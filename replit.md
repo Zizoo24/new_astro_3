@@ -52,6 +52,15 @@ The system is designed as a "Digital Concierge" with a "WhatsApp-First Architect
 
 ## Recent Changes (December 2025)
 
+**Homepage UX Refactor - December 5, 2025:**
+- Hero section restructured: long paragraph replaced with scannable lead + 3 bullet points
+- New CSS classes: `.hero-lead`, `.hero-bullets`, `.hero-cta-secondary`
+- CTA standardization: all primary CTAs now use "Send Documents on WhatsApp"
+- Specialists section: paragraphs converted to bullet lists (`.specialist-bullets`)
+- Why Choose Us: reordered concrete benefits first, abstract messaging after
+- About section simplified with `.about-summary` styling
+- Service worker bumped to v126
+
 **Sensitive Page UX Improvements - December 5, 2025:**
 - Death certificate page hero restructured for empathy-first approach
 - Added `.hero-empathy-note` component with subtle styling (light overlay, left border accent)
