@@ -86,9 +86,17 @@ This document tracks all tasks for the project, organized by status.
 
 ### Vercel Cache Headers (vercel.json)
 - `/service-worker.js`: no-cache, no-store, must-revalidate
+- HTML pages: max-age=0, must-revalidate (via negative lookahead regex excluding static dirs)
 - `/styles/*`, `/scripts/*`: max-age=0, must-revalidate (prevents stale CSS/JS)
+- `/_astro/*`: default long-term caching (hashed filenames)
 - `/images/*`: 30-day cache
-- Note: Non-hashed filenames require must-revalidate to force fresh fetches on redeploy
+
+### Mobile Navigation Architecture
+- **Footer bar items** (Menu, Search): `<button type="button">` elements to prevent navigation fallback
+- **Header toggles** (Sidebar, Theme): `<button type="button">` elements
+- **Real links** (WhatsApp, Call, Contact): `<a>` elements with proper hrefs
+- **Script loading**: All scripts use `defer` attribute for DOM-ready execution
+- **Focus states**: Accessible box-shadow focus rings using `:focus-visible`
 
 ### Mobile Sidebar Contrast (visibility-fixes.css)
 - Sidebar background is forced to navy via `visibility-fixes.css`
