@@ -115,7 +115,7 @@
     transform: scale(0.95);
 }
 
-/* WhatsApp Button - Green with Neon Pulse */
+/* WhatsApp Button - Green with subtle glow (no scale transform to prevent glitches) */
 .footer-whatsapp,
 .footer-whatsapp span {
     color: #25D366 !important;
@@ -123,25 +123,25 @@
 
 .footer-whatsapp i {
     color: #25D366 !important;
-    animation: whatsappPulse 3s ease-in-out infinite;
+    animation: whatsappGlow 3s ease-in-out infinite;
 }
 
-@keyframes whatsappPulse {
+@keyframes whatsappGlow {
     0%, 70%, 100% {
         text-shadow: none;
-        transform: scale(1);
+        opacity: 1;
     }
     75% {
-        text-shadow: 0 0 8px #25D366, 0 0 16px #25D366, 0 0 24px #25D366;
-        transform: scale(1.1);
+        text-shadow: 0 0 6px #25D366, 0 0 12px #25D366;
+        opacity: 1;
     }
     80% {
-        text-shadow: 0 0 4px #25D366, 0 0 10px #25D366;
-        transform: scale(1.05);
+        text-shadow: 0 0 3px #25D366;
+        opacity: 1;
     }
     85% {
         text-shadow: none;
-        transform: scale(1);
+        opacity: 1;
     }
 }
 
@@ -152,6 +152,7 @@
 
 .footer-whatsapp:active i {
     color: #128C7E !important;
+    animation: none;
 }
 
 /* Sidebar Menu */

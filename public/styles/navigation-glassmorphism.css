@@ -97,78 +97,103 @@
 
 /* ========================================
    HOMEPAGE ONLY - Transparent Header
+   Coral top bar stays coral, main nav transparent with WHITE text
    ======================================== */
 
-/* Homepage: Transparent header with dark text */
+/* Homepage: Keep announcement bar CORAL (not transparent) */
+body.homepage .header-announcement {
+    background: var(--accent-color) !important;
+}
+
+/* Homepage: Announcement bar text stays white on coral */
+body.homepage .header-desktop.exodus-header:not(.scrolled) .announcement-label {
+    color: #ffffff;
+}
+
+body.homepage .header-desktop.exodus-header:not(.scrolled) .announcement-btn {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+body.homepage .header-desktop.exodus-header:not(.scrolled) .announcement-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+body.homepage .header-desktop.exodus-header:not(.scrolled) .announcement-cta {
+    color: #ffffff;
+}
+
+/* Homepage: Main header TRANSPARENT (not just .header-main) with WHITE text before scroll */
 body.homepage .header-desktop.exodus-header:not(.scrolled) {
     background: transparent !important;
     border-bottom: none;
     box-shadow: none;
 }
 
-/* Homepage: Announcement bar always transparent (regardless of scroll) */
-body.homepage .header-announcement {
+body.homepage .header-desktop.exodus-header:not(.scrolled) .header-main {
     background: transparent !important;
 }
 
-/* Homepage: Dark navy text for visibility on hero */
-body.homepage .header-desktop.exodus-header:not(.scrolled) .announcement-label {
-    color: var(--primary-color);
-    text-shadow: 0 1px 2px rgba(255,255,255,0.5);
-}
-
-body.homepage .header-desktop.exodus-header:not(.scrolled) .announcement-btn {
-    color: var(--primary-color);
-    border-color: var(--primary-color);
-}
-
-body.homepage .header-desktop.exodus-header:not(.scrolled) .announcement-btn:hover {
-    background: var(--primary-color);
-    color: #ffffff;
-}
-
-body.homepage .header-desktop.exodus-header:not(.scrolled) .announcement-cta {
-    color: var(--primary-color);
-}
-
+/* Homepage: WHITE logo text on transparent nav */
 body.homepage .header-desktop.exodus-header:not(.scrolled) .logo-text,
 body.homepage .header-desktop.exodus-header:not(.scrolled) .logo-text .logo-suffix {
-    color: var(--primary-color);
+    color: #ffffff !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 body.homepage .header-desktop.exodus-header:not(.scrolled) .logo-domain {
-    color: var(--accent-color);
+    color: var(--accent-color) !important;
 }
 
 body.homepage .header-desktop.exodus-header:not(.scrolled) .logo-tagline {
-    color: var(--primary-color);
-    opacity: 0.8;
+    color: rgba(255, 255, 255, 0.85) !important;
 }
 
+/* Homepage: WHITE nav links before scroll */
 body.homepage .header-desktop.exodus-header:not(.scrolled) .nav-link {
-    color: var(--primary-color);
+    color: #ffffff !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 body.homepage .header-desktop.exodus-header:not(.scrolled) .nav-link i {
-    color: var(--primary-color);
+    color: #ffffff !important;
 }
 
 body.homepage .header-desktop.exodus-header:not(.scrolled) .nav-link:hover {
-    color: var(--accent-color);
+    color: var(--accent-color) !important;
 }
 
+/* Homepage: WHITE contact button before scroll */
 body.homepage .header-desktop.exodus-header:not(.scrolled) .header-contact-btn {
-    color: var(--primary-color);
-    border-color: var(--primary-color);
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
 }
 
+body.homepage .header-desktop.exodus-header:not(.scrolled) .header-contact-btn:hover {
+    background: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
+}
+
+/* Homepage: WHITE social icons before scroll */
 body.homepage .header-desktop.exodus-header:not(.scrolled) .social-icons a {
-    color: var(--primary-color);
-    border-color: var(--primary-color);
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
 }
 
+body.homepage .header-desktop.exodus-header:not(.scrolled) .social-icons a:hover {
+    background: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
+}
+
+/* Homepage: WHITE theme toggle before scroll */
 body.homepage .header-desktop.exodus-header:not(.scrolled) #themeToggle {
-    color: var(--primary-color);
+    color: #ffffff !important;
+}
+
+/* Homepage: PNG logo should have brightness filter for visibility on dark hero */
+body.homepage .header-desktop.exodus-header:not(.scrolled) .logo-img {
+    filter: brightness(0) invert(1) !important;
 }
 
 /* Smooth transitions */
