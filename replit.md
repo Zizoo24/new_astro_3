@@ -160,3 +160,38 @@ Optional props:
 - Certificate Translation: /services/certificate-translation/
 - Corporate Translation: /services/corporate-translation/
 - Legal Translation: /services/legal-translation/
+
+*Industry Pages (using BaseLayout):*
+- Industries hub: /industries/
+- Legal Industry: /industries/legal/
+- Healthcare: /industries/healthcare/
+- Real Estate: /industries/real-estate/
+- E-Commerce: /industries/e-commerce/
+
+*Resource Pages (using BaseLayout):*
+- Resources hub: /resources/
+- FAQ: /resources/faq/
+- Pricing Guide: /resources/pricing-guide/
+- Document Checklist: /resources/document-checklist/
+- Attestation Guide: /resources/attestation-guide/
+- Golden Visa Checklist: /resources/golden-visa-checklist/
+
+*Utility Pages:*
+- Contact: /contact/
+- 404: /404.astro (redirects)
+- Offline: /offline/
+- Privacy Policy: /privacy/
+- Terms of Service: /terms/
+
+**Mobile Header Fix - December 6, 2025:**
+- Added `.header-mobile` div to Header.astro matching original HTML structure
+- Elements: `#sidebarToggle` (hamburger), logo text, `#themeToggle` (dark mode)
+- CSS at 991px breakpoint hides `.header-desktop`, shows `.header-mobile`
+- Body now has `theme-light` class by default for dark mode toggle to work
+
+**Feature Catalog:**
+- Created `FEATURE_CATALOG.md` documenting all original HTML features vs Astro implementation
+- Use this as reference for tracking feature parity
+- Includes verification checklists for desktop, mobile, theme toggle, and PWA
+
+**Total Pages Created: 40+**

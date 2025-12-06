@@ -118,17 +118,15 @@ const { isHomepage = false } = Astro.props;
 </header>
 
 <!-- Mobile Header - Shown on mobile devices -->
-<header class="header-mobile">
-  <a href="#" class="header-icon" id="mobileMenuToggle2" aria-label="Open menu">
+<div class="header-mobile">
+  <a href="#" class="header-icon" id="sidebarToggle" aria-label="Open menu">
     <i class="fas fa-bars"></i>
   </a>
-  <a href="/" class="header-title">
-    Online<span>Translation</span>.ae
+  <a href="/" class="header-title">OnlineTranslation<span>.ae</span></a>
+  <a href="#" id="themeToggle" class="header-icon" aria-label="Toggle theme">
+    <i class="fas fa-moon"></i>
   </a>
-  <a href="https://wa.me/971508620217" class="header-icon" aria-label="WhatsApp">
-    <i class="fab fa-whatsapp" style="color: #25D366;"></i>
-  </a>
-</header>
+</div>
 
 <!-- Mobile Navigation Overlay -->
 <div class="mobile-nav-overlay" id="mobileNavOverlay">
@@ -170,7 +168,6 @@ const { isHomepage = false } = Astro.props;
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const mobileToggle = document.getElementById('mobileMenuToggle');
-    const mobileToggle2 = document.getElementById('mobileMenuToggle2');
     const mobileClose = document.getElementById('mobileCloseBtn');
     const mobileOverlay = document.getElementById('mobileNavOverlay');
     const header = document.getElementById('header');
@@ -186,11 +183,6 @@ const { isHomepage = false } = Astro.props;
     }
 
     mobileToggle?.addEventListener('click', (e) => {
-      e.preventDefault();
-      openMobileNav();
-    });
-    
-    mobileToggle2?.addEventListener('click', (e) => {
       e.preventDefault();
       openMobileNav();
     });
