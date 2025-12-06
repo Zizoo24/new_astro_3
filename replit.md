@@ -33,7 +33,9 @@ The system is designed as a "Digital Concierge" with a "WhatsApp-First Architect
 - **Tech Stack:** Astro 5.x with a component-based architecture.
 - **Deployment:** Vercel.
 - **Current Page Count:** 49 pages built (target: 55+).
-- **CSS Architecture:** CSS files served from `public/styles/` (not `src/styles/`). When editing CSS, update files in `public/styles/` directly. Key files: `porto-desktop.css` (base desktop styles), `navigation-glassmorphism.css` (header/nav styling), `sticky-mobile.css` (mobile bottom bar), `mobile-action-bar.css` (disabled to prevent footer conflicts).
+- **CSS Architecture:** CSS files served from `public/styles/` (not `src/styles/`). When editing CSS, update files in `public/styles/` directly. Key files: `porto-desktop.css` (base desktop styles), `navigation-glassmorphism.css` (header/nav styling), `sticky-mobile.css` (mobile bottom bar and sidebar), `visibility-fixes.css` (enforces dark navy sidebar background).
+- **Mobile Sidebar Contrast:** The sidebar background is forced to navy via `visibility-fixes.css` (`rgba(14, 43, 72, 0.98)`). All sidebar text must use light colors (`rgba(255, 255, 255, 0.7-0.92)`). Hover/active states use white text (#ffffff), not accent color, to meet WCAG AA contrast requirements (≥4.5:1 for text, ≥3:1 for icons).
+- **Service Worker:** Current version v152 in `public/service-worker.js`. Bump version after any CSS/JS changes to bust cache.
 - **Layout Components:** `BaseLayout.astro` (base HTML wrapper), `CategoryLayout.astro` (reusable category page structure with hero, breadcrumbs, and shared styles).
 - **Schema Markup:** Automatic generation for Service, Breadcrumb, and FAQ schemas via `ServiceLayout` component.
 - **Performance Standards:** Page load under 3 seconds on 3G, lazy loading, WebP images with JPG fallback, no JavaScript console errors.
@@ -44,7 +46,8 @@ The system is designed as a "Digital Concierge" with a "WhatsApp-First Architect
 - **Content Structure:** 4-Silo SEO structure (Legal & Corporate, Personal & Civil, Industry Specialized, Locations).
 - **Page Anatomy:** "Above the Fold" section (H1, Concierge Intro, Service Snapshot, Primary CTA), Compliance Checklist, Step-by-Step Process, After-Care Guide, Pricing & Timelines, and FAQ.
 - **Internal Linking:** Centralized URL mappings in `src/data/serviceLinks.ts` for consistent internal linking across service, document, and location mentions. Link density standard: 1-2 contextual links per paragraph, no duplicate anchors within same thematic blocks.
-- **Key Components:** `Icon.astro`, `TrustStrip.astro`, `ProcessSteps.astro`, `BenefitCards.astro`, `AccordionSection.astro` for content modularity and reusability.
+- **Key Components:** `Icon.astro`, `TrustStrip.astro`, `ProcessSteps.astro`, `BenefitCards.astro`, `AccordionSection.astro`, `TestimonialsCarousel.astro` for content modularity and reusability.
+- **TestimonialsCarousel:** Touch-swipe enabled carousel with navigation dots, arrow controls, and 5-second auto-rotation. External JS in `public/scripts/testimonials-carousel.js`. Displays client testimonials with names, roles, and UAE locations.
 - **serviceLinks.ts Pattern:** Single source of truth for all service/document/location URLs. Exports: `serviceLinks` (object with url/text/full), `footerServices` (array for footer rendering), `relatedServices` (grouped by category), `makeLink()` helper function. Footer.astro wired to use `footerServices`.
 
 ## External Dependencies

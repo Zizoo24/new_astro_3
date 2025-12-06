@@ -30,6 +30,7 @@ This document tracks all tasks for the project, organized by status.
 | Create TestimonialsCarousel component | Carousel with touch swipe, navigation dots, auto-rotation | Completed |
 | Add testimonials to homepage | Implement carousel with realistic client testimonials | Completed |
 | Fix mobile sidebar contrast | Section titles, nav links, borders now use light colors for navy background | Completed |
+| Update documentation | Updated replit.md with sidebar contrast rules, TestimonialsCarousel, service worker v152 | Completed |
 
 ---
 
