@@ -32,7 +32,7 @@ The system is designed as a "Digital Concierge" with a "WhatsApp-First Architect
 **Technical Implementations:**
 - **Tech Stack:** Astro 5.x with a component-based architecture.
 - **Deployment:** Vercel.
-- **CSS Architecture:** `base-architecture.css` defines primitives; component styles in `porto-desktop.css` and OS-specific stylesheets.
+- **CSS Architecture:** CSS files served from `public/styles/` (not `src/styles/`). When editing CSS, update files in `public/styles/` directly. Key files: `porto-desktop.css` (base desktop styles), `navigation-glassmorphism.css` (header/nav styling).
 - **Schema Markup:** Automatic generation for Service, Breadcrumb, and FAQ schemas via `ServiceLayout` component.
 - **Performance Standards:** Page load under 3 seconds on 3G, lazy loading, WebP images with JPG fallback, no JavaScript console errors.
 - **GitHub Repository:** `OT.ae-astro-astro` (Astro-only repo).

@@ -118,67 +118,86 @@ h1, h2, h3, h4, h5, h6 {
     right: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: var(--primary-color);
     transition: all 0.3s ease;
     overflow: visible;
     box-sizing: border-box;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .header-desktop.exodus-header.scrolled {
-    background: rgba(14, 43, 72, 0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: var(--primary-color);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Homepage-only: Transparent header on initial load */
-.homepage .header-desktop.exodus-header:not(.scrolled) {
+body.homepage .header-desktop.exodus-header:not(.scrolled) {
     background: transparent;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: none;
 }
 
-.homepage .header-desktop.exodus-header:not(.scrolled) .logo-text,
-.homepage .header-desktop.exodus-header:not(.scrolled) .logo-text span {
-    color: #ffffff;
+/* Homepage transparent header - announcement bar also transparent */
+body.homepage .header-announcement {
+    background: transparent !important;
 }
 
-.homepage .header-desktop.exodus-header:not(.scrolled) .logo-tagline {
-    color: rgba(255, 255, 255, 0.8);
+/* Homepage transparent header - dark text for visibility */
+body.homepage .header-desktop.exodus-header:not(.scrolled) .announcement-label {
+    color: var(--primary-color);
+    text-shadow: 0 1px 2px rgba(255,255,255,0.5);
 }
 
-.homepage .header-desktop.exodus-header:not(.scrolled) .logo-suffix,
-.homepage .header-desktop.exodus-header:not(.scrolled) .logo-domain {
-    color: #ffffff;
+body.homepage .header-desktop.exodus-header:not(.scrolled) .announcement-btn {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
 }
 
-.homepage .header-desktop.exodus-header:not(.scrolled) .nav-link {
-    color: var(--text-light);
+body.homepage .header-desktop.exodus-header:not(.scrolled) .announcement-cta {
+    color: var(--primary-color);
 }
 
-.homepage .header-desktop.exodus-header:not(.scrolled) .nav-link i {
-    color: var(--text-light);
+body.homepage .header-desktop.exodus-header:not(.scrolled) .logo-text,
+body.homepage .header-desktop.exodus-header:not(.scrolled) .logo-text span {
+    color: var(--primary-color);
 }
 
-.homepage .header-desktop.exodus-header:not(.scrolled) .header-contact-btn {
-    color: var(--text-light);
-    border-color: rgba(255, 255, 255, 0.5);
+body.homepage .header-desktop.exodus-header:not(.scrolled) .logo-tagline {
+    color: var(--primary-color);
+    opacity: 0.8;
 }
 
-.homepage .header-desktop.exodus-header:not(.scrolled) .social-icons a {
-    color: var(--text-light);
-    border-color: rgba(255, 255, 255, 0.5);
+body.homepage .header-desktop.exodus-header:not(.scrolled) .logo-suffix,
+body.homepage .header-desktop.exodus-header:not(.scrolled) .logo-domain {
+    color: var(--accent-color);
 }
 
-.homepage .header-desktop.exodus-header:not(.scrolled) .menu-toggle-btn.mobile-only {
-    color: var(--text-light);
-    border-color: rgba(255, 255, 255, 0.5);
+body.homepage .header-desktop.exodus-header:not(.scrolled) .nav-link {
+    color: var(--primary-color);
+}
+
+body.homepage .header-desktop.exodus-header:not(.scrolled) .nav-link i {
+    color: var(--primary-color);
+}
+
+body.homepage .header-desktop.exodus-header:not(.scrolled) .header-contact-btn {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+body.homepage .header-desktop.exodus-header:not(.scrolled) .social-icons a {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+body.homepage .header-desktop.exodus-header:not(.scrolled) .menu-toggle-btn.mobile-only {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
     background: transparent;
+}
+
+body.homepage .header-desktop.exodus-header:not(.scrolled) #themeToggle {
+    color: var(--primary-color);
 }
 
 /* Exodus Announcement Bar */
@@ -376,7 +395,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-primary);
     font-size: 22px;
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--text-light);
     letter-spacing: 0.5px;
 }
 
@@ -393,7 +412,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-secondary);
     font-size: 12px;
     font-weight: 400;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.7);
     letter-spacing: 2px;
     text-transform: uppercase;
     margin-top: 3px;
@@ -405,8 +424,8 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     padding: 6px 14px;
     background: transparent;
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: var(--text-light);
     font-family: var(--font-primary);
     font-size: 11px;
     font-weight: 600;
@@ -454,7 +473,7 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     gap: 3px;
     padding: 8px 8px;
-    color: var(--primary-color);
+    color: var(--text-light);
     text-decoration: none;
     font-family: var(--font-primary);
     font-size: 11px;
@@ -464,6 +483,10 @@ h1, h2, h3, h4, h5, h6 {
     transition: var(--transition-fast);
     position: relative;
     white-space: nowrap;
+}
+
+.nav-link i {
+    color: var(--text-light);
 }
 
 .header-desktop.exodus-header.scrolled .nav-link {
@@ -579,10 +602,10 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--primary-color);
+    color: var(--text-light);
     font-size: 12px;
     background: transparent;
-    border: 1px solid var(--primary-color);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 4px;
     transition: var(--transition);
 }
@@ -599,6 +622,22 @@ h1, h2, h3, h4, h5, h6 {
     border-color: var(--accent-color);
     color: var(--text-light);
     transform: translateY(-3px);
+}
+
+/* Theme Toggle Icon */
+.exodus-header #themeToggle {
+    color: var(--text-light);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+.exodus-header #themeToggle:hover {
+    color: var(--accent-color);
 }
 
 /* Mobile Only Toggle */
