@@ -120,10 +120,35 @@ Optional props:
 - `accordionSections`: Array of {title, id, items: [{heading, body}]}
 - `faqs`: Array of {question, answer} for FAQ section
 
-**Created Document Pages (using ServiceLayout template):**
+**Created Astro Pages (23 total):**
+
+*Hub/Index Pages (using BaseLayout):*
+- Homepage: /
+- Personal documents hub: /personal/
+- Legal documents hub: /legal/
+- Locations hub: /locations/
+- Dubai hub: /locations/dubai/
+
+*Personal Documents (using ServiceLayout):*
 - Birth certificate: /personal/vital-records/birth/
 - Marriage certificate: /personal/vital-records/marriage/
 - Divorce certificate: /personal/vital-records/divorce/
 - Death certificate: /personal/vital-records/death/
 - Degree certificate: /personal/education/degree/
+- Academic transcripts: /personal/academic/transcripts/
 - Police clearance (PCC): /personal/immigration/pcc/
+- Driving license: /personal/immigration/license/
+- Bank statements: /personal/immigration/bank/
+
+*Legal Documents (using ServiceLayout):*
+- Power of Attorney: /legal/corporate/poa/
+- Memorandum of Association: /legal/corporate/moa/
+- NDA / Confidentiality: /legal/contracts/nda/
+
+*Location Pages (using ServiceLayout):*
+- Palm Jumeirah: /locations/dubai/palm-jumeirah/
+- DIFC: /locations/dubai/difc/
+- JLT: /locations/dubai/jlt/
+- Business Bay: /locations/dubai/business-bay/
+- Abu Dhabi: /locations/abu-dhabi/
+- Sharjah: /locations/sharjah/
