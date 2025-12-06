@@ -80,8 +80,9 @@ This document tracks all tasks for the project, organized by status.
 - **Data pattern:** Service pages use `pageData` object passed to ServiceLayout
 
 ### Service Worker
-- **Current version:** v157
-- **Bump version** after any CSS/JS changes to bust cache
+- **Status:** Disabled (cleanup version that self-unregisters)
+- **Reason:** Previous caching worker caused production cache poisoning on Vercel
+- **Future:** Implement Workbox-based solution with hashed assets before re-enabling
 
 ### Mobile Sidebar Contrast (visibility-fixes.css)
 - Sidebar background is forced to navy via `visibility-fixes.css`
