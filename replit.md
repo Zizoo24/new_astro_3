@@ -29,14 +29,14 @@ The system is designed as a "Digital Concierge" with a "WhatsApp-First Architect
 - **Hero Section:** Desktop features three overlapping cards (MOJ Certified, Court Accepted, 60-Min Draft); mobile displays these cards flowing after the hero.
 
 **Technical Implementations:**
-- **Tech Stack:** Static HTML/CSS/JS (no build process).
-- **Deployment:** Vercel with `vercel.json` for configuration.
-- **PWA:** `manifest.webmanifest` and `service-worker.js` for Progressive Web App capabilities.
-- **Local Development:** `server.py` for a local development server.
-- **CSS Architecture:** Base architecture CSS (`base-architecture.css`) defining section primitives, container system, grid utilities, spacing scale, and responsive breakpoints. Component styles reside in `porto-desktop.css` and 6 OS-specific stylesheets.
-- **Schema Markup:** Required on every page (Service, LocalBusiness, FAQPage, BreadcrumbList).
+- **Tech Stack:** Astro 5.x static site generator with component-based architecture.
+- **Project Structure:** src/layouts/, src/components/, src/pages/, src/styles/
+- **Deployment:** Vercel with `vercel.json` for Astro build configuration.
+- **Local Development:** `npm run dev` via Astro dev server on port 5000.
+- **CSS Architecture:** Base architecture CSS (`base-architecture.css`) defining section primitives, container system, grid utilities, spacing scale, and responsive breakpoints. Component styles in `porto-desktop.css` and OS-specific stylesheets imported via BaseLayout.
+- **Schema Markup:** Automatic generation for Service, Breadcrumb, and FAQ schemas via ServiceLayout component.
 - **Performance Standards:** Page load under 3 seconds on 3G, lazy loading, WebP images with JPG fallback, no JavaScript console errors.
-- **CI/CD:** GitHub Actions for automated sitemap generation and deployment.
+- **GitHub Repository:** OT.ae-astro-astro (new Astro-only repo, replaces old static HTML repo).
 
 **Feature Specifications:**
 - **Content Structure:** 4-Silo SEO structure (Legal & Corporate, Personal & Civil, Industry Specialized, Locations).
@@ -46,7 +46,7 @@ The system is designed as a "Digital Concierge" with a "WhatsApp-First Architect
 ## External Dependencies
 
 - **OneDrive:** Used for storing user's images and brand assets from the `OtLegalTranslationcom` folder.
-- **GitHub:** Utilized for version control with the `onlinetranslation-dubai` repository.
+- **GitHub:** New repository `OT.ae-astro-astro` for Astro codebase. Old `onlinetranslation-dubai` repo deprecated.
 - **Arkan Legal Translation:** Strategic partner for fulfillment, providing the MOJ license, stamp, and signature for certified translations.
 - **Form Handler:** Contact forms use `form-handler.js` with graceful fallback to WhatsApp; optional Supabase integration for database storage.
 - **Vercel:** Platform for production website deployment.
