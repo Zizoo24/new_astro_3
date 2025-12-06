@@ -2,7 +2,7 @@
 
 ## Overview
 
-OnlineTranslation.ae is a "Digital Concierge" service in Dubai, specializing in document clearing and project management for legal translation. It aims to provide a "boutique" experience, emphasizing speed, trust, and government acceptance of translated documents, bridging the gap between slow legacy agencies and unreliable street shops. The service offers "Stress Management" and "Government Acceptance" through features like a "60-Minute Promise" for digital drafts and a "White-Glove" Shield for pre-validation. Operating in partnership with Arkan Legal Translation for MOJ licensing and certification, OnlineTranslation.ae manages the platform, customer service, and logistics. The project's ambition is to achieve significant organic reach via a highly structured SEO content strategy.
+OnlineTranslation.ae is a "Digital Concierge" service in Dubai, specializing in document clearing and project management for legal translation. It aims to provide a "boutique" experience, emphasizing speed, trust, and government acceptance of translated documents. The service offers features like a "60-Minute Promise" for digital drafts and a "White-Glove" Shield for pre-validation. Operating in partnership with Arkan Legal Translation for MOJ licensing and certification, OnlineTranslation.ae manages the platform, customer service, and logistics. The project seeks significant organic reach through a highly structured SEO content strategy.
 
 ## User Preferences
 
@@ -19,197 +19,34 @@ OnlineTranslation.ae is a "Digital Concierge" service in Dubai, specializing in 
 
 ## System Architecture
 
-The system is designed as a "Digital Concierge" with a "WhatsApp-First Architecture."
+The system is designed as a "Digital Concierge" with a "WhatsApp-First Architecture," built using Astro 5.x static site generator.
 
 **UI/UX Decisions:**
 - **Design Inspiration:** Divi Exodus immigration template.
 - **Color Palette:** Primary Navy (#0E2B48), Accent Coral (#FF1654), Gold Highlight (#d4a54c), Text Dark (#1a1a1a), Text Muted (#666666), Background Light (#f8f9fa).
 - **Typography:** Headings (Montserrat or Jost, 700-800 weight, uppercase with 0.3em letter-spacing), Body (Open Sans or Roboto, 400 weight, 1.8-1.9 line-height).
-- **Principles:** Mobile-first design (70%+ UAE traffic is mobile), seamless WhatsApp integration, accordion-based content for SEO and mobile optimization, sticky bottom navigation (mobile only), no floating CTAs (use bottom action bar).
-- **Hero Section:** Desktop features three overlapping cards (MOJ Certified, Court Accepted, 60-Min Draft); mobile displays these cards flowing after the hero.
+- **Principles:** Mobile-first design (70%+ UAE traffic is mobile), seamless WhatsApp integration, accordion-based content, sticky bottom navigation (mobile only), no floating CTAs.
+- **Hero Section:** Desktop features three overlapping cards (MOJ Certified, Court Accepted, 60-Min Draft); mobile displays these cards sequentially.
+- **Micro-Components:** Icon Box, Timeline, Alert Box for visual punctuation.
 
 **Technical Implementations:**
-- **Tech Stack:** Astro 5.x static site generator with component-based architecture.
-- **Project Structure:** src/layouts/, src/components/, src/pages/, src/styles/
-- **Deployment:** Vercel with `vercel.json` for Astro build configuration.
-- **Local Development:** `npm run dev` via Astro dev server on port 5000.
-- **CSS Architecture:** Base architecture CSS (`base-architecture.css`) defining section primitives, container system, grid utilities, spacing scale, and responsive breakpoints. Component styles in `porto-desktop.css` and OS-specific stylesheets imported via BaseLayout.
-- **Schema Markup:** Automatic generation for Service, Breadcrumb, and FAQ schemas via ServiceLayout component.
+- **Tech Stack:** Astro 5.x with a component-based architecture.
+- **Deployment:** Vercel.
+- **CSS Architecture:** `base-architecture.css` defines primitives; component styles in `porto-desktop.css` and OS-specific stylesheets.
+- **Schema Markup:** Automatic generation for Service, Breadcrumb, and FAQ schemas via `ServiceLayout` component.
 - **Performance Standards:** Page load under 3 seconds on 3G, lazy loading, WebP images with JPG fallback, no JavaScript console errors.
-- **GitHub Repository:** OT.ae-astro-astro (new Astro-only repo, replaces old static HTML repo).
+- **GitHub Repository:** `OT.ae-astro-astro` (Astro-only repo).
 
 **Feature Specifications:**
 - **Content Structure:** 4-Silo SEO structure (Legal & Corporate, Personal & Civil, Industry Specialized, Locations).
-- **Page Anatomy:** "Above the Fold" section (H1, Concierge Intro, Service Snapshot, Primary CTA), Compliance Checklist (accordion), Step-by-Step Process (accordion), After-Care Guide, Pricing & Timelines, and FAQ (schema optimized).
-- **Operational Scripts:** Pre-defined scripts for WhatsApp triage and client query handling.
+- **Page Anatomy:** "Above the Fold" section (H1, Concierge Intro, Service Snapshot, Primary CTA), Compliance Checklist, Step-by-Step Process, After-Care Guide, Pricing & Timelines, and FAQ.
+- **Internal Linking:** Centralized URL mappings in `src/data/serviceLinks.ts` for consistent internal linking across service, document, and location mentions.
+- **Key Components:** `Icon.astro`, `TrustStrip.astro`, `ProcessSteps.astro`, `BenefitCards.astro`, `AccordionSection.astro` for content modularity and reusability.
 
 ## External Dependencies
 
-- **OneDrive:** Used for storing user's images and brand assets from the `OtLegalTranslationcom` folder.
-- **GitHub:** New repository `OT.ae-astro-astro` for Astro codebase. Old `onlinetranslation-dubai` repo deprecated.
-- **Arkan Legal Translation:** Strategic partner for fulfillment, providing the MOJ license, stamp, and signature for certified translations.
-- **Form Handler:** Contact forms use `form-handler.js` with graceful fallback to WhatsApp; optional Supabase integration for database storage.
-- **Vercel:** Platform for production website deployment.
-
-## Recent Changes (December 2025)
-
-**Micro-Components for Visual Punctuation - December 6, 2025:**
-- **Icon Box** (`.icon-box`): Flex container for checklist items with icon + content layout
-  - Variants: `.icon-box--navy`, `.icon-box--gold` for different icon colors
-  - Use with `.grid-2` for 2-column layout
-- **Timeline** (`.timeline` + `.timeline-item`): Vertical process steps with coral/navy line
-  - Variants: `.timeline--navy` for navy-colored timeline
-  - Use `.timeline-title` span for step headers
-- **Alert Box** (`.alert-box`): Callout boxes for warnings and important notes
-  - Variants: `.alert-box--warning` (gold), `.alert-box--info` (navy), `.alert-box--success` (green)
-  - Default is coral/red
-- All components added to `styles/base-architecture.css`
-- Birth certificate page refactored as template: Module B uses timeline, alert-boxes added to Module A
-
-**Homepage Transparent Header - December 6, 2025:**
-- **Homepage-only body class:** Added `homepage` class to index.html body tag
-- **Transparent header on initial load:** Homepage header is fully transparent (no background, no blur) until scroll
-- **White header elements:** Logo text, nav links, contact button, social icons, and mobile toggle all display white on homepage before scroll
-- **CSS implementation:** `.homepage .header-desktop.exodus-header:not(.scrolled)` rules in porto-desktop.css
-- **Scroll behavior preserved:** Header transitions to navy background on scroll (same as before)
-
-**Dark Background Text Visibility Fix - December 6, 2025:**
-- **Root cause:** `.service-snapshot` and `.snapshot-item` classes had no CSS defined, inheriting dark body text on navy backgrounds
-- **Site-wide fix in base-architecture.css:**
-  - Added cascading rule for `.bg-dark` and `[data-theme="dark"]` containers with `color: rgba(255, 255, 255, 0.95)`
-  - All child text elements (h1-h6, p, span, li, strong) inherit light color automatically
-  - Added complete `.service-snapshot` and `.snapshot-item` definitions
-- **Protection:** Any future dark-themed sections will automatically have legible light text
-
-**Service Worker:** Currently at v140
-
-**Fidelity Restoration - December 6, 2025:**
-- **Mobile sidebar CSS class fixes:** JavaScript uses `.is-open`, `.is-visible`, `.is-active` but CSS only had `.active`, `.expanded`. Fixed all selectors:
-  - `.sidebar-menu.is-open` for sidebar open state
-  - `.sidebar-accordion-content.is-open` for accordion content
-  - `.sidebar-overlay.is-visible` for overlay
-  - `.search-overlay.is-open` for search overlay
-  - `.sidebar-section-title.is-active .accordion-icon` for chevron rotation
-- **Dark mode sidebar contrast:** Added explicit styles for sidebar elements:
-  - `.sidebar-section-title` - white text (85% opacity)
-  - `.accordion-icon` - white (60% opacity), coral on hover/active
-  - `.sidebar-cta.secondary` - white text on dark background
-- **Footer.astro restored:** Now matches original static HTML exactly:
-  - Logo emblem, MOJ certification text, Arkan partnership link
-  - 4-column grid: footer-brand, footer-links, footer-services, footer-contact
-  - Social icons (WhatsApp, Instagram, LinkedIn)
-  - Footer bottom band with copyright and policy links
-- **Header.astro cleanup:** Removed orphaned `.mobile-nav-overlay` div that had no CSS
-
-**Astro Migration - December 6, 2025:**
-- **Framework:** Migrated from static HTML to Astro 5.x for easier content management
-- **Project structure:** src/layouts/, src/components/, src/pages/, src/content/, src/styles/
-- **Layouts:** BaseLayout.astro (base with Header/Footer components), ServiceLayout.astro (extends BaseLayout for document pages)
-- **Components:** Header.astro (modern megamenu + mobile nav with JS), Footer.astro (reusable footer)
-- **Navigation:** Modern megamenu with hover dropdowns, accessible keyboard navigation, mobile hamburger menu
-- **Schema markup:** Automatic generation for Service, Breadcrumb, and FAQ schemas
-- **Content workflow:** Document pages defined as Astro files with front-matter for SEO and content structure
-- **Vercel:** Updated vercel.json with Astro build configuration
-- **CSS preserved:** All existing stylesheets (base-architecture.css, porto-desktop.css, etc.) imported as-is
-- **New GitHub repo:** OT.ae-astro-astro (clean Astro-only repo, excludes old static HTML)
-
-**Visual Relief Components - December 6, 2025:**
-- **Icon.astro:** SVG icon component with 20+ built-in icons (checkmark, clock, document, shield, court, etc.)
-- **TrustStrip.astro:** Horizontal bar with 3 trust signals, gold icons on navy background
-- **ProcessSteps.astro:** 3-step numbered cards with coral accents, configurable via array
-- **BenefitCards.astro:** Icon + heading + text grid, navy icon boxes on light cards
-- **AccordionSection.astro:** Collapsible content groups with JS toggle, single-open behavior
-
-**ServiceLayout Front-Matter Schema:**
-Required props:
-- `title`: Page title for SEO
-- `description`: Meta description
-- `heroTitle`: H1 heading
-- `heroIntro`: Intro paragraph
-- `snapshot`: Array of {icon, bold, text} for hero snapshot items
-- `breadcrumbs`: Array of {name, url} for breadcrumb navigation
-
-Optional props:
-- `heroSubtitle`: Coral accent subtitle
-- `keywords`: Meta keywords
-- `trustStrip`: Array of 3 trust signal strings
-- `processSteps`: Array of {title, text} for 3-step process
-- `benefitCards`: Array of {icon, title, text} for benefit grid
-- `accordionSections`: Array of {title, id, items: [{heading, body}]}
-- `faqs`: Array of {question, answer} for FAQ section
-
-**Created Astro Pages (29 total):**
-
-*Hub/Index Pages (using BaseLayout):*
-- Homepage: /
-- Personal documents hub: /personal/
-- Legal documents hub: /legal/
-- Locations hub: /locations/
-- Dubai hub: /locations/dubai/
-- Services hub: /services/
-
-*Personal Documents (using ServiceLayout):*
-- Birth certificate: /personal/vital-records/birth/
-- Marriage certificate: /personal/vital-records/marriage/
-- Divorce certificate: /personal/vital-records/divorce/
-- Death certificate: /personal/vital-records/death/
-- Degree certificate: /personal/education/degree/
-- Academic transcripts: /personal/academic/transcripts/
-- Police clearance (PCC): /personal/immigration/pcc/
-- Driving license: /personal/immigration/license/
-- Bank statements: /personal/immigration/bank/
-
-*Legal Documents (using ServiceLayout):*
-- Power of Attorney: /legal/corporate/poa/
-- Memorandum of Association: /legal/corporate/moa/
-- NDA / Confidentiality: /legal/contracts/nda/
-
-*Location Pages (using ServiceLayout):*
-- Palm Jumeirah: /locations/dubai/palm-jumeirah/
-- DIFC: /locations/dubai/difc/
-- JLT: /locations/dubai/jlt/
-- Business Bay: /locations/dubai/business-bay/
-- Abu Dhabi: /locations/abu-dhabi/
-- Sharjah: /locations/sharjah/
-
-*Services Pages (using ServiceLayout):*
-- Attestation & MOFAIC: /services/attestation/
-- Golden Visa Translation: /services/golden-visa-translation/
-- Certificate Translation: /services/certificate-translation/
-- Corporate Translation: /services/corporate-translation/
-- Legal Translation: /services/legal-translation/
-
-*Industry Pages (using BaseLayout):*
-- Industries hub: /industries/
-- Legal Industry: /industries/legal/
-- Healthcare: /industries/healthcare/
-- Real Estate: /industries/real-estate/
-- E-Commerce: /industries/e-commerce/
-
-*Resource Pages (using BaseLayout):*
-- Resources hub: /resources/
-- FAQ: /resources/faq/
-- Pricing Guide: /resources/pricing-guide/
-- Document Checklist: /resources/document-checklist/
-- Attestation Guide: /resources/attestation-guide/
-- Golden Visa Checklist: /resources/golden-visa-checklist/
-
-*Utility Pages:*
-- Contact: /contact/
-- 404: /404.astro (redirects)
-- Offline: /offline/
-- Privacy Policy: /privacy/
-- Terms of Service: /terms/
-
-**Mobile Header Fix - December 6, 2025:**
-- Added `.header-mobile` div to Header.astro matching original HTML structure
-- Elements: `#sidebarToggle` (hamburger), logo text, `#themeToggle` (dark mode)
-- CSS at 991px breakpoint hides `.header-desktop`, shows `.header-mobile`
-- Body now has `theme-light` class by default for dark mode toggle to work
-
-**Feature Catalog:**
-- Created `FEATURE_CATALOG.md` documenting all original HTML features vs Astro implementation
-- Use this as reference for tracking feature parity
-- Includes verification checklists for desktop, mobile, theme toggle, and PWA
-
-**Total Pages Created: 40+**
+- **OneDrive:** Stores user images and brand assets from the `OtLegalTranslationcom` folder.
+- **GitHub:** Hosts the `OT.ae-astro-astro` repository.
+- **Arkan Legal Translation:** Strategic partner providing MOJ license, stamp, and signature for certified translations.
+- **Form Handler:** Used for contact forms with graceful fallback to WhatsApp.
+- **Vercel:** Deployment platform for the website.
