@@ -91,6 +91,16 @@ This document tracks all tasks for the project, organized by status.
 - `/_astro/*`: default long-term caching (hashed filenames)
 - `/images/*`: 30-day cache
 
+### Inline Cache Buster (BaseLayout.astro)
+- Synchronous inline script in `<head>` runs before any deferred scripts
+- Unregisters all service workers via `navigator.serviceWorker.getRegistrations()`
+- Clears all CacheStorage caches via `caches.keys()` / `caches.delete()`
+- Guarantees fresh assets on every page load
+
+### Versioned Script Files
+- `main-v2.js` and `navigation-v2.js` replace original filenames
+- Forces CDN cache miss on Vercel for all visitors
+
 ### Mobile Navigation Architecture
 - **Footer bar items** (Menu, Search): `<button type="button">` elements to prevent navigation fallback
 - **Header toggles** (Sidebar, Theme): `<button type="button">` elements
