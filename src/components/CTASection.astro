@@ -1,0 +1,110 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  ctaText?: string;
+  ctaHref?: string;
+  ctaIcon?: string;
+  background?: 'white' | 'light' | 'dark' | 'accent';
+}
+
+const { 
+  title = "Ready to Start?",
+  description = "Send your documents via WhatsApp and receive certified translations delivered to your door.",
+  ctaText = "Start Your Translation",
+  ctaHref = "https://wa.me/971508620217",
+  ctaIcon = "fab fa-whatsapp",
+  background = 'white'
+} = Astro.props;
+
+const bgClass = `bg-${background}`;
+---
+
+<section class={`section ${bgClass}`}>
+  <div class="container cta-section">
+    <h2>{title}</h2>
+    <p>{description}</p>
+    <a href={ctaHref} class="btn btn-primary">
+      {ctaIcon && <i class={ctaIcon}></i>} {ctaText}
+    </a>
+  </div>
+</section>
+
+<style>
+  .cta-section {
+    text-align: center;
+    padding: 3rem 1.5rem;
+  }
+  
+  .cta-section h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+  
+  .cta-section p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.7;
+  }
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-primary {
+    background: var(--accent-color);
+    color: #fff;
+  }
+  
+  .btn-primary:hover {
+    background: #d41445;
+    transform: translateY(-2px);
+  }
+  
+  .bg-white {
+    background: #fff;
+  }
+  
+  .bg-light {
+    background: var(--bg-light);
+  }
+  
+  .bg-dark {
+    background: var(--primary-color);
+  }
+  
+  .bg-dark h2,
+  .bg-dark p {
+    color: #fff;
+  }
+  
+  .bg-dark .btn-primary {
+    background: #fff;
+    color: var(--primary-color);
+  }
+  
+  .bg-accent {
+    background: var(--accent-color);
+  }
+  
+  .bg-accent h2,
+  .bg-accent p {
+    color: #fff;
+  }
+  
+  .bg-accent .btn-primary {
+    background: #fff;
+    color: var(--accent-color);
+  }
+</style>

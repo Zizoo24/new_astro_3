@@ -1,0 +1,71 @@
+---
+interface Props {
+  badge?: string;
+  titlePrefix: string;
+  titleMain: string;
+  subtitle: string;
+  primaryCTA?: {
+    href: string;
+    text: string;
+    icon?: string;
+  };
+  secondaryCTA?: {
+    href: string;
+    text: string;
+    icon?: string;
+  };
+  trustItems?: Array<{
+    value: string;
+    label: string;
+  }>;
+}
+
+const { 
+  badge,
+  titlePrefix, 
+  titleMain, 
+  subtitle,
+  primaryCTA = {
+    href: "https://wa.me/971508620217",
+    text: "Send Documents on WhatsApp",
+    icon: "fab fa-whatsapp"
+  },
+  secondaryCTA,
+  trustItems = [
+    { value: "24hr", label: "Standard Delivery" },
+    { value: "Same-Day", label: "Express Available" },
+    { value: "Court", label: "Ready Documents" }
+  ]
+} = Astro.props;
+---
+
+<section class="services-hero">
+  {badge && <span class="hero-badge">{badge}</span>}
+  <h1 class="hero-title">
+    <span class="title-prefix">{titlePrefix}</span>
+    <span class="title-main">{titleMain}</span>
+  </h1>
+  <p class="hero-subtitle">{subtitle}</p>
+  
+  <div class="hero-cta-group">
+    <a href={primaryCTA.href} class="btn-primary">
+      {primaryCTA.icon && <i class={`${primaryCTA.icon} btn-icon`}></i>} {primaryCTA.text}
+    </a>
+    {secondaryCTA && (
+      <a href={secondaryCTA.href} class="btn-secondary">
+        {secondaryCTA.icon && <i class={`${secondaryCTA.icon} btn-icon`}></i>} {secondaryCTA.text}
+      </a>
+    )}
+  </div>
+  
+  {trustItems && trustItems.length > 0 && (
+    <div class="trust-bar">
+      {trustItems.map(item => (
+        <div class="trust-item">
+          <strong>{item.value}</strong>
+          {item.label}
+        </div>
+      ))}
+    </div>
+  )}
+</section>
