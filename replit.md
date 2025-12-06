@@ -40,8 +40,9 @@ The system is designed as a "Digital Concierge" with a "WhatsApp-First Architect
 **Feature Specifications:**
 - **Content Structure:** 4-Silo SEO structure (Legal & Corporate, Personal & Civil, Industry Specialized, Locations).
 - **Page Anatomy:** "Above the Fold" section (H1, Concierge Intro, Service Snapshot, Primary CTA), Compliance Checklist, Step-by-Step Process, After-Care Guide, Pricing & Timelines, and FAQ.
-- **Internal Linking:** Centralized URL mappings in `src/data/serviceLinks.ts` for consistent internal linking across service, document, and location mentions.
+- **Internal Linking:** Centralized URL mappings in `src/data/serviceLinks.ts` for consistent internal linking across service, document, and location mentions. Link density standard: 1-2 contextual links per paragraph, no duplicate anchors within same thematic blocks.
 - **Key Components:** `Icon.astro`, `TrustStrip.astro`, `ProcessSteps.astro`, `BenefitCards.astro`, `AccordionSection.astro` for content modularity and reusability.
+- **serviceLinks.ts Pattern:** Single source of truth for all service/document/location URLs. Exports: `serviceLinks` (object with url/text/full), `footerServices` (array for footer rendering), `relatedServices` (grouped by category), `makeLink()` helper function. Footer.astro wired to use `footerServices`.
 
 ## External Dependencies
 

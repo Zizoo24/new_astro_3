@@ -122,6 +122,14 @@ export const makeLink = (key: keyof typeof serviceLinks, useFullText = false): s
   return `<a href="${link.url}">${text}</a>`;
 };
 
+export const footerServices = [
+  { url: serviceLinks.legalTranslation.url, text: "Legal Translation" },
+  { url: serviceLinks.goldenVisa.url, text: "Golden Visa Translation" },
+  { url: serviceLinks.attestation.url, text: "Attestation & MOFAIC" },
+  { url: serviceLinks.corporateTranslation.url, text: "Corporate Translation" },
+  { url: serviceLinks.certificateTranslation.url, text: "Certificate Translation" }
+];
+
 export const relatedServices = {
   personal: [
     serviceLinks.birthCertificate,
