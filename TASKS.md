@@ -84,6 +84,12 @@ This document tracks all tasks for the project, organized by status.
 - **Reason:** Previous caching worker caused production cache poisoning on Vercel
 - **Future:** Implement Workbox-based solution with hashed assets before re-enabling
 
+### Vercel Cache Headers (vercel.json)
+- `/service-worker.js`: no-cache, no-store, must-revalidate
+- `/styles/*`, `/scripts/*`: max-age=0, must-revalidate (prevents stale CSS/JS)
+- `/images/*`: 30-day cache
+- Note: Non-hashed filenames require must-revalidate to force fresh fetches on redeploy
+
 ### Mobile Sidebar Contrast (visibility-fixes.css)
 - Sidebar background is forced to navy via `visibility-fixes.css`
 - All sidebar text must use light colors (white/rgba(255,255,255,x))
