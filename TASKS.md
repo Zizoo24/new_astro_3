@@ -31,6 +31,9 @@ This document tracks all tasks for the project, organized by status.
 | Add testimonials to homepage | Implement carousel with realistic client testimonials | Completed |
 | Fix mobile sidebar contrast | Section titles, nav links, borders now use light colors for navy background | Completed |
 | Update documentation | Updated replit.md with sidebar contrast rules, TestimonialsCarousel, service worker v152 | Completed |
+| Fix brand-suffix color | Restored coral (#FF1654) for ".ae" suffix in sidebar | Completed |
+| Add sidebar category links | Services, Personal, Corporate, Locations, Resources now link to category pages | Completed |
+| Separate accordion from links | Chevron toggles accordion, section title navigates to category page | Completed |
 
 ---
 
@@ -76,7 +79,7 @@ This document tracks all tasks for the project, organized by status.
 - **Data pattern:** Service pages use `pageData` object passed to ServiceLayout
 
 ### Service Worker
-- **Current version:** v152
+- **Current version:** v153
 - **Bump version** after any CSS/JS changes to bust cache
 
 ### Mobile Sidebar Contrast (visibility-fixes.css)
