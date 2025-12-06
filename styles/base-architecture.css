@@ -370,3 +370,170 @@
         scroll-snap-align: center;
     }
 }
+
+/* ============================================
+   MICRO-COMPONENTS: Visual Punctuation
+   Icon boxes, timelines, alert boxes for 
+   breaking wall-of-text content
+   ============================================ */
+
+/* Icon Box - For checklist/requirements grids */
+.icon-box {
+    display: flex;
+    align-items: flex-start;
+    background: var(--bg-white, #fff);
+    padding: var(--space-md);
+    border-radius: 8px;
+    border: 1px solid var(--border-color, #eee);
+    height: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.icon-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.icon-box i,
+.icon-box .icon-box__icon {
+    font-size: 24px;
+    color: var(--accent-color, #FF1654);
+    margin-right: 15px;
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.icon-box__content h4,
+.icon-box h4 {
+    font-family: var(--font-primary, 'Montserrat', sans-serif);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-dark, #1a1a1a);
+    margin: 0 0 6px 0;
+}
+
+.icon-box__content p,
+.icon-box p {
+    font-size: 14px;
+    color: var(--text-muted, #666);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Icon Box - Navy variant */
+.icon-box--navy i,
+.icon-box--navy .icon-box__icon {
+    color: var(--primary-color, #0E2B48);
+}
+
+/* Icon Box - Gold variant */
+.icon-box--gold i,
+.icon-box--gold .icon-box__icon {
+    color: var(--gold-highlight, #d4a54c);
+}
+
+/* Vertical Timeline - For process steps */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+    border-left: 2px solid var(--accent-color, #FF1654);
+    margin-left: 10px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -36px;
+    top: 0;
+    width: 14px;
+    height: 14px;
+    background: var(--bg-white, #fff);
+    border: 3px solid var(--accent-color, #FF1654);
+    border-radius: 50%;
+}
+
+.timeline-title {
+    font-family: var(--font-primary, 'Montserrat', sans-serif);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--text-dark, #1a1a1a);
+    margin-bottom: 6px;
+    display: block;
+}
+
+.timeline-item p {
+    font-size: 15px;
+    color: var(--text-muted, #666);
+    margin: 0;
+    line-height: 1.7;
+}
+
+/* Timeline - Navy line variant */
+.timeline--navy {
+    border-left-color: var(--primary-color, #0E2B48);
+}
+
+.timeline--navy .timeline-item::before {
+    border-color: var(--primary-color, #0E2B48);
+}
+
+/* Alert Box - For warnings and important notes */
+.alert-box {
+    padding: 15px 20px;
+    border-left: 4px solid var(--accent-color, #FF1654);
+    background-color: #fff5f5;
+    margin: 20px 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.alert-box strong {
+    color: var(--accent-color, #FF1654);
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.alert-box p {
+    margin: 0;
+    color: var(--text-dark, #1a1a1a);
+    line-height: 1.6;
+}
+
+/* Alert Box - Warning variant (gold) */
+.alert-box--warning {
+    border-left-color: var(--gold-highlight, #d4a54c);
+    background-color: #fffbf0;
+}
+
+.alert-box--warning strong {
+    color: var(--gold-highlight, #d4a54c);
+}
+
+/* Alert Box - Info variant (navy) */
+.alert-box--info {
+    border-left-color: var(--primary-color, #0E2B48);
+    background-color: #f5f8fb;
+}
+
+.alert-box--info strong {
+    color: var(--primary-color, #0E2B48);
+}
+
+/* Alert Box - Success variant (green) */
+.alert-box--success {
+    border-left-color: #28a745;
+    background-color: #f0fff4;
+}
+
+.alert-box--success strong {
+    color: #28a745;
+}

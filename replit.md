@@ -50,3 +50,27 @@ The system is designed as a "Digital Concierge" with a "WhatsApp-First Architect
 - **Arkan Legal Translation:** Strategic partner for fulfillment, providing the MOJ license, stamp, and signature for certified translations.
 - **Form Handler:** Contact forms use `form-handler.js` with graceful fallback to WhatsApp; optional Supabase integration for database storage.
 - **Vercel:** Platform for production website deployment.
+
+## Recent Changes (December 2025)
+
+**Micro-Components for Visual Punctuation - December 6, 2025:**
+- **Icon Box** (`.icon-box`): Flex container for checklist items with icon + content layout
+  - Variants: `.icon-box--navy`, `.icon-box--gold` for different icon colors
+  - Use with `.grid-2` for 2-column layout
+- **Timeline** (`.timeline` + `.timeline-item`): Vertical process steps with coral/navy line
+  - Variants: `.timeline--navy` for navy-colored timeline
+  - Use `.timeline-title` span for step headers
+- **Alert Box** (`.alert-box`): Callout boxes for warnings and important notes
+  - Variants: `.alert-box--warning` (gold), `.alert-box--info` (navy), `.alert-box--success` (green)
+  - Default is coral/red
+- All components added to `styles/base-architecture.css`
+- Birth certificate page refactored as template: Module B uses timeline, alert-boxes added to Module A
+
+**Homepage Transparent Header - December 6, 2025:**
+- **Homepage-only body class:** Added `homepage` class to index.html body tag
+- **Transparent header on initial load:** Homepage header is fully transparent (no background, no blur) until scroll
+- **White header elements:** Logo text, nav links, contact button, social icons, and mobile toggle all display white on homepage before scroll
+- **CSS implementation:** `.homepage .header-desktop.exodus-header:not(.scrolled)` rules in porto-desktop.css
+- **Scroll behavior preserved:** Header transitions to navy background on scroll (same as before)
+
+**Service Worker:** Currently at v139
