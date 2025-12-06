@@ -29,6 +29,7 @@ This document tracks all tasks for the project, organized by status.
 | Fix hero-cta-secondary mobile styling | "Or request a written quote" link should be underlined but NOT blue on mobile | Completed |
 | Create TestimonialsCarousel component | Carousel with touch swipe, navigation dots, auto-rotation | Completed |
 | Add testimonials to homepage | Implement carousel with realistic client testimonials | Completed |
+| Fix mobile sidebar contrast | Section titles, nav links, borders now use light colors for navy background | Completed |
 
 ---
 
@@ -74,8 +75,13 @@ This document tracks all tasks for the project, organized by status.
 - **Data pattern:** Service pages use `pageData` object passed to ServiceLayout
 
 ### Service Worker
-- **Current version:** v150
+- **Current version:** v152
 - **Bump version** after any CSS/JS changes to bust cache
+
+### Mobile Sidebar Contrast (visibility-fixes.css)
+- Sidebar background is forced to navy via `visibility-fixes.css`
+- All sidebar text must use light colors (white/rgba(255,255,255,x))
+- Hover/active states should use white text, not accent color
 
 ---
 
