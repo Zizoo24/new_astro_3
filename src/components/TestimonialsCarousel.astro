@@ -1,0 +1,312 @@
+---
+interface Testimonial {
+  quote: string;
+  name: string;
+  role: string;
+  location?: string;
+}
+
+interface Props {
+  testimonials?: Testimonial[];
+  title?: string;
+  autoRotate?: boolean;
+  rotateInterval?: number;
+}
+
+const defaultTestimonials: Testimonial[] = [
+  {
+    quote: "We needed our incorporation documents translated for a Dubai Courts filing. The team delivered within hours, and the translation was accepted without any queries. Professional service from start to finish.",
+    name: "Sarah M.",
+    role: "Business Owner",
+    location: "DIFC"
+  },
+  {
+    quote: "After struggling with another agency that kept getting our technical terms wrong, we switched here. They understood our engineering certificates and got the terminology right the first time.",
+    name: "Ahmed K.",
+    role: "Project Manager",
+    location: "Abu Dhabi"
+  },
+  {
+    quote: "The WhatsApp process made everything so simple. I sent my birth certificate photos while at work, received the draft for review, and had the certified copies delivered to my office the next day.",
+    name: "Maria L.",
+    role: "HR Manager",
+    location: "Dubai Marina"
+  },
+  {
+    quote: "Golden Visa application required multiple documents translated and attested. They coordinated everything and kept me updated at each step. Saved me weeks of running around.",
+    name: "Raj P.",
+    role: "Tech Entrepreneur",
+    location: "JLT"
+  },
+  {
+    quote: "Our law firm uses them for all Arabic-English translations. Consistent quality, reliable turnaround, and they understand legal formatting requirements. Highly recommend for professional use.",
+    name: "James W.",
+    role: "Legal Consultant",
+    location: "ADGM"
+  }
+];
+
+const { 
+  testimonials = defaultTestimonials,
+  title = "What Our Clients Say",
+  autoRotate = true,
+  rotateInterval = 5000
+} = Astro.props;
+---
+
+<section class="testimonials-section">
+  <div class="container">
+    <h2 class="testimonials-title">{title}</h2>
+    
+    <div class="carousel-wrapper" data-auto-rotate={autoRotate} data-interval={rotateInterval}>
+      <div class="carousel-track">
+        {testimonials.map((testimonial, index) => (
+          <div class="testimonial-card" data-index={index}>
+            <div class="quote-icon">
+              <i class="fas fa-quote-left"></i>
+            </div>
+            <blockquote class="testimonial-quote">
+              {testimonial.quote}
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="author-info">
+                <span class="author-name">{testimonial.name}</span>
+                <span class="author-role">{testimonial.role}</span>
+                {testimonial.location && (
+                  <span class="author-location">
+                    <i class="fas fa-map-marker-alt"></i> {testimonial.location}
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div class="carousel-dots">
+        {testimonials.map((_, index) => (
+          <button 
+            class={`carousel-dot ${index === 0 ? 'active' : ''}`}
+            data-index={index}
+            aria-label={`Go to testimonial ${index + 1}`}
+          ></button>
+        ))}
+      </div>
+      
+      <button class="carousel-arrow carousel-prev" aria-label="Previous testimonial">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="carousel-arrow carousel-next" aria-label="Next testimonial">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials-section {
+    padding: 5rem 0;
+    background: var(--bg-light, #f8f9fa);
+  }
+  
+  .testimonials-title {
+    text-align: center;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .carousel-wrapper {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  
+  .carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .testimonial-card {
+    flex: 0 0 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+  
+  .testimonial-card > div,
+  .testimonial-card > blockquote {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  .testimonial-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin: 0 1rem;
+  }
+  
+  .quote-icon {
+    color: var(--accent-color);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    opacity: 0.6;
+  }
+  
+  .testimonial-quote {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-dark, #1a1a1a);
+    margin: 0 0 1.5rem;
+    font-style: italic;
+  }
+  
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  
+  .author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .author-name {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1rem;
+  }
+  
+  .author-role {
+    color: var(--text-muted, #666);
+    font-size: 0.9rem;
+  }
+  
+  .author-location {
+    color: var(--accent-color);
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  
+  .author-location i {
+    font-size: 0.75rem;
+  }
+  
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+  
+  .carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+  
+  .carousel-dot:hover {
+    background: rgba(14, 43, 72, 0.3);
+  }
+  
+  .carousel-dot.active {
+    background: var(--primary-color);
+  }
+  
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+  
+  .carousel-arrow:hover {
+    background: var(--primary-color);
+    color: #fff;
+  }
+  
+  .carousel-prev {
+    left: -24px;
+  }
+  
+  .carousel-next {
+    right: -24px;
+  }
+  
+  @media (max-width: 1024px) {
+    .carousel-prev {
+      left: 0;
+    }
+    
+    .carousel-next {
+      right: 0;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .testimonials-section {
+      padding: 3rem 0;
+    }
+    
+    .testimonials-title {
+      margin-bottom: 2rem;
+    }
+    
+    .testimonial-card {
+      padding: 1.5rem;
+      margin: 0 0.5rem;
+    }
+    
+    .testimonial-quote {
+      font-size: 1rem;
+    }
+    
+    .carousel-arrow {
+      width: 40px;
+      height: 40px;
+      font-size: 0.85rem;
+    }
+    
+    .carousel-prev {
+      left: 5px;
+    }
+    
+    .carousel-next {
+      right: 5px;
+    }
+  }
+</style>
+
