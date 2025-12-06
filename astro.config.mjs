@@ -12,7 +12,8 @@ export default defineConfig({
   },
   vite: {
     server: {
-      allowedHosts: true
+      allowedHosts: 'all',
+      hmr: false
     }
   }
 });
