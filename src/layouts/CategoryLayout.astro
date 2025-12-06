@@ -1,0 +1,229 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  heroTitle: string;
+  heroSubtitle: string;
+  heroIntro: string;
+  breadcrumbs: Array<{label: string; href?: string}>;
+}
+
+const { 
+  title, 
+  description, 
+  heroTitle,
+  heroSubtitle,
+  heroIntro,
+  breadcrumbs
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="category-hero" data-theme="dark">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        {breadcrumbs.map((crumb, i) => (
+          <>
+            {crumb.href ? (
+              <a href={crumb.href}>{crumb.label}</a>
+            ) : (
+              <span class="current">{crumb.label}</span>
+            )}
+            {i < breadcrumbs.length - 1 && <span class="separator">&gt;</span>}
+          </>
+        ))}
+      </nav>
+      
+      <h1>{heroTitle}</h1>
+      <p class="hero-subtitle">{heroSubtitle}</p>
+      <p class="hero-intro">{heroIntro}</p>
+    </div>
+  </section>
+
+  <slot />
+</BaseLayout>
+
+<style is:global>
+  .category-hero {
+    padding: 8rem 0 4rem;
+    background: var(--primary-color);
+  }
+  
+  .category-hero .breadcrumb {
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+  }
+  
+  .category-hero .breadcrumb a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+  }
+  
+  .category-hero .breadcrumb a:hover {
+    color: #fff;
+  }
+  
+  .category-hero .breadcrumb .separator {
+    margin: 0 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+  }
+  
+  .category-hero .breadcrumb .current {
+    color: #fff;
+  }
+  
+  .category-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+  
+  .category-hero .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  
+  .category-hero .hero-intro {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 800px;
+    line-height: 1.8;
+  }
+  
+  .category-section {
+    padding: 5rem 0;
+  }
+  
+  .category-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+  
+  .category-section .section-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 700px;
+  }
+  
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .category-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  a.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .category-card-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark, #0a1a30));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .category-card-icon i {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+  
+  .category-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+  }
+  
+  .category-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  
+  .category-info-box {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--accent-color);
+  }
+  
+  .category-info-box h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+  }
+  
+  .category-info-box h3 i {
+    margin-right: 0.5rem;
+    color: var(--accent-color);
+  }
+  
+  .category-info-box p {
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+  
+  .category-cta {
+    text-align: center;
+    padding: 3rem;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 16px;
+  }
+  
+  .category-cta h2 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+  
+  .category-cta p {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    color: var(--text-muted);
+  }
+  
+  @media (max-width: 992px) {
+    .category-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .category-hero h1 {
+      font-size: 2rem;
+    }
+    
+    .category-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .category-hero {
+      padding: 6rem 0 3rem;
+    }
+  }
+</style>
