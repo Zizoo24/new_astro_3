@@ -296,11 +296,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .exodus-header.scrolled .header-logo img {
-    height: 40px;
+    height: 32px;
 }
 
 .exodus-header.scrolled .logo-text {
-    font-size: 16px;
+    font-size: 14px;
     color: var(--text-light);
 }
 
@@ -310,8 +310,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .exodus-header.scrolled .nav-link {
-    padding: 6px 10px;
-    font-size: 12px;
+    padding: 5px 5px;
+    font-size: 10px;
 }
 
 .exodus-header.scrolled .social-icons a {
@@ -321,8 +321,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .exodus-header.scrolled .header-contact-btn {
-    padding: 6px 14px;
-    font-size: 11px;
+    padding: 4px 10px;
+    font-size: 9px;
     border-color: rgba(255,255,255,0.5);
 }
 
@@ -334,29 +334,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .exodus-header .header-main-row {
-    display: grid;
-    grid-template-columns: max-content minmax(0, 1fr) max-content max-content;
+    display: flex;
     align-items: center;
-    column-gap: clamp(12px, 2vw, 24px);
+    gap: clamp(12px, 1.5vw, 20px);
     width: 100%;
 }
 
 .exodus-header .header-logo {
     white-space: nowrap;
-    min-width: max-content;
+    flex-shrink: 0;
 }
 
 .exodus-header .header-nav {
-    justify-self: start;
-    margin-left: clamp(8px, 1.5vw, 16px);
+    flex: 1 1 auto;
     min-width: 0;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .exodus-header .header-actions {
     display: flex;
     align-items: center;
-    gap: 10px;
-    justify-self: end;
+    gap: 8px;
     flex-shrink: 0;
 }
 
@@ -369,7 +368,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .exodus-header .header-logo img {
-    height: 56px;
+    height: 44px;
     width: auto;
     object-fit: contain;
 }
@@ -382,7 +381,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .exodus-header .logo-text {
     font-family: var(--font-primary);
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 700;
     color: var(--primary-color);
     letter-spacing: 0.5px;
@@ -411,19 +410,20 @@ h1, h2, h3, h4, h5, h6 {
 .header-contact-btn {
     display: inline-flex;
     align-items: center;
-    padding: 6px 14px;
+    padding: 5px 12px;
     background: transparent;
     border: 1px solid var(--primary-color);
     color: var(--primary-color);
     font-family: var(--font-primary);
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.5px;
     text-transform: uppercase;
     text-decoration: none;
     border-radius: 4px;
     transition: var(--transition-fast);
-    margin-left: 20px;
+    margin-left: 12px;
+    flex-shrink: 0;
 }
 
 /* Scrolled state - white text for navy background */
@@ -438,6 +438,41 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text-light);
 }
 
+/* Narrow desktop screens - tighter nav to prevent Contact overlap */
+@media (max-width: 1400px) {
+    .exodus-header .header-main-row {
+        gap: clamp(8px, 1vw, 14px);
+    }
+    
+    .nav-link {
+        padding: 5px 4px;
+        font-size: 10px;
+        letter-spacing: 0.15px;
+    }
+    
+    .nav-menu {
+        gap: 2px;
+    }
+    
+    .header-contact-btn {
+        padding: 4px 10px;
+        font-size: 9px;
+        margin-left: 8px;
+    }
+    
+    .exodus-header .header-logo img {
+        height: 38px;
+    }
+    
+    .exodus-header .logo-text {
+        font-size: 16px;
+    }
+    
+    .exodus-header .logo-tagline {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+    }
+}
 
 /* Exodus Navigation */
 .header-nav {
@@ -461,7 +496,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     gap: 3px;
-    padding: 8px 8px;
+    padding: 6px 6px;
     color: var(--primary-color);
     text-decoration: none;
     font-family: var(--font-primary);
@@ -774,14 +809,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .header-main {
-    padding: 18px 0;
+    padding: 14px 0;
     transition: var(--transition);
 }
 
 .header-main-row {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: clamp(12px, 1.5vw, 20px);
 }
 
 .header-logo a {
@@ -792,16 +827,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .header-logo img {
-    height: 45px;
+    height: 38px;
     width: auto;
 }
 
 .logo-text {
     font-family: var(--font-primary);
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 700;
     color: var(--primary-color);
-    letter-spacing: -0.5px;
+    letter-spacing: -0.3px;
 }
 
 .logo-suffix {
