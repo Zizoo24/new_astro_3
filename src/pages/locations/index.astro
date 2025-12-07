@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTASection from '../../components/CTASection.astro';
+---
+
+<BaseLayout 
+  title="Translation Services by Location – Dubai, Abu Dhabi, Sharjah | OnlineTranslation.ae"
+  description="MOJ-certified translation services across the UAE. Serving Dubai, Abu Dhabi, Sharjah, and all Emirates with WhatsApp-based workflow and courier delivery."
+>
+  <PageHero 
+    title="Translation Services Across the UAE"
+    subtitle="MOJ Certified with UAE-Wide Delivery"
+    intro="Based in Dubai, we serve clients across all Emirates. Our WhatsApp-based workflow means you can send documents from anywhere, and we deliver certified translations to your location. Same-day delivery in Dubai, next-day to other Emirates."
+    breadcrumbs={[
+      { label: "HOME", href: "/" },
+      { label: "LOCATIONS" }
+    ]}
+  />
+
+  <section class="section bg-white">
+    <div class="container">
+      <h2>Dubai Areas</h2>
+      <p class="section-intro">Specialized services for Dubai's key business and residential districts.</p>
+      
+      <div class="service-grid">
+        <a href="/locations/dubai/palm-jumeirah/" class="service-card">
+          <div class="service-icon"><i class="fas fa-umbrella-beach"></i></div>
+          <h3>Palm Jumeirah</h3>
+          <p>Property translation for investors and residents. Remote handover support.</p>
+        </a>
+        
+        <a href="/locations/dubai/difc/" class="service-card">
+          <div class="service-icon"><i class="fas fa-landmark"></i></div>
+          <h3>DIFC</h3>
+          <p>Financial and corporate translation for DIFC-registered entities.</p>
+        </a>
+        
+        <a href="/locations/dubai/jlt/" class="service-card">
+          <div class="service-icon"><i class="fas fa-city"></i></div>
+          <h3>JLT</h3>
+          <p>Free zone company documents and professional licensing support.</p>
+        </a>
+        
+        <a href="/locations/dubai/business-bay/" class="service-card">
+          <div class="service-icon"><i class="fas fa-building"></i></div>
+          <h3>Business Bay</h3>
+          <p>Corporate and commercial translation for the business district.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Other Emirates</h2>
+      <p class="section-intro">Same MOJ-certified quality with next-day delivery across the UAE.</p>
+      
+      <div class="service-grid">
+        <a href="/locations/abu-dhabi/" class="service-card">
+          <div class="service-icon"><i class="fas fa-mosque"></i></div>
+          <h3>Abu Dhabi</h3>
+          <p>Government, ADGM, and federal authority document translation.</p>
+        </a>
+        
+        <a href="/locations/sharjah/" class="service-card">
+          <div class="service-icon"><i class="fas fa-book"></i></div>
+          <h3>Sharjah</h3>
+          <p>Personal and business document translation with Sharjah delivery.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CTASection 
+    title="Anywhere in the UAE"
+    description="Regardless of your location, send documents via WhatsApp and receive certified translations delivered to your door. Same-day in Dubai, next-day everywhere else."
+  />
+</BaseLayout>
+
+<style>
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+  
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .service-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    border-color: var(--accent-color);
+  }
+  
+  .bg-light .service-card {
+    background: #ffffff;
+  }
+  
+  .service-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: var(--primary-color);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .service-card h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.15rem;
+  }
+  
+  .service-card p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+</style>

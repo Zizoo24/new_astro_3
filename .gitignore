@@ -38,33 +38,36 @@ attached_assets/
 
 # OLD STATIC FILES - DO NOT INCLUDE IN ASTRO REPO
 # These are legacy files from the pre-Astro static site
-index.html
-contact.html
-privacy.html
-terms.html
-404.html
-offline.html
-server.py
-service-worker.js
-browserconfig.xml
-github-raw-links.txt
+# Using leading / to only match at root level, not inside src/pages/
+/index.html
+/contact.html
+/privacy.html
+/terms.html
+/404.html
+/offline.html
+/server.py
+/service-worker.js
+/browserconfig.xml
+/github-raw-links.txt
 
-# Old static HTML directories
-industries/
-legal/
-locations/
-personal/
-personal-documents/
-resources/
-services/
-specialized/
-legal-translation-dubai/
+# Old static HTML directories at ROOT ONLY (not src/pages/ subdirs)
+# Leading / ensures we only ignore root-level legacy directories
+/industries/
+/legal/
+/locations/
+/personal/
+/personal-documents/
+/resources/
+/services/
+/specialized/
+/legal-translation-dubai/
 
-# Old styles directory (styles are now in src/styles/)
-styles/
+# Old styles directory at ROOT ONLY (not styles/ used for CSS source)
+# REMOVED - styles/ directory is needed for CSS source files
+# /styles/
 
-# Old images directory (images are now in public/images/)
-images/
+# Old images directory at ROOT ONLY (not public/images/)
+/images/
 
 # Old scripts
 # scripts/ - REMOVED: scripts are needed for the site to function

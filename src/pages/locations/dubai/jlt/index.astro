@@ -1,0 +1,134 @@
+---
+import ServiceLayout from '../../../../layouts/ServiceLayout.astro';
+
+const pageData = {
+  title: "JLT Translation Services – MOJ Certified | OnlineTranslation.ae",
+  description: "Translation services for JLT free zone companies. Trade licenses, MOA, visas, and corporate documents. MOJ-certified with same-day delivery.",
+  keywords: "JLT translation, Jumeirah Lake Towers translation, free zone translation Dubai, DMCC translation",
+  heroTitle: "JLT Translation Services",
+  heroSubtitle: "MOJ Certified for Free Zone Business",
+  heroIntro: "Jumeirah Lake Towers hosts thousands of free zone companies with unique documentation needs. Whether you need trade license translation for bank accounts, visa documents for employees, or corporate agreements for business partners, we understand the free zone context and deliver court-accepted translations quickly.",
+  snapshot: [
+    { icon: "clock", bold: "Digital drafts", text: "typically within 60 minutes" },
+    { icon: "mobile-alt", bold: "WhatsApp workflow", text: "send from your JLT office" },
+    { icon: "check-circle", bold: "DMCC & JAFZA ready", text: "free zone authority accepted" },
+    { icon: "stamp", bold: "MOJ legal stamp", text: "with QR verification" }
+  ],
+  breadcrumbs: [
+    { name: "Home", url: "/" },
+    { name: "Locations", url: "/locations/" },
+    { name: "Dubai", url: "/locations/dubai/" },
+    { name: "JLT", url: "/locations/dubai/jlt/" }
+  ],
+  
+  trustStrip: [
+    "MOJ-licensed partner",
+    "Free zone expertise",
+    "Same-day JLT delivery"
+  ],
+  
+  processSteps: [
+    {
+      title: "Send your documents",
+      text: "Trade licenses, MOA, visa documents, or contracts. WhatsApp from your JLT office."
+    },
+    {
+      title: "We prepare your translation",
+      text: "MOJ-licensed translator handles free zone terminology accurately."
+    },
+    {
+      title: "Pickup or delivery",
+      text: "Same-day delivery to JLT towers. Digital PDF sent immediately."
+    }
+  ],
+  
+  benefitCards: [
+    {
+      icon: "briefcase",
+      title: "Free zone documents",
+      text: "Trade licenses, establishment cards, and free zone authority correspondence."
+    },
+    {
+      icon: "document",
+      title: "Corporate documents",
+      text: "MOA, shareholder resolutions, and partnership agreements."
+    },
+    {
+      icon: "shield",
+      title: "Visa documents",
+      text: "Employment contracts, salary certificates, and visa applications."
+    }
+  ],
+  
+  accordionSections: [
+    {
+      title: "Common JLT document needs",
+      id: "documents",
+      items: [
+        {
+          heading: "Trade license translation",
+          body: "<p>JLT companies often need trade license translations for opening corporate bank accounts with UAE banks. The translation must accurately render all license details including activities, shareholders, and validity dates.</p>"
+        },
+        {
+          heading: "DMCC and JAFZA documents",
+          body: "<p>Free zone authority correspondence, establishment cards, and regulatory documents may need translation for mainland use or legal proceedings. We are familiar with free zone terminology.</p>"
+        },
+        {
+          heading: "Employee visa documents",
+          body: "<p>Employment contracts, salary certificates, and NOC letters for visa applications and renewals. These are common needs for JLT businesses managing employee relocations.</p>"
+        }
+      ]
+    }
+  ],
+  
+  faqs: [
+    {
+      question: "Do you deliver to JLT towers?",
+      answer: "Yes. Same-day delivery to all JLT clusters. We can deliver to your office or the tower reception if preferred."
+    },
+    {
+      question: "Can you translate DMCC documents?",
+      answer: "Yes. We translate DMCC trade licenses, establishment cards, and all free zone authority documentation. The MOJ stamp is accepted for bank accounts and mainland government use."
+    },
+    {
+      question: "How quickly can you complete a trade license translation?",
+      answer: "Standard service delivers within 24 hours. Express service completes in 6 hours. VIP Concierge provides 1-hour drafts for urgent bank account openings."
+    }
+  ],
+  serviceType: "Legal Translation"
+};
+---
+
+<ServiceLayout {...pageData}>
+  <section class="section bg-white">
+    <div class="container">
+      <h2>Service Levels</h2>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Standard</h3>
+          <div class="pricing-price">From AED 150</div>
+          <p class="pricing-time">24-hour delivery</p>
+        </div>
+        <div class="pricing-card pricing-card--featured">
+          <h3>Express</h3>
+          <div class="pricing-price">From AED 300</div>
+          <p class="pricing-time">6-hour delivery</p>
+        </div>
+        <div class="pricing-card">
+          <h3>VIP Concierge</h3>
+          <div class="pricing-price">From AED 500</div>
+          <p class="pricing-time">1-hour draft</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</ServiceLayout>
+
+<style>
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .pricing-card { background: #f8f9fa; border-radius: 1rem; padding: 2rem; text-align: center; border: 1px solid rgba(0, 0, 0, 0.05); }
+  .pricing-card--featured { border-color: var(--accent-color); box-shadow: 0 8px 30px rgba(255, 22, 84, 0.15); background: #ffffff; }
+  .pricing-card h3 { margin: 0 0 0.5rem; font-size: 1.25rem; }
+  .pricing-price { font-size: 2rem; font-weight: 700; color: var(--primary-color); }
+  .pricing-time { color: var(--text-muted); font-size: 0.9rem; }
+</style>

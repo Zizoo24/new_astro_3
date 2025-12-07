@@ -1,0 +1,133 @@
+---
+import ServiceLayout from '../../../layouts/ServiceLayout.astro';
+
+const pageData = {
+  title: "Abu Dhabi Translation Services – MOJ Certified | OnlineTranslation.ae",
+  description: "MOJ-certified translation services for Abu Dhabi. Government documents, ADGM entities, and federal authority submissions. Next-day delivery from Dubai.",
+  keywords: "Abu Dhabi translation, ADGM translation, government translation Abu Dhabi, MOJ certified translation Abu Dhabi",
+  heroTitle: "Abu Dhabi Translation Services",
+  heroSubtitle: "MOJ Certified with Next-Day Delivery",
+  heroIntro: "Serving Abu Dhabi clients from our Dubai base with next-day delivery across the capital. Whether you need translations for federal government authorities, ADGM-registered entities, or personal documents for Abu Dhabi institutions, we provide the same MOJ-certified quality with convenient remote workflow.",
+  snapshot: [
+    { icon: "clock", bold: "Digital drafts", text: "typically within 60 minutes" },
+    { icon: "mobile-alt", bold: "WhatsApp-based workflow", text: "no office visit needed" },
+    { icon: "check-circle", bold: "Accepted by ADJD", text: "and federal authorities" },
+    { icon: "stamp", bold: "MOJ legal stamp", text: "with QR verification" }
+  ],
+  breadcrumbs: [
+    { name: "Home", url: "/" },
+    { name: "Locations", url: "/locations/" },
+    { name: "Abu Dhabi", url: "/locations/abu-dhabi/" }
+  ],
+  
+  trustStrip: [
+    "MOJ-licensed partner",
+    "Next-day Abu Dhabi delivery",
+    "WhatsApp concierge support"
+  ],
+  
+  processSteps: [
+    {
+      title: "Send your documents",
+      text: "WhatsApp photos or scans. No need to travel to Dubai - everything handled remotely."
+    },
+    {
+      title: "We prepare your translation",
+      text: "Same MOJ-certified quality as our Dubai clients receive."
+    },
+    {
+      title: "Next-day Abu Dhabi delivery",
+      text: "Physical copies couriered to your Abu Dhabi address. Digital PDF sent immediately."
+    }
+  ],
+  
+  benefitCards: [
+    {
+      icon: "building",
+      title: "ADGM documents",
+      text: "Corporate and financial documents for Abu Dhabi Global Market entities."
+    },
+    {
+      icon: "court",
+      title: "ADJD submissions",
+      text: "Court documents and legal filings for Abu Dhabi Judicial Department."
+    },
+    {
+      icon: "document",
+      title: "Federal authorities",
+      text: "Documents for ministries and federal government entities."
+    }
+  ],
+  
+  accordionSections: [
+    {
+      title: "Services for Abu Dhabi",
+      id: "services",
+      items: [
+        {
+          heading: "ADGM corporate documents",
+          body: "<p>Abu Dhabi Global Market operates under English common law, similar to DIFC. We handle Articles of Association, corporate governance documents, and regulatory filings for ADGM-registered entities.</p>"
+        },
+        {
+          heading: "Federal government submissions",
+          body: "<p>Many federal ministries and authorities are based in Abu Dhabi. We translate documents for MOHRE, Ministry of Interior, and other federal entities with appropriate governmental terminology.</p>"
+        },
+        {
+          heading: "Abu Dhabi court documents",
+          body: "<p>ADJD (Abu Dhabi Judicial Department) accepts our MOJ-certified translations for court proceedings, legal filings, and official submissions.</p>"
+        }
+      ]
+    }
+  ],
+  
+  faqs: [
+    {
+      question: "How quickly can you deliver to Abu Dhabi?",
+      answer: "Digital PDF is sent immediately upon completion. Physical copies are delivered next-day to Abu Dhabi addresses via courier. For urgent matters, same-day courier can be arranged at additional cost."
+    },
+    {
+      question: "Is MOJ certification accepted in Abu Dhabi?",
+      answer: "Yes. MOJ (Ministry of Justice) certification is federal and accepted across all Emirates including Abu Dhabi. Our translations are accepted by ADJD, ADGM, and all Abu Dhabi government authorities."
+    },
+    {
+      question: "Do I need to visit Dubai?",
+      answer: "No. Our entire workflow is WhatsApp-based. Send documents from Abu Dhabi, and we deliver to you. No office visit required."
+    }
+  ],
+  serviceType: "Legal Translation"
+};
+---
+
+<ServiceLayout {...pageData}>
+  <section class="section bg-white">
+    <div class="container">
+      <h2>Service Levels</h2>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Standard</h3>
+          <div class="pricing-price">From AED 150</div>
+          <p class="pricing-time">24-hour + next-day delivery</p>
+        </div>
+        <div class="pricing-card pricing-card--featured">
+          <h3>Express</h3>
+          <div class="pricing-price">From AED 300</div>
+          <p class="pricing-time">6-hour + same-day courier</p>
+        </div>
+        <div class="pricing-card">
+          <h3>VIP Concierge</h3>
+          <div class="pricing-price">From AED 500</div>
+          <p class="pricing-time">1-hour draft + urgent courier</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</ServiceLayout>
+
+<style>
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .pricing-card { background: #f8f9fa; border-radius: 1rem; padding: 2rem; text-align: center; border: 1px solid rgba(0, 0, 0, 0.05); }
+  .pricing-card--featured { border-color: var(--accent-color); box-shadow: 0 8px 30px rgba(255, 22, 84, 0.15); background: #ffffff; }
+  .pricing-card h3 { margin: 0 0 0.5rem; font-size: 1.25rem; }
+  .pricing-price { font-size: 2rem; font-weight: 700; color: var(--primary-color); }
+  .pricing-time { color: var(--text-muted); font-size: 0.9rem; }
+</style>

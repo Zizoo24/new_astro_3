@@ -1,0 +1,152 @@
+---
+import ServiceLayout from '../../../../layouts/ServiceLayout.astro';
+
+const pageData = {
+  title: "DIFC Translation Services – MOJ Certified | OnlineTranslation.ae",
+  description: "Translation services for DIFC-registered entities. Corporate documents, financial agreements, and regulatory filings. MOJ-certified with DIFC Courts awareness.",
+  keywords: "DIFC translation, Dubai International Financial Centre translation, financial translation dubai, corporate translation DIFC",
+  heroTitle: "DIFC Translation Services",
+  heroSubtitle: "MOJ Certified with Common Law Awareness",
+  heroIntro: "The Dubai International Financial Centre operates under English common law, creating unique translation requirements. Whether you are a DIFC-registered company needing Arabic translations for mainland dealings, or a mainland entity requiring English translations for DIFC proceedings, we handle the legal terminology with awareness of both systems.",
+  snapshot: [
+    { icon: "clock", bold: "Digital drafts", text: "typically within 60 minutes" },
+    { icon: "mobile-alt", bold: "WhatsApp-based workflow", text: "for busy professionals" },
+    { icon: "check-circle", bold: "Court-ready", text: "for DIFC and Dubai Courts" },
+    { icon: "stamp", bold: "MOJ legal stamp", text: "with QR verification" }
+  ],
+  breadcrumbs: [
+    { name: "Home", url: "/" },
+    { name: "Locations", url: "/locations/" },
+    { name: "Dubai", url: "/locations/dubai/" },
+    { name: "DIFC", url: "/locations/dubai/difc/" }
+  ],
+  
+  trustStrip: [
+    "MOJ-licensed partner",
+    "Common law terminology",
+    "WhatsApp concierge support"
+  ],
+  
+  processSteps: [
+    {
+      title: "Send your documents",
+      text: "Corporate agreements, court filings, or regulatory documents. Specify the intended use."
+    },
+    {
+      title: "We prepare your translation",
+      text: "MOJ-licensed translator handles legal terminology with awareness of DIFC's legal framework."
+    },
+    {
+      title: "Pickup or delivery",
+      text: "Same-day delivery to DIFC offices. Digital PDF for immediate use."
+    }
+  ],
+  
+  benefitCards: [
+    {
+      icon: "court",
+      title: "DIFC Courts ready",
+      text: "Translations suitable for DIFC Courts proceedings and dispute resolution."
+    },
+    {
+      icon: "briefcase",
+      title: "Financial expertise",
+      text: "Investment agreements, fund documents, and banking contracts."
+    },
+    {
+      icon: "document",
+      title: "Regulatory filings",
+      text: "DFSA submissions and compliance documentation."
+    }
+  ],
+  
+  accordionSections: [
+    {
+      title: "Documents we translate for DIFC",
+      id: "documents",
+      items: [
+        {
+          heading: "Corporate governance documents",
+          body: "<p>Articles of Association, Shareholders' Agreements, Board Resolutions, and other governance documents for DIFC-registered entities. We handle common law corporate terminology accurately.</p>"
+        },
+        {
+          heading: "Financial agreements",
+          body: "<p>Investment agreements, fund subscription documents, loan agreements, and other financial contracts. DIFC's financial services focus means these documents often have specialized terminology.</p>"
+        },
+        {
+          heading: "Court documents and legal filings",
+          body: "<p>Claim forms, witness statements, expert reports, and other documents for DIFC Courts proceedings. We ensure translations meet court submission requirements.</p>"
+        },
+        {
+          heading: "Regulatory submissions",
+          body: "<p>Documents for DFSA (Dubai Financial Services Authority) including license applications, compliance reports, and regulatory correspondence.</p>"
+        }
+      ]
+    }
+  ],
+  
+  faqs: [
+    {
+      question: "Is this translation accepted by DIFC Courts?",
+      answer: "Yes. Our MOJ-certified translations are accepted for DIFC Courts proceedings. While DIFC Courts primarily operate in English, Arabic translations may be required for certain matters or when documents need to be used in mainland UAE courts."
+    },
+    {
+      question: "Do you understand DIFC's common law system?",
+      answer: "Yes. We are familiar with the English common law terminology used in DIFC. This is important because legal concepts may not have direct Arabic equivalents, and careful translation is required to preserve legal meaning."
+    },
+    {
+      question: "How quickly can you deliver to DIFC?",
+      answer: "Same-day delivery is available for DIFC offices. Express service completes translation in 6 hours. VIP Concierge provides 1-hour drafts for urgent court deadlines."
+    }
+  ],
+  serviceType: "Legal Translation"
+};
+---
+
+<ServiceLayout {...pageData}>
+  <section class="section bg-white">
+    <div class="container">
+      <h2>Service Levels</h2>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Standard</h3>
+          <div class="pricing-price">From AED 250</div>
+          <p class="pricing-time">24-hour delivery</p>
+        </div>
+        <div class="pricing-card pricing-card--featured">
+          <h3>Express</h3>
+          <div class="pricing-price">From AED 400</div>
+          <p class="pricing-time">6-hour delivery</p>
+        </div>
+        <div class="pricing-card">
+          <h3>VIP Concierge</h3>
+          <div class="pricing-price">From AED 600</div>
+          <p class="pricing-time">1-hour draft</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</ServiceLayout>
+
+<style>
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .pricing-card {
+    background: #f8f9fa;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  .pricing-card--featured {
+    border-color: var(--accent-color);
+    box-shadow: 0 8px 30px rgba(255, 22, 84, 0.15);
+    background: #ffffff;
+  }
+  .pricing-card h3 { margin: 0 0 0.5rem; font-size: 1.25rem; }
+  .pricing-price { font-size: 2rem; font-weight: 700; color: var(--primary-color); }
+  .pricing-time { color: var(--text-muted); font-size: 0.9rem; }
+</style>
