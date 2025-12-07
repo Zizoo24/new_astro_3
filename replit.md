@@ -81,10 +81,13 @@ The system is designed as a "Digital Concierge" with a "WhatsApp-First Architect
 - cleanUrls: true and trailingSlash: false configured for SEO
 
 ### SEO Content Expansion
-- Legal Translation page (`/services/legal-translation/`) expanded to 2000+ words with comprehensive content covering court documents, contracts, litigation support, and working with law firms
-- Palm Jumeirah page (`/locations/dubai/palm-jumeirah/`) expanded to 2000+ words covering property documentation, remote investor support, developer handovers, and transaction scenarios
+- Legal Translation page (`/services/legal-translation/`) expanded to 2,453 words covering court documents, contracts, litigation support, and law firm partnerships
+- Palm Jumeirah page (`/locations/dubai/palm-jumeirah/`) expanded to 2,934 words covering property documentation, remote investor support, and developer handovers
+- Golden Visa Translation page (`/services/golden-visa-translation/`) expanded to 2,442 words covering ICP requirements, degree equivalency, salary documentation, and category guidance
+- Attestation page (`/services/attestation/`) expanded to 2,582 words covering Hague Convention, embassy attestation, document types, and country-specific requirements
+- Dubai hub page (`/locations/dubai/`) expanded to 1,504 words covering administrative structure, districts, and practical delivery information
 - Content follows brand voice: professional, helpful, no hype, concierge tone
-- Pages include multiple content sections with proper heading hierarchy (H2, H3) for SEO
+- All pages include proper heading hierarchy (H2, H3) and contextual internal links for SEO
 
 ### Content Standards
 - Target: 2000+ words per service/location page for SEO authority
