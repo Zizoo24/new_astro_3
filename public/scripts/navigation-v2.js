@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Connect desktop header mobile menu button to sidebar
   if (mobileMenuToggle) {
     mobileMenuToggle.addEventListener('click', function(e) {
-      e.preventDefault();
+      e.stopPropagation();
       openSidebar();
     });
   }
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Connect mobile header sidebar toggle button
   if (sidebarToggle) {
     sidebarToggle.addEventListener('click', function(e) {
-      e.preventDefault();
+      e.stopPropagation();
       openSidebar();
     });
   }
