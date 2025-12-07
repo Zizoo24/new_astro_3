@@ -158,10 +158,46 @@ document.addEventListener('DOMContentLoaded', function() {
   const searchOverlay = document.getElementById('search-overlay');
   const backToTop = document.getElementById('backToTop');
   
+  // Expand Services by default when sidebar opens
+  function expandServicesDefault() {
+    // Close all first
+    document.querySelectorAll('.sidebar-accordion-content').forEach(function(el) {
+      el.classList.remove('expanded');
+    });
+    document.querySelectorAll('.sidebar-section-title[data-accordion]').forEach(function(el) {
+      el.classList.remove('expanded');
+    });
+    // Expand Services
+    const servicesContent = document.getElementById('accordion-services');
+    const servicesTitle = document.querySelector('.sidebar-section-title[data-accordion="services"]');
+    if (servicesContent && servicesTitle) {
+      servicesContent.classList.add('expanded');
+      servicesTitle.classList.add('expanded');
+    }
+  }
+  
   function openSidebar() {
     menuSidebar?.classList.add('is-open');
     sidebarOverlay?.classList.add('is-visible');
     document.body.style.overflow = 'hidden';
+    // Always expand Services when sidebar opens
+    expandServicesDefault();
+  }
+  
+  // Watch for sidebar open from ANY source (including navigation-v2.js)
+  if (menuSidebar) {
+    const sidebarObserver = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.attributeName === 'class') {
+          const isOpen = menuSidebar.classList.contains('is-open');
+          if (isOpen) {
+            // Delay slightly to ensure DOM is ready
+            setTimeout(expandServicesDefault, 10);
+          }
+        }
+      });
+    });
+    sidebarObserver.observe(menuSidebar, { attributes: true, attributeFilter: ['class'] });
   }
   
   function closeSidebar() {
@@ -203,32 +239,58 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-  // Sidebar accordion - toggle buttons only
-  const accordionToggles = document.querySelectorAll('.sidebar-section-title .accordion-toggle');
-  const accordionTitles = document.querySelectorAll('.sidebar-section-title');
+  // Sidebar accordion - toggle buttons and full header clickable
+  const accordionTitles = document.querySelectorAll('.sidebar-section-title[data-accordion]');
   
-  accordionToggles.forEach(function(toggle) {
-    toggle.addEventListener('click', function(e) {
+  function toggleAccordion(title) {
+    const accordionId = title?.getAttribute('data-accordion');
+    const content = document.getElementById('accordion-' + accordionId);
+    const isExpanded = content?.classList.contains('expanded');
+    
+    // Close all other accordions
+    document.querySelectorAll('.sidebar-accordion-content').forEach(function(el) {
+      el.classList.remove('expanded');
+    });
+    accordionTitles.forEach(function(el) {
+      el.classList.remove('expanded');
+    });
+    
+    // Toggle current (if wasn't expanded, expand it)
+    if (!isExpanded) {
+      content?.classList.add('expanded');
+      title?.classList.add('expanded');
+    }
+  }
+  
+  accordionTitles.forEach(function(title) {
+    const toggle = title.querySelector('.accordion-toggle');
+    const sectionLink = title.querySelector('.section-link');
+    
+    // Toggle button click (chevron)
+    toggle?.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
-      const title = this.closest('.sidebar-section-title');
-      const accordionId = title?.getAttribute('data-accordion');
-      const content = document.getElementById('accordion-' + accordionId);
-      const isOpen = content?.classList.contains('is-open');
-      
-      document.querySelectorAll('.sidebar-accordion-content').forEach(function(el) {
-        el.classList.remove('is-open');
-      });
-      accordionTitles.forEach(function(el) {
-        el.classList.remove('is-active');
-      });
-      
-      if (!isOpen) {
-        content?.classList.add('is-open');
-        title?.classList.add('is-active');
+      toggleAccordion(title);
+    });
+    
+    // Full header click (excluding the link) - for touch targets
+    title.addEventListener('click', function(e) {
+      // If clicking on the actual link, let it navigate
+      if (e.target === sectionLink || sectionLink?.contains(e.target)) {
+        return; // Allow link to work
       }
+      // If clicking on the toggle, it has its own handler
+      if (e.target === toggle || toggle?.contains(e.target)) {
+        return; // Already handled
+      }
+      // Otherwise toggle the accordion
+      e.preventDefault();
+      toggleAccordion(title);
     });
   });
+  
+  // Expand Services on initial page load
+  expandServicesDefault();
   
   // Back to top
   window.addEventListener('scroll', function() {
