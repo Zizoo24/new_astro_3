@@ -131,6 +131,84 @@ const { isHomepage = false } = Astro.props;
   </button>
 </div>
 
+<script is:inline>
+  (function() {
+    // ========================================
+    // Theme Toggle - Runs Immediately
+    // ========================================
+    
+    const body = document.body;
+    const html = document.documentElement;
+    
+    // Get saved theme or default to light
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    body.classList.remove('theme-light', 'theme-dark');
+    body.classList.add('theme-' + savedTheme);
+    html.setAttribute('data-theme', savedTheme);
+    
+    // Update theme toggle icons
+    function updateThemeIcons() {
+      const isDark = body.classList.contains('theme-dark');
+      const icon = isDark ? 'fa-sun' : 'fa-moon';
+      
+      const themeToggle = document.getElementById('themeToggle');
+      const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+      
+      if (themeToggle) {
+        const desktopIcon = themeToggle.querySelector('i');
+        if (desktopIcon) desktopIcon.className = 'fas ' + icon;
+      }
+      
+      if (mobileThemeToggle) {
+        const mobileIcon = mobileThemeToggle.querySelector('i');
+        if (mobileIcon) mobileIcon.className = 'fas ' + icon;
+      }
+    }
+    
+    // Toggle theme function
+    function toggleTheme(e) {
+      e.preventDefault();
+      const isDark = body.classList.contains('theme-dark');
+      
+      if (isDark) {
+        body.classList.remove('theme-dark');
+        body.classList.add('theme-light');
+        html.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+      } else {
+        body.classList.remove('theme-light');
+        body.classList.add('theme-dark');
+        html.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+      }
+      
+      updateThemeIcons();
+    }
+    
+    // Attach listeners when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      const themeToggle = document.getElementById('themeToggle');
+      const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+      
+      if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+      if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+      
+      updateThemeIcons();
+    });
+    
+    // Also try to attach immediately if DOM already loaded
+    if (document.readyState !== 'loading') {
+      const themeToggle = document.getElementById('themeToggle');
+      const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+      
+      if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+      if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+      
+      updateThemeIcons();
+    }
+  })();
+</script>
+
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const header = document.getElementById('header');
