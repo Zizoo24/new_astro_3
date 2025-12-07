@@ -40,7 +40,7 @@ The system is designed as a "Digital Concierge" with a "WhatsApp-First Architect
 - **Global Scale:** `html { font-size: 80% }` applies a 20% reduction to all rem-based elements for a more compact desktop fit. The nav bar is exempt via `.nav-shell { font-size: calc(1rem / 0.8) }` which restores the original 16px baseline for the header. Header uses flexbox layout with flexible nav width (`flex: 1 1 auto`) and fixed contact button (`flex-shrink: 0`). Media query at 1400px further reduces spacing for narrower screens.
 - **Announcement Bar Collapse:** On scroll past 50px, the coral announcement bar collapses using `max-height: 0` animation (not transform) so content moves up smoothly without leaving a gap.
 - **Dark Mode:** Toggle sets both `body.theme-dark` class and `html[data-theme="dark"]` attribute. Color variables auto-switch in dark mode. Moon/sun icon toggle in header and mobile. Theme toggle logic is implemented as an inline script (`is:inline`) in `Header.astro` for reliable production execution on Vercel - this ensures the script runs immediately without build/deployment race conditions.
-- **Mobile Sidebar Contrast:** The sidebar background is forced to navy via `visibility-fixes.css` (`rgba(14, 43, 72, 0.98)`). All sidebar text must use light colors (`rgba(255, 255, 255, 0.7-0.92)`). Hover/active states use white text (#ffffff), not accent color, to meet WCAG AA contrast requirements (≥4.5:1 for text, ≥3:1 for icons).
+- **Mobile Sidebar Contrast:** The sidebar uses navy glass background (`rgba(14, 43, 72, 0.98)`) defined directly in `sticky-mobile.css` with backdrop blur. All sidebar text uses `var(--text-on-dark)` and `var(--text-on-dark-muted)` tokens for WCAG AA contrast (≥4.5:1 for text, ≥3:1 for icons). Section titles hover to white (#ffffff). Dark mode uses deeper background `rgba(11, 17, 26, 0.98)`. The `visibility-fixes.css` file provides minimal overrides for desktop header and dropdowns only.
 - **Service Worker:** Currently disabled (self-unregistering cleanup version). The previous caching service worker was causing production cache poisoning on Vercel. PWA/offline support is temporarily disabled until a hashed-cache or Workbox-based solution is implemented.
 - **Vercel Caching:** All pages use `max-age=0, must-revalidate` by default. Hashed `/_astro/` assets use Vercel default caching. Service worker uses `no-cache, no-store`. Images use 30-day cache. No Content-Security-Policy header (was causing resource blocking issues).
 - **Sidebar Section Links:** Section titles (Services, Personal, etc.) are now clickable links to category pages. The chevron icon is a separate button that toggles the accordion submenu.
@@ -95,6 +95,13 @@ The system is designed as a "Digital Concierge" with a "WhatsApp-First Architect
 - JLT page (`/locations/dubai/jlt/`) expanded to 1,866 words covering DMCC free zone, banking requirements, business types
 - Business Bay page (`/locations/dubai/business-bay/`) expanded to 1,851 words covering corporate hub, litigation support, delivery coverage
 - Sharjah page (`/locations/sharjah/`) expanded to 1,926 words covering emirate courts, free zones, delivery areas
+
+### Mobile Sidebar CSS Architecture (December 2025)
+- Sidebar background now defined directly in `sticky-mobile.css` (was in visibility-fixes.css with !important)
+- All sidebar text colors use `var(--text-on-dark)` and `var(--text-on-dark-muted)` tokens
+- Removed !important declarations from visibility-fixes.css for cleaner cascade
+- CSS load order: base-architecture.css → porto-desktop.css → visibility-fixes.css → sticky-mobile.css → dark-mode.css
+- Critical: sticky-mobile.css loads LAST (before dark-mode.css), so sidebar styles defined there take precedence
 
 ### Content Standards
 - Target: 2000+ words per service/location page for SEO authority
