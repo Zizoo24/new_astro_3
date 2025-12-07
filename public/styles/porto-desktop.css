@@ -653,6 +653,40 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(-3px);
 }
 
+/* Desktop Theme Toggle - Softer contrast in light mode */
+#themeToggle.header-icon {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted, #5a6a7a);
+    font-size: 14px;
+    background: transparent;
+    border: 1px solid rgba(90, 106, 122, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+#themeToggle.header-icon:hover {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+    background: rgba(255, 22, 84, 0.08);
+}
+
+/* Scrolled state - softer white icon for navy background */
+.header-desktop.exodus-header.scrolled #themeToggle.header-icon {
+    color: rgba(255, 255, 255, 0.7);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.header-desktop.exodus-header.scrolled #themeToggle.header-icon:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+}
+
 /* Mobile Only Toggle */
 .menu-toggle-btn.mobile-only {
     display: flex;
