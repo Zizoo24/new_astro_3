@@ -80,14 +80,21 @@ The system is designed as a "Digital Concierge" with a "WhatsApp-First Architect
 - Security headers already in place: X-Content-Type-Options (nosniff), X-Frame-Options (DENY), Referrer-Policy (strict-origin-when-cross-origin)
 - cleanUrls: true and trailingSlash: false configured for SEO
 
-### SEO Content Expansion
+### SEO Content Expansion (Batch 1 - Priority Pages)
 - Legal Translation page (`/services/legal-translation/`) expanded to 2,453 words covering court documents, contracts, litigation support, and law firm partnerships
 - Palm Jumeirah page (`/locations/dubai/palm-jumeirah/`) expanded to 2,934 words covering property documentation, remote investor support, and developer handovers
 - Golden Visa Translation page (`/services/golden-visa-translation/`) expanded to 2,442 words covering ICP requirements, degree equivalency, salary documentation, and category guidance
 - Attestation page (`/services/attestation/`) expanded to 2,582 words covering Hague Convention, embassy attestation, document types, and country-specific requirements
 - Dubai hub page (`/locations/dubai/`) expanded to 1,504 words covering administrative structure, districts, and practical delivery information
-- Content follows brand voice: professional, helpful, no hype, concierge tone
-- All pages include proper heading hierarchy (H2, H3) and contextual internal links for SEO
+
+### SEO Content Expansion (Batch 2 - Service & Location Pages)
+- Corporate Translation page (`/services/corporate-translation/`) expanded to 2,043 words covering governance documents, formation docs, jurisdictional differences
+- Certificate Translation page (`/services/certificate-translation/`) expanded to 2,111 words covering educational, professional, and civil certificates
+- DIFC page (`/locations/dubai/difc/`) expanded to 1,842 words covering common law environment, DIFC Courts, financial documents
+- Abu Dhabi page (`/locations/abu-dhabi/`) expanded to 1,900 words covering federal government, ADJD, ADGM, district delivery
+- JLT page (`/locations/dubai/jlt/`) expanded to 1,866 words covering DMCC free zone, banking requirements, business types
+- Business Bay page (`/locations/dubai/business-bay/`) expanded to 1,851 words covering corporate hub, litigation support, delivery coverage
+- Sharjah page (`/locations/sharjah/`) expanded to 1,926 words covering emirate courts, free zones, delivery areas
 
 ### Content Standards
 - Target: 2000+ words per service/location page for SEO authority
