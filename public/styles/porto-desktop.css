@@ -1,31 +1,33 @@
 :root {
-    /* Exodus Premium Corporate Palette - Navy/Red/White */
-    --primary-color: #0E2B48;
-    --primary: #0E2B48;
-    --primary-dark: #071824;
+    /* ============================================
+       COLOR TOKENS ARE IN base-architecture.css
+       This file only contains component-specific
+       styles. All color variables inherit from
+       the unified token system.
+       
+       Source of truth: styles/base-architecture.css
+       ============================================ */
+    
+    /* Legacy aliases for backward compatibility */
+    --primary: var(--surface-navy);
+    --primary-dark: var(--surface-navy-dark);
     --primary-light: #1a4570;
-    --primary-overlay: rgba(14, 43, 72, 0.92);
-    --accent-color: #FF1654;
-    --accent: #FF1654;
+    --primary-overlay: var(--surface-overlay);
+    --accent: var(--accent-coral);
     --accent-light: #ff4d7a;
-    --accent-dark: #cc1143;
-    --gold-color: #d4a54c;
-    --gold: #d4a54c;
-    --text-dark: #1a1a1a;
-    --text-muted: #555555;
-    --text-light: #ffffff;
-    --bg-light: #f8f9fa;
-    --bg-white: #ffffff;
-    --bg-alt: #f0f2f5;
-    --bg-card: #ffffff;
-    --border-color: #e0e0e0;
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
-    --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.16);
+    --accent-dark: var(--accent-coral-hover);
+    --gold-color: var(--accent-gold-light);
+    --gold: var(--accent-gold-light);
+    --bg-card: var(--surface-base);
+    --border-color: var(--border-light);
     --shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.2);
+    
+    /* Transitions */
     --transition: all 0.3s ease;
     --transition-fast: all 0.2s ease;
     --transition-slow: all 0.4s ease;
+    
+    /* Typography */
     --font-heading: 'Montserrat', 'Jost', sans-serif;
     --font-primary: 'Montserrat', sans-serif;
     --font-secondary: 'Open Sans', 'Roboto', sans-serif;
@@ -45,8 +47,8 @@ body {
     font-family: var(--font-secondary);
     font-size: 1rem;
     line-height: 1.8;
-    color: var(--text-dark);
-    background-color: var(--bg-white);
+    color: var(--text-body);
+    background-color: var(--surface-base);
     overflow-x: hidden;
 }
 

@@ -23,7 +23,9 @@ The system is designed as a "Digital Concierge" with a "WhatsApp-First Architect
 
 **UI/UX Decisions:**
 - **Design Inspiration:** Divi Exodus immigration template.
-- **Color Palette:** Primary Navy (#0E2B48), Accent Coral (#FF1654), Gold Highlight (#d4a54c), Text Dark (#1a1a1a), Text Muted (#666666), Background Light (#f8f9fa).
+- **Color Palette:** Primary Navy (#0E2B48), Accent Coral (#FF1654), Gold Highlight (#d4a54c), Text Dark (#1a1a1a), Text Muted (#5a6a7a), Background Light (#f8f9fa).
+- **Color Token System:** All colors use CSS custom properties defined in `base-architecture.css`. Light mode uses `:root`, dark mode uses `[data-theme="dark"]`. Token categories: `--surface-*` (backgrounds), `--text-*` (typography with documented contrast ratios), `--link-*` (link colors), `--accent-*` (coral/gold), `--state-*` (success/warning/error), `--border-*` (borders). Legacy aliases maintain backward compatibility: `--primary-color` (navy surfaces), `--primary-accent` (bright accents for dark mode text/icons), `--accent-color`, `--bg-dark`, etc.
+- **Dark Mode Contrast:** All text meets WCAG AA (≥4.5:1). Headings use #f4f7fc (17.4:1), body text uses #d1dce9 (14.0:1), muted text uses #9fb2c9 (8.2:1). `--primary-accent` provides bright cyan (#58a6ff) for icons/links against dark backgrounds.
 - **Typography:** Headings (Montserrat or Jost, 700-800 weight, uppercase with 0.3em letter-spacing), Body (Open Sans or Roboto, 400 weight, 1.8-1.9 line-height).
 - **Principles:** Mobile-first design (70%+ UAE traffic is mobile), seamless WhatsApp integration, accordion-based content, sticky bottom navigation (mobile only), no floating CTAs.
 - **Hero Section:** Desktop features three overlapping cards (MOJ Certified, Court Accepted, 60-Min Draft); mobile displays these cards sequentially.

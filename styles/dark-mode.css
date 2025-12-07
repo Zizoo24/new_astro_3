@@ -1,31 +1,21 @@
 /* Dark Mode - Comprehensive Styles */
 
-/* Dark mode variables - HIGH CONTRAST */
+/* ============================================
+   COLOR TOKENS ARE NOW IN base-architecture.css
+   This file only contains component-specific
+   dark mode overrides, NOT variable definitions.
+   
+   Source of truth: styles/base-architecture.css
+   All contrast ratios documented there.
+   ============================================ */
+
+/* Legacy variable aliases for backward compatibility */
 body.theme-dark {
-    --bg-white: #0d1117;
-    --bg-light: #161b22;
-    --bg-dark: #010409;
-    --bg-card: #21262d;
-    --bg-elevated: #30363d;
-    
-    --text-dark: #f0f6fc;
-    --text-body: #e6edf3;
-    --text-muted: #a8b3c2;
-    --text-light: #ffffff;
-    
-    --border-color: #30363d;
-    --border-light: #21262d;
-    
-    /* CRITICAL: Use light blue for primary in dark mode - NOT dark navy */
-    --primary-color: #58a6ff;
-    --primary-dark: #1f6feb;
-    --primary-heading: #f0f6fc;
-    --accent-color: #ff4757;
-    --accent-dark: #e31e24;
-    
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
-    --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.6);
+    --bg-card: var(--surface-muted);
+    --bg-elevated: var(--surface-navy);
+    --border-color: var(--border-medium);
+    --primary-heading: var(--text-heading);
+    --accent-dark: var(--accent-coral-hover);
 }
 
 /* Dark Mode - Hero Images Fix - Allow team photo to show */
@@ -204,7 +194,7 @@ body.theme-dark .sidebar-nav ul li a i {
 }
 
 body.theme-dark .sidebar-nav ul li a:hover i {
-    color: var(--primary-color);
+    color: var(--primary-accent);
 }
 
 body.theme-dark .sidebar-cta {
@@ -341,11 +331,11 @@ body.theme-dark .channel-card p {
 
 body.theme-dark .card-icon {
     background: rgba(88, 166, 255, 0.15);
-    color: var(--primary-color);
+    color: var(--primary-accent);
 }
 
 body.theme-dark .card-link {
-    color: var(--primary-color);
+    color: var(--primary-accent);
 }
 
 body.theme-dark .card-link:hover {
@@ -499,7 +489,7 @@ body.theme-dark .testimonial-author span {
 /* Stats */
 body.theme-dark .stats-item .number,
 body.theme-dark .stat-number {
-    color: var(--primary-color);
+    color: var(--primary-accent);
 }
 
 body.theme-dark .stats-item .label,
@@ -527,7 +517,7 @@ body.theme-dark .pricing-features li {
 }
 
 body.theme-dark .pricing-features li i {
-    color: var(--primary-color);
+    color: var(--primary-accent);
 }
 
 /* Process Steps */
@@ -566,7 +556,7 @@ body.theme-dark .breadcrumb a {
 }
 
 body.theme-dark .breadcrumb a:hover {
-    color: var(--primary-color);
+    color: var(--primary-accent);
 }
 
 body.theme-dark .breadcrumb span {
@@ -634,7 +624,7 @@ body.theme-dark .trust-badge {
 }
 
 body.theme-dark .trust-badge i {
-    color: var(--primary-color);
+    color: var(--primary-accent);
 }
 
 /* WhatsApp Float */
@@ -673,14 +663,8 @@ body.theme-dark ::selection {
     color: var(--text-light);
 }
 
-/* Links in content */
-body.theme-dark a:not(.btn-coral):not(.hero-cta):not(.header-cta):not(.sidebar-cta):not(.card-link):not(.footer-item):not(.hero-btn) {
-    color: var(--primary-color);
-}
-
-body.theme-dark a:not(.btn-coral):not(.hero-cta):not(.header-cta):not(.sidebar-cta):not(.card-link):not(.footer-item):not(.hero-btn):hover {
-    color: var(--accent-color);
-}
+/* Links in content - now handled by base-architecture.css global link reset */
+/* See base-architecture.css for link color tokens */
 
 /* Hero Buttons - Dark Mode */
 body.theme-dark .hero-btn--primary {
@@ -748,7 +732,7 @@ body.theme-dark .package-card h3 {
 }
 
 body.theme-dark .package-card .price {
-    color: var(--primary-color);
+    color: var(--primary-accent);
 }
 
 body.theme-dark .package-card ul li {
@@ -762,7 +746,7 @@ body.theme-dark .document-list li {
 }
 
 body.theme-dark .document-list li i {
-    color: var(--primary-color);
+    color: var(--primary-accent);
 }
 
 /* Alerts */

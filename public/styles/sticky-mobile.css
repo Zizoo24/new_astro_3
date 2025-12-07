@@ -29,23 +29,11 @@
     border-radius: 12px;
     transition: var(--transition-fast);
     background: rgba(10, 31, 68, 0.05);
-    border: none;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
 }
 
 .header-mobile .header-icon:active {
     background: rgba(10, 31, 68, 0.1);
     transform: scale(0.95);
-}
-
-.header-mobile .header-icon:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px var(--accent-color);
-}
-
-.header-mobile .header-icon:focus:not(:focus-visible) {
-    box-shadow: none;
 }
 
 .header-mobile .header-title {
@@ -95,20 +83,6 @@
     border-radius: 12px;
     min-width: 65px;
     position: relative;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-    font-family: inherit;
-}
-
-.footer-item:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px var(--accent-color);
-}
-
-.footer-item:focus:not(:focus-visible) {
-    box-shadow: none;
 }
 
 .footer-item i {
@@ -141,7 +115,7 @@
     transform: scale(0.95);
 }
 
-/* WhatsApp Button - Green with subtle glow (no scale transform to prevent glitches) */
+/* WhatsApp Button - Green with Neon Pulse */
 .footer-whatsapp,
 .footer-whatsapp span {
     color: #25D366 !important;
@@ -149,25 +123,25 @@
 
 .footer-whatsapp i {
     color: #25D366 !important;
-    animation: whatsappGlow 3s ease-in-out infinite;
+    animation: whatsappPulse 3s ease-in-out infinite;
 }
 
-@keyframes whatsappGlow {
+@keyframes whatsappPulse {
     0%, 70%, 100% {
         text-shadow: none;
-        opacity: 1;
+        transform: scale(1);
     }
     75% {
-        text-shadow: 0 0 6px #25D366, 0 0 12px #25D366;
-        opacity: 1;
+        text-shadow: 0 0 8px #25D366, 0 0 16px #25D366, 0 0 24px #25D366;
+        transform: scale(1.1);
     }
     80% {
-        text-shadow: 0 0 3px #25D366;
-        opacity: 1;
+        text-shadow: 0 0 4px #25D366, 0 0 10px #25D366;
+        transform: scale(1.05);
     }
     85% {
         text-shadow: none;
-        opacity: 1;
+        transform: scale(1);
     }
 }
 
@@ -178,7 +152,6 @@
 
 .footer-whatsapp:active i {
     color: #128C7E !important;
-    animation: none;
 }
 
 /* Sidebar Menu */
@@ -197,8 +170,7 @@
     box-shadow: var(--shadow-lg);
 }
 
-.sidebar-menu.active,
-.sidebar-menu.is-open {
+.sidebar-menu.active {
     transform: translateX(320px);
 }
 
@@ -294,9 +266,9 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.2px;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-muted, #6c757d);
     margin-top: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-top: 1px solid var(--border-color, #e9ecef);
     background: transparent;
     cursor: pointer;
     transition: var(--transition-fast);
@@ -311,43 +283,17 @@
 
 .sidebar-section-title:hover,
 .sidebar-section-title:active {
-    background: rgba(255, 255, 255, 0.08);
-}
-
-.sidebar-section-title .section-link {
-    flex: 1;
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-}
-
-.sidebar-section-title .section-link:hover,
-.sidebar-section-title .section-link:active {
-    color: #ffffff;
-}
-
-.sidebar-section-title .accordion-toggle {
-    background: transparent;
-    border: none;
-    padding: 8px 12px;
-    margin: -8px -12px -8px 0;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: rgba(0, 0, 0, 0.03);
+    color: var(--accent-color, #ff1654);
 }
 
 .sidebar-section-title .accordion-icon {
     font-size: 10px;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--text-muted, #6c757d);
     transition: transform 0.3s ease;
 }
 
-.sidebar-section-title.expanded .accordion-icon,
-.sidebar-section-title.is-active .accordion-icon {
+.sidebar-section-title.expanded .accordion-icon {
     transform: rotate(180deg);
 }
 
@@ -357,8 +303,7 @@
     transition: max-height 0.3s ease-out;
 }
 
-.sidebar-accordion-content.expanded,
-.sidebar-accordion-content.is-open {
+.sidebar-accordion-content.expanded {
     max-height: 500px;
 }
 
@@ -371,7 +316,7 @@
     align-items: center;
     gap: 18px;
     padding: 18px 28px;
-    color: rgba(255, 255, 255, 0.92);
+    color: var(--text-dark);
     text-decoration: none;
     font-size: 16px;
     font-weight: 600;
@@ -381,9 +326,9 @@
 
 .sidebar-nav ul li a:active,
 .sidebar-nav ul li a.active {
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(227, 30, 36, 0.08);
     border-left-color: var(--accent-color);
-    color: #ffffff;
+    color: var(--accent-color);
 }
 
 .sidebar-nav ul li a i {
@@ -394,7 +339,7 @@
 
 .sidebar-contact {
     padding: 25px 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-top: 1px solid var(--border-color);
 }
 
 .sidebar-cta {
@@ -421,13 +366,13 @@
 }
 
 .sidebar-cta.secondary {
-    background: rgba(255, 255, 255, 0.12);
-    color: rgba(255, 255, 255, 0.92);
+    background: var(--bg-light);
+    color: var(--text-dark);
     box-shadow: none;
 }
 
 .sidebar-cta.secondary:active {
-    background: rgba(255, 255, 255, 0.18);
+    background: var(--border-color);
 }
 
 .sidebar-overlay {
@@ -444,8 +389,7 @@
     backdrop-filter: blur(5px);
 }
 
-.sidebar-overlay.active,
-.sidebar-overlay.is-visible {
+.sidebar-overlay.active {
     opacity: 1;
     visibility: visible;
 }
@@ -467,8 +411,7 @@
     transition: var(--transition);
 }
 
-.search-overlay.active,
-.search-overlay.is-open {
+.search-overlay.active {
     opacity: 1;
     visibility: visible;
 }

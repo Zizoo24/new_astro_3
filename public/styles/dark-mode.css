@@ -1,31 +1,21 @@
 /* Dark Mode - Comprehensive Styles */
 
-/* Dark mode variables - HIGH CONTRAST */
+/* ============================================
+   COLOR TOKENS ARE NOW IN base-architecture.css
+   This file only contains component-specific
+   dark mode overrides, NOT variable definitions.
+   
+   Source of truth: styles/base-architecture.css
+   All contrast ratios documented there.
+   ============================================ */
+
+/* Legacy variable aliases for backward compatibility */
 body.theme-dark {
-    --bg-white: #0d1117;
-    --bg-light: #161b22;
-    --bg-dark: #010409;
-    --bg-card: #21262d;
-    --bg-elevated: #30363d;
-    
-    --text-dark: #f0f6fc;
-    --text-body: #e6edf3;
-    --text-muted: #a8b3c2;
-    --text-light: #ffffff;
-    
-    --border-color: #30363d;
-    --border-light: #21262d;
-    
-    /* CRITICAL: Use light blue for primary in dark mode - NOT dark navy */
-    --primary-color: #58a6ff;
-    --primary-dark: #1f6feb;
-    --primary-heading: #f0f6fc;
-    --accent-color: #ff4757;
-    --accent-dark: #e31e24;
-    
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
-    --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.6);
+    --bg-card: var(--surface-muted);
+    --bg-elevated: var(--surface-navy);
+    --border-color: var(--border-medium);
+    --primary-heading: var(--text-heading);
+    --accent-dark: var(--accent-coral-hover);
 }
 
 /* Dark Mode - Hero Images Fix - Allow team photo to show */
@@ -204,37 +194,11 @@ body.theme-dark .sidebar-nav ul li a i {
 }
 
 body.theme-dark .sidebar-nav ul li a:hover i {
-    color: var(--primary-color);
-}
-
-body.theme-dark .sidebar-section-title {
-    color: rgba(255, 255, 255, 0.85);
-    border-top-color: var(--border-color);
-}
-
-body.theme-dark .sidebar-section-title:hover,
-body.theme-dark .sidebar-section-title:active,
-body.theme-dark .sidebar-section-title.is-active {
-    color: var(--accent-color);
-    background: rgba(255, 255, 255, 0.04);
-}
-
-body.theme-dark .sidebar-section-title .accordion-icon {
-    color: rgba(255, 255, 255, 0.6);
-}
-
-body.theme-dark .sidebar-section-title:hover .accordion-icon,
-body.theme-dark .sidebar-section-title.is-active .accordion-icon {
-    color: var(--accent-color);
+    color: var(--primary-accent);
 }
 
 body.theme-dark .sidebar-cta {
     background: var(--accent-color);
-    color: var(--text-light);
-}
-
-body.theme-dark .sidebar-cta.secondary {
-    background: rgba(255, 255, 255, 0.1);
     color: var(--text-light);
 }
 
@@ -367,11 +331,11 @@ body.theme-dark .channel-card p {
 
 body.theme-dark .card-icon {
     background: rgba(88, 166, 255, 0.15);
-    color: var(--primary-color);
+    color: var(--primary-accent);
 }
 
 body.theme-dark .card-link {
-    color: var(--primary-color);
+    color: var(--primary-accent);
 }
 
 body.theme-dark .card-link:hover {
@@ -525,7 +489,7 @@ body.theme-dark .testimonial-author span {
 /* Stats */
 body.theme-dark .stats-item .number,
 body.theme-dark .stat-number {
-    color: var(--primary-color);
+    color: var(--primary-accent);
 }
 
 body.theme-dark .stats-item .label,
@@ -553,7 +517,7 @@ body.theme-dark .pricing-features li {
 }
 
 body.theme-dark .pricing-features li i {
-    color: var(--primary-color);
+    color: var(--primary-accent);
 }
 
 /* Process Steps */
@@ -592,7 +556,7 @@ body.theme-dark .breadcrumb a {
 }
 
 body.theme-dark .breadcrumb a:hover {
-    color: var(--primary-color);
+    color: var(--primary-accent);
 }
 
 body.theme-dark .breadcrumb span {
@@ -660,7 +624,7 @@ body.theme-dark .trust-badge {
 }
 
 body.theme-dark .trust-badge i {
-    color: var(--primary-color);
+    color: var(--primary-accent);
 }
 
 /* WhatsApp Float */
@@ -699,14 +663,8 @@ body.theme-dark ::selection {
     color: var(--text-light);
 }
 
-/* Links in content */
-body.theme-dark a:not(.btn-coral):not(.hero-cta):not(.header-cta):not(.sidebar-cta):not(.card-link):not(.footer-item):not(.hero-btn) {
-    color: var(--primary-color);
-}
-
-body.theme-dark a:not(.btn-coral):not(.hero-cta):not(.header-cta):not(.sidebar-cta):not(.card-link):not(.footer-item):not(.hero-btn):hover {
-    color: var(--accent-color);
-}
+/* Links in content - now handled by base-architecture.css global link reset */
+/* See base-architecture.css for link color tokens */
 
 /* Hero Buttons - Dark Mode */
 body.theme-dark .hero-btn--primary {
@@ -774,7 +732,7 @@ body.theme-dark .package-card h3 {
 }
 
 body.theme-dark .package-card .price {
-    color: var(--primary-color);
+    color: var(--primary-accent);
 }
 
 body.theme-dark .package-card ul li {
@@ -788,7 +746,7 @@ body.theme-dark .document-list li {
 }
 
 body.theme-dark .document-list li i {
-    color: var(--primary-color);
+    color: var(--primary-accent);
 }
 
 /* Alerts */
@@ -1327,15 +1285,11 @@ body.theme-dark .footer-bottom span {
 }
 
 body.theme-dark .footer-bottom a {
-    color: #e6edf3 !important;
-    text-decoration: underline;
-    text-decoration-color: rgba(230, 237, 243, 0.4);
-    text-underline-offset: 2px;
+    color: #58a6ff !important;
 }
 
 body.theme-dark .footer-bottom a:hover {
-    color: #ffffff !important;
-    text-decoration-color: rgba(255, 255, 255, 0.8);
+    color: #79c0ff !important;
 }
 
 /* ============================================
@@ -1961,74 +1915,4 @@ body.theme-dark [style*="background:var(--bg-white)"] {
 body.theme-dark [style*="background: var(--bg-light)"],
 body.theme-dark [style*="background:var(--bg-light)"] {
     background: #161b22 !important;
-}
-
-/* ============================================
-   SERVICE CARDS V2 - Dark Mode
-   ============================================ */
-body.theme-dark .service-card-v2 {
-    background: #21262d !important;
-    border-color: #30363d !important;
-}
-
-body.theme-dark .service-card-v2:hover {
-    background: #30363d !important;
-    border-color: #484f58 !important;
-}
-
-body.theme-dark .service-card-v2 .card-body h3 {
-    color: #f0f6fc !important;
-}
-
-body.theme-dark .service-card-v2 .card-body p {
-    color: #c9d1d9 !important;
-}
-
-body.theme-dark .service-card-v2 .card-badge {
-    background: linear-gradient(135deg, #ff4757, #e31e24) !important;
-}
-
-body.theme-dark .service-card-v2 .card-badge-gold {
-    background: linear-gradient(135deg, #d4a54c, #b8902f) !important;
-}
-
-body.theme-dark .service-card-v2 .card-arrow {
-    background: var(--accent-color) !important;
-}
-
-body.theme-dark .service-card-v2:hover .card-arrow {
-    background: #58a6ff !important;
-}
-
-/* Service grid section in dark mode */
-body.theme-dark .services-grid-enhanced {
-    background: transparent !important;
-}
-
-/* Category cards and tiles */
-body.theme-dark .category-card,
-body.theme-dark .service-tile,
-body.theme-dark .document-card {
-    background: #21262d !important;
-    border-color: #30363d !important;
-    color: #f0f6fc !important;
-}
-
-body.theme-dark .category-card h3,
-body.theme-dark .service-tile h3,
-body.theme-dark .document-card h3 {
-    color: #f0f6fc !important;
-}
-
-body.theme-dark .category-card p,
-body.theme-dark .service-tile p,
-body.theme-dark .document-card p {
-    color: #c9d1d9 !important;
-}
-
-body.theme-dark .category-card:hover,
-body.theme-dark .service-tile:hover,
-body.theme-dark .document-card:hover {
-    background: #30363d !important;
-    border-color: #484f58 !important;
 }
