@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const savedTheme = localStorage.getItem('theme') || 'light';
   body.classList.remove('theme-light', 'theme-dark');
   body.classList.add('theme-' + savedTheme);
+  document.documentElement.setAttribute('data-theme', savedTheme);
 
   /**
    * Update theme toggle icons based on current theme
@@ -54,11 +55,13 @@ document.addEventListener('DOMContentLoaded', function () {
     if (isDark) {
       body.classList.remove('theme-dark');
       body.classList.add('theme-light');
+      document.documentElement.setAttribute('data-theme', 'light');
       localStorage.setItem('theme', 'light');
       console.log('[OT] Theme switched to light');
     } else {
       body.classList.remove('theme-light');
       body.classList.add('theme-dark');
+      document.documentElement.setAttribute('data-theme', 'dark');
       localStorage.setItem('theme', 'dark');
       console.log('[OT] Theme switched to dark');
     }

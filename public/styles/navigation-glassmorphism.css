@@ -1,185 +1,175 @@
 /* ========================================
-   NAVIGATION STYLES - Clean Dark Theme
-   No glassmorphism - solid navy with white text
+   DARK GLASSMORPHISM NAVIGATION
+   Premium dark glass with white text
    ======================================== */
 
-/* Default dark navy navigation */
+/* Dark glassmorphism - initial state */
 .header-desktop.exodus-header {
-    background: var(--primary-color);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    /* Dark glass effect with blur */
+    background: rgba(14, 43, 72, 0.85) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Scrolled state - same solid navy */
+/* Scrolled state - stronger dark glass */
 .header-desktop.exodus-header.scrolled {
-    background: var(--primary-color);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    background: rgba(14, 43, 72, 0.95) !important;
+    backdrop-filter: blur(24px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(200%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 6px 32px rgba(0, 0, 0, 0.4) !important;
 }
 
-/* White text on dark navy background */
+/* White text on dark glass background */
 .header-desktop.exodus-header .nav-link {
-    color: #ffffff;
+    color: #ffffff !important;
     font-weight: 600;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .header-desktop.exodus-header .logo-text,
 .header-desktop.exodus-header .logo-text .logo-suffix {
-    color: #ffffff;
+    color: #ffffff !important;
     font-weight: 700;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .header-desktop.exodus-header .logo-domain {
-    color: var(--accent-color);
+    color: #ffffff !important;
 }
 
 .header-desktop.exodus-header .logo-tagline {
-    color: rgba(255, 255, 255, 0.8);
-    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-weight: 600;
+}
+
+/* Announcement bar text - already white on red, keep it */
+.header-desktop.exodus-header .announcement-label {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* Dropdown arrows - white */
 .header-desktop.exodus-header .nav-link i {
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
-/* Nav link hover - accent color */
+/* Nav link hover - lighter white */
 .header-desktop.exodus-header .nav-link:hover {
-    color: var(--accent-color);
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.1) !important;
 }
 
-/* Dropdown menu - solid navy to match nav */
-.header-desktop.exodus-header .dropdown-menu {
-    background: var(--primary-color);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
+/* Dropdown menu - dark glass to match nav (modernized) */
+.dropdown-menu {
+    background: rgba(14, 43, 72, 0.97) !important;
+    backdrop-filter: blur(24px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(200%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35) !important;
+    border-radius: 12px !important;
+    padding: var(--space-xs, 6px) var(--space-sm, 10px) !important;
+    max-height: 70vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
 }
 
-.header-desktop.exodus-header .dropdown-menu li a {
-    color: #ffffff;
+.dropdown-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 3px;
+}
+
+.dropdown-menu li a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.75rem !important;
+    color: #ffffff !important;
+    font-size: var(--fs-sm, 0.9rem);
     font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    transition: background 0.2s ease, transform 0.15s ease;
 }
 
-.header-desktop.exodus-header .dropdown-menu li a:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--accent-color);
+.dropdown-menu li a:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+    color: #ffffff !important;
+    transform: translateX(2px);
 }
 
-/* Contact button */
-.header-desktop.exodus-header .header-contact-btn {
-    color: #ffffff;
-    border-color: rgba(255, 255, 255, 0.5);
+.dropdown-menu li a i {
+    opacity: 0.7;
+    font-size: 0.85em;
 }
 
-.header-desktop.exodus-header .header-contact-btn:hover {
-    background: var(--accent-color);
-    border-color: var(--accent-color);
-    color: #ffffff;
-}
-
-/* Social icons */
-.header-desktop.exodus-header .social-icons a {
-    color: #ffffff;
-    border-color: rgba(255, 255, 255, 0.4);
-}
-
-.header-desktop.exodus-header .social-icons a:hover {
-    background: var(--accent-color);
-    border-color: var(--accent-color);
-    color: #ffffff;
-}
-
-/* Theme toggle */
-.header-desktop.exodus-header #themeToggle {
-    color: #ffffff;
-}
-
-/* ========================================
-   HOMEPAGE ONLY - Transparent Header
-   Uses .header-homepage class on the header element directly (more reliable than body.homepage)
-   Coral top bar stays coral, main nav transparent with WHITE text
-   ======================================== */
-
-/* Homepage: Keep announcement bar CORAL (not transparent) */
-.header-desktop.exodus-header.header-homepage .header-announcement {
-    background: var(--accent-color) !important;
-}
-
-/* Homepage: Main header TRANSPARENT before scroll */
-.header-desktop.exodus-header.header-homepage:not(.scrolled) {
-    background: transparent !important;
-    border-bottom: none !important;
-    box-shadow: none !important;
-}
-
-.header-desktop.exodus-header.header-homepage:not(.scrolled) .header-main {
-    background: transparent !important;
-}
-
-/* Homepage: WHITE logo text on transparent nav */
-.header-desktop.exodus-header.header-homepage:not(.scrolled) .logo-text,
-.header-desktop.exodus-header.header-homepage:not(.scrolled) .logo-text .logo-suffix {
+/* Scrolled state - same white text, just stronger background */
+.header-desktop.exodus-header.scrolled .nav-link,
+.header-desktop.exodus-header.scrolled .logo-text,
+.header-desktop.exodus-header.scrolled .logo-tagline {
     color: #ffffff !important;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
-
-.header-desktop.exodus-header.header-homepage:not(.scrolled) .logo-domain {
-    color: var(--accent-color) !important;
-}
-
-.header-desktop.exodus-header.header-homepage:not(.scrolled) .logo-tagline {
-    color: rgba(255, 255, 255, 0.85) !important;
-}
-
-/* Homepage: WHITE nav links before scroll */
-.header-desktop.exodus-header.header-homepage:not(.scrolled) .nav-link {
-    color: #ffffff !important;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-}
-
-.header-desktop.exodus-header.header-homepage:not(.scrolled) .nav-link i {
-    color: #ffffff !important;
-}
-
-.header-desktop.exodus-header.header-homepage:not(.scrolled) .nav-link:hover {
-    color: var(--accent-color) !important;
-}
-
-/* Homepage: WHITE contact button before scroll */
-.header-desktop.exodus-header.header-homepage:not(.scrolled) .header-contact-btn {
-    color: #ffffff !important;
-    border-color: rgba(255, 255, 255, 0.5) !important;
-}
-
-.header-desktop.exodus-header.header-homepage:not(.scrolled) .header-contact-btn:hover {
-    background: var(--accent-color) !important;
-    border-color: var(--accent-color) !important;
-}
-
-/* Homepage: WHITE social icons before scroll */
-.header-desktop.exodus-header.header-homepage:not(.scrolled) .social-icons a {
-    color: #ffffff !important;
-    border-color: rgba(255, 255, 255, 0.4) !important;
-}
-
-.header-desktop.exodus-header.header-homepage:not(.scrolled) .social-icons a:hover {
-    background: var(--accent-color) !important;
-    border-color: var(--accent-color) !important;
-}
-
-/* Homepage: WHITE theme toggle before scroll */
-.header-desktop.exodus-header.header-homepage:not(.scrolled) #themeToggle {
-    color: #ffffff !important;
-}
-
-/* Logo displays with original brand colors - no filter needed for transparent PNG */
 
 /* Smooth transitions */
 .header-desktop.exodus-header,
 .header-desktop.exodus-header .nav-link,
 .header-desktop.exodus-header .logo-text,
-.header-desktop.exodus-header .logo-tagline,
-.header-desktop.exodus-header .header-announcement {
-    transition: all 0.3s ease;
+.header-desktop.exodus-header .logo-tagline {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark mode support - manual toggle */
+[data-theme="dark"] .header-desktop.exodus-header,
+body.theme-dark .header-desktop.exodus-header {
+    background: rgba(10, 10, 10, 0.88) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .header-desktop.exodus-header.scrolled,
+body.theme-dark .header-desktop.exodus-header.scrolled {
+    background: rgba(10, 10, 10, 0.95) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+[data-theme="dark"] .dropdown-menu,
+body.theme-dark .dropdown-menu {
+    background: rgba(5, 10, 24, 0.98) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .dropdown-menu li a,
+body.theme-dark .dropdown-menu li a {
+    color: var(--text-light, #ffffff) !important;
+}
+
+/* System preference dark mode */
+@media (prefers-color-scheme: dark) {
+    .header-desktop.exodus-header {
+        background: rgba(10, 10, 10, 0.88) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+    
+    .header-desktop.exodus-header.scrolled {
+        background: rgba(10, 10, 10, 0.95) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+    }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 1024px) {
+    .header-desktop.exodus-header {
+        backdrop-filter: blur(12px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(12px) saturate(180%) !important;
+    }
 }

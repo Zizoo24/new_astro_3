@@ -5,24 +5,77 @@
    ============================================ */
 
 /* ============================================
-   CSS VARIABLES - SPACING SCALE
+   CSS VARIABLES - RESPONSIVE DESIGN SYSTEM
+   Typography and spacing scale with clamp()
    ============================================ */
 :root {
-    --space-xs: 8px;
-    --space-sm: 16px;
-    --space-md: 24px;
-    --space-lg: 40px;
-    --space-xl: 60px;
-    --space-2xl: 80px;
-    --space-3xl: 120px;
+    /* Responsive Typography Scale */
+    --fs-xs: clamp(0.75rem, 0.65rem + 0.2vw, 0.8rem);
+    --fs-sm: clamp(0.875rem, 0.8rem + 0.2vw, 1rem);
+    --fs-md: clamp(1rem, 0.9rem + 0.35vw, 1.125rem);
+    --fs-lg: clamp(1.25rem, 1rem + 0.6vw, 1.5rem);
+    --fs-xl: clamp(1.75rem, 1.3rem + 1.2vw, 2.5rem);
+    --fs-xxl: clamp(2.25rem, 1.5rem + 2vw, 3.5rem);
+    --fs-hero: clamp(2.5rem, 1.6rem + 2.5vw, 4.5rem);
     
+    /* Responsive Spacing Scale */
+    --space-xs: clamp(0.25rem, 0.15rem + 0.3vw, 0.5rem);
+    --space-sm: clamp(0.5rem, 0.35rem + 0.4vw, 0.75rem);
+    --space-md: clamp(0.75rem, 0.5rem + 0.6vw, 1.25rem);
+    --space-lg: clamp(1.25rem, 0.8rem + 1vw, 2rem);
+    --space-xl: clamp(2rem, 1.2rem + 1.8vw, 3.5rem);
+    --space-2xl: clamp(3rem, 1.8rem + 2.5vw, 5rem);
+    --space-3xl: clamp(4rem, 2.5rem + 3vw, 7rem);
+    
+    /* Section Padding - Responsive */
+    --section-py: clamp(40px, 5vw, 80px);
+    --section-py-sm: clamp(24px, 3vw, 50px);
+    --section-py-lg: clamp(60px, 7vw, 120px);
+    
+    /* Brand Colors */
+    --brand-coral: #FF1654;
+    --brand-coral-dark: #e01346;
+    --brand-navy: #0E2B48;
+    --brand-navy-dark: #072035;
+    --brand-white: #ffffff;
+    --brand-muted: #6c757d;
+    --brand-gold: #d4a54c;
+    
+    /* Semantic Colors */
+    --bg-white: #ffffff;
+    --bg-light: #f8f9fa;
+    --bg-alt: #f0f2f5;
+    --text-dark: #1a1a1a;
+    --text-body: #333333;
+    --text-muted: #666666;
+    --text-light: #ffffff;
+    
+    /* Container widths */
     --container-max: 1200px;
     --container-narrow: 900px;
     --container-wide: 1400px;
     
-    --gutter: 24px;
-    --gutter-sm: 16px;
-    --gutter-lg: 32px;
+    /* Gutters - Responsive */
+    --gutter: clamp(16px, 2vw, 24px);
+    --gutter-sm: clamp(12px, 1.5vw, 16px);
+    --gutter-lg: clamp(20px, 2.5vw, 32px);
+}
+
+/* Dark Mode Color Overrides */
+[data-theme="dark"],
+body.theme-dark {
+    --brand-coral: #ff3366;
+    --brand-navy: #0a1929;
+    --brand-white: #f5f7fb;
+    --brand-muted: #8d97aa;
+    
+    --bg-white: #0d1117;
+    --bg-light: #161b22;
+    --bg-alt: #21262d;
+    --text-dark: #f0f6fc;
+    --text-body: #e6edf3;
+    --text-muted: #a8b3c2;
+    --text-light: #ffffff;
 }
 
 /* ============================================
@@ -31,15 +84,15 @@
 .section {
     position: relative;
     width: 100%;
-    padding: 80px 0; /* Standardized vertical rhythm */
+    padding: var(--section-py) 0;
 }
 
 .section--sm {
-    padding: 50px 0;
+    padding: var(--section-py-sm) 0;
 }
 
 .section--lg {
-    padding: 100px 0;
+    padding: var(--section-py-lg) 0;
 }
 
 .section--flush {
@@ -75,15 +128,6 @@
 [data-theme="dark"] p, [data-theme="dark"] span, [data-theme="dark"] li,
 [data-theme="dark"] strong {
     color: rgba(255, 255, 255, 0.95);
-}
-
-/* Links in dark sections */
-.bg-dark a:not(.btn):not(.cta-btn):not(.contact-btn):not(.hero-cta):not(.exodus-cta) {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.bg-dark a:not(.btn):not(.cta-btn):not(.contact-btn):not(.hero-cta):not(.exodus-cta):hover {
-    color: #ffffff;
 }
 
 /* Service Snapshot - Hero bullet points */
@@ -590,4 +634,85 @@
 
 .alert-box--success strong {
     color: #28a745;
+}
+
+/* ============================================
+   METRICS STRIP - Compact 4-Column Grid
+   ============================================ */
+.ot-metrics {
+    background: linear-gradient(135deg, var(--brand-coral, #FF1654) 0%, var(--brand-coral-dark, #e01346) 100%);
+    color: var(--text-light, #ffffff);
+    padding-block: var(--space-lg);
+}
+
+.ot-metrics-inner {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+}
+
+.ot-metric {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.ot-metric-value {
+    font-family: var(--font-primary, 'Montserrat', sans-serif);
+    font-size: var(--fs-xl);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--brand-navy, #0E2B48);
+}
+
+.ot-metric-label {
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.95;
+}
+
+.ot-metric-note {
+    font-size: var(--fs-xs);
+    opacity: 0.8;
+}
+
+/* Metrics - Tablet (2 columns) */
+@media (max-width: 992px) {
+    .ot-metrics-inner {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-md);
+    }
+}
+
+/* Metrics - Mobile (2 columns, tighter) */
+@media (max-width: 600px) {
+    .ot-metrics {
+        padding-block: var(--space-md);
+    }
+    
+    .ot-metrics-inner {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-sm);
+    }
+    
+    .ot-metric-value {
+        font-size: var(--fs-lg);
+    }
+}
+
+/* Dark mode metrics */
+[data-theme="dark"] .ot-metrics,
+body.theme-dark .ot-metrics {
+    background: linear-gradient(135deg, #8b1a1f 0%, #6b1419 100%);
+}
+
+[data-theme="dark"] .ot-metric-value,
+body.theme-dark .ot-metric-value {
+    color: var(--text-light, #ffffff);
 }
