@@ -300,6 +300,128 @@
 }
 
 /* ========================================
+   SERVICE CARDS V2 - Exodus Style
+   Homepage service cards with images
+   ======================================== */
+
+.service-card-v2 {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface-base, #ffffff);
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: var(--shadow-sm, 0 2px 12px rgba(0, 0, 0, 0.06));
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-light, rgba(0, 0, 0, 0.04));
+    position: relative;
+}
+
+.service-card-v2:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md, 0 12px 32px rgba(0, 0, 0, 0.12));
+}
+
+.service-card-v2 .card-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 44px;
+    height: 44px;
+    background: var(--accent-color, #FF1654);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    z-index: 2;
+    box-shadow: 0 4px 12px rgba(255, 22, 84, 0.3);
+}
+
+.service-card-v2 .card-badge-gold {
+    background: linear-gradient(135deg, #d4a54c 0%, #c49a3e 100%);
+    box-shadow: 0 4px 12px rgba(212, 165, 76, 0.4);
+}
+
+.service-card-v2 .card-image {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+
+.service-card-v2 .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.service-card-v2:hover .card-image img {
+    transform: scale(1.05);
+}
+
+.service-card-v2 .card-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.service-card-v2 .card-body h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-heading, #1a1a1a);
+    margin: 0 0 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.service-card-v2 .card-body p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-muted, #5a6a7a);
+    margin: 0;
+    flex-grow: 1;
+}
+
+.service-card-v2 .card-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--accent-color, #FF1654);
+    border-radius: 50%;
+    color: #ffffff;
+    margin-top: 1rem;
+    transition: background 0.2s ease;
+}
+
+.service-card-v2:hover .card-arrow {
+    background: var(--accent-coral-hover, #d91144);
+}
+
+/* Dark mode support */
+body.theme-dark .service-card-v2 {
+    background: var(--surface-muted);
+    border-color: var(--border-medium);
+}
+
+body.theme-dark .service-card-v2:hover {
+    background: var(--surface-navy);
+    border-color: var(--border-dark);
+}
+
+body.theme-dark .service-card-v2 .card-body h3 {
+    color: var(--text-heading);
+}
+
+body.theme-dark .service-card-v2 .card-body p {
+    color: var(--text-muted);
+}
+
+/* ========================================
    PRICING TIERS
    ======================================== */
 

@@ -39,7 +39,7 @@ const { title = "How it works", steps } = Astro.props;
     text-align: center;
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 700;
-    color: var(--primary-color, #0E2B48);
+    color: var(--text-heading, #0E2B48);
     margin-bottom: 2.5rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -54,18 +54,19 @@ const { title = "How it works", steps } = Astro.props;
   }
   
   .ot-process-card {
-    background: #ffffff;
+    background: var(--surface-base, #ffffff);
     border-radius: 16px;
     padding: 2rem 1.5rem;
     text-align: center;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow-sm, 0 8px 32px rgba(0, 0, 0, 0.06));
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-light, transparent);
   }
   
   .ot-process-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-md, 0 12px 40px rgba(0, 0, 0, 0.1));
   }
   
   .ot-process-number {
@@ -86,14 +87,14 @@ const { title = "How it works", steps } = Astro.props;
   .ot-process-card-title {
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--primary-color, #0E2B48);
+    color: var(--text-heading, #0E2B48);
     margin-bottom: 0.75rem;
   }
   
   .ot-process-card-text {
     font-size: 0.95rem;
     line-height: 1.6;
-    color: var(--text-muted, #666);
+    color: var(--text-muted, #5a6a7a);
     margin: 0;
   }
   

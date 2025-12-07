@@ -33,7 +33,7 @@ const { benefits } = Astro.props;
 <style>
   .ot-benefits-section {
     padding: 4rem 0;
-    background: #ffffff;
+    background: var(--surface-base, #ffffff);
   }
   
   .ot-benefits-grid {
@@ -45,23 +45,23 @@ const { benefits } = Astro.props;
   }
   
   .ot-benefit-card {
-    background: var(--bg-light, #f8f9fa);
+    background: var(--surface-raised, #f8f9fa);
     border-radius: 16px;
     padding: 2rem 1.5rem;
     text-align: center;
-    border: 1px solid rgba(0, 0, 0, 0.04);
+    border: 1px solid var(--border-light, rgba(0, 0, 0, 0.04));
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   
   .ot-benefit-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-md, 0 12px 40px rgba(0, 0, 0, 0.08));
   }
   
   .ot-benefit-icon {
     width: 56px;
     height: 56px;
-    background: linear-gradient(135deg, var(--primary-color, #0E2B48) 0%, #1a3d5c 100%);
+    background: linear-gradient(135deg, var(--accent-color, #FF1654) 0%, #ff4d7a 100%);
     color: #ffffff;
     border-radius: 14px;
     display: flex;
@@ -73,14 +73,14 @@ const { benefits } = Astro.props;
   .ot-benefit-title {
     font-size: 1.05rem;
     font-weight: 700;
-    color: var(--primary-color, #0E2B48);
+    color: var(--text-heading, #0E2B48);
     margin-bottom: 0.75rem;
   }
   
   .ot-benefit-text {
     font-size: 0.95rem;
     line-height: 1.6;
-    color: var(--text-muted, #666);
+    color: var(--text-muted, #5a6a7a);
     margin: 0;
   }
   
