@@ -66,3 +66,28 @@ The system is designed as a "Digital Concierge" with a "WhatsApp-First Architect
 - **Arkan Legal Translation:** Strategic partner providing MOJ license, stamp, and signature for certified translations.
 - **Form Handler:** Used for contact forms with graceful fallback to WhatsApp.
 - **Vercel:** Deployment platform for the website.
+
+## Recent Changes (December 2025)
+
+### Theme Toggle Styling
+- Desktop theme toggle button (#themeToggle) now uses softer neutral styling in light mode
+- Muted gray border and text color (`--text-muted`) instead of stark navy contrast
+- Hover state uses coral accent for consistency with brand
+- Scrolled state uses subtle white tones on navy header background
+
+### Vercel Configuration
+- Removed duplicate `/contact-us/` redirect entry (was appearing twice in vercel.json)
+- Security headers already in place: X-Content-Type-Options (nosniff), X-Frame-Options (DENY), Referrer-Policy (strict-origin-when-cross-origin)
+- cleanUrls: true and trailingSlash: false configured for SEO
+
+### SEO Content Expansion
+- Legal Translation page (`/services/legal-translation/`) expanded to 2000+ words with comprehensive content covering court documents, contracts, litigation support, and working with law firms
+- Palm Jumeirah page (`/locations/dubai/palm-jumeirah/`) expanded to 2000+ words covering property documentation, remote investor support, developer handovers, and transaction scenarios
+- Content follows brand voice: professional, helpful, no hype, concierge tone
+- Pages include multiple content sections with proper heading hierarchy (H2, H3) for SEO
+
+### Content Standards
+- Target: 2000+ words per service/location page for SEO authority
+- Style: Professional concierge voice, solution-focused, no marketing speak
+- Structure: Hero intro + accordion sections + prose content sections + pricing + FAQ
+- Internal linking: Contextual links to related services using established URL patterns
