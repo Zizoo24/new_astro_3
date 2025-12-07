@@ -299,13 +299,13 @@ body.theme-dark .service-card,
 body.theme-dark .channel-card,
 body.theme-dark .why-card,
 body.theme-dark .stat-card,
-body.theme-dark .testimonial-card,
 body.theme-dark .pricing-card,
 body.theme-dark .process-step {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow-sm);
 }
+/* Note: testimonial-card excluded - uses custom navy glassmorphism styling */
 
 body.theme-dark .feature-card:hover,
 body.theme-dark .service-card:hover,
@@ -469,21 +469,36 @@ body.theme-dark .faq-item.active {
     border-color: var(--primary-color);
 }
 
-/* Testimonials */
+/* Testimonials - Navy background section */
+/* Note: Testimonials now use a navy gradient background with glassmorphism cards
+   Text must be light on dark in BOTH light and dark themes */
+body.theme-dark .testimonials-section {
+    background: linear-gradient(135deg, var(--primary-color, #0E2B48) 0%, #071824 100%);
+}
+
 body.theme-dark .testimonial-card {
-    background: var(--bg-card);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
-body.theme-dark .testimonial-card p {
-    color: var(--text-body);
+body.theme-dark .testimonial-card p,
+body.theme-dark .testimonial-card .testimonial-quote {
+    color: rgba(255, 255, 255, 0.9);
 }
 
-body.theme-dark .testimonial-author strong {
-    color: var(--text-light);
+body.theme-dark .testimonial-author strong,
+body.theme-dark .author-name {
+    color: #ffffff;
 }
 
-body.theme-dark .testimonial-author span {
-    color: var(--text-muted);
+body.theme-dark .testimonial-author span,
+body.theme-dark .author-role,
+body.theme-dark .author-title {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+body.theme-dark .author-location {
+    color: rgba(255, 255, 255, 0.75);
 }
 
 /* Stats */

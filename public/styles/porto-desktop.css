@@ -3873,6 +3873,75 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ============================================
+   DIAGONAL SECTION TRANSITIONS - Exodus Style
+   ============================================ */
+
+.section-diagonal {
+    position: relative;
+    overflow: visible;
+}
+
+.section-diagonal::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: inherit;
+    transform: skewY(-3deg);
+    transform-origin: top left;
+    z-index: -1;
+}
+
+.section-diagonal-navy {
+    position: relative;
+    background: var(--primary-color, #0E2B48);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.section-diagonal-navy h1,
+.section-diagonal-navy h2,
+.section-diagonal-navy h3,
+.section-diagonal-navy h4 {
+    color: #ffffff;
+}
+
+.section-diagonal-navy p,
+.section-diagonal-navy li {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.section-diagonal-navy::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: var(--primary-color, #0E2B48);
+    transform: skewY(-2deg);
+    transform-origin: top left;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.section-diagonal-navy::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: var(--primary-color, #0E2B48);
+    transform: skewY(2deg);
+    transform-origin: bottom right;
+    z-index: -1;
+    pointer-events: none;
+}
+
+
+/* ============================================
    EXODUS PROCESS STEPS - Premium 3-Step Layout
    ============================================ */
 
@@ -3930,11 +3999,19 @@ h1, h2, h3, h4, h5, h6 {
 
 .exodus-step .step-index {
     font-family: var(--font-primary);
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 700;
-    color: var(--accent-color);
-    letter-spacing: 2px;
-    margin-bottom: 12px;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-color, #FF1654);
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(255, 22, 84, 0.35);
 }
 
 .exodus-step .step-icon {
@@ -3982,67 +4059,157 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
-/* Testimonials Section */
+/* Testimonials Section - Exodus Navy Style */
 .testimonials-section {
-    /* Padding controlled by .section class in base-architecture.css */
-    background: var(--bg-light);
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--primary-color, #0E2B48) 0%, #071824 100%);
+    position: relative;
+    z-index: 1;
+}
+
+.testimonials-section .testimonials-title {
+    color: #ffffff;
+    text-align: center;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 50px;
+}
+
+.testimonials-section .testimonials-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--accent-color, #FF1654);
+    margin: 16px auto 0;
 }
 
 .testimonials-carousel {
-    /* Grid handled by base-architecture.css .grid-3.carousel-mobile */
     gap: 30px;
     margin-top: 60px;
 }
 
 .testimonial-card {
-    background: var(--bg-white);
-    padding: 45px 35px;
-    border-radius: 16px;
-    box-shadow: var(--shadow-sm);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    padding: 40px 32px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     position: relative;
     transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .testimonial-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+    background: rgba(255, 255, 255, 0.12);
 }
 
 .quote-icon {
     position: absolute;
-    top: 25px;
-    right: 35px;
-    font-size: 48px;
-    color: var(--accent-color);
-    opacity: 0.15;
+    top: 20px;
+    right: 28px;
+    font-size: 42px;
+    color: var(--accent-color, #FF1654);
+    opacity: 0.3;
 }
 
-.testimonial-card p {
-    font-size: 17px;
-    line-height: 1.8;
-    color: var(--text-dark);
+.testimonial-card p,
+.testimonial-card .testimonial-quote {
+    font-size: 16px;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.9);
     font-style: italic;
-    margin-bottom: 30px;
+    margin-bottom: 28px;
 }
 
 .testimonial-author {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    padding-top: 25px;
-    border-top: 2px solid var(--accent-color);
+    gap: 6px;
+    padding-top: 20px;
+    border-top: 2px solid var(--accent-color, #FF1654);
 }
 
 .author-name {
     font-family: var(--font-primary);
     font-weight: 700;
-    color: var(--text-dark);
-    font-size: 16px;
+    color: #ffffff;
+    font-size: 15px;
 }
 
+.author-role,
 .author-title {
-    font-size: 14px;
-    color: var(--text-muted);
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.author-location {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.author-location i {
+    color: var(--accent-color, #FF1654);
+    margin-right: 4px;
+}
+
+/* Testimonials Carousel Controls */
+.carousel-wrapper {
+    position: relative;
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.carousel-arrow:hover {
+    background: var(--accent-color, #FF1654);
+    border-color: var(--accent-color, #FF1654);
+}
+
+.carousel-prev {
+    left: -20px;
+}
+
+.carousel-next {
+    right: -20px;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active,
+.carousel-dot:hover {
+    background: var(--accent-color, #FF1654);
+    transform: scale(1.2);
 }
 
 /* FAQ Section - HTML5 Native Accordions */
