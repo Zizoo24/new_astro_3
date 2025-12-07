@@ -1,177 +1,174 @@
 /* ============================================
-   COMPREHENSIVE VISIBILITY FIXES
-   Ensures text is readable on all backgrounds
+   VISIBILITY FIXES - Minimal Overrides
+   Only applies where absolutely needed
+   Respects the color token system
    ============================================ */
 
 /* ==========================================
-   NAVIGATION - DARK GLASS WITH WHITE TEXT
+   DESKTOP NAVIGATION - DARK GLASS HEADER
+   The exodus-header has dark glass background
+   so white text is appropriate here
    ========================================== */
 
-/* Dark glassmorphism navigation - white text throughout */
+.header-desktop.exodus-header {
+    background: rgba(14, 43, 72, 0.85);
+}
+
+.header-desktop.exodus-header.scrolled {
+    background: rgba(14, 43, 72, 0.95);
+}
+
 .header-desktop.exodus-header .nav-link,
 .header-desktop.exodus-header .logo-text,
 .header-desktop.exodus-header .logo-suffix,
 .header-desktop.exodus-header .logo-domain {
-    color: #ffffff !important;
+    color: #ffffff;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .header-desktop.exodus-header .logo-tagline {
-    color: rgba(255, 255, 255, 0.85) !important;
-}
-
-/* Scrolled state - same white text, stronger shadow */
-.header-desktop.exodus-header.scrolled .nav-link,
-.header-desktop.exodus-header.scrolled .logo-text {
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    color: rgba(255, 255, 255, 0.85);
 }
 
 /* ==========================================
-   DROPDOWN MENUS - DARK GLASS WITH WHITE TEXT
+   DROPDOWN MENUS - DARK GLASS
+   Dropdowns have navy glass backgrounds
    ========================================== */
 
 .dropdown-menu,
 .nav-dropdown,
 .sub-menu {
-    background: rgba(14, 43, 72, 0.95) !important;
-    backdrop-filter: blur(24px) saturate(200%) !important;
-    -webkit-backdrop-filter: blur(24px) saturate(200%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    background: rgba(14, 43, 72, 0.95);
+    backdrop-filter: blur(24px) saturate(200%);
+    -webkit-backdrop-filter: blur(24px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .dropdown-menu li a,
 .nav-dropdown li a,
 .sub-menu li a {
-    color: #ffffff !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .dropdown-menu li a:hover,
 .nav-dropdown li a:hover,
 .sub-menu li a:hover {
-    color: #ffffff !important;
-    background: rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.15);
 }
 
 /* ==========================================
-   MOBILE MENU - DARK GLASS WITH WHITE TEXT
+   MOBILE SIDEBAR - NAVY BACKGROUND
+   Sidebar uses navy glass background
    ========================================== */
 
 .sidebar-menu,
 .mobile-menu,
 #menu-sidebar {
-    background: rgba(14, 43, 72, 0.98) !important;
-    backdrop-filter: blur(20px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    background: rgba(14, 43, 72, 0.98);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
 }
 
 .sidebar-nav a,
 .sidebar-menu a,
 .mobile-menu a {
-    color: #ffffff !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 0.9);
 }
 
-.sidebar-brand-name,
+.sidebar-nav a:hover,
+.sidebar-menu a:hover,
+.mobile-menu a:hover {
+    color: #ffffff;
+}
+
+.sidebar-brand-name {
+    color: #ffffff;
+}
+
 .sidebar-tagline {
-    color: #ffffff !important;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .brand-suffix {
-    color: #ffffff !important;
+    color: var(--accent-coral, #FF1654);
+}
+
+.sidebar-section-title {
+    color: rgba(255, 255, 255, 0.85);
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-section-title:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-section-title .section-link {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.sidebar-section-title .section-link:hover {
+    color: #ffffff;
+}
+
+.sidebar-accordion-content li a {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.sidebar-accordion-content li a:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-nav ul li a i {
+    color: var(--accent-coral, #FF1654);
 }
 
 /* ==========================================
-   BUTTONS - ENSURE PROPER CONTRAST
+   BUTTONS - PROPER CONTRAST
    ========================================== */
 
-/* Primary buttons - white text on solid color is OK */
-.btn-primary,
-.pricing-cta,
-.card-cta-enhanced {
-    background: #1a5f7a;
-    color: #ffffff !important;
-}
-
-.btn-primary:hover,
-.pricing-cta:hover {
-    color: #ffffff !important;
-}
-
-/* Secondary buttons - dark text on transparent/light background */
-.btn-secondary {
-    background: transparent;
-    color: var(--link-color) !important;
-    border: 2px solid var(--link-color);
-}
-
-.btn-secondary:hover {
-    background: var(--link-hover);
-    color: var(--text-on-dark) !important;
-}
-
-/* WhatsApp buttons - white text on green is OK */
+/* WhatsApp buttons - white text on green */
 .btn-whatsapp,
-.mobile-action-btn--whatsapp,
-.footer-whatsapp {
+.mobile-action-btn--whatsapp {
     background: #25D366;
-    color: #ffffff !important;
-}
-
-.btn-whatsapp:hover {
-    color: #ffffff !important;
+    color: #ffffff;
 }
 
 /* ==========================================
-   HERO SECTIONS - CONDITIONAL
+   HERO SECTIONS WITH DARK OVERLAYS
+   Only apply white text on dark sections
    ========================================== */
 
-/* If hero has dark overlay, white text is OK */
-.services-hero {
-    /* This section has no overlay, so text should be dark */
-    color: var(--text-heading);
+/* Breadcrumbs on dark hero backgrounds */
+.hero-section .breadcrumbs,
+.hero-section .breadcrumb,
+[data-theme="dark"] .breadcrumbs,
+[data-theme="dark"] .breadcrumb {
+    color: rgba(255, 255, 255, 0.7);
 }
 
-.hero-badge {
-    background: linear-gradient(135deg, var(--link-color) 0%, #2d8fb8 100%);
-    color: var(--text-on-dark); /* White on dark gradient is OK */
+.hero-section .breadcrumbs a,
+.hero-section .breadcrumb a,
+[data-theme="dark"] .breadcrumbs a,
+[data-theme="dark"] .breadcrumb a {
+    color: rgba(255, 255, 255, 0.7);
 }
 
-.title-main {
-    color: var(--text-heading) !important;
-}
-
-.hero-subtitle {
-    color: var(--text-secondary) !important;
+.hero-section .breadcrumbs a:hover,
+.hero-section .breadcrumb a:hover {
+    color: #ffffff;
 }
 
 /* ==========================================
-   PRICING CARDS
+   CONTENT SECTIONS - USE TOKEN SYSTEM
+   Let the color variables do their job
    ========================================== */
 
-.pricing-tier-name,
-.pricing-tier-tagline,
-.pricing-features li {
-    color: var(--text-heading);
-}
-
-.pricing-cta {
-    background: var(--link-color);
-    color: var(--text-on-dark) !important;
-}
-
-.pricing-card.featured .pricing-cta {
-    background: var(--state-success);
-    color: var(--text-on-dark) !important;
-}
-
-/* ==========================================
-   SERVICE CARDS
-   ========================================== */
-
+/* Service cards use token colors */
 .card-title-enhanced,
-.card-description-enhanced,
-.card-features-enhanced li {
+.card-description-enhanced {
     color: var(--text-heading);
 }
 
@@ -179,107 +176,41 @@
     color: var(--text-muted);
 }
 
-/* ==========================================
-   ACCORDIONS
-   ========================================== */
-
+/* Accordion titles use token colors */
 .accordion-title {
-    color: var(--text-heading) !important;
+    color: var(--text-heading);
 }
 
 .accordion-content {
     color: var(--text-body);
 }
 
-/* ==========================================
-   FOOTER - IF LIGHT BACKGROUND
-   ========================================== */
-
-/* Most footers are dark, so white text is OK */
-/* If you have a light footer, uncomment this: */
-/*
-footer.light-footer {
-    background: #f8f9fa;
-    color: #1a1a1a;
-}
-
-footer.light-footer a {
-    color: #1a5f7a;
-}
-*/
-
-/* ==========================================
-   BREADCRUMBS & MISC
-   ========================================== */
-
-.breadcrumbs,
-.breadcrumb {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.breadcrumbs a,
-.breadcrumb a,
-.breadcrumb ol li a {
-    color: rgba(255, 255, 255, 0.55);
+/* Pricing cards use token colors */
+.pricing-tier-name,
+.pricing-tier-tagline,
+.pricing-features li {
+    color: var(--text-heading);
 }
 
 /* ==========================================
-   ENSURE DARK GLASS BACKGROUND
-   ========================================== */
-
-/* Ensure dark glassmorphism is applied */
-.header-desktop.exodus-header {
-    /* Already handled by navigation-glassmorphism.css */
-    /* This is just a safety net */
-    background: rgba(14, 43, 72, 0.85) !important;
-}
-
-/* ==========================================
-   TEXT SHADOWS FOR EXTRA READABILITY
-   ========================================== */
-
-/* Dark shadow on white text for depth */
-.header-desktop.exodus-header .nav-link,
-.header-desktop.exodus-header .logo-text {
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-/* ==========================================
-   MOBILE SPECIFIC FIXES
-   ========================================== */
-
-@media (max-width: 1024px) {
-    /* Mobile menu text is white on dark glass */
-    .sidebar-menu a,
-    .mobile-menu a {
-        color: #ffffff !important;
-    }
-    
-    /* Mobile hamburger icon is white on dark glass */
-    .hamburger-line,
-    .menu-toggle-line {
-        background: #ffffff !important;
-    }
-}
-
-/* ==========================================
-   DARK MODE OVERRIDES
+   DARK MODE ADJUSTMENTS
    ========================================== */
 
 @media (prefers-color-scheme: dark) {
-    /* In dark mode, use pure black glass */
     .header-desktop.exodus-header {
-        background: rgba(10, 10, 10, 0.85) !important;
+        background: rgba(11, 17, 26, 0.9);
     }
     
     .header-desktop.exodus-header.scrolled {
-        background: rgba(10, 10, 10, 0.95) !important;
+        background: rgba(11, 17, 26, 0.95);
     }
-    
-    /* White text remains the same */
-    .header-desktop.exodus-header .nav-link,
-    .header-desktop.exodus-header .logo-text {
-        color: #ffffff !important;
-        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-    }
+}
+
+/* Theme-dark class overrides */
+body.theme-dark .header-desktop.exodus-header {
+    background: rgba(11, 17, 26, 0.9);
+}
+
+body.theme-dark .header-desktop.exodus-header.scrolled {
+    background: rgba(11, 17, 26, 0.95);
 }
