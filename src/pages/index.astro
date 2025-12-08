@@ -29,8 +29,6 @@ import AuthorityLogos from '../components/AuthorityLogos.astro';
             <li><i class="fas fa-file-alt"></i> Birth certificates to corporate contracts</li>
           </ul>
           
-          <DulBadge variant="pill" />
-          
           <div class="hero-cta-group">
             <a href="https://wa.me/971508620217" class="hero-cta exodus-cta">
               <i class="fab fa-whatsapp"></i> Send Documents on WhatsApp
@@ -45,20 +43,28 @@ import AuthorityLogos from '../components/AuthorityLogos.astro';
     <div class="overlap-cards-wrapper">
       <div class="container">
         <div class="overlap-cards">
-          <article class="overlap-card">
-            <div class="overlap-card-icon">
-              <i class="fas fa-stamp"></i>
-            </div>
-            <h3 class="overlap-card-title">MOJ Certified Partners</h3>
-            <p class="overlap-card-desc">All translations carry official Ministry of Justice certification designed for court acceptance</p>
+          <!-- Card 1: DUL License Badge -->
+          <article class="overlap-card overlap-card--dul">
+            <a href="https://app.invest.dubai.ae/DUL/1DE9D8AA-768A-4CFC-BC27-A6F23017B858" target="_blank" rel="noopener noreferrer" class="overlap-card-link">
+              <div class="overlap-card-icon dul-icon">
+                <span class="dul-dot"></span>
+              </div>
+              <h3 class="overlap-card-title">Dubai Unified License</h3>
+              <p class="overlap-card-desc">Verified by DET – Click to view official license</p>
+            </a>
           </article>
-          <article class="overlap-card">
-            <div class="overlap-card-icon">
-              <i class="fas fa-gavel"></i>
+          <!-- Card 2: Authority Logos -->
+          <article class="overlap-card overlap-card--logos">
+            <p class="overlap-card-logos-title">Accepted By</p>
+            <div class="overlap-card-logos">
+              <img src="/images/logos/moj.png" alt="Government of Dubai" loading="lazy">
+              <img src="/images/logos/dubai-courts.png" alt="Dubai Courts" loading="lazy">
+              <img src="/images/logos/dubai-police.png" alt="Dubai Police" loading="lazy">
+              <img src="/images/logos/dld.png" alt="Dubai Land Department" loading="lazy">
+              <img src="/images/logos/mofaic.png" alt="MOFAIC" loading="lazy">
             </div>
-            <h3 class="overlap-card-title">Accepted by UAE Courts</h3>
-            <p class="overlap-card-desc">Formatted for Dubai Courts, DIFC, ADGM and all government bodies</p>
           </article>
+          <!-- Card 3: 60 Minute Draft -->
           <article class="overlap-card">
             <div class="overlap-card-icon">
               <i class="fas fa-bolt"></i>
@@ -68,11 +74,6 @@ import AuthorityLogos from '../components/AuthorityLogos.astro';
           </article>
         </div>
       </div>
-    </div>
-    
-    <!-- Authority Logos Strip -->
-    <div class="container">
-      <AuthorityLogos />
     </div>
   </section>
 
