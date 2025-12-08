@@ -24,7 +24,7 @@ The system is designed as a "Digital Concierge" with a "WhatsApp-First Architect
 - **Color Palette:** Primary Navy (#0E2B48), Accent Coral (#FF1654), Gold Highlight (#d4a54c), Text Dark (#1a1a1a), Text Muted (#5a6a7a), Background Light (#f8f9fa). A comprehensive color token system using CSS custom properties (`--surface-*`, `--text-*`, `--link-*`, `--accent-*`, `--state-*`, `--border-*`) supports light and dark modes, ensuring WCAG AA contrast ratios.
 - **Typography:** Headings use Montserrat or Jost (700-800 weight, uppercase, 0.3em letter-spacing); Body uses Open Sans or Roboto (400 weight, 1.8-1.9 line-height).
 - **Principles:** Mobile-first design (70%+ UAE traffic), seamless WhatsApp integration, accordion-based content, sticky bottom navigation (mobile only), no floating CTAs.
-- **Hero Section:** Desktop features three overlapping cards (MOJ Certified, Court Accepted, 60-Min Draft); mobile displays these cards sequentially.
+- **Hero Section:** Desktop features three overlapping coral cards with consolidated trust signals: 1) DUL License Badge (clickable link to DET verification with green pulsing dot), 2) Authority Logos strip (vibrant full-color Government of Dubai, Dubai Courts, Dubai Police, DLD, MOFAIC), 3) 60-Min Draft promise. Mobile displays cards sequentially at 92% opacity.
 - **Micro-Components:** Icon Box, Timeline, Alert Box for visual punctuation.
 
 **Technical Implementations:**
