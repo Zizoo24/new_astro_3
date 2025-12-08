@@ -13039,6 +13039,322 @@ body.theme-dark .sidebar-nav ul li a:active {
     }
 }
 
+/* === VISUAL RELIEF & READABILITY ENHANCEMENTS ===
+   Addresses content density, improves vertical rhythm,
+   and enhances scannability for better UX.
+   Added: December 2025
+   ============================================ */
+
+/* --- 1. GLOBAL TYPOGRAPHY IMPROVEMENTS --- */
+
+/* Increase line-height for better readability on all body text */
+body {
+    line-height: 1.7;
+}
+
+/* Preserve compact line-height for navigation and UI elements */
+.header-desktop,
+.header-main,
+.nav-links,
+.nav-links a,
+.header-actions,
+.header-actions button,
+.header-actions a,
+.header-announcement,
+.sidebar-menu,
+.sidebar-nav,
+.sidebar-nav a,
+.sidebar-nav button,
+.footer-bar,
+.footer-bar button,
+.footer-bar a,
+.cta-btn,
+.hero-cta,
+.team-cta,
+.about-cta,
+.submit-btn,
+.card-badge,
+.tag,
+.overlap-card-badge,
+.step-index,
+.experience-badge {
+    line-height: 1.2;
+}
+
+p, li, .faq-answer, .card-body p, .about-summary,
+.contact-description, .languages-note, .team-tagline,
+.overlap-card-desc, .step-desc, .why-card p,
+.specialist-bullets li {
+    line-height: 1.75;
+}
+
+/* Constrain text width for optimal reading (60-80 characters) */
+.text-block,
+.faq-answer p,
+.about-summary,
+.contact-description,
+.languages-note,
+.team-tagline,
+.cta-banner p {
+    max-width: 75ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- 2. ENHANCED VERTICAL RHYTHM --- */
+
+/* Increase section padding for more breathing room */
+.section {
+    padding-top: clamp(60px, 8vw, 100px);
+    padding-bottom: clamp(60px, 8vw, 100px);
+}
+
+/* Larger gap above headings for clear section breaks */
+.section-header {
+    margin-bottom: clamp(2.5rem, 4vw, 4rem);
+}
+
+.section-title {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.section-label {
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+/* Improved paragraph spacing */
+.faq-answer p,
+.about-summary,
+.contact-description {
+    margin-bottom: 1.5rem;
+}
+
+/* --- 3. SERVICE CARDS - More Visual Separation --- */
+
+.services-grid-enhanced {
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.service-card-v2 .card-body {
+    padding: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+.service-card-v2 .card-body p {
+    margin-bottom: 0.75rem;
+    line-height: 1.7;
+}
+
+/* --- 4. WHY CARDS - Better Spacing --- */
+
+.why-grid {
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.why-card {
+    padding: clamp(1.5rem, 2.5vw, 2.25rem);
+}
+
+.why-card p {
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+}
+
+/* --- 5. PROCESS STEPS - Improved Readability --- */
+
+.process-steps.exodus-process-steps {
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.process-step.exodus-step {
+    padding: clamp(1.5rem, 2.5vw, 2.25rem);
+}
+
+.step-desc {
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+}
+
+/* --- 6. LANGUAGES GRID - Reduced Density --- */
+
+.languages-grid {
+    gap: clamp(0.75rem, 1.5vw, 1.25rem);
+    margin-bottom: clamp(2rem, 3vw, 3rem);
+}
+
+.language-item {
+    padding: clamp(0.75rem, 1.25vw, 1rem) clamp(1rem, 1.5vw, 1.5rem);
+}
+
+.languages-note {
+    margin-top: clamp(1.5rem, 2.5vw, 2.5rem);
+    padding-top: clamp(1rem, 1.5vw, 1.5rem);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* --- 7. SPECIALIST CARDS - Better Hierarchy --- */
+
+.specialists-grid {
+    gap: clamp(1.5rem, 2.5vw, 2.25rem);
+}
+
+.specialist-card {
+    padding: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+.specialist-bullets {
+    margin: 1rem 0;
+}
+
+.specialist-bullets li {
+    padding: 0.35rem 0;
+    line-height: 1.6;
+}
+
+.specialist-tags {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-light, #e2e8f0);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.specialist-tags .tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+}
+
+/* --- 8. FAQ SECTION - Better Answer Formatting --- */
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    margin-bottom: clamp(0.75rem, 1.25vw, 1.25rem);
+}
+
+.faq-question {
+    padding: clamp(1rem, 1.5vw, 1.5rem);
+}
+
+.faq-answer {
+    padding: clamp(1rem, 1.5vw, 1.5rem);
+    padding-top: 0;
+}
+
+.faq-answer p {
+    line-height: 1.8;
+}
+
+.faq-answer ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.faq-answer ul li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.faq-answer strong {
+    color: var(--text-heading, #0E2B48);
+    font-weight: 600;
+}
+
+body.theme-dark .faq-answer strong {
+    color: var(--text-on-dark, #f4f7fc);
+}
+
+/* --- 9. OUR APPROACH SECTION - Visual Grouping --- */
+
+.exodus-features-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: clamp(0.5rem, 1vw, 0.75rem);
+    margin-bottom: clamp(1.5rem, 2.5vw, 2.5rem);
+}
+
+.exodus-feature-item {
+    padding: 0.5rem 0;
+}
+
+.about-summary {
+    font-size: clamp(1rem, 1vw + 0.1rem, 1.125rem);
+    margin-bottom: clamp(1.5rem, 2.5vw, 2.5rem);
+}
+
+/* --- 10. CTA BANNER - Breathing Room --- */
+
+.cta-banner {
+    padding-top: clamp(60px, 8vw, 100px);
+    padding-bottom: clamp(60px, 8vw, 100px);
+}
+
+.cta-banner h2 {
+    margin-bottom: clamp(1rem, 1.5vw, 1.5rem);
+}
+
+.cta-banner p {
+    margin-bottom: clamp(1.5rem, 2.5vw, 2.5rem);
+    line-height: 1.7;
+}
+
+/* --- 11. TEAM CTA WRAPPER - Better Transition --- */
+
+.team-cta-wrapper {
+    margin-top: clamp(2.5rem, 4vw, 4rem);
+    padding-top: clamp(2rem, 3vw, 3rem);
+    border-top: 1px solid var(--border-light, #e2e8f0);
+    text-align: center;
+}
+
+.team-tagline {
+    margin-bottom: clamp(1rem, 1.5vw, 1.5rem);
+}
+
+/* --- 12. OVERLAP CARDS - Better Spacing --- */
+
+.overlap-cards {
+    gap: clamp(1rem, 2vw, 1.75rem);
+}
+
+.overlap-card-content {
+    padding: clamp(0.75rem, 1.25vw, 1rem);
+}
+
+.overlap-card-desc {
+    margin-top: 0.35rem;
+    margin-bottom: 0.5rem;
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+
+@media (max-width: 768px) {
+    /* Slightly reduce section padding on mobile */
+    .section {
+        padding-top: clamp(40px, 6vw, 60px);
+        padding-bottom: clamp(40px, 6vw, 60px);
+    }
+    
+    /* Stack features list on mobile */
+    .exodus-features-list {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Smaller card gaps on mobile */
+    .services-grid-enhanced,
+    .why-grid,
+    .specialists-grid {
+        gap: 1.25rem;
+    }
+}
+
+/* === END VISUAL RELIEF SECTION === */
+
 /* === FROM dark-mode.css === */
 /* Dark Mode - Comprehensive Styles */
 
