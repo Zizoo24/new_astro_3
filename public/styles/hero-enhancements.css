@@ -1,0 +1,331 @@
+/**
+ * Hero Enhancements - Visual Relief System
+ * 
+ * Adds gradient overlays and pattern backgrounds to page heroes
+ * for improved visual hierarchy and professional appearance.
+ */
+
+/* ============================================
+   BASE HERO STYLING
+   ============================================ */
+
+.page-hero {
+  position: relative;
+  padding: 100px 0 80px;
+  overflow: hidden;
+  min-height: 280px;
+}
+
+/* Background container */
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Pattern layer - subtle texture */
+.hero-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/patterns/dots-pattern.svg');
+  background-size: 30px 30px;
+  background-repeat: repeat;
+  opacity: 0.08;
+  z-index: 1;
+}
+
+/* Gradient overlay - default navy */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgba(14, 43, 72, 0.95) 0%,
+    rgba(26, 41, 66, 0.92) 50%,
+    rgba(42, 63, 95, 0.88) 100%
+  );
+  z-index: 2;
+}
+
+/* Content layer - ensure it's above background */
+.page-hero .container {
+  position: relative;
+  z-index: 3;
+}
+
+/* Hero text styling */
+.page-title {
+  color: #ffffff;
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.page-subtitle {
+  color: #e6edf3;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 24px;
+  line-height: 1.5;
+  opacity: 0.95;
+}
+
+/* Breadcrumb styling */
+.breadcrumb {
+  margin-bottom: 24px;
+  font-size: 14px;
+  color: #c9d1d9;
+}
+
+.breadcrumb a {
+  color: #e6edf3;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumb a:hover {
+  color: #FF1654;
+}
+
+.breadcrumb .separator {
+  margin: 0 8px;
+  opacity: 0.6;
+}
+
+.breadcrumb .current {
+  color: #FF1654;
+  font-weight: 500;
+}
+
+/* ============================================
+   PAGE-SPECIFIC HERO VARIANTS
+   ============================================ */
+
+/* About page - gold accent for trust/certification */
+.about-hero .hero-overlay {
+  background: linear-gradient(135deg, 
+    rgba(212, 175, 55, 0.15) 0%,
+    rgba(14, 43, 72, 0.95) 25%,
+    rgba(26, 41, 66, 0.92) 70%,
+    rgba(42, 63, 95, 0.88) 100%
+  );
+}
+
+/* Services pages - coral accent for action */
+.services-hero .hero-overlay,
+.service-hero .hero-overlay {
+  background: linear-gradient(135deg, 
+    rgba(255, 22, 84, 0.18) 0%,
+    rgba(14, 43, 72, 0.95) 25%,
+    rgba(26, 41, 66, 0.92) 70%,
+    rgba(42, 63, 95, 0.88) 100%
+  );
+}
+
+/* Contact page - neutral professional */
+.contact-hero .hero-overlay {
+  background: linear-gradient(135deg, 
+    rgba(14, 43, 72, 0.98) 0%,
+    rgba(26, 41, 66, 0.95) 50%,
+    rgba(42, 63, 95, 0.92) 100%
+  );
+}
+
+/* Locations pages - blue gradient for geography */
+.location-hero .hero-overlay {
+  background: linear-gradient(135deg, 
+    rgba(41, 128, 185, 0.15) 0%,
+    rgba(14, 43, 72, 0.95) 25%,
+    rgba(26, 41, 66, 0.92) 70%,
+    rgba(42, 63, 95, 0.88) 100%
+  );
+}
+
+/* Industries pages - purple accent for diversity */
+.industry-hero .hero-overlay {
+  background: linear-gradient(135deg, 
+    rgba(142, 68, 173, 0.12) 0%,
+    rgba(14, 43, 72, 0.95) 25%,
+    rgba(26, 41, 66, 0.92) 70%,
+    rgba(42, 63, 95, 0.88) 100%
+  );
+}
+
+/* Legal pages - deep navy for authority */
+.legal-hero .hero-overlay {
+  background: linear-gradient(135deg, 
+    rgba(10, 25, 47, 0.98) 0%,
+    rgba(14, 43, 72, 0.95) 50%,
+    rgba(26, 41, 66, 0.92) 100%
+  );
+}
+
+/* ============================================
+   PATTERN VARIATIONS
+   ============================================ */
+
+/* Diagonal lines pattern for legal pages */
+.legal-hero .hero-background::before {
+  background-image: url('/assets/patterns/diagonal-lines.svg');
+  background-size: 40px 40px;
+  opacity: 0.06;
+}
+
+/* World map pattern for location pages */
+.location-hero .hero-background::before {
+  background-image: url('/assets/patterns/world-map.svg');
+  background-size: 800px auto;
+  background-position: center;
+  opacity: 0.05;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .page-hero {
+    padding: 80px 0 60px;
+    min-height: 240px;
+  }
+  
+  .page-title {
+    font-size: 36px;
+  }
+  
+  .page-subtitle {
+    font-size: 18px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .page-hero {
+    padding: 60px 0 40px;
+    min-height: 200px;
+  }
+  
+  .page-title {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+  
+  .page-subtitle {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .breadcrumb {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+  
+  /* Adjust pattern size for mobile */
+  .hero-background::before {
+    background-size: 20px 20px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .page-hero {
+    padding: 50px 0 35px;
+  }
+  
+  .page-title {
+    font-size: 24px;
+  }
+  
+  .page-subtitle {
+    font-size: 15px;
+  }
+}
+
+/* ============================================
+   LIGHT MODE ADJUSTMENTS
+   ============================================ */
+
+@media (prefers-color-scheme: light) {
+  /* Lighter gradients for light mode */
+  .hero-overlay {
+    background: linear-gradient(135deg, 
+      rgba(14, 43, 72, 0.92) 0%,
+      rgba(26, 41, 66, 0.88) 50%,
+      rgba(42, 63, 95, 0.85) 100%
+    );
+  }
+  
+  /* Increase pattern visibility slightly */
+  .hero-background::before {
+    opacity: 0.12;
+  }
+  
+  /* Ensure text remains readable */
+  .page-title {
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* ============================================
+   SUBTLE ANIMATIONS
+   ============================================ */
+
+/* Fade in on load */
+.page-hero {
+  animation: heroFadeIn 0.6s ease-out;
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Parallax effect on scroll (subtle) */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-background {
+    transition: transform 0.3s ease-out;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* Ensure sufficient contrast */
+.page-hero * {
+  color: inherit;
+}
+
+/* Focus states for breadcrumb links */
+.breadcrumb a:focus {
+  outline: 2px solid #FF1654;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .page-hero,
+  .hero-background {
+    animation: none;
+    transition: none;
+  }
+}
