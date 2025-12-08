@@ -7,11 +7,11 @@ interface Props {
 const { class: className = '', title = 'Translations formatted for acceptance by:' } = Astro.props;
 
 const authorities = [
-  { name: 'Ministry of Justice', logo: '/images/logos/moj-uae.svg', alt: 'UAE Ministry of Justice' },
-  { name: 'Dubai Courts', logo: '/images/logos/dubai-courts.svg', alt: 'Dubai Courts' },
-  { name: 'Dubai Police', logo: '/images/logos/dubai-police.svg', alt: 'Dubai Police' },
-  { name: 'Dubai Land Department', logo: '/images/logos/dld.svg', alt: 'Dubai Land Department' },
-  { name: 'MOFAIC', logo: '/images/logos/mofaic.svg', alt: 'UAE Ministry of Foreign Affairs' },
+  { name: 'Government of Dubai', logo: '/images/logos/moj.png', alt: 'Government of Dubai' },
+  { name: 'Dubai Courts', logo: '/images/logos/dubai-courts.png', alt: 'Dubai Courts' },
+  { name: 'Dubai Police', logo: '/images/logos/dubai-police.png', alt: 'Dubai Police' },
+  { name: 'Dubai Land Department', logo: '/images/logos/dld.png', alt: 'Dubai Land Department' },
+  { name: 'MOFAIC', logo: '/images/logos/mofaic.png', alt: 'UAE Ministry of Foreign Affairs' },
 ];
 ---
 
@@ -66,8 +66,10 @@ const authorities = [
   }
 
   .authority-logos li img {
-    height: 40px;
+    height: 48px;
+    max-width: 120px;
     width: auto;
+    object-fit: contain;
     filter: grayscale(100%);
     opacity: 0.7;
     transition: all 0.3s ease;
@@ -103,7 +105,8 @@ const authorities = [
     }
 
     .authority-logos li img {
-      height: 32px;
+      height: 36px;
+      max-width: 90px;
     }
 
     .authority-name {
