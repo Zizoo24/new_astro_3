@@ -7,6 +7,10 @@
  * MAXIMUM SPECIFICITY to override any conflicting styles
  */
 
+/* ============================================
+   DARK MODE (DEFAULT)
+   ============================================ */
+
 /* Remove default footer-partnership styling and create pill wrapper */
 footer .footer-partnership,
 .footer .footer-partnership,
@@ -133,131 +137,105 @@ footer .footer-partnership a:hover,
 }
 
 /* ============================================
-   LIGHT MODE - MAXIMUM VISIBILITY
+   LIGHT MODE - CLASS-BASED (NO MEDIA QUERY)
    ============================================ */
 
-/* Light mode variant - SOLID DARK BACKGROUND for maximum contrast */
-@media (prefers-color-scheme: light) {
-  html.theme-light footer .footer-partnership,
-  html.theme-light .footer .footer-partnership,
-  html.theme-light .footer-partnership,
-  body.theme-light footer .footer-partnership,
-  body.theme-light .footer .footer-partnership,
-  body.theme-light .footer-partnership,
-  .theme-light footer .footer-partnership,
-  .theme-light .footer .footer-partnership,
-  .theme-light .footer-partnership,
-  footer .footer-partnership,
-  .footer .footer-partnership,
-  .footer-partnership {
-    /* SOLID navy background - highly visible on light backgrounds */
-    background: linear-gradient(135deg, #1a2942 0%, #0e1f35 100%) !important;
-    border: 2px solid #d4af37 !important;
-    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.25), 0 1px 3px rgba(0, 0, 0, 0.1) !important;
-    color: #ffffff !important;
-  }
-  
-  html.theme-light footer .footer-partnership:hover,
-  html.theme-light .footer .footer-partnership:hover,
-  html.theme-light .footer-partnership:hover,
-  body.theme-light footer .footer-partnership:hover,
-  body.theme-light .footer .footer-partnership:hover,
-  body.theme-light .footer-partnership:hover,
-  .theme-light footer .footer-partnership:hover,
-  .theme-light .footer .footer-partnership:hover,
-  .theme-light .footer-partnership:hover,
-  footer .footer-partnership:hover,
-  .footer .footer-partnership:hover,
-  .footer-partnership:hover {
-    background: linear-gradient(135deg, #243654 0%, #152840 100%) !important;
-    border-color: #f4d03f !important;
-    box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35), 0 2px 6px rgba(0, 0, 0, 0.15) !important;
-  }
-  
-  /* Text colors for light mode - bright and visible */
-  html.theme-light footer .footer-partnership,
-  html.theme-light .footer .footer-partnership,
-  html.theme-light .footer-partnership,
-  body.theme-light footer .footer-partnership,
-  body.theme-light .footer .footer-partnership,
-  body.theme-light .footer-partnership,
-  .theme-light footer .footer-partnership,
-  .theme-light .footer .footer-partnership,
-  .theme-light .footer-partnership,
-  footer .footer-partnership,
-  .footer .footer-partnership,
-  .footer-partnership {
-    color: #ffffff !important;
-  }
-  
-  html.theme-light footer .footer-partnership .partner-link,
-  html.theme-light .footer .footer-partnership .partner-link,
-  html.theme-light .footer-partnership .partner-link,
-  html.theme-light footer .footer-partnership a,
-  html.theme-light .footer .footer-partnership a,
-  html.theme-light .footer-partnership a,
-  body.theme-light footer .footer-partnership .partner-link,
-  body.theme-light .footer .footer-partnership .partner-link,
-  body.theme-light .footer-partnership .partner-link,
-  body.theme-light footer .footer-partnership a,
-  body.theme-light .footer .footer-partnership a,
-  body.theme-light .footer-partnership a,
-  .theme-light footer .footer-partnership .partner-link,
-  .theme-light .footer .footer-partnership .partner-link,
-  .theme-light .footer-partnership .partner-link,
-  .theme-light footer .footer-partnership a,
-  .theme-light .footer .footer-partnership a,
-  .theme-light .footer-partnership a,
-  footer .footer-partnership .partner-link,
-  .footer .footer-partnership .partner-link,
-  .footer-partnership .partner-link,
-  footer .footer-partnership a,
-  .footer .footer-partnership a,
-  .footer-partnership a {
-    color: #ffd700 !important;
-  }
-  
-  html.theme-light footer .footer-partnership .partner-link:hover,
-  html.theme-light .footer .footer-partnership .partner-link:hover,
-  html.theme-light .footer-partnership .partner-link:hover,
-  html.theme-light footer .footer-partnership a:hover,
-  html.theme-light .footer .footer-partnership a:hover,
-  html.theme-light .footer-partnership a:hover,
-  body.theme-light footer .footer-partnership .partner-link:hover,
-  body.theme-light .footer .footer-partnership .partner-link:hover,
-  body.theme-light .footer-partnership .partner-link:hover,
-  body.theme-light footer .footer-partnership a:hover,
-  body.theme-light .footer .footer-partnership a:hover,
-  body.theme-light .footer-partnership a:hover,
-  .theme-light footer .footer-partnership .partner-link:hover,
-  .theme-light .footer .footer-partnership .partner-link:hover,
-  .theme-light .footer-partnership .partner-link:hover,
-  .theme-light footer .footer-partnership a:hover,
-  .theme-light .footer .footer-partnership a:hover,
-  .theme-light .footer-partnership a:hover,
-  footer .footer-partnership .partner-link:hover,
-  .footer .footer-partnership .partner-link:hover,
-  .footer-partnership .partner-link:hover,
-  footer .footer-partnership a:hover,
-  .footer .footer-partnership a:hover,
-  .footer-partnership a:hover {
-    color: #ffed4e !important;
-  }
-  
-  html.theme-light footer .footer-partnership i.fas,
-  html.theme-light .footer .footer-partnership i.fas,
-  html.theme-light .footer-partnership i.fas,
-  body.theme-light footer .footer-partnership i.fas,
-  body.theme-light .footer .footer-partnership i.fas,
-  body.theme-light .footer-partnership i.fas,
-  .theme-light footer .footer-partnership i.fas,
-  .theme-light .footer .footer-partnership i.fas,
-  .theme-light .footer-partnership i.fas,
-  footer .footer-partnership i.fas,
-  .footer .footer-partnership i.fas,
-  .footer-partnership i.fas {
-    color: #ffd700 !important;
-  }
+/* Light mode - triggered by .theme-light class on body */
+body.theme-light footer .footer-partnership,
+body.theme-light .footer .footer-partnership,
+body.theme-light .footer-partnership,
+html.theme-light footer .footer-partnership,
+html.theme-light .footer .footer-partnership,
+html.theme-light .footer-partnership,
+.theme-light footer .footer-partnership,
+.theme-light .footer .footer-partnership,
+.theme-light .footer-partnership {
+  /* SOLID navy background - highly visible on light backgrounds */
+  background: linear-gradient(135deg, #1a2942 0%, #0e1f35 100%) !important;
+  border: 2px solid #d4af37 !important;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.25), 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  color: #ffffff !important;
+}
+
+body.theme-light footer .footer-partnership:hover,
+body.theme-light .footer .footer-partnership:hover,
+body.theme-light .footer-partnership:hover,
+html.theme-light footer .footer-partnership:hover,
+html.theme-light .footer .footer-partnership:hover,
+html.theme-light .footer-partnership:hover,
+.theme-light footer .footer-partnership:hover,
+.theme-light .footer .footer-partnership:hover,
+.theme-light .footer-partnership:hover {
+  background: linear-gradient(135deg, #243654 0%, #152840 100%) !important;
+  border-color: #f4d03f !important;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35), 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Text colors for light mode - bright and visible */
+body.theme-light footer .footer-partnership,
+body.theme-light .footer .footer-partnership,
+body.theme-light .footer-partnership,
+html.theme-light footer .footer-partnership,
+html.theme-light .footer .footer-partnership,
+html.theme-light .footer-partnership,
+.theme-light footer .footer-partnership,
+.theme-light .footer .footer-partnership,
+.theme-light .footer-partnership {
+  color: #ffffff !important;
+}
+
+body.theme-light footer .footer-partnership .partner-link,
+body.theme-light .footer .footer-partnership .partner-link,
+body.theme-light .footer-partnership .partner-link,
+body.theme-light footer .footer-partnership a,
+body.theme-light .footer .footer-partnership a,
+body.theme-light .footer-partnership a,
+html.theme-light footer .footer-partnership .partner-link,
+html.theme-light .footer .footer-partnership .partner-link,
+html.theme-light .footer-partnership .partner-link,
+html.theme-light footer .footer-partnership a,
+html.theme-light .footer .footer-partnership a,
+html.theme-light .footer-partnership a,
+.theme-light footer .footer-partnership .partner-link,
+.theme-light .footer .footer-partnership .partner-link,
+.theme-light .footer-partnership .partner-link,
+.theme-light footer .footer-partnership a,
+.theme-light .footer .footer-partnership a,
+.theme-light .footer-partnership a {
+  color: #ffd700 !important;
+}
+
+body.theme-light footer .footer-partnership .partner-link:hover,
+body.theme-light .footer .footer-partnership .partner-link:hover,
+body.theme-light .footer-partnership .partner-link:hover,
+body.theme-light footer .footer-partnership a:hover,
+body.theme-light .footer .footer-partnership a:hover,
+body.theme-light .footer-partnership a:hover,
+html.theme-light footer .footer-partnership .partner-link:hover,
+html.theme-light .footer .footer-partnership .partner-link:hover,
+html.theme-light .footer-partnership .partner-link:hover,
+html.theme-light footer .footer-partnership a:hover,
+html.theme-light .footer .footer-partnership a:hover,
+html.theme-light .footer-partnership a:hover,
+.theme-light footer .footer-partnership .partner-link:hover,
+.theme-light .footer .footer-partnership .partner-link:hover,
+.theme-light .footer-partnership .partner-link:hover,
+.theme-light footer .footer-partnership a:hover,
+.theme-light .footer .footer-partnership a:hover,
+.theme-light .footer-partnership a:hover {
+  color: #ffed4e !important;
+}
+
+body.theme-light footer .footer-partnership i.fas,
+body.theme-light .footer .footer-partnership i.fas,
+body.theme-light .footer-partnership i.fas,
+html.theme-light footer .footer-partnership i.fas,
+html.theme-light .footer .footer-partnership i.fas,
+html.theme-light .footer-partnership i.fas,
+.theme-light footer .footer-partnership i.fas,
+.theme-light .footer .footer-partnership i.fas,
+.theme-light .footer-partnership i.fas {
+  color: #ffd700 !important;
 }
 
 /* Additional alignment fixes for footer sections */
