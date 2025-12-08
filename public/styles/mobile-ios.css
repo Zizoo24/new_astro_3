@@ -1,11 +1,17 @@
-@media (max-width: 991px) {
-    .os-ios {
-        --os-font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
-        --os-radius: 14px;
-        --os-nav-height: 83px;
-        --os-safe-bottom: env(safe-area-inset-bottom, 20px);
-    }
+/* iOS-specific variable overrides - inherit from base-architecture.css */
+.os-ios {
+    --os-font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
+    --os-radius: 14px;
+    --os-radius-lg: 20px;
+    --os-radius-sm: 10px;
+    --os-nav-height: 83px;
+    --os-safe-bottom: env(safe-area-inset-bottom, 20px);
+    --os-elevation-1: 0 2px 8px rgba(0,0,0,0.08);
+    --os-elevation-2: 0 4px 16px rgba(0,0,0,0.12);
+    --os-elevation-3: 0 8px 32px rgba(0,0,0,0.16);
+}
 
+@media (max-width: 991px) {
     .os-ios .footer-bar {
         height: var(--os-nav-height);
         padding-bottom: var(--os-safe-bottom);
