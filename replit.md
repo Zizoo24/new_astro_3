@@ -48,7 +48,7 @@ The system is designed as a "Digital Concierge" with a "WhatsApp-First Architect
 - **Internal Linking:** Centralized URL mappings in `src/data/serviceLinks.ts` ensure consistent and contextual internal linking with a density of 1-2 links per paragraph.
 - **Key Components:** `Icon.astro`, `TrustStrip.astro`, `ProcessSteps.astro`, `BenefitCards.astro`, `AccordionSection.astro`, `TestimonialsCarousel.astro`, `DulBadge.astro`, `AuthorityLogos.astro` for content modularity.
 - **DulBadge Component:** Two variants - 'pill' (glassmorphism badge for hero sections) and 'detailed' (full licensing card for About page). Links to verified DUL: https://app.invest.dubai.ae/DUL/1DE9D8AA-768A-4CFC-BC27-A6F23017B858
-- **AuthorityLogos Component:** Horizontal strip showing government authorities (MoJ, Dubai Courts, Dubai Police, DLD, MOFAIC) with grayscale-to-color hover effect. Currently uses placeholder SVG icons - official logos needed.
+- **AuthorityLogos Component:** Horizontal strip showing government authorities (Government of Dubai, Dubai Courts, Dubai Police, DLD, MOFAIC) with grayscale-to-color hover effect. Uses official PNG logos with consistent 48px/36px responsive sizing.
 - **TestimonialsCarousel:** Touch-swipe enabled carousel with navigation, auto-rotation, and WCAG AA compliant text on a navy gradient background.
 - **serviceLinks.ts Pattern:** Single source of truth for all service/document/location URLs, used for navigation and related service groupings.
 
