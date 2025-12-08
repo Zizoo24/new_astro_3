@@ -45,7 +45,7 @@ This document tracks all tasks for the project, organized by status.
 | Task | Description | Notes |
 |------|-------------|-------|
 | Migrate high-traffic pages to ServiceLayout | Use the birth-certificate-style data-driven structure | ServiceLayout already supports this pattern |
-| Expand 4 category pages to 2,000+ words | SEO requirement for organic reach | Legal & Corporate, Personal & Civil, Industry Specialized, Locations |
+| Expand 4 category pages to 2,000+ words | ✅ COMPLETED | Legal (2,253w), Personal (3,253w), Industries (2,144w), Locations (2,014w) |
 
 ### Medium Priority
 

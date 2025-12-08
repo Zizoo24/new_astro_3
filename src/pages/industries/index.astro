@@ -1,29 +1,45 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTASection from '../../components/CTASection.astro';
 ---
 
 <BaseLayout 
   title="Translation by Industry – Legal, Healthcare, Real Estate, E-Commerce | OnlineTranslation.ae"
   description="Specialized translation services for different industries in the UAE. Legal, healthcare, real estate, and e-commerce expertise with MOJ certification."
 >
-  <section class="hero-section bg-dark" data-theme="dark">
-    <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">HOME</a>
-        <span class="separator">&gt;</span>
-        <span class="current">INDUSTRIES</span>
-      </nav>
-      
-      <h1>Translation by Industry</h1>
-      <p class="hero-subtitle">Specialized Expertise for Your Sector</p>
-      <p class="hero-intro">Different industries have different requirements. Legal terminology for law firms, medical precision for healthcare, property jargon for real estate, and commercial language for e-commerce. We understand the nuances that make translations work for your specific sector.</p>
-    </div>
-  </section>
+  <PageHero 
+    title="Translation by Industry"
+    subtitle="Specialized Expertise for Your Sector"
+    intro="Different industries have different requirements. Legal terminology for law firms, medical precision for healthcare, property jargon for real estate, and commercial language for e-commerce. We understand the nuances that make translations work for your specific sector."
+    breadcrumbs={[
+      { label: "HOME", href: "/" },
+      { label: "INDUSTRIES" }
+    ]}
+  />
 
   <section class="section bg-white">
     <div class="container">
+      <h2>Why Industry-Specific Translation Matters</h2>
+      <div class="content-prose">
+        <p>Every industry develops its own language. Medical professionals use diagnostic codes and clinical terminology that outsiders find incomprehensible. Legal documents employ precise terms with specific meanings that differ from everyday usage. Real estate contracts reference concepts like easements and encumbrances that require accurate translation for legal validity.</p>
+        
+        <p>Generic translation misses these nuances. A translator unfamiliar with healthcare might translate a medical term literally, producing a result that sounds strange to Arabic-speaking medical professionals. Someone without legal training might miss the significance of "shall" versus "may" in contract language. These errors can confuse readers, delay processes, or worse—create legal liability.</p>
+        
+        <p>We assign documents to translators with relevant sector experience. This means your legal documents go to translators who understand legal terminology. Your medical reports are handled by linguists familiar with healthcare language. The result is translation that reads naturally to professionals in your field and accurately conveys the original meaning.</p>
+        
+        <h3>Terminology Consistency</h3>
+        <p>Industries develop standardized terminology over time. The Arabic equivalent of "Title Deed" in property transactions has become established through usage by Dubai Land Department and real estate professionals. Using a different translation would confuse readers and potentially raise questions about document authenticity.</p>
+        
+        <p>Our sector-specific translators know these established conventions. They translate using the terminology that your industry expects, ensuring documents integrate smoothly with existing workflows and are recognized by authorities and professionals in your field.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
       <h2>Professional Services</h2>
-      <p class="section-intro">Precision translation for regulated industries.</p>
+      <p class="section-intro">Precision translation for regulated industries where accuracy is not optional.</p>
       
       <div class="service-grid">
         <a href="/industries/legal/" class="service-card">
@@ -38,13 +54,29 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           <p>Medical reports, clinical documents, insurance claims, and healthcare provider communications.</p>
         </a>
       </div>
+      
+      <div class="content-prose" style="margin-top: 2rem;">
+        <h3>Legal Industry Requirements</h3>
+        <p>Law firms and corporate legal departments operate under strict accuracy requirements. A mistranslated contract clause could expose clients to unintended liabilities. An incorrectly rendered court document could affect litigation outcomes. Legal translation demands translators who understand both the language and the law.</p>
+        
+        <p>We serve law firms across the UAE with translation for contracts, court filings, corporate documents, and legal correspondence. Our legal translators understand civil law principles that underpin UAE federal law while also handling common law documents from DIFC and ADGM jurisdictions. This dual capability is essential for the UAE's mixed legal environment.</p>
+        
+        <p>For law firms with regular translation needs, we offer priority handling, consistent translator assignment for terminology continuity, and direct communication with our team. Many firms integrate our services into their case management workflow, sending documents via WhatsApp and receiving translations ready for filing.</p>
+        
+        <h3>Healthcare Industry Requirements</h3>
+        <p>Medical translation requires precision that could affect patient care. Diagnostic reports must accurately convey findings. Treatment plans must clearly communicate instructions. Insurance documents need correct coding and terminology for claims processing.</p>
+        
+        <p>Our healthcare translation covers hospitals, clinics, insurance companies, and individual patients. Common documents include medical reports for visa applications, insurance claim documentation, medical history records for continuing care abroad, and healthcare provider agreements. We understand medical terminology across specializations—from cardiology to oncology, orthopedics to psychiatry.</p>
+        
+        <p>Patient confidentiality is paramount in healthcare. We handle medical documents with strict privacy protocols, ensuring sensitive health information remains protected throughout the translation process.</p>
+      </div>
     </div>
   </section>
 
-  <section class="section bg-light">
+  <section class="section bg-white">
     <div class="container">
       <h2>Commercial Sectors</h2>
-      <p class="section-intro">Business-focused translation for commercial operations.</p>
+      <p class="section-intro">Business-focused translation for commercial operations and transactions.</p>
       
       <div class="service-grid">
         <a href="/industries/real-estate/" class="service-card">
@@ -59,72 +91,139 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           <p>Terms of service, product documentation, supplier agreements, and international trade documents.</p>
         </a>
       </div>
+      
+      <div class="content-prose" style="margin-top: 2rem;">
+        <h3>Real Estate Industry Requirements</h3>
+        <p>Dubai's property market attracts buyers from around the world. International investors need translated Sale and Purchase Agreements (SPAs) to understand their commitments. Title Deeds require Arabic translation for Dubai Land Department registration. Powers of Attorney enable remote transactions when buyers cannot attend in person.</p>
+        
+        <p>Real estate translation involves specific terminology—freehold versus leasehold, service charges, escrow arrangements, handover protocols, and mortgage terms. Our translators understand these concepts and translate them using established Arabic equivalents recognized by DLD, banks, and real estate professionals.</p>
+        
+        <p>We serve real estate agencies, property developers, law firms handling property transactions, and individual buyers and sellers. For high-value transactions, timing matters—delays in translation can affect deal timelines. We offer express service to keep transactions moving, with same-day delivery for urgent property documents.</p>
+        
+        <h3>E-Commerce Industry Requirements</h3>
+        <p>E-commerce businesses operate across borders, requiring translation for terms of service, privacy policies, product descriptions, and customer communications. UAE law requires certain disclosures in Arabic, making translation essential for legal compliance.</p>
+        
+        <p>We translate e-commerce legal documents—terms and conditions, return policies, and consumer rights notices—ensuring Arabic versions meet UAE consumer protection requirements. For businesses sourcing internationally, we translate supplier agreements, import documentation, and trade contracts.</p>
+        
+        <p>Product documentation translation helps e-commerce sellers reach Arabic-speaking customers. User manuals, product specifications, and safety information translated accurately build customer trust and reduce returns from misunderstanding.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Additional Industry Sectors</h2>
+      <div class="content-prose">
+        <h3>Construction and Engineering</h3>
+        <p>The UAE's construction industry generates substantial translation needs. Contract documents—JCT, FIDIC, and bespoke construction agreements—require careful translation to preserve their risk allocation and procedural provisions. Technical specifications, drawings with annotations, and project correspondence all need accurate translation for Arabic-speaking stakeholders.</p>
+        
+        <p>Engineering documents present unique challenges with their mix of technical terminology and contractual language. We translate for contractors, developers, consultants, and engineering firms involved in UAE construction projects. Our translators understand construction terminology and can handle documents from tender submissions through project completion and final accounts.</p>
+        
+        <h3>Banking and Finance</h3>
+        <p>Financial services translation covers loan documentation, facility agreements, security documents, compliance materials, and regulatory filings. The UAE Central Bank and other financial regulators require Arabic documentation, making translation essential for licensed financial institutions.</p>
+        
+        <p>We translate for banks, insurance companies, investment firms, and fintech companies. Documents include credit agreements, guarantee instruments, insurance policies, and investment disclosures. Our translators understand financial terminology and regulatory context, producing translations that meet institutional standards.</p>
+        
+        <h3>Education</h3>
+        <p>Educational institutions require translation for administrative documents, academic policies, and communications with Arabic-speaking families. International schools often need to translate enrollment agreements, school policies, and progress reports for parents who prefer Arabic.</p>
+        
+        <p>Universities and higher education institutions translate academic transcripts, degree certificates, and institutional documents for student visa applications and employment purposes. We work with UAE universities, international schools, and students needing academic document translation.</p>
+        
+        <h3>Government and Public Sector</h3>
+        <p>Government contractors and suppliers often need Arabic translation for tender submissions, contract documents, and compliance materials. Public-private partnership agreements, licensing documents, and regulatory submissions require accurate translation that meets government standards.</p>
+        
+        <p>We translate for companies working with UAE federal and emirate-level government entities. Our translators understand government terminology and formatting requirements, ensuring documents meet the expectations of public sector clients.</p>
+        
+        <h3>Hospitality and Tourism</h3>
+        <p>Hotels, restaurants, and tourism operators need translation for licensing, employee documentation, and guest-facing materials. Labor contracts, health and safety documents, and operational agreements require Arabic translation for regulatory compliance.</p>
+        
+        <p>Tourism businesses serving international visitors benefit from multilingual documentation. We translate between English and Arabic, helping hospitality businesses communicate with both regulators and staff effectively.</p>
+        
+        <h3>Technology and Startups</h3>
+        <p>Tech companies and startups often operate with English documentation but need Arabic translation for UAE licensing, banking, and investor relations. Shareholder agreements, investment documentation, and intellectual property filings require accurate translation.</p>
+        
+        <p>We work with technology companies from free zones like Dubai Internet City, Dubai Silicon Oasis, and Abu Dhabi's Hub71. Our translators handle technology-related terminology—software licensing, SaaS agreements, and technical specifications—while ensuring legal accuracy for contracts and corporate documents.</p>
+      </div>
     </div>
   </section>
 
   <section class="section bg-white">
-    <div class="container cta-section">
-      <h2>Industry-Specific Requirements?</h2>
-      <p>Tell us about your sector and document types. We will advise on the specific terminology, formatting, and certification requirements for your industry.</p>
-      <a href="https://wa.me/971508620217" class="btn btn-primary">
-        <i class="fab fa-whatsapp"></i> Discuss Your Industry Needs
-      </a>
+    <div class="container">
+      <h2>How We Match Translators to Industries</h2>
+      <div class="content-prose">
+        <h3>Translator Specialization</h3>
+        <p>Our translation team includes specialists across different sectors. Some translators have legal backgrounds and focus on contracts and court documents. Others have medical training and handle healthcare documentation. This specialization means your document goes to someone who understands your industry's language.</p>
+        
+        <p>When you send a document, our assignment process considers document type, industry context, and complexity. A medical report goes to a healthcare-specialized translator. A construction contract goes to someone familiar with FIDIC terminology. This matching ensures accurate, natural-sounding translations.</p>
+        
+        <h3>Quality Assurance</h3>
+        <p>Every translation undergoes review before delivery. For specialized documents, reviewers with relevant expertise check terminology usage and accuracy. This two-step process catches errors and ensures consistency with industry standards.</p>
+        
+        <p>For complex or high-stakes documents, we can arrange additional review steps—legal review by a translator with law qualifications, or technical review by a subject matter expert. These enhanced quality processes are available for clients who need extra assurance.</p>
+        
+        <h3>Confidentiality</h3>
+        <p>Different industries have different confidentiality concerns. Legal documents may be privileged. Medical records contain sensitive patient information. Commercial contracts reveal business strategies. We handle all documents with strict confidentiality protocols.</p>
+        
+        <p>For particularly sensitive matters, we can execute NDAs, limit document access to specific team members, and implement enhanced security measures. These arrangements are common for law firms, healthcare organizations, and businesses handling confidential commercial information.</p>
+      </div>
     </div>
   </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>How do you ensure industry terminology is correct?</h3>
+          <p>We assign documents to translators with relevant sector experience. They know established Arabic equivalents for industry terms and keep current with terminology developments. For new or unusual terms, we research usage in authoritative sources and consult subject matter experts when needed.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3>Can you handle highly technical documents?</h3>
+          <p>Yes. We have translators with backgrounds in engineering, medicine, law, finance, and technology. For extremely specialized documents, we may consult external experts to verify technical accuracy. We will inform you if a document requires special handling.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3>Do you translate for industries not listed here?</h3>
+          <p>Absolutely. The industries listed are common sectors, but we handle translation across all business areas. Send your document for review, and we will assess the terminology requirements and assign appropriate translators.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3>What if I need consistent terminology across multiple documents?</h3>
+          <p>For ongoing translation needs, we can assign the same translator or team to your documents. This ensures terminology consistency across your translated materials. We also maintain glossaries for repeat clients, capturing approved translations for key terms.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3>How do you handle confidential business documents?</h3>
+          <p>All documents are handled confidentially as standard. For enhanced security, we can execute NDAs, restrict access to specific team members, use encrypted transfer methods, and delete documents after delivery. These arrangements are available upon request.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection 
+    title="Industry-Specific Requirements?"
+    description="Tell us about your sector and document types. We will advise on the specific terminology, formatting, and certification requirements for your industry."
+    buttonText="Discuss Your Industry Needs"
+  />
 </BaseLayout>
 
 <style>
-  .hero-section {
-    padding: 8rem 0 4rem;
-    background: var(--primary-color);
-  }
-  
-  .breadcrumb {
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    margin-bottom: 2rem;
-  }
-  
-  .breadcrumb a {
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-  }
-  
-  .breadcrumb a:hover {
-    color: #ffffff;
-  }
-  
-  .breadcrumb .separator {
-    margin: 0 0.5rem;
-    color: rgba(255, 255, 255, 0.5);
-  }
-  
-  .breadcrumb .current {
-    color: #ffffff;
-  }
-  
-  h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.5rem;
-    color: #ffffff;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.25rem;
-    color: var(--accent-color);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 1.5rem;
-  }
-  
-  .hero-intro {
-    font-size: 1.1rem;
+  .content-prose {
+    max-width: 800px;
     line-height: 1.8;
-    max-width: 700px;
-    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .content-prose h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    color: var(--primary-color);
+  }
+  
+  .content-prose p {
+    margin-bottom: 1.25rem;
+    color: var(--text-dark);
   }
   
   .section-intro {
@@ -184,39 +283,40 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     line-height: 1.6;
   }
   
-  .cta-section {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
+  .faq-list {
+    max-width: 800px;
   }
   
-  .cta-section h2 {
-    margin-bottom: 1rem;
-  }
-  
-  .cta-section p {
+  .faq-item {
     margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .faq-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  
+  .faq-item h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+  }
+  
+  .faq-item p {
+    margin: 0;
     color: var(--text-muted);
+    line-height: 1.7;
   }
-  
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 2rem;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-  
-  .btn-primary {
-    background: var(--accent-color);
-    color: #ffffff;
-  }
-  
-  .btn-primary:hover {
-    background: #e0144c;
-    transform: translateY(-2px);
-  }
+
+  :global(body.theme-dark) .content-prose h3 { color: var(--accent-coral, #ff6b6b); }
+  :global(body.theme-dark) .content-prose p { color: var(--text-secondary, #c5d4e8); }
+  :global(body.theme-dark) .service-card { background: var(--surface-muted, #1b2738); border-color: var(--border-light, #1f2a3a); }
+  :global(body.theme-dark) .service-card h3 { color: var(--text-light, #f0f6fc); }
+  :global(body.theme-dark) .service-card p { color: var(--text-secondary, #c5d4e8); }
+  :global(body.theme-dark) .faq-item { border-bottom-color: var(--border-light, #1f2a3a); }
+  :global(body.theme-dark) .faq-item h3 { color: var(--accent-coral, #ff6b6b); }
+  :global(body.theme-dark) .faq-item p { color: var(--text-secondary, #c5d4e8); }
 </style>
