@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTASection from '../../components/CTASection.astro';
+---
+
+<BaseLayout 
+  title="Specialized Translation Services in Dubai | OnlineTranslation.ae"
+  description="Specialized translation services in Dubai for technical documents. Medical, financial, and technical translation with MOJ certification."
+>
+  <PageHero 
+    title="Specialized Translation"
+    subtitle="Technical Expertise for Complex Documents"
+    intro="Some documents require more than language skills—they need subject matter expertise. Medical reports use clinical terminology, financial documents require accounting knowledge, and technical manuals demand engineering understanding. Our specialized translation services match documents with translators who have relevant expertise."
+    breadcrumbs={[
+      { label: "HOME", href: "/" },
+      { label: "SPECIALIZED" }
+    ]}
+  />
+
+  <section class="section bg-white">
+    <div class="container">
+      <h2>Our Specialized Services</h2>
+      <p class="section-intro">Technical translation requiring subject matter expertise beyond language skills.</p>
+      
+      <div class="service-grid">
+        <a href="/specialized/medical/" class="service-card">
+          <div class="service-icon"><i class="fas fa-heartbeat"></i></div>
+          <h3>Medical Translation</h3>
+          <p>Medical reports, clinical documents, health records, and healthcare communications requiring medical terminology expertise.</p>
+        </a>
+        
+        <a href="/specialized/financial/" class="service-card">
+          <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Financial Translation</h3>
+          <p>Bank statements, audit reports, financial records, and investment documents with accounting precision.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Why Specialized Translation Matters</h2>
+      <div class="content-prose">
+        <p>Generic translation can miss the nuances of technical documents. A medical translator understands that "negative" test results are usually good news. A financial translator knows the difference between "equity" in accounting versus law. These distinctions matter.</p>
+        
+        <h3>Subject Matter Expertise</h3>
+        <p>Our specialized translators have backgrounds in their fields—healthcare professionals handling medical documents, accountants working on financial translations, engineers managing technical content. This expertise ensures accurate, natural-sounding translations that professionals in your field will recognize.</p>
+        
+        <h3>Terminology Consistency</h3>
+        <p>Each field develops standardized terminology. Medical reports use ICD codes and clinical terms. Financial documents follow accounting standards. Technical manuals use industry-specific language. We translate using the established Arabic equivalents that authorities and professionals expect.</p>
+        
+        <h3>Quality for High-Stakes Documents</h3>
+        <p>Specialized documents often have significant consequences—medical reports affect treatment decisions, financial documents influence lending or legal outcomes, technical documents guide engineering decisions. Our enhanced quality processes for specialized translation match the stakes involved.</p>
+      </div>
+    </div>
+  </section>
+
+  <CTASection 
+    title="Technical Document Translation"
+    description="Send your specialized documents via WhatsApp. We match them with translators who understand your field and provide certified translations ready for official use."
+  />
+</BaseLayout>
+
+<style>
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+  
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .service-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    border-color: var(--accent-color);
+  }
+  
+  .bg-light .service-card {
+    background: #ffffff;
+  }
+  
+  .service-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: var(--primary-color);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .service-card h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.15rem;
+  }
+  
+  .service-card p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  
+  .content-prose {
+    max-width: 800px;
+    line-height: 1.8;
+  }
+  
+  .content-prose h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    color: var(--primary-color);
+  }
+  
+  .content-prose p {
+    margin-bottom: 1.25rem;
+    color: var(--text-dark);
+  }
+
+  :global(body.theme-dark) .service-card { background: var(--surface-muted, #1b2738); border-color: var(--border-light, #1f2a3a); }
+  :global(body.theme-dark) .service-card h3 { color: var(--text-light, #f0f6fc); }
+  :global(body.theme-dark) .service-card p { color: var(--text-secondary, #c5d4e8); }
+  :global(body.theme-dark) .content-prose h3 { color: var(--accent-coral, #ff6b6b); }
+  :global(body.theme-dark) .content-prose p { color: var(--text-secondary, #c5d4e8); }
+</style>

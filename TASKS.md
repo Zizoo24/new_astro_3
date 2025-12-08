@@ -52,7 +52,7 @@ This document tracks all tasks for the project, organized by status.
 | Task | Description | Notes |
 |------|-------------|-------|
 | CSS consolidation | ✅ COMPLETED - Merged 13 CSS files into unified app.css (335KB) | Dec 2025 |
-| Add more service pages | Target: 55+ pages total (currently 49) | Follow ServiceLayout pattern |
+| Add more service pages | ✅ COMPLETED - Now 56 pages total | Added: employment contracts, passport, visa docs, wills, financial, specialized index |
 
 ### Low Priority / Ideas
 
