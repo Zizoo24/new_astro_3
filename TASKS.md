@@ -24,6 +24,23 @@ This document tracks all tasks for the project, organized by status.
 
 ## Current Tasks (In Progress)
 
+_None - all tasks completed_
+
+---
+
+## Session: December 2025 - CTA Enhancement & Hero Images
+
+| Task | Description | Status |
+|------|-------------|--------|
+| Add hero images to key service pages | PageHero.astro and ServiceLayout.astro support background images with 88%→75% overlay | Completed |
+| Strengthen WhatsApp CTA | Dark green gradient (#0a7d3e→#065f46), WCAG AA contrast, focus-visible state | Completed |
+| Dark mode spot-check | Verified all 6 new service pages display correctly in dark mode | Completed |
+| Update navigation | Added Employment Contracts, Wills, Financial Documents to Header and MobileShell | Completed |
+
+---
+
+## Session: December 2024 - Component Fixes
+
 | Task | Description | Status |
 |------|-------------|--------|
 | Fix hero-cta-secondary mobile styling | "Or request a written quote" link should be underlined but NOT blue on mobile | Completed |
