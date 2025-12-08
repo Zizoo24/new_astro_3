@@ -536,21 +536,34 @@ body.theme-dark .pricing-features li i {
 }
 
 /* Process Steps */
-body.theme-dark .process-step {
-    background: var(--bg-card);
+body.theme-dark .process-step,
+body.theme-dark .process-step.exodus-step {
+    background: var(--surface-muted, #1b2738) !important;
+    border: 1px solid var(--border-light, #1f2a3a);
 }
 
-body.theme-dark .process-step .step-number {
-    background: var(--primary-color);
-    color: var(--bg-dark);
+body.theme-dark .process-step .step-number,
+body.theme-dark .exodus-step .step-index {
+    background: linear-gradient(135deg, var(--accent-coral, #ff6b6b) 0%, #ff4d7a 100%) !important;
+    color: #ffffff !important;
 }
 
-body.theme-dark .process-step h3 {
-    color: var(--text-light);
+body.theme-dark .process-step h3,
+body.theme-dark .exodus-step .step-title {
+    color: var(--text-heading, #f4f7fc) !important;
 }
 
-body.theme-dark .process-step p {
-    color: var(--text-muted);
+body.theme-dark .process-step p,
+body.theme-dark .exodus-step .step-desc {
+    color: var(--text-secondary, #c5d4e8) !important;
+}
+
+body.theme-dark .exodus-step .step-icon {
+    border-color: var(--accent-coral, #ff6b6b) !important;
+}
+
+body.theme-dark .exodus-step .step-icon i {
+    color: var(--text-heading, #f4f7fc) !important;
 }
 
 /* Page Hero */
@@ -1651,25 +1664,42 @@ body.theme-dark .checklist-item i {
     color: #ff4757 !important;
 }
 
-/* Accordion items */
-body.theme-dark .accordion-item {
-    background: #21262d !important;
-    border-color: #30363d !important;
+/* Accordion items - both legacy and ot-prefixed */
+body.theme-dark .accordion-item,
+body.theme-dark .ot-accordion-item {
+    background: var(--surface-muted, #1b2738) !important;
+    border-color: var(--border-light, #1f2a3a) !important;
 }
 
-body.theme-dark .accordion-header {
-    background: #161b22 !important;
-    color: #f0f6fc !important;
+body.theme-dark .accordion-header,
+body.theme-dark .ot-accordion-header {
+    background: transparent !important;
+    color: var(--text-heading, #f4f7fc) !important;
 }
 
-body.theme-dark .accordion-header:hover {
-    background: #0e2b48 !important;
+body.theme-dark .accordion-header:hover,
+body.theme-dark .ot-accordion-header:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
     color: #ffffff !important;
 }
 
-body.theme-dark .accordion-item.active .accordion-header {
-    background: #0e2b48 !important;
+body.theme-dark .accordion-item.active .accordion-header,
+body.theme-dark .ot-accordion-item.is-open .ot-accordion-header {
+    background: rgba(255, 255, 255, 0.08) !important;
     color: #ffffff !important;
+}
+
+body.theme-dark .ot-accordion-section {
+    background: var(--surface-base, #0b111a) !important;
+}
+
+body.theme-dark .ot-accordion-title {
+    color: var(--text-heading, #f4f7fc) !important;
+}
+
+body.theme-dark .ot-accordion-content p,
+body.theme-dark .ot-accordion-content li {
+    color: var(--text-secondary, #c5d4e8) !important;
 }
 
 body.theme-dark .accordion-content {
@@ -2046,4 +2076,168 @@ body.theme-dark .faq-item[open] .faq-question {
 body.theme-dark .faq-answer {
     color: var(--text-body) !important;
     background: var(--surface-muted) !important;
+}
+
+/* ============================================
+   HOMEPAGE SECTIONS - COMPREHENSIVE DARK MODE
+   ============================================ */
+
+/* Process Section - Exodus Style */
+body.theme-dark .process-section,
+body.theme-dark .exodus-process {
+    background: var(--surface-base, #0b111a) !important;
+}
+
+body.theme-dark .exodus-process-steps .exodus-step {
+    background: var(--surface-muted, #1b2738) !important;
+    border: 1px solid var(--border-light, #1f2a3a) !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+body.theme-dark .exodus-step .step-index {
+    background: linear-gradient(135deg, var(--accent-coral, #ff6b6b) 0%, #ff4d7a 100%) !important;
+    color: #ffffff !important;
+}
+
+body.theme-dark .exodus-step .step-icon {
+    border-color: var(--accent-coral, #ff6b6b) !important;
+    background: transparent !important;
+}
+
+body.theme-dark .exodus-step .step-icon i {
+    color: var(--accent-coral, #ff6b6b) !important;
+}
+
+body.theme-dark .exodus-step:hover .step-icon {
+    background: var(--accent-coral, #ff6b6b) !important;
+}
+
+body.theme-dark .exodus-step:hover .step-icon i {
+    color: #ffffff !important;
+}
+
+body.theme-dark .exodus-step .step-title {
+    color: var(--text-heading, #f4f7fc) !important;
+}
+
+body.theme-dark .exodus-step .step-desc {
+    color: var(--text-secondary, #c5d4e8) !important;
+}
+
+/* Why Cards Section */
+body.theme-dark .why-section {
+    background: var(--surface-raised, #121b2a) !important;
+}
+
+body.theme-dark .why-card {
+    background: var(--surface-muted, #1b2738) !important;
+    border: 1px solid var(--border-light, #1f2a3a) !important;
+}
+
+body.theme-dark .why-card h3 {
+    color: var(--text-heading, #f4f7fc) !important;
+}
+
+body.theme-dark .why-card p {
+    color: var(--text-secondary, #c5d4e8) !important;
+}
+
+body.theme-dark .why-card i {
+    color: var(--accent-coral, #ff6b6b) !important;
+}
+
+/* Testimonials - Ensure text visibility */
+body.theme-dark .testimonials-section .testimonial-card {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+body.theme-dark .testimonial-quote {
+    color: var(--text-heading, #f4f7fc) !important;
+}
+
+body.theme-dark .quote-icon {
+    color: var(--accent-coral, #ff6b6b) !important;
+}
+
+body.theme-dark .author-name {
+    color: #ffffff !important;
+}
+
+body.theme-dark .author-role {
+    color: var(--text-muted, #9fb2c9) !important;
+}
+
+body.theme-dark .author-location {
+    color: var(--accent-coral, #ff6b6b) !important;
+}
+
+body.theme-dark .testimonial-author {
+    border-top-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.theme-dark .carousel-dot {
+    border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+body.theme-dark .carousel-dot.active {
+    background: #ffffff !important;
+    border-color: #ffffff !important;
+}
+
+body.theme-dark .carousel-arrow {
+    background: var(--surface-muted, #1b2738) !important;
+    color: var(--text-heading, #f4f7fc) !important;
+    border: 1px solid var(--border-light, #1f2a3a) !important;
+}
+
+body.theme-dark .carousel-arrow:hover {
+    background: var(--accent-coral, #ff6b6b) !important;
+    color: #ffffff !important;
+}
+
+/* Section Labels and Titles */
+body.theme-dark .section-label,
+body.theme-dark .exodus-label {
+    color: var(--accent-coral, #ff6b6b) !important;
+}
+
+body.theme-dark .section-title,
+body.theme-dark .exodus-section-title {
+    color: var(--text-heading, #f4f7fc) !important;
+}
+
+/* Metrics Strip */
+body.theme-dark .ot-metrics {
+    background: var(--surface-raised, #121b2a) !important;
+}
+
+body.theme-dark .ot-metric-value {
+    color: var(--accent-coral, #ff6b6b) !important;
+}
+
+body.theme-dark .ot-metric-label {
+    color: var(--text-heading, #f4f7fc) !important;
+}
+
+body.theme-dark .ot-metric-note {
+    color: var(--text-muted, #9fb2c9) !important;
+}
+
+/* Specialists Section */
+body.theme-dark .specialists-section {
+    background: var(--surface-base, #0b111a) !important;
+}
+
+body.theme-dark .specialist-card {
+    background: var(--surface-muted, #1b2738) !important;
+    border: 1px solid var(--border-light, #1f2a3a) !important;
+}
+
+body.theme-dark .specialist-card h3 {
+    color: var(--text-heading, #f4f7fc) !important;
+}
+
+body.theme-dark .specialist-card p {
+    color: var(--text-secondary, #c5d4e8) !important;
 }
