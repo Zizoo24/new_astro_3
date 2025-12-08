@@ -53,6 +53,7 @@ interface Props {
   heroTitle: string;
   heroSubtitle?: string;
   heroIntro: string;
+  heroImage?: string;
   snapshot: SnapshotItem[];
   breadcrumbs: Breadcrumb[];
   faqs?: FAQ[];
@@ -72,6 +73,7 @@ const {
   heroTitle,
   heroSubtitle = '',
   heroIntro,
+  heroImage,
   snapshot,
   breadcrumbs,
   faqs = [],
@@ -82,6 +84,8 @@ const {
   benefitCards,
   accordionSections = []
 } = Astro.props;
+
+const hasHeroImage = !!heroImage;
 
 const siteUrl = 'https://onlinetranslation.ae';
 
@@ -156,7 +160,11 @@ const faqSchema = faqs.length > 0 ? {
   </nav>
 
   <!-- Hero Section -->
-  <section class="section section--hero bg-dark">
+  <section 
+    class={`section section--hero bg-dark ${hasHeroImage ? 'has-hero-image' : ''}`}
+    style={hasHeroImage ? `--hero-bg-image: url('${heroImage}')` : ''}
+  >
+    {hasHeroImage && <div class="hero-image-overlay"></div>}
     <div class="container">
       <div class="row">
         <div class="col col--8">
@@ -355,6 +363,27 @@ const faqSchema = faqs.length > 0 ? {
     margin: 0;
     line-height: 1.7;
     color: var(--text-muted);
+  }
+  
+  /* Hero background image support */
+  .section--hero.has-hero-image {
+    position: relative;
+    background-image: var(--hero-bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .hero-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(14, 43, 72, 0.88) 0%, rgba(14, 43, 72, 0.75) 100%);
+    z-index: 1;
+  }
+  
+  .section--hero.has-hero-image .container {
+    position: relative;
+    z-index: 2;
   }
   
   @media (max-width: 768px) {
