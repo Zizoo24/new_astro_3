@@ -1,0 +1,322 @@
+/* Visual Relief Deployment 3: Subtle Animations */
+/* Applied: Dec 8, 2025 */
+/* Purpose: Add subtle, tasteful animations for engagement */
+
+/* ========== FADE-IN ON SCROLL ANIMATIONS ========== */
+
+/* Base fade-in animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Apply to cards with staggered delays */
+.service-card {
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+.service-card:nth-child(4) { animation-delay: 0.4s; }
+.service-card:nth-child(5) { animation-delay: 0.5s; }
+.service-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Feature cards animation */
+.feature-card {
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.feature-card:nth-child(1) { animation-delay: 0.15s; }
+.feature-card:nth-child(2) { animation-delay: 0.3s; }
+.feature-card:nth-child(3) { animation-delay: 0.45s; }
+
+/* Process steps animation */
+.process-step {
+    animation: fadeInUp 0.7s ease-out;
+    animation-fill-mode: both;
+}
+
+.process-step:nth-child(1) { animation-delay: 0.2s; }
+.process-step:nth-child(2) { animation-delay: 0.4s; }
+.process-step:nth-child(3) { animation-delay: 0.6s; }
+
+/* Why choose us cards */
+.why-card {
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.why-card:nth-child(1) { animation-delay: 0.1s; }
+.why-card:nth-child(2) { animation-delay: 0.2s; }
+.why-card:nth-child(3) { animation-delay: 0.3s; }
+.why-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Stats animation */
+.stat-card {
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.stat-card:nth-child(1) { animation-delay: 0.1s; }
+.stat-card:nth-child(2) { animation-delay: 0.25s; }
+.stat-card:nth-child(3) { animation-delay: 0.4s; }
+.stat-card:nth-child(4) { animation-delay: 0.55s; }
+
+/* ========== HOVER ANIMATIONS ========== */
+
+/* Subtle pulse animation for CTA buttons */
+@keyframes subtlePulse {
+    0%, 100% {
+        box-shadow: 0 4px 20px rgba(255,22,84,0.25);
+    }
+    50% {
+        box-shadow: 0 6px 30px rgba(255,22,84,0.35);
+    }
+}
+
+.cta-button:hover,
+.hero-cta-primary:hover,
+button[type="submit"]:hover {
+    animation: subtlePulse 2s ease-in-out infinite;
+}
+
+/* Gentle glow animation for icons */
+@keyframes iconGlow {
+    0%, 100% {
+        box-shadow: 0 4px 20px rgba(255,22,84,0.15);
+    }
+    50% {
+        box-shadow: 0 6px 28px rgba(255,22,84,0.25);
+    }
+}
+
+.stat-icon:hover,
+.service-icon:hover {
+    animation: iconGlow 1.5s ease-in-out infinite;
+}
+
+/* ========== BACKGROUND ANIMATIONS ========== */
+
+/* Subtle gradient shift for hero section */
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.hero-section {
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease infinite;
+}
+
+/* ========== LOADING ANIMATIONS ========== */
+
+/* Shimmer effect for loading states */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.loading-shimmer {
+    background: linear-gradient(
+        90deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.05) 50%,
+        rgba(255,255,255,0) 100%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+}
+
+/* ========== SCROLL ANIMATIONS ========== */
+
+/* Fade in sections as they come into view */
+.section-fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section-fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ========== NUMBER COUNTER ANIMATION ========== */
+
+/* Animated counting for stats */
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stat-number {
+    animation: countUp 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+/* ========== ICON ROTATION ON HOVER ========== */
+
+/* Subtle rotation for interactive icons */
+.icon-rotate {
+    transition: transform 0.3s ease;
+}
+
+.icon-rotate:hover {
+    transform: rotate(10deg);
+}
+
+/* ========== ACCORDION ANIMATIONS ========== */
+
+/* Smooth expand/collapse for FAQ */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 1000px;
+}
+
+/* FAQ chevron rotation */
+.faq-chevron {
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-chevron {
+    transform: rotate(180deg);
+}
+
+/* ========== BUTTON RIPPLE EFFECT ========== */
+
+/* Ripple animation on button click */
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.button-ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.button-ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    transform: translate(-50%, -50%) scale(0);
+    pointer-events: none;
+}
+
+.button-ripple:active::after {
+    animation: ripple 0.6s ease-out;
+}
+
+/* ========== FLOATING ANIMATION ========== */
+
+/* Subtle floating for decorative elements */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.float-animation {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* ========== MOBILE OPTIMIZATIONS ========== */
+
+@media (max-width: 768px) {
+    /* Disable complex animations on mobile for performance */
+    .hero-section {
+        animation: none;
+    }
+    
+    /* Simplify fade-in animations */
+    .service-card,
+    .feature-card,
+    .process-step,
+    .why-card,
+    .stat-card {
+        animation: fadeIn 0.4s ease-out;
+        animation-fill-mode: both;
+    }
+    
+    /* Remove staggered delays on mobile */
+    .service-card:nth-child(n),
+    .feature-card:nth-child(n),
+    .process-step:nth-child(n),
+    .why-card:nth-child(n),
+    .stat-card:nth-child(n) {
+        animation-delay: 0s;
+    }
+    
+    /* Disable hover animations on touch devices */
+    @media (hover: none) {
+        .cta-button:hover,
+        .stat-icon:hover,
+        .service-icon:hover {
+            animation: none;
+        }
+    }
+}
+
+/* ========== REDUCED MOTION PREFERENCE ========== */
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

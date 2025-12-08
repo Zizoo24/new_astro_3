@@ -1,0 +1,248 @@
+/* Visual Relief Deployment 1: Gradients & Shadows */
+/* Applied: Dec 8, 2025 */
+/* Purpose: Add subtle visual depth and interest through gradients and shadows */
+
+/* ========== SECTION BACKGROUND GRADIENTS ========== */
+
+/* Languages section - subtle coral wash with world map */
+.languages-section {
+    background-image: url('/images/patterns/world-map.svg'), linear-gradient(135deg, rgba(255,22,84,0.02) 0%, rgba(255,22,84,0.06) 100%);
+    background-size: contain, 100%;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+}
+
+/* Stats section - navy depth gradient */
+.stats-section,
+body.theme-dark .stats-section {
+    background: linear-gradient(135deg, #1a2332 0%, #2a3442 100%);
+}
+
+/* Approach section - light subtle gradient */
+.approach-section {
+    background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+body.theme-dark .approach-section {
+    background: linear-gradient(180deg, #0d1117 0%, #161b22 100%);
+}
+
+/* Testimonials section - subtle gradient */
+.testimonials-section {
+    background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+body.theme-dark .testimonials-section {
+    background: linear-gradient(180deg, #161b22 0%, #0d1117 100%);
+}
+
+/* ========== CARD ENHANCEMENTS ========== */
+
+/* Service cards - enhanced hover glow */
+.service-card:hover,
+.service-card.exodus-service-card:hover {
+    box-shadow: 0 12px 40px rgba(255,22,84,0.12) !important;
+    transform: translateY(-6px);
+}
+
+/* Feature cards - subtle gradient border on hover */
+.feature-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(255,22,84,0) 0%, rgba(255,22,84,0.3) 50%, rgba(255,22,84,0) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.feature-card:hover::after {
+    opacity: 1;
+}
+
+/* Stats cards - glow effect */
+.stat-card {
+    box-shadow: 0 4px 20px rgba(255,22,84,0.08);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    box-shadow: 0 8px 30px rgba(255,22,84,0.15);
+    transform: translateY(-4px);
+}
+
+/* Why choose us cards - enhanced depth */
+.why-card {
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: all 0.3s ease;
+}
+
+.why-card:hover {
+    box-shadow: 0 8px 28px rgba(255,22,84,0.10);
+}
+
+body.theme-dark .why-card:hover {
+    box-shadow: 0 8px 28px rgba(255,22,84,0.15);
+}
+
+/* ========== TEXT SHADOWS FOR DEPTH ========== */
+
+/* Hero heading - subtle depth */
+.hero-title,
+.hero-section h1 {
+    text-shadow: 0 2px 20px rgba(0,0,0,0.15);
+}
+
+body.theme-dark .hero-title,
+body.theme-dark .hero-section h1 {
+    text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+
+/* Section headings - light shadow */
+.section-title,
+h2.section-heading {
+    text-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+body.theme-dark .section-title,
+body.theme-dark h2.section-heading {
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* ========== CORAL CARDS (BELOW HERO) ENHANCEMENT ========== */
+
+/* Exodus red cards - add subtle inner glow */
+.feature-card.exodus-red-card {
+    box-shadow: 
+        0 8px 24px rgba(227, 30, 36, 0.25),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.feature-card.exodus-red-card:hover {
+    box-shadow: 
+        0 12px 32px rgba(227, 30, 36, 0.35),
+        inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+/* ========== CTA SECTIONS ========== */
+
+/* CTA sections - coral gradient background */
+.cta-section {
+    background: linear-gradient(135deg, #FF1654 0%, #d91144 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add subtle pattern overlay to CTA */
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/images/patterns/dots.svg');
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+/* ========== BUTTON ENHANCEMENTS ========== */
+
+/* Primary CTA buttons - enhanced glow */
+.cta-button,
+.hero-cta-primary,
+button[type="submit"] {
+    box-shadow: 0 4px 20px rgba(255,22,84,0.25);
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover,
+.hero-cta-primary:hover,
+button[type="submit"]:hover {
+    box-shadow: 0 6px 30px rgba(255,22,84,0.35);
+    transform: translateY(-2px);
+}
+
+/* ========== SERVICES SECTION ========== */
+
+/* Services grid background - subtle dots */
+.services-section {
+    position: relative;
+}
+
+.services-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/images/patterns/dots.svg');
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* ========== FAQ SECTION ========== */
+
+/* FAQ items - alternating subtle backgrounds */
+.faq-item:nth-child(even) {
+    background: linear-gradient(90deg, rgba(255,22,84,0.01) 0%, rgba(255,22,84,0.02) 100%);
+}
+
+body.theme-dark .faq-item:nth-child(even) {
+    background: linear-gradient(90deg, rgba(255,22,84,0.02) 0%, rgba(255,22,84,0.04) 100%);
+}
+
+/* ========== FOOTER ========== */
+
+/* Footer - subtle top gradient fade */
+footer,
+.footer-section {
+    position: relative;
+}
+
+footer::before,
+.footer-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(180deg, rgba(255,22,84,0.02) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+body.theme-dark footer::before,
+body.theme-dark .footer-section::before {
+    background: linear-gradient(180deg, rgba(255,22,84,0.04) 0%, transparent 100%);
+}
+
+/* ========== MOBILE RESPONSIVENESS ========== */
+
+@media (max-width: 768px) {
+    /* Reduce shadow intensity on mobile for performance */
+    .service-card:hover,
+    .feature-card:hover,
+    .stat-card:hover {
+        box-shadow: 0 6px 20px rgba(255,22,84,0.10);
+    }
+    
+    /* Simplify gradients on mobile */
+    .languages-section {
+        background-image: linear-gradient(135deg, rgba(255,22,84,0.02) 0%, rgba(255,22,84,0.06) 100%);
+    }
+    
+    /* Remove text shadows on small screens */
+    .hero-title,
+    .section-title {
+        text-shadow: none;
+    }
+}
