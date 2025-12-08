@@ -2,60 +2,10 @@
    VISIBILITY FIXES - Minimal Overrides
    Only applies where absolutely needed
    Respects the color token system
+   
+   NOTE: Header and dropdown styles are in
+   navigation-glassmorphism.css (loads after this)
    ============================================ */
-
-/* ==========================================
-   DESKTOP NAVIGATION - DARK GLASS HEADER
-   The exodus-header has dark glass background
-   so white text is appropriate here
-   ========================================== */
-
-.header-desktop.exodus-header {
-    background: rgba(14, 43, 72, 0.85);
-}
-
-.header-desktop.exodus-header.scrolled {
-    background: rgba(14, 43, 72, 0.95);
-}
-
-.header-desktop.exodus-header .nav-link,
-.header-desktop.exodus-header .logo-text,
-.header-desktop.exodus-header .logo-suffix,
-.header-desktop.exodus-header .logo-domain {
-    color: #ffffff;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-.header-desktop.exodus-header .logo-tagline {
-    color: rgba(255, 255, 255, 0.85);
-}
-
-/* ==========================================
-   DROPDOWN MENUS - DARK GLASS
-   Dropdowns have navy glass backgrounds
-   ========================================== */
-
-.dropdown-menu,
-.nav-dropdown,
-.sub-menu {
-    background: rgba(14, 43, 72, 0.95);
-    backdrop-filter: blur(24px) saturate(200%);
-    -webkit-backdrop-filter: blur(24px) saturate(200%);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.dropdown-menu li a,
-.nav-dropdown li a,
-.sub-menu li a {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.dropdown-menu li a:hover,
-.nav-dropdown li a:hover,
-.sub-menu li a:hover {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.15);
-}
 
 /* ==========================================
    MOBILE SIDEBAR - NAVY BACKGROUND
@@ -192,25 +142,4 @@
     color: var(--text-heading);
 }
 
-/* ==========================================
-   DARK MODE ADJUSTMENTS
-   ========================================== */
-
-@media (prefers-color-scheme: dark) {
-    .header-desktop.exodus-header {
-        background: rgba(11, 17, 26, 0.9);
-    }
-    
-    .header-desktop.exodus-header.scrolled {
-        background: rgba(11, 17, 26, 0.95);
-    }
-}
-
-/* Theme-dark class overrides */
-body.theme-dark .header-desktop.exodus-header {
-    background: rgba(11, 17, 26, 0.9);
-}
-
-body.theme-dark .header-desktop.exodus-header.scrolled {
-    background: rgba(11, 17, 26, 0.95);
-}
+/* Dark mode header styles are in navigation-glassmorphism.css */
