@@ -51,7 +51,7 @@ This document tracks all tasks for the project, organized by status.
 
 | Task | Description | Notes |
 |------|-------------|-------|
-| CSS consolidation | Remove redundant overrides and unused styles from public/styles/ | Wait until component migrations stabilize |
+| CSS consolidation | ✅ COMPLETED - Merged 13 CSS files into unified app.css (335KB) | Dec 2025 |
 | Add more service pages | Target: 55+ pages total (currently 49) | Follow ServiceLayout pattern |
 
 ### Low Priority / Ideas
@@ -68,11 +68,10 @@ This document tracks all tasks for the project, organized by status.
 ### CSS Architecture
 - **Canonical CSS location:** `public/styles/` (NOT `src/styles/`)
 - **Key files:**
-  - `porto-desktop.css` - Base desktop styles
-  - `navigation-glassmorphism.css` - Header/nav styling
-  - `sticky-mobile.css` - Mobile bottom bar
-  - `mobile-ios.css` - iOS-specific adjustments
-  - `dark-mode.css` - Dark theme overrides
+  - `app.css` - Unified stylesheet (335KB, ~15,700 lines) containing all 13 merged CSS files
+  - `print.css` - Print-specific styles
+  - `mobile-action-bar.css` - Optional mobile action bar
+- **CSS sections in app.css (load order):** base-architecture → porto-desktop → services-enhanced → document-pages → visibility-fixes → navigation-glassmorphism → subsection-menu → sticky-mobile → mobile-ios → mobile-android → desktop-macos → dark-mode → megamenu
 
 ### Component Architecture
 - **Layouts:** `BaseLayout.astro`, `ServiceLayout.astro`, `CategoryLayout.astro`

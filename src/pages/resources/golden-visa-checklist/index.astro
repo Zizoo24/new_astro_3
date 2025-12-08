@@ -138,7 +138,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
   .checklist-box { background: #f8f9fa; padding: 1.5rem; border-radius: 0.75rem; margin-bottom: 1rem; }
   .checklist-box h4 { margin: 0 0 1rem; font-size: 1rem; color: var(--primary-color); }
   .checklist-box ul { margin: 0; padding-left: 1.25rem; }
-  .checklist-box li { margin-bottom: 0.5rem; line-height: 1.6; }
+  .checklist-box li { margin-bottom: 0.5rem; line-height: 1.6; color: #374151; }
   .note-box { background: var(--primary-color); color: #fff; padding: 2rem; border-radius: 0.75rem; margin-top: 2rem; }
   .note-box h4 { margin: 0 0 1rem; }
   .note-box p { margin-bottom: 1rem; color: rgba(255, 255, 255, 0.9); }
@@ -150,4 +150,14 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
   .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
   .btn-primary { background: var(--accent-color); color: #ffffff; }
   .btn-primary:hover { background: #e0144c; transform: translateY(-2px); }
+
+  :global(body.theme-dark) .bg-white { background: var(--bg-dark, #0d1117); }
+  :global(body.theme-dark) .bg-light { background: var(--bg-light, #161b22); }
+  :global(body.theme-dark) h2 { color: var(--text-light, #f0f6fc); }
+  :global(body.theme-dark) .category-intro { color: var(--text-muted, #8b949e); }
+  :global(body.theme-dark) .checklist-box { background: var(--surface-muted, #1b2738); border: 1px solid var(--border-light, #1f2a3a); }
+  :global(body.theme-dark) .checklist-box h4 { color: var(--accent-coral, #ff6b6b); }
+  :global(body.theme-dark) .checklist-box li { color: var(--text-secondary, #c5d4e8); }
+  :global(body.theme-dark) .cta-section h2 { color: var(--text-light, #f0f6fc); }
+  :global(body.theme-dark) .cta-section p { color: var(--text-muted, #8b949e); }
 </style>
