@@ -28,6 +28,19 @@ _None - all tasks completed_
 
 ---
 
+## Session: December 2025 - Visual Relief & Readability
+
+| Task | Description | Status |
+|------|-------------|--------|
+| Global typography | Increased line-height to 1.7 for body text, 75ch max-width for text blocks | Completed |
+| Vertical rhythm | Section padding clamp(60px, 8vw, 100px), improved heading/paragraph spacing | Completed |
+| Service cards | Increased grid gaps clamp(1.5rem, 3vw, 2.5rem), more card padding | Completed |
+| FAQ formatting | Bold keywords, bullet points, shorter paragraphs in all 5 answers | Completed |
+| Languages grid | Border-top separator, improved gaps and margins | Completed |
+| Specialist cards | Visual hierarchy with border-top on tags, smaller font size | Completed |
+
+---
+
 ## Session: December 2025 - CTA Enhancement & Hero Images
 
 | Task | Description | Status |
