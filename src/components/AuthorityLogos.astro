@@ -1,0 +1,138 @@
+---
+interface Props {
+  class?: string;
+  title?: string;
+}
+
+const { class: className = '', title = 'Translations formatted for acceptance by:' } = Astro.props;
+
+const authorities = [
+  { name: 'Ministry of Justice', logo: '/images/logos/moj-uae.svg', alt: 'UAE Ministry of Justice' },
+  { name: 'Dubai Courts', logo: '/images/logos/dubai-courts.svg', alt: 'Dubai Courts' },
+  { name: 'Dubai Police', logo: '/images/logos/dubai-police.svg', alt: 'Dubai Police' },
+  { name: 'Dubai Land Department', logo: '/images/logos/dld.svg', alt: 'Dubai Land Department' },
+  { name: 'MOFAIC', logo: '/images/logos/mofaic.svg', alt: 'UAE Ministry of Foreign Affairs' },
+];
+---
+
+<section class={`authority-strip ${className}`}>
+  <p class="authority-strip-title">{title}</p>
+  <ul class="authority-logos">
+    {authorities.map((auth) => (
+      <li>
+        <img src={auth.logo} alt={auth.alt} loading="lazy" />
+        <span class="authority-name">{auth.name}</span>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .authority-strip {
+    margin: 2rem 0;
+    padding: 1.25rem 1.5rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  }
+
+  .authority-strip-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+    color: var(--primary-navy, #0E2B48);
+    text-align: center;
+  }
+
+  .authority-logos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .authority-logos li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.3s ease;
+  }
+
+  .authority-logos li img {
+    height: 40px;
+    width: auto;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+  }
+
+  .authority-logos li:hover img {
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: translateY(-2px);
+  }
+
+  .authority-name {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--text-muted, #5a6a7a);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .authority-logos li:hover .authority-name {
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .authority-strip {
+      padding: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .authority-logos {
+      gap: 1rem;
+    }
+
+    .authority-logos li img {
+      height: 32px;
+    }
+
+    .authority-name {
+      font-size: 0.65rem;
+      opacity: 1;
+    }
+  }
+
+  /* Dark mode */
+  :global(body.theme-dark) .authority-strip {
+    background: rgba(22, 27, 34, 0.95);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  :global(body.theme-dark) .authority-strip-title {
+    color: #e6edf3;
+  }
+
+  :global(body.theme-dark) .authority-logos li img {
+    filter: grayscale(100%) brightness(1.2);
+    opacity: 0.8;
+  }
+
+  :global(body.theme-dark) .authority-logos li:hover img {
+    filter: grayscale(0%) brightness(1);
+    opacity: 1;
+  }
+
+  :global(body.theme-dark) .authority-name {
+    color: #a8b3c2;
+  }
+</style>
