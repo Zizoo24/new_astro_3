@@ -17,23 +17,32 @@ const authorities = [
 
 <section class={`authority-strip ${className}`}>
   <p class="authority-strip-title">{title}</p>
-  <ul class="authority-logos">
-    {authorities.map((auth) => (
-      <li>
-        <img src={auth.logo} alt={auth.alt} loading="lazy" />
-        <span class="authority-name">{auth.name}</span>
-      </li>
-    ))}
-  </ul>
+  <div class="authority-carousel">
+    <ul class="authority-logos">
+      {authorities.map((auth) => (
+        <li>
+          <img src={auth.logo} alt={auth.alt} loading="lazy" />
+          <span class="authority-name">{auth.name}</span>
+        </li>
+      ))}
+      {authorities.map((auth) => (
+        <li aria-hidden="true">
+          <img src={auth.logo} alt="" loading="lazy" />
+          <span class="authority-name">{auth.name}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
 </section>
 
 <style>
   .authority-strip {
     margin: 2rem 0;
-    padding: 1.25rem 1.5rem;
+    padding: 1.5rem 0;
     border-radius: 1rem;
     background: rgba(255, 255, 255, 0.95);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
   }
 
   .authority-strip-title {
@@ -41,46 +50,69 @@ const authorities = [
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
     color: var(--primary-navy, #0E2B48);
     text-align: center;
+    padding: 0 1.5rem;
+  }
+
+  .authority-carousel {
+    width: 100%;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
   }
 
   .authority-logos {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 3rem;
     align-items: center;
-    justify-content: center;
     list-style: none;
-    padding: 0;
+    padding: 0.5rem 0;
     margin: 0;
+    width: max-content;
+    animation: scrollLogos 30s linear infinite;
+  }
+
+  .authority-carousel:hover .authority-logos {
+    animation-play-state: paused;
+  }
+
+  @keyframes scrollLogos {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-50% - 1.5rem));
+    }
   }
 
   .authority-logos li {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.5rem;
     transition: all 0.3s ease;
+    flex-shrink: 0;
   }
 
   .authority-logos li img {
-    height: 48px;
-    max-width: 120px;
+    height: 72px;
+    max-width: 160px;
     width: auto;
     object-fit: contain;
     transition: all 0.3s ease;
   }
 
   .authority-logos li:hover img {
-    transform: translateY(-2px);
+    transform: translateY(-4px) scale(1.05);
+    filter: drop-shadow(0 8px 16px rgba(14, 43, 72, 0.2));
   }
 
   .authority-name {
-    font-size: 0.7rem;
-    font-weight: 500;
-    color: var(--text-muted, #5a6a7a);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--primary-navy, #0E2B48);
     text-align: center;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -92,17 +124,18 @@ const authorities = [
 
   @media (max-width: 768px) {
     .authority-strip {
-      padding: 1rem;
+      padding: 1.25rem 0;
       margin: 1.5rem 0;
     }
 
     .authority-logos {
-      gap: 1rem;
+      gap: 2rem;
+      animation-duration: 25s;
     }
 
     .authority-logos li img {
-      height: 36px;
-      max-width: 90px;
+      height: 56px;
+      max-width: 120px;
     }
 
     .authority-name {
@@ -122,14 +155,14 @@ const authorities = [
   }
 
   :global(body.theme-dark) .authority-logos li img {
-    opacity: 0.9;
+    filter: brightness(1.1);
   }
 
   :global(body.theme-dark) .authority-logos li:hover img {
-    opacity: 1;
+    filter: brightness(1.2) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
   }
 
   :global(body.theme-dark) .authority-name {
-    color: #a8b3c2;
+    color: #c9d1d9;
   }
 </style>

@@ -23,13 +23,34 @@
 
 .trust-bar-logos {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 20px;
-    padding: 0 20px;
-    max-width: 1000px;
+    gap: 24px;
+    padding: 0;
+    max-width: 100%;
     margin: 0 auto;
+    overflow: hidden;
+}
+
+.trust-bar-carousel {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    width: max-content;
+    animation: trustBarScroll 35s linear infinite;
+}
+
+.trust-bar-logos:hover .trust-bar-carousel {
+    animation-play-state: paused;
+}
+
+@keyframes trustBarScroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-50% - 20px));
+    }
 }
 
 .trust-capsule {
@@ -37,32 +58,32 @@
     align-items: center;
     justify-content: center;
     background: #FFFFFF;
-    padding: 16px 32px;
+    padding: 20px 40px;
     border-radius: 50px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     border: 1px solid #E5E7EB;
     transition: all 0.3s ease;
-    min-width: 140px;
-    min-height: 70px;
+    min-width: 160px;
+    min-height: 90px;
+    flex-shrink: 0;
 }
 
 .trust-capsule:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px) scale(1.02);
     border-color: #D1D5DB;
 }
 
 .trust-capsule img {
-    height: 42px;
-    max-width: 120px;
+    height: 64px;
+    max-width: 150px;
     width: auto;
     object-fit: contain;
-    filter: grayscale(20%) opacity(0.9);
     transition: all 0.3s ease;
 }
 
 .trust-capsule:hover img {
-    filter: grayscale(0%) opacity(1);
+    filter: drop-shadow(0 4px 8px rgba(14, 43, 72, 0.15));
 }
 
 /* Mobile Responsive */
@@ -81,18 +102,22 @@
     
     .trust-bar-logos {
         gap: 15px;
-        padding: 0 15px;
+    }
+    
+    .trust-bar-carousel {
+        gap: 30px;
+        animation-duration: 28s;
     }
     
     .trust-capsule {
-        padding: 12px 24px;
-        min-width: 120px;
-        min-height: 60px;
+        padding: 16px 28px;
+        min-width: 140px;
+        min-height: 75px;
     }
     
     .trust-capsule img {
-        height: 36px;
-        max-width: 100px;
+        height: 52px;
+        max-width: 120px;
     }
 }
 
@@ -101,19 +126,20 @@
         padding: 35px 0;
     }
     
-    .trust-bar-logos {
-        gap: 12px;
+    .trust-bar-carousel {
+        gap: 24px;
+        animation-duration: 25s;
     }
     
     .trust-capsule {
-        padding: 10px 20px;
-        min-width: 110px;
-        min-height: 55px;
+        padding: 14px 24px;
+        min-width: 130px;
+        min-height: 70px;
     }
     
     .trust-capsule img {
-        height: 32px;
-        max-width: 90px;
+        height: 48px;
+        max-width: 110px;
     }
 }
 
