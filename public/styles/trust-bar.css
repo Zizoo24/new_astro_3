@@ -1,0 +1,147 @@
+/* Trust Bar Section - Government Logos Below Cards */
+
+.trust-bar-section {
+    background: #F8F9FA;
+    padding: 50px 0;
+    border-top: 1px solid #E5E7EB;
+}
+
+.trust-bar-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.trust-bar-title {
+    font-family: var(--font-secondary);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #6B7280;
+    margin: 0;
+}
+
+.trust-bar-logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 0 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.trust-capsule {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+    padding: 16px 32px;
+    border-radius: 50px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #E5E7EB;
+    transition: all 0.3s ease;
+    min-width: 140px;
+    min-height: 70px;
+}
+
+.trust-capsule:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+    border-color: #D1D5DB;
+}
+
+.trust-capsule img {
+    height: 42px;
+    max-width: 120px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(20%) opacity(0.9);
+    transition: all 0.3s ease;
+}
+
+.trust-capsule:hover img {
+    filter: grayscale(0%) opacity(1);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .trust-bar-section {
+        padding: 40px 0;
+    }
+    
+    .trust-bar-header {
+        margin-bottom: 28px;
+    }
+    
+    .trust-bar-title {
+        font-size: 12px;
+    }
+    
+    .trust-bar-logos {
+        gap: 15px;
+        padding: 0 15px;
+    }
+    
+    .trust-capsule {
+        padding: 12px 24px;
+        min-width: 120px;
+        min-height: 60px;
+    }
+    
+    .trust-capsule img {
+        height: 36px;
+        max-width: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .trust-bar-section {
+        padding: 35px 0;
+    }
+    
+    .trust-bar-logos {
+        gap: 12px;
+    }
+    
+    .trust-capsule {
+        padding: 10px 20px;
+        min-width: 110px;
+        min-height: 55px;
+    }
+    
+    .trust-capsule img {
+        height: 32px;
+        max-width: 90px;
+    }
+}
+
+/* Dark Mode Support */
+body.theme-dark .trust-bar-section {
+    background: rgba(14, 31, 68, 0.3);
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+body.theme-dark .trust-bar-title {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+body.theme-dark .trust-capsule {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+body.theme-dark .trust-capsule:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+body.theme-dark .trust-capsule img {
+    filter: brightness(1.1) grayscale(30%) opacity(0.85);
+}
+
+body.theme-dark .trust-capsule:hover img {
+    filter: brightness(1.2) grayscale(0%) opacity(1);
+}
