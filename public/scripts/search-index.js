@@ -127,7 +127,7 @@ const searchIndex = [
     },
     {
         title: "Contact Us",
-        url: "/contact.html",
+        url: "/contact/",
         category: "Contact",
         keywords: "contact whatsapp email phone call quote"
     },
@@ -259,13 +259,13 @@ const searchIndex = [
     },
     {
         title: "Privacy Policy",
-        url: "/privacy.html",
+        url: "/privacy/",
         category: "Legal",
         keywords: "privacy policy data protection gdpr personal information"
     },
     {
         title: "Terms of Service",
-        url: "/terms.html",
+        url: "/terms/",
         category: "Legal",
         keywords: "terms service conditions agreement legal"
     }
