@@ -1,0 +1,449 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Personal Documents', url: '/personal-documents/' }
+];
+
+const snapshot = [
+  { icon: 'certificate', bold: 'MOJ Certified', text: 'Ministry of Justice registered translators' },
+  { icon: 'passport', bold: 'Visa Ready', text: 'Formatted for GDRFA, ICP, MOHRE submission' },
+  { icon: 'clock', bold: '60-Min Standard', text: 'Most certificates delivered within the hour' },
+  { icon: 'check-circle', bold: 'Guaranteed', text: 'Government acceptance or free revision' }
+];
+
+const trustStrip = [
+  'Ministry of Justice Licensed',
+  'GDRFA & ICP Compliant',
+  'Golden Visa Accepted',
+  'Same-Day Delivery Available'
+];
+
+const processSteps = [
+  {
+    number: 1,
+    title: 'Send Your Document',
+    text: 'WhatsApp us a clear photo or scan. We check legibility, verify any required attestation stamps, and confirm the scope within 15 minutes.',
+    icon: 'mobile-alt'
+  },
+  {
+    number: 2,
+    title: 'Receive Your Quote',
+    text: 'Fixed price with no surprises. We tell you exactly what you will pay, what is included, and when you will receive the completed translation.',
+    icon: 'file-invoice'
+  },
+  {
+    number: 3,
+    title: 'Translation & Review',
+    text: 'Our MOJ-licensed partner translates your document. A second reviewer verifies all names match your passport and Emirates ID exactly.',
+    icon: 'user-check'
+  },
+  {
+    number: 4,
+    title: 'Certified Delivery',
+    text: 'Digital copy sent via WhatsApp immediately. Physical stamped copy available via same-day courier anywhere in the UAE.',
+    icon: 'shipping-fast'
+  }
+];
+
+const benefitCards = [
+  {
+    icon: 'id-card',
+    title: 'Name Match Guarantee',
+    text: 'We cross-reference every translation against your passport and Emirates ID. Name mismatches cause 40% of government rejections—we prevent them.'
+  },
+  {
+    icon: 'globe',
+    title: 'Multi-Language Support',
+    text: 'Arabic, English, French, German, Hindi, Urdu, Tagalog, Chinese, Russian, and 40+ other languages. All certified to UAE standards.'
+  },
+  {
+    icon: 'concierge-bell',
+    title: 'White-Glove Service',
+    text: 'We guide you through the entire process. Which stamps you need, where to submit, what to expect. Not just translation—complete document support.'
+  }
+];
+
+const accordionSections = [
+  {
+    title: 'Vital Records & Certificates',
+    id: 'vital-records',
+    items: [
+      {
+        heading: 'Birth Certificate Translation',
+        body: 'Required for child sponsorship, school enrollment, and family visa applications. We translate birth certificates from any country into Arabic or English with MOJ certification. The translation includes all details: child name, parents names, date and place of birth, and registration numbers. Processing typically takes 60 minutes for standard certificates.'
+      },
+      {
+        heading: 'Marriage Certificate Translation',
+        body: 'Essential for spousal visa sponsorship, joint bank accounts, and property registration. We handle marriage certificates from civil registries, religious authorities, and court-issued documents. The translation preserves all legal details required by GDRFA and ensures spouse names match passport records exactly.'
+      },
+      {
+        heading: 'Divorce Certificate Translation',
+        body: 'Required when updating visa status, remarrying in the UAE, or resolving custody matters. We translate divorce decrees, separation agreements, and court orders. Sensitive documents handled with complete confidentiality. The translation captures all terms relevant to UAE family law proceedings.'
+      },
+      {
+        heading: 'Death Certificate Translation',
+        body: 'Necessary for inheritance claims, insurance processing, and repatriation procedures. We translate death certificates with appropriate care and urgency. The translation includes cause of death, date, location, and all registration details required by UAE authorities and insurance companies.'
+      }
+    ]
+  },
+  {
+    title: 'Immigration & Visa Documents',
+    id: 'immigration',
+    items: [
+      {
+        heading: 'Police Clearance Certificate (PCC)',
+        body: 'Required for employment visas, Golden Visa applications, and residency renewals. We translate PCCs from all countries including FBI reports, ACRO certificates, and national police clearances. Note: PCCs have limited validity (typically 3-6 months), so timing your translation correctly is important. We advise on optimal timing.'
+      },
+      {
+        heading: 'Driving License Translation',
+        body: 'Required for RTA file opening and license conversion. We translate driving licenses from all countries into Arabic with the specific format RTA requires. The translation includes license class, issue date, expiry date, and any restrictions. Processing takes approximately 60 minutes.'
+      },
+      {
+        heading: 'Bank Statement Translation',
+        body: 'Required for Golden Visa applications, investor visas, and proof of funds. We translate bank statements while preserving the tabular format that authorities expect. Note: Bank statements are typically valid for only 30 days, so we prioritize quick turnaround to maximize your submission window.'
+      },
+      {
+        heading: 'Salary Certificate & Employment Letters',
+        body: 'Required for loan applications, tenancy agreements, and visa sponsorship. We translate salary certificates, employment contracts, and HR letters with all financial details accurately converted. The translation maintains the official format banks and landlords require.'
+      }
+    ]
+  },
+  {
+    title: 'Academic & Educational Documents',
+    id: 'academic',
+    items: [
+      {
+        heading: 'University Degree Translation',
+        body: 'Required for employment, professional licensing, and further education in the UAE. We translate degrees, diplomas, and certificates from universities worldwide. The translation includes institution name, degree title, field of study, graduation date, and any honors. For regulated professions (medicine, engineering, law), we ensure terminology meets licensing authority requirements.'
+      },
+      {
+        heading: 'Academic Transcript Translation',
+        body: 'Required for school transfers, university admissions, and credential evaluation. We translate transcripts preserving the grade format, credit hours, and course titles. Whether your transcript uses GPA, percentages, or letter grades, we present it clearly for UAE institutions to evaluate.'
+      },
+      {
+        heading: 'School Records & Transfer Documents',
+        body: 'Required when transferring children between schools in Dubai or enrolling from abroad. We translate report cards, transfer certificates, and immunization records. Schools like GEMS, Taaleem, and KHDA-rated institutions accept our translations for enrollment processing.'
+      }
+    ]
+  },
+  {
+    title: 'Document Requirements by Purpose',
+    id: 'by-purpose',
+    items: [
+      {
+        heading: 'Golden Visa Application',
+        body: 'Golden Visa requires multiple translated documents: passport copies, bank statements (6 months), property title deeds, salary certificates, and educational credentials. We provide a complete Golden Visa translation package with consistent formatting across all documents. Our translations are accepted by ICP and all Golden Visa processing centers.'
+      },
+      {
+        heading: 'Family Visa Sponsorship',
+        body: 'Sponsoring family members requires: marriage certificate, birth certificates for children, passport copies, and tenancy contract. We translate the complete package ensuring all names match exactly across documents. GDRFA rejects applications where spouse or child names differ even slightly between documents.'
+      },
+      {
+        heading: 'Employment Visa Processing',
+        body: 'Employment visas require: degree certificates, professional certifications, police clearance, and passport copies. We translate documents to meet MOHRE requirements. For regulated professions, we ensure translations use the specific terminology required by DHA, Dubai Municipality, or other licensing bodies.'
+      },
+      {
+        heading: 'School Enrollment',
+        body: 'Enrolling children in UAE schools requires: birth certificate, previous school records, immunization records, and passport copies. We translate the complete enrollment package with the format KHDA-rated schools expect. Many schools have enrollment deadlines—we offer rush processing to meet them.'
+      }
+    ]
+  }
+];
+
+const faqs = [
+  {
+    question: 'Which personal documents need certified translation in the UAE?',
+    answer: 'Any document submitted to UAE government entities (GDRFA, ICP, MOHRE, RTA, courts) must be translated by an MOJ-certified translator. This includes birth certificates, marriage certificates, degrees, driving licenses, police clearances, and bank statements. Documents for private use (personal reference, non-official purposes) do not require certification.'
+  },
+  {
+    question: 'How long does personal document translation take?',
+    answer: 'Standard certificates (birth, marriage, driving license) are typically completed within 60 minutes. Bank statements and academic transcripts take 2-4 hours depending on length. University degrees with multiple pages may take up to 24 hours. We provide exact timelines after reviewing your specific document.'
+  },
+  {
+    question: 'Do my documents need attestation before translation?',
+    answer: 'It depends on the purpose. For most visa applications, documents need the full attestation chain (home country notarization, foreign ministry, UAE embassy, MOFA) before translation. For some purposes like school enrollment or bank account opening, unattested translations may be accepted. We check your specific requirement and advise accordingly.'
+  },
+  {
+    question: 'What if my name is spelled differently on different documents?',
+    answer: 'Name inconsistencies are the most common cause of government rejections. We translate names exactly as they appear on the source document, then flag any discrepancies with your passport or Emirates ID. We can add a translator note explaining variations (e.g., transliteration differences) which authorities typically accept.'
+  },
+  {
+    question: 'Can you translate documents in languages other than Arabic and English?',
+    answer: 'Yes. We translate from 50+ source languages into Arabic or English. Common languages include Hindi, Urdu, Tagalog, French, German, Russian, Chinese, Spanish, and Portuguese. All translations receive the same MOJ certification regardless of source language.'
+  },
+  {
+    question: 'Do I need to bring original documents to your office?',
+    answer: 'No. Send a clear photo or scan via WhatsApp. We work from digital copies for translation. If you need a physical stamped copy, we can courier it to you. For attestation services that require original documents, we arrange secure pickup and delivery.'
+  }
+];
+---
+
+<ServiceLayout
+  title="Personal Document Translation Dubai | Birth, Marriage & Certificate Translation"
+  description="Professional translation of personal documents in Dubai. MOJ-certified translation for birth certificates, marriage certificates, degrees, driving licenses, police clearances. 60-minute delivery. Accepted by GDRFA, ICP, MOHRE."
+  keywords="personal document translation dubai, birth certificate translation, marriage certificate translation, degree translation dubai, driving license translation, police clearance translation, certificate translation uae, gdrfa translation, golden visa documents"
+  heroTitle="Personal Documents"
+  heroSubtitle="Translation Hub"
+  heroIntro="Every life milestone comes with paperwork. Whether you are sponsoring family, applying for Golden Visa, enrolling children in school, or converting your driving license, we translate the documents that move your life forward. MOJ-certified, government-accepted, delivered within the hour."
+  snapshot={snapshot}
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  serviceType="Personal Document Translation"
+  trustStrip={trustStrip}
+  processSteps={processSteps}
+  processTitle="How It Works"
+  benefitCards={benefitCards}
+  accordionSections={accordionSections}
+>
+
+  <section class="section bg-white">
+    <div class="container">
+      <h2>The Expat Guide to Document Translation in the UAE</h2>
+      
+      <p>Living in the UAE means navigating a constant stream of paperwork. Visa applications, school enrollments, driving license conversions, bank account openings—each requires translated documents that meet specific government standards. Understanding these requirements saves you time, money, and the frustration of rejected applications.</p>
+
+      <h3>Why Personal Documents Need Certified Translation</h3>
+      
+      <p>The UAE government requires all foreign-language documents to be translated into Arabic (and sometimes English) by translators registered with the Ministry of Justice. This is not bureaucratic formality—it ensures legal validity and prevents fraud. A translation without the MOJ stamp has no official standing, regardless of how accurate it may be.</p>
+      
+      <p>Each government entity has specific formatting expectations. GDRFA applications require translations in a particular layout. RTA driving license conversions need specific details highlighted. School enrollment offices expect transcripts presented in familiar formats. We know these requirements because we process hundreds of documents monthly for each authority.</p>
+
+      <h3>The Attestation Question</h3>
+      
+      <p>One of the most common questions we receive: Does my document need attestation before translation? The answer depends entirely on your purpose.</p>
+      
+      <p>For visa applications and government submissions, most documents require the full attestation chain: notarization in your home country, authentication by your foreign ministry, attestation by the UAE embassy, and final MOFA stamp in the UAE. Only after this chain is complete should you translate the document.</p>
+      
+      <p>For other purposes—school enrollment, bank account opening, employment verification—unattested translations are often accepted. We always check your specific requirement before quoting, ensuring you do not pay for attestation you do not need.</p>
+
+      <h3>Timing Matters</h3>
+      
+      <p>Several personal documents have validity windows that affect when you should get them translated. Police clearance certificates typically expire within 3-6 months of issue. Bank statements are usually valid for only 30 days. Medical fitness certificates have similar short windows.</p>
+      
+      <p>Getting a translation too early means your document may expire before you can use it. Getting it too late means rushing and paying premium fees. We advise on optimal timing based on your specific application timeline.</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Browse by Document Type</h2>
+      <p>Select your document category for specific requirements and processing information:</p>
+      
+      <div class="service-grid">
+        <a href="/personal/vital-records/" class="service-card">
+          <i class="fas fa-file-certificate"></i>
+          <h3>Vital Records</h3>
+          <p>Birth, marriage, divorce, and death certificates</p>
+        </a>
+        
+        <a href="/personal/immigration/" class="service-card">
+          <i class="fas fa-passport"></i>
+          <h3>Immigration Documents</h3>
+          <p>Police clearance, driving license, bank statements</p>
+        </a>
+        
+        <a href="/personal/academic/" class="service-card">
+          <i class="fas fa-graduation-cap"></i>
+          <h3>Academic Documents</h3>
+          <p>Degrees, transcripts, school records</p>
+        </a>
+        
+        <a href="/services/golden-visa-translation/" class="service-card">
+          <i class="fas fa-star"></i>
+          <h3>Golden Visa Package</h3>
+          <p>Complete document bundle for Golden Visa applications</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <h2>Popular Documents</h2>
+      
+      <div class="quick-links-grid">
+        <a href="/personal/vital-records/birth/" class="quick-link">
+          <i class="fas fa-baby"></i>
+          <span>Birth Certificate</span>
+        </a>
+        <a href="/personal/vital-records/marriage/" class="quick-link">
+          <i class="fas fa-ring"></i>
+          <span>Marriage Certificate</span>
+        </a>
+        <a href="/personal/immigration/pcc/" class="quick-link">
+          <i class="fas fa-shield-alt"></i>
+          <span>Police Clearance</span>
+        </a>
+        <a href="/personal/immigration/license/" class="quick-link">
+          <i class="fas fa-car"></i>
+          <span>Driving License</span>
+        </a>
+        <a href="/personal/academic/degree/" class="quick-link">
+          <i class="fas fa-scroll"></i>
+          <span>University Degree</span>
+        </a>
+        <a href="/personal/immigration/bank/" class="quick-link">
+          <i class="fas fa-university"></i>
+          <span>Bank Statements</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Related Services</h2>
+      
+      <div class="related-grid">
+        <a href="/services/attestation/" class="related-card">
+          <h3>Document Attestation</h3>
+          <p>MOFA attestation and embassy legalization for foreign documents</p>
+        </a>
+        
+        <a href="/legal-translation-dubai/" class="related-card">
+          <h3>Legal Translation</h3>
+          <p>Court documents, contracts, powers of attorney, and corporate filings</p>
+        </a>
+        
+        <a href="/services/certificate-translation/" class="related-card">
+          <h3>Certificate Translation</h3>
+          <p>All official certificates with MOJ certification</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</ServiceLayout>
+
+<style>
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .service-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+    display: block;
+  }
+  
+  .service-card:hover {
+    border-color: var(--accent-color, #FF1654);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .service-card i {
+    font-size: 2rem;
+    color: var(--primary-color, #0E2B48);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  
+  .service-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color, #0E2B48);
+  }
+  
+  .service-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted, #666);
+    margin: 0;
+    line-height: 1.5;
+  }
+  
+  .quick-links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .quick-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    background: var(--bg-light, #f8f9fa);
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--primary-color, #0E2B48);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+  }
+  
+  .quick-link:hover {
+    background: #ffffff;
+    border-color: var(--accent-color, #FF1654);
+    color: var(--accent-color, #FF1654);
+  }
+  
+  .quick-link i {
+    font-size: 1.1rem;
+    opacity: 0.8;
+  }
+  
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .related-card {
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 6px;
+    text-decoration: none;
+    color: inherit;
+    border-left: 3px solid var(--primary-color, #0E2B48);
+    transition: all 0.2s ease;
+  }
+  
+  .related-card:hover {
+    border-left-color: var(--accent-color, #FF1654);
+  }
+  
+  .related-card h3 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color, #0E2B48);
+  }
+  
+  .related-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted, #666);
+    margin: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .service-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .service-card {
+      padding: 1.5rem;
+    }
+    
+    .quick-links-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    
+    .quick-link {
+      padding: 0.875rem 1rem;
+      font-size: 0.875rem;
+    }
+  }
+</style>
