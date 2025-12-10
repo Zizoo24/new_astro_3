@@ -4,11 +4,51 @@
     "specialized": {
       "type": "object",
       "properties": {
+        "pageTitle": {
+          "type": "string"
+        },
+        "metaDescription": {
+          "type": "string"
+        },
         "title": {
+          "type": "string"
+        },
+        "slug": {
           "type": "string"
         },
         "description": {
           "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "heroHeading": {
+          "type": "string"
+        },
+        "heroSubheading": {
+          "type": "string"
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "icon": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "title",
+              "text"
+            ],
+            "additionalProperties": false
+          }
         },
         "body": {
           "type": "string"
