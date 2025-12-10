@@ -14,9 +14,155 @@ collections:
         label: "Homepage"
         name: "home"
         fields:
-          - { label: "Hero Title", name: "hero_title", widget: "string" }
-          - { label: "Hero Image", name: "hero_image", widget: "image", required: false }
-          - { label: "Body (optional)", name: "body", widget: "markdown", required: false }
+          - { label: "Page Title (SEO)", name: "pageTitle", widget: "string" }
+          - { label: "Meta Description", name: "metaDescription", widget: "text" }
+
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Title Line", name: "titleLine", widget: "string" }
+              - { label: "Lead Text", name: "lead", widget: "string" }
+              - { label: "Background Image", name: "image", widget: "image" }
+              - label: "Bullets"
+                name: "bullets"
+                widget: "list"
+                fields:
+                  - { label: "Icon Class (Font Awesome)", name: "icon", widget: "string", required: false }
+                  - { label: "Text", name: "text", widget: "string" }
+              - label: "Primary CTA"
+                name: "primaryCta"
+                widget: "object"
+                fields:
+                  - { label: "Button Label", name: "label", widget: "string" }
+                  - { label: "Button URL", name: "url", widget: "string" }
+              - label: "Secondary CTA"
+                name: "secondaryCta"
+                widget: "object"
+                required: false
+                fields:
+                  - { label: "Button Label", name: "label", widget: "string" }
+                  - { label: "Button URL", name: "url", widget: "string" }
+
+          - label: "Overlap Cards"
+            name: "overlapCards"
+            widget: "list"
+            fields:
+              - { label: "Icon Class", name: "icon", widget: "string", required: false }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "desc", widget: "text" }
+              - { label: "Badge Text", name: "badge", widget: "string", required: false }
+              - { label: "Link URL", name: "url", widget: "string", required: false }
+
+          - label: "iOS / Concierge Block"
+            name: "iosBlock"
+            widget: "object"
+            fields:
+              - { label: "Section Label", name: "label", widget: "string" }
+              - { label: "Heading", name: "title", widget: "string" }
+              - { label: "Body Text", name: "body", widget: "text" }
+              - label: "WhatsApp Button"
+                name: "whatsapp"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string", default: "WhatsApp" }
+                  - { label: "URL", name: "url", widget: "string" }
+              - label: "iMessage Button"
+                name: "imessage"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string", default: "iMessage" }
+                  - { label: "URL", name: "url", widget: "string" }
+              - label: "Express Card"
+                name: "expressCard"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Text", name: "text", widget: "text" }
+                  - { label: "Link URL", name: "url", widget: "string" }
+                  - { label: "Link Label", name: "linkLabel", widget: "string" }
+
+          - label: "Services Section"
+            name: "servicesSection"
+            widget: "object"
+            fields:
+              - { label: "Section Label", name: "label", widget: "string" }
+              - { label: "Section Title", name: "title", widget: "string" }
+              - label: "Service Cards"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Link URL", name: "href", widget: "string" }
+                  - { label: "Card Image", name: "image", widget: "image" }
+                  - { label: "Image Alt", name: "imageAlt", widget: "string" }
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - { label: "Text", name: "text", widget: "text" }
+
+          - label: "Metrics Strip"
+            name: "metrics"
+            widget: "list"
+            fields:
+              - { label: "Value", name: "value", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Note", name: "note", widget: "string", required: false }
+
+          - label: "Specialists Section"
+            name: "specialistsSection"
+            widget: "object"
+            fields:
+              - { label: "Section Label", name: "label", widget: "string" }
+              - { label: "Section Title", name: "title", widget: "string" }
+              - label: "Specialist Cards"
+                name: "cards"
+                widget: "list"
+                fields:
+                  - { label: "Link URL", name: "href", widget: "string" }
+                  - { label: "Icon Class", name: "icon", widget: "string", required: false }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - label: "Bullet Points"
+                    name: "bullets"
+                    widget: "list"
+                    field: { label: "Bullet", name: "bullet", widget: "string" }
+                  - label: "Tags"
+                    name: "tags"
+                    widget: "list"
+                    field: { label: "Tag", name: "tag", widget: "string" }
+
+          - label: "FAQ Section"
+            name: "faqSection"
+            widget: "object"
+            fields:
+              - { label: "Section Label", name: "label", widget: "string" }
+              - { label: "Section Title", name: "title", widget: "string" }
+              - label: "FAQ Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Question", name: "question", widget: "string" }
+                  - { label: "Answer", name: "answer", widget: "text" }
+
+          - label: "CTA Banner"
+            name: "ctaBanner"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "title", widget: "string" }
+              - { label: "Body Text", name: "body", widget: "text" }
+              - { label: "Button Label", name: "buttonLabel", widget: "string" }
+              - { label: "Button URL", name: "buttonUrl", widget: "string" }
+
+          - label: "Contact Section"
+            name: "contactSection"
+            widget: "object"
+            fields:
+              - { label: "Section Label", name: "label", widget: "string" }
+              - { label: "Section Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Name Placeholder", name: "namePlaceholder", widget: "string" }
+              - { label: "Email Placeholder", name: "emailPlaceholder", widget: "string" }
+              - { label: "Phone Placeholder", name: "phonePlaceholder", widget: "string" }
+              - { label: "Message Placeholder", name: "messagePlaceholder", widget: "string" }
+
+    
 
       - file: "src/content/core/about.md"
         label: "About Us"

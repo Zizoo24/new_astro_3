@@ -3,83 +3,400 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import TestimonialsCarousel from '../components/TestimonialsCarousel.astro';
 import DulBadge from '../components/DulBadge.astro';
 import AuthorityLogos from '../components/AuthorityLogos.astro';
+import { getEntry } from 'astro:content';
+
+const homeEntry = await getEntry('core', 'home');
+const data = homeEntry?.data || {};
+
+// SEO
+const pageTitle =
+  data.pageTitle ??
+  'MOJ Certified Legal Translation Dubai | Court-Ready Documents | OnlineTranslation.ae';
+
+const metaDescription =
+  data.metaDescription ??
+  'Professional legal translation services in Dubai designed for UAE court acceptance. Ministry of Justice certified translators for documents, contracts, and attestation. Fast, secure, reliable.';
+
+// HERO
+const hero = data.hero ?? {};
+const heroTitle =
+  hero.titleLine ?? 'MOJ Certified Legal Translation in Dubai';
+const heroLead =
+  hero.lead ?? 'Your Digital Document Concierge Across the UAE';
+const heroImage =
+  hero.image ?? '/images/onedrive/hero/office-team.png';
+
+const heroBullets =
+  hero.bullets ??
+  [
+    {
+      icon: 'fas fa-stamp',
+      text: 'MOJ certified for Dubai Courts, DIFC and ADGM',
+    },
+    {
+      icon: 'fas fa-bolt',
+      text: 'Standard draft ready in 60 minutes',
+    },
+    {
+      icon: 'fas fa-comments',
+      text: 'WhatsApp evidence for Police & Courts (formatted for legal submission)',
+    },
+  ];
+
+const primaryCta =
+  hero.primaryCta ?? {
+    label: 'Send Documents on WhatsApp',
+    url: 'https://wa.me/971508620217',
+  };
+
+const secondaryCta =
+  hero.secondaryCta ?? {
+    label: 'Or request a written quotation',
+    url: '/contact/',
+  };
+
+// OVERLAP CARDS
+const overlapCards =
+  data.overlapCards ??
+  [
+    {
+      icon: 'fas fa-shield-alt',
+      title: 'Dubai Unified License',
+      desc: 'Official Dubai business registry – click to verify',
+      badge: 'We are officially licensed',
+      url: 'https://app.invest.dubai.ae/DUL/1DE9D8AA-768A-4CFC-BC27-A6F23017B858',
+    },
+    {
+      icon: 'fas fa-building',
+      title: 'Government Accepted',
+      desc: 'Recognized by courts, embassies, and ministries',
+      badge: '',
+      url: '/services/legal-translation/',
+    },
+    {
+      icon: 'fas fa-bolt',
+      title: '60-Minute Turnaround',
+      desc: 'Fastest certified translation delivery in Dubai for standard documents',
+      badge: '',
+      url: '/services/legal-translation/',
+    },
+  ];
+
+// iOS / CONCIERGE BLOCK
+const ios = data.iosBlock ?? {};
+const iosLabel =
+  ios.label ?? 'Your Legal Concierge in Your Pocket';
+const iosTitle =
+  ios.title ?? 'It’s like having an in-house coordinator inside your phone.';
+const iosBody =
+  ios.body ??
+  'Send your documents once and we coordinate between legal translators, attestation providers, and couriers so you don’t have to chase anyone.';
+
+// Backward compatible: support both nested objects and flat label/url fields
+const whatsappConfig =
+  ios.whatsapp ??
+  {
+    label: ios.whatsappLabel ?? 'WhatsApp',
+    url:
+      ios.whatsappUrl ??
+      'https://wa.me/971508620217',
+  };
+
+const imessageConfig =
+  ios.imessage ??
+  {
+    label: ios.imessageLabel ?? 'iMessage',
+    url:
+      ios.imessageUrl ??
+      'sms:+971508620217&body=Hi, I need a translation quote',
+  };
+
+const expressCard =
+  ios.expressCard ??
+  {
+    title: 'Express Service',
+    text: 'Ultra-urgent translation for critical deadlines. Same-day certified delivery available.',
+    url:
+      'https://wa.me/971508620217?text=URGENT:%20I%20need%20express%20translation',
+    linkLabel: 'Urgent Request',
+  };
+
+// SERVICES SECTION
+const servicesSection = data.servicesSection ?? {};
+const servicesLabel =
+  servicesSection.label ?? 'Our Services';
+const servicesTitle =
+  servicesSection.title ??
+  'Professional Translation Services Across Four Practice Areas';
+
+const servicesItems =
+  servicesSection.items ??
+  [
+    {
+      href: '/services/legal-translation/',
+      image: '/images/onedrive/tiles/tile-courts.png',
+      imageAlt: 'Legal Translation Services',
+      heading: 'Legal & Corporate',
+      text:
+        'Contracts, court judgments, corporate governance, powers of attorney, and litigation documents with MOJ certification.',
+    },
+    {
+      href: '/personal/',
+      image: '/images/onedrive/tiles/tile-immigration.png',
+      imageAlt: 'Personal Document Translation',
+      heading: 'Personal Documents',
+      text:
+        'Birth certificates, marriage certificates, academic credentials, police clearance, and immigration documentation.',
+    },
+    {
+      href: '/services/attestation/',
+      image: '/images/onedrive/services/services-4.jpg',
+      imageAlt: 'Attestation & MOFAIC',
+      heading: 'Attestation Services',
+      text:
+        'Document attestation for MOFA and government entities. Complete legalization services including secure courier handling.',
+    },
+    {
+      href: '/services/certificate-translation/',
+      image: '/images/onedrive/services/services-5.jpg',
+      imageAlt: 'Business Localization',
+      heading: 'Business Localization',
+      text:
+        'Website and app localization, marketing adaptation, menu translation, and technical documentation for UAE market entry.',
+    },
+    {
+      href: '/locations/',
+      image: '/images/onedrive/tiles/tile-corporate.png',
+      imageAlt: 'Location Services',
+      heading: 'Location Services',
+      text:
+        'On-site collection and delivery across Dubai, Abu Dhabi, and Northern Emirates. Doorstep service for busy professionals.',
+    },
+    {
+      href: '/services/golden-visa-translation/',
+      image: '/images/onedrive/tiles/tile-immigration.png',
+      imageAlt: 'Golden Visa Translation',
+      heading: 'Golden Visa',
+      text:
+        'Complete document packages for UAE Golden Visa applications. Academic, professional, and investment documentation.',
+    },
+  ];
+
+// METRICS STRIP
+const metrics =
+  data.metrics ??
+  [
+    { value: '43+', label: 'Languages', note: 'Certified pairs' },
+    { value: '7', label: 'Days a Week', note: 'Always available' },
+    { value: 'Court', label: 'Ready Docs', note: 'MOJ certified' },
+    { value: '60min', label: 'Standard Draft', note: 'Digital delivery' },
+  ];
+
+// SPECIALISTS SECTION
+const specialistsSection = data.specialistsSection ?? {};
+const specialistsLabel =
+  specialistsSection.label ?? 'Our Specialists';
+const specialistsTitle =
+  specialistsSection.title ??
+  'Trusted Legal Translation Services in Dubai';
+
+const rawSpecialistCards =
+  specialistsSection.cards ??
+  [
+    {
+      href: '/services/legal-translation/',
+      icon: 'fas fa-gavel',
+      title: 'Court & Litigation Translation',
+      bullets: [
+        'Pleadings, memoranda, judgments',
+        'Evidence bundles and exhibits',
+        'UAE legal terminology',
+      ],
+      tags: ['Dubai Courts', 'DIFC', 'ADGM'],
+    },
+    {
+      href: '/services/golden-visa-translation/',
+      icon: 'fas fa-passport',
+      title: 'Immigration & Residency Translation',
+      bullets: [
+        'Golden Visa applications',
+        'Family visa documents',
+        'Emirates ID and ICP/GDRFA',
+      ],
+      tags: ['Golden Visa', 'Family Visa', 'ICP/GDRFA'],
+    },
+    {
+      href: '/industries/real-estate/',
+      icon: 'fas fa-building',
+      title: 'Real Estate & DLD Translation',
+      bullets: [
+        'Property contracts and POAs',
+        'Title deeds and RERA docs',
+        'DLD submission format',
+      ],
+      tags: ['DLD', 'RERA', 'Property POA'],
+    },
+    {
+      href: '/services/corporate-translation/',
+      icon: 'fas fa-briefcase',
+      title: 'Corporate & Commercial Translation',
+      bullets: [
+        'Trade licenses and MOAs',
+        'Shareholder agreements',
+        'Free zone documentation',
+      ],
+      tags: ['DMCC', 'Free Zones', 'DED'],
+    },
+  ];
+
+// Normalize bullets/tags (string OR { bullet } / { tag })
+const specialistsCards = rawSpecialistCards.map((card) => ({
+  ...card,
+  bullets: (card.bullets ?? []).map((b: any) =>
+    typeof b === 'string' ? b : b?.bullet ?? '',
+  ),
+  tags: (card.tags ?? []).map((t: any) =>
+    typeof t === 'string' ? t : t?.tag ?? '',
+  ),
+}));
+
+// FAQ SECTION
+const faqSection = data.faqSection ?? {};
+const faqLabel =
+  faqSection.label ?? 'Common Questions';
+const faqTitle =
+  faqSection.title ??
+  'Common Questions About Legal Translation in Dubai';
+
+const faqItems =
+  faqSection.items ??
+  [
+    {
+      question:
+        'What makes your translation service different from other translation companies?',
+      answer:
+        'We operate as a document concierge, not a traditional translation office. This means you get the compliance guarantees of working with certified legal translation providers without the friction of conventional agencies.',
+    },
+    {
+      question: 'Are your translations accepted by UAE courts?',
+      answer:
+        'Yes. Every legal translation service we coordinate is executed by translators certified by the Ministry of Justice. Our translations are formatted specifically for Dubai Courts, DIFC, ADGM, and federal judicial bodies.',
+    },
+    {
+      question: 'How quickly can you provide certified legal translation?',
+      answer:
+        'Standard documents (birth certificates, marriage certificates, educational credentials) are typically ready within 3–6 business hours. Express processing available for urgent legal requirements.',
+    },
+    {
+      question: 'Do you provide attestation services?',
+      answer:
+        'Yes. When your legal documents require attestation from MOFA or other government entities, we coordinate the complete process including secure courier handling of originals.',
+    },
+    {
+      question: 'Can you handle Arabic to English and English to Arabic?',
+      answer:
+        'Yes. Our certified translators work in both directions for comprehensive Arabic translation services.',
+    },
+  ];
+
+// CTA BANNER
+const ctaBanner =
+  data.ctaBanner ??
+  {
+    title: 'Let Us Handle the Compliance. You Focus on What Matters.',
+    body:
+      'Join the businesses and individuals across Dubai, Abu Dhabi, and the Northern Emirates who trust OnlineTranslation.ae as their provider of legal translation services.',
+    buttonLabel: 'Send Documents on WhatsApp',
+    buttonUrl: 'https://wa.me/971508620217',
+  };
+
+// CONTACT SECTION
+const contactSection =
+  data.contactSection ??
+  {
+    label: 'Get In Touch',
+    title: 'Request a Free Quotation',
+    description:
+      'Share your documents. We will confirm price and delivery time within minutes.',
+    namePlaceholder: 'Enter your full name',
+    emailPlaceholder: 'your@email.com',
+    phonePlaceholder: '+971 XX XXX XXXX',
+    messagePlaceholder:
+      'Describe your document(s) and requirements...',
+  };
 ---
 
-<BaseLayout 
-  title="MOJ Certified Legal Translation Dubai | Court-Ready Documents | OnlineTranslation.ae"
-  description="Professional legal translation services in Dubai designed for UAE court acceptance. Ministry of Justice certified translators for documents, contracts, and attestation. Fast, secure, reliable."
+<BaseLayout
+  title={pageTitle}
+  description={metaDescription}
   isHomepage={true}
 >
   <!-- Hero Section - Exodus Style -->
   <section id="home" class="hero-section exodus-hero">
     <div class="hero-background">
-      <img src="/images/onedrive/hero/office-team.png" alt="OnlineTranslation.ae Professional Team" class="hero-image" loading="eager">
+      <img
+        src={heroImage}
+        alt="OnlineTranslation.ae Professional Team"
+        class="hero-image"
+        loading="eager"
+      >
       <div class="hero-overlay exodus-overlay"></div>
     </div>
     <div class="container">
       <div class="hero-content">
         <div class="hero-text">
           <h1 class="hero-title exodus-title">
-            <span class="title-line">MOJ Certified Legal Translation in Dubai</span>
+            <span class="title-line">{heroTitle}</span>
           </h1>
-          <p class="hero-lead">Your Digital Document Concierge Across the UAE</p>
+          <p class="hero-lead">{heroLead}</p>
           <ul class="hero-bullets">
-            <li><i class="fas fa-stamp"></i> MOJ certified for Dubai Courts, DIFC and ADGM</li>
-            <li><i class="fas fa-bolt"></i> Standard draft ready in 60 minutes</li>
-            <li><i class="fas fa-comments"></i> WhatsApp evidence for Police & Courts (formatted for legal submission)</li>
+            {heroBullets.map((item) => (
+              <li>
+                {item.icon && <i class={item.icon}></i>}
+                {item.text}
+              </li>
+            ))}
           </ul>
-          
+
           <div class="hero-cta-group">
-            <a href="https://wa.me/971508620217" class="hero-cta exodus-cta">
-              <i class="fab fa-whatsapp"></i> Send Documents on WhatsApp
+            <a href={primaryCta.url} class="hero-cta exodus-cta">
+              <i class="fab fa-whatsapp"></i> {primaryCta.label}
             </a>
-            <a href="/contact/" class="hero-cta-secondary">Or request a written quotation</a>
+            {secondaryCta?.url && (
+              <a href={secondaryCta.url} class="hero-cta-secondary">
+                {secondaryCta.label}
+              </a>
+            )}
           </div>
         </div>
       </div>
     </div>
-    
+
     <!-- Exodus Overlap Cards - Trust Stack -->
     <div class="overlap-cards-wrapper">
       <div class="container">
         <div class="overlap-cards">
-          <!-- Card 1: DUL License Badge -->
-          <article class="overlap-card">
-            <a href="https://app.invest.dubai.ae/DUL/1DE9D8AA-768A-4CFC-BC27-A6F23017B858" target="_blank" rel="noopener noreferrer" class="overlap-card-link">
-              <div class="overlap-card-icon">
-                <i class="fas fa-shield-alt"></i>
-              </div>
-              <div class="overlap-card-content">
-                <h3 class="overlap-card-title">Dubai Unified License</h3>
-                <p class="overlap-card-desc">Official Dubai business registry – click to verify</p>
-                <span class="overlap-card-badge">We are officially licensed</span>
-              </div>
-            </a>
-          </article>
-          <!-- Card 2: Authority Logos -->
-          <article class="overlap-card">
-            <a href="/services/legal-translation/" class="overlap-card-link">
-              <div class="overlap-card-icon">
-                <i class="fas fa-building"></i>
-              </div>
-              <div class="overlap-card-content">
-                <h3 class="overlap-card-title">Government Accepted</h3>
-                <p class="overlap-card-desc">Recognized by courts, embassies, and ministries</p>
-              </div>
-            </a>
-          </article>
-          <!-- Card 3: 60 Minute Draft -->
-          <article class="overlap-card">
-            <a href="/services/legal-translation/" class="overlap-card-link">
-              <div class="overlap-card-icon">
-                <i class="fas fa-bolt"></i>
-              </div>
-              <div class="overlap-card-content">
-                <h3 class="overlap-card-title">60-Minute Turnaround</h3>
-                <p class="overlap-card-desc">Fastest certified translation delivery in Dubai for standard documents</p>
-              </div>
-            </a>
-          </article>
+          {overlapCards.map((card) => (
+            <article class="overlap-card">
+              <a
+                href={card.url || '#'}
+                class="overlap-card-link"
+                target={card.url?.startsWith('http') ? '_blank' : undefined}
+                rel={card.url?.startsWith('http') ? 'noopener noreferrer' : undefined}
+              >
+                <div class="overlap-card-icon">
+                  {card.icon && <i class={card.icon}></i>}
+                </div>
+                <div class="overlap-card-content">
+                  <h3 class="overlap-card-title">{card.title}</h3>
+                  <p class="overlap-card-desc">{card.desc}</p>
+                  {card.badge && (
+                    <span class="overlap-card-badge">{card.badge}</span>
+                  )}
+                </div>
+              </a>
+            </article>
+          ))}
         </div>
       </div>
     </div>
@@ -89,7 +406,7 @@ import AuthorityLogos from '../components/AuthorityLogos.astro';
   <section class="trust-bar-section">
     <div class="container">
       <div class="trust-bar-header">
-        <h3 class="trust-bar-title">Trusted & Recognized By</h3>
+        <h3 class="trust-bar-title">Trusted &amp; Recognized By</h3>
       </div>
       <div class="trust-bar-logos">
         <div class="trust-capsule">
@@ -125,11 +442,15 @@ import AuthorityLogos from '../components/AuthorityLogos.astro';
             </div>
           </div>
           <div class="card-divider"></div>
-          <h3>Message Us Directly</h3>
-          <p>Send documents and get instant quotes via WhatsApp or iMessage. Choose your preferred channel below.</p>
+          <h3>{iosLabel}</h3>
+          <p>{iosBody}</p>
           <div class="dual-cta-buttons">
-            <a href="https://wa.me/971508620217" class="cta-button whatsapp-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-            <a href="sms:+971508620217&body=Hi, I need a translation quote" class="cta-button imessage-btn"><i class="fab fa-apple"></i> iMessage</a>
+            <a href={whatsappConfig.url} class="cta-button whatsapp-btn">
+              <i class="fab fa-whatsapp"></i> {whatsappConfig.label}
+            </a>
+            <a href={imessageConfig.url} class="cta-button imessage-btn">
+              <i class="fab fa-apple"></i> {imessageConfig.label}
+            </a>
           </div>
         </article>
         <article class="feature-card">
@@ -137,9 +458,11 @@ import AuthorityLogos from '../components/AuthorityLogos.astro';
             <i class="fas fa-bolt"></i>
           </div>
           <div class="card-divider"></div>
-          <h3>Express Service</h3>
-          <p>Ultra-urgent translation for critical deadlines. Same-day certified delivery available.</p>
-          <a href="https://wa.me/971508620217?text=URGENT:%20I%20need%20express%20translation" class="card-link">Urgent Request <i class="fas fa-arrow-right"></i></a>
+          <h3>{expressCard.title}</h3>
+          <p>{expressCard.text}</p>
+          <a href={expressCard.url} class="card-link">
+            {expressCard.linkLabel} <i class="fas fa-arrow-right"></i>
+          </a>
         </article>
       </div>
     </div>
@@ -149,110 +472,46 @@ import AuthorityLogos from '../components/AuthorityLogos.astro';
   <section id="services" class="section bg-white services-section">
     <div class="container">
       <div class="section-header">
-        <span class="section-label">Our Services</span>
-        <h2 class="section-title">Professional Translation Services Across Four Practice Areas</h2>
+        <span class="section-label">{servicesLabel}</span>
+        <h2 class="section-title">{servicesTitle}</h2>
       </div>
       <div class="services-grid-enhanced">
-        <a href="/services/legal-translation/" class="service-card-v2">
-          <div class="card-badge">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          </div>
-          <div class="card-image">
-            <img src="/images/onedrive/tiles/tile-courts.png" alt="Legal Translation Services" loading="lazy">
-          </div>
-          <div class="card-body">
-            <h3>Legal & Corporate</h3>
-            <p>Contracts, court judgments, corporate governance, powers of attorney, and litigation documents with MOJ certification.</p>
-            <span class="card-arrow">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-            </span>
-          </div>
-        </a>
-        <a href="/personal/" class="service-card-v2">
-          <div class="card-badge">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          </div>
-          <div class="card-image">
-            <img src="/images/onedrive/tiles/tile-immigration.png" alt="Personal Document Translation" loading="lazy">
-          </div>
-          <div class="card-body">
-            <h3>Personal Documents</h3>
-            <p>Birth certificates, marriage certificates, academic credentials, police clearance, and immigration documentation.</p>
-            <span class="card-arrow">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-            </span>
-          </div>
-        </a>
-        <a href="/services/attestation/" class="service-card-v2">
-          <div class="card-badge">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          </div>
-          <div class="card-image">
-            <img src="/images/onedrive/services/services-4.jpg" alt="Attestation & MOFAIC" loading="lazy">
-          </div>
-          <div class="card-body">
-            <h3>Attestation Services</h3>
-            <p>Document attestation for MOFA and government entities. Complete legalization services including secure courier handling.</p>
-            <span class="card-arrow">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-            </span>
-          </div>
-        </a>
-        <a href="/services/certificate-translation/" class="service-card-v2">
-          <div class="card-badge">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <div class="card-image">
-            <img src="/images/onedrive/services/services-5.jpg" alt="Business Localization" loading="lazy">
-          </div>
-          <div class="card-body">
-            <h3>Business Localization</h3>
-            <p>Website and app localization, marketing adaptation, menu translation, and technical documentation for UAE market entry.</p>
-            <span class="card-arrow">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-            </span>
-          </div>
-        </a>
-        <a href="/locations/" class="service-card-v2">
-          <div class="card-badge">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
-          <div class="card-image">
-            <img src="/images/onedrive/tiles/tile-corporate.png" alt="Location Services" loading="lazy">
-          </div>
-          <div class="card-body">
-            <h3>Location Services</h3>
-            <p>On-site collection and delivery across Dubai, Abu Dhabi, and Northern Emirates. Doorstep service for busy professionals.</p>
-            <span class="card-arrow">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-            </span>
-          </div>
-        </a>
-        <a href="/services/golden-visa-translation/" class="service-card-v2">
-          <div class="card-badge card-badge-gold">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          </div>
-          <div class="card-image">
-            <img src="/images/onedrive/tiles/tile-immigration.png" alt="Golden Visa Translation" loading="lazy">
-          </div>
-          <div class="card-body">
-            <h3>Golden Visa</h3>
-            <p>Complete document packages for UAE Golden Visa applications. Academic, professional, and investment documentation.</p>
-            <span class="card-arrow">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-            </span>
-          </div>
-        </a>
+        {servicesItems.map((service) => (
+          <a href={service.href} class="service-card-v2">
+            <div class="card-badge">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                <path d="M2 17l10 5 10-5"></path>
+                <path d="M2 12l10 5 10-5"></path>
+              </svg>
+            </div>
+            <div class="card-image">
+              <img src={service.image} alt={service.imageAlt} loading="lazy">
+            </div>
+            <div class="card-body">
+              <h3>{service.heading}</h3>
+              <p>{service.text}</p>
+              <span class="card-arrow">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14"></path>
+                  <path d="M12 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Why Choose Us Section -->
+  <!-- Why Choose Us Section (still template-driven) -->
   <section id="why" class="section bg-light why-section">
     <div class="container">
       <div class="section-header">
         <span class="section-label">Why Choose Us?</span>
-        <h2 class="section-title">The Risk Management Standard<br>for Legal Translation Services in Dubai</h2>
+        <h2 class="section-title">
+          The Risk Management Standard<br>for Legal Translation Services in Dubai
+        </h2>
         <div class="section-divider"></div>
       </div>
       <div class="grid grid-4 grid--auto-fit why-grid">
@@ -273,7 +532,7 @@ import AuthorityLogos from '../components/AuthorityLogos.astro';
         </article>
         <article class="why-card">
           <i class="fas fa-bolt"></i>
-          <h3>Fast & Online</h3>
+          <h3>Fast &amp; Online</h3>
           <p>WhatsApp-based workflow, same-day options and clear written quotations.</p>
         </article>
       </div>
@@ -296,7 +555,9 @@ import AuthorityLogos from '../components/AuthorityLogos.astro';
             </div>
           </div>
           <h3 class="step-title">Submit Your Document</h3>
-          <p class="step-desc">Send via WhatsApp or upload through our secure portal. Accepted formats: PDF, JPG, PNG, DOCX.</p>
+          <p class="step-desc">
+            Send via WhatsApp or upload through our secure portal. Accepted formats: PDF, JPG, PNG, DOCX.
+          </p>
         </article>
         <article class="process-step exodus-step">
           <div class="step-header">
@@ -306,7 +567,9 @@ import AuthorityLogos from '../components/AuthorityLogos.astro';
             </div>
           </div>
           <h3 class="step-title">Instant Compliance Review</h3>
-          <p class="step-desc">We verify document type and confirm whether additional attestation services are required.</p>
+          <p class="step-desc">
+            We verify document type and confirm whether additional attestation services are required.
+          </p>
         </article>
         <article class="process-step exodus-step">
           <div class="step-header">
@@ -316,7 +579,9 @@ import AuthorityLogos from '../components/AuthorityLogos.astro';
             </div>
           </div>
           <h3 class="step-title">Immediate Delivery</h3>
-          <p class="step-desc">Receive your certified translation digitally within hours. Physical copies couriered when needed.</p>
+          <p class="step-desc">
+            Receive your certified translation digitally within hours. Physical copies couriered when needed.
+          </p>
         </article>
       </div>
     </div>
@@ -325,26 +590,15 @@ import AuthorityLogos from '../components/AuthorityLogos.astro';
   <!-- Metrics Strip - Compact Modern Design -->
   <section class="ot-metrics">
     <div class="ot-metrics-inner">
-      <article class="ot-metric">
-        <span class="ot-metric-value">43+</span>
-        <span class="ot-metric-label">Languages</span>
-        <span class="ot-metric-note">Certified pairs</span>
-      </article>
-      <article class="ot-metric">
-        <span class="ot-metric-value">7</span>
-        <span class="ot-metric-label">Days a Week</span>
-        <span class="ot-metric-note">Always available</span>
-      </article>
-      <article class="ot-metric">
-        <span class="ot-metric-value">Court</span>
-        <span class="ot-metric-label">Ready Docs</span>
-        <span class="ot-metric-note">MOJ certified</span>
-      </article>
-      <article class="ot-metric">
-        <span class="ot-metric-value">60min</span>
-        <span class="ot-metric-label">Standard Draft</span>
-        <span class="ot-metric-note">Digital delivery</span>
-      </article>
+      {metrics.map((metric) => (
+        <article class="ot-metric">
+          <span class="ot-metric-value">{metric.value}</span>
+          <span class="ot-metric-label">{metric.label}</span>
+          {metric.note && (
+            <span class="ot-metric-note">{metric.note}</span>
+          )}
+        </article>
+      ))}
     </div>
   </section>
 
@@ -352,77 +606,33 @@ import AuthorityLogos from '../components/AuthorityLogos.astro';
   <section id="team" class="section bg-alt specialists-section">
     <div class="container">
       <div class="section-header">
-        <span class="section-label exodus-label">Our Specialists</span>
-        <h2 class="section-title exodus-section-title">Trusted Legal Translation Services in Dubai</h2>
+        <span class="section-label exodus-label">{specialistsLabel}</span>
+        <h2 class="section-title exodus-section-title">{specialistsTitle}</h2>
       </div>
       <div class="grid grid-4 grid--auto-fit specialists-grid">
-        <a href="/services/legal-translation/" class="specialist-card">
-          <div class="specialist-icon">
-            <i class="fas fa-gavel"></i>
-          </div>
-          <h3>Court & Litigation Translation</h3>
-          <ul class="specialist-bullets">
-            <li>Pleadings, memoranda, judgments</li>
-            <li>Evidence bundles and exhibits</li>
-            <li>UAE legal terminology</li>
-          </ul>
-          <div class="specialist-tags">
-            <span class="tag">Dubai Courts</span>
-            <span class="tag">DIFC</span>
-            <span class="tag">ADGM</span>
-          </div>
-        </a>
-        <a href="/services/golden-visa-translation/" class="specialist-card">
-          <div class="specialist-icon">
-            <i class="fas fa-passport"></i>
-          </div>
-          <h3>Immigration & Residency Translation</h3>
-          <ul class="specialist-bullets">
-            <li>Golden Visa applications</li>
-            <li>Family visa documents</li>
-            <li>Emirates ID and ICP/GDRFA</li>
-          </ul>
-          <div class="specialist-tags">
-            <span class="tag">Golden Visa</span>
-            <span class="tag">Family Visa</span>
-            <span class="tag">ICP/GDRFA</span>
-          </div>
-        </a>
-        <a href="/industries/real-estate/" class="specialist-card">
-          <div class="specialist-icon">
-            <i class="fas fa-building"></i>
-          </div>
-          <h3>Real Estate & DLD Translation</h3>
-          <ul class="specialist-bullets">
-            <li>Property contracts and POAs</li>
-            <li>Title deeds and RERA docs</li>
-            <li>DLD submission format</li>
-          </ul>
-          <div class="specialist-tags">
-            <span class="tag">DLD</span>
-            <span class="tag">RERA</span>
-            <span class="tag">Property POA</span>
-          </div>
-        </a>
-        <a href="/services/corporate-translation/" class="specialist-card">
-          <div class="specialist-icon">
-            <i class="fas fa-briefcase"></i>
-          </div>
-          <h3>Corporate & Commercial Translation</h3>
-          <ul class="specialist-bullets">
-            <li>Trade licenses and MOAs</li>
-            <li>Shareholder agreements</li>
-            <li>Free zone documentation</li>
-          </ul>
-          <div class="specialist-tags">
-            <span class="tag">DMCC</span>
-            <span class="tag">Free Zones</span>
-            <span class="tag">DED</span>
-          </div>
-        </a>
+        {specialistsCards.map((card) => (
+          <a href={card.href} class="specialist-card">
+            <div class="specialist-icon">
+              {card.icon && <i class={card.icon}></i>}
+            </div>
+            <h3>{card.title}</h3>
+            <ul class="specialist-bullets">
+              {card.bullets.map((b) => (
+                <li>{b}</li>
+              ))}
+            </ul>
+            <div class="specialist-tags">
+              {card.tags.map((t) => (
+                <span class="tag">{t}</span>
+              ))}
+            </div>
+          </a>
+        ))}
       </div>
       <div class="team-cta-wrapper">
-        <p class="team-tagline">Your documents are handled by dedicated specialists and reviewed before delivery.</p>
+        <p class="team-tagline">
+          Your documents are handled by dedicated specialists and reviewed before delivery.
+        </p>
         <a href="https://wa.me/971508620217" class="team-cta">
           <i class="fab fa-whatsapp"></i> Send Documents on WhatsApp
         </a>
@@ -430,12 +640,14 @@ import AuthorityLogos from '../components/AuthorityLogos.astro';
     </div>
   </section>
 
-  <!-- Languages Section -->
+  <!-- Languages Section (still template-driven) -->
   <section class="section bg-dark languages-section exodus-languages">
     <div class="container">
       <div class="section-header">
         <span class="section-label exodus-label">Languages We Support</span>
-        <h2 class="section-title exodus-section-title">Translation Services in 43+ Languages</h2>
+        <h2 class="section-title exodus-section-title">
+          Translation Services in 43+ Languages
+        </h2>
       </div>
       <div class="grid grid-3 grid--auto-fit languages-grid">
         <div class="language-item"><i class="fas fa-globe"></i> Arabic</div>
@@ -461,9 +673,13 @@ import AuthorityLogos from '../components/AuthorityLogos.astro';
         <div class="language-item"><i class="fas fa-globe"></i> Tagalog</div>
         <div class="language-item"><i class="fas fa-globe"></i> Indonesian</div>
         <div class="language-item"><i class="fas fa-globe"></i> Thai</div>
-        <div class="language-item highlight"><i class="fas fa-plus-circle"></i> 20+ More</div>
+        <div class="language-item highlight">
+          <i class="fas fa-plus-circle"></i> 20+ More
+        </div>
       </div>
-      <p class="languages-note">Don't see your language? Contact us - we work with native translators in 43+ languages and language combinations.</p>
+      <p class="languages-note">
+        Don't see your language? Contact us - we work with native translators in 43+ languages and language combinations.
+      </p>
     </div>
   </section>
 
@@ -472,7 +688,11 @@ import AuthorityLogos from '../components/AuthorityLogos.astro';
     <div class="container">
       <div class="about-grid exodus-about-grid">
         <div class="about-image exodus-about-image">
-          <img src="/images/onedrive/contact-office.png" alt="Professional Legal Translation Dubai" loading="lazy">
+          <img
+            src="/images/onedrive/contact-office.png"
+            alt="Professional Legal Translation Dubai"
+            loading="lazy"
+          >
           <div class="experience-badge exodus-badge">
             <span class="years">Court</span>
             <span class="text">Ready</span>
@@ -480,7 +700,9 @@ import AuthorityLogos from '../components/AuthorityLogos.astro';
         </div>
         <div class="about-content exodus-about-content">
           <span class="section-label exodus-label">Our Approach</span>
-          <h2 class="section-title exodus-section-title">Designed for Court Acceptance. Consistent Results.</h2>
+          <h2 class="section-title exodus-section-title">
+            Designed for Court Acceptance. Consistent Results.
+          </h2>
           <div class="exodus-features-list">
             <div class="exodus-feature-item">
               <i class="fas fa-check-circle"></i>
@@ -507,8 +729,12 @@ import AuthorityLogos from '../components/AuthorityLogos.astro';
               <span>Original Document Security</span>
             </div>
           </div>
-          <p class="about-summary">Our approach is built on one principle: meticulous preparation for every submission.</p>
-          <a href="https://wa.me/971508620217" class="about-cta exodus-cta-btn"><i class="fab fa-whatsapp"></i> Send Documents on WhatsApp</a>
+          <p class="about-summary">
+            Our approach is built on one principle: meticulous preparation for every submission.
+          </p>
+          <a href="https://wa.me/971508620217" class="about-cta exodus-cta-btn">
+            <i class="fab fa-whatsapp"></i> Send Documents on WhatsApp
+          </a>
         </div>
       </div>
     </div>
@@ -521,55 +747,21 @@ import AuthorityLogos from '../components/AuthorityLogos.astro';
   <section id="faq" class="section bg-white faq-section">
     <div class="container container--narrow">
       <div class="section-header">
-        <span class="section-label">Common Questions</span>
-        <h2 class="section-title">Common Questions About Legal Translation in Dubai</h2>
+        <span class="section-label">{faqLabel}</span>
+        <h2 class="section-title">{faqTitle}</h2>
       </div>
       <div class="faq-list">
-        <article class="faq-item">
-          <button class="faq-question">
-            What makes your translation service different from other translation companies?
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="faq-answer">
-            <p>We operate as a document concierge, not a traditional translation office. This means you get the compliance guarantees of working with certified legal translation providers without the friction of conventional agencies.</p>
-          </div>
-        </article>
-        <article class="faq-item">
-          <button class="faq-question">
-            Are your translations accepted by UAE courts?
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="faq-answer">
-            <p>Yes. Every legal translation service we coordinate is executed by translators certified by the Ministry of Justice. Our translations are formatted specifically for Dubai Courts, DIFC, ADGM, and federal judicial bodies.</p>
-          </div>
-        </article>
-        <article class="faq-item">
-          <button class="faq-question">
-            How quickly can you provide certified legal translation?
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="faq-answer">
-            <p>Standard documents (birth certificates, marriage certificates, educational credentials) are typically ready within 3-6 business hours. Express processing available for urgent legal requirements.</p>
-          </div>
-        </article>
-        <article class="faq-item">
-          <button class="faq-question">
-            Do you provide attestation services?
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="faq-answer">
-            <p>Yes. When your legal documents require attestation from MOFA or other government entities, we coordinate the complete process including secure courier handling of originals.</p>
-          </div>
-        </article>
-        <article class="faq-item">
-          <button class="faq-question">
-            Can you handle Arabic to English and English to Arabic?
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="faq-answer">
-            <p>Yes. Our certified translators work in both directions for comprehensive Arabic translation services.</p>
-          </div>
-        </article>
+        {faqItems.map((item) => (
+          <article class="faq-item">
+            <button class="faq-question">
+              {item.question}
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>{item.answer}</p>
+            </div>
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -577,10 +769,10 @@ import AuthorityLogos from '../components/AuthorityLogos.astro';
   <!-- CTA Banner -->
   <section class="section bg-dark cta-banner">
     <div class="container text-center">
-      <h2>Let Us Handle the Compliance. You Focus on What Matters.</h2>
-      <p>Join the businesses and individuals across Dubai, Abu Dhabi, and the Northern Emirates who trust OnlineTranslation.ae as their provider of legal translation services.</p>
-      <a href="https://wa.me/971508620217" class="cta-btn">
-        <i class="fab fa-whatsapp"></i> Send Documents on WhatsApp
+      <h2>{ctaBanner.title}</h2>
+      <p>{ctaBanner.body}</p>
+      <a href={ctaBanner.buttonUrl} class="cta-btn">
+        <i class="fab fa-whatsapp"></i> {ctaBanner.buttonLabel}
       </a>
     </div>
   </section>
@@ -589,27 +781,51 @@ import AuthorityLogos from '../components/AuthorityLogos.astro';
   <section id="contact" class="section bg-dark contact-section">
     <div class="container">
       <div class="contact-wrapper">
-        <span class="section-label">Get In Touch</span>
-        <h2 class="section-title">Request a Free Quotation</h2>
-        <p class="contact-description">Share your documents. We will confirm price and delivery time within minutes.</p>
+        <span class="section-label">{contactSection.label}</span>
+        <h2 class="section-title">{contactSection.title}</h2>
+        <p class="contact-description">
+          {contactSection.description}
+        </p>
         <form class="contact-form" id="contactForm">
           <div class="form-row">
             <div class="form-group">
               <label for="name">Your Name</label>
-              <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder={contactSection.namePlaceholder}
+                required
+              >
             </div>
             <div class="form-group">
               <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="your@email.com" required>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder={contactSection.emailPlaceholder}
+                required
+              >
             </div>
           </div>
           <div class="form-group">
             <label for="phone">Phone / WhatsApp Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="+971 XX XXX XXXX">
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder={contactSection.phonePlaceholder}
+            >
           </div>
           <div class="form-group">
             <label for="message">Document Details</label>
-            <textarea id="message" name="message" placeholder="Describe your document(s) and requirements..." rows="5"></textarea>
+            <textarea
+              id="message"
+              name="message"
+              placeholder={contactSection.messagePlaceholder}
+              rows={5}
+            ></textarea>
           </div>
           <button type="submit" class="submit-btn">Submit Request</button>
           <div id="formResult" class="form-result"></div>
@@ -633,11 +849,11 @@ import AuthorityLogos from '../components/AuthorityLogos.astro';
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
+    faqItems.forEach((item) => {
       const question = item.querySelector('.faq-question');
       question?.addEventListener('click', () => {
         const isOpen = item.classList.contains('is-open');
-        faqItems.forEach(i => i.classList.remove('is-open'));
+        faqItems.forEach((i) => i.classList.remove('is-open'));
         if (!isOpen) {
           item.classList.add('is-open');
         }
