@@ -1,15 +1,55 @@
 backend:
   name: git-gateway
-  branch: main
+  branch: main 
 
 media_folder: "public/images"
 public_folder: "/images"
 
 collections:
-  - name: "specialized"
-    label: "Specialized Services"
-    folder: "src/content/specialized"
+  # 1. SPECIAL PAGES (Home, About, Contact) - "Singleton" files
+  - name: "pages"
+    label: "Core Pages"
+    files:
+      - file: "src/content/core/home.md"
+        label: "Homepage"
+        name: "home"
+        fields:
+          - {label: "Hero Title", name: "hero_title", widget: "string"}
+          - {label: "Hero Image", name: "hero_image", widget: "image"}
+          - {label: "Services Grid", name: "services_grid", widget: "list", fields: [{name: title}, {name: icon}]}
+      - file: "src/content/core/about.md"
+        label: "About Us"
+        name: "about"
+        fields:
+          - {label: "Story Title", name: "story_title", widget: "string"}
+          - {label: "Our History", name: "body", widget: "markdown"}
+
+  # 2. SERVICES (The big list: Legal, Medical, Attestation...)
+  - name: "services"
+    label: "Services"
+    folder: "src/content/services"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Service Name", name: "title", widget: "string"}
+      - {label: "Hero Image", name: "image", widget: "image"}
+      - {label: "Full Description", name: "body", widget: "markdown"}
+
+  # 3. INDUSTRIES (Healthcare, Legal, Real Estate...)
+  - name: "industries"
+    label: "Industries"
+    folder: "src/content/industries"
     create: true
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Industry Name", name: "title", widget: "string"}
+      - {label: "Content", name: "body", widget: "markdown"}
+
+  # 4. LOCATIONS (Dubai, Abu Dhabi...)
+  - name: "locations"
+    label: "Locations"
+    folder: "src/content/locations"
+    create: true
+    fields:
+      - {label: "City Name", name: "title", widget: "string"}
+      - {label: "Map Embed Code", name: "map_embed", widget: "text"}
+      - {label: "Content", name: "body", widget: "markdown"}
