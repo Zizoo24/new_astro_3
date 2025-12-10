@@ -19,18 +19,200 @@
         "heroLead": {
           "type": "string"
         },
-        "body": {
+        "hero_title": {
           "type": "string"
+        },
+        "hero_image": {
+          "type": "string"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "introWithImage"
+                  },
+                  "heading": {
+                    "type": "string"
+                  },
+                  "p1": {
+                    "type": "string"
+                  },
+                  "p2": {
+                    "type": "string"
+                  },
+                  "features": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "label": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "label",
+                        "text"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "default": []
+                  },
+                  "image": {
+                    "type": "string"
+                  },
+                  "imageAlt": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "type",
+                  "heading",
+                  "p1",
+                  "image",
+                  "imageAlt"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "licensing"
+                  },
+                  "sectionLabel": {
+                    "type": "string"
+                  },
+                  "sectionTitle": {
+                    "type": "string"
+                  },
+                  "mojLabel": {
+                    "type": "string"
+                  },
+                  "mojTitle": {
+                    "type": "string"
+                  },
+                  "mojSubtitle": {
+                    "type": "string"
+                  },
+                  "note": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "type",
+                  "sectionLabel",
+                  "sectionTitle",
+                  "mojLabel",
+                  "mojTitle",
+                  "mojSubtitle",
+                  "note"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "authorityLogos"
+                  },
+                  "title": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "type",
+                  "title"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "values"
+                  },
+                  "sectionLabel": {
+                    "type": "string"
+                  },
+                  "sectionTitle": {
+                    "type": "string"
+                  },
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "title",
+                        "text"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "default": []
+                  }
+                },
+                "required": [
+                  "type",
+                  "sectionLabel",
+                  "sectionTitle"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "cta"
+                  },
+                  "heading": {
+                    "type": "string"
+                  },
+                  "body": {
+                    "type": "string"
+                  },
+                  "buttonLabel": {
+                    "type": "string"
+                  },
+                  "buttonUrl": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "type",
+                  "heading",
+                  "body",
+                  "buttonLabel",
+                  "buttonUrl"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "default": []
         },
         "$schema": {
           "type": "string"
         }
       },
-      "required": [
-        "pageTitle",
-        "metaDescription",
-        "heroHeading"
-      ],
       "additionalProperties": false
     }
   },

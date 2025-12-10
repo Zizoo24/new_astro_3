@@ -6,7 +6,7 @@ media_folder: "public/images"
 public_folder: "/images"
 
 # ---------------------------------------------------------
-# THIS IS THE COLLECTIONS SECTION (DO NOT REMOVE)
+# COLLECTIONS
 # ---------------------------------------------------------
 collections:
   # 1. CORE PAGES (Home, About)
@@ -24,12 +24,78 @@ collections:
         label: "About Us"
         name: "about"
         fields:
+          # SEO + hero
           - { label: "Page Title (SEO)", name: "pageTitle", widget: "string" }
           - { label: "Meta Description", name: "metaDescription", widget: "text" }
           - { label: "Hero Heading", name: "heroHeading", widget: "string" }
           - { label: "Hero Subheading", name: "heroSubheading", widget: "string", required: false }
           - { label: "Hero Lead Paragraph", name: "heroLead", widget: "text", required: false }
-          - { label: "Main Body", name: "body", widget: "markdown", required: false }
+
+          # Modular sections for About page
+          - label: "Page Sections"
+            name: "sections"
+            widget: "list"
+            summary: "{{fields.type}} — {{fields.heading}}"
+            types:
+              # Intro with side image + bullets
+              - label: "Intro with Image"
+                name: "introWithImage"
+                widget: "object"
+                fields:
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - { label: "Intro Paragraph 1", name: "p1", widget: "text" }
+                  - { label: "Intro Paragraph 2", name: "p2", widget: "text", required: false }
+                  - label: "Feature Items"
+                    name: "features"
+                    widget: "list"
+                    fields:
+                      - { label: "Label", name: "label", widget: "string" }
+                      - { label: "Text", name: "text", widget: "text" }
+                  - { label: "Side Image", name: "image", widget: "image" }
+                  - { label: "Image Alt Text", name: "imageAlt", widget: "string" }
+
+              # Licensing & Compliance block
+              - label: "Licensing & Compliance"
+                name: "licensing"
+                widget: "object"
+                fields:
+                  - { label: "Section Label", name: "sectionLabel", widget: "string" }
+                  - { label: "Section Title", name: "sectionTitle", widget: "string" }
+                  - { label: "MOJ Badge Label", name: "mojLabel", widget: "string" }
+                  - { label: "MOJ Badge Title", name: "mojTitle", widget: "string" }
+                  - { label: "MOJ Badge Subtitle", name: "mojSubtitle", widget: "string" }
+                  - { label: "Compliance Note", name: "note", widget: "text" }
+
+              # Authority logos block (uses existing AuthorityLogos component)
+              - label: "Authority Logos Block"
+                name: "authorityLogos"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+
+              # Values / How we work
+              - label: "Values / How We Work"
+                name: "values"
+                widget: "object"
+                fields:
+                  - { label: "Section Label", name: "sectionLabel", widget: "string" }
+                  - { label: "Section Title", name: "sectionTitle", widget: "string" }
+                  - label: "Value Cards"
+                    name: "items"
+                    widget: "list"
+                    fields:
+                      - { label: "Title", name: "title", widget: "string" }
+                      - { label: "Text", name: "text", widget: "text" }
+
+              # Final CTA block
+              - label: "CTA Section"
+                name: "cta"
+                widget: "object"
+                fields:
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - { label: "Body", name: "body", widget: "markdown" }
+                  - { label: "Button Label", name: "buttonLabel", widget: "string" }
+                  - { label: "Button URL", name: "buttonUrl", widget: "string" }
 
   # 2. SERVICES (Dynamic - Creates new files in src/content/services)
   - name: "services"
