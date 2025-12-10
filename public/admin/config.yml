@@ -5,9 +5,12 @@ backend:
 media_folder: "public/images"
 public_folder: "/images"
 
+# ---------------------------------------------------------
+# THIS IS THE COLLECTIONS SECTION (DO NOT REMOVE)
+# ---------------------------------------------------------
 collections:
-  # 1. SPECIAL PAGES (Home, About, Contact) - "Singleton" files
-  - name: "pages"
+  # 1. CORE PAGES (Home, About)
+  - name: "core"
     label: "Core Pages"
     files:
       - file: "src/content/core/home.md"
@@ -16,40 +19,38 @@ collections:
         fields:
           - {label: "Hero Title", name: "hero_title", widget: "string"}
           - {label: "Hero Image", name: "hero_image", widget: "image"}
-          - {label: "Services Grid", name: "services_grid", widget: "list", fields: [{name: title}, {name: icon}]}
       - file: "src/content/core/about.md"
         label: "About Us"
         name: "about"
         fields:
-          - {label: "Story Title", name: "story_title", widget: "string"}
-          - {label: "Our History", name: "body", widget: "markdown"}
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Body", name: "body", widget: "markdown"}
 
-  # 2. SERVICES (The big list: Legal, Medical, Attestation...)
+  # 2. SERVICES (Dynamic - Creates new files in src/content/services)
   - name: "services"
     label: "Services"
     folder: "src/content/services"
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "Service Name", name: "title", widget: "string"}
+      - {label: "Title", name: "title", widget: "string"}
       - {label: "Hero Image", name: "image", widget: "image"}
-      - {label: "Full Description", name: "body", widget: "markdown"}
+      - {label: "Body", name: "body", widget: "markdown"}
 
-  # 3. INDUSTRIES (Healthcare, Legal, Real Estate...)
+  # 3. INDUSTRIES (Dynamic)
   - name: "industries"
     label: "Industries"
     folder: "src/content/industries"
     create: true
     fields:
-      - {label: "Industry Name", name: "title", widget: "string"}
-      - {label: "Content", name: "body", widget: "markdown"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}
 
-  # 4. LOCATIONS (Dubai, Abu Dhabi...)
+  # 4. LOCATIONS (Dynamic)
   - name: "locations"
     label: "Locations"
     folder: "src/content/locations"
     create: true
     fields:
       - {label: "City Name", name: "title", widget: "string"}
-      - {label: "Map Embed Code", name: "map_embed", widget: "text"}
-      - {label: "Content", name: "body", widget: "markdown"}
+      - {label: "Body", name: "body", widget: "markdown"}
