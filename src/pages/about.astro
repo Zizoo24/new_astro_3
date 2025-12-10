@@ -2,11 +2,23 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import DulBadge from '../components/DulBadge.astro';
 import AuthorityLogos from '../components/AuthorityLogos.astro';
+import aboutContent from '../content/core/about.md';
+
+const {
+  pageTitle,
+  metaDescription,
+  heroHeading,
+  heroSubheading,
+  heroLead,
+  body
+} = aboutContent.frontmatter;
+
+
 ---
 
 <BaseLayout 
-  title="About Us | OnlineTranslation.ae - Licensed Legal Translation in Dubai"
-  description="Learn about OnlineTranslation.ae, your trusted partner for MOJ-certified legal translation services in Dubai. Licensed by Dubai Economy, we provide court-ready document translation across the UAE."
+    title={pageTitle}
+    description={metaDescription}
 >
   <section class="page-hero about-hero">
     <div class="hero-background">
@@ -18,8 +30,8 @@ import AuthorityLogos from '../components/AuthorityLogos.astro';
         <span class="separator">&gt;</span>
         <span class="current">About</span>
       </nav>
-      <h1 class="page-title">About OnlineTranslation.ae</h1>
-      <p class="page-subtitle">Your Digital Document Concierge in Dubai</p>
+      <h1 class="page-title">{heroHeading}ae</h1>
+      <p class="page-subtitle">{heroSubheading}</p>
     </div>
   </section>
 
