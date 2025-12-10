@@ -23,9 +23,12 @@ collections:
         label: "About Us"
         name: "about"
         fields:
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Body", name: "body", widget: "markdown"}
-
+                    - { label: "Page Title (SEO)", name: "pageTitle", widget: "string" }
+          - { label: "Meta Description", name: "metaDescription", widget: "text" }
+          - { label: "Hero Heading", name: "heroHeading", widget: "string" }
+          - { label: "Hero Subheading", name: "heroSubheading", widget: "string", required: false }
+          - { label: "Hero Lead Paragraph", name: "heroLead", widget: "text", required: false }
+          - { label: "Main Body", name: "body", widget: "markdown", required: false }
   # 2. SERVICES (Dynamic - Creates new files in src/content/services)
   - name: "services"
     label: "Services"
