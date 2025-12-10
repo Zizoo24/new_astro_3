@@ -21,15 +21,9 @@ sections:
   - type: "licensing"
     sectionLabel: "Official Credentials"
     sectionTitle: "Licensed & Certified"
-    dul:
-      badgeLabel: "Licensed Business"
-      badgeTitle: "Dubai Unified License"
-      badgeSubtitle: "Verified by Department of Economy & Tourism"
-      linkUrl: "https://app.invest.dubai.ae/DUL/1DE9D8AA-768A-4CFC-BC27-A6F23017B858"
-    moj:
-      badgeLabel: "Certified Partner"
-      badgeTitle: "MOJ Legal Translation"
-      badgeSubtitle: "In partnership with Arkan Legal Translation"
+    mojLabel: "Certified Partner"
+    mojTitle: "MOJ Legal Translation"
+    mojSubtitle: "In partnership with Arkan Legal Translation"
     note: "All translations are prepared by Ministry of Justice certified translators and carry official certification designed for acceptance by UAE courts and government authorities."
 
   - type: "authorityLogos"
