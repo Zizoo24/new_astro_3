@@ -1,0 +1,359 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Legal Translation Dubai', url: '/legal-translation-dubai/' }
+];
+
+const snapshot = [
+  { icon: 'gavel', bold: 'MOJ Certified', text: 'Ministry of Justice registered translators' },
+  { icon: 'stamp', bold: 'Court Accepted', text: 'Dubai Courts, DIFC, ADGM compliant' },
+  { icon: 'clock', bold: '60-Min Standard', text: 'Digital draft delivery within the hour' },
+  { icon: 'shield-alt', bold: 'Guaranteed', text: 'Acceptance guaranteed or free revision' }
+];
+
+const trustStrip = [
+  'Ministry of Justice Licensed',
+  'Dubai Courts Compliant',
+  'DIFC & ADGM Certified',
+  'MOFA Attestation Ready'
+];
+
+const processSteps = [
+  {
+    number: 1,
+    title: 'Document Assessment',
+    text: 'Send your document via WhatsApp. We verify legibility, check for required stamps, and confirm the translation scope within 15 minutes.',
+    icon: 'search'
+  },
+  {
+    number: 2,
+    title: 'Legal Translation',
+    text: 'Our MOJ-licensed partner executes the translation with full legal terminology accuracy. Every name, date, and clause verified against the original.',
+    icon: 'file-alt'
+  },
+  {
+    number: 3,
+    title: 'Quality Review',
+    text: 'A second translator reviews the work. We cross-check spellings against your Emirates ID or passport to prevent rejection at government counters.',
+    icon: 'check-double'
+  },
+  {
+    number: 4,
+    title: 'Certification & Delivery',
+    text: 'The official MOJ stamp and QR code are applied. Digital copy sent immediately; physical copy via same-day courier if needed.',
+    icon: 'certificate'
+  }
+];
+
+const benefitCards = [
+  {
+    icon: 'balance-scale',
+    title: 'Court-Ready Formatting',
+    text: 'Every translation formatted to meet Dubai Courts, DIFC, and ADGM submission standards. No reformatting required at filing.'
+  },
+  {
+    icon: 'user-check',
+    title: 'Name Consistency Guarantee',
+    text: 'We verify that translated names match your passport and Emirates ID exactly. Inconsistencies cause 40% of government rejections.'
+  },
+  {
+    icon: 'hand-holding-usd',
+    title: 'Transparent Pricing',
+    text: 'Fixed quotes before work begins. No hidden fees for stamps, formatting, or rush processing. The price we quote is the price you pay.'
+  }
+];
+
+const accordionSections = [
+  {
+    title: 'What Documents Require Legal Translation in Dubai?',
+    id: 'legal-docs',
+    items: [
+      {
+        heading: 'Court & Litigation Documents',
+        body: 'Court judgments, arbitration awards, legal notices, summons, and case filings must be translated by MOJ-certified translators to be accepted by UAE courts. This includes documents from the Court of First Instance, Court of Appeal, and Court of Cassation. For DIFC and ADGM matters, translations must also meet common law terminology standards.'
+      },
+      {
+        heading: 'Corporate & Commercial Documents',
+        body: 'Trade licenses, Memoranda of Association (MOA), Articles of Association, board resolutions, shareholder agreements, and commercial contracts require certified legal translation for submission to DED, DMCC, JAFZA, and other free zone authorities. Bank account openings also require translated corporate documents.'
+      },
+      {
+        heading: 'Contracts & Agreements',
+        body: 'Employment contracts for MOHRE submission, tenancy agreements for Ejari registration, sale and purchase agreements (SPAs) for DLD property registration, NDAs, franchise agreements, and joint venture contracts all require MOJ-certified translation to be legally enforceable in the UAE.'
+      },
+      {
+        heading: 'Powers of Attorney',
+        body: 'General and Special Powers of Attorney must be translated for notarization at the Dubai Courts Notary Public. The translation must precisely reflect the scope of authority granted—errors can result in invalid POAs or unintended legal exposure.'
+      },
+      {
+        heading: 'Wills & Inheritance Documents',
+        body: 'Wills registered with DIFC Wills Service Centre, probate documents, inheritance certificates, and estate documents require specialized legal translation that understands both civil law (mainland) and common law (DIFC) frameworks.'
+      }
+    ]
+  },
+  {
+    title: 'Understanding UAE Legal Translation Requirements',
+    id: 'requirements',
+    items: [
+      {
+        heading: 'MOJ Certification Explained',
+        body: 'The UAE Ministry of Justice maintains a register of approved legal translators. Only translations bearing an MOJ-registered translator stamp and unique serial number are accepted by courts and government entities. The stamp includes a QR code that authorities can scan to verify authenticity. Translations without this certification are rejected outright.'
+      },
+      {
+        heading: 'The Attestation Chain',
+        body: 'Foreign documents typically require a multi-step attestation process before translation: (1) Notarization in the country of origin, (2) Authentication by that country Foreign Ministry, (3) Attestation by the UAE Embassy, (4) MOFA attestation in the UAE. Only after this chain is complete should translation occur. We review your documents to confirm attestation status before quoting.'
+      },
+      {
+        heading: 'Dubai Courts vs DIFC vs ADGM',
+        body: 'Dubai Courts operate under UAE civil law (Arabic primary language). DIFC and ADGM operate under common law (English primary language). Translations must use terminology appropriate to the receiving jurisdiction. A contract translated for Dubai Courts uses different terminology than one destined for DIFC arbitration.'
+      },
+      {
+        heading: 'Document Validity Periods',
+        body: 'Most translated documents have limited validity for government submission: Police Clearance Certificates (3-6 months), Bank Statements (typically 30 days), Medical Fitness Certificates (30-90 days). We advise on validity windows so your translation remains usable when you need it.'
+      }
+    ]
+  },
+  {
+    title: 'Common Legal Translation Scenarios',
+    id: 'scenarios',
+    items: [
+      {
+        heading: 'Setting Up a Business in Dubai',
+        body: 'Business setup requires translated: passport copies, existing company documents (MOA, trade licenses), bank reference letters, and proof of address. Free zones like DMCC, JAFZA, and DAFZA each have specific formatting requirements. We format translations to match each authority submission portal specifications.'
+      },
+      {
+        heading: 'Property Purchase & Registration',
+        body: 'DLD property registration requires translated SPAs, POAs (if purchasing remotely), passport copies, and source of funds documentation. For off-plan purchases, the translation must capture payment schedules and handover conditions precisely. Errors delay registration and can jeopardize payment milestones.'
+      },
+      {
+        heading: 'Employment & Labour Disputes',
+        body: 'MOHRE labour complaints require translated employment contracts, salary certificates, termination letters, and any written correspondence. Translations must preserve the exact language of termination clauses and notice periods, as these determine compensation calculations.'
+      },
+      {
+        heading: 'Family Law Matters',
+        body: 'Divorce proceedings, child custody cases, and alimony disputes require translated marriage certificates, birth certificates, prior court orders, and financial disclosure documents. The Personal Status Court has strict formatting requirements for translated evidence.'
+      }
+    ]
+  }
+];
+
+const faqs = [
+  {
+    question: 'What makes a translation legal in the UAE?',
+    answer: 'A legal translation in the UAE must be performed by a translator registered with the Ministry of Justice (MOJ). The completed translation bears the translator official stamp, signature, serial number, and a QR code that government entities scan to verify authenticity. Without these elements, the translation has no legal standing and will be rejected by courts, notaries, and government departments.'
+  },
+  {
+    question: 'How long does legal translation take?',
+    answer: 'Standard legal documents (contracts, POAs, certificates) are completed within 60 minutes to 24 hours depending on length and complexity. Lengthy court judgments or technical agreements may require 2-3 business days. We provide exact timelines after reviewing your document—rush processing is available for urgent matters.'
+  },
+  {
+    question: 'Do you translate documents for DIFC and ADGM?',
+    answer: 'Yes. DIFC and ADGM operate under common law frameworks with English as the primary language. We provide translations using appropriate common law terminology for wills, trusts, corporate governance documents, and commercial agreements destined for these jurisdictions. Our translators understand the distinction between civil law and common law legal concepts.'
+  },
+  {
+    question: 'Can you translate documents that are not yet attested?',
+    answer: 'We can translate unattested documents, but the translation may not be accepted for official purposes. We always check attestation status first and advise on the proper sequence. Typically: get attestation completed first, then translate. This prevents paying for a translation that cannot be used.'
+  },
+  {
+    question: 'What if the government rejects my translation?',
+    answer: 'If a government entity rejects a translation we provided due to our error, we correct it immediately at no charge and redeliver. We also cover courier costs for physical redelivery. Our acceptance guarantee reflects our confidence in our MOJ-certified process—we handle thousands of submissions monthly and know what each authority requires.'
+  },
+  {
+    question: 'Do I need to visit your office?',
+    answer: 'No. Our entire workflow operates via WhatsApp and secure file transfer. Send your document, receive the quote, approve, pay online, and receive your completed translation digitally. Physical copies can be couriered anywhere in the UAE. We designed this process for busy professionals who cannot take time off work for document errands.'
+  }
+];
+---
+
+<ServiceLayout
+  title="Legal Translation Dubai | MOJ Certified Legal Document Translation"
+  description="Professional legal translation services in Dubai. MOJ-certified translators for court documents, contracts, corporate filings & attestation. 60-minute delivery available. Accepted by Dubai Courts, DIFC, ADGM."
+  keywords="legal translation dubai, moj certified translation, court document translation dubai, contract translation uae, legal document translation, difc translation, adgm translation, corporate translation dubai"
+  heroTitle="Legal Translation"
+  heroSubtitle="Dubai"
+  heroIntro="Every legal document tells a story that courts and authorities must understand precisely. We provide Ministry of Justice certified translations accepted by Dubai Courts, DIFC, ADGM, and all UAE government entities. From court judgments to corporate filings, your documents handled with the accuracy the law demands."
+  snapshot={snapshot}
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  serviceType="Legal Translation Service"
+  trustStrip={trustStrip}
+  processSteps={processSteps}
+  processTitle="Our Legal Translation Process"
+  benefitCards={benefitCards}
+  accordionSections={accordionSections}
+>
+
+  <section class="section bg-white">
+    <div class="container">
+      <h2>The Complete Guide to Legal Translation in the UAE</h2>
+      
+      <p>The UAE legal system operates across multiple jurisdictions, each with distinct language requirements and acceptance standards. Understanding these requirements before you begin saves time, money, and the frustration of rejected submissions.</p>
+
+      <h3>Why Legal Translation Differs from Standard Translation</h3>
+      
+      <p>Legal translation is not simply converting words from one language to another. Legal terminology carries precise meaning developed over centuries of case law and statutory interpretation. A lease is not merely rent—it encompasses specific rights, obligations, and remedies that differ between legal systems.</p>
+      
+      <p>In the UAE context, this complexity multiplies. The country operates civil law courts (Dubai Courts, Abu Dhabi Judicial Department) alongside common law jurisdictions (DIFC, ADGM). A Power of Attorney translated for Dubai Courts uses different terminology than one destined for DIFC registration. Our translators understand these distinctions because they work with both systems daily.</p>
+
+      <h3>The Hierarchy of Legal Documents in UAE Proceedings</h3>
+      
+      <p>Courts and authorities weight documents differently based on their certification level. A document with the full attestation chain (origin country notarization, foreign ministry, UAE embassy, MOFA) plus MOJ-certified translation carries maximum evidentiary weight. Documents missing attestation steps may be admitted but given less consideration.</p>
+      
+      <p>For commercial matters, this hierarchy determines whether contracts are enforceable and whether corporate actions are valid. We advise clients on the minimum certification level required for their specific use case—sometimes full attestation is necessary, sometimes MOJ translation alone suffices.</p>
+
+      <h3>Cost Factors in Legal Translation</h3>
+      
+      <p>Legal translation pricing depends on several factors beyond simple word count. Technical complexity matters: a standard employment contract translates faster than a pharmaceutical licensing agreement filled with specialized terminology. Document condition affects cost—faded photocopies require more careful handling than clear originals. Urgency carries a premium because rush jobs require rearranging translator schedules.</p>
+      
+      <p>We provide fixed quotes after reviewing your document, never after. The price we quote includes the MOJ stamp, digital delivery, and any standard formatting. We do not add fees for processing or certification after the fact.</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Legal Translation Services by Category</h2>
+      <p>Select your document type for specific requirements and processing information:</p>
+      
+      <div class="service-grid">
+        <a href="/legal/contracts/" class="service-card">
+          <i class="fas fa-file-contract"></i>
+          <h3>Contract Translation</h3>
+          <p>Employment contracts, tenancy agreements, SPAs, NDAs, and commercial agreements</p>
+        </a>
+        
+        <a href="/legal/corporate/" class="service-card">
+          <i class="fas fa-building"></i>
+          <h3>Corporate Documents</h3>
+          <p>MOA, board resolutions, trade licenses, and shareholder agreements</p>
+        </a>
+        
+        <a href="/legal/litigation/" class="service-card">
+          <i class="fas fa-balance-scale"></i>
+          <h3>Court Documents</h3>
+          <p>Judgments, arbitration awards, legal notices, and case filings</p>
+        </a>
+        
+        <a href="/legal/wills/" class="service-card">
+          <i class="fas fa-scroll"></i>
+          <h3>Wills & Estates</h3>
+          <p>DIFC wills, probate documents, and inheritance certificates</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <h2>Related Services</h2>
+      
+      <div class="related-grid">
+        <a href="/services/attestation/" class="related-card">
+          <h3>Document Attestation</h3>
+          <p>MOFA attestation and embassy legalization services for foreign documents</p>
+        </a>
+        
+        <a href="/services/corporate-translation/" class="related-card">
+          <h3>Corporate Translation</h3>
+          <p>Business setup documentation for DED, DMCC, JAFZA, and free zone authorities</p>
+        </a>
+        
+        <a href="/personal-documents/" class="related-card">
+          <h3>Personal Documents</h3>
+          <p>Certificates, immigration documents, and academic credentials</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</ServiceLayout>
+
+<style>
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .service-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+    display: block;
+  }
+  
+  .service-card:hover {
+    border-color: var(--accent-color, #FF1654);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .service-card i {
+    font-size: 2rem;
+    color: var(--primary-color, #0E2B48);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  
+  .service-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color, #0E2B48);
+  }
+  
+  .service-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted, #666);
+    margin: 0;
+    line-height: 1.5;
+  }
+  
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .related-card {
+    padding: 1.5rem;
+    background: var(--bg-light, #f8f9fa);
+    border-radius: 6px;
+    text-decoration: none;
+    color: inherit;
+    border-left: 3px solid var(--primary-color, #0E2B48);
+    transition: all 0.2s ease;
+  }
+  
+  .related-card:hover {
+    border-left-color: var(--accent-color, #FF1654);
+    background: #ffffff;
+  }
+  
+  .related-card h3 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color, #0E2B48);
+  }
+  
+  .related-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted, #666);
+    margin: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .service-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .service-card {
+      padding: 1.5rem;
+    }
+  }
+</style>
