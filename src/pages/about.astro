@@ -2,17 +2,22 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import DulBadge from '../components/DulBadge.astro';
 import AuthorityLogos from '../components/AuthorityLogos.astro';
-import aboutContent from '../content/core/about.md';
+import { getEntry } from 'astro:content';
 
-const {
-  pageTitle,
-  metaDescription,
-  heroHeading,
-  heroSubheading,
-  heroLead,
-  body
-} = aboutContent.frontmatter;
+// Fetch the About page entry from content collection
+const aboutEntry = await getEntry('core', 'about');
 
+// Default values to prevent undefined crash if file is missing/empty
+const data = aboutEntry?.data || {
+  pageTitle: "About Us | OnlineTranslation.ae",
+  metaDescription: "Professional legal translation in Dubai.",
+  heroHeading: "About Us",
+  heroSubheading: "Leading Translation Agency",
+  heroLead: "We provide certified translation services.",
+  body: ""
+};
+
+const { pageTitle, metaDescription, heroHeading, heroSubheading, heroLead, body } = data;
 
 ---
 
