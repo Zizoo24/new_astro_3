@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: main 
+  branch: main
 
 media_folder: "public/images"
 public_folder: "/images"
@@ -17,18 +17,20 @@ collections:
         label: "Homepage"
         name: "home"
         fields:
-          - {label: "Hero Title", name: "hero_title", widget: "string"}
-          - {label: "Hero Image", name: "hero_image", widget: "image"}
+          - { label: "Hero Title", name: "hero_title", widget: "string" }
+          - { label: "Hero Image", name: "hero_image", widget: "image" }
+
       - file: "src/content/core/about.md"
         label: "About Us"
         name: "about"
         fields:
-                    - { label: "Page Title (SEO)", name: "pageTitle", widget: "string" }
+          - { label: "Page Title (SEO)", name: "pageTitle", widget: "string" }
           - { label: "Meta Description", name: "metaDescription", widget: "text" }
           - { label: "Hero Heading", name: "heroHeading", widget: "string" }
           - { label: "Hero Subheading", name: "heroSubheading", widget: "string", required: false }
           - { label: "Hero Lead Paragraph", name: "heroLead", widget: "text", required: false }
           - { label: "Main Body", name: "body", widget: "markdown", required: false }
+
   # 2. SERVICES (Dynamic - Creates new files in src/content/services)
   - name: "services"
     label: "Services"
@@ -36,24 +38,26 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Hero Image", name: "image", widget: "image"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Hero Image", name: "image", widget: "image" }
+      - { label: "Body", name: "body", widget: "markdown" }
 
   # 3. INDUSTRIES (Dynamic)
   - name: "industries"
     label: "Industries"
     folder: "src/content/industries"
     create: true
+    slug: "{{slug}}"
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
 
   # 4. LOCATIONS (Dynamic)
   - name: "locations"
     label: "Locations"
     folder: "src/content/locations"
     create: true
+    slug: "{{slug}}"
     fields:
-      - {label: "City Name", name: "title", widget: "string"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - { label: "City Name", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
