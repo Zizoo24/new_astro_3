@@ -1,98 +1,91 @@
 // src/content/config.ts
 import { defineCollection, z } from 'astro:content';
 
-/**
- * Reusable section schema for the About page (and other core pages later if you want).
- * This is a discriminated union on "type" so each section has its own shape.
- */
-const sectionSchema = z.discriminatedUnion('type', [
-  z.object({
-    type: z.literal('introWithImage'),
-    heading: z.string(),
-    p1: z.string(),
-    p2: z.string().optional(),
-    features: z
-      .array(
-        z.object({
-          label: z.string(),
-          text: z.string(),
-        })
-      )
-      .default([]),
-    image: z.string(),
-    imageAlt: z.string(),
-  }),
+// ----- About sections schemas -----
+const introWithImageSection = z.object({
+  type: z.literal('introWithImage'),
+  heading: z.string(),
+  p1: z.string(),
+  p2: z.string().optional(),
+  features: z.array(
+    z.object({
+      label: z.string(),
+      text: z.string(),
+    })
+  ),
+  image: z.string(),
+  imageAlt: z.string(),
+});
 
-  z.object({
-    type: z.literal('licensing'),
-    sectionLabel: z.string(),
-    sectionTitle: z.string(),
-    mojLabel: z.string(),
-    mojTitle: z.string(),
-    mojSubtitle: z.string(),
-    note: z.string(),
-  }),
+const licensingSection = z.object({
+  type: z.literal('licensing'),
+  sectionLabel: z.string(),
+  sectionTitle: z.string(),
+  mojLabel: z.string(),
+  mojTitle: z.string(),
+  mojSubtitle: z.string(),
+  note: z.string(),
+});
 
-  z.object({
-    type: z.literal('authorityLogos'),
-    title: z.string(),
-  }),
+const authorityLogosSection = z.object({
+  type: z.literal('authorityLogos'),
+  title: z.string(),
+});
 
-  z.object({
-    type: z.literal('values'),
-    sectionLabel: z.string(),
-    sectionTitle: z.string(),
-    items: z
-      .array(
-        z.object({
-          title: z.string(),
-          text: z.string(),
-        })
-      )
-      .default([]),
-  }),
+const valuesSection = z.object({
+  type: z.literal('values'),
+  sectionLabel: z.string(),
+  sectionTitle: z.string(),
+  items: z.array(
+    z.object({
+      title: z.string(),
+      text: z.string(),
+    })
+  ),
+});
 
-  z.object({
-    type: z.literal('cta'),
-    heading: z.string(),
-    body: z.string(),
-    buttonLabel: z.string(),
-    buttonUrl: z.string(),
-  }),
+const ctaSection = z.object({
+  type: z.literal('cta'),
+  heading: z.string(),
+  body: z.string(),
+  buttonLabel: z.string(),
+  buttonUrl: z.string(),
+});
+
+const aboutSection = z.discriminatedUnion('type', [
+  introWithImageSection,
+  licensingSection,
+  authorityLogosSection,
+  valuesSection,
+  ctaSection,
 ]);
 
-/**
- * CORE collection
- * - Used for: home.md, about.md, and any other “core” pages.
- * - Many fields are optional so home/about can coexist under the same schema.
- */
+// ----- Collections -----
+
+// Core pages: home, about, etc.
 const core = defineCollection({
   type: 'content',
   schema: z.object({
-    // About-style SEO fields
+    // Home-style fields (keep your home page working)
+    hero_title: z.string().optional(),
+    hero_image: z.string().optional(),
+
+    // Generic SEO + hero
     pageTitle: z.string().optional(),
     metaDescription: z.string().optional(),
-
-    // Hero fields (used by About, can also be used by Home)
     heroHeading: z.string().optional(),
     heroSubheading: z.string().optional(),
     heroLead: z.string().optional(),
 
-    // Old home fields (from CMS: hero_title / hero_image)
-    hero_title: z.string().optional(),
-    hero_image: z.string().optional(),
+    // About modules
+    sections: z.array(aboutSection).optional(),
 
-    // Modular sections (About page, and possibly others)
-    sections: z.array(sectionSchema).default([]).optional(),
+    // Optional fallback markdown
+    body: z.string().optional(),
   }),
 });
 
-/**
- * SERVICES collection
- * - Folder: src/content/services
- * - Fields aligned with Netlify CMS:
- *   Title (required), Hero Image (optional), Body (markdown)
- */
+// Services pages
 const services = defineCollection({
   type: 'content',
   schema: z.object({
@@ -102,11 +95,7 @@ const services = defineCollection({
   }),
 });
 
-/**
- * INDUSTRIES collection
- * - Folder: src/content/industries
- * - Simple text pages: title + markdown body.
- */
+// Industries pages
 const industries = defineCollection({
   type: 'content',
   schema: z.object({
@@ -115,11 +104,7 @@ const industries = defineCollection({
   }),
 });
 
-/**
- * LOCATIONS collection
- * - Folder: src/content/locations
- * - Simple text pages: city name (title) + body.
- */
+// Locations pages
 const locations = defineCollection({
   type: 'content',
   schema: z.object({
@@ -128,21 +113,34 @@ const locations = defineCollection({
   }),
 });
 
-/**
- * SPECIALIZED collection
- * - Folder: src/content/specialized
- * - For things like medical.md etc.
- * - "title" is required (this resolves your earlier error about medical.md missing title).
- */
+// Specialized pages (e.g. medical)
 const specialized = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    // You can add more fields here if you want:
-    // slug, summary, image, etc.
-    summary: z.string().optional(),
+    description: z.string().optional(),
     body: z.string().optional(),
   }),
+});
+
+// Settings: navigation etc.
+const settings = defineCollection({
+  type: 'data',
+  schema: z
+    .object({
+      logoText: z.string().optional(),
+      links: z
+        .array(
+          z.object({
+            label: z.string(),
+            href: z.string(),
+          })
+        )
+        .optional(),
+      ctaLabel: z.string().optional(),
+      ctaHref: z.string().optional(),
+    })
+    .partial(),
 });
 
 export const collections = {
@@ -151,4 +149,5 @@ export const collections = {
   industries,
   locations,
   specialized,
+  settings,
 };

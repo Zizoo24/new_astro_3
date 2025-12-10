@@ -4,6 +4,12 @@
     "core": {
       "type": "object",
       "properties": {
+        "hero_title": {
+          "type": "string"
+        },
+        "hero_image": {
+          "type": "string"
+        },
         "pageTitle": {
           "type": "string"
         },
@@ -17,12 +23,6 @@
           "type": "string"
         },
         "heroLead": {
-          "type": "string"
-        },
-        "hero_title": {
-          "type": "string"
-        },
-        "hero_image": {
           "type": "string"
         },
         "sections": {
@@ -62,8 +62,7 @@
                         "text"
                       ],
                       "additionalProperties": false
-                    },
-                    "default": []
+                    }
                   },
                   "image": {
                     "type": "string"
@@ -76,6 +75,7 @@
                   "type",
                   "heading",
                   "p1",
+                  "features",
                   "image",
                   "imageAlt"
                 ],
@@ -165,14 +165,14 @@
                         "text"
                       ],
                       "additionalProperties": false
-                    },
-                    "default": []
+                    }
                   }
                 },
                 "required": [
                   "type",
                   "sectionLabel",
-                  "sectionTitle"
+                  "sectionTitle",
+                  "items"
                 ],
                 "additionalProperties": false
               },
@@ -206,8 +206,10 @@
                 "additionalProperties": false
               }
             ]
-          },
-          "default": []
+          }
+        },
+        "body": {
+          "type": "string"
         },
         "$schema": {
           "type": "string"

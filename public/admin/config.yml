@@ -5,9 +5,6 @@ backend:
 media_folder: "public/images"
 public_folder: "/images"
 
-# ---------------------------------------------------------
-# COLLECTIONS
-# ---------------------------------------------------------
 collections:
   # 1. CORE PAGES (Home, About)
   - name: "core"
@@ -18,86 +15,81 @@ collections:
         name: "home"
         fields:
           - { label: "Hero Title", name: "hero_title", widget: "string" }
-          - { label: "Hero Image", name: "hero_image", widget: "image" }
+          - { label: "Hero Image", name: "hero_image", widget: "image", required: false }
+          - { label: "Body (optional)", name: "body", widget: "markdown", required: false }
 
       - file: "src/content/core/about.md"
         label: "About Us"
         name: "about"
         fields:
-          # SEO + hero
           - { label: "Page Title (SEO)", name: "pageTitle", widget: "string" }
           - { label: "Meta Description", name: "metaDescription", widget: "text" }
+
           - { label: "Hero Heading", name: "heroHeading", widget: "string" }
           - { label: "Hero Subheading", name: "heroSubheading", widget: "string", required: false }
           - { label: "Hero Lead Paragraph", name: "heroLead", widget: "text", required: false }
 
-          # Modular sections for About page
-          - label: "Page Sections"
+          - label: "Sections"
             name: "sections"
             widget: "list"
-            summary: "{{fields.type}} — {{fields.heading}}"
             types:
-              # Intro with side image + bullets
               - label: "Intro with Image"
                 name: "introWithImage"
                 widget: "object"
                 fields:
                   - { label: "Heading", name: "heading", widget: "string" }
-                  - { label: "Intro Paragraph 1", name: "p1", widget: "text" }
-                  - { label: "Intro Paragraph 2", name: "p2", widget: "text", required: false }
-                  - label: "Feature Items"
+                  - { label: "Paragraph 1", name: "p1", widget: "text" }
+                  - { label: "Paragraph 2", name: "p2", widget: "text", required: false }
+                  - label: "Features"
                     name: "features"
                     widget: "list"
                     fields:
                       - { label: "Label", name: "label", widget: "string" }
                       - { label: "Text", name: "text", widget: "text" }
-                  - { label: "Side Image", name: "image", widget: "image" }
+                  - { label: "Image", name: "image", widget: "image" }
                   - { label: "Image Alt Text", name: "imageAlt", widget: "string" }
 
-              # Licensing & Compliance block
-              - label: "Licensing & Compliance"
+              - label: "Licensing"
                 name: "licensing"
                 widget: "object"
                 fields:
                   - { label: "Section Label", name: "sectionLabel", widget: "string" }
                   - { label: "Section Title", name: "sectionTitle", widget: "string" }
-                  - { label: "MOJ Badge Label", name: "mojLabel", widget: "string" }
-                  - { label: "MOJ Badge Title", name: "mojTitle", widget: "string" }
-                  - { label: "MOJ Badge Subtitle", name: "mojSubtitle", widget: "string" }
-                  - { label: "Compliance Note", name: "note", widget: "text" }
+                  - { label: "MOJ Label", name: "mojLabel", widget: "string" }
+                  - { label: "MOJ Title", name: "mojTitle", widget: "string" }
+                  - { label: "MOJ Subtitle", name: "mojSubtitle", widget: "string" }
+                  - { label: "Note", name: "note", widget: "text" }
 
-              # Authority logos block (uses existing AuthorityLogos component)
-              - label: "Authority Logos Block"
+              - label: "Authority Logos Section"
                 name: "authorityLogos"
                 widget: "object"
                 fields:
                   - { label: "Title", name: "title", widget: "string" }
 
-              # Values / How we work
-              - label: "Values / How We Work"
+              - label: "Values"
                 name: "values"
                 widget: "object"
                 fields:
                   - { label: "Section Label", name: "sectionLabel", widget: "string" }
                   - { label: "Section Title", name: "sectionTitle", widget: "string" }
-                  - label: "Value Cards"
+                  - label: "Items"
                     name: "items"
                     widget: "list"
                     fields:
                       - { label: "Title", name: "title", widget: "string" }
                       - { label: "Text", name: "text", widget: "text" }
 
-              # Final CTA block
-              - label: "CTA Section"
+              - label: "CTA"
                 name: "cta"
                 widget: "object"
                 fields:
                   - { label: "Heading", name: "heading", widget: "string" }
-                  - { label: "Body", name: "body", widget: "markdown" }
+                  - { label: "Body", name: "body", widget: "text" }
                   - { label: "Button Label", name: "buttonLabel", widget: "string" }
                   - { label: "Button URL", name: "buttonUrl", widget: "string" }
 
-  # 2. SERVICES (Dynamic - Creates new files in src/content/services)
+
+  # 2. SERVICES (Dynamic - folder)
   - name: "services"
     label: "Services"
     folder: "src/content/services"
@@ -105,8 +97,8 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Hero Image", name: "image", widget: "image" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Hero Image", name: "image", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
 
   # 3. INDUSTRIES (Dynamic)
   - name: "industries"
@@ -116,7 +108,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
 
   # 4. LOCATIONS (Dynamic)
   - name: "locations"
@@ -126,4 +118,26 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "City Name", name: "title", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+
+  # 5. SETTINGS (Navigation now, footer later)
+  - name: "settings"
+    label: "Site Settings"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: "src/content/settings/navigation.json"
+        label: "Navigation"
+        name: "navigation"
+        fields:
+          - { label: "Logo Text", name: "logoText", widget: "string", required: false }
+          - label: "Main Links"
+            name: "links"
+            widget: "list"
+            summary: "{{fields.label}} → {{fields.href}}"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "href", widget: "string" }
+          - { label: "CTA Label", name: "ctaLabel", widget: "string", required: false }
+          - { label: "CTA URL", name: "ctaHref", widget: "string", required: false }
