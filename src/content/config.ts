@@ -128,7 +128,7 @@ const contactSectionSchema = z.object({
   messagePlaceholder: z.string().optional(),
 });
 
-// Full homepage schema
+// Full homepage schema - STRICT to prevent matching about.md
 const homePageSchema = z.object({
   // SEO
   pageTitle: z.string(),
@@ -160,7 +160,7 @@ const homePageSchema = z.object({
 
   // Contact form section
   contactSection: contactSectionSchema.optional(),
-});
+}).strict(); // STRICT MODE - fails if extra keys like heroHeading exist
 
 // =============================================
 // ABOUT PAGE SCHEMA (core/about.md)
@@ -269,6 +269,7 @@ const aboutSection = z.discriminatedUnion('type', [
   ctaSection,
 ]);
 
+// About page schema - has heroHeading which home doesn't have
 const aboutPageSchema = z.object({
   pageTitle: z.string(),
   metaDescription: z.string(),
