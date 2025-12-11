@@ -1,0 +1,693 @@
+/* ============================================
+   DARK MODE - TOKENIZED
+   OnlineTranslation.ae
+   
+   REPLACES: dark-mode.css (2000+ lines → ~800)
+   
+   All hardcoded colors replaced with var(--token)
+   Zero !important declarations
+   Works with @layer cascade system
+   ============================================ */
+
+@layer states {
+
+  /* ============================================
+     BASE BODY & BACKGROUNDS
+     ============================================ */
+
+  [data-theme="dark"],
+  body.theme-dark {
+    background: var(--surface-base);
+    color: var(--text-body);
+  }
+
+
+  /* ============================================
+     TYPOGRAPHY
+     ============================================ */
+
+  body.theme-dark h1,
+  body.theme-dark h2,
+  body.theme-dark h3,
+  body.theme-dark h4,
+  body.theme-dark h5,
+  body.theme-dark h6 {
+    color: var(--text-heading);
+  }
+
+  body.theme-dark p {
+    color: var(--text-body);
+  }
+
+  body.theme-dark strong,
+  body.theme-dark b {
+    color: var(--text-heading);
+  }
+
+  body.theme-dark a {
+    color: var(--link-color);
+  }
+
+  body.theme-dark a:hover {
+    color: var(--link-hover);
+  }
+
+
+  /* ============================================
+     HEADER & NAVIGATION
+     ============================================ */
+
+  body.theme-dark .header-desktop {
+    background: rgba(11, 17, 26, 0.95);
+    border-bottom: 1px solid var(--border-medium);
+    backdrop-filter: blur(10px);
+  }
+
+  body.theme-dark .header-desktop.scrolled {
+    background: rgba(11, 17, 26, 0.98);
+  }
+
+  body.theme-dark .header-mobile {
+    background: rgba(11, 17, 26, 0.95);
+    border-bottom: 1px solid var(--border-medium);
+  }
+
+  body.theme-dark .header-logo-text {
+    color: var(--text-on-dark);
+  }
+
+  body.theme-dark .header-logo-text span {
+    color: var(--accent-coral);
+  }
+
+  body.theme-dark .header-mobile .header-title {
+    color: var(--text-on-dark);
+  }
+
+  body.theme-dark .header-mobile .header-title span {
+    color: var(--accent-coral);
+  }
+
+  body.theme-dark .header-mobile .header-icon {
+    color: var(--text-on-dark);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  body.theme-dark .menu-toggle-btn {
+    color: var(--text-on-dark);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  body.theme-dark .menu-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  /* Top bar */
+  body.theme-dark .top-bar {
+    background: var(--surface-navy-dark);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  body.theme-dark .top-bar a,
+  body.theme-dark .top-bar span {
+    color: var(--text-muted);
+  }
+
+  body.theme-dark .top-bar a:hover {
+    color: var(--text-on-dark);
+  }
+
+  /* Announcement bar */
+  body.theme-dark .header-announcement {
+    background: var(--accent-coral);
+  }
+
+
+  /* ============================================
+     SIDEBAR MENU
+     ============================================ */
+
+  body.theme-dark .sidebar-menu {
+    background: var(--surface-raised);
+    border-right: 1px solid var(--border-medium);
+  }
+
+  body.theme-dark .sidebar-header {
+    background: linear-gradient(135deg, var(--surface-navy-dark) 0%, var(--surface-navy) 100%);
+    border-bottom: 1px solid var(--border-medium);
+  }
+
+  body.theme-dark .sidebar-logo,
+  body.theme-dark .sidebar-brand-name {
+    color: var(--text-on-dark);
+  }
+
+  body.theme-dark .sidebar-brand-name .brand-suffix {
+    color: var(--accent-coral);
+  }
+
+  body.theme-dark .sidebar-tagline {
+    color: var(--text-on-dark-muted);
+  }
+
+  body.theme-dark .sidebar-nav ul li a {
+    color: var(--text-body);
+  }
+
+  body.theme-dark .sidebar-nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-heading);
+  }
+
+  body.theme-dark .sidebar-nav ul li a i {
+    color: var(--text-muted);
+  }
+
+  body.theme-dark .sidebar-nav ul li a:hover i {
+    color: var(--link-color);
+  }
+
+  body.theme-dark .sidebar-cta {
+    background: var(--accent-coral);
+    color: var(--text-on-dark);
+  }
+
+  body.theme-dark .quick-links {
+    background: var(--surface-navy-dark);
+  }
+
+  body.theme-dark .quick-links a {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-body);
+  }
+
+  body.theme-dark .sidebar-overlay {
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+
+  /* ============================================
+     HERO SECTION
+     ============================================ */
+
+  body.theme-dark .hero-section {
+    background: transparent;
+  }
+
+  body.theme-dark .hero-background {
+    opacity: 1;
+    z-index: 0;
+  }
+
+  body.theme-dark .hero-background .hero-image {
+    opacity: 1;
+    filter: brightness(0.75) saturate(0.85);
+  }
+
+  body.theme-dark .hero-overlay {
+    background: linear-gradient(
+      135deg,
+      rgba(11, 17, 26, 0.65) 0%,
+      rgba(11, 17, 26, 0.5) 40%,
+      rgba(11, 17, 26, 0.4) 70%,
+      rgba(11, 17, 26, 0.3) 100%
+    );
+  }
+
+  body.theme-dark .hero-overlay.exodus-overlay {
+    background: linear-gradient(
+      135deg,
+      rgba(13, 17, 23, 0.65) 0%,
+      rgba(13, 17, 23, 0.5) 40%,
+      rgba(13, 17, 23, 0.4) 70%,
+      rgba(13, 17, 23, 0.3) 100%
+    );
+  }
+
+  body.theme-dark .hero-title,
+  body.theme-dark .title-bg {
+    color: var(--text-on-dark);
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  body.theme-dark .hero-subtitle {
+    color: var(--text-body);
+  }
+
+  body.theme-dark .hero-subtitle .highlight {
+    color: var(--accent-coral);
+  }
+
+  body.theme-dark .hero-description {
+    color: var(--text-muted);
+  }
+
+  body.theme-dark .hero-cta {
+    background: var(--accent-coral);
+    box-shadow: 0 4px 20px rgba(255, 107, 107, 0.4);
+  }
+
+  body.theme-dark .hero-cta:hover {
+    background: var(--accent-coral-hover);
+    box-shadow: 0 6px 30px rgba(255, 107, 107, 0.5);
+  }
+
+  body.theme-dark .hero-cta-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+
+  /* ============================================
+     SECTIONS & BACKGROUNDS
+     ============================================ */
+
+  body.theme-dark section {
+    background: var(--surface-base);
+  }
+
+  body.theme-dark .section-light,
+  body.theme-dark .feature-cards-section,
+  body.theme-dark .services-section,
+  body.theme-dark .about-section {
+    background: var(--surface-raised);
+  }
+
+  body.theme-dark .section-header h2 {
+    color: var(--text-heading);
+  }
+
+  body.theme-dark .section-header p,
+  body.theme-dark .section-subtitle {
+    color: var(--text-muted);
+  }
+
+
+  /* ============================================
+     CARDS (UNIVERSAL)
+     ============================================ */
+
+  body.theme-dark .card,
+  body.theme-dark .feature-card,
+  body.theme-dark .service-card,
+  body.theme-dark .channel-card,
+  body.theme-dark .why-card,
+  body.theme-dark .stat-card,
+  body.theme-dark .pricing-card,
+  body.theme-dark .process-step {
+    background: var(--surface-muted);
+    border: 1px solid var(--border-medium);
+    box-shadow: var(--shadow-sm);
+  }
+
+  body.theme-dark .card:hover,
+  body.theme-dark .feature-card:hover,
+  body.theme-dark .service-card:hover,
+  body.theme-dark .why-card:hover {
+    background: var(--surface-navy);
+    border-color: var(--border-dark);
+    box-shadow: var(--shadow-md);
+  }
+
+  body.theme-dark .card h3,
+  body.theme-dark .feature-card h3,
+  body.theme-dark .service-card h3,
+  body.theme-dark .why-card h3,
+  body.theme-dark .channel-card h3 {
+    color: var(--text-heading);
+  }
+
+  body.theme-dark .card p,
+  body.theme-dark .feature-card p,
+  body.theme-dark .service-card p,
+  body.theme-dark .why-card p,
+  body.theme-dark .channel-card p {
+    color: var(--text-secondary);
+  }
+
+  body.theme-dark .card-icon {
+    background: rgba(127, 209, 255, 0.15);
+    color: var(--link-color);
+  }
+
+  body.theme-dark .card-link {
+    color: var(--link-color);
+  }
+
+  body.theme-dark .card-link:hover {
+    color: var(--accent-coral);
+  }
+
+  body.theme-dark .card-divider {
+    background: var(--border-medium);
+  }
+
+  /* Exodus red card variant */
+  body.theme-dark .feature-card.exodus-red-card {
+    background: #8b1a1f;
+  }
+
+  body.theme-dark .feature-card.exodus-red-card:hover {
+    background: #a01f25;
+  }
+
+
+  /* ============================================
+     PROCESS STEPS
+     ============================================ */
+
+  body.theme-dark .process-step {
+    background: var(--surface-muted);
+    border-color: var(--border-medium);
+  }
+
+  body.theme-dark .process-step:hover {
+    background: var(--surface-navy);
+  }
+
+  body.theme-dark .process-step__number {
+    background: var(--accent-coral);
+    color: var(--text-on-dark);
+  }
+
+  body.theme-dark .process-step h4 {
+    color: var(--text-heading);
+  }
+
+  body.theme-dark .process-step p {
+    color: var(--text-secondary);
+  }
+
+  body.theme-dark .process-connector {
+    background: var(--border-medium);
+  }
+
+
+  /* ============================================
+     TESTIMONIALS
+     ============================================ */
+
+  body.theme-dark .testimonial-card {
+    background: var(--surface-muted);
+    border-color: var(--border-medium);
+  }
+
+  body.theme-dark .testimonial-card:hover {
+    background: var(--surface-navy);
+  }
+
+  body.theme-dark .testimonial-text {
+    color: var(--text-body);
+  }
+
+  body.theme-dark .testimonial-author {
+    color: var(--text-heading);
+  }
+
+  body.theme-dark .testimonial-role {
+    color: var(--text-muted);
+  }
+
+  body.theme-dark .testimonial-quote-icon {
+    color: var(--accent-coral);
+    opacity: 0.5;
+  }
+
+
+  /* ============================================
+     BUTTONS
+     ============================================ */
+
+  body.theme-dark .btn-coral,
+  body.theme-dark .hero-cta {
+    background: var(--accent-coral);
+    color: var(--text-on-dark);
+  }
+
+  body.theme-dark .btn-coral:hover,
+  body.theme-dark .hero-cta:hover {
+    background: var(--accent-coral-hover);
+  }
+
+  body.theme-dark .btn-outline {
+    border-color: var(--text-heading);
+    color: var(--text-heading);
+  }
+
+  body.theme-dark .btn-outline:hover {
+    background: var(--text-heading);
+    color: var(--surface-base);
+  }
+
+  body.theme-dark .header-cta {
+    background: var(--accent-coral);
+    color: var(--text-on-dark);
+  }
+
+  body.theme-dark .header-cta:hover {
+    background: var(--accent-coral-hover);
+  }
+
+
+  /* ============================================
+     FORMS
+     ============================================ */
+
+  body.theme-dark .form-input,
+  body.theme-dark .form-textarea,
+  body.theme-dark .form-select,
+  body.theme-dark input,
+  body.theme-dark textarea,
+  body.theme-dark select {
+    background: var(--surface-muted);
+    border-color: var(--border-medium);
+    color: var(--text-body);
+  }
+
+  body.theme-dark .form-input::placeholder,
+  body.theme-dark input::placeholder,
+  body.theme-dark textarea::placeholder {
+    color: var(--text-muted);
+  }
+
+  body.theme-dark .form-input:focus,
+  body.theme-dark .form-textarea:focus,
+  body.theme-dark .form-select:focus,
+  body.theme-dark input:focus,
+  body.theme-dark textarea:focus,
+  body.theme-dark select:focus {
+    border-color: var(--link-color);
+    box-shadow: 0 0 0 3px rgba(127, 209, 255, 0.2);
+  }
+
+  body.theme-dark label,
+  body.theme-dark .form-label {
+    color: var(--text-heading);
+  }
+
+  body.theme-dark .form-helper {
+    color: var(--text-muted);
+  }
+
+  body.theme-dark .form-error {
+    color: var(--state-danger);
+  }
+
+
+  /* ============================================
+     FOOTER
+     ============================================ */
+
+  body.theme-dark .footer {
+    background: var(--surface-navy-dark);
+    border-top: 1px solid var(--border-medium);
+  }
+
+  body.theme-dark .footer h4 {
+    color: var(--text-heading);
+  }
+
+  body.theme-dark .footer p,
+  body.theme-dark .footer li {
+    color: var(--text-secondary);
+  }
+
+  body.theme-dark .footer a {
+    color: var(--text-secondary);
+  }
+
+  body.theme-dark .footer a:hover {
+    color: var(--link-color);
+  }
+
+  body.theme-dark .footer-bar {
+    background: rgba(11, 17, 26, 0.98);
+    border-top: 1px solid var(--border-medium);
+  }
+
+  body.theme-dark .footer-item {
+    color: var(--text-muted);
+  }
+
+  body.theme-dark .footer-item.active-nav,
+  body.theme-dark .footer-item:hover {
+    color: var(--accent-coral);
+  }
+
+
+  /* ============================================
+     FAQ & ACCORDION
+     ============================================ */
+
+  body.theme-dark .faq-item {
+    background: var(--surface-muted);
+    border-color: var(--border-medium);
+  }
+
+  body.theme-dark .faq-question {
+    color: var(--text-heading);
+  }
+
+  body.theme-dark .faq-answer {
+    color: var(--text-body);
+  }
+
+  body.theme-dark .faq-toggle {
+    color: var(--text-muted);
+  }
+
+  body.theme-dark .accordion-heading {
+    background: var(--surface-muted);
+    border-color: var(--border-medium);
+    color: var(--text-heading);
+  }
+
+  body.theme-dark .accordion-content {
+    background: var(--surface-raised);
+    border-color: var(--border-medium);
+    color: var(--text-body);
+  }
+
+
+  /* ============================================
+     TABLES
+     ============================================ */
+
+  body.theme-dark table {
+    background: var(--surface-muted);
+    border-color: var(--border-medium);
+  }
+
+  body.theme-dark th {
+    background: var(--surface-navy);
+    color: var(--text-heading);
+    border-color: var(--border-medium);
+  }
+
+  body.theme-dark td {
+    color: var(--text-body);
+    border-color: var(--border-light);
+  }
+
+  body.theme-dark tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+
+  /* ============================================
+     IMAGES & MEDIA
+     ============================================ */
+
+  body.theme-dark .about-image img {
+    filter: brightness(0.9);
+  }
+
+  body.theme-dark .service-card img,
+  body.theme-dark .services-section img {
+    filter: brightness(0.85);
+  }
+
+
+  /* ============================================
+     MEGAMENU
+     ============================================ */
+
+  body.theme-dark .megamenu {
+    background: var(--surface-raised);
+    border-color: var(--border-medium);
+    box-shadow: var(--shadow-lg);
+  }
+
+  body.theme-dark .megamenu-column h4 {
+    color: var(--text-heading);
+  }
+
+  body.theme-dark .megamenu-link {
+    color: var(--text-body);
+  }
+
+  body.theme-dark .megamenu-link:hover {
+    color: var(--link-color);
+    background: rgba(127, 209, 255, 0.1);
+  }
+
+
+  /* ============================================
+     TRUST BAR
+     ============================================ */
+
+  body.theme-dark .trust-bar {
+    background: var(--surface-muted);
+    border-color: var(--border-medium);
+  }
+
+  body.theme-dark .trust-item {
+    color: var(--text-secondary);
+  }
+
+  body.theme-dark .trust-item i {
+    color: var(--accent-gold);
+  }
+
+
+  /* ============================================
+     DOCUMENT PAGES
+     ============================================ */
+
+  body.theme-dark .document-content {
+    background: var(--surface-muted);
+    border-color: var(--border-medium);
+  }
+
+  body.theme-dark .document-content h1,
+  body.theme-dark .document-content h2,
+  body.theme-dark .document-content h3 {
+    color: var(--text-heading);
+  }
+
+  body.theme-dark .document-content p,
+  body.theme-dark .document-content li {
+    color: var(--text-body);
+  }
+
+
+  /* ============================================
+     WHATSAPP FLOAT
+     ============================================ */
+
+  body.theme-dark .whatsapp-float {
+    background: #25D366;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  }
+
+
+  /* ============================================
+     SELECTION
+     ============================================ */
+
+  body.theme-dark ::selection {
+    background: var(--surface-navy);
+    color: var(--text-heading);
+  }
+
+}

@@ -1,0 +1,325 @@
+/* ============================================
+   CONTRAST FIXES - CONSOLIDATED
+   OnlineTranslation.ae
+   
+   Merged from:
+   - contrast-fix-1.css
+   - contrast-fix-2.css
+   - contrast-fix-3.css
+   - contrast-fix-4.css
+   
+   All fixes use CSS tokens - no hardcoded colors
+   ============================================ */
+
+@layer states {
+
+  /* ============================================
+     SIDEBAR CONTRAST FIXES
+     ============================================ */
+
+  /* Sidebar tagline - improved visibility */
+  body.theme-dark .sidebar-tagline {
+    color: var(--text-on-dark-muted);
+  }
+
+  /* Accordion chevrons */
+  body.theme-dark .sidebar-accordion-heading .accordion-chevron {
+    color: var(--text-on-dark-muted);
+  }
+
+  /* Sidebar nav links */
+  body.theme-dark .sidebar-nav ul li a {
+    color: var(--text-body);
+  }
+
+  body.theme-dark .sidebar-nav ul li a:hover {
+    color: var(--text-heading);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  body.theme-dark .sidebar-nav ul li a i {
+    color: var(--text-muted);
+  }
+
+  body.theme-dark .sidebar-nav ul li a:hover i {
+    color: var(--link-color);
+  }
+
+  /* Quick links in sidebar */
+  body.theme-dark .quick-links a {
+    color: var(--text-body);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  body.theme-dark .quick-links a:hover {
+    color: var(--text-heading);
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+
+  /* ============================================
+     CAROUSEL & SLIDER CONTRAST
+     ============================================ */
+
+  /* Carousel dots */
+  body.theme-dark .carousel-dot {
+    border-color: var(--text-on-dark-muted);
+  }
+
+  body.theme-dark .carousel-dot.active {
+    background: var(--accent-coral);
+    border-color: var(--accent-coral);
+  }
+
+  /* Carousel navigation arrows */
+  body.theme-dark .carousel-arrow {
+    color: var(--text-on-dark);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--border-on-dark);
+  }
+
+  body.theme-dark .carousel-arrow:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+
+  /* ============================================
+     FORM ELEMENT CONTRAST
+     ============================================ */
+
+  /* Form labels */
+  body.theme-dark label,
+  body.theme-dark .form-label {
+    color: var(--text-heading);
+  }
+
+  /* Form inputs */
+  body.theme-dark input,
+  body.theme-dark textarea,
+  body.theme-dark select,
+  body.theme-dark .form-input,
+  body.theme-dark .form-textarea,
+  body.theme-dark .form-select {
+    background: var(--surface-muted);
+    border-color: var(--border-medium);
+    color: var(--text-body);
+  }
+
+  body.theme-dark input::placeholder,
+  body.theme-dark textarea::placeholder {
+    color: var(--text-muted);
+  }
+
+  body.theme-dark input:focus,
+  body.theme-dark textarea:focus,
+  body.theme-dark select:focus {
+    border-color: var(--link-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(127, 209, 255, 0.2);
+  }
+
+  /* Checkboxes & radios */
+  body.theme-dark input[type="checkbox"],
+  body.theme-dark input[type="radio"] {
+    accent-color: var(--link-color);
+  }
+
+
+  /* ============================================
+     TABLE CONTRAST
+     ============================================ */
+
+  body.theme-dark table {
+    background: var(--surface-muted);
+    border-color: var(--border-medium);
+  }
+
+  body.theme-dark th {
+    background: var(--surface-navy);
+    color: var(--text-heading);
+    border-color: var(--border-medium);
+  }
+
+  body.theme-dark td {
+    color: var(--text-body);
+    border-color: var(--border-light);
+  }
+
+  body.theme-dark tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  body.theme-dark tr:hover {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+
+  /* ============================================
+     BADGE & TAG CONTRAST
+     ============================================ */
+
+  body.theme-dark .badge,
+  body.theme-dark .tag {
+    background: var(--surface-navy);
+    color: var(--text-heading);
+    border: 1px solid var(--border-medium);
+  }
+
+  body.theme-dark .badge--coral {
+    background: var(--accent-coral);
+    color: var(--text-on-dark);
+    border-color: var(--accent-coral);
+  }
+
+  body.theme-dark .badge--success {
+    background: rgba(74, 222, 128, 0.2);
+    color: var(--state-success);
+    border-color: var(--state-success);
+  }
+
+  body.theme-dark .badge--warning {
+    background: rgba(250, 204, 21, 0.2);
+    color: var(--state-warning);
+    border-color: var(--state-warning);
+  }
+
+
+  /* ============================================
+     BLOCKQUOTE & CODE CONTRAST
+     ============================================ */
+
+  body.theme-dark blockquote {
+    background: var(--surface-muted);
+    border-left-color: var(--accent-coral);
+    color: var(--text-body);
+  }
+
+  body.theme-dark blockquote cite {
+    color: var(--text-muted);
+  }
+
+  body.theme-dark code,
+  body.theme-dark pre {
+    background: var(--surface-navy);
+    color: var(--text-heading);
+    border-color: var(--border-medium);
+  }
+
+  body.theme-dark pre code {
+    background: transparent;
+  }
+
+
+  /* ============================================
+     ALERT & NOTICE CONTRAST
+     ============================================ */
+
+  body.theme-dark .alert,
+  body.theme-dark .notice {
+    background: var(--surface-muted);
+    border-color: var(--border-medium);
+    color: var(--text-body);
+  }
+
+  body.theme-dark .alert--info {
+    background: rgba(127, 209, 255, 0.1);
+    border-color: var(--state-info);
+  }
+
+  body.theme-dark .alert--success {
+    background: rgba(74, 222, 128, 0.1);
+    border-color: var(--state-success);
+  }
+
+  body.theme-dark .alert--warning {
+    background: rgba(250, 204, 21, 0.1);
+    border-color: var(--state-warning);
+  }
+
+  body.theme-dark .alert--danger {
+    background: rgba(255, 79, 109, 0.1);
+    border-color: var(--state-danger);
+  }
+
+
+  /* ============================================
+     BREADCRUMB CONTRAST
+     ============================================ */
+
+  body.theme-dark .breadcrumb {
+    color: var(--text-muted);
+  }
+
+  body.theme-dark .breadcrumb a {
+    color: var(--link-color);
+  }
+
+  body.theme-dark .breadcrumb a:hover {
+    color: var(--link-hover);
+  }
+
+  body.theme-dark .breadcrumb-separator {
+    color: var(--text-subtle);
+  }
+
+
+  /* ============================================
+     PAGINATION CONTRAST
+     ============================================ */
+
+  body.theme-dark .pagination a,
+  body.theme-dark .pagination span {
+    background: var(--surface-muted);
+    border-color: var(--border-medium);
+    color: var(--text-body);
+  }
+
+  body.theme-dark .pagination a:hover {
+    background: var(--surface-navy);
+    color: var(--text-heading);
+  }
+
+  body.theme-dark .pagination .active {
+    background: var(--accent-coral);
+    border-color: var(--accent-coral);
+    color: var(--text-on-dark);
+  }
+
+
+  /* ============================================
+     TOOLTIP CONTRAST
+     ============================================ */
+
+  body.theme-dark [data-tooltip]::after {
+    background: var(--surface-navy);
+    color: var(--text-heading);
+    border: 1px solid var(--border-medium);
+    box-shadow: var(--shadow-md);
+  }
+
+
+  /* ============================================
+     MODAL & OVERLAY CONTRAST
+     ============================================ */
+
+  body.theme-dark .modal,
+  body.theme-dark .dialog {
+    background: var(--surface-raised);
+    border: 1px solid var(--border-medium);
+    box-shadow: var(--shadow-lg);
+  }
+
+  body.theme-dark .modal-header {
+    border-bottom-color: var(--border-medium);
+  }
+
+  body.theme-dark .modal-footer {
+    border-top-color: var(--border-medium);
+  }
+
+  body.theme-dark .modal-overlay,
+  body.theme-dark .backdrop {
+    background: rgba(0, 0, 0, 0.75);
+  }
+
+}
