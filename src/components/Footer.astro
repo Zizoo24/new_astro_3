@@ -17,7 +17,12 @@ import { siteContact, socialLinks, footerNav } from '../data/navigation';
       <!-- COLUMN 1: Brand -->
       <div class="footer-brand">
         <a href="/" class="footer-logo">
-          <img src="/images/logo.svg" alt="OnlineTranslation.ae" width="180" height="50" loading="lazy" />
+          <img src="/images/logo/brand/emblem-clean.png" alt="" class="footer-logo-img" loading="lazy" />
+          <div class="footer-logo-text">
+            <span class="logo-name">Online<span class="logo-suffix">Translation</span><span class="logo-domain">.ae</span></span>
+            <span class="logo-tagline">Boutique Legal Translation</span>
+          </div>
+        </a>
         </a>
         <p>Services Executed by MOJ Certified Partners. Formatted for Dubai Courts, DIFC, ADGM, Federal Entities, and Immigration Services.</p>
         
@@ -125,11 +130,44 @@ import { siteContact, socialLinks, footerNav } from '../data/navigation';
   
   .footer-logo {
     margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
   }
   
-  .footer-logo img {
-    height: 50px;
+  .footer-logo-img {
+    height: 40px;
     width: auto;
+  }
+  
+  .footer-logo-text {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .footer-logo-text .logo-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+  }
+  
+  .footer-logo-text .logo-suffix {
+    font-weight: 400;
+  }
+  
+  .footer-logo-text .logo-domain {
+    color: var(--accent-coral, #FF1654);
+    font-weight: 700;
+  }
+  
+  .footer-logo-text .logo-tagline {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-on-dark-muted, #c5d4e8);
+    margin-top: 2px;
   }
   
   .footer-brand > p {
@@ -302,6 +340,14 @@ import { siteContact, socialLinks, footerNav } from '../data/navigation';
       text-align: center;
     }
     
+    .footer-logo {
+      justify-content: center;
+    }
+    
+    .footer-logo-text {
+      text-align: left;
+    }
+    
     .footer-partnership {
       margin-left: auto;
       margin-right: auto;
@@ -328,6 +374,15 @@ import { siteContact, socialLinks, footerNav } from '../data/navigation';
     
     .footer-brand {
       align-items: center;
+    }
+    
+    .footer-logo {
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .footer-logo-text {
+      text-align: center;
     }
     
     .footer-links h4::after,
