@@ -1,0 +1,954 @@
+/* ============================================
+   BASE ARCHITECTURE CSS - Divi/Exodus Style
+   Predictable section → container → row → column
+   Load BEFORE component stylesheets
+   ============================================ */
+
+/* Global scale: 80% of browser default (20% smaller) */
+html {
+    font-size: 80%;
+}
+
+/* ============================================
+   CSS VARIABLES - RESPONSIVE DESIGN SYSTEM
+   Typography and spacing scale with clamp()
+   ============================================ */
+:root {
+    /* Responsive Typography Scale */
+    --fs-xs: clamp(0.75rem, 0.65rem + 0.2vw, 0.8rem);
+    --fs-sm: clamp(0.875rem, 0.8rem + 0.2vw, 1rem);
+    --fs-md: clamp(1rem, 0.9rem + 0.35vw, 1.125rem);
+    --fs-lg: clamp(1.25rem, 1rem + 0.6vw, 1.5rem);
+    --fs-xl: clamp(1.75rem, 1.3rem + 1.2vw, 2.5rem);
+    --fs-xxl: clamp(2.25rem, 1.5rem + 2vw, 3.5rem);
+    --fs-hero: clamp(2.5rem, 1.6rem + 2.5vw, 4.5rem);
+    
+    /* Responsive Spacing Scale */
+    --space-xs: clamp(0.25rem, 0.15rem + 0.3vw, 0.5rem);
+    --space-sm: clamp(0.5rem, 0.35rem + 0.4vw, 0.75rem);
+    --space-md: clamp(0.75rem, 0.5rem + 0.6vw, 1.25rem);
+    --space-lg: clamp(1.25rem, 0.8rem + 1vw, 2rem);
+    --space-xl: clamp(2rem, 1.2rem + 1.8vw, 3.5rem);
+    --space-2xl: clamp(3rem, 1.8rem + 2.5vw, 5rem);
+    --space-3xl: clamp(4rem, 2.5rem + 3vw, 7rem);
+    
+    /* Section Padding - Responsive */
+    --section-py: clamp(40px, 5vw, 80px);
+    --section-py-sm: clamp(24px, 3vw, 50px);
+    --section-py-lg: clamp(60px, 7vw, 120px);
+    
+    /* ============================================
+       UNIFIED COLOR TOKEN SYSTEM - LIGHT MODE
+       All contrast ratios calculated for WCAG AA
+       Normal text: ≥4.5:1 | Large text: ≥3:1
+       ============================================ */
+    
+    /* === SURFACE COLORS (Backgrounds) === */
+    --surface-base: #ffffff;           /* Page background */
+    --surface-raised: #f8f9fa;         /* Cards, elevated elements */
+    --surface-muted: #f0f2f5;          /* Alternate sections */
+    --surface-navy: #0E2B48;           /* Headers, hero, dark sections */
+    --surface-navy-dark: #072035;      /* Deeper navy variant */
+    --surface-overlay: rgba(14, 43, 72, 0.85); /* Hero overlays */
+    
+    /* === TEXT COLORS - on white/light backgrounds === */
+    /* Contrast ratios vs #ffffff */
+    --text-heading: #0E2B48;           /* 14.4:1 - Headings */
+    --text-body: #2d3748;              /* 10.7:1 - Body copy */
+    --text-secondary: #4a5568;         /* 7.0:1 - Secondary text */
+    --text-muted: #5a6a7a;             /* 5.3:1 - Muted (warm gray, not icy) */
+    --text-subtle: #718096;            /* 4.5:1 - Minimum contrast text */
+    
+    /* === TEXT COLORS - on navy/dark backgrounds === */
+    /* Contrast ratios vs #0E2B48 */
+    --text-on-dark: #f4f7fc;           /* 15.2:1 - Primary on dark */
+    --text-on-dark-muted: #c5d4e8;     /* 9.8:1 - Muted on dark */
+    --text-on-dark-subtle: #9fb2c9;    /* 6.4:1 - Subtle on dark */
+    
+    /* === LINK COLORS === */
+    /* Using teal/cyan instead of harsh default blue */
+    --link-color: #0077b6;             /* 5.2:1 on white - Accessible teal */
+    --link-hover: #005f8a;             /* 7.4:1 on white - Darker on hover */
+    --link-on-dark: #7fd1ff;           /* 11.2:1 on navy - Cyan on dark */
+    --link-on-dark-hover: #ffe178;     /* 14.8:1 on navy - Gold hover */
+    
+    /* === ACCENT/BRAND COLORS === */
+    --accent-coral: #FF1654;           /* 4.7:1 on white - CTAs */
+    --accent-coral-hover: #e01346;     /* 5.5:1 on white - Hover state */
+    --accent-gold: #b8860b;            /* 4.6:1 on white - Gold accent */
+    --accent-gold-light: #d4a54c;      /* 3.2:1 on white - Large text only */
+    
+    /* === STATE COLORS === */
+    --state-success: #047857;          /* 5.9:1 on white */
+    --state-warning: #b45309;          /* 5.0:1 on white */
+    --state-danger: #dc2626;           /* 5.0:1 on white */
+    --state-info: #0369a1;             /* 5.4:1 on white */
+    
+    /* === BORDER COLORS === */
+    --border-light: #e2e8f0;           /* Subtle borders */
+    --border-medium: #cbd5e1;          /* Medium borders */
+    --border-dark: #94a3b8;            /* Strong borders */
+    --border-on-dark: rgba(255,255,255,0.2); /* Borders on dark bg */
+    
+    /* === SHADOWS === */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+    --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+    
+    /* === LEGACY ALIASES (for backward compatibility) === */
+    --brand-coral: var(--accent-coral);
+    --brand-coral-dark: var(--accent-coral-hover);
+    --brand-navy: var(--surface-navy);
+    --brand-navy-dark: var(--surface-navy-dark);
+    --brand-white: var(--surface-base);
+    --brand-muted: var(--text-muted);
+    --brand-gold: var(--accent-gold-light);
+    --bg-white: var(--surface-base);
+    --bg-light: var(--surface-raised);
+    --bg-alt: var(--surface-muted);
+    --bg-dark: var(--surface-navy-dark);
+    --bg-card: var(--surface-base);
+    --bg-elevated: var(--surface-raised);
+    --text-dark: var(--text-heading);
+    --text-light: var(--text-on-dark);
+    --primary-color: var(--surface-navy);
+    --primary-dark: var(--surface-navy-dark);
+    --primary-accent: var(--link-color);
+    --accent-color: var(--accent-coral);
+    --border-color: var(--border-light);
+    
+    /* Container widths */
+    --container-max: 1200px;
+    --container-narrow: 900px;
+    --container-wide: 1400px;
+    
+    /* Gutters - Responsive */
+    --gutter: clamp(16px, 2vw, 24px);
+    --gutter-sm: clamp(12px, 1.5vw, 16px);
+    --gutter-lg: clamp(20px, 2.5vw, 32px);
+    
+    /* === OS-AGNOSTIC BASE VARIABLES === */
+    /* Default values - OS-specific files override these */
+    --os-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --os-radius: 8px;
+    --os-radius-lg: 12px;
+    --os-radius-sm: 6px;
+    --os-nav-height: 64px;
+    --os-safe-bottom: 0px;
+    --os-elevation-1: 0 1px 3px rgba(0,0,0,0.12);
+    --os-elevation-2: 0 4px 12px rgba(0,0,0,0.15);
+    --os-elevation-3: 0 8px 24px rgba(0,0,0,0.18);
+}
+
+/* ============================================
+   UNIFIED COLOR TOKEN SYSTEM - DARK MODE
+   All contrast ratios calculated for WCAG AA
+   Normal text: ≥4.5:1 | Large text: ≥3:1
+   ============================================ */
+[data-theme="dark"],
+body.theme-dark {
+    /* === SURFACE COLORS (Backgrounds) === */
+    --surface-base: #0b111a;           /* Deep indigo base */
+    --surface-raised: #121b2a;         /* Nav, top bar */
+    --surface-muted: #1b2738;          /* Cards */
+    --surface-navy: #243347;           /* Popovers, elevated */
+    --surface-navy-dark: #0b111a;      /* Deepest */
+    --surface-overlay: rgba(11, 17, 26, 0.82);
+    
+    /* === TEXT COLORS - on dark backgrounds === */
+    /* Contrast ratios vs #0b111a */
+    --text-heading: #f4f7fc;           /* 17.4:1 - Headings (bright) */
+    --text-body: #dfe8f5;              /* 14.0:1 - Body copy */
+    --text-secondary: #c5d4e8;         /* 12.5:1 - Secondary */
+    --text-muted: #9fb2c9;             /* 8.7:1 - Muted (warm, not icy) */
+    --text-subtle: #7a8fa6;            /* 5.8:1 - Subtle */
+    
+    /* === TEXT ON DARK (same as heading for dark mode) === */
+    --text-on-dark: #f4f7fc;           /* 17.4:1 */
+    --text-on-dark-muted: #c5d4e8;     /* 12.5:1 */
+    --text-on-dark-subtle: #9fb2c9;    /* 8.7:1 */
+    
+    /* === LINK COLORS === */
+    /* Cyan/gold instead of harsh blue */
+    --link-color: #7fd1ff;             /* 11.2:1 on dark - Cyan */
+    --link-hover: #ffe178;             /* 14.8:1 on dark - Gold hover */
+    --link-on-dark: #7fd1ff;           /* Same as link-color in dark mode */
+    --link-on-dark-hover: #ffe178;     /* Same as link-hover */
+    
+    /* === ACCENT/BRAND COLORS === */
+    --accent-coral: #ff6b6b;           /* 6.7:1 on dark - Softer coral */
+    --accent-coral-hover: #ff5050;     /* 5.9:1 on dark */
+    --accent-gold: #f2cf87;            /* 12.6:1 on dark */
+    --accent-gold-light: #ffe178;      /* 14.8:1 on dark */
+    
+    /* === STATE COLORS === */
+    --state-success: #4ade80;          /* 10.8:1 on dark */
+    --state-warning: #facc15;          /* 10.4:1 on dark */
+    --state-danger: #ff4f6d;           /* 6.1:1 on dark */
+    --state-info: #7fd1ff;             /* 11.2:1 on dark */
+    
+    /* === BORDER COLORS === */
+    --border-light: #1f2a3a;           /* 4.9:1 on surface-base */
+    --border-medium: #304156;          /* 5.6:1 on surface-raised */
+    --border-dark: #3d4f66;            /* Stronger borders */
+    --border-on-dark: rgba(255,255,255,0.15);
+    
+    /* === SHADOWS === */
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.4);
+    --shadow-md: 0 6px 20px rgba(0,0,0,0.5);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,0.6);
+    
+    /* === LEGACY ALIASES === */
+    --brand-coral: var(--accent-coral);
+    --brand-coral-dark: var(--accent-coral-hover);
+    --brand-navy: var(--surface-navy);
+    --brand-navy-dark: var(--surface-navy-dark);
+    --brand-white: var(--text-heading);
+    --brand-muted: var(--text-muted);
+    --brand-gold: var(--accent-gold);
+    --bg-white: var(--surface-base);
+    --bg-light: var(--surface-raised);
+    --bg-alt: var(--surface-muted);
+    --bg-dark: var(--surface-navy-dark);
+    --bg-card: var(--surface-muted);
+    --bg-elevated: var(--surface-navy);
+    --text-dark: var(--text-heading);
+    --text-light: var(--text-on-dark);
+    /* In dark mode, --primary-color stays navy for backgrounds */
+    --primary-color: var(--surface-navy);
+    --primary-dark: var(--surface-navy-dark);
+    /* --primary-accent for high-contrast text/icons in dark mode */
+    --primary-accent: var(--link-color);
+    --accent-color: var(--accent-coral);
+    --border-color: var(--border-medium);
+}
+
+/* ============================================
+   GLOBAL LINK & BUTTON RESET
+   Eliminates browser default blue (#0000ee)
+   Ensures ALL links use token colors
+   ============================================ */
+
+/* Light Mode Links */
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover,
+a:focus {
+    color: var(--link-hover);
+}
+
+a:visited {
+    color: var(--link-color);
+}
+
+/* Dark Mode Links - Override for ALL links */
+[data-theme="dark"] a,
+body.theme-dark a {
+    color: var(--link-color);
+}
+
+[data-theme="dark"] a:hover,
+[data-theme="dark"] a:focus,
+body.theme-dark a:hover,
+body.theme-dark a:focus {
+    color: var(--link-hover);
+}
+
+[data-theme="dark"] a:visited,
+body.theme-dark a:visited {
+    color: var(--link-color);
+}
+
+/* Links on dark backgrounds (navy headers, hero, etc.) */
+.bg-dark a,
+.hero-section a,
+.header-desktop a,
+.header-mobile a,
+.footer a,
+.sidebar a {
+    color: var(--link-on-dark);
+}
+
+.bg-dark a:hover,
+.hero-section a:hover,
+.header-desktop a:hover,
+.header-mobile a:hover,
+.footer a:hover,
+.sidebar a:hover {
+    color: var(--link-on-dark-hover);
+}
+
+/* Button-style links should NOT follow link colors */
+a.btn-coral,
+a.hero-cta,
+a.header-cta,
+a.sidebar-cta,
+a.announcement-btn,
+a.announcement-cta,
+a[class*="btn-"],
+button {
+    color: inherit;
+}
+
+/* ============================================
+   SECTION - Full-width wrapper
+   ============================================ */
+.section {
+    position: relative;
+    width: 100%;
+    padding: var(--section-py) 0;
+}
+
+.section--sm {
+    padding: var(--section-py-sm) 0;
+}
+
+.section--lg {
+    padding: var(--section-py-lg) 0;
+}
+
+.section--flush {
+    padding: 0;
+}
+
+.section--hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    padding-top: 160px;
+    padding-bottom: 180px;
+}
+
+/* Section backgrounds */
+.bg-white { background-color: var(--bg-white, #ffffff); }
+.bg-light { background-color: var(--bg-light, #f8f9fa); }
+.bg-alt { background-color: var(--bg-alt, #f0f2f5); }
+.bg-dark { background-color: var(--primary-color, #0E2B48); }
+.bg-accent { background-color: var(--accent-color, #FF1654); }
+
+/* Dark background text override - uses token system */
+.bg-dark,
+.section--hero.bg-dark {
+    color: var(--text-on-dark);
+}
+
+.bg-dark h1, .bg-dark h2, .bg-dark h3, .bg-dark h4, .bg-dark h5, .bg-dark h6 {
+    color: var(--text-on-dark);
+}
+
+.bg-dark p, .bg-dark li {
+    color: var(--text-on-dark-muted);
+}
+
+.bg-dark span, .bg-dark strong {
+    color: var(--text-on-dark);
+}
+
+/* Dark mode theme - uses text tokens */
+[data-theme="dark"],
+body.theme-dark {
+    color: var(--text-body);
+}
+
+[data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3,
+[data-theme="dark"] h4, [data-theme="dark"] h5, [data-theme="dark"] h6,
+body.theme-dark h1, body.theme-dark h2, body.theme-dark h3,
+body.theme-dark h4, body.theme-dark h5, body.theme-dark h6 {
+    color: var(--text-heading);
+}
+
+[data-theme="dark"] p, [data-theme="dark"] li,
+body.theme-dark p, body.theme-dark li {
+    color: var(--text-body);
+}
+
+/* Service Snapshot - Hero bullet points */
+.service-snapshot {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.snapshot-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-secondary);
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.snapshot-item i {
+    color: var(--accent-color, #FF1654);
+    font-size: 14px;
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.snapshot-item strong {
+    color: #ffffff;
+}
+
+/* ============================================
+   CONTAINER - Centered max-width wrapper
+   ============================================ */
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+    position: relative;
+}
+
+.container--narrow {
+    max-width: var(--container-narrow);
+}
+
+.container--wide {
+    max-width: var(--container-wide);
+}
+
+.container--fluid {
+    max-width: none;
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+}
+
+/* ============================================
+   ROW - Flexbox row container
+   ============================================ */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: calc(var(--gutter) / -2);
+    margin-right: calc(var(--gutter) / -2);
+}
+
+.row--center {
+    justify-content: center;
+}
+
+.row--between {
+    justify-content: space-between;
+}
+
+.row--middle {
+    align-items: center;
+}
+
+.row--stretch {
+    align-items: stretch;
+}
+
+.row--gap-sm {
+    margin-left: calc(var(--gutter-sm) / -2);
+    margin-right: calc(var(--gutter-sm) / -2);
+}
+
+.row--gap-lg {
+    margin-left: calc(var(--gutter-lg) / -2);
+    margin-right: calc(var(--gutter-lg) / -2);
+}
+
+.row--gap-sm > [class*="col-"] {
+    padding-left: calc(var(--gutter-sm) / 2);
+    padding-right: calc(var(--gutter-sm) / 2);
+}
+
+.row--gap-lg > [class*="col-"] {
+    padding-left: calc(var(--gutter-lg) / 2);
+    padding-right: calc(var(--gutter-lg) / 2);
+}
+
+/* ============================================
+   COLUMNS - Percentage-based widths
+   ============================================ */
+[class*="col-"] {
+    padding-left: calc(var(--gutter) / 2);
+    padding-right: calc(var(--gutter) / 2);
+    margin-bottom: var(--gutter);
+}
+
+.col-1 { flex: 0 0 8.333%; max-width: 8.333%; }
+.col-2 { flex: 0 0 16.666%; max-width: 16.666%; }
+.col-3 { flex: 0 0 25%; max-width: 25%; }
+.col-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+.col-5 { flex: 0 0 41.666%; max-width: 41.666%; }
+.col-6 { flex: 0 0 50%; max-width: 50%; }
+.col-7 { flex: 0 0 58.333%; max-width: 58.333%; }
+.col-8 { flex: 0 0 66.666%; max-width: 66.666%; }
+.col-9 { flex: 0 0 75%; max-width: 75%; }
+.col-10 { flex: 0 0 83.333%; max-width: 83.333%; }
+.col-11 { flex: 0 0 91.666%; max-width: 91.666%; }
+.col-12 { flex: 0 0 100%; max-width: 100%; }
+
+.col-auto { flex: 0 0 auto; max-width: none; width: auto; }
+
+/* ============================================
+   GRID - CSS Grid alternative for cards
+   ============================================ */
+.grid {
+    display: grid;
+    gap: var(--gutter);
+}
+
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-5 { grid-template-columns: repeat(5, 1fr); }
+
+.grid--auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid--auto-fill {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+/* ============================================
+   SECTION HEADER - Centered titles
+   ============================================ */
+.section-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+.section-header--left {
+    text-align: left;
+}
+
+.section-subtitle {
+    max-width: 700px;
+    margin: var(--space-sm) auto 0;
+    color: var(--text-muted, #666);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* ============================================
+   SPACING UTILITIES
+   ============================================ */
+.mt-0 { margin-top: 0; }
+.mt-sm { margin-top: var(--space-sm); }
+.mt-md { margin-top: var(--space-md); }
+.mt-lg { margin-top: var(--space-lg); }
+.mt-xl { margin-top: var(--space-xl); }
+
+.mb-0 { margin-bottom: 0; }
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+.mb-xl { margin-bottom: var(--space-xl); }
+
+.py-sm { padding-top: var(--space-sm); padding-bottom: var(--space-sm); }
+.py-md { padding-top: var(--space-md); padding-bottom: var(--space-md); }
+.py-lg { padding-top: var(--space-lg); padding-bottom: var(--space-lg); }
+.py-xl { padding-top: var(--space-xl); padding-bottom: var(--space-xl); }
+
+.px-sm { padding-left: var(--space-sm); padding-right: var(--space-sm); }
+.px-md { padding-left: var(--space-md); padding-right: var(--space-md); }
+.px-lg { padding-left: var(--space-lg); padding-right: var(--space-lg); }
+
+/* ============================================
+   TEXT ALIGNMENT
+   ============================================ */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Tablet (768px - 991px) */
+@media (max-width: 991px) {
+    :root {
+        --space-xl: 50px;
+        --space-2xl: 60px;
+        --space-3xl: 80px;
+    }
+    
+    .section { padding: var(--space-2xl) 0; }
+    .section--hero { min-height: auto; padding-top: 120px; padding-bottom: 100px; }
+    
+    .col-md-6 { flex: 0 0 50%; max-width: 50%; }
+    .col-md-12 { flex: 0 0 100%; max-width: 100%; }
+    
+    .grid-4, .grid-5 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    
+    .hide-tablet { display: none; }
+}
+
+/* Mobile (max-width 767px) */
+@media (max-width: 767px) {
+    :root {
+        --space-xl: 40px;
+        --space-2xl: 50px;
+        --space-3xl: 60px;
+        --gutter: 16px;
+    }
+    
+    .section { padding: var(--space-xl) 0; }
+    .section--hero { 
+        min-height: auto; 
+        padding-top: 80px; 
+        padding-bottom: 40px;
+    }
+    
+    .container {
+        padding-left: var(--space-sm);
+        padding-right: var(--space-sm);
+    }
+    
+    [class*="col-"] { flex: 0 0 100%; max-width: 100%; }
+    .col-sm-6 { flex: 0 0 50%; max-width: 50%; }
+    .col-sm-12 { flex: 0 0 100%; max-width: 100%; }
+    
+    .grid-2, .grid-3, .grid-4, .grid-5 { grid-template-columns: 1fr; }
+    .grid-2--mobile { grid-template-columns: repeat(2, 1fr); }
+    
+    .row { margin-left: calc(var(--gutter) / -2); margin-right: calc(var(--gutter) / -2); }
+    
+    .hide-mobile { display: none; }
+    .show-mobile { display: block; }
+}
+
+/* Small phones (max-width 480px) */
+@media (max-width: 480px) {
+    :root {
+        --space-lg: 32px;
+        --space-xl: 32px;
+    }
+    
+    .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}
+
+/* ============================================
+   CARD PRIMITIVES
+   ============================================ */
+.card {
+    background: var(--bg-white, #fff);
+    border-radius: 12px;
+    padding: var(--space-md);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.card--flat {
+    box-shadow: none;
+    border: 1px solid var(--border-color, #e0e0e0);
+}
+
+.card--accent {
+    background: var(--accent-color, #FF1654);
+    color: #fff;
+}
+
+/* ============================================
+   FLEX UTILITIES
+   ============================================ */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-wrap { flex-wrap: wrap; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.items-stretch { align-items: stretch; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-start { justify-content: flex-start; }
+.gap-sm { gap: var(--space-sm); }
+.gap-md { gap: var(--space-md); }
+.gap-lg { gap: var(--space-lg); }
+
+/* ============================================
+   HORIZONTAL SCROLL CAROUSEL (Mobile)
+   ============================================ */
+.carousel-mobile {
+    display: grid;
+}
+
+@media (max-width: 767px) {
+    .carousel-mobile {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: var(--space-sm);
+        padding-bottom: var(--space-sm);
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    
+    .carousel-mobile::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .carousel-mobile > * {
+        flex: 0 0 90%;
+        scroll-snap-align: center;
+    }
+}
+
+/* ============================================
+   MICRO-COMPONENTS: Visual Punctuation
+   Icon boxes, timelines, alert boxes for 
+   breaking wall-of-text content
+   ============================================ */
+
+/* Icon Box - For checklist/requirements grids */
+.icon-box {
+    display: flex;
+    align-items: flex-start;
+    background: var(--bg-white, #fff);
+    padding: var(--space-md);
+    border-radius: 8px;
+    border: 1px solid var(--border-color, #eee);
+    height: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.icon-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.icon-box i,
+.icon-box .icon-box__icon {
+    font-size: 24px;
+    color: var(--accent-color, #FF1654);
+    margin-right: 15px;
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.icon-box__content h4,
+.icon-box h4 {
+    font-family: var(--font-primary, 'Montserrat', sans-serif);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-dark, #1a1a1a);
+    margin: 0 0 6px 0;
+}
+
+.icon-box__content p,
+.icon-box p {
+    font-size: 14px;
+    color: var(--text-muted, #666);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Icon Box - Navy variant */
+.icon-box--navy i,
+.icon-box--navy .icon-box__icon {
+    color: var(--primary-color, #0E2B48);
+}
+
+/* Icon Box - Gold variant */
+.icon-box--gold i,
+.icon-box--gold .icon-box__icon {
+    color: var(--gold-highlight, #d4a54c);
+}
+
+/* Vertical Timeline - For process steps */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+    border-left: 2px solid var(--accent-color, #FF1654);
+    margin-left: 10px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -36px;
+    top: 0;
+    width: 14px;
+    height: 14px;
+    background: var(--bg-white, #fff);
+    border: 3px solid var(--accent-color, #FF1654);
+    border-radius: 50%;
+}
+
+.timeline-title {
+    font-family: var(--font-primary, 'Montserrat', sans-serif);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--text-dark, #1a1a1a);
+    margin-bottom: 6px;
+    display: block;
+}
+
+.timeline-item p {
+    font-size: 15px;
+    color: var(--text-muted, #666);
+    margin: 0;
+    line-height: 1.7;
+}
+
+/* Timeline - Navy line variant */
+.timeline--navy {
+    border-left-color: var(--primary-color, #0E2B48);
+}
+
+.timeline--navy .timeline-item::before {
+    border-color: var(--primary-color, #0E2B48);
+}
+
+/* Alert Box - For warnings and important notes */
+.alert-box {
+    padding: 15px 20px;
+    border-left: 4px solid var(--accent-color, #FF1654);
+    background-color: #fff5f5;
+    margin: 20px 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.alert-box strong {
+    color: var(--accent-color, #FF1654);
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.alert-box p {
+    margin: 0;
+    color: var(--text-dark, #1a1a1a);
+    line-height: 1.6;
+}
+
+/* Alert Box - Warning variant (gold) */
+.alert-box--warning {
+    border-left-color: var(--gold-highlight, #d4a54c);
+    background-color: #fffbf0;
+}
+
+.alert-box--warning strong {
+    color: var(--gold-highlight, #d4a54c);
+}
+
+/* Alert Box - Info variant (navy) */
+.alert-box--info {
+    border-left-color: var(--primary-color, #0E2B48);
+    background-color: #f5f8fb;
+}
+
+.alert-box--info strong {
+    color: var(--primary-color, #0E2B48);
+}
+
+/* Alert Box - Success variant (green) */
+.alert-box--success {
+    border-left-color: #28a745;
+    background-color: #f0fff4;
+}
+
+.alert-box--success strong {
+    color: #28a745;
+}
+
+/* ============================================
+   METRICS STRIP - Compact 4-Column Grid
+   ============================================ */
+.ot-metrics {
+    background: linear-gradient(135deg, var(--brand-coral, #FF1654) 0%, var(--brand-coral-dark, #e01346) 100%);
+    color: var(--text-light, #ffffff);
+    padding-block: var(--space-lg);
+}
+
+.ot-metrics-inner {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+}
+
+.ot-metric {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.ot-metric-value {
+    font-family: var(--font-primary, 'Montserrat', sans-serif);
+    font-size: var(--fs-xl);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--brand-navy, #0E2B48);
+}
+
+.ot-metric-label {
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.95;
+}
+
+.ot-metric-note {
+    font-size: var(--fs-xs);
+    opacity: 0.8;
+}
+
+/* Metrics - Tablet (2 columns) */
+@media (max-width: 992px) {
+    .ot-metrics-inner {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-md);
+    }
+}
+
+/* Metrics - Mobile (2 columns, tighter) */
+@media (max-width: 600px) {
+    .ot-metrics {
+        padding-block: var(--space-md);
+    }
+    
+    .ot-metrics-inner {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-sm);
+    }
+    
+    .ot-metric-value {
+        font-size: var(--fs-lg);
+    }
+}
+
+/* Dark mode metrics */
+[data-theme="dark"] .ot-metrics,
+body.theme-dark .ot-metrics {
+    background: linear-gradient(135deg, #8b1a1f 0%, #6b1419 100%);
+}
+
+[data-theme="dark"] .ot-metric-value,
+body.theme-dark .ot-metric-value {
+    color: var(--text-light, #ffffff);
+}

@@ -100,53 +100,51 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous">
   
   <!-- ============================================
-       CSS ARCHITECTURE v2.0 - @layer System
+       CSS - SAFE CONFIGURATION
        
-       Load order matters! css-layers.css MUST be first.
-       The @layer declaration in css-layers.css controls
-       cascade priority for all subsequent CSS.
+       Changes from original:
+       - Merged 4 contrast-fix files → contrast-fixes.css
+       - Merged 3 visual-relief files → visual-relief.css  
+       - Replaced dark-mode.css → dark-mode-tokenized.css
        
-       Removed: 7 patch files (merged into 2)
-       Removed: dark-mode.css (replaced with tokenized)
-       Removed: base-architecture.css (merged into css-layers)
+       Everything else unchanged.
        ============================================ -->
   
-  <!-- FOUNDATION: Must load FIRST - declares @layer order + tokens -->
-  <link rel="stylesheet" href="/styles/css-layers.css">
+  <!-- FOUNDATION -->
+  <link rel="stylesheet" href="/styles/base-architecture.css">
   
-  <!-- COMPONENTS: Cards, buttons, forms, UI elements -->
-  <link rel="stylesheet" href="/styles/components.css">
-  
-  <!-- PAGE-SPECIFIC STYLES -->
+  <!-- PAGE STYLES -->
   <link rel="stylesheet" href="/styles/porto-desktop.css">
   <link rel="stylesheet" href="/styles/services-enhanced.css">
   <link rel="stylesheet" href="/styles/document-pages.css">
-  <link rel="stylesheet" href="/styles/hero-enhancements.css">
+  <link rel="stylesheet" href="/styles/visibility-fixes.css">
   
   <!-- NAVIGATION -->
   <link rel="stylesheet" href="/styles/navigation-glassmorphism.css">
-  <link rel="stylesheet" href="/styles/megamenu.css">
   <link rel="stylesheet" href="/styles/subsection-menu.css">
-  
-  <!-- FOOTER -->
-  <link rel="stylesheet" href="/styles/footer-redesign.css">
+  <link rel="stylesheet" href="/styles/megamenu.css">
   
   <!-- MOBILE -->
   <link rel="stylesheet" href="/styles/sticky-mobile.css">
-  
-  <!-- OS-SPECIFIC (must stay separate) -->
+  <link rel="stylesheet" href="/styles/mobile-action-bar.css">
   <link rel="stylesheet" href="/styles/mobile-ios.css">
   <link rel="stylesheet" href="/styles/mobile-android.css">
   <link rel="stylesheet" href="/styles/desktop-macos.css">
   
-  <!-- POLISH & ACCESSIBILITY -->
-  <link rel="stylesheet" href="/styles/visual-relief.css">
-  <link rel="stylesheet" href="/styles/contrast-fixes.css">
-  <link rel="stylesheet" href="/styles/visibility-fixes.css">
+  <!-- COMPONENTS -->
+  <link rel="stylesheet" href="/styles/hero-enhancements.css">
+  <link rel="stylesheet" href="/styles/footer-redesign.css">
   <link rel="stylesheet" href="/styles/trust-bar.css">
   
-  <!-- THEME: Dark mode (token-based, no !important) -->
+  <!-- POLISH (NEW - merged files) -->
+  <link rel="stylesheet" href="/styles/visual-relief.css">
+  <link rel="stylesheet" href="/styles/contrast-fixes.css">
+  
+  <!-- DARK MODE (NEW - tokenized, replaces dark-mode.css) -->
   <link rel="stylesheet" href="/styles/dark-mode-tokenized.css">
+  
+  <!-- PRINT -->
+  <link rel="stylesheet" href="/styles/print.css">
   
   <slot name="head" />
   <script is:inline src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
