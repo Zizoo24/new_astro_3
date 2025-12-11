@@ -215,3 +215,90 @@ body.theme-dark .dropdown-menu li a {
         -webkit-backdrop-filter: blur(12px) saturate(180%);
     }
 }
+/* ========================================
+   DROPDOWN HEADER FIX
+   Addresses gray-on-navy visibility issue
+   
+   Add to: navigation-glassmorphism.css
+   ======================================== */
+
+/* --------------------------------------
+   ISSUE: .dropdown-header has no explicit 
+   styling, inheriting gray from elsewhere
+   -------------------------------------- */
+
+/* Dropdown Section Headers - Make them visible */
+.dropdown-menu .dropdown-header {
+    display: block;
+    padding: 0.6rem 0.75rem 0.35rem;
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.5);  /* Subtle white, not gray */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    pointer-events: none;
+}
+
+/* First header doesn't need top margin */
+.dropdown-menu .dropdown-header:first-child {
+    margin-top: 0;
+}
+
+/* Dropdown Dividers - Subtle separation */
+.dropdown-menu .dropdown-divider {
+    height: 0;
+    margin: 0.4rem 0;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Ensure all dropdown text is white, not gray */
+.dropdown-menu,
+.dropdown-menu li,
+.dropdown-menu li a,
+.dropdown-menu .dropdown-header {
+    color: #ffffff;
+}
+
+/* Links get slightly dimmer, brighten on hover */
+.dropdown-menu li a {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.dropdown-menu li a:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .dropdown-menu .dropdown-header,
+body.theme-dark .dropdown-menu .dropdown-header {
+    color: rgba(255, 255, 255, 0.4);
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .dropdown-menu .dropdown-divider,
+body.theme-dark .dropdown-menu .dropdown-divider {
+    border-top-color: rgba(255, 255, 255, 0.06);
+}
+
+/* --------------------------------------
+   MEGA DROPDOWN WIDTH FIX
+   Services dropdown needs more width
+   -------------------------------------- */
+
+.nav-item.mega-dropdown .dropdown-menu {
+    min-width: 280px;
+    max-width: 320px;
+}
+
+/* If you want 2-column layout for Services dropdown:
+.nav-item.mega-dropdown .dropdown-menu {
+    min-width: 480px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem 1.5rem;
+}
+*/
