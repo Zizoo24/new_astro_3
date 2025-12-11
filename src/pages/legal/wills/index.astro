@@ -1,0 +1,261 @@
+---
+/**
+ * Will Translation - Tier 2 Service Page
+ * URL: /legal/wills/
+ */
+import ServiceLayout from '../../../layouts/ServiceLayout.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Legal Translation', url: '/legal-translation-dubai/' },
+  { name: 'Will Translation', url: '/legal/wills/' }
+];
+
+const snapshot = [
+  { icon: 'scroll', bold: 'DIFC & Dubai Courts', text: 'formatted for both jurisdictions' },
+  { icon: 'stamp', bold: 'MOJ Certified', text: 'Ministry of Justice accredited translators' },
+  { icon: 'shield-alt', bold: 'Confidential', text: 'secure handling of sensitive estate documents' },
+  { icon: 'clock', bold: 'Same-Day Available', text: 'express service for urgent probate matters' }
+];
+
+const processSteps = [
+  {
+    number: 1,
+    title: 'Send Your Will',
+    text: 'WhatsApp your will or testament document. We accept wills from any country, in any language. We review the document structure and confirm if any pages are missing or illegible.',
+    icon: 'paper-plane'
+  },
+  {
+    number: 2,
+    title: 'Quote & Timeline',
+    text: 'Receive a fixed quote based on document length and complexity. Standard wills completed same day. Complex estate documents with multiple schedules may require 24-48 hours.',
+    icon: 'file-invoice-dollar'
+  },
+  {
+    number: 3,
+    title: 'Legal Translation',
+    text: 'A MOJ-certified translator with estate law expertise translates your document. We preserve legal terminology, beneficiary details, and executor provisions with precision.',
+    icon: 'certificate'
+  },
+  {
+    number: 4,
+    title: 'Certified Delivery',
+    text: 'Receive your certified translation digitally and by courier. Ready for submission to DIFC Wills Service Centre, Dubai Courts, or probate proceedings.',
+    icon: 'check-circle'
+  }
+];
+
+const benefitCards = [
+  {
+    icon: 'landmark',
+    title: 'DIFC Wills Registry',
+    text: 'Translations formatted for DIFC Wills Service Centre registration. We understand DIFC requirements for non-Muslim expatriate wills covering UAE assets.'
+  },
+  {
+    icon: 'gavel',
+    title: 'Probate & Succession',
+    text: 'Court-ready translations for probate proceedings in Dubai Courts and Abu Dhabi. Essential when administering estates with UAE assets.'
+  },
+  {
+    icon: 'globe-americas',
+    title: 'Cross-Border Estates',
+    text: 'Handle wills from any jurisdiction for use in UAE. UK, US, European, and Asian wills translated for local legal recognition and asset transfer.'
+  }
+];
+
+const faqs = [
+  {
+    question: 'Why would I need my will translated in Dubai?',
+    answer: 'Common scenarios include: registering a foreign will with DIFC Wills Service Centre, probate proceedings when a foreign national dies with UAE assets, property transfer at Dubai Land Department, bank account release requiring translated probate documentation, and cross-border estate coordination.'
+  },
+  {
+    question: 'What is the difference between DIFC Wills and Dubai Courts Wills?',
+    answer: 'DIFC Wills are registered with the DIFC Wills Service Centre and follow common law principles, allowing non-Muslims to distribute assets according to their wishes. Dubai Courts Wills fall under UAE civil law and Sharia principles. The translation requirements differ significantly: DIFC accepts English-language wills, while Dubai Courts require Arabic translations certified by MOJ-licensed translators. We format your translation for the correct jurisdiction based on your specific situation.'
+  },
+  {
+    question: 'Do I need to translate my foreign will for use in Dubai?',
+    answer: 'Yes. Any will executed outside the UAE must be translated into Arabic by an MOJ-certified translator before it can be presented to Dubai Courts. For DIFC registration, English wills from common law jurisdictions may be accepted without translation, but supporting documents such as death certificates and probate grants typically require certified translation regardless of jurisdiction.'
+  },
+  {
+    question: 'How long does will translation take?',
+    answer: 'Standard will translations of 5-15 pages are completed within 24-48 hours. Express same-day service is available for urgent probate matters where court deadlines are imminent. Complex wills with multiple schedules, trust provisions, or codicils may require 3-5 business days. We provide an exact timeline after reviewing your specific document.'
+  },
+  {
+    question: 'Is my will kept confidential?',
+    answer: 'Absolutely. We understand wills contain sensitive family and financial information. All documents are handled under strict confidentiality protocols by senior translators only. Files are transmitted via encrypted channels, stored on secure servers, and permanently deleted from our systems upon request after delivery. We can sign NDAs for particularly sensitive estates.'
+  },
+  {
+    question: 'What documents do I need alongside the will translation?',
+    answer: 'For probate proceedings, you typically need the original will or certified copy, death certificate of the testator, grant of probate or letters of administration from the home jurisdiction, and identification documents of beneficiaries. All foreign documents require certified translation and may need attestation depending on court requirements. We can advise on the complete document package for your situation.'
+  },
+  {
+    question: 'Can you translate wills from any language?',
+    answer: 'Yes. We translate wills from 43+ languages into Arabic and English. Common language pairs include Arabic-English, French-Arabic, German-Arabic, Russian-Arabic, Hindi-Arabic, and Urdu-Arabic. Each translator assigned to estate documents has legal specialization and experience with testamentary terminology.'
+  },
+  {
+    question: 'Which jurisdiction applies to my situation?',
+    answer: 'Jurisdiction depends on your religion, nationality, residency status, and asset types. Non-Muslims with a registered DIFC Will have their UAE assets distributed according to their wishes under common law. Without a DIFC Will, non-Muslim estates may default to Sharia distribution. We advise on the correct translation format based on jurisdiction, though we recommend consulting with a UAE estate lawyer for complex situations.'
+  }
+];
+
+const accordionSections = [
+  {
+    title: 'Understanding UAE Estate Jurisdictions',
+    id: 'jurisdictions',
+    items: [
+      {
+        heading: 'DIFC Wills Service Centre',
+        body: 'The DIFC Wills Service Centre allows non-Muslims to register wills that follow common law principles. DIFC Wills can cover Dubai real estate, bank accounts, investments, business interests, personal property, and guardianship provisions for minor children. We translate supporting documents for DIFC registration and translate existing DIFC Wills when needed for use elsewhere.'
+      },
+      {
+        heading: 'Dubai Courts Personal Status',
+        body: 'Dubai Courts handle inheritance matters under UAE Federal Law. Without a registered will, non-Muslim estates may default to Sharia distribution rules. All documents submitted to Dubai Courts must be in Arabic, translated by MOJ-certified translators. Our translations are formatted specifically for Dubai Courts acceptance.'
+      },
+      {
+        heading: 'Abu Dhabi Judicial Department',
+        body: 'Abu Dhabi has its own wills registry and court system. The Abu Dhabi Judicial Department Wills Registry offers similar protections to DIFC for non-Muslims. We provide translations for both Abu Dhabi registration and court proceedings.'
+      }
+    ]
+  },
+  {
+    title: 'Will Translation Scenarios',
+    id: 'scenarios',
+    items: [
+      {
+        heading: 'Probate of Foreign Nationals',
+        body: 'When an expatriate passes away in Dubai, or when a foreign national with UAE assets dies abroad, their existing will must be translated for recognition by UAE authorities. This applies whether the estate proceeds through DIFC or Dubai Courts.'
+      },
+      {
+        heading: 'Property Inheritance',
+        body: 'Dubai real estate held by a deceased person requires translated documentation before the Dubai Land Department will process ownership transfer. This includes the will, death certificate, and often the grant of probate from the home jurisdiction.'
+      },
+      {
+        heading: 'Bank Account Release',
+        body: 'UAE banks freeze accounts upon notification of an account holder death. Releasing these funds requires translated probate documentation proving the beneficiary legal right to the assets.'
+      },
+      {
+        heading: 'DIFC Registration',
+        body: 'While DIFC operates in English, many expatriates have existing wills from non-English jurisdictions. Translating these documents helps DIFC staff understand the testator existing wishes when drafting the new DIFC Will.'
+      }
+    ]
+  },
+  {
+    title: 'After Your Translation: Next Steps',
+    id: 'after-care',
+    items: [
+      {
+        heading: 'DIFC Wills Registration Process',
+        body: 'If registering a new DIFC Will, your translated supporting documents will be submitted to the DIFC Wills Service Centre at Gate Village, DIFC. The Centre operates by appointment. Guardianship provisions for minor children can be included in DIFC Wills. Registration fees apply separately from translation costs.'
+      },
+      {
+        heading: 'Dubai Courts Probate Filing',
+        body: 'For Dubai Courts inheritance cases, your translated will and supporting documents are submitted to the Personal Status Court. Required documents include translated death certificate, translated will, beneficiary identification, and property ownership documents. A local lawyer or PRO typically handles the court filing.'
+      },
+      {
+        heading: 'Property Transfer at DLD',
+        body: 'If the estate includes Dubai real estate, the Dubai Land Department requires translated title deeds, the translated will, and death certificate. Inheritance transfers follow specific DLD procedures. Some properties require NOC from the developer before transfer can proceed.'
+      },
+      {
+        heading: 'Bank Account Access',
+        body: 'UAE banks require translated probate documents before releasing funds from a deceased account holder. Each bank has specific requirements, but typically translated death certificate, translated grant of probate, and beneficiary identification are needed. Accounts remain frozen until proper documentation is submitted.'
+      }
+    ]
+  }
+];
+---
+
+<ServiceLayout
+  title="Will Translation Dubai | DIFC & Dubai Courts | Certified Estate Document Translation"
+  description="Professional will translation services in Dubai for DIFC Wills and Dubai Courts probate. MOJ-certified translators specializing in estate documents, codicils, and inheritance proceedings. Confidential handling guaranteed."
+  keywords="will translation dubai, difc wills translation, probate translation uae, estate document translation, inheritance translation dubai, testament translation arabic"
+  canonical="https://onlinetranslation.ae/legal/wills/"
+  heroTitle="Will Translation"
+  heroSubtitle="DIFC & Dubai Courts"
+  heroIntro="Professional translation services for wills, testaments, and estate documents. Whether you are registering with the DIFC Wills Service Centre or navigating Dubai Courts probate proceedings, we provide MOJ-certified translations formatted for the correct jurisdiction. Your sensitive documents handled with the discretion they deserve."
+  snapshot={snapshot}
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  serviceType="Will Translation"
+  processSteps={processSteps}
+  processTitle="How Will Translation Works"
+  benefitCards={benefitCards}
+  accordionSections={accordionSections}
+>
+  <!-- Main Content Section -->
+  <section class="section bg-white">
+    <div class="container">
+      <h2>Understanding Will Translation in Dubai</h2>
+      
+      <p>Dubai operates under a dual legal system for inheritance matters. Understanding which jurisdiction applies to your situation determines the translation requirements, court procedures, and ultimate distribution of assets. We help you navigate this complexity with translations formatted correctly from the start.</p>
+
+      <h3>The DIFC Wills Jurisdiction</h3>
+      
+      <p>The Dubai International Financial Centre established its Wills Service Centre in 2015, offering non-Muslim residents the ability to register wills that follow common law principles rather than Sharia inheritance rules. This is particularly important for expatriates who wish to distribute assets according to their own wishes rather than the forced heirship provisions of UAE civil law.</p>
+      
+      <p>DIFC Wills can cover real estate located anywhere in Dubai, bank accounts, investments, business interests, personal property, and guardianship provisions for minor children. The registration process requires in-person attendance at the DIFC Wills Service Centre, typically with supporting documents including identification and translations of existing foreign wills where relevant.</p>
+      
+      <p>While DIFC operates primarily in English, supporting documents from non-English jurisdictions require certified translation. We provide translations of foreign wills, death certificates, and probate grants formatted for DIFC submission standards.</p>
+
+      <h3>Dubai Courts and UAE Civil Law</h3>
+      
+      <p>Matters falling outside DIFC jurisdiction or where no DIFC Will was registered are handled by Dubai Courts under UAE Federal Law. For non-Muslims, this can create complexity as the default distribution follows Sharia principles unless a registered will directs otherwise.</p>
+      
+      <p>All documents submitted to Dubai Courts must be in Arabic. Foreign wills, death certificates, and probate grants require MOJ-certified translation before the court will accept them. The translation must accurately convey legal terminology while using appropriate Arabic legal equivalents recognized by UAE courts.</p>
+      
+      <p>Our translators specialize in estate terminology across multiple legal systems. We understand the differences between UK executors and UAE court-appointed administrators, between US probate procedures and UAE inheritance processes. This comparative knowledge ensures your translation is not just linguistically accurate but legally functional.</p>
+
+      <h3>The Sensitivity of Estate Documents</h3>
+      
+      <p>We recognize that wills contain deeply personal information about family relationships, asset details, and final wishes. Many clients are processing these documents during an already difficult time following the loss of a family member.</p>
+      
+      <p>Our approach reflects this reality. We handle estate documents with appropriate gravity and discretion. Senior translators process these files directly rather than distributing to junior staff or external contractors. Confidentiality is absolute.</p>
+    </div>
+  </section>
+
+  <!-- Related Services -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Related Estate & Legal Services</h2>
+      <p style="max-width: 700px; margin-bottom: 2rem;">
+        Will translation is often part of a larger estate administration process. We support the complete documentation requirements.
+      </p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+        
+        <a href="/personal/vital-records/death/" style="display: block; padding: 1.25rem; background: var(--surface-raised, #f8f9fa); border-radius: 8px; text-decoration: none; color: inherit;">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+            <i class="fas fa-file-alt" style="color: var(--accent-color, #d4af37);"></i>
+            <strong>Death Certificate Translation</strong>
+          </div>
+          <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">Required for all probate proceedings</p>
+        </a>
+        
+        <a href="/legal/corporate/poa/" style="display: block; padding: 1.25rem; background: var(--surface-raised, #f8f9fa); border-radius: 8px; text-decoration: none; color: inherit;">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+            <i class="fas fa-file-signature" style="color: var(--accent-color, #d4af37);"></i>
+            <strong>Power of Attorney</strong>
+          </div>
+          <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">For representatives acting on behalf of estates</p>
+        </a>
+        
+        <a href="/services/attestation/" style="display: block; padding: 1.25rem; background: var(--surface-raised, #f8f9fa); border-radius: 8px; text-decoration: none; color: inherit;">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+            <i class="fas fa-stamp" style="color: var(--accent-color, #d4af37);"></i>
+            <strong>Attestation Services</strong>
+          </div>
+          <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">MOFA and embassy legalization</p>
+        </a>
+        
+        <a href="/legal-translation-dubai/" style="display: block; padding: 1.25rem; background: var(--surface-raised, #f8f9fa); border-radius: 8px; text-decoration: none; color: inherit;">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+            <i class="fas fa-gavel" style="color: var(--accent-color, #d4af37);"></i>
+            <strong>All Legal Translation</strong>
+          </div>
+          <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">Contracts, court documents, corporate</p>
+        </a>
+        
+      </div>
+    </div>
+  </section>
+
+</ServiceLayout>

@@ -1,0 +1,280 @@
+---
+/**
+ * US Attestation - Country-Specific Attestation Page
+ * URL: /services/attestation/us/
+ */
+import ServiceLayout from '../../../../layouts/ServiceLayout.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Services', url: '/services/' },
+  { name: 'Attestation', url: '/services/attestation/' },
+  { name: 'USA', url: '/services/attestation/us/' }
+];
+
+const snapshot = [
+  { icon: 'flag-usa', bold: 'State + Federal', text: 'Secretary of State & US Dept of State' },
+  { icon: 'building', bold: 'UAE Embassy DC', text: 'Washington DC Embassy legalization' },
+  { icon: 'clock', bold: '2-8 Weeks', text: 'varies by state processing times' },
+  { icon: 'globe-americas', bold: 'All 50 States', text: 'documents from any US state' }
+];
+
+const processSteps = [
+  {
+    number: 1,
+    title: 'Document Assessment',
+    text: 'Send your US document via WhatsApp. We identify the issuing state, determine if notarization is needed, and confirm the complete authentication chain.',
+    icon: 'clipboard-check'
+  },
+  {
+    number: 2,
+    title: 'State Authentication',
+    text: 'Secretary of State in the issuing state authenticates the document. Processing times vary significantly by state - from same-day to 4 weeks.',
+    icon: 'landmark'
+  },
+  {
+    number: 3,
+    title: 'Federal Apostille',
+    text: 'US Department of State applies the apostille in Washington DC. Standard processing 4-8 weeks, expedited 1-2 weeks available.',
+    icon: 'stamp'
+  },
+  {
+    number: 4,
+    title: 'UAE Embassy & MOFA',
+    text: 'UAE Embassy in Washington DC attests the document, then MOFA in UAE completes the chain. Your document is ready for official UAE use.',
+    icon: 'check-circle'
+  }
+];
+
+const benefitCards = [
+  {
+    icon: 'graduation-cap',
+    title: 'US Degrees & Diplomas',
+    text: 'University degrees, college diplomas, and professional certifications from institutions across all 50 states attested for UAE employment and licensing.'
+  },
+  {
+    icon: 'fingerprint',
+    title: 'FBI Background Checks',
+    text: 'FBI Identity History Summary (criminal background check) attested for UAE visa applications. Federal documents skip state authentication.'
+  },
+  {
+    icon: 'file-alt',
+    title: 'US Vital Records',
+    text: 'Birth certificates, marriage certificates, and divorce decrees from any US state attested for UAE legal recognition.'
+  }
+];
+
+const faqs = [
+  {
+    question: 'What is the attestation process for US documents?',
+    answer: 'US documents require: (1) Notarization if needed, (2) Secretary of State authentication in the issuing state, (3) US Department of State Apostille, (4) UAE Embassy legalization in Washington DC, and (5) MOFA attestation in UAE. The exact steps depend on document type and issuing authority.'
+  },
+  {
+    question: 'Why do US documents need state-level authentication?',
+    answer: 'The US federal system means most documents are issued by state authorities. Educational certificates come from state-licensed institutions, vital records from state registries. The Secretary of State authenticates that state-level officials are legitimate before federal authentication can proceed.'
+  },
+  {
+    question: 'How long does US document attestation take?',
+    answer: 'Processing varies significantly by state. Some states (Texas, Florida) process in 1-3 days, while others (California) take 2-4 weeks. Department of State adds 4-8 weeks standard or 1-2 weeks expedited. UAE Embassy and MOFA add 5-7 days. Total time ranges from 2-8 weeks depending on state and service level.'
+  },
+  {
+    question: 'Is FBI background check attestation different?',
+    answer: 'Yes. FBI checks are federal documents, so they skip state authentication and go directly to Department of State for apostille. However, FBI reports have validity periods (typically 6 months), so timing is critical. We coordinate the process to ensure your FBI check remains valid throughout attestation.'
+  },
+  {
+    question: 'Which states have the fastest processing?',
+    answer: 'Texas (1-3 days), Florida (1-2 days), and New York (same-day in-person) are among the fastest. California is one of the slowest at 2-4 weeks with mail-only processing. We factor state processing times into your timeline estimate.'
+  },
+  {
+    question: 'Do I need to be in the US for attestation?',
+    answer: 'No. You can send your documents to us or our US partners. We coordinate Secretary of State, Department of State, UAE Embassy DC, and arrange secure courier to Dubai for MOFA completion. The entire process can be managed remotely.'
+  },
+  {
+    question: 'What about documents from US territories?',
+    answer: 'Documents from Puerto Rico, US Virgin Islands, Guam, and other territories follow similar processes but may have different authentication offices. We handle documents from all US territories.'
+  },
+  {
+    question: 'Is translation required after attestation?',
+    answer: 'Yes, for most UAE government submissions. US documents are in English, but UAE authorities typically require Arabic translation by an MOJ-certified translator. We provide combined attestation and translation services.'
+  }
+];
+
+const accordionSections = [
+  {
+    title: 'The US Authentication Chain',
+    id: 'process',
+    items: [
+      {
+        heading: 'Step 1: Notarization (If Required)',
+        body: 'Documents not issued by government offices typically need notarization first. The notary must be commissioned in the state where authentication will occur. Some documents (birth certificates, official transcripts) skip this step as they already bear official signatures.'
+      },
+      {
+        heading: 'Step 2: Secretary of State Authentication',
+        body: 'The Secretary of State in the issuing state authenticates signatures on the document. For notarized documents, they verify the notary commission is valid. Processing times vary significantly: California takes 2-4 weeks, Texas 1-3 days, New York offers same-day in-person service.'
+      },
+      {
+        heading: 'Step 3: Department of State Apostille',
+        body: 'After state authentication, documents go to the US Department of State Office of Authentications in Washington DC. Standard processing takes 4-8 weeks; expedited service reduces this to 1-2 weeks for additional fees. This is often the longest part of US document attestation.'
+      },
+      {
+        heading: 'Step 4: UAE Embassy Legalization',
+        body: 'The UAE Embassy in Washington DC applies legalization stamps confirming UAE recognition of the US government authentication. Processing typically takes 3-5 working days.'
+      },
+      {
+        heading: 'Step 5: MOFA UAE',
+        body: 'The final step is MOFA attestation in UAE. This confirms UAE government acceptance for official use. Processing takes 1-3 working days.'
+      }
+    ]
+  },
+  {
+    title: 'State-Specific Information',
+    id: 'states',
+    items: [
+      {
+        heading: 'California',
+        body: 'Mail-only processing, 2-4 weeks. No walk-in service available. Documents must be notarized by California notary or issued by California state agency. Plan accordingly for the longer processing time.'
+      },
+      {
+        heading: 'New York',
+        body: 'Mail-in and in-person options at Albany or NYC. Same-day in-person available. County Clerk certification may be required first for some documents. Relatively efficient processing.'
+      },
+      {
+        heading: 'Texas',
+        body: 'Efficient 1-3 day processing. Walk-in available in Austin. One of the faster states for authentication. Documents from Texas universities process quickly.'
+      },
+      {
+        heading: 'Florida',
+        body: 'Quick 1-2 day processing. Mail-in and in-person options in Tallahassee. Another efficient state for document authentication.'
+      },
+      {
+        heading: 'Other States',
+        body: 'We handle documents from all 50 states. Processing times and procedures vary. Send your document details and we provide an accurate timeline for your specific state.'
+      }
+    ]
+  },
+  {
+    title: 'Document Types',
+    id: 'documents',
+    items: [
+      {
+        heading: 'Educational Certificates',
+        body: 'University degrees, college diplomas, transcripts, and professional certifications. Documents must be from accredited US institutions. Transcripts typically need notarization before state authentication.'
+      },
+      {
+        heading: 'FBI Background Check',
+        body: 'FBI Identity History Summary for UAE visa applications and Golden Visa. Federal document goes directly to Department of State (skips state authentication). Plan timing carefully due to validity period.'
+      },
+      {
+        heading: 'Birth & Marriage Certificates',
+        body: 'State-issued vital records from any US state. Must be official copies from the state vital records office. Photocopies are not accepted.'
+      },
+      {
+        heading: 'Corporate Documents',
+        body: 'Articles of Incorporation, Certificates of Good Standing, board resolutions. Secretary of State in the state of incorporation handles authentication.'
+      }
+    ]
+  },
+  {
+    title: 'After Attestation',
+    id: 'after-care',
+    items: [
+      {
+        heading: 'Arabic Translation',
+        body: 'Most UAE authorities require Arabic translation after attestation. We provide MOJ-certified translation referencing all attestation stamps on the original document.'
+      },
+      {
+        heading: 'Document Validity',
+        body: 'FBI checks should be used within 6 months of issue. Plan attestation timing to ensure documents remain valid when submitted to UAE authorities. Other documents may have similar validity considerations.'
+      },
+      {
+        heading: 'Submission to UAE Authorities',
+        body: 'Fully attested documents can be submitted to MOHRE for employment visas, GDRFA/ICP for residence visas, professional licensing bodies, Dubai Courts for legal matters, or corporate registries for business transactions.'
+      }
+    ]
+  }
+];
+---
+
+<ServiceLayout
+  title="US Document Attestation UAE | State & Federal Apostille | Embassy DC"
+  description="US document attestation for UAE. Secretary of State, Department of State Apostille, UAE Embassy DC, MOFA. Degrees, FBI checks, vital records from all 50 states."
+  keywords="us attestation uae, american degree attestation, fbi background check attestation, us apostille uae, usa document legalization dubai"
+  canonical="https://onlinetranslation.ae/services/attestation/us/"
+  heroTitle="US Document"
+  heroSubtitle="Attestation"
+  heroIntro="Complete attestation for American documents. State Secretary of State authentication, federal Department of State apostille, UAE Embassy Washington DC, and MOFA. Documents from all 50 states handled with expert navigation of the US federal system."
+  snapshot={snapshot}
+  breadcrumbs={breadcrumbs}
+  processSteps={processSteps}
+  processTitle="US Attestation Process"
+  benefitCards={benefitCards}
+  accordionSections={accordionSections}
+  faqs={faqs}
+  serviceType="US Document Attestation"
+>
+  <!-- Understanding US System -->
+  <section class="section bg-white">
+    <div class="container">
+      <h2>Understanding US Document Attestation</h2>
+      
+      <p>The United States presents unique challenges for document attestation due to its federal system. Unlike countries with centralized government document issuance, most US documents originate from state authorities rather than the federal government. This means your California degree, Texas birth certificate, or Florida marriage certificate each requires authentication from different state offices before federal authentication can proceed.</p>
+
+      <h3>The State-Federal Authentication Chain</h3>
+      
+      <p>Most US documents follow this path: First, the document may need notarization if not already issued by a government office. Second, the Secretary of State (or equivalent) in the issuing state authenticates the notary or official signature. Third, the US Department of State in Washington DC applies the federal apostille. Only then can UAE Embassy and MOFA attestation proceed.</p>
+      
+      <p>Each of the 50 states has different procedures, offices, and processing times. Some states offer same-day in-person service while others require weeks of mail-in processing. This variation significantly impacts total attestation timeline and requires familiarity with each state's system.</p>
+
+      <h3>Department of State Processing</h3>
+      
+      <p>After state authentication, documents go to the US Department of State Office of Authentications. Standard processing currently takes 4-8 weeks due to high volumes. Expedited service reduces this to 1-2 weeks for additional fees. This federal step is often the longest part of US document attestation, so planning ahead is essential.</p>
+
+      <h3>Federal Documents</h3>
+      
+      <p>Some documents originate from federal agencies rather than state authorities. FBI background checks are the most common example for UAE visa applications. These federal documents skip state authentication and go directly to Department of State for apostille. However, FBI reports have validity periods, so timing coordination is critical.</p>
+    </div>
+  </section>
+
+  <!-- Service Options -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Service Options</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+        
+        <div style="padding: 2rem; background: white; border-radius: 8px; border: 1px solid #e5e7eb;">
+          <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Standard</h3>
+          <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem;">6-10 Weeks</p>
+          <p style="margin: 0;">Standard Department of State processing with regular state authentication.</p>
+        </div>
+        
+        <div style="padding: 2rem; background: white; border-radius: 8px; border: 2px solid var(--primary-color);">
+          <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Expedited</h3>
+          <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem;">2-4 Weeks</p>
+          <p style="margin: 0;">Rush processing at all stages including expedited Department of State.</p>
+        </div>
+        
+        <div style="padding: 2rem; background: white; border-radius: 8px; border: 1px solid #e5e7eb;">
+          <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">With Translation</h3>
+          <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem;">Complete Package</p>
+          <p style="margin: 0;">Attestation plus MOJ-certified Arabic translation.</p>
+        </div>
+        
+      </div>
+      
+      <p style="margin-top: 2rem; text-align: center; color: #6b7280;">Processing time varies by state. Send your documents for accurate timeline estimate based on current state processing times.</p>
+    </div>
+  </section>
+
+  <!-- Related Services -->
+  <section class="section bg-white">
+    <div class="container">
+      <h2>Related Services</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+        <a href="/services/attestation/india/" style="padding: 0.75rem 1.25rem; background: var(--surface-raised); border-radius: 8px; text-decoration: none; color: inherit;">India Attestation</a>
+        <a href="/services/attestation/uk/" style="padding: 0.75rem 1.25rem; background: var(--surface-raised); border-radius: 8px; text-decoration: none; color: inherit;">UK Attestation</a>
+        <a href="/personal/education/degree/" style="padding: 0.75rem 1.25rem; background: var(--surface-raised); border-radius: 8px; text-decoration: none; color: inherit;">Degree Translation</a>
+        <a href="/services/attestation/" style="padding: 0.75rem 1.25rem; background: var(--surface-raised); border-radius: 8px; text-decoration: none; color: inherit;">All Attestation Services</a>
+      </div>
+    </div>
+  </section>
+</ServiceLayout>

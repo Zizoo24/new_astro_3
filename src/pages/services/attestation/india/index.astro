@@ -1,0 +1,276 @@
+---
+/**
+ * India Attestation - Country-Specific Attestation Page
+ * URL: /services/attestation/india/
+ */
+import ServiceLayout from '../../../../layouts/ServiceLayout.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Services', url: '/services/' },
+  { name: 'Attestation', url: '/services/attestation/' },
+  { name: 'India', url: '/services/attestation/india/' }
+];
+
+const snapshot = [
+  { icon: 'stamp', bold: 'HRD + MEA', text: 'state and central government attestation' },
+  { icon: 'clock', bold: '5-7 Days', text: 'standard processing time' },
+  { icon: 'map-marked-alt', bold: 'All States', text: 'documents from any Indian state' },
+  { icon: 'shield-alt', bold: 'Complete Chain', text: 'through to UAE MOFA' }
+];
+
+const processSteps = [
+  {
+    number: 1,
+    title: 'Document Assessment',
+    text: 'Send your Indian certificates via WhatsApp. We verify document type, issuing state, and determine the exact attestation chain required including any state-specific HRD requirements.',
+    icon: 'clipboard-check'
+  },
+  {
+    number: 2,
+    title: 'India-Side Attestation',
+    text: 'Our partner agents in India handle Notary, SDM/Home Department, HRD (if required), and MEA attestation. You receive updates as each stamp is obtained.',
+    icon: 'stamp'
+  },
+  {
+    number: 3,
+    title: 'UAE Embassy Legalization',
+    text: 'Documents are submitted to the UAE Embassy in New Delhi, Mumbai, or the nearest consulate. Embassy stamp confirms UAE recognition of the Indian authentication.',
+    icon: 'building'
+  },
+  {
+    number: 4,
+    title: 'MOFA & Delivery',
+    text: 'Once in UAE, we complete MOFA attestation in Dubai or Abu Dhabi. Your fully attested documents are delivered, ready for submission to any UAE authority.',
+    icon: 'check-circle'
+  }
+];
+
+const benefitCards = [
+  {
+    icon: 'graduation-cap',
+    title: 'Educational Certificates',
+    text: 'Degrees, diplomas, mark sheets from any Indian university. HRD attestation handled for states that require it before MEA.'
+  },
+  {
+    icon: 'file-alt',
+    title: 'Personal Documents',
+    text: 'Birth certificates, marriage certificates, police clearance (PCC). For visa applications and family sponsorship.'
+  },
+  {
+    icon: 'briefcase',
+    title: 'Commercial Documents',
+    text: 'Company registration, board resolutions, power of attorney. Chamber of Commerce attestation when required.'
+  }
+];
+
+const faqs = [
+  {
+    question: 'What is the attestation chain for Indian documents?',
+    answer: 'Indian documents typically require: (1) Notary attestation, (2) State Home Department or SDM, (3) HRD for educational documents in some states, (4) MEA apostille/attestation, (5) UAE Embassy legalization, and (6) MOFA attestation in UAE. The exact chain depends on document type and issuing state.'
+  },
+  {
+    question: 'Which Indian documents need attestation for UAE?',
+    answer: 'Common documents requiring attestation include educational certificates (degrees, diplomas, mark sheets), personal documents (birth certificates, marriage certificates, police clearance), and commercial documents (company registration, board resolutions, power of attorney). Employment visas typically require attested educational certificates, while family visas require attested personal documents.'
+  },
+  {
+    question: 'What is MEA attestation?',
+    answer: 'MEA stands for Ministry of External Affairs, the Indian government department responsible for foreign affairs. MEA attestation confirms that the document has been properly authenticated within India and is genuine for use abroad. MEA operates attestation centers in Delhi, Chennai, Mumbai, Kolkata, and other major cities. This step comes after state-level attestation and before UAE Embassy legalization.'
+  },
+  {
+    question: 'Is HRD attestation required for educational certificates?',
+    answer: 'Some states require Human Resource Development (HRD) attestation for educational certificates before MEA attestation. This adds verification at the state education department level. States like Kerala, Tamil Nadu, and Maharashtra have specific HRD requirements. We confirm the exact requirements based on your certificate issuing state.'
+  },
+  {
+    question: 'How long does Indian document attestation take?',
+    answer: 'Standard processing takes 5-7 working days for the complete chain from India to UAE MOFA. Express service is available for urgent requirements. Processing time varies by state - some states process faster than others. We provide accurate timelines based on your specific document and issuing state.'
+  },
+  {
+    question: 'What is the cost of Indian document attestation?',
+    answer: 'Costs include government fees at each attestation level plus our service coordination fee. Government fees vary by document type and state. We provide a complete cost breakdown before you proceed, with no hidden charges. Our fee covers coordination, tracking, and communication throughout the process.'
+  },
+  {
+    question: 'Can you translate and attest documents together?',
+    answer: 'Yes. For documents requiring both attestation and translation, the sequence matters. Generally, you attest the original document first through the full chain, then we translate the attested document into Arabic with MOJ certification. Some clients need only attestation (the document is already bilingual), while others need both services. We advise on the correct approach for your specific use case.'
+  }
+];
+
+const accordionSections = [
+  {
+    title: 'The Indian Attestation Chain',
+    id: 'process',
+    items: [
+      {
+        heading: 'Step 1: Notary Attestation',
+        body: 'The first step is notarization by an Indian notary public. This confirms the document is genuine and the signatures are authentic. Some documents issued by government bodies may skip this step.'
+      },
+      {
+        heading: 'Step 2: State Home Department / SDM',
+        body: 'The Sub-Divisional Magistrate (SDM) or State Home Department provides state-level authentication. This confirms the notary is registered and the document originates from that state. Processing time varies by state, typically 2-5 working days.'
+      },
+      {
+        heading: 'Step 3: HRD Attestation (Educational Only)',
+        body: 'Educational certificates from certain states require Human Resource Development (HRD) department attestation. States with HRD requirements include Kerala, Tamil Nadu, Maharashtra, Karnataka, and others. This step adds 3-5 working days.'
+      },
+      {
+        heading: 'Step 4: MEA Attestation',
+        body: 'The Ministry of External Affairs provides the central government authentication. MEA has regional offices in Delhi, Mumbai, Chennai, Kolkata, and Hyderabad. Processing typically takes 2-4 working days.'
+      },
+      {
+        heading: 'Step 5: UAE Embassy Legalization',
+        body: 'The UAE Embassy in India or Consulates provide legalization confirming UAE recognition. Embassy processing takes 3-7 working days depending on current volumes.'
+      },
+      {
+        heading: 'Step 6: MOFA UAE Attestation',
+        body: 'Once in UAE, MOFA provides final attestation confirming UAE government acceptance. MOFA processing typically takes 1-3 working days.'
+      }
+    ]
+  },
+  {
+    title: 'Educational Documents',
+    id: 'educational',
+    items: [
+      {
+        heading: 'University Degrees',
+        body: 'Bachelor, Master, and Doctoral degrees from any recognized Indian university. UGC-recognized institutions only. Required for employment visa applications in UAE.'
+      },
+      {
+        heading: 'Diplomas & Certificates',
+        body: 'Polytechnic diplomas, ITI certificates, professional certifications. Required for dependent visa and school enrollment.'
+      },
+      {
+        heading: 'Transcripts & Mark Sheets',
+        body: 'Semester mark sheets and consolidated transcripts. Often attested with degrees for efficiency.'
+      }
+    ]
+  },
+  {
+    title: 'Personal Documents',
+    id: 'personal',
+    items: [
+      {
+        heading: 'Birth Certificate',
+        body: 'From municipal corporations across India. For dependent visa and school admission in UAE.'
+      },
+      {
+        heading: 'Marriage Certificate',
+        body: 'Registered and religious certificates. Essential for spouse visa sponsorship in UAE.'
+      },
+      {
+        heading: 'Police Clearance Certificate',
+        body: 'Indian PCC from Passport Seva. Note: PCC has validity period, timing matters for attestation.'
+      }
+    ]
+  },
+  {
+    title: 'State-Specific Requirements',
+    id: 'states',
+    items: [
+      {
+        heading: 'Maharashtra',
+        body: 'HRD from Mantralaya Mumbai. We have established channels for fast processing.'
+      },
+      {
+        heading: 'Delhi',
+        body: 'HRD from Directorate of Education. MEA HQ in Delhi enables faster apostille processing.'
+      },
+      {
+        heading: 'Karnataka & Tamil Nadu',
+        body: 'Bangalore and Chennai HRD for respective state universities and institutions.'
+      },
+      {
+        heading: 'Other States',
+        body: 'Kerala, Gujarat, Telangana, Punjab, Uttar Pradesh, and all other states handled with state-specific processes.'
+      }
+    ]
+  },
+  {
+    title: 'After Attestation',
+    id: 'after-care',
+    items: [
+      {
+        heading: 'Employment Visa Applications',
+        body: 'Attested educational certificates are required for employment visa applications. MOHRE verifies attestation before approving work permits. Your employer PRO typically submits these documents.'
+      },
+      {
+        heading: 'Family Visa Sponsorship',
+        body: 'Sponsoring spouse or children requires attested marriage certificates and birth certificates. GDRFA or ICP verifies attestation. Documents must also be translated into Arabic.'
+      },
+      {
+        heading: 'Professional Licensing',
+        body: 'Certain professions require attested credentials for UAE licensing. Authorities like DHA, Dubai Municipality, or KHDA verify attested certificates before issuing licenses.'
+      }
+    ]
+  }
+];
+---
+
+<ServiceLayout
+  title="India Document Attestation UAE | HRD MEA Embassy | All States"
+  description="Complete Indian document attestation for UAE. HRD, MEA apostille, UAE Embassy, MOFA. Degrees, certificates, PCC from all states. 5-7 days processing."
+  keywords="india attestation uae, indian degree attestation, hrd attestation, mea apostille uae, indian certificate attestation dubai"
+  canonical="https://onlinetranslation.ae/services/attestation/india/"
+  heroTitle="India Document"
+  heroSubtitle="Attestation"
+  heroIntro="Complete attestation service for Indian documents required in UAE. We handle the full chain: state-level HRD/Home Department, MEA apostille, UAE Embassy attestation, and MOFA. Documents from all Indian states processed efficiently."
+  snapshot={snapshot}
+  breadcrumbs={breadcrumbs}
+  processSteps={processSteps}
+  processTitle="India Attestation Process"
+  benefitCards={benefitCards}
+  accordionSections={accordionSections}
+  faqs={faqs}
+  serviceType="India Document Attestation"
+>
+  <!-- Document Checklist -->
+  <section class="section bg-white">
+    <div class="container">
+      <h2>What You Need to Provide</h2>
+      <p style="max-width: 700px; margin-bottom: 2rem;">
+        To begin the attestation process, send us:
+      </p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+        
+        <div style="padding: 1.5rem; background: var(--surface-raised, #f8f9fa); border-radius: 8px;">
+          <h3 style="font-size: 1.1rem; margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-file-alt" style="color: var(--accent-color, #d4af37);"></i>
+            Original Document
+          </h3>
+          <p style="margin: 0; font-size: 0.95rem;">Original certificate with all original stamps and signatures. Photocopies cannot be attested.</p>
+        </div>
+        
+        <div style="padding: 1.5rem; background: var(--surface-raised, #f8f9fa); border-radius: 8px;">
+          <h3 style="font-size: 1.1rem; margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-id-card" style="color: var(--accent-color, #d4af37);"></i>
+            Passport Copy
+          </h3>
+          <p style="margin: 0; font-size: 0.95rem;">Clear copy of your passport for identity verification and embassy submission.</p>
+        </div>
+        
+        <div style="padding: 1.5rem; background: var(--surface-raised, #f8f9fa); border-radius: 8px;">
+          <h3 style="font-size: 1.1rem; margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-info-circle" style="color: var(--accent-color, #d4af37);"></i>
+            Issuing Details
+          </h3>
+          <p style="margin: 0; font-size: 0.95rem;">State of issue, institution name, and year. This helps us determine the exact attestation chain.</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Related Services</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+        <a href="/services/attestation/uk/" style="padding: 0.75rem 1.25rem; background: var(--surface-raised); border-radius: 8px; text-decoration: none; color: inherit;">UK Attestation</a>
+        <a href="/services/attestation/us/" style="padding: 0.75rem 1.25rem; background: var(--surface-raised); border-radius: 8px; text-decoration: none; color: inherit;">US Attestation</a>
+        <a href="/personal/education/degree/" style="padding: 0.75rem 1.25rem; background: var(--surface-raised); border-radius: 8px; text-decoration: none; color: inherit;">Degree Translation</a>
+        <a href="/personal/immigration/pcc/" style="padding: 0.75rem 1.25rem; background: var(--surface-raised); border-radius: 8px; text-decoration: none; color: inherit;">PCC Translation</a>
+        <a href="/services/attestation/" style="padding: 0.75rem 1.25rem; background: var(--surface-raised); border-radius: 8px; text-decoration: none; color: inherit;">All Attestation Services</a>
+      </div>
+    </div>
+  </section>
+</ServiceLayout>

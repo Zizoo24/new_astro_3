@@ -1,0 +1,265 @@
+---
+/**
+ * UK Attestation - Country-Specific Attestation Page
+ * URL: /services/attestation/uk/
+ */
+import ServiceLayout from '../../../../layouts/ServiceLayout.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Services', url: '/services/' },
+  { name: 'Attestation', url: '/services/attestation/' },
+  { name: 'UK', url: '/services/attestation/uk/' }
+];
+
+const snapshot = [
+  { icon: 'stamp', bold: 'FCO Apostille', text: 'UK Foreign Office legalization' },
+  { icon: 'clock', bold: '7-10 Days', text: 'complete chain processing' },
+  { icon: 'globe-europe', bold: 'Hague Convention', text: 'apostille recognized internationally' },
+  { icon: 'shield-alt', bold: 'Full Service', text: 'UK and UAE steps handled' }
+];
+
+const processSteps = [
+  {
+    number: 1,
+    title: 'Send Your Document',
+    text: 'WhatsApp your UK document. We confirm if it needs solicitor certification before apostille and advise on the complete attestation chain.',
+    icon: 'paper-plane'
+  },
+  {
+    number: 2,
+    title: 'Solicitor Certification',
+    text: 'If required, a UK solicitor certifies the document as a true copy or witnesses signatures. Not all documents need this step.',
+    icon: 'user-tie'
+  },
+  {
+    number: 3,
+    title: 'FCDO Apostille',
+    text: 'UK Foreign, Commonwealth & Development Office applies the apostille. This is the official UK government authentication under the Hague Convention.',
+    icon: 'stamp'
+  },
+  {
+    number: 4,
+    title: 'UAE Embassy & MOFA',
+    text: 'UAE Embassy in London attests the apostilled document, then MOFA in UAE completes the chain. Document ready for official UAE use.',
+    icon: 'check-circle'
+  }
+];
+
+const benefitCards = [
+  {
+    icon: 'graduation-cap',
+    title: 'UK Degrees & Qualifications',
+    text: 'University degrees, professional certifications (ACCA, CIMA, CFA), and academic transcripts attested for employment visas and professional licensing in UAE.'
+  },
+  {
+    icon: 'ring',
+    title: 'UK Vital Records',
+    text: 'Marriage certificates, birth certificates, death certificates, and decree absolute attested for UAE legal recognition and visa applications.'
+  },
+  {
+    icon: 'building',
+    title: 'UK Corporate Documents',
+    text: 'Companies House certificates, board resolutions, and powers of attorney attested for UAE business transactions and company registration.'
+  }
+];
+
+const faqs = [
+  {
+    question: 'What is FCDO apostille?',
+    answer: 'The FCDO (Foreign, Commonwealth and Development Office) Apostille is the UK government certification that authenticates documents for international use under the Hague Apostille Convention. The apostille is a standardized certificate attached to your document confirming it is genuine. For UAE use, the apostille is followed by UAE Embassy and MOFA attestation.'
+  },
+  {
+    question: 'Does UAE accept UK Apostille directly?',
+    answer: 'The UAE joined the Hague Apostille Convention in 2023, but implementation varies. Currently, most UAE authorities still require UAE Embassy attestation after the FCDO Apostille, followed by MOFA attestation. We monitor the evolving requirements and advise on the current process for your specific document type and intended use.'
+  },
+  {
+    question: 'How long does UK document attestation take?',
+    answer: 'UK document attestation typically takes 7-10 working days for the complete chain: FCDO Apostille (3-5 days standard, same-day premium available), UAE Embassy London (2-3 days), and MOFA UAE (1-2 days). Express services can reduce total time to 5-7 days.'
+  },
+  {
+    question: 'Which UK documents need attestation for UAE?',
+    answer: 'Common UK documents requiring attestation include degree certificates and academic transcripts, birth and marriage certificates, police clearance (ACRO certificates), professional qualifications, company documents, and powers of attorney. Any UK-issued document intended for official use in UAE typically requires attestation.'
+  },
+  {
+    question: 'Do I need to be in the UK for attestation?',
+    answer: 'No. You can send your UK documents to us or directly to our UK partner. We coordinate FCDO Apostille, UAE Embassy legalization in London, and arrange secure courier to Dubai for MOFA completion. The entire process can be managed remotely while you remain in UAE.'
+  },
+  {
+    question: 'What about Scottish or Northern Irish documents?',
+    answer: 'Documents issued in Scotland or Northern Ireland follow the same FCDO Apostille process as English and Welsh documents. The FCDO handles apostille for all UK jurisdictions. However, some documents may require preliminary certification from Scottish or Northern Irish authorities before FCDO processing.'
+  },
+  {
+    question: 'Which UK documents need solicitor certification?',
+    answer: 'Photocopies, unsigned documents, and certain private documents need a UK solicitor to certify them before FCDO will apostille. Original signed documents from official bodies (universities, GRO, Companies House) usually do not need this step. We advise on requirements for your specific document.'
+  },
+  {
+    question: 'Is translation required after attestation?',
+    answer: 'Yes, for most UAE government submissions. UK documents are in English, but UAE authorities typically require Arabic translation by an MOJ-certified translator. We provide combined attestation and translation services so your document arrives ready for immediate submission.'
+  }
+];
+
+const accordionSections = [
+  {
+    title: 'The UK Attestation Process',
+    id: 'process',
+    items: [
+      {
+        heading: 'Step 1: Document Preparation',
+        body: 'Original documents or certified copies are required. For educational certificates, the original degree or a certified copy from the issuing university is needed. Birth and marriage certificates should be official copies from the General Register Office (GRO) or local registry office. Photocopies are not accepted for apostille without solicitor certification.'
+      },
+      {
+        heading: 'Step 2: Solicitor Certification (If Required)',
+        body: 'Some documents require a UK solicitor to certify them before the FCDO will apply an apostille. This applies to photocopies, documents not bearing original signatures, and certain private documents. The solicitor confirms the document is a true copy or that signatures are genuine.'
+      },
+      {
+        heading: 'Step 3: FCDO Apostille',
+        body: 'The Foreign, Commonwealth and Development Office issues apostilles for UK documents. Standard processing takes 3-5 working days. Premium same-day service is available for urgent requirements. The apostille certificate is physically attached to your document.'
+      },
+      {
+        heading: 'Step 4: UAE Embassy London',
+        body: 'After apostille, the document is submitted to the UAE Embassy in London for legalization. This confirms UAE recognition of the UK government authentication. Processing typically takes 2-3 working days.'
+      },
+      {
+        heading: 'Step 5: MOFA UAE',
+        body: 'The final step is MOFA attestation in UAE. This confirms the UAE government accepts the document for official use. Processing takes 1-2 working days. Your document is now ready for submission to any UAE authority.'
+      }
+    ]
+  },
+  {
+    title: 'Educational Documents',
+    id: 'educational',
+    items: [
+      {
+        heading: 'University Degrees',
+        body: 'Degrees from all UK universities including Oxford, Cambridge, LSE, Imperial, and all Russell Group and post-92 universities. HEDD verification may be required for employment purposes in addition to attestation.'
+      },
+      {
+        heading: 'A-Levels & GCSEs',
+        body: 'Exam board certificates from AQA, Edexcel, OCR, and other UK exam boards. Required for school enrollment and university applications in UAE.'
+      },
+      {
+        heading: 'Professional Qualifications',
+        body: 'ACCA, CIMA, CFA, CIPD, and other UK professional certifications. Required for licensing with UAE professional bodies and regulatory authorities.'
+      }
+    ]
+  },
+  {
+    title: 'Personal Documents',
+    id: 'personal',
+    items: [
+      {
+        heading: 'Birth Certificate',
+        body: 'GRO (General Register Office) certificates from England, Wales, Scotland, or Northern Ireland. Required for dependent visa applications and nationality matters.'
+      },
+      {
+        heading: 'Marriage Certificate',
+        body: 'UK marriage certificates for spouse visa sponsorship in UAE. Church and civil ceremonies both accepted with proper attestation.'
+      },
+      {
+        heading: 'Police Certificate (ACRO)',
+        body: 'UK police certificate from ACRO for UAE visa applications. Note the validity period when timing your attestation - typically valid for 6 months.'
+      },
+      {
+        heading: 'Decree Absolute',
+        body: 'UK divorce decrees for remarriage eligibility or legal status changes in UAE.'
+      }
+    ]
+  },
+  {
+    title: 'Corporate Documents',
+    id: 'corporate',
+    items: [
+      {
+        heading: 'Companies House Documents',
+        body: 'Certificate of Incorporation, Annual Returns, Certificate of Good Standing. Required for UAE business registration, contracts, and corporate matters.'
+      },
+      {
+        heading: 'Board Resolutions',
+        body: 'Company resolutions and minutes authorizing specific actions. Solicitor certification usually required before apostille.'
+      },
+      {
+        heading: 'Power of Attorney',
+        body: 'UK-executed POA for UAE use. Must be properly witnessed and certified. We advise on correct execution format for UAE acceptance.'
+      }
+    ]
+  },
+  {
+    title: 'After Attestation',
+    id: 'after-care',
+    items: [
+      {
+        heading: 'Arabic Translation',
+        body: 'Most UAE authorities require Arabic translation after attestation. We provide MOJ-certified translation that references all attestation stamps on the original document.'
+      },
+      {
+        heading: 'Document Submission',
+        body: 'Fully attested documents can be submitted to MOHRE, GDRFA/ICP, professional licensing bodies, Dubai Courts, or any other UAE authority. Each has specific submission requirements we can advise on.'
+      },
+      {
+        heading: 'Document Validity',
+        body: 'Some attested documents have validity periods. ACRO police certificates should be used within 6 months. Plan your attestation timing to ensure documents remain valid when you need to submit them.'
+      }
+    ]
+  }
+];
+---
+
+<ServiceLayout
+  title="UK Document Attestation UAE | FCO Apostille | Embassy Legalization"
+  description="UK document attestation for UAE. FCDO apostille, UAE Embassy London, MOFA. Degrees, certificates, corporate documents. 7-10 days complete service."
+  keywords="uk attestation uae, fco apostille, uk degree attestation dubai, british document legalization, uk certificate attestation"
+  canonical="https://onlinetranslation.ae/services/attestation/uk/"
+  heroTitle="UK Document"
+  heroSubtitle="Attestation"
+  heroIntro="Complete attestation for UK documents. FCDO apostille, UAE Embassy London, and MOFA attestation. Degrees, certificates, and corporate documents handled end-to-end with tracking at every step."
+  snapshot={snapshot}
+  breadcrumbs={breadcrumbs}
+  processSteps={processSteps}
+  processTitle="UK Attestation Process"
+  benefitCards={benefitCards}
+  accordionSections={accordionSections}
+  faqs={faqs}
+  serviceType="UK Document Attestation"
+>
+  <!-- Service Options -->
+  <section class="section bg-white">
+    <div class="container">
+      <h2>Service Options</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+        
+        <div style="padding: 2rem; background: white; border-radius: 8px; border: 1px solid #e5e7eb;">
+          <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Standard</h3>
+          <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem;">7-10 Working Days</p>
+          <p style="margin: 0;">Full chain attestation with standard FCDO processing.</p>
+        </div>
+        
+        <div style="padding: 2rem; background: white; border-radius: 8px; border: 2px solid var(--primary-color);">
+          <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Express</h3>
+          <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem;">5-7 Working Days</p>
+          <p style="margin: 0;">Premium FCDO same-day + expedited embassy processing.</p>
+        </div>
+        
+        <div style="padding: 2rem; background: white; border-radius: 8px; border: 1px solid #e5e7eb;">
+          <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">With Translation</h3>
+          <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem;">Complete Package</p>
+          <p style="margin: 0;">Attestation plus MOJ-certified Arabic translation.</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Related Services</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+        <a href="/services/attestation/india/" style="padding: 0.75rem 1.25rem; background: var(--surface-raised); border-radius: 8px; text-decoration: none; color: inherit;">India Attestation</a>
+        <a href="/services/attestation/us/" style="padding: 0.75rem 1.25rem; background: var(--surface-raised); border-radius: 8px; text-decoration: none; color: inherit;">US Attestation</a>
+        <a href="/personal/education/degree/" style="padding: 0.75rem 1.25rem; background: var(--surface-raised); border-radius: 8px; text-decoration: none; color: inherit;">Degree Translation</a>
+        <a href="/services/attestation/" style="padding: 0.75rem 1.25rem; background: var(--surface-raised); border-radius: 8px; text-decoration: none; color: inherit;">All Attestation Services</a>
+      </div>
+    </div>
+  </section>
+</ServiceLayout>
