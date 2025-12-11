@@ -1,48 +1,61 @@
 ---
 /**
- * Footer.astro - Site Footer
- * Uses navigation.ts as single source of truth
+ * Footer Component - FIXED 4-Column Grid Layout
+ * 
+ * Structure: Brand | Quick Links | Services | Contact
+ * All 4 sections as direct children of .footer-grid
  */
-import { footerNav, socialLinks, siteContact } from '../data/navigation';
-
-const currentYear = new Date().getFullYear();
+import { siteContact, socialLinks, footerNav } from '../data/navigation';
 ---
 
-<footer class="footer">
+<footer class="footer bg-dark" data-theme="dark">
   <div class="container">
+    
+    <!-- Main Footer Grid - 4 DIRECT CHILDREN -->
     <div class="footer-grid">
+      
+      <!-- COLUMN 1: Brand -->
       <div class="footer-brand">
-        <div class="footer-emblem">
-          <img src="/images/logo/brand/emblem-256.png" alt="OnlineTranslation.ae" width="80" height="80">
-        </div>
+        <a href="/" class="footer-logo">
+          <img src="/images/logo.svg" alt="OnlineTranslation.ae" width="180" height="50" loading="lazy" />
+        </a>
         <p>Services Executed by MOJ Certified Partners. Formatted for Dubai Courts, DIFC, ADGM, Federal Entities, and Immigration Services.</p>
-        <p class="footer-partnership" style="padding: 12px 24px; border-radius: 50px; background: linear-gradient(135deg, #1a2942 0%, #0e1f35 100%); border: 2px solid #d4af37; box-shadow: 0 2px 8px rgba(212, 175, 55, 0.25); color: #ffffff; display: inline-block; max-width: fit-content; margin: 24px auto; text-align: center;">
-          <i class="fas fa-handshake" style="color: #ffd700; margin-right: 8px;"></i> Certified translations fulfilled by <strong><a href="https://arkanlegaltranslation.ae/" target="_blank" rel="noopener" class="partner-link" style="color: #ffd700; text-decoration: none; font-weight: 600;">Arkan Legal Translation</a></strong>
+        
+        <p class="footer-partnership">
+          <i class="fas fa-certificate"></i>
+          Certified translations fulfilled by <strong><a href="https://arkanlegal.com" target="_blank" rel="noopener" class="partner-link">Arkan Legal Translation</a></strong>
         </p>
+        
         <div class="footer-social">
-          {socialLinks.map((social) => (
-            <a href={social.url} target="_blank" rel="noopener" aria-label={social.platform}>
-              <i class={social.icon}></i>
+          {socialLinks.map(social => (
+            <a href={social.url} target="_blank" rel="noopener" aria-label={social.label}>
+              <i class={`fab fa-${social.icon}`}></i>
             </a>
           ))}
         </div>
       </div>
+      
+      <!-- COLUMN 2: Quick Links -->
       <div class="footer-links">
         <h4>Quick Links</h4>
         <ul>
-          {footerNav.quickLinks.map((link) => (
+          {footerNav.quickLinks.map(link => (
             <li><a href={link.href}>{link.label}</a></li>
           ))}
         </ul>
       </div>
-      <div class="footer-services">
+      
+      <!-- COLUMN 3: Our Services -->
+      <div class="footer-links footer-services">
         <h4>Our Services</h4>
         <ul>
-          {footerNav.services.map((service) => (
-            <li><a href={service.href}>{service.label}</a></li>
+          {footerNav.services.map(link => (
+            <li><a href={link.href}>{link.label}</a></li>
           ))}
         </ul>
       </div>
+      
+      <!-- COLUMN 4: Contact Us - MUST be direct child of .footer-grid -->
       <div class="footer-contact">
         <h4>Contact Us</h4>
         <ul>
@@ -52,7 +65,7 @@ const currentYear = new Date().getFullYear();
           </li>
           <li>
             <i class="fas fa-phone"></i>
-            <a href={`tel:${siteContact.phone}`}>{siteContact.phoneDisplay}</a>
+            <a href={`tel:${siteContact.phone.replace(/\s/g, '')}`}>{siteContact.phone}</a>
           </li>
           <li>
             <i class="fas fa-envelope"></i>
@@ -60,19 +73,275 @@ const currentYear = new Date().getFullYear();
           </li>
           <li>
             <i class="fas fa-clock"></i>
-            <span>{siteContact.hours}</span>
+            <span>Daily: 8:00 AM - 10:00 PM</span>
           </li>
         </ul>
       </div>
+      
+    </div><!-- /.footer-grid - exactly 4 direct children -->
+    
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p>&copy; {new Date().getFullYear()} OnlineTranslation.ae. All rights reserved. | <a href="/privacy/">Privacy</a> | <a href="/terms/">Terms</a></p>
     </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="container">
-      <p>&copy; {currentYear} OnlineTranslation.ae. All rights reserved. | 
-        {footerNav.legal.map((link, i) => (
-          <><a href={link.href}>{link.label}</a>{i < footerNav.legal.length - 1 ? ' | ' : ''}</>
-        ))}
-      </p>
-    </div>
+    
   </div>
 </footer>
+
+<style>
+  /* ============================================
+     FOOTER BASE
+     ============================================ */
+  .footer {
+    padding: 60px 0 30px;
+    background: var(--surface-navy-dark, #072035);
+    color: var(--text-on-dark, #f4f7fc);
+  }
+  
+  /* ============================================
+     4-COLUMN GRID - CRITICAL FIX
+     Using !important to override any conflicting styles
+     ============================================ */
+  .footer-grid {
+    display: grid !important;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr !important;
+    gap: 40px !important;
+    align-items: start !important;
+  }
+  
+  /* Ensure grid children don't overflow */
+  .footer-grid > * {
+    min-width: 0;
+  }
+  
+  /* ============================================
+     COLUMN 1: BRAND
+     ============================================ */
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .footer-logo {
+    margin-bottom: 1rem;
+  }
+  
+  .footer-logo img {
+    height: 50px;
+    width: auto;
+  }
+  
+  .footer-brand > p {
+    color: var(--text-on-dark-muted, #c5d4e8);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+  
+  /* Arkan Partnership Pill */
+  .footer-partnership {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.08) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 50px;
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .footer-partnership i {
+    color: #f4d03f;
+  }
+  
+  .footer-partnership .partner-link {
+    color: #f4d03f;
+    font-weight: 600;
+  }
+  
+  .footer-partnership .partner-link:hover {
+    color: #ffd700;
+    text-decoration: underline;
+  }
+  
+  /* Social Icons */
+  .footer-social {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--text-on-dark, #f4f7fc);
+    transition: all 0.2s ease;
+  }
+  
+  .footer-social a:hover {
+    background: var(--accent-coral, #FF1654);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+  
+  /* ============================================
+     COLUMNS 2-4: LINKS & CONTACT
+     ============================================ */
+  .footer-links h4,
+  .footer-contact h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.25rem;
+    color: #ffffff;
+    position: relative;
+    padding-bottom: 0.75rem;
+  }
+  
+  .footer-links h4::after,
+  .footer-contact h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background: var(--accent-coral, #FF1654);
+  }
+  
+  .footer-links ul,
+  .footer-contact ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-links li {
+    margin-bottom: 0.6rem;
+  }
+  
+  .footer-links a {
+    color: var(--text-on-dark-muted, #c5d4e8);
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+  }
+  
+  .footer-links a:hover {
+    color: var(--accent-coral, #FF1654);
+  }
+  
+  /* Contact Items */
+  .footer-contact li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 0.75rem;
+    color: var(--text-on-dark-muted, #c5d4e8);
+    font-size: 0.95rem;
+  }
+  
+  .footer-contact li i {
+    color: var(--accent-coral, #FF1654);
+    width: 16px;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+  
+  .footer-contact a {
+    color: var(--text-on-dark-muted, #c5d4e8);
+    transition: color 0.2s ease;
+  }
+  
+  .footer-contact a:hover {
+    color: var(--accent-coral, #FF1654);
+  }
+  
+  /* ============================================
+     FOOTER BOTTOM
+     ============================================ */
+  .footer-bottom {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+  }
+  
+  .footer-bottom p {
+    font-size: 0.875rem;
+    color: var(--text-on-dark-subtle, #9fb2c9);
+    margin: 0;
+  }
+  
+  .footer-bottom a {
+    color: var(--text-on-dark-muted, #c5d4e8);
+  }
+  
+  .footer-bottom a:hover {
+    color: var(--accent-coral, #FF1654);
+  }
+  
+  /* ============================================
+     TABLET - 2x2 GRID
+     ============================================ */
+  @media (max-width: 991px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr !important;
+      gap: 30px !important;
+    }
+    
+    .footer-brand {
+      grid-column: 1 / -1;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .footer-partnership {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .footer-social {
+      justify-content: center;
+    }
+  }
+  
+  /* ============================================
+     MOBILE - SINGLE COLUMN
+     ============================================ */
+  @media (max-width: 767px) {
+    .footer {
+      padding: 40px 0 24px;
+    }
+    
+    .footer-grid {
+      grid-template-columns: 1fr !important;
+      gap: 24px !important;
+      text-align: center;
+    }
+    
+    .footer-brand {
+      align-items: center;
+    }
+    
+    .footer-links h4::after,
+    .footer-contact h4::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .footer-contact li {
+      justify-content: center;
+    }
+    
+    .footer-social {
+      justify-content: center;
+    }
+  }
+</style>
