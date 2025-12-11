@@ -1,5 +1,10 @@
 ---
-import { footerServices } from '../data/serviceLinks';
+/**
+ * Footer.astro - Site Footer
+ * Uses navigation.ts as single source of truth
+ */
+import { footerNav, socialLinks, siteContact } from '../data/navigation';
+
 const currentYear = new Date().getFullYear();
 ---
 
@@ -11,30 +16,30 @@ const currentYear = new Date().getFullYear();
           <img src="/images/logo/brand/emblem-256.png" alt="OnlineTranslation.ae" width="80" height="80">
         </div>
         <p>Services Executed by MOJ Certified Partners. Formatted for Dubai Courts, DIFC, ADGM, Federal Entities, and Immigration Services.</p>
-        <p class="footer-partnership" style="padding: 12px 24px; border-radius: 50px; background: linear-gradient(135deg, #1a2942 0%, #0e1f35 100%); border: 2px solid #d4af37; box-shadow: 0 2px 8px rgba(212, 175, 55, 0.25); color: #ffffff; display: inline-block; max-width: fit-content; margin: 24px auto; text-align: center;"><i class="fas fa-handshake" style="color: #ffd700; margin-right: 8px;"></i> Certified translations fulfilled by <strong><a href="https://arkanlegaltranslation.ae/" target="_blank" rel="noopener" class="partner-link" style="color: #ffd700; text-decoration: none; font-weight: 600;">Arkan Legal Translation</a></strong></p>
+        <p class="footer-partnership" style="padding: 12px 24px; border-radius: 50px; background: linear-gradient(135deg, #1a2942 0%, #0e1f35 100%); border: 2px solid #d4af37; box-shadow: 0 2px 8px rgba(212, 175, 55, 0.25); color: #ffffff; display: inline-block; max-width: fit-content; margin: 24px auto; text-align: center;">
+          <i class="fas fa-handshake" style="color: #ffd700; margin-right: 8px;"></i> Certified translations fulfilled by <strong><a href="https://arkanlegaltranslation.ae/" target="_blank" rel="noopener" class="partner-link" style="color: #ffd700; text-decoration: none; font-weight: 600;">Arkan Legal Translation</a></strong>
+        </p>
         <div class="footer-social">
-          <a href="https://wa.me/971508620217" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-          <a href="https://www.facebook.com/DXBTranslate/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://www.instagram.com/onlinetranslation.ae" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.linkedin.com/company/online-translation-agency-dubai/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          {socialLinks.map((social) => (
+            <a href={social.url} target="_blank" rel="noopener" aria-label={social.platform}>
+              <i class={social.icon}></i>
+            </a>
+          ))}
         </div>
       </div>
       <div class="footer-links">
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/services/">Services</a></li>
-          <li><a href="/locations/">Locations</a></li>
-          <li><a href="/about/">About & Licensing</a></li>
-          <li><a href="/resources/faq/">FAQ</a></li>
-          <li><a href="/contact/">Contact</a></li>
+          {footerNav.quickLinks.map((link) => (
+            <li><a href={link.href}>{link.label}</a></li>
+          ))}
         </ul>
       </div>
       <div class="footer-services">
         <h4>Our Services</h4>
         <ul>
-          {footerServices.map(service => (
-            <li><a href={service.url}>{service.text}</a></li>
+          {footerNav.services.map((service) => (
+            <li><a href={service.href}>{service.label}</a></li>
           ))}
         </ul>
       </div>
@@ -43,19 +48,19 @@ const currentYear = new Date().getFullYear();
         <ul>
           <li>
             <i class="fas fa-map-marker-alt"></i>
-            <span>Palm Jumeirah, Dubai, UAE</span>
+            <span>{siteContact.address}</span>
           </li>
           <li>
             <i class="fas fa-phone"></i>
-            <a href="tel:+971508620217">+971 50 862 0217</a>
+            <a href={`tel:${siteContact.phone}`}>{siteContact.phoneDisplay}</a>
           </li>
           <li>
             <i class="fas fa-envelope"></i>
-            <a href="mailto:info@onlinetranslation.ae">info@onlinetranslation.ae</a>
+            <a href={`mailto:${siteContact.email}`}>{siteContact.email}</a>
           </li>
           <li>
             <i class="fas fa-clock"></i>
-            <span>Daily: 8:00 AM - 10:00 PM</span>
+            <span>{siteContact.hours}</span>
           </li>
         </ul>
       </div>
@@ -63,7 +68,11 @@ const currentYear = new Date().getFullYear();
   </div>
   <div class="footer-bottom">
     <div class="container">
-      <p>&copy; {currentYear} OnlineTranslation.ae. All rights reserved. | <a href="/privacy/">Privacy Policy</a> | <a href="/terms/">Terms of Service</a></p>
+      <p>&copy; {currentYear} OnlineTranslation.ae. All rights reserved. | 
+        {footerNav.legal.map((link, i) => (
+          <><a href={link.href}>{link.label}</a>{i < footerNav.legal.length - 1 ? ' | ' : ''}</>
+        ))}
+      </p>
     </div>
   </div>
 </footer>

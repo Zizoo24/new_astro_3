@@ -1,4 +1,10 @@
 ---
+/**
+ * Header.astro - Desktop Navigation
+ * Uses navigation.ts as single source of truth
+ */
+import { mainNav, socialLinks, siteContact, isNavGroup, type NavGroup } from '../data/navigation';
+
 interface Props {
   isHomepage?: boolean;
 }
@@ -15,9 +21,9 @@ const { isHomepage = false } = Astro.props;
     <div class="container announcement-flex">
       <span class="announcement-label">MOJ-Licensed Legal Translation</span>
       <div class="announcement-actions">
-        <a href="https://wa.me/971508620217" class="announcement-btn announcement-btn--whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-        <a href="tel:+971508620217" class="announcement-btn announcement-btn--call"><i class="fas fa-phone-alt"></i> Call</a>
-        <a href="https://wa.me/971508620217" class="announcement-cta">Send Documents <i class="fas fa-arrow-right"></i></a>
+        <a href={siteContact.whatsapp} class="announcement-btn announcement-btn--whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href={`tel:${siteContact.phone}`} class="announcement-btn announcement-btn--call"><i class="fas fa-phone-alt"></i> Call</a>
+        <a href={siteContact.whatsapp} class="announcement-cta">Send Documents <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
   </div>
@@ -36,73 +42,43 @@ const { isHomepage = false } = Astro.props;
         </div>
         <nav class="header-nav" id="desktopNav">
           <ul class="nav-menu">
-            <li class="nav-item has-dropdown">
-              <a href="/" class="nav-link">Home</a>
-            </li>
-            <li class="nav-item has-dropdown mega-dropdown">
-              <a href="/services/" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
-              <ul class="dropdown-menu">
-                <li class="dropdown-header">Translation Services</li>
-                <li><a href="/services/legal-translation/">Legal Translation</a></li>
-                <li><a href="/services/certificate-translation/">Certificate Translation</a></li>
-                <li><a href="/services/corporate-translation/">Corporate Translation</a></li>
-                <li><a href="/services/golden-visa-translation/">Golden Visa</a></li>
-                <li><a href="/services/attestation/">Attestation & MOFAIC</a></li>
-                <li class="dropdown-divider"></li>
-                <li class="dropdown-header">Vital Records</li>
-                <li><a href="/personal/vital-records/birth/">Birth Certificate</a></li>
-                <li><a href="/personal/vital-records/marriage/">Marriage Certificate</a></li>
-                <li><a href="/personal/vital-records/death/">Death Certificate</a></li>
-                <li><a href="/personal/vital-records/divorce/">Divorce Certificate</a></li>
-                <li class="dropdown-divider"></li>
-                <li class="dropdown-header">Academic & Immigration</li>
-                <li><a href="/personal/education/degree/">University Degree</a></li>
-                <li><a href="/personal/academic/transcripts/">Academic Transcripts</a></li>
-                <li><a href="/personal/immigration/pcc/">Police Clearance (PCC)</a></li>
-                <li><a href="/personal/immigration/license/">Driving License</a></li>
-                <li><a href="/personal/immigration/bank/">Bank Statements</a></li>
-                <li class="dropdown-divider"></li>
-                <li class="dropdown-header">Legal & Commercial</li>
-                <li><a href="/legal/corporate/poa/">Power of Attorney</a></li>
-                <li><a href="/legal/corporate/moa/">Memorandum of Association</a></li>
-                <li><a href="/legal/contracts/nda/">NDA Translation</a></li>
-                <li><a href="/specialized/medical/">Medical Reports</a></li>
-              </ul>
-            </li>
-            <li class="nav-item has-dropdown">
-              <a href="/locations/" class="nav-link">Locations <i class="fas fa-chevron-down"></i></a>
-              <ul class="dropdown-menu">
-                <li><a href="/locations/dubai/">Dubai (All Areas)</a></li>
-                <li><a href="/locations/dubai/palm-jumeirah/">Palm Jumeirah</a></li>
-                <li><a href="/locations/dubai/jlt/">JLT & DMCC</a></li>
-                <li><a href="/locations/dubai/difc/">DIFC</a></li>
-                <li><a href="/locations/dubai/business-bay/">Business Bay</a></li>
-                <li><a href="/locations/abu-dhabi/">Abu Dhabi</a></li>
-                <li><a href="/locations/sharjah/">Sharjah</a></li>
-              </ul>
-            </li>
-            <li class="nav-item has-dropdown">
-              <a href="/industries/" class="nav-link">Industries <i class="fas fa-chevron-down"></i></a>
-              <ul class="dropdown-menu">
-                <li><a href="/industries/legal/">Legal & Law Firms</a></li>
-                <li><a href="/industries/healthcare/">Healthcare</a></li>
-                <li><a href="/industries/real-estate/">Real Estate</a></li>
-                <li><a href="/industries/e-commerce/">E-Commerce</a></li>
-              </ul>
-            </li>
-            <li class="nav-item has-dropdown">
-              <a href="/resources/" class="nav-link">Resources <i class="fas fa-chevron-down"></i></a>
-              <ul class="dropdown-menu">
-                <li><a href="/resources/faq/">FAQ</a></li>
-                <li><a href="/resources/pricing-guide/">Pricing Guide</a></li>
-                <li><a href="/resources/document-checklist/">Document Checklist</a></li>
-                <li><a href="/resources/attestation-guide/">Attestation Guide</a></li>
-                <li><a href="/resources/golden-visa-checklist/">Golden Visa Checklist</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a href="/about/" class="nav-link">About</a>
-            </li>
+            {mainNav.map((item) => {
+              if (isNavGroup(item)) {
+                const group = item as NavGroup;
+                return (
+                  <li class={`nav-item has-dropdown ${group.id === 'services' ? 'mega-dropdown' : ''}`}>
+                    <a href={group.href} class="nav-link">{group.label} <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                      {group.children.map((child, index) => {
+                        const elements = [];
+                        
+                        // Check if we need a header before this item
+                        const header = group.headers?.find(h => h.index === index);
+                        if (header) {
+                          elements.push(<li class="dropdown-header">{header.label}</li>);
+                        }
+                        
+                        // Add the link
+                        elements.push(<li><a href={child.href}>{child.label}</a></li>);
+                        
+                        // Check if we need a divider after this item
+                        if (group.dividers?.includes(index)) {
+                          elements.push(<li class="dropdown-divider"></li>);
+                        }
+                        
+                        return elements;
+                      })}
+                    </ul>
+                  </li>
+                );
+              } else {
+                return (
+                  <li class="nav-item has-dropdown">
+                    <a href={item.href} class="nav-link">{item.label}</a>
+                  </li>
+                );
+              }
+            })}
           </ul>
         </nav>
         <a href="/contact/" class="header-contact-btn">Contact</a>
@@ -111,9 +87,11 @@ const { isHomepage = false } = Astro.props;
             <i class="fas fa-moon"></i>
           </button>
           <div class="social-icons">
-            <a href="https://www.facebook.com/DXBTranslate/" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/onlinetranslation.ae" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/company/online-translation-agency-dubai/" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            {socialLinks.filter(s => s.platform !== 'whatsapp').map((social) => (
+              <a href={social.url} target="_blank" rel="noopener" title={social.platform.charAt(0).toUpperCase() + social.platform.slice(1)}>
+                <i class={social.icon}></i>
+              </a>
+            ))}
           </div>
           <button type="button" class="menu-toggle-btn mobile-only" id="mobileMenuToggle" aria-label="Open menu" title="Menu"><i class="fas fa-bars"></i></button>
         </div>
@@ -226,14 +204,64 @@ const { isHomepage = false } = Astro.props;
       }
     });
 
-    // Desktop dropdown hover behavior
+    // Desktop dropdown behavior - click-toggle for touch, hover for desktop
     const dropdownItems = document.querySelectorAll('.nav-item.has-dropdown');
+    
     dropdownItems.forEach(item => {
+      const link = item.querySelector('.nav-link');
+      
+      // Hover for desktop
       item.addEventListener('mouseenter', () => {
-        item.classList.add('is-open');
+        if (window.innerWidth > 1024) {
+          item.classList.add('is-open');
+        }
       });
+      
       item.addEventListener('mouseleave', () => {
-        item.classList.remove('is-open');
+        if (window.innerWidth > 1024) {
+          item.classList.remove('is-open');
+        }
+      });
+      
+      // Click toggle for touch devices
+      link?.addEventListener('click', (e) => {
+        if (window.innerWidth <= 1024 && item.querySelector('.dropdown-menu')) {
+          e.preventDefault();
+          
+          // Close other dropdowns
+          dropdownItems.forEach(other => {
+            if (other !== item) {
+              other.classList.remove('is-open');
+            }
+          });
+          
+          item.classList.toggle('is-open');
+        }
+      });
+    });
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-item.has-dropdown')) {
+        dropdownItems.forEach(item => item.classList.remove('is-open'));
+      }
+    });
+    
+    // Keyboard navigation
+    dropdownItems.forEach(item => {
+      const link = item.querySelector('.nav-link');
+      
+      link?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          if (item.querySelector('.dropdown-menu')) {
+            e.preventDefault();
+            item.classList.toggle('is-open');
+          }
+        }
+        
+        if (e.key === 'Escape') {
+          item.classList.remove('is-open');
+        }
       });
     });
   });

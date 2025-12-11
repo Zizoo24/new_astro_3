@@ -1,4 +1,9 @@
 ---
+/**
+ * MobileShell.astro - Mobile Navigation (Sidebar, Bottom Bar, Search)
+ * Uses navigation.ts as single source of truth
+ */
+import { mobileNav, searchQuickLinks, siteContact } from '../data/navigation';
 ---
 
 <!-- Mobile Bottom Navigation -->
@@ -11,11 +16,11 @@
     <i class="fas fa-search"></i>
     <span>Search</span>
   </button>
-  <a href="https://wa.me/971508620217" class="footer-item footer-whatsapp">
+  <a href={siteContact.whatsapp} class="footer-item footer-whatsapp">
     <i class="fab fa-whatsapp"></i>
     <span>WhatsApp</span>
   </a>
-  <a href="tel:+971508620217" class="footer-item">
+  <a href={`tel:${siteContact.phone}`} class="footer-item">
     <i class="fas fa-phone"></i>
     <span>Call</span>
   </a>
@@ -40,95 +45,46 @@
     </button>
   </div>
   <div class="sidebar-nav">
-    <a href="/" class="sidebar-home-link"><i class="fas fa-home"></i> Home</a>
+    <!-- Home Link -->
+    <a href={mobileNav.home.href} class="sidebar-home-link">
+      <i class={mobileNav.home.icon}></i> {mobileNav.home.label}
+    </a>
     
-    <div class="sidebar-accordion-group" data-accordion="services">
-      <button class="sidebar-accordion-heading" aria-expanded="false" aria-controls="accordion-services">
-        <span class="heading-text">Services</span>
-        <i class="fas fa-chevron-down accordion-chevron"></i>
-      </button>
-      <div class="sidebar-accordion-panel" id="accordion-services">
-        <a href="/services/legal-translation/">Legal Translation</a>
-        <a href="/services/golden-visa-translation/">Golden Visa</a>
-        <a href="/services/attestation/">Attestation & MOFAIC</a>
-        <a href="/services/certificate-translation/">Certificate Translation</a>
-        <a href="/services/corporate-translation/">Corporate Translation</a>
-        <a href="/services/" class="sidebar-viewall">View all services <i class="fas fa-arrow-right"></i></a>
+    <!-- Accordion Groups -->
+    {mobileNav.accordions.map((accordion) => (
+      <div class="sidebar-accordion-group" data-accordion={accordion.id}>
+        <button 
+          class="sidebar-accordion-heading" 
+          aria-expanded="false" 
+          aria-controls={`accordion-${accordion.id}`}
+        >
+          <span class="heading-text">{accordion.label}</span>
+          <i class="fas fa-chevron-down accordion-chevron"></i>
+        </button>
+        <div class="sidebar-accordion-panel" id={`accordion-${accordion.id}`}>
+          {accordion.children.map((child) => (
+            <a href={child.href}>{child.label}</a>
+          ))}
+          <a href={accordion.href} class="sidebar-viewall">
+            View all {accordion.label.toLowerCase()} <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
       </div>
-    </div>
+    ))}
     
-    <div class="sidebar-accordion-group" data-accordion="personal">
-      <button class="sidebar-accordion-heading" aria-expanded="false" aria-controls="accordion-personal">
-        <span class="heading-text">Personal Documents</span>
-        <i class="fas fa-chevron-down accordion-chevron"></i>
-      </button>
-      <div class="sidebar-accordion-panel" id="accordion-personal">
-        <a href="/personal/vital-records/birth/">Birth Certificate</a>
-        <a href="/personal/vital-records/marriage/">Marriage Certificate</a>
-        <a href="/personal/vital-records/death/">Death Certificate</a>
-        <a href="/personal/vital-records/divorce/">Divorce Certificate</a>
-        <a href="/personal/education/degree/">University Degree</a>
-        <a href="/personal/academic/transcripts/">Academic Transcripts</a>
-        <a href="/personal/immigration/pcc/">Police Clearance</a>
-        <a href="/personal/immigration/bank/">Bank Statement</a>
-        <a href="/personal/immigration/license/">Driving License</a>
-        <a href="/personal/" class="sidebar-viewall">View all personal docs <i class="fas fa-arrow-right"></i></a>
-      </div>
-    </div>
-    
-    <div class="sidebar-accordion-group" data-accordion="corporate">
-      <button class="sidebar-accordion-heading" aria-expanded="false" aria-controls="accordion-corporate">
-        <span class="heading-text">Corporate Documents</span>
-        <i class="fas fa-chevron-down accordion-chevron"></i>
-      </button>
-      <div class="sidebar-accordion-panel" id="accordion-corporate">
-        <a href="/legal/corporate/poa/">Power of Attorney</a>
-        <a href="/legal/corporate/moa/">Memorandum of Association</a>
-        <a href="/legal/contracts/nda/">NDA Translation</a>
-        <a href="/legal/" class="sidebar-viewall">View all corporate docs <i class="fas fa-arrow-right"></i></a>
-      </div>
-    </div>
-    
-    <div class="sidebar-accordion-group" data-accordion="locations">
-      <button class="sidebar-accordion-heading" aria-expanded="false" aria-controls="accordion-locations">
-        <span class="heading-text">Locations</span>
-        <i class="fas fa-chevron-down accordion-chevron"></i>
-      </button>
-      <div class="sidebar-accordion-panel" id="accordion-locations">
-        <a href="/locations/dubai/">Dubai</a>
-        <a href="/locations/dubai/palm-jumeirah/">Palm Jumeirah</a>
-        <a href="/locations/dubai/difc/">DIFC</a>
-        <a href="/locations/dubai/jlt/">JLT & DMCC</a>
-        <a href="/locations/abu-dhabi/">Abu Dhabi</a>
-        <a href="/locations/sharjah/">Sharjah</a>
-        <a href="/locations/" class="sidebar-viewall">View all locations <i class="fas fa-arrow-right"></i></a>
-      </div>
-    </div>
-    
-    <div class="sidebar-accordion-group" data-accordion="resources">
-      <button class="sidebar-accordion-heading" aria-expanded="false" aria-controls="accordion-resources">
-        <span class="heading-text">Resources</span>
-        <i class="fas fa-chevron-down accordion-chevron"></i>
-      </button>
-      <div class="sidebar-accordion-panel" id="accordion-resources">
-        <a href="/resources/faq/">FAQ</a>
-        <a href="/resources/pricing-guide/">Pricing Guide</a>
-        <a href="/resources/document-checklist/">Document Checklist</a>
-        <a href="/resources/attestation-guide/">Attestation Guide</a>
-        <a href="/resources/golden-visa-checklist/">Golden Visa Checklist</a>
-        <a href="/resources/" class="sidebar-viewall">View all resources <i class="fas fa-arrow-right"></i></a>
-      </div>
-    </div>
-    
-    <a href="/about/" class="sidebar-single-link"><i class="fas fa-info-circle"></i> About & Licensing</a>
-    <a href="/contact/" class="sidebar-single-link"><i class="fas fa-envelope"></i> Contact Us</a>
+    <!-- Single Links -->
+    {mobileNav.singleLinks.map((link) => (
+      <a href={link.href} class="sidebar-single-link">
+        <i class={link.icon}></i> {link.label}
+      </a>
+    ))}
   </div>
   <div class="sidebar-contact">
-    <a href="https://wa.me/971508620217" class="sidebar-cta">
+    <a href={siteContact.whatsapp} class="sidebar-cta">
       <i class="fab fa-whatsapp"></i> WhatsApp Us
     </a>
-    <a href="tel:+971508620217" class="sidebar-cta secondary">
-      <i class="fas fa-phone"></i> +971 50 862 0217
+    <a href={`tel:${siteContact.phone}`} class="sidebar-cta secondary">
+      <i class="fas fa-phone"></i> {siteContact.phoneDisplay}
     </a>
   </div>
 </nav>
@@ -147,10 +103,9 @@
     <div id="searchResults" class="search-results"></div>
     <div class="quick-links">
       <span>Popular:</span>
-      <a href="/services/golden-visa-translation/">Golden Visa</a>
-      <a href="/services/legal-translation/">Legal Translation</a>
-      <a href="/services/attestation/">Attestation</a>
-      <a href="/resources/pricing-guide/">Pricing</a>
+      {searchQuickLinks.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
     </div>
   </div>
 </div>
