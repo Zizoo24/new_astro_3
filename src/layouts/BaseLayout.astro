@@ -61,7 +61,97 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
   <meta name="twitter:title" content={title}>
   <meta name="twitter:description" content={description}>
   <meta name="twitter:image" content={`${siteUrl}${ogImage}`}>
-  
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": `${siteUrl}/#organization`,
+    "name": "OnlineTranslation.ae",
+    "alternateName": "Online Translation UAE",
+    "description": "MOJ-certified legal translation services in Dubai. Professional translation for courts, immigration, and business documents.",
+    "url": siteUrl,
+    "logo": `${siteUrl}/images/logo/brand/emblem-256.png`,
+    "image": `${siteUrl}/images/og-image.jpg`,
+    "telephone": "+971508620217",
+    "email": "info@onlinetranslation.ae",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Umm Al Sheif",
+      "addressLocality": "Dubai",
+      "addressRegion": "Dubai",
+      "postalCode": "",
+      "addressCountry": "AE"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 25.1124,
+      "longitude": 55.1880
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "08:00",
+      "closes": "22:00"
+    },
+    "priceRange": "$$",
+    "currenciesAccepted": "AED, USD",
+    "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+    "areaServed": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": 25.2048,
+        "longitude": 55.2708
+      },
+      "geoRadius": "50000"
+    },
+    "sameAs": [
+      "https://wa.me/971508620217",
+      "https://facebook.com/onlinetranslationae",
+      "https://instagram.com/onlinetranslationae",
+      "https://linkedin.com/company/onlinetranslationae"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Translation Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Legal Translation",
+            "description": "MOJ-certified legal document translation for Dubai courts and government entities"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Certificate Translation",
+            "description": "Birth, marriage, death, and academic certificate translation"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Attestation Services",
+            "description": "MOFA, embassy, and apostille attestation services"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Golden Visa Translation",
+            "description": "Document translation for UAE Golden Visa applications"
+          }
+        }
+      ]
+    }
+  })} />
+
   <!-- Theme -->
   <meta name="theme-color" content="#0E2B48">
   <meta name="format-detection" content="telephone=yes">
