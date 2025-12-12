@@ -1,5 +1,8 @@
 ---
 import ServiceLayout from '../../../layouts/ServiceLayout.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../components/CrossSiloLinks.astro';
+import InlineCallout from '../../../components/InlineCallout.astro';
 
 const pageData = {
   title: "Attestation & MOFAIC Services Dubai – Document Legalization UAE | OnlineTranslation.ae",
@@ -298,6 +301,42 @@ const pageData = {
     </div>
   </section>
 
+  <section class="section bg-white">
+    <div class="container">
+      <h2>Attestation by Country</h2>
+      <div class="country-links">
+        <a href="/services/attestation/india/" class="country-link">India</a>
+        <a href="/services/attestation/pakistan/" class="country-link">Pakistan</a>
+        <a href="/services/attestation/philippines/" class="country-link">Philippines</a>
+        <a href="/services/attestation/uk/" class="country-link">UK</a>
+        <a href="/services/attestation/us/" class="country-link">USA</a>
+        <a href="/services/attestation/mofa/" class="country-link">MOFA UAE</a>
+        <a href="/services/attestation/apostille/" class="country-link">Apostille</a>
+        <a href="/services/attestation/embassy/" class="country-link">Embassy Services</a>
+      </div>
+
+      <InlineCallout 
+        type="tip" 
+        title="Need Translation Too?"
+        link="/services/legal-translation/"
+        linkText="View translation services"
+      >
+        Most attested documents also require MOJ-certified translation before submission to UAE authorities.
+      </InlineCallout>
+
+      <RelatedServices 
+        pageKey="attestation"
+        title="Documents That Need Attestation"
+        maxItems={6}
+      />
+      
+      <CrossSiloLinks 
+        pageKey="attestation"
+        title="Related Services"
+      />
+    </div>
+  </section>
+
 </ServiceLayout>
 
 <style>
@@ -385,5 +424,30 @@ const pageData = {
     left: 0;
     color: var(--accent-color);
     font-weight: 700;
+  }
+  
+  .country-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+  
+  .country-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: var(--primary-color);
+    color: #ffffff;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .country-link:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
   }
 </style>

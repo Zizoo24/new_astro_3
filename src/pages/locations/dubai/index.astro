@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../components/CrossSiloLinks.astro';
+import InlineCallout from '../../../components/InlineCallout.astro';
 ---
 
 <BaseLayout 
@@ -130,6 +133,30 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
   </section>
 
   <section class="section bg-white">
+    <div class="container">
+      <InlineCallout 
+        type="tip" 
+        title="Popular Services in Dubai"
+        link="/services/golden-visa-translation/"
+        linkText="Golden Visa translation"
+      >
+        Many Dubai residents need document translation for Golden Visa applications, property transactions, and company formation.
+      </InlineCallout>
+
+      <RelatedServices 
+        pageKey="dubai"
+        title="Common Document Needs in Dubai"
+        maxItems={6}
+      />
+      
+      <CrossSiloLinks 
+        pageKey="dubai"
+        title="Explore Other Locations"
+      />
+    </div>
+  </section>
+
+  <section class="section bg-light">
     <div class="container cta-section">
       <h2>Anywhere in Dubai</h2>
       <p>Not listed above? We deliver to all Dubai areas including Downtown, Marina, JBR, Silicon Oasis, Mirdif, Al Barsha, and more. Same-day delivery available.</p>
