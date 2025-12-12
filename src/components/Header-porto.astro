@@ -323,15 +323,47 @@ function isActive(href: string): boolean {
     top: 0;
     z-index: 1030;
     width: 100%;
+    transition: all 0.3s ease;
   }
 
   .header-body {
     background: linear-gradient(135deg, var(--ot-header-dark, #0a1628) 0%, var(--ot-header-gradient, #1a365d) 100%);
+    transition: all 0.3s ease;
   }
 
   /* Header Container */
   .header-container {
     padding: 15px 0;
+    transition: padding 0.3s ease;
+  }
+
+  /* ====================================
+     SCROLLED STATE - Compact header
+     ==================================== */
+  .site-header.scrolled .header-container {
+    padding: 8px 0;
+  }
+
+  .site-header.scrolled .logo-emblem {
+    height: 32px;
+  }
+
+  .site-header.scrolled .logo-text {
+    font-size: 1rem;
+  }
+
+  .site-header.scrolled .logo-tagline {
+    font-size: 0.55rem;
+  }
+
+  .site-header.scrolled .desktop-sidebar-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .site-header.scrolled .theme-toggle {
+    width: 32px;
+    height: 32px;
   }
 
   .header-row {
@@ -352,6 +384,7 @@ function isActive(href: string): boolean {
   .logo-emblem {
     height: 45px;
     width: auto;
+    transition: height 0.3s ease;
   }
 
   .logo-text-block {
@@ -364,6 +397,7 @@ function isActive(href: string): boolean {
     font-weight: 700;
     color: #ffffff;
     letter-spacing: -0.01em;
+    transition: font-size 0.3s ease;
   }
 
   .logo-suffix {
@@ -381,6 +415,7 @@ function isActive(href: string): boolean {
     letter-spacing: 0.15em;
     color: rgba(255, 255, 255, 0.7);
     margin-top: 2px;
+    transition: font-size 0.3s ease;
   }
 
   /* Navigation Column */
@@ -473,24 +508,28 @@ function isActive(href: string): boolean {
   // Mobile menu is handled by MobileShell via navigation-v2.js (#sidebarToggle)
   document.addEventListener('DOMContentLoaded', () => {
     // ========================================
-    // CORAL TOP BAR - Scroll Behavior
-    // Disappears on scroll, returns at top
+    // SCROLL BEHAVIOR
+    // - Coral bar disappears on scroll
+    // - Header shrinks (scrolled class)
     // ========================================
     const coralTopBar = document.getElementById('coralTopBar');
+    const header = document.getElementById('header');
     const scrollThreshold = 50;
 
-    function handleCoralBarScroll() {
+    function handleScrollBehavior() {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY > scrollThreshold) {
         coralTopBar?.classList.add('hidden');
+        header?.classList.add('scrolled');
       } else {
         coralTopBar?.classList.remove('hidden');
+        header?.classList.remove('scrolled');
       }
     }
 
-    window.addEventListener('scroll', handleCoralBarScroll, { passive: true });
-    handleCoralBarScroll();
+    window.addEventListener('scroll', handleScrollBehavior, { passive: true });
+    handleScrollBehavior();
 
     // ========================================
     // DESKTOP SIDEBAR TOGGLE
