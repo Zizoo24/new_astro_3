@@ -30,32 +30,34 @@ function isActive(href: string): boolean {
 }
 ---
 
-<!-- Coral Top Bar - Disappears on scroll -->
-<div class="coral-top-bar" id="coralTopBar">
-  <div class="container">
-    <div class="coral-top-content">
-      <div class="coral-top-left">
-        <a href={`tel:${siteContact.phone.replace(/\s/g, '')}`} class="coral-top-link">
-          <i class="fas fa-phone-alt"></i>
-          <span>{siteContact.phoneDisplay}</span>
-        </a>
-        <a href={`mailto:${siteContact.email}`} class="coral-top-link coral-top-email">
-          <i class="fas fa-envelope"></i>
-          <span>{siteContact.email}</span>
-        </a>
-      </div>
-      <div class="coral-top-right">
-        <span class="coral-top-hours">
-          <i class="fas fa-clock"></i>
-          Daily: 8:00 AM - 10:00 PM
-        </span>
+<!-- Fixed Header Wrapper -->
+<div class="header-wrapper" id="headerWrapper">
+  <!-- Coral Top Bar - Disappears on scroll -->
+  <div class="coral-top-bar" id="coralTopBar">
+    <div class="container">
+      <div class="coral-top-content">
+        <div class="coral-top-left">
+          <a href={`tel:${siteContact.phone.replace(/\s/g, '')}`} class="coral-top-link">
+            <i class="fas fa-phone-alt"></i>
+            <span>{siteContact.phoneDisplay}</span>
+          </a>
+          <a href={`mailto:${siteContact.email}`} class="coral-top-link coral-top-email">
+            <i class="fas fa-envelope"></i>
+            <span>{siteContact.email}</span>
+          </a>
+        </div>
+        <div class="coral-top-right">
+          <span class="coral-top-hours">
+            <i class="fas fa-clock"></i>
+            Daily: 8:00 AM - 10:00 PM
+          </span>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Sticky Navy Header -->
-<header id="header" class:list={["site-header", { "header-homepage": isHomepage }]}>
+  <!-- Sticky Navy Header -->
+  <header id="header" class:list={["site-header", { "header-homepage": isHomepage }]}>
   <div class="header-body">
     <!-- Main Header -->
     <div class="header-container container">
@@ -249,6 +251,37 @@ function isActive(href: string): boolean {
     </div>
   </div>
 </header>
+</div><!-- /.header-wrapper -->
+
+<!-- Spacer for fixed header -->
+<div class="header-spacer"></div>
+
+<style>
+  /* ====================================
+     FIXED HEADER WRAPPER
+     ==================================== */
+  .header-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    width: 100%;
+  }
+
+  .header-spacer {
+    height: 100px; /* Approximate header height */
+  }
+
+  @media (max-width: 991px) {
+    .header-wrapper {
+      display: none !important;
+    }
+    .header-spacer {
+      display: none;
+    }
+  }
+</style>
 
 <style>
   /* ====================================
@@ -316,12 +349,9 @@ function isActive(href: string): boolean {
   }
 
   /* ====================================
-     STICKY NAVY HEADER
+     NAVY HEADER (inside fixed wrapper)
      ==================================== */
   .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 1030;
     width: 100%;
     transition: all 0.3s ease;
   }
@@ -462,7 +492,7 @@ function isActive(href: string): boolean {
     display: block;
   }
 
-  /* Desktop Sidebar Toggle - Always visible on desktop */
+  /* Desktop Sidebar Toggle */
   .desktop-sidebar-toggle {
     display: flex;
     align-items: center;
