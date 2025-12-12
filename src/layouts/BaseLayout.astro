@@ -38,7 +38,7 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
     })();
   </script>
   
-  <!-- Cache Buster: Force unregister any service workers and clear caches -->
+  <!-- Cache Buster: DISABLED - was clearing caches on every page load causing slow performance
   <script is:inline>
     (function() {
       if ('serviceWorker' in navigator) {
@@ -48,15 +48,9 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
           });
         });
       }
-      if ('caches' in window) {
-        caches.keys().then(function(names) {
-          names.forEach(function(name) {
-            caches.delete(name);
-          });
-        });
-      }
     })();
   </script>
+  -->
   
   <title>{title}</title>
   <meta name="description" content={description}>

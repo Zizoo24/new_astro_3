@@ -130,6 +130,8 @@ import { mobileNav, searchQuickLinks, siteContact } from '../data/navigation';
 
 <script is:inline>
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('[MobileShell] Initializing...');
+
   const footerMenuToggle = document.getElementById('footerMenuToggle');
   const sidebarClose = document.getElementById('sidebarClose');
   const sidebarOverlay = document.getElementById('sidebarOverlay');
@@ -138,9 +140,10 @@ document.addEventListener('DOMContentLoaded', function() {
   const searchClose = document.getElementById('searchClose');
   const searchOverlay = document.getElementById('search-overlay');
   const backToTop = document.getElementById('backToTop');
-  
+
   // Mobile top header sidebar toggle
   const sidebarToggle = document.getElementById('sidebarToggle');
+  console.log('[MobileShell] sidebarToggle element:', sidebarToggle);
 
   // Expand Legal Translation by default when sidebar opens
   function expandLegalDefault() {
@@ -163,18 +166,36 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   function openSidebar() {
-    menuSidebar?.classList.add('is-open');
-    sidebarOverlay?.classList.add('is-visible');
+    console.log('[MobileShell] openSidebar called, menuSidebar:', menuSidebar);
+    if (menuSidebar) {
+      menuSidebar.classList.add('is-open');
+      console.log('[MobileShell] Added is-open to sidebar');
+    }
+    if (sidebarOverlay) {
+      sidebarOverlay.classList.add('is-visible');
+      console.log('[MobileShell] Added is-visible to overlay');
+    }
     document.body.style.overflow = 'hidden';
     // Always expand Legal Translation when sidebar opens
     expandLegalDefault();
   }
 
   // Mobile top header toggle (top left hamburger button)
-  sidebarToggle?.addEventListener('click', function(e) {
-    e.preventDefault();
-    openSidebar();
-  });
+  if (sidebarToggle) {
+    // Add both click and touchend for mobile reliability
+    function handleSidebarToggle(e) {
+      console.log('[MobileShell] Toggle clicked/touched!', e.type);
+      e.preventDefault();
+      e.stopPropagation();
+      openSidebar();
+    }
+
+    sidebarToggle.addEventListener('click', handleSidebarToggle);
+    sidebarToggle.addEventListener('touchend', handleSidebarToggle, { passive: false });
+    console.log('[MobileShell] Toggle listeners attached');
+  } else {
+    console.error('[MobileShell] sidebarToggle NOT FOUND!');
+  }
 
   // Watch for sidebar open from ANY source (including navigation-v2.js)
   if (menuSidebar) {
