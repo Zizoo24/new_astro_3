@@ -130,12 +130,11 @@ import { mobileNav, searchQuickLinks, siteContact } from '../data/navigation';
 
 <script is:inline>
 document.addEventListener('DOMContentLoaded', function() {
-  // Visual debug box for iPhone (no console access)
+  // Visual debug box - ALWAYS visible for testing
   var debugBox = document.createElement('div');
   debugBox.id = 'mobileDebug';
-  debugBox.style.cssText = 'position:fixed;bottom:80px;left:10px;right:10px;background:rgba(0,0,0,0.95);color:#0f0;font-family:monospace;font-size:11px;padding:10px;z-index:99999;max-height:120px;overflow:auto;border-radius:8px;display:none;';
+  debugBox.style.cssText = 'position:fixed;top:70px;left:10px;right:10px;background:red;color:white;font-family:monospace;font-size:12px;padding:10px;z-index:99999;border-radius:8px;';
   document.body.appendChild(debugBox);
-  if (window.innerWidth <= 991) debugBox.style.display = 'block';
 
   function dbg(msg) {
     console.log('[MobileShell] ' + msg);
@@ -143,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (d) d.innerHTML = msg + '<br>' + d.innerHTML;
   }
 
-  dbg('Init OK');
+  dbg('JS Loaded OK');
 
   const footerMenuToggle = document.getElementById('footerMenuToggle');
   const sidebarClose = document.getElementById('sidebarClose');
@@ -156,7 +155,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Mobile top header sidebar toggle
   const sidebarToggle = document.getElementById('sidebarToggle');
-  dbg('Toggle: ' + (sidebarToggle ? 'FOUND' : 'NOT FOUND'));
+  dbg('Toggle btn: ' + (sidebarToggle ? 'FOUND' : 'NOT FOUND'));
+  dbg('Sidebar: ' + (menuSidebar ? 'FOUND' : 'NOT FOUND'));
 
   // Expand Legal Translation by default when sidebar opens
   function expandLegalDefault() {
