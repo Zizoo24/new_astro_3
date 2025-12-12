@@ -11,15 +11,16 @@ interface Props {
   isHomepage?: boolean;
 }
 
-const { 
-  title, 
-  description, 
+const {
+  title,
+  description,
   canonical = Astro.url.pathname,
   ogImage = '/images/og-image.jpg',
   isHomepage = false
 } = Astro.props;
 
-const siteUrl = 'https://onlinetranslation.ae';
+// Use Astro.site from config for consistent URL handling
+const siteUrl = Astro.site?.origin || 'https://onlinetranslation.ae';
 const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${canonical}`;
 ---
 
@@ -37,20 +38,6 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
       document.documentElement.classList.add('theme-' + theme);
     })();
   </script>
-  
-  <!-- Cache Buster: DISABLED - was clearing caches on every page load causing slow performance
-  <script is:inline>
-    (function() {
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then(function(registrations) {
-          registrations.forEach(function(registration) {
-            registration.unregister();
-          });
-        });
-      }
-    })();
-  </script>
-  -->
   
   <title>{title}</title>
   <meta name="description" content={description}>
@@ -157,10 +144,14 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
   </script>
 </head>
 <body class={isHomepage ? 'homepage' : ''}>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <Header isHomepage={isHomepage} />
   
   <HeaderPorto isHomepage={isHomepage} />
 
-  <main>
+  <main id="main-content">
     <slot />
   </main>
 

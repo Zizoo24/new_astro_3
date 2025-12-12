@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://onlinetranslation.ae',
   output: 'static',
+  trailingSlash: 'always',
   integrations: [
     sitemap({
       changefreq: 'weekly',
