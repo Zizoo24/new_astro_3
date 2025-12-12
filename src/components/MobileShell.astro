@@ -6,6 +6,17 @@
 import { mobileNav, searchQuickLinks, siteContact } from '../data/navigation';
 ---
 
+<!-- Mobile Top Header - Only visible on mobile -->
+<div class="header-mobile">
+  <button type="button" class="header-icon" id="sidebarToggle" aria-label="Open menu" onclick="document.getElementById('menu-sidebar').classList.add('is-open'); document.getElementById('sidebarOverlay').classList.add('is-visible'); document.body.style.overflow='hidden';">
+    <i class="fas fa-bars"></i>
+  </button>
+  <a href="/" class="header-title">OnlineTranslation<span>.ae</span></a>
+  <button type="button" id="mobileThemeToggle" class="header-icon" aria-label="Toggle theme">
+    <i class="fas fa-moon"></i>
+  </button>
+</div>
+
 <!-- Mobile Bottom Navigation -->
 <div id="footer-bar" class="footer-bar">
   <button type="button" class="footer-item active-nav" id="footerMenuToggle">
@@ -127,9 +138,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const searchClose = document.getElementById('searchClose');
   const searchOverlay = document.getElementById('search-overlay');
   const backToTop = document.getElementById('backToTop');
-  
-  // Expand Services by default when sidebar opens
-  function expandServicesDefault() {
+  const sidebarToggle = document.getElementById('sidebarToggle');
+  const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+
+  // Expand Legal Translation by default when sidebar opens
+  function expandLegalDefault() {
     // Close all first
     document.querySelectorAll('.sidebar-accordion-panel').forEach(function(el) {
       el.classList.remove('is-open');
@@ -138,24 +151,59 @@ document.addEventListener('DOMContentLoaded', function() {
       el.classList.remove('is-open');
       el.setAttribute('aria-expanded', 'false');
     });
-    // Expand Services
-    const servicesPanel = document.getElementById('accordion-services');
-    const servicesHeading = document.querySelector('.sidebar-accordion-group[data-accordion="services"] .sidebar-accordion-heading');
-    if (servicesPanel && servicesHeading) {
-      servicesPanel.classList.add('is-open');
-      servicesHeading.classList.add('is-open');
-      servicesHeading.setAttribute('aria-expanded', 'true');
+    // Expand Legal Translation
+    const legalPanel = document.getElementById('accordion-legal');
+    const legalHeading = document.querySelector('.sidebar-accordion-group[data-accordion="legal"] .sidebar-accordion-heading');
+    if (legalPanel && legalHeading) {
+      legalPanel.classList.add('is-open');
+      legalHeading.classList.add('is-open');
+      legalHeading.setAttribute('aria-expanded', 'true');
     }
   }
   
   function openSidebar() {
-    menuSidebar?.classList.add('is-open');
-    sidebarOverlay?.classList.add('is-visible');
+    if (menuSidebar) {
+      menuSidebar.classList.add('is-open');
+    }
+    if (sidebarOverlay) {
+      sidebarOverlay.classList.add('is-visible');
+    }
     document.body.style.overflow = 'hidden';
-    // Always expand Services when sidebar opens
-    expandServicesDefault();
+    expandLegalDefault();
   }
-  
+
+  // Mobile top header toggle (top left hamburger button)
+  if (sidebarToggle) {
+    sidebarToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      openSidebar();
+    });
+  }
+
+  // Mobile theme toggle (top right moon/sun icon)
+  if (mobileThemeToggle) {
+    mobileThemeToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      var html = document.documentElement;
+      var body = document.body;
+      var currentTheme = html.getAttribute('data-theme') || 'light';
+      var newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+      html.setAttribute('data-theme', newTheme);
+      html.className = html.className.replace(/theme-\w+/, 'theme-' + newTheme);
+      body.classList.remove('theme-light', 'theme-dark');
+      body.classList.add('theme-' + newTheme);
+      localStorage.setItem('theme', newTheme);
+
+      // Update icon
+      var icon = mobileThemeToggle.querySelector('i');
+      if (icon) {
+        icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+      }
+    });
+  }
+
   // Watch for sidebar open from ANY source (including navigation-v2.js)
   if (menuSidebar) {
     const sidebarObserver = new MutationObserver(function(mutations) {
@@ -164,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function() {
           const isOpen = menuSidebar.classList.contains('is-open');
           if (isOpen) {
             // Delay slightly to ensure DOM is ready
-            setTimeout(expandServicesDefault, 10);
+            setTimeout(expandLegalDefault, 10);
           }
         }
       });
@@ -252,8 +300,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // Expand Services on initial page load
-  expandServicesDefault();
+  // Expand Legal Translation on initial page load
+  expandLegalDefault();
   
   // Back to top
   window.addEventListener('scroll', function() {

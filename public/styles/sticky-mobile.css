@@ -1,3 +1,53 @@
+/* ============================================
+   MOBILE ZOOM PREVENTION
+   Fixes auto-zoom issues on iOS/Android
+   ============================================ */
+
+/* Prevent double-tap zoom on all interactive elements */
+html {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+/* Prevent iOS auto-zoom on input focus (requires 16px minimum) */
+@media screen and (max-width: 991px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="search"],
+  input[type="password"],
+  input[type="url"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+
+/* Prevent content overflow causing zoom */
+body {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Disable user-scalable for problematic fixed elements */
+@media screen and (max-width: 991px) {
+  .header-wrapper,
+  .header-mobile,
+  .footer-bar,
+  .sidebar-menu {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+}
+
+/* ============================================
+   END MOBILE ZOOM PREVENTION
+   ============================================ */
+
 /* Mobile Header */
 .header-mobile {
     display: none;
@@ -9,17 +59,26 @@
     height: 65px;
     background: var(--bg-white);
     box-shadow: var(--shadow-md);
-    z-index: 1000;
+    z-index: 1050; /* Higher than desktop header to ensure it's on top */
     padding: 0 15px;
     align-items: center;
     justify-content: space-between;
-    overflow: hidden;
+    overflow: visible; /* Changed from hidden to allow proper touch targets */
     box-sizing: border-box;
+}
+
+/* Explicit sidebar toggle styling */
+#sidebarToggle {
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
 }
 
 .header-mobile .header-icon {
     width: 48px;
     height: 48px;
+    min-width: 48px;
+    min-height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,12 +87,21 @@
     text-decoration: none;
     border-radius: 12px;
     transition: var(--transition-fast);
-    background: rgba(10, 31, 68, 0.05);
+    background: transparent;
+    border: none;
+    /* Touch target optimization */
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    position: relative;
+    z-index: 10;
 }
 
 .header-mobile .header-icon:active {
-    background: rgba(10, 31, 68, 0.1);
     transform: scale(0.95);
+    background: rgba(14, 43, 72, 0.1);
 }
 
 .header-mobile .header-title {
@@ -83,6 +151,14 @@
     border-radius: 12px;
     min-width: 65px;
     position: relative;
+    /* Reset button defaults */
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 .footer-item i {
@@ -95,20 +171,14 @@
     color: var(--accent-color);
 }
 
+/* No wrapper/background for active footer items */
 .footer-item.active-nav {
-    background: rgba(227, 30, 36, 0.1);
+    background: transparent;
 }
 
+/* No top accent bar for active footer items */
 .footer-item.active-nav::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30px;
-    height: 3px;
-    background: var(--accent-color);
-    border-radius: 0 0 3px 3px;
+    display: none;
 }
 
 .footer-item:active {
@@ -616,7 +686,7 @@ body.theme-dark .header-mobile .header-title {
 
 body.theme-dark .header-mobile .header-icon {
     color: var(--text-light);
-    background: rgba(255,255,255,0.08);
+    background: transparent;
 }
 
 body.theme-dark .sidebar-nav ul li a {
@@ -629,12 +699,24 @@ body.theme-dark .sidebar-nav ul li a:active {
 
 /* Mobile-Only Responsive Breakpoint */
 @media (max-width: 991px) {
+    /* CRITICAL: Hide entire header-wrapper on mobile to prevent blocking touch events */
+    .header-wrapper {
+        display: none !important;
+        pointer-events: none !important;
+    }
+
     .header-desktop {
         display: none !important;
     }
-    
+
+    /* Coral top bar also hidden on mobile */
+    .coral-top-bar {
+        display: none !important;
+    }
+
     .header-mobile {
         display: flex !important;
+        pointer-events: auto !important;
     }
     
     .footer-bar {

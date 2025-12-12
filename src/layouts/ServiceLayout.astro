@@ -53,6 +53,7 @@ interface Props {
   heroTitle: string;
   heroSubtitle?: string;
   heroIntro: string;
+  heroImage?: string;
   snapshot: SnapshotItem[];
   breadcrumbs: Breadcrumb[];
   faqs?: FAQ[];
@@ -64,14 +65,15 @@ interface Props {
   accordionSections?: AccordionGroup[];
 }
 
-const { 
-  title, 
-  description, 
+const {
+  title,
+  description,
   canonical,
   keywords = '',
   heroTitle,
   heroSubtitle = '',
   heroIntro,
+  heroImage = '',
   snapshot,
   breadcrumbs,
   faqs = [],
@@ -156,14 +158,18 @@ const faqSchema = faqs.length > 0 ? {
   </nav>
 
   <!-- Hero Section -->
-  <section class="section section--hero bg-dark">
+  <section class={`section section--hero bg-dark ${heroImage ? 'has-hero-image' : ''}`}>
+    {heroImage && (
+      <img src={heroImage} alt="" class="hero-bg-image" loading="eager" />
+    )}
+    {heroImage && <div class="hero-gradient-overlay"></div>}
     <div class="container">
       <div class="row">
         <div class="col col--8">
           <h1 class="hero-title">{heroTitle}</h1>
           {heroSubtitle && <h2 class="hero-subtitle-accent">{heroSubtitle}</h2>}
           <p class="hero-intro">{heroIntro}</p>
-          
+
           <div class="service-snapshot">
             {snapshot.map(item => (
               <div class="snapshot-item">

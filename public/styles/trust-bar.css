@@ -143,31 +143,35 @@
     }
 }
 
-/* Dark Mode Support */
+/* Dark Mode Support - Improved Logo Treatment */
 body.theme-dark .trust-bar-section {
-    background: rgba(14, 31, 68, 0.3);
-    border-top-color: rgba(255, 255, 255, 0.1);
+    background: var(--surface-raised, rgba(18, 27, 42, 0.9));
+    border-top-color: var(--border-medium, rgba(255, 255, 255, 0.1));
 }
 
 body.theme-dark .trust-bar-title {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-muted, rgba(255, 255, 255, 0.7));
 }
 
+/* Light background capsules for logo visibility in dark mode */
 body.theme-dark .trust-capsule {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 body.theme-dark .trust-capsule:hover {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    background: #ffffff;
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
+/* Keep logos in original colors - no filter needed with light capsule background */
 body.theme-dark .trust-capsule img {
-    filter: brightness(1.1) grayscale(30%) opacity(0.85);
+    filter: none;
+    opacity: 1;
 }
 
 body.theme-dark .trust-capsule:hover img {
-    filter: brightness(1.2) grayscale(0%) opacity(1);
+    filter: drop-shadow(0 2px 4px rgba(14, 43, 72, 0.2));
 }

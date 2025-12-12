@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import TestimonialsCarousel from '../components/TestimonialsCarousel.astro';
 import DulBadge from '../components/DulBadge.astro';
 import AuthorityLogos from '../components/AuthorityLogos.astro';
+import TrustBar from '../components/TrustBar.astro';
 import { getEntry } from 'astro:content';
 
 const homeEntry = await getEntry('core', 'home');
@@ -403,30 +404,7 @@ const contactSection =
   </section>
 
   <!-- Trust Bar - Government Logos -->
-  <section class="trust-bar-section">
-    <div class="container">
-      <div class="trust-bar-header">
-        <h3 class="trust-bar-title">Trusted &amp; Recognized By</h3>
-      </div>
-      <div class="trust-bar-logos">
-        <div class="trust-capsule">
-          <img src="/images/logos/moj.png" alt="Government of Dubai" loading="lazy">
-        </div>
-        <div class="trust-capsule">
-          <img src="/images/logos/dubai-courts.png" alt="Dubai Courts" loading="lazy">
-        </div>
-        <div class="trust-capsule">
-          <img src="/images/logos/dubai-police.png" alt="Dubai Police" loading="lazy">
-        </div>
-        <div class="trust-capsule">
-          <img src="/images/logos/dld.png" alt="Dubai Land Department" loading="lazy">
-        </div>
-        <div class="trust-capsule">
-          <img src="/images/logos/mofaic.png" alt="MOFAIC" loading="lazy">
-        </div>
-      </div>
-    </div>
-  </section>
+  <TrustBar />
 
   <!-- iOS Feature Cards - Hidden by default, shown via os-detect.js -->
   <section class="feature-cards-section os-ios-only" style="display: none;">
