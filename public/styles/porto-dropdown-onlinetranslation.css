@@ -51,15 +51,17 @@
   --badge-hot: var(--ot-coral);    /* Coral - hot items */
 }
 
-/* Dark mode overrides */
-[data-theme="dark"] {
-  --dropdown-bg: #1e293b;
-  --dropdown-text: #e2e8f0;
-  --dropdown-text-muted: #94a3b8;
-  --dropdown-hover-bg: #334155;
-  --dropdown-border: #475569;
+/* Dark mode overrides - aligned with site tokens */
+[data-theme="dark"],
+body.theme-dark {
+  /* Use site's dark surface colors for consistency */
+  --dropdown-bg: var(--surface-raised, #121b2a);
+  --dropdown-text: var(--text-body, #dfe8f5);
+  --dropdown-text-muted: var(--text-muted, #9fb2c9);
+  --dropdown-hover-bg: var(--surface-muted, #1b2738);
+  --dropdown-border: var(--border-medium, #304156);
   --dropdown-border-top: var(--ot-primary-light);
-  --dropdown-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.3);
+  --dropdown-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.5);
 
   /* Softer coral for dark mode */
   --ot-coral: #ff6b6b;
