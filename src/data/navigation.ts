@@ -145,7 +145,7 @@ export const mainNav: (NavLink | NavGroup)[] = [
 
       // Academic Docs Hub
       { label: 'Academic Documents', href: '/personal/academic/' },
-      { label: 'University Degree', href: '/personal/academic/degree/' },
+      { label: 'University Degree', href: '/personal/education/degree/' },
       { label: 'School Transcripts', href: '/personal/academic/transcripts/' },
     ],
     headers: [
@@ -184,8 +184,7 @@ export const mainNav: (NavLink | NavGroup)[] = [
 
   // ========================================
   // CLUSTER D: LOCATIONS (Geo-targeting)
-  // Hub: /locations/ ("Coverage Map")
-  // Blueprint: Flat URL structure
+  // Hub: /locations/ - Uses EXISTING page paths
   // ========================================
   {
     id: 'locations',
@@ -193,42 +192,24 @@ export const mainNav: (NavLink | NavGroup)[] = [
     href: '/locations/',
     children: [
       { label: 'All Locations', href: '/locations/', badge: 'HUB' },
-      { label: 'JLT / DMCC', href: '/locations/jlt/' },
-      { label: 'Business Bay', href: '/locations/business-bay/' },
-      { label: 'DIFC', href: '/locations/difc/' },
-      { label: 'Dubai Marina', href: '/locations/marina/' },
+      { label: 'Dubai', href: '/locations/dubai/' },
+      { label: 'Palm Jumeirah', href: '/locations/dubai/palm-jumeirah/' },
+      { label: 'DIFC', href: '/locations/dubai/difc/' },
+      { label: 'JLT / DMCC', href: '/locations/dubai/jlt/' },
+      { label: 'Business Bay', href: '/locations/dubai/business-bay/' },
       { label: 'Abu Dhabi', href: '/locations/abu-dhabi/' },
+      { label: 'Sharjah', href: '/locations/sharjah/' },
     ],
     headers: [
       { index: 0, label: 'Coverage Map' },
-      { index: 1, label: 'Dubai Areas' },
-      { index: 5, label: 'Other Emirates' },
+      { index: 1, label: 'Dubai' },
+      { index: 6, label: 'Other Emirates' },
     ],
-    dividers: [0, 4],
+    dividers: [0, 5],
   },
 
   // ========================================
-  // INDUSTRIES SILO (Good Addition)
-  // ========================================
-  {
-    id: 'industries',
-    label: 'Industries',
-    href: '/industries/',
-    children: [
-      { label: 'Industries Overview', href: '/industries/', badge: 'HUB' },
-      { label: 'Legal Sector', href: '/industries/legal/' },
-      { label: 'Healthcare', href: '/industries/healthcare/' },
-      { label: 'Real Estate', href: '/industries/real-estate/' },
-      { label: 'E-Commerce', href: '/industries/e-commerce/' },
-    ],
-    headers: [
-      { index: 0, label: 'Industry Solutions' },
-    ],
-    dividers: [],
-  },
-
-  // ========================================
-  // RESOURCES SILO (Good Addition)
+  // RESOURCES SILO (Support Content)
   // ========================================
   {
     id: 'resources',
@@ -245,9 +226,8 @@ export const mainNav: (NavLink | NavGroup)[] = [
   },
 
   // ========================================
-  // ADDITIONAL REQUIRED PAGES
+  // ABOUT (Removed Services - redundant with silos)
   // ========================================
-  { label: 'Services', href: '/services/' },  // Master Services Gateway
   { label: 'About', href: '/about/' },
 ];
 
@@ -286,17 +266,14 @@ export const mobileNav = {
       href: '/personal-documents/',
       children: [
         { label: 'Personal Docs Hub', href: '/personal-documents/' },
-        { label: 'Vital Records', href: '/personal/vital-records/' },
         { label: 'Birth Certificate', href: '/personal/vital-records/birth/' },
         { label: 'Marriage Certificate', href: '/personal/vital-records/marriage/' },
         { label: 'Divorce Certificate', href: '/personal/vital-records/divorce/' },
         { label: 'Death Certificate', href: '/personal/vital-records/death/' },
-        { label: 'Visa & Immigration', href: '/personal/immigration/' },
         { label: 'Police Clearance (PCC)', href: '/personal/immigration/pcc/' },
         { label: 'Bank Statements', href: '/personal/immigration/bank/' },
         { label: 'Driving License', href: '/personal/immigration/license/' },
-        { label: 'Academic Documents', href: '/personal/academic/' },
-        { label: 'University Degree', href: '/personal/academic/degree/' },
+        { label: 'University Degree', href: '/personal/education/degree/' },
         { label: 'School Transcripts', href: '/personal/academic/transcripts/' },
       ],
     },
@@ -305,13 +282,11 @@ export const mobileNav = {
     {
       id: 'specialized',
       label: 'Specialized',
-      href: '/specialized-translation/',
+      href: '/specialized/medical/',
       children: [
-        { label: 'Specialized Hub', href: '/specialized-translation/' },
-        { label: 'Medical Reports (DHA/MOH)', href: '/specialized/medical/' },
-        { label: 'Technical Manuals (ISO)', href: '/specialized/technical/' },
-        { label: 'Menu Translation', href: '/specialized/hospitality/' },
-        { label: 'Website Localization', href: '/specialized/digital/' },
+        { label: 'Medical Reports', href: '/specialized/medical/' },
+        { label: 'Golden Visa Package', href: '/services/golden-visa-translation/' },
+        { label: 'Attestation Services', href: '/services/attestation/' },
       ],
     },
 
@@ -322,46 +297,29 @@ export const mobileNav = {
       href: '/locations/',
       children: [
         { label: 'All Locations', href: '/locations/' },
-        { label: 'JLT / DMCC', href: '/locations/jlt/' },
-        { label: 'Business Bay', href: '/locations/business-bay/' },
-        { label: 'DIFC', href: '/locations/difc/' },
-        { label: 'Dubai Marina', href: '/locations/marina/' },
+        { label: 'Dubai', href: '/locations/dubai/' },
+        { label: 'Palm Jumeirah', href: '/locations/dubai/palm-jumeirah/' },
+        { label: 'DIFC', href: '/locations/dubai/difc/' },
+        { label: 'JLT / DMCC', href: '/locations/dubai/jlt/' },
         { label: 'Abu Dhabi', href: '/locations/abu-dhabi/' },
       ],
     },
 
-    // Industries Silo (Good Addition)
-    {
-      id: 'industries',
-      label: 'Industries',
-      href: '/industries/',
-      children: [
-        { label: 'Industries Overview', href: '/industries/' },
-        { label: 'Legal Sector', href: '/industries/legal/' },
-        { label: 'Healthcare', href: '/industries/healthcare/' },
-        { label: 'Real Estate', href: '/industries/real-estate/' },
-        { label: 'E-Commerce', href: '/industries/e-commerce/' },
-      ],
-    },
-
-    // Resources Silo (Good Addition)
+    // Resources Silo
     {
       id: 'resources',
       label: 'Resources',
       href: '/resources/',
       children: [
-        { label: 'Resource Center', href: '/resources/' },
         { label: 'Pricing Guide', href: '/resources/pricing-guide/' },
         { label: 'Document Checklist', href: '/resources/document-checklist/' },
         { label: 'Attestation Guide', href: '/resources/attestation-guide/' },
-        { label: 'Golden Visa Checklist', href: '/resources/golden-visa-checklist/' },
         { label: 'FAQ', href: '/resources/faq/' },
       ],
     },
   ],
 
   singleLinks: [
-    { label: 'Services', href: '/services/', icon: 'fas fa-cogs' },
     { label: 'About', href: '/about/', icon: 'fas fa-building' },
     { label: 'Contact Us', href: '/contact/', icon: 'fas fa-envelope' },
   ],
@@ -374,8 +332,8 @@ export const mobileNav = {
 export const searchQuickLinks: NavLink[] = [
   { label: 'Legal Translation', href: '/legal-translation-dubai/' },
   { label: 'Birth Certificate', href: '/personal/vital-records/birth/' },
-  { label: 'Medical Reports', href: '/specialized/medical/' },
-  { label: 'JLT / DMCC', href: '/locations/jlt/' },
+  { label: 'Golden Visa', href: '/services/golden-visa-translation/' },
+  { label: 'Dubai Locations', href: '/locations/dubai/' },
   { label: 'Pricing', href: '/resources/pricing-guide/' },
 ];
 
@@ -388,11 +346,9 @@ export const footerNav = {
     { label: 'Home', href: '/' },
     { label: 'Legal Translation', href: '/legal-translation-dubai/' },
     { label: 'Personal Documents', href: '/personal-documents/' },
-    { label: 'Specialized', href: '/specialized-translation/' },
+    { label: 'Medical Reports', href: '/specialized/medical/' },
     { label: 'Locations', href: '/locations/' },
-    { label: 'Industries', href: '/industries/' },
     { label: 'Resources', href: '/resources/' },
-    { label: 'Services', href: '/services/' },
     { label: 'About', href: '/about/' },
     { label: 'Contact', href: '/contact/' },
   ],
@@ -400,9 +356,9 @@ export const footerNav = {
   services: [
     { label: 'Birth Certificate', href: '/personal/vital-records/birth/' },
     { label: 'Marriage Certificate', href: '/personal/vital-records/marriage/' },
-    { label: 'University Degree', href: '/personal/academic/degree/' },
+    { label: 'University Degree', href: '/personal/education/degree/' },
     { label: 'Power of Attorney', href: '/legal/corporate/poa/' },
-    { label: 'NDA Translation', href: '/legal/contracts/nda/' },
+    { label: 'Golden Visa Package', href: '/services/golden-visa-translation/' },
     { label: 'Medical Reports', href: '/specialized/medical/' },
   ],
 
