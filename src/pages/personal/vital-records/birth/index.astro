@@ -1,5 +1,9 @@
 ---
 import ServiceLayout from '../../../../layouts/ServiceLayout.astro';
+import RelatedServices from '../../../../components/RelatedServices.astro';
+import DocumentFamily from '../../../../components/DocumentFamily.astro';
+import CrossSiloLinks from '../../../../components/CrossSiloLinks.astro';
+import InlineCallout from '../../../../components/InlineCallout.astro';
 
 const pageData = {
   title: "Birth Certificate Translation in Dubai – MOJ Certified | OnlineTranslation.ae",
@@ -256,6 +260,38 @@ const pageData = {
         <strong>Multi-Document Discount</strong><br>
         Translating multiple documents for the same family? Contact us for package pricing. Many families need birth certificates, marriage certificates, and educational documents translated together.
       </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <DocumentFamily 
+        pageKey="birthCertificate" 
+        currentLabel="Birth Certificate"
+        title="Other Vital Records"
+      />
+      
+      <InlineCallout 
+        type="next" 
+        title="What's the next step?"
+        link="/services/attestation/"
+        linkText="Learn about attestation services"
+      >
+        After translation, most birth certificates need MOFAIC attestation for official UAE use. We can guide you through the full process.
+      </InlineCallout>
+
+      <RelatedServices 
+        pageKey="birthCertificate"
+        title="You May Also Need"
+        showNextSteps={true}
+        showPrerequisites={false}
+        maxItems={6}
+      />
+      
+      <CrossSiloLinks 
+        pageKey="birthCertificate"
+        title="Explore Related Services"
+      />
     </div>
   </section>
 
