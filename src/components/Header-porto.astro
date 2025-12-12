@@ -59,6 +59,17 @@ function isActive(href: string): boolean {
     <!-- Main Header -->
     <div class="header-container container">
       <div class="header-row">
+        <!-- Desktop Sidebar Toggle -->
+        <div class="header-column header-column-sidebar">
+          <button
+            id="desktopSidebarToggle"
+            class="desktop-sidebar-toggle"
+            aria-label="Open sidebar menu"
+          >
+            <i class="fas fa-bars" aria-hidden="true"></i>
+          </button>
+        </div>
+
         <!-- Logo -->
         <div class="header-column header-column-logo">
           <a href="/" class="header-logo">
@@ -383,43 +394,48 @@ function isActive(href: string): boolean {
     display: block;
   }
 
+  /* Desktop Sidebar Toggle - Always visible on desktop */
+  .desktop-sidebar-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 0;
+    border-radius: 8px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .desktop-sidebar-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .desktop-sidebar-toggle i {
+    font-size: 1.25rem;
+  }
+
+  .header-column-sidebar {
+    flex-shrink: 0;
+  }
+
   /* Mobile Menu Button */
   .header-btn-collapse-nav {
     display: none;
   }
 
-  /* Hide top bar on mobile */
+  /* Hide entire Porto header on mobile - use original header-mobile instead */
   @media (max-width: 991px) {
-    .header-top {
-      display: none;
+    .site-header {
+      display: none !important;
     }
+  }
 
-    .header-btn-collapse-nav {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 44px;
-      height: 44px;
-      padding: 0;
-      background: transparent;
-      border: 0;
-      cursor: pointer;
-    }
-
-    .header-btn-collapse-nav i {
-      font-size: 1.5rem;
-      color: #ffffff;
-    }
-
-    .header-column-actions {
-      order: 2;
-    }
-
-    .header-column-nav {
-      order: 3;
-    }
-
-    .logo-text-block {
+  /* Hide top bar and sidebar toggle on smaller desktops if needed */
+  @media (max-width: 1200px) and (min-width: 992px) {
+    .header-top-email {
       display: none;
     }
   }
@@ -429,6 +445,19 @@ function isActive(href: string): boolean {
   // Desktop navigation enhancements
   // Mobile menu is handled by MobileShell via navigation-v2.js (#sidebarToggle)
   document.addEventListener('DOMContentLoaded', () => {
+    // Desktop Sidebar Toggle - opens sidebar on desktop
+    const desktopSidebarToggle = document.getElementById('desktopSidebarToggle');
+    const menuSidebar = document.getElementById('menu-sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    if (desktopSidebarToggle && menuSidebar) {
+      desktopSidebarToggle.addEventListener('click', () => {
+        menuSidebar.classList.add('is-open');
+        if (sidebarOverlay) sidebarOverlay.classList.add('is-visible');
+        document.body.style.overflow = 'hidden';
+      });
+    }
+
     // Flyout edge detection (desktop)
     const flyoutParents = document.querySelectorAll('.dropdown-submenu');
 

@@ -6,6 +6,17 @@
 import { mobileNav, searchQuickLinks, siteContact } from '../data/navigation';
 ---
 
+<!-- Mobile Top Header - Only visible on mobile -->
+<div class="header-mobile">
+  <button type="button" class="header-icon" id="sidebarToggle" aria-label="Open menu">
+    <i class="fas fa-bars"></i>
+  </button>
+  <a href="/" class="header-title">OnlineTranslation<span>.ae</span></a>
+  <button type="button" id="mobileThemeToggle" class="header-icon" aria-label="Toggle theme">
+    <i class="fas fa-moon"></i>
+  </button>
+</div>
+
 <!-- Mobile Bottom Navigation -->
 <div id="footer-bar" class="footer-bar">
   <button type="button" class="footer-item active-nav" id="footerMenuToggle">
@@ -267,5 +278,43 @@ document.addEventListener('DOMContentLoaded', function() {
   backToTop?.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+
+  // Mobile Theme Toggle
+  const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+
+  function updateMobileThemeIcon() {
+    if (!mobileThemeToggle) return;
+    const isDark = document.body.classList.contains('theme-dark');
+    const icon = mobileThemeToggle.querySelector('i');
+    if (icon) {
+      icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+    }
+  }
+
+  if (mobileThemeToggle) {
+    mobileThemeToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      const html = document.documentElement;
+      const body = document.body;
+      const isDark = body.classList.contains('theme-dark');
+
+      if (isDark) {
+        body.classList.remove('theme-dark');
+        body.classList.add('theme-light');
+        html.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+      } else {
+        body.classList.remove('theme-light');
+        body.classList.add('theme-dark');
+        html.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+      }
+
+      updateMobileThemeIcon();
+    });
+
+    // Set initial icon state
+    updateMobileThemeIcon();
+  }
 });
 </script>

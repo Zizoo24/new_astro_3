@@ -95,20 +95,14 @@
     color: var(--accent-color);
 }
 
+/* No wrapper/background for active footer items */
 .footer-item.active-nav {
-    background: rgba(227, 30, 36, 0.1);
+    background: transparent;
 }
 
+/* No top accent bar for active footer items */
 .footer-item.active-nav::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30px;
-    height: 3px;
-    background: var(--accent-color);
-    border-radius: 0 0 3px 3px;
+    display: none;
 }
 
 .footer-item:active {
