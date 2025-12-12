@@ -130,7 +130,20 @@ import { mobileNav, searchQuickLinks, siteContact } from '../data/navigation';
 
 <script is:inline>
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('[MobileShell] Initializing...');
+  // Visual debug box for iPhone (no console access)
+  var debugBox = document.createElement('div');
+  debugBox.id = 'mobileDebug';
+  debugBox.style.cssText = 'position:fixed;bottom:80px;left:10px;right:10px;background:rgba(0,0,0,0.95);color:#0f0;font-family:monospace;font-size:11px;padding:10px;z-index:99999;max-height:120px;overflow:auto;border-radius:8px;display:none;';
+  document.body.appendChild(debugBox);
+  if (window.innerWidth <= 991) debugBox.style.display = 'block';
+
+  function dbg(msg) {
+    console.log('[MobileShell] ' + msg);
+    var d = document.getElementById('mobileDebug');
+    if (d) d.innerHTML = msg + '<br>' + d.innerHTML;
+  }
+
+  dbg('Init OK');
 
   const footerMenuToggle = document.getElementById('footerMenuToggle');
   const sidebarClose = document.getElementById('sidebarClose');
@@ -143,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Mobile top header sidebar toggle
   const sidebarToggle = document.getElementById('sidebarToggle');
-  console.log('[MobileShell] sidebarToggle element:', sidebarToggle);
+  dbg('Toggle: ' + (sidebarToggle ? 'FOUND' : 'NOT FOUND'));
 
   // Expand Legal Translation by default when sidebar opens
   function expandLegalDefault() {
