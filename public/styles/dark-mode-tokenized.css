@@ -753,7 +753,7 @@
     color: var(--text-on-dark);
   }
 
-  /* Trust Bar - Logo capsules */
+  /* Trust Bar - Logo capsules (light background for logo visibility) */
   body.theme-dark .trust-bar-section {
     background: var(--surface-raised);
     border-top: 1px solid var(--border-medium);
@@ -764,13 +764,21 @@
     color: var(--text-muted);
   }
 
+  /* Keep capsules light in dark mode so logos remain visible */
   body.theme-dark .trust-capsule {
-    background: var(--surface-muted);
-    border: 1px solid var(--border-medium);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   }
 
+  body.theme-dark .trust-capsule:hover {
+    background: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  /* No filter needed - logos display in original colors on light capsule */
   body.theme-dark .trust-capsule img {
-    filter: brightness(0.9) contrast(1.1);
+    filter: none;
   }
 
   /* Services Section */

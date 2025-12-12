@@ -31,6 +31,17 @@ function isActive(href: string): boolean {
 ---
 
 <header id="header" class:list={["site-header", { "header-homepage": isHomepage }]}>
+  <!-- Coral Announcement Bar - Uses existing styles from porto-desktop.css -->
+  <div class="header-announcement" id="announcementBar">
+    <div class="container announcement-flex">
+      <span class="announcement-label">MOJ-Licensed Legal Translation</span>
+      <div class="announcement-actions">
+        <a href={siteContact.whatsapp} class="announcement-btn announcement-btn--whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href={`tel:${siteContact.phone}`} class="announcement-btn announcement-btn--call"><i class="fas fa-phone-alt"></i> Call</a>
+        <a href={siteContact.whatsapp} class="announcement-cta">Send Documents <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
   <div class="header-body">
     <!-- Top Bar -->
     <div class="header-top">
@@ -250,7 +261,9 @@ function isActive(href: string): boolean {
 </header>
 
 <style>
-  /* Header Base Styles */
+  /* ====================================
+     HEADER BASE STYLES
+     ==================================== */
   .site-header {
     position: sticky;
     top: 0;
@@ -445,7 +458,29 @@ function isActive(href: string): boolean {
   // Desktop navigation enhancements
   // Mobile menu is handled by MobileShell via navigation-v2.js (#sidebarToggle)
   document.addEventListener('DOMContentLoaded', () => {
-    // Desktop Sidebar Toggle - opens sidebar on desktop
+    // ========================================
+    // ANNOUNCEMENT BAR - Scroll Behavior
+    // Uses existing .hidden class from porto-desktop.css
+    // ========================================
+    const announcementBar = document.getElementById('announcementBar');
+    const scrollThreshold = 50;
+
+    function handleAnnouncementScroll() {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > scrollThreshold) {
+        announcementBar?.classList.add('hidden');
+      } else {
+        announcementBar?.classList.remove('hidden');
+      }
+    }
+
+    window.addEventListener('scroll', handleAnnouncementScroll, { passive: true });
+    handleAnnouncementScroll();
+
+    // ========================================
+    // DESKTOP SIDEBAR TOGGLE
+    // ========================================
     const desktopSidebarToggle = document.getElementById('desktopSidebarToggle');
     const menuSidebar = document.getElementById('menu-sidebar');
     const sidebarOverlay = document.getElementById('sidebarOverlay');
