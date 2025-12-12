@@ -139,8 +139,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const searchOverlay = document.getElementById('search-overlay');
   const backToTop = document.getElementById('backToTop');
   
-  // Expand Services by default when sidebar opens
-  function expandServicesDefault() {
+  // Mobile top header sidebar toggle
+  const sidebarToggle = document.getElementById('sidebarToggle');
+
+  // Expand Legal Translation by default when sidebar opens
+  function expandLegalDefault() {
     // Close all first
     document.querySelectorAll('.sidebar-accordion-panel').forEach(function(el) {
       el.classList.remove('is-open');
@@ -149,13 +152,13 @@ document.addEventListener('DOMContentLoaded', function() {
       el.classList.remove('is-open');
       el.setAttribute('aria-expanded', 'false');
     });
-    // Expand Services
-    const servicesPanel = document.getElementById('accordion-services');
-    const servicesHeading = document.querySelector('.sidebar-accordion-group[data-accordion="services"] .sidebar-accordion-heading');
-    if (servicesPanel && servicesHeading) {
-      servicesPanel.classList.add('is-open');
-      servicesHeading.classList.add('is-open');
-      servicesHeading.setAttribute('aria-expanded', 'true');
+    // Expand Legal Translation
+    const legalPanel = document.getElementById('accordion-legal');
+    const legalHeading = document.querySelector('.sidebar-accordion-group[data-accordion="legal"] .sidebar-accordion-heading');
+    if (legalPanel && legalHeading) {
+      legalPanel.classList.add('is-open');
+      legalHeading.classList.add('is-open');
+      legalHeading.setAttribute('aria-expanded', 'true');
     }
   }
   
@@ -163,10 +166,16 @@ document.addEventListener('DOMContentLoaded', function() {
     menuSidebar?.classList.add('is-open');
     sidebarOverlay?.classList.add('is-visible');
     document.body.style.overflow = 'hidden';
-    // Always expand Services when sidebar opens
-    expandServicesDefault();
+    // Always expand Legal Translation when sidebar opens
+    expandLegalDefault();
   }
-  
+
+  // Mobile top header toggle (top left hamburger button)
+  sidebarToggle?.addEventListener('click', function(e) {
+    e.preventDefault();
+    openSidebar();
+  });
+
   // Watch for sidebar open from ANY source (including navigation-v2.js)
   if (menuSidebar) {
     const sidebarObserver = new MutationObserver(function(mutations) {
@@ -175,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
           const isOpen = menuSidebar.classList.contains('is-open');
           if (isOpen) {
             // Delay slightly to ensure DOM is ready
-            setTimeout(expandServicesDefault, 10);
+            setTimeout(expandLegalDefault, 10);
           }
         }
       });

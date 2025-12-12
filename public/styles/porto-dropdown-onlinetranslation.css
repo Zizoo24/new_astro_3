@@ -77,10 +77,12 @@ body.theme-dark {
   .header-nav-main {
     display: flex !important;
     height: auto !important;
+    overflow: visible !important;
   }
 
   .header-nav-main nav {
     display: flex !important;
+    overflow: visible !important;
   }
 
   .header-nav-main nav > ul {
@@ -89,6 +91,7 @@ body.theme-dark {
     margin: 0;
     padding: 0;
     list-style: none;
+    overflow: visible !important;
   }
 
   /* ===========================================
@@ -99,6 +102,7 @@ body.theme-dark {
     height: 100%;
     align-self: stretch;
     margin-left: 2px;
+    overflow: visible !important;
   }
 
   .header-nav-main nav > ul > li > a {
@@ -232,10 +236,12 @@ body.theme-dark {
     list-style: none;
     padding: 0;
     margin: 0;
+    overflow: visible !important;
   }
 
   .dropdown-menu li {
     position: relative;
+    overflow: visible !important;
   }
 
   .dropdown-menu li a {
@@ -329,6 +335,7 @@ body.theme-dark {
      =========================================== */
   .dropdown-menu li.dropdown-submenu {
     position: relative;
+    overflow: visible !important;
   }
 
   /* Submenu trigger - arrow indicator */
@@ -350,13 +357,24 @@ body.theme-dark {
     right: 12px;
   }
 
+  /* Hover bridge - prevents gap between trigger and flyout */
+  .dropdown-menu li.dropdown-submenu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -15px;
+    width: 15px;
+    height: 100%;
+    background: transparent;
+  }
+
   /* Flyout menu */
   .dropdown-menu li.dropdown-submenu > .dropdown-menu {
     position: absolute;
     left: 100%;
-    top: 0;
-    margin-top: -8px;
-    margin-left: -1px;
+    top: -3px;
+    margin-left: 0;
+    z-index: 1001;
 
     opacity: 0;
     visibility: hidden;
@@ -364,7 +382,8 @@ body.theme-dark {
 
     border-radius: var(--dropdown-submenu-radius);
     border-top-width: 3px;
-    min-width: 200px;
+    min-width: 220px;
+    overflow: visible !important;
   }
 
   .dropdown-menu li.dropdown-submenu:hover > .dropdown-menu {
