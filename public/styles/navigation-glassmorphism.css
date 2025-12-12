@@ -302,3 +302,99 @@ body.theme-dark .dropdown-menu .dropdown-divider {
     gap: 0.5rem 1.5rem;
 }
 */
+/* ========================================
+   HEADER ICON VISIBILITY FIX
+   
+   PROBLEM: Social icons and theme toggle have 
+   navy/gray colors on dark navy background,
+   making them invisible in default state.
+   
+   SOLUTION: Set white colors for ALL header 
+   action icons in the default state (not just
+   scrolled/homepage).
+   
+   Add this to: navigation-glassmorphism.css
+   (after the existing .exodus-header styles)
+   ======================================== */
+
+/* --------------------------------------
+   FIX: Header Actions Default State
+   Make icons white on dark glass background
+   -------------------------------------- */
+
+/* Theme Toggle - White on dark glass */
+.header-desktop.exodus-header #themeToggle.header-icon {
+    color: rgba(255, 255, 255, 0.85);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.header-desktop.exodus-header #themeToggle.header-icon:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Social Icons - White on dark glass */
+.header-desktop.exodus-header .social-icons a {
+    color: rgba(255, 255, 255, 0.85);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.header-desktop.exodus-header .social-icons a:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Hamburger Menu Toggle - White on dark glass */
+.header-desktop.exodus-header .menu-toggle-btn.mobile-only {
+    color: rgba(255, 255, 255, 0.85);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.header-desktop.exodus-header .menu-toggle-btn.mobile-only:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* --------------------------------------
+   SCROLLED STATE - Slightly brighter
+   (These should already exist but ensuring
+   proper specificity)
+   -------------------------------------- */
+
+.header-desktop.exodus-header.scrolled #themeToggle.header-icon {
+    color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+.header-desktop.exodus-header.scrolled .social-icons a {
+    color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* --------------------------------------
+   DARK MODE - Ensure visibility maintained
+   -------------------------------------- */
+
+[data-theme="dark"] .header-desktop.exodus-header #themeToggle.header-icon,
+body.theme-dark .header-desktop.exodus-header #themeToggle.header-icon {
+    color: rgba(255, 255, 255, 0.8);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+[data-theme="dark"] .header-desktop.exodus-header .social-icons a,
+body.theme-dark .header-desktop.exodus-header .social-icons a {
+    color: rgba(255, 255, 255, 0.8);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+[data-theme="dark"] .header-desktop.exodus-header #themeToggle.header-icon:hover,
+[data-theme="dark"] .header-desktop.exodus-header .social-icons a:hover,
+body.theme-dark .header-desktop.exodus-header #themeToggle.header-icon:hover,
+body.theme-dark .header-desktop.exodus-header .social-icons a:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.4);
+}
