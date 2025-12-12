@@ -95,20 +95,24 @@
     color: var(--accent-color);
 }
 
+/* Remove wrapper boxes from Menu and Search buttons */
 .footer-item.active-nav {
-    background: rgba(227, 30, 36, 0.1);
+    background: transparent;
 }
 
 .footer-item.active-nav::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30px;
-    height: 3px;
-    background: var(--accent-color);
-    border-radius: 0 0 3px 3px;
+    display: none;
+}
+
+/* Ensure button elements have no extra styling */
+button.footer-item {
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 .footer-item:active {
