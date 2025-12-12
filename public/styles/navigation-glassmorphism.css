@@ -398,3 +398,53 @@ body.theme-dark .header-desktop.exodus-header .social-icons a:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.4);
 }
+
+/* ========================================
+   ICON VISIBILITY FIX - CRITICAL
+
+   Forces white icons on dark glass header.
+   Uses !important to override porto-desktop.css
+   specificity battles (e.g., .homepage rules).
+
+   Problem: porto-desktop.css .exodus-header .social-icons a
+   sets color: var(--primary-color) which is navy (#0E2B48).
+   This makes icons invisible on dark navy glass background.
+   ======================================== */
+
+/* Social Icons - Force white in ALL states */
+.header-desktop.exodus-header .social-icons a,
+.header-desktop.exodus-header .social-icons a i,
+.homepage .header-desktop.exodus-header .social-icons a,
+.homepage .header-desktop.exodus-header .social-icons a i,
+.homepage .header-desktop.exodus-header:not(.scrolled) .social-icons a,
+.homepage .header-desktop.exodus-header:not(.scrolled) .social-icons a i {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.header-desktop.exodus-header .social-icons a:hover,
+.header-desktop.exodus-header .social-icons a:hover i {
+    color: #ffffff !important;
+}
+
+/* Theme Toggle - Force white in ALL states */
+.header-desktop.exodus-header #themeToggle.header-icon,
+.header-desktop.exodus-header #themeToggle.header-icon i,
+.homepage .header-desktop.exodus-header #themeToggle.header-icon,
+.homepage .header-desktop.exodus-header #themeToggle.header-icon i,
+.homepage .header-desktop.exodus-header:not(.scrolled) #themeToggle.header-icon,
+.homepage .header-desktop.exodus-header:not(.scrolled) #themeToggle.header-icon i {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.header-desktop.exodus-header #themeToggle.header-icon:hover,
+.header-desktop.exodus-header #themeToggle.header-icon:hover i {
+    color: #ffffff !important;
+}
+
+/* Hamburger Menu - Force white in ALL states */
+.header-desktop.exodus-header .menu-toggle-btn.mobile-only,
+.header-desktop.exodus-header .menu-toggle-btn.mobile-only i,
+.homepage .header-desktop.exodus-header .menu-toggle-btn.mobile-only,
+.homepage .header-desktop.exodus-header .menu-toggle-btn.mobile-only i {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
