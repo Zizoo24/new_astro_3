@@ -5,6 +5,11 @@ export default defineConfig({
   site: 'https://onlinetranslation.ae',
   output: 'static',
   trailingSlash: 'always',
+  compressHTML: true,
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'viewport'
+  },
   integrations: [
     sitemap({
       changefreq: 'weekly',
@@ -18,7 +23,8 @@ export default defineConfig({
     host: '0.0.0.0'
   },
   build: {
-    assets: 'assets'
+    assets: 'assets',
+    inlineStylesheets: 'auto'
   },
   vite: {
     server: {
