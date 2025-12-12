@@ -258,6 +258,36 @@ const ctaSection = z.object({
   buttonUrl: z.string(),
 });
 
+const missionSection = z.object({
+  type: z.literal('mission'),
+  sectionLabel: z.string(),
+  sectionTitle: z.string(),
+  statement: z.string(),
+  vision: z.string().optional(),
+});
+
+const languagesSection = z.object({
+  type: z.literal('languages'),
+  sectionLabel: z.string(),
+  sectionTitle: z.string(),
+  intro: z.string(),
+  languages: z.array(z.object({
+    name: z.string(),
+    pairs: z.array(z.string()),
+  })),
+});
+
+const historySection = z.object({
+  type: z.literal('history'),
+  sectionLabel: z.string(),
+  sectionTitle: z.string(),
+  timeline: z.array(z.object({
+    year: z.string(),
+    title: z.string(),
+    description: z.string(),
+  })),
+});
+
 const aboutSection = z.discriminatedUnion('type', [
   heroSection,
   introSection,
@@ -267,6 +297,9 @@ const aboutSection = z.discriminatedUnion('type', [
   authorityLogosSection,
   valuesSection,
   ctaSection,
+  missionSection,
+  languagesSection,
+  historySection,
 ]);
 
 // About page schema - has heroHeading which home doesn't have
