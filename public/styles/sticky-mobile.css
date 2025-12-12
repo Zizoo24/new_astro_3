@@ -59,17 +59,26 @@ body {
     height: 65px;
     background: var(--bg-white);
     box-shadow: var(--shadow-md);
-    z-index: 1000;
+    z-index: 1050; /* Higher than desktop header to ensure it's on top */
     padding: 0 15px;
     align-items: center;
     justify-content: space-between;
-    overflow: hidden;
+    overflow: visible; /* Changed from hidden to allow proper touch targets */
     box-sizing: border-box;
+}
+
+/* Explicit sidebar toggle styling */
+#sidebarToggle {
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
 }
 
 .header-mobile .header-icon {
     width: 48px;
     height: 48px;
+    min-width: 48px;
+    min-height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -80,10 +89,19 @@ body {
     transition: var(--transition-fast);
     background: transparent;
     border: none;
+    /* Touch target optimization */
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    position: relative;
+    z-index: 10;
 }
 
 .header-mobile .header-icon:active {
     transform: scale(0.95);
+    background: rgba(14, 43, 72, 0.1);
 }
 
 .header-mobile .header-title {
@@ -681,12 +699,24 @@ body.theme-dark .sidebar-nav ul li a:active {
 
 /* Mobile-Only Responsive Breakpoint */
 @media (max-width: 991px) {
+    /* CRITICAL: Hide entire header-wrapper on mobile to prevent blocking touch events */
+    .header-wrapper {
+        display: none !important;
+        pointer-events: none !important;
+    }
+
     .header-desktop {
         display: none !important;
     }
-    
+
+    /* Coral top bar also hidden on mobile */
+    .coral-top-bar {
+        display: none !important;
+    }
+
     .header-mobile {
         display: flex !important;
+        pointer-events: auto !important;
     }
     
     .footer-bar {
