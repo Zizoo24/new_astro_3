@@ -397,7 +397,7 @@ export const footerNav = {
     { label: 'Contact', href: '/contact/' },
   ],
 
-  popularServices: [
+  services: [
     { label: 'Birth Certificate', href: '/personal/vital-records/birth/' },
     { label: 'Marriage Certificate', href: '/personal/vital-records/marriage/' },
     { label: 'University Degree', href: '/personal/academic/degree/' },
@@ -458,7 +458,7 @@ export const getAllLinks = (): string[] => {
 // For any code still importing from old structure
 // ============================================
 
-export const footerServices = footerNav.popularServices.map(s => ({
+export const footerServices = footerNav.services.map(s => ({
   url: s.href,
   text: s.label
 }));
