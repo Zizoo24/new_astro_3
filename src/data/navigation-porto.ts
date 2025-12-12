@@ -451,17 +451,6 @@ export const mainNavigation: MainNavItem[] = [
         href: '/resources/'
       }
     }
-  },
-
-  // ─────────────────────────────────────────
-  // CTA BUTTON - WhatsApp
-  // ─────────────────────────────────────────
-  {
-    label: 'WhatsApp Us',
-    href: 'https://wa.me/971508620217',
-    icon: 'fab fa-whatsapp',
-    isButton: true,
-    buttonClass: 'btn-whatsapp'
   }
 ];
 
