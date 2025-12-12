@@ -1,0 +1,47 @@
+---
+/**
+ * TrustBar.astro - Government/Partner Logos Carousel
+ *
+ * Displays trusted partner logos in an animated carousel
+ * Use this component on any page that needs the trust bar
+ */
+
+interface Props {
+  title?: string;
+}
+
+const { title = "Trusted & Recognized By" } = Astro.props;
+
+// Logo data - single source of truth
+const logos = [
+  { src: "/images/logos/moj.png", alt: "Ministry of Justice UAE" },
+  { src: "/images/logos/dubai-courts.png", alt: "Dubai Courts" },
+  { src: "/images/logos/dubai-police.png", alt: "Dubai Police" },
+  { src: "/images/logos/dld.png", alt: "Dubai Land Department" },
+  { src: "/images/logos/mofaic.png", alt: "MOFAIC" },
+];
+---
+
+<section class="trust-bar-section">
+  <div class="container">
+    <div class="trust-bar-header">
+      <h3 class="trust-bar-title">{title}</h3>
+    </div>
+    <div class="trust-bar-logos">
+      <div class="trust-bar-carousel">
+        <!-- First set of logos -->
+        {logos.map((logo) => (
+          <div class="trust-capsule">
+            <img src={logo.src} alt={logo.alt} loading="lazy" />
+          </div>
+        ))}
+        <!-- Duplicate for seamless loop -->
+        {logos.map((logo) => (
+          <div class="trust-capsule">
+            <img src={logo.src} alt={logo.alt} loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
