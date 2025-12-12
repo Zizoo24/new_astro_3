@@ -1,23 +1,24 @@
 /**
  * navigation.ts - Single Source of Truth for All Navigation
- * 
- * RESTRUCTURED to match Blueprint Silo Architecture:
- * - Silo 1: Legal & Corporate (High Trust)
- * - Silo 2: Personal & Civil (High Volume)
- * - Silo 3: Attestation (Country-specific)
- * - Silo 4: Specialized (Niche B2B)
- * - Silo 5: Locations (Geo-targeting)
- * - Silo 6: Resources (Support content)
- * 
+ *
+ * RESTRUCTURED to match Master Strategic Blueprint (6-Silo Architecture):
+ * - Cluster A: Legal & Corporate (/legal-translation-dubai/)
+ * - Cluster B: Personal & Civil (/personal-documents/)
+ * - Cluster C: Specialized (/specialized-translation/)
+ * - Cluster D: Locations (/locations/)
+ * - Industries (Good Addition)
+ * - Resources (Good Addition)
+ *
  * This file controls:
  * - Desktop header dropdown (Header.astro)
  * - Mobile sidebar accordion (MobileShell.astro)
  * - Footer links (Footer.astro)
- * 
- * UPDATED: 2024-12-11
- * - Fixed social icon classes (fab fa-xxx format)
- * - Added /personal-documents/ pillar page
- * - Restructured to blueprint silo architecture
+ *
+ * UPDATED: 2024-12-12
+ * - Aligned to Master Strategic Blueprint exactly
+ * - Fixed location URLs to flat structure per blueprint
+ * - Added Industries silo (Good Addition)
+ * - Added /services/ Master Services Gateway
  */
 
 // ============================================
@@ -72,186 +73,169 @@ export const socialLinks: SocialLink[] = [
 ];
 
 // ============================================
-// MAIN NAVIGATION - BLUEPRINT SILO STRUCTURE
+// MAIN NAVIGATION - BLUEPRINT 6-SILO STRUCTURE
 // ============================================
 
 export const mainNav: (NavLink | NavGroup)[] = [
   { label: 'Home', href: '/' },
-  
+
   // ========================================
-  // SILO 1: LEGAL & CORPORATE (High Trust)
-  // Pillar: /legal-translation-dubai/
+  // CLUSTER A: LEGAL & CORPORATE (High Trust)
+  // Hub: /legal-translation-dubai/ (3,000+ words)
   // ========================================
   {
     id: 'legal',
     label: 'Legal Translation',
     href: '/legal-translation-dubai/',
     children: [
-      // Pillar page
+      // Hub page
       { label: 'Legal Translation Dubai', href: '/legal-translation-dubai/', badge: 'HUB' },
-      
-      // Contracts cluster
-      { label: 'Contract Translation', href: '/legal/contracts/' },
+
+      // Contracts Hub
+      { label: 'Contracts Hub', href: '/legal/contracts/' },
       { label: 'NDA Translation', href: '/legal/contracts/nda/' },
-      { label: 'SPA (Sale Purchase)', href: '/legal/contracts/spa/' },
+      { label: 'Sales Purchase Agreement', href: '/legal/contracts/spa/' },
       { label: 'MOU Translation', href: '/legal/contracts/mou/' },
-      { label: 'Lease Contracts', href: '/legal/contracts/lease/' },
-      
-      // Corporate cluster
-      { label: 'Corporate Documents', href: '/legal/corporate/' },
-      { label: 'MOA Translation', href: '/legal/corporate/moa/' },
+      { label: 'Commercial Leases', href: '/legal/contracts/lease/' },
+
+      // Corporate Governance Hub
+      { label: 'Corporate Governance', href: '/legal/corporate/' },
+      { label: 'Memorandum of Association', href: '/legal/corporate/moa/' },
       { label: 'Board Resolutions', href: '/legal/corporate/resolution/' },
       { label: 'Power of Attorney', href: '/legal/corporate/poa/' },
-      
-      // Litigation cluster
+
+      // Court Documents Hub
       { label: 'Court Documents', href: '/legal/litigation/' },
       { label: 'Court Verdicts', href: '/legal/litigation/verdict/' },
       { label: 'Arbitration Awards', href: '/legal/litigation/arbitration/' },
-      { label: 'Will Translation', href: '/legal/wills/' },
     ],
     headers: [
       { index: 0, label: 'Legal Translation Hub' },
       { index: 1, label: 'Contracts' },
-      { index: 6, label: 'Corporate' },
-      { index: 10, label: 'Court & Litigation' },
+      { index: 6, label: 'Corporate Governance' },
+      { index: 10, label: 'Court Documents' },
     ],
     dividers: [0, 5, 9],
   },
-  
+
   // ========================================
-  // SILO 2: PERSONAL & CIVIL (High Volume)
-  // Pillar: /personal-documents/ ✅ CREATED
+  // CLUSTER B: PERSONAL & CIVIL (High Volume)
+  // Hub: /personal-documents/ (3,000+ words)
   // ========================================
   {
     id: 'personal',
     label: 'Personal Documents',
     href: '/personal-documents/',
     children: [
-      // Pillar page ✅ EXISTS
+      // Hub page
       { label: 'Personal Documents Hub', href: '/personal-documents/', badge: 'HUB' },
-      
-      // Vital Records cluster
+
+      // Vital Records Hub
       { label: 'Vital Records', href: '/personal/vital-records/' },
       { label: 'Birth Certificate', href: '/personal/vital-records/birth/' },
       { label: 'Marriage Certificate', href: '/personal/vital-records/marriage/' },
       { label: 'Divorce Certificate', href: '/personal/vital-records/divorce/' },
       { label: 'Death Certificate', href: '/personal/vital-records/death/' },
-      
-      // Immigration cluster
+
+      // Visa & Immigration Hub
       { label: 'Visa & Immigration', href: '/personal/immigration/' },
       { label: 'Police Clearance (PCC)', href: '/personal/immigration/pcc/' },
       { label: 'Bank Statements', href: '/personal/immigration/bank/' },
       { label: 'Driving License', href: '/personal/immigration/license/' },
-      
-      // Academic cluster
+
+      // Academic Docs Hub
       { label: 'Academic Documents', href: '/personal/academic/' },
-      { label: 'University Degree', href: '/personal/education/degree/' },
-      { label: 'Transcripts', href: '/personal/academic/transcripts/' },
+      { label: 'University Degree', href: '/personal/academic/degree/' },
+      { label: 'School Transcripts', href: '/personal/academic/transcripts/' },
     ],
     headers: [
       { index: 0, label: 'Expat Document Services' },
       { index: 1, label: 'Vital Records' },
-      { index: 6, label: 'Immigration' },
+      { index: 6, label: 'Visa & Immigration' },
       { index: 10, label: 'Academic' },
     ],
     dividers: [0, 5, 9],
   },
-  
+
   // ========================================
-  // SILO 3: ATTESTATION (Country-specific)
-  // Pillar: /services/attestation/
-  // ========================================
-  {
-    id: 'attestation',
-    label: 'Attestation',
-    href: '/services/attestation/',
-    children: [
-      // Pillar page
-      { label: 'Attestation Guide', href: '/services/attestation/', badge: 'HUB' },
-      
-      // Country-specific ✅ India/UK/US exist
-      { label: '🇮🇳 India Attestation', href: '/services/attestation/india/' },
-      { label: '🇬🇧 UK Attestation', href: '/services/attestation/uk/' },
-      { label: '🇺🇸 US Attestation', href: '/services/attestation/us/' },
-      { label: '🇵🇭 Philippines', href: '/services/attestation/philippines/' },
-      { label: '🇵🇰 Pakistan', href: '/services/attestation/pakistan/' },
-      
-      // Process types
-      { label: 'MOFA Attestation', href: '/services/attestation/mofa/' },
-      { label: 'Embassy Legalization', href: '/services/attestation/embassy/' },
-      { label: 'Apostille Services', href: '/services/attestation/apostille/' },
-    ],
-    headers: [
-      { index: 0, label: 'Attestation Services' },
-      { index: 1, label: 'By Country' },
-      { index: 6, label: 'By Process' },
-    ],
-    dividers: [0, 5],
-  },
-  
-  // ========================================
-  // SILO 4: SPECIALIZED (Niche B2B)
-  // Pillar: /specialized-translation/
+  // CLUSTER C: SPECIALIZED (Niche B2B)
+  // Hub: /specialized-translation/ (2,000+ words)
   // ========================================
   {
     id: 'specialized',
     label: 'Specialized',
     href: '/specialized-translation/',
     children: [
-      // Pillar page
-      { label: 'Specialized Services', href: '/specialized-translation/', badge: 'HUB' },
-      
-      // Industry verticals
-      { label: 'Medical Reports', href: '/specialized/medical/' },
-      { label: 'Technical Manuals', href: '/specialized/technical/' },
+      // Hub page
+      { label: 'Specialized Translation', href: '/specialized-translation/', badge: 'HUB' },
+
+      // Industry verticals per blueprint
+      { label: 'Medical Reports (DHA/MOH)', href: '/specialized/medical/' },
+      { label: 'Technical Manuals (ISO)', href: '/specialized/technical/' },
       { label: 'Menu Translation', href: '/specialized/hospitality/' },
       { label: 'Website Localization', href: '/specialized/digital/' },
-      
-      // High-value packages
-      { label: 'Golden Visa Package', href: '/services/golden-visa-translation/', badge: 'POPULAR' },
     ],
     headers: [
       { index: 0, label: 'Technical Translation' },
       { index: 1, label: 'Industry Verticals' },
-      { index: 5, label: 'Packages' },
     ],
-    dividers: [0, 4],
+    dividers: [0],
   },
-  
+
   // ========================================
-  // SILO 5: LOCATIONS (Geo-targeting)
+  // CLUSTER D: LOCATIONS (Geo-targeting)
+  // Hub: /locations/ ("Coverage Map")
+  // Blueprint: Flat URL structure
   // ========================================
   {
     id: 'locations',
     label: 'Locations',
     href: '/locations/',
     children: [
-      { label: 'All Locations', href: '/locations/' },
-      { label: 'Dubai', href: '/locations/dubai/' },
-      { label: 'Palm Jumeirah', href: '/locations/dubai/palm-jumeirah/' },
-      { label: 'DIFC', href: '/locations/dubai/difc/' },
-      { label: 'JLT & DMCC', href: '/locations/dubai/jlt/' },
-      { label: 'Business Bay', href: '/locations/dubai/business-bay/' },
-      { label: 'Dubai Marina', href: '/locations/dubai/marina/' },
+      { label: 'All Locations', href: '/locations/', badge: 'HUB' },
+      { label: 'JLT / DMCC', href: '/locations/jlt/' },
+      { label: 'Business Bay', href: '/locations/business-bay/' },
+      { label: 'DIFC', href: '/locations/difc/' },
+      { label: 'Dubai Marina', href: '/locations/marina/' },
       { label: 'Abu Dhabi', href: '/locations/abu-dhabi/' },
-      { label: 'Sharjah', href: '/locations/sharjah/' },
     ],
     headers: [
-      { index: 1, label: 'Dubai' },
-      { index: 7, label: 'Other Emirates' },
+      { index: 0, label: 'Coverage Map' },
+      { index: 1, label: 'Dubai Areas' },
+      { index: 5, label: 'Other Emirates' },
     ],
-    dividers: [0, 6],
+    dividers: [0, 4],
   },
-  
+
   // ========================================
-  // SILO 6: RESOURCES (Support Content)
+  // INDUSTRIES SILO (Good Addition)
+  // ========================================
+  {
+    id: 'industries',
+    label: 'Industries',
+    href: '/industries/',
+    children: [
+      { label: 'Industries Overview', href: '/industries/', badge: 'HUB' },
+      { label: 'Legal Sector', href: '/industries/legal/' },
+      { label: 'Healthcare', href: '/industries/healthcare/' },
+      { label: 'Real Estate', href: '/industries/real-estate/' },
+      { label: 'E-Commerce', href: '/industries/e-commerce/' },
+    ],
+    headers: [
+      { index: 0, label: 'Industry Solutions' },
+    ],
+    dividers: [],
+  },
+
+  // ========================================
+  // RESOURCES SILO (Good Addition)
   // ========================================
   {
     id: 'resources',
     label: 'Resources',
     href: '/resources/',
     children: [
-      { label: 'Resource Center', href: '/resources/' },
+      { label: 'Resource Center', href: '/resources/', badge: 'HUB' },
       { label: 'Pricing Guide', href: '/resources/pricing-guide/' },
       { label: 'Document Checklist', href: '/resources/document-checklist/' },
       { label: 'Attestation Guide', href: '/resources/attestation-guide/' },
@@ -259,7 +243,11 @@ export const mainNav: (NavLink | NavGroup)[] = [
       { label: 'FAQ', href: '/resources/faq/' },
     ],
   },
-  
+
+  // ========================================
+  // ADDITIONAL REQUIRED PAGES
+  // ========================================
+  { label: 'Services', href: '/services/' },  // Master Services Gateway
   { label: 'About', href: '/about/' },
 ];
 
@@ -269,95 +257,112 @@ export const mainNav: (NavLink | NavGroup)[] = [
 
 export const mobileNav = {
   home: { label: 'Home', href: '/', icon: 'fas fa-home' },
-  
+
   accordions: [
-    // SILO 1: Legal
+    // CLUSTER A: Legal & Corporate
     {
       id: 'legal',
       label: 'Legal Translation',
       href: '/legal-translation-dubai/',
       children: [
         { label: 'Legal Translation Hub', href: '/legal-translation-dubai/' },
-        { label: 'Contract Translation', href: '/legal/contracts/' },
+        { label: 'Contracts Hub', href: '/legal/contracts/' },
         { label: 'NDA Translation', href: '/legal/contracts/nda/' },
+        { label: 'Sales Purchase Agreement', href: '/legal/contracts/spa/' },
+        { label: 'Corporate Governance', href: '/legal/corporate/' },
         { label: 'MOA Translation', href: '/legal/corporate/moa/' },
+        { label: 'Board Resolutions', href: '/legal/corporate/resolution/' },
         { label: 'Power of Attorney', href: '/legal/corporate/poa/' },
         { label: 'Court Documents', href: '/legal/litigation/' },
-        { label: 'Will Translation', href: '/legal/wills/' },
+        { label: 'Court Verdicts', href: '/legal/litigation/verdict/' },
+        { label: 'Arbitration Awards', href: '/legal/litigation/arbitration/' },
       ],
     },
-    
-    // SILO 2: Personal ✅ Pillar page exists
+
+    // CLUSTER B: Personal & Civil
     {
       id: 'personal',
       label: 'Personal Documents',
       href: '/personal-documents/',
       children: [
         { label: 'Personal Docs Hub', href: '/personal-documents/' },
+        { label: 'Vital Records', href: '/personal/vital-records/' },
         { label: 'Birth Certificate', href: '/personal/vital-records/birth/' },
         { label: 'Marriage Certificate', href: '/personal/vital-records/marriage/' },
-        { label: 'University Degree', href: '/personal/education/degree/' },
-        { label: 'Police Clearance', href: '/personal/immigration/pcc/' },
-        { label: 'Bank Statement', href: '/personal/immigration/bank/' },
+        { label: 'Divorce Certificate', href: '/personal/vital-records/divorce/' },
+        { label: 'Death Certificate', href: '/personal/vital-records/death/' },
+        { label: 'Visa & Immigration', href: '/personal/immigration/' },
+        { label: 'Police Clearance (PCC)', href: '/personal/immigration/pcc/' },
+        { label: 'Bank Statements', href: '/personal/immigration/bank/' },
         { label: 'Driving License', href: '/personal/immigration/license/' },
+        { label: 'Academic Documents', href: '/personal/academic/' },
+        { label: 'University Degree', href: '/personal/academic/degree/' },
+        { label: 'School Transcripts', href: '/personal/academic/transcripts/' },
       ],
     },
-    
-    // SILO 3: Attestation
-    {
-      id: 'attestation',
-      label: 'Attestation Services',
-      href: '/services/attestation/',
-      children: [
-        { label: 'Attestation Guide', href: '/services/attestation/' },
-        { label: 'India Attestation', href: '/services/attestation/india/' },
-        { label: 'UK Attestation', href: '/services/attestation/uk/' },
-        { label: 'US Attestation', href: '/services/attestation/us/' },
-        { label: 'MOFA Attestation', href: '/services/attestation/mofa/' },
-      ],
-    },
-    
-    // SILO 4: Specialized + Golden Visa
+
+    // CLUSTER C: Specialized
     {
       id: 'specialized',
-      label: 'Specialized & Packages',
+      label: 'Specialized',
       href: '/specialized-translation/',
       children: [
-        { label: 'Golden Visa Package', href: '/services/golden-visa-translation/' },
-        { label: 'Medical Reports', href: '/specialized/medical/' },
-        { label: 'Technical Manuals', href: '/specialized/technical/' },
-        { label: 'Corporate Translation', href: '/services/corporate-translation/' },
+        { label: 'Specialized Hub', href: '/specialized-translation/' },
+        { label: 'Medical Reports (DHA/MOH)', href: '/specialized/medical/' },
+        { label: 'Technical Manuals (ISO)', href: '/specialized/technical/' },
+        { label: 'Menu Translation', href: '/specialized/hospitality/' },
+        { label: 'Website Localization', href: '/specialized/digital/' },
       ],
     },
-    
-    // SILO 5: Locations
+
+    // CLUSTER D: Locations
     {
       id: 'locations',
       label: 'Locations',
       href: '/locations/',
       children: [
-        { label: 'Dubai', href: '/locations/dubai/' },
-        { label: 'Palm Jumeirah', href: '/locations/dubai/palm-jumeirah/' },
-        { label: 'DIFC', href: '/locations/dubai/difc/' },
+        { label: 'All Locations', href: '/locations/' },
+        { label: 'JLT / DMCC', href: '/locations/jlt/' },
+        { label: 'Business Bay', href: '/locations/business-bay/' },
+        { label: 'DIFC', href: '/locations/difc/' },
+        { label: 'Dubai Marina', href: '/locations/marina/' },
         { label: 'Abu Dhabi', href: '/locations/abu-dhabi/' },
       ],
     },
-    
-    // SILO 6: Resources
+
+    // Industries Silo (Good Addition)
+    {
+      id: 'industries',
+      label: 'Industries',
+      href: '/industries/',
+      children: [
+        { label: 'Industries Overview', href: '/industries/' },
+        { label: 'Legal Sector', href: '/industries/legal/' },
+        { label: 'Healthcare', href: '/industries/healthcare/' },
+        { label: 'Real Estate', href: '/industries/real-estate/' },
+        { label: 'E-Commerce', href: '/industries/e-commerce/' },
+      ],
+    },
+
+    // Resources Silo (Good Addition)
     {
       id: 'resources',
       label: 'Resources',
       href: '/resources/',
       children: [
+        { label: 'Resource Center', href: '/resources/' },
         { label: 'Pricing Guide', href: '/resources/pricing-guide/' },
         { label: 'Document Checklist', href: '/resources/document-checklist/' },
+        { label: 'Attestation Guide', href: '/resources/attestation-guide/' },
+        { label: 'Golden Visa Checklist', href: '/resources/golden-visa-checklist/' },
         { label: 'FAQ', href: '/resources/faq/' },
       ],
     },
   ],
-  
+
   singleLinks: [
-    { label: 'About & Licensing', href: '/about/', icon: 'fas fa-building' },
+    { label: 'Services', href: '/services/', icon: 'fas fa-cogs' },
+    { label: 'About', href: '/about/', icon: 'fas fa-building' },
     { label: 'Contact Us', href: '/contact/', icon: 'fas fa-envelope' },
   ],
 };
@@ -367,10 +372,10 @@ export const mobileNav = {
 // ============================================
 
 export const searchQuickLinks: NavLink[] = [
-  { label: 'Golden Visa', href: '/services/golden-visa-translation/' },
-  { label: 'Birth Certificate', href: '/personal/vital-records/birth/' },
   { label: 'Legal Translation', href: '/legal-translation-dubai/' },
-  { label: 'India Attestation', href: '/services/attestation/india/' },
+  { label: 'Birth Certificate', href: '/personal/vital-records/birth/' },
+  { label: 'Medical Reports', href: '/specialized/medical/' },
+  { label: 'JLT / DMCC', href: '/locations/jlt/' },
   { label: 'Pricing', href: '/resources/pricing-guide/' },
 ];
 
@@ -383,21 +388,24 @@ export const footerNav = {
     { label: 'Home', href: '/' },
     { label: 'Legal Translation', href: '/legal-translation-dubai/' },
     { label: 'Personal Documents', href: '/personal-documents/' },
-    { label: 'Attestation', href: '/services/attestation/' },
+    { label: 'Specialized', href: '/specialized-translation/' },
     { label: 'Locations', href: '/locations/' },
+    { label: 'Industries', href: '/industries/' },
+    { label: 'Resources', href: '/resources/' },
+    { label: 'Services', href: '/services/' },
     { label: 'About', href: '/about/' },
     { label: 'Contact', href: '/contact/' },
   ],
-  
+
   popularServices: [
-    { label: 'Golden Visa Translation', href: '/services/golden-visa-translation/' },
     { label: 'Birth Certificate', href: '/personal/vital-records/birth/' },
     { label: 'Marriage Certificate', href: '/personal/vital-records/marriage/' },
-    { label: 'University Degree', href: '/personal/education/degree/' },
+    { label: 'University Degree', href: '/personal/academic/degree/' },
     { label: 'Power of Attorney', href: '/legal/corporate/poa/' },
-    { label: 'India Attestation', href: '/services/attestation/india/' },
+    { label: 'NDA Translation', href: '/legal/contracts/nda/' },
+    { label: 'Medical Reports', href: '/specialized/medical/' },
   ],
-  
+
   legal: [
     { label: 'Privacy Policy', href: '/privacy/' },
     { label: 'Terms of Service', href: '/terms/' },
@@ -419,7 +427,7 @@ export const isNavGroup = (item: NavLink | NavGroup): item is NavGroup => {
  * Get a nav group by ID
  */
 export const getNavGroup = (id: string): NavGroup | undefined => {
-  return mainNav.find((item): item is NavGroup => 
+  return mainNav.find((item): item is NavGroup =>
     'id' in item && item.id === id
   );
 };
@@ -429,17 +437,19 @@ export const getNavGroup = (id: string): NavGroup | undefined => {
  */
 export const getAllLinks = (): string[] => {
   const links: string[] = [];
-  
+
   mainNav.forEach(item => {
     links.push(item.href);
     if (isNavGroup(item)) {
       item.children.forEach(child => links.push(child.href));
     }
   });
-  
-  // Add contact page
+
+  // Add additional required pages
   links.push('/contact/');
-  
+  links.push('/privacy/');
+  links.push('/terms/');
+
   return [...new Set(links)]; // Remove duplicates
 };
 
@@ -454,39 +464,61 @@ export const footerServices = footerNav.popularServices.map(s => ({
 }));
 
 // ============================================
-// PAGE STATUS TRACKER
-// ✅ = Exists | ❌ = Missing
+// PAGE STATUS TRACKER - BLUEPRINT ALIGNMENT
+// ✅ = Exists | ❌ = Missing | 🔧 = Needs Update
 // ============================================
 
 export const pageStatus = {
-  // Pillar Pages
-  pillars: {
-    '/legal-translation-dubai/': '✅',
-    '/personal-documents/': '✅',  // Just created
-    '/services/attestation/': '✅',
-    '/specialized-translation/': '❌',  // NEXT PRIORITY
-    '/locations/': '✅',
-    '/resources/': '✅',
-  },
-  
-  // Hub Pages (sub-pillar)
+  // Hub Pages (Pillars)
   hubs: {
-    '/legal/contracts/': '❌',
-    '/legal/corporate/': '✅',
-    '/legal/litigation/': '✅',
-    '/personal/vital-records/': '❌',
-    '/personal/immigration/': '❌',
-    '/personal/academic/': '❌',
+    '/legal-translation-dubai/': '✅',    // Cluster A Hub
+    '/personal-documents/': '✅',          // Cluster B Hub
+    '/specialized-translation/': '❌',     // Cluster C Hub - PRIORITY
+    '/locations/': '✅',                   // Cluster D Hub
+    '/industries/': '❌',                  // Industries Hub
+    '/resources/': '✅',                   // Resources Hub
+    '/services/': '❌',                    // Master Services Gateway
   },
-  
-  // High Priority Missing
-  missing: [
-    '/specialized-translation/',     // Silo 4 pillar
-    '/personal/vital-records/',      // Silo 2 hub
-    '/personal/immigration/',        // Silo 2 hub
-    '/personal/academic/',           // Silo 2 hub
-    '/legal/contracts/',             // Silo 1 hub
-    '/services/attestation/mofa/',   // Process page
-    '/locations/dubai/marina/',      // Location page
+
+  // Legal Sub-Hubs (Cluster A)
+  legalSubHubs: {
+    '/legal/contracts/': '❌',             // Contracts Hub
+    '/legal/corporate/': '✅',             // Corporate Hub
+    '/legal/litigation/': '✅',            // Litigation Hub
+  },
+
+  // Personal Sub-Hubs (Cluster B)
+  personalSubHubs: {
+    '/personal/vital-records/': '❌',      // Vital Records Hub
+    '/personal/immigration/': '❌',        // Immigration Hub
+    '/personal/academic/': '❌',           // Academic Hub
+  },
+
+  // Location Pages (Cluster D) - Blueprint flat URLs
+  locations: {
+    '/locations/jlt/': '🔧',              // May need redirect from /locations/dubai/jlt/
+    '/locations/business-bay/': '🔧',     // May need redirect
+    '/locations/difc/': '🔧',             // May need redirect
+    '/locations/marina/': '🔧',           // May need redirect
+    '/locations/abu-dhabi/': '✅',
+  },
+
+  // Additional Required Pages
+  additional: {
+    '/about/': '✅',
+    '/contact/': '✅',
+    '/privacy/': '✅',
+    '/terms/': '✅',
+  },
+
+  // Priority Missing Pages
+  priorityMissing: [
+    '/specialized-translation/',           // Cluster C Hub
+    '/services/',                          // Master Services Gateway
+    '/personal/vital-records/',            // Personal sub-hub
+    '/personal/immigration/',              // Personal sub-hub
+    '/personal/academic/',                 // Personal sub-hub
+    '/legal/contracts/',                   // Legal sub-hub
+    '/industries/',                        // Industries hub
   ],
 };
