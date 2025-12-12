@@ -1,0 +1,116 @@
+---
+/**
+ * DocumentFamily.astro
+ * Shows related documents in the same family/category
+ * 
+ * Usage:
+ * <DocumentFamily pageKey="birthCertificate" currentLabel="Birth Certificate" />
+ */
+import { serviceLinks, pageRelationships } from '../data/serviceLinks';
+
+interface Props {
+  pageKey: string;
+  currentLabel: string;
+  title?: string;
+}
+
+const { 
+  pageKey, 
+  currentLabel,
+  title = "Related Documents" 
+} = Astro.props;
+
+const relationships = pageRelationships[pageKey];
+const familyKeys = relationships?.family || [];
+const familyDocs = familyKeys.map(key => serviceLinks[key]).filter(Boolean);
+---
+
+{familyDocs.length > 0 && (
+  <div class="document-family">
+    <span class="family-label">{title}:</span>
+    <div class="family-links">
+      <span class="family-current">{currentLabel}</span>
+      {familyDocs.map((doc, index) => (
+        <>
+          <span class="family-separator">|</span>
+          <a href={doc.url} class="family-link">
+            {doc.text}
+          </a>
+        </>
+      ))}
+    </div>
+  </div>
+)}
+
+<style>
+  .document-family {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: var(--surface-secondary, #f8f9fa);
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    font-size: 0.875rem;
+  }
+
+  .family-label {
+    font-weight: 600;
+    color: var(--text-muted, #5a6a7a);
+  }
+
+  .family-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .family-current {
+    font-weight: 600;
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .family-separator {
+    color: var(--border-light, #e5e7eb);
+  }
+
+  .family-link {
+    color: var(--primary-navy, #0E2B48);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .family-link:hover {
+    color: var(--accent-coral, #FF1654);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .document-family {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .family-links {
+      gap: 0.375rem;
+    }
+  }
+
+  :global(body.theme-dark) .document-family {
+    background: rgba(22, 27, 34, 0.6);
+  }
+
+  :global(body.theme-dark) .family-label {
+    color: #8b949e;
+  }
+
+  :global(body.theme-dark) .family-link {
+    color: #58a6ff;
+  }
+
+  :global(body.theme-dark) .family-separator {
+    color: rgba(255, 255, 255, 0.2);
+  }
+</style>

@@ -1,0 +1,128 @@
+---
+/**
+ * CrossSiloLinks.astro
+ * Links to other content silos for comprehensive internal linking
+ * 
+ * Usage:
+ * <CrossSiloLinks pageKey="birthCertificate" />
+ */
+import { serviceLinks, pageRelationships, getCrossLinks } from '../data/serviceLinks';
+
+interface Props {
+  pageKey: string;
+  title?: string;
+  maxLinks?: number;
+}
+
+const { 
+  pageKey, 
+  title = "Explore More Services",
+  maxLinks = 4 
+} = Astro.props;
+
+const crossLinks = getCrossLinks(pageKey).slice(0, maxLinks);
+---
+
+{crossLinks.length > 0 && (
+  <section class="cross-silo-links">
+    <h4 class="cross-title">{title}</h4>
+    <div class="cross-grid">
+      {crossLinks.map((link) => (
+        <a href={link.url} class="cross-card">
+          {link.icon && <i class={link.icon}></i>}
+          <span class="cross-text">{link.full || link.text}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+)}
+
+<style>
+  .cross-silo-links {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(14, 43, 72, 0.03) 0%, rgba(255, 22, 84, 0.03) 100%);
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-light, #e5e7eb);
+  }
+
+  .cross-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted, #5a6a7a);
+    margin-bottom: 1rem;
+  }
+
+  .cross-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .cross-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1rem;
+    background: white;
+    border: 1px solid var(--border-light, #e5e7eb);
+    border-radius: 2rem;
+    text-decoration: none;
+    color: var(--text-primary, #1a1a1a);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  .cross-card:hover {
+    border-color: var(--accent-coral, #FF1654);
+    background: rgba(255, 22, 84, 0.05);
+    transform: translateY(-2px);
+  }
+
+  .cross-card i {
+    font-size: 0.875rem;
+    color: var(--primary-navy, #0E2B48);
+  }
+
+  .cross-card:hover i {
+    color: var(--accent-coral, #FF1654);
+  }
+
+  @media (max-width: 768px) {
+    .cross-silo-links {
+      padding: 1rem;
+    }
+
+    .cross-card {
+      padding: 0.5rem 0.875rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  :global(body.theme-dark) .cross-silo-links {
+    background: linear-gradient(135deg, rgba(14, 43, 72, 0.3) 0%, rgba(255, 22, 84, 0.1) 100%);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :global(body.theme-dark) .cross-title {
+    color: #8b949e;
+  }
+
+  :global(body.theme-dark) .cross-card {
+    background: rgba(22, 27, 34, 0.8);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #e6edf3;
+  }
+
+  :global(body.theme-dark) .cross-card:hover {
+    border-color: var(--accent-coral, #FF1654);
+    background: rgba(255, 22, 84, 0.15);
+  }
+
+  :global(body.theme-dark) .cross-card i {
+    color: #8b949e;
+  }
+</style>
