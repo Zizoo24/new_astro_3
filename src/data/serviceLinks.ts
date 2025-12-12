@@ -757,6 +757,22 @@ export const pageRelationships: Record<string, PageRelationships> = {
     related: ["digital", "technical"],
     crossSilo: ["corporateTranslation"],
     locations: ["difc", "businessBay", "jlt"]
+  },
+
+  // ========================================
+  // HUB PAGES
+  // ========================================
+  servicesHub: {
+    related: ["legalTranslation", "goldenVisa", "attestation", "corporateTranslation"],
+    crossSilo: ["birthCertificate", "marriageCertificate", "degree", "pcc", "poa", "contracts"]
+  },
+  locationsHub: {
+    related: ["dubai", "abuDhabi", "sharjah", "palmJumeirah", "difc", "jlt"],
+    crossSilo: ["legalTranslation", "goldenVisa", "attestation", "birthCertificate", "marriageCertificate"]
+  },
+  personalDocuments: {
+    related: ["birthCertificate", "marriageCertificate", "deathCertificate", "degree", "pcc"],
+    crossSilo: ["legalTranslation", "attestation", "goldenVisa", "dubai", "abuDhabi"]
   }
 };
 
