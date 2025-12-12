@@ -783,6 +783,127 @@
                           "buttonUrl"
                         ],
                         "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "const": "mission"
+                          },
+                          "sectionLabel": {
+                            "type": "string"
+                          },
+                          "sectionTitle": {
+                            "type": "string"
+                          },
+                          "statement": {
+                            "type": "string"
+                          },
+                          "vision": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "sectionLabel",
+                          "sectionTitle",
+                          "statement"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "const": "languages"
+                          },
+                          "sectionLabel": {
+                            "type": "string"
+                          },
+                          "sectionTitle": {
+                            "type": "string"
+                          },
+                          "intro": {
+                            "type": "string"
+                          },
+                          "languages": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "pairs": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "pairs"
+                              ],
+                              "additionalProperties": false
+                            }
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "sectionLabel",
+                          "sectionTitle",
+                          "intro",
+                          "languages"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "const": "history"
+                          },
+                          "sectionLabel": {
+                            "type": "string"
+                          },
+                          "sectionTitle": {
+                            "type": "string"
+                          },
+                          "timeline": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "year": {
+                                  "type": "string"
+                                },
+                                "title": {
+                                  "type": "string"
+                                },
+                                "description": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "year",
+                                "title",
+                                "description"
+                              ],
+                              "additionalProperties": false
+                            }
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "sectionLabel",
+                          "sectionTitle",
+                          "timeline"
+                        ],
+                        "additionalProperties": false
                       }
                     ]
                   }
