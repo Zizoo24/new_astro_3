@@ -1,3 +1,53 @@
+/* ============================================
+   MOBILE ZOOM PREVENTION
+   Fixes auto-zoom issues on iOS/Android
+   ============================================ */
+
+/* Prevent double-tap zoom on all interactive elements */
+html {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+/* Prevent iOS auto-zoom on input focus (requires 16px minimum) */
+@media screen and (max-width: 991px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="search"],
+  input[type="password"],
+  input[type="url"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+
+/* Prevent content overflow causing zoom */
+body {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Disable user-scalable for problematic fixed elements */
+@media screen and (max-width: 991px) {
+  .header-wrapper,
+  .header-mobile,
+  .footer-bar,
+  .sidebar-menu {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+}
+
+/* ============================================
+   END MOBILE ZOOM PREVENTION
+   ============================================ */
+
 /* Mobile Header */
 .header-mobile {
     display: none;
