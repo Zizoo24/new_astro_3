@@ -1,5 +1,5 @@
 ---
-import Header from '../components/Header.astro';
+import HeaderPorto from '../components/Header-porto.astro';
 import Footer from '../components/Footer.astro';
 import MobileShell from '../components/MobileShell.astro';
 
@@ -38,7 +38,7 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
     })();
   </script>
   
-  <!-- Cache Buster: Force unregister any service workers and clear caches -->
+  <!-- Cache Buster: DISABLED - was clearing caches on every page load causing slow performance
   <script is:inline>
     (function() {
       if ('serviceWorker' in navigator) {
@@ -48,15 +48,9 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
           });
         });
       }
-      if ('caches' in window) {
-        caches.keys().then(function(names) {
-          names.forEach(function(name) {
-            caches.delete(name);
-          });
-        });
-      }
     })();
   </script>
+  -->
   
   <title>{title}</title>
   <meta name="description" content={description}>
@@ -123,6 +117,7 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
   <link rel="stylesheet" href="/styles/navigation-glassmorphism.css">
   <link rel="stylesheet" href="/styles/subsection-menu.css">
   <link rel="stylesheet" href="/styles/megamenu.css">
+  <link rel="stylesheet" href="/styles/porto-dropdown-onlinetranslation.css">
   
   <!-- MOBILE -->
   <link rel="stylesheet" href="/styles/sticky-mobile.css">
@@ -163,7 +158,7 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
 </head>
 <body class={isHomepage ? 'homepage' : ''}>
   
-  <Header isHomepage={isHomepage} />
+  <HeaderPorto isHomepage={isHomepage} />
 
   <main>
     <slot />
@@ -175,7 +170,7 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
 
   <!-- Scripts -->
   <script is:inline src="/scripts/os-detect.js"></script>
-  <script defer src="/scripts/cookie-consent.js"></script>
+  <script defer src="/scripts/preferences.js"></script>
   <script defer src="/scripts/analytics.js"></script>
   <script defer src="/scripts/main-v2.js"></script>
   <script defer src="/scripts/navigation-v2.js"></script>
