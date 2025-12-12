@@ -1,0 +1,764 @@
+/* ============================================================
+   PORTO-STYLE DROPDOWN NAVIGATION
+   Adapted for OnlineTranslation.ae
+
+   Based on Porto Theme v10.x navigation patterns
+   Preserves OnlineTranslation.ae brand colors
+   ============================================================ */
+
+/* ===========================================
+   CSS CUSTOM PROPERTIES (Design Tokens)
+   Map Porto variables to OnlineTranslation palette
+   =========================================== */
+:root {
+  /* OnlineTranslation.ae Brand Colors */
+  --ot-primary: #1a5f7a;           /* Teal - main brand */
+  --ot-primary-light: #2d8fb8;     /* Lighter teal */
+  --ot-primary-dark: #15526a;      /* Darker teal */
+  --ot-header-dark: #0a1628;       /* Dark navy header */
+  --ot-header-gradient: #1a365d;   /* Navy gradient end */
+  --ot-whatsapp: #25D366;          /* WhatsApp green */
+
+  /* Coral Accent (from your design system) */
+  --ot-coral: #FF1654;             /* Primary coral - CTAs */
+  --ot-coral-hover: #e01346;       /* Coral hover state */
+  --ot-coral-subtle: rgba(255, 22, 84, 0.08);  /* Very subtle coral tint */
+
+  /* Porto-style Dropdown Tokens */
+  --dropdown-bg: #ffffff;
+  --dropdown-text: #333333;
+  --dropdown-text-muted: #777777;
+  --dropdown-hover-bg: #f8f9fa;
+  --dropdown-border: #e8e8e8;
+  --dropdown-border-top: var(--ot-primary);  /* Teal top border */
+  --dropdown-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.07);
+  --dropdown-shadow-hover: 0 20px 40px -5px rgba(0, 0, 0, 0.12);
+  --dropdown-radius: 0 0 4px 4px;
+  --dropdown-submenu-radius: 4px;
+
+  /* Typography */
+  --dropdown-font-size: 0.83em;
+  --dropdown-font-weight: 400;
+  --dropdown-title-weight: 600;
+
+  /* Animation */
+  --dropdown-transition: 0.2s ease-out;
+
+  /* Badge Colors - Coral for Hot/Popular */
+  --badge-new: #27ae60;            /* Green - new items */
+  --badge-express: #f39c12;        /* Orange - express service */
+  --badge-popular: var(--ot-coral); /* Coral - popular items */
+  --badge-hot: var(--ot-coral);    /* Coral - hot items */
+}
+
+/* Dark mode overrides */
+[data-theme="dark"] {
+  --dropdown-bg: #1e293b;
+  --dropdown-text: #e2e8f0;
+  --dropdown-text-muted: #94a3b8;
+  --dropdown-hover-bg: #334155;
+  --dropdown-border: #475569;
+  --dropdown-border-top: var(--ot-primary-light);
+  --dropdown-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.3);
+
+  /* Softer coral for dark mode */
+  --ot-coral: #ff6b6b;
+  --ot-coral-hover: #ff5050;
+  --ot-coral-subtle: rgba(255, 107, 107, 0.12);
+}
+
+/* ===========================================
+   HEADER NAV MAIN - Porto Structure
+   =========================================== */
+@media (min-width: 992px) {
+
+  .header-nav-main {
+    display: flex !important;
+    height: auto !important;
+  }
+
+  .header-nav-main nav {
+    display: flex !important;
+  }
+
+  .header-nav-main nav > ul {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* ===========================================
+     TOP-LEVEL NAV ITEMS
+     =========================================== */
+  .header-nav-main nav > ul > li {
+    position: relative;
+    height: 100%;
+    align-self: stretch;
+    margin-left: 2px;
+  }
+
+  .header-nav-main nav > ul > li > a {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all var(--dropdown-transition);
+  }
+
+  .header-nav-main nav > ul > li > a:hover,
+  .header-nav-main nav > ul > li > a:focus {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .header-nav-main nav > ul > li > a.active {
+    color: #ffffff;
+    background-color: var(--ot-primary);
+  }
+
+  /* Hover/Open state for dropdown parent */
+  .header-nav-main nav > ul > li.dropdown:hover > a,
+  .header-nav-main nav > ul > li.dropdown.open > a {
+    background-color: var(--ot-primary);
+    color: #ffffff;
+    border-radius: 4px 4px 0 0;
+  }
+
+  /* Connecting bridge (prevents gap between trigger and dropdown) */
+  .header-nav-main nav > ul > li.dropdown:hover > a::before,
+  .header-nav-main nav > ul > li.dropdown.open > a::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+    border-bottom: 5px solid var(--ot-primary);
+  }
+
+  /* Chevron icon */
+  .header-nav-main nav > ul > li > a .nav-chevron {
+    display: inline-block;
+    margin-left: 6px;
+    font-size: 0.6em;
+    transition: transform var(--dropdown-transition);
+  }
+
+  .header-nav-main nav > ul > li.dropdown:hover > a .nav-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* ===========================================
+     DROPDOWN MENU (Level 2)
+     Porto white dropdown style
+     =========================================== */
+  .header-nav-main nav > ul > li.dropdown > .dropdown-menu {
+    position: absolute;
+    top: -10000px;
+    left: 0;
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+
+    /* Porto styling */
+    background: var(--dropdown-bg);
+    border: 0;
+    border-top: 3px solid var(--dropdown-border-top);
+    border-radius: var(--dropdown-radius);
+    box-shadow: var(--dropdown-shadow);
+
+    min-width: 220px;
+    padding: 5px 0;
+    margin: 0;
+
+    /* Animation */
+    transform: translate3d(0, -5px, 0);
+    transition: opacity var(--dropdown-transition),
+                transform var(--dropdown-transition),
+                visibility var(--dropdown-transition);
+  }
+
+  /* Show dropdown on hover */
+  .header-nav-main nav > ul > li.dropdown:hover > .dropdown-menu,
+  .header-nav-main nav > ul > li.dropdown.open > .dropdown-menu {
+    top: 100%;
+    opacity: 1;
+    visibility: visible;
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* Dropdown reverse (opens to left) */
+  .header-nav-main nav > ul > li.dropdown.dropdown-reverse > .dropdown-menu {
+    left: auto;
+    right: 0;
+  }
+
+  /* ===========================================
+     DROPDOWN ITEMS
+     =========================================== */
+  .dropdown-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .dropdown-menu li {
+    position: relative;
+  }
+
+  .dropdown-menu li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 18px;
+
+    color: var(--dropdown-text);
+    font-size: var(--dropdown-font-size);
+    font-weight: var(--dropdown-font-weight);
+    text-decoration: none;
+    text-transform: none;
+    letter-spacing: -0.5px;
+
+    border-bottom: 1px solid var(--dropdown-border);
+    transition: all var(--dropdown-transition);
+  }
+
+  .dropdown-menu li:last-child a {
+    border-bottom: 0;
+  }
+
+  /* Icon styling */
+  .dropdown-menu li a i {
+    width: 18px;
+    text-align: center;
+    color: var(--ot-primary);
+    font-size: 0.9em;
+    opacity: 0.7;
+    transition: opacity var(--dropdown-transition);
+  }
+
+  .dropdown-menu li a:hover i {
+    opacity: 1;
+  }
+
+  /* Hover state */
+  .dropdown-menu li a:hover,
+  .dropdown-menu li a:focus,
+  .dropdown-menu li.active > a {
+    background-color: var(--dropdown-hover-bg);
+    color: var(--dropdown-text);
+  }
+
+  /* Left accent bar on hover (Porto signature) */
+  .dropdown-menu li a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--ot-primary);
+    transform: scaleY(0);
+    transition: transform 0.15s ease;
+  }
+
+  .dropdown-menu li a:hover::before,
+  .dropdown-menu li.active > a::before {
+    transform: scaleY(1);
+  }
+
+  /* ===========================================
+     SECTION HEADERS (Non-clickable dividers)
+     =========================================== */
+  .dropdown-menu .dropdown-header {
+    display: block;
+    padding: 12px 18px 6px;
+    margin-top: 5px;
+
+    color: var(--dropdown-text-muted);
+    font-size: 0.75em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    border-bottom: 1px solid var(--dropdown-border);
+    background: transparent;
+    cursor: default;
+  }
+
+  .dropdown-menu .dropdown-header:first-child {
+    margin-top: 0;
+    padding-top: 8px;
+  }
+
+  /* ===========================================
+     SUBMENU (Level 3 Flyout)
+     =========================================== */
+  .dropdown-menu li.dropdown-submenu {
+    position: relative;
+  }
+
+  /* Submenu trigger - arrow indicator */
+  .dropdown-menu li.dropdown-submenu > a::after {
+    content: '';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    border-right: 1.5px solid #999;
+    border-bottom: 1.5px solid #999;
+    transform: translateY(-50%) rotate(-45deg);
+    transition: all var(--dropdown-transition);
+  }
+
+  .dropdown-menu li.dropdown-submenu:hover > a::after {
+    border-color: var(--ot-primary);
+    right: 12px;
+  }
+
+  /* Flyout menu */
+  .dropdown-menu li.dropdown-submenu > .dropdown-menu {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    margin-top: -8px;
+    margin-left: -1px;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translate3d(-10px, 0, 0);
+
+    border-radius: var(--dropdown-submenu-radius);
+    border-top-width: 3px;
+    min-width: 200px;
+  }
+
+  .dropdown-menu li.dropdown-submenu:hover > .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* Reverse flyout (opens left when near edge) */
+  .dropdown-menu li.dropdown-submenu.dropdown-reverse > .dropdown-menu {
+    left: auto;
+    right: 100%;
+    transform: translate3d(10px, 0, 0);
+  }
+
+  .dropdown-menu li.dropdown-submenu.dropdown-reverse:hover > .dropdown-menu {
+    transform: translate3d(0, 0, 0);
+  }
+
+  .dropdown-menu li.dropdown-submenu.dropdown-reverse > a::after {
+    transform: translateY(-50%) rotate(135deg);
+    right: auto;
+    left: 15px;
+  }
+
+  .dropdown-menu li.dropdown-submenu.dropdown-reverse:hover > a::after {
+    left: 18px;
+  }
+
+  /* ===========================================
+     BADGES (NEW, Express, Popular, Hot)
+     Popular/Hot use coral for brand consistency
+     =========================================== */
+  .dropdown-menu .badge,
+  .nav-badge {
+    display: inline-block;
+    padding: 2px 6px;
+    margin-left: auto;
+
+    font-size: 0.65em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    border-radius: 3px;
+    color: #ffffff;
+  }
+
+  .badge-new,
+  .nav-badge-new {
+    background-color: var(--badge-new);
+  }
+
+  .badge-express,
+  .nav-badge-express {
+    background-color: var(--badge-express);
+  }
+
+  .badge-popular,
+  .nav-badge-popular {
+    background-color: var(--badge-popular);  /* Coral */
+  }
+
+  .badge-hot,
+  .nav-badge-hot {
+    background-color: var(--badge-hot);      /* Coral */
+  }
+
+  /* Subtle coral tint on hover for popular/hot items */
+  .dropdown-menu li:has(.badge-popular) a:hover,
+  .dropdown-menu li:has(.badge-hot) a:hover {
+    background-color: var(--ot-coral-subtle);
+  }
+
+  .dropdown-menu li:has(.badge-popular) a:hover::before,
+  .dropdown-menu li:has(.badge-hot) a:hover::before {
+    background: var(--ot-coral);
+  }
+
+  /* ===========================================
+     VIEW ALL LINK (Bottom of dropdown)
+     Coral accent on hover for brand consistency
+     =========================================== */
+  .dropdown-menu .dropdown-footer {
+    display: block;
+    padding: 10px 18px;
+    margin-top: 5px;
+
+    color: var(--ot-primary);
+    font-size: 0.8em;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+
+    border-top: 1px solid var(--dropdown-border);
+    background: var(--dropdown-hover-bg);
+    transition: all var(--dropdown-transition);
+  }
+
+  .dropdown-menu .dropdown-footer:hover {
+    background: var(--ot-coral);
+    color: #ffffff;
+  }
+
+  .dropdown-menu .dropdown-footer i {
+    margin-left: 5px;
+    transition: transform var(--dropdown-transition);
+  }
+
+  .dropdown-menu .dropdown-footer:hover i {
+    transform: translateX(3px);
+  }
+
+  /* ===========================================
+     WhatsApp CTA Button
+     =========================================== */
+  .nav-item-button .btn-whatsapp {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--ot-whatsapp);
+    color: #ffffff !important;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.2s ease;
+  }
+
+  .nav-item-button .btn-whatsapp:hover {
+    background: #128C7E;
+    transform: translateY(-2px);
+  }
+
+  /* ===========================================
+     MEGA MENU (Multi-column dropdowns)
+     =========================================== */
+  .header-nav-main nav > ul > li.dropdown-mega {
+    position: static;
+  }
+
+  .header-nav-main nav > ul > li.dropdown-mega > .dropdown-menu {
+    left: 15px;
+    right: 15px;
+    width: auto;
+    padding: 20px;
+    border-radius: 4px;
+  }
+
+  .dropdown-mega-content {
+    display: flex;
+    gap: 30px;
+  }
+
+  .dropdown-mega-column {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .dropdown-mega-sub-title {
+    display: block;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+
+    color: var(--dropdown-text);
+    font-size: 0.9em;
+    font-weight: var(--dropdown-title-weight);
+    text-transform: none;
+    letter-spacing: -0.5px;
+
+    border-bottom: 1px solid var(--dropdown-border);
+  }
+
+  .dropdown-mega-sub-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .dropdown-mega-sub-nav li a {
+    display: block;
+    padding: 5px 10px;
+    margin: 0 -10px;
+
+    color: var(--dropdown-text-muted);
+    font-size: var(--dropdown-font-size);
+    text-decoration: none;
+    border-radius: 4px;
+    border-bottom: 0;
+    transition: all var(--dropdown-transition);
+  }
+
+  .dropdown-mega-sub-nav li a::before {
+    display: none;
+  }
+
+  .dropdown-mega-sub-nav li a:hover {
+    background: var(--dropdown-hover-bg);
+    color: var(--dropdown-text);
+  }
+
+}
+
+/* ===========================================
+   MOBILE NAVIGATION (< 992px)
+   Accordion-style collapsible menu
+   =========================================== */
+@media (max-width: 991px) {
+
+  .header-nav-main {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--dropdown-bg);
+    box-shadow: var(--dropdown-shadow);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .header-nav-main.is-open {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  .header-nav-main nav > ul {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .header-nav-main nav > ul > li {
+    border-bottom: 1px solid var(--dropdown-border);
+  }
+
+  .header-nav-main nav > ul > li:last-child {
+    border-bottom: 0;
+  }
+
+  .header-nav-main nav > ul > li > a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+
+    color: var(--dropdown-text);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .header-nav-main nav > ul > li > a .nav-chevron {
+    transition: transform 0.2s ease;
+  }
+
+  .header-nav-main nav > ul > li.is-open > a .nav-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Mobile dropdown */
+  .header-nav-main .dropdown-menu {
+    position: static;
+    display: none;
+    background: transparent;
+    box-shadow: none;
+    border: 0;
+    border-top: 0;
+    padding-left: 15px;
+    margin-bottom: 10px;
+  }
+
+  .header-nav-main li.dropdown.is-open > .dropdown-menu {
+    display: block;
+  }
+
+  .header-nav-main .dropdown-menu li a {
+    padding: 8px 0;
+    border-bottom: 0;
+    color: var(--dropdown-text-muted);
+  }
+
+  .header-nav-main .dropdown-menu li a::before {
+    display: none;
+  }
+
+  .header-nav-main .dropdown-menu li a:hover {
+    color: var(--ot-primary);
+    background: transparent;
+  }
+
+  /* Mobile submenu */
+  .header-nav-main .dropdown-submenu > .dropdown-menu {
+    position: static;
+    display: none;
+    padding-left: 15px;
+    border-left: 2px solid var(--dropdown-border);
+    margin-left: 10px;
+  }
+
+  .header-nav-main .dropdown-submenu.is-open > .dropdown-menu {
+    display: block;
+  }
+
+  .header-nav-main .dropdown-submenu > a::after {
+    content: '+';
+    position: static;
+    border: 0;
+    width: auto;
+    height: auto;
+    transform: none;
+    font-size: 1.2em;
+    color: var(--dropdown-text-muted);
+  }
+
+  .header-nav-main .dropdown-submenu.is-open > a::after {
+    content: '\2212';  /* minus sign */
+  }
+
+  /* Hide section headers on mobile */
+  .header-nav-main .dropdown-header {
+    display: none;
+  }
+
+  /* Mobile WhatsApp button */
+  .nav-item-button {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--dropdown-border);
+  }
+
+  .nav-item-button .btn-whatsapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: var(--ot-whatsapp);
+    color: #ffffff !important;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 25px;
+    width: 100%;
+  }
+
+  /* Mobile hamburger button */
+  .header-btn-collapse-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .header-btn-collapse-nav i {
+    font-size: 1.5rem;
+    color: #ffffff;
+  }
+
+}
+
+/* ===========================================
+   ANIMATION EFFECTS
+   Porto Effect 1 - Slide up
+   =========================================== */
+@media (min-width: 992px) {
+
+  .header-nav-main-effect-1 .dropdown-menu li a {
+    transform: translate3d(0, -5px, 0);
+    transition: transform var(--dropdown-transition),
+                background var(--dropdown-transition),
+                color var(--dropdown-transition);
+  }
+
+  .header-nav-main-effect-1 li.dropdown:hover .dropdown-menu li a {
+    transform: translate3d(0, 0, 0);
+  }
+
+}
+
+/* ===========================================
+   ACCESSIBILITY
+   =========================================== */
+.header-nav-main nav > ul > li > a:focus-visible,
+.dropdown-menu li a:focus-visible {
+  outline: 2px solid var(--ot-primary);
+  outline-offset: 2px;
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ===========================================
+   UTILITY CLASSES
+   =========================================== */
+.dropdown-menu-wide {
+  min-width: 280px !important;
+}
+
+.dropdown-menu-narrow {
+  min-width: 180px !important;
+}
+
+/* No wrap for long items */
+.dropdown-menu li a.text-nowrap {
+  white-space: nowrap;
+}
