@@ -46,7 +46,11 @@ The system is designed as a "Digital Concierge" with a "WhatsApp-First Architect
 **Feature Specifications:**
 - **Content Structure:** 4-Silo SEO structure (Legal & Corporate, Personal & Civil, Industry Specialized, Locations).
 - **Page Anatomy:** "Above the Fold" section (H1, Concierge Intro, Service Snapshot, Primary CTA), Compliance Checklist, Step-by-Step Process, After-Care Guide, Pricing & Timelines, and FAQ.
-- **Internal Linking:** Centralized URL mappings in `src/data/serviceLinks.ts` ensure consistent and contextual internal linking with a density of 1-2 links per paragraph.
+- **Internal Linking (Dec 2025):** Near-extreme internal linking strategy implemented across the site:
+  - **serviceLinks.ts:** Single source of truth with 60+ service links, semantic relationships (related, family, crossSilo, locations, attestation, nextSteps, prerequisites)
+  - **Components:** `RelatedServices.astro` (semantic grid), `InlineCallout.astro` (contextual tips), `CrossSiloLinks.astro` (inter-category links), `DocumentFamily.astro` (same-category documents)
+  - **Coverage:** 15+ pages enhanced with linking components including vital records, attestation, legal/corporate services, and location hubs
+  - **Helper Functions:** `getRelatedServices()`, `getCrossLinks()`, `getFamilyDocuments()`, `getAllLinksForPage()` for component data retrieval
 - **Key Components:** `Icon.astro`, `TrustStrip.astro`, `ProcessSteps.astro`, `BenefitCards.astro`, `AccordionSection.astro`, `TestimonialsCarousel.astro`, `DulBadge.astro`, `AuthorityLogos.astro` for content modularity.
 - **DulBadge Component:** Two variants - 'pill' (glassmorphism badge for hero sections) and 'detailed' (full licensing card for About page). Links to verified DUL: https://app.invest.dubai.ae/DUL/1DE9D8AA-768A-4CFC-BC27-A6F23017B858
 - **AuthorityLogos Component:** Horizontal strip showing government authorities (Government of Dubai, Dubai Courts, Dubai Police, DLD, MOFAIC) with grayscale-to-color hover effect. Uses official PNG logos with consistent 48px/36px responsive sizing.
