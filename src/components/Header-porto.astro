@@ -211,12 +211,11 @@ function isActive(href: string): boolean {
               </nav>
             </div>
 
-            <!-- Mobile Menu Button -->
+            <!-- Mobile Menu Button - triggers MobileShell sidebar -->
             <button
+              id="sidebarToggle"
               class="header-btn-collapse-nav"
-              aria-label="Toggle navigation"
-              aria-expanded="false"
-              aria-controls="mainNav"
+              aria-label="Open menu"
             >
               <i class="fas fa-bars" aria-hidden="true"></i>
             </button>
@@ -427,33 +426,9 @@ function isActive(href: string): boolean {
 </style>
 
 <script is:inline>
-  // Mobile menu toggle
+  // Desktop navigation enhancements
+  // Mobile menu is handled by MobileShell via navigation-v2.js (#sidebarToggle)
   document.addEventListener('DOMContentLoaded', () => {
-    const toggleBtn = document.querySelector('.header-btn-collapse-nav');
-    const navMain = document.querySelector('.header-nav-main');
-
-    if (toggleBtn && navMain) {
-      toggleBtn.addEventListener('click', () => {
-        const isOpen = navMain.classList.toggle('is-open');
-        toggleBtn.setAttribute('aria-expanded', String(isOpen));
-      });
-    }
-
-    // Mobile dropdown toggles
-    const dropdownItems = document.querySelectorAll('.dropdown > a, .dropdown-submenu > a');
-
-    dropdownItems.forEach(item => {
-      item.addEventListener('click', (e) => {
-        if (window.innerWidth < 992) {
-          const parent = e.target.closest('li');
-          if (parent && parent.querySelector('.dropdown-menu')) {
-            e.preventDefault();
-            parent.classList.toggle('is-open');
-          }
-        }
-      });
-    });
-
     // Flyout edge detection (desktop)
     const flyoutParents = document.querySelectorAll('.dropdown-submenu');
 
