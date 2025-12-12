@@ -4,6 +4,9 @@
  * URL: /services/attestation/uk/
  */
 import ServiceLayout from '../../../../layouts/ServiceLayout.astro';
+import RelatedServices from '../../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../../components/CrossSiloLinks.astro';
+import InlineCallout from '../../../../components/InlineCallout.astro';
 
 const breadcrumbs = [
   { name: 'Home', url: '/' },
@@ -260,6 +263,30 @@ const accordionSections = [
         <a href="/personal/education/degree/" style="padding: 0.75rem 1.25rem; background: var(--surface-raised); border-radius: 8px; text-decoration: none; color: inherit;">Degree Translation</a>
         <a href="/services/attestation/" style="padding: 0.75rem 1.25rem; background: var(--surface-raised); border-radius: 8px; text-decoration: none; color: inherit;">All Attestation Services</a>
       </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <InlineCallout 
+        type="tip" 
+        title="Need Translation Too?"
+        link="/services/legal-translation/"
+        linkText="View translation services"
+      >
+        Most attested UK documents also require MOJ-certified Arabic translation before submission to UAE authorities.
+      </InlineCallout>
+
+      <RelatedServices 
+        pageKey="ukAttestation"
+        title="Related Services"
+        maxItems={6}
+      />
+      
+      <CrossSiloLinks 
+        pageKey="ukAttestation"
+        title="Other Countries"
+      />
     </div>
   </section>
 </ServiceLayout>

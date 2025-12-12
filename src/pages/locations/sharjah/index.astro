@@ -1,5 +1,8 @@
 ---
 import ServiceLayout from '../../../layouts/ServiceLayout.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../components/CrossSiloLinks.astro';
+import InlineCallout from '../../../components/InlineCallout.astro';
 
 const pageData = {
   title: "Sharjah Translation Services – MOJ Certified | OnlineTranslation.ae",
@@ -269,6 +272,30 @@ const pageData = {
         
         <p>No Dubai travel required. Everything happens remotely, with certified translations delivered directly to your Sharjah address.</p>
       </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <InlineCallout 
+        type="tip" 
+        title="Common Sharjah Services"
+        link="/services/attestation/"
+        linkText="View attestation services"
+      >
+        Many Sharjah residents need attestation along with translation for documents from their home countries.
+      </InlineCallout>
+
+      <RelatedServices 
+        pageKey="sharjah"
+        title="Common Document Needs"
+        maxItems={6}
+      />
+      
+      <CrossSiloLinks 
+        pageKey="sharjah"
+        title="Other Locations"
+      />
     </div>
   </section>
 
