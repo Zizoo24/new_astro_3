@@ -30,43 +30,33 @@ function isActive(href: string): boolean {
 }
 ---
 
-<header id="header" class:list={["site-header", { "header-homepage": isHomepage }]}>
-  <!-- Coral Announcement Bar - Uses existing styles from porto-desktop.css -->
-  <div class="header-announcement" id="announcementBar">
-    <div class="container announcement-flex">
-      <span class="announcement-label">MOJ-Licensed Legal Translation</span>
-      <div class="announcement-actions">
-        <a href={siteContact.whatsapp} class="announcement-btn announcement-btn--whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-        <a href={`tel:${siteContact.phone}`} class="announcement-btn announcement-btn--call"><i class="fas fa-phone-alt"></i> Call</a>
-        <a href={siteContact.whatsapp} class="announcement-cta">Send Documents <i class="fas fa-arrow-right"></i></a>
+<!-- Coral Top Bar - Disappears on scroll -->
+<div class="coral-top-bar" id="coralTopBar">
+  <div class="container">
+    <div class="coral-top-content">
+      <div class="coral-top-left">
+        <a href={`tel:${siteContact.phone.replace(/\s/g, '')}`} class="coral-top-link">
+          <i class="fas fa-phone-alt"></i>
+          <span>{siteContact.phoneDisplay}</span>
+        </a>
+        <a href={`mailto:${siteContact.email}`} class="coral-top-link coral-top-email">
+          <i class="fas fa-envelope"></i>
+          <span>{siteContact.email}</span>
+        </a>
+      </div>
+      <div class="coral-top-right">
+        <span class="coral-top-hours">
+          <i class="fas fa-clock"></i>
+          Daily: 8:00 AM - 10:00 PM
+        </span>
       </div>
     </div>
   </div>
-  <div class="header-body">
-    <!-- Top Bar -->
-    <div class="header-top">
-      <div class="container">
-        <div class="header-top-content">
-          <div class="header-top-left">
-            <a href={`tel:${siteContact.phone.replace(/\s/g, '')}`} class="header-top-phone">
-              <i class="fas fa-phone-alt"></i>
-              <span>{siteContact.phoneDisplay}</span>
-            </a>
-            <a href={`mailto:${siteContact.email}`} class="header-top-email">
-              <i class="fas fa-envelope"></i>
-              <span>{siteContact.email}</span>
-            </a>
-          </div>
-          <div class="header-top-right">
-            <span class="header-top-hours">
-              <i class="fas fa-clock"></i>
-              Daily: 8:00 AM - 10:00 PM
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
+</div>
 
+<!-- Sticky Navy Header -->
+<header id="header" class:list={["site-header", { "header-homepage": isHomepage }]}>
+  <div class="header-body">
     <!-- Main Header -->
     <div class="header-container container">
       <div class="header-row">
@@ -262,7 +252,71 @@ function isActive(href: string): boolean {
 
 <style>
   /* ====================================
-     HEADER BASE STYLES
+     CORAL TOP BAR - Disappears on scroll
+     ==================================== */
+  .coral-top-bar {
+    background: var(--ot-coral, #FF1654);
+    padding: 10px 0;
+    font-size: 0.85rem;
+    transition: transform 0.3s ease, opacity 0.3s ease, max-height 0.3s ease;
+    max-height: 60px;
+    overflow: hidden;
+  }
+
+  .coral-top-bar.hidden {
+    max-height: 0;
+    padding: 0;
+    opacity: 0;
+    transform: translateY(-100%);
+    pointer-events: none;
+  }
+
+  .coral-top-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .coral-top-left {
+    display: flex;
+    gap: 20px;
+  }
+
+  .coral-top-link,
+  .coral-top-hours {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-weight: 500;
+  }
+
+  .coral-top-link:hover {
+    color: #ffffff;
+  }
+
+  .coral-top-hours {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  /* Hide coral bar on mobile */
+  @media (max-width: 991px) {
+    .coral-top-bar {
+      display: none !important;
+    }
+  }
+
+  /* Hide email on smaller desktops */
+  @media (max-width: 1200px) and (min-width: 992px) {
+    .coral-top-email {
+      display: none;
+    }
+  }
+
+  /* ====================================
+     STICKY NAVY HEADER
      ==================================== */
   .site-header {
     position: sticky;
@@ -273,40 +327,6 @@ function isActive(href: string): boolean {
 
   .header-body {
     background: linear-gradient(135deg, var(--ot-header-dark, #0a1628) 0%, var(--ot-header-gradient, #1a365d) 100%);
-  }
-
-  /* Header Top Bar */
-  .header-top {
-    background: rgba(0, 0, 0, 0.2);
-    padding: 8px 0;
-    font-size: 0.85rem;
-  }
-
-  .header-top-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .header-top-left {
-    display: flex;
-    gap: 20px;
-  }
-
-  .header-top-phone,
-  .header-top-email,
-  .header-top-hours {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-
-  .header-top-phone:hover,
-  .header-top-email:hover {
-    color: #ffffff;
   }
 
   /* Header Container */
@@ -340,6 +360,7 @@ function isActive(href: string): boolean {
   }
 
   .logo-text {
+    font-family: var(--font-primary, 'Montserrat', sans-serif);
     font-size: 1.25rem;
     font-weight: 700;
     color: #ffffff;
@@ -356,6 +377,7 @@ function isActive(href: string): boolean {
   }
 
   .logo-tagline {
+    font-family: var(--font-secondary, 'Open Sans', sans-serif);
     font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 0.15em;
@@ -446,12 +468,6 @@ function isActive(href: string): boolean {
     }
   }
 
-  /* Hide top bar and sidebar toggle on smaller desktops if needed */
-  @media (max-width: 1200px) and (min-width: 992px) {
-    .header-top-email {
-      display: none;
-    }
-  }
 </style>
 
 <script is:inline>
@@ -459,24 +475,24 @@ function isActive(href: string): boolean {
   // Mobile menu is handled by MobileShell via navigation-v2.js (#sidebarToggle)
   document.addEventListener('DOMContentLoaded', () => {
     // ========================================
-    // ANNOUNCEMENT BAR - Scroll Behavior
-    // Uses existing .hidden class from porto-desktop.css
+    // CORAL TOP BAR - Scroll Behavior
+    // Disappears on scroll, returns at top
     // ========================================
-    const announcementBar = document.getElementById('announcementBar');
+    const coralTopBar = document.getElementById('coralTopBar');
     const scrollThreshold = 50;
 
-    function handleAnnouncementScroll() {
+    function handleCoralBarScroll() {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY > scrollThreshold) {
-        announcementBar?.classList.add('hidden');
+        coralTopBar?.classList.add('hidden');
       } else {
-        announcementBar?.classList.remove('hidden');
+        coralTopBar?.classList.remove('hidden');
       }
     }
 
-    window.addEventListener('scroll', handleAnnouncementScroll, { passive: true });
-    handleAnnouncementScroll();
+    window.addEventListener('scroll', handleCoralBarScroll, { passive: true });
+    handleCoralBarScroll();
 
     // ========================================
     // DESKTOP SIDEBAR TOGGLE
