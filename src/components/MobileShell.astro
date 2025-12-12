@@ -130,10 +130,10 @@ import { mobileNav, searchQuickLinks, siteContact } from '../data/navigation';
 
 <script is:inline>
 document.addEventListener('DOMContentLoaded', function() {
-  // Visual debug box - ALWAYS visible for testing
+  // Visual debug box - bottom right to not block header
   var debugBox = document.createElement('div');
   debugBox.id = 'mobileDebug';
-  debugBox.style.cssText = 'position:fixed;top:70px;left:10px;right:10px;background:red;color:white;font-family:monospace;font-size:12px;padding:10px;z-index:99999;border-radius:8px;';
+  debugBox.style.cssText = 'position:fixed;bottom:90px;right:10px;width:200px;background:rgba(0,0,0,0.9);color:lime;font-family:monospace;font-size:10px;padding:8px;z-index:99999;border-radius:8px;max-height:150px;overflow:auto;';
   document.body.appendChild(debugBox);
 
   function dbg(msg) {
@@ -195,19 +195,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Mobile top header toggle (top left hamburger button)
   if (sidebarToggle) {
-    // Add both click and touchend for mobile reliability
     function handleSidebarToggle(e) {
-      console.log('[MobileShell] Toggle clicked/touched!', e.type);
+      dbg('CLICK! type=' + e.type);
       e.preventDefault();
       e.stopPropagation();
       openSidebar();
+      dbg('openSidebar called');
     }
 
     sidebarToggle.addEventListener('click', handleSidebarToggle);
-    sidebarToggle.addEventListener('touchend', handleSidebarToggle, { passive: false });
-    console.log('[MobileShell] Toggle listeners attached');
+    sidebarToggle.addEventListener('touchstart', handleSidebarToggle, { passive: false });
+    dbg('Listeners attached');
+
+    // Also make the button very obvious it's clickable
+    sidebarToggle.style.background = 'lime';
+    sidebarToggle.style.border = '3px solid red';
   } else {
-    console.error('[MobileShell] sidebarToggle NOT FOUND!');
+    dbg('ERROR: Toggle NOT FOUND!');
   }
 
   // Watch for sidebar open from ANY source (including navigation-v2.js)
