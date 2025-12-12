@@ -162,17 +162,13 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   function openSidebar() {
-    console.log('[MobileShell] openSidebar called, menuSidebar:', menuSidebar);
     if (menuSidebar) {
       menuSidebar.classList.add('is-open');
-      console.log('[MobileShell] Added is-open to sidebar');
     }
     if (sidebarOverlay) {
       sidebarOverlay.classList.add('is-visible');
-      console.log('[MobileShell] Added is-visible to overlay');
     }
     document.body.style.overflow = 'hidden';
-    // Always expand Legal Translation when sidebar opens
     expandLegalDefault();
   }
 
@@ -319,43 +315,5 @@ document.addEventListener('DOMContentLoaded', function() {
   backToTop?.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
-
-  // Mobile Theme Toggle
-  const mobileThemeToggle = document.getElementById('mobileThemeToggle');
-
-  function updateMobileThemeIcon() {
-    if (!mobileThemeToggle) return;
-    const isDark = document.body.classList.contains('theme-dark');
-    const icon = mobileThemeToggle.querySelector('i');
-    if (icon) {
-      icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-    }
-  }
-
-  if (mobileThemeToggle) {
-    mobileThemeToggle.addEventListener('click', function(e) {
-      e.preventDefault();
-      const html = document.documentElement;
-      const body = document.body;
-      const isDark = body.classList.contains('theme-dark');
-
-      if (isDark) {
-        body.classList.remove('theme-dark');
-        body.classList.add('theme-light');
-        html.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-      } else {
-        body.classList.remove('theme-light');
-        body.classList.add('theme-dark');
-        html.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-      }
-
-      updateMobileThemeIcon();
-    });
-
-    // Set initial icon state
-    updateMobileThemeIcon();
-  }
 });
 </script>

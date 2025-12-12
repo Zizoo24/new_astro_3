@@ -368,7 +368,7 @@ body.theme-dark {
     background: transparent;
   }
 
-  /* Flyout menu */
+  /* Flyout menu - same styling as main dropdown */
   .dropdown-menu li.dropdown-submenu > .dropdown-menu {
     position: absolute;
     left: 100%;
@@ -380,8 +380,13 @@ body.theme-dark {
     visibility: hidden;
     transform: translate3d(-10px, 0, 0);
 
+    /* Match main dropdown styling */
+    background: var(--dropdown-bg);
+    border: 0;
+    border-top: 3px solid var(--dropdown-border-top);
     border-radius: var(--dropdown-submenu-radius);
-    border-top-width: 3px;
+    box-shadow: var(--dropdown-shadow);
+    padding: 5px 0;
     min-width: 220px;
     overflow: visible !important;
   }
