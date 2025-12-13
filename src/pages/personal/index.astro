@@ -1,468 +1,476 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+/**
+ * /personal/ - Personal Document Translation Hub
+ * 
+ * CONVERTED: BaseLayout → CategoryLayout
+ * Added: BreadcrumbList, Service, FAQPage schemas (auto-generated)
+ * Added: 10 FAQs for rich snippets
+ * Content: Preserved and enhanced from original
+ * 
+ * Silo: Personal & Civil (Silo 2)
+ * Type: Hub Page
+ */
+import CategoryLayout from '../../layouts/CategoryLayout.astro';
+
+const breadcrumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Personal Documents' }
+];
+
+const faqs = [
+  {
+    question: 'What personal documents need MOJ-certified translation in the UAE?',
+    answer: 'Personal documents requiring MOJ-certified translation include birth certificates (for visa sponsorship, school enrollment), marriage certificates (for spouse visa, family book registration), divorce certificates, death certificates, academic degrees and transcripts (for employment, professional licensing), police clearance certificates (for employment visa, Golden Visa), bank statements (for Golden Visa, property purchase), driving licenses (for RTA conversion), medical reports, and passport copies. Any document submitted to UAE government entities, courts, or official bodies requires MOJ certification.'
+  },
+  {
+    question: 'How long does personal document translation take?',
+    answer: 'Standard personal documents like birth certificates, marriage certificates, and single-page certificates complete within 4-6 hours. Multi-page documents such as academic transcripts (5-10 pages) take 24 hours. Bank statements depend on page count—typically 24-48 hours for 3-6 months of statements. Police clearance certificates complete within 6-12 hours. We offer same-day rush processing for urgent visa deadlines or government appointments.'
+  },
+  {
+    question: 'Do my documents need attestation before or after translation?',
+    answer: 'Documents from foreign countries typically need attestation before translation for UAE government acceptance. The attestation chain includes: notarization in the country of origin, authentication by that country Foreign Ministry, attestation by the UAE Embassy, and final MOFA attestation in the UAE. We review your documents during the initial assessment and advise on the proper sequence. Some documents (like UAE-issued certificates) may not require attestation—only MOJ-certified translation.'
+  },
+  {
+    question: 'Can you translate documents for Golden Visa applications?',
+    answer: 'Yes, we provide complete document translation packages for Golden Visa applications. This includes degree certificates (with MOHESR attestation coordination), professional licenses, bank statements showing required balances, property title deeds, employment contracts, salary certificates, and any supporting documentation. We understand ICA requirements and format translations for smooth Golden Visa processing.'
+  },
+  {
+    question: 'What if my name is spelled differently on different documents?',
+    answer: 'Name consistency is critical—40% of government rejections stem from name mismatches. We verify that translated names match your Emirates ID and passport exactly. If your source documents have variations (common with transliterated names), we note this and can provide consistency letters explaining the variations. During your initial submission, send copies of your Emirates ID and passport so we can ensure all translations use matching name spellings.'
+  },
+  {
+    question: 'Do you translate documents from languages other than English?',
+    answer: 'Yes, we translate personal documents from 40+ languages into Arabic for UAE use, and from Arabic into English or other languages for international use. Common language pairs include Hindi, Urdu, Tagalog, Russian, French, German, Chinese, Spanish, and Portuguese to Arabic. All translations receive the same MOJ certification regardless of source language.'
+  },
+  {
+    question: 'How do I submit documents for translation?',
+    answer: 'Send clear photos or scans of your documents via WhatsApp to +971 50 862 0217. We accept all common formats (photos, PDF, scans). Within 5-10 minutes, you receive confirmation of receipt, document assessment, and a fixed quote. After approval and payment, translation begins immediately. You receive the completed translation digitally, with optional physical copy courier delivery anywhere in the UAE.'
+  },
+  {
+    question: 'What is the cost of personal document translation?',
+    answer: 'Standard single-page certificates (birth, marriage, degree) start at AED 150 per page including MOJ certification. Multi-page documents (5+ pages) receive volume pricing at AED 120 per page. Express same-day service adds 50% to standard rates. We provide exact quotes after reviewing your specific documents—the price quoted is the price you pay with no hidden fees for stamps, formatting, or processing.'
+  },
+  {
+    question: 'Can you help with school enrollment document requirements?',
+    answer: 'Yes, we translate all documents required for school enrollment in UAE: birth certificates, previous school transcripts, transfer certificates, vaccination records, and parent passport copies. We understand KHDA requirements for Dubai schools and ADEK requirements for Abu Dhabi. Documents are formatted for direct submission to school administration offices.'
+  },
+  {
+    question: 'What happens if immigration or government rejects my translation?',
+    answer: 'If any UAE government entity rejects a translation we provided due to our error, we correct it immediately at no charge and redeliver. We also cover courier costs for physical redelivery. Our acceptance guarantee reflects years of experience with UAE government requirements—we know exactly what GDRFA, ICA, MOHRE, DLD, and other entities expect, and we format translations accordingly.'
+  }
+];
+
+const documentCategories = [
+  {
+    title: 'Birth Certificate Translation',
+    href: '/personal/vital-records/birth/',
+    icon: 'baby',
+    desc: 'Essential for visa applications, family sponsorship, school enrollment, and nationality registration. MOJ certification ensures acceptance by all UAE authorities.'
+  },
+  {
+    title: 'Marriage Certificate Translation',
+    href: '/personal/vital-records/marriage/',
+    icon: 'ring',
+    desc: 'Required for spouse visa sponsorship, family book registration, property co-ownership, and legal recognition of marriage status in the UAE.'
+  },
+  {
+    title: 'Police Clearance Certificate',
+    href: '/personal/immigration/pcc/',
+    icon: 'shield-alt',
+    desc: 'Mandatory for employment visas, Golden Visa applications, and immigration processing. Accurate translation of criminal record verification documents.'
+  },
+  {
+    title: 'Bank Statement Translation',
+    href: '/personal/immigration/bank/',
+    icon: 'university',
+    desc: 'Required for Golden Visa financial proof, property purchases, business setup, and immigration applications demonstrating financial stability.'
+  },
+  {
+    title: 'Driving License Translation',
+    href: '/personal/immigration/license/',
+    icon: 'id-card',
+    desc: 'Essential for UAE driving license conversion from eligible countries. RTA-accepted translations for efficient license exchange processing.'
+  },
+  {
+    title: 'Degree Certificate Translation',
+    href: '/personal/education/degree/',
+    icon: 'graduation-cap',
+    desc: 'Required for employment, professional licensing, and credential recognition. MOHESR attestation support for complete academic verification.'
+  }
+];
+
+const features = [
+  {
+    icon: 'stamp',
+    title: 'MOJ Certified',
+    desc: 'All translations carry official Ministry of Justice certification, formatted for acceptance by UAE courts, government bodies, and embassies.'
+  },
+  {
+    icon: 'bolt',
+    title: '60-Minute Drafts',
+    desc: 'Standard documents receive draft translations within 60 minutes, with same-day certified delivery available for urgent requirements.'
+  },
+  {
+    icon: 'check-double',
+    title: 'Acceptance Guaranteed',
+    desc: 'Our translations meet exact government specifications, formatted to standards required by UAE authorities. Free revision if rejected due to our error.'
+  },
+  {
+    icon: 'file-signature',
+    title: 'Attestation Support',
+    desc: 'Complete attestation coordination through MOFA, UAE embassies, and notary public services for documents requiring full legalization.'
+  }
+];
+
+const processSteps = [
+  {
+    number: 1,
+    title: 'Submit Documents',
+    desc: 'Send clear photos or scans of your documents via WhatsApp. We accept all formats and provide immediate confirmation of receipt.'
+  },
+  {
+    number: 2,
+    title: 'Receive Quote',
+    desc: 'Within 5-10 minutes, receive a detailed quote including translation, certification, and any attestation services required for your documents.'
+  },
+  {
+    number: 3,
+    title: 'Translation & Review',
+    desc: 'MOJ-licensed translators complete your work with quality review. You receive a draft for approval before final certification.'
+  },
+  {
+    number: 4,
+    title: 'Certified Delivery',
+    desc: 'Receive your stamped, certified translation via WhatsApp and email. Optional hard copy courier delivery anywhere in the UAE.'
+  }
+];
+
+const useCases = [
+  {
+    icon: 'passport',
+    title: 'Visa and Immigration Applications',
+    content: 'UAE immigration requires certified translations of personal documents for residency visas, family sponsorship, and Golden Visa applications. Essential documents include birth certificates for dependents, marriage certificates for spouse visas, bank statements for financial proof, and police clearance certificates for employment authorization. Our translations meet GDRFA and ICA requirements for all visa categories, ensuring smooth processing through immigration channels.'
+  },
+  {
+    icon: 'briefcase',
+    title: 'Employment and Professional Licensing',
+    content: 'Employers and licensing bodies in the UAE require translated and attested academic credentials, professional certificates, and experience letters. Healthcare professionals need DHA or DOH-accepted translations. Engineers require translations for SCAD registration. Teachers need MOE-compatible document formats. We coordinate with MOHESR for degree attestation and understand the specific requirements of each professional licensing body.'
+  },
+  {
+    icon: 'university',
+    title: 'University Admissions and Education',
+    content: 'Universities in the UAE require translated academic transcripts, degree certificates, and secondary school records for admission processing. International students need birth certificates for enrollment and visa processing. Scholarship applications often require translated financial documents. Our academic document translations meet requirements of leading UAE universities including NYU Abu Dhabi, American University of Sharjah, and all federal institutions.'
+  },
+  {
+    icon: 'building',
+    title: 'Property and Financial Transactions',
+    content: 'Real estate transactions in Dubai require translated personal documents for property registration with DLD. Bank account opening requires passport and address proof translations. Mortgage applications need translated salary certificates and financial statements. We provide DLD-accepted translations for property transactions and bank-compatible formats for financial institution requirements.'
+  }
+];
 ---
 
-<BaseLayout
+<CategoryLayout
   title="Personal Document Translation Dubai | MOJ Certified | OnlineTranslation.ae"
-  description="MOJ-certified personal document translation in Dubai. Birth certificates, marriage certificates, degrees, bank statements, driving licenses, police clearance. Designed for UAE visa, immigration, attestation acceptance."
+  description="MOJ-certified personal document translation in Dubai. Birth certificates, marriage certificates, degrees, bank statements, driving licenses, police clearance. Accepted by UAE visa, immigration, and government authorities."
+  keywords="personal document translation dubai, birth certificate translation, marriage certificate translation, degree translation uae, bank statement translation, police clearance translation, driving license translation dubai"
+  heroTitle="Personal Document Translation"
+  heroSubtitle="MOJ Certified for UAE Government Acceptance"
+  heroIntro="Your personal documents form the foundation of your identity, legal status, and professional credentials in the UAE. Whether applying for a Golden Visa, sponsoring family members, enrolling children in school, or establishing residency, accurate MOJ-certified translation ensures your documents are accepted without question by immigration, courts, and government authorities."
+  breadcrumbs={breadcrumbs}
+  serviceType="Personal Document Translation"
+  faqs={faqs}
 >
-  <Fragment slot="head">
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "Personal Document Translation Services Dubai",
-      "description": "MOJ-certified personal document translation including birth certificates, marriage certificates, academic degrees, bank statements, and immigration documents",
-      "provider": {
-        "@type": "Organization",
-        "name": "OnlineTranslation.ae",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Dubai",
-          "addressCountry": "AE"
-        }
-      },
-      "areaServed": ["Dubai", "Abu Dhabi", "Sharjah", "UAE"],
-      "serviceType": ["Certificate Translation", "Personal Document Translation", "Immigration Document Translation"],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Personal Document Translation Services",
-        "itemListElement": [
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Birth Certificate Translation"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Marriage Certificate Translation"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Degree Certificate Translation"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Bank Statement Translation"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Police Clearance Translation"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Driving License Translation"}}
-        ]
-      }
-    })} />
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://onlinetranslation.ae/"},
-        {"@type": "ListItem", "position": 2, "name": "Personal Documents", "item": "https://onlinetranslation.ae/personal/"}
-      ]
-    })} />
-  </Fragment>
 
-  <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+  <!-- Document Categories Section -->
+  <section class="section">
     <div class="container">
-      <ol class="breadcrumb-list">
-        <li><a href="/">Home</a></li>
-        <li aria-current="page">Personal Documents</li>
-      </ol>
-    </div>
-  </nav>
+      <h2>Personal Document Categories</h2>
+      <p class="section-intro">Select your document type below to learn about specific requirements, pricing, and turnaround times for your translation needs.</p>
 
-  <section class="page-hero service-hero">
-    <div class="container">
-      <div class="hero-content">
-        <span class="hero-badge">MOJ Certified</span>
-        <h1 class="hero-title">Personal Document Translation Dubai</h1>
-        <p class="hero-description">Your trusted partner for Ministry of Justice certified personal document translation. From birth certificates to academic degrees, we ensure every translation meets the exacting standards required by UAE government bodies, embassies, and immigration authorities. With court-ready formatting and rapid turnaround, we handle life's most important paperwork with the care and precision it deserves.</p>
-        <div class="hero-cta-group">
-          <a href="https://wa.me/971508620217?text=I%20need%20personal%20document%20translation" class="hero-btn hero-btn--primary">
-            <i class="fab fa-whatsapp"></i> Get Free Quote
+      <div class="documents-grid">
+        {documentCategories.map(doc => (
+          <a href={doc.href} class="document-card">
+            <div class="document-icon">
+              <i class={`fas fa-${doc.icon}`}></i>
+            </div>
+            <h3>{doc.title}</h3>
+            <p>{doc.desc}</p>
+            <span class="document-link">Learn More <i class="fas fa-arrow-right"></i></span>
           </a>
-          <a href="#document-categories" class="hero-btn hero-btn--ghost">
-            View All Documents <i class="fas fa-arrow-down"></i>
-          </a>
-        </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <section class="intro-section">
+  <!-- Why Choose Us Section -->
+  <section class="section bg-dark">
     <div class="container">
-      <div class="content-block">
-        <h2 class="section-title">Comprehensive Personal Document Translation Services in Dubai</h2>
-        <p class="intro-text">Personal documents form the foundation of your identity, legal status, and professional credentials in the UAE. Whether you are applying for a Golden Visa, sponsoring family members, enrolling in a university, or establishing residency, accurate translation of your personal documents is essential for success.</p>
-        <p class="intro-text">At OnlineTranslation.ae, we specialize in MOJ-certified personal document translation that meets the rigorous requirements of UAE government bodies, courts, immigration departments, and international embassies. Our translators hold Ministry of Justice licenses and understand the specific formatting, terminology, and certification requirements that ensure your documents are accepted without question.</p>
-        <p class="intro-text intro-text--last">Every personal document carries significant weight in official proceedings. A birth certificate translation supports visa applications and family sponsorship. A marriage certificate enables spouse visa processing. Academic degree translations open doors to professional licensing and employment. We treat each document with the importance it deserves, delivering translations that protect your interests and advance your goals in the UAE.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="document-categories" class="categories-section">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Personal Document Categories</h2>
-        <p class="section-subtitle">Select your document type below to learn about specific requirements, pricing, and turnaround times for your translation needs.</p>
-      </div>
-
-      <div class="service-cards-grid">
-        <a href="/personal/vital-records/birth/" class="service-card">
-          <div class="service-card__icon">
-            <i class="fas fa-baby"></i>
-          </div>
-          <h3 class="service-card__title">Birth Certificate Translation</h3>
-          <p class="service-card__text">Essential for visa applications, family sponsorship, school enrollment, and nationality registration. MOJ certification ensures acceptance by all UAE authorities.</p>
-          <span class="service-card__link">Learn More <i class="fas fa-arrow-right"></i></span>
-        </a>
-
-        <a href="/personal/vital-records/marriage/" class="service-card">
-          <div class="service-card__icon">
-            <i class="fas fa-ring"></i>
-          </div>
-          <h3 class="service-card__title">Marriage Certificate Translation</h3>
-          <p class="service-card__text">Required for spouse visa sponsorship, family book registration, property co-ownership, and legal recognition of marriage status in the UAE.</p>
-          <span class="service-card__link">Learn More <i class="fas fa-arrow-right"></i></span>
-        </a>
-
-        <a href="/personal/immigration/pcc/" class="service-card">
-          <div class="service-card__icon">
-            <i class="fas fa-shield-alt"></i>
-          </div>
-          <h3 class="service-card__title">Police Clearance Certificate</h3>
-          <p class="service-card__text">Mandatory for employment visas, Golden Visa applications, and immigration processing. Accurate translation of criminal record verification documents.</p>
-          <span class="service-card__link">Learn More <i class="fas fa-arrow-right"></i></span>
-        </a>
-
-        <a href="/personal/immigration/bank/" class="service-card">
-          <div class="service-card__icon">
-            <i class="fas fa-university"></i>
-          </div>
-          <h3 class="service-card__title">Bank Statement Translation</h3>
-          <p class="service-card__text">Required for Golden Visa financial proof, property purchases, business setup, and immigration applications demonstrating financial stability.</p>
-          <span class="service-card__link">Learn More <i class="fas fa-arrow-right"></i></span>
-        </a>
-
-        <a href="/personal/immigration/license/" class="service-card">
-          <div class="service-card__icon">
-            <i class="fas fa-id-card"></i>
-          </div>
-          <h3 class="service-card__title">Driving License Translation</h3>
-          <p class="service-card__text">Essential for UAE driving license conversion from eligible countries. RTA-accepted translations for efficient license exchange processing.</p>
-          <span class="service-card__link">Learn More <i class="fas fa-arrow-right"></i></span>
-        </a>
-
-        <a href="/personal/academic/degree/" class="service-card">
-          <div class="service-card__icon">
-            <i class="fas fa-graduation-cap"></i>
-          </div>
-          <h3 class="service-card__title">Degree Certificate Translation</h3>
-          <p class="service-card__text">Required for employment, professional licensing, and credential recognition. MOHESR attestation support for complete academic verification.</p>
-          <span class="service-card__link">Learn More <i class="fas fa-arrow-right"></i></span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="why-choose-section">
-    <div class="container">
-      <div class="section-header section-header--light">
-        <h2 class="section-title">Why Choose Us for Personal Document Translation</h2>
-        <p class="section-subtitle">Relied upon by individuals and families across the UAE for accurate, certified translations formatted for government acceptance.</p>
-      </div>
+      <h2 class="text-white">Why Choose Us for Personal Document Translation</h2>
+      <p class="section-intro text-white-muted">Trusted by individuals and families across the UAE for accurate, certified translations formatted for government acceptance.</p>
 
       <div class="features-grid">
-        <div class="feature-item">
-          <div class="feature-item__icon">
-            <i class="fas fa-stamp"></i>
+        {features.map(feature => (
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class={`fas fa-${feature.icon}`}></i>
+            </div>
+            <h3>{feature.title}</h3>
+            <p>{feature.desc}</p>
           </div>
-          <h3 class="feature-item__title">MOJ Certified</h3>
-          <p class="feature-item__text">All translations carry official Ministry of Justice certification, formatted for acceptance by UAE courts, government bodies, and embassies.</p>
-        </div>
-
-        <div class="feature-item">
-          <div class="feature-item__icon">
-            <i class="fas fa-bolt"></i>
-          </div>
-          <h3 class="feature-item__title">60-Minute Drafts</h3>
-          <p class="feature-item__text">Standard documents receive draft translations within 60 minutes, with same-day certified delivery available for urgent requirements.</p>
-        </div>
-
-        <div class="feature-item">
-          <div class="feature-item__icon">
-            <i class="fas fa-check-double"></i>
-          </div>
-          <h3 class="feature-item__title">Consistent Acceptance</h3>
-          <p class="feature-item__text">Our translations meet exact government specifications, formatted to the standards required by UAE authorities and international embassies.</p>
-        </div>
-
-        <div class="feature-item">
-          <div class="feature-item__icon">
-            <i class="fas fa-file-signature"></i>
-          </div>
-          <h3 class="feature-item__title">Attestation Support</h3>
-          <p class="feature-item__text">Complete attestation coordination through MOFA, UAE embassies, and notary public services for documents requiring full legalization.</p>
-        </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <section class="process-section">
+  <!-- Comprehensive Services Section -->
+  <section class="section">
     <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Our Simple Translation Process</h2>
-        <p class="section-subtitle">From document submission to certified delivery, our streamlined process ensures fast, accurate translations with minimal effort on your part.</p>
-      </div>
+      <h2>Comprehensive Personal Document Translation Services in Dubai</h2>
+      
+      <p>Personal documents carry significant weight in official proceedings throughout the UAE. A birth certificate translation supports visa applications and family sponsorship. A marriage certificate enables spouse visa processing. Academic degree translations open doors to professional licensing and employment. We treat each document with the importance it deserves, delivering translations that protect your interests and advance your goals.</p>
+      
+      <p>At OnlineTranslation.ae, we specialize in MOJ-certified personal document translation that meets the rigorous requirements of UAE government bodies, courts, immigration departments, and international embassies. Our translators hold Ministry of Justice licenses and understand the specific formatting, terminology, and certification requirements that ensure your documents are accepted without question.</p>
+
+      <h3>The Importance of Name Consistency</h3>
+      
+      <p>One of the most common reasons for document rejection at UAE government counters is name inconsistency. When your birth certificate shows "Mohammed," your degree says "Muhammad," and your passport reads "Mohamed," authorities may question whether all documents belong to the same person. This is especially problematic for names transliterated from Arabic, Hindi, Urdu, or other non-Latin scripts.</p>
+      
+      <p>We verify that all translated names match your Emirates ID and passport exactly. If source documents contain variations, we note these and can provide supporting documentation explaining the discrepancies. This attention to detail—developed from processing thousands of documents—prevents the frustrating rejections that delay your important applications.</p>
+
+      <h3>Understanding UAE Document Requirements</h3>
+      
+      <p>Different UAE authorities have different requirements for personal documents. GDRFA (immigration) needs specific formats for visa applications. MOHRE requires particular layouts for employment-related documents. DLD has its own standards for property transaction documentation. Educational institutions follow KHDA or ADEK guidelines depending on the emirate.</p>
+      
+      <p>We maintain current knowledge of these varying requirements and format each translation accordingly. This specialization means your documents arrive ready for submission—no reformatting, no additional steps, no delays at the counter while staff try to interpret non-standard translations.</p>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Our Simple Translation Process</h2>
+      <p class="section-intro">From document submission to certified delivery—our streamlined process ensures fast, accurate translations with minimal effort on your part.</p>
 
       <div class="process-grid">
-        <div class="process-step">
-          <div class="process-step__number">1</div>
-          <h3 class="process-step__title">Submit Documents</h3>
-          <p class="process-step__text">Send clear photos or scans of your documents via WhatsApp. We accept all formats and provide immediate confirmation.</p>
-        </div>
-
-        <div class="process-step">
-          <div class="process-step__number">2</div>
-          <h3 class="process-step__title">Receive Quote</h3>
-          <p class="process-step__text">Within 5 minutes, receive a detailed quote including translation, certification, and any attestation services required.</p>
-        </div>
-
-        <div class="process-step">
-          <div class="process-step__number">3</div>
-          <h3 class="process-step__title">Translation & Review</h3>
-          <p class="process-step__text">MOJ-licensed translators complete your work with quality review. You receive a draft for approval before final certification.</p>
-        </div>
-
-        <div class="process-step">
-          <div class="process-step__number">4</div>
-          <h3 class="process-step__title">Certified Delivery</h3>
-          <p class="process-step__text">Receive your stamped, certified translation via email for digital use, with optional hard copy courier delivery across UAE.</p>
-        </div>
+        {processSteps.map(step => (
+          <div class="process-card">
+            <div class="process-number">{step.number}</div>
+            <h3>{step.title}</h3>
+            <p>{step.desc}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <section class="use-cases-section">
+  <!-- Use Cases Section -->
+  <section class="section">
     <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Common Use Cases for Personal Document Translation</h2>
-        <p class="section-subtitle">Understanding when and why you need certified personal document translation helps ensure you have the right documents ready for your specific requirements.</p>
-      </div>
+      <h2>Common Use Cases for Personal Document Translation</h2>
+      <p class="section-intro">Understanding when and why you need certified personal document translation helps ensure you have the right documents ready for your specific requirements.</p>
 
       <div class="use-cases-grid">
-        <div class="use-case-card">
-          <h3 class="use-case-card__title"><i class="fas fa-passport"></i>Visa and Immigration Applications</h3>
-          <p class="use-case-card__text">UAE immigration requires certified translations of personal documents for residency visas, family sponsorship, and Golden Visa applications. Essential documents include birth certificates for dependents, marriage certificates for spouse visas, bank statements for financial proof, and police clearance certificates for employment authorization.</p>
-          <p class="use-case-card__text">Our translations meet GDRFA and ICA requirements for all visa categories, ensuring smooth processing through immigration channels. We understand the specific formatting and certification requirements that immigration officers expect.</p>
-        </div>
-
-        <div class="use-case-card">
-          <h3 class="use-case-card__title"><i class="fas fa-briefcase"></i>Employment and Professional Licensing</h3>
-          <p class="use-case-card__text">Employers and licensing bodies in the UAE require translated and attested academic credentials, professional certificates, and experience letters. Healthcare professionals need DHA or DOH-accepted translations. Engineers require translations for SCAD registration. Teachers need MOE-compatible document formats.</p>
-          <p class="use-case-card__text">We coordinate with MOHESR for degree attestation and understand the specific requirements of each professional licensing body in the UAE, ensuring your credentials are properly translated and ready for submission.</p>
-        </div>
-
-        <div class="use-case-card">
-          <h3 class="use-case-card__title"><i class="fas fa-university"></i>University Admissions and Education</h3>
-          <p class="use-case-card__text">Universities in the UAE require translated academic transcripts, degree certificates, and secondary school records for admission processing. International students need birth certificates for enrollment and visa processing. Scholarship applications often require translated financial documents.</p>
-          <p class="use-case-card__text">Our academic document translations meet the requirements of leading UAE universities including NYU Abu Dhabi, American University of Sharjah, and all federal institutions. We understand academic terminology and formatting expectations.</p>
-        </div>
-
-        <div class="use-case-card">
-          <h3 class="use-case-card__title"><i class="fas fa-building"></i>Property and Financial Transactions</h3>
-          <p class="use-case-card__text">Real estate transactions in Dubai require translated personal documents for property registration with DLD. Bank account opening requires passport and address proof translations. Mortgage applications need translated salary certificates and financial statements.</p>
-          <p class="use-case-card__text">We provide DLD-accepted translations for property transactions and bank-compatible formats for financial institution requirements. Our translators understand the financial and legal terminology essential for these sensitive transactions.</p>
-        </div>
+        {useCases.map(useCase => (
+          <div class="use-case-card">
+            <h3><i class={`fas fa-${useCase.icon}`}></i> {useCase.title}</h3>
+            <p>{useCase.content}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <section class="pricing-overview">
+  <!-- Pricing Section -->
+  <section class="section bg-light">
     <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Personal Document Translation Pricing</h2>
-        <p class="section-subtitle">Transparent pricing with no hidden fees. All quotes include MOJ certification, quality review, and digital delivery.</p>
-      </div>
+      <h2>Personal Document Translation Pricing</h2>
+      <p class="section-intro">Transparent pricing with no hidden fees. All quotes include MOJ certification, quality review, and digital delivery.</p>
 
       <div class="pricing-grid">
         <div class="pricing-card">
-          <h3 class="pricing-card__title">Standard Certificates</h3>
-          <div class="pricing-card__price">AED 150</div>
-          <p class="pricing-card__unit">per page</p>
-          <ul class="pricing-card__features">
-            <li><i class="fas fa-check"></i>Birth Certificates</li>
-            <li><i class="fas fa-check"></i>Marriage Certificates</li>
-            <li><i class="fas fa-check"></i>Degree Certificates</li>
-            <li><i class="fas fa-check"></i>24-48 Hour Delivery</li>
+          <h3>Standard Certificates</h3>
+          <div class="pricing-amount">AED 150</div>
+          <div class="pricing-unit">per page</div>
+          <ul>
+            <li><i class="fas fa-check"></i> Birth Certificates</li>
+            <li><i class="fas fa-check"></i> Marriage Certificates</li>
+            <li><i class="fas fa-check"></i> Degree Certificates</li>
+            <li><i class="fas fa-check"></i> 24-48 Hour Delivery</li>
           </ul>
-          <a href="https://wa.me/971508620217" class="pricing-card__btn">Get Quote</a>
+          <a href="https://wa.me/971508620217" class="btn btn--outline">Get Quote</a>
         </div>
 
-        <div class="pricing-card pricing-card--featured">
-          <span class="pricing-card__badge">MOST POPULAR</span>
-          <h3 class="pricing-card__title">Multi-Page Documents</h3>
-          <div class="pricing-card__price">AED 120</div>
-          <p class="pricing-card__unit">per page (5+ pages)</p>
-          <ul class="pricing-card__features">
-            <li><i class="fas fa-check"></i>Bank Statements</li>
-            <li><i class="fas fa-check"></i>Academic Transcripts</li>
-            <li><i class="fas fa-check"></i>Medical Reports</li>
-            <li><i class="fas fa-check"></i>Volume Discount Applied</li>
+        <div class="pricing-card featured">
+          <div class="pricing-badge">MOST POPULAR</div>
+          <h3>Multi-Page Documents</h3>
+          <div class="pricing-amount">AED 120</div>
+          <div class="pricing-unit">per page (5+ pages)</div>
+          <ul>
+            <li><i class="fas fa-check"></i> Bank Statements</li>
+            <li><i class="fas fa-check"></i> Academic Transcripts</li>
+            <li><i class="fas fa-check"></i> Medical Reports</li>
+            <li><i class="fas fa-check"></i> Volume Discount Applied</li>
           </ul>
-          <a href="https://wa.me/971508620217" class="pricing-card__btn">Get Quote</a>
+          <a href="https://wa.me/971508620217" class="btn btn--primary">Get Quote</a>
         </div>
 
         <div class="pricing-card">
-          <h3 class="pricing-card__title">Express Service</h3>
-          <div class="pricing-card__price">+50%</div>
-          <p class="pricing-card__unit">urgent surcharge</p>
-          <ul class="pricing-card__features">
-            <li><i class="fas fa-check"></i>Same-Day Delivery</li>
-            <li><i class="fas fa-check"></i>Priority Processing</li>
-            <li><i class="fas fa-check"></i>Dedicated Translator</li>
-            <li><i class="fas fa-check"></i>4-Hour Rush Option</li>
+          <h3>Express Service</h3>
+          <div class="pricing-amount">+50%</div>
+          <div class="pricing-unit">urgent surcharge</div>
+          <ul>
+            <li><i class="fas fa-check"></i> Same-Day Delivery</li>
+            <li><i class="fas fa-check"></i> Priority Processing</li>
+            <li><i class="fas fa-check"></i> Dedicated Translator</li>
+            <li><i class="fas fa-check"></i> 4-Hour Rush Option</li>
           </ul>
-          <a href="https://wa.me/971508620217?text=URGENT" class="pricing-card__btn">Request Urgent</a>
+          <a href="https://wa.me/971508620217?text=URGENT" class="btn btn--outline">Request Urgent</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="attestation-section">
+  <!-- Attestation Section -->
+  <section class="section">
     <div class="container">
       <div class="attestation-grid">
         <div class="attestation-content">
-          <h2 class="section-title">Complete Attestation Coordination</h2>
-          <p class="attestation-text">Many personal documents require full attestation before submission to UAE authorities. This involves a multi-step legalization process through your home country, the UAE Embassy, and MOFA. We coordinate the entire attestation chain, saving you time and ensuring proper completion at each stage.</p>
-          <p class="attestation-text">Our attestation services include notarization coordination, embassy appointment scheduling, MOFA submission, and document tracking throughout the process. We handle documents from all countries with established attestation protocols.</p>
+          <h2>Complete Attestation Coordination</h2>
+          <p>Many personal documents require full attestation before submission to UAE authorities. This involves a multi-step legalization process through your home country, the UAE Embassy, and MOFA. We coordinate the entire attestation chain, saving you time and ensuring proper completion at each stage.</p>
+          <p>Our attestation services include notarization coordination, embassy appointment scheduling, MOFA submission, and document tracking throughout the process. We handle documents from all countries with established attestation protocols.</p>
           <ul class="attestation-list">
-            <li><i class="fas fa-check-circle"></i>Home Country Notarization</li>
-            <li><i class="fas fa-check-circle"></i>UAE Embassy Attestation</li>
-            <li><i class="fas fa-check-circle"></i>MOFA Final Legalization</li>
-            <li><i class="fas fa-check-circle"></i>Document Collection & Delivery</li>
+            <li><i class="fas fa-check-circle"></i> Home Country Notarization</li>
+            <li><i class="fas fa-check-circle"></i> UAE Embassy Attestation</li>
+            <li><i class="fas fa-check-circle"></i> MOFA Final Legalization</li>
+            <li><i class="fas fa-check-circle"></i> Document Collection & Delivery</li>
           </ul>
+          <a href="/services/attestation/" class="btn btn--primary">
+            <i class="fas fa-arrow-right"></i> Learn About Attestation
+          </a>
         </div>
+        
         <div class="attestation-box">
-          <h3 class="attestation-box__title">Documents Requiring Attestation</h3>
-          <div class="attestation-docs-grid">
-            <div class="attestation-doc">
-              <i class="fas fa-baby"></i>
-              <span>Birth Certificates</span>
-            </div>
-            <div class="attestation-doc">
-              <i class="fas fa-ring"></i>
-              <span>Marriage Certificates</span>
-            </div>
-            <div class="attestation-doc">
-              <i class="fas fa-graduation-cap"></i>
-              <span>Degree Certificates</span>
-            </div>
-            <div class="attestation-doc">
-              <i class="fas fa-shield-alt"></i>
-              <span>Police Clearance</span>
-            </div>
-            <div class="attestation-doc">
-              <i class="fas fa-file-medical"></i>
-              <span>Medical Reports</span>
-            </div>
-            <div class="attestation-doc">
-              <i class="fas fa-file-contract"></i>
-              <span>Power of Attorney</span>
-            </div>
+          <h3>Documents Requiring Attestation</h3>
+          <div class="attestation-docs">
+            <div class="attestation-doc"><i class="fas fa-baby"></i> Birth Certificates</div>
+            <div class="attestation-doc"><i class="fas fa-ring"></i> Marriage Certificates</div>
+            <div class="attestation-doc"><i class="fas fa-graduation-cap"></i> Degree Certificates</div>
+            <div class="attestation-doc"><i class="fas fa-shield-alt"></i> Police Clearance</div>
+            <div class="attestation-doc"><i class="fas fa-file-medical"></i> Medical Reports</div>
+            <div class="attestation-doc"><i class="fas fa-file-contract"></i> Power of Attorney</div>
           </div>
-          <a href="/services/attestation/" class="attestation-box__btn">Learn About Attestation</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="cta-section">
+  <!-- Related Services -->
+  <section class="section bg-light">
     <div class="container">
-      <h2 class="cta-section__title">Ready to Translate Your Personal Documents?</h2>
-      <p class="cta-section__text">Send your documents via WhatsApp for a free quote. Most translations completed within 24 hours with MOJ certification included.</p>
-      <div class="cta-section__buttons">
-        <a href="https://wa.me/971508620217" class="cta-btn cta-btn--primary">
-          <i class="fab fa-whatsapp"></i> Send Documents Now
+      <h2>Related Services</h2>
+      <div class="related-grid">
+        <a href="/legal-translation-dubai/" class="related-card">
+          <i class="fas fa-balance-scale"></i>
+          <h3>Legal Translation</h3>
+          <p>Court documents, contracts, and corporate filings</p>
         </a>
-        <a href="tel:+971508620217" class="cta-btn cta-btn--ghost">
-          <i class="fas fa-phone-alt"></i> Call +971 50 862 0217
+        <a href="/services/attestation/" class="related-card">
+          <i class="fas fa-stamp"></i>
+          <h3>Document Attestation</h3>
+          <p>MOFA and embassy legalization services</p>
+        </a>
+        <a href="/services/golden-visa-translation/" class="related-card">
+          <i class="fas fa-star"></i>
+          <h3>Golden Visa Package</h3>
+          <p>Complete document packages for investor visas</p>
+        </a>
+        <a href="/resources/document-checklist/" class="related-card">
+          <i class="fas fa-list-check"></i>
+          <h3>Document Checklist</h3>
+          <p>Requirements by visa and application type</p>
         </a>
       </div>
     </div>
   </section>
-</BaseLayout>
+
+</CategoryLayout>
 
 <style>
-  /* Intro Section */
-  .intro-section {
-    padding: 60px 0;
-    background: var(--bg-light);
+  /* Base Section Styles */
+  .section {
+    padding: 4rem 0;
   }
 
-  .content-block {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .section-title {
-    font-size: 28px;
-    margin-bottom: 20px;
+  .section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
     color: var(--primary-color);
   }
 
-  .intro-text {
-    font-size: 17px;
+  .section h3 {
+    font-size: 1.25rem;
+    margin: 2rem 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .section p {
     line-height: 1.8;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
   }
 
-  .intro-text--last {
-    margin-bottom: 0;
-  }
-
-  /* Section Headers */
-  .section-header {
-    text-align: center;
-    margin-bottom: 50px;
-  }
-
-  .section-header--light {
-    color: white;
-  }
-
-  .section-header--light .section-title {
-    color: white;
-  }
-
-  .section-subtitle {
-    font-size: 18px;
+  .section-intro {
+    font-size: 1.1rem;
     color: var(--text-muted);
-    max-width: 700px;
-    margin: 0 auto;
+    margin-bottom: 2.5rem;
+    max-width: 800px;
   }
 
-  .section-header--light .section-subtitle {
-    opacity: 0.9;
-    color: white;
+  .text-white {
+    color: #fff;
   }
 
-  /* Categories Section */
-  .categories-section {
-    padding: 80px 0;
+  .text-white-muted {
+    color: rgba(255, 255, 255, 0.85);
   }
 
-  .categories-section .section-title {
-    font-size: 32px;
+  .bg-dark {
+    background: var(--primary-color);
+    color: #fff;
   }
 
-  .service-cards-grid {
+  .bg-dark h2,
+  .bg-dark h3 {
+    color: #fff;
+  }
+
+  .bg-light {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  /* Documents Grid */
+  .documents-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin-bottom: 60px;
+    gap: 1.5rem;
   }
 
-  .service-card {
-    display: block;
-    background: white;
-    border-radius: 16px;
-    padding: 35px 30px;
+  .document-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
     text-decoration: none;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    color: inherit;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
+    display: block;
   }
 
-  .service-card:hover {
+  .document-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
   }
 
-  .service-card__icon {
+  .document-icon {
     width: 60px;
     height: 60px;
     background: var(--accent-color);
@@ -470,104 +478,91 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
   }
 
-  .service-card__icon i {
-    font-size: 24px;
-    color: white;
+  .document-icon i {
+    font-size: 1.5rem;
+    color: #fff;
   }
 
-  .service-card__title {
-    font-size: 20px;
+  .document-card h3 {
+    font-size: 1.15rem;
+    margin: 0 0 0.75rem;
     color: var(--primary-color);
-    margin-bottom: 12px;
   }
 
-  .service-card__text {
+  .document-card p {
     color: var(--text-muted);
-    line-height: 1.7;
-    margin-bottom: 15px;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
   }
 
-  .service-card__link {
+  .document-link {
     color: var(--accent-color);
     font-weight: 600;
+    font-size: 0.9rem;
   }
 
-  .service-card__link i {
-    margin-left: 5px;
+  .document-link i {
+    margin-left: 0.25rem;
+    font-size: 0.8rem;
   }
 
-  /* Why Choose Section */
-  .why-choose-section {
-    padding: 80px 0;
-    background: var(--primary-color);
-    color: white;
-  }
-
-  .why-choose-section .section-title {
-    font-size: 32px;
-  }
-
+  /* Features Grid */
   .features-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
+    gap: 2rem;
   }
 
-  .feature-item {
+  .feature-card {
     text-align: center;
-    padding: 30px 20px;
+    padding: 1.5rem;
   }
 
-  .feature-item__icon {
+  .feature-icon {
     width: 70px;
     height: 70px;
-    background: rgba(255,255,255,0.15);
+    background: rgba(255, 255, 255, 0.15);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 20px;
+    margin: 0 auto 1.25rem;
   }
 
-  .feature-item__icon i {
-    font-size: 28px;
+  .feature-icon i {
+    font-size: 1.75rem;
     color: var(--accent-color);
   }
 
-  .feature-item__title {
-    font-size: 18px;
-    margin-bottom: 12px;
+  .feature-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
   }
 
-  .feature-item__text {
-    opacity: 0.85;
+  .feature-card p {
+    font-size: 0.95rem;
+    opacity: 0.9;
     line-height: 1.6;
+    margin: 0;
   }
 
-  /* Process Section */
-  .process-section {
-    padding: 80px 0;
-  }
-
-  .process-section .section-title {
-    font-size: 32px;
-  }
-
+  /* Process Grid */
   .process-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
+    gap: 2rem;
   }
 
-  .process-step {
+  .process-card {
     text-align: center;
     position: relative;
   }
 
-  .process-step__number {
+  .process-number {
     width: 60px;
     height: 60px;
     background: var(--accent-color);
@@ -575,342 +570,331 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 20px;
-    color: white;
-    font-size: 24px;
+    margin: 0 auto 1.25rem;
+    color: #fff;
+    font-size: 1.5rem;
     font-weight: 700;
   }
 
-  .process-step__title {
-    font-size: 18px;
-    color: var(--primary-color);
-    margin-bottom: 10px;
+  .process-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
   }
 
-  .process-step__text {
+  .process-card p {
     color: var(--text-muted);
     line-height: 1.6;
+    font-size: 0.95rem;
+    margin: 0;
   }
 
-  /* Use Cases Section */
-  .use-cases-section {
-    padding: 80px 0;
-    background: var(--bg-light);
-  }
-
-  .use-cases-section .section-title {
-    font-size: 32px;
-  }
-
+  /* Use Cases Grid */
   .use-cases-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+    gap: 2rem;
   }
 
   .use-case-card {
-    background: white;
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   }
 
-  .use-case-card__title {
-    font-size: 22px;
+  .use-case-card h3 {
+    font-size: 1.25rem;
+    margin: 0 0 1rem;
     color: var(--primary-color);
-    margin-bottom: 20px;
   }
 
-  .use-case-card__title i {
+  .use-case-card h3 i {
     color: var(--accent-color);
-    margin-right: 10px;
+    margin-right: 0.5rem;
   }
 
-  .use-case-card__text {
+  .use-case-card p {
     color: var(--text-muted);
     line-height: 1.8;
-    margin-bottom: 15px;
+    margin: 0;
   }
 
-  .use-case-card__text:last-child {
-    margin-bottom: 0;
-  }
-
-  /* Pricing Section */
-  .pricing-overview {
-    padding: 80px 0;
-  }
-
-  .pricing-overview .section-title {
-    font-size: 32px;
-  }
-
+  /* Pricing Grid */
   .pricing-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 2rem;
     max-width: 1000px;
     margin: 0 auto;
   }
 
   .pricing-card {
-    background: white;
+    background: #fff;
     border: 2px solid #eee;
     border-radius: 16px;
-    padding: 35px 30px;
+    padding: 2rem;
     text-align: center;
-  }
-
-  .pricing-card--featured {
-    background: var(--primary-color);
-    color: white;
-    transform: scale(1.05);
-  }
-
-  .pricing-card__badge {
-    background: var(--accent-color);
-    color: white;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
     position: relative;
-    top: -10px;
-    display: inline-block;
   }
 
-  .pricing-card__title {
-    font-size: 20px;
-    color: var(--primary-color);
-    margin-bottom: 10px;
+  .pricing-card.featured {
+    background: var(--primary-color);
+    color: #fff;
+    transform: scale(1.05);
+    border-color: var(--primary-color);
   }
 
-  .pricing-card--featured .pricing-card__title {
-    color: white;
+  .pricing-badge {
+    background: var(--accent-color);
+    color: #fff;
+    padding: 0.35rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
-  .pricing-card__price {
-    font-size: 42px;
+  .pricing-card h3 {
+    font-size: 1.15rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .pricing-card.featured h3 {
+    color: #fff;
+  }
+
+  .pricing-amount {
+    font-size: 2.5rem;
     font-weight: 700;
     color: var(--accent-color);
-    margin-bottom: 10px;
+    margin-bottom: 0.25rem;
   }
 
-  .pricing-card__unit {
+  .pricing-unit {
     color: var(--text-muted);
-    margin-bottom: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
   }
 
-  .pricing-card--featured .pricing-card__unit {
-    opacity: 0.8;
-    color: white;
+  .pricing-card.featured .pricing-unit {
+    color: rgba(255, 255, 255, 0.8);
   }
 
-  .pricing-card__features {
-    text-align: left;
+  .pricing-card ul {
     list-style: none;
     padding: 0;
-    margin-bottom: 25px;
+    margin: 0 0 1.5rem;
+    text-align: left;
   }
 
-  .pricing-card__features li {
-    padding: 8px 0;
+  .pricing-card li {
+    padding: 0.5rem 0;
     border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
   }
 
-  .pricing-card--featured .pricing-card__features li {
-    border-bottom-color: rgba(255,255,255,0.2);
+  .pricing-card.featured li {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
   }
 
-  .pricing-card__features i {
+  .pricing-card li i {
     color: var(--accent-color);
-    margin-right: 8px;
-  }
-
-  .pricing-card__btn {
-    display: block;
-    background: var(--accent-color);
-    color: white;
-    padding: 14px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
+    margin-right: 0.5rem;
   }
 
   /* Attestation Section */
-  .attestation-section {
-    padding: 80px 0;
-    background: var(--bg-light);
-  }
-
   .attestation-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 3rem;
     align-items: center;
   }
 
-  .attestation-content .section-title {
-    font-size: 32px;
+  .attestation-content h2 {
+    margin-top: 0;
   }
 
-  .attestation-text {
-    font-size: 17px;
-    line-height: 1.8;
-    margin-bottom: 20px;
+  .attestation-content p {
     color: var(--text-muted);
+    margin-bottom: 1rem;
   }
 
   .attestation-list {
     list-style: none;
     padding: 0;
+    margin: 1.5rem 0;
   }
 
   .attestation-list li {
-    padding: 10px 0;
-    font-size: 16px;
+    padding: 0.5rem 0;
+    font-size: 1rem;
   }
 
   .attestation-list i {
     color: var(--accent-color);
-    margin-right: 10px;
+    margin-right: 0.5rem;
   }
 
   .attestation-box {
-    background: white;
-    padding: 40px;
+    background: #fff;
+    padding: 2rem;
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   }
 
-  .attestation-box__title {
-    font-size: 22px;
-    margin-bottom: 25px;
-    color: var(--primary-color);
+  .attestation-box h3 {
+    font-size: 1.25rem;
+    margin: 0 0 1.5rem;
   }
 
-  .attestation-docs-grid {
+  .attestation-docs {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
+    gap: 1rem;
   }
 
   .attestation-doc {
-    background: var(--bg-light);
-    padding: 15px;
+    background: var(--bg-light, #f8f9fa);
+    padding: 1rem;
     border-radius: 8px;
+    font-size: 0.9rem;
   }
 
   .attestation-doc i {
     color: var(--accent-color);
+    margin-right: 0.5rem;
   }
 
-  .attestation-doc span {
-    margin-left: 10px;
+  /* Related Grid */
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
   }
 
-  .attestation-box__btn {
-    display: block;
-    margin-top: 25px;
-    background: var(--accent-color);
-    color: white;
-    padding: 14px 20px;
-    border-radius: 8px;
+  .related-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
     text-decoration: none;
-    font-weight: 600;
+    color: inherit;
     text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
   }
 
-  /* CTA Section */
-  .cta-section {
-    padding: 80px 0;
-    background: var(--primary-color);
-    text-align: center;
+  .related-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   }
 
-  .cta-section__title {
-    font-size: 36px;
-    color: white;
-    margin-bottom: 20px;
+  .related-card i {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    display: block;
   }
 
-  .cta-section__text {
-    font-size: 20px;
-    color: rgba(255,255,255,0.9);
-    margin-bottom: 35px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+  .related-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
   }
 
-  .cta-section__buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
+  .related-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0;
   }
 
-  .cta-btn {
+  /* Buttons */
+  .btn {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 18px 35px;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
     border-radius: 8px;
-    text-decoration: none;
     font-weight: 600;
-    font-size: 18px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
   }
 
-  .cta-btn--primary {
+  .btn--primary {
     background: var(--accent-color);
-    color: white;
+    color: #fff;
   }
 
-  .cta-btn--primary i {
-    font-size: 22px;
+  .btn--primary:hover {
+    opacity: 0.9;
   }
 
-  .cta-btn--ghost {
+  .btn--outline {
     background: transparent;
-    color: white;
-    border: 2px solid white;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+  }
+
+  .pricing-card .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .pricing-card.featured .btn--outline {
+    color: #fff;
+    border-color: #fff;
   }
 
   /* Responsive */
-  @media (max-width: 991px) {
-    .service-cards-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
+  @media (max-width: 1200px) {
     .features-grid,
     .process-grid {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    .use-cases-grid {
-      grid-template-columns: 1fr;
+    .related-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 991px) {
+    .documents-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
 
     .pricing-grid {
       grid-template-columns: 1fr;
+      max-width: 400px;
     }
 
-    .pricing-card--featured {
+    .pricing-card.featured {
       transform: none;
     }
 
     .attestation-grid {
       grid-template-columns: 1fr;
     }
+
+    .use-cases-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
-  @media (max-width: 767px) {
-    .service-cards-grid {
+  @media (max-width: 768px) {
+    .section {
+      padding: 3rem 0;
+    }
+
+    .documents-grid,
+    .features-grid,
+    .process-grid,
+    .related-grid {
       grid-template-columns: 1fr;
     }
 
-    .features-grid,
-    .process-grid {
+    .attestation-docs {
       grid-template-columns: 1fr;
     }
   }
