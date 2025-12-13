@@ -668,3 +668,260 @@ body.theme-dark .dropdown-menu .view-all:hover {
         transition: none;
     }
 }
+
+/* ============================================
+   DROPDOWN - LUXURY DARK GLASSMORPHISM
+   Added: 2025-12-13
+
+   Inspired by: Stripe dropdown elegance + Glassmorphism
+   Sources: codepen.io/aholachek, ui.glass/generator
+
+   Brand Palette:
+   - Navy: #0E2B48 (base)
+   - Coral: #FF1654 (primary accent)
+   - Teal: #1a5f7a (secondary)
+   - Gold: #d4a54c (premium accent)
+   ============================================ */
+
+/* Dropdown container - Dark glass with premium shadow */
+.dropdown-menu,
+.header-nav .dropdown-menu,
+.nav-item .dropdown-menu,
+.exodus-header .dropdown-menu,
+.header-desktop .dropdown-menu {
+    /* Dark glassmorphism base */
+    background: linear-gradient(
+        135deg,
+        rgba(14, 43, 72, 0.95) 0%,
+        rgba(10, 32, 53, 0.98) 100%
+    ) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+
+    /* Stripe-style luxury shadow */
+    box-shadow:
+        0 50px 100px rgba(0, 0, 0, 0.15),
+        0 15px 35px rgba(0, 0, 0, 0.2),
+        0 5px 15px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+
+    /* Border treatment */
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-top: 2px solid #FF1654 !important;
+    border-radius: 12px !important;
+
+    /* Spacing */
+    padding: 8px 0 !important;
+    min-width: 240px !important;
+}
+
+/* Subtle glow effect on dropdown */
+.dropdown-menu::before {
+    content: '' !important;
+    position: absolute !important;
+    top: -2px !important;
+    left: 20% !important;
+    right: 20% !important;
+    height: 2px !important;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 22, 84, 0.8),
+        transparent) !important;
+    filter: blur(1px) !important;
+}
+
+/* Dropdown links - Elegant light text */
+.dropdown-menu li a,
+.header-nav .dropdown-menu li a,
+.nav-item .dropdown-menu li a,
+.nav-item.has-dropdown .dropdown-menu li a,
+.exodus-header .dropdown-menu li a,
+.header-desktop .dropdown-menu li a {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-weight: 500 !important;
+    font-size: 0.875rem !important;
+    letter-spacing: 0.01em !important;
+    text-shadow: none !important;
+    background: transparent !important;
+    padding: 10px 20px !important;
+    margin: 2px 8px !important;
+    border-radius: 8px !important;
+    position: relative !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Hover state - Coral glow */
+.dropdown-menu li a:hover,
+.header-nav .dropdown-menu li a:hover,
+.nav-item .dropdown-menu li a:hover,
+.exodus-header .dropdown-menu li a:hover,
+.header-desktop .dropdown-menu li a:hover {
+    color: #ffffff !important;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 22, 84, 0.15) 0%,
+        rgba(255, 22, 84, 0.08) 100%
+    ) !important;
+    box-shadow:
+        0 0 20px rgba(255, 22, 84, 0.1),
+        inset 0 0 0 1px rgba(255, 22, 84, 0.2) !important;
+    transform: translateX(4px) !important;
+}
+
+/* Left accent bar - Gold on hover */
+.dropdown-menu li a::before,
+.header-nav .dropdown-menu li a::before,
+.nav-item .dropdown-menu li a::before {
+    content: '' !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) scaleY(0) !important;
+    width: 3px !important;
+    height: 50% !important;
+    background: linear-gradient(180deg, #d4a54c, #FF1654) !important;
+    border-radius: 0 3px 3px 0 !important;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.dropdown-menu li a:hover::before,
+.header-nav .dropdown-menu li a:hover::before,
+.nav-item .dropdown-menu li a:hover::before {
+    transform: translateY(-50%) scaleY(1) !important;
+}
+
+/* Section headers - Teal with gold accent */
+.dropdown-menu .dropdown-header,
+.header-nav .dropdown-menu .dropdown-header,
+.nav-item .dropdown-menu .dropdown-header,
+.exodus-header .dropdown-menu .dropdown-header,
+.header-desktop .dropdown-menu .dropdown-header {
+    color: #d4a54c !important;
+    font-size: 0.65rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.15em !important;
+    padding: 12px 20px 8px !important;
+    margin-top: 4px !important;
+    border-bottom: 1px solid rgba(212, 165, 76, 0.15) !important;
+    background: linear-gradient(
+        90deg,
+        rgba(212, 165, 76, 0.05) 0%,
+        transparent 100%
+    ) !important;
+    text-shadow: 0 0 20px rgba(212, 165, 76, 0.3) !important;
+}
+
+/* First header */
+.dropdown-menu .dropdown-header:first-child,
+.header-nav .dropdown-menu .dropdown-header:first-child,
+.nav-item .dropdown-menu .dropdown-header:first-child {
+    margin-top: 0 !important;
+    padding-top: 8px !important;
+    border-radius: 10px 10px 0 0 !important;
+}
+
+/* Dividers - Subtle glass edge */
+.dropdown-menu .dropdown-divider {
+    border: none !important;
+    height: 1px !important;
+    margin: 8px 16px !important;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    ) !important;
+}
+
+/* Icons - Teal with hover transition */
+.dropdown-menu li a i,
+.header-nav .dropdown-menu li a i,
+.nav-item .dropdown-menu li a i {
+    color: #1a5f7a !important;
+    opacity: 0.8 !important;
+    font-size: 0.9em !important;
+    width: 20px !important;
+    transition: all 0.25s ease !important;
+}
+
+.dropdown-menu li a:hover i {
+    color: #FF1654 !important;
+    opacity: 1 !important;
+    transform: scale(1.1) !important;
+}
+
+/* Focus state - Coral ring */
+.dropdown-menu li a:focus,
+.header-nav .dropdown-menu li a:focus,
+.nav-item .dropdown-menu li a:focus {
+    outline: none !important;
+    box-shadow:
+        0 0 0 2px rgba(255, 22, 84, 0.4),
+        0 0 20px rgba(255, 22, 84, 0.15) !important;
+    color: #ffffff !important;
+}
+
+/* Active/Current page */
+.dropdown-menu li a.active,
+.dropdown-menu li.active > a {
+    color: #ffffff !important;
+    background: rgba(255, 22, 84, 0.12) !important;
+}
+
+.dropdown-menu li a.active::before,
+.dropdown-menu li.active > a::before {
+    transform: translateY(-50%) scaleY(1) !important;
+    background: #FF1654 !important;
+}
+
+/* Dark mode - Deeper darkness */
+[data-theme="dark"] .dropdown-menu,
+body.theme-dark .dropdown-menu {
+    background: linear-gradient(
+        135deg,
+        rgba(5, 15, 30, 0.98) 0%,
+        rgba(10, 20, 35, 0.99) 100%
+    ) !important;
+    border-color: rgba(255, 255, 255, 0.05) !important;
+    box-shadow:
+        0 50px 100px rgba(0, 0, 0, 0.4),
+        0 15px 35px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+}
+
+[data-theme="dark"] .dropdown-menu li a,
+body.theme-dark .dropdown-menu li a {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+[data-theme="dark"] .dropdown-menu li a:hover,
+body.theme-dark .dropdown-menu li a:hover {
+    color: #ffffff !important;
+    background: rgba(255, 107, 107, 0.12) !important;
+}
+
+[data-theme="dark"] .dropdown-menu .dropdown-header,
+body.theme-dark .dropdown-menu .dropdown-header {
+    color: #ffe178 !important;
+    border-bottom-color: rgba(255, 225, 120, 0.1) !important;
+}
+
+/* Mobile - Larger touch targets */
+@media (max-width: 1024px) {
+    .dropdown-menu li a,
+    .header-nav .dropdown-menu li a,
+    .nav-item .dropdown-menu li a {
+        padding: 14px 20px !important;
+        min-height: 48px !important;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .dropdown-menu li a,
+    .dropdown-menu li a::before,
+    .dropdown-menu li a i {
+        transition: none !important;
+    }
+}
