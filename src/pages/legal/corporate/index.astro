@@ -1,10 +1,61 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+/**
+ * /legal/corporate/ - Corporate Document Translation Hub
+ * 
+ * CONVERTED: BaseLayout → CategoryLayout
+ * Added: BreadcrumbList, Service, FAQPage schemas (auto-generated)
+ * Added: 10 FAQs for rich snippets
+ * Target: 2,200+ words
+ */
+import CategoryLayout from '../../../layouts/CategoryLayout.astro';
 
 const breadcrumbs = [
-  { name: 'Home', url: '/' },
-  { name: 'Legal Translation', url: '/legal-translation-dubai/' },
-  { name: 'Corporate Documents', url: '/legal/corporate/' }
+  { label: 'Home', href: '/' },
+  { label: 'Legal Translation', href: '/legal-translation-dubai/' },
+  { label: 'Corporate Documents' }
+];
+
+const faqs = [
+  {
+    question: 'What corporate documents require MOJ-certified translation in Dubai?',
+    answer: 'All corporate documents submitted to UAE government entities require MOJ-certified translation. This includes Memoranda of Association (MOA), Articles of Association, board resolutions, shareholder agreements, Powers of Attorney, trade licenses, commercial registration extracts, and any document filed with DED, DMCC, JAFZA, Dubai Courts, or banking institutions. Documents for DIFC and ADGM may have different requirements depending on the specific filing.'
+  },
+  {
+    question: 'How long does corporate document translation take?',
+    answer: 'Turnaround varies by document complexity: Trade licenses take 4-6 hours, simple MOAs 24 hours, complex MOAs with multiple shareholders 48 hours, board resolutions 24 hours, and Powers of Attorney 6-12 hours. Rush processing is available for urgent business needs—contact us via WhatsApp for same-day options.'
+  },
+  {
+    question: 'Do you offer package pricing for business setup documents?',
+    answer: 'Yes, we offer discounted package pricing for complete business setup documentation. A typical package includes MOA translation, trade license, passport copies, and bank reference letters. Package pricing saves 15-20% compared to individual document rates. Send your complete document list via WhatsApp for a package quote.'
+  },
+  {
+    question: 'What is the difference between DED mainland and free zone document requirements?',
+    answer: 'DED mainland companies require full Arabic documentation for all government interactions, visa processing, and local bank accounts. Free zones like DMCC, JAFZA, and DAFZA primarily operate in English but require Arabic translations for mainland banking, certain government submissions, and legal proceedings. DIFC and ADGM operate under common law with English as the primary language.'
+  },
+  {
+    question: 'Can you translate documents from countries other than the UAE?',
+    answer: 'Yes, we translate corporate documents from any country into Arabic for UAE use, and from Arabic into English for international use. Foreign documents typically require attestation before translation—we advise on the proper sequence and can coordinate the complete attestation chain including home country notarization, UAE Embassy attestation, and MOFA legalization.'
+  },
+  {
+    question: 'How do I ensure my translated MOA matches bank requirements?',
+    answer: 'Banks have specific formatting expectations for translated MOAs. We format translations to match standard banking requirements including clear shareholder identification, authorized signatory details, and activity descriptions that align with trade license categories. After years of working with UAE banks, we know what compliance officers look for during account opening reviews.'
+  },
+  {
+    question: 'What happens if a government entity rejects my translated document?',
+    answer: 'If any UAE government entity rejects a translation we provided due to our error, we correct it immediately at no additional charge. We also cover courier costs for physical redelivery. Our acceptance guarantee reflects confidence built from processing thousands of corporate documents monthly.'
+  },
+  {
+    question: 'Do board resolutions need to be translated for UAE use?',
+    answer: 'Board resolutions require translation when submitted to banks for signatory changes, government entities for corporate actions, or courts for legal proceedings. Resolutions authorizing specific transactions (property purchases, major contracts, bank mandates) must be translated with precise language that reflects the scope of authority granted.'
+  },
+  {
+    question: 'Can you translate shareholder agreements and joint venture contracts?',
+    answer: 'Yes, we specialize in complex commercial agreements including shareholder agreements, joint venture contracts, franchise agreements, and distribution agreements. These documents require translators who understand both legal terminology and commercial concepts. We ensure translated terms maintain their legal effect across jurisdictions.'
+  },
+  {
+    question: 'What information do you need to provide a quote for corporate translation?',
+    answer: 'Send clear photos or scans of your documents via WhatsApp. We need to see the full document including all pages, stamps, and signatures. Within 5-10 minutes, we will confirm the page count, identify any attestation requirements, and provide a fixed quote. The price we quote is the price you pay—no hidden fees for stamps or formatting.'
+  }
 ];
 
 const documents = [
@@ -38,75 +89,57 @@ const documents = [
   },
   {
     title: 'Share Certificates',
-    href: '/legal/corporate/',
+    href: '/legal/corporate/shares/',
     icon: 'certificate',
     desc: 'Ownership certificates, share transfer documents, and equity agreements.',
     use: 'Ownership Transfer, Due Diligence'
   },
   {
     title: 'Commercial Registration',
-    href: '/legal/corporate/',
+    href: '/legal/corporate/registration/',
     icon: 'building',
     desc: 'Chamber of Commerce certificates, establishment cards, and registration extracts.',
     use: 'Government Submissions'
   }
 ];
+
+const jurisdictions = [
+  {
+    name: 'DED Mainland',
+    desc: 'Department of Economic Development registered companies. Full Arabic documentation required for all government interactions, bank accounts, and visa processing.'
+  },
+  {
+    name: 'DMCC',
+    desc: 'Dubai Multi Commodities Centre free zone. English-primary with Arabic translations needed for certain government submissions and mainland banking.'
+  },
+  {
+    name: 'DIFC',
+    desc: 'Dubai International Financial Centre. Common law jurisdiction with English documentation, Arabic translations for specific court and government matters.'
+  },
+  {
+    name: 'JAFZA & Other Free Zones',
+    desc: 'Jebel Ali, Dubai Silicon Oasis, Dubai Internet City, and other free zones. Mixed language requirements depending on specific interactions.'
+  }
+];
 ---
 
-<BaseLayout 
-  title="Corporate Document Translation Dubai | MOA, POA, Resolution Translation | OnlineTranslation.ae"
-  description="MOJ-certified corporate document translation in Dubai. MOA, trade licenses, board resolutions, POA for DED, free zones, banking. Business setup documentation specialists."
+<CategoryLayout
+  title="Corporate Document Translation Dubai | MOA, POA, Resolution Translation"
+  description="MOJ-certified corporate document translation in Dubai. MOA, trade licenses, board resolutions, POA for DED, free zones, banking. Business setup documentation specialists serving DMCC, JAFZA, DIFC."
+  keywords="corporate document translation dubai, moa translation, poa translation dubai, board resolution translation, trade license translation, business setup documents uae, dmcc translation, jafza documents"
+  heroTitle="Corporate Document Translation"
+  heroSubtitle="Business Documentation Specialists"
+  heroIntro="Business operations in the UAE require Arabic documentation at every stage—from company formation through daily operations to eventual exit. We translate the corporate documents that keep your business compliant and operational across DED, free zones, banks, and government entities. MOJ-certified translations accepted by all UAE authorities."
+  breadcrumbs={breadcrumbs}
+  serviceType="Corporate Document Translation"
+  faqs={faqs}
 >
-  <Fragment slot="head">
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "Corporate Document Translation Services Dubai",
-      "description": "MOJ-certified translation of corporate documents for business setup, banking, and legal compliance in UAE",
-      "provider": {
-        "@type": "Organization",
-        "name": "OnlineTranslation.ae"
-      },
-      "areaServed": ["Dubai", "Abu Dhabi", "Sharjah", "UAE"],
-      "serviceType": ["MOA Translation", "POA Translation", "Board Resolution Translation", "Trade License Translation"]
-    })} />
-  </Fragment>
 
-  <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+  <!-- Documents Grid Section -->
+  <section class="section">
     <div class="container">
-      <ol class="breadcrumb-list">
-        {breadcrumbs.map((crumb, i) => (
-          <li>
-            {i === breadcrumbs.length - 1 ? (
-              <span aria-current="page">{crumb.name}</span>
-            ) : (
-              <a href={crumb.url}>{crumb.name}</a>
-            )}
-          </li>
-        ))}
-      </ol>
-    </div>
-  </nav>
-
-  <section class="page-hero">
-    <div class="container">
-      <span class="hero-badge">Business Documentation</span>
-      <h1>Corporate Document Translation</h1>
-      <p class="hero-lead">Business operations in the UAE require Arabic documentation at every stage—from company formation through daily operations to eventual exit. We translate the corporate documents that keep your business compliant and operational across DED, free zones, banks, and government entities.</p>
-      <div class="hero-actions">
-        <a href="https://wa.me/971508620217?text=I%20need%20corporate%20document%20translation" class="btn btn--primary">
-          <i class="fab fa-whatsapp"></i> Send Document
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="documents-section section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Corporate Documents We Translate</h2>
-        <p>Select your document type for specific requirements and turnaround times.</p>
-      </div>
+      <h2>Corporate Documents We Translate</h2>
+      <p class="section-intro">Select your document type for specific requirements and turnaround times. All translations include MOJ certification and are formatted for immediate submission.</p>
 
       <div class="documents-grid">
         {documents.map(doc => (
@@ -119,186 +152,554 @@ const documents = [
             <div class="document-use">
               <strong>Common Use:</strong> {doc.use}
             </div>
-            <span class="document-link">Learn More →</span>
+            <span class="document-link">View Requirements →</span>
           </a>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="jurisdictions-section section bg-light">
+  <!-- Jurisdictions Section -->
+  <section class="section bg-light">
     <div class="container">
       <h2>Business Jurisdictions We Serve</h2>
-      <p class="section-intro">Different business structures require different documentation. We understand the requirements across UAE's diverse business landscape.</p>
+      <p class="section-intro">Different business structures require different documentation. We understand the specific requirements across UAE's diverse business landscape and format translations accordingly.</p>
 
       <div class="jurisdiction-grid">
-        <div class="jurisdiction-card">
-          <h3>DED Mainland</h3>
-          <p>Department of Economic Development registered companies. Full Arabic documentation required for all government interactions, bank accounts, and visa processing.</p>
-        </div>
-        <div class="jurisdiction-card">
-          <h3>DMCC</h3>
-          <p>Dubai Multi Commodities Centre free zone. English-primary with Arabic translations needed for certain government submissions and mainland banking.</p>
-        </div>
-        <div class="jurisdiction-card">
-          <h3>DIFC</h3>
-          <p>Dubai International Financial Centre. Common law jurisdiction with English documentation, Arabic translations for specific court and government matters.</p>
-        </div>
-        <div class="jurisdiction-card">
-          <h3>JAFZA & Other Free Zones</h3>
-          <p>Jebel Ali, Dubai Silicon Oasis, Dubai Internet City, and other free zones. Mixed language requirements depending on specific interactions.</p>
-        </div>
+        {jurisdictions.map(j => (
+          <div class="jurisdiction-card">
+            <h3>{j.name}</h3>
+            <p>{j.desc}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <section class="process-section section">
+  <!-- Main Content Section -->
+  <section class="section">
     <div class="container">
       <div class="content-grid">
         <div class="content-main">
-          <h2>Corporate Translation for Business Operations</h2>
-          <p>Corporate documents form the legal foundation of your business. The Arabic translations of these documents are referenced whenever you interact with UAE authorities, open bank accounts, process visas, or engage in legal matters.</p>
+          <h2>Corporate Translation for UAE Business Operations</h2>
           
-          <p>Accuracy is critical. A mistranslated shareholder name causes bank rejections. Incorrect activity descriptions lead to license issues. Ambiguous authority language in POAs can invalidate transactions. We understand what's at stake.</p>
+          <p>Corporate documents form the legal foundation of your business in the UAE. The Arabic translations of these documents are referenced whenever you interact with government authorities, open bank accounts, process employee visas, sign contracts, or engage in legal matters. Accuracy in these translations is not optional—it is essential for operational continuity.</p>
           
-          <p>Our corporate translators work with these documents daily. They know the terminology DED expects, the formatting banks require, and the precision courts demand. This expertise translates into smooth processing and fewer rejections.</p>
+          <p>A mistranslated shareholder name causes bank account rejections. Incorrect activity descriptions lead to license compliance issues. Ambiguous authority language in Powers of Attorney can invalidate transactions worth millions of dirhams. We understand what is at stake because we see the consequences of poor translation work that clients bring to us for correction.</p>
+          
+          <p>Our corporate translators work with these documents daily across every major jurisdiction in the UAE. They know the terminology DED expects, the formatting banks require, the precision courts demand, and the nuances that differ between DMCC, JAFZA, DIFC, and mainland Dubai. This accumulated expertise translates into smooth processing and fewer rejections for your business.</p>
 
-          <h3>Common Corporate Translation Needs</h3>
-          <ul>
-            <li>Company formation packages for new business setup</li>
-            <li>Bank account opening documentation</li>
-            <li>Visa processing for employees and partners</li>
-            <li>Annual license renewal submissions</li>
-            <li>Shareholder changes and corporate restructuring</li>
-            <li>Due diligence document packages</li>
+          <h3>The Corporate Document Lifecycle</h3>
+          
+          <p>Most businesses encounter translation requirements at predictable stages. During company formation, the MOA, shareholder passport copies, and initial board resolutions require translation. Once operational, ongoing needs include employee visa documentation, contract translations, bank mandate updates, and regulatory filings. Growth stages bring joint venture agreements, acquisition documents, and expanded licensing. Even exit strategies require translated documents for share transfers, liquidation filings, or business sales.</p>
+          
+          <p>Understanding this lifecycle helps you anticipate translation needs rather than scrambling at deadline. We maintain records for returning clients, ensuring consistency across all your corporate documents over time. The same translated company name, the same shareholder name spellings, the same formatting—consistency that prevents confusion and delays at government counters.</p>
+
+          <h3>Why Corporate Translation Requires Specialization</h3>
+          
+          <p>General translators struggle with corporate documents because business terminology carries specific legal meaning. "Authorized signatory" in English becomes a precise Arabic term that banks recognize. "Limited liability" must be translated using the exact terminology UAE corporate law employs. Share classes, voting rights, dividend provisions, and dissolution procedures all have established Arabic equivalents that cannot be improvised.</p>
+          
+          <p>Beyond terminology, formatting matters. UAE banks expect MOA translations in specific formats. Government portals have character limits and field requirements. Court filings demand particular layouts. We format every translation to match the destination requirements, eliminating the back-and-forth that delays your business objectives.</p>
+
+          <h3>Common Corporate Translation Scenarios</h3>
+          
+          <ul class="scenario-list">
+            <li><strong>New Company Formation:</strong> Complete document packages for DED mainland or free zone registration including MOA, passport copies, NOC letters, and bank reference translations.</li>
+            <li><strong>Bank Account Opening:</strong> Translated corporate documents formatted for UAE banking compliance review, including shareholder identification and authorized signatory documentation.</li>
+            <li><strong>Employee Visa Processing:</strong> Trade license translations, establishment cards, and corporate authorization letters for MOHRE and immigration submissions.</li>
+            <li><strong>Shareholder Changes:</strong> Board resolutions, share transfer agreements, and amended MOA translations for regulatory notification.</li>
+            <li><strong>Corporate Restructuring:</strong> Merger documents, acquisition agreements, and due diligence package translations for complex transactions.</li>
+            <li><strong>Legal Proceedings:</strong> Corporate documents translated for court submission, arbitration, or regulatory defense.</li>
           </ul>
+
+          <h3>The Translation Process for Corporate Documents</h3>
+          
+          <p>Corporate document translation follows a structured process designed for accuracy and efficiency. You send the document via WhatsApp—we accept photos, scans, or PDF files. Within minutes, we confirm receipt, verify document completeness, and provide a fixed quote with turnaround time.</p>
+          
+          <p>Upon approval, an MOJ-licensed translator with corporate specialization begins work. For complex documents like MOAs with multiple shareholders or detailed shareholder agreements, a second translator reviews the work. We cross-reference all names against your provided identification documents to ensure consistency.</p>
+          
+          <p>You receive a draft for review before final certification. This step catches any specific preferences—perhaps you want a particular transliteration of a name, or there is a standard Arabic rendering your company uses. After your approval, we apply the official MOJ stamp with QR verification code and deliver digitally. Physical copies courier anywhere in the UAE same-day if needed.</p>
         </div>
 
         <div class="content-sidebar">
           <div class="info-card">
-            <h4>Turnaround Times</h4>
+            <h4><i class="fas fa-clock"></i> Turnaround Times</h4>
             <ul>
               <li><strong>Trade License:</strong> 4-6 hours</li>
               <li><strong>MOA (simple):</strong> 24 hours</li>
               <li><strong>MOA (complex):</strong> 48 hours</li>
               <li><strong>Board Resolution:</strong> 24 hours</li>
               <li><strong>POA:</strong> 6-12 hours</li>
+              <li><strong>Share Certificate:</strong> 4-6 hours</li>
             </ul>
           </div>
 
           <div class="info-card highlight">
-            <h4>Business Setup Package?</h4>
-            <p>Starting a new company? We offer package pricing for complete formation document sets.</p>
-            <a href="https://wa.me/971508620217?text=Business%20setup%20translation%20package" class="btn btn--primary btn--sm">Get Package Quote</a>
+            <h4><i class="fas fa-box-open"></i> Business Setup Package</h4>
+            <p>Starting a new company? We offer package pricing for complete formation document sets including MOA, trade license, passport copies, and bank letters.</p>
+            <a href="https://wa.me/971508620217?text=Business%20setup%20translation%20package%20inquiry" class="btn btn--primary btn--sm">
+              <i class="fab fa-whatsapp"></i> Get Package Quote
+            </a>
+          </div>
+
+          <div class="info-card">
+            <h4><i class="fas fa-shield-alt"></i> Quality Guarantee</h4>
+            <p>All translations include MOJ certification with QR verification. If any government entity rejects our translation due to our error, we correct and redeliver at no charge.</p>
+          </div>
+
+          <div class="info-card">
+            <h4><i class="fas fa-building"></i> Jurisdictions Served</h4>
+            <ul class="jurisdiction-list">
+              <li>DED Mainland Dubai</li>
+              <li>DMCC</li>
+              <li>JAFZA</li>
+              <li>DAFZA</li>
+              <li>Dubai Silicon Oasis</li>
+              <li>DIFC</li>
+              <li>ADGM</li>
+              <li>RAK ICC</li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="related-section section bg-light">
+  <!-- Banking Requirements Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Corporate Translation for Banking Requirements</h2>
+      
+      <p>Opening and maintaining corporate bank accounts in the UAE requires translated documentation that meets stringent compliance standards. Banks operate under Central Bank of UAE regulations and conduct thorough due diligence on all business accounts. Your translated corporate documents must clearly establish company ownership, authorized signatories, business activities, and source of funds.</p>
+      
+      <div class="banking-grid">
+        <div class="banking-card">
+          <h3><i class="fas fa-university"></i> Account Opening</h3>
+          <p>New corporate accounts require translated MOA, trade license, board resolution appointing signatories, shareholder passport copies, and proof of address. We format all documents to match banking compliance expectations.</p>
+        </div>
+        
+        <div class="banking-card">
+          <h3><i class="fas fa-user-edit"></i> Signatory Changes</h3>
+          <p>Adding or removing authorized signatories requires translated board resolutions with specific language banks recognize. Incorrect terminology causes delays and repeat submissions.</p>
+        </div>
+        
+        <div class="banking-card">
+          <h3><i class="fas fa-search-dollar"></i> Due Diligence</h3>
+          <p>Banks periodically request updated documentation for KYC compliance. We maintain translation records to ensure consistency across all your corporate documents over time.</p>
+        </div>
+        
+        <div class="banking-card">
+          <h3><i class="fas fa-hand-holding-usd"></i> Loan Applications</h3>
+          <p>Business financing requires translated financial statements, corporate guarantees, and board authorizations. We understand the precision required for lending documentation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services Section -->
+  <section class="section">
     <div class="container">
       <h2>Related Services</h2>
+      <p class="section-intro">Corporate document translation often connects with other services. Explore related offerings to address your complete documentation needs.</p>
+      
       <div class="related-grid">
         <a href="/legal-translation-dubai/" class="related-card">
           <i class="fas fa-balance-scale"></i>
           <h3>Legal Translation Hub</h3>
-          <p>Complete legal document services</p>
+          <p>Complete legal document translation services including court documents, contracts, and litigation support.</p>
         </a>
         <a href="/legal/contracts/" class="related-card">
           <i class="fas fa-file-contract"></i>
           <h3>Contract Translation</h3>
-          <p>Commercial agreements and NDAs</p>
+          <p>Commercial agreements, NDAs, employment contracts, and lease agreements.</p>
         </a>
         <a href="/services/attestation/" class="related-card">
           <i class="fas fa-stamp"></i>
           <h3>Document Attestation</h3>
-          <p>MOFA and embassy legalization</p>
+          <p>MOFA attestation and embassy legalization for foreign corporate documents.</p>
+        </a>
+        <a href="/services/golden-visa-translation/" class="related-card">
+          <i class="fas fa-star"></i>
+          <h3>Golden Visa Package</h3>
+          <p>Complete document translation for investor and entrepreneur visa applications.</p>
         </a>
       </div>
     </div>
   </section>
 
-  <section class="cta-section section bg-dark">
-    <div class="container text-center">
-      <h2>Need Corporate Documents Translated?</h2>
-      <p>Send your documents via WhatsApp for immediate quote and turnaround estimate.</p>
-      <a href="https://wa.me/971508620217" class="btn btn--primary btn--lg">
-        <i class="fab fa-whatsapp"></i> Start Now
-      </a>
-    </div>
-  </section>
-</BaseLayout>
+</CategoryLayout>
 
 <style>
-  .breadcrumb-nav { background: var(--primary-color); padding: 1rem 0; }
-  .breadcrumb-list { display: flex; list-style: none; margin: 0; padding: 0; gap: 0.5rem; font-size: 0.875rem; }
-  .breadcrumb-list li:not(:last-child)::after { content: '/'; margin-left: 0.5rem; color: rgba(255,255,255,0.5); }
-  .breadcrumb-list a { color: rgba(255,255,255,0.8); text-decoration: none; }
-  .breadcrumb-list span { color: white; }
+  /* Section Styling */
+  .section {
+    padding: 4rem 0;
+  }
+  
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 800px;
+  }
 
-  .page-hero { background: var(--primary-color); color: white; padding: 4rem 0; }
-  .hero-badge { display: inline-block; background: var(--accent-color); padding: 0.5rem 1rem; border-radius: 2rem; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; }
-  .page-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
-  .hero-lead { font-size: 1.125rem; line-height: 1.7; max-width: 700px; opacity: 0.95; margin-bottom: 2rem; }
+  /* Documents Grid */
+  .documents-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
 
-  .section { padding: 4rem 0; }
-  .section-header { text-align: center; margin-bottom: 3rem; }
-  .section-header h2 { font-size: 2rem; margin-bottom: 0.5rem; }
-  .section-header p { color: var(--text-muted); }
-  .section-intro { font-size: 1.125rem; color: var(--text-muted); margin-bottom: 2rem; text-align: center; }
+  .document-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    display: block;
+  }
 
-  .documents-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-  .document-card { background: white; border-radius: 1rem; padding: 2rem; text-decoration: none; color: inherit; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s; }
-  .document-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
-  .document-icon { width: 60px; height: 60px; background: var(--accent-color); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
-  .document-icon i { font-size: 1.5rem; color: white; }
-  .document-card h3 { font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--primary-color); }
-  .document-card p { color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem; }
-  .document-use { font-size: 0.875rem; color: var(--text-muted); padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.08); margin-bottom: 1rem; }
-  .document-link { color: var(--accent-color); font-weight: 600; }
+  .document-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
 
-  .jurisdiction-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-  .jurisdiction-card { background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
-  .jurisdiction-card h3 { font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--primary-color); }
-  .jurisdiction-card p { color: var(--text-muted); line-height: 1.6; font-size: 0.95rem; }
+  .document-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-color);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
 
-  .content-grid { display: grid; grid-template-columns: 1fr 350px; gap: 3rem; }
-  .content-main h2 { font-size: 1.75rem; margin-bottom: 1.5rem; }
-  .content-main h3 { font-size: 1.25rem; margin: 2rem 0 1rem; }
-  .content-main p { line-height: 1.8; margin-bottom: 1.25rem; }
-  .content-main ul { list-style: none; padding: 0; }
-  .content-main li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
-  .content-main li::before { content: '→'; position: absolute; left: 0; color: var(--accent-color); }
+  .document-icon i {
+    font-size: 1.5rem;
+    color: #fff;
+  }
 
-  .info-card { background: white; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
-  .info-card.highlight { background: var(--primary-color); color: white; }
-  .info-card h4 { font-size: 1rem; margin-bottom: 1rem; }
-  .info-card ul { list-style: none; padding: 0; margin: 0; }
-  .info-card li { padding: 0.4rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
-  .info-card.highlight li { border-bottom-color: rgba(255,255,255,0.2); }
-  .info-card p { margin-bottom: 1rem; }
+  .document-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+  }
 
-  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-  .related-card { background: white; padding: 2rem; border-radius: 1rem; text-decoration: none; color: inherit; text-align: center; transition: all 0.3s; }
-  .related-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
-  .related-card i { font-size: 2rem; color: var(--accent-color); margin-bottom: 1rem; }
-  .related-card h3 { font-size: 1.125rem; margin-bottom: 0.5rem; }
-  .related-card p { color: var(--text-muted); font-size: 0.9rem; }
+  .document-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
 
-  .cta-section { text-align: center; }
-  .cta-section h2 { color: white; margin-bottom: 1rem; }
-  .cta-section p { color: rgba(255,255,255,0.9); margin-bottom: 2rem; }
+  .document-use {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    margin-bottom: 1rem;
+  }
 
-  .bg-light { background: var(--bg-light, #f8f9fa); }
-  .bg-dark { background: var(--primary-color); }
-  .text-center { text-align: center; }
+  .document-link {
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
 
-  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; }
-  .btn--primary { background: var(--accent-color); color: white; }
-  .btn--sm { padding: 0.75rem 1.5rem; font-size: 0.9rem; }
-  .btn--lg { padding: 1.125rem 2.25rem; }
+  /* Jurisdiction Grid */
+  .jurisdiction-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
 
-  @media (max-width: 991px) { .content-grid { grid-template-columns: 1fr; } }
-  @media (max-width: 768px) { .related-grid { grid-template-columns: 1fr; } }
+  .jurisdiction-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .jurisdiction-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .jurisdiction-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* Content Grid (Main + Sidebar) */
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 3rem;
+  }
+
+  .content-main h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+  }
+
+  .content-main h3 {
+    font-size: 1.25rem;
+    margin: 2.5rem 0 1rem;
+    color: var(--primary-color);
+  }
+
+  .content-main p {
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+    color: var(--text-color);
+  }
+
+  .scenario-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+  }
+
+  .scenario-list li {
+    padding: 0.75rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.7;
+  }
+
+  .scenario-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-weight: bold;
+  }
+
+  /* Sidebar Info Cards */
+  .info-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .info-card.highlight {
+    background: var(--primary-color);
+    color: #fff;
+  }
+
+  .info-card h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .info-card h4 i {
+    color: var(--accent-color);
+  }
+
+  .info-card.highlight h4 i {
+    color: #fff;
+  }
+
+  .info-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .info-card li {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    font-size: 0.95rem;
+  }
+
+  .info-card.highlight li {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .info-card li:last-child {
+    border-bottom: none;
+  }
+
+  .info-card p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .info-card .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .jurisdiction-list {
+    columns: 2;
+    column-gap: 1rem;
+  }
+
+  /* Banking Grid */
+  .banking-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .banking-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .banking-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .banking-card h3 i {
+    color: var(--accent-color);
+  }
+
+  .banking-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  /* Related Grid */
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .related-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .related-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .related-card i {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .related-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .related-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Utility Classes */
+  .bg-light {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .btn--primary {
+    background: var(--accent-color);
+    color: #fff;
+  }
+
+  .btn--primary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  .btn--sm {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .jurisdiction-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .related-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 991px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .content-sidebar {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .documents-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section {
+      padding: 3rem 0;
+    }
+
+    .documents-grid,
+    .jurisdiction-grid,
+    .banking-grid,
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .content-sidebar {
+      grid-template-columns: 1fr;
+    }
+
+    .jurisdiction-list {
+      columns: 1;
+    }
+  }
 </style>
