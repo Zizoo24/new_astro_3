@@ -742,12 +742,21 @@ body.theme-dark .dropdown-menu .view-all:hover {
     font-size: 0.875rem !important;
     letter-spacing: 0.01em !important;
     text-shadow: none !important;
-    background: transparent !important;
+    background: rgba(14, 43, 72, 0.3) !important;
     padding: 10px 20px !important;
     margin: 2px 8px !important;
     border-radius: 8px !important;
     position: relative !important;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Ensure all dropdown list items have solid background */
+.dropdown-menu li,
+.header-nav .dropdown-menu li,
+.nav-item .dropdown-menu li,
+.exodus-header .dropdown-menu li,
+.header-desktop .dropdown-menu li {
+    background: transparent !important;
 }
 
 /* Hover state - Coral glow */
@@ -924,4 +933,122 @@ body.theme-dark .dropdown-menu .dropdown-header {
     .dropdown-menu li a i {
         transition: none !important;
     }
+}
+
+/* ============================================
+   NESTED SUBMENU POSITIONING FIX
+   Ensures submenus open to the right properly
+   ============================================ */
+
+/* Nested submenu container */
+.dropdown-menu li.dropdown-submenu,
+.nav-item .dropdown-menu li.dropdown-submenu,
+.header-desktop .dropdown-menu li.dropdown-submenu {
+    position: relative !important;
+}
+
+/* Nested submenu - open to the RIGHT */
+.dropdown-menu li.dropdown-submenu > .dropdown-menu,
+.dropdown-menu .dropdown-submenu > .dropdown-menu,
+.nav-item .dropdown-menu li.dropdown-submenu > .dropdown-menu,
+.header-desktop .dropdown-menu li.dropdown-submenu > .dropdown-menu {
+    position: absolute !important;
+    left: 100% !important;
+    top: 0 !important;
+    margin-left: 2px !important;
+    margin-top: 0 !important;
+    min-width: 220px !important;
+
+    /* Same glassmorphism styling */
+    background: linear-gradient(
+        135deg,
+        rgba(14, 43, 72, 0.95) 0%,
+        rgba(10, 32, 53, 0.98) 100%
+    ) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    box-shadow:
+        0 50px 100px rgba(0, 0, 0, 0.15),
+        0 15px 35px rgba(0, 0, 0, 0.2),
+        0 5px 15px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-top: 2px solid #FF1654 !important;
+    border-radius: 12px !important;
+
+    /* Hidden by default */
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateX(-10px) !important;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease !important;
+}
+
+/* Show nested submenu on hover */
+.dropdown-menu li.dropdown-submenu:hover > .dropdown-menu,
+.dropdown-menu .dropdown-submenu:hover > .dropdown-menu,
+.nav-item .dropdown-menu li.dropdown-submenu:hover > .dropdown-menu,
+.header-desktop .dropdown-menu li.dropdown-submenu:hover > .dropdown-menu {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateX(0) !important;
+}
+
+/* Submenu arrow indicator */
+.dropdown-menu li.dropdown-submenu > a::after,
+.dropdown-menu .dropdown-submenu > a::after {
+    content: '' !important;
+    position: absolute !important;
+    right: 12px !important;
+    top: 50% !important;
+    width: 6px !important;
+    height: 6px !important;
+    border-right: 2px solid rgba(255, 255, 255, 0.5) !important;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5) !important;
+    transform: translateY(-50%) rotate(-45deg) !important;
+    transition: border-color 0.2s ease, right 0.2s ease !important;
+}
+
+.dropdown-menu li.dropdown-submenu:hover > a::after,
+.dropdown-menu .dropdown-submenu:hover > a::after {
+    border-color: #FF1654 !important;
+    right: 10px !important;
+}
+
+/* Hover bridge to prevent gap issues */
+.dropdown-menu li.dropdown-submenu::before,
+.dropdown-menu .dropdown-submenu::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    right: -10px !important;
+    width: 15px !important;
+    height: 100% !important;
+    background: transparent !important;
+}
+
+/* Reverse submenu - opens to the LEFT when near screen edge */
+.dropdown-menu li.dropdown-submenu.dropdown-reverse > .dropdown-menu,
+.dropdown-menu .dropdown-submenu.dropdown-reverse > .dropdown-menu {
+    left: auto !important;
+    right: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 2px !important;
+    transform: translateX(10px) !important;
+}
+
+.dropdown-menu li.dropdown-submenu.dropdown-reverse:hover > .dropdown-menu,
+.dropdown-menu .dropdown-submenu.dropdown-reverse:hover > .dropdown-menu {
+    transform: translateX(0) !important;
+}
+
+.dropdown-menu li.dropdown-submenu.dropdown-reverse > a::after,
+.dropdown-menu .dropdown-submenu.dropdown-reverse > a::after {
+    right: auto !important;
+    left: 12px !important;
+    transform: translateY(-50%) rotate(135deg) !important;
+}
+
+.dropdown-menu li.dropdown-submenu.dropdown-reverse:hover > a::after,
+.dropdown-menu .dropdown-submenu.dropdown-reverse:hover > a::after {
+    left: 14px !important;
 }
