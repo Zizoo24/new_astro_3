@@ -1,216 +1,685 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+/**
+ * /legal/ - Legal Translation Hub
+ * 
+ * Using: CategoryLayout
+ * Schemas: BreadcrumbList, Service, FAQPage (auto-generated)
+ * Added: 10 FAQs for rich snippets
+ * 
+ * Silo: Legal & Corporate (Silo 1)
+ * Type: Silo Hub Page
+ */
+import CategoryLayout from '../../layouts/CategoryLayout.astro';
+
+const breadcrumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Legal Translation' }
+];
+
+const faqs = [
+  {
+    question: "What legal documents do you translate?",
+    answer: "We translate all legal documents required for UAE courts and government entities. This includes court judgments, pleadings, evidence bundles, contracts, powers of attorney, wills, arbitration awards, corporate documents (MOA, board resolutions, shareholder agreements), trade licenses, and regulatory filings. Each translation receives MOJ certification with the official stamp and QR verification code required for legal enforceability in the UAE."
+  },
+  {
+    question: "Are your legal translations accepted by UAE courts?",
+    answer: "Yes. All our legal translations are performed by MOJ-certified translators registered with the UAE Ministry of Justice. Our translations are accepted by Dubai Courts, Abu Dhabi Judicial Department, DIFC Courts, ADGM Courts, and all federal courts. We understand court formatting requirements and legal terminology specific to each jurisdiction."
+  },
+  {
+    question: "What is the difference between Dubai Courts and DIFC Courts translation?",
+    answer: "Dubai Courts operate under UAE civil law with Arabic as the official language—all documents must be translated to Arabic. DIFC Courts operate under common law derived from English law, with English as the primary language. Documents for DIFC may require different terminology and formatting. We understand these jurisdictional differences and format translations accordingly."
+  },
+  {
+    question: "How long does legal document translation take?",
+    answer: "Turnaround depends on document complexity. Single-page documents like powers of attorney complete in 6-12 hours. Standard contracts (5-15 pages) take 24-48 hours. Complex litigation documents, lengthy contracts, or large evidence bundles may require 3-5 business days. We offer express processing for urgent court deadlines—contact us with your timeline for confirmation."
+  },
+  {
+    question: "Can you translate documents for ongoing litigation?",
+    answer: "Yes. We regularly support law firms and corporate legal departments with litigation translation needs. This includes translating incoming foreign judgments for recognition, preparing evidence bundles for court submission, translating witness statements and expert reports, and handling discovery documents. We understand confidentiality requirements and can sign NDAs for sensitive matters."
+  },
+  {
+    question: "Do you translate contracts before or after signing?",
+    answer: "Both scenarios are common. Translate before signing when both parties need to understand terms in their native language—essential for joint ventures between Arabic and English speakers. Translate after signing when the executed contract is needed for court submissions, regulatory filings, or government registrations. We advise on optimal timing during our initial document review."
+  },
+  {
+    question: "What corporate documents require legal translation?",
+    answer: "Corporate documents requiring MOJ-certified translation include Memoranda of Association (MOA), Articles of Association, board resolutions, shareholder agreements, share certificates, trade licenses, commercial registration extracts, powers of attorney, and any document filed with DED, free zone authorities, banks, or courts. We format translations for each authority's specific requirements."
+  },
+  {
+    question: "Can you handle urgent court filing deadlines?",
+    answer: "Yes. We understand that court deadlines are non-negotiable. For urgent matters, we offer express processing with same-day or next-day delivery. Contact us immediately with your deadline—we will confirm whether we can meet it before you commit. We have capacity for rush jobs but prefer to decline rather than deliver something with errors under time pressure."
+  },
+  {
+    question: "Do you provide bilingual contract formatting?",
+    answer: "Yes. Dubai Courts often require bilingual contracts with Arabic and English in parallel columns on the same page. This format allows judges to verify translation accuracy and treats both language versions as equally authoritative. We produce bilingual documents meeting Dubai Courts formatting requirements: proper column alignment, consistent pagination, and matching clause numbering."
+  },
+  {
+    question: "What happens if a court rejects my translated document?",
+    answer: "If any UAE court rejects a translation we provided due to our error, we correct it immediately at no additional charge and redeliver. We also cover courier costs for physical redelivery to meet your filing deadline. This guarantee reflects our confidence in our MOJ-certified process and understanding of court requirements."
+  }
+];
+
+const categories = [
+  {
+    title: "Corporate Documents",
+    href: "/legal/corporate/",
+    icon: "building",
+    desc: "MOA, trade licenses, board resolutions, shareholder agreements, and business formation documents for DED and free zones.",
+    items: ["Memorandum of Association", "Board Resolutions", "Trade Licenses", "Share Certificates"]
+  },
+  {
+    title: "Contracts",
+    href: "/legal/contracts/",
+    icon: "file-contract",
+    desc: "Commercial agreements, NDAs, SPAs, MOUs, lease agreements, and employment contracts with bilingual formatting.",
+    items: ["Sale Purchase Agreements", "NDAs", "Lease Agreements", "Employment Contracts"]
+  },
+  {
+    title: "Court Documents",
+    href: "/legal/litigation/",
+    icon: "gavel",
+    desc: "Judgments, pleadings, evidence bundles, witness statements, and arbitration documents for Dubai Courts and DIFC.",
+    items: ["Court Judgments", "Pleadings", "Evidence Bundles", "Arbitration Awards"]
+  },
+  {
+    title: "Powers of Attorney",
+    href: "/legal/corporate/poa/",
+    icon: "stamp",
+    desc: "General and special POAs for property transactions, banking operations, corporate representation, and legal matters.",
+    items: ["General POA", "Property POA", "Banking POA", "Corporate POA"]
+  }
+];
+
+const jurisdictions = [
+  {
+    name: "Dubai Courts",
+    icon: "balance-scale",
+    desc: "UAE civil law jurisdiction with Arabic as official language. All documents require Arabic translation."
+  },
+  {
+    name: "DIFC Courts",
+    icon: "landmark",
+    desc: "Common law jurisdiction with English as primary language. Specific terminology and formatting requirements."
+  },
+  {
+    name: "ADGM Courts",
+    icon: "university",
+    desc: "Abu Dhabi common law financial center. English-language proceedings with specific court standards."
+  },
+  {
+    name: "Federal Courts",
+    icon: "flag",
+    desc: "UAE federal jurisdiction for matters of national law. Arabic documentation required."
+  }
+];
+
+const documentTypes = [
+  { name: "Court Judgments", time: "24-48 hrs" },
+  { name: "Contracts (5-15 pages)", time: "24-48 hrs" },
+  { name: "Powers of Attorney", time: "6-12 hrs" },
+  { name: "Board Resolutions", time: "24 hrs" },
+  { name: "MOA (simple)", time: "24 hrs" },
+  { name: "MOA (complex)", time: "48 hrs" },
+  { name: "Evidence Bundles", time: "3-5 days" },
+  { name: "Trade Licenses", time: "4-6 hrs" }
+];
 ---
 
-<BaseLayout 
-  title="Legal Translation in Dubai – MOJ Certified | OnlineTranslation.ae"
-  description="Legal document translation services in Dubai. Contracts, corporate documents, court filings, and litigation support. MOJ-certified for UAE courts and government."
+<CategoryLayout
+  title="Legal Translation Dubai | MOJ Certified Court & Contract Translation | OnlineTranslation.ae"
+  description="MOJ-certified legal translation in Dubai. Court documents, contracts, corporate filings, powers of attorney for Dubai Courts, DIFC, ADGM. Bilingual formatting, litigation support, same-day available."
+  keywords="legal translation dubai, court document translation, contract translation dubai, moj certified legal translation, difc translation, corporate document translation, poa translation dubai"
+  heroTitle="Legal Translation Services"
+  heroSubtitle="MOJ Certified for UAE Courts & Government"
+  heroIntro="Legal documents demand precision—every term carries weight, every clause has consequence. We provide MOJ-certified legal translation that UAE courts, regulatory bodies, and government entities accept without question. From court judgments to corporate formations, from contracts to litigation support, our legal specialists understand the terminology and formatting requirements that matter."
+  breadcrumbs={breadcrumbs}
+  serviceType="Legal Document Translation"
+  faqs={faqs}
 >
-  <section class="hero-section bg-dark" data-theme="dark">
-    <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">HOME</a>
-        <span class="separator">&gt;</span>
-        <span class="current">LEGAL DOCUMENTS</span>
-      </nav>
-      
-      <h1>Legal Document Translation</h1>
-      <p class="hero-subtitle">MOJ Certified for UAE Courts</p>
-      <p class="hero-intro">Legal documents require precision. Whether you need contracts for business deals, corporate documents for company formation, or translations for court proceedings, every term and clause must be accurately rendered. We handle complex legal terminology with the accuracy that courts and government authorities require.</p>
-    </div>
-  </section>
 
-  <section class="section bg-white">
+  <!-- Categories Grid -->
+  <section class="section">
     <div class="container">
-      <h2>Corporate Documents</h2>
-      <p class="section-intro">Company formation, governance, and management documents.</p>
-      
-      <div class="service-grid">
-        <a href="/legal/corporate/poa/" class="service-card">
-          <div class="service-icon"><i class="fas fa-signature"></i></div>
-          <h3>Power of Attorney</h3>
-          <p>General and Special POA for property, banking, and corporate management.</p>
-        </a>
-        
-        <a href="/legal/corporate/moa/" class="service-card">
-          <div class="service-icon"><i class="fas fa-building"></i></div>
-          <h3>Memorandum of Association</h3>
-          <p>Mainland and free zone MOA for bank accounts and licensing.</p>
-        </a>
+      <h2>Legal Document Categories</h2>
+      <p class="section-intro">Select your document category for specific requirements, turnaround times, and pricing information.</p>
+
+      <div class="categories-grid">
+        {categories.map(cat => (
+          <a href={cat.href} class="category-card">
+            <div class="category-icon">
+              <i class={`fas fa-${cat.icon}`}></i>
+            </div>
+            <h3>{cat.title}</h3>
+            <p>{cat.desc}</p>
+            <ul class="category-items">
+              {cat.items.map(item => (
+                <li><i class="fas fa-check"></i> {item}</li>
+              ))}
+            </ul>
+            <span class="category-link">View Details <i class="fas fa-arrow-right"></i></span>
+          </a>
+        ))}
       </div>
     </div>
   </section>
 
+  <!-- Jurisdictions Section -->
   <section class="section bg-light">
     <div class="container">
-      <h2>Contracts</h2>
-      <p class="section-intro">Business agreements and commercial contracts.</p>
-      
-      <div class="service-grid">
-        <a href="/legal/contracts/nda/" class="service-card">
-          <div class="service-icon"><i class="fas fa-lock"></i></div>
-          <h3>NDA / Confidentiality</h3>
-          <p>Non-disclosure agreements for IP protection and business deals.</p>
+      <h2>Court Jurisdictions We Serve</h2>
+      <p class="section-intro">Different courts have different requirements. We understand the nuances of each jurisdiction and format translations accordingly.</p>
+
+      <div class="jurisdictions-grid">
+        {jurisdictions.map(j => (
+          <div class="jurisdiction-card">
+            <div class="jurisdiction-icon">
+              <i class={`fas fa-${j.icon}`}></i>
+            </div>
+            <h3>{j.name}</h3>
+            <p>{j.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Section -->
+  <section class="section">
+    <div class="container">
+      <div class="content-grid">
+        <div class="content-main">
+          <h2>Why Legal Translation Requires Specialization</h2>
+          
+          <p>Legal documents are not ordinary text—they are precise instruments that allocate rights, create obligations, and determine outcomes worth millions of dirhams. A single mistranslated term can shift liability, invalidate agreements, or derail litigation. This is why legal translation requires specialists who understand both languages and the legal systems they serve.</p>
+          
+          <p>Our legal translators hold MOJ licenses and have backgrounds in UAE law. They understand the difference between civil law concepts used in Dubai Courts and common law terminology required for DIFC proceedings. They know how "shall" differs from "may" in contract drafting, how defined terms must be rendered consistently, and how cross-references must align across translated documents.</p>
+
+          <h3>Court Document Translation</h3>
+          
+          <p>UAE courts require Arabic documentation for all proceedings. Foreign judgments submitted for recognition must be translated with precision that preserves their legal effect. Evidence from international parties needs certification that courts will accept. Witness statements, expert reports, and documentary evidence all require MOJ-certified translation before submission.</p>
+          
+          <p>We work with law firms across Dubai handling civil litigation, commercial disputes, family matters, and criminal defense. Our translators understand court formatting requirements, legal terminology conventions, and the deadlines that drive litigation timelines. When you have a filing deadline, we deliver.</p>
+
+          <h3>Contract and Commercial Translation</h3>
+          
+          <p>Commercial contracts form the foundation of business relationships in the UAE. Whether you need a sale purchase agreement translated for DLD registration, an employment contract for MOHRE compliance, or a shareholder agreement for corporate governance, every term must be rendered with precision that preserves the parties' intent.</p>
+          
+          <p>We translate contracts with attention to defined terms, cross-references, interpretation clauses, and governing law provisions. For bilingual contracts—increasingly common in joint ventures and international transactions—we produce parallel-column documents where both language versions carry equal weight.</p>
+
+          <h3>Corporate and Regulatory Translation</h3>
+          
+          <p>Business operations in the UAE require Arabic documentation at every stage. Company formation documents, board resolutions, shareholder agreements, trade licenses, and regulatory filings all need MOJ-certified translation for government acceptance. We understand the specific requirements of DED, DMCC, JAFZA, DAFZA, DIFC, and other authorities.</p>
+          
+          <p>Our corporate translation specialists maintain consistency across all your documents. The same company name, the same shareholder name spellings, the same terminology—consistency that prevents confusion at government counters and ensures smooth processing of your business matters.</p>
+        </div>
+
+        <div class="content-sidebar">
+          <div class="info-card highlight">
+            <h4><i class="fab fa-whatsapp"></i> Get Started</h4>
+            <p>Send your legal documents via WhatsApp for an immediate quote and timeline confirmation.</p>
+            <a href="https://wa.me/971508620217" class="btn btn--primary btn--sm">
+              <i class="fab fa-whatsapp"></i> Send Documents
+            </a>
+          </div>
+
+          <div class="info-card">
+            <h4><i class="fas fa-clock"></i> Turnaround Times</h4>
+            <ul>
+              {documentTypes.map(doc => (
+                <li><strong>{doc.name}:</strong> {doc.time}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h4><i class="fas fa-shield-alt"></i> Our Guarantee</h4>
+            <p>If any court rejects our translation due to our error, we correct and redeliver at no charge—including courier costs to meet your deadline.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Legal Translation Process</h2>
+      <p class="section-intro">Our process is designed for the precision and confidentiality that legal work demands.</p>
+
+      <div class="process-grid">
+        <div class="process-card">
+          <div class="process-number">1</div>
+          <h3>Document Assessment</h3>
+          <p>Send your documents via WhatsApp or email. We analyze complexity, identify jurisdiction requirements, and confirm timeline and pricing within minutes.</p>
+        </div>
+        <div class="process-card">
+          <div class="process-number">2</div>
+          <h3>Specialist Assignment</h3>
+          <p>Your documents are assigned to an MOJ-certified translator with expertise in your document type—litigation, corporate, contracts, or regulatory.</p>
+        </div>
+        <div class="process-card">
+          <div class="process-number">3</div>
+          <h3>Translation and Review</h3>
+          <p>Translation is completed with attention to legal terminology and formatting. A second translator reviews for accuracy before certification.</p>
+        </div>
+        <div class="process-card">
+          <div class="process-number">4</div>
+          <h3>Certification and Delivery</h3>
+          <p>MOJ stamp with QR verification applied. Digital delivery via WhatsApp and email. Physical copies couriered to your location same-day in Dubai.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services -->
+  <section class="section">
+    <div class="container">
+      <h2>Related Services</h2>
+      <div class="related-grid">
+        <a href="/personal/" class="related-card">
+          <i class="fas fa-user"></i>
+          <h3>Personal Documents</h3>
+          <p>Birth certificates, marriage certificates, degrees, immigration documents</p>
+        </a>
+        <a href="/services/attestation/" class="related-card">
+          <i class="fas fa-stamp"></i>
+          <h3>Attestation Services</h3>
+          <p>MOFA attestation and embassy legalization coordination</p>
+        </a>
+        <a href="/services/golden-visa-translation/" class="related-card">
+          <i class="fas fa-star"></i>
+          <h3>Golden Visa Package</h3>
+          <p>Complete document packages for investor visa applications</p>
+        </a>
+        <a href="/locations/dubai/" class="related-card">
+          <i class="fas fa-map-marker-alt"></i>
+          <h3>Dubai Services</h3>
+          <p>Same-day delivery across all Dubai areas</p>
         </a>
       </div>
     </div>
   </section>
 
-  <section class="section bg-white">
-    <div class="container cta-section">
-      <h2>Complex Legal Document?</h2>
-      <p>Send us your document via WhatsApp for a review. We will assess the complexity, advise on requirements, and provide an accurate quote.</p>
-      <a href="https://wa.me/971508620217" class="btn btn-primary">
-        <i class="fab fa-whatsapp"></i> Send Your Document
-      </a>
-    </div>
-  </section>
-</BaseLayout>
+</CategoryLayout>
 
 <style>
-  .hero-section {
-    padding: 8rem 0 4rem;
-    background: var(--primary-color);
+  /* Base Section Styles */
+  .section {
+    padding: 4rem 0;
   }
-  
-  .breadcrumb {
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    margin-bottom: 2rem;
+
+  .section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
   }
-  
-  .breadcrumb a {
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-  }
-  
-  .breadcrumb a:hover {
-    color: #ffffff;
-  }
-  
-  .breadcrumb .separator {
-    margin: 0 0.5rem;
-    color: rgba(255, 255, 255, 0.5);
-  }
-  
-  .breadcrumb .current {
-    color: #ffffff;
-  }
-  
-  h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.5rem;
-    color: #ffffff;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.25rem;
-    color: var(--accent-color);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 1.5rem;
-  }
-  
-  .hero-intro {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    max-width: 700px;
-    color: rgba(255, 255, 255, 0.9);
-  }
-  
+
   .section-intro {
     font-size: 1.1rem;
     color: var(--text-muted);
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
+    max-width: 800px;
   }
-  
-  .service-grid {
+
+  .bg-light {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  /* Categories Grid */
+  .categories-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
-  
-  .service-card {
-    background: #ffffff;
-    border-radius: 1rem;
+
+  .category-card {
+    background: #fff;
+    border-radius: 12px;
     padding: 2rem;
     text-decoration: none;
     color: inherit;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
   }
-  
-  .service-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
-    border-color: var(--accent-color);
+
+  .category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
   }
-  
-  .bg-light .service-card {
-    background: #ffffff;
-  }
-  
-  .service-icon {
-    width: 56px;
-    height: 56px;
-    border-radius: 14px;
-    background: var(--primary-color);
-    color: #ffffff;
+
+  .category-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-color);
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
     margin-bottom: 1.25rem;
   }
-  
-  .service-card h3 {
-    margin: 0 0 0.5rem;
-    font-size: 1.15rem;
+
+  .category-icon i {
+    font-size: 1.5rem;
+    color: #fff;
   }
-  
-  .service-card p {
-    margin: 0;
+
+  .category-card h3 {
+    font-size: 1.25rem;
+    margin: 0 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .category-card p {
     color: var(--text-muted);
-    font-size: 0.95rem;
     line-height: 1.6;
-  }
-  
-  .cta-section {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .cta-section h2 {
     margin-bottom: 1rem;
+    font-size: 0.95rem;
   }
-  
-  .cta-section p {
-    margin-bottom: 2rem;
+
+  .category-items {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .category-items li {
+    font-size: 0.9rem;
     color: var(--text-muted);
   }
-  
+
+  .category-items i {
+    color: var(--accent-color);
+    margin-right: 0.35rem;
+    font-size: 0.75rem;
+  }
+
+  .category-link {
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  /* Jurisdictions Grid */
+  .jurisdictions-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .jurisdiction-card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .jurisdiction-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+
+  .jurisdiction-icon i {
+    font-size: 1.25rem;
+    color: #fff;
+  }
+
+  .jurisdiction-card h3 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .jurisdiction-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Content Grid */
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 3rem;
+  }
+
+  .content-main h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .content-main h3 {
+    font-size: 1.25rem;
+    margin: 2.5rem 0 1rem;
+    color: var(--primary-color);
+  }
+
+  .content-main p {
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Sidebar */
+  .info-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .info-card.highlight {
+    background: var(--primary-color);
+    color: #fff;
+  }
+
+  .info-card h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .info-card h4 i {
+    color: var(--accent-color);
+  }
+
+  .info-card.highlight h4 i {
+    color: #fff;
+  }
+
+  .info-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .info-card li {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    font-size: 0.9rem;
+  }
+
+  .info-card.highlight li {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .info-card li:last-child {
+    border-bottom: none;
+  }
+
+  .info-card p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .info-card .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Process Grid */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .process-card {
+    text-align: center;
+    position: relative;
+  }
+
+  .process-number {
+    width: 50px;
+    height: 50px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .process-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .process-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* Related Grid */
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .related-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .related-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .related-card i {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .related-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .related-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Buttons */
   .btn {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 1rem 2rem;
-    border-radius: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
     font-weight: 600;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
   }
-  
-  .btn-primary {
+
+  .btn--primary {
     background: var(--accent-color);
-    color: #ffffff;
+    color: #fff;
   }
-  
-  .btn-primary:hover {
-    background: #e0144c;
-    transform: translateY(-2px);
+
+  .btn--primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn--sm {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .jurisdictions-grid,
+    .process-grid,
+    .related-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 991px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .content-sidebar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .categories-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section {
+      padding: 3rem 0;
+    }
+
+    .jurisdictions-grid,
+    .process-grid,
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .content-sidebar {
+      grid-template-columns: 1fr;
+    }
+
+    .category-items {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
