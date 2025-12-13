@@ -1,0 +1,288 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Legal Translation', url: '/legal-translation-dubai/' },
+  { name: 'Court Documents', url: '/legal/litigation/' }
+];
+
+const documents = [
+  {
+    title: 'Court Verdicts & Judgments',
+    href: '/legal/litigation/verdict/',
+    icon: 'gavel',
+    desc: 'Final judgments, default judgments, appellate decisions for UAE enforcement and legal records.',
+    courts: 'Dubai Courts, DIFC, Federal Courts'
+  },
+  {
+    title: 'Arbitration Awards',
+    href: '/legal/litigation/arbitration/',
+    icon: 'balance-scale-right',
+    desc: 'ICC, LCIA, DIAC, and ad-hoc arbitration awards for recognition and enforcement proceedings.',
+    courts: 'DIAC, ICC, LCIA, SIAC'
+  },
+  {
+    title: 'Legal Notices & Pleadings',
+    href: '/legal-translation-dubai/',
+    icon: 'file-alt',
+    desc: 'Claim statements, defenses, motions, and legal correspondence for court submission.',
+    courts: 'All UAE Courts'
+  },
+  {
+    title: 'Evidence & Exhibits',
+    href: '/legal-translation-dubai/',
+    icon: 'folder-open',
+    desc: 'Documentary evidence, witness statements, and exhibit bundles for litigation support.',
+    courts: 'All Jurisdictions'
+  }
+];
+---
+
+<BaseLayout 
+  title="Court Document Translation Dubai | Litigation & Legal Translation | OnlineTranslation.ae"
+  description="MOJ-certified court document translation in Dubai. Judgments, arbitration awards, pleadings, legal notices for Dubai Courts, DIFC, ADGM. Enforcement-ready translations."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Court Document Translation Services Dubai",
+      "description": "MOJ-certified translation of court documents including judgments, arbitration awards, and litigation materials",
+      "provider": {
+        "@type": "Organization",
+        "name": "OnlineTranslation.ae"
+      },
+      "areaServed": ["Dubai", "Abu Dhabi", "Sharjah", "UAE"],
+      "serviceType": ["Court Document Translation", "Judgment Translation", "Arbitration Award Translation"]
+    })} />
+  </Fragment>
+
+  <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        {breadcrumbs.map((crumb, i) => (
+          <li>
+            {i === breadcrumbs.length - 1 ? (
+              <span aria-current="page">{crumb.name}</span>
+            ) : (
+              <a href={crumb.url}>{crumb.name}</a>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="hero-badge">Litigation Support</span>
+      <h1>Court Document Translation</h1>
+      <p class="hero-lead">Litigation requires precision—every word in a court document carries legal weight. From foreign judgment enforcement to arbitration award recognition, we provide translations that UAE courts rely upon. Our litigation translators understand procedural requirements across Dubai Courts, DIFC, ADGM, and federal jurisdictions.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/971508620217?text=I%20need%20court%20document%20translation" class="btn btn--primary">
+          <i class="fab fa-whatsapp"></i> Send Document
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="documents-section section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Court Documents We Translate</h2>
+        <p>Select your document type for specific requirements and jurisdictional expertise.</p>
+      </div>
+
+      <div class="documents-grid">
+        {documents.map(doc => (
+          <a href={doc.href} class="document-card">
+            <div class="document-icon">
+              <i class={`fas fa-${doc.icon}`}></i>
+            </div>
+            <h3>{doc.title}</h3>
+            <p>{doc.desc}</p>
+            <div class="document-courts">
+              <strong>Jurisdictions:</strong> {doc.courts}
+            </div>
+            <span class="document-link">Learn More →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="jurisdictions-section section bg-light">
+    <div class="container">
+      <h2>Multi-Jurisdiction Expertise</h2>
+      <p class="section-intro">The UAE operates multiple court systems with different language requirements and procedural rules. We understand the distinctions.</p>
+
+      <div class="jurisdiction-grid">
+        <div class="jurisdiction-card">
+          <h3>Dubai Courts</h3>
+          <p>Civil law jurisdiction with Arabic as the official language. All submissions require Arabic documentation. Court of First Instance, Court of Appeal, and Court of Cassation.</p>
+        </div>
+        <div class="jurisdiction-card">
+          <h3>DIFC Courts</h3>
+          <p>Common law jurisdiction with English as the primary language. Serves the Dubai International Financial Centre with specialized commercial and civil procedures.</p>
+        </div>
+        <div class="jurisdiction-card">
+          <h3>ADGM Courts</h3>
+          <p>Abu Dhabi's common law jurisdiction operating in English. Similar to DIFC with specialized commercial dispute resolution.</p>
+        </div>
+        <div class="jurisdiction-card">
+          <h3>Federal Courts</h3>
+          <p>Federal Supreme Court and federal judicial bodies operating under UAE civil law. Arabic documentation required for all proceedings.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="enforcement-section section">
+    <div class="container">
+      <div class="content-grid">
+        <div class="content-main">
+          <h2>Foreign Judgment & Award Enforcement</h2>
+          <p>Enforcing foreign court judgments and arbitration awards in the UAE requires presenting these documents to UAE courts in Arabic. The translation becomes the document that judges read and rely upon when deciding enforcement.</p>
+          
+          <p>For judgments, courts assess whether the foreign court had jurisdiction, whether due process was followed, and whether enforcement would violate UAE public policy. The translation must clearly present procedural history and the operative ruling.</p>
+          
+          <p>For arbitration awards, the New York Convention provides the framework. The translation must include the arbitration agreement, the award itself, and any supporting procedural orders that demonstrate proper arbitral process.</p>
+
+          <h3>Key Enforcement Requirements</h3>
+          <ul>
+            <li>Authenticated original judgment or award</li>
+            <li>MOJ-certified Arabic translation</li>
+            <li>Proof of proper service on defendant</li>
+            <li>Evidence that judgment is final and enforceable</li>
+          </ul>
+        </div>
+
+        <div class="content-sidebar">
+          <div class="info-card">
+            <h4>Document Checklist</h4>
+            <ul>
+              <li>Original judgment/award</li>
+              <li>Arbitration agreement (for awards)</li>
+              <li>Proof of authentication</li>
+              <li>Service documentation</li>
+              <li>Certified translation</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight">
+            <h4>Urgent Litigation?</h4>
+            <p>Court deadlines don't wait. We offer expedited translation for urgent litigation matters.</p>
+            <a href="https://wa.me/971508620217?text=URGENT%20court%20document" class="btn btn--primary btn--sm">Priority Request</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="related-section section bg-light">
+    <div class="container">
+      <h2>Related Services</h2>
+      <div class="related-grid">
+        <a href="/legal-translation-dubai/" class="related-card">
+          <i class="fas fa-balance-scale"></i>
+          <h3>Legal Translation Hub</h3>
+          <p>Complete legal document services</p>
+        </a>
+        <a href="/legal/contracts/" class="related-card">
+          <i class="fas fa-file-contract"></i>
+          <h3>Contract Translation</h3>
+          <p>Commercial agreements and contracts</p>
+        </a>
+        <a href="/legal/corporate/" class="related-card">
+          <i class="fas fa-building"></i>
+          <h3>Corporate Documents</h3>
+          <p>MOA, resolutions, shareholder documents</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section section bg-dark">
+    <div class="container text-center">
+      <h2>Court Deadline Approaching?</h2>
+      <p>Litigation documents require accuracy and speed. Send your document for priority assessment.</p>
+      <a href="https://wa.me/971508620217" class="btn btn--primary btn--lg">
+        <i class="fab fa-whatsapp"></i> Send Document Now
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .breadcrumb-nav { background: var(--primary-color); padding: 1rem 0; }
+  .breadcrumb-list { display: flex; list-style: none; margin: 0; padding: 0; gap: 0.5rem; font-size: 0.875rem; }
+  .breadcrumb-list li:not(:last-child)::after { content: '/'; margin-left: 0.5rem; color: rgba(255,255,255,0.5); }
+  .breadcrumb-list a { color: rgba(255,255,255,0.8); text-decoration: none; }
+  .breadcrumb-list span { color: white; }
+
+  .page-hero { background: var(--primary-color); color: white; padding: 4rem 0; }
+  .hero-badge { display: inline-block; background: var(--accent-color); padding: 0.5rem 1rem; border-radius: 2rem; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; }
+  .page-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
+  .hero-lead { font-size: 1.125rem; line-height: 1.7; max-width: 700px; opacity: 0.95; margin-bottom: 2rem; }
+
+  .section { padding: 4rem 0; }
+  .section-header { text-align: center; margin-bottom: 3rem; }
+  .section-header h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+  .section-header p { color: var(--text-muted); }
+  .section-intro { font-size: 1.125rem; color: var(--text-muted); margin-bottom: 2rem; text-align: center; }
+
+  .documents-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .document-card { background: white; border-radius: 1rem; padding: 2rem; text-decoration: none; color: inherit; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s; }
+  .document-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+  .document-icon { width: 60px; height: 60px; background: var(--accent-color); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
+  .document-icon i { font-size: 1.5rem; color: white; }
+  .document-card h3 { font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--primary-color); }
+  .document-card p { color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem; }
+  .document-courts { font-size: 0.875rem; color: var(--text-muted); padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.08); margin-bottom: 1rem; }
+  .document-link { color: var(--accent-color); font-weight: 600; }
+
+  .jurisdiction-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+  .jurisdiction-card { background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+  .jurisdiction-card h3 { font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--primary-color); }
+  .jurisdiction-card p { color: var(--text-muted); line-height: 1.6; font-size: 0.95rem; }
+
+  .content-grid { display: grid; grid-template-columns: 1fr 350px; gap: 3rem; }
+  .content-main h2 { font-size: 1.75rem; margin-bottom: 1.5rem; }
+  .content-main h3 { font-size: 1.25rem; margin: 2rem 0 1rem; }
+  .content-main p { line-height: 1.8; margin-bottom: 1.25rem; }
+  .content-main ul { list-style: none; padding: 0; }
+  .content-main li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
+  .content-main li::before { content: '→'; position: absolute; left: 0; color: var(--accent-color); }
+
+  .info-card { background: white; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+  .info-card.highlight { background: var(--primary-color); color: white; }
+  .info-card h4 { font-size: 1rem; margin-bottom: 1rem; }
+  .info-card ul { list-style: none; padding: 0; margin: 0; }
+  .info-card li { padding: 0.4rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .info-card.highlight li { border-bottom-color: rgba(255,255,255,0.2); }
+  .info-card p { margin-bottom: 1rem; }
+
+  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .related-card { background: white; padding: 2rem; border-radius: 1rem; text-decoration: none; color: inherit; text-align: center; transition: all 0.3s; }
+  .related-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+  .related-card i { font-size: 2rem; color: var(--accent-color); margin-bottom: 1rem; }
+  .related-card h3 { font-size: 1.125rem; margin-bottom: 0.5rem; }
+  .related-card p { color: var(--text-muted); font-size: 0.9rem; }
+
+  .cta-section { text-align: center; }
+  .cta-section h2 { color: white; margin-bottom: 1rem; }
+  .cta-section p { color: rgba(255,255,255,0.9); margin-bottom: 2rem; }
+
+  .bg-light { background: var(--bg-light, #f8f9fa); }
+  .bg-dark { background: var(--primary-color); }
+  .text-center { text-align: center; }
+
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; }
+  .btn--primary { background: var(--accent-color); color: white; }
+  .btn--sm { padding: 0.75rem 1.5rem; font-size: 0.9rem; }
+  .btn--lg { padding: 1.125rem 2.25rem; }
+
+  @media (max-width: 991px) { .content-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 768px) { .related-grid { grid-template-columns: 1fr; } }
+</style>
