@@ -1,452 +1,177 @@
 ---
 import ServiceLayout from '../../../../layouts/ServiceLayout.astro';
-import RelatedServices from '../../../../components/RelatedServices.astro';
-import DocumentFamily from '../../../../components/DocumentFamily.astro';
-import CrossSiloLinks from '../../../../components/CrossSiloLinks.astro';
-import InlineCallout from '../../../../components/InlineCallout.astro';
 
-const pageData = {
-  title: "Marriage Certificate Translation in Dubai – MOJ Certified | OnlineTranslation.ae",
-  description: "Marriage certificate translation in Dubai accepted by UAE courts, GDRFA, and family law proceedings. MOJ-certified translations with pre-validation to help reduce rejection risk.",
-  keywords: "marriage certificate translation dubai, marriage certificate translation UAE, MOJ certified marriage certificate, spouse visa UAE, family visa sponsorship",
-  heroTitle: "Marriage Certificate Translation in Dubai",
-  heroSubtitle: "MOJ Certified for UAE Government Use",
-  heroIntro: "Whether you are sponsoring a spouse, updating family records, or preparing for legal proceedings, your marriage certificate translation needs to meet specific UAE requirements. We review every submission before accepting payment, checking that the document is properly attested and formatted for the authority you are dealing with. This helps prevent delays caused by rejected paperwork.",
-  snapshot: [
-    { icon: "clock", bold: "Digital drafts", text: "typically within 60 minutes" },
-    { icon: "mobile-alt", bold: "WhatsApp-based workflow", text: "for easy communication" },
-    { icon: "check-circle", bold: "Accepted by GDRFA & Courts", text: "for family proceedings" },
-    { icon: "stamp", bold: "MOJ legal stamp", text: "with QR verification" }
-  ],
-  breadcrumbs: [
-    { name: "Home", url: "/" },
-    { name: "Personal Documents", url: "/personal/" },
-    { name: "Vital Records", url: "/personal/vital-records/" },
-    { name: "Marriage Certificate Translation", url: "/personal/vital-records/marriage/" }
-  ],
-  
-  trustStrip: [
-    "MOJ-licensed partner",
-    "Court-ready in Dubai & UAE",
-    "WhatsApp concierge support"
-  ],
-  
-  processSteps: [
-    {
-      title: "Send a clear photo or scan",
-      text: "Front and back of the marriage certificate, including any attestation stamps or endorsements."
-    },
-    {
-      title: "We prepare your translation",
-      text: "MOJ-licensed legal translator creates a court-ready draft with proper formatting for UAE authorities."
-    },
-    {
-      title: "Pickup or delivery",
-      text: "Collect in Dubai or arrange courier to your address. Digital PDF sent immediately upon completion."
-    }
-  ],
-  
-  benefitCards: [
-    {
-      icon: "court",
-      title: "Designed for UAE procedures",
-      text: "Translations drafted with UAE courts, immigration offices, and family law requirements in mind."
-    },
-    {
-      icon: "fast",
-      title: "WhatsApp-based workflow",
-      text: "You do not need to visit an office to get started. Send documents from anywhere."
-    },
-    {
-      icon: "document",
-      title: "Pre-validation review",
-      text: "We flag issues with attestation or document quality before they cause delays."
-    }
-  ],
-  
-  accordionSections: [
-    {
-      title: "Where you will use your marriage certificate translation",
-      id: "use-cases",
-      items: [
-        {
-          heading: "Spouse visa and family sponsorship",
-          body: "<p>GDRFA requires a certified marriage certificate translation when sponsoring a spouse for UAE residence. The translation must include the MOJ stamp and show all parties' names exactly as they appear on passports.</p><p>For <a href='/services/golden-visa-translation/'>Golden Visa family sponsorship</a>, additional documents like birth certificates may also be needed.</p>"
-        },
-        {
-          heading: "Family law and court proceedings",
-          body: "<p>Dubai Courts and other UAE judicial entities require MOJ-certified translations for any marriage-related proceedings, including <a href='/personal/vital-records/divorce/'>divorce filings</a>, custody matters, and inheritance cases.</p><p>The translation must accurately reflect all annotations, amendments, or endorsements on the original certificate.</p>"
-        },
-        {
-          heading: "Bank accounts and property transactions",
-          body: "<p>Some banks and property developers require marriage certificate translations when adding a spouse to accounts or property titles. The requirements vary by institution.</p><p>Many <a href='/locations/dubai/palm-jumeirah/'>Palm Jumeirah</a> property purchases require spousal documentation.</p>"
-        }
-      ]
-    },
-    {
-      title: "Special cases and requirements",
-      id: "special-cases",
-      items: [
-        {
-          heading: "Marriage registered in the UAE",
-          body: "<p>If your marriage was registered in the UAE, you likely have both Arabic and English versions already. However, some authorities still require a fresh MOJ-certified translation if the original documents are older or if names have changed.</p><p>We can review your existing documents and advise whether a new translation is needed.</p>"
-        },
-        {
-          heading: "Marriage registered abroad",
-          body: "<p>Foreign marriage certificates typically need <a href='/services/attestation/'>attestation</a> before they can be translated for UAE use. The attestation chain usually includes: home country authorities, home country Ministry of Foreign Affairs, UAE Embassy, and UAE MOFA.</p><p>We check attestation status during our pre-validation review and advise accordingly.</p>"
-        },
-        {
-          heading: "Religious or traditional ceremonies",
-          body: "<p>Some marriages are registered through religious authorities rather than civil registries. These certificates may require additional documentation or explanation for UAE authorities.</p><p>We can help you understand what supplementary documents might be needed alongside the translation.</p>"
-        },
-        {
-          heading: "Name changes after marriage",
-          body: "<p>If either spouse changed their name after marriage, you may need to provide additional documentation showing the name change. This is particularly important when passport names differ from certificate names.</p><p>We ensure the translation clearly reflects all names as they appear on the original document.</p>"
-        }
-      ]
-    },
-    {
-      title: "Related family documents",
-      id: "related",
-      items: [
-        {
-          heading: "Birth certificates",
-          body: "<p>Family sponsorship often requires <a href='/personal/vital-records/birth/'>birth certificate translation</a> for children alongside marriage documentation.</p>"
-        },
-        {
-          heading: "Divorce documents",
-          body: "<p>If you have been previously married, <a href='/personal/vital-records/divorce/'>divorce decree translation</a> may be required for remarriage registration or visa applications.</p>"
-        },
-        {
-          heading: "Death certificates",
-          body: "<p>For inheritance or remarriage after widowhood, <a href='/personal/vital-records/death/'>death certificate translation</a> is needed for legal proceedings.</p>"
-        }
-      ]
-    }
-  ],
-  
-  faqs: [
-    {
-      question: "Is this marriage certificate translation accepted for spouse visa applications?",
-      answer: "Yes. Our MOJ-certified marriage certificate translations are accepted by GDRFA for spouse visa and family sponsorship applications. The translation includes the official stamp, QR code verification, and translator license details required for immigration documentation."
-    },
-    {
-      question: "What if my marriage certificate is in a language other than English?",
-      answer: "We translate marriage certificates from virtually any language. For documents not in English or Arabic, we may use a two-step process depending on the requirements of the receiving authority. Let us know the original language when you submit, and we will advise on the best approach."
-    },
-    {
-      question: "Does my marriage certificate need MOFA attestation before translation?",
-      answer: "For most official UAE uses, yes. Foreign marriage certificates typically need to go through the attestation chain before translation. We review each case individually and advise you before proceeding, so you do not spend money on translation that will not be accepted without attestation."
-    },
-    {
-      question: "How long does marriage certificate translation take?",
-      answer: "Standard service delivers within 24 hours. Express service completes in 6 hours with priority handling. VIP Concierge provides 1-hour drafts with immediate agent assignment. All timelines begin after document review and payment confirmation."
-    },
-    {
-      question: "Can I use this translation for divorce proceedings?",
-      answer: "Yes. MOJ-certified marriage certificate translations are accepted by Dubai Courts and other UAE judicial entities for divorce proceedings, custody matters, and other family law cases. The translation meets all court submission requirements."
-    }
-  ],
-  serviceType: "Marriage Certificate Translation"
-};
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Personal Documents', url: '/personal/' },
+  { name: 'Vital Records', url: '/personal/vital-records/' },
+  { name: 'Marriage Certificate', url: '/personal/vital-records/marriage/' }
+];
+
+const snapshot = [
+  { icon: 'ring', bold: 'All Formats', text: 'Religious, civil, foreign certificates' },
+  { icon: 'stamp', bold: 'Court Ready', text: 'Personal Status Court accepted' },
+  { icon: 'clock', bold: '2-4 Hours', text: 'Standard certificate turnaround' },
+  { icon: 'users', bold: 'Spouse Visas', text: 'GDRFA formatting included' }
+];
+
+const processSteps = [
+  {
+    number: 1,
+    title: 'Certificate Review',
+    text: 'We identify certificate type (religious, civil, foreign), verify all details are legible, and confirm attestation status.',
+    icon: 'search'
+  },
+  {
+    number: 2,
+    title: 'Detail Translation',
+    text: 'Full names, dates, locations, witnesses, and officiant details translated with attention to spouse name consistency.',
+    icon: 'file-alt'
+  },
+  {
+    number: 3,
+    title: 'Format Verification',
+    text: 'Spouse names verified against passport spellings to prevent visa or bank rejections.',
+    icon: 'check-double'
+  },
+  {
+    number: 4,
+    title: 'Certified Delivery',
+    text: 'MOJ-stamped translation ready for visa applications, court submissions, or bank account changes.',
+    icon: 'certificate'
+  }
+];
+
+const faqs = [
+  {
+    question: 'What marriage certificate formats do you translate?',
+    answer: 'We translate all marriage certificate formats: religious certificates (Muslim Nikah Nama, Christian marriage certificates, Hindu marriage documents), civil certificates from any country, court marriage certificates, and UAE marriage contracts. Each format has specific terminology that our translators understand.'
+  },
+  {
+    question: 'Why is spouse name accuracy so important?',
+    answer: 'Immigration and banking systems match names exactly. If your marriage certificate shows "Mohammad" but your passport shows "Mohammed," this creates problems. We verify names against passports when available and flag any discrepancies that could cause rejection.'
+  },
+  {
+    question: 'Does my marriage certificate need attestation?',
+    answer: 'For UAE government use, foreign marriage certificates typically need attestation before translation. The chain includes: home country authentication, UAE Embassy attestation, and MOFA. For some purposes like bank account changes, attested translation may not be required—we advise based on your specific need.'
+  },
+  {
+    question: 'How do you handle religious marriage certificates?',
+    answer: 'Religious certificates often include specific religious terminology and may be in languages like Urdu (Nikah Nama), Hindi, or Arabic. Our translators understand the religious context and use appropriate Arabic equivalents that UAE authorities recognize.'
+  },
+  {
+    question: 'Can you translate marriage certificates for court cases?',
+    answer: 'Yes. Marriage certificates are frequently needed for Personal Status Court matters—divorce proceedings, inheritance cases, and custody disputes. We format translations to meet court submission requirements and can provide multiple certified copies.'
+  },
+  {
+    question: 'What about same-country UAE marriages?',
+    answer: 'UAE marriage contracts issued by UAE courts or authorized religious authorities may already be in Arabic. If you need English translation (for international use) or additional certified copies, we can assist with that as well.'
+  }
+];
+
+const accordionSections = [
+  {
+    title: 'Certificate Types We Translate',
+    id: 'types',
+    items: [
+      {
+        heading: 'Civil Marriage Certificates',
+        body: 'Government-issued certificates from any country. UK, US, European, Asian civil marriage documents with official registration details and government seals.'
+      },
+      {
+        heading: 'Religious Marriage Certificates',
+        body: 'Nikah Nama (Muslim), Christian marriage certificates, Hindu marriage documents, and other religious ceremony records. Specialized religious terminology handled appropriately.'
+      },
+      {
+        heading: 'Court Marriage Certificates',
+        body: 'Certificates issued by courts for civil marriages or court-registered religious marriages. Legal terminology and court formatting preserved.'
+      },
+      {
+        heading: 'Foreign Consular Marriages',
+        body: 'Marriages registered at embassies or consulates abroad. These have specific formats that we recognize and translate accurately.'
+      }
+    ]
+  },
+  {
+    title: 'Common Uses',
+    id: 'uses',
+    items: [
+      {
+        heading: 'Spouse Visa Applications',
+        body: 'GDRFA requires marriage certificate translation for spouse residency visa applications. We format translations to meet immigration requirements.'
+      },
+      {
+        heading: 'Bank Account Updates',
+        body: 'Adding spouse to bank accounts or changing account names after marriage. Banks require certified translation of marriage proof.'
+      },
+      {
+        heading: 'Property Transactions',
+        body: 'Joint property purchases or adding spouse to existing property titles. DLD requires proof of marriage for joint ownership registration.'
+      },
+      {
+        heading: 'Personal Status Court',
+        body: 'Divorce proceedings, inheritance matters, and custody cases all require original marriage documentation translated for court records.'
+      },
+      {
+        heading: 'Insurance & Benefits',
+        body: 'Adding spouse to health insurance, life insurance beneficiaries, or employer benefits programs.'
+      }
+    ]
+  }
+];
 ---
 
-<ServiceLayout {...pageData}>
-  
-  <!-- What You Receive Section -->
-  <section class="section bg-white">
-    <div class="container">
-      <h2>What You Receive</h2>
-      <p class="section-intro">Every marriage certificate translation includes these deliverables, whether you choose Standard, Express, or VIP service:</p>
-      
-      <div class="deliverables-grid">
-        <div class="deliverable-card">
-          <div class="deliverable-icon"><i class="fas fa-file-pdf"></i></div>
-          <h3>Digital PDF Copy</h3>
-          <p>Sent via WhatsApp and email within your chosen timeframe. Suitable for initial submissions and digital applications.</p>
-        </div>
-        
-        <div class="deliverable-card">
-          <div class="deliverable-icon"><i class="fas fa-stamp"></i></div>
-          <h3>MOJ-Stamped Original</h3>
-          <p>Physical copy with the official Ministry of Justice stamp, QR verification code, and translator license details.</p>
-        </div>
-        
-        <div class="deliverable-card">
-          <div class="deliverable-icon"><i class="fas fa-copy"></i></div>
-          <h3>Certified Copies</h3>
-          <p>Additional stamped copies available on request. Many clients order 2-3 copies for different government submissions.</p>
-        </div>
-        
-        <div class="deliverable-card">
-          <div class="deliverable-icon"><i class="fas fa-truck"></i></div>
-          <h3>Courier Delivery</h3>
-          <p>Free delivery across Dubai. Next-day delivery to Abu Dhabi, Sharjah, and other Emirates at standard courier rates.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Requirements Section -->
+<ServiceLayout
+  title="Marriage Certificate Translation Dubai | Wedding Certificate Arabic | MOJ Certified"
+  description="MOJ-certified marriage certificate translation in Dubai. Civil, religious, foreign marriage documents for visa applications, court submissions, banking. 2-4 hour turnaround."
+  keywords="marriage certificate translation dubai, wedding certificate translation, nikah nama translation, spouse visa translation, marriage document arabic"
+  heroTitle="Marriage Certificate Translation"
+  heroSubtitle="Vital Records"
+  heroIntro="Marriage certificates establish legal relationships that affect visas, property, banking, and inheritance. Whether your certificate is a civil document, religious record, or foreign registration, we provide certified translations that UAE authorities accept for all official purposes."
+  snapshot={snapshot}
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  serviceType="Marriage Certificate Translation Service"
+  processSteps={processSteps}
+  processTitle="Translation Process"
+  accordionSections={accordionSections}
+>
   <section class="section bg-light">
     <div class="container">
-      <h2>Before You Submit</h2>
-      <p class="section-intro">To avoid delays, please check these requirements before sending your marriage certificate:</p>
+      <h2>Marriage Certificate Translation for UAE Life</h2>
+      <p>Your marriage certificate is referenced throughout your UAE experience—from the initial spouse visa application to property purchases, bank accounts, and eventually inheritance planning. The Arabic translation becomes part of your permanent record with UAE authorities.</p>
       
-      <div class="alert-box alert-box--warning">
-        <strong>Attestation Requirements</strong><br>
-        For most official UAE uses, your marriage certificate needs attestation from your home country before translation. We will check this during our free pre-validation review.
-      </div>
+      <p>Different certificate formats present different challenges. A Nikah Nama includes religious terminology that must be rendered appropriately. A UK civil certificate uses formal legal language. An Indian marriage certificate may be in Hindi or a regional language. Our translators have experience with all formats.</p>
       
-      <div class="requirements-list">
-        <div class="requirement-item">
-          <div class="requirement-icon"><i class="fas fa-image"></i></div>
-          <div class="requirement-content">
-            <h4>Clear, Complete Image</h4>
-            <p>All corners visible, no blur, all stamps and endorsements clearly captured. Phone photos are acceptable if quality is good.</p>
-          </div>
-        </div>
-        
-        <div class="requirement-item">
-          <div class="requirement-icon"><i class="fas fa-language"></i></div>
-          <div class="requirement-content">
-            <h4>Original Language Identified</h4>
-            <p>Let us know the original language. If not English or Arabic, we may use a two-step translation process.</p>
-          </div>
-        </div>
-        
-        <div class="requirement-item">
-          <div class="requirement-icon"><i class="fas fa-bullseye"></i></div>
-          <div class="requirement-content">
-            <h4>Intended Use Specified</h4>
-            <p>Tell us what you need this for (spouse visa, court filing, bank account). This helps us advise on attestation requirements.</p>
-          </div>
-        </div>
-      </div>
+      <p>We pay particular attention to name consistency. Your spouse's name must appear exactly as it does on their passport. Any variation—even Mohamed vs Mohammed—can cause visa rejections or banking complications. We verify this detail before finalizing your translation.</p>
     </div>
   </section>
 
-  <!-- Pricing Section -->
-  <section class="section bg-white">
+  <section class="section">
     <div class="container">
-      <h2>Service Levels and Pricing</h2>
-      <p class="section-intro">Choose the service level that matches your timeline. All options include the same quality translation and MOJ certification.</p>
-      
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <h3>Standard</h3>
-          <div class="pricing-price">AED 150</div>
-          <p class="pricing-time">24-hour delivery</p>
-          <ul class="pricing-features">
-            <li>MOJ-certified translation</li>
-            <li>Digital PDF + physical copy</li>
-            <li>Free Dubai delivery</li>
-            <li>WhatsApp updates</li>
-          </ul>
-        </div>
-        
-        <div class="pricing-card pricing-card--featured">
-          <h3>Express</h3>
-          <div class="pricing-price">AED 250</div>
-          <p class="pricing-time">6-hour delivery</p>
-          <ul class="pricing-features">
-            <li>Everything in Standard</li>
-            <li>Priority queue</li>
-            <li>Dedicated coordinator</li>
-            <li>Same-day physical delivery</li>
-          </ul>
-        </div>
-        
-        <div class="pricing-card">
-          <h3>VIP Concierge</h3>
-          <div class="pricing-price">AED 450</div>
-          <p class="pricing-time">1-hour draft</p>
-          <ul class="pricing-features">
-            <li>Everything in Express</li>
-            <li>Immediate agent assignment</li>
-            <li>Direct phone line</li>
-            <li>Document collection service</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="alert-box alert-box--info" style="margin-top: 2rem;">
-        <strong>Multi-Document Discount</strong><br>
-        Translating multiple documents for spouse sponsorship? Contact us for package pricing. Many families need marriage certificates, birth certificates, and educational documents translated together.
+      <h2>Related Services</h2>
+      <div class="related-grid">
+        <a href="/personal/vital-records/" class="related-card">
+          <h3>Vital Records Hub</h3>
+          <p>All personal certificate services</p>
+        </a>
+        <a href="/personal/vital-records/birth/" class="related-card">
+          <h3>Birth Certificate</h3>
+          <p>Child and dependent documentation</p>
+        </a>
+        <a href="/services/attestation/" class="related-card">
+          <h3>Document Attestation</h3>
+          <p>Certificate authentication services</p>
+        </a>
       </div>
     </div>
   </section>
-
-  <section class="section bg-white">
-    <div class="container">
-      <InlineCallout 
-        type="related" 
-        title="Family Visa Requirements"
-        link="/services/golden-visa-translation/"
-        linkText="See Golden Visa documents"
-      >
-        Sponsoring family members often requires multiple translated documents including birth certificates and educational credentials.
-      </InlineCallout>
-
-      <DocumentFamily 
-        pageKey="marriageCertificate"
-        title="Related Vital Records"
-      />
-      
-      <RelatedServices 
-        pageKey="marriageCertificate"
-        title="You May Also Need"
-        maxItems={6}
-      />
-      
-      <CrossSiloLinks 
-        pageKey="marriageCertificate"
-        title="Related Services"
-      />
-    </div>
-  </section>
-
 </ServiceLayout>
 
 <style>
-  .section-intro {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    max-width: 700px;
-    margin-bottom: 2rem;
-  }
-  
-  .deliverables-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-  }
-  
-  .deliverable-card {
-    background: #f8f9fa;
-    border-radius: 1rem;
-    padding: 1.5rem;
-  }
-  
-  .deliverable-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    background: var(--primary-color);
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-  }
-  
-  .deliverable-card h3 {
-    margin: 0 0 0.5rem;
-    font-size: 1.1rem;
-  }
-  
-  .deliverable-card p {
-    margin: 0;
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.6;
-  }
-  
-  .requirements-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-  
-  .requirement-item {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-  }
-  
-  .requirement-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    background: var(--primary-color);
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  
-  .requirement-content h4 {
-    margin: 0 0 0.25rem;
-    font-size: 1rem;
-  }
-  
-  .requirement-content p {
-    margin: 0;
-    color: var(--text-muted);
-    font-size: 0.95rem;
-  }
-  
-  .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
-  
-  .pricing-card {
-    background: #f8f9fa;
-    border-radius: 1rem;
-    padding: 2rem;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    text-align: center;
-  }
-  
-  .pricing-card--featured {
-    border-color: var(--accent-color);
-    box-shadow: 0 8px 30px rgba(255, 22, 84, 0.15);
-    background: #ffffff;
-  }
-  
-  .pricing-card h3 {
-    margin: 0 0 0.5rem;
-    font-size: 1.25rem;
-  }
-  
-  .pricing-price {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 0.25rem;
-  }
-  
-  .pricing-time {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .pricing-features {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align: left;
-  }
-  
-  .pricing-features li {
-    padding: 0.5rem 0;
-    padding-left: 1.5rem;
-    position: relative;
-    font-size: 0.95rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  }
-  
-  .pricing-features li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--accent-color);
-    font-weight: 700;
-  }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+  .related-card { padding: 1.5rem; background: var(--bg-light, #f8f9fa); border-radius: 8px; text-decoration: none; color: inherit; border-left: 3px solid var(--primary-color); transition: all 0.2s; }
+  .related-card:hover { border-left-color: var(--accent-color); background: white; }
+  .related-card h3 { font-size: 1.1rem; margin: 0 0 0.5rem; color: var(--primary-color); }
+  .related-card p { font-size: 0.9rem; color: var(--text-muted); margin: 0; }
 </style>

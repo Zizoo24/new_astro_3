@@ -1,359 +1,216 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ServiceLayout from '../../../layouts/ServiceLayout.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Specialized Translation', url: '/specialized-translation/' },
+  { name: 'Medical Translation', url: '/specialized/medical/' }
+];
+
+const snapshot = [
+  { icon: 'heartbeat', bold: 'Healthcare Expertise', text: 'Medical professionals as translators' },
+  { icon: 'file-medical', bold: 'DHA Compliant', text: 'Dubai Health Authority formatting' },
+  { icon: 'user-md', bold: 'Licensing Ready', text: 'For professional registration' },
+  { icon: 'shield-alt', bold: 'Confidential', text: 'Patient privacy protected' }
+];
+
+const processSteps = [
+  {
+    number: 1,
+    title: 'Document Assessment',
+    text: 'We identify the medical specialty, terminology requirements, and intended use (licensing, treatment, insurance, legal).',
+    icon: 'clipboard-list'
+  },
+  {
+    number: 2,
+    title: 'Specialist Assignment',
+    text: 'Documents assigned to translators with verified medical backgrounds matching your specialty area.',
+    icon: 'user-md'
+  },
+  {
+    number: 3,
+    title: 'Medical Translation',
+    text: 'Translation using standardized medical terminology, drug names, and anatomical references appropriate for UAE healthcare.',
+    icon: 'file-medical-alt'
+  },
+  {
+    number: 4,
+    title: 'Quality Review',
+    text: 'Second medical translator reviews for terminology accuracy, dosage precision, and regulatory compliance.',
+    icon: 'check-double'
+  }
+];
+
+const faqs = [
+  {
+    question: 'What medical documents do you translate?',
+    answer: 'We translate the full range of medical documentation: patient records, discharge summaries, lab reports, radiology reports, surgical notes, prescriptions, medical certificates, insurance claims, clinical trial documents, pharmaceutical literature, and medical device documentation. We also translate healthcare professional credentials for DHA licensing.'
+  },
+  {
+    question: 'Do your translators have medical backgrounds?',
+    answer: 'Yes. Our medical translators include healthcare professionals, pharmacists, and specialists with medical education. This background is essential—medical translation requires understanding context, not just vocabulary. A translator must recognize when a term has different meanings in different specialties.'
+  },
+  {
+    question: 'How do you handle drug names?',
+    answer: 'We use International Nonproprietary Names (INN) alongside brand names where relevant. Drug dosages are preserved exactly as written with appropriate Arabic notation. We flag any potential confusion between similar drug names and ensure dosing instructions are unambiguous.'
+  },
+  {
+    question: 'Are translations accepted by DHA for licensing?',
+    answer: 'Yes. Our MOJ-certified translations are accepted by Dubai Health Authority for healthcare professional licensing applications. We understand DHA formatting requirements and ensure credentials, good standing certificates, and experience letters meet submission standards.'
+  },
+  {
+    question: 'How do you protect patient confidentiality?',
+    answer: 'Patient documents are handled with strict confidentiality. We use secure file transfer, limit access to assigned translators, and can sign NDAs for sensitive materials. All patient-identifiable information is protected according to healthcare privacy standards.'
+  },
+  {
+    question: 'Can you translate medical records from any language?',
+    answer: 'Yes. We translate medical records from English, Hindi, Urdu, Tagalog, Arabic, French, German, Chinese, Russian, and many other languages. Medical terminology often has Latin roots that experienced medical translators recognize across languages.'
+  }
+];
+
+const accordionSections = [
+  {
+    title: 'Medical Documents We Translate',
+    id: 'documents',
+    items: [
+      {
+        heading: 'Patient Records',
+        body: 'Complete medical histories, discharge summaries, consultation notes, and treatment records. Essential for continuity of care when patients transfer between healthcare systems.'
+      },
+      {
+        heading: 'Diagnostic Reports',
+        body: 'Laboratory results, pathology reports, radiology interpretations, and diagnostic imaging findings. Precise terminology ensures accurate clinical understanding.'
+      },
+      {
+        heading: 'Prescriptions & Medication',
+        body: 'Prescription translations with drug names, dosages, frequencies, and administration instructions. Critical accuracy for patient safety.'
+      },
+      {
+        heading: 'Healthcare Credentials',
+        body: 'Medical degrees, specialty certifications, good standing certificates, and experience letters for DHA, DOH, and MOH licensing applications.'
+      },
+      {
+        heading: 'Insurance & Legal',
+        body: 'Medical insurance claims, medico-legal reports, expert opinions, and healthcare litigation documents.'
+      },
+      {
+        heading: 'Pharmaceutical & Clinical',
+        body: 'Clinical trial documentation, drug information leaflets, pharmaceutical research, and regulatory submissions.'
+      }
+    ]
+  },
+  {
+    title: 'Medical Specialties',
+    id: 'specialties',
+    items: [
+      {
+        heading: 'Cardiology & Internal Medicine',
+        body: 'ECG reports, echocardiograms, cardiac catheterization findings, and complex internal medicine documentation with specialized cardiovascular terminology.'
+      },
+      {
+        heading: 'Oncology',
+        body: 'Pathology reports, staging documentation, treatment protocols, and cancer registry materials. Precise terminology for tumor types, grades, and treatment responses.'
+      },
+      {
+        heading: 'Surgery',
+        body: 'Operative notes, surgical pathology, post-operative summaries, and procedure documentation across all surgical specialties.'
+      },
+      {
+        heading: 'Obstetrics & Gynecology',
+        body: 'Prenatal records, delivery summaries, ultrasound reports, and reproductive health documentation.'
+      },
+      {
+        heading: 'Pediatrics',
+        body: 'Growth charts, developmental assessments, vaccination records, and pediatric specialty consultations.'
+      },
+      {
+        heading: 'Psychiatry & Mental Health',
+        body: 'Psychiatric evaluations, therapy notes, and mental health assessments. Sensitive handling of psychological terminology.'
+      }
+    ]
+  }
+];
 ---
 
-<BaseLayout 
-  title="Medical Translation Dubai - MOJ Certified Healthcare Documents | OnlineTranslation.ae"
-  description="MOJ-certified medical translation in Dubai. Medical reports, patient records, clinical trials, pharmaceutical documents. Accepted by DHA, HAAD, and healthcare institutions."
+<ServiceLayout
+  title="Medical Translation Dubai | Healthcare Document Translation | DHA Compliant"
+  description="Expert medical translation in Dubai. Patient records, medical reports, healthcare credentials for DHA licensing. Medical professionals as translators ensure terminology accuracy."
+  keywords="medical translation dubai, healthcare translation, patient records translation, dha licensing translation, medical report arabic"
+  heroTitle="Medical Translation"
+  heroSubtitle="Healthcare & Clinical Documents"
+  heroIntro="Medical translation carries responsibility—accuracy can affect patient safety, treatment decisions, and professional licensing. Our medical translators combine language expertise with healthcare backgrounds, ensuring your medical documents communicate with the precision that clinical settings demand."
+  snapshot={snapshot}
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  serviceType="Medical Translation Service"
+  processSteps={processSteps}
+  processTitle="Medical Translation Process"
+  accordionSections={accordionSections}
 >
-  <section class="hero-section bg-dark" data-theme="dark">
-    <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">HOME</a>
-        <span class="separator">&gt;</span>
-        <a href="/industries/healthcare/">HEALTHCARE</a>
-        <span class="separator">&gt;</span>
-        <span class="current">MEDICAL TRANSLATION</span>
-      </nav>
-      
-      <h1>Medical Translation</h1>
-      <p class="hero-subtitle">MOJ Certified for Healthcare and Regulatory Compliance</p>
-      <p class="hero-intro">Medical documents demand specialized knowledge and absolute precision. A mistranslated dosage, diagnosis, or procedure can have serious consequences. We provide medical translations that healthcare institutions, regulatory bodies, and insurance companies trust.</p>
-    </div>
-  </section>
-
-  <section class="section bg-white">
-    <div class="container">
-      <h2>Medical Documents We Translate</h2>
-      <p class="section-intro">Clinical, administrative, and regulatory healthcare documentation.</p>
-      
-      <div class="service-grid">
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-file-medical"></i></div>
-          <h3>Medical Reports</h3>
-          <p>Diagnostic reports, lab results, imaging reports, and specialist consultations.</p>
-        </div>
-        
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-notes-medical"></i></div>
-          <h3>Patient Records</h3>
-          <p>Medical histories, treatment records, and discharge summaries for continuity of care.</p>
-        </div>
-        
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-pills"></i></div>
-          <h3>Pharmaceutical Documents</h3>
-          <p>Drug registration files, package inserts, and regulatory submissions.</p>
-        </div>
-        
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-flask"></i></div>
-          <h3>Clinical Trial Documents</h3>
-          <p>Protocols, informed consent forms, and investigator brochures.</p>
-        </div>
-        
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-hospital"></i></div>
-          <h3>Hospital Documentation</h3>
-          <p>Policies, procedures, accreditation documents, and quality management systems.</p>
-        </div>
-        
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
-          <h3>Insurance Claims</h3>
-          <p>Medical claim documentation, pre-authorization forms, and coverage correspondence.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="section bg-light">
     <div class="container">
-      <h2>Regulatory Acceptance</h2>
-      <p class="section-intro">Our medical translations meet requirements of UAE health authorities.</p>
+      <h2>Why Medical Translation Requires Specialists</h2>
+      <p>Medical terminology is precise for a reason—slight variations in wording can indicate completely different conditions, treatments, or outcomes. A general translator might not recognize that "hypertension" and "high blood pressure" refer to the same condition, or that "negative" test results are usually good news.</p>
       
-      <div class="authority-grid">
-        <div class="authority-item">
-          <i class="fas fa-hospital-user"></i>
-          <span>DHA</span>
-          <p>Dubai Health Authority</p>
-        </div>
-        <div class="authority-item">
-          <i class="fas fa-clinic-medical"></i>
-          <span>HAAD</span>
-          <p>Health Authority Abu Dhabi</p>
-        </div>
-        <div class="authority-item">
-          <i class="fas fa-prescription"></i>
-          <span>MOH</span>
-          <p>Ministry of Health</p>
-        </div>
-        <div class="authority-item">
-          <i class="fas fa-heartbeat"></i>
-          <span>Insurance</span>
-          <p>Major UAE Insurers</p>
-        </div>
-      </div>
+      <p>Our medical translators understand clinical context. They know that drug dosages must be rendered exactly, that anatomical terms have standardized Arabic equivalents, and that certain medical abbreviations should be expanded for clarity. This knowledge prevents dangerous misunderstandings.</p>
+      
+      <p>For healthcare professionals seeking UAE licensing, translation quality directly affects application outcomes. DHA reviewers assess credentials through the Arabic translation—ambiguous or incorrect translations can delay or derail licensing applications.</p>
     </div>
   </section>
 
-  <section class="section bg-white">
+  <section class="section">
     <div class="container">
-      <h2>Confidentiality and Compliance</h2>
-      
-      <div class="info-box">
-        <h3><i class="fas fa-lock"></i> Patient Privacy</h3>
-        <p>All medical translations are handled with strict confidentiality protocols. We understand HIPAA-equivalent standards and UAE data protection requirements for patient information.</p>
-      </div>
-      
-      <div class="info-box">
-        <h3><i class="fas fa-user-md"></i> Medical Terminology Expertise</h3>
-        <p>Our medical translators have backgrounds in healthcare and understand clinical terminology across specialties including cardiology, oncology, orthopedics, and more.</p>
+      <h2>Related Services</h2>
+      <div class="related-grid">
+        <a href="/specialized-translation/" class="related-card">
+          <h3>Specialized Translation</h3>
+          <p>All industry-specific services</p>
+        </a>
+        <a href="/specialized/technical/" class="related-card">
+          <h3>Technical Translation</h3>
+          <p>Medical device documentation</p>
+        </a>
+        <a href="/services/attestation/" class="related-card">
+          <h3>Document Attestation</h3>
+          <p>Credential authentication</p>
+        </a>
       </div>
     </div>
   </section>
-
-  <section class="section bg-light">
-    <div class="container cta-section">
-      <h2>Medical Document Translation</h2>
-      <p>Send your medical documents via WhatsApp. We will assess the specialty area, confirm terminology requirements, and provide a confidential quote.</p>
-      <a href="https://wa.me/971508620217" class="btn btn-primary">
-        <i class="fab fa-whatsapp"></i> Send Documents Securely
-      </a>
-    </div>
-  </section>
-</BaseLayout>
+</ServiceLayout>
 
 <style>
-  .hero-section {
-    padding: 8rem 0 4rem;
-    background: var(--primary-color);
-  }
-  
-  .breadcrumb {
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    margin-bottom: 2rem;
-  }
-  
-  .breadcrumb a {
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-  }
-  
-  .breadcrumb a:hover {
-    color: #fff;
-  }
-  
-  .breadcrumb .separator {
-    margin: 0 0.75rem;
-    color: rgba(255, 255, 255, 0.4);
-  }
-  
-  .breadcrumb .current {
-    color: #fff;
-  }
-  
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: #fff;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.25rem;
-    color: var(--accent-color);
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-  
-  .hero-intro {
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.9);
-    max-width: 800px;
-    line-height: 1.8;
-  }
-  
-  .section {
-    padding: 5rem 0;
-  }
-  
-  .section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-  }
-  
-  .section-intro {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    margin-bottom: 2.5rem;
-    max-width: 700px;
-  }
-  
-  .service-grid {
+  .related-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-  
-  .service-card {
-    background: #fff;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-  }
-  
-  .service-icon {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark, #0a1a30));
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-  }
-  
-  .service-icon i {
-    font-size: 1.5rem;
-    color: #fff;
-  }
-  
-  .service-card h3 {
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
-    color: var(--primary-color);
-  }
-  
-  .service-card p {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-  
-  .authority-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
+    margin-top: 1.5rem;
   }
   
-  .authority-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 2rem;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    text-align: center;
-  }
-  
-  .authority-item i {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-  }
-  
-  .authority-item span {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--primary-color);
-  }
-  
-  .authority-item p {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-  }
-  
-  .info-box {
-    background: #fff;
-    border-radius: 12px;
-    padding: 2rem;
-    margin-bottom: 1.5rem;
-    border-left: 4px solid var(--accent-color);
-  }
-  
-  .info-box h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.75rem;
-    color: var(--primary-color);
-  }
-  
-  .info-box h3 i {
-    margin-right: 0.5rem;
-    color: var(--accent-color);
-  }
-  
-  .info-box p {
-    color: var(--text-muted);
-    line-height: 1.7;
-  }
-  
-  .cta-section {
-    text-align: center;
-    padding: 3rem;
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  }
-  
-  .cta-section h2 {
-    margin-bottom: 1rem;
-  }
-  
-  .cta-section p {
-    max-width: 600px;
-    margin: 0 auto 2rem;
-    color: var(--text-muted);
-  }
-  
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1rem 2rem;
+  .related-card {
+    padding: 1.5rem;
+    background: var(--bg-light, #f8f9fa);
     border-radius: 8px;
-    font-weight: 600;
     text-decoration: none;
-    transition: all 0.3s ease;
+    color: inherit;
+    border-left: 3px solid var(--primary-color);
+    transition: all 0.2s;
   }
   
-  .btn-primary {
-    background: var(--accent-color);
-    color: #fff;
+  .related-card:hover {
+    border-left-color: var(--accent-color);
+    background: white;
   }
   
-  .btn-primary:hover {
-    background: var(--accent-dark, #d41448);
-    transform: translateY(-2px);
+  .related-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
   }
   
-  @media (max-width: 992px) {
-    .service-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .authority-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 2rem;
-    }
-    
-    .service-grid,
-    .authority-grid {
-      grid-template-columns: 1fr;
-    }
-    
-    .hero-section {
-      padding: 6rem 0 3rem;
-    }
+  .related-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
   }
 </style>
