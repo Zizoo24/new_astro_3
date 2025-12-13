@@ -10,12 +10,57 @@ html[dir="rtl"],
   text-align: right;
 }
 
-/* Arabic Font Family */
+/* Arabic Font Family - exclude icons */
 html[dir="rtl"] body,
-.rtl-page body,
-html[dir="rtl"] *,
-.rtl-page * {
+.rtl-page body {
   font-family: 'Noto Sans Arabic', 'Montserrat', 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Preserve Font Awesome icons */
+html[dir="rtl"] .fas,
+html[dir="rtl"] .far,
+html[dir="rtl"] .fab,
+html[dir="rtl"] .fa,
+html[dir="rtl"] i[class*="fa-"],
+.rtl-page .fas,
+.rtl-page .far,
+.rtl-page .fab,
+.rtl-page .fa,
+.rtl-page i[class*="fa-"] {
+  font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", FontAwesome !important;
+  direction: ltr;
+  display: inline-block;
+}
+
+/* Solid icons need font-weight 900 */
+html[dir="rtl"] .fas,
+html[dir="rtl"] i.fas,
+.rtl-page .fas,
+.rtl-page i.fas {
+  font-weight: 900 !important;
+}
+
+/* Brand icons */
+html[dir="rtl"] .fab,
+html[dir="rtl"] i.fab,
+.rtl-page .fab,
+.rtl-page i.fab {
+  font-family: "Font Awesome 6 Brands" !important;
+  font-weight: 400 !important;
+}
+
+/* Regular icons */
+html[dir="rtl"] .far,
+html[dir="rtl"] i.far,
+.rtl-page .far,
+.rtl-page i.far {
+  font-weight: 400 !important;
+}
+
+/* All icon elements in RTL */
+html[dir="rtl"] i,
+.rtl-page i {
+  font-style: normal;
 }
 
 /* Typography Adjustments for Arabic */
@@ -38,10 +83,10 @@ html[dir="rtl"] h6,
 /* Larger line height for Arabic text */
 html[dir="rtl"] p,
 html[dir="rtl"] li,
-html[dir="rtl"] span,
+html[dir="rtl"] span:not(.fas):not(.far):not(.fab):not(.fa):not([class*="fa-"]),
 .rtl-page p,
 .rtl-page li,
-.rtl-page span {
+.rtl-page span:not(.fas):not(.far):not(.fab):not(.fa):not([class*="fa-"]) {
   line-height: 1.8;
 }
 
@@ -81,22 +126,78 @@ html[dir="rtl"] .overlap-cards,
    HEADER & NAVIGATION RTL
    ============================================ */
 
+/* Main header row - reverse order */
+html[dir="rtl"] .header-main-row,
+.rtl-page .header-main-row {
+  flex-direction: row-reverse !important;
+}
+
+/* Logo on the right */
 html[dir="rtl"] .header-logo,
 .rtl-page .header-logo {
   margin-left: auto;
   margin-right: 0;
+  order: 1;
 }
 
+html[dir="rtl"] .header-logo a,
+.rtl-page .header-logo a {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .logo-text-block,
+.rtl-page .logo-text-block {
+  text-align: right;
+  margin-right: 0.75rem;
+  margin-left: 0;
+}
+
+/* Navigation in the middle - reversed */
 html[dir="rtl"] .header-nav,
 .rtl-page .header-nav {
   margin-right: auto;
   margin-left: 0;
+  order: 2;
+}
+
+html[dir="rtl"] .nav-menu,
+.rtl-page .nav-menu {
+  flex-direction: row-reverse !important;
+}
+
+/* Header actions on left */
+html[dir="rtl"] .header-actions,
+.rtl-page .header-actions {
+  order: 3;
+  flex-direction: row-reverse !important;
+}
+
+html[dir="rtl"] .header-contact-btn,
+.rtl-page .header-contact-btn {
+  order: 4;
+}
+
+/* Announcement bar RTL */
+html[dir="rtl"] .announcement-flex,
+.rtl-page .announcement-flex {
+  flex-direction: row-reverse !important;
+}
+
+html[dir="rtl"] .announcement-actions,
+.rtl-page .announcement-actions {
+  flex-direction: row-reverse !important;
+}
+
+/* Nav links RTL */
+html[dir="rtl"] .nav-link,
+.rtl-page .nav-link {
+  flex-direction: row-reverse;
 }
 
 html[dir="rtl"] .dropdown-menu,
 .rtl-page .dropdown-menu {
-  left: auto;
-  right: 0;
+  left: auto !important;
+  right: 0 !important;
   text-align: right;
 }
 
@@ -131,8 +232,23 @@ html[dir="rtl"] .dropdown-menu li.dropdown-submenu > a::after,
    HERO SECTION RTL
    ============================================ */
 
+html[dir="rtl"] .hero-content,
+.rtl-page .hero-content {
+  text-align: right;
+}
+
 html[dir="rtl"] .hero-text,
 .rtl-page .hero-text {
+  text-align: right;
+}
+
+html[dir="rtl"] .hero-title,
+.rtl-page .hero-title {
+  text-align: right;
+}
+
+html[dir="rtl"] .hero-lead,
+.rtl-page .hero-lead {
   text-align: right;
 }
 
@@ -140,18 +256,43 @@ html[dir="rtl"] .hero-bullets,
 .rtl-page .hero-bullets {
   padding-right: 0;
   padding-left: 0;
+  list-style: none;
 }
 
 html[dir="rtl"] .hero-bullets li,
 .rtl-page .hero-bullets li {
+  display: flex;
   flex-direction: row-reverse;
   text-align: right;
+  justify-content: flex-end;
 }
 
 html[dir="rtl"] .hero-bullets li i,
 .rtl-page .hero-bullets li i {
   margin-left: 0.75rem;
   margin-right: 0;
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+}
+
+/* Hero CTA buttons */
+html[dir="rtl"] .hero-cta-group,
+.rtl-page .hero-cta-group {
+  justify-content: flex-start;
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .hero-cta,
+.rtl-page .hero-cta {
+  display: inline-flex;
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .hero-cta i,
+.rtl-page .hero-cta i {
+  margin-left: 0.5rem;
+  margin-right: 0;
+  font-family: "Font Awesome 6 Brands" !important;
 }
 
 /* ============================================
@@ -203,6 +344,11 @@ html[dir="rtl"] .card-arrow,
    ============================================ */
 
 /* Overlap cards */
+html[dir="rtl"] .overlap-cards,
+.rtl-page .overlap-cards {
+  flex-direction: row-reverse;
+}
+
 html[dir="rtl"] .overlap-card,
 .rtl-page .overlap-card {
   text-align: right;
@@ -217,6 +363,13 @@ html[dir="rtl"] .overlap-card-icon,
 .rtl-page .overlap-card-icon {
   margin-left: 1rem;
   margin-right: 0;
+}
+
+/* Ensure icons in overlap cards display correctly */
+html[dir="rtl"] .overlap-card-icon i,
+.rtl-page .overlap-card-icon i {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900;
 }
 
 /* Service cards */
