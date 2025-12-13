@@ -145,7 +145,7 @@ export const mainNav: (NavLink | NavGroup)[] = [
       
       // Academic cluster
       { label: 'Academic Documents', href: '/personal/academic/' },
-      { label: 'University Degree', href: '/personal/education/degree/' },
+      { label: 'University Degree', href: '/personal/academic/degree/' },
       { label: 'Transcripts', href: '/personal/academic/transcripts/' },
     ],
     headers: [
@@ -296,7 +296,7 @@ export const mobileNav = {
         { label: 'Personal Docs Hub', href: '/personal-documents/' },
         { label: 'Birth Certificate', href: '/personal/vital-records/birth/' },
         { label: 'Marriage Certificate', href: '/personal/vital-records/marriage/' },
-        { label: 'University Degree', href: '/personal/education/degree/' },
+        { label: 'University Degree', href: '/personal/academic/degree/' },
         { label: 'Police Clearance', href: '/personal/immigration/pcc/' },
         { label: 'Bank Statement', href: '/personal/immigration/bank/' },
         { label: 'Driving License', href: '/personal/immigration/license/' },
@@ -393,7 +393,7 @@ export const footerNav = {
     { label: 'Golden Visa Translation', href: '/services/golden-visa-translation/' },
     { label: 'Birth Certificate', href: '/personal/vital-records/birth/' },
     { label: 'Marriage Certificate', href: '/personal/vital-records/marriage/' },
-    { label: 'University Degree', href: '/personal/education/degree/' },
+    { label: 'University Degree', href: '/personal/academic/degree/' },
     { label: 'Power of Attorney', href: '/legal/corporate/poa/' },
     { label: 'India Attestation', href: '/services/attestation/india/' },
   ],

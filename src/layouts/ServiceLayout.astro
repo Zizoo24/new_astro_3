@@ -85,7 +85,8 @@ const {
   accordionSections = []
 } = Astro.props;
 
-const siteUrl = 'https://onlinetranslation.ae';
+// Use Astro.site from config for consistent URL handling
+const siteUrl = Astro.site?.origin || 'https://onlinetranslation.ae';
 
 const serviceSchema = {
   "@context": "https://schema.org",

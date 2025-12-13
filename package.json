@@ -31,7 +31,9 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "links:check": "linkinator ./dist --recurse --skip \"^(?!https?://onlinetranslation\\.ae)\"",
-    "quality": "npm run check && npm run lint && npm run lint:css && npm run format:check"
+    "nav:check": "node scripts/check-nav-links.js",
+    "quality": "npm run check && npm run lint && npm run lint:css && npm run format:check",
+    "prebuild": "npm run nav:check"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",

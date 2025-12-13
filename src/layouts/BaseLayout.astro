@@ -45,7 +45,11 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
   <meta name="robots" content="index, follow">
   <meta name="googlebot" content="index, follow">
   <link rel="canonical" href={fullCanonical}>
-  
+
+  <!-- Hreflang tags for internationalization (prepared for Arabic) -->
+  <link rel="alternate" hreflang="en-AE" href={fullCanonical} />
+  <link rel="alternate" hreflang="x-default" href={fullCanonical} />
+
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content={fullCanonical}>
