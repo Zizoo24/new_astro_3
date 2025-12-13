@@ -1,200 +1,702 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import RelatedServices from '../../../components/RelatedServices.astro';
-import CrossSiloLinks from '../../../components/CrossSiloLinks.astro';
-import InlineCallout from '../../../components/InlineCallout.astro';
+/**
+ * /locations/dubai/ - Dubai Translation Services Hub
+ * 
+ * Using: CategoryLayout
+ * Schemas: BreadcrumbList, Service, FAQPage (auto-generated)
+ * Added: 10 FAQs for rich snippets
+ * 
+ * Silo: Locations (Silo 5)
+ * Type: Location Hub Page
+ */
+import CategoryLayout from '../../../layouts/CategoryLayout.astro';
+
+const breadcrumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Locations', href: '/locations/' },
+  { label: 'Dubai' }
+];
+
+const faqs = [
+  {
+    question: "Where is your translation office in Dubai?",
+    answer: "We operate as a digital-first translation service with document collection and delivery across all Dubai areas. You can send documents via WhatsApp for immediate processing. For clients who prefer in-person service, we offer courier pickup from your location in Business Bay, Downtown Dubai, DIFC, Marina, JBR, JLT, Palm Jumeirah, Deira, Bur Dubai, and all other Dubai neighborhoods. Same-day pickup and delivery available."
+  },
+  {
+    question: "Do you provide same-day translation in Dubai?",
+    answer: "Yes. Standard single-page documents like birth certificates, marriage certificates, and driving licenses can be completed within 4-6 hours. For urgent requirements, we offer express processing with certified translations ready in as little as 2-3 hours. Contact us via WhatsApp with your deadline and we will confirm availability immediately."
+  },
+  {
+    question: "Which Dubai government entities accept your translations?",
+    answer: "All Dubai government entities accept our MOJ-certified translations. This includes Dubai Courts, GDRFA Dubai, Dubai Economy and Tourism (DET), Dubai Land Department (DLD), KHDA, RTA, Dubai Health Authority (DHA), Dubai Municipality, and all federal entities operating in Dubai such as MOHRE and ICA. Our translations also meet requirements for DIFC Courts and DIFC Authority."
+  },
+  {
+    question: "Can you translate documents for Dubai Courts cases?",
+    answer: "Yes. We specialize in legal translation for Dubai Courts including civil cases, commercial disputes, family matters, and criminal proceedings. Our translators understand Dubai Courts formatting requirements and legal terminology. We translate judgments, pleadings, evidence bundles, witness statements, contracts, and all litigation documents with proper MOJ certification."
+  },
+  {
+    question: "Do you handle translations for DIFC and free zone companies?",
+    answer: "Yes. We serve businesses across all Dubai free zones including DIFC, DMCC, JAFZA, DAFZA, Dubai Silicon Oasis, Dubai Internet City, Dubai Media City, and Dubai Healthcare City. We translate MOAs, trade licenses, board resolutions, shareholder agreements, and regulatory filings formatted for each authority's specific requirements."
+  },
+  {
+    question: "What areas in Dubai do you serve?",
+    answer: "We serve all areas of Dubai including Business Bay, Downtown Dubai, DIFC, Dubai Marina, JBR, JLT, Palm Jumeirah, Arabian Ranches, Emirates Hills, Jumeirah, Deira, Bur Dubai, Al Barsha, Motor City, Sports City, Dubai Hills, and Dubai South. Courier pickup and delivery available to any Dubai address with same-day service in most areas."
+  },
+  {
+    question: "Can you help with Dubai Golden Visa document translation?",
+    answer: "Yes. We provide complete document translation packages for Dubai Golden Visa applications processed through GDRFA Dubai. This includes degree certificates, professional licenses, bank statements, property title deeds, salary certificates, and all supporting documentation. We understand GDRFA requirements and format translations for smooth processing."
+  },
+  {
+    question: "Do you translate documents for DLD property registration?",
+    answer: "Yes. We translate all documents required for Dubai Land Department transactions including sale purchase agreements, title deeds, powers of attorney, passport copies, and NOC letters. Our translations are formatted specifically for DLD submission requirements, ensuring smooth property registration and transfer processes."
+  },
+  {
+    question: "What languages do you translate in Dubai?",
+    answer: "We translate 43+ languages in Dubai with Arabic-English being our most common pairing. Other frequently requested languages include Hindi, Urdu, Tagalog, Russian, French, German, Chinese, Spanish, Portuguese, Farsi, and Turkish. All language combinations receive the same MOJ certification accepted by Dubai authorities."
+  },
+  {
+    question: "How do I get documents translated in Dubai?",
+    answer: "Send clear photos or scans of your documents via WhatsApp to +971 50 862 0217. Within 5-10 minutes, you receive confirmation, assessment, and a fixed quote. After approval, translation begins immediately. You receive certified translations digitally via WhatsApp and email. Physical copies with original MOJ stamps can be couriered to any Dubai address same-day."
+  }
+];
+
+const areas = [
+  { name: "Business Bay", desc: "Corporate headquarters and business setup documentation" },
+  { name: "Downtown Dubai", desc: "Property transactions and personal document services" },
+  { name: "DIFC", desc: "Financial center legal and corporate translations" },
+  { name: "Dubai Marina", desc: "Residential and property documentation" },
+  { name: "JLT", desc: "Free zone business and personal documents" },
+  { name: "Palm Jumeirah", desc: "Property registration and visa documentation" },
+  { name: "Deira", desc: "Trade license and commercial translations" },
+  { name: "Bur Dubai", desc: "Court documents and consular services" }
+];
+
+const authorities = [
+  { name: "Dubai Courts", icon: "gavel", desc: "Civil, commercial, family, and criminal case documentation" },
+  { name: "GDRFA Dubai", icon: "passport", desc: "Visa applications, Golden Visa, and residency matters" },
+  { name: "Dubai Land Department", icon: "building", desc: "Property registration, transfers, and real estate transactions" },
+  { name: "DIFC Courts", icon: "balance-scale", desc: "Common law jurisdiction disputes and arbitration" },
+  { name: "RTA", icon: "car", desc: "Driving license conversion and vehicle documentation" },
+  { name: "KHDA", icon: "graduation-cap", desc: "School enrollment and academic credential verification" },
+  { name: "DHA", icon: "hospital", desc: "Healthcare professional licensing and medical documents" },
+  { name: "DET", icon: "store", desc: "Business licensing and commercial registration" }
+];
+
+const services = [
+  {
+    title: "Legal Translation",
+    href: "/legal-translation-dubai/",
+    icon: "balance-scale",
+    desc: "Court documents, contracts, judgments, and litigation materials for Dubai Courts and DIFC."
+  },
+  {
+    title: "Personal Documents",
+    href: "/personal/",
+    icon: "user",
+    desc: "Birth certificates, marriage certificates, degrees, and immigration documents."
+  },
+  {
+    title: "Corporate Documents",
+    href: "/legal/corporate/",
+    icon: "building",
+    desc: "MOA, trade licenses, board resolutions, and free zone documentation."
+  },
+  {
+    title: "Golden Visa Package",
+    href: "/services/golden-visa-translation/",
+    icon: "star",
+    desc: "Complete document packages for investor and professional visa applications."
+  },
+  {
+    title: "Property Documents",
+    href: "/legal/contracts/spa/",
+    icon: "home",
+    desc: "SPAs, title deeds, POAs, and all DLD registration requirements."
+  },
+  {
+    title: "Attestation Services",
+    href: "/services/attestation/",
+    icon: "stamp",
+    desc: "MOFA attestation and embassy legalization coordination."
+  }
+];
 ---
 
-<BaseLayout 
-  title="Dubai Translation Services – MOJ Certified | OnlineTranslation.ae"
-  description="MOJ-certified translation services across Dubai. Palm Jumeirah, DIFC, JLT, Business Bay, and all areas. Same-day delivery with WhatsApp workflow."
+<CategoryLayout
+  title="Translation Services Dubai | MOJ Certified Legal Translation | OnlineTranslation.ae"
+  description="MOJ-certified translation services in Dubai. Legal documents, personal certificates, corporate filings for Dubai Courts, GDRFA, DLD, DIFC, and all Dubai government entities. Same-day delivery across Dubai."
+  keywords="translation services dubai, legal translation dubai, moj certified translation dubai, dubai courts translation, difc translation, dld translation, gdrfa translation, document translation dubai"
+  heroTitle="Translation Services in Dubai"
+  heroSubtitle="MOJ Certified • Same-Day Delivery • All Dubai Areas"
+  heroIntro="Dubai's business environment demands precise documentation. Whether you are registering property with DLD, filing at Dubai Courts, processing a Golden Visa through GDRFA, or setting up a DIFC company, we provide the MOJ-certified translations that Dubai authorities accept. Same-day service available across all Dubai areas."
+  breadcrumbs={breadcrumbs}
+  serviceType="Document Translation Services in Dubai"
+  faqs={faqs}
 >
-  <section class="hero-section bg-dark" data-theme="dark">
+
+  <!-- Services Grid -->
+  <section class="section">
     <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">HOME</a>
-        <span class="separator">&gt;</span>
-        <a href="/locations/">LOCATIONS</a>
-        <span class="separator">&gt;</span>
-        <span class="current">DUBAI</span>
-      </nav>
-      
-      <h1>Dubai Translation Services</h1>
-      <p class="hero-subtitle">MOJ Certified with Same-Day Delivery</p>
-      <p class="hero-intro">Serving all Dubai areas with MOJ-certified translation. Send documents via WhatsApp from anywhere in Dubai and receive certified translations delivered to your door, office, or preferred location. Same-day delivery across the emirate.</p>
+      <h2>Translation Services for Dubai</h2>
+      <p class="section-intro">Select your document type for Dubai-specific requirements, formatting standards, and turnaround times.</p>
+
+      <div class="services-grid">
+        {services.map(service => (
+          <a href={service.href} class="service-card">
+            <div class="service-icon">
+              <i class={`fas fa-${service.icon}`}></i>
+            </div>
+            <h3>{service.title}</h3>
+            <p>{service.desc}</p>
+            <span class="service-link">Learn More <i class="fas fa-arrow-right"></i></span>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 
-  <section class="section bg-white">
+  <!-- Dubai Authorities Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Dubai Government Authorities We Serve</h2>
+      <p class="section-intro">Our MOJ-certified translations are accepted by all Dubai government entities. We understand the specific requirements of each authority.</p>
+
+      <div class="authorities-grid">
+        {authorities.map(auth => (
+          <div class="authority-card">
+            <div class="authority-icon">
+              <i class={`fas fa-${auth.icon}`}></i>
+            </div>
+            <h3>{auth.name}</h3>
+            <p>{auth.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Section -->
+  <section class="section">
+    <div class="container">
+      <div class="content-grid">
+        <div class="content-main">
+          <h2>Why Dubai Businesses and Residents Choose Us</h2>
+          
+          <p>Dubai operates at a pace that demands efficiency. Government offices, courts, and business registries expect properly formatted, MOJ-certified translations that meet their specific requirements. A translation rejected at the DLD counter delays your property registration. Documents returned by Dubai Courts can derail your litigation timeline. We understand these stakes because we process translations for Dubai clients daily.</p>
+          
+          <p>Our translators know the terminology Dubai Courts expects, the formatting DLD requires, the certification standards GDRFA demands, and the nuances that differ between mainland Dubai, DIFC, and free zone authorities. This Dubai-specific expertise means your documents are accepted the first time, every time.</p>
+
+          <h3>Understanding Dubai's Legal Landscape</h3>
+          
+          <p>Dubai operates under multiple legal frameworks. Mainland Dubai follows UAE federal law with Arabic as the official language. DIFC operates under common law derived from English law, with English as the primary language. Free zones have their own regulatory frameworks with varying language requirements.</p>
+          
+          <p>This complexity requires translators who understand which framework applies to your situation. A contract for DIFC arbitration needs different treatment than one subject to Dubai Courts jurisdiction. Corporate documents for DMCC follow different conventions than those for DED mainland registration. We navigate these distinctions so you receive translations properly formatted for your specific use.</p>
+
+          <h3>Dubai Courts Translation Services</h3>
+          
+          <p>Dubai Courts require Arabic documentation for all proceedings. Foreign judgments must be translated for recognition and enforcement. Evidence from international parties needs certification. Witness statements, expert reports, and documentary evidence all require MOJ-certified translation before submission.</p>
+          
+          <p>We translate court documents with the precision litigation demands. Every term carries legal weight. Our translators understand civil procedure, commercial law, family law, and criminal matters in the Dubai Courts context. We format translations to court submission standards and deliver within the timelines your case requires.</p>
+
+          <h3>Property Transactions with DLD</h3>
+          
+          <p>Dubai Land Department requires translated documentation for property registration, transfers, and mortgage transactions. This includes sale purchase agreements, title deeds, powers of attorney, passport copies, and corporate authorization documents for company-owned properties.</p>
+          
+          <p>We format translations specifically for DLD requirements. Property descriptions match title deed specifications exactly. Buyer and seller names align with passport and Emirates ID records. Payment schedules and milestone descriptions are rendered with precision. This attention to detail prevents registration delays that can jeopardize transaction timelines worth millions of dirhams.</p>
+        </div>
+
+        <div class="content-sidebar">
+          <div class="info-card highlight">
+            <h4><i class="fab fa-whatsapp"></i> Quick Start</h4>
+            <p>Send your documents via WhatsApp for an instant quote. Same-day certified delivery available across Dubai.</p>
+            <a href="https://wa.me/971508620217" class="btn btn--primary btn--sm">
+              <i class="fab fa-whatsapp"></i> Send Documents
+            </a>
+          </div>
+
+          <div class="info-card">
+            <h4><i class="fas fa-clock"></i> Dubai Turnaround</h4>
+            <ul>
+              <li><strong>Express:</strong> 2-3 hours</li>
+              <li><strong>Standard:</strong> 4-6 hours</li>
+              <li><strong>Complex:</strong> 24-48 hours</li>
+              <li><strong>Courier:</strong> Same-day Dubai</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h4><i class="fas fa-check-circle"></i> Accepted By</h4>
+            <ul class="authority-list">
+              <li>Dubai Courts</li>
+              <li>GDRFA Dubai</li>
+              <li>Dubai Land Department</li>
+              <li>DIFC Courts</li>
+              <li>DMCC</li>
+              <li>All Dubai Free Zones</li>
+              <li>UAE Federal Entities</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Areas Served Section -->
+  <section class="section bg-light">
     <div class="container">
       <h2>Dubai Areas We Serve</h2>
-      
-      <div class="service-grid">
-        <a href="/locations/dubai/palm-jumeirah/" class="service-card">
-          <div class="service-icon"><i class="fas fa-umbrella-beach"></i></div>
-          <h3>Palm Jumeirah</h3>
-          <p>Property translation for investors and residents. Remote handover support.</p>
-        </a>
-        
-        <a href="/locations/dubai/difc/" class="service-card">
-          <div class="service-icon"><i class="fas fa-landmark"></i></div>
-          <h3>DIFC</h3>
-          <p>Financial and corporate translation with common law awareness.</p>
-        </a>
-        
-        <a href="/locations/dubai/jlt/" class="service-card">
-          <div class="service-icon"><i class="fas fa-city"></i></div>
-          <h3>JLT</h3>
-          <p>Free zone company documents and professional licensing.</p>
-        </a>
-        
-        <a href="/locations/dubai/business-bay/" class="service-card">
-          <div class="service-icon"><i class="fas fa-building"></i></div>
-          <h3>Business Bay</h3>
-          <p>Corporate and commercial translation for the business district.</p>
-        </a>
+      <p class="section-intro">Courier pickup and delivery available across all Dubai neighborhoods. Same-day service in most areas.</p>
+
+      <div class="areas-grid">
+        {areas.map(area => (
+          <div class="area-card">
+            <h3><i class="fas fa-map-marker-alt"></i> {area.name}</h3>
+            <p>{area.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="areas-note">
+        <p><strong>Additional areas served:</strong> Al Barsha, Motor City, Sports City, Dubai Hills, Dubai South, Mirdif, Al Quoz, Jumeirah Village Circle (JVC), Dubai Silicon Oasis, International City, and all other Dubai neighborhoods.</p>
       </div>
     </div>
   </section>
 
+  <!-- Trust Section -->
+  <section class="section">
+    <div class="container">
+      <div class="trust-grid">
+        <div class="trust-stat">
+          <div class="trust-number">24hr</div>
+          <div class="trust-label">Standard Delivery</div>
+        </div>
+        <div class="trust-stat">
+          <div class="trust-number">2-3hr</div>
+          <div class="trust-label">Express Available</div>
+        </div>
+        <div class="trust-stat">
+          <div class="trust-number">43+</div>
+          <div class="trust-label">Languages</div>
+        </div>
+        <div class="trust-stat">
+          <div class="trust-number">100%</div>
+          <div class="trust-label">Acceptance Rate</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Other Locations -->
   <section class="section bg-light">
     <div class="container">
-      <h2>Understanding Dubai's Translation Needs</h2>
-      <div class="content-prose">
-        <p>Dubai operates as a multilingual city where business and personal matters regularly require documents to move between Arabic and other languages. The emirate's position as a global hub means residents and businesses routinely deal with documentation from dozens of countries, all of which may eventually need translation for UAE government purposes.</p>
-        
-        <p>The Dubai legal system, government services, and official registrations all function primarily in Arabic. This creates consistent demand for certified translation services—whether you are registering a company, buying property, applying for visas, or dealing with courts. Each of these processes has specific requirements for how translated documents must be prepared and certified.</p>
-        
-        <h3>How Dubai's Administrative Structure Affects Translation</h3>
-        <p>Dubai contains several distinct jurisdictions with different requirements. Mainland Dubai operates under UAE federal law with Arabic as the official language. Free zones like <a href="/locations/dubai/jlt/">JLT (DMCC)</a> have their own registration processes but still interface with mainland authorities for visas, banking, and certain registrations.</p>
-        
-        <p>The <a href="/locations/dubai/difc/">Dubai International Financial Centre</a> operates as a common law jurisdiction with English as its official language. DIFC Courts function in English, but matters that cross into mainland jurisdiction—or documents for use outside DIFC—often require Arabic translation. Understanding these jurisdictional nuances helps us prepare documents correctly for their intended use.</p>
-        
-        <p>The Dubai Land Department handles all property registrations, requiring Arabic documentation. Dubai Courts, the Department of Economy, and various licensing authorities all require MOJ-certified translations for official submissions. We understand these requirements and prepare translations that each authority will accept.</p>
-        
-        <h3>Document Categories Common in Dubai</h3>
-        <p>Certain document types appear repeatedly in Dubai translation requests. <a href="/services/legal-translation/">Legal documents</a> including contracts, court filings, and Powers of Attorney require precise terminology and MOJ certification. Corporate documents—trade licenses, Memoranda of Association, board resolutions—need translation for company establishment, changes, or transactions.</p>
-        
-        <p>Personal documents form another major category. Birth certificates, marriage certificates, and educational credentials frequently need translation for visa applications, school registrations, and various administrative purposes. The <a href="/services/golden-visa-translation/">Golden Visa programme</a> has created additional demand for degree equivalency and professional document translation.</p>
-        
-        <p>Property documentation represents a significant portion of our Dubai work. Title deeds, sale agreements, Powers of Attorney for property transactions, and developer correspondence all require translation for the international investors who own substantial portions of Dubai's residential and commercial real estate.</p>
+      <h2>Other UAE Locations</h2>
+      <div class="locations-grid">
+        <a href="/locations/abu-dhabi/" class="location-link">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Abu Dhabi</span>
+        </a>
+        <a href="/locations/sharjah/" class="location-link">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Sharjah</span>
+        </a>
+        <a href="/locations/ajman/" class="location-link">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Ajman</span>
+        </a>
+        <a href="/locations/" class="location-link">
+          <i class="fas fa-globe"></i>
+          <span>All Locations</span>
+        </a>
       </div>
     </div>
   </section>
 
-  <section class="section bg-white">
-    <div class="container">
-      <h2>Serving All Dubai Locations</h2>
-      <div class="content-prose">
-        <h3>Prime Residential Areas</h3>
-        <p><a href="/locations/dubai/palm-jumeirah/">Palm Jumeirah</a> attracts international property investors who often manage their Dubai assets remotely. We provide comprehensive property document translation with delivery to their local representatives or international mailing when required.</p>
-        
-        <p>Dubai Marina, JBR, and the surrounding waterfront communities house a diverse international population. Residents frequently need personal document translation for visa renewals, family sponsorship, and local administrative matters. We deliver throughout these areas with same-day service available.</p>
-        
-        <p>Downtown Dubai, including the Burj Khalifa district, combines residential and commercial uses. Business owners living here often need both personal and corporate translation services. We understand how these needs intersect and can coordinate complete document packages.</p>
-        
-        <h3>Business Districts</h3>
-        <p><a href="/locations/dubai/business-bay/">Business Bay</a> has emerged as Dubai's commercial centre, home to thousands of companies ranging from startups to regional headquarters. Corporate translation needs here include employment contracts, commercial agreements, and regulatory filings.</p>
-        
-        <p><a href="/locations/dubai/difc/">DIFC</a> serves as the financial centre with its own courts and regulatory framework. While DIFC operates in English, companies here regularly need Arabic translations for mainland dealings—banking relationships, property transactions, and employee visa processing.</p>
-        
-        <p><a href="/locations/dubai/jlt/">JLT and DMCC</a> house thousands of free zone companies. Company formation documents, visa applications, and trade license amendments all commonly require translation between English and Arabic. We understand DMCC's specific documentation requirements.</p>
-        
-        <h3>Industrial and Emerging Areas</h3>
-        <p>Dubai South, near Al Maktoum Airport, is growing as a logistics and aviation hub. Companies establishing here need translation for licensing, customs documentation, and staff visas. We serve this developing area with the same responsiveness as established districts.</p>
-        
-        <p>Jebel Ali Free Zone (JAFZA), one of the world's largest free zones, requires extensive documentation for company operations. Import-export businesses need translation for customs purposes, contracts with international suppliers, and regulatory compliance.</p>
-        
-        <p>Dubai Silicon Oasis and other technology-focused areas attract businesses with complex documentation needs—intellectual property filings, technology licensing agreements, and investor documents. We handle the technical terminology these sectors require.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-light">
-    <div class="container">
-      <h2>Practical Considerations for Dubai</h2>
-      <div class="content-prose">
-        <h3>Delivery Across the Emirate</h3>
-        <p>Dubai's geography means that document delivery requires planning. We offer free delivery throughout Dubai, covering everywhere from Palm Jumeirah to Dubai Silicon Oasis, from Jumeirah Beach to Dubai Investment Park. Same-day delivery is available for most areas when documents are ready by midday.</p>
-        
-        <p>For urgent situations, we can arrange courier collection of originals and express delivery of completed translations. Many clients send documents via WhatsApp while originals follow by courier, allowing translation to begin immediately.</p>
-        
-        <h3>Understanding Government Requirements</h3>
-        <p>Dubai government authorities have specific requirements for translated documents. The Dubai Land Department requires MOJ-certified translations for all property registrations and transfers. Dubai Courts accept only properly certified translations with the translator's stamp and registration number clearly visible.</p>
-        
-        <p>The Department of Economic Development (DED) requires Arabic translations for licensing applications involving foreign documents. Dubai Health Authority (DHA) requires translated medical credentials for healthcare professional licensing. We understand these requirements and format translations appropriately.</p>
-        
-        <h3>Working With Dubai's International Community</h3>
-        <p>Dubai's population comes from over 200 nationalities, speaking dozens of languages. While we primarily translate between Arabic and English—covering the vast majority of requirements—we can arrange translation from other languages when needed. Documents in French, German, Russian, Chinese, Hindi, Urdu, and other languages can be handled through qualified translators.</p>
-        
-        <p>Many Dubai residents maintain connections to their home countries, requiring documents to move in both directions. A birth certificate might need translation from Arabic for use abroad, while a foreign marriage certificate needs Arabic translation for UAE registration. We handle both directions with equal care.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-white">
-    <div class="container">
-      <InlineCallout 
-        type="tip" 
-        title="Popular Services in Dubai"
-        link="/services/golden-visa-translation/"
-        linkText="Golden Visa translation"
-      >
-        Many Dubai residents need document translation for Golden Visa applications, property transactions, and company formation.
-      </InlineCallout>
-
-      <RelatedServices 
-        pageKey="dubai"
-        title="Common Document Needs in Dubai"
-        maxItems={6}
-      />
-      
-      <CrossSiloLinks 
-        pageKey="dubai"
-        title="Explore Other Locations"
-      />
-    </div>
-  </section>
-
-  <section class="section bg-light">
-    <div class="container cta-section">
-      <h2>Anywhere in Dubai</h2>
-      <p>Not listed above? We deliver to all Dubai areas including Downtown, Marina, JBR, Silicon Oasis, Mirdif, Al Barsha, and more. Same-day delivery available.</p>
-      <a href="https://wa.me/971508620217" class="btn btn-primary">
-        <i class="fab fa-whatsapp"></i> Start Your Translation
-      </a>
-    </div>
-  </section>
-</BaseLayout>
+</CategoryLayout>
 
 <style>
-  .hero-section { padding: 8rem 0 4rem; background: var(--primary-color); }
-  .breadcrumb { font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 2rem; }
-  .breadcrumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
-  .breadcrumb a:hover { color: #ffffff; }
-  .breadcrumb .separator { margin: 0 0.5rem; color: rgba(255, 255, 255, 0.5); }
-  .breadcrumb .current { color: #ffffff; }
-  h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: #ffffff; }
-  .hero-subtitle { font-size: 1.25rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
-  .hero-intro { font-size: 1.1rem; line-height: 1.8; max-width: 700px; color: rgba(255, 255, 255, 0.9); }
-  
-  .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-  .service-card { background: #ffffff; border-radius: 1rem; padding: 2rem; text-decoration: none; color: inherit; border: 1px solid rgba(0, 0, 0, 0.05); transition: all 0.3s ease; }
-  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1); border-color: var(--accent-color); }
-  .service-icon { width: 56px; height: 56px; border-radius: 14px; background: var(--primary-color); color: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.25rem; }
-  .service-card h3 { margin: 0 0 0.5rem; font-size: 1.15rem; }
-  .service-card p { margin: 0; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
-  
-  .content-prose { max-width: 800px; line-height: 1.8; }
-  .content-prose h3 { margin-top: 2rem; margin-bottom: 1rem; font-size: 1.25rem; color: var(--primary-color); }
-  .content-prose p { margin-bottom: 1.25rem; color: var(--text-dark); }
-  .content-prose a { color: var(--accent-color); text-decoration: none; }
-  .content-prose a:hover { text-decoration: underline; }
-  
-  .cta-section { text-align: center; max-width: 600px; margin: 0 auto; }
-  .cta-section h2 { margin-bottom: 1rem; }
-  .cta-section p { margin-bottom: 2rem; color: var(--text-muted); }
-  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
-  .btn-primary { background: var(--accent-color); color: #ffffff; }
-  .btn-primary:hover { background: #e0144c; transform: translateY(-2px); }
+  /* Base Section Styles */
+  .section {
+    padding: 4rem 0;
+  }
+
+  .section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 800px;
+  }
+
+  .bg-light {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  /* Services Grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .service-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-color);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .service-icon i {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+
+  .service-card h3 {
+    font-size: 1.15rem;
+    margin: 0 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .service-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .service-link {
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  /* Authorities Grid */
+  .authorities-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .authority-card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .authority-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+
+  .authority-icon i {
+    font-size: 1.25rem;
+    color: #fff;
+  }
+
+  .authority-card h3 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .authority-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Content Grid */
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 3rem;
+  }
+
+  .content-main h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .content-main h3 {
+    font-size: 1.25rem;
+    margin: 2.5rem 0 1rem;
+    color: var(--primary-color);
+  }
+
+  .content-main p {
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Sidebar */
+  .info-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .info-card.highlight {
+    background: var(--primary-color);
+    color: #fff;
+  }
+
+  .info-card h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .info-card h4 i {
+    color: var(--accent-color);
+  }
+
+  .info-card.highlight h4 i {
+    color: #fff;
+  }
+
+  .info-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .info-card li {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    font-size: 0.95rem;
+  }
+
+  .info-card.highlight li {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .info-card li:last-child {
+    border-bottom: none;
+  }
+
+  .info-card p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .info-card .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .authority-list {
+    columns: 1;
+  }
+
+  /* Areas Grid */
+  .areas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .area-card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .area-card h3 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .area-card h3 i {
+    color: var(--accent-color);
+    margin-right: 0.5rem;
+  }
+
+  .area-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .areas-note {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .areas-note p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+
+  /* Trust Grid */
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .trust-stat {
+    padding: 2rem;
+  }
+
+  .trust-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+  }
+
+  .trust-label {
+    font-size: 1rem;
+    color: var(--text-muted);
+  }
+
+  /* Locations Grid */
+  .locations-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .location-link {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--primary-color);
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  .location-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .location-link i {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .location-link span {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .btn--primary {
+    background: var(--accent-color);
+    color: #fff;
+  }
+
+  .btn--primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn--sm {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .authorities-grid,
+    .areas-grid,
+    .trust-grid,
+    .locations-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 991px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .content-sidebar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section {
+      padding: 3rem 0;
+    }
+
+    .services-grid,
+    .authorities-grid,
+    .areas-grid,
+    .trust-grid,
+    .locations-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .content-sidebar {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
