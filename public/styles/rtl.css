@@ -1,0 +1,545 @@
+/* ============================================
+   RTL (Right-to-Left) SUPPORT
+   Arabic language styling
+   ============================================ */
+
+/* Base RTL Settings */
+html[dir="rtl"],
+.rtl-page {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Arabic Font Family */
+html[dir="rtl"] body,
+.rtl-page body,
+html[dir="rtl"] *,
+.rtl-page * {
+  font-family: 'Noto Sans Arabic', 'Montserrat', 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Typography Adjustments for Arabic */
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] h4,
+html[dir="rtl"] h5,
+html[dir="rtl"] h6,
+.rtl-page h1,
+.rtl-page h2,
+.rtl-page h3,
+.rtl-page h4,
+.rtl-page h5,
+.rtl-page h6 {
+  font-family: 'Noto Sans Arabic', 'Montserrat', sans-serif;
+  letter-spacing: 0;
+}
+
+/* Larger line height for Arabic text */
+html[dir="rtl"] p,
+html[dir="rtl"] li,
+html[dir="rtl"] span,
+.rtl-page p,
+.rtl-page li,
+.rtl-page span {
+  line-height: 1.8;
+}
+
+/* ============================================
+   LAYOUT FLIPPING
+   ============================================ */
+
+/* Flexbox row reversal */
+html[dir="rtl"] .header-main-row,
+html[dir="rtl"] .hero-cta-group,
+html[dir="rtl"] .nav-menu,
+html[dir="rtl"] .header-actions,
+html[dir="rtl"] .social-icons,
+html[dir="rtl"] .contact-buttons,
+html[dir="rtl"] .dual-cta-buttons,
+.rtl-page .header-main-row,
+.rtl-page .hero-cta-group,
+.rtl-page .nav-menu,
+.rtl-page .header-actions,
+.rtl-page .social-icons,
+.rtl-page .contact-buttons,
+.rtl-page .dual-cta-buttons {
+  flex-direction: row-reverse;
+}
+
+/* Grid and flex alignment */
+html[dir="rtl"] .hero-content,
+html[dir="rtl"] .about-grid,
+html[dir="rtl"] .overlap-cards,
+.rtl-page .hero-content,
+.rtl-page .about-grid,
+.rtl-page .overlap-cards {
+  direction: rtl;
+}
+
+/* ============================================
+   HEADER & NAVIGATION RTL
+   ============================================ */
+
+html[dir="rtl"] .header-logo,
+.rtl-page .header-logo {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+html[dir="rtl"] .header-nav,
+.rtl-page .header-nav {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+html[dir="rtl"] .dropdown-menu,
+.rtl-page .dropdown-menu {
+  left: auto;
+  right: 0;
+  text-align: right;
+}
+
+html[dir="rtl"] .dropdown-menu li a,
+.rtl-page .dropdown-menu li a {
+  text-align: right;
+  flex-direction: row-reverse;
+}
+
+/* Dropdown arrow flip */
+html[dir="rtl"] .nav-link i.fa-chevron-down,
+.rtl-page .nav-link i.fa-chevron-down {
+  margin-right: 0.5rem;
+  margin-left: 0;
+}
+
+/* Submenu opens to left in RTL */
+html[dir="rtl"] .dropdown-menu li.dropdown-submenu > .dropdown-menu,
+.rtl-page .dropdown-menu li.dropdown-submenu > .dropdown-menu {
+  left: auto !important;
+  right: 100% !important;
+}
+
+html[dir="rtl"] .dropdown-menu li.dropdown-submenu > a::after,
+.rtl-page .dropdown-menu li.dropdown-submenu > a::after {
+  right: auto !important;
+  left: 12px !important;
+  transform: translateY(-50%) rotate(135deg) !important;
+}
+
+/* ============================================
+   HERO SECTION RTL
+   ============================================ */
+
+html[dir="rtl"] .hero-text,
+.rtl-page .hero-text {
+  text-align: right;
+}
+
+html[dir="rtl"] .hero-bullets,
+.rtl-page .hero-bullets {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+html[dir="rtl"] .hero-bullets li,
+.rtl-page .hero-bullets li {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+html[dir="rtl"] .hero-bullets li i,
+.rtl-page .hero-bullets li i {
+  margin-left: 0.75rem;
+  margin-right: 0;
+}
+
+/* ============================================
+   BUTTONS & CTAs RTL
+   ============================================ */
+
+html[dir="rtl"] .hero-cta,
+html[dir="rtl"] .cta-btn,
+html[dir="rtl"] .about-cta,
+html[dir="rtl"] .team-cta,
+html[dir="rtl"] .contact-btn,
+.rtl-page .hero-cta,
+.rtl-page .cta-btn,
+.rtl-page .about-cta,
+.rtl-page .team-cta,
+.rtl-page .contact-btn {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .hero-cta i,
+html[dir="rtl"] .cta-btn i,
+html[dir="rtl"] .about-cta i,
+html[dir="rtl"] .team-cta i,
+html[dir="rtl"] .contact-btn i,
+.rtl-page .hero-cta i,
+.rtl-page .cta-btn i,
+.rtl-page .about-cta i,
+.rtl-page .team-cta i,
+.rtl-page .contact-btn i {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+/* Arrow icons flip */
+html[dir="rtl"] .fa-arrow-right,
+.rtl-page .fa-arrow-right {
+  transform: scaleX(-1);
+}
+
+html[dir="rtl"] .card-arrow,
+.rtl-page .card-arrow {
+  right: auto;
+  left: 1rem;
+  transform: scaleX(-1);
+}
+
+/* ============================================
+   CARDS & COMPONENTS RTL
+   ============================================ */
+
+/* Overlap cards */
+html[dir="rtl"] .overlap-card,
+.rtl-page .overlap-card {
+  text-align: right;
+}
+
+html[dir="rtl"] .overlap-card-link,
+.rtl-page .overlap-card-link {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .overlap-card-icon,
+.rtl-page .overlap-card-icon {
+  margin-left: 1rem;
+  margin-right: 0;
+}
+
+/* Service cards */
+html[dir="rtl"] .service-card-v2,
+.rtl-page .service-card-v2 {
+  text-align: right;
+}
+
+html[dir="rtl"] .card-badge,
+.rtl-page .card-badge {
+  right: auto;
+  left: 1rem;
+}
+
+/* Why cards */
+html[dir="rtl"] .why-card,
+.rtl-page .why-card {
+  text-align: right;
+}
+
+/* Specialist cards */
+html[dir="rtl"] .specialist-card,
+.rtl-page .specialist-card {
+  text-align: right;
+}
+
+html[dir="rtl"] .specialist-bullets,
+.rtl-page .specialist-bullets {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+html[dir="rtl"] .specialist-bullets li::before,
+.rtl-page .specialist-bullets li::before {
+  margin-left: 0.5rem;
+  margin-right: 0;
+}
+
+/* Process steps */
+html[dir="rtl"] .process-step,
+.rtl-page .process-step {
+  text-align: right;
+}
+
+html[dir="rtl"] .step-header,
+.rtl-page .step-header {
+  flex-direction: row-reverse;
+}
+
+/* Feature cards */
+html[dir="rtl"] .feature-card,
+.rtl-page .feature-card {
+  text-align: right;
+}
+
+/* ============================================
+   SECTION HEADERS RTL
+   ============================================ */
+
+html[dir="rtl"] .section-header,
+.rtl-page .section-header {
+  text-align: right;
+}
+
+html[dir="rtl"] .section-label,
+.rtl-page .section-label {
+  text-align: right;
+}
+
+/* Centered sections stay centered */
+html[dir="rtl"] .text-center,
+html[dir="rtl"] .cta-banner .section-header,
+.rtl-page .text-center,
+.rtl-page .cta-banner .section-header {
+  text-align: center;
+}
+
+/* ============================================
+   ABOUT SECTION RTL
+   ============================================ */
+
+html[dir="rtl"] .about-grid,
+.rtl-page .about-grid {
+  direction: rtl;
+}
+
+html[dir="rtl"] .exodus-features-list,
+.rtl-page .exodus-features-list {
+  text-align: right;
+}
+
+html[dir="rtl"] .exodus-feature-item,
+.rtl-page .exodus-feature-item {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .exodus-feature-item i,
+.rtl-page .exodus-feature-item i {
+  margin-left: 0.75rem;
+  margin-right: 0;
+}
+
+html[dir="rtl"] .experience-badge,
+.rtl-page .experience-badge {
+  right: auto;
+  left: -1rem;
+}
+
+/* ============================================
+   LANGUAGES SECTION RTL
+   ============================================ */
+
+html[dir="rtl"] .language-item,
+.rtl-page .language-item {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .language-item i,
+.rtl-page .language-item i {
+  margin-left: 0.5rem;
+  margin-right: 0;
+}
+
+/* ============================================
+   FAQ SECTION RTL
+   ============================================ */
+
+html[dir="rtl"] .faq-question,
+.rtl-page .faq-question {
+  text-align: right;
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .faq-question i,
+.rtl-page .faq-question i {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+html[dir="rtl"] .faq-answer,
+.rtl-page .faq-answer {
+  text-align: right;
+}
+
+/* ============================================
+   CONTACT FORM RTL
+   ============================================ */
+
+html[dir="rtl"] .contact-form,
+.rtl-page .contact-form {
+  text-align: right;
+}
+
+html[dir="rtl"] .contact-form input,
+html[dir="rtl"] .contact-form textarea,
+.rtl-page .contact-form input,
+.rtl-page .contact-form textarea {
+  text-align: right;
+  direction: rtl;
+}
+
+html[dir="rtl"] .contact-form label,
+.rtl-page .contact-form label {
+  text-align: right;
+}
+
+/* Phone input stays LTR for number entry */
+html[dir="rtl"] input[type="tel"],
+.rtl-page input[type="tel"] {
+  direction: ltr;
+  text-align: left;
+}
+
+/* ============================================
+   FOOTER RTL
+   ============================================ */
+
+html[dir="rtl"] .footer-grid,
+.rtl-page .footer-grid {
+  direction: rtl;
+}
+
+html[dir="rtl"] .footer-column,
+.rtl-page .footer-column {
+  text-align: right;
+}
+
+html[dir="rtl"] .footer-links,
+.rtl-page .footer-links {
+  padding-right: 0;
+}
+
+html[dir="rtl"] .footer-social,
+.rtl-page .footer-social {
+  justify-content: flex-start;
+}
+
+/* ============================================
+   MOBILE SHELL RTL
+   ============================================ */
+
+html[dir="rtl"] .mobile-sidebar,
+.rtl-page .mobile-sidebar {
+  right: auto;
+  left: 0;
+  transform: translateX(-100%);
+}
+
+html[dir="rtl"] .mobile-sidebar.is-open,
+.rtl-page .mobile-sidebar.is-open {
+  transform: translateX(0);
+}
+
+html[dir="rtl"] .mobile-nav-item,
+.rtl-page .mobile-nav-item {
+  text-align: right;
+}
+
+html[dir="rtl"] .accordion-header,
+.rtl-page .accordion-header {
+  flex-direction: row-reverse;
+}
+
+/* ============================================
+   METRICS RTL
+   ============================================ */
+
+html[dir="rtl"] .ot-metrics-inner,
+.rtl-page .ot-metrics-inner {
+  direction: rtl;
+}
+
+html[dir="rtl"] .ot-metric,
+.rtl-page .ot-metric {
+  text-align: center;
+}
+
+/* ============================================
+   TRUST BAR RTL
+   ============================================ */
+
+html[dir="rtl"] .trust-bar,
+.rtl-page .trust-bar {
+  direction: rtl;
+}
+
+/* ============================================
+   TESTIMONIALS RTL
+   ============================================ */
+
+html[dir="rtl"] .testimonial-card,
+.rtl-page .testimonial-card {
+  text-align: right;
+}
+
+html[dir="rtl"] .testimonial-author,
+.rtl-page .testimonial-author {
+  flex-direction: row-reverse;
+}
+
+/* ============================================
+   MISC UTILITIES
+   ============================================ */
+
+/* Lists */
+html[dir="rtl"] ul,
+html[dir="rtl"] ol,
+.rtl-page ul,
+.rtl-page ol {
+  padding-right: 1.5rem;
+  padding-left: 0;
+}
+
+/* Margins and padding flip */
+html[dir="rtl"] .ml-auto,
+.rtl-page .ml-auto {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+html[dir="rtl"] .mr-auto,
+.rtl-page .mr-auto {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+/* Chevron/arrow animations */
+html[dir="rtl"] .fa-chevron-right,
+.rtl-page .fa-chevron-right {
+  transform: scaleX(-1);
+}
+
+html[dir="rtl"] .fa-chevron-left,
+.rtl-page .fa-chevron-left {
+  transform: scaleX(-1);
+}
+
+/* ============================================
+   LANGUAGE SWITCHER
+   ============================================ */
+
+.language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.language-switcher a {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.2s ease;
+}
+
+.language-switcher a:hover,
+.language-switcher a.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.language-switcher .lang-ar {
+  font-family: 'Noto Sans Arabic', sans-serif;
+}
