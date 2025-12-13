@@ -1,453 +1,849 @@
 ---
-import ServiceLayout from '../../../layouts/ServiceLayout.astro';
-import RelatedServices from '../../../components/RelatedServices.astro';
-import CrossSiloLinks from '../../../components/CrossSiloLinks.astro';
-import InlineCallout from '../../../components/InlineCallout.astro';
+/**
+ * /services/attestation/ - Document Attestation Services Hub
+ * 
+ * Using: CategoryLayout
+ * Schemas: BreadcrumbList, Service, FAQPage (auto-generated)
+ * Added: 10 FAQs for rich snippets
+ * 
+ * Silo: Services (Silo 3)
+ * Type: Service Page
+ */
+import CategoryLayout from '../../../layouts/CategoryLayout.astro';
 
-const pageData = {
-  title: "Attestation & MOFAIC Services Dubai – Document Legalization UAE | OnlineTranslation.ae",
-  description: "Complete attestation and MOFAIC services in UAE. Embassy legalization, MOFA attestation, and document authentication. We handle the entire chain from home country to UAE acceptance.",
-  keywords: "MOFAIC attestation Dubai, document attestation UAE, embassy legalization, MOFA UAE, certificate attestation, document authentication Dubai",
-  heroTitle: "Attestation & MOFAIC Services",
-  heroSubtitle: "Complete Document Legalization Chain",
-  heroImage: "/images/onedrive/stamped-hardcopy.png",
-  heroIntro: "Document attestation in the UAE follows a specific chain: home country attestation, embassy legalization, and finally MOFA attestation. Missing any step means rejection at the final destination. We coordinate the complete process, whether your documents come from Hague Convention countries requiring Apostille or non-Hague countries requiring traditional embassy attestation.",
-  snapshot: [
-    { icon: "clock", bold: "Complete chain", text: "coordination from source to UAE" },
-    { icon: "mobile-alt", bold: "WhatsApp updates", text: "at every stage" },
-    { icon: "check-circle", bold: "MOFA accepted", text: "for all UAE authorities" },
-    { icon: "globe", bold: "170+ countries", text: "document source expertise" }
-  ],
-  breadcrumbs: [
-    { name: "Home", url: "/" },
-    { name: "Services", url: "/services/" },
-    { name: "Attestation", url: "/services/attestation/" }
-  ],
-  
-  trustStrip: [
-    "Complete chain service",
-    "Embassy coordination",
-    "MOFA attestation included"
-  ],
-  
-  processSteps: [
-    {
-      title: "Document review",
-      text: "We examine your document and determine the complete attestation chain required."
-    },
-    {
-      title: "Home country attestation",
-      text: "Apostille for Hague countries or notary and foreign affairs attestation for others."
-    },
-    {
-      title: "UAE legalization",
-      text: "UAE Embassy attestation (in your country) followed by MOFA attestation in UAE."
-    }
-  ],
-  
-  benefitCards: [
-    {
-      icon: "globe",
-      title: "Source country expertise",
-      text: "We know the specific requirements for documents from major source countries."
-    },
-    {
-      icon: "shield",
-      title: "Complete coordination",
-      text: "We manage the entire chain so you do not need to track multiple agencies."
-    },
-    {
-      icon: "clock",
-      title: "Timeline clarity",
-      text: "Realistic timeframes upfront based on document type and source country."
-    }
-  ],
-  
-  accordionSections: [
-    {
-      title: "Understanding the attestation chain",
-      id: "chain",
-      items: [
-        {
-          heading: "Hague Convention countries (Apostille)",
-          body: "<p>If your document is from a country that signed the Hague Convention (UK, USA, EU, Australia, Canada, India, and 100+ others), it can be Apostilled. An Apostille is a simplified certification that replaces traditional embassy legalization for these countries.</p><p>After Apostille in your home country, the document goes directly to MOFA attestation in UAE. This is faster and less expensive than the traditional route.</p>"
-        },
-        {
-          heading: "Non-Hague countries (Embassy attestation)",
-          body: "<p>If your document is from a country that has not joined the Hague Convention, the traditional attestation chain applies: notary attestation, foreign affairs attestation in your country, UAE Embassy attestation in your country, then MOFA attestation in UAE.</p><p>This process takes longer but we coordinate with verified partners in major source countries to manage the complete chain.</p>"
-        },
-        {
-          heading: "Documents requiring translation first",
-          body: "<p>Some documents need translation before attestation. For example, if your <a href='/personal/vital-records/birth/'>birth certificate</a> is in a language other than Arabic or English, it may need certified translation before the attestation chain begins.</p><p>We provide both translation and attestation services, ensuring the correct sequence is followed.</p>"
-        },
-        {
-          heading: "MOFA attestation (final step)",
-          body: "<p>MOFA (Ministry of Foreign Affairs) attestation is the final step that makes your document valid for use in UAE. Without this step, the document will not be accepted by UAE government authorities, courts, or employers.</p><p>We handle MOFA submission and collection, delivering the fully attested document to you.</p>"
-        }
-      ]
-    },
-    {
-      title: "Common attestation scenarios",
-      id: "scenarios",
-      items: [
-        {
-          heading: "Degree for employment",
-          body: "<p>UAE employers and MOHRE require <a href='/personal/education/degree/'>degree certificates</a> to be attested for work permit applications. The complete chain includes: university verification, home country attestation or Apostille, UAE Embassy attestation (if applicable), and MOFA attestation.</p><p>We handle the complete process, advising you on any additional steps specific to your country and field.</p>"
-        },
-        {
-          heading: "Marriage certificate for visa",
-          body: "<p>Sponsoring a spouse requires an attested <a href='/personal/vital-records/marriage/'>marriage certificate</a>. If the marriage took place outside UAE, the certificate needs attestation through the complete chain before immigration authorities will accept it.</p>"
-        },
-        {
-          heading: "Commercial documents for business",
-          body: "<p><a href='/legal/corporate/moa/'>MOA</a>, trade licenses, and commercial contracts may need attestation for use in UAE business transactions or government tenders. The requirements vary based on the intended use.</p>"
-        },
-        {
-          heading: "Golden Visa documents",
-          body: "<p>For <a href='/services/golden-visa-translation/'>Golden Visa applications</a>, multiple documents often require attestation including degrees, police clearances, and family certificates.</p>"
-        }
-      ]
-    },
-    {
-      title: "Related services",
-      id: "related",
-      items: [
-        {
-          heading: "Legal translation",
-          body: "<p>Our <a href='/services/legal-translation/'>legal translation services</a> ensure your documents are correctly translated with MOJ certification before or after attestation as required.</p>"
-        },
-        {
-          heading: "Corporate documents",
-          body: "<p>For <a href='/services/corporate-translation/'>corporate translation</a> and attestation of business documents, we coordinate the complete process.</p>"
-        }
-      ]
-    }
-  ],
-  
-  faqs: [
-    {
-      question: "Do you handle the entire attestation process or just the UAE part?",
-      answer: "We handle the complete chain. If your document needs home country attestation first, we coordinate with verified partners in major source countries to ensure the entire process is managed seamlessly."
-    },
-    {
-      question: "What is the difference between Apostille and Embassy attestation?",
-      answer: "An Apostille is a simplified certification valid between countries that signed the Hague Convention. If your document is from a Hague country (UK, USA, EU, Australia, etc.), an Apostille replaces embassy attestation - it is often faster and less expensive."
-    },
-    {
-      question: "How long does the complete attestation chain take?",
-      answer: "Timelines vary by source country and document type. Apostille from Hague countries typically takes 2-4 weeks. Traditional embassy attestation from non-Hague countries may take 4-8 weeks. We provide realistic timeframes based on your specific situation."
-    },
-    {
-      question: "Can you attest documents that are already translated?",
-      answer: "Yes, if the translation was done by an MOJ-licensed translator. If the translation is from another source, we may need to re-translate it to meet UAE requirements."
-    },
-    {
-      question: "What happens if my document is rejected?",
-      answer: "Rejection usually means a step was missed or performed incorrectly. We review rejected documents, identify the issue, and advise on how to proceed. In most cases, the document can be resubmitted after addressing the specific problem."
-    },
-    {
-      question: "Can I track my document through the process?",
-      answer: "Yes. We provide WhatsApp updates at each stage of the attestation chain. You will know when your document completes each step and when it is ready for collection."
-    }
-  ],
-  serviceType: "Document Attestation"
-};
+const breadcrumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Services', href: '/services/' },
+  { label: 'Attestation' }
+];
+
+const faqs = [
+  {
+    question: "What is document attestation and why do I need it?",
+    answer: "Document attestation is the process of authenticating documents for use in another country. For documents to be legally recognized in the UAE, they must be verified through a chain of authorities: notarization in the country of origin, authentication by that country's Foreign Ministry, attestation by the UAE Embassy, and final legalization by UAE MOFA. Without proper attestation, foreign documents have no legal standing in the UAE for visa applications, employment, business setup, or court proceedings."
+  },
+  {
+    question: "What documents require attestation for UAE use?",
+    answer: "Common documents requiring attestation include educational certificates (degrees, diplomas, transcripts) for employment and professional licensing, personal documents (birth certificates, marriage certificates, police clearance) for visa applications and family matters, commercial documents (MOA, trade licenses, powers of attorney) for business setup and banking, and legal documents (court judgments, affidavits) for legal proceedings. The specific requirements depend on your intended use in the UAE."
+  },
+  {
+    question: "What is the attestation process for documents from India?",
+    answer: "Indian documents follow this attestation chain: (1) Notarization by Indian notary public, (2) Authentication by State Home Department or HRD (for educational documents), (3) Authentication by Ministry of External Affairs (MEA), (4) Attestation by UAE Embassy in India, (5) Final attestation by UAE MOFA. We coordinate this entire process with our network of agents in India, typically completing the full chain in 2-3 weeks."
+  },
+  {
+    question: "How long does the attestation process take?",
+    answer: "Attestation timelines vary by country of origin. Documents from India typically take 2-3 weeks for the complete chain. UK documents take 2-4 weeks. US documents take 3-4 weeks. Documents already partially attested move faster. UAE MOFA attestation alone takes 1-3 business days. We provide realistic timelines based on your specific documents and current processing times at each authority."
+  },
+  {
+    question: "Do you handle attestation for documents from all countries?",
+    answer: "Yes. We coordinate attestation for documents from most countries including India, Pakistan, Philippines, UK, USA, Canada, Australia, European countries, and Middle Eastern countries. Each country has different requirements and processing channels. We have established networks and understand the specific procedures for each country's attestation chain."
+  },
+  {
+    question: "What is MOFA attestation and when is it required?",
+    answer: "MOFA (Ministry of Foreign Affairs) attestation is the final step in the UAE attestation chain. It verifies that the UAE Embassy attestation is genuine. MOFA attestation is required for most official uses in the UAE including visa applications, employment authorization, company formation, bank account opening, and court submissions. Some documents may be exempt—we advise on requirements for your specific use case."
+  },
+  {
+    question: "Can you expedite the attestation process?",
+    answer: "Yes, expedited processing is available for urgent requirements. UAE MOFA offers express service completing in 24-48 hours instead of standard 3-5 days. For foreign attestation, expedited options depend on the country—some embassies and ministries offer priority processing for additional fees. Contact us with your deadline and we will advise on the fastest possible route."
+  },
+  {
+    question: "Do I need to send original documents for attestation?",
+    answer: "Yes, attestation requires original documents. Stamps and signatures are applied directly to the original document at each stage of the chain. We handle your originals with care, use secure courier services with tracking, and maintain insurance coverage. You can track your document's progress throughout the attestation process."
+  },
+  {
+    question: "What is the cost of attestation services?",
+    answer: "Attestation costs depend on the country of origin and document type. UAE MOFA attestation alone starts at AED 200 per document. Full chain attestation from countries like India starts at AED 800-1,200 depending on document type and processing speed. We provide detailed quotes covering all fees (government fees, embassy fees, courier costs) before you commit—no hidden charges."
+  },
+  {
+    question: "What happens if my document is rejected during attestation?",
+    answer: "Document rejection can occur for various reasons: missing notarization, incorrect sequence, document quality issues, or discrepancies in information. If rejection occurs, we identify the issue, advise on remediation, and resubmit at no additional service fee (government fees may apply). Our experience with attestation requirements helps prevent rejections—we review documents before submission to catch potential issues."
+  }
+];
+
+const countries = [
+  {
+    name: "India",
+    flag: "🇮🇳",
+    timeline: "2-3 weeks",
+    steps: ["Notary", "State HRD/Home Dept", "MEA", "UAE Embassy", "MOFA"]
+  },
+  {
+    name: "Pakistan",
+    flag: "🇵🇰",
+    timeline: "2-3 weeks",
+    steps: ["Notary", "IBCC/HEC", "MOFA Pakistan", "UAE Embassy", "UAE MOFA"]
+  },
+  {
+    name: "Philippines",
+    flag: "🇵🇭",
+    timeline: "2-3 weeks",
+    steps: ["DFA Authentication", "UAE Embassy", "UAE MOFA"]
+  },
+  {
+    name: "United Kingdom",
+    flag: "🇬🇧",
+    timeline: "2-4 weeks",
+    steps: ["Notary/Solicitor", "FCO Apostille", "UAE Embassy", "UAE MOFA"]
+  },
+  {
+    name: "United States",
+    flag: "🇺🇸",
+    timeline: "3-4 weeks",
+    steps: ["Notary", "State Secretary", "US State Dept", "UAE Embassy", "UAE MOFA"]
+  },
+  {
+    name: "Canada",
+    flag: "🇨🇦",
+    timeline: "3-4 weeks",
+    steps: ["Notary", "Provincial Auth", "GAC", "UAE Embassy", "UAE MOFA"]
+  }
+];
+
+const documentTypes = [
+  {
+    category: "Educational Documents",
+    icon: "graduation-cap",
+    items: ["University Degrees", "Diplomas", "Transcripts", "Professional Certificates", "Training Certificates"],
+    use: "Employment, professional licensing, MOHESR equivalency"
+  },
+  {
+    category: "Personal Documents",
+    icon: "user",
+    items: ["Birth Certificates", "Marriage Certificates", "Divorce Decrees", "Death Certificates", "Police Clearance"],
+    use: "Visa applications, family sponsorship, legal matters"
+  },
+  {
+    category: "Commercial Documents",
+    icon: "briefcase",
+    items: ["MOA/AOA", "Trade Licenses", "Board Resolutions", "Powers of Attorney", "Commercial Invoices"],
+    use: "Business setup, banking, corporate transactions"
+  },
+  {
+    category: "Legal Documents",
+    icon: "gavel",
+    items: ["Court Judgments", "Affidavits", "Legal Declarations", "Wills", "Contracts"],
+    use: "Court proceedings, legal enforcement, property matters"
+  }
+];
+
+const processSteps = [
+  {
+    number: 1,
+    title: "Document Review",
+    desc: "Send your documents via WhatsApp. We verify document type, country of origin, intended use, and confirm the required attestation chain."
+  },
+  {
+    number: 2,
+    title: "Quote and Timeline",
+    desc: "Receive detailed quote covering all fees (service, government, embassy, courier) with realistic timeline based on current processing times."
+  },
+  {
+    number: 3,
+    title: "Document Collection",
+    desc: "We collect your original documents via secure courier from your location in Dubai, Abu Dhabi, Sharjah, or anywhere in the UAE."
+  },
+  {
+    number: 4,
+    title: "Attestation Processing",
+    desc: "Documents move through the attestation chain with tracking at each stage. We handle all submissions, payments, and follow-ups."
+  },
+  {
+    number: 5,
+    title: "Delivery",
+    desc: "Fully attested documents returned to you via secure courier. Digital copies provided immediately upon completion."
+  }
+];
 ---
 
-<ServiceLayout {...pageData}>
-  
-  <section class="section bg-white">
+<CategoryLayout
+  title="Document Attestation Services Dubai | MOFA, Embassy Attestation | OnlineTranslation.ae"
+  description="Complete document attestation services in Dubai. MOFA attestation, embassy legalization, educational and personal document authentication. India, UK, US, Pakistan, Philippines attestation coordination."
+  keywords="document attestation dubai, mofa attestation, embassy attestation uae, certificate attestation, degree attestation dubai, indian document attestation, uk document attestation, attestation services uae"
+  heroTitle="Document Attestation Services"
+  heroSubtitle="Complete Attestation Chain Coordination"
+  heroIntro="Foreign documents need authentication before UAE authorities will accept them. We coordinate the complete attestation chain—from notarization in your home country through embassy attestation to final MOFA legalization. Whether you need educational certificates for employment, personal documents for visa applications, or commercial documents for business setup, we handle the entire process while you focus on what matters."
+  breadcrumbs={breadcrumbs}
+  serviceType="Document Attestation Services"
+  faqs={faqs}
+>
+
+  <!-- Document Types Section -->
+  <section class="section">
     <div class="container">
-      <h2>How Document Attestation Works in the UAE</h2>
-      <div class="content-prose">
-        <p>Document attestation is a verification chain that confirms your document is genuine and was issued by a legitimate authority. In the UAE, this chain typically ends with MOFA (Ministry of Foreign Affairs) attestation, which makes your document legally valid for use in the country.</p>
-        
-        <p>The specific steps depend on where your document originates and what type of document it is. A degree from the United Kingdom follows a different path than one from Pakistan or Egypt. A marriage certificate requires different handling than a commercial contract. Understanding these variations prevents delays and rejections.</p>
-        
-        <h3>Why Attestation Matters</h3>
-        <p>Without proper attestation, your document will be rejected when you try to use it. Employers cannot process work permits with unattested degrees. Immigration cannot accept unattested marriage certificates for family visa applications. Courts will not admit unattested foreign judgments as evidence. The attestation is not optional—it is a legal requirement for foreign documents to have effect in the UAE.</p>
-        
-        <p>Each step in the attestation chain serves a purpose. Home country attestation confirms the document was legitimately issued. Embassy attestation confirms the home country verification is genuine. MOFA attestation confirms the UAE accepts all preceding steps. Skipping any step breaks the chain.</p>
-        
-        <h3>The Hague Convention and Apostille</h3>
-        <p>The Hague Apostille Convention simplified international document verification between member countries. Over 120 countries have joined, including most of Europe, North America, Australia, and India (which joined in 2005). For documents from these countries, a single Apostille certificate replaces the multi-step embassy attestation process.</p>
-        
-        <p>An Apostille is typically issued by a designated government authority in the document's country of origin. In the UK, the Foreign Office issues Apostilles. In the US, it is typically the Secretary of State. In India, the Ministry of External Affairs handles Apostilles. We work with verified agents in each country to obtain Apostilles efficiently.</p>
-        
-        <p>After obtaining an Apostille, the document proceeds directly to MOFA attestation in the UAE. This shortcut saves time and money compared to the traditional embassy route.</p>
-        
-        <h3>Non-Hague Countries and Embassy Attestation</h3>
-        <p>Some countries have not joined the Hague Convention, including many in the Middle East, parts of Asia, and some African nations. Documents from these countries must follow the traditional attestation chain.</p>
-        
-        <p>This chain typically involves: (1) notarization in the country of origin, (2) attestation by the originating country's Ministry of Foreign Affairs, (3) attestation by the UAE Embassy in that country, and (4) MOFA attestation in the UAE. Each step verifies the previous one, building a complete chain of authentication.</p>
-        
-        <p>This process takes longer—often 4-8 weeks—but we coordinate with reliable partners in major source countries to manage the complete process. You do not need to navigate foreign bureaucracies or find local agents; we handle those relationships.</p>
+      <h2>Documents We Attest</h2>
+      <p class="section-intro">We handle attestation for all document types required for UAE government, employment, and legal use.</p>
+
+      <div class="document-types-grid">
+        {documentTypes.map(docType => (
+          <div class="document-type-card">
+            <div class="document-type-icon">
+              <i class={`fas fa-${docType.icon}`}></i>
+            </div>
+            <h3>{docType.category}</h3>
+            <ul class="document-items">
+              {docType.items.map(item => (
+                <li>{item}</li>
+              ))}
+            </ul>
+            <div class="document-use">
+              <strong>Used for:</strong> {docType.use}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
+  <!-- Country Attestation Section -->
   <section class="section bg-light">
-    <div class="container">
-      <h2>Common Document Types and Their Requirements</h2>
-      <div class="content-prose">
-        <h3>Educational Certificates</h3>
-        <p>Degree certificates, diplomas, and transcripts are among the most frequently attested documents. UAE employers require attested degrees for work permit applications. Universities require attested transcripts for admission. Professional licensing authorities require attested qualifications.</p>
-        
-        <p>The attestation chain for educational documents often starts with verification by the issuing institution. Some countries require the university to verify the degree before the attestation process can begin. We advise on these preliminary requirements based on your specific institution and country.</p>
-        
-        <p>For <a href="/services/golden-visa-translation/">Golden Visa applications</a>, educational documents need both attestation and MOHESR equivalency. We coordinate both processes to ensure your documents meet all requirements.</p>
-        
-        <h3>Personal Status Documents</h3>
-        <p><a href="/personal/vital-records/birth/">Birth certificates</a>, <a href="/personal/vital-records/marriage/">marriage certificates</a>, and <a href="/personal/vital-records/divorce/">divorce decrees</a> frequently need attestation for immigration, family sponsorship, and personal status proceedings in the UAE.</p>
-        
-        <p>These documents often require translation as well as attestation. The translation may need to happen before or after certain attestation steps depending on the document and country of origin. We ensure the correct sequence is followed.</p>
-        
-        <p>For marriage certificates from countries that do not issue separate documents, attestation of the official record extract may be required. We understand these variations and advise accordingly.</p>
-        
-        <h3>Commercial and Corporate Documents</h3>
-        <p>Trade licenses, <a href="/legal/corporate/moa/">Memoranda of Association</a>, board resolutions, and commercial contracts may need attestation for use in UAE business contexts. Requirements vary based on the intended use—whether for company registration, banking relationships, or legal proceedings.</p>
-        
-        <p>Powers of Attorney for business purposes often require attestation when created abroad. <a href="/legal/corporate/poa/">POA attestation</a> follows the same chain as other documents but may have additional requirements depending on the specific powers granted.</p>
-        
-        <h3>Police Clearance Certificates</h3>
-        <p><a href="/personal/immigration/pcc/">Police clearance certificates</a> are required for many UAE visa applications. These documents typically have validity periods, so timing the attestation process is important—you do not want the certificate to expire during the attestation chain.</p>
-        
-        <p>We advise on realistic timelines for PCC attestation based on your country of origin and current processing times, helping you plan the application sequence appropriately.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-white">
-    <div class="container">
-      <h2>Country-Specific Guidance</h2>
-      <div class="content-prose">
-        <h3>United Kingdom</h3>
-        <p>UK documents can be Apostilled through the Foreign, Commonwealth and Development Office. The UK Apostille process is well-established and typically takes 5-10 working days. We coordinate with reliable UK agents who handle documents frequently and understand the specific requirements.</p>
-        
-        <p>Educational documents from the UK may also require Chartered Institute verification or HEA confirmation depending on the institution. We advise on these additional requirements when applicable.</p>
-        
-        <h3>India</h3>
-        <p>India joined the Hague Convention in 2005, so Indian documents can now be Apostilled rather than requiring embassy attestation. The Ministry of External Affairs handles Apostilles through regional passport offices. Processing typically takes 7-14 days.</p>
-        
-        <p>Educational documents from India often require verification from the issuing university and HRD (Human Resource Development) attestation before Apostille. We coordinate this complete chain.</p>
-        
-        <h3>Pakistan</h3>
-        <p>Pakistan has not joined the Hague Convention, so documents require traditional embassy attestation. The chain includes: Ministry of Foreign Affairs (Pakistan), UAE Embassy (Islamabad or Karachi), and MOFA (UAE). Processing typically takes 3-5 weeks.</p>
-        
-        <p>We work with established partners in Pakistan who handle attestation requests regularly and can navigate the specific requirements efficiently.</p>
-        
-        <h3>Egypt and Other Arab Countries</h3>
-        <p>Several Arab countries have reciprocal attestation agreements with the UAE that may simplify certain requirements. The specific process depends on the document type and current bilateral arrangements. We advise based on current practice rather than outdated information.</p>
-        
-        <h3>Other Countries</h3>
-        <p>We handle documents from virtually any country. For less common source countries, we research current requirements and connect with reliable local partners to ensure proper attestation. Processing times vary but we provide realistic estimates based on current conditions.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-light">
-    <div class="container">
-      <h2>Service Levels</h2>
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <h3>MOFA Only</h3>
-          <div class="pricing-price">From AED 300</div>
-          <p class="pricing-time">When document is already embassy-attested</p>
-          <ul class="pricing-features">
-            <li>Document collection</li>
-            <li>MOFA submission</li>
-            <li>Delivery to you</li>
-            <li>WhatsApp updates</li>
-          </ul>
-        </div>
-        <div class="pricing-card pricing-card--featured">
-          <h3>Complete Chain</h3>
-          <div class="pricing-price">From AED 800</div>
-          <p class="pricing-time">Source country to MOFA</p>
-          <ul class="pricing-features">
-            <li>Home country coordination</li>
-            <li>Embassy attestation</li>
-            <li>MOFA submission</li>
-            <li>Complete tracking</li>
-          </ul>
-        </div>
-        <div class="pricing-card">
-          <h3>Translation + Attestation</h3>
-          <div class="pricing-price">From AED 500</div>
-          <p class="pricing-time">When translation needed first</p>
-          <ul class="pricing-features">
-            <li>MOJ-certified translation</li>
-            <li>Correct sequencing</li>
-            <li>Attestation handling</li>
-            <li>Single point of contact</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-white">
-    <div class="container">
-      <h2>Getting Started</h2>
-      <div class="content-prose">
-        <p>The first step is to understand what attestation your specific document requires. Send us a photo of your document via WhatsApp and tell us what you need it for. We will review it and explain the complete chain required, including realistic timelines and costs.</p>
-        
-        <p>If your document is already partially attested, we can advise on remaining steps. If attestation has been attempted but rejected, we can identify the issue and suggest how to proceed.</p>
-        
-        <p>For complete document packages—such as all documents needed for a <a href="/services/golden-visa-translation/">Golden Visa application</a> or family sponsorship—we coordinate the timing so all documents are ready together, avoiding situations where some documents expire while waiting for others.</p>
-        
-        <p>Attestation timelines depend on factors beyond our control, but we provide honest estimates based on current processing times. We keep you informed throughout the process so you always know where your documents are and when to expect them.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-white">
     <div class="container">
       <h2>Attestation by Country</h2>
-      <div class="country-links">
-        <a href="/services/attestation/india/" class="country-link">India</a>
-        <a href="/services/attestation/pakistan/" class="country-link">Pakistan</a>
-        <a href="/services/attestation/philippines/" class="country-link">Philippines</a>
-        <a href="/services/attestation/uk/" class="country-link">UK</a>
-        <a href="/services/attestation/us/" class="country-link">USA</a>
-        <a href="/services/attestation/mofa/" class="country-link">MOFA UAE</a>
-        <a href="/services/attestation/apostille/" class="country-link">Apostille</a>
-        <a href="/services/attestation/embassy/" class="country-link">Embassy Services</a>
+      <p class="section-intro">Each country has different attestation requirements and processing channels. We handle documents from all major source countries.</p>
+
+      <div class="countries-grid">
+        {countries.map(country => (
+          <div class="country-card">
+            <div class="country-header">
+              <span class="country-flag">{country.flag}</span>
+              <h3>{country.name}</h3>
+              <span class="country-timeline">{country.timeline}</span>
+            </div>
+            <div class="country-steps">
+              {country.steps.map((step, index) => (
+                <span class="step-badge">
+                  {index + 1}. {step}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
 
-      <InlineCallout 
-        type="tip" 
-        title="Need Translation Too?"
-        link="/services/legal-translation/"
-        linkText="View translation services"
-      >
-        Most attested documents also require MOJ-certified translation before submission to UAE authorities.
-      </InlineCallout>
-
-      <RelatedServices 
-        pageKey="attestation"
-        title="Documents That Need Attestation"
-        maxItems={6}
-      />
-      
-      <CrossSiloLinks 
-        pageKey="attestation"
-        title="Related Services"
-      />
+      <div class="countries-note">
+        <p><i class="fas fa-info-circle"></i> <strong>Other countries:</strong> We also handle attestation for documents from Australia, Germany, France, Egypt, Jordan, Lebanon, Bangladesh, Sri Lanka, Nepal, and 50+ other countries. Contact us for specific requirements.</p>
+      </div>
     </div>
   </section>
 
-</ServiceLayout>
+  <!-- Process Section -->
+  <section class="section">
+    <div class="container">
+      <h2>Our Attestation Process</h2>
+      <p class="section-intro">We handle the complexity so you do not have to navigate multiple government offices and embassies.</p>
+
+      <div class="process-timeline">
+        {processSteps.map(step => (
+          <div class="process-step">
+            <div class="step-number">{step.number}</div>
+            <div class="step-content">
+              <h3>{step.title}</h3>
+              <p>{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <div class="content-grid">
+        <div class="content-main">
+          <h2>Understanding Document Attestation in the UAE</h2>
+          
+          <p>The UAE requires foreign documents to be authenticated through a specific chain of verification before they carry legal weight. This attestation process confirms that the document is genuine, was issued by a legitimate authority, and has been verified by appropriate government bodies in both the issuing country and the UAE.</p>
+          
+          <p>Without proper attestation, your foreign degree certificate cannot be used for employment or professional licensing. Your marriage certificate will not be accepted for spouse visa applications. Your power of attorney has no legal effect for property transactions. The attestation requirement applies to virtually all official uses of foreign documents in the UAE.</p>
+
+          <h3>The Attestation Chain Explained</h3>
+          
+          <p>The standard attestation chain involves multiple steps, each building on the previous verification:</p>
+          
+          <p><strong>Step 1 - Notarization:</strong> A notary public in the issuing country verifies the document is genuine. For educational documents, this may involve the issuing institution or education ministry.</p>
+          
+          <p><strong>Step 2 - Government Authentication:</strong> The issuing country's foreign ministry (or designated authority) confirms the notary's credentials and stamps the document.</p>
+          
+          <p><strong>Step 3 - UAE Embassy Attestation:</strong> The UAE Embassy in the issuing country verifies the foreign ministry's authentication and applies their attestation stamp.</p>
+          
+          <p><strong>Step 4 - UAE MOFA Legalization:</strong> The UAE Ministry of Foreign Affairs provides final verification, confirming the embassy attestation is genuine.</p>
+
+          <h3>Why Professional Attestation Services Matter</h3>
+          
+          <p>The attestation process involves navigating bureaucracies in two countries, understanding varying requirements, managing document custody across international borders, and meeting specific timelines. A single mistake—wrong sequence, missing step, incorrect form—can delay the process by weeks or require starting over.</p>
+          
+          <p>We have established networks in major source countries and understand current requirements at each authority. We know when MOFA has backlogs, which embassy processes are fastest, and how to handle documents that do not fit standard categories. This expertise translates into faster processing and fewer rejections for your documents.</p>
+        </div>
+
+        <div class="content-sidebar">
+          <div class="info-card highlight">
+            <h4><i class="fab fa-whatsapp"></i> Get Started</h4>
+            <p>Send your documents via WhatsApp for a free assessment and detailed quote.</p>
+            <a href="https://wa.me/971508620217?text=Attestation%20inquiry" class="btn btn--primary btn--sm">
+              <i class="fab fa-whatsapp"></i> Send Documents
+            </a>
+          </div>
+
+          <div class="info-card">
+            <h4><i class="fas fa-clock"></i> Processing Times</h4>
+            <ul>
+              <li><strong>UAE MOFA only:</strong> 1-3 days</li>
+              <li><strong>India full chain:</strong> 2-3 weeks</li>
+              <li><strong>UK full chain:</strong> 2-4 weeks</li>
+              <li><strong>US full chain:</strong> 3-4 weeks</li>
+              <li><strong>Express available:</strong> 50% faster</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h4><i class="fas fa-tag"></i> Pricing Guide</h4>
+            <ul>
+              <li><strong>MOFA only:</strong> from AED 200</li>
+              <li><strong>India chain:</strong> from AED 800</li>
+              <li><strong>UK/US chain:</strong> from AED 1,200</li>
+              <li><strong>Express service:</strong> +50%</li>
+            </ul>
+            <p class="info-note">All fees included in quote—no hidden charges</p>
+          </div>
+
+          <div class="info-card">
+            <h4><i class="fas fa-shield-alt"></i> Document Safety</h4>
+            <ul>
+              <li>Secure courier with tracking</li>
+              <li>Insurance coverage</li>
+              <li>Progress updates</li>
+              <li>Digital copies provided</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Translation + Attestation -->
+  <section class="section">
+    <div class="container">
+      <div class="combo-section">
+        <div class="combo-content">
+          <h2>Translation + Attestation Packages</h2>
+          <p>Many documents require both MOJ-certified translation and attestation for UAE use. We offer combined packages that handle both services with a single point of contact. Your document goes through the attestation chain first, then receives certified translation—or vice versa depending on requirements.</p>
+          <p>Combined packages save time and ensure proper sequencing. We advise on whether translation should happen before or after attestation based on your specific documents and intended use.</p>
+          <a href="https://wa.me/971508620217?text=Translation%20and%20attestation%20package" class="btn btn--primary">
+            <i class="fab fa-whatsapp"></i> Get Package Quote
+          </a>
+        </div>
+        <div class="combo-features">
+          <div class="combo-feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Single point of contact</span>
+          </div>
+          <div class="combo-feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Proper sequencing guaranteed</span>
+          </div>
+          <div class="combo-feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Package pricing saves 10-15%</span>
+          </div>
+          <div class="combo-feature">
+            <i class="fas fa-check-circle"></i>
+            <span>End-to-end tracking</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Related Services</h2>
+      <div class="related-grid">
+        <a href="/legal-translation-dubai/" class="related-card">
+          <i class="fas fa-balance-scale"></i>
+          <h3>Legal Translation</h3>
+          <p>MOJ-certified translation for attested documents</p>
+        </a>
+        <a href="/personal/" class="related-card">
+          <i class="fas fa-user"></i>
+          <h3>Personal Documents</h3>
+          <p>Birth certificates, marriage certificates, degrees</p>
+        </a>
+        <a href="/services/golden-visa-translation/" class="related-card">
+          <i class="fas fa-star"></i>
+          <h3>Golden Visa Package</h3>
+          <p>Complete attestation and translation for investor visas</p>
+        </a>
+        <a href="/attestation/india/" class="related-card">
+          <i class="fas fa-globe-asia"></i>
+          <h3>India Attestation</h3>
+          <p>Specialized services for Indian documents</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</CategoryLayout>
 
 <style>
-  .content-prose {
-    max-width: 800px;
-    line-height: 1.8;
+  /* Base Section Styles */
+  .section {
+    padding: 4rem 0;
   }
-  
-  .content-prose h3 {
-    margin-top: 2rem;
+
+  .section h2 {
+    font-size: 1.75rem;
     margin-bottom: 1rem;
-    font-size: 1.25rem;
     color: var(--primary-color);
   }
-  
-  .content-prose p {
-    margin-bottom: 1.25rem;
-    color: var(--text-dark);
+
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 800px;
   }
-  
-  .content-prose a {
+
+  .bg-light {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  /* Document Types Grid */
+  .document-types-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .document-type-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .document-type-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--accent-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .document-type-icon i {
+    font-size: 1.25rem;
+    color: #fff;
+  }
+
+  .document-type-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 1rem;
+    color: var(--primary-color);
+  }
+
+  .document-items {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+  }
+
+  .document-items li {
+    padding: 0.35rem 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .document-items li:last-child {
+    border-bottom: none;
+  }
+
+  .document-use {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  /* Countries Grid */
+  .countries-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .country-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .country-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .country-flag {
+    font-size: 1.5rem;
+  }
+
+  .country-header h3 {
+    font-size: 1.1rem;
+    margin: 0;
+    color: var(--primary-color);
+    flex-grow: 1;
+  }
+
+  .country-timeline {
+    background: var(--accent-color);
+    color: #fff;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .country-steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .step-badge {
+    background: var(--bg-light, #f8f9fa);
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .countries-note {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 12px;
+    border-left: 4px solid var(--accent-color);
+  }
+
+  .countries-note p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+
+  .countries-note i {
     color: var(--accent-color);
-    text-decoration: none;
+    margin-right: 0.5rem;
   }
-  
-  .content-prose a:hover {
-    text-decoration: underline;
+
+  /* Process Timeline */
+  .process-timeline {
+    max-width: 800px;
+    margin: 0 auto;
   }
-  
-  .pricing-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-    gap: 1.5rem; 
+
+  .process-step {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
   }
-  
-  .pricing-card { 
-    background: #ffffff; 
-    border-radius: 1rem; 
-    padding: 2rem; 
-    text-align: center; 
-    border: 1px solid rgba(0, 0, 0, 0.05); 
+
+  .process-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 24px;
+    top: 50px;
+    bottom: -2rem;
+    width: 2px;
+    background: var(--accent-color);
+    opacity: 0.3;
   }
-  
-  .pricing-card--featured { 
-    border-color: var(--accent-color); 
-    box-shadow: 0 8px 30px rgba(255, 22, 84, 0.15); 
+
+  .step-number {
+    width: 50px;
+    height: 50px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 700;
+    flex-shrink: 0;
   }
-  
-  .pricing-card h3 { 
-    margin: 0 0 0.5rem; 
-    font-size: 1.25rem; 
+
+  .step-content h3 {
+    font-size: 1.15rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
   }
-  
-  .pricing-price { 
-    font-size: 2rem; 
-    font-weight: 700; 
-    color: var(--primary-color); 
-    margin-bottom: 0.25rem;
+
+  .step-content p {
+    margin: 0;
+    color: var(--text-muted);
+    line-height: 1.6;
   }
-  
-  .pricing-time { 
-    color: var(--text-muted); 
-    font-size: 0.9rem; 
+
+  /* Content Grid */
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 3rem;
+  }
+
+  .content-main h2 {
+    font-size: 1.75rem;
     margin-bottom: 1.5rem;
   }
-  
-  .pricing-features {
+
+  .content-main h3 {
+    font-size: 1.25rem;
+    margin: 2rem 0 1rem;
+    color: var(--primary-color);
+  }
+
+  .content-main p {
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Sidebar */
+  .info-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .info-card.highlight {
+    background: var(--primary-color);
+    color: #fff;
+  }
+
+  .info-card h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .info-card h4 i {
+    color: var(--accent-color);
+  }
+
+  .info-card.highlight h4 i {
+    color: #fff;
+  }
+
+  .info-card ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    text-align: left;
   }
-  
-  .pricing-features li {
-    padding: 0.5rem 0;
-    padding-left: 1.5rem;
-    position: relative;
+
+  .info-card li {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    font-size: 0.9rem;
+  }
+
+  .info-card.highlight li {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .info-card li:last-child {
+    border-bottom: none;
+  }
+
+  .info-card p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
     font-size: 0.95rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   }
-  
-  .pricing-features li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--accent-color);
-    font-weight: 700;
+
+  .info-note {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
   }
-  
-  .country-links {
+
+  .info-card .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Combo Section */
+  .combo-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    background: var(--primary-color);
+    padding: 3rem;
+    border-radius: 16px;
+    color: #fff;
+  }
+
+  .combo-content h2 {
+    color: #fff;
+    margin-top: 0;
+  }
+
+  .combo-content p {
+    opacity: 0.9;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .combo-features {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .combo-feature {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     gap: 0.75rem;
-    margin-bottom: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
   }
-  
-  .country-link {
+
+  .combo-feature i {
+    color: var(--accent-color);
+    font-size: 1.25rem;
+  }
+
+  /* Related Grid */
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .related-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .related-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .related-card i {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .related-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .related-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Buttons */
+  .btn {
     display: inline-flex;
     align-items: center;
-    padding: 0.5rem 1rem;
-    background: var(--primary-color);
-    color: #ffffff;
-    border-radius: 0.5rem;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
     text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
   }
-  
-  .country-link:hover {
+
+  .btn--primary {
     background: var(--accent-color);
-    transform: translateY(-2px);
+    color: #fff;
+  }
+
+  .btn--primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn--sm {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .document-types-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .countries-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .related-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 991px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .content-sidebar {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .combo-section {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section {
+      padding: 3rem 0;
+    }
+
+    .document-types-grid,
+    .countries-grid,
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .content-sidebar {
+      grid-template-columns: 1fr;
+    }
+
+    .combo-section {
+      padding: 2rem;
+    }
   }
 </style>
