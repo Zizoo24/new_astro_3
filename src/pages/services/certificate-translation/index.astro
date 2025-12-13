@@ -1,373 +1,803 @@
 ---
-import ServiceLayout from '../../../layouts/ServiceLayout.astro';
+/**
+ * /services/certificate-translation/ - Certificate Translation Services
+ * 
+ * Using: CategoryLayout
+ * Schemas: BreadcrumbList, Service, FAQPage (auto-generated)
+ * Added: 10 FAQs for rich snippets
+ * 
+ * Silo: Services (Silo 3)
+ * Type: Service Page
+ */
+import CategoryLayout from '../../../layouts/CategoryLayout.astro';
 
-const pageData = {
-  title: "Certificate Translation Dubai – MOJ Certified | OnlineTranslation.ae",
-  description: "Professional certificate translation in Dubai. Educational, professional, and civil certificates translated by MOJ-licensed translators for UAE government acceptance.",
-  keywords: "certificate translation Dubai, degree translation, diploma translation, professional certificate translation UAE, MOJ certified certificate",
-  heroTitle: "Certificate Translation",
-  heroSubtitle: "MOJ Certified for All Certificate Types",
-  heroImage: "/assets/images/onedrive/services/services-1.jpg",
-  heroIntro: "Certificates form the foundation of most visa, employment, and licensing applications in the UAE. Whether you need educational credentials for MOHRE, professional certifications for licensing bodies, or civil certificates for government procedures, each type has specific requirements. We handle all certificate categories with the accuracy that government authorities require.",
-  snapshot: [
-    { icon: "clock", bold: "Digital drafts", text: "typically within 60 minutes" },
-    { icon: "mobile-alt", bold: "WhatsApp workflow", text: "no office visit needed" },
-    { icon: "check-circle", bold: "MOHRE accepted", text: "for work permits" },
-    { icon: "stamp", bold: "MOJ certified", text: "with QR verification" }
-  ],
-  breadcrumbs: [
-    { name: "Home", url: "/" },
-    { name: "Services", url: "/services/" },
-    { name: "Certificate Translation", url: "/services/certificate-translation/" }
-  ],
-  
-  trustStrip: [
-    "MOJ-licensed partner",
-    "MOHRE format expertise",
-    "Attestation coordination"
-  ],
-  
-  processSteps: [
-    {
-      title: "Send your certificate",
-      text: "WhatsApp photo or scan. We review and advise on any attestation requirements."
-    },
-    {
-      title: "We prepare your translation",
-      text: "MOJ-licensed translator ensures accuracy and appropriate terminology."
-    },
-    {
-      title: "Delivery and attestation",
-      text: "Digital PDF immediately, physical copy with MOJ stamp delivered to you."
-    }
-  ],
-  
-  benefitCards: [
-    {
-      icon: "document",
-      title: "Educational certificates",
-      text: "Degrees, diplomas, transcripts, and professional qualifications."
-    },
-    {
-      icon: "shield",
-      title: "Professional certificates",
-      text: "Medical licenses, engineering certifications, and trade qualifications."
-    },
-    {
-      icon: "court",
-      title: "Civil certificates",
-      text: "Birth, marriage, divorce, and death certificates."
-    }
-  ],
-  
-  accordionSections: [
-    {
-      title: "Certificate types we translate",
-      id: "types",
-      items: [
-        {
-          heading: "Educational certificates",
-          body: "<p>Degree certificates, diplomas, higher diplomas, and professional qualifications. These typically require translation for MOHRE work permits, MOHESR equivalency, and professional licensing applications.</p><p>We format educational certificate translations to meet the specific requirements of UAE authorities.</p>"
-        },
-        {
-          heading: "Professional certificates",
-          body: "<p>Medical licenses, engineering certifications, teaching qualifications, and trade certifications. These are often required for professional licensing in the UAE.</p><p>Different professional bodies have different requirements, and we advise on what each typically needs.</p>"
-        },
-        {
-          heading: "Civil certificates",
-          body: "<p>Birth certificates, marriage certificates, divorce decrees, and death certificates. These are fundamental documents for visa applications, family sponsorship, and civil status updates.</p><p>We handle these frequently and know the common issues that can cause delays.</p>"
-        },
-        {
-          heading: "Training and course certificates",
-          body: "<p>Professional development certificates, training course completions, and workshop certifications. These may be needed for visa applications or employment verification.</p>"
-        }
-      ]
-    }
-  ],
-  
-  faqs: [
-    {
-      question: "Do I need my certificate attested as well as translated?",
-      answer: "This depends on the intended use. Employment visas typically require both translation and attestation. We review your specific situation and advise on the complete requirements."
-    },
-    {
-      question: "How long does certificate translation take?",
-      answer: "Standard service delivers within 24 hours. Express service completes in 6 hours. VIP Concierge provides 1-hour drafts for urgent employment deadlines."
-    },
-    {
-      question: "Is the translation accepted by MOHRE?",
-      answer: "Yes. Our MOJ-certified translations are accepted by MOHRE for work permit applications. The translation includes the official stamp and translator credentials that MOHRE requires."
-    },
-    {
-      question: "Can you translate certificates in languages other than English?",
-      answer: "Yes. We handle certificates in most major languages including Hindi, Urdu, Tagalog, French, German, Russian, Chinese, and many others. Arabic to English translation is also common for locally issued certificates."
-    },
-    {
-      question: "What if my certificate has unclear or faded text?",
-      answer: "We assess each document before translation. If parts are unclear, we let you know which elements may be affected. In some cases, obtaining a new certificate from the issuing authority may be advisable."
-    }
-  ],
-  serviceType: "Certificate Translation"
-};
+const breadcrumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Services', href: '/services/' },
+  { label: 'Certificate Translation' }
+];
+
+const faqs = [
+  {
+    question: "What types of certificates do you translate?",
+    answer: "We translate all certificate types required for UAE use: birth certificates, marriage certificates, death certificates, divorce decrees, academic degrees and diplomas, professional certifications, trade certificates, medical certificates, police clearance certificates, driving licenses, and any official document issued by government or institutional authorities. Each translation receives MOJ certification for UAE government acceptance."
+  },
+  {
+    question: "How long does certificate translation take?",
+    answer: "Standard single-page certificates (birth, marriage, degree) complete within 4-6 hours. Multi-page certificates or those with complex formatting take 24 hours. Academic transcripts with multiple pages take 24-48 hours depending on length. We offer express 2-hour service for urgent requirements. You receive exact timelines when we assess your specific documents."
+  },
+  {
+    question: "Do certificates need attestation before translation?",
+    answer: "It depends on the intended use. For most UAE government submissions (visa applications, employment, court proceedings), foreign certificates need attestation before translation. The attestation chain includes: notarization in the issuing country, foreign ministry authentication, UAE Embassy attestation, and MOFA legalization. We advise on requirements and can coordinate attestation services."
+  },
+  {
+    question: "Are your certificate translations accepted by UAE immigration?",
+    answer: "Yes. All our translations are performed by MOJ-certified translators and include the official stamp with QR verification code. GDRFA, ICA, and all UAE immigration authorities accept our translations for visa applications, family sponsorship, residency permits, and Golden Visa applications. We format translations to meet specific immigration submission requirements."
+  },
+  {
+    question: "What is the cost of certificate translation?",
+    answer: "Standard single-page certificates (birth, marriage, degree) are AED 150 per page including MOJ certification. Multi-page documents receive volume pricing at AED 120 per page for 5+ pages. Express same-day service adds 50% to standard rates. We provide exact quotes after reviewing your documents—the quoted price is the final price with no hidden fees."
+  },
+  {
+    question: "Can you translate certificates in languages other than English?",
+    answer: "Yes. We translate certificates from 40+ languages into Arabic for UAE use, and from Arabic into English or other languages. Common source languages include Hindi, Urdu, Tagalog, Russian, French, German, Chinese, Spanish, Portuguese, Farsi, and Turkish. All translations receive the same MOJ certification regardless of source language."
+  },
+  {
+    question: "What if my certificate has errors or unclear text?",
+    answer: "We translate exactly what appears on your certificate, including any errors in the original. If text is unclear due to poor scan quality, stamps obscuring text, or document damage, we note this in the translation. For critical documents, we recommend obtaining a clearer copy or certified duplicate from the issuing authority before translation."
+  },
+  {
+    question: "Do you translate certificates for school enrollment?",
+    answer: "Yes. We translate all documents required for UAE school enrollment: birth certificates, previous school transcripts, transfer certificates, vaccination records, and parent identification documents. We understand KHDA requirements for Dubai schools and ADEK requirements for Abu Dhabi schools, formatting translations for direct submission to school administration."
+  },
+  {
+    question: "How do I ensure name consistency across translated certificates?",
+    answer: "Name consistency is critical—mismatches cause government rejections. We verify all translated names match your passport and Emirates ID exactly. Send copies of your ID documents with your certificates so we can ensure consistent spelling across all translations. For names with multiple transliteration variants, we use your passport spelling as the standard."
+  },
+  {
+    question: "Can you translate old or historical certificates?",
+    answer: "Yes. We translate certificates regardless of age, including historical documents, vintage birth certificates, and archived records. Older documents may require additional care due to faded text, archaic language, or unfamiliar formats. We note any legibility issues and translate all readable content with appropriate annotations where text is unclear."
+  }
+];
+
+const certificateTypes = [
+  {
+    title: "Birth Certificates",
+    icon: "baby",
+    href: "/personal/vital-records/birth/",
+    desc: "Essential for visa sponsorship, school enrollment, and family registration in the UAE.",
+    uses: ["Family visa", "School enrollment", "Passport applications"]
+  },
+  {
+    title: "Marriage Certificates",
+    icon: "ring",
+    href: "/personal/vital-records/marriage/",
+    desc: "Required for spouse visa, family book registration, and legal recognition of marriage.",
+    uses: ["Spouse visa", "Family book", "Property co-ownership"]
+  },
+  {
+    title: "Degree Certificates",
+    icon: "graduation-cap",
+    href: "/personal/education/degree/",
+    desc: "Mandatory for employment, professional licensing, and Golden Visa applications.",
+    uses: ["Employment", "Golden Visa", "Professional licensing"]
+  },
+  {
+    title: "Police Clearance",
+    icon: "shield-alt",
+    href: "/personal/immigration/pcc/",
+    desc: "Required for employment visas, residency applications, and security clearance.",
+    uses: ["Employment visa", "Residency", "Security clearance"]
+  },
+  {
+    title: "Driving Licenses",
+    icon: "id-card",
+    href: "/personal/immigration/license/",
+    desc: "Essential for UAE driving license conversion from eligible countries.",
+    uses: ["RTA license conversion", "Insurance", "Employment"]
+  },
+  {
+    title: "Professional Certificates",
+    icon: "certificate",
+    href: "/personal/education/",
+    desc: "Training certificates, professional qualifications, and industry certifications.",
+    uses: ["Employment", "Licensing bodies", "Credential verification"]
+  }
+];
+
+const processSteps = [
+  {
+    number: 1,
+    title: "Submit Certificate",
+    desc: "Send clear photos or scans via WhatsApp. We accept all formats and confirm receipt within minutes."
+  },
+  {
+    number: 2,
+    title: "Assessment and Quote",
+    desc: "We verify document type, check attestation requirements, and provide fixed pricing with timeline."
+  },
+  {
+    number: 3,
+    title: "Translation",
+    desc: "MOJ-certified translator completes your translation with quality review for accuracy."
+  },
+  {
+    number: 4,
+    title: "Certification and Delivery",
+    desc: "Official MOJ stamp applied. Digital delivery via WhatsApp, physical copies couriered on request."
+  }
+];
+
+const useCases = [
+  {
+    icon: "passport",
+    title: "Visa and Immigration",
+    desc: "Birth certificates for dependents, marriage certificates for spouse visas, police clearance for employment authorization."
+  },
+  {
+    icon: "briefcase",
+    title: "Employment",
+    desc: "Degree certificates for job applications, professional certifications for licensing, experience certificates for HR verification."
+  },
+  {
+    icon: "school",
+    title: "Education",
+    desc: "Transcripts for university admission, transfer certificates for school enrollment, vaccination records for student registration."
+  },
+  {
+    icon: "balance-scale",
+    title: "Legal Matters",
+    desc: "Marriage certificates for divorce proceedings, birth certificates for inheritance cases, death certificates for estate matters."
+  }
+];
 ---
 
-<ServiceLayout {...pageData}>
-  
-  <section class="section bg-white">
+<CategoryLayout
+  title="Certificate Translation Dubai | Birth, Marriage, Degree Certificates | OnlineTranslation.ae"
+  description="MOJ-certified certificate translation in Dubai. Birth certificates, marriage certificates, degree certificates, police clearance, driving licenses. Accepted by UAE immigration, courts, and government."
+  keywords="certificate translation dubai, birth certificate translation, marriage certificate translation, degree translation uae, police clearance translation, moj certified certificate, document translation dubai"
+  heroTitle="Certificate Translation Services"
+  heroSubtitle="MOJ Certified for UAE Government Acceptance"
+  heroIntro="Certificates document the milestones of your life—birth, marriage, education, professional achievements. When you need these documents recognized in the UAE, they require MOJ-certified translation that government authorities accept without question. We translate all certificate types with the precision and certification that UAE immigration, courts, and institutions require."
+  breadcrumbs={breadcrumbs}
+  serviceType="Certificate Translation Services"
+  faqs={faqs}
+>
+
+  <!-- Certificate Types Section -->
+  <section class="section">
     <div class="container">
-      <h2>Why Certificate Translation Matters in the UAE</h2>
-      <div class="content-prose">
-        <p>Certificates document your qualifications, relationships, and life events. In the UAE, these certificates often need translation to have legal effect. MOHRE needs translated degrees for work permits. Immigration needs translated family certificates for visa applications. Professional licensing bodies need translated qualifications for practice authorization.</p>
-        
-        <p>The translation must be accurate in substance and appropriate in form. A degree certificate translation needs to correctly state the qualification, institution, and date. It also needs to follow the formatting conventions that UAE authorities expect. Translators who handle certificates regularly understand these requirements.</p>
-        
-        <h3>The Role of MOJ Certification</h3>
-        <p>Ministry of Justice (MOJ) certification gives a translation official status in the UAE. The MOJ-licensed translator's stamp and signature authenticate the translation, making it acceptable to government authorities, courts, and banks.</p>
-        
-        <p>Not all translation services provide MOJ certification. If you obtain a translation that lacks proper certification, you may need to have it re-done when submitting to authorities. We provide MOJ-certified translations by default for all certificate types.</p>
-        
-        <h3>Understanding Attestation Requirements</h3>
-        <p>Translation and <a href="/services/attestation/">attestation</a> are different processes that are often both required. Attestation authenticates the original document; translation makes the content accessible in another language. Depending on your situation, you may need attestation before translation, translation before attestation, or both processes coordinated together.</p>
-        
-        <p>We advise on the correct sequence based on your document type and intended use. Getting this wrong can cause delays or require re-processing.</p>
+      <h2>Certificate Types We Translate</h2>
+      <p class="section-intro">Select your certificate type for specific requirements, turnaround times, and common use cases.</p>
+
+      <div class="certificates-grid">
+        {certificateTypes.map(cert => (
+          <a href={cert.href} class="certificate-card">
+            <div class="certificate-icon">
+              <i class={`fas fa-${cert.icon}`}></i>
+            </div>
+            <h3>{cert.title}</h3>
+            <p>{cert.desc}</p>
+            <div class="certificate-uses">
+              {cert.uses.map(use => (
+                <span class="use-badge">{use}</span>
+              ))}
+            </div>
+            <span class="certificate-link">View Details <i class="fas fa-arrow-right"></i></span>
+          </a>
+        ))}
       </div>
     </div>
   </section>
 
+  <!-- Use Cases Section -->
   <section class="section bg-light">
     <div class="container">
-      <h2>Educational Certificate Translation</h2>
-      <div class="content-prose">
-        <h3>Degree Certificates</h3>
-        <p>Bachelor's, master's, and doctoral <a href="/personal/education/degree/">degree certificates</a> are required for most professional employment in the UAE. MOHRE needs translated degrees for work permit processing. The translation must accurately state the qualification title, awarding institution, date of award, and any honors or classifications.</p>
-        
-        <p>Different countries issue degrees in different formats. UK degrees state classification (First Class, Upper Second Class). US degrees may indicate Latin honors (cum laude, magna cum laude). European degrees may reference the Bologna framework. We understand these variations and translate them appropriately.</p>
-        
-        <h3>Diplomas and Higher Diplomas</h3>
-        <p>Vocational qualifications, higher diplomas, and professional diplomas often require translation for employment or licensing. These documents may have complex structures describing modules, assessments, and competencies. We preserve this detail in translation.</p>
-        
-        <h3>Transcripts and Academic Records</h3>
-        <p>Transcripts list courses, grades, and credits. They may be required alongside degree certificates for MOHESR equivalency applications or detailed employment verification. Transcript translation requires attention to grading systems, credit hours, and course nomenclature.</p>
-        
-        <h3>School Certificates</h3>
-        <p>High school certificates, O-levels, A-levels, and equivalent qualifications may need translation for university admission or certain employment categories. The translation must correctly render examination grades and subject names.</p>
-        
-        <h3>MOHESR Equivalency</h3>
-        <p>For <a href="/services/golden-visa-translation/">Golden Visa applications</a> and certain regulated professions, MOHESR equivalency of foreign degrees is required. This involves submitting translated and attested educational documents to the Ministry of Higher Education and Scientific Research. We coordinate translation, attestation, and equivalency support.</p>
+      <h2>Common Use Cases</h2>
+      <p class="section-intro">Certificate translations serve many purposes in the UAE. Understanding your use case helps ensure proper formatting and attestation.</p>
+
+      <div class="use-cases-grid">
+        {useCases.map(useCase => (
+          <div class="use-case-card">
+            <div class="use-case-icon">
+              <i class={`fas fa-${useCase.icon}`}></i>
+            </div>
+            <h3>{useCase.title}</h3>
+            <p>{useCase.desc}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <section class="section bg-white">
+  <!-- Process Section -->
+  <section class="section">
     <div class="container">
-      <h2>Professional Certificate Translation</h2>
-      <div class="content-prose">
-        <h3>Medical Licenses and Qualifications</h3>
-        <p>Healthcare professionals need translated qualifications for DHA (Dubai Health Authority), DOH (Abu Dhabi Department of Health), or MOH licensing. This includes medical degrees, specialty certificates, board certifications, and current practice licenses. Accuracy is critical because licensing authorities verify credentials carefully.</p>
-        
-        <h3>Engineering and Technical Certifications</h3>
-        <p>Engineers seeking registration with the Society of Engineers or pursuing consultancy licensing need translated qualifications. Specialized certifications—structural, mechanical, electrical—must accurately describe the scope of qualification.</p>
-        
-        <h3>Teaching Qualifications</h3>
-        <p>Teachers and educators need translated qualifications for KHDA licensing in Dubai or ADEK in Abu Dhabi. Teaching certificates, PGCE qualifications, and subject endorsements all require accurate translation.</p>
-        
-        <h3>Trade and Vocational Certifications</h3>
-        <p>Skilled trades—electricians, plumbers, technicians—often hold certifications that need translation for employment. Industry-specific qualifications in areas like aviation, maritime, or construction may have specialized terminology requiring experienced translators.</p>
-        
-        <h3>Continuing Professional Development</h3>
-        <p>CPD certificates, workshop completions, and professional training records may need translation for visa renewals or employment verification. While these are typically simpler documents, they still require MOJ certification for official use.</p>
+      <h2>Our Translation Process</h2>
+      <p class="section-intro">Simple, fast, and reliable—from document submission to certified delivery.</p>
+
+      <div class="process-grid">
+        {processSteps.map(step => (
+          <div class="process-card">
+            <div class="process-number">{step.number}</div>
+            <h3>{step.title}</h3>
+            <p>{step.desc}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
+  <!-- Main Content Section -->
   <section class="section bg-light">
     <div class="container">
-      <h2>Civil Certificate Translation</h2>
-      <div class="content-prose">
-        <h3>Birth Certificates</h3>
-        <p><a href="/personal/vital-records/birth/">Birth certificate translation</a> is commonly required for visa applications, school enrollment, and family book registration. These documents establish identity, parentage, and nationality. They come in many formats depending on the issuing country and era.</p>
-        
-        <p>Older birth certificates may use archaic language or unfamiliar formats. Some countries issue short-form and long-form versions with different detail levels. We handle all variations with appropriate attention to the specific format.</p>
-        
-        <h3>Marriage Certificates</h3>
-        <p><a href="/personal/vital-records/marriage/">Marriage certificate translation</a> is essential for spouse visa applications and family sponsorship. The translation must correctly state the parties, date, place, and officiating authority. Religious marriage certificates, civil registrations, and combined documents all require appropriate handling.</p>
-        
-        <p>Some marriages involve additional documentation—marriage contracts, prenuptial agreements, religious certifications. We can translate the complete documentation package.</p>
-        
-        <h3>Divorce Decrees</h3>
-        <p><a href="/personal/vital-records/divorce/">Divorce decree translation</a> may be needed for remarriage in the UAE or for updating immigration status. These documents vary significantly—from simple certificates to lengthy court judgments. We translate the complete document accurately.</p>
-        
-        <h3>Death Certificates</h3>
-        <p>Death certificate translation is required for inheritance proceedings, pension claims, and civil status updates. These sensitive documents require careful handling and accurate translation of cause of death, registration details, and official certifications.</p>
-        
-        <h3>Name Change Documents</h3>
-        <p>Deed polls, name change orders, and official notifications of name changes may need translation when current names differ from those on other documents. This helps establish identity continuity across documentation.</p>
-      </div>
-    </div>
-  </section>
+      <div class="content-grid">
+        <div class="content-main">
+          <h2>Why Certificate Translation Matters</h2>
+          
+          <p>A certificate is more than a piece of paper—it is official proof of identity, status, qualifications, or events that shape your life. In the UAE, foreign certificates carry no weight until they are properly translated and certified. Without MOJ-certified translation, your birth certificate cannot support a family visa application. Your degree cannot be used for employment verification. Your marriage certificate has no legal standing for spouse sponsorship.</p>
+          
+          <p>We understand what is at stake. Our translators work with certificates daily and know the precise requirements for each document type and use case. They ensure every name, date, seal, and official notation is accurately rendered in Arabic or English as required.</p>
 
-  <section class="section bg-white">
-    <div class="container">
-      <h2>Common Certificate Translation Scenarios</h2>
-      <div class="content-prose">
-        <h3>Employment Visa Processing</h3>
-        <p>When applying for a UAE work permit, MOHRE typically requires translated and attested degree certificates. The process involves: (1) obtaining attestation from your home country, (2) UAE Embassy attestation if required, (3) MOFA attestation in UAE, and (4) MOJ-certified translation. We advise on the correct sequence and handle translation as part of the process.</p>
-        
-        <h3>Family Visa Sponsorship</h3>
-        <p>Sponsoring family members requires translated civil certificates—typically birth certificates for children and marriage certificates for spouses. These must be attested and translated before submission to immigration authorities.</p>
-        
-        <h3>Professional Licensing</h3>
-        <p>Medical, legal, and engineering professionals need translated qualifications for licensing applications. Different licensing authorities have different requirements; we advise based on your specific profession and target authority.</p>
-        
-        <h3>University Admission</h3>
-        <p>UAE universities may require translated transcripts and school certificates for admission applications. International schools may need translated academic records for student placement.</p>
-        
-        <h3>Driving License Exchange</h3>
-        <p>Some driving license exchanges require translated documents, particularly for licenses from countries without reciprocal agreements. We handle <a href="/personal/immigration/license/">driving license translation</a> with appropriate formatting.</p>
-      </div>
-    </div>
-  </section>
+          <h3>The Importance of Accuracy</h3>
+          
+          <p>Certificate translation demands absolute accuracy. A misspelled name causes visa rejections. An incorrect date creates discrepancies that delay processing. Missing information about seals or stamps raises authenticity questions. Our translators capture every detail—including stamps, signatures, and marginal notations—ensuring the translation is a complete representation of the original.</p>
+          
+          <p>We verify that translated names match your passport and Emirates ID exactly. This name consistency check has prevented countless rejections for our clients. When source documents contain name variations (common with transliterated names), we standardize to your official ID spelling and note the original variation.</p>
 
-  <section class="section bg-light">
-    <div class="container">
-      <h2>Service Levels</h2>
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <h3>Standard</h3>
-          <div class="pricing-price">From AED 150</div>
-          <p class="pricing-time">24-hour delivery</p>
-          <ul class="pricing-features">
-            <li>MOJ-certified translation</li>
-            <li>Digital PDF provided</li>
-            <li>Physical copy with stamp</li>
-            <li>Free Dubai delivery</li>
-          </ul>
+          <h3>Understanding Attestation Requirements</h3>
+          
+          <p>Many certificate uses in the UAE require attestation before translation. Attestation is the process of authenticating a document through a chain of government authorities—from the issuing country through UAE Embassy to MOFA. The specific requirements depend on your certificate type and intended use.</p>
+          
+          <p>Birth certificates for visa applications typically need full attestation. Marriage certificates for spouse sponsorship require attestation. Degree certificates for employment need both attestation and MOHESR verification. We advise on requirements during our initial assessment and can coordinate attestation services if needed.</p>
+
+          <h3>Formatting for Specific Uses</h3>
+          
+          <p>Different UAE authorities have different formatting expectations. Immigration authorities expect certificates formatted a certain way. School administrations have their own requirements. Courts require specific layouts for evidentiary submissions. We format each translation for its intended use, ensuring smooth acceptance at the destination authority.</p>
         </div>
-        <div class="pricing-card pricing-card--featured">
-          <h3>Express</h3>
-          <div class="pricing-price">From AED 300</div>
-          <p class="pricing-time">6-hour delivery</p>
-          <ul class="pricing-features">
-            <li>Everything in Standard</li>
-            <li>Priority queue</li>
-            <li>Same-day completion</li>
-            <li>Urgent deadline support</li>
-          </ul>
-        </div>
-        <div class="pricing-card">
-          <h3>VIP Concierge</h3>
-          <div class="pricing-price">From AED 500</div>
-          <p class="pricing-time">1-hour draft</p>
-          <ul class="pricing-features">
-            <li>Everything in Express</li>
-            <li>Immediate assignment</li>
-            <li>Draft within 60 minutes</li>
-            <li>Personal coordinator</li>
-          </ul>
+
+        <div class="content-sidebar">
+          <div class="info-card highlight">
+            <h4><i class="fab fa-whatsapp"></i> Quick Start</h4>
+            <p>Send your certificate via WhatsApp for instant assessment and quote.</p>
+            <a href="https://wa.me/971508620217?text=Certificate%20translation%20inquiry" class="btn btn--primary btn--sm">
+              <i class="fab fa-whatsapp"></i> Send Certificate
+            </a>
+          </div>
+
+          <div class="info-card">
+            <h4><i class="fas fa-clock"></i> Turnaround Times</h4>
+            <ul>
+              <li><strong>Birth/Marriage:</strong> 4-6 hours</li>
+              <li><strong>Degree Certificate:</strong> 4-6 hours</li>
+              <li><strong>Police Clearance:</strong> 6-12 hours</li>
+              <li><strong>Transcripts:</strong> 24-48 hours</li>
+              <li><strong>Express Service:</strong> 2 hours</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h4><i class="fas fa-tag"></i> Pricing</h4>
+            <ul>
+              <li><strong>Standard (1 page):</strong> AED 150</li>
+              <li><strong>Volume (5+ pages):</strong> AED 120/page</li>
+              <li><strong>Express (+50%):</strong> AED 225</li>
+            </ul>
+            <p class="info-note">Includes MOJ certification, no hidden fees</p>
+          </div>
+
+          <div class="info-card">
+            <h4><i class="fas fa-check-circle"></i> Accepted By</h4>
+            <ul>
+              <li>GDRFA / ICA Immigration</li>
+              <li>MOHRE Employment</li>
+              <li>KHDA / ADEK Schools</li>
+              <li>UAE Courts</li>
+              <li>All Government Entities</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section bg-white">
+  <!-- Quality Assurance Section -->
+  <section class="section">
     <div class="container">
-      <h2>Getting Started</h2>
-      <div class="content-prose">
-        <p>Send a photo of your certificate via WhatsApp. We will review it and tell you exactly what is needed: whether attestation is required, what the translation will cost, and how long it will take.</p>
-        
-        <p>If you are unsure which documents you need translated, describe your situation—what you are trying to accomplish—and we will advise on the complete documentation requirements. Whether it is a work permit, visa application, or professional license, we can guide you through the process.</p>
-        
-        <p>For multiple certificates or family packages, we provide combined pricing and coordinated processing. All certificates will be delivered together, properly sequenced for your submission.</p>
+      <div class="quality-section">
+        <div class="quality-content">
+          <h2>Our Quality Guarantee</h2>
+          <p>Every certificate translation undergoes quality review before certification. We verify accuracy, check name consistency with your ID documents, ensure proper formatting, and confirm all stamps and seals are noted. If any UAE authority rejects our translation due to our error, we correct and redeliver at no charge.</p>
+        </div>
+        <div class="quality-features">
+          <div class="quality-item">
+            <i class="fas fa-check-double"></i>
+            <span>Dual-translator review</span>
+          </div>
+          <div class="quality-item">
+            <i class="fas fa-id-card"></i>
+            <span>Name consistency verification</span>
+          </div>
+          <div class="quality-item">
+            <i class="fas fa-stamp"></i>
+            <span>MOJ certification included</span>
+          </div>
+          <div class="quality-item">
+            <i class="fas fa-shield-alt"></i>
+            <span>Acceptance guarantee</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-</ServiceLayout>
+  <!-- Related Services -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Related Services</h2>
+      <div class="related-grid">
+        <a href="/services/attestation/" class="related-card">
+          <i class="fas fa-stamp"></i>
+          <h3>Attestation Services</h3>
+          <p>MOFA and embassy attestation for certificates</p>
+        </a>
+        <a href="/services/golden-visa-translation/" class="related-card">
+          <i class="fas fa-star"></i>
+          <h3>Golden Visa Package</h3>
+          <p>Complete document packages for 10-year visa</p>
+        </a>
+        <a href="/personal/" class="related-card">
+          <i class="fas fa-user"></i>
+          <h3>Personal Documents</h3>
+          <p>Full range of personal document translation</p>
+        </a>
+        <a href="/legal-translation-dubai/" class="related-card">
+          <i class="fas fa-balance-scale"></i>
+          <h3>Legal Translation</h3>
+          <p>Court documents and legal certificates</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</CategoryLayout>
 
 <style>
-  .content-prose {
-    max-width: 800px;
-    line-height: 1.8;
+  /* Base Section Styles */
+  .section {
+    padding: 4rem 0;
   }
-  
-  .content-prose h3 {
-    margin-top: 2rem;
+
+  .section h2 {
+    font-size: 1.75rem;
     margin-bottom: 1rem;
-    font-size: 1.25rem;
     color: var(--primary-color);
   }
-  
-  .content-prose p {
-    margin-bottom: 1.25rem;
-    color: var(--text-dark);
+
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 800px;
   }
-  
-  .content-prose a {
-    color: var(--accent-color);
+
+  .bg-light {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  /* Certificates Grid */
+  .certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .certificate-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
     text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
   }
-  
-  .content-prose a:hover {
-    text-decoration: underline;
+
+  .certificate-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
   }
-  
-  .pricing-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-    gap: 1.5rem; 
+
+  .certificate-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-color);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
   }
-  
-  .pricing-card { 
-    background: #ffffff; 
-    border-radius: 1rem; 
-    padding: 2rem; 
-    text-align: center; 
-    border: 1px solid rgba(0, 0, 0, 0.05); 
+
+  .certificate-icon i {
+    font-size: 1.5rem;
+    color: #fff;
   }
-  
-  .pricing-card--featured { 
-    border-color: var(--accent-color); 
-    box-shadow: 0 8px 30px rgba(255, 22, 84, 0.15); 
+
+  .certificate-card h3 {
+    font-size: 1.15rem;
+    margin: 0 0 0.75rem;
+    color: var(--primary-color);
   }
-  
-  .pricing-card h3 { 
-    margin: 0 0 0.5rem; 
-    font-size: 1.25rem; 
+
+  .certificate-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    flex-grow: 1;
   }
-  
-  .pricing-price { 
-    font-size: 2rem; 
-    font-weight: 700; 
-    color: var(--primary-color); 
-    margin-bottom: 0.25rem;
+
+  .certificate-uses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
   }
-  
-  .pricing-time { 
-    color: var(--text-muted); 
-    font-size: 0.9rem; 
+
+  .use-badge {
+    background: var(--bg-light, #f8f9fa);
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .certificate-link {
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: auto;
+  }
+
+  /* Use Cases Grid */
+  .use-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .use-case-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .use-case-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+
+  .use-case-icon i {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+
+  .use-case-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .use-case-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* Process Grid */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .process-card {
+    text-align: center;
+  }
+
+  .process-number {
+    width: 50px;
+    height: 50px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .process-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .process-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* Content Grid */
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 3rem;
+  }
+
+  .content-main h2 {
+    font-size: 1.75rem;
     margin-bottom: 1.5rem;
   }
-  
-  .pricing-features {
+
+  .content-main h3 {
+    font-size: 1.25rem;
+    margin: 2rem 0 1rem;
+    color: var(--primary-color);
+  }
+
+  .content-main p {
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Sidebar */
+  .info-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .info-card.highlight {
+    background: var(--primary-color);
+    color: #fff;
+  }
+
+  .info-card h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .info-card h4 i {
+    color: var(--accent-color);
+  }
+
+  .info-card.highlight h4 i {
+    color: #fff;
+  }
+
+  .info-card ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    text-align: left;
   }
-  
-  .pricing-features li {
-    padding: 0.5rem 0;
-    padding-left: 1.5rem;
-    position: relative;
+
+  .info-card li {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    font-size: 0.9rem;
+  }
+
+  .info-card.highlight li {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .info-card li:last-child {
+    border-bottom: none;
+  }
+
+  .info-card p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
     font-size: 0.95rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   }
-  
-  .pricing-features li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
+
+  .info-note {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .info-card .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Quality Section */
+  .quality-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    background: var(--primary-color);
+    padding: 3rem;
+    border-radius: 16px;
+    color: #fff;
+  }
+
+  .quality-content h2 {
+    color: #fff;
+    margin-top: 0;
+  }
+
+  .quality-content p {
+    opacity: 0.9;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .quality-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .quality-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+  }
+
+  .quality-item i {
     color: var(--accent-color);
-    font-weight: 700;
+    font-size: 1.25rem;
+  }
+
+  /* Related Grid */
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .related-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .related-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .related-card i {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .related-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .related-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .btn--primary {
+    background: var(--accent-color);
+    color: #fff;
+  }
+
+  .btn--primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn--sm {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .certificates-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .use-cases-grid,
+    .process-grid,
+    .related-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 991px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .content-sidebar {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .quality-section {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section {
+      padding: 3rem 0;
+    }
+
+    .certificates-grid,
+    .use-cases-grid,
+    .process-grid,
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .content-sidebar {
+      grid-template-columns: 1fr;
+    }
+
+    .quality-section {
+      padding: 2rem;
+    }
+
+    .quality-features {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

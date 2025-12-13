@@ -1,401 +1,809 @@
 ---
-import ServiceLayout from '../../../layouts/ServiceLayout.astro';
-import RelatedServices from '../../../components/RelatedServices.astro';
-import CrossSiloLinks from '../../../components/CrossSiloLinks.astro';
-import InlineCallout from '../../../components/InlineCallout.astro';
+/**
+ * /services/golden-visa-translation/ - Golden Visa Translation Package
+ * 
+ * Using: CategoryLayout
+ * Schemas: BreadcrumbList, Service, FAQPage (auto-generated)
+ * Added: 10 FAQs for rich snippets
+ * 
+ * Silo: Services (Silo 3)
+ * Type: Service Page
+ */
+import CategoryLayout from '../../../layouts/CategoryLayout.astro';
 
-const pageData = {
-  title: "Golden Visa Translation Dubai – MOJ Certified Equivalency Pack | OnlineTranslation.ae",
-  description: "UAE Golden Visa document translation and attestation. Get your degree equivalency, salary certificate, and all ICP requirements translated by MOJ-licensed translators.",
-  keywords: "golden visa translation, UAE golden visa documents, degree equivalency Dubai, salary certificate translation, ICP translation, MOJ certified golden visa",
-  heroTitle: "Golden Visa Translation",
-  heroSubtitle: "ICP-Ready Document Packages",
-  heroImage: "/assets/images/onedrive/hero/ot-man.png",
-  heroIntro: "The UAE Golden Visa application requires specific documents translated and formatted to meet ICP (Federal Authority for Identity, Citizenship, Customs, and Port Security) requirements. From degree equivalency to salary certificates, each document has specific terminology and formatting that affects acceptance. We prepare complete packages designed for ICP submission.",
-  snapshot: [
-    { icon: "clock", bold: "Complete packages", text: "ready for ICP submission" },
-    { icon: "mobile-alt", bold: "WhatsApp coordination", text: "throughout the process" },
-    { icon: "check-circle", bold: "ICP-formatted", text: "using required terminology" },
-    { icon: "stamp", bold: "MOJ certified", text: "for government acceptance" }
-  ],
-  breadcrumbs: [
-    { name: "Home", url: "/" },
-    { name: "Services", url: "/services/" },
-    { name: "Golden Visa Translation", url: "/services/golden-visa-translation/" }
-  ],
-  
-  trustStrip: [
-    "ICP terminology expertise",
-    "MOHESR equivalency support",
-    "Complete package coordination"
-  ],
-  
-  processSteps: [
-    {
-      title: "Document review",
-      text: "We review your documents and advise on any gaps or additional requirements for your visa category."
-    },
-    {
-      title: "Translation and formatting",
-      text: "Each document is translated with ICP-required terminology and formatted appropriately."
-    },
-    {
-      title: "Package delivery",
-      text: "Complete package ready for submission, with guidance on the application process."
-    }
-  ],
-  
-  benefitCards: [
-    {
-      icon: "document",
-      title: "ICP terminology",
-      text: "We use the exact terminology ICP requires for salary certificates, employment letters, and more."
-    },
-    {
-      icon: "shield",
-      title: "Package coordination",
-      text: "All your documents prepared together, ensuring consistency across your application."
-    },
-    {
-      icon: "clock",
-      title: "Equivalency support",
-      text: "Guidance on MOHESR degree equivalency requirements and process."
-    }
-  ],
-  
-  accordionSections: [
-    {
-      title: "Golden Visa document requirements",
-      id: "requirements",
-      items: [
-        {
-          heading: "Degree certificate and equivalency",
-          body: "<p>Your <a href='/personal/education/degree/'>degree certificate</a> needs to be translated and, for most applicants, evaluated by MOHESR (Ministry of Higher Education and Scientific Research) for equivalency. This confirms that your foreign degree is equivalent to a UAE qualification.</p><p>We translate your degree with the terminology MOHESR requires and can advise on the equivalency application process. Academic transcripts may also be required.</p>"
-        },
-        {
-          heading: "Salary certificate",
-          body: "<p>ICP requires salary certificates to include specific information: job title, start date, current salary in AED, and confirmation that the position is permanent. The terminology matters, as variations may cause queries or rejection.</p><p>We format your salary certificate translation to match ICP requirements exactly. See also <a href='/personal/immigration/bank/'>bank statement translation</a> for financial proof.</p>"
-        },
-        {
-          heading: "Employment contract",
-          body: "<p>Your employment contract may need translation to verify your role and salary. We ensure the translation accurately reflects the terms while using terminology that ICP expects.</p><p>For related corporate documents, see our <a href='/services/corporate-translation/'>corporate translation services</a>.</p>"
-        },
-        {
-          heading: "Bank statements and financial proof",
-          body: "<p>For investor and entrepreneur categories, <a href='/personal/immigration/bank/'>bank statements</a> and financial documents may need translation. We translate these with appropriate financial terminology while maintaining the format that authorities recognize.</p>"
-        }
-      ]
-    },
-    {
-      title: "Golden Visa categories",
-      id: "categories",
-      items: [
-        {
-          heading: "Skilled employees",
-          body: "<p>Employees earning AED 30,000+ monthly with a bachelor's degree or equivalent can apply for the skilled employee Golden Visa. Document requirements include degree equivalency, salary certificate, and employment contract.</p><p>Clients in <a href='/locations/dubai/difc/'>DIFC</a> and Business Bay often apply through this category.</p>"
-        },
-        {
-          heading: "Investors and entrepreneurs",
-          body: "<p>Investors with property worth AED 2 million+ or business investors require different documentation including title deeds, company documents, and financial statements.</p><p>Many <a href='/locations/dubai/palm-jumeirah/'>Palm Jumeirah</a> property owners qualify under this category.</p>"
-        },
-        {
-          heading: "Specialized talents",
-          body: "<p>Doctors, scientists, artists, and other specialized talents have specific documentation requirements based on their field. We advise on the requirements for your category.</p>"
-        }
-      ]
-    },
-    {
-      title: "Family sponsorship documents",
-      id: "family",
-      items: [
-        {
-          heading: "Birth certificates",
-          body: "<p>For sponsoring children, you will need <a href='/personal/vital-records/birth/'>birth certificate translation</a> with MOJ certification. The translation must clearly show the child's name, date of birth, and parents' names.</p>"
-        },
-        {
-          heading: "Marriage certificate",
-          body: "<p>For sponsoring a spouse, <a href='/personal/vital-records/marriage/'>marriage certificate translation</a> is required. Some cases also require <a href='/services/attestation/'>attestation from MOFAIC</a> before the translation can be used.</p>"
-        },
-        {
-          heading: "Police clearance certificates",
-          body: "<p>Applicants and family members may need <a href='/personal/immigration/pcc/'>police clearance certificate (PCC) translation</a> from their home country. We handle PCCs from virtually any country.</p>"
-        }
-      ]
-    }
-  ],
-  
-  faqs: [
-    {
-      question: "What is the Salary Certificate format required by ICP?",
-      answer: "ICP requires salary certificates to include specific terminology: job title, start date, current salary in AED, and a statement that the position is permanent. We format your translation to match these exact requirements."
-    },
-    {
-      question: "My degree is from a non-English speaking country. What do I need?",
-      answer: "You will need: (1) the original degree certificate, (2) a certified translation into Arabic, and (3) attestation from your home country followed by MOFA attestation. We can guide you through this entire chain."
-    },
-    {
-      question: "Do you help with MOHESR degree equivalency?",
-      answer: "We prepare your documents for MOHESR submission, translating with the terminology they require. While we do not submit the application on your behalf, we can advise on the process and requirements."
-    },
-    {
-      question: "How long does the complete Golden Visa package take?",
-      answer: "Translation of a complete document package typically takes 2-3 days. Attestation and equivalency processes have their own timelines which we can advise on based on your specific documents."
-    },
-    {
-      question: "Can I apply if my degree is not from a recognized university?",
-      answer: "MOHESR maintains a list of recognized institutions. If your university is not listed, additional verification may be required. We can advise on the likely outcome based on your specific institution and help prepare documents accordingly."
-    },
-    {
-      question: "Do you handle renewals?",
-      answer: "Yes. Golden Visa renewals may require updated salary certificates, employment verification, or other documentation. We can prepare translation packages for renewal applications."
-    }
-  ],
-  serviceType: "Legal Translation"
-};
+const breadcrumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Services', href: '/services/' },
+  { label: 'Golden Visa Translation' }
+];
+
+const faqs = [
+  {
+    question: "What documents need translation for UAE Golden Visa?",
+    answer: "Golden Visa applications require MOJ-certified translation of several documents: educational certificates (degrees, diplomas) with MOHESR attestation, professional licenses and certifications, bank statements showing required financial thresholds, salary certificates or income proof, property title deeds for real estate investors, company documents for business owners (MOA, trade license, audited financials), passport copies, and Emirates ID. The specific requirements depend on your Golden Visa category—investor, professional, or specialized talent."
+  },
+  {
+    question: "Do I need attestation in addition to translation for Golden Visa?",
+    answer: "Yes, most Golden Visa documents require both attestation and translation. Educational certificates need MOHESR attestation (which includes UAE Embassy and MOFA attestation from the issuing country). Professional licenses may need attestation from relevant UAE authorities. We coordinate both services—attestation first, then MOJ-certified translation—ensuring proper sequencing for ICA acceptance."
+  },
+  {
+    question: "What are the Golden Visa categories and their document requirements?",
+    answer: "The main categories are: (1) Investors—property title deeds worth AED 2M+, or business ownership documents with audited financials; (2) Professionals—degree certificates, employment contracts, salary certificates showing AED 30,000+ monthly; (3) Specialized Talents—professional achievements, awards, publications, or recognition letters; (4) Entrepreneurs—business plans, startup documentation, incubator acceptance letters. Each category has specific document requirements we help you compile."
+  },
+  {
+    question: "How long does Golden Visa document translation take?",
+    answer: "A complete Golden Visa translation package typically takes 2-3 business days. Individual documents complete faster: degree certificates 24 hours, bank statements 24-48 hours depending on page count, property documents 24 hours. If your documents also need attestation, add 2-4 weeks for the attestation chain. We recommend starting the process 4-6 weeks before your intended application date."
+  },
+  {
+    question: "What is MOHESR attestation and do I need it?",
+    answer: "MOHESR (Ministry of Higher Education and Scientific Research) attestation verifies that your foreign degree is recognized in the UAE. It is mandatory for Golden Visa applications in the professional category. The process involves: attestation from your home country, UAE Embassy attestation, MOFA attestation, and finally MOHESR equivalency. We coordinate the complete chain and provide MOJ-certified translation of the attested certificate."
+  },
+  {
+    question: "Can you help if my degree is from an unrecognized university?",
+    answer: "Some universities are not on the MOHESR recognized list, which can complicate Golden Visa applications. We can advise on alternative pathways: some applicants qualify through the investor route instead, others through specialized talent categories that focus on professional achievements rather than academic credentials. We assess your situation and recommend the most viable approach."
+  },
+  {
+    question: "What bank statement requirements apply for Golden Visa?",
+    answer: "Bank statements must demonstrate financial stability appropriate to your category. Professionals need statements showing consistent salary deposits of AED 30,000+ monthly. Investors need proof of investment funds or property ownership. Statements should cover 6 months minimum, show the account holder name matching your passport, and be translated with MOJ certification. We format translations to meet ICA review requirements."
+  },
+  {
+    question: "Do you provide document review before I apply?",
+    answer: "Yes. We review your complete document package before translation to identify any gaps, missing documents, or potential issues that could delay your application. This pre-assessment catches problems like name mismatches between documents, missing attestations, insufficient financial proof, or documents that do not meet category requirements. Better to address these before paying for translation and application fees."
+  },
+  {
+    question: "What is the cost of Golden Visa translation package?",
+    answer: "Package pricing depends on your category and document count. A typical professional category package (degree, employment contract, salary certificate, bank statements, passport) runs AED 800-1,200. Investor packages with property documents and financial statements run AED 1,000-1,500. We provide detailed quotes after reviewing your specific documents. Package pricing saves 15-20% compared to individual document rates."
+  },
+  {
+    question: "Can you help with Golden Visa renewals?",
+    answer: "Yes. Golden Visa renewals require updated documentation proving you still meet category requirements. This includes recent bank statements, current employment verification, updated property valuations, or continued business activity proof. We translate renewal documents with the same MOJ certification and can advise on what documentation ICA typically requests for renewal applications."
+  }
+];
+
+const visaCategories = [
+  {
+    title: "Investors",
+    icon: "chart-line",
+    requirement: "AED 2M+ Investment",
+    documents: ["Property title deeds", "Investment certificates", "Bank statements", "Passport copies"],
+    color: "gold"
+  },
+  {
+    title: "Professionals",
+    icon: "user-tie",
+    requirement: "AED 30K+ Salary",
+    documents: ["Degree certificate (MOHESR attested)", "Employment contract", "Salary certificate", "Bank statements"],
+    color: "blue"
+  },
+  {
+    title: "Entrepreneurs",
+    icon: "lightbulb",
+    requirement: "Approved Project",
+    documents: ["Business plan", "Incubator approval", "Company documents", "Financial projections"],
+    color: "green"
+  },
+  {
+    title: "Specialized Talents",
+    icon: "award",
+    requirement: "Proven Excellence",
+    documents: ["Achievement certificates", "Awards/recognition", "Publications", "Recommendation letters"],
+    color: "purple"
+  }
+];
+
+const processSteps = [
+  {
+    number: 1,
+    title: "Document Assessment",
+    desc: "Send your documents via WhatsApp. We review completeness, verify category eligibility, identify attestation needs, and flag any potential issues."
+  },
+  {
+    number: 2,
+    title: "Attestation Coordination",
+    desc: "If needed, we coordinate MOHESR attestation for degrees and other required attestations. This step takes 2-4 weeks depending on source country."
+  },
+  {
+    number: 3,
+    title: "MOJ-Certified Translation",
+    desc: "All documents translated by licensed legal translators with official MOJ certification. Quality review ensures accuracy and proper formatting."
+  },
+  {
+    number: 4,
+    title: "Package Delivery",
+    desc: "Complete translated package delivered digitally and physically. Documents organized and ready for ICA Golden Visa application submission."
+  }
+];
+
+const includedServices = [
+  { icon: "check-circle", text: "Pre-application document review" },
+  { icon: "check-circle", text: "Category eligibility assessment" },
+  { icon: "check-circle", text: "MOHESR attestation coordination" },
+  { icon: "check-circle", text: "MOJ-certified translation" },
+  { icon: "check-circle", text: "Name consistency verification" },
+  { icon: "check-circle", text: "ICA-ready formatting" },
+  { icon: "check-circle", text: "Digital and physical copies" },
+  { icon: "check-circle", text: "Post-submission support" }
+];
+
+const documentChecklist = [
+  { doc: "Passport (all pages)", required: true, notes: "Clear copies, valid 6+ months" },
+  { doc: "Emirates ID", required: true, notes: "Both sides" },
+  { doc: "Degree Certificate", required: true, notes: "MOHESR attested for professionals" },
+  { doc: "Employment Contract", required: true, notes: "Current, showing salary" },
+  { doc: "Salary Certificate", required: true, notes: "Recent, on company letterhead" },
+  { doc: "Bank Statements", required: true, notes: "6 months, showing salary deposits" },
+  { doc: "Property Title Deed", required: false, notes: "For investor category" },
+  { doc: "Trade License", required: false, notes: "For business owners" },
+  { doc: "Professional License", required: false, notes: "If applicable to profession" }
+];
 ---
 
-<ServiceLayout {...pageData}>
-  
-  <section class="section bg-white">
+<CategoryLayout
+  title="Golden Visa Translation Dubai | Document Package for UAE 10-Year Visa | OnlineTranslation.ae"
+  description="Complete Golden Visa translation packages for UAE 10-year visa applications. MOJ-certified translation, MOHESR attestation coordination, ICA-ready formatting for investors, professionals, and entrepreneurs."
+  keywords="golden visa translation dubai, uae golden visa documents, mohesr attestation, golden visa document requirements, 10 year visa uae translation, investor visa translation, professional visa documents"
+  heroTitle="Golden Visa Translation Package"
+  heroSubtitle="Complete Document Solutions for UAE 10-Year Visa"
+  heroIntro="The UAE Golden Visa offers 10-year residency for investors, professionals, entrepreneurs, and specialized talents. Success depends on presenting properly translated and attested documents that meet ICA requirements. We provide complete document packages—from MOHESR attestation coordination to MOJ-certified translation—formatted and organized for smooth Golden Visa processing."
+  breadcrumbs={breadcrumbs}
+  serviceType="Golden Visa Document Translation"
+  faqs={faqs}
+>
+
+  <!-- Visa Categories Section -->
+  <section class="section">
     <div class="container">
-      <h2>Understanding Golden Visa Document Requirements</h2>
-      <div class="content-prose">
-        <p>The UAE Golden Visa has transformed residency for professionals, investors, and talented individuals. Unlike standard employment visas tied to specific sponsors, the Golden Visa offers 5 or 10 years of residency with significant flexibility. However, the application process requires careful documentation, and translation plays a critical role in how ICP evaluates your application.</p>
-        
-        <p>Each Golden Visa category has specific document requirements. Skilled employees must demonstrate both qualification (through degree equivalency) and income level (through salary documentation). Investors must prove asset ownership and value. Specialized talents must evidence their achievements and recognition. Understanding exactly what each category requires helps you prepare a complete and compelling application.</p>
-        
-        <h3>Why Translation Quality Matters for Golden Visa</h3>
-        <p>ICP reviewers assess your application based on the Arabic translations of your documents. If the translation of your salary certificate omits key details or uses non-standard terminology, your application may be queried or rejected—even if the original document contained all required information.</p>
-        
-        <p>We have seen applications delayed because salary certificates lacked the phrase confirming permanent employment, or because degree certificates were translated without including the specialization details that MOHESR requires for equivalency. These are not translation errors in the traditional sense—the English was correctly rendered—but failures to include what the receiving authorities specifically need to see.</p>
-        
-        <p>Our approach addresses this by understanding what ICP and MOHESR actually look for, then ensuring translations include those elements prominently. When your HR department provides a salary letter, we know which elements must be present and can advise if anything is missing before we translate.</p>
-        
-        <h3>The Degree Equivalency Process</h3>
-        <p>For most Golden Visa applicants, degree equivalency through MOHESR is a critical step. This process verifies that your foreign degree is equivalent to a UAE qualification, which ICP requires for the skilled employee category.</p>
-        
-        <p>MOHESR evaluates your degree based on the institution, the programme of study, and the qualification level. Translations must accurately convey these details. The degree title, specialization, and any honors or distinctions all matter for the equivalency assessment.</p>
-        
-        <p>Some applicants also need to submit academic transcripts, particularly when the degree title alone does not clearly indicate the field of study. We translate transcripts with the course titles and grades preserved accurately, allowing MOHESR to assess the substance of your education.</p>
-        
-        <h3>Salary Documentation Requirements</h3>
-        <p>The salary certificate is arguably the most important document for the skilled employee category. ICP has specific expectations about what this document should contain and how it should be phrased.</p>
-        
-        <p>Required elements include: your full name, job title, date of joining, current monthly salary in AED, and a statement that your employment is permanent or of ongoing nature. The salary must meet the minimum threshold for your visa category. The letter should be on company letterhead, signed by an authorized signatory, and dated recently.</p>
-        
-        <p>We translate salary certificates using the exact Arabic terminology that ICP expects. This is not a matter of word choice—it is using the specific phrases that reviewers look for when processing applications. Years of handling these documents have taught us what works.</p>
+      <h2>Golden Visa Categories</h2>
+      <p class="section-intro">Different categories have different document requirements. Select your category to understand what documents you need translated.</p>
+
+      <div class="categories-grid">
+        {visaCategories.map(cat => (
+          <div class={`category-card category-${cat.color}`}>
+            <div class="category-icon">
+              <i class={`fas fa-${cat.icon}`}></i>
+            </div>
+            <h3>{cat.title}</h3>
+            <div class="category-requirement">{cat.requirement}</div>
+            <ul class="category-documents">
+              {cat.documents.map(doc => (
+                <li><i class="fas fa-file-alt"></i> {doc}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
+  <!-- Document Checklist Section -->
   <section class="section bg-light">
     <div class="container">
-      <h2>Category-Specific Guidance</h2>
-      <div class="content-prose">
-        <h3>Skilled Employee Golden Visa</h3>
-        <p>The skilled employee category suits professionals meeting the income threshold (currently AED 30,000 monthly) with a bachelor's degree or equivalent. This is the most common Golden Visa category for <a href="/locations/dubai/">Dubai</a> residents working in finance, technology, healthcare, and other professional sectors.</p>
-        
-        <p>Your document package will typically include: degree certificate with MOHESR equivalency, salary certificate, employment contract, and passport copies. If sponsoring family members, add marriage certificates, children's birth certificates, and potentially previous marriage documentation if applicable.</p>
-        
-        <p>The timeline from document preparation to visa issuance varies. Translation itself takes 2-3 days for a complete package. MOHESR equivalency adds 5-15 working days depending on the institution. ICP processing then takes its own course. We help you plan realistically based on current processing times.</p>
-        
-        <h3>Investor Golden Visa</h3>
-        <p>Property investors with holdings worth AED 2 million or more can apply for the investor Golden Visa. The key documents here are property-related: title deeds, valuation certificates (if required), and proof of ownership.</p>
-        
-        <p>Many <a href="/locations/dubai/palm-jumeirah/">Palm Jumeirah</a> property owners pursue this category. We already handle their property documentation—title deeds, SPAs, and POAs—so adding Golden Visa translation is a natural extension of existing relationships.</p>
-        
-        <p>Business investors have different requirements including company documents, financial statements, and evidence of investment value. For those with substantial corporate holdings, we coordinate with <a href="/services/corporate-translation/">corporate translation services</a> to prepare comprehensive packages.</p>
-        
-        <h3>Specialized Talent Categories</h3>
-        <p>Doctors, scientists, researchers, artists, and athletes may qualify under specialized talent categories. Each has its own criteria and documentation requirements.</p>
-        
-        <p>Medical professionals need translated medical licenses, specialty certificates, and evidence of practice. The Dubai Health Authority licensing process has its own translation requirements which we also support.</p>
-        
-        <p>Researchers and scientists may need to evidence publications, patents, or institutional affiliations. Artists require proof of recognition in their field. We advise on what documentation is typically required for each specialty.</p>
-        
-        <h3>Family Member Sponsorship</h3>
-        <p>Golden Visa holders can sponsor immediate family members, creating a path to long-term UAE residency for the whole family. Spouses require <a href="/personal/vital-records/marriage/">marriage certificate translation</a>; children require <a href="/personal/vital-records/birth/">birth certificate translation</a>.</p>
-        
-        <p>For complex family situations—previous marriages, adopted children, or adult dependents—additional documentation may be required. We can advise on the typical requirements based on your specific circumstances.</p>
+      <h2>Document Checklist</h2>
+      <p class="section-intro">Use this checklist to prepare your documents. Requirements vary by category—we confirm exactly what you need during initial assessment.</p>
+
+      <div class="checklist-table">
+        <div class="checklist-header">
+          <span>Document</span>
+          <span>Required</span>
+          <span>Notes</span>
+        </div>
+        {documentChecklist.map(item => (
+          <div class="checklist-row">
+            <span class="checklist-doc">{item.doc}</span>
+            <span class="checklist-required">
+              {item.required ? (
+                <i class="fas fa-check-circle text-success"></i>
+              ) : (
+                <i class="fas fa-minus-circle text-muted"></i>
+              )}
+            </span>
+            <span class="checklist-notes">{item.notes}</span>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <section class="section bg-white">
+  <!-- Process Section -->
+  <section class="section">
     <div class="container">
-      <h2>Package Options</h2>
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <h3>Translation Only</h3>
-          <div class="pricing-price">From AED 400</div>
-          <p class="pricing-time">Documents already attested</p>
-          <ul class="pricing-features">
-            <li>MOJ-certified translation</li>
-            <li>ICP-formatted terminology</li>
-            <li>Digital and physical copies</li>
-            <li>WhatsApp coordination</li>
-          </ul>
-        </div>
-        <div class="pricing-card pricing-card--featured">
-          <h3>Complete Package</h3>
-          <div class="pricing-price">From AED 1,200</div>
-          <p class="pricing-time">Translation + attestation</p>
-          <ul class="pricing-features">
-            <li>Everything in Translation Only</li>
-            <li>Attestation coordination</li>
-            <li>Document review before submission</li>
-            <li>Dedicated coordinator</li>
-          </ul>
-        </div>
-        <div class="pricing-card">
-          <h3>With Equivalency</h3>
-          <div class="pricing-price">From AED 1,800</div>
-          <p class="pricing-time">Including MOHESR prep</p>
-          <ul class="pricing-features">
-            <li>Everything in Complete Package</li>
-            <li>MOHESR document preparation</li>
-            <li>Transcript translation if needed</li>
-            <li>Equivalency process guidance</li>
-          </ul>
-        </div>
+      <h2>Our Golden Visa Process</h2>
+      <p class="section-intro">From document review to ICA-ready package delivery—we handle the complexity so you can focus on your application.</p>
+
+      <div class="process-grid">
+        {processSteps.map(step => (
+          <div class="process-card">
+            <div class="process-number">{step.number}</div>
+            <h3>{step.title}</h3>
+            <p>{step.desc}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
+  <!-- Main Content Section -->
   <section class="section bg-light">
     <div class="container">
-      <h2>Working With Us</h2>
-      <div class="content-prose">
-        <h3>Document Review Process</h3>
-        <p>Before we begin translation, we review your documents to ensure they contain what ICP requires. This avoids situations where you receive a perfect translation of an incomplete document. If your salary certificate lacks the permanent employment statement, we will tell you before we translate it—not after.</p>
-        
-        <p>We also check for attestation requirements. Documents from certain countries need attestation before they can be used in the UAE. We can advise whether your documents need this step and coordinate the process if so.</p>
-        
-        <h3>Coordination and Communication</h3>
-        <p>Golden Visa applications involve multiple documents, often arriving at different times. A salary certificate might be issued today; a degree is already in hand; birth certificates for children are being requested from another country. We track all components and keep you informed of what is ready and what is still needed.</p>
-        
-        <p>Our WhatsApp coordination means you can check status, submit additional documents, or ask questions at any time. We understand that Golden Visa applications are time-sensitive, often tied to visa renewals or employment changes.</p>
-        
-        <h3>Getting Started</h3>
-        <p>The best starting point is to send us what you have. Even if your document package is incomplete, we can review what exists, advise on what else is needed, and begin translation on the documents that are ready.</p>
-        
-        <p>Many clients are uncertain about their eligibility or requirements. A brief WhatsApp conversation usually clarifies which category applies to you and what documents you will need. We can then provide an accurate quote for the complete package.</p>
+      <div class="content-grid">
+        <div class="content-main">
+          <h2>Why Golden Visa Applications Get Rejected</h2>
+          
+          <p>Golden Visa applications fail for preventable reasons: missing attestations, inconsistent name spellings across documents, translations without proper MOJ certification, financial documents that do not clearly demonstrate category requirements, or degrees from universities not on the MOHESR recognized list. Each rejection means delays, resubmission fees, and frustration.</p>
+          
+          <p>We have processed hundreds of Golden Visa document packages and understand what ICA reviewers look for. Our pre-assessment catches issues before you invest in translation and application fees. Our translations are formatted to ICA expectations. Our attestation coordination ensures proper sequencing. This experience translates into higher first-time approval rates for our clients.</p>
+
+          <h3>MOHESR Attestation for Professionals</h3>
+          
+          <p>The professional category requires degree certificates attested by MOHESR—the UAE Ministry of Higher Education and Scientific Research. This attestation confirms your degree is from a recognized institution and is equivalent to UAE standards. The process involves multiple steps: attestation from your home country, UAE Embassy attestation, MOFA attestation, and finally MOHESR equivalency verification.</p>
+          
+          <p>We coordinate the complete MOHESR attestation chain. For degrees already attested through MOFA, we handle the MOHESR submission. For degrees requiring full attestation, we manage the entire process from your home country through to final MOHESR approval. Once attested, we provide MOJ-certified translation of the complete attested document.</p>
+
+          <h3>Name Consistency Matters</h3>
+          
+          <p>ICA systems cross-reference names across all submitted documents. If your degree shows "Mohammed Ahmed," your passport shows "Mohamed Ahmad," and your bank statement shows "Mohd Ahmed"—the system may flag inconsistencies that delay processing. This is especially common with names transliterated from Arabic, Hindi, Urdu, or other non-Latin scripts.</p>
+          
+          <p>We verify name consistency across all documents before translation. Where variations exist, we ensure translations match your passport and Emirates ID exactly. We can provide supporting documentation explaining transliteration variations if needed. This attention to detail prevents the frustrating back-and-forth that delays Golden Visa approvals.</p>
+
+          <h3>Financial Documentation Requirements</h3>
+          
+          <p>Financial documents must clearly demonstrate you meet category thresholds. For professionals, bank statements should show consistent salary deposits of AED 30,000+ monthly over at least 6 months. For investors, documents must prove property ownership or investment value of AED 2 million or more. Statements should be recent, show your name as account holder, and include clear transaction details.</p>
+          
+          <p>We translate bank statements with attention to the details reviewers check: account holder names, transaction descriptions, running balances, and date ranges. Multi-page statements are translated completely with consistent formatting. For property investors, we translate title deeds with precise property descriptions that match DLD records.</p>
+        </div>
+
+        <div class="content-sidebar">
+          <div class="info-card highlight">
+            <h4><i class="fab fa-whatsapp"></i> Start Your Application</h4>
+            <p>Send your documents for a free assessment. We confirm category eligibility and provide a complete quote.</p>
+            <a href="https://wa.me/971508620217?text=Golden%20Visa%20document%20assessment" class="btn btn--primary btn--sm">
+              <i class="fab fa-whatsapp"></i> Free Assessment
+            </a>
+          </div>
+
+          <div class="info-card">
+            <h4><i class="fas fa-box-open"></i> Package Includes</h4>
+            <ul>
+              {includedServices.map(service => (
+                <li><i class={`fas fa-${service.icon}`}></i> {service.text}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h4><i class="fas fa-tag"></i> Package Pricing</h4>
+            <ul>
+              <li><strong>Professional:</strong> AED 800-1,200</li>
+              <li><strong>Investor:</strong> AED 1,000-1,500</li>
+              <li><strong>Entrepreneur:</strong> AED 1,200-1,800</li>
+              <li><strong>MOHESR add-on:</strong> from AED 1,500</li>
+            </ul>
+            <p class="info-note">Exact quote after document review</p>
+          </div>
+
+          <div class="info-card">
+            <h4><i class="fas fa-clock"></i> Timeline</h4>
+            <ul>
+              <li><strong>Translation only:</strong> 2-3 days</li>
+              <li><strong>With MOHESR:</strong> 3-4 weeks</li>
+              <li><strong>Full attestation:</strong> 4-6 weeks</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section bg-white">
+  <!-- Success Tips Section -->
+  <section class="section">
     <div class="container">
-      <InlineCallout 
-        type="tip" 
-        title="Required Documents Checklist"
-        link="/resources/golden-visa-checklist/"
-        linkText="View complete checklist"
-      >
-        Make sure you have all the required documents before starting your Golden Visa application. Our checklist covers each visa category.
-      </InlineCallout>
-
-      <RelatedServices 
-        pageKey="goldenVisa"
-        title="Documents You'll Need"
-        showPrerequisites={true}
-        showNextSteps={true}
-        maxItems={8}
-      />
-      
-      <CrossSiloLinks 
-        pageKey="goldenVisa"
-        title="Related Services"
-      />
+      <h2>Golden Visa Success Tips</h2>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-icon"><i class="fas fa-calendar-check"></i></div>
+          <h3>Start Early</h3>
+          <p>Begin document preparation 4-6 weeks before your intended application. MOHESR attestation alone takes 2-3 weeks.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon"><i class="fas fa-id-card"></i></div>
+          <h3>Match Names Exactly</h3>
+          <p>Ensure all document names match your passport spelling. Inconsistencies trigger verification delays.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+          <h3>Recent Financials</h3>
+          <p>Bank statements should be no older than 3 months. Salary certificates should be dated within 30 days of application.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon"><i class="fas fa-university"></i></div>
+          <h3>Verify University Recognition</h3>
+          <p>Check if your university is on the MOHESR recognized list before applying in the professional category.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-</ServiceLayout>
+  <!-- Related Services -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Related Services</h2>
+      <div class="related-grid">
+        <a href="/services/attestation/" class="related-card">
+          <i class="fas fa-stamp"></i>
+          <h3>Attestation Services</h3>
+          <p>MOFA, embassy, and MOHESR attestation coordination</p>
+        </a>
+        <a href="/personal/education/degree/" class="related-card">
+          <i class="fas fa-graduation-cap"></i>
+          <h3>Degree Translation</h3>
+          <p>Academic credential translation and verification</p>
+        </a>
+        <a href="/personal/immigration/bank/" class="related-card">
+          <i class="fas fa-university"></i>
+          <h3>Bank Statement Translation</h3>
+          <p>Financial document translation for visa applications</p>
+        </a>
+        <a href="/legal/corporate/" class="related-card">
+          <i class="fas fa-building"></i>
+          <h3>Corporate Documents</h3>
+          <p>Business documents for investor category applications</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</CategoryLayout>
 
 <style>
-  .content-prose {
-    max-width: 800px;
-    line-height: 1.8;
+  /* Base Section Styles */
+  .section {
+    padding: 4rem 0;
   }
-  
-  .content-prose h3 {
-    margin-top: 2rem;
+
+  .section h2 {
+    font-size: 1.75rem;
     margin-bottom: 1rem;
-    font-size: 1.25rem;
     color: var(--primary-color);
   }
-  
-  .content-prose p {
-    margin-bottom: 1.25rem;
-    color: var(--text-dark);
+
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 800px;
   }
-  
-  .content-prose a {
+
+  .bg-light {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  /* Categories Grid */
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .category-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-top: 4px solid var(--accent-color);
+  }
+
+  .category-card.category-gold { border-top-color: #D4AF37; }
+  .category-card.category-blue { border-top-color: #2563EB; }
+  .category-card.category-green { border-top-color: #059669; }
+  .category-card.category-purple { border-top-color: #7C3AED; }
+
+  .category-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+
+  .category-icon i {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+
+  .category-card h3 {
+    font-size: 1.2rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .category-requirement {
+    background: var(--bg-light, #f8f9fa);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
     color: var(--accent-color);
-    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 1rem;
   }
-  
-  .content-prose a:hover {
-    text-decoration: underline;
-  }
-  
-  .pricing-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-    gap: 1.5rem; 
-  }
-  
-  .pricing-card { 
-    background: #ffffff; 
-    border-radius: 1rem; 
-    padding: 2rem; 
-    text-align: center; 
-    border: 1px solid rgba(0, 0, 0, 0.05); 
-  }
-  
-  .pricing-card--featured { 
-    border-color: var(--accent-color); 
-    box-shadow: 0 8px 30px rgba(255, 22, 84, 0.15); 
-  }
-  
-  .pricing-card h3 { 
-    margin: 0 0 0.5rem; 
-    font-size: 1.25rem; 
-  }
-  
-  .pricing-price { 
-    font-size: 2rem; 
-    font-weight: 700; 
-    color: var(--primary-color); 
-    margin-bottom: 0.25rem;
-  }
-  
-  .pricing-time { 
-    color: var(--text-muted); 
-    font-size: 0.9rem; 
-    margin-bottom: 1.5rem;
-  }
-  
-  .pricing-features {
+
+  .category-documents {
     list-style: none;
     padding: 0;
     margin: 0;
     text-align: left;
   }
-  
-  .pricing-features li {
-    padding: 0.5rem 0;
-    padding-left: 1.5rem;
-    position: relative;
-    font-size: 0.95rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+  .category-documents li {
+    padding: 0.4rem 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
   }
-  
-  .pricing-features li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
+
+  .category-documents i {
     color: var(--accent-color);
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  /* Checklist Table */
+  .checklist-table {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .checklist-header {
+    display: grid;
+    grid-template-columns: 1fr 100px 1fr;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: var(--primary-color);
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .checklist-row {
+    display: grid;
+    grid-template-columns: 1fr 100px 1fr;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    align-items: center;
+  }
+
+  .checklist-row:last-child {
+    border-bottom: none;
+  }
+
+  .checklist-doc {
+    font-weight: 500;
+    color: var(--primary-color);
+  }
+
+  .checklist-required {
+    text-align: center;
+  }
+
+  .checklist-notes {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .text-success { color: #059669; }
+  .text-muted { color: #9CA3AF; }
+
+  /* Process Grid */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .process-card {
+    text-align: center;
+    position: relative;
+  }
+
+  .process-number {
+    width: 50px;
+    height: 50px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+    color: #fff;
+    font-size: 1.25rem;
     font-weight: 700;
+  }
+
+  .process-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .process-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* Content Grid */
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 3rem;
+  }
+
+  .content-main h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .content-main h3 {
+    font-size: 1.25rem;
+    margin: 2rem 0 1rem;
+    color: var(--primary-color);
+  }
+
+  .content-main p {
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Sidebar */
+  .info-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .info-card.highlight {
+    background: var(--primary-color);
+    color: #fff;
+  }
+
+  .info-card h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .info-card h4 i {
+    color: var(--accent-color);
+  }
+
+  .info-card.highlight h4 i {
+    color: #fff;
+  }
+
+  .info-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .info-card li {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    font-size: 0.9rem;
+  }
+
+  .info-card.highlight li {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .info-card li:last-child {
+    border-bottom: none;
+  }
+
+  .info-card li i {
+    color: var(--accent-color);
+    margin-right: 0.5rem;
+  }
+
+  .info-card p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .info-note {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .info-card .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Tips Grid */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .tip-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .tip-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+
+  .tip-icon i {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+
+  .tip-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .tip-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* Related Grid */
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .related-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .related-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .related-card i {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .related-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .related-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .btn--primary {
+    background: var(--accent-color);
+    color: #fff;
+  }
+
+  .btn--primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn--sm {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .categories-grid,
+    .process-grid,
+    .tips-grid,
+    .related-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 991px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .content-sidebar {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .checklist-header,
+    .checklist-row {
+      grid-template-columns: 1fr 80px 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section {
+      padding: 3rem 0;
+    }
+
+    .categories-grid,
+    .process-grid,
+    .tips-grid,
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .content-sidebar {
+      grid-template-columns: 1fr;
+    }
+
+    .checklist-header,
+    .checklist-row {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .checklist-header span:nth-child(2),
+    .checklist-header span:nth-child(3) {
+      display: none;
+    }
+
+    .checklist-notes {
+      display: block;
+      margin-top: 0.25rem;
+    }
   }
 </style>
