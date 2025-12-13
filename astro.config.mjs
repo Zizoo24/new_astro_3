@@ -5,9 +5,6 @@ export default defineConfig({
   site: 'https://onlinetranslation.ae',
   output: 'static',
   trailingSlash: 'always',
-  redirects: {
-    '/legal-translation/': '/legal/'
-  },
   compressHTML: true,
   prefetch: {
     prefetchAll: true,
