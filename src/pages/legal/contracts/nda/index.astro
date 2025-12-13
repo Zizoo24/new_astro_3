@@ -1,322 +1,181 @@
 ---
 import ServiceLayout from '../../../../layouts/ServiceLayout.astro';
 
-const pageData = {
-  title: "NDA Translation in Dubai – MOJ Certified | OnlineTranslation.ae",
-  description: "MOJ certified NDA translation in Dubai. Protecting intellectual property in cross-border deals. Mutual and unilateral NDAs, confidentiality agreements.",
-  keywords: "NDA translation dubai, non-disclosure agreement translation, confidentiality agreement translation, mutual NDA translation, unilateral NDA translation",
-  heroTitle: "NDA Translation in Dubai",
-  heroSubtitle: "MOJ Certified for Business Protection",
-  heroIntro: "Non-Disclosure Agreements protect your business's confidential information and intellectual property. When working across languages in the UAE, both parties need to understand exactly what they are agreeing to. We handle mutual NDAs, unilateral NDAs, and complex multi-party confidentiality agreements with the precision that enforceable legal documents require.",
-  snapshot: [
-    { icon: "clock", bold: "Digital drafts", text: "typically within 60 minutes" },
-    { icon: "mobile-alt", bold: "WhatsApp-based workflow", text: "for easy communication" },
-    { icon: "check-circle", bold: "Court-enforceable", text: "in UAE jurisdictions" },
-    { icon: "stamp", bold: "MOJ legal stamp", text: "with QR verification" }
-  ],
-  breadcrumbs: [
-    { name: "Home", url: "/" },
-    { name: "Legal", url: "/legal/" },
-    { name: "Contracts", url: "/legal/contracts/" },
-    { name: "NDA Translation", url: "/legal/contracts/nda/" }
-  ],
-  
-  trustStrip: [
-    "MOJ-licensed partner",
-    "DIFC and ADGM ready",
-    "WhatsApp concierge support"
-  ],
-  
-  processSteps: [
-    {
-      title: "Send your NDA document",
-      text: "Include all schedules and exhibits. Specify jurisdiction (UAE courts, DIFC, ADGM) if relevant."
-    },
-    {
-      title: "We prepare your translation",
-      text: "MOJ-licensed translator handles IP terminology and confidentiality provisions with precision."
-    },
-    {
-      title: "Pickup or delivery",
-      text: "Collect in Dubai or arrange courier. Digital PDF sent immediately upon completion."
-    }
-  ],
-  
-  benefitCards: [
-    {
-      icon: "shield",
-      title: "IP protection terms",
-      text: "Trade secrets, proprietary information, and intellectual property definitions accurately translated."
-    },
-    {
-      icon: "court",
-      title: "Enforcement ready",
-      text: "Formatted for UAE court submission or DIFC/ADGM proceedings if disputes arise."
-    },
-    {
-      icon: "document",
-      title: "Multi-party handling",
-      text: "Complex NDAs with multiple signatories, affiliates, and carve-outs properly structured."
-    }
-  ],
-  
-  accordionSections: [
-    {
-      title: "Types of NDA we translate",
-      id: "nda-types",
-      items: [
-        {
-          heading: "Mutual NDA (two-way)",
-          body: "<p>Mutual NDAs protect both parties when they are sharing confidential information with each other. This is common in joint venture discussions, partnership negotiations, and technology collaborations.</p><p>We ensure the reciprocal obligations are clearly distinguished so both parties understand their protection and responsibilities.</p>"
-        },
-        {
-          heading: "Unilateral NDA (one-way)",
-          body: "<p>Unilateral NDAs protect one party (the disclosing party) when sharing confidential information with another (the receiving party). This is common when hiring contractors, presenting to investors, or sharing trade secrets with potential partners.</p><p>The translation clearly identifies which party bears the confidentiality obligations.</p>"
-        },
-        {
-          heading: "Multi-party NDA",
-          body: "<p>When more than two parties are involved, the NDA structure becomes more complex. We carefully translate how obligations flow between parties and ensure each party is consistently identified throughout the Arabic version.</p><p>Carve-outs for affiliates and related parties are accurately rendered.</p>"
-        },
-        {
-          heading: "Employee confidentiality agreement",
-          body: "<p>Employment-related NDAs have specific provisions about work product, invention assignment, and post-employment obligations. UAE labor law considerations may affect how these provisions are interpreted.</p><p>We translate with awareness of the employment law context.</p>"
-        }
-      ]
-    },
-    {
-      title: "Key provisions we handle",
-      id: "provisions",
-      items: [
-        {
-          heading: "Definition of confidential information",
-          body: "<p>The definition section is often the most critical part of an NDA. We ensure trade secrets, proprietary information, technical data, business plans, and all other categories of protected information are accurately translated.</p><p>Exclusions and carve-outs are equally important and receive careful attention.</p>"
-        },
-        {
-          heading: "Term and survival",
-          body: "<p>How long confidentiality obligations last matters for enforcement. We accurately translate the agreement term, any renewal provisions, and survival clauses that extend protection beyond termination.</p>"
-        },
-        {
-          heading: "Remedies and injunctive relief",
-          body: "<p>Provisions about damages, injunctive relief, and specific performance are critical if the NDA is ever enforced. We use legal terminology that UAE courts recognize and understand.</p>"
-        },
-        {
-          heading: "Governing law and jurisdiction",
-          body: "<p>Whether the NDA is governed by UAE law, DIFC law, or another jurisdiction affects interpretation. We note the governing law clause and can advise if the translation approach should consider specific jurisdictional requirements.</p>"
-        }
-      ]
-    }
-  ],
-  
-  faqs: [
-    {
-      question: "How do you handle multi-party NDAs with more than two signatories?",
-      answer: "We carefully translate the definitions section to ensure each party is consistently identified throughout the Arabic version, and verify that mutual versus unilateral obligations are clearly distinguished. For joint venture or consortium NDAs, we ensure carve-outs for affiliates and related parties are accurately rendered."
-    },
-    {
-      question: "Is this NDA translation enforceable in UAE courts?",
-      answer: "Yes. Our MOJ-certified NDA translations are accepted by UAE courts for legal proceedings. The translation includes the official stamp and translator credentials required for court submission. For DIFC or ADGM disputes, the same translation serves as evidence of the agreement terms."
-    },
-    {
-      question: "Do you translate NDAs with technical or scientific terms?",
-      answer: "Yes. We frequently translate NDAs in technology, pharmaceutical, engineering, and other technical fields. Our translators handle industry-specific terminology for intellectual property, trade secrets, and proprietary processes."
-    },
-    {
-      question: "How long does NDA translation take?",
-      answer: "Standard service delivers within 24 hours for typical NDAs. Express service completes in 6 hours. Complex multi-party agreements or NDAs with extensive schedules may require additional time, which we confirm upfront."
-    },
-    {
-      question: "Can you translate NDAs in languages other than English?",
-      answer: "Yes. We translate NDAs from any language into Arabic (and vice versa). For non-English NDAs, we can provide Arabic translation directly or work through English as an intermediary if required by your legal team."
-    }
-  ],
-  serviceType: "NDA Translation"
-};
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Legal Translation', url: '/legal-translation-dubai/' },
+  { name: 'Contracts', url: '/legal/contracts/' },
+  { name: 'NDA Translation', url: '/legal/contracts/nda/' }
+];
+
+const snapshot = [
+  { icon: 'user-secret', bold: 'Confidentiality Focus', text: 'Precise protection language' },
+  { icon: 'shield-alt', bold: 'Legal Enforceability', text: 'UAE court-ready terminology' },
+  { icon: 'clock', bold: '6-12 Hours', text: 'Standard NDA turnaround' },
+  { icon: 'handshake', bold: 'Bilateral & Unilateral', text: 'All NDA types covered' }
+];
+
+const processSteps = [
+  {
+    number: 1,
+    title: 'NDA Review',
+    text: 'We identify the NDA type, parties involved, and specific confidentiality provisions requiring careful translation.',
+    icon: 'search'
+  },
+  {
+    number: 2,
+    title: 'Legal Translation',
+    text: 'MOJ-certified translator handles the document with attention to scope definitions, exclusions, and enforcement provisions.',
+    icon: 'file-contract'
+  },
+  {
+    number: 3,
+    title: 'Terminology Review',
+    text: 'Second reviewer ensures consistent translation of defined terms and legally effective Arabic equivalents.',
+    icon: 'check-double'
+  },
+  {
+    number: 4,
+    title: 'Certified Delivery',
+    text: 'MOJ-stamped translation ready for business use, court submission, or notarization as required.',
+    icon: 'certificate'
+  }
+];
+
+const faqs = [
+  {
+    question: 'Why does NDA translation require special attention?',
+    answer: 'NDAs define what information is protected and what happens if protection is breached. Ambiguous translation of the confidential information definition could exclude critical data from protection. Weak translation of remedy provisions could limit your legal recourse. Every clause needs precision to maintain enforceability.'
+  },
+  {
+    question: 'What NDA sections are most critical?',
+    answer: 'The definition of Confidential Information is paramount—it determines what is protected. Exclusions (publicly known information, independently developed materials) must be equally precise. Duration provisions, permitted disclosures, and return/destruction obligations also require careful translation to preserve their legal effect.'
+  },
+  {
+    question: 'Do you translate both bilateral and unilateral NDAs?',
+    answer: 'Yes. Unilateral NDAs (one-way confidentiality) and bilateral/mutual NDAs (both parties share confidential information) have different structures. We ensure the directional obligations are clear—who is disclosing, who is receiving, and what duties apply to each party.'
+  },
+  {
+    question: 'How long does NDA translation take?',
+    answer: 'Standard NDAs (3-5 pages) are typically completed within 6-12 hours. Complex NDAs with extensive schedules or industry-specific provisions may require 24 hours. Rush service available for urgent business deals.'
+  },
+  {
+    question: 'Are translated NDAs enforceable in UAE courts?',
+    answer: 'Yes. UAE courts recognize and enforce NDAs governed by UAE law. For NDAs governed by foreign law, UAE courts may still enforce them under conflict of law principles. The Arabic translation is what courts will interpret, making translation accuracy essential for enforcement.'
+  },
+  {
+    question: 'What about NDAs in languages other than English?',
+    answer: 'We translate NDAs from Chinese, French, German, Hindi, and other languages into Arabic. International business partnerships often involve multi-language NDAs—we ensure consistent protection across all versions.'
+  }
+];
+
+const accordionSections = [
+  {
+    title: 'NDA Types We Translate',
+    id: 'types',
+    items: [
+      {
+        heading: 'Unilateral NDAs',
+        body: 'One-way confidentiality where only one party discloses information. Common in employment contexts, vendor relationships, and early-stage business discussions.'
+      },
+      {
+        heading: 'Bilateral/Mutual NDAs',
+        body: 'Both parties share confidential information and owe reciprocal duties. Standard for joint ventures, partnerships, and M&A discussions.'
+      },
+      {
+        heading: 'Employment NDAs',
+        body: 'Employee confidentiality agreements protecting trade secrets, client information, and proprietary processes. Often combined with non-compete provisions.'
+      },
+      {
+        heading: 'Investment NDAs',
+        body: 'Pre-investment confidentiality for due diligence processes. Protect financial information, business plans, and strategic data during funding discussions.'
+      },
+      {
+        heading: 'Technology NDAs',
+        body: 'Protection for software code, algorithms, technical specifications, and intellectual property in technology partnerships.'
+      }
+    ]
+  },
+  {
+    title: 'Critical NDA Elements',
+    id: 'elements',
+    items: [
+      {
+        heading: 'Confidential Information Definition',
+        body: 'The scope of what is protected. Must be translated to include all intended categories (technical, financial, business) without unintended gaps.'
+      },
+      {
+        heading: 'Exclusions',
+        body: 'Information not covered—publicly available, independently developed, previously known. These exclusions limit obligations and must be precisely rendered.'
+      },
+      {
+        heading: 'Permitted Disclosures',
+        body: 'Circumstances allowing disclosure—to employees, advisors, or under legal compulsion. Must clearly define who can access information and under what conditions.'
+      },
+      {
+        heading: 'Duration & Survival',
+        body: 'How long obligations last. Some duties end with the agreement; others survive termination. Time periods must be unambiguous in translation.'
+      },
+      {
+        heading: 'Remedies & Enforcement',
+        body: 'What happens upon breach—injunctive relief, damages, specific performance. Strong remedy language must remain strong in Arabic translation.'
+      }
+    ]
+  }
+];
 ---
 
-<ServiceLayout {...pageData}>
-  
-  <section class="section bg-white">
-    <div class="container">
-      <h2>What You Receive</h2>
-      <p class="section-intro">Every NDA translation includes:</p>
-      
-      <div class="deliverables-grid">
-        <div class="deliverable-card">
-          <div class="deliverable-icon"><i class="fas fa-file-pdf"></i></div>
-          <h3>Digital PDF Copy</h3>
-          <p>Sent via WhatsApp and email. Suitable for circulation to parties for review.</p>
-        </div>
-        
-        <div class="deliverable-card">
-          <div class="deliverable-icon"><i class="fas fa-stamp"></i></div>
-          <h3>MOJ-Stamped Original</h3>
-          <p>Physical copy for signing and filing. Includes QR verification and translator credentials.</p>
-        </div>
-        
-        <div class="deliverable-card">
-          <div class="deliverable-icon"><i class="fas fa-copy"></i></div>
-          <h3>Certified Copies</h3>
-          <p>Additional copies for each signatory party and for corporate records.</p>
-        </div>
-        
-        <div class="deliverable-card">
-          <div class="deliverable-icon"><i class="fas fa-truck"></i></div>
-          <h3>Courier Delivery</h3>
-          <p>Free delivery across Dubai. Same-day available for urgent signings.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
+<ServiceLayout
+  title="NDA Translation Dubai | Non-Disclosure Agreement Translation | MOJ Certified"
+  description="MOJ-certified NDA translation in Dubai. Confidentiality agreements for business, employment, investment. Precise legal terminology for UAE court enforceability."
+  keywords="nda translation dubai, confidentiality agreement translation, non-disclosure agreement arabic, business nda translation"
+  heroTitle="NDA Translation"
+  heroSubtitle="Non-Disclosure Agreements"
+  heroIntro="Non-Disclosure Agreements protect your most valuable business information—trade secrets, client data, strategic plans. The Arabic translation must provide the same protection as the original. Ambiguous translation can create gaps that undermine the entire agreement's purpose."
+  snapshot={snapshot}
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  serviceType="NDA Translation Service"
+  processSteps={processSteps}
+  processTitle="NDA Translation Process"
+  accordionSections={accordionSections}
+>
   <section class="section bg-light">
     <div class="container">
-      <h2>Service Levels and Pricing</h2>
-      <p class="section-intro">Choose based on your signing timeline:</p>
+      <h2>Protecting Your Confidential Information</h2>
+      <p>NDAs are often the first legal document in a business relationship—signed before sharing the information that makes deals possible. This makes translation quality critical from the very start of your engagement.</p>
       
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <h3>Standard</h3>
-          <div class="pricing-price">AED 200</div>
-          <p class="pricing-time">24-hour delivery</p>
-          <ul class="pricing-features">
-            <li>MOJ-certified translation</li>
-            <li>Digital PDF + physical copy</li>
-            <li>Free Dubai delivery</li>
-            <li>WhatsApp updates</li>
-          </ul>
-        </div>
-        
-        <div class="pricing-card pricing-card--featured">
-          <h3>Express</h3>
-          <div class="pricing-price">AED 350</div>
-          <p class="pricing-time">6-hour delivery</p>
-          <ul class="pricing-features">
-            <li>Everything in Standard</li>
-            <li>Priority queue</li>
-            <li>Dedicated coordinator</li>
-            <li>Same-day physical delivery</li>
-          </ul>
-        </div>
-        
-        <div class="pricing-card">
-          <h3>VIP Concierge</h3>
-          <div class="pricing-price">AED 550</div>
-          <p class="pricing-time">1-hour draft</p>
-          <ul class="pricing-features">
-            <li>Everything in Express</li>
-            <li>Immediate agent assignment</li>
-            <li>Direct phone line</li>
-            <li>Urgent meeting support</li>
-          </ul>
-        </div>
-      </div>
+      <p>Consider what happens if the confidential information definition is too narrow in translation: data you intended to protect might be excluded. Or if permitted disclosure language is too broad: recipients might share your information with parties you never intended to reach.</p>
+      
+      <p>Our legal translators understand NDA structure and purpose. They preserve the protective intent of every clause while ensuring the Arabic version uses terminology that UAE courts recognize and enforce.</p>
     </div>
   </section>
 
+  <section class="section">
+    <div class="container">
+      <h2>Related Services</h2>
+      <div class="related-grid">
+        <a href="/legal/contracts/" class="related-card">
+          <h3>Contract Translation</h3>
+          <p>All commercial contract types</p>
+        </a>
+        <a href="/legal/contracts/mou/" class="related-card">
+          <h3>MOU Translation</h3>
+          <p>Memoranda of understanding</p>
+        </a>
+        <a href="/legal-translation-dubai/" class="related-card">
+          <h3>Legal Translation Hub</h3>
+          <p>Complete legal document services</p>
+        </a>
+      </div>
+    </div>
+  </section>
 </ServiceLayout>
 
 <style>
-  .section-intro {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    max-width: 700px;
-    margin-bottom: 2rem;
-  }
-  
-  .deliverables-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-  }
-  
-  .deliverable-card {
-    background: #f8f9fa;
-    border-radius: 1rem;
-    padding: 1.5rem;
-  }
-  
-  .deliverable-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    background: var(--primary-color);
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-  }
-  
-  .deliverable-card h3 {
-    margin: 0 0 0.5rem;
-    font-size: 1.1rem;
-  }
-  
-  .deliverable-card p {
-    margin: 0;
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.6;
-  }
-  
-  .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
-  
-  .pricing-card {
-    background: #ffffff;
-    border-radius: 1rem;
-    padding: 2rem;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    text-align: center;
-  }
-  
-  .pricing-card--featured {
-    border-color: var(--accent-color);
-    box-shadow: 0 8px 30px rgba(255, 22, 84, 0.15);
-  }
-  
-  .pricing-card h3 {
-    margin: 0 0 0.5rem;
-    font-size: 1.25rem;
-  }
-  
-  .pricing-price {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 0.25rem;
-  }
-  
-  .pricing-time {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .pricing-features {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align: left;
-  }
-  
-  .pricing-features li {
-    padding: 0.5rem 0;
-    padding-left: 1.5rem;
-    position: relative;
-    font-size: 0.95rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  }
-  
-  .pricing-features li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--accent-color);
-    font-weight: 700;
-  }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+  .related-card { padding: 1.5rem; background: var(--bg-light, #f8f9fa); border-radius: 8px; text-decoration: none; color: inherit; border-left: 3px solid var(--primary-color); transition: all 0.2s; }
+  .related-card:hover { border-left-color: var(--accent-color); background: white; }
+  .related-card h3 { font-size: 1.1rem; margin: 0 0 0.5rem; color: var(--primary-color); }
+  .related-card p { font-size: 0.9rem; color: var(--text-muted); margin: 0; }
 </style>

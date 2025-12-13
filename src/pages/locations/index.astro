@@ -1,276 +1,269 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PageHero from '../../components/PageHero.astro';
-import CTASection from '../../components/CTASection.astro';
-import CrossSiloLinks from '../../components/CrossSiloLinks.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Locations', url: '/locations/' }
+];
+
+const dubaiAreas = [
+  { name: 'Dubai Marina', href: '/locations/dubai/marina/', desc: 'Waterfront community, DMCC businesses' },
+  { name: 'Downtown Dubai', href: '/locations/dubai/downtown/', desc: 'Burj Khalifa area, DIFC proximity' },
+  { name: 'Business Bay', href: '/locations/dubai/business-bay/', desc: 'Commercial hub, corporate offices' },
+  { name: 'JLT', href: '/locations/dubai/jlt/', desc: 'Jumeirah Lakes Towers, DMCC' },
+  { name: 'Deira', href: '/locations/dubai/deira/', desc: 'Traditional business district' },
+  { name: 'Bur Dubai', href: '/locations/dubai/bur-dubai/', desc: 'Historic area, courts nearby' }
+];
+
+const otherEmirates = [
+  { name: 'Abu Dhabi', href: '/locations/abu-dhabi/', desc: 'Capital city services' },
+  { name: 'Sharjah', href: '/locations/sharjah/', desc: 'Sharjah business community' },
+  { name: 'Ajman', href: '/locations/ajman/', desc: 'Ajman free zone area' }
+];
 ---
 
 <BaseLayout 
-  title="Translation Services by Location – Dubai, Abu Dhabi, Sharjah | OnlineTranslation.ae"
-  description="MOJ-certified translation services across the UAE. Serving Dubai, Abu Dhabi, Sharjah, and all Emirates with WhatsApp-based workflow and courier delivery."
+  title="Legal Translation Locations UAE | Dubai, Abu Dhabi, Sharjah | OnlineTranslation.ae"
+  description="MOJ-certified legal translation serving all UAE locations. Digital delivery to Dubai Marina, Downtown, Business Bay, Abu Dhabi, Sharjah. WhatsApp-based service, no office visit needed."
 >
-  <PageHero 
-    title="Translation Services Across the UAE"
-    subtitle="MOJ Certified with UAE-Wide Delivery"
-    intro="Based in Dubai, we serve clients across all Emirates. Our WhatsApp-based workflow means you can send documents from anywhere, and we deliver certified translations to your location. Same-day delivery in Dubai, next-day to other Emirates."
-    breadcrumbs={[
-      { label: "HOME", href: "/" },
-      { label: "LOCATIONS" }
-    ]}
-  />
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "OnlineTranslation.ae",
+      "description": "MOJ-certified legal translation services across UAE",
+      "areaServed": [
+        { "@type": "City", "name": "Dubai" },
+        { "@type": "City", "name": "Abu Dhabi" },
+        { "@type": "City", "name": "Sharjah" },
+        { "@type": "City", "name": "Ajman" }
+      ],
+      "telephone": "+971508620217",
+      "url": "https://onlinetranslation.ae"
+    })} />
+  </Fragment>
 
-  <section class="section bg-white">
+  <nav class="breadcrumb-nav" aria-label="Breadcrumb">
     <div class="container">
-      <h2>How Our UAE-Wide Service Works</h2>
-      <div class="content-prose">
-        <p>Our service model is designed for the UAE's mobile, connected population. You do not need to visit an office or be in Dubai to access MOJ-certified translation. Send documents via WhatsApp from anywhere in the Emirates, and we deliver certified translations directly to your location.</p>
-        
-        <p>For Dubai clients, same-day delivery is standard for Express service. Other emirates receive next-day courier delivery. Digital PDFs are sent immediately upon completion regardless of location—useful when you need a translated document urgently for email submission or reference while waiting for the physical copy.</p>
-        
-        <h3>MOJ Certification is Federal</h3>
-        <p>Ministry of Justice (MOJ) certification is a federal credential recognized across all UAE emirates. Whether you submit translated documents to Dubai Courts, Abu Dhabi Judicial Department, Sharjah authorities, or federal ministries, MOJ-certified translations have the same official status throughout the country.</p>
-        
-        <p>This means translations prepared in Dubai are equally valid for use in Abu Dhabi, Sharjah, or any other emirate. There is no need to use a local translation service—quality and certification matter, not the translator's physical location.</p>
+      <ol class="breadcrumb-list">
+        {breadcrumbs.map((crumb, i) => (
+          <li>
+            {i === breadcrumbs.length - 1 ? (
+              <span aria-current="page">{crumb.name}</span>
+            ) : (
+              <a href={crumb.url}>{crumb.name}</a>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="hero-badge">UAE Coverage</span>
+      <h1>Translation Services Across the UAE</h1>
+      <p class="hero-lead">We serve clients throughout the UAE with the same WhatsApp-based workflow—send your document, receive your certified translation digitally. No office visits, no geographic limitations. Physical copies delivered via courier to any UAE address.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/971508620217" class="btn btn--primary">
+          <i class="fab fa-whatsapp"></i> Start on WhatsApp
+        </a>
       </div>
     </div>
   </section>
 
-  <section class="section bg-light">
+  <section class="dubai-section section">
     <div class="container">
-      <h2>Dubai Areas</h2>
-      <p class="section-intro">Specialized services for Dubai's key business and residential districts with same-day delivery.</p>
-      
-      <div class="service-grid">
-        <a href="/locations/dubai/palm-jumeirah/" class="service-card">
-          <div class="service-icon"><i class="fas fa-umbrella-beach"></i></div>
-          <h3>Palm Jumeirah</h3>
-          <p>Property translation for investors and residents. Remote handover support for overseas buyers.</p>
-        </a>
-        
-        <a href="/locations/dubai/difc/" class="service-card">
-          <div class="service-icon"><i class="fas fa-landmark"></i></div>
-          <h3>DIFC</h3>
-          <p>Financial and corporate translation for DIFC-registered entities. Common law terminology expertise.</p>
-        </a>
-        
-        <a href="/locations/dubai/jlt/" class="service-card">
-          <div class="service-icon"><i class="fas fa-city"></i></div>
-          <h3>JLT</h3>
-          <p>Free zone company documents, DMCC licensing, and banking documentation support.</p>
-        </a>
-        
-        <a href="/locations/dubai/business-bay/" class="service-card">
-          <div class="service-icon"><i class="fas fa-building"></i></div>
-          <h3>Business Bay</h3>
-          <p>Corporate and commercial translation for the business district. Litigation and transaction support.</p>
-        </a>
+      <div class="section-header">
+        <h2>Dubai Locations</h2>
+        <p>Serving all Dubai communities with local expertise and digital convenience.</p>
       </div>
-      
-      <div class="more-dubai">
-        <p>We also serve all other Dubai areas including Downtown, Dubai Marina, Al Barsha, Deira, Bur Dubai, Jumeirah, and all residential and commercial districts. <a href="/locations/dubai/">View complete Dubai coverage</a>.</p>
+
+      <div class="locations-grid">
+        {dubaiAreas.map(area => (
+          <a href={area.href} class="location-card">
+            <h3>{area.name}</h3>
+            <p>{area.desc}</p>
+            <span class="card-link">View Services →</span>
+          </a>
+        ))}
       </div>
     </div>
   </section>
 
-  <section class="section bg-white">
+  <section class="emirates-section section bg-light">
     <div class="container">
-      <h2>Other Emirates</h2>
-      <p class="section-intro">Same MOJ-certified quality with next-day delivery across the UAE.</p>
-      
-      <div class="service-grid">
-        <a href="/locations/abu-dhabi/" class="service-card">
-          <div class="service-icon"><i class="fas fa-mosque"></i></div>
+      <div class="section-header">
+        <h2>Other Emirates</h2>
+        <p>Same digital service, same quality, wherever you are in the UAE.</p>
+      </div>
+
+      <div class="locations-grid cols-3">
+        {otherEmirates.map(emirate => (
+          <a href={emirate.href} class="location-card">
+            <h3>{emirate.name}</h3>
+            <p>{emirate.desc}</p>
+            <span class="card-link">View Services →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="how-section section">
+    <div class="container">
+      <div class="content-grid">
+        <div class="content-main">
+          <h2>How Our Location-Independent Service Works</h2>
+          <p>Traditional translation services require you to visit an office, wait in line, and return to collect documents. We've eliminated all of that.</p>
+          
+          <p>Our WhatsApp-based workflow means you can get MOJ-certified translations from anywhere in the UAE—whether you're in a Dubai Marina apartment, an Abu Dhabi villa, or a Sharjah office. The process is identical regardless of your location:</p>
+
+          <ol class="process-list">
+            <li><strong>Send your document via WhatsApp</strong> — Photo or PDF, we accept both</li>
+            <li><strong>Receive instant quote</strong> — Price and turnaround confirmed within minutes</li>
+            <li><strong>Approve and pay online</strong> — Bank transfer or card payment</li>
+            <li><strong>Get certified PDF</strong> — Digital delivery, typically within hours</li>
+            <li><strong>Physical delivery (optional)</strong> — Courier to your address anywhere in UAE</li>
+          </ol>
+
+          <p>This approach saves you time, eliminates travel, and delivers the same MOJ-certified quality that government entities and courts require.</p>
+        </div>
+
+        <div class="content-sidebar">
+          <div class="info-card">
+            <h4>Service Hours</h4>
+            <ul>
+              <li><strong>WhatsApp:</strong> 8 AM - 10 PM</li>
+              <li><strong>Response Time:</strong> Minutes</li>
+              <li><strong>Quote Validity:</strong> 24 hours</li>
+              <li><strong>Weekend:</strong> Limited service</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight">
+            <h4>Courier Delivery</h4>
+            <p>Physical copies delivered to any UAE address. Same-day delivery available in Dubai.</p>
+            <p class="small">Additional delivery fee applies based on location.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="govt-section section bg-light">
+    <div class="container">
+      <h2>Government Offices We Support</h2>
+      <p class="section-intro">Our translations are accepted by government entities across all emirates.</p>
+
+      <div class="govt-grid">
+        <div class="govt-card">
+          <h3>Dubai</h3>
+          <ul>
+            <li>Dubai Courts</li>
+            <li>GDRFA Dubai</li>
+            <li>DLD / RERA</li>
+            <li>DED</li>
+            <li>DIFC Courts</li>
+          </ul>
+        </div>
+        <div class="govt-card">
           <h3>Abu Dhabi</h3>
-          <p>Government, ADGM, and federal authority document translation. Serving the capital with next-day delivery.</p>
-        </a>
-        
-        <a href="/locations/sharjah/" class="service-card">
-          <div class="service-icon"><i class="fas fa-book"></i></div>
-          <h3>Sharjah</h3>
-          <p>Personal and business document translation for the cultural capital. All Sharjah areas covered.</p>
-        </a>
+          <ul>
+            <li>Abu Dhabi Courts</li>
+            <li>ICP</li>
+            <li>ADGM</li>
+            <li>DED Abu Dhabi</li>
+            <li>ADJD</li>
+          </ul>
+        </div>
+        <div class="govt-card">
+          <h3>Federal</h3>
+          <ul>
+            <li>MOFA</li>
+            <li>MOHRE</li>
+            <li>Federal Courts</li>
+            <li>UAE Central Bank</li>
+            <li>MOHESR</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section bg-light">
-    <div class="container">
-      <h2>Understanding UAE Document Requirements</h2>
-      <div class="content-prose">
-        <p>While MOJ certification is federal, each emirate has its own court system and administrative procedures. Understanding these differences helps ensure your documents are prepared correctly.</p>
-        
-        <h3>Dubai</h3>
-        <p>Dubai Courts handle most civil and commercial matters for Dubai residents and businesses. Dubai Land Department manages property transactions. DED (Department of Economic Development) handles business licensing for mainland companies. DIFC operates separately with its own courts under common law. We understand these jurisdictional distinctions and prepare translations appropriately.</p>
-        
-        <h3>Abu Dhabi</h3>
-        <p>Abu Dhabi Judicial Department (ADJD) manages the emirate's court system. Many federal ministries are headquartered in Abu Dhabi, so documents for federal purposes often end up there. ADGM operates as a financial free zone with its own common law system, similar to DIFC. We translate for all Abu Dhabi authorities with awareness of these structures.</p>
-        
-        <h3>Sharjah</h3>
-        <p>Sharjah maintains its own court system and administrative bodies. The emirate is known for cultural institutions and has several active free zones including SAIF Zone and Sharjah Media City. We serve Sharjah clients with the same quality translation and understanding of local requirements.</p>
-        
-        <h3>Northern Emirates</h3>
-        <p>Ajman, Ras Al Khaimah, Fujairah, and Umm Al Quwain each have their own court systems and administrative structures. We can deliver to these emirates and provide translations accepted by their authorities. Contact us for specific timing and delivery arrangements.</p>
-      </div>
+  <section class="cta-section section bg-dark">
+    <div class="container text-center">
+      <h2>Ready to Start?</h2>
+      <p>Same service quality, anywhere in the UAE. Send your document now.</p>
+      <a href="https://wa.me/971508620217" class="btn btn--primary btn--lg">
+        <i class="fab fa-whatsapp"></i> WhatsApp Us
+      </a>
     </div>
   </section>
-
-  <section class="section bg-white">
-    <div class="container">
-      <h2>Common Location-Based Translation Needs</h2>
-      <div class="content-prose">
-        <h3>Property Transactions</h3>
-        <p>Dubai's property market attracts international buyers who need translated documents for Dubai Land Department registration. <a href="/locations/dubai/palm-jumeirah/">Palm Jumeirah</a> investors, in particular, often purchase remotely and need comprehensive documentation support. We translate SPAs, title deeds, POAs, and all property-related documents.</p>
-        
-        <h3>Free Zone Business</h3>
-        <p>The UAE's many free zones—DMCC, JAFZA, SAIF Zone, ADGM, DIFC, and dozens more—generate consistent translation needs. Trade licenses, MOAs, and corporate documents often need Arabic translation for mainland banking and official purposes. We understand free zone terminology across different jurisdictions.</p>
-        
-        <h3>Court Proceedings</h3>
-        <p>Whether your case is before Dubai Courts, ADJD, Sharjah Courts, or one of the common law courts in DIFC or ADGM, we provide <a href="/services/legal-translation/">legal translation</a> that meets court requirements. We can deliver to your lawyer's office, the court building, or wherever you need the documents.</p>
-        
-        <h3>Immigration and Visa</h3>
-        <p>Immigration processing happens through federal authorities but often involves emirate-level steps. Whether you are applying from Dubai, Abu Dhabi, or elsewhere, <a href="/services/golden-visa-translation/">Golden Visa</a> and other immigration translations follow the same federal standards. We deliver wherever you are in the UAE.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-light">
-    <div class="container">
-      <h2>Delivery Options by Location</h2>
-      <div class="content-prose">
-        <h3>Dubai (Same-Day Available)</h3>
-        <p>All Dubai areas receive same-day delivery for Express service. Standard service delivers next business day. VIP Concierge includes priority courier for fastest possible physical delivery. We cover all districts from Deira to Dubai Marina, from Al Quoz to Silicon Oasis.</p>
-        
-        <h3>Abu Dhabi (Next-Day Standard)</h3>
-        <p>Abu Dhabi city, Al Reem Island, Saadiyat, Yas Island, and surrounding areas receive next-day courier delivery. Same-day delivery can be arranged at additional cost for urgent matters. Digital PDFs arrive immediately regardless of physical delivery timing.</p>
-        
-        <h3>Sharjah (Next-Day Standard)</h3>
-        <p>All Sharjah areas including Al Nahda, Al Khan, Al Majaz, and industrial areas receive next-day delivery. Same-day urgent courier is available when needed.</p>
-        
-        <h3>Other Emirates</h3>
-        <p>We can arrange delivery to Ajman, Ras Al Khaimah, Fujairah, and Umm Al Quwain. Timing varies by specific location. Contact us for delivery arrangements to these areas.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-white">
-    <div class="container">
-      <CrossSiloLinks 
-        pageKey="locationsHub"
-        title="Browse by Document Type"
-      />
-    </div>
-  </section>
-
-  <CTASection 
-    title="Anywhere in the UAE"
-    description="Regardless of your location, send documents via WhatsApp and receive certified translations delivered to your door. Same-day in Dubai, next-day everywhere else."
-  />
 </BaseLayout>
 
 <style>
-  .content-prose {
-    max-width: 800px;
-    line-height: 1.8;
-  }
-  
-  .content-prose h3 {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
-    color: var(--primary-color);
-  }
-  
-  .content-prose p {
-    margin-bottom: 1.25rem;
-    color: var(--text-dark);
-  }
-  
-  .content-prose a {
-    color: var(--accent-color);
-    text-decoration: none;
-  }
-  
-  .content-prose a:hover {
-    text-decoration: underline;
-  }
-  
-  .section-intro {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    margin-bottom: 2rem;
-  }
-  
-  .service-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
-  
-  .service-card {
-    background: #ffffff;
-    border-radius: 1rem;
-    padding: 2rem;
-    text-decoration: none;
-    color: inherit;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-  }
-  
-  .service-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
-    border-color: var(--accent-color);
-  }
-  
-  .bg-light .service-card {
-    background: #ffffff;
-  }
-  
-  .service-icon {
-    width: 56px;
-    height: 56px;
-    border-radius: 14px;
-    background: var(--primary-color);
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    margin-bottom: 1.25rem;
-  }
-  
-  .service-card h3 {
-    margin: 0 0 0.5rem;
-    font-size: 1.15rem;
-  }
-  
-  .service-card p {
-    margin: 0;
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.6;
-  }
-  
-  .more-dubai {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background: rgba(14, 43, 72, 0.05);
-    border-radius: 0.75rem;
-    text-align: center;
-  }
-  
-  .more-dubai p {
-    margin: 0;
-    color: var(--text-muted);
-  }
-  
-  .more-dubai a {
-    color: var(--accent-color);
-    text-decoration: none;
-    font-weight: 600;
-  }
-  
-  .more-dubai a:hover {
-    text-decoration: underline;
+  .breadcrumb-nav { background: var(--primary-color); padding: 1rem 0; }
+  .breadcrumb-list { display: flex; list-style: none; margin: 0; padding: 0; gap: 0.5rem; font-size: 0.875rem; }
+  .breadcrumb-list li:not(:last-child)::after { content: '/'; margin-left: 0.5rem; color: rgba(255,255,255,0.5); }
+  .breadcrumb-list a { color: rgba(255,255,255,0.8); text-decoration: none; }
+  .breadcrumb-list span { color: white; }
+
+  .page-hero { background: var(--primary-color); color: white; padding: 4rem 0; }
+  .hero-badge { display: inline-block; background: var(--accent-color); padding: 0.5rem 1rem; border-radius: 2rem; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; }
+  .page-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
+  .hero-lead { font-size: 1.125rem; line-height: 1.7; max-width: 700px; opacity: 0.95; margin-bottom: 2rem; }
+
+  .section { padding: 4rem 0; }
+  .section-header { text-align: center; margin-bottom: 3rem; }
+  .section-header h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+  .section-header p { color: var(--text-muted); }
+  .section-intro { font-size: 1.125rem; color: var(--text-muted); margin-bottom: 2rem; text-align: center; }
+
+  .locations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .locations-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .location-card { background: white; padding: 2rem; border-radius: 1rem; text-decoration: none; color: inherit; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s; border-left: 4px solid var(--primary-color); }
+  .location-card:hover { transform: translateY(-4px); border-left-color: var(--accent-color); }
+  .location-card h3 { font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--primary-color); }
+  .location-card p { color: var(--text-muted); margin-bottom: 1rem; }
+  .card-link { color: var(--accent-color); font-weight: 600; }
+
+  .content-grid { display: grid; grid-template-columns: 1fr 350px; gap: 3rem; }
+  .content-main h2 { font-size: 1.75rem; margin-bottom: 1.5rem; }
+  .content-main p { line-height: 1.8; margin-bottom: 1.25rem; }
+  .process-list { margin: 1.5rem 0; padding-left: 1.5rem; }
+  .process-list li { padding: 0.5rem 0; line-height: 1.6; }
+
+  .info-card { background: white; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+  .info-card.highlight { background: var(--primary-color); color: white; }
+  .info-card h4 { font-size: 1rem; margin-bottom: 1rem; }
+  .info-card ul { list-style: none; padding: 0; margin: 0; }
+  .info-card li { padding: 0.4rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .info-card.highlight li { border-bottom-color: rgba(255,255,255,0.2); }
+  .info-card p { margin-bottom: 0.5rem; }
+  .info-card .small { font-size: 0.85rem; opacity: 0.8; }
+
+  .govt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .govt-card { background: white; padding: 2rem; border-radius: 1rem; }
+  .govt-card h3 { font-size: 1.125rem; margin-bottom: 1rem; color: var(--primary-color); }
+  .govt-card ul { list-style: none; padding: 0; margin: 0; }
+  .govt-card li { padding: 0.4rem 0; color: var(--text-muted); border-bottom: 1px solid rgba(0,0,0,0.06); }
+
+  .cta-section { text-align: center; }
+  .cta-section h2 { color: white; margin-bottom: 1rem; }
+  .cta-section p { color: rgba(255,255,255,0.9); margin-bottom: 2rem; }
+
+  .bg-light { background: var(--bg-light, #f8f9fa); }
+  .bg-dark { background: var(--primary-color); }
+  .text-center { text-align: center; }
+
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; }
+  .btn--primary { background: var(--accent-color); color: white; }
+  .btn--lg { padding: 1.125rem 2.25rem; }
+
+  @media (max-width: 991px) { 
+    .content-grid { grid-template-columns: 1fr; } 
+    .govt-grid { grid-template-columns: 1fr; }
+    .locations-grid.cols-3 { grid-template-columns: 1fr; }
   }
 </style>

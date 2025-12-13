@@ -1,224 +1,204 @@
 ---
-import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import ServiceLayout from '../../../../layouts/ServiceLayout.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Attestation Services', url: '/services/attestation/' },
+  { name: 'Apostille Services', url: '/services/attestation/apostille/' }
+];
+
+const snapshot = [
+  { icon: 'stamp', bold: 'Hague Convention', text: 'Simplified international authentication' },
+  { icon: 'globe', bold: '120+ Countries', text: 'Apostille accepted worldwide' },
+  { icon: 'clock', bold: '3-7 Days', text: 'Typical apostille processing' },
+  { icon: 'exchange-alt', bold: 'Embassy Alternative', text: 'Replaces embassy legalization chain' }
+];
+
+const processSteps = [
+  {
+    number: 1,
+    title: 'Document Assessment',
+    text: 'We verify your document type and confirm whether apostille or traditional attestation is the appropriate route for your destination country.',
+    icon: 'clipboard-check'
+  },
+  {
+    number: 2,
+    title: 'Notarization (if needed)',
+    text: 'Some documents require notarization before apostille. We coordinate notary services or advise on requirements.',
+    icon: 'file-signature'
+  },
+  {
+    number: 3,
+    title: 'Apostille Application',
+    text: 'Documents submitted to the designated competent authority in the issuing country for apostille certification.',
+    icon: 'stamp'
+  },
+  {
+    number: 4,
+    title: 'Delivery',
+    text: 'Apostilled documents shipped to Dubai or your preferred location, ready for use in any Hague Convention country.',
+    icon: 'shipping-fast'
+  }
+];
+
+const faqs = [
+  {
+    question: 'What is an apostille?',
+    answer: 'An apostille is a simplified form of document authentication used between countries that are members of the Hague Apostille Convention. Instead of the lengthy embassy legalization chain, a single apostille certificate from the issuing country makes the document valid in all other member countries. The apostille confirms the document signature and seal are genuine.'
+  },
+  {
+    question: 'Is the UAE a member of the Hague Apostille Convention?',
+    answer: 'Yes. The UAE joined the Hague Apostille Convention in 2023, which significantly simplifies document authentication. Documents apostilled in UAE are now accepted in 120+ member countries without additional embassy legalization. Similarly, apostilled documents from other member countries are accepted in UAE with just MOFA attestation.'
+  },
+  {
+    question: 'When should I use apostille vs traditional attestation?',
+    answer: 'Use apostille when both the issuing country AND destination country are Hague Convention members. If either country is not a member, traditional embassy attestation is required. For UAE use, apostilled foreign documents still need MOFA attestation as the final step. We advise on the correct route for your specific situation.'
+  },
+  {
+    question: 'Which documents can be apostilled?',
+    answer: 'Most public documents can be apostilled: birth certificates, marriage certificates, educational credentials, court documents, notarized documents, and government-issued certificates. Private documents (like commercial contracts) typically need notarization first, then the notarized document can be apostilled.'
+  },
+  {
+    question: 'How long does apostille take?',
+    answer: 'Processing time varies by country. US apostilles typically take 3-5 business days (longer for federal documents). UK apostilles take 2-5 days through FCDO. Australian apostilles take 5-10 days through DFAT. We provide realistic timelines based on current processing speeds in each country.'
+  },
+  {
+    question: 'Do apostilled documents need translation?',
+    answer: 'For UAE use, yes. While the apostille authenticates the document, UAE government entities and courts require Arabic translation. The translation should be done after apostille so it reflects the authenticated document. We coordinate both apostille and subsequent MOJ-certified translation.'
+  }
+];
+
+const accordionSections = [
+  {
+    title: 'Apostille by Country',
+    id: 'countries',
+    items: [
+      {
+        heading: 'United States',
+        body: 'US apostilles are issued by the Secretary of State in each state for state-issued documents, or by the US Department of State for federal documents. Processing times and procedures vary by state. Our partners handle submissions across all 50 states.'
+      },
+      {
+        heading: 'United Kingdom',
+        body: 'UK apostilles are issued by the Foreign, Commonwealth & Development Office (FCDO). Solicitor-certified copies and notarized documents can be apostilled. We coordinate FCDO submissions for all UK document types.'
+      },
+      {
+        heading: 'Australia',
+        body: 'Australian apostilles are issued by the Department of Foreign Affairs and Trade (DFAT). Documents must be original or certified copies from authorized persons. Processing typically takes 5-10 business days.'
+      },
+      {
+        heading: 'European Union Countries',
+        body: 'Each EU member state has designated competent authorities for apostille issuance. We coordinate apostilles from Germany, France, Netherlands, Spain, Italy, and other EU countries through local partners.'
+      },
+      {
+        heading: 'India',
+        body: 'India joined the Hague Convention in 2023. Apostilles are issued by designated authorities including the Ministry of External Affairs. This significantly simplifies authentication for Indian documents destined for UAE and other member countries.'
+      }
+    ]
+  },
+  {
+    title: 'Apostille vs Embassy Attestation',
+    id: 'comparison',
+    items: [
+      {
+        heading: 'Speed',
+        body: 'Apostille is typically faster—one step versus multiple embassy visits. A US apostille takes days; traditional attestation through UAE Embassy can take weeks.'
+      },
+      {
+        heading: 'Cost',
+        body: 'Apostille is generally less expensive due to fewer steps and handling points. Embassy attestation involves fees at multiple stages plus courier costs between offices.'
+      },
+      {
+        heading: 'Complexity',
+        body: 'Apostille is a single certificate attached to your document. Embassy attestation requires navigating foreign ministry, embassy, and MOFA procedures with different requirements at each step.'
+      },
+      {
+        heading: 'Acceptance',
+        body: 'Both routes result in documents accepted for UAE use. The key difference is which route applies—determined by whether countries are Hague Convention members.'
+      }
+    ]
+  }
+];
 ---
 
-<BaseLayout
-  title="Apostille Services Dubai - Hague Convention Document Authentication | OnlineTranslation.ae"
-  description="Apostille services for Hague Convention countries. Simplified document authentication for UAE use. Guidance on apostille vs embassy legalization requirements."
+<ServiceLayout
+  title="Apostille Services Dubai | Hague Convention Document Authentication"
+  description="Apostille services for UAE and international document authentication. Hague Convention certification from US, UK, Australia, EU countries. Simplified alternative to embassy legalization."
+  keywords="apostille services dubai, hague apostille uae, document apostille, apostille certificate, international document authentication"
+  heroTitle="Apostille Services"
+  heroSubtitle="Hague Convention Authentication"
+  heroIntro="The Hague Apostille Convention simplifies international document authentication. Instead of lengthy embassy legalization chains, a single apostille certificate makes your documents valid across 120+ member countries. We coordinate apostille services from the US, UK, Europe, Australia, and other member nations."
+  snapshot={snapshot}
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  serviceType="Apostille Service"
+  processSteps={processSteps}
+  processTitle="Apostille Process"
+  accordionSections={accordionSections}
 >
-  <section class="hero-section bg-dark" data-theme="dark">
-    <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">HOME</a>
-        <span class="separator">&gt;</span>
-        <a href="/services/attestation/">ATTESTATION</a>
-        <span class="separator">&gt;</span>
-        <span class="current">APOSTILLE</span>
-      </nav>
-
-      <h1>Apostille Services</h1>
-      <p class="hero-subtitle">Hague Convention Authentication</p>
-      <p class="hero-intro">For documents from Hague Convention member countries, an apostille provides simplified authentication that is recognized internationally. While UAE is not a Hague member, apostilled documents still require embassy attestation for full UAE acceptance. We guide you through the complete process.</p>
-    </div>
-  </section>
-
-  <section class="section bg-white">
-    <div class="container">
-      <h2>Understanding Apostille Authentication</h2>
-
-      <div class="info-grid">
-        <div class="info-card">
-          <i class="fas fa-certificate"></i>
-          <h3>What is an Apostille?</h3>
-          <p>An apostille is a standardized certificate that authenticates documents for use in countries that are members of the Hague Apostille Convention.</p>
-        </div>
-
-        <div class="info-card highlight">
-          <i class="fas fa-exclamation-triangle"></i>
-          <h3>UAE Requirement</h3>
-          <p>Since UAE is not a Hague member, apostilled documents still require UAE Embassy attestation followed by MOFA attestation for official use.</p>
-        </div>
-
-        <div class="info-card">
-          <i class="fas fa-check-circle"></i>
-          <h3>Simplified First Step</h3>
-          <p>Apostille replaces the need for home country ministry authentication, making it a faster first step in the attestation chain.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="section bg-light">
     <div class="container">
-      <h2>Apostille Process for UAE Documents</h2>
-
-      <div class="process-flow">
-        <div class="process-step">
-          <div class="step-number">1</div>
-          <h3>Apostille</h3>
-          <p>Obtain apostille from competent authority in issuing country (replaces ministry authentication)</p>
-        </div>
-        <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
-        <div class="process-step">
-          <div class="step-number">2</div>
-          <h3>UAE Embassy</h3>
-          <p>Submit apostilled document to UAE Embassy for attestation stamp</p>
-        </div>
-        <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
-        <div class="process-step">
-          <div class="step-number">3</div>
-          <h3>MOFA</h3>
-          <p>Final attestation by UAE Ministry of Foreign Affairs</p>
-        </div>
-      </div>
+      <h2>The UAE and the Hague Apostille Convention</h2>
+      <p>The UAE's accession to the Hague Apostille Convention in 2023 marked a significant change in document authentication. Previously, all foreign documents required the lengthy embassy attestation chain. Now, documents from other member countries can follow the simplified apostille route.</p>
+      
+      <p>For documents destined for UAE use, apostilled documents from member countries require only MOFA attestation as the final step—eliminating the need for UAE Embassy attestation in the origin country. This saves time, reduces costs, and simplifies the process considerably.</p>
+      
+      <p>Similarly, UAE-issued documents can now be apostilled for use in other member countries, replacing the previous requirement for embassy legalization at each destination country's embassy.</p>
     </div>
   </section>
 
-  <section class="section bg-white">
+  <section class="section">
     <div class="container">
-      <h2>Common Apostille Countries</h2>
-      <p class="section-intro">Major Hague Convention member countries for UAE expat documents.</p>
-
-      <div class="country-grid">
-        <div class="country-item">
-          <span class="flag">🇬🇧</span>
-          <h3>United Kingdom</h3>
-          <p>FCO issues apostilles for UK documents</p>
-        </div>
-
-        <div class="country-item">
-          <span class="flag">🇺🇸</span>
-          <h3>United States</h3>
-          <p>Secretary of State issues by state</p>
-        </div>
-
-        <div class="country-item">
-          <span class="flag">🇩🇪</span>
-          <h3>Germany</h3>
-          <p>Regional courts issue apostilles</p>
-        </div>
-
-        <div class="country-item">
-          <span class="flag">🇫🇷</span>
-          <h3>France</h3>
-          <p>Court of Appeal jurisdiction</p>
-        </div>
-
-        <div class="country-item">
-          <span class="flag">🇦🇺</span>
-          <h3>Australia</h3>
-          <p>DFAT issues apostilles</p>
-        </div>
-
-        <div class="country-item">
-          <span class="flag">🇳🇱</span>
-          <h3>Netherlands</h3>
-          <p>Court registries handle apostilles</p>
-        </div>
-      </div>
-
-      <div class="note-box">
-        <i class="fas fa-info-circle"></i>
-        <p><strong>Note:</strong> India, Pakistan, and several other countries with large UAE expat populations are NOT Hague members. Documents from these countries require full embassy legalization chain.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-light">
-    <div class="container">
-      <h2>Documents Commonly Apostilled</h2>
-
-      <div class="document-grid">
-        <div class="doc-item">
-          <i class="fas fa-user"></i>
-          <span>Birth Certificates</span>
-        </div>
-        <div class="doc-item">
-          <i class="fas fa-ring"></i>
-          <span>Marriage Certificates</span>
-        </div>
-        <div class="doc-item">
-          <i class="fas fa-graduation-cap"></i>
-          <span>Degree Certificates</span>
-        </div>
-        <div class="doc-item">
-          <i class="fas fa-shield-alt"></i>
-          <span>Police Clearance</span>
-        </div>
-        <div class="doc-item">
-          <i class="fas fa-file-contract"></i>
-          <span>Power of Attorney</span>
-        </div>
-        <div class="doc-item">
-          <i class="fas fa-building"></i>
-          <span>Company Documents</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-primary">
-    <div class="container cta-section">
-      <h2>Need Apostille Guidance?</h2>
-      <p>Tell us your document type and country of issue. We'll confirm if apostille applies and guide you through the complete UAE attestation process.</p>
-      <div class="cta-buttons">
-        <a href="https://wa.me/971508620217?text=I%20need%20apostille%20guidance" class="btn btn-accent">
-          <i class="fab fa-whatsapp"></i> Get Guidance
+      <h2>Related Services</h2>
+      <div class="related-grid">
+        <a href="/services/attestation/" class="related-card">
+          <h3>Attestation Guide</h3>
+          <p>Complete attestation services overview</p>
         </a>
-        <a href="/services/attestation/" class="btn btn-outline">
-          <i class="fas fa-arrow-left"></i> All Attestation Services
+        <a href="/services/attestation/mofa/" class="related-card">
+          <h3>MOFA Attestation</h3>
+          <p>Final UAE legalization step</p>
+        </a>
+        <a href="/services/attestation/embassy/" class="related-card">
+          <h3>Embassy Legalization</h3>
+          <p>Traditional attestation route</p>
         </a>
       </div>
     </div>
   </section>
-</BaseLayout>
+</ServiceLayout>
 
 <style>
-  .hero-section { padding: 8rem 0 4rem; background: var(--primary-color); }
-  .breadcrumb { font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 2rem; }
-  .breadcrumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
-  .breadcrumb a:hover { color: #fff; }
-  .breadcrumb .separator { margin: 0 0.75rem; color: rgba(255, 255, 255, 0.4); }
-  .breadcrumb .current { color: #fff; }
-  h1 { font-size: 3rem; margin-bottom: 1rem; color: #fff; }
-  .hero-subtitle { font-size: 1.25rem; color: var(--accent-color); margin-bottom: 1.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; }
-  .hero-intro { font-size: 1.1rem; color: rgba(255, 255, 255, 0.9); max-width: 800px; line-height: 1.8; }
-  .section { padding: 5rem 0; }
-  .section h2 { font-size: 2rem; margin-bottom: 1rem; color: var(--primary-color); }
-  .section-intro { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2.5rem; }
-  .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-  .info-card { text-align: center; padding: 2rem; background: var(--bg-light); border-radius: 12px; }
-  .info-card.highlight { background: #fff3cd; border: 2px solid #ffc107; }
-  .info-card i { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem; }
-  .info-card.highlight i { color: #856404; }
-  .info-card h3 { font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--primary-color); }
-  .info-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
-  .process-flow { display: flex; align-items: flex-start; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-  .process-step { flex: 1; min-width: 200px; max-width: 280px; text-align: center; padding: 2rem; background: #fff; border-radius: 12px; box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); }
-  .step-number { width: 50px; height: 50px; background: var(--accent-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: #fff; font-size: 1.25rem; font-weight: 700; }
-  .process-step h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--primary-color); }
-  .process-step p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
-  .process-arrow { display: flex; align-items: center; color: var(--accent-color); font-size: 1.5rem; padding-top: 2rem; }
-  .country-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem; }
-  .country-item { background: var(--bg-light); border-radius: 12px; padding: 2rem; text-align: center; }
-  .flag { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; }
-  .country-item h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--primary-color); }
-  .country-item p { font-size: 0.85rem; color: var(--text-muted); }
-  .note-box { background: #e7f3ff; border-left: 4px solid #0066cc; padding: 1.5rem; border-radius: 8px; display: flex; align-items: flex-start; gap: 1rem; }
-  .note-box i { color: #0066cc; font-size: 1.25rem; margin-top: 0.2rem; }
-  .note-box p { margin: 0; font-size: 0.95rem; color: var(--text-muted); }
-  .document-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.5rem; }
-  .doc-item { background: #fff; border-radius: 12px; padding: 1.5rem; text-align: center; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); }
-  .doc-item i { font-size: 2rem; color: var(--accent-color); margin-bottom: 0.75rem; display: block; }
-  .doc-item span { font-size: 0.9rem; color: var(--primary-color); font-weight: 500; }
-  .bg-primary { background: var(--primary-color); }
-  .bg-primary h2, .bg-primary p { color: #fff; }
-  .cta-section { text-align: center; max-width: 700px; margin: 0 auto; }
-  .cta-section p { opacity: 0.9; margin-bottom: 2rem; font-size: 1.1rem; }
-  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-  .btn { display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
-  .btn-accent { background: var(--accent-color); color: #fff; }
-  .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255, 255, 255, 0.5); }
-  @media (max-width: 992px) { .info-grid, .country-grid { grid-template-columns: repeat(2, 1fr); } .document-grid { grid-template-columns: repeat(3, 1fr); } .process-arrow { display: none; } }
-  @media (max-width: 768px) { h1 { font-size: 2rem; } .info-grid, .country-grid, .document-grid { grid-template-columns: 1fr; } .hero-section { padding: 6rem 0 3rem; } }
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .related-card {
+    padding: 1.5rem;
+    background: var(--bg-light, #f8f9fa);
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    border-left: 3px solid var(--primary-color);
+    transition: all 0.2s;
+  }
+  
+  .related-card:hover {
+    border-left-color: var(--accent-color);
+    background: white;
+  }
+  
+  .related-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+  
+  .related-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
 </style>

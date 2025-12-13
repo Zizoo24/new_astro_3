@@ -102,6 +102,7 @@ export const mainNav: (NavLink | NavGroup)[] = [
       { label: 'MOA Translation', href: '/legal/corporate/moa/' },
       { label: 'Board Resolutions', href: '/legal/corporate/resolution/' },
       { label: 'Power of Attorney', href: '/legal/corporate/poa/' },
+      { label: 'Trade License', href: '/legal/corporate/license/' },
       
       // Litigation cluster
       { label: 'Court Documents', href: '/legal/litigation/' },
@@ -113,9 +114,9 @@ export const mainNav: (NavLink | NavGroup)[] = [
       { index: 0, label: 'Legal Translation Hub' },
       { index: 1, label: 'Contracts' },
       { index: 6, label: 'Corporate' },
-      { index: 10, label: 'Court & Litigation' },
+      { index: 11, label: 'Court & Litigation' },
     ],
-    dividers: [0, 5, 9],
+    dividers: [0, 5, 10],
   },
   
   // ========================================
@@ -145,7 +146,7 @@ export const mainNav: (NavLink | NavGroup)[] = [
       
       // Academic cluster
       { label: 'Academic Documents', href: '/personal/academic/' },
-      { label: 'University Degree', href: '/personal/education/degree/' },
+      { label: 'University Degree', href: '/personal/academic/degree/' },
       { label: 'Transcripts', href: '/personal/academic/transcripts/' },
     ],
     headers: [
@@ -206,6 +207,7 @@ export const mainNav: (NavLink | NavGroup)[] = [
       { label: 'Technical Manuals', href: '/specialized/technical/' },
       { label: 'Menu Translation', href: '/specialized/hospitality/' },
       { label: 'Website Localization', href: '/specialized/digital/' },
+      { label: 'Financial Documents', href: '/specialized/financial/' },
       
       // High-value packages
       { label: 'Golden Visa Package', href: '/services/golden-visa-translation/', badge: 'POPULAR' },
@@ -213,9 +215,9 @@ export const mainNav: (NavLink | NavGroup)[] = [
     headers: [
       { index: 0, label: 'Technical Translation' },
       { index: 1, label: 'Industry Verticals' },
-      { index: 5, label: 'Packages' },
+      { index: 6, label: 'Packages' },
     ],
-    dividers: [0, 4],
+    dividers: [0, 5],
   },
   
   // ========================================
@@ -232,15 +234,16 @@ export const mainNav: (NavLink | NavGroup)[] = [
       { label: 'DIFC', href: '/locations/dubai/difc/' },
       { label: 'JLT & DMCC', href: '/locations/dubai/jlt/' },
       { label: 'Business Bay', href: '/locations/dubai/business-bay/' },
+      { label: 'Downtown Dubai', href: '/locations/dubai/downtown/' },
       { label: 'Dubai Marina', href: '/locations/dubai/marina/' },
       { label: 'Abu Dhabi', href: '/locations/abu-dhabi/' },
       { label: 'Sharjah', href: '/locations/sharjah/' },
     ],
     headers: [
       { index: 1, label: 'Dubai' },
-      { index: 7, label: 'Other Emirates' },
+      { index: 8, label: 'Other Emirates' },
     ],
-    dividers: [0, 6],
+    dividers: [0, 7],
   },
   
   // ========================================
@@ -296,7 +299,7 @@ export const mobileNav = {
         { label: 'Personal Docs Hub', href: '/personal-documents/' },
         { label: 'Birth Certificate', href: '/personal/vital-records/birth/' },
         { label: 'Marriage Certificate', href: '/personal/vital-records/marriage/' },
-        { label: 'University Degree', href: '/personal/education/degree/' },
+        { label: 'University Degree', href: '/personal/academic/degree/' },
         { label: 'Police Clearance', href: '/personal/immigration/pcc/' },
         { label: 'Bank Statement', href: '/personal/immigration/bank/' },
         { label: 'Driving License', href: '/personal/immigration/license/' },
@@ -393,7 +396,7 @@ export const footerNav = {
     { label: 'Golden Visa Translation', href: '/services/golden-visa-translation/' },
     { label: 'Birth Certificate', href: '/personal/vital-records/birth/' },
     { label: 'Marriage Certificate', href: '/personal/vital-records/marriage/' },
-    { label: 'University Degree', href: '/personal/education/degree/' },
+    { label: 'University Degree', href: '/personal/academic/degree/' },
     { label: 'Power of Attorney', href: '/legal/corporate/poa/' },
     { label: 'India Attestation', href: '/services/attestation/india/' },
   ],
