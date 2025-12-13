@@ -135,9 +135,9 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.45rem 0.75rem;
+    padding: 0.5rem 0.75rem;
     color: #ffffff;
-    font-size: var(--fs-sm, 0.9rem);
+    font-size: var(--fs-sm, 0.95rem);
     font-weight: 500;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
@@ -397,4 +397,274 @@ body.theme-dark .header-desktop.exodus-header .social-icons a:hover {
     color: #ffffff;
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ========================================
+   EXODUS DROPDOWN REFINEMENTS
+   Premium styling to match homepage aesthetic
+
+   Uses actual brand tokens:
+   - Coral: #FF1654 (accent)
+   - Navy: #0E2B48 (primary)
+   - Gold: #d4a54c (secondary accent)
+   ======================================== */
+
+/* --------------------------------------
+   TOP CORAL ACCENT LINE
+   Matches card gradient overlays
+   -------------------------------------- */
+.dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 16px;
+    right: 16px;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        #FF1654 50%,
+        transparent 100%
+    );
+    border-radius: 2px;
+    opacity: 0.8;
+}
+
+/* Ensure dropdown has relative positioning */
+.dropdown-menu {
+    position: absolute;
+}
+
+/* --------------------------------------
+   CORAL LEFT ACCENT BAR ON HOVER
+   Matches card hover accent effect
+   -------------------------------------- */
+.dropdown-menu li a {
+    position: relative;
+}
+
+.dropdown-menu li a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) scaleY(0);
+    width: 3px;
+    height: 60%;
+    background: #FF1654;
+    border-radius: 0 2px 2px 0;
+    transition: transform 0.2s ease;
+}
+
+.dropdown-menu li a:hover::before {
+    transform: translateY(-50%) scaleY(1);
+}
+
+/* Enhanced hover with subtle background shift */
+.dropdown-menu li a:hover {
+    background: rgba(255, 22, 84, 0.08);
+    padding-left: 1rem;
+}
+
+/* --------------------------------------
+   EXODUS-STYLE SECTION HEADERS
+   Matches section-label.exodus-label
+   -------------------------------------- */
+.dropdown-menu .dropdown-header {
+    color: #FF1654;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 0.75rem 0.75rem 0.4rem;
+    margin-top: 0.6rem;
+    border-bottom: 1px solid rgba(255, 22, 84, 0.15);
+    text-shadow: none;
+}
+
+.dropdown-menu .dropdown-header:first-child {
+    margin-top: 0.25rem;
+    padding-top: 0.5rem;
+}
+
+/* --------------------------------------
+   ICON STYLING - CORAL ACCENT
+   Matches specialist-icon treatment
+   -------------------------------------- */
+.dropdown-menu li a i {
+    color: #FF1654;
+    opacity: 0.7;
+    font-size: 0.9em;
+    width: 18px;
+    text-align: center;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.dropdown-menu li a:hover i {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* --------------------------------------
+   BADGE STYLING
+   Matches card-badge treatment
+   -------------------------------------- */
+.dropdown-menu .badge,
+.dropdown-menu .nav-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 8px;
+    margin-left: auto;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    text-shadow: none;
+}
+
+/* Popular/Hot - Coral (primary accent) */
+.dropdown-menu .badge-popular,
+.dropdown-menu .badge-hot {
+    background: #FF1654;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(255, 22, 84, 0.3);
+}
+
+/* New - Green */
+.dropdown-menu .badge-new {
+    background: #27ae60;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(39, 174, 96, 0.3);
+}
+
+/* Express - Gold (secondary accent) */
+.dropdown-menu .badge-express {
+    background: linear-gradient(135deg, #d4a54c 0%, #c49a3e 100%);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(212, 165, 76, 0.3);
+}
+
+/* --------------------------------------
+   VIEW ALL / FOOTER LINK
+   Matches exodus CTA treatment
+   -------------------------------------- */
+.dropdown-menu .dropdown-footer,
+.dropdown-menu .view-all {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0.75rem 1rem;
+    margin-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #FF1654;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-shadow: none;
+    transition: all 0.2s ease;
+}
+
+.dropdown-menu .dropdown-footer:hover,
+.dropdown-menu .view-all:hover {
+    background: #FF1654;
+    color: #ffffff;
+}
+
+.dropdown-menu .dropdown-footer i,
+.dropdown-menu .view-all i {
+    color: inherit;
+    opacity: 1;
+    transition: transform 0.2s ease;
+}
+
+.dropdown-menu .dropdown-footer:hover i,
+.dropdown-menu .view-all:hover i {
+    transform: translateX(4px);
+}
+
+/* --------------------------------------
+   DIVIDER REFINEMENT
+   Subtle coral tint
+   -------------------------------------- */
+.dropdown-menu .dropdown-divider {
+    border-top-color: rgba(255, 22, 84, 0.1);
+    margin: 0.5rem 0.75rem;
+}
+
+/* --------------------------------------
+   SUBMENU ARROW - CORAL
+   -------------------------------------- */
+.dropdown-menu li.dropdown-submenu > a::after {
+    border-left-color: rgba(255, 255, 255, 0.5);
+}
+
+.dropdown-menu li.dropdown-submenu:hover > a::after {
+    border-left-color: #FF1654;
+}
+
+/* --------------------------------------
+   DARK MODE ADJUSTMENTS
+   Softer coral for dark mode
+   -------------------------------------- */
+[data-theme="dark"] .dropdown-menu::before,
+body.theme-dark .dropdown-menu::before {
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        #ff6b6b 50%,
+        transparent 100%
+    );
+    opacity: 0.6;
+}
+
+[data-theme="dark"] .dropdown-menu .dropdown-header,
+body.theme-dark .dropdown-menu .dropdown-header {
+    color: #ff6b6b;
+    border-bottom-color: rgba(255, 107, 107, 0.12);
+}
+
+[data-theme="dark"] .dropdown-menu li a i,
+body.theme-dark .dropdown-menu li a i {
+    color: #ff6b6b;
+}
+
+[data-theme="dark"] .dropdown-menu li a:hover,
+body.theme-dark .dropdown-menu li a:hover {
+    background: rgba(255, 107, 107, 0.08);
+}
+
+[data-theme="dark"] .dropdown-menu li a::before,
+body.theme-dark .dropdown-menu li a::before {
+    background: #ff6b6b;
+}
+
+[data-theme="dark"] .dropdown-menu .dropdown-footer,
+[data-theme="dark"] .dropdown-menu .view-all,
+body.theme-dark .dropdown-menu .dropdown-footer,
+body.theme-dark .dropdown-menu .view-all {
+    color: #ff6b6b;
+}
+
+[data-theme="dark"] .dropdown-menu .dropdown-footer:hover,
+[data-theme="dark"] .dropdown-menu .view-all:hover,
+body.theme-dark .dropdown-menu .dropdown-footer:hover,
+body.theme-dark .dropdown-menu .view-all:hover {
+    background: #ff6b6b;
+    color: #ffffff;
+}
+
+/* --------------------------------------
+   REDUCED MOTION
+   Respect user preferences
+   -------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    .dropdown-menu li a::before,
+    .dropdown-menu li a,
+    .dropdown-menu li a i,
+    .dropdown-menu .dropdown-footer i {
+        transition: none;
+    }
 }
