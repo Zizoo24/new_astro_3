@@ -15,7 +15,7 @@ sections:
         text: "Standard digital drafts are typically delivered within an hour of receiving clear scans of your documents, during working hours."
       - label: "White-Glove Shield"
         text: "We pre-validate documents and flag issues before submission, to minimize rejections and wasted visits to government counters."
-    image: "/images/onedrive/contact-office.png"
+    image: "/assets/images/onedrive/contact-office.png"
     imageAlt: "OnlineTranslation.ae Office"
 
   - type: "licensing"
