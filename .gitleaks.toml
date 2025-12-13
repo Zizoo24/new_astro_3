@@ -1,0 +1,24 @@
+# Gitleaks configuration
+# https://github.com/gitleaks/gitleaks
+
+title = "Gitleaks config"
+
+[extend]
+# Use default rules as base
+useDefault = true
+
+# Paths to ignore
+[allowlist]
+paths = [
+  '''node_modules''',
+  '''dist''',
+  '''\.astro''',
+  '''package-lock\.json''',
+]
+
+# Additional patterns to ignore (false positives)
+regexes = [
+  # Example API keys that are not real
+  '''example-api-key''',
+  '''your-api-key-here''',
+]

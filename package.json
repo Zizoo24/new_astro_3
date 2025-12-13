@@ -22,10 +22,34 @@
     "dev": "astro dev --port 5000 --host 0.0.0.0",
     "build": "astro build",
     "preview": "astro preview --port 5000 --host 0.0.0.0",
-    "start": "astro dev --port 5000 --host 0.0.0.0"
+    "start": "astro dev --port 5000 --host 0.0.0.0",
+    "check": "astro check",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix",
+    "lint:css": "stylelint \"**/*.css\" --ignore-path .prettierignore",
+    "lint:css:fix": "stylelint \"**/*.css\" --fix --ignore-path .prettierignore",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "links:check": "linkinator ./dist --recurse --skip \"^(?!https?://onlinetranslation\\.ae)\"",
+    "quality": "npm run check && npm run lint && npm run lint:css && npm run format:check"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",
     "astro": "^5.16.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.6",
+    "@eslint/js": "^9.39.2",
+    "@typescript-eslint/eslint-plugin": "^8.49.0",
+    "@typescript-eslint/parser": "^8.49.0",
+    "eslint": "^9.39.2",
+    "eslint-plugin-astro": "^1.5.0",
+    "globals": "^16.5.0",
+    "linkinator": "^7.5.1",
+    "prettier": "^3.7.4",
+    "prettier-plugin-astro": "^0.14.1",
+    "stylelint": "^16.26.1",
+    "stylelint-config-standard": "^39.0.1",
+    "typescript": "^5.9.3"
   }
 }
