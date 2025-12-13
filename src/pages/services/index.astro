@@ -1,502 +1,699 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import CrossSiloLinks from '../../components/CrossSiloLinks.astro';
+/**
+ * /services/ - Translation Services Hub
+ * 
+ * CONVERTED: BaseLayout → CategoryLayout
+ * Added: BreadcrumbList, Service, FAQPage schemas (auto-generated)
+ * Added: 10 FAQs for rich snippets
+ * 
+ * Type: Main Services Hub Page
+ */
+import CategoryLayout from '../../layouts/CategoryLayout.astro';
+
+const breadcrumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Services' }
+];
+
+const faqs = [
+  {
+    question: "What documents can you translate?",
+    answer: "We translate all document types required for UAE government, court, and business use. This includes birth certificates, marriage certificates, divorce decrees, death certificates, academic degrees, transcripts, police clearance certificates, bank statements, driving licenses, contracts, court judgments, powers of attorney, trade licenses, MOAs, board resolutions, and corporate filings. If you have a document not listed here, send it via WhatsApp for a free assessment."
+  },
+  {
+    question: "Are your translations accepted by UAE courts and government?",
+    answer: "Yes. All our translations are performed by MOJ-certified translators registered with the UAE Ministry of Justice. Each translation includes the official MOJ stamp, translator signature, unique serial number, and QR verification code. This certification is required for acceptance by Dubai Courts, Abu Dhabi Judicial Department, DIFC Courts, ADGM Courts, GDRFA, ICA, MOHRE, DLD, and all UAE government entities."
+  },
+  {
+    question: "How long does translation take?",
+    answer: "Standard single-page documents like birth certificates and marriage certificates complete within 4-6 hours. Multi-page documents such as contracts and academic transcripts take 24-48 hours depending on length and complexity. Complex legal documents may require 2-3 business days. We offer same-day express service for urgent requirements—contact us with your deadline and we will confirm availability."
+  },
+  {
+    question: "Do you provide attestation services?",
+    answer: "Yes. We coordinate the complete attestation chain for documents requiring legalization. This includes notarization in the country of origin, authentication by that country's Foreign Ministry, attestation by the UAE Embassy, and final MOFA attestation in the UAE. We handle your original documents securely and provide tracking throughout the process. Attestation timelines vary by country—typically 2-4 weeks for the complete chain."
+  },
+  {
+    question: "What languages do you translate?",
+    answer: "We translate 43+ languages including Arabic, English, French, German, Spanish, Portuguese, Italian, Russian, Chinese (Simplified and Traditional), Japanese, Korean, Hindi, Urdu, Tagalog, Bengali, Tamil, Malayalam, Farsi, Turkish, and many more. Arabic-English and English-Arabic are our most common translation pairs for UAE use. All language combinations receive the same MOJ certification."
+  },
+  {
+    question: "How do I send my documents for translation?",
+    answer: "The easiest method is WhatsApp. Take clear photos or scan your documents and send them to +971 50 862 0217. We also accept email submissions and secure file uploads. We support PDF, JPG, PNG, and DOCX formats. Within 5-10 minutes of receiving your documents, we confirm receipt, assess requirements, and provide a fixed quote with timeline."
+  },
+  {
+    question: "What is the cost of translation services?",
+    answer: "Standard certificates start at AED 150 per page including MOJ certification. Multi-page documents (5+ pages) receive volume pricing at AED 120 per page. Legal contracts and complex documents are quoted based on complexity and length. Express same-day service adds 50% to standard rates. We provide exact quotes after reviewing your specific documents—the price quoted is the price you pay with no hidden fees."
+  },
+  {
+    question: "Do you deliver physical copies?",
+    answer: "Yes. While we provide digital copies immediately via WhatsApp and email, we also courier hard copies with original MOJ stamps to any location in the UAE. Same-day courier delivery is available in Dubai. Delivery to Abu Dhabi, Sharjah, and other emirates typically arrives next business day. International courier services are available for documents needed outside the UAE."
+  },
+  {
+    question: "Can you help with Golden Visa document requirements?",
+    answer: "Yes. We provide complete document translation packages for Golden Visa applications including degree certificates, professional licenses, bank statements, salary certificates, property title deeds, and supporting documentation. We understand ICA requirements and format translations for smooth Golden Visa processing. We also coordinate MOHESR attestation for academic credentials when required."
+  },
+  {
+    question: "What if my translation is rejected by a government entity?",
+    answer: "If any UAE government entity rejects a translation we provided due to our error, we correct it immediately at no additional charge and redeliver. We also cover courier costs for physical redelivery. This guarantee reflects our confidence in our MOJ-certified process and our understanding of what UAE authorities require. We process thousands of documents monthly with consistent acceptance."
+  }
+];
+
+const services = [
+  {
+    icon: "balance-scale",
+    title: "Legal Translation",
+    desc: "Court documents, contracts, judgments, and litigation materials translated by MOJ-certified specialists. Formatted for Dubai Courts, DIFC, and ADGM.",
+    features: ["MOJ certification included", "Court formatting standards", "Rush processing available"],
+    href: "/legal-translation-dubai/"
+  },
+  {
+    icon: "star",
+    title: "Golden Visa Translation",
+    desc: "Complete document packages for UAE Golden Visa applications. Academic credentials, professional certificates, and investment documentation.",
+    features: ["ICP/GDRFA accepted format", "Full document package review", "Application guidance included"],
+    href: "/services/golden-visa-translation/"
+  },
+  {
+    icon: "certificate",
+    title: "Certificate Translation",
+    desc: "Birth certificates, marriage certificates, degree certificates, and professional credentials. Certified for government submission.",
+    features: ["Vital records specialists", "Academic credential experts", "Attestation coordination"],
+    href: "/services/certificate-translation/"
+  },
+  {
+    icon: "building",
+    title: "Corporate Translation",
+    desc: "Trade licenses, MOAs, shareholder agreements, and regulatory filings. Free zone documentation and DED submissions.",
+    features: ["All free zone authorities", "DMCC, JAFZA, DAFZA ready", "Bulk pricing available"],
+    href: "/services/corporate-translation/"
+  },
+  {
+    icon: "stamp",
+    title: "Attestation Services",
+    desc: "Complete attestation chain from your home country to UAE acceptance. MOFA, embassy, and ministry attestations handled.",
+    features: ["Full chain attestation", "Secure document handling", "Status tracking provided"],
+    href: "/services/attestation/"
+  },
+  {
+    icon: "user-friends",
+    title: "Personal Documents",
+    desc: "Immigration documents, bank statements, driving licenses, and police clearance certificates for visa and residency applications.",
+    features: ["GDRFA/ICA formats", "Name consistency verification", "Express processing"],
+    href: "/personal/"
+  }
+];
+
+const processSteps = [
+  {
+    icon: "mobile-alt",
+    title: "Send Your Documents",
+    desc: "Share documents via WhatsApp, email, or secure upload. We accept PDF, JPG, PNG, and DOCX formats. Include a note about intended use for correct formatting."
+  },
+  {
+    icon: "clipboard-check",
+    title: "Review and Quote",
+    desc: "Within minutes, we confirm document type, translation requirements, attestation needs, exact price, and delivery timeline. Clear written quote with no hidden fees."
+  },
+  {
+    icon: "pen-fancy",
+    title: "Translation by Specialists",
+    desc: "Your document is assigned to a specialist in that document type. Every translation is reviewed by a second translator before certification."
+  },
+  {
+    icon: "paper-plane",
+    title: "Delivery and Certification",
+    desc: "Receive your MOJ-certified translation digitally via WhatsApp and email. Physical copies with original stamps couriered to your location."
+  }
+];
+
+const documentTypes = [
+  {
+    category: "Legal Documents",
+    icon: "gavel",
+    items: ["Court judgments", "Contracts and agreements", "Powers of Attorney", "Wills and probate", "Arbitration awards", "Legal notices"]
+  },
+  {
+    category: "Personal Documents",
+    icon: "user",
+    items: ["Birth certificates", "Marriage certificates", "Divorce decrees", "Death certificates", "Police clearance", "Driving licenses"]
+  },
+  {
+    category: "Academic Documents",
+    icon: "graduation-cap",
+    items: ["University degrees", "Academic transcripts", "Professional certifications", "Training certificates", "School records", "Equivalency documents"]
+  },
+  {
+    category: "Corporate Documents",
+    icon: "briefcase",
+    items: ["Trade licenses", "MOA and AOA", "Board resolutions", "Shareholder agreements", "Financial statements", "Regulatory filings"]
+  }
+];
 ---
 
-<BaseLayout
+<CategoryLayout
   title="Translation Services Dubai | MOJ Certified Legal Translation | OnlineTranslation.ae"
-  description="Professional translation services in Dubai. MOJ-licensed legal translation for personal documents, corporate agreements, Golden Visa applications, and attestation. 43+ languages, same-day delivery available."
+  description="Professional MOJ-certified translation services in Dubai. Legal documents, personal certificates, corporate filings, Golden Visa packages, and attestation services. 43+ languages, same-day delivery available."
+  keywords="translation services dubai, moj certified translation, legal translation dubai, document translation uae, certified translation services, arabic translation dubai, golden visa translation"
+  heroTitle="Translation Services Dubai"
+  heroSubtitle="MOJ-Licensed • 43+ Languages • Same-Day Available"
+  heroIntro="From your property purchase documents to your Golden Visa application, we provide the MOJ-certified translation that UAE authorities accept. Every document is reviewed before translation to ensure it meets the specific requirements for your intended use—whether court submission, visa application, or business registration."
+  breadcrumbs={breadcrumbs}
+  serviceType="Document Translation Services"
+  faqs={faqs}
 >
-  <section class="services-hero">
-    <img src="/images/onedrive/hero/cyber-smith.png" alt="" class="hero-bg-image" loading="eager" />
-    <div class="hero-gradient-overlay"></div>
-    <span class="hero-badge">MOJ-Licensed • 43+ Languages</span>
-    <h1 class="hero-title">
-      <span class="title-prefix">Translation Services in Dubai</span>
-      <span class="title-main">Built for Documents That Can't Fail</span>
-    </h1>
-    <p class="hero-subtitle">From your Palm Jumeirah villa purchase to your Golden Visa application, we provide the MOJ-licensed translation that UAE authorities accept. Every document is reviewed before translation to ensure it meets the requirements for your intended use.</p>
-    
-    <div class="hero-cta-group">
-      <a href="https://wa.me/971508620217" class="btn-primary">
-        <i class="fab fa-whatsapp btn-icon"></i> Send Documents on WhatsApp
-      </a>
-      <a href="#how-it-works" class="btn-secondary">
-        <i class="fas fa-play-circle btn-icon"></i> See How It Works
-      </a>
-    </div>
-    
-    <div class="trust-bar">
-      <div class="trust-item">
-        <strong>24hr</strong>
-        Standard Delivery
-      </div>
-      <div class="trust-item">
-        <strong>Same-Day</strong>
-        Express Available
-      </div>
-      <div class="trust-item">
-        <strong>Court</strong>
-        Ready Documents
-      </div>
-    </div>
-  </section>
 
-  <section class="section bg-white" style="padding: 4rem 1.5rem;">
+  <!-- Services Grid -->
+  <section class="section">
     <div class="container">
-      <div class="services-grid-enhanced">
-        <div class="service-card-enhanced card-legal">
-          <span class="card-icon-enhanced">⚖️</span>
-          <h3 class="card-title-enhanced">Legal Translation</h3>
-          <p class="card-description-enhanced">Court documents, contracts, judgments, and litigation materials translated by MOJ-certified specialists. Formatted for Dubai Courts, DIFC, and ADGM.</p>
-          <ul class="card-features-enhanced">
-            <li>MOJ certification included</li>
-            <li>Court formatting standards</li>
-            <li>Rush processing available</li>
-          </ul>
-          <a href="/services/legal-translation/" class="card-cta-enhanced">
-            Learn More <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
+      <h2>Our Translation Services</h2>
+      <p class="section-intro">Select the service category that matches your document type. Each service includes MOJ certification and is formatted for UAE government acceptance.</p>
 
-        <div class="service-card-enhanced card-visa">
-          <span class="card-icon-enhanced">🛂</span>
-          <h3 class="card-title-enhanced">Golden Visa & Immigration</h3>
-          <p class="card-description-enhanced">Complete document packages for UAE Golden Visa applications. Academic credentials, professional certificates, and investment documentation.</p>
-          <ul class="card-features-enhanced">
-            <li>ICP/GDRFA accepted format</li>
-            <li>Full document package review</li>
-            <li>Application guidance included</li>
-          </ul>
-          <a href="/services/golden-visa-translation/" class="card-cta-enhanced">
-            Learn More <i class="fas fa-arrow-right"></i>
+      <div class="services-grid">
+        {services.map(service => (
+          <a href={service.href} class="service-card">
+            <div class="service-icon">
+              <i class={`fas fa-${service.icon}`}></i>
+            </div>
+            <h3>{service.title}</h3>
+            <p>{service.desc}</p>
+            <ul class="service-features">
+              {service.features.map(feature => (
+                <li><i class="fas fa-check"></i> {feature}</li>
+              ))}
+            </ul>
+            <span class="service-link">Learn More <i class="fas fa-arrow-right"></i></span>
           </a>
-        </div>
-
-        <div class="service-card-enhanced card-certificate">
-          <span class="card-icon-enhanced">📜</span>
-          <h3 class="card-title-enhanced">Certificate Translation</h3>
-          <p class="card-description-enhanced">Birth certificates, marriage certificates, degree certificates, and professional credentials. Certified for government submission.</p>
-          <ul class="card-features-enhanced">
-            <li>Vital records specialists</li>
-            <li>Academic credential experts</li>
-            <li>Attestation coordination</li>
-          </ul>
-          <a href="/services/certificate-translation/" class="card-cta-enhanced">
-            Learn More <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-
-        <div class="service-card-enhanced card-corporate">
-          <span class="card-icon-enhanced">🏢</span>
-          <h3 class="card-title-enhanced">Corporate Translation</h3>
-          <p class="card-description-enhanced">Trade licenses, MOAs, shareholder agreements, and regulatory filings. Free zone documentation and DED submissions.</p>
-          <ul class="card-features-enhanced">
-            <li>All free zone authorities</li>
-            <li>DMCC, JAFZA, DAFZA ready</li>
-            <li>Bulk pricing available</li>
-          </ul>
-          <a href="/services/corporate-translation/" class="card-cta-enhanced">
-            Learn More <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-
-        <div class="service-card-enhanced card-specialized">
-          <span class="card-icon-enhanced">📋</span>
-          <h3 class="card-title-enhanced">Attestation Services</h3>
-          <p class="card-description-enhanced">Complete attestation chain from your home country to UAE acceptance. MOFA, embassy, and ministry attestations handled.</p>
-          <ul class="card-features-enhanced">
-            <li>Full chain attestation</li>
-            <li>Secure document handling</li>
-            <li>Status tracking provided</li>
-          </ul>
-          <a href="/services/attestation/" class="card-cta-enhanced">
-            Learn More <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <section id="how-it-works" class="section bg-light" style="padding: 4rem 1.5rem;">
+  <!-- Process Section -->
+  <section class="section bg-light">
     <div class="container">
-      <div class="content-modules">
-        <div class="content-module">
-          <h2 class="module-heading">How Our Translation Process Works</h2>
-          <p class="module-intro">We've streamlined the translation process so you can focus on your business or personal matters while we handle the compliance details.</p>
-          
-          <div class="accordion-group">
-            <details class="accordion-item">
-              <summary class="accordion-header">
-                <span class="accordion-icon">📱</span>
-                <span class="accordion-title">Step 1: Send Your Documents</span>
-                <i class="fas fa-chevron-down accordion-arrow"></i>
-              </summary>
-              <div class="accordion-content">
-                <p>Share your documents via WhatsApp, email, or our secure upload portal. We accept PDF, JPG, PNG, and DOCX formats. Take a clear photo of your document ensuring all text and stamps are visible.</p>
-                <div class="checklist-tip">
-                  <strong>Tip:</strong> Include a note about the intended use (court submission, visa application, etc.) so we can ensure the correct formatting and certification.
-                </div>
-              </div>
-            </details>
+      <h2>How Our Translation Process Works</h2>
+      <p class="section-intro">We have streamlined the translation process so you can focus on your business or personal matters while we handle the compliance details.</p>
 
-            <details class="accordion-item">
-              <summary class="accordion-header">
-                <span class="accordion-icon">📋</span>
-                <span class="accordion-title">Step 2: Compliance Review & Quote</span>
-                <i class="fas fa-chevron-down accordion-arrow"></i>
-              </summary>
-              <div class="accordion-content">
-                <p>Within minutes, we review your document and confirm:</p>
-                <ul>
-                  <li>Document type and translation requirements</li>
-                  <li>Whether attestation is needed for your use case</li>
-                  <li>Exact price and delivery timeline</li>
-                  <li>Any additional documents that may be required</li>
-                </ul>
-                <p>You receive a clear written quote with no hidden fees.</p>
-              </div>
-            </details>
-
-            <details class="accordion-item">
-              <summary class="accordion-header">
-                <span class="accordion-icon">✍️</span>
-                <span class="accordion-title">Step 3: Translation by Specialists</span>
-                <i class="fas fa-chevron-down accordion-arrow"></i>
-              </summary>
-              <div class="accordion-content">
-                <p>Your document is assigned to a translator who specializes in your document type. Legal documents go to legal translation specialists. Medical documents to medical translators. This ensures accurate terminology and proper formatting.</p>
-                <p>Every translation is reviewed by a second translator before certification.</p>
-              </div>
-            </details>
-
-            <details class="accordion-item">
-              <summary class="accordion-header">
-                <span class="accordion-icon">📬</span>
-                <span class="accordion-title">Step 4: Delivery & Certification</span>
-                <i class="fas fa-chevron-down accordion-arrow"></i>
-              </summary>
-              <div class="accordion-content">
-                <p>You receive your certified translation via:</p>
-                <ul>
-                  <li><strong>Digital delivery:</strong> PDF with MOJ certification stamp sent via WhatsApp or email</li>
-                  <li><strong>Physical copies:</strong> Hard copies with original stamps couriered to your location</li>
-                </ul>
-                <p>Attestation services include secure handling and tracking of your original documents.</p>
-              </div>
-            </details>
+      <div class="process-grid">
+        {processSteps.map((step, index) => (
+          <div class="process-card">
+            <div class="process-number">{index + 1}</div>
+            <div class="process-icon">
+              <i class={`fas fa-${step.icon}`}></i>
+            </div>
+            <h3>{step.title}</h3>
+            <p>{step.desc}</p>
           </div>
-        </div>
-
-        <div class="content-module">
-          <h2 class="module-heading">Legal Translation Services</h2>
-          <p class="module-intro">Our legal translation specialists handle court documents, contracts, and litigation materials with the precision UAE courts require.</p>
-          
-          <div class="accordion-group">
-            <details class="accordion-item">
-              <summary class="accordion-header">
-                <span class="accordion-icon">⚖️</span>
-                <span class="accordion-title">Court Documents & Litigation</span>
-                <i class="fas fa-chevron-down accordion-arrow"></i>
-              </summary>
-              <div class="accordion-content">
-                <p>We translate pleadings, memoranda, judgments, evidence bundles, and all litigation materials. Our translators understand UAE legal terminology and court formatting requirements.</p>
-                <ul>
-                  <li>Pleadings and legal memoranda</li>
-                  <li>Court judgments and orders</li>
-                  <li>Evidence bundles and exhibits</li>
-                  <li>Witness statements and affidavits</li>
-                </ul>
-                <a href="/services/legal-translation/" class="inline-cta">
-                  View Legal Translation Details <i class="fas fa-arrow-right"></i>
-                </a>
-              </div>
-            </details>
-
-            <details class="accordion-item">
-              <summary class="accordion-header">
-                <span class="accordion-icon">📄</span>
-                <span class="accordion-title">Contracts & Agreements</span>
-                <i class="fas fa-chevron-down accordion-arrow"></i>
-              </summary>
-              <div class="accordion-content">
-                <p>Commercial contracts, tenancy agreements, employment contracts, and SPAs translated with legal precision. We maintain the legal effect of every clause.</p>
-                <ul>
-                  <li>Sale and Purchase Agreements (SPAs)</li>
-                  <li>Tenancy contracts and Ejari</li>
-                  <li>Employment contracts</li>
-                  <li>NDAs and confidentiality agreements</li>
-                  <li>Joint venture and partnership agreements</li>
-                </ul>
-              </div>
-            </details>
-
-            <details class="accordion-item">
-              <summary class="accordion-header">
-                <span class="accordion-icon">📝</span>
-                <span class="accordion-title">Powers of Attorney & Notarial Documents</span>
-                <i class="fas fa-chevron-down accordion-arrow"></i>
-              </summary>
-              <div class="accordion-content">
-                <p>General and special powers of attorney, notarized documents, and legal declarations. Formatted for UAE Notary Public acceptance.</p>
-                <ul>
-                  <li>General Power of Attorney</li>
-                  <li>Special Power of Attorney for property</li>
-                  <li>Corporate POA for company representation</li>
-                  <li>Revocation of POA documents</li>
-                </ul>
-                <a href="/legal/corporate/poa/" class="inline-cta">
-                  View POA Translation Services <i class="fas fa-arrow-right"></i>
-                </a>
-              </div>
-            </details>
-          </div>
-        </div>
-
-        <div class="content-module">
-          <h2 class="module-heading">Personal Document Translation</h2>
-          <p class="module-intro">Birth certificates, marriage certificates, academic credentials, and immigration documents translated for UAE government submission.</p>
-          
-          <div class="accordion-group">
-            <details class="accordion-item">
-              <summary class="accordion-header">
-                <span class="accordion-icon">👶</span>
-                <span class="accordion-title">Vital Records (Birth, Marriage, Divorce)</span>
-                <i class="fas fa-chevron-down accordion-arrow"></i>
-              </summary>
-              <div class="accordion-content">
-                <p>Civil status documents require precise translation of names, dates, and official seals. We ensure consistency across all your documents.</p>
-                <ul>
-                  <li>Birth certificates for visa applications</li>
-                  <li>Marriage certificates for family visa</li>
-                  <li>Divorce decrees and settlements</li>
-                  <li>Death certificates</li>
-                </ul>
-                <a href="/personal/vital-records/birth/" class="inline-cta">
-                  View Birth Certificate Translation <i class="fas fa-arrow-right"></i>
-                </a>
-              </div>
-            </details>
-
-            <details class="accordion-item">
-              <summary class="accordion-header">
-                <span class="accordion-icon">🎓</span>
-                <span class="accordion-title">Academic Credentials</span>
-                <i class="fas fa-chevron-down accordion-arrow"></i>
-              </summary>
-              <div class="accordion-content">
-                <p>Degree certificates, transcripts, and professional certifications translated for equivalency assessment and employment.</p>
-                <ul>
-                  <li>University degrees and diplomas</li>
-                  <li>Academic transcripts</li>
-                  <li>Professional certifications</li>
-                  <li>Training certificates</li>
-                </ul>
-                <a href="/personal/education/degree/" class="inline-cta">
-                  View Degree Translation <i class="fas fa-arrow-right"></i>
-                </a>
-              </div>
-            </details>
-
-            <details class="accordion-item">
-              <summary class="accordion-header">
-                <span class="accordion-icon">🛂</span>
-                <span class="accordion-title">Immigration Documents</span>
-                <i class="fas fa-chevron-down accordion-arrow"></i>
-              </summary>
-              <div class="accordion-content">
-                <p>Police clearance certificates, bank statements, and visa support documents translated in the format required by ICP and GDRFA.</p>
-                <ul>
-                  <li>Police Clearance Certificates (PCC)</li>
-                  <li>Bank statements and financial documents</li>
-                  <li>Driving licenses</li>
-                  <li>Medical reports for visa</li>
-                </ul>
-                <a href="/personal/immigration/pcc/" class="inline-cta">
-                  View PCC Translation <i class="fas fa-arrow-right"></i>
-                </a>
-              </div>
-            </details>
-          </div>
-        </div>
-
-        <div class="content-module">
-          <h2 class="module-heading">Corporate & Business Translation</h2>
-          <p class="module-intro">Trade licenses, MOAs, and regulatory filings for free zone authorities and mainland businesses.</p>
-          
-          <div class="accordion-group">
-            <details class="accordion-item">
-              <summary class="accordion-header">
-                <span class="accordion-icon">🏢</span>
-                <span class="accordion-title">Company Formation Documents</span>
-                <i class="fas fa-chevron-down accordion-arrow"></i>
-              </summary>
-              <div class="accordion-content">
-                <p>Memorandum of Association, Articles of Association, and shareholder resolutions translated for DED, DMCC, and all free zone authorities.</p>
-                <ul>
-                  <li>Memorandum of Association (MOA)</li>
-                  <li>Articles of Association (AOA)</li>
-                  <li>Shareholder agreements</li>
-                  <li>Board resolutions</li>
-                </ul>
-                <a href="/legal/corporate/moa/" class="inline-cta">
-                  View MOA Translation <i class="fas fa-arrow-right"></i>
-                </a>
-              </div>
-            </details>
-
-            <details class="accordion-item">
-              <summary class="accordion-header">
-                <span class="accordion-icon">📊</span>
-                <span class="accordion-title">Financial & Regulatory Documents</span>
-                <i class="fas fa-chevron-down accordion-arrow"></i>
-              </summary>
-              <div class="accordion-content">
-                <p>Audited financial statements, annual reports, and regulatory filings translated with accuracy for compliance submissions.</p>
-                <ul>
-                  <li>Audited financial statements</li>
-                  <li>Annual reports</li>
-                  <li>Tax documents</li>
-                  <li>Regulatory filings</li>
-                </ul>
-              </div>
-            </details>
-
-            <details class="accordion-item">
-              <summary class="accordion-header">
-                <span class="accordion-icon">🏗️</span>
-                <span class="accordion-title">Trade Licenses & Permits</span>
-                <i class="fas fa-chevron-down accordion-arrow"></i>
-              </summary>
-              <div class="accordion-content">
-                <p>Trade licenses from foreign jurisdictions translated for UAE business setup. Professional licenses and permits included.</p>
-                <ul>
-                  <li>Trade licenses</li>
-                  <li>Professional licenses</li>
-                  <li>Operating permits</li>
-                  <li>Industry certifications</li>
-                </ul>
-              </div>
-            </details>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <section class="section bg-white faq-section" style="padding: 4rem 1.5rem;">
-    <div class="container container--narrow">
-      <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
-        <span class="section-label">FAQ</span>
-        <h2 class="section-title">Frequently Asked Questions</h2>
-      </div>
-      
-      <div class="faq-list">
-        <article class="faq-item">
-          <button class="faq-question">
-            What documents can you translate?
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="faq-answer">
-            <p>We translate all document types including birth certificates, marriage certificates, degree certificates, contracts, court documents, powers of attorney, trade licenses, and corporate documents. If you're unsure whether we can translate your document, send it via WhatsApp for a free assessment.</p>
-          </div>
-        </article>
-
-        <article class="faq-item">
-          <button class="faq-question">
-            Are your translations accepted by UAE courts?
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="faq-answer">
-            <p>Yes. All our legal translations are performed by MOJ-certified translators and formatted specifically for Dubai Courts, DIFC Courts, ADGM Courts, and all federal courts. We understand the formatting and certification requirements that courts expect.</p>
-          </div>
-        </article>
-
-        <article class="faq-item">
-          <button class="faq-question">
-            How long does translation take?
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="faq-answer">
-            <p>Standard documents (birth certificates, marriage certificates, single-page documents) are typically ready within 3-6 hours. Complex legal documents may take 24-48 hours. Express service is available for urgent requirements. We provide exact timelines when we review your document.</p>
-          </div>
-        </article>
-
-        <article class="faq-item">
-          <button class="faq-question">
-            Do you provide attestation services?
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="faq-answer">
-            <p>Yes. We coordinate the complete attestation chain including home country attestation, embassy attestation, and MOFA attestation. We handle your original documents securely and provide tracking throughout the process.</p>
-          </div>
-        </article>
-
-        <article class="faq-item">
-          <button class="faq-question">
-            What languages do you translate?
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="faq-answer">
-            <p>We translate 43+ languages including Arabic, English, French, German, Spanish, Portuguese, Italian, Russian, Chinese, Japanese, Korean, Hindi, Urdu, Tagalog, and many more. Arabic-English and English-Arabic are our most common translation pairs.</p>
-          </div>
-        </article>
-
-        <article class="faq-item">
-          <button class="faq-question">
-            How do I send my documents?
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="faq-answer">
-            <p>The easiest way is via WhatsApp. Take a clear photo or scan of your document and send it to our WhatsApp number. You can also email documents or use our secure upload portal. We accept PDF, JPG, PNG, and DOCX formats.</p>
-          </div>
-        </article>
-
-        <article class="faq-item">
-          <button class="faq-question">
-            Do you deliver physical copies?
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="faq-answer">
-            <p>Yes. While we provide digital copies immediately, we also courier hard copies with original stamps to your location across Dubai, Abu Dhabi, Sharjah, and the Northern Emirates. Courier charges may apply depending on location.</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-white" style="padding: 3rem 1.5rem;">
+  <!-- Document Types Section -->
+  <section class="section">
     <div class="container">
-      <CrossSiloLinks 
-        pageKey="servicesHub"
-        title="Browse by Category"
-      />
+      <h2>Documents We Translate</h2>
+      <p class="section-intro">We handle all document types required for UAE government, court, immigration, and business purposes. Below are the most common categories.</p>
+
+      <div class="document-types-grid">
+        {documentTypes.map(docType => (
+          <div class="document-type-card">
+            <div class="document-type-header">
+              <i class={`fas fa-${docType.icon}`}></i>
+              <h3>{docType.category}</h3>
+            </div>
+            <ul class="document-list">
+              {docType.items.map(item => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
-  <section class="section bg-accent cta-banner" style="padding: 4rem 1.5rem;">
-    <div class="container text-center">
-      <h2>Ready to Get Started?</h2>
-      <p>Send us your document via WhatsApp for a free quote. We'll review it and confirm price and timeline within minutes.</p>
-      <a href="https://wa.me/971508620217" class="cta-btn">
-        <i class="fab fa-whatsapp"></i> Send Documents on WhatsApp
-      </a>
+  <!-- Why Choose Us Section -->
+  <section class="section bg-dark">
+    <div class="container">
+      <h2 class="text-white">Why Choose OnlineTranslation.ae</h2>
+      <p class="section-intro text-white-muted">Trusted by individuals, businesses, and legal professionals across the UAE for accurate, certified translations.</p>
+
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-certificate"></i></div>
+          <h3>MOJ Certified</h3>
+          <p>All translations include official Ministry of Justice certification with QR verification code accepted by all UAE authorities.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+          <h3>Fast Turnaround</h3>
+          <p>Standard documents ready in 4-6 hours. Same-day express service available for urgent requirements.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>Acceptance Guaranteed</h3>
+          <p>If any government entity rejects our translation due to our error, we correct and redeliver at no charge.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-globe"></i></div>
+          <h3>43+ Languages</h3>
+          <p>Arabic, English, French, German, Russian, Chinese, Hindi, Urdu, and many more language pairs available.</p>
+        </div>
+      </div>
     </div>
   </section>
-</BaseLayout>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-      const question = item.querySelector('.faq-question');
-      question?.addEventListener('click', () => {
-        const isOpen = item.classList.contains('is-open');
-        faqItems.forEach(i => i.classList.remove('is-open'));
-        if (!isOpen) {
-          item.classList.add('is-open');
-        }
-      });
-    });
-  });
-</script>
+  <!-- Trust Indicators -->
+  <section class="section">
+    <div class="container">
+      <div class="trust-grid">
+        <div class="trust-stat">
+          <div class="trust-number">10,000+</div>
+          <div class="trust-label">Documents Translated</div>
+        </div>
+        <div class="trust-stat">
+          <div class="trust-number">24hr</div>
+          <div class="trust-label">Standard Delivery</div>
+        </div>
+        <div class="trust-stat">
+          <div class="trust-number">43+</div>
+          <div class="trust-label">Languages Supported</div>
+        </div>
+        <div class="trust-stat">
+          <div class="trust-number">100%</div>
+          <div class="trust-label">Acceptance Rate</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Links Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Browse by Category</h2>
+      <div class="category-links-grid">
+        <a href="/legal-translation-dubai/" class="category-link">
+          <i class="fas fa-balance-scale"></i>
+          <span>Legal Translation</span>
+        </a>
+        <a href="/personal/" class="category-link">
+          <i class="fas fa-user"></i>
+          <span>Personal Documents</span>
+        </a>
+        <a href="/services/attestation/" class="category-link">
+          <i class="fas fa-stamp"></i>
+          <span>Attestation</span>
+        </a>
+        <a href="/locations/dubai/" class="category-link">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Dubai Services</span>
+        </a>
+        <a href="/resources/pricing-guide/" class="category-link">
+          <i class="fas fa-tag"></i>
+          <span>Pricing Guide</span>
+        </a>
+        <a href="/resources/faq/" class="category-link">
+          <i class="fas fa-question-circle"></i>
+          <span>FAQ</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</CategoryLayout>
+
+<style>
+  /* Base Section Styles */
+  .section {
+    padding: 4rem 0;
+  }
+
+  .section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 800px;
+  }
+
+  .bg-light {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  .bg-dark {
+    background: var(--primary-color);
+    color: #fff;
+  }
+
+  .bg-dark h2 {
+    color: #fff;
+  }
+
+  .text-white {
+    color: #fff;
+  }
+
+  .text-white-muted {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  /* Services Grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .service-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-color);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .service-icon i {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+
+  .service-card h3 {
+    font-size: 1.2rem;
+    margin: 0 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .service-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    flex-grow: 1;
+  }
+
+  .service-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+    font-size: 0.9rem;
+  }
+
+  .service-features li {
+    padding: 0.35rem 0;
+    color: var(--text-muted);
+  }
+
+  .service-features i {
+    color: var(--accent-color);
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .service-link {
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: auto;
+  }
+
+  .service-link i {
+    margin-left: 0.25rem;
+  }
+
+  /* Process Grid */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .process-card {
+    text-align: center;
+    position: relative;
+  }
+
+  .process-number {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 28px;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 50%;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .process-icon {
+    width: 70px;
+    height: 70px;
+    background: #fff;
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+  }
+
+  .process-icon i {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+  }
+
+  .process-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .process-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* Document Types Grid */
+  .document-types-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .document-type-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .document-type-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .document-type-header i {
+    font-size: 1.25rem;
+    color: var(--accent-color);
+  }
+
+  .document-type-header h3 {
+    font-size: 1rem;
+    margin: 0;
+    color: var(--primary-color);
+  }
+
+  .document-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .document-list li {
+    padding: 0.4rem 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  }
+
+  .document-list li:last-child {
+    border-bottom: none;
+  }
+
+  /* Benefits Grid */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .benefit-card {
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .benefit-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+  }
+
+  .benefit-icon i {
+    font-size: 1.75rem;
+    color: var(--accent-color);
+  }
+
+  .benefit-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: #fff;
+  }
+
+  .benefit-card p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Trust Grid */
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .trust-stat {
+    padding: 2rem;
+  }
+
+  .trust-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+  }
+
+  .trust-label {
+    font-size: 1rem;
+    color: var(--text-muted);
+  }
+
+  /* Category Links Grid */
+  .category-links-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+  }
+
+  .category-link {
+    background: #fff;
+    padding: 1.5rem 1rem;
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--primary-color);
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  .category-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .category-link i {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .category-link span {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .document-types-grid,
+    .benefits-grid,
+    .trust-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .category-links-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 991px) {
+    .process-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section {
+      padding: 3rem 0;
+    }
+
+    .services-grid,
+    .process-grid,
+    .document-types-grid,
+    .benefits-grid,
+    .trust-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .category-links-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
