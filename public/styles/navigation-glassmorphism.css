@@ -668,3 +668,98 @@ body.theme-dark .dropdown-menu .view-all:hover {
         transition: none;
     }
 }
+
+/* ============================================
+   DROPDOWN CONTRAST FIX - CRITICAL
+   Added: 2025-12-13
+   Issue: Grey text on dark dropdown = invisible
+   Solution: Force white text with !important
+   ============================================ */
+
+/* Force white text on all dropdown links */
+.dropdown-menu li a {
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 500 !important;
+    font-size: 0.9rem !important;
+}
+
+/* Hover state - full white with coral background tint */
+.dropdown-menu li a:hover {
+    color: #ffffff !important;
+    background: rgba(255, 22, 84, 0.15) !important;
+    transform: translateX(3px);
+}
+
+/* Section headers - Coral color for visibility */
+.dropdown-menu .dropdown-header {
+    color: #FF1654 !important;
+    font-size: 0.7rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.12em !important;
+    padding: 0.75rem 0.75rem 0.4rem !important;
+    margin-top: 0.5rem !important;
+    border-bottom: 1px solid rgba(255, 22, 84, 0.15) !important;
+    text-shadow: none !important;
+}
+
+/* First header no top margin */
+.dropdown-menu .dropdown-header:first-child {
+    margin-top: 0.25rem !important;
+}
+
+/* Dividers - subtle visibility */
+.dropdown-menu .dropdown-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    margin: 0.5rem 0.75rem !important;
+    background: transparent !important;
+    height: 0 !important;
+}
+
+/* Left accent bar on hover */
+.dropdown-menu li a {
+    position: relative !important;
+}
+
+.dropdown-menu li a::before {
+    content: '' !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) scaleY(0) !important;
+    width: 3px !important;
+    height: 60% !important;
+    background: #FF1654 !important;
+    border-radius: 0 2px 2px 0 !important;
+    transition: transform 0.2s ease !important;
+}
+
+.dropdown-menu li a:hover::before {
+    transform: translateY(-50%) scaleY(1) !important;
+}
+
+/* Focus state for keyboard navigation */
+.dropdown-menu li a:focus {
+    outline: 2px solid #FF1654 !important;
+    outline-offset: 2px !important;
+    color: #ffffff !important;
+}
+
+/* Dark mode - same treatment */
+[data-theme="dark"] .dropdown-menu li a,
+body.theme-dark .dropdown-menu li a {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+[data-theme="dark"] .dropdown-menu .dropdown-header,
+body.theme-dark .dropdown-menu .dropdown-header {
+    color: #ff6b6b !important;
+}
+
+/* Mobile touch targets */
+@media (max-width: 1024px) {
+    .dropdown-menu li a {
+        padding: 12px 16px !important;
+        min-height: 44px !important;
+    }
+}
