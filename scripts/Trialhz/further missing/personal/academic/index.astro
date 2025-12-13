@@ -1,0 +1,292 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Personal Documents', url: '/personal/' },
+  { name: 'Academic Documents', url: '/personal/academic/' }
+];
+
+const documents = [
+  {
+    title: 'Degree Certificate Translation',
+    href: '/personal/education/degree/',
+    icon: 'graduation-cap',
+    desc: 'University degrees, diplomas, and professional certifications for employment, licensing, and credential recognition.',
+    use: 'MOHESR, Employers, Licensing Bodies'
+  },
+  {
+    title: 'Transcript Translation',
+    href: '/personal/academic/transcripts/',
+    icon: 'file-alt',
+    desc: 'Academic transcripts with grade conversions and course descriptions for university admissions and credential evaluation.',
+    use: 'Universities, MOHESR'
+  }
+];
+---
+
+<BaseLayout 
+  title="Academic Document Translation Dubai | Degrees & Transcripts | OnlineTranslation.ae"
+  description="MOJ-certified academic document translation in Dubai. University degrees, transcripts, diplomas for MOHESR attestation, employment, and professional licensing."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Academic Document Translation Services Dubai",
+      "description": "MOJ-certified translation of academic documents including degrees, transcripts, and professional certifications",
+      "provider": {
+        "@type": "Organization",
+        "name": "OnlineTranslation.ae"
+      },
+      "areaServed": ["Dubai", "Abu Dhabi", "Sharjah", "UAE"],
+      "serviceType": ["Degree Translation", "Transcript Translation", "Academic Certificate Translation"]
+    })} />
+  </Fragment>
+
+  <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        {breadcrumbs.map((crumb, i) => (
+          <li>
+            {i === breadcrumbs.length - 1 ? (
+              <span aria-current="page">{crumb.name}</span>
+            ) : (
+              <a href={crumb.url}>{crumb.name}</a>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="hero-badge">Educational Credentials</span>
+      <h1>Academic Document Translation</h1>
+      <p class="hero-lead">Your academic credentials open doors to employment, professional licensing, and further education in the UAE. Degree certificates and transcripts require precise translation that accurately reflects your qualifications while meeting MOHESR equivalency requirements and employer expectations.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/971508620217?text=I%20need%20academic%20document%20translation" class="btn btn--primary">
+          <i class="fab fa-whatsapp"></i> Send Documents
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="documents-section section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Academic Documents We Translate</h2>
+        <p>Select your document type for specific requirements.</p>
+      </div>
+
+      <div class="documents-grid">
+        {documents.map(doc => (
+          <a href={doc.href} class="document-card">
+            <div class="document-icon">
+              <i class={`fas fa-${doc.icon}`}></i>
+            </div>
+            <h3>{doc.title}</h3>
+            <p>{doc.desc}</p>
+            <div class="document-use">
+              <strong>Required by:</strong> {doc.use}
+            </div>
+            <span class="document-link">View Requirements →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="info-section section bg-light">
+    <div class="container">
+      <div class="info-grid">
+        <div class="info-content">
+          <h2>Academic Translation for UAE Requirements</h2>
+          
+          <h3>MOHESR Equivalency Process</h3>
+          <p>The Ministry of Higher Education and Scientific Research (MOHESR) evaluates foreign academic credentials for UAE recognition. This equivalency process requires certified translations of degree certificates, transcripts, and supporting documentation. The translation must accurately reflect degree titles, specializations, and awarding institutions.</p>
+
+          <h3>Professional Licensing Requirements</h3>
+          <p>Healthcare professionals seeking DHA or DOH licensing require translated medical degrees and specialty certificates. Engineers need translated credentials for SCAD registration. Teachers require translated teaching certificates for MOE approval. Each licensing body has specific formatting expectations that our translations meet.</p>
+
+          <h3>Employment Documentation</h3>
+          <p>UAE employers frequently require translated academic credentials for employment visa processing and internal verification. HR departments expect translations that clearly present qualification levels, graduation dates, and fields of study. We format translations for immediate HR use.</p>
+
+          <h3>University Admissions</h3>
+          <p>Students applying to UAE universities need translated transcripts with accurate grade representations. Some institutions require specific grade conversion formats. We understand admission office requirements and format translations accordingly.</p>
+
+          <h3>The Attestation Chain</h3>
+          <p>Academic documents typically require attestation before translation for official use. The standard chain involves: university verification, home country Ministry of Education, home country Ministry of Foreign Affairs, UAE Embassy, and finally UAE MOFA. We advise on attestation requirements before translation to avoid wasted effort.</p>
+        </div>
+
+        <div class="info-sidebar">
+          <div class="sidebar-card">
+            <h4>Documents We Translate</h4>
+            <ul>
+              <li>Bachelor's Degrees</li>
+              <li>Master's Degrees</li>
+              <li>PhD Certificates</li>
+              <li>Diplomas</li>
+              <li>Professional Certifications</li>
+              <li>Academic Transcripts</li>
+              <li>Course Descriptions</li>
+              <li>Research Publications</li>
+            </ul>
+          </div>
+
+          <div class="sidebar-card">
+            <h4>Pricing</h4>
+            <div class="price-row">
+              <span>Degree Certificate</span>
+              <strong>AED 150</strong>
+            </div>
+            <div class="price-row">
+              <span>Transcript (per page)</span>
+              <strong>AED 100</strong>
+            </div>
+            <div class="price-row">
+              <span>Express Service</span>
+              <strong>+50%</strong>
+            </div>
+            <a href="https://wa.me/971508620217" class="btn btn--primary btn--block">Get Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="licensing-section section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Professional Licensing Support</h2>
+        <p>Academic translations formatted for UAE licensing authorities.</p>
+      </div>
+
+      <div class="licensing-grid">
+        <div class="licensing-card">
+          <i class="fas fa-stethoscope"></i>
+          <h3>Healthcare (DHA/DOH)</h3>
+          <p>Medical degrees, specialty certificates, and residency documentation for healthcare professional licensing.</p>
+        </div>
+        <div class="licensing-card">
+          <i class="fas fa-hard-hat"></i>
+          <h3>Engineering (SCAD)</h3>
+          <p>Engineering degrees and professional certifications for Society of Chartered Engineers registration.</p>
+        </div>
+        <div class="licensing-card">
+          <i class="fas fa-chalkboard-teacher"></i>
+          <h3>Education (MOE)</h3>
+          <p>Teaching degrees and certifications for Ministry of Education approval and school employment.</p>
+        </div>
+        <div class="licensing-card">
+          <i class="fas fa-balance-scale"></i>
+          <h3>Legal (MOJ)</h3>
+          <p>Law degrees for legal consultant licensing and court admission requirements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="related-section section bg-light">
+    <div class="container">
+      <h2>Related Services</h2>
+      <div class="related-grid">
+        <a href="/services/attestation/" class="related-card">
+          <i class="fas fa-stamp"></i>
+          <h3>Document Attestation</h3>
+          <p>MOFA and embassy legalization for academic credentials</p>
+        </a>
+        <a href="/personal/vital-records/" class="related-card">
+          <i class="fas fa-certificate"></i>
+          <h3>Vital Records</h3>
+          <p>Birth and marriage certificates for visa applications</p>
+        </a>
+        <a href="/personal/immigration/" class="related-card">
+          <i class="fas fa-passport"></i>
+          <h3>Immigration Documents</h3>
+          <p>PCC and supporting documents for employment visas</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section section bg-dark">
+    <div class="container text-center">
+      <h2>Need Academic Documents Translated?</h2>
+      <p>Send your degree or transcript for assessment. We confirm MOHESR compatibility and pricing within 15 minutes.</p>
+      <a href="https://wa.me/971508620217" class="btn btn--primary btn--lg">
+        <i class="fab fa-whatsapp"></i> Start Translation
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .breadcrumb-nav { background: var(--primary-color); padding: 1rem 0; }
+  .breadcrumb-list { display: flex; list-style: none; margin: 0; padding: 0; gap: 0.5rem; font-size: 0.875rem; }
+  .breadcrumb-list li:not(:last-child)::after { content: '/'; margin-left: 0.5rem; color: rgba(255,255,255,0.5); }
+  .breadcrumb-list a { color: rgba(255,255,255,0.8); text-decoration: none; }
+  .breadcrumb-list span { color: white; }
+
+  .page-hero { background: var(--primary-color); color: white; padding: 4rem 0; }
+  .hero-badge { display: inline-block; background: var(--accent-color); padding: 0.5rem 1rem; border-radius: 2rem; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; }
+  .page-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
+  .hero-lead { font-size: 1.125rem; line-height: 1.7; max-width: 700px; opacity: 0.95; margin-bottom: 2rem; }
+
+  .section { padding: 4rem 0; }
+  .section-header { text-align: center; margin-bottom: 3rem; }
+  .section-header h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+  .section-header p { color: var(--text-muted); }
+
+  .documents-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .document-card { background: white; border-radius: 1rem; padding: 2rem; text-decoration: none; color: inherit; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s; }
+  .document-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+  .document-icon { width: 60px; height: 60px; background: var(--accent-color); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
+  .document-icon i { font-size: 1.5rem; color: white; }
+  .document-card h3 { font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--primary-color); }
+  .document-card p { color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem; }
+  .document-use { font-size: 0.875rem; color: var(--text-muted); padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.08); margin-bottom: 1rem; }
+  .document-link { color: var(--accent-color); font-weight: 600; }
+
+  .info-grid { display: grid; grid-template-columns: 1fr 350px; gap: 3rem; align-items: start; }
+  .info-content h2 { font-size: 1.75rem; margin-bottom: 1.5rem; }
+  .info-content h3 { font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--primary-color); }
+  .info-content p { line-height: 1.8; margin-bottom: 1.25rem; }
+
+  .sidebar-card { background: white; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+  .sidebar-card h4 { font-size: 1rem; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--accent-color); }
+  .sidebar-card ul { list-style: none; padding: 0; margin: 0; }
+  .sidebar-card li { padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .price-row { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .price-row strong { color: var(--accent-color); }
+  .btn--block { display: block; width: 100%; text-align: center; margin-top: 1rem; }
+
+  .licensing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+  .licensing-card { background: white; padding: 2rem; border-radius: 1rem; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+  .licensing-card i { font-size: 2rem; color: var(--accent-color); margin-bottom: 1rem; }
+  .licensing-card h3 { font-size: 1.125rem; margin-bottom: 0.5rem; }
+  .licensing-card p { color: var(--text-muted); font-size: 0.9rem; }
+
+  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .related-card { background: white; padding: 2rem; border-radius: 1rem; text-decoration: none; color: inherit; text-align: center; transition: all 0.3s; }
+  .related-card:hover { transform: translateY(-4px); }
+  .related-card i { font-size: 2rem; color: var(--accent-color); margin-bottom: 1rem; }
+  .related-card h3 { font-size: 1.125rem; margin-bottom: 0.5rem; }
+  .related-card p { color: var(--text-muted); font-size: 0.9rem; }
+
+  .cta-section { text-align: center; }
+  .cta-section h2 { color: white; margin-bottom: 1rem; }
+  .cta-section p { color: rgba(255,255,255,0.9); margin-bottom: 2rem; }
+
+  .bg-light { background: var(--bg-light, #f8f9fa); }
+  .bg-dark { background: var(--primary-color); }
+  .text-center { text-align: center; }
+
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; }
+  .btn--primary { background: var(--accent-color); color: white; }
+  .btn--lg { padding: 1.125rem 2.25rem; }
+
+  @media (max-width: 991px) { .info-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 768px) { .related-grid { grid-template-columns: 1fr; } }
+</style>

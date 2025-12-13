@@ -1,0 +1,298 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Legal Translation', url: '/legal-translation-dubai/' },
+  { name: 'Contracts', url: '/legal/contracts/' }
+];
+
+const contracts = [
+  {
+    title: 'NDA Translation',
+    href: '/legal/contracts/nda/',
+    icon: 'user-secret',
+    desc: 'Non-disclosure agreements for business partnerships, employment, and IP protection. Precise confidentiality clause translation.',
+    authorities: 'DIFC, ADGM, Dubai Courts'
+  },
+  {
+    title: 'SPA Translation',
+    href: '/legal/contracts/spa/',
+    icon: 'home',
+    desc: 'Sale and Purchase Agreements for property transactions. DLD-compliant formatting for registration.',
+    authorities: 'DLD, Dubai Courts'
+  },
+  {
+    title: 'MOU Translation',
+    href: '/legal/contracts/mou/',
+    icon: 'handshake',
+    desc: 'Memoranda of Understanding for business partnerships and preliminary agreements.',
+    authorities: 'DED, Free Zones'
+  },
+  {
+    title: 'Lease Contract Translation',
+    href: '/legal/contracts/lease/',
+    icon: 'key',
+    desc: 'Commercial and residential tenancy agreements for Ejari registration and dispute resolution.',
+    authorities: 'Ejari, RDC, Dubai Courts'
+  }
+];
+---
+
+<BaseLayout 
+  title="Contract Translation Dubai | NDA, SPA, MOU, Lease Agreements | OnlineTranslation.ae"
+  description="MOJ-certified contract translation in Dubai. NDAs, Sale Purchase Agreements, MOUs, lease contracts. Legal terminology precision for Dubai Courts, DIFC, DLD compliance."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Contract Translation Services Dubai",
+      "description": "MOJ-certified legal contract translation including NDAs, SPAs, MOUs, and lease agreements",
+      "provider": {
+        "@type": "Organization",
+        "name": "OnlineTranslation.ae"
+      },
+      "areaServed": ["Dubai", "Abu Dhabi", "Sharjah", "UAE"],
+      "serviceType": ["NDA Translation", "SPA Translation", "MOU Translation", "Lease Contract Translation"]
+    })} />
+  </Fragment>
+
+  <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        {breadcrumbs.map((crumb, i) => (
+          <li>
+            {i === breadcrumbs.length - 1 ? (
+              <span aria-current="page">{crumb.name}</span>
+            ) : (
+              <a href={crumb.url}>{crumb.name}</a>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="hero-badge">Commercial Agreements</span>
+      <h1>Contract Translation Services</h1>
+      <p class="hero-lead">Contracts define business relationships, allocate risk, and establish enforceable obligations. A mistranslated termination clause or ambiguous payment term can expose your business to liability. Our legal translators understand contract law terminology across UAE civil law, DIFC common law, and ADGM frameworks.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/971508620217?text=I%20need%20contract%20translation" class="btn btn--primary">
+          <i class="fab fa-whatsapp"></i> Send Contract
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contracts-section section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Contract Types We Translate</h2>
+        <p>Select your contract type for specific requirements and acceptance information.</p>
+      </div>
+
+      <div class="contracts-grid">
+        {contracts.map(contract => (
+          <a href={contract.href} class="contract-card">
+            <div class="contract-icon">
+              <i class={`fas fa-${contract.icon}`}></i>
+            </div>
+            <h3>{contract.title}</h3>
+            <p>{contract.desc}</p>
+            <div class="contract-authorities">
+              <strong>Accepted:</strong> {contract.authorities}
+            </div>
+            <span class="contract-link">View Details →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="info-section section bg-light">
+    <div class="container">
+      <div class="content-wrapper">
+        <h2>Understanding Contract Translation in the UAE</h2>
+        
+        <p>The UAE operates multiple legal jurisdictions with different governing laws. Mainland Dubai follows UAE civil law with Arabic as the official language of courts. DIFC and ADGM operate under common law frameworks with English as the primary language. Contract translations must use terminology appropriate to the receiving jurisdiction.</p>
+
+        <h3>Risk Mitigation Through Precision</h3>
+        <p>Contract translation is fundamentally about risk management. Ambiguous translations create loopholes that parties may exploit. Consider a lease contract: the Arabic term for "notice period" may carry different implications than its English equivalent. Our translators flag these distinctions and ensure the translation preserves the original intent.</p>
+
+        <h3>Property Transactions (SPA)</h3>
+        <p>Dubai Land Department requires Arabic documentation for property registration. Sale and Purchase Agreements must be translated with attention to payment schedules, handover conditions, and penalty clauses. Off-plan purchases require particularly careful translation of milestone payments and construction timelines.</p>
+
+        <h3>Employment Contracts</h3>
+        <p>MOHRE requires Arabic employment contracts for labor compliance. Translations must capture notice periods, end-of-service calculations, and restrictive covenants accurately. In dispute scenarios, the Arabic version typically prevails—making translation quality critical.</p>
+
+        <h3>Confidentiality Agreements</h3>
+        <p>NDAs protect intellectual property and business relationships. The scope of confidential information, exclusions, and breach remedies must be translated with legal precision. Vague translations can render confidentiality protections unenforceable.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="additional-section section">
+    <div class="container">
+      <h2>Additional Contract Services</h2>
+      <div class="additional-grid">
+        <div class="additional-card">
+          <i class="fas fa-file-signature"></i>
+          <h3>Employment Contracts</h3>
+          <p>MOHRE-compliant employment agreement translation for labor compliance and dispute resolution.</p>
+        </div>
+        <div class="additional-card">
+          <i class="fas fa-store"></i>
+          <h3>Franchise Agreements</h3>
+          <p>Franchise contracts for UAE market entry with territorial and operational clause precision.</p>
+        </div>
+        <div class="additional-card">
+          <i class="fas fa-project-diagram"></i>
+          <h3>Joint Venture Agreements</h3>
+          <p>JV documentation for business partnerships with profit-sharing and governance provisions.</p>
+        </div>
+        <div class="additional-card">
+          <i class="fas fa-hard-hat"></i>
+          <h3>Construction Contracts</h3>
+          <p>EPC, turnkey, and construction agreements with technical specification accuracy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process-section section bg-light">
+    <div class="container">
+      <div class="section-header">
+        <h2>Contract Translation Process</h2>
+        <p>Additional review steps ensure legal terminology precision.</p>
+      </div>
+
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <h3>Contract Review</h3>
+          <p>We identify contract type, governing law, and target jurisdiction to assign appropriate legal expertise.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <h3>Legal Translation</h3>
+          <p>MOJ-certified translator with contract law experience handles the translation using verified legal terminology.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <h3>Legal Review</h3>
+          <p>Second review by legal translation specialist ensures terminology consistency and clause accuracy.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <h3>Certification</h3>
+          <p>MOJ stamp and certification applied. Delivered in format required by receiving authority.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="related-section section">
+    <div class="container">
+      <h2>Related Legal Services</h2>
+      <div class="related-grid">
+        <a href="/legal/corporate/" class="related-card">
+          <i class="fas fa-building"></i>
+          <h3>Corporate Documents</h3>
+          <p>MOA, board resolutions, shareholder agreements</p>
+        </a>
+        <a href="/legal/litigation/" class="related-card">
+          <i class="fas fa-gavel"></i>
+          <h3>Court Documents</h3>
+          <p>Judgments, pleadings, arbitration awards</p>
+        </a>
+        <a href="/legal-translation-dubai/" class="related-card">
+          <i class="fas fa-balance-scale"></i>
+          <h3>Legal Translation Hub</h3>
+          <p>Complete legal translation services</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section section bg-dark">
+    <div class="container text-center">
+      <h2>Contract Ready for Translation?</h2>
+      <p>Send your contract for assessment. We confirm scope, timeline, and pricing within 30 minutes.</p>
+      <a href="https://wa.me/971508620217" class="btn btn--primary btn--lg">
+        <i class="fab fa-whatsapp"></i> Send Contract
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .breadcrumb-nav { background: var(--primary-color); padding: 1rem 0; }
+  .breadcrumb-list { display: flex; list-style: none; margin: 0; padding: 0; gap: 0.5rem; font-size: 0.875rem; }
+  .breadcrumb-list li:not(:last-child)::after { content: '/'; margin-left: 0.5rem; color: rgba(255,255,255,0.5); }
+  .breadcrumb-list a { color: rgba(255,255,255,0.8); text-decoration: none; }
+  .breadcrumb-list span { color: white; }
+
+  .page-hero { background: var(--primary-color); color: white; padding: 4rem 0; }
+  .hero-badge { display: inline-block; background: var(--accent-color); padding: 0.5rem 1rem; border-radius: 2rem; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; }
+  .page-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
+  .hero-lead { font-size: 1.125rem; line-height: 1.7; max-width: 700px; opacity: 0.95; margin-bottom: 2rem; }
+
+  .section { padding: 4rem 0; }
+  .section-header { text-align: center; margin-bottom: 3rem; }
+  .section-header h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+  .section-header p { color: var(--text-muted); }
+
+  .contracts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .contract-card { background: white; border-radius: 1rem; padding: 2rem; text-decoration: none; color: inherit; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s; }
+  .contract-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+  .contract-icon { width: 60px; height: 60px; background: var(--accent-color); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
+  .contract-icon i { font-size: 1.5rem; color: white; }
+  .contract-card h3 { font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--primary-color); }
+  .contract-card p { color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem; }
+  .contract-authorities { font-size: 0.875rem; color: var(--text-muted); padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.08); margin-bottom: 1rem; }
+  .contract-link { color: var(--accent-color); font-weight: 600; }
+
+  .content-wrapper { max-width: 800px; margin: 0 auto; }
+  .content-wrapper h2 { font-size: 1.75rem; margin-bottom: 1.5rem; }
+  .content-wrapper h3 { font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--primary-color); }
+  .content-wrapper p { line-height: 1.8; margin-bottom: 1.25rem; }
+
+  .additional-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+  .additional-card { background: var(--bg-light); padding: 2rem; border-radius: 1rem; text-align: center; }
+  .additional-card i { font-size: 2rem; color: var(--accent-color); margin-bottom: 1rem; }
+  .additional-card h3 { font-size: 1.125rem; margin-bottom: 0.5rem; }
+  .additional-card p { color: var(--text-muted); font-size: 0.9rem; }
+
+  .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+  .process-step { text-align: center; }
+  .step-number { width: 50px; height: 50px; background: var(--accent-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: 700; margin: 0 auto 1rem; }
+  .process-step h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+  .process-step p { color: var(--text-muted); font-size: 0.9rem; }
+
+  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .related-card { background: var(--bg-light); padding: 2rem; border-radius: 1rem; text-decoration: none; color: inherit; text-align: center; transition: all 0.3s; }
+  .related-card:hover { transform: translateY(-4px); background: white; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+  .related-card i { font-size: 2rem; color: var(--accent-color); margin-bottom: 1rem; }
+  .related-card h3 { font-size: 1.125rem; margin-bottom: 0.5rem; }
+  .related-card p { color: var(--text-muted); font-size: 0.9rem; }
+
+  .cta-section { text-align: center; }
+  .cta-section h2 { color: white; margin-bottom: 1rem; }
+  .cta-section p { color: rgba(255,255,255,0.9); margin-bottom: 2rem; }
+
+  .bg-light { background: var(--bg-light, #f8f9fa); }
+  .bg-dark { background: var(--primary-color); }
+  .text-center { text-align: center; }
+
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; }
+  .btn--primary { background: var(--accent-color); color: white; }
+  .btn--lg { padding: 1.125rem 2.25rem; }
+
+  @media (max-width: 768px) {
+    .process-steps { grid-template-columns: repeat(2, 1fr); }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>

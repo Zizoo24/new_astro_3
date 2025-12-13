@@ -1,0 +1,200 @@
+---
+import ServiceLayout from '../../../../layouts/ServiceLayout.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Attestation Services', url: '/services/attestation/' },
+  { name: 'MOFA Attestation', url: '/services/attestation/mofa/' }
+];
+
+const snapshot = [
+  { icon: 'stamp', bold: 'Final UAE Step', text: 'Ministry of Foreign Affairs legalization' },
+  { icon: 'clock', bold: '1-3 Days', text: 'Standard MOFA processing' },
+  { icon: 'check-circle', bold: 'Full Chain', text: 'Complete attestation coordination' },
+  { icon: 'truck', bold: 'Collection Service', text: 'Document pickup and delivery' }
+];
+
+const processSteps = [
+  {
+    number: 1,
+    title: 'Document Review',
+    text: 'We verify your documents have completed all prerequisite steps: home country notarization, foreign ministry authentication, and UAE Embassy attestation.',
+    icon: 'search'
+  },
+  {
+    number: 2,
+    title: 'MOFA Submission',
+    text: 'Documents submitted to Ministry of Foreign Affairs with proper application forms and fees. We track status throughout processing.',
+    icon: 'file-upload'
+  },
+  {
+    number: 3,
+    title: 'Collection',
+    text: 'Attested documents collected from MOFA once processing is complete. We verify attestation stamps before release.',
+    icon: 'hand-holding'
+  },
+  {
+    number: 4,
+    title: 'Delivery',
+    text: 'Documents delivered to you via courier or available for pickup. Ready for use with UAE government entities.',
+    icon: 'truck'
+  }
+];
+
+const faqs = [
+  {
+    question: 'What is MOFA attestation?',
+    answer: 'MOFA (Ministry of Foreign Affairs) attestation is the final step in legalizing foreign documents for use in the UAE. After documents are authenticated by the UAE Embassy in your home country, MOFA verifies the embassy stamp and applies the final UAE government authentication. This confirms the document is genuine and legally valid in the UAE.'
+  },
+  {
+    question: 'Which documents require MOFA attestation?',
+    answer: 'Most foreign documents intended for official UAE use require MOFA attestation: educational certificates for employment or licensing, personal documents for visa applications, commercial documents for business setup, and legal documents for court proceedings. Some documents from Hague Convention countries may use apostille instead.'
+  },
+  {
+    question: 'What are the prerequisite steps before MOFA?',
+    answer: 'Documents must complete a chain of authentication: (1) Notarization in the issuing country, (2) Authentication by that country Foreign Ministry or State Department, (3) Attestation by the UAE Embassy in that country. Only after these steps can MOFA attestation proceed. We review your documents to confirm readiness.'
+  },
+  {
+    question: 'How long does MOFA attestation take?',
+    answer: 'Standard MOFA processing takes 1-3 working days after submission. Express service may be available for urgent requirements. Total time including document collection and delivery is typically 3-5 working days. We provide tracking updates throughout the process.'
+  },
+  {
+    question: 'Can you handle the entire attestation chain?',
+    answer: 'Yes. We coordinate the complete attestation process from your home country through MOFA. This includes arranging notarization, foreign ministry authentication, UAE Embassy attestation, and final MOFA legalization. We work with partners in major countries to handle the overseas steps.'
+  },
+  {
+    question: 'Do I need translation before or after MOFA?',
+    answer: 'Translation timing depends on your end use. For most purposes, you should complete attestation first, then translate the attested document. This ensures the translation reflects the final authenticated version. We advise on the optimal sequence for your specific situation.'
+  }
+];
+
+const accordionSections = [
+  {
+    title: 'Documents We Process for MOFA',
+    id: 'documents',
+    items: [
+      {
+        heading: 'Educational Documents',
+        body: 'University degrees, diplomas, transcripts, and professional certifications. Required for employment visa processing, professional licensing, and credential recognition with MOHESR.'
+      },
+      {
+        heading: 'Personal Documents',
+        body: 'Birth certificates, marriage certificates, divorce decrees, and death certificates. Essential for family visa sponsorship, legal status changes, and court proceedings.'
+      },
+      {
+        heading: 'Commercial Documents',
+        body: 'Company registration certificates, powers of attorney, board resolutions, and commercial contracts. Required for business setup, banking, and government transactions.'
+      },
+      {
+        heading: 'Legal Documents',
+        body: 'Court judgments, police clearance certificates, and legal declarations. Necessary for immigration, employment, and legal proceedings in UAE.'
+      }
+    ]
+  },
+  {
+    title: 'The Attestation Chain Explained',
+    id: 'chain',
+    items: [
+      {
+        heading: 'Step 1: Home Country Notarization',
+        body: 'Documents must first be notarized by an authorized notary in the issuing country. For educational documents, this may involve verification by the issuing institution or education ministry.'
+      },
+      {
+        heading: 'Step 2: Foreign Ministry Authentication',
+        body: 'The notarized document is then authenticated by the Foreign Ministry (or State Department in the US). This confirms the notary signature and authority.'
+      },
+      {
+        heading: 'Step 3: UAE Embassy Attestation',
+        body: 'The UAE Embassy in your country verifies the Foreign Ministry authentication and applies their attestation stamp. This is the critical bridge step before MOFA.'
+      },
+      {
+        heading: 'Step 4: MOFA Final Attestation',
+        body: 'The Ministry of Foreign Affairs in UAE verifies the embassy stamp and applies the final authentication. After this step, the document is fully legalized for UAE use.'
+      }
+    ]
+  }
+];
+---
+
+<ServiceLayout
+  title="MOFA Attestation Dubai | Ministry of Foreign Affairs Document Legalization"
+  description="MOFA attestation services in Dubai. Ministry of Foreign Affairs document legalization for educational, personal, and commercial documents. Complete attestation chain coordination."
+  keywords="mofa attestation dubai, ministry of foreign affairs attestation, document legalization uae, mofa authentication, uae document attestation"
+  heroTitle="MOFA Attestation"
+  heroSubtitle="Ministry of Foreign Affairs"
+  heroIntro="MOFA attestation is the final step in legalizing foreign documents for UAE use. The Ministry of Foreign Affairs verifies that your documents have properly completed the international authentication chain, making them officially valid for government submissions, court proceedings, and business transactions."
+  snapshot={snapshot}
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  serviceType="MOFA Attestation Service"
+  processSteps={processSteps}
+  processTitle="Our MOFA Attestation Process"
+  accordionSections={accordionSections}
+>
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Understanding MOFA's Role</h2>
+      <p>The Ministry of Foreign Affairs serves as the UAE government's final verification point for foreign documents. When you present an attested document to a UAE court, employer, or government agency, they trust it because MOFA has confirmed the authenticity of the entire authentication chain.</p>
+      
+      <p>MOFA doesn't verify the document content itself—they verify that proper authentication procedures were followed. Their stamp confirms that a legitimate UAE Embassy attested the document, which in turn confirmed Foreign Ministry authentication from the issuing country.</p>
+      
+      <p>This chain of trust is why attempting to skip steps doesn't work. A document with only embassy attestation (no prior foreign ministry authentication) will be rejected by MOFA. A document with foreign ministry authentication but no embassy attestation cannot proceed. Each step verifies the previous one.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Related Services</h2>
+      <div class="related-grid">
+        <a href="/services/attestation/" class="related-card">
+          <h3>Attestation Guide</h3>
+          <p>Complete attestation services overview</p>
+        </a>
+        <a href="/services/attestation/embassy/" class="related-card">
+          <h3>Embassy Legalization</h3>
+          <p>UAE Embassy attestation coordination</p>
+        </a>
+        <a href="/services/attestation/india/" class="related-card">
+          <h3>India Attestation</h3>
+          <p>Complete chain for Indian documents</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</ServiceLayout>
+
+<style>
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .related-card {
+    padding: 1.5rem;
+    background: var(--bg-light, #f8f9fa);
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    border-left: 3px solid var(--primary-color);
+    transition: all 0.2s;
+  }
+  
+  .related-card:hover {
+    border-left-color: var(--accent-color);
+    background: white;
+  }
+  
+  .related-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+  
+  .related-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+</style>

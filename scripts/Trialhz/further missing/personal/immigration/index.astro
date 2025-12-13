@@ -1,0 +1,464 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Personal Documents', url: '/personal/' },
+  { name: 'Immigration Documents', url: '/personal/immigration/' }
+];
+
+const documents = [
+  {
+    title: 'Police Clearance Certificate',
+    href: '/personal/immigration/pcc/',
+    icon: 'shield-alt',
+    desc: 'Good conduct certificates for employment visas, Golden Visa, and immigration processing. Time-sensitive with 3-6 month validity.',
+    timeline: '3-6 hours'
+  },
+  {
+    title: 'Bank Statement Translation',
+    href: '/personal/immigration/bank/',
+    icon: 'university',
+    desc: 'Financial proof for Golden Visa, investor visas, and property purchases. 6-month statements typically required.',
+    timeline: '6-24 hours'
+  },
+  {
+    title: 'Driving License Translation',
+    href: '/personal/immigration/license/',
+    icon: 'id-card',
+    desc: 'License conversion for eligible countries. RTA-accepted translations for efficient exchange processing.',
+    timeline: '3-6 hours'
+  }
+];
+---
+
+<BaseLayout 
+  title="Immigration Document Translation Dubai | PCC, Bank Statements, License | OnlineTranslation.ae"
+  description="MOJ-certified immigration document translation in Dubai. Police clearance, bank statements, driving licenses for UAE visa, Golden Visa, and residency applications."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Immigration Document Translation Services Dubai",
+      "description": "MOJ-certified translation of immigration documents including police clearance, bank statements, and driving licenses",
+      "provider": {
+        "@type": "Organization",
+        "name": "OnlineTranslation.ae"
+      },
+      "areaServed": ["Dubai", "Abu Dhabi", "Sharjah", "UAE"],
+      "serviceType": ["Police Clearance Translation", "Bank Statement Translation", "Driving License Translation"]
+    })} />
+  </Fragment>
+
+  <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        {breadcrumbs.map((crumb, i) => (
+          <li>
+            {i === breadcrumbs.length - 1 ? (
+              <span aria-current="page">{crumb.name}</span>
+            ) : (
+              <a href={crumb.url}>{crumb.name}</a>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="hero-badge">Visa & Residency Support</span>
+      <h1>Immigration Document Translation</h1>
+      <p class="hero-lead">Police clearance certificates, bank statements, and driving licenses form the supporting documentation for UAE visa and residency applications. These documents have strict validity windows—a translated PCC older than 6 months may be rejected. We understand the time pressure and format requirements that immigration authorities expect.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/971508620217?text=I%20need%20immigration%20document%20translation" class="btn btn--primary">
+          <i class="fab fa-whatsapp"></i> Get Started
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="documents-section section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Immigration Documents We Translate</h2>
+        <p>Select your document type for specific requirements and processing times.</p>
+      </div>
+
+      <div class="documents-grid">
+        {documents.map(doc => (
+          <a href={doc.href} class="document-card">
+            <div class="document-icon">
+              <i class={`fas fa-${doc.icon}`}></i>
+            </div>
+            <h3>{doc.title}</h3>
+            <p>{doc.desc}</p>
+            <div class="document-meta">
+              <span><i class="fas fa-clock"></i> {doc.timeline}</span>
+            </div>
+            <span class="document-link">View Details →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="info-section section bg-light">
+    <div class="container">
+      <div class="info-grid">
+        <div class="info-content">
+          <h2>Immigration Translation Requirements</h2>
+          
+          <h3>Document Validity Windows</h3>
+          <p>Immigration authorities impose strict validity periods on supporting documents. A police clearance certificate more than 3-6 months old (depending on jurisdiction) will be rejected regardless of translation quality. Bank statements typically must reflect the most recent 30-90 days. We track these windows and advise when documents approach expiration.</p>
+
+          <h3>Golden Visa Document Requirements</h3>
+          <p>The Golden Visa program has elevated the importance of accurate financial documentation. Investor visas require translated bank statements showing sufficient funds or property valuations. Professional category applications need translated credentials and employment documentation. We handle complete Golden Visa document packages with coordinated translation timelines.</p>
+
+          <h3>Employment Visa Processing</h3>
+          <p>Employment visas require police clearance certificates from your home country, typically within 3 months of issue. The translation must precisely reflect the certificate content, including any notations about case outcomes or clearance scope. MOHRE and immigration authorities reject translations that summarize or paraphrase official statements.</p>
+
+          <h3>RTA License Conversion</h3>
+          <p>Dubai's Roads and Transport Authority accepts driving license translations from specific countries for direct conversion. The translation must capture all license categories, issue dates, and validity periods. Incomplete or inaccurate translations result in manual testing requirements.</p>
+        </div>
+
+        <div class="info-sidebar">
+          <div class="sidebar-card highlight">
+            <h4><i class="fas fa-exclamation-triangle"></i> Time-Sensitive Documents</h4>
+            <p>Immigration documents have strict validity windows. We prioritize these translations to maximize your usable timeframe.</p>
+          </div>
+
+          <div class="sidebar-card">
+            <h4>Common Visa Categories</h4>
+            <ul>
+              <li>Golden Visa (Investor/Professional)</li>
+              <li>Employment Visa</li>
+              <li>Family Sponsorship</li>
+              <li>Residency Renewal</li>
+              <li>Freelance Permit</li>
+            </ul>
+          </div>
+
+          <div class="sidebar-card">
+            <h4>Accepted By</h4>
+            <div class="authority-tags">
+              <span>GDRFA</span>
+              <span>ICP</span>
+              <span>MOHRE</span>
+              <span>RTA</span>
+              <span>Dubai Courts</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="package-section section">
+    <div class="container">
+      <div class="package-card">
+        <div class="package-content">
+          <span class="package-badge">Recommended</span>
+          <h2>Golden Visa Translation Package</h2>
+          <p>Complete document translation for Golden Visa applications. All documents coordinated for simultaneous submission with consistent formatting.</p>
+          <ul class="package-list">
+            <li><i class="fas fa-check"></i> Police Clearance Certificate</li>
+            <li><i class="fas fa-check"></i> Bank Statements (6 months)</li>
+            <li><i class="fas fa-check"></i> Property Valuations</li>
+            <li><i class="fas fa-check"></i> Professional Credentials</li>
+            <li><i class="fas fa-check"></i> Family Documents (dependents)</li>
+          </ul>
+          <a href="/services/golden-visa-translation/" class="btn btn--primary">
+            View Golden Visa Package
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="related-section section bg-light">
+    <div class="container">
+      <h2>Related Services</h2>
+      <div class="related-grid">
+        <a href="/personal/vital-records/" class="related-card">
+          <i class="fas fa-certificate"></i>
+          <h3>Vital Records</h3>
+          <p>Birth and marriage certificates for family visa sponsorship</p>
+        </a>
+        <a href="/personal/academic/" class="related-card">
+          <i class="fas fa-graduation-cap"></i>
+          <h3>Academic Documents</h3>
+          <p>Degrees and transcripts for professional licensing</p>
+        </a>
+        <a href="/services/attestation/" class="related-card">
+          <i class="fas fa-stamp"></i>
+          <h3>Attestation Services</h3>
+          <p>MOFA and embassy legalization coordination</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section section bg-dark">
+    <div class="container text-center">
+      <h2>Visa Application Deadline?</h2>
+      <p>Immigration documents require fast turnaround. Send your document for priority assessment.</p>
+      <a href="https://wa.me/971508620217?text=URGENT%20immigration%20document" class="btn btn--primary btn--lg">
+        <i class="fab fa-whatsapp"></i> Priority Request
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .breadcrumb-nav {
+    background: var(--primary-color);
+    padding: 1rem 0;
+  }
+  
+  .breadcrumb-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .breadcrumb-list li:not(:last-child)::after {
+    content: '/';
+    margin-left: 0.5rem;
+    color: rgba(255,255,255,0.5);
+  }
+  
+  .breadcrumb-list a { color: rgba(255,255,255,0.8); text-decoration: none; }
+  .breadcrumb-list span { color: white; }
+
+  .page-hero {
+    background: var(--primary-color);
+    color: white;
+    padding: 4rem 0;
+  }
+  
+  .hero-badge {
+    display: inline-block;
+    background: var(--accent-color);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .page-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 1rem;
+  }
+  
+  .hero-lead {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    max-width: 700px;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+  }
+
+  .section { padding: 4rem 0; }
+  .section-header { text-align: center; margin-bottom: 3rem; }
+  .section-header h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+  .section-header p { color: var(--text-muted); }
+
+  .documents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .document-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s;
+  }
+  
+  .document-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  }
+  
+  .document-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-color);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .document-icon i { font-size: 1.5rem; color: white; }
+  .document-card h3 { font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--primary-color); }
+  .document-card p { color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem; }
+  
+  .document-meta {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    padding: 0.75rem 0;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    margin-bottom: 0.75rem;
+  }
+  
+  .document-meta i { color: var(--accent-color); margin-right: 0.5rem; }
+  .document-link { color: var(--accent-color); font-weight: 600; }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 3rem;
+    align-items: start;
+  }
+  
+  .info-content h2 { font-size: 1.75rem; margin-bottom: 1.5rem; }
+  .info-content h3 { font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--primary-color); }
+  .info-content p { line-height: 1.8; margin-bottom: 1.25rem; }
+
+  .sidebar-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  }
+  
+  .sidebar-card.highlight {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+  }
+  
+  .sidebar-card h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .sidebar-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar-card li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  
+  .authority-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .authority-tags span {
+    background: var(--bg-light);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .package-card {
+    background: linear-gradient(135deg, var(--primary-color), #1a3d5c);
+    border-radius: 1rem;
+    padding: 3rem;
+    color: white;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .package-badge {
+    display: inline-block;
+    background: var(--accent-color);
+    padding: 0.25rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .package-card h2 { margin-bottom: 1rem; }
+  .package-card p { opacity: 0.9; margin-bottom: 1.5rem; }
+  
+  .package-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+  }
+  
+  .package-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .package-list i { color: var(--accent-color); }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .related-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  
+  .related-card:hover { transform: translateY(-4px); }
+  .related-card i { font-size: 2rem; color: var(--accent-color); margin-bottom: 1rem; }
+  .related-card h3 { font-size: 1.125rem; margin-bottom: 0.5rem; }
+  .related-card p { color: var(--text-muted); font-size: 0.9rem; }
+
+  .cta-section { text-align: center; }
+  .cta-section h2 { color: white; margin-bottom: 1rem; }
+  .cta-section p { color: rgba(255,255,255,0.9); margin-bottom: 2rem; }
+  
+  .bg-light { background: var(--bg-light, #f8f9fa); }
+  .bg-dark { background: var(--primary-color); }
+  .text-center { text-align: center; }
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  .btn--primary { background: var(--accent-color); color: white; }
+  .btn--lg { padding: 1.125rem 2.25rem; }
+
+  @media (max-width: 991px) {
+    .info-grid { grid-template-columns: 1fr; }
+  }
+  
+  @media (max-width: 768px) {
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
