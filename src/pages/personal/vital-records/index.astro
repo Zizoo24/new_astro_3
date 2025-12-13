@@ -1,84 +1,97 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+/**
+ * Vital Records Hub - Enhanced with Schema + Expanded Content
+ * 
+ * URL: /personal/vital-records/
+ * Silo: Personal & Civil (Silo 2)
+ * Type: Hub Page (links to birth, marriage, divorce, death children)
+ * 
+ * Target: 2,500+ words with comprehensive UAE context
+ */
+import CategoryLayout from '../../../layouts/CategoryLayout.astro';
+
+const breadcrumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Personal Documents', href: '/personal-documents/' },
+  { label: 'Vital Records' }
+];
+
+const faqs = [
+  {
+    question: 'What documents count as vital records in the UAE?',
+    answer: 'Vital records are official government documents that record key life events: birth certificates, marriage certificates, divorce decrees/certificates, and death certificates. In UAE context, these documents are required for visa applications, family sponsorship, inheritance matters, and various government procedures. All must be translated by MOJ-certified translators for official use.'
+  },
+  {
+    question: 'Do my vital records need attestation before translation?',
+    answer: 'For UAE government submissions, foreign vital records typically require the full attestation chain: notarization in the country of issue, authentication by that country\'s foreign ministry, attestation by the UAE embassy, and finally MOFA attestation in the UAE. We check attestation status before quoting and can guide you through the process if stamps are missing.'
+  },
+  {
+    question: 'How do I get my birth certificate translated for a UAE visa?',
+    answer: 'Send us a clear scan of your attested birth certificate via WhatsApp. We verify the document is complete and legible, provide a quote, and upon approval, our MOJ-certified translator produces the Arabic translation with official stamp. Digital delivery within hours; physical copies couriered same-day if needed.'
+  },
+  {
+    question: 'Why do UAE authorities need translated vital records?',
+    answer: 'Arabic is the official language of UAE government and judicial proceedings. Authorities cannot process documents they cannot read. Translated vital records are required for visa applications, family sponsorship at GDRFA, school enrollment, inheritance proceedings in Personal Status Court, and various other official matters.'
+  },
+  {
+    question: 'What if names are spelled differently on my documents?',
+    answer: 'Name consistency is critical—discrepancies cause 40% of government rejections. We verify that translated names match exactly how they appear on your passport and Emirates ID. If discrepancies exist in your source documents, we flag them before translation so you can address the issue with issuing authorities.'
+  },
+  {
+    question: 'Can you translate vital records from any country?',
+    answer: 'Yes. We translate vital records from all countries, in 43+ languages. Common origins include India, Pakistan, Philippines, UK, US, Egypt, Jordan, and European countries. Each country has different document formats, but our translators are experienced with international vital record conventions.'
+  },
+  {
+    question: 'How long are translated vital records valid?',
+    answer: 'The translation itself does not expire. However, some government procedures require documents issued within specific timeframes. For example, marriage certificates for spouse visa applications are typically accepted regardless of age, while other documents may need to be recently issued. We advise on requirements for your specific use case.'
+  },
+  {
+    question: 'Do you translate vital records for DIFC and ADGM?',
+    answer: 'Yes. While DIFC and ADGM operate in English, certain proceedings (especially those involving family law or inheritance) may require Arabic translations for coordination with mainland courts. We provide translations formatted for both common law and civil law jurisdictions.'
+  }
+];
 ---
 
-<BaseLayout
-  title="Vital Records Translation Dubai - Birth, Marriage, Death Certificates | OnlineTranslation.ae"
-  description="MOJ-certified vital records translation in Dubai. Birth certificates, marriage certificates, divorce decrees, and death certificates for UAE visa, immigration, and legal use."
+<CategoryLayout
+  title="Vital Records Translation Dubai | Birth, Marriage, Death Certificates | OnlineTranslation.ae"
+  description="MOJ-certified translation of vital records in Dubai. Birth certificates, marriage certificates, divorce decrees, death certificates. Required for UAE visas, sponsorship, and legal proceedings."
+  keywords="vital records translation dubai, birth certificate translation, marriage certificate translation, divorce certificate translation, death certificate translation, MOJ certified, UAE visa documents"
+  heroTitle="Vital Records Translation"
+  heroSubtitle="Birth, Marriage, Divorce & Death Certificates"
+  heroIntro="Vital records document the defining moments of your life—and in the UAE, they're required for nearly every major administrative process. From sponsoring family members to settling inheritance matters, these translations must be precise, properly attested, and MOJ-certified. We handle vital records from every country, ensuring your life documents are recognized by UAE authorities."
+  breadcrumbs={breadcrumbs}
+  serviceType="Vital Records Translation"
+  faqs={faqs}
 >
-  <Fragment slot="head">
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "Vital Records Translation Services Dubai",
-      "description": "MOJ-certified translation of birth certificates, marriage certificates, divorce decrees, and death certificates",
-      "provider": {
-        "@type": "Organization",
-        "name": "OnlineTranslation.ae",
-        "address": { "@type": "PostalAddress", "addressLocality": "Dubai", "addressCountry": "AE" }
-      },
-      "areaServed": ["Dubai", "Abu Dhabi", "Sharjah", "UAE"],
-      "serviceType": ["Birth Certificate Translation", "Marriage Certificate Translation", "Divorce Certificate Translation", "Death Certificate Translation"]
-    })} />
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://onlinetranslation.ae/" },
-        { "@type": "ListItem", "position": 2, "name": "Personal Documents", "item": "https://onlinetranslation.ae/personal/" },
-        { "@type": "ListItem", "position": 3, "name": "Vital Records", "item": "https://onlinetranslation.ae/personal/vital-records/" }
-      ]
-    })} />
-  </Fragment>
-
-  <section class="hero-section bg-dark" data-theme="dark">
-    <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">HOME</a>
-        <span class="separator">&gt;</span>
-        <a href="/personal/">PERSONAL DOCUMENTS</a>
-        <span class="separator">&gt;</span>
-        <span class="current">VITAL RECORDS</span>
-      </nav>
-
-      <h1>Vital Records Translation</h1>
-      <p class="hero-subtitle">Birth, Marriage, Divorce & Death Certificates</p>
-      <p class="hero-intro">Vital records are the foundation of your identity and family status in the UAE. Whether you're sponsoring a child, registering a marriage, processing inheritance, or completing immigration applications, accurate MOJ-certified translations ensure your documents are accepted without question by all UAE authorities.</p>
-    </div>
-  </section>
 
   <section class="section bg-white">
     <div class="container">
-      <h2>Vital Record Categories</h2>
-      <p class="section-intro">Select your document type for specific requirements and pricing.</p>
-
-      <div class="service-grid">
-        <a href="/personal/vital-records/birth/" class="service-card">
-          <div class="service-icon"><i class="fas fa-baby"></i></div>
-          <h3>Birth Certificate</h3>
-          <p>Essential for child sponsorship, Golden Visa dependents, school enrollment, and nationality registration in the UAE.</p>
-          <span class="card-link">Learn More <i class="fas fa-arrow-right"></i></span>
+      <h2>Vital Record Types</h2>
+      <p class="section-intro">Each vital record serves specific purposes in UAE administrative and legal systems.</p>
+      
+      <div class="category-grid">
+        <a href="/personal/vital-records/birth/" class="category-card">
+          <div class="category-card-icon"><i class="fas fa-baby"></i></div>
+          <h3>Birth Certificate Translation</h3>
+          <p>Required for child visa sponsorship, school enrollment, passport applications, and establishing family relationships for inheritance purposes.</p>
         </a>
-
-        <a href="/personal/vital-records/marriage/" class="service-card">
-          <div class="service-icon"><i class="fas fa-ring"></i></div>
-          <h3>Marriage Certificate</h3>
-          <p>Required for spouse visa sponsorship, family book registration, property co-ownership, and legal recognition of marriage.</p>
-          <span class="card-link">Learn More <i class="fas fa-arrow-right"></i></span>
+        
+        <a href="/personal/vital-records/marriage/" class="category-card">
+          <div class="category-card-icon"><i class="fas fa-ring"></i></div>
+          <h3>Marriage Certificate Translation</h3>
+          <p>Essential for spouse visa sponsorship, joint bank accounts, property registration, and establishing marital status for various government procedures.</p>
         </a>
-
-        <a href="/personal/vital-records/divorce/" class="service-card">
-          <div class="service-icon"><i class="fas fa-file-contract"></i></div>
-          <h3>Divorce Certificate</h3>
-          <p>Necessary for updating marital status, custody arrangements, remarriage documentation, and immigration applications.</p>
-          <span class="card-link">Learn More <i class="fas fa-arrow-right"></i></span>
+        
+        <a href="/personal/vital-records/divorce/" class="category-card">
+          <div class="category-card-icon"><i class="fas fa-file-signature"></i></div>
+          <h3>Divorce Certificate Translation</h3>
+          <p>Required for updating marital status, remarriage in UAE, custody arrangements, and removing ex-spouse from sponsorship records.</p>
         </a>
-
-        <a href="/personal/vital-records/death/" class="service-card">
-          <div class="service-icon"><i class="fas fa-scroll"></i></div>
-          <h3>Death Certificate</h3>
-          <p>Required for inheritance proceedings, insurance claims, repatriation processing, and estate administration.</p>
-          <span class="card-link">Learn More <i class="fas fa-arrow-right"></i></span>
+        
+        <a href="/personal/vital-records/death/" class="category-card">
+          <div class="category-card-icon"><i class="fas fa-scroll"></i></div>
+          <h3>Death Certificate Translation</h3>
+          <p>Necessary for inheritance proceedings, canceling residency, repatriation arrangements, and transferring property or assets of the deceased.</p>
         </a>
       </div>
     </div>
@@ -86,43 +99,84 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 
   <section class="section bg-light">
     <div class="container">
-      <h2>Common Use Cases for Vital Records Translation</h2>
+      <h2>Why Vital Records Translation Matters in the UAE</h2>
+      
+      <p>The UAE's administrative systems require documented proof for virtually every family-related process. Your children cannot be added to your visa without translated birth certificates. Your spouse cannot be sponsored without a translated marriage certificate. Inheritance cannot be distributed without translated death certificates. These are not optional conveniences—they are mandatory requirements.</p>
+      
+      <h3>The Attestation Chain</h3>
+      
+      <p>For vital records issued outside the UAE, a multi-step attestation process typically precedes translation. This chain establishes the document's authenticity before UAE authorities will accept it:</p>
+      
+      <ol style="line-height: 2; margin: 1.5rem 0;">
+        <li><strong>Notarization</strong> in the country where the document was issued</li>
+        <li><strong>Authentication</strong> by that country's foreign ministry (or state department for US documents)</li>
+        <li><strong>Attestation</strong> by the UAE Embassy in that country</li>
+        <li><strong>MOFA Attestation</strong> in the UAE (Ministry of Foreign Affairs)</li>
+        <li><strong>Translation</strong> by an MOJ-certified translator</li>
+      </ol>
+      
+      <p>This sequence matters. Translation before attestation may be rejected because authorities cannot verify the stamps were present before translation. We always check your document's attestation status and advise on the correct sequence.</p>
+      
+      <div class="category-info-box">
+        <h3><i class="fas fa-exclamation-triangle"></i> Common Rejection Reasons</h3>
+        <p>Government counters reject vital records translations for several preventable reasons: name spelling doesn't match passport exactly, document is missing required attestation stamps, scan quality is too poor to read dates or signatures, or the document has expired (for time-sensitive uses). We verify all these factors before beginning translation.</p>
+      </div>
+      
+      <h3>Country-Specific Considerations</h3>
+      
+      <p>Vital records from different countries have unique characteristics our translators understand:</p>
+      
+      <p><strong>India:</strong> Birth certificates may be issued by municipal corporations, gram panchayats, or hospitals depending on location and era. Marriage certificates come from registrars under different state-level marriage acts. We're familiar with all Indian vital record formats.</p>
+      
+      <p><strong>Philippines:</strong> PSA-issued certificates have specific security features. Church marriage certificates must be distinguished from civil registration. Birth certificates may need to be authenticated through DFA (Department of Foreign Affairs).</p>
+      
+      <p><strong>UK:</strong> Full birth certificates vs. short-form certificates serve different purposes. Scottish, Welsh, and Northern Irish documents have different formats than English ones. We handle all UK variations.</p>
+      
+      <p><strong>US:</strong> Each state issues vital records differently. Apostille from the Secretary of State may substitute for embassy attestation under the Hague Convention for certain uses.</p>
+    </div>
+  </section>
 
-      <div class="use-case-grid">
-        <div class="use-case-item">
-          <i class="fas fa-passport"></i>
-          <h3>Visa & Immigration</h3>
-          <p>GDRFA and ICA require translated birth and marriage certificates for residence visa applications, family sponsorship, and dependent additions.</p>
+  <section class="section bg-white">
+    <div class="container">
+      <h2>Common Use Cases for Vital Records</h2>
+      
+      <h3>Family Visa Sponsorship</h3>
+      <p>Sponsoring family members through GDRFA (General Directorate of Residency and Foreigners Affairs) requires translated vital records proving the relationship. For children: birth certificates showing parentage. For spouses: marriage certificates proving the union. For parents: birth certificates establishing the relationship chain. All must be attested and translated to Arabic.</p>
+      
+      <h3>School Enrollment</h3>
+      <p>Schools in Dubai require translated birth certificates to verify a child's age and identity. Some schools also require translated immunization records. KHDA-regulated schools have specific documentation requirements that we're familiar with.</p>
+      
+      <h3>Inheritance and Personal Status Court</h3>
+      <p>When someone passes away in the UAE—or when UAE assets are involved in an inheritance—the Personal Status Court requires translated vital records. Death certificates establish the passing. Birth certificates establish who the heirs are. Marriage certificates establish spousal rights. These translations directly affect how assets are distributed.</p>
+      
+      <h3>Status Changes and Updates</h3>
+      <p>Life changes require documentation. A divorce certificate updates your marital status for future marriage applications. A death certificate removes a deceased family member from records. A birth certificate for a newborn starts their official record. We help with translations for all life transitions.</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Our Vital Records Process</h2>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-title">1. Document Verification</span>
+          <p>Send your vital record via WhatsApp. We check legibility, verify attestation stamps are present, and confirm all required information is visible. We'll let you know immediately if anything needs attention before we can proceed.</p>
         </div>
-
-        <div class="use-case-item">
-          <i class="fas fa-star"></i>
-          <h3>Golden Visa</h3>
-          <p>Birth certificates for dependent children and marriage certificates for spouse inclusion in Golden Visa applications.</p>
+        
+        <div class="timeline-item">
+          <span class="timeline-title">2. Name Consistency Check</span>
+          <p>We compare names on your vital record against your passport and Emirates ID (if applicable). Any discrepancies are flagged before translation—this single check prevents the most common reason for government rejection.</p>
         </div>
-
-        <div class="use-case-item">
-          <i class="fas fa-graduation-cap"></i>
-          <h3>School Enrollment</h3>
-          <p>KHDA and private schools require birth certificate translations for student registration and age verification.</p>
+        
+        <div class="timeline-item">
+          <span class="timeline-title">3. Translation</span>
+          <p>Our MOJ-certified translator renders your document into Arabic with exact preservation of names, dates, registration numbers, and official notations. Nothing is paraphrased or summarized—every detail transfers to the translation.</p>
         </div>
-
-        <div class="use-case-item">
-          <i class="fas fa-building"></i>
-          <h3>Property Purchase</h3>
-          <p>DLD requires marriage certificate translation for joint property ownership registration between spouses.</p>
-        </div>
-
-        <div class="use-case-item">
-          <i class="fas fa-landmark"></i>
-          <h3>Inheritance</h3>
-          <p>Death certificates and family relationship documents for inheritance cases in UAE courts.</p>
-        </div>
-
-        <div class="use-case-item">
-          <i class="fas fa-plane"></i>
-          <h3>Repatriation</h3>
-          <p>Death certificate translation for repatriation of remains and settlement of affairs in the UAE.</p>
+        
+        <div class="timeline-item">
+          <span class="timeline-title">4. Certification & Delivery</span>
+          <p>The official MOJ stamp and QR verification code are applied. You receive the certified digital copy immediately. Physical copies can be couriered anywhere in the UAE on the same day.</p>
         </div>
       </div>
     </div>
@@ -130,342 +184,103 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 
   <section class="section bg-white">
     <div class="container">
-      <h2>Why UAE Authorities Trust Our Translations</h2>
-
-      <div class="trust-grid">
-        <div class="trust-item">
-          <div class="trust-icon"><i class="fas fa-stamp"></i></div>
-          <h3>MOJ Certified</h3>
-          <p>All vital records translations carry official Ministry of Justice certification with translator stamp and registration number.</p>
-        </div>
-
-        <div class="trust-item">
-          <div class="trust-icon"><i class="fas fa-check-double"></i></div>
-          <h3>Consistent Acceptance</h3>
-          <p>Formatted to exact specifications required by GDRFA, ICA, DLD, KHDA, and UAE courts for immediate acceptance.</p>
-        </div>
-
-        <div class="trust-item">
-          <div class="trust-icon"><i class="fas fa-bolt"></i></div>
-          <h3>60-Minute Drafts</h3>
-          <p>Standard vital records receive draft translations within 60 minutes, with same-day certified delivery available.</p>
-        </div>
-
-        <div class="trust-item">
-          <div class="trust-icon"><i class="fas fa-file-signature"></i></div>
-          <h3>Attestation Ready</h3>
-          <p>We coordinate MOFA, embassy attestation, and notarization for documents requiring full legalization.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-primary">
-    <div class="container cta-section">
-      <h2>Need a Vital Record Translated?</h2>
-      <p>Send a clear photo of your certificate via WhatsApp. We'll confirm the document type, provide an instant quote, and begin work immediately upon approval.</p>
-      <div class="cta-buttons">
-        <a href="https://wa.me/971508620217?text=I%20need%20vital%20records%20translation" class="btn btn-accent">
-          <i class="fab fa-whatsapp"></i> Send Your Document
+      <h2>Related Document Services</h2>
+      <p class="section-intro">Vital records often accompany other documents in government applications.</p>
+      
+      <div class="category-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <a href="/personal/immigration/" class="category-card">
+          <h3>Immigration Documents</h3>
+          <p>Police clearance certificates, bank statements, and other visa requirements.</p>
         </a>
-        <a href="/personal/" class="btn btn-outline">
-          <i class="fas fa-arrow-left"></i> Back to Personal Documents
+        
+        <a href="/personal/academic/" class="category-card">
+          <h3>Academic Documents</h3>
+          <p>Degree certificates, transcripts, and educational credentials for UAE recognition.</p>
+        </a>
+        
+        <a href="/services/attestation/" class="category-card">
+          <h3>Attestation Services</h3>
+          <p>MOFA attestation and embassy legalization for foreign documents.</p>
+        </a>
+        
+        <a href="/personal-documents/" class="category-card">
+          <h3>Personal Documents Hub</h3>
+          <p>Complete guide to personal document translation for UAE expats.</p>
         </a>
       </div>
     </div>
   </section>
-</BaseLayout>
+
+</CategoryLayout>
 
 <style>
-  .hero-section {
-    padding: 8rem 0 4rem;
-    background: var(--primary-color);
-  }
-
-  .breadcrumb {
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    margin-bottom: 2rem;
-  }
-
-  .breadcrumb a {
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-  }
-
-  .breadcrumb a:hover {
-    color: #fff;
-  }
-
-  .breadcrumb .separator {
-    margin: 0 0.75rem;
-    color: rgba(255, 255, 255, 0.4);
-  }
-
-  .breadcrumb .current {
-    color: #fff;
-  }
-
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: #fff;
-  }
-
-  .hero-subtitle {
-    font-size: 1.25rem;
-    color: var(--accent-color);
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  .hero-intro {
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.9);
-    max-width: 800px;
-    line-height: 1.8;
-  }
-
   .section {
-    padding: 5rem 0;
+    padding: 4rem 0;
   }
-
+  
   .section h2 {
-    font-size: 2rem;
+    font-size: 1.75rem;
     margin-bottom: 1rem;
     color: var(--primary-color);
   }
-
+  
+  .section h3 {
+    font-size: 1.25rem;
+    margin: 2rem 0 0.75rem;
+    color: var(--primary-color);
+  }
+  
+  .section p {
+    line-height: 1.8;
+    color: var(--text-body);
+    margin-bottom: 1rem;
+  }
+  
   .section-intro {
     font-size: 1.1rem;
     color: var(--text-muted);
-    margin-bottom: 2.5rem;
-    max-width: 700px;
-  }
-
-  .service-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
-
-  .service-card {
-    background: #fff;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-  }
-
-  .service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  }
-
-  .service-icon {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark, #0a1a30));
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-  }
-
-  .service-icon i {
-    font-size: 1.5rem;
-    color: #fff;
-  }
-
-  .service-card h3 {
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
-    color: var(--primary-color);
-  }
-
-  .service-card p {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-    margin-bottom: 1rem;
-  }
-
-  .card-link {
-    color: var(--accent-color);
-    font-weight: 600;
-    font-size: 0.9rem;
-  }
-
-  .card-link i {
-    margin-left: 0.25rem;
-    transition: transform 0.2s ease;
-  }
-
-  .service-card:hover .card-link i {
-    transform: translateX(4px);
-  }
-
-  .use-case-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-
-  .use-case-item {
-    text-align: center;
-    padding: 2rem;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  }
-
-  .use-case-item i {
-    font-size: 2.5rem;
-    color: var(--accent-color);
-    margin-bottom: 1rem;
-  }
-
-  .use-case-item h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.75rem;
-    color: var(--primary-color);
-  }
-
-  .use-case-item p {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  .trust-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-  }
-
-  .trust-item {
-    text-align: center;
-    padding: 2rem 1.5rem;
-  }
-
-  .trust-icon {
-    width: 70px;
-    height: 70px;
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark, #0a1a30));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.25rem;
-  }
-
-  .trust-icon i {
-    font-size: 1.75rem;
-    color: #fff;
-  }
-
-  .trust-item h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.75rem;
-    color: var(--primary-color);
-  }
-
-  .trust-item p {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  .bg-primary {
-    background: var(--primary-color);
-  }
-
-  .bg-primary h2,
-  .bg-primary p {
-    color: #fff;
-  }
-
-  .cta-section {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto;
-  }
-
-  .cta-section p {
-    opacity: 0.9;
     margin-bottom: 2rem;
-    font-size: 1.1rem;
+    max-width: 700px;
   }
-
-  .cta-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
+  
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-left: 30px;
+    border-left: 2px solid var(--accent-color);
+    margin: 2rem 0 2rem 10px;
   }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1rem 2rem;
-    border-radius: 8px;
+  
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  
+  .timeline-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -36px;
+    top: 0;
+    width: 14px;
+    height: 14px;
+    background: var(--bg-white, #fff);
+    border: 3px solid var(--accent-color);
+    border-radius: 50%;
+  }
+  
+  .timeline-title {
     font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    display: block;
   }
-
-  .btn-accent {
-    background: var(--accent-color);
-    color: #fff;
-  }
-
-  .btn-accent:hover {
-    background: var(--accent-dark, #d41448);
-    transform: translateY(-2px);
-  }
-
-  .btn-outline {
-    background: transparent;
-    color: #fff;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-  }
-
-  .btn-outline:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: #fff;
-  }
-
-  @media (max-width: 992px) {
-    .trust-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .use-case-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 2rem;
-    }
-
-    .service-grid,
-    .trust-grid,
-    .use-case-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .hero-section {
-      padding: 6rem 0 3rem;
-    }
+  
+  .timeline-item p {
+    margin: 0;
   }
 </style>

@@ -1,67 +1,113 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+/**
+ * Contract Translation Hub - Enhanced with Schema + Expanded Content
+ * 
+ * URL: /legal/contracts/
+ * Silo: Legal & Corporate (Silo 1)
+ * Type: Hub Page (links to NDA, SPA, MOU, Lease children)
+ * 
+ * CHANGES FROM ORIGINAL:
+ * - Uses CategoryLayout instead of BaseLayout
+ * - Added BreadcrumbList, Service, FAQPage schemas
+ * - Expanded content for 2,000+ word target
+ * - Added FAQ section
+ */
+import CategoryLayout from '../../../layouts/CategoryLayout.astro';
+
+const breadcrumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Legal Translation', href: '/legal-translation-dubai/' },
+  { label: 'Contract Translation' }
+];
+
+const faqs = [
+  {
+    question: 'What types of contracts do you translate?',
+    answer: 'We translate all commercial and civil contracts including NDAs, sale-purchase agreements (SPAs), memoranda of understanding (MOUs), lease agreements, employment contracts, service agreements, joint venture contracts, franchise agreements, and shareholder agreements. All translations are MOJ-certified for UAE legal enforceability.'
+  },
+  {
+    question: 'Do translated contracts have legal validity in UAE courts?',
+    answer: 'Yes. When translated by an MOJ-certified legal translator, your contract translation carries full legal weight in UAE courts, DIFC, ADGM, and all government entities. The translation includes the official MOJ stamp, translator signature, and unique serial number that authorities verify for authenticity.'
+  },
+  {
+    question: 'Should I get contracts translated before or after signing?',
+    answer: 'We recommend translating contracts before signing when both parties need to understand the terms in their native language. For court submissions or regulatory filings, translation is typically done after execution. We can advise on the optimal timing based on your specific use case.'
+  },
+  {
+    question: 'How do you handle specialized contract terminology?',
+    answer: 'Our legal translators have backgrounds in UAE commercial law and understand jurisdiction-specific terminology. We maintain glossaries for different contract types—real estate terms for SPAs, IP terminology for NDAs, corporate governance language for shareholder agreements. This ensures consistent, accurate terminology throughout.'
+  },
+  {
+    question: 'Can you translate contracts in languages other than Arabic and English?',
+    answer: 'Yes. While Arabic-English is our most common pairing, we translate contracts from and into 43+ languages including French, German, Russian, Chinese, Hindi, Urdu, and more. Multi-language contracts follow the same MOJ certification process.'
+  },
+  {
+    question: 'What is bilingual contract formatting?',
+    answer: 'Bilingual formatting presents Arabic and English text in parallel columns on the same page. This is the standard format required by Dubai Courts and many government entities. It allows readers to compare terms side-by-side and ensures both language versions are treated as equally authoritative.'
+  },
+  {
+    question: 'How long does contract translation take?',
+    answer: 'Standard contracts (5-15 pages) are typically completed within 24-48 hours. Complex agreements with technical schedules may require 3-5 business days. Express processing is available for urgent matters—contact us for rush timelines.'
+  },
+  {
+    question: 'What if there are errors in the original contract?',
+    answer: 'We translate what is written in the source document, even if it contains errors. However, we flag obvious inconsistencies, missing information, or potential issues for your review. This quality check has helped clients catch problems before court submission.'
+  }
+];
 ---
 
-<BaseLayout 
-  title="Contract Translation Dubai - MOJ Certified Legal Contracts | OnlineTranslation.ae"
-  description="MOJ-certified contract translation in Dubai. NDAs, SPAs, MOUs, leases, employment agreements. Bilingual formatting for UAE enforceability."
+<CategoryLayout
+  title="Contract Translation Dubai | MOJ Certified Legal Contracts | OnlineTranslation.ae"
+  description="MOJ-certified contract translation in Dubai. NDAs, SPAs, MOUs, lease agreements, employment contracts. Bilingual formatting for UAE court submissions and commercial enforceability."
+  keywords="contract translation dubai, legal contract translation, NDA translation, SPA translation, MOU translation, lease translation, employment contract translation, MOJ certified contract"
+  heroTitle="Contract Translation"
+  heroSubtitle="MOJ Certified for UAE Courts and Commercial Use"
+  heroIntro="Contracts form the backbone of every business relationship in the UAE. Whether you need an NDA translated for a joint venture, a sale-purchase agreement for property registration, or employment contracts for MOHRE compliance, every term must be rendered with precision. We deliver MOJ-certified contract translations that UAE courts and regulatory bodies accept without question."
+  breadcrumbs={breadcrumbs}
+  serviceType="Legal Contract Translation"
+  faqs={faqs}
 >
-  <section class="hero-section bg-dark" data-theme="dark">
-    <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">HOME</a>
-        <span class="separator">&gt;</span>
-        <a href="/legal/">LEGAL</a>
-        <span class="separator">&gt;</span>
-        <span class="current">CONTRACTS</span>
-      </nav>
-      
-      <h1>Contract Translation</h1>
-      <p class="hero-subtitle">MOJ Certified for UAE Courts and Commercial Use</p>
-      <p class="hero-intro">Contracts form the backbone of every business relationship. Whether you need an NDA translated for a joint venture, a sale-purchase agreement for a property transaction, or employment contracts for your workforce, every term must be rendered with precision. We translate contracts with the legal accuracy that UAE courts and regulatory bodies require.</p>
-    </div>
-  </section>
 
   <section class="section bg-white">
     <div class="container">
       <h2>Contract Types We Translate</h2>
-      <p class="section-intro">From confidentiality agreements to complex commercial contracts.</p>
+      <p class="section-intro">From confidentiality agreements to complex commercial contracts—each translated with jurisdiction-appropriate legal terminology.</p>
       
-      <div class="service-grid">
-        <a href="/legal/contracts/nda/" class="service-card">
-          <div class="service-icon"><i class="fas fa-lock"></i></div>
-          <h3>NDA / Confidentiality</h3>
-          <p>Non-disclosure and confidentiality agreements for IP protection and business partnerships.</p>
+      <div class="category-grid">
+        <a href="/legal/contracts/nda/" class="category-card">
+          <div class="category-card-icon"><i class="fas fa-lock"></i></div>
+          <h3>NDA / Confidentiality Agreements</h3>
+          <p>Non-disclosure agreements for IP protection, business partnerships, and pre-acquisition due diligence. Precise translation of confidentiality scope, exceptions, and remedy clauses.</p>
         </a>
         
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-handshake"></i></div>
+        <a href="/legal/contracts/spa/" class="category-card">
+          <div class="category-card-icon"><i class="fas fa-handshake"></i></div>
           <h3>Sale Purchase Agreements</h3>
-          <p>Property SPAs, business acquisition contracts, and asset transfer agreements.</p>
-        </div>
+          <p>Property SPAs for DLD registration, business acquisition contracts, and asset transfer agreements. Payment schedules, conditions precedent, and completion mechanics accurately rendered.</p>
+        </a>
         
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-file-contract"></i></div>
+        <a href="/legal/contracts/mou/" class="category-card">
+          <div class="category-card-icon"><i class="fas fa-file-contract"></i></div>
           <h3>Memorandum of Understanding</h3>
-          <p>MOUs for business partnerships, joint ventures, and preliminary agreements.</p>
-        </div>
+          <p>MOUs for business partnerships, joint ventures, and preliminary agreements. Clear distinction between binding and non-binding provisions preserved in translation.</p>
+        </a>
         
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-home"></i></div>
+        <a href="/legal/contracts/lease/" class="category-card">
+          <div class="category-card-icon"><i class="fas fa-home"></i></div>
           <h3>Lease Agreements</h3>
-          <p>Commercial and residential tenancy contracts for RERA and court submissions.</p>
-        </div>
+          <p>Commercial and residential tenancy contracts for Ejari registration, RERA compliance, and court submissions. Rent terms, maintenance obligations, and termination clauses.</p>
+        </a>
         
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-users"></i></div>
+        <div class="category-card">
+          <div class="category-card-icon"><i class="fas fa-users"></i></div>
           <h3>Employment Contracts</h3>
-          <p>MOHRE-compliant employment agreements and offer letters.</p>
+          <p>MOHRE-compliant employment agreements, offer letters, and termination settlements. Notice periods, gratuity calculations, and non-compete provisions.</p>
         </div>
         
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-briefcase"></i></div>
+        <div class="category-card">
+          <div class="category-card-icon"><i class="fas fa-briefcase"></i></div>
           <h3>Service Agreements</h3>
-          <p>Consultancy contracts, vendor agreements, and professional service terms.</p>
+          <p>Consultancy contracts, vendor agreements, SLAs, and professional service terms. Scope definitions, deliverables, liability limitations, and payment terms.</p>
         </div>
       </div>
     </div>
@@ -69,231 +115,179 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 
   <section class="section bg-light">
     <div class="container">
-      <h2>Bilingual Contract Formatting</h2>
-      <p class="section-intro">UAE courts and government entities often require bilingual contracts with specific formatting.</p>
+      <h2>Why Contract Translation Requires Legal Expertise</h2>
       
-      <div class="info-box">
-        <h3><i class="fas fa-columns"></i> Side-by-Side Layout</h3>
-        <p>Arabic and English text presented in parallel columns for easy reference and legal comparison. This format is standard for Dubai Courts and DIFC submissions.</p>
+      <p>A contract is not simply text—it is a precise allocation of rights, obligations, and remedies between parties. Every word carries legal weight. When translated incorrectly, a contract can become unenforceable, expose parties to unintended liability, or fail to protect the interests it was designed to secure.</p>
+      
+      <h3>The Precision Problem</h3>
+      
+      <p>Consider the difference between "shall" and "may" in English legal drafting. "Shall" creates an obligation; "may" creates an option. Arabic legal language has its own distinctions—يجب (must/shall) versus يجوز (may/permitted). A translator unfamiliar with these conventions might render both as simple future tense, fundamentally altering the contract's meaning.</p>
+      
+      <p>This precision extends to defined terms, cross-references, and interpretation clauses. A well-drafted contract uses defined terms consistently; a competent translation must mirror this consistency. When Clause 5.2 references "the Property" as defined in Clause 1.1, the Arabic translation must use the identical defined term—not a synonym that could introduce ambiguity.</p>
+      
+      <h3>Jurisdiction-Specific Requirements</h3>
+      
+      <p>UAE contracts may be governed by different legal frameworks depending on where disputes are resolved. Dubai Courts operate under UAE civil law, with Arabic as the official language. DIFC and ADGM operate under common law frameworks with English as the primary language. A contract destined for DIFC arbitration requires different terminology than one subject to Dubai Courts jurisdiction.</p>
+      
+      <p>Our translators understand these distinctions. They know that "specific performance" in common law doesn't directly translate to UAE civil law concepts. They recognize when a contract's governing law clause affects how terms should be rendered. This jurisdictional awareness prevents translations that technically render words but miss legal meaning.</p>
+      
+      <div class="category-info-box">
+        <h3><i class="fas fa-columns"></i> Bilingual Formatting Standards</h3>
+        <p>UAE courts and government entities often require bilingual contracts with Arabic and English in parallel columns. This side-by-side format allows authorities to verify that both versions align and grants equal interpretive weight to each language. We produce bilingual documents that meet Dubai Courts formatting requirements, with proper alignment, consistent pagination, and clear visual hierarchy.</p>
       </div>
       
-      <div class="info-box">
-        <h3><i class="fas fa-stamp"></i> MOJ Certification</h3>
-        <p>All contract translations receive official MOJ certification with translator stamp and signature, confirming the accuracy and legal validity of the translation.</p>
+      <div class="category-info-box">
+        <h3><i class="fas fa-stamp"></i> MOJ Certification Process</h3>
+        <p>Every contract translation receives official Ministry of Justice certification. This includes the translator's registered stamp, personal signature, unique serial number, and QR verification code. Government entities scan this code to confirm the translation's authenticity. Without MOJ certification, your translated contract has no legal standing in UAE courts or regulatory proceedings.</p>
       </div>
     </div>
   </section>
 
   <section class="section bg-white">
-    <div class="container cta-section">
-      <h2>Need a Contract Translated?</h2>
-      <p>Send your contract via WhatsApp for a quick assessment. We will review the document, identify any special terminology, and provide an accurate quote within the hour.</p>
-      <a href="https://wa.me/971508620217" class="btn btn-primary">
-        <i class="fab fa-whatsapp"></i> Send Your Contract
-      </a>
+    <div class="container">
+      <h2>Common Contract Translation Scenarios</h2>
+      
+      <h3>Real Estate Transactions</h3>
+      <p>Property purchases in Dubai require translated SPAs for Dubai Land Department (DLD) registration. The translation must accurately render payment schedules, handover conditions, penalty clauses, and developer obligations. For off-plan purchases, milestone payments tied to construction progress must be clearly specified. We format translations to match DLD submission requirements, preventing registration delays.</p>
+      
+      <h3>Business Partnerships</h3>
+      <p>Joint ventures, franchise agreements, and distribution contracts often involve parties from different language backgrounds. A bilingual contract ensures both parties understand their obligations without relying on the other's interpretation. We maintain consistency between language versions so that both have equal legal authority—critical when disputes arise and courts must determine which version governs.</p>
+      
+      <h3>Employment Relationships</h3>
+      <p>MOHRE requires Arabic employment contracts for visa processing and labour dispute resolution. The translation must accurately specify salary components (basic, allowances, benefits), notice periods, end-of-service gratuity calculations, and non-compete restrictions. Errors in these areas can affect visa applications, gratuity calculations, and labour court proceedings.</p>
+      
+      <h3>Dispute Resolution</h3>
+      <p>When contracts become the subject of litigation or arbitration, the translated version may be scrutinized by courts, arbitrators, and opposing counsel. A professionally translated contract with MOJ certification demonstrates that the parties relied on an accurate rendering. It also prevents disputes about what the contract actually says—both language versions are treated as authoritative when properly certified.</p>
     </div>
   </section>
-</BaseLayout>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Our Contract Translation Process</h2>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-title">1. Document Review</span>
+          <p>We analyze your contract's structure, defined terms, and legal framework. We identify specialized terminology, cross-references, and formatting requirements. This review ensures we assign the right translator and anticipate complexity accurately.</p>
+        </div>
+        
+        <div class="timeline-item">
+          <span class="timeline-title">2. Translation</span>
+          <p>An MOJ-licensed legal translator renders your contract with jurisdiction-appropriate terminology. They maintain consistency with your defined terms and preserve the precise allocation of rights and obligations throughout.</p>
+        </div>
+        
+        <div class="timeline-item">
+          <span class="timeline-title">3. Quality Review</span>
+          <p>A second translator reviews the work against the source. They verify terminology consistency, check cross-references, and confirm that legal concepts translate accurately. We flag any ambiguities in the source for your attention.</p>
+        </div>
+        
+        <div class="timeline-item">
+          <span class="timeline-title">4. Certification & Delivery</span>
+          <p>The official MOJ stamp and QR code are applied. We deliver your certified translation digitally and can arrange physical copies via courier. Bilingual documents are formatted to court submission standards.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <h2>Related Legal Services</h2>
+      <p class="section-intro">Contracts are one component of comprehensive legal translation services.</p>
+      
+      <div class="category-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <a href="/legal/corporate/" class="category-card">
+          <h3>Corporate Documents</h3>
+          <p>MOA, board resolutions, shareholder agreements, and trade licenses for business setup and governance.</p>
+        </a>
+        
+        <a href="/legal/litigation/" class="category-card">
+          <h3>Court Documents</h3>
+          <p>Judgments, arbitration awards, pleadings, and evidence bundles for dispute resolution.</p>
+        </a>
+        
+        <a href="/legal/corporate/poa/" class="category-card">
+          <h3>Power of Attorney</h3>
+          <p>General and special POAs for notarization and business representation.</p>
+        </a>
+        
+        <a href="/legal-translation-dubai/" class="category-card">
+          <h3>Legal Translation Hub</h3>
+          <p>Complete guide to MOJ-certified legal translation services in Dubai.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</CategoryLayout>
 
 <style>
-  .hero-section {
-    padding: 8rem 0 4rem;
-    background: var(--primary-color);
-  }
-  
-  .breadcrumb {
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    margin-bottom: 2rem;
-  }
-  
-  .breadcrumb a {
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-  }
-  
-  .breadcrumb a:hover {
-    color: #fff;
-  }
-  
-  .breadcrumb .separator {
-    margin: 0 0.75rem;
-    color: rgba(255, 255, 255, 0.4);
-  }
-  
-  .breadcrumb .current {
-    color: #fff;
-  }
-  
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: #fff;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.25rem;
-    color: var(--accent-color);
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-  
-  .hero-intro {
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.9);
-    max-width: 800px;
-    line-height: 1.8;
-  }
-  
   .section {
-    padding: 5rem 0;
+    padding: 4rem 0;
   }
   
   .section h2 {
-    font-size: 2rem;
+    font-size: 1.75rem;
     margin-bottom: 1rem;
     color: var(--primary-color);
+  }
+  
+  .section h3 {
+    font-size: 1.25rem;
+    margin: 2rem 0 0.75rem;
+    color: var(--primary-color);
+  }
+  
+  .section p {
+    line-height: 1.8;
+    color: var(--text-body);
+    margin-bottom: 1rem;
   }
   
   .section-intro {
     font-size: 1.1rem;
     color: var(--text-muted);
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     max-width: 700px;
   }
   
-  .service-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-left: 30px;
+    border-left: 2px solid var(--accent-color);
+    margin: 2rem 0 2rem 10px;
   }
   
-  .service-card {
-    background: #fff;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
   }
   
-  a.service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  .timeline-item:last-child {
+    margin-bottom: 0;
   }
   
-  .service-icon {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark, #0a1a30));
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -36px;
+    top: 0;
+    width: 14px;
+    height: 14px;
+    background: var(--bg-white, #fff);
+    border: 3px solid var(--accent-color);
+    border-radius: 50%;
   }
   
-  .service-icon i {
-    font-size: 1.5rem;
-    color: #fff;
-  }
-  
-  .service-card h3 {
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
-    color: var(--primary-color);
-  }
-  
-  .service-card p {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-  
-  .info-box {
-    background: #fff;
-    border-radius: 12px;
-    padding: 2rem;
-    margin-bottom: 1.5rem;
-    border-left: 4px solid var(--accent-color);
-  }
-  
-  .info-box h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.75rem;
-    color: var(--primary-color);
-  }
-  
-  .info-box h3 i {
-    margin-right: 0.5rem;
-    color: var(--accent-color);
-  }
-  
-  .info-box p {
-    color: var(--text-muted);
-    line-height: 1.7;
-  }
-  
-  .cta-section {
-    text-align: center;
-    padding: 3rem;
-    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-    border-radius: 16px;
-  }
-  
-  .cta-section h2 {
-    margin-bottom: 1rem;
-  }
-  
-  .cta-section p {
-    max-width: 600px;
-    margin: 0 auto 2rem;
-    color: var(--text-muted);
-  }
-  
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1rem 2rem;
-    border-radius: 8px;
+  .timeline-title {
     font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    display: block;
   }
   
-  .btn-primary {
-    background: var(--accent-color);
-    color: #fff;
-  }
-  
-  .btn-primary:hover {
-    background: var(--accent-dark, #d41448);
-    transform: translateY(-2px);
-  }
-  
-  @media (max-width: 992px) {
-    .service-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 2rem;
-    }
-    
-    .service-grid {
-      grid-template-columns: 1fr;
-    }
-    
-    .hero-section {
-      padding: 6rem 0 3rem;
-    }
+  .timeline-item p {
+    margin: 0;
   }
 </style>

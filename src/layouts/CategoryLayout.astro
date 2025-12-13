@@ -1,26 +1,109 @@
 ---
+/**
+ * CategoryLayout.astro - Enhanced with Schema.org Support
+ * 
+ * Use for: Hub pages, category index pages
+ * Provides: BreadcrumbList, Service, FAQPage schemas
+ * Inherits: LocalBusiness from BaseLayout
+ */
 import BaseLayout from './BaseLayout.astro';
+
+interface Breadcrumb {
+  label: string;
+  href?: string;
+}
+
+interface FAQ {
+  question: string;
+  answer: string;
+}
 
 interface Props {
   title: string;
   description: string;
+  canonical?: string;
+  keywords?: string;
   heroTitle: string;
   heroSubtitle: string;
   heroIntro: string;
-  breadcrumbs: Array<{label: string; href?: string}>;
+  breadcrumbs: Breadcrumb[];
+  // NEW: Schema support
+  serviceType?: string;
+  faqs?: FAQ[];
 }
 
 const { 
   title, 
-  description, 
+  description,
+  canonical,
+  keywords = '',
   heroTitle,
   heroSubtitle,
   heroIntro,
-  breadcrumbs
+  breadcrumbs,
+  serviceType = 'Translation Service',
+  faqs = []
 } = Astro.props;
+
+// Use Astro.site from config for consistent URL handling
+const siteUrl = Astro.site?.origin || 'https://onlinetranslation.ae';
+
+// BreadcrumbList Schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": breadcrumbs.map((crumb, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "name": crumb.label,
+    "item": crumb.href 
+      ? (crumb.href.startsWith('http') ? crumb.href : `${siteUrl}${crumb.href}`)
+      : undefined
+  }))
+};
+
+// Service Schema
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": heroTitle,
+  "description": description,
+  "serviceType": serviceType,
+  "provider": {
+    "@type": "LocalBusiness",
+    "@id": `${siteUrl}/#organization`,
+    "name": "OnlineTranslation.ae"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Dubai" },
+    { "@type": "City", "name": "Abu Dhabi" },
+    { "@type": "City", "name": "Sharjah" }
+  ]
+};
+
+// FAQPage Schema (conditional)
+const faqSchema = faqs.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+} : null;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} canonical={canonical}>
+  <Fragment slot="head">
+    {keywords && <meta name="keywords" content={keywords} />}
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+    {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+  </Fragment>
+
   <section class="category-hero" data-theme="dark">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -43,6 +126,37 @@ const {
   </section>
 
   <slot />
+
+  <!-- FAQ Section (if FAQs provided) -->
+  {faqs.length > 0 && (
+    <section class="section bg-light">
+      <div class="container">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+          {faqs.map(faq => (
+            <details class="faq-item">
+              <summary class="faq-question">{faq.question}</summary>
+              <div class="faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA Section -->
+  <section class="section bg-dark">
+    <div class="container text-center">
+      <h2>Ready to Get Started?</h2>
+      <p style="max-width: 600px; margin: 0 auto 2rem;">Send your document via WhatsApp for a free assessment and quote within 15 minutes.</p>
+      <a href="https://wa.me/971508620217" class="btn btn--primary btn--lg">
+        <i class="fab fa-whatsapp"></i>
+        Start on WhatsApp
+      </a>
+    </div>
+  </section>
 </BaseLayout>
 
 <style is:global>
@@ -205,6 +319,52 @@ const {
     max-width: 600px;
     margin: 0 auto 2rem;
     color: var(--text-muted);
+  }
+  
+  /* FAQ Styles */
+  .faq-list {
+    max-width: 800px;
+  }
+  
+  .faq-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+  }
+  
+  .faq-question {
+    font-weight: 600;
+    font-size: 1.05rem;
+    cursor: pointer;
+    list-style: none;
+    padding-right: 2rem;
+    position: relative;
+  }
+  
+  .faq-question::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 1.5rem;
+    color: var(--accent-color);
+  }
+  
+  .faq-item[open] .faq-question::after {
+    content: '−';
+  }
+  
+  .faq-answer {
+    padding-top: 1rem;
+  }
+  
+  .faq-answer p {
+    margin: 0;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+  
+  .text-center {
+    text-align: center;
   }
   
   @media (max-width: 992px) {
