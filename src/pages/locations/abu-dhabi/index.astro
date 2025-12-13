@@ -1,380 +1,702 @@
 ---
-import ServiceLayout from '../../../layouts/ServiceLayout.astro';
-import RelatedServices from '../../../components/RelatedServices.astro';
-import CrossSiloLinks from '../../../components/CrossSiloLinks.astro';
-import InlineCallout from '../../../components/InlineCallout.astro';
+/**
+ * /locations/abu-dhabi/ - Abu Dhabi Translation Services Hub
+ * 
+ * Using: CategoryLayout
+ * Schemas: BreadcrumbList, Service, FAQPage (auto-generated)
+ * Added: 10 FAQs for rich snippets
+ * 
+ * Silo: Locations (Silo 5)
+ * Type: Location Hub Page
+ */
+import CategoryLayout from '../../../layouts/CategoryLayout.astro';
 
-const pageData = {
-  title: "Abu Dhabi Translation Services – MOJ Certified | OnlineTranslation.ae",
-  description: "MOJ-certified translation services for Abu Dhabi. Government documents, ADGM entities, and federal authority submissions. Next-day delivery from Dubai.",
-  keywords: "Abu Dhabi translation, ADGM translation, government translation Abu Dhabi, MOJ certified translation Abu Dhabi",
-  heroTitle: "Abu Dhabi Translation Services",
-  heroSubtitle: "MOJ Certified with Next-Day Delivery",
-  heroIntro: "Serving Abu Dhabi clients from our Dubai base with next-day delivery across the capital. Whether you need translations for federal government authorities, ADGM-registered entities, or personal documents for Abu Dhabi institutions, we provide the same MOJ-certified quality with convenient remote workflow.",
-  snapshot: [
-    { icon: "clock", bold: "Digital drafts", text: "typically within 60 minutes" },
-    { icon: "mobile-alt", bold: "WhatsApp-based workflow", text: "no office visit needed" },
-    { icon: "check-circle", bold: "Accepted by ADJD", text: "and federal authorities" },
-    { icon: "stamp", bold: "MOJ legal stamp", text: "with QR verification" }
-  ],
-  breadcrumbs: [
-    { name: "Home", url: "/" },
-    { name: "Locations", url: "/locations/" },
-    { name: "Abu Dhabi", url: "/locations/abu-dhabi/" }
-  ],
-  
-  trustStrip: [
-    "MOJ-licensed partner",
-    "Next-day Abu Dhabi delivery",
-    "WhatsApp concierge support"
-  ],
-  
-  processSteps: [
-    {
-      title: "Send your documents",
-      text: "WhatsApp photos or scans. No need to travel to Dubai - everything handled remotely."
-    },
-    {
-      title: "We prepare your translation",
-      text: "Same MOJ-certified quality as our Dubai clients receive."
-    },
-    {
-      title: "Next-day Abu Dhabi delivery",
-      text: "Physical copies couriered to your Abu Dhabi address. Digital PDF sent immediately."
-    }
-  ],
-  
-  benefitCards: [
-    {
-      icon: "building",
-      title: "ADGM documents",
-      text: "Corporate and financial documents for Abu Dhabi Global Market entities."
-    },
-    {
-      icon: "court",
-      title: "ADJD submissions",
-      text: "Court documents and legal filings for Abu Dhabi Judicial Department."
-    },
-    {
-      icon: "document",
-      title: "Federal authorities",
-      text: "Documents for ministries and federal government entities."
-    }
-  ],
-  
-  accordionSections: [
-    {
-      title: "Services for Abu Dhabi",
-      id: "services",
-      items: [
-        {
-          heading: "ADGM corporate documents",
-          body: "<p>Abu Dhabi Global Market operates under English common law, similar to DIFC. We handle Articles of Association, corporate governance documents, and regulatory filings for ADGM-registered entities.</p>"
-        },
-        {
-          heading: "Federal government submissions",
-          body: "<p>Many federal ministries and authorities are based in Abu Dhabi. We translate documents for MOHRE, Ministry of Interior, and other federal entities with appropriate governmental terminology.</p>"
-        },
-        {
-          heading: "Abu Dhabi court documents",
-          body: "<p>ADJD (Abu Dhabi Judicial Department) accepts our MOJ-certified translations for court proceedings, legal filings, and official submissions.</p>"
-        }
-      ]
-    }
-  ],
-  
-  faqs: [
-    {
-      question: "How quickly can you deliver to Abu Dhabi?",
-      answer: "Digital PDF is sent immediately upon completion. Physical copies are delivered next-day to Abu Dhabi addresses via courier. For urgent matters, same-day courier can be arranged at additional cost."
-    },
-    {
-      question: "Is MOJ certification accepted in Abu Dhabi?",
-      answer: "Yes. MOJ (Ministry of Justice) certification is federal and accepted across all Emirates including Abu Dhabi. Our translations are accepted by ADJD, ADGM, and all Abu Dhabi government authorities."
-    },
-    {
-      question: "Do I need to visit Dubai?",
-      answer: "No. Our entire workflow is WhatsApp-based. Send documents from Abu Dhabi, and we deliver to you. No office visit required."
-    },
-    {
-      question: "Can you handle documents for ADGM courts?",
-      answer: "Yes. ADGM operates its own courts under common law. We handle translations for ADGM court proceedings with awareness of common law terminology and conventions."
-    },
-    {
-      question: "Do you deliver to all Abu Dhabi locations?",
-      answer: "Yes. We deliver to all Abu Dhabi locations including the city center, Al Reem Island, Saadiyat, Yas Island, Al Ain, and the Western Region. Delivery times may vary slightly for outer areas."
-    }
-  ],
-  serviceType: "Legal Translation"
-};
+const breadcrumbs = [
+  { label: 'Home', href: '/' },
+  { label: 'Locations', href: '/locations/' },
+  { label: 'Abu Dhabi' }
+];
+
+const faqs = [
+  {
+    question: "Do you have a translation office in Abu Dhabi?",
+    answer: "We operate as a digital-first translation service with document collection and delivery across all Abu Dhabi areas. Send documents via WhatsApp for immediate processing. For clients who prefer physical service, we offer courier pickup from your location in Abu Dhabi Island, Al Reem Island, Yas Island, Saadiyat Island, Khalifa City, Al Raha, Mussafah, and all other Abu Dhabi neighborhoods. Same-day courier service available."
+  },
+  {
+    question: "Are your translations accepted by Abu Dhabi government entities?",
+    answer: "Yes. All our translations are MOJ-certified and accepted by Abu Dhabi Judicial Department, ADJD, ICA Abu Dhabi, ADGM, ADDED, TAMM, Abu Dhabi Municipality, Department of Health, and all Abu Dhabi government entities. We understand the specific requirements of each authority and format translations accordingly."
+  },
+  {
+    question: "Can you translate documents for ADGM companies?",
+    answer: "Yes. We serve businesses in Abu Dhabi Global Market with translations for registration documents, corporate filings, and regulatory submissions. ADGM operates under common law with English as the primary language, but Arabic translations may be needed for interactions with mainland Abu Dhabi authorities. We understand both frameworks and advise on requirements."
+  },
+  {
+    question: "What is the turnaround time for Abu Dhabi deliveries?",
+    answer: "Standard single-page documents complete within 4-6 hours. Digital delivery via WhatsApp is immediate upon completion. Physical copies with original MOJ stamps can be couriered to any Abu Dhabi address same-day for orders completed before 2 PM. Next-day delivery guaranteed for later orders. Express 2-3 hour service available for urgent requirements."
+  },
+  {
+    question: "Do you handle Abu Dhabi court document translation?",
+    answer: "Yes. We translate documents for Abu Dhabi Judicial Department including civil cases, commercial disputes, family matters, and criminal proceedings. We also handle ADGM Courts documents which operate under common law. Our translators understand both Arabic civil law and English common law terminology, ensuring accurate translation for each jurisdiction."
+  },
+  {
+    question: "Can you help with Department of Health licensing documents?",
+    answer: "Yes. We translate medical credentials, professional certificates, and licensing documents for Department of Health Abu Dhabi healthcare professional licensing. This includes medical degrees, specialty certificates, good standing certificates, and experience letters. We format translations to DOH submission requirements."
+  },
+  {
+    question: "What areas in Abu Dhabi do you serve?",
+    answer: "We serve all Abu Dhabi areas including Abu Dhabi Island, Al Reem Island, Yas Island, Saadiyat Island, Khalifa City, Al Raha Beach, Mussafah, Mohamed Bin Zayed City, Al Shamkha, Al Falah, Baniyas, and Al Ain. Courier pickup and delivery available to any address with same-day service in most areas."
+  },
+  {
+    question: "Do you translate documents for TAMM services?",
+    answer: "Yes. TAMM is Abu Dhabi's integrated government services platform. We translate documents required for TAMM transactions including personal documents for visa services, business documents for licensing, property documents for registration, and legal documents for various government procedures. Our translations meet TAMM submission standards."
+  },
+  {
+    question: "Can you translate documents from Al Ain?",
+    answer: "Yes. We serve Al Ain with the same services available in Abu Dhabi city. Send documents via WhatsApp from anywhere. Courier pickup and delivery available throughout Al Ain including Al Ain city center, Al Jimi, Al Muwaiji, Al Khabisi, and surrounding areas. Turnaround times are identical to Abu Dhabi city orders."
+  },
+  {
+    question: "What languages do you translate for Abu Dhabi clients?",
+    answer: "We translate 43+ languages for Abu Dhabi clients with Arabic-English being most common. Other frequently requested languages include Hindi, Urdu, Malayalam, Tagalog, Bengali, Nepali, Sinhala, Russian, French, German, and Chinese. All translations receive the same MOJ certification accepted by Abu Dhabi authorities."
+  }
+];
+
+const areas = [
+  { name: "Abu Dhabi Island", desc: "Government offices, embassies, and corporate headquarters" },
+  { name: "Al Reem Island", desc: "Residential towers and business centers" },
+  { name: "Yas Island", desc: "Tourism, entertainment, and residential documentation" },
+  { name: "Saadiyat Island", desc: "Cultural district and residential services" },
+  { name: "Khalifa City", desc: "Residential communities and business parks" },
+  { name: "Al Raha", desc: "Waterfront living and commercial services" },
+  { name: "Mussafah", desc: "Industrial zone and worker documentation" },
+  { name: "Al Ain", desc: "Eastern region services and university town" }
+];
+
+const authorities = [
+  { name: "ADJD", icon: "gavel", desc: "Abu Dhabi Judicial Department - Court documents and legal proceedings" },
+  { name: "ICA Abu Dhabi", icon: "passport", desc: "Federal Authority for Identity and Citizenship - Visa and residency" },
+  { name: "ADGM", icon: "landmark", desc: "Abu Dhabi Global Market - Financial center common law jurisdiction" },
+  { name: "ADDED", icon: "briefcase", desc: "Economic Development - Business licensing and commercial registration" },
+  { name: "DOH", icon: "hospital", desc: "Department of Health - Healthcare professional licensing" },
+  { name: "TAMM", icon: "building", desc: "Integrated government services platform" },
+  { name: "ADEK", icon: "graduation-cap", desc: "Education and Knowledge - School enrollment and credentials" },
+  { name: "Abu Dhabi Municipality", icon: "city", desc: "Municipal services and property matters" }
+];
+
+const services = [
+  {
+    title: "Legal Translation",
+    href: "/legal-translation-dubai/",
+    icon: "balance-scale",
+    desc: "Court documents, contracts, judgments for ADJD and ADGM Courts."
+  },
+  {
+    title: "Personal Documents",
+    href: "/personal/",
+    icon: "user",
+    desc: "Birth certificates, marriage certificates, degrees for visa and immigration."
+  },
+  {
+    title: "Corporate Documents",
+    href: "/legal/corporate/",
+    icon: "building",
+    desc: "MOA, trade licenses, board resolutions for ADDED and ADGM."
+  },
+  {
+    title: "Medical Credentials",
+    href: "/personal/education/",
+    icon: "user-md",
+    desc: "Healthcare professional documents for DOH licensing."
+  },
+  {
+    title: "Property Documents",
+    href: "/legal/contracts/spa/",
+    icon: "home",
+    desc: "SPAs, title deeds, POAs for Abu Dhabi property transactions."
+  },
+  {
+    title: "Attestation Services",
+    href: "/services/attestation/",
+    icon: "stamp",
+    desc: "MOFA attestation and embassy legalization coordination."
+  }
+];
 ---
 
-<ServiceLayout {...pageData}>
-  
-  <section class="section bg-white">
+<CategoryLayout
+  title="Translation Services Abu Dhabi | MOJ Certified Legal Translation | OnlineTranslation.ae"
+  description="MOJ-certified translation services in Abu Dhabi. Legal documents, personal certificates, corporate filings for ADJD, ICA, ADGM, ADDED, DOH, and all Abu Dhabi government entities. Same-day delivery."
+  keywords="translation services abu dhabi, legal translation abu dhabi, moj certified translation abu dhabi, adjd translation, adgm translation, abu dhabi court translation, document translation abu dhabi"
+  heroTitle="Translation Services in Abu Dhabi"
+  heroSubtitle="MOJ Certified • Same-Day Delivery • All Abu Dhabi Areas"
+  heroIntro="Abu Dhabi's role as the UAE capital means navigating both federal and emirate-level authorities. Whether you need documents for ADJD court proceedings, ADGM company formation, DOH healthcare licensing, or ICA visa applications, we provide MOJ-certified translations that Abu Dhabi authorities accept. Same-day service available across Abu Dhabi, Al Ain, and the Western Region."
+  breadcrumbs={breadcrumbs}
+  serviceType="Document Translation Services in Abu Dhabi"
+  faqs={faqs}
+>
+
+  <!-- Services Grid -->
+  <section class="section">
     <div class="container">
-      <h2>Serving Abu Dhabi from Dubai</h2>
-      <div class="content-prose">
-        <p>Abu Dhabi is the UAE's capital and home to federal government ministries, major corporations, and significant residential population. While our physical base is in Dubai, we serve Abu Dhabi clients with the same quality and responsiveness through our remote workflow and reliable courier delivery.</p>
-        
-        <p>The 90-minute drive between Dubai and Abu Dhabi means next-day delivery is straightforward. For urgent matters, same-day courier is available. Digital documents are delivered instantly, so you can have a PDF for immediate use while waiting for physical copies.</p>
-        
-        <h3>Why Abu Dhabi Clients Choose Us</h3>
-        <p>Many Abu Dhabi residents and businesses work with Dubai-based translation services because of the concentration of MOJ-licensed translators in Dubai and the ease of remote workflow. You do not need to visit an office or make multiple trips. Send documents via WhatsApp, approve the quote, and receive your translation delivered to your door.</p>
-        
-        <p>For federal government submissions, court filings, or corporate documentation, our MOJ certification is valid throughout the UAE. There is no difference in acceptance between translation done in Dubai and Abu Dhabi—MOJ licensing is federal.</p>
-        
-        <h3>Understanding Abu Dhabi's Distinct Needs</h3>
-        <p>Abu Dhabi has its own governmental structure alongside the federal ministries headquartered there. ADJD (Abu Dhabi Judicial Department) handles local court matters. Abu Dhabi DED manages local business licensing. ADGM operates as a separate financial free zone under common law. We understand these distinctions and advise appropriately.</p>
+      <h2>Translation Services for Abu Dhabi</h2>
+      <p class="section-intro">Select your document type for Abu Dhabi-specific requirements, formatting standards, and turnaround times.</p>
+
+      <div class="services-grid">
+        {services.map(service => (
+          <a href={service.href} class="service-card">
+            <div class="service-icon">
+              <i class={`fas fa-${service.icon}`}></i>
+            </div>
+            <h3>{service.title}</h3>
+            <p>{service.desc}</p>
+            <span class="service-link">Learn More <i class="fas fa-arrow-right"></i></span>
+          </a>
+        ))}
       </div>
     </div>
   </section>
 
+  <!-- Abu Dhabi Authorities Section -->
   <section class="section bg-light">
     <div class="container">
-      <h2>Federal Government and Ministry Documents</h2>
-      <div class="content-prose">
-        <h3>Working with Federal Authorities</h3>
-        <p>Many UAE federal ministries are headquartered in Abu Dhabi: Ministry of Foreign Affairs, Ministry of Interior, Ministry of Human Resources and Emiratisation, and others. Documents for these ministries—whether personal immigration matters, employment documentation, or official correspondence—require MOJ-certified translation.</p>
-        
-        <p>We translate documents for federal authority submissions regularly and understand the terminology and formatting expectations. Whether you are dealing with visa matters, employment permits, or official applications, we provide translations that meet federal standards.</p>
-        
-        <h3>Immigration and Visa Documents</h3>
-        <p>Abu Dhabi residents processing visa applications, family sponsorship, or <a href="/services/golden-visa-translation/">Golden Visa</a> applications need translated documents for federal immigration authorities. <a href="/personal/vital-records/birth/">Birth certificates</a>, <a href="/personal/vital-records/marriage/">marriage certificates</a>, <a href="/personal/education/degree/">degree certificates</a>, and other supporting documents all require MOJ-certified translation.</p>
-        
-        <h3>Employment Documentation</h3>
-        <p>MOHRE processing for Abu Dhabi-based employees follows the same federal requirements as elsewhere in the UAE. <a href="/services/certificate-translation/">Certificate translation</a> for work permits, salary certificate translation, and employment contract translation all meet MOHRE standards.</p>
+      <h2>Abu Dhabi Government Authorities We Serve</h2>
+      <p class="section-intro">Our MOJ-certified translations are accepted by all Abu Dhabi government entities. We understand the specific requirements of each authority.</p>
+
+      <div class="authorities-grid">
+        {authorities.map(auth => (
+          <div class="authority-card">
+            <div class="authority-icon">
+              <i class={`fas fa-${auth.icon}`}></i>
+            </div>
+            <h3>{auth.name}</h3>
+            <p>{auth.desc}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <section class="section bg-white">
+  <!-- Main Content Section -->
+  <section class="section">
     <div class="container">
-      <h2>Abu Dhabi Judicial Department (ADJD)</h2>
-      <div class="content-prose">
-        <h3>Court Documents and Legal Filings</h3>
-        <p>ADJD handles civil, criminal, and personal status cases in Abu Dhabi. Court filings, evidence documents, and legal submissions may require translation. We provide MOJ-certified translations that ADJD accepts for all court proceedings.</p>
-        
-        <p>For <a href="/services/legal-translation/">legal translation</a> involving Abu Dhabi courts, we work with individuals and law firms to meet court deadlines and formatting requirements. Urgent court filings can be accommodated with our Express and VIP Concierge services.</p>
-        
-        <h3>Personal Status Matters</h3>
-        <p>Divorce proceedings, custody matters, and inheritance cases in Abu Dhabi require translated documents when parties or evidence involve foreign elements. Marriage certificates, birth certificates, foreign court orders, and other civil documents need certified translation for court submission.</p>
-        
-        <h3>Commercial Litigation</h3>
-        <p>Business disputes before Abu Dhabi courts may involve contracts, correspondence, and corporate documents in languages other than Arabic. We translate commercial documentation for litigation support, working with law firms on volume and deadline requirements.</p>
-      </div>
-    </div>
-  </section>
+      <div class="content-grid">
+        <div class="content-main">
+          <h2>Why Abu Dhabi Businesses and Residents Choose Us</h2>
+          
+          <p>Abu Dhabi presents unique translation requirements. As the UAE capital, the emirate hosts federal ministries, foreign embassies, and major government entities alongside emirate-level authorities like ADJD and ADDED. Documents may need to satisfy federal Arabic requirements while also meeting ADGM's English common law standards. We navigate this complexity daily.</p>
+          
+          <p>Our translators understand the terminology ADJD expects, the formatting DOH requires for medical licensing, the certification standards ICA demands for visa applications, and the distinctions between mainland Abu Dhabi and ADGM requirements. This Abu Dhabi-specific expertise means your documents are accepted the first time.</p>
 
-  <section class="section bg-light">
-    <div class="container">
-      <h2>ADGM Corporate Services</h2>
-      <div class="content-prose">
-        <h3>Abu Dhabi Global Market</h3>
-        <p>ADGM is Abu Dhabi's financial free zone, operating under English common law similar to <a href="/locations/dubai/difc/">DIFC</a> in Dubai. Companies registered in ADGM use English as the primary operating language, with documentation following common law conventions.</p>
-        
-        <p>ADGM entities may need Arabic translation when dealing with mainland Abu Dhabi authorities, opening bank accounts with UAE banks, or engaging in property transactions. We translate ADGM corporate documents to Arabic with awareness of common law concepts and their Arabic equivalents.</p>
-        
-        <h3>ADGM Courts</h3>
-        <p>ADGM operates its own courts under English common law. Proceedings occur primarily in English, but Arabic documents introduced as evidence require certified translation. We support ADGM court filings with translations that meet court requirements.</p>
-        
-        <h3>Financial Services Regulatory Authority (FSRA)</h3>
-        <p>ADGM's FSRA regulates financial services within the free zone. Regulatory correspondence, license applications, and compliance documents may require translation when dealing with other regulatory bodies or for record-keeping purposes.</p>
-      </div>
-    </div>
-  </section>
+          <h3>Understanding Abu Dhabi's Legal Landscape</h3>
+          
+          <p>Abu Dhabi operates under UAE federal law with Arabic as the official language for most government interactions. However, ADGM—Abu Dhabi Global Market—operates as a financial free zone under common law with English as the primary language. This dual system requires translators who understand both frameworks.</p>
+          
+          <p>A contract for ADGM arbitration uses different terminology than one subject to ADJD jurisdiction. Corporate documents for mainland ADDED registration follow different conventions than ADGM company filings. Employment matters may involve both MOHRE federal requirements and Abu Dhabi-specific regulations. We advise on requirements and format translations appropriately.</p>
 
-  <section class="section bg-white">
-    <div class="container">
-      <h2>Abu Dhabi Districts We Serve</h2>
-      <div class="content-prose">
-        <h3>Abu Dhabi City</h3>
-        <p>The central city area including Corniche, Al Khalidiyah, and the downtown districts. Government offices, courts, and major businesses are concentrated here. Next-day delivery is standard; same-day available for urgent matters.</p>
-        
-        <h3>Al Reem Island</h3>
-        <p>A major residential and commercial development with significant professional population. Many corporate offices and residential towers. Regular delivery service with same next-day timing.</p>
-        
-        <h3>Saadiyat Island</h3>
-        <p>Cultural district with museums, universities, and upscale residential. NYU Abu Dhabi and Louvre Abu Dhabi create international community with diverse translation needs. Standard delivery service.</p>
-        
-        <h3>Yas Island</h3>
-        <p>Entertainment and residential district. Growing residential population and hospitality businesses. Included in standard Abu Dhabi delivery area.</p>
-        
-        <h3>Al Ain</h3>
-        <p>Abu Dhabi's second city, inland near the Omani border. University town with significant population. Delivery available with slightly extended timeline.</p>
-        
-        <h3>Western Region</h3>
-        <p>Including areas like Madinat Zayed and Liwa. Delivery available; timing confirmed based on specific location.</p>
-      </div>
-    </div>
-  </section>
+          <h3>Abu Dhabi Judicial Department (ADJD)</h3>
+          
+          <p>ADJD handles civil, commercial, family, and criminal matters in Abu Dhabi emirate. All court proceedings require Arabic documentation. Foreign judgments need translation for recognition and enforcement. Evidence from international parties requires MOJ certification. We translate court documents with the precision that litigation demands.</p>
+          
+          <p>Our translators understand ADJD formatting requirements, legal terminology conventions, and the urgency that court deadlines create. When you have a filing deadline, we deliver. Same-day translation with courier delivery to ADJD offices available for urgent matters.</p>
 
-  <section class="section bg-light">
-    <div class="container">
-      <h2>Service Levels</h2>
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <h3>Standard</h3>
-          <div class="pricing-price">From AED 150</div>
-          <p class="pricing-time">24-hour + next-day delivery</p>
-          <ul class="pricing-features">
-            <li>MOJ-certified translation</li>
-            <li>Digital PDF immediately</li>
-            <li>Next-day Abu Dhabi courier</li>
-            <li>WhatsApp updates</li>
-          </ul>
+          <h3>Healthcare Professional Licensing</h3>
+          
+          <p>Abu Dhabi's Department of Health requires translated credentials for healthcare professional licensing. This includes medical degrees, specialty certificates, good standing certificates from medical councils, experience letters, and professional development records. DOH has specific formatting requirements that differ from other emirates.</p>
+          
+          <p>We translate healthcare credentials with attention to medical terminology, credential designations, and the specific document formats DOH accepts. Our translations have supported licensing for physicians, nurses, pharmacists, dentists, and allied health professionals across Abu Dhabi healthcare facilities.</p>
         </div>
-        <div class="pricing-card pricing-card--featured">
-          <h3>Express</h3>
-          <div class="pricing-price">From AED 300</div>
-          <p class="pricing-time">6-hour + same-day courier</p>
-          <ul class="pricing-features">
-            <li>Everything in Standard</li>
-            <li>Priority processing</li>
-            <li>Same-day Abu Dhabi delivery</li>
-            <li>Court deadline support</li>
-          </ul>
-        </div>
-        <div class="pricing-card">
-          <h3>VIP Concierge</h3>
-          <div class="pricing-price">From AED 500</div>
-          <p class="pricing-time">1-hour draft + urgent courier</p>
-          <ul class="pricing-features">
-            <li>Everything in Express</li>
-            <li>Immediate assignment</li>
-            <li>Draft within 60 minutes</li>
-            <li>Urgent courier dispatch</li>
-          </ul>
+
+        <div class="content-sidebar">
+          <div class="info-card highlight">
+            <h4><i class="fab fa-whatsapp"></i> Quick Start</h4>
+            <p>Send your documents via WhatsApp for an instant quote. Same-day certified delivery available across Abu Dhabi.</p>
+            <a href="https://wa.me/971508620217" class="btn btn--primary btn--sm">
+              <i class="fab fa-whatsapp"></i> Send Documents
+            </a>
+          </div>
+
+          <div class="info-card">
+            <h4><i class="fas fa-clock"></i> Abu Dhabi Turnaround</h4>
+            <ul>
+              <li><strong>Express:</strong> 2-3 hours</li>
+              <li><strong>Standard:</strong> 4-6 hours</li>
+              <li><strong>Complex:</strong> 24-48 hours</li>
+              <li><strong>Courier:</strong> Same-day Abu Dhabi</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h4><i class="fas fa-check-circle"></i> Accepted By</h4>
+            <ul class="authority-list">
+              <li>ADJD Courts</li>
+              <li>ICA Abu Dhabi</li>
+              <li>ADGM</li>
+              <li>ADDED</li>
+              <li>DOH</li>
+              <li>TAMM Services</li>
+              <li>All Federal Entities</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section bg-white">
+  <!-- Areas Served Section -->
+  <section class="section bg-light">
     <div class="container">
-      <h2>Getting Started</h2>
-      <div class="content-prose">
-        <p>Send your documents via WhatsApp from anywhere in Abu Dhabi. We will review them, confirm the translation requirements, and provide a quote. Once approved, work begins immediately.</p>
-        
-        <p>For federal ministry submissions, court filings, or ADGM matters, tell us the intended use so we can advise on any additional requirements like <a href="/services/attestation/">attestation</a> or specific formatting.</p>
-        
-        <p>Digital copies are delivered as soon as translation is complete. Physical copies ship the same day by courier, arriving next day to Abu Dhabi addresses. For urgent matters, same-day courier delivery can be arranged.</p>
-        
-        <p>There is no need to visit Dubai. Our complete workflow—document submission, payment, delivery—happens remotely. You get the same quality and service as Dubai-based clients with the convenience of delivery to your Abu Dhabi address.</p>
+      <h2>Abu Dhabi Areas We Serve</h2>
+      <p class="section-intro">Courier pickup and delivery available across all Abu Dhabi neighborhoods and Al Ain. Same-day service in most areas.</p>
+
+      <div class="areas-grid">
+        {areas.map(area => (
+          <div class="area-card">
+            <h3><i class="fas fa-map-marker-alt"></i> {area.name}</h3>
+            <p>{area.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="areas-note">
+        <p><strong>Additional areas served:</strong> Mohamed Bin Zayed City, Al Shamkha, Al Falah, Baniyas, Al Wathba, Al Bahia, Al Shahama, Masdar City, and the Western Region including Madinat Zayed and Liwa.</p>
       </div>
     </div>
   </section>
 
-  <section class="section bg-white">
+  <!-- Trust Section -->
+  <section class="section">
     <div class="container">
-      <InlineCallout 
-        type="tip" 
-        title="Federal Authority Documents"
-        link="/services/attestation/mofa/"
-        linkText="MOFA attestation services"
-      >
-        Documents for federal ministries in Abu Dhabi often require MOFA attestation along with translation.
-      </InlineCallout>
-
-      <RelatedServices 
-        pageKey="abuDhabi"
-        title="Common Document Needs"
-        maxItems={6}
-      />
-      
-      <CrossSiloLinks 
-        pageKey="abuDhabi"
-        title="Other Locations"
-      />
+      <div class="trust-grid">
+        <div class="trust-stat">
+          <div class="trust-number">24hr</div>
+          <div class="trust-label">Standard Delivery</div>
+        </div>
+        <div class="trust-stat">
+          <div class="trust-number">2-3hr</div>
+          <div class="trust-label">Express Available</div>
+        </div>
+        <div class="trust-stat">
+          <div class="trust-number">43+</div>
+          <div class="trust-label">Languages</div>
+        </div>
+        <div class="trust-stat">
+          <div class="trust-number">100%</div>
+          <div class="trust-label">Acceptance Rate</div>
+        </div>
+      </div>
     </div>
   </section>
 
-</ServiceLayout>
+  <!-- Other Locations -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Other UAE Locations</h2>
+      <div class="locations-grid">
+        <a href="/locations/dubai/" class="location-link">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Dubai</span>
+        </a>
+        <a href="/locations/sharjah/" class="location-link">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Sharjah</span>
+        </a>
+        <a href="/locations/ajman/" class="location-link">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Ajman</span>
+        </a>
+        <a href="/locations/" class="location-link">
+          <i class="fas fa-globe"></i>
+          <span>All Locations</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</CategoryLayout>
 
 <style>
-  .content-prose {
-    max-width: 800px;
-    line-height: 1.8;
+  /* Base Section Styles */
+  .section {
+    padding: 4rem 0;
   }
-  
-  .content-prose h3 {
-    margin-top: 2rem;
+
+  .section h2 {
+    font-size: 1.75rem;
     margin-bottom: 1rem;
-    font-size: 1.25rem;
     color: var(--primary-color);
   }
-  
-  .content-prose p {
-    margin-bottom: 1.25rem;
-    color: var(--text-dark);
+
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 800px;
   }
-  
-  .content-prose a {
-    color: var(--accent-color);
+
+  .bg-light {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  /* Services Grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
     text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
   }
-  
-  .content-prose a:hover {
-    text-decoration: underline;
+
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
   }
-  
-  .pricing-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-    gap: 1.5rem; 
+
+  .service-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-color);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
   }
-  
-  .pricing-card { 
-    background: #ffffff; 
-    border-radius: 1rem; 
-    padding: 2rem; 
-    text-align: center; 
-    border: 1px solid rgba(0, 0, 0, 0.05); 
+
+  .service-icon i {
+    font-size: 1.5rem;
+    color: #fff;
   }
-  
-  .pricing-card--featured { 
-    border-color: var(--accent-color); 
-    box-shadow: 0 8px 30px rgba(255, 22, 84, 0.15); 
+
+  .service-card h3 {
+    font-size: 1.15rem;
+    margin: 0 0 0.75rem;
+    color: var(--primary-color);
   }
-  
-  .pricing-card h3 { 
-    margin: 0 0 0.5rem; 
-    font-size: 1.25rem; 
+
+  .service-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
   }
-  
-  .pricing-price { 
-    font-size: 2rem; 
-    font-weight: 700; 
-    color: var(--primary-color); 
-    margin-bottom: 0.25rem;
+
+  .service-link {
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 0.9rem;
   }
-  
-  .pricing-time { 
-    color: var(--text-muted); 
-    font-size: 0.9rem; 
+
+  /* Authorities Grid */
+  .authorities-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .authority-card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .authority-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+
+  .authority-icon i {
+    font-size: 1.25rem;
+    color: #fff;
+  }
+
+  .authority-card h3 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .authority-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Content Grid */
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 3rem;
+  }
+
+  .content-main h2 {
+    font-size: 1.75rem;
     margin-bottom: 1.5rem;
   }
-  
-  .pricing-features {
+
+  .content-main h3 {
+    font-size: 1.25rem;
+    margin: 2.5rem 0 1rem;
+    color: var(--primary-color);
+  }
+
+  .content-main p {
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Sidebar */
+  .info-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .info-card.highlight {
+    background: var(--primary-color);
+    color: #fff;
+  }
+
+  .info-card h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .info-card h4 i {
+    color: var(--accent-color);
+  }
+
+  .info-card.highlight h4 i {
+    color: #fff;
+  }
+
+  .info-card ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    text-align: left;
   }
-  
-  .pricing-features li {
-    padding: 0.5rem 0;
-    padding-left: 1.5rem;
-    position: relative;
+
+  .info-card li {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     font-size: 0.95rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   }
-  
-  .pricing-features li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
+
+  .info-card.highlight li {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .info-card li:last-child {
+    border-bottom: none;
+  }
+
+  .info-card p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .info-card .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .authority-list {
+    columns: 1;
+  }
+
+  /* Areas Grid */
+  .areas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .area-card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .area-card h3 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .area-card h3 i {
     color: var(--accent-color);
+    margin-right: 0.5rem;
+  }
+
+  .area-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .areas-note {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .areas-note p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+
+  /* Trust Grid */
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .trust-stat {
+    padding: 2rem;
+  }
+
+  .trust-number {
+    font-size: 2.5rem;
     font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+  }
+
+  .trust-label {
+    font-size: 1rem;
+    color: var(--text-muted);
+  }
+
+  /* Locations Grid */
+  .locations-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .location-link {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--primary-color);
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  .location-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .location-link i {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .location-link span {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .btn--primary {
+    background: var(--accent-color);
+    color: #fff;
+  }
+
+  .btn--primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn--sm {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .authorities-grid,
+    .areas-grid,
+    .trust-grid,
+    .locations-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 991px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .content-sidebar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section {
+      padding: 3rem 0;
+    }
+
+    .services-grid,
+    .authorities-grid,
+    .areas-grid,
+    .trust-grid,
+    .locations-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .content-sidebar {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
