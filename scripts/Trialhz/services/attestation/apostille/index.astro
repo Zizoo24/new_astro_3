@@ -1,0 +1,204 @@
+---
+import ServiceLayout from '../../../../layouts/ServiceLayout.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Attestation Services', url: '/services/attestation/' },
+  { name: 'Apostille Services', url: '/services/attestation/apostille/' }
+];
+
+const snapshot = [
+  { icon: 'stamp', bold: 'Hague Convention', text: 'Simplified international authentication' },
+  { icon: 'globe', bold: '120+ Countries', text: 'Apostille accepted worldwide' },
+  { icon: 'clock', bold: '3-7 Days', text: 'Typical apostille processing' },
+  { icon: 'exchange-alt', bold: 'Embassy Alternative', text: 'Replaces embassy legalization chain' }
+];
+
+const processSteps = [
+  {
+    number: 1,
+    title: 'Document Assessment',
+    text: 'We verify your document type and confirm whether apostille or traditional attestation is the appropriate route for your destination country.',
+    icon: 'clipboard-check'
+  },
+  {
+    number: 2,
+    title: 'Notarization (if needed)',
+    text: 'Some documents require notarization before apostille. We coordinate notary services or advise on requirements.',
+    icon: 'file-signature'
+  },
+  {
+    number: 3,
+    title: 'Apostille Application',
+    text: 'Documents submitted to the designated competent authority in the issuing country for apostille certification.',
+    icon: 'stamp'
+  },
+  {
+    number: 4,
+    title: 'Delivery',
+    text: 'Apostilled documents shipped to Dubai or your preferred location, ready for use in any Hague Convention country.',
+    icon: 'shipping-fast'
+  }
+];
+
+const faqs = [
+  {
+    question: 'What is an apostille?',
+    answer: 'An apostille is a simplified form of document authentication used between countries that are members of the Hague Apostille Convention. Instead of the lengthy embassy legalization chain, a single apostille certificate from the issuing country makes the document valid in all other member countries. The apostille confirms the document signature and seal are genuine.'
+  },
+  {
+    question: 'Is the UAE a member of the Hague Apostille Convention?',
+    answer: 'Yes. The UAE joined the Hague Apostille Convention in 2023, which significantly simplifies document authentication. Documents apostilled in UAE are now accepted in 120+ member countries without additional embassy legalization. Similarly, apostilled documents from other member countries are accepted in UAE with just MOFA attestation.'
+  },
+  {
+    question: 'When should I use apostille vs traditional attestation?',
+    answer: 'Use apostille when both the issuing country AND destination country are Hague Convention members. If either country is not a member, traditional embassy attestation is required. For UAE use, apostilled foreign documents still need MOFA attestation as the final step. We advise on the correct route for your specific situation.'
+  },
+  {
+    question: 'Which documents can be apostilled?',
+    answer: 'Most public documents can be apostilled: birth certificates, marriage certificates, educational credentials, court documents, notarized documents, and government-issued certificates. Private documents (like commercial contracts) typically need notarization first, then the notarized document can be apostilled.'
+  },
+  {
+    question: 'How long does apostille take?',
+    answer: 'Processing time varies by country. US apostilles typically take 3-5 business days (longer for federal documents). UK apostilles take 2-5 days through FCDO. Australian apostilles take 5-10 days through DFAT. We provide realistic timelines based on current processing speeds in each country.'
+  },
+  {
+    question: 'Do apostilled documents need translation?',
+    answer: 'For UAE use, yes. While the apostille authenticates the document, UAE government entities and courts require Arabic translation. The translation should be done after apostille so it reflects the authenticated document. We coordinate both apostille and subsequent MOJ-certified translation.'
+  }
+];
+
+const accordionSections = [
+  {
+    title: 'Apostille by Country',
+    id: 'countries',
+    items: [
+      {
+        heading: 'United States',
+        body: 'US apostilles are issued by the Secretary of State in each state for state-issued documents, or by the US Department of State for federal documents. Processing times and procedures vary by state. Our partners handle submissions across all 50 states.'
+      },
+      {
+        heading: 'United Kingdom',
+        body: 'UK apostilles are issued by the Foreign, Commonwealth & Development Office (FCDO). Solicitor-certified copies and notarized documents can be apostilled. We coordinate FCDO submissions for all UK document types.'
+      },
+      {
+        heading: 'Australia',
+        body: 'Australian apostilles are issued by the Department of Foreign Affairs and Trade (DFAT). Documents must be original or certified copies from authorized persons. Processing typically takes 5-10 business days.'
+      },
+      {
+        heading: 'European Union Countries',
+        body: 'Each EU member state has designated competent authorities for apostille issuance. We coordinate apostilles from Germany, France, Netherlands, Spain, Italy, and other EU countries through local partners.'
+      },
+      {
+        heading: 'India',
+        body: 'India joined the Hague Convention in 2023. Apostilles are issued by designated authorities including the Ministry of External Affairs. This significantly simplifies authentication for Indian documents destined for UAE and other member countries.'
+      }
+    ]
+  },
+  {
+    title: 'Apostille vs Embassy Attestation',
+    id: 'comparison',
+    items: [
+      {
+        heading: 'Speed',
+        body: 'Apostille is typically faster—one step versus multiple embassy visits. A US apostille takes days; traditional attestation through UAE Embassy can take weeks.'
+      },
+      {
+        heading: 'Cost',
+        body: 'Apostille is generally less expensive due to fewer steps and handling points. Embassy attestation involves fees at multiple stages plus courier costs between offices.'
+      },
+      {
+        heading: 'Complexity',
+        body: 'Apostille is a single certificate attached to your document. Embassy attestation requires navigating foreign ministry, embassy, and MOFA procedures with different requirements at each step.'
+      },
+      {
+        heading: 'Acceptance',
+        body: 'Both routes result in documents accepted for UAE use. The key difference is which route applies—determined by whether countries are Hague Convention members.'
+      }
+    ]
+  }
+];
+---
+
+<ServiceLayout
+  title="Apostille Services Dubai | Hague Convention Document Authentication"
+  description="Apostille services for UAE and international document authentication. Hague Convention certification from US, UK, Australia, EU countries. Simplified alternative to embassy legalization."
+  keywords="apostille services dubai, hague apostille uae, document apostille, apostille certificate, international document authentication"
+  heroTitle="Apostille Services"
+  heroSubtitle="Hague Convention Authentication"
+  heroIntro="The Hague Apostille Convention simplifies international document authentication. Instead of lengthy embassy legalization chains, a single apostille certificate makes your documents valid across 120+ member countries. We coordinate apostille services from the US, UK, Europe, Australia, and other member nations."
+  snapshot={snapshot}
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  serviceType="Apostille Service"
+  processSteps={processSteps}
+  processTitle="Apostille Process"
+  accordionSections={accordionSections}
+>
+  <section class="section bg-light">
+    <div class="container">
+      <h2>The UAE and the Hague Apostille Convention</h2>
+      <p>The UAE's accession to the Hague Apostille Convention in 2023 marked a significant change in document authentication. Previously, all foreign documents required the lengthy embassy attestation chain. Now, documents from other member countries can follow the simplified apostille route.</p>
+      
+      <p>For documents destined for UAE use, apostilled documents from member countries require only MOFA attestation as the final step—eliminating the need for UAE Embassy attestation in the origin country. This saves time, reduces costs, and simplifies the process considerably.</p>
+      
+      <p>Similarly, UAE-issued documents can now be apostilled for use in other member countries, replacing the previous requirement for embassy legalization at each destination country's embassy.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Related Services</h2>
+      <div class="related-grid">
+        <a href="/services/attestation/" class="related-card">
+          <h3>Attestation Guide</h3>
+          <p>Complete attestation services overview</p>
+        </a>
+        <a href="/services/attestation/mofa/" class="related-card">
+          <h3>MOFA Attestation</h3>
+          <p>Final UAE legalization step</p>
+        </a>
+        <a href="/services/attestation/embassy/" class="related-card">
+          <h3>Embassy Legalization</h3>
+          <p>Traditional attestation route</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</ServiceLayout>
+
+<style>
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .related-card {
+    padding: 1.5rem;
+    background: var(--bg-light, #f8f9fa);
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    border-left: 3px solid var(--primary-color);
+    transition: all 0.2s;
+  }
+  
+  .related-card:hover {
+    border-left-color: var(--accent-color);
+    background: white;
+  }
+  
+  .related-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+  
+  .related-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+</style>
