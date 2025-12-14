@@ -1,404 +1,641 @@
-# TinaCMS Migration Plan
+# TinaCMS Migration Plan: OnlineTranslation.ae
 
 ## Executive Summary
 
-This document outlines a phased approach to migrate from Netlify CMS (Decap CMS) to TinaCMS while removing all Netlify-related traces from the codebase. The project is an Astro v5 static site deployed on Vercel.
+This plan outlines the migration from Decap CMS (Netlify CMS) to TinaCMS for onlinetranslation.ae. The migration removes all Netlify dependencies and establishes TinaCMS as your Git-based headless CMS, deployed on Vercel.
+
+**Current State:**
+
+- ~~Decap CMS v3.1.2 via CDN~~ (REMOVED)
+- ~~Netlify Identity Widget for authentication~~ (REMOVED)
+- ~~Git Gateway backend (Netlify)~~ (REMOVED)
+- ~~Config: `public/admin/config.yml`~~ (REMOVED)
+- Schemas: `src/content/config.ts` (Zod-based, 500+ lines)
+- Deployed on Vercel (site only, no Netlify dependency)
+
+**Target State:**
+
+- TinaCMS with Tina Cloud (free tier) or self-hosted
+- GitHub authentication (no Netlify dependency)
+- Config: `tina/config.ts` (TypeScript-native)
+- Fully deployed on Vercel
 
 ---
 
-## Current State Analysis
+## Phase 0: Pre-Migration Preparation (COMPLETED)
 
-### Netlify Components Present
-| Component | Location | Purpose |
-|-----------|----------|---------|
-| Decap CMS v3.1.2 | `/public/admin/config.yml` | CMS configuration (499 lines) |
-| CMS Interface | `/public/admin/index.html` | Admin panel entry point |
-| Netlify Identity Widget | CDN reference in index.html | Authentication |
-| Git-gateway Backend | config.yml | Content sync |
+**Status:** DONE
 
-### Content Structure
-```
-src/content/
-├── config.ts          # Zod schemas for collections
-├── core/              # Home & About pages (populated)
-├── blog/              # 1 blog post
-├── services/          # Empty (.gitkeep)
-├── industries/        # Empty (.gitkeep)
-├── locations/         # Empty (.gitkeep)
-└── specialized/       # Missing directory
-```
+### Completed Tasks
 
-### Deployment Setup
-- **Hosting**: Vercel (with 350+ redirects in vercel.json)
-- **CMS Auth**: Netlify Identity (git-gateway)
-- **CI/CD**: GitHub Actions
+- [x] Created migration branch: `claude/plan-tinacms-migration-uh9mU`
+- [x] Removed `public/admin/config.yml` (Decap CMS config)
+- [x] Removed `public/admin/index.html` (Decap CMS interface)
+- [x] Removed Netlify Identity widget from `src/layouts/BaseLayout.astro`
+- [x] Removed Netlify Identity widget from `src/layouts/BaseLayoutArabic.astro`
+- [x] All Netlify/Decap references eliminated from codebase
 
 ---
 
-## Phase 1: Preparation & TinaCMS Setup
+## Phase 1: TinaCMS Installation
 
-### 1.1 Install TinaCMS Dependencies
+**Duration:** 30-45 minutes
+**Risk Level:** Low (isolated to dev branch)
+
+### 1.1 Install TinaCMS
+
 ```bash
-npm install tinacms @tinacms/cli
+# From project root
+npx @tinacms/cli@latest init
+
+# When prompted:
+# - Cloud ID: Press Enter (skip for now)
+# - Framework: Other
+# - Public assets directory: public
+# - TypeScript: Yes
 ```
 
-### 1.2 Create TinaCMS Configuration
-Create `/tina/config.ts` with:
-- Schema definitions mirroring existing Astro content collections
-- Branch configuration for development/production
-- Media management setup pointing to `/public/assets/images`
+This creates:
 
-### 1.3 Create Schema Mappings
-Map existing collections from `src/content/config.ts` to TinaCMS schema:
+```
+tina/
+├── config.ts          # TinaCMS configuration
+└── __generated__/     # Auto-generated types (gitignore these)
 
-| Astro Collection | TinaCMS Collection | Priority |
-|------------------|-------------------|----------|
-| core | core | High |
-| blog | blog | High |
-| services | services | Medium |
-| industries | industries | Medium |
-| locations | locations | Medium |
-| specialized | specialized | Low |
-| settings | settings | Low |
+public/admin/          # Tina's admin UI
+```
 
-### 1.4 Add TinaCMS Scripts to package.json
+### 1.2 Update package.json Scripts
+
 ```json
 {
   "scripts": {
-    "tina:dev": "tinacms dev -c \"astro dev --port 5000 --host 0.0.0.0\"",
-    "tina:build": "tinacms build && astro build",
-    "tina:start": "tinacms build && astro dev"
+    "dev": "tinacms dev -c 'astro dev --port 5000 --host 0.0.0.0'",
+    "build": "tinacms build && astro build",
+    "preview": "astro preview --port 5000 --host 0.0.0.0",
+    "start": "tinacms dev -c 'astro dev --port 5000 --host 0.0.0.0'"
   }
 }
 ```
 
-### Deliverables - Phase 1
-- [ ] TinaCMS dependencies installed
-- [ ] `/tina/config.ts` created with all collection schemas
-- [ ] Package.json updated with Tina scripts
-- [ ] Local development verified with `npm run tina:dev`
+### 1.3 Update .gitignore
+
+```gitignore
+# TinaCMS
+tina/__generated__
+.tina/__generated__
+```
+
+### 1.4 Verify Installation
+
+```bash
+npm run dev
+# Navigate to http://localhost:5000/admin/index.html
+```
 
 ---
 
-## Phase 2: Content Schema Migration
+## Phase 2: Schema Migration
 
-### 2.1 Core Collection Schema
+**Duration:** 2-4 hours
+**Risk Level:** Medium (schema compatibility)
+
+### 2.1 Create TinaCMS Collections
+
+Convert existing collections from Decap YAML to TinaCMS TypeScript.
+
+**File:** `tina/config.ts`
+
 ```typescript
-// tina/config.ts
-{
-  name: "core",
-  label: "Core Pages",
-  path: "src/content/core",
-  format: "md",
-  fields: [
-    { type: "string", name: "title", label: "Title", required: true },
-    { type: "string", name: "type", label: "Page Type" },
-    // ... mirror existing Zod schema
-  ]
-}
+import { defineConfig, defineSchema } from 'tinacms';
+
+const schema = defineSchema({
+  collections: [
+    // CORE PAGES (Homepage, About)
+    {
+      name: 'core',
+      label: 'Core Pages',
+      path: 'src/content/core',
+      format: 'md',
+      fields: [
+        {
+          type: 'string',
+          name: 'pageTitle',
+          label: 'Page Title (SEO)',
+          required: true,
+        },
+        {
+          type: 'string',
+          name: 'metaDescription',
+          label: 'Meta Description',
+          ui: { component: 'textarea' },
+        },
+        {
+          type: 'object',
+          name: 'hero',
+          label: 'Hero Section',
+          fields: [
+            { type: 'string', name: 'titleLine', label: 'Title' },
+            { type: 'string', name: 'lead', label: 'Lead Text' },
+            { type: 'image', name: 'image', label: 'Hero Image' },
+            {
+              type: 'object',
+              name: 'primaryCta',
+              label: 'Primary CTA',
+              fields: [
+                { type: 'string', name: 'label', label: 'Button Label' },
+                { type: 'string', name: 'url', label: 'Button URL' },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+
+    // SERVICES
+    {
+      name: 'services',
+      label: 'Services',
+      path: 'src/content/services',
+      format: 'md',
+      fields: [
+        { type: 'string', name: 'title', label: 'Title', required: true },
+        { type: 'string', name: 'pageTitle', label: 'Page Title (SEO)' },
+        { type: 'string', name: 'metaDescription', label: 'Meta Description', ui: { component: 'textarea' } },
+        { type: 'string', name: 'description', label: 'Description', ui: { component: 'textarea' } },
+        { type: 'image', name: 'image', label: 'Featured Image' },
+        { type: 'string', name: 'heroHeading', label: 'Hero Heading' },
+        { type: 'string', name: 'heroSubheading', label: 'Hero Subheading' },
+        { type: 'string', name: 'heroLead', label: 'Hero Lead', ui: { component: 'textarea' } },
+        { type: 'image', name: 'heroImage', label: 'Hero Image' },
+        {
+          type: 'object',
+          name: 'features',
+          label: 'Features',
+          list: true,
+          fields: [
+            { type: 'string', name: 'icon', label: 'Icon Class' },
+            { type: 'string', name: 'title', label: 'Title' },
+            { type: 'string', name: 'text', label: 'Text', ui: { component: 'textarea' } },
+          ],
+        },
+        {
+          type: 'object',
+          name: 'faq',
+          label: 'FAQ',
+          list: true,
+          fields: [
+            { type: 'string', name: 'question', label: 'Question' },
+            { type: 'string', name: 'answer', label: 'Answer', ui: { component: 'textarea' } },
+          ],
+        },
+        { type: 'string', name: 'ctaTitle', label: 'CTA Title' },
+        { type: 'string', name: 'ctaBody', label: 'CTA Body', ui: { component: 'textarea' } },
+        { type: 'string', name: 'ctaButtonLabel', label: 'CTA Button Label' },
+        { type: 'string', name: 'ctaButtonUrl', label: 'CTA Button URL' },
+        { type: 'rich-text', name: 'body', label: 'Body Content', isBody: true },
+      ],
+    },
+
+    // INDUSTRIES
+    {
+      name: 'industries',
+      label: 'Industries',
+      path: 'src/content/industries',
+      format: 'md',
+      fields: [
+        { type: 'string', name: 'title', label: 'Title', required: true },
+        { type: 'string', name: 'pageTitle', label: 'Page Title (SEO)' },
+        { type: 'string', name: 'metaDescription', label: 'Meta Description', ui: { component: 'textarea' } },
+        { type: 'string', name: 'description', label: 'Description', ui: { component: 'textarea' } },
+        { type: 'image', name: 'image', label: 'Featured Image' },
+        { type: 'string', name: 'heroHeading', label: 'Hero Heading' },
+        { type: 'string', name: 'heroSubheading', label: 'Hero Subheading' },
+        {
+          type: 'object',
+          name: 'features',
+          label: 'Features',
+          list: true,
+          fields: [
+            { type: 'string', name: 'icon', label: 'Icon' },
+            { type: 'string', name: 'title', label: 'Title' },
+            { type: 'string', name: 'text', label: 'Text', ui: { component: 'textarea' } },
+          ],
+        },
+        { type: 'rich-text', name: 'body', label: 'Body Content', isBody: true },
+      ],
+    },
+
+    // LOCATIONS
+    {
+      name: 'locations',
+      label: 'Locations',
+      path: 'src/content/locations',
+      format: 'md',
+      fields: [
+        { type: 'string', name: 'title', label: 'Title', required: true },
+        { type: 'string', name: 'pageTitle', label: 'Page Title (SEO)' },
+        { type: 'string', name: 'metaDescription', label: 'Meta Description', ui: { component: 'textarea' } },
+        { type: 'string', name: 'description', label: 'Description', ui: { component: 'textarea' } },
+        { type: 'image', name: 'image', label: 'Featured Image' },
+        { type: 'string', name: 'heroHeading', label: 'Hero Heading' },
+        { type: 'string', name: 'heroSubheading', label: 'Hero Subheading' },
+        { type: 'string', name: 'address', label: 'Address', ui: { component: 'textarea' } },
+        { type: 'string', name: 'phone', label: 'Phone' },
+        { type: 'string', name: 'whatsapp', label: 'WhatsApp' },
+        { type: 'string', name: 'mapUrl', label: 'Google Maps URL' },
+        {
+          type: 'object',
+          name: 'features',
+          label: 'Features',
+          list: true,
+          fields: [
+            { type: 'string', name: 'icon', label: 'Icon' },
+            { type: 'string', name: 'title', label: 'Title' },
+            { type: 'string', name: 'text', label: 'Text', ui: { component: 'textarea' } },
+          ],
+        },
+        { type: 'string', name: 'nearbyLandmarks', label: 'Nearby Landmarks', list: true },
+        { type: 'rich-text', name: 'body', label: 'Body Content', isBody: true },
+      ],
+    },
+
+    // SPECIALIZED SERVICES
+    {
+      name: 'specialized',
+      label: 'Specialized Services',
+      path: 'src/content/specialized',
+      format: 'md',
+      fields: [
+        { type: 'string', name: 'title', label: 'Title', required: true },
+        { type: 'string', name: 'pageTitle', label: 'Page Title (SEO)' },
+        { type: 'string', name: 'metaDescription', label: 'Meta Description', ui: { component: 'textarea' } },
+        { type: 'string', name: 'description', label: 'Description', ui: { component: 'textarea' } },
+        { type: 'image', name: 'image', label: 'Featured Image' },
+        { type: 'string', name: 'heroHeading', label: 'Hero Heading' },
+        { type: 'string', name: 'heroSubheading', label: 'Hero Subheading' },
+        {
+          type: 'object',
+          name: 'features',
+          label: 'Features',
+          list: true,
+          fields: [
+            { type: 'string', name: 'icon', label: 'Icon' },
+            { type: 'string', name: 'title', label: 'Title' },
+            { type: 'string', name: 'text', label: 'Text', ui: { component: 'textarea' } },
+          ],
+        },
+        { type: 'rich-text', name: 'body', label: 'Body Content', isBody: true },
+      ],
+    },
+
+    // BLOG
+    {
+      name: 'blog',
+      label: 'Blog Posts',
+      path: 'src/content/blog',
+      format: 'md',
+      fields: [
+        { type: 'string', name: 'title', label: 'Title', required: true },
+        { type: 'string', name: 'description', label: 'Description', required: true, ui: { component: 'textarea' } },
+        { type: 'datetime', name: 'publishDate', label: 'Publish Date', required: true },
+        { type: 'datetime', name: 'updatedDate', label: 'Updated Date' },
+        {
+          type: 'object',
+          name: 'author',
+          label: 'Author',
+          fields: [
+            { type: 'string', name: 'name', label: 'Name' },
+            { type: 'string', name: 'title', label: 'Title' },
+            { type: 'image', name: 'avatar', label: 'Avatar' },
+          ],
+        },
+        {
+          type: 'string',
+          name: 'category',
+          label: 'Category',
+          options: [
+            'legal-translation',
+            'personal-documents',
+            'attestation',
+            'golden-visa',
+            'corporate',
+            'industry-insights',
+            'how-to-guides',
+            'news',
+          ],
+        },
+        { type: 'string', name: 'tags', label: 'Tags', list: true },
+        { type: 'string', name: 'keywords', label: 'Keywords' },
+        { type: 'string', name: 'canonicalUrl', label: 'Canonical URL' },
+        { type: 'image', name: 'heroImage', label: 'Hero Image' },
+        { type: 'string', name: 'heroImageAlt', label: 'Hero Image Alt' },
+        { type: 'boolean', name: 'featured', label: 'Featured' },
+        { type: 'boolean', name: 'draft', label: 'Draft' },
+        { type: 'string', name: 'relatedServices', label: 'Related Services', list: true },
+        { type: 'string', name: 'relatedPosts', label: 'Related Posts', list: true },
+        { type: 'rich-text', name: 'body', label: 'Body Content', isBody: true },
+      ],
+    },
+
+    // SETTINGS
+    {
+      name: 'settings',
+      label: 'Site Settings',
+      path: 'src/content/settings',
+      format: 'json',
+      fields: [
+        { type: 'string', name: 'logoText', label: 'Logo Text' },
+        {
+          type: 'object',
+          name: 'links',
+          label: 'Navigation Links',
+          list: true,
+          fields: [
+            { type: 'string', name: 'label', label: 'Label' },
+            { type: 'string', name: 'href', label: 'URL' },
+          ],
+        },
+        { type: 'string', name: 'ctaLabel', label: 'CTA Label' },
+        { type: 'string', name: 'ctaHref', label: 'CTA URL' },
+      ],
+    },
+  ],
+});
+
+export default defineConfig({
+  branch:
+    process.env.TINA_BRANCH ||
+    process.env.VERCEL_GIT_COMMIT_REF ||
+    process.env.HEAD ||
+    'main',
+
+  clientId: process.env.TINA_CLIENT_ID || '',
+  token: process.env.TINA_TOKEN || '',
+
+  build: {
+    outputFolder: 'admin',
+    publicFolder: 'public',
+  },
+
+  media: {
+    tina: {
+      mediaRoot: 'assets/images',
+      publicFolder: 'public',
+    },
+  },
+
+  schema,
+});
 ```
 
-### 2.2 Blog Collection Schema
-```typescript
-{
-  name: "blog",
-  label: "Blog Posts",
-  path: "src/content/blog",
-  format: "md",
-  fields: [
-    { type: "string", name: "title", label: "Title", required: true },
-    { type: "datetime", name: "pubDate", label: "Publish Date" },
-    { type: "image", name: "image", label: "Featured Image" },
-    { type: "string", name: "category", label: "Category" },
-    { type: "string", name: "tags", label: "Tags", list: true },
-    { type: "rich-text", name: "body", label: "Content", isBody: true }
-  ]
-}
+### 2.2 Field Type Mapping Reference
+
+| Decap CMS | TinaCMS | Notes |
+|-----------|---------|-------|
+| `string` | `string` | Direct mapping |
+| `text` | `string` + `ui: { component: 'textarea' }` | Use textarea component |
+| `markdown` | `rich-text` + `isBody: true` | For body content |
+| `image` | `image` | Direct mapping |
+| `list` (simple) | `string` + `list: true` | Array of strings |
+| `list` (objects) | `object` + `list: true` | Array of objects |
+| `object` | `object` | Direct mapping |
+| `boolean` | `boolean` | Direct mapping |
+| `datetime` | `datetime` | Direct mapping |
+| `select` | `string` + `options: []` | Enum values |
+| `hidden` | Use `ui: { component: null }` | Or just omit |
+
+---
+
+## Phase 3: Tina Cloud Setup (Production)
+
+**Duration:** 30-45 minutes
+**Risk Level:** Low
+
+### 3.1 Create Tina Cloud Account
+
+1. Go to [app.tina.io](https://app.tina.io)
+2. Sign up with GitHub
+3. Click "Create Project"
+4. Select your repository: `Zizoo24/new_astro_3`
+5. Copy your **Client ID** and **Token**
+
+### 3.2 Add Environment Variables
+
+**Local Development (`.env`):**
+
+```env
+TINA_CLIENT_ID=your-client-id-here
+TINA_TOKEN=your-token-here
+TINA_PUBLIC_IS_LOCAL=true
 ```
 
-### 2.3 Service/Industry/Location Collections
-Create dynamic folder collections for each content type matching the existing Zod schemas in `src/content/config.ts`.
+**Vercel Dashboard:**
 
-### 2.4 Create Missing Directory
+1. Go to your project settings
+2. Navigate to Environment Variables
+3. Add:
+   - `TINA_CLIENT_ID` = your-client-id
+   - `TINA_TOKEN` = your-token
+
+### 3.3 Decision: Tina Cloud vs Self-Hosted
+
+| Feature | Tina Cloud (Free) | Self-Hosted |
+|---------|------------------|-------------|
+| **Users** | 2 users | Unlimited |
+| **Sites** | 2 sites | Unlimited |
+| **Auth** | Built-in | DIY (Auth.js) |
+| **Setup** | 10 minutes | 2-4 hours |
+| **Database** | Managed | You manage (MongoDB/Vercel KV) |
+| **Cost** | Free -> $29/mo+ | Infrastructure only |
+
+**Recommendation:** Start with Tina Cloud Free tier. Migrate to self-hosted later if needed.
+
+---
+
+## Phase 4: Testing & Validation
+
+**Duration:** 1-2 hours
+**Risk Level:** Medium
+
+### 4.1 Local Testing Checklist
+
+```bash
+npm run dev
+```
+
+- [ ] Admin accessible at `/admin/index.html`
+- [ ] All collections visible
+- [ ] Can create new content
+- [ ] Can edit existing content
+- [ ] Changes save to local files
+- [ ] No console errors
+- [ ] Images upload correctly
+
+### 4.2 Content Migration Validation
+
+For each collection, verify:
+
+- [ ] **Core Pages:** Homepage, About load correctly
+- [ ] **Services:** All service pages render
+- [ ] **Blog:** Posts display with correct dates/categories
+- [ ] **Locations:** Map URLs, addresses work
+- [ ] **Settings:** Navigation reflects changes
+
+### 4.3 Schema Compatibility Test
+
+Create test entries in each collection via TinaCMS admin:
+
+1. Create entry
+2. Check markdown file generated correctly
+3. Verify frontmatter matches Astro's content config
+4. Ensure page renders without errors
+
+---
+
+## Phase 5: Production Deployment
+
+**Duration:** 30 minutes
+**Risk Level:** Medium-High
+
+### 5.1 Pre-Deployment Checklist
+
+- [ ] All tests passing locally
+- [ ] Environment variables set in Vercel
+- [ ] No Netlify references remain
+- [ ] Git branch is clean
+- [ ] Tina Cloud project connected
+
+### 5.2 Deploy Process
+
+```bash
+# Commit all changes
+git add .
+git commit -m "feat: migrate from Decap CMS to TinaCMS"
+
+# Push to trigger Vercel build
+git push origin feature/tinacms-migration
+
+# Create PR for review (optional)
+# Or merge directly to main for production
+```
+
+### 5.3 Post-Deployment Verification
+
+1. Visit `https://onlinetranslation.ae/admin/`
+2. Login with GitHub
+3. Test editing a page
+4. Verify changes commit to repository
+5. Check build triggers correctly
+
+---
+
+## Phase 6: Cleanup & Documentation
+
+**Duration:** 30 minutes
+**Risk Level:** Low
+
+### 6.1 Update Documentation
+
+Update project README with:
+
+- New CMS access URL
+- How to run locally with TinaCMS
+- Environment variable requirements
+
+### 6.2 Create Specialized Directory
+
 ```bash
 mkdir -p src/content/specialized
 ```
 
-### Deliverables - Phase 2
-- [ ] All 7 collection schemas defined in TinaCMS config
-- [ ] Schema validation matches existing Zod schemas
-- [ ] Missing `specialized` directory created
-- [ ] Test content creation in TinaCMS admin panel
-
 ---
 
-## Phase 3: Media Management Configuration
+## Rollback Plan
 
-### 3.1 Configure TinaCMS Media Store
-```typescript
-// tina/config.ts
-media: {
-  tina: {
-    publicFolder: "public",
-    mediaRoot: "assets/images"
-  }
-}
-```
+If issues arise, rollback is simple:
 
-### 3.2 Update Image References
-Audit and update any hardcoded image paths in:
-- `src/content/core/home.md`
-- `src/content/core/about.md`
-- `src/content/blog/golden-visa-document-requirements-2024.md`
-
-### 3.3 Media Migration Checklist
-- [ ] Verify all 85 images in `/public/assets/images/` are accessible
-- [ ] Test image upload through TinaCMS
-- [ ] Confirm image paths resolve correctly in build
-
-### Deliverables - Phase 3
-- [ ] Media configuration complete
-- [ ] Image uploads functional
-- [ ] Existing content images verified
-
----
-
-## Phase 4: Authentication Setup
-
-### 4.1 Option A: Tina Cloud (Recommended)
-1. Create account at [tina.io](https://tina.io)
-2. Connect GitHub repository
-3. Configure environment variables:
-   ```
-   TINA_CLIENT_ID=<from-tina-cloud>
-   TINA_TOKEN=<from-tina-cloud>
-   ```
-
-### 4.2 Option B: Self-Hosted Authentication
-Configure custom auth backend if Tina Cloud is not preferred.
-
-### 4.3 Update Vercel Environment Variables
-Add to Vercel project settings:
-- `TINA_CLIENT_ID`
-- `TINA_TOKEN`
-- `TINA_BRANCH` (optional, for branch-based editing)
-
-### Deliverables - Phase 4
-- [ ] Tina Cloud account created and connected
-- [ ] Environment variables configured locally
-- [ ] Environment variables added to Vercel
-- [ ] Authentication tested in production build
-
----
-
-## Phase 5: Remove Netlify Components
-
-### 5.1 Delete Netlify CMS Files
 ```bash
-rm -rf public/admin/
+# Revert to previous commit
+git revert HEAD
+
+# Or checkout the backup from git history
+git checkout HEAD~1 -- public/admin/
+
+# Remove TinaCMS
+rm -rf tina/
+npm uninstall tinacms @tinacms/cli
+
+# Restore original scripts in package.json
 ```
-
-Files to remove:
-- `/public/admin/config.yml` (499 lines)
-- `/public/admin/index.html`
-
-### 5.2 Remove Netlify References
-Search and remove any Netlify-related code:
-```bash
-grep -r "netlify" --include="*.{js,ts,astro,json,md,html}" .
-```
-
-Expected locations to clean:
-- Any `netlify.toml` (currently not present)
-- CDN references to `identity.netlify.com`
-- Any `netlify-identity-widget` imports
-- Comments referencing Netlify
-
-### 5.3 Update Documentation
-- Update README.md (if exists) to reference TinaCMS
-- Remove any Netlify-specific documentation
-
-### 5.4 Verify No Netlify Dependencies
-```bash
-npm ls | grep -i netlify
-```
-
-### Deliverables - Phase 5
-- [ ] `/public/admin/` directory deleted
-- [ ] All Netlify string references removed
-- [ ] No Netlify npm packages remain
-- [ ] Documentation updated
 
 ---
 
-## Phase 6: CI/CD Pipeline Updates
+## Timeline Summary
 
-### 6.1 Update GitHub Actions Workflow
-Modify `.github/workflows/ci.yml`:
+| Phase | Duration | Risk | Status |
+|-------|----------|------|--------|
+| 0. Preparation | 1-2 hours | None | DONE |
+| 1. Installation | 30-45 min | Low | TODO |
+| 2. Schema Migration | 2-4 hours | Medium | TODO |
+| 3. Tina Cloud Setup | 30-45 min | Low | TODO |
+| 4. Testing | 1-2 hours | Medium | TODO |
+| 5. Deployment | 30 min | Medium-High | TODO |
+| 6. Cleanup | 30 min | Low | TODO |
 
-```yaml
-# Add Tina build step
-- name: Build with TinaCMS
-  run: npm run tina:build
-  env:
-    TINA_CLIENT_ID: ${{ secrets.TINA_CLIENT_ID }}
-    TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
-```
-
-### 6.2 Add GitHub Secrets
-Add to repository secrets:
-- `TINA_CLIENT_ID`
-- `TINA_TOKEN`
-
-### 6.3 Update Build Command in Vercel
-Change build command from:
-```
-npm run build
-```
-to:
-```
-npm run tina:build
-```
-
-### Deliverables - Phase 6
-- [ ] CI workflow updated
-- [ ] GitHub secrets configured
-- [ ] Vercel build command updated
-- [ ] Successful deployment verified
+**Total Estimated Time:** 6-10 hours (spread across 2-3 sessions recommended)
 
 ---
 
-## Phase 7: Testing & Validation
+## Cost Comparison
 
-### 7.1 Content Editing Tests
-- [ ] Create new blog post via TinaCMS
-- [ ] Edit existing home page content
-- [ ] Upload and use new image
-- [ ] Save and verify Git commit created
+| Service | Current (Netlify + Decap) | New (TinaCMS) |
+|---------|---------------------------|---------------|
+| Hosting | Vercel (free) | Vercel (free) |
+| CMS Backend | ~~Netlify (free tier)~~ | Tina Cloud (free tier) |
+| Auth | ~~Netlify Identity~~ | GitHub (via Tina Cloud) |
+| **Total** | **$0/month** | **$0/month** |
 
-### 7.2 Build Verification
-- [ ] Run `npm run tina:build` locally
-- [ ] Verify all pages render correctly
-- [ ] Check no broken image links
-- [ ] Validate sitemap generation
+**Tina Cloud Free Tier Limits:**
 
-### 7.3 Production Deployment Test
-- [ ] Push changes to staging branch
-- [ ] Verify Vercel preview deployment
-- [ ] Test admin access at `/admin/`
-- [ ] Confirm authentication works
+- 2 users
+- 2 sites
+- Basic features
 
-### 7.4 Regression Testing
-- [ ] All existing pages load correctly
-- [ ] SEO metadata preserved
-- [ ] Arabic pages functional
-- [ ] Mobile responsiveness maintained
+If you exceed these, Team plan starts at $29/month.
 
 ---
 
-## Phase 8: Cleanup & Documentation
+## Benefits of Migration
 
-### 8.1 Remove Obsolete Files
-- [ ] Delete any backup config files
-- [ ] Remove unused npm scripts
-- [ ] Clean up any temporary migration files
-
-### 8.2 Update .gitignore
-Add TinaCMS-specific ignores:
-```
-# TinaCMS
-.tina/__generated__
-```
-
-### 8.3 Create Admin Documentation
-Document for content editors:
-- How to access TinaCMS admin
-- How to create/edit content
-- Media upload guidelines
-- Publishing workflow
-
-### 8.4 Final Verification
-- [ ] All tests passing
-- [ ] No console errors
-- [ ] Build size acceptable
-- [ ] Performance benchmarks met
+1. **No Netlify Dependency** - Single platform (Vercel) for everything
+2. **Better DX** - TypeScript-native configuration
+3. **Visual Editing** - Real-time preview (experimental with Astro)
+4. **Modern Stack** - Active development, better Astro support
+5. **GraphQL API** - Query content programmatically if needed
+6. **Git-Based** - All content stays in your repo
 
 ---
 
-## File Changes Summary
+## Next Steps After Migration
 
-### Files to Create
-| File | Purpose |
-|------|---------|
-| `/tina/config.ts` | TinaCMS schema and configuration |
-| `/tina/__generated__/` | Auto-generated (gitignored) |
-| `/.env.local` | Local environment variables |
-
-### Files to Modify
-| File | Changes |
-|------|---------|
-| `package.json` | Add TinaCMS dependencies and scripts |
-| `.github/workflows/ci.yml` | Update build commands |
-| `.gitignore` | Add TinaCMS ignores |
-| `astro.config.mjs` | Potentially add TinaCMS integration |
-
-### Files to Delete
-| File | Reason |
-|------|--------|
-| `/public/admin/config.yml` | Replaced by TinaCMS |
-| `/public/admin/index.html` | Replaced by TinaCMS |
+1. **Enable Visual Editing** (experimental) - See Tina docs
+2. **Add Custom Components** - Rich text embeds for FAQs, CTAs
+3. **Set Up Branch-Based Workflow** - Preview changes before merge
+4. **Consider Self-Hosting** - If you need more users/sites
 
 ---
 
-## Risk Mitigation
+## Support Resources
 
-### Backup Strategy
-1. Create backup branch before migration: `git checkout -b backup/pre-tinacms-migration`
-2. Export all content to local files
-3. Document current admin access credentials
-
-### Rollback Plan
-If migration fails:
-1. Restore `/public/admin/` from backup branch
-2. Revert package.json changes
-3. Remove TinaCMS dependencies
-4. Restore original build commands
-
-### Known Considerations
-- **Media folder path**: Current CMS config points to `/public/images` but actual images in `/public/assets/images`. TinaCMS config should use correct path.
-- **Missing specialized directory**: Create before migration
-- **Branch editing**: TinaCMS supports branch-based editing which aligns with current GitHub workflow
+- [TinaCMS Docs](https://tina.io/docs)
+- [TinaCMS + Astro Guide](https://tina.io/docs/frameworks/astro)
+- [TinaCMS Discord](https://discord.gg/tinacms)
+- [GitHub Issues](https://github.com/tinacms/tinacms/issues)
 
 ---
 
-## Implementation Notes
-
-### TinaCMS Advantages Over Netlify CMS
-1. **Visual Editing**: Real-time preview while editing
-2. **TypeScript Support**: Native TypeScript schema definitions
-3. **Better Astro Integration**: First-class Astro support
-4. **Active Development**: Regular updates and improvements
-5. **Modern UI**: Improved editing experience
-
-### Post-Migration Considerations
-- Train content editors on new TinaCMS interface
-- Update any external documentation referencing admin panel
-- Monitor for any content sync issues in first week
-
----
-
-## Approval Checklist
-
-Before proceeding with implementation:
-
-- [ ] Review and approve migration plan
-- [ ] Confirm Tina Cloud vs self-hosted decision
-- [ ] Verify all stakeholders informed
-- [ ] Schedule migration window (if production)
-- [ ] Ensure backup procedures in place
-
----
-
-*Plan Version: 1.0*
+*Plan Version: 2.0*
 *Created: December 2024*
 *Last Updated: December 2024*
+*Phase 0 Completed: Netlify/Decap references removed*
