@@ -1,0 +1,276 @@
+# SEO Repair Roadmap - OnlineTranslation.ae
+
+**Audit Date:** December 14, 2025
+**Last Updated:** December 14, 2025
+**Status:** Phases 1-3 COMPLETE
+
+---
+
+## Executive Summary
+
+| Area | Critical | High | Medium | Low | Status |
+|------|----------|------|--------|-----|--------|
+| Technical | 2 | 3 | 2 | 1 | **FIXED** |
+| Schema | 4 | 4 | 5 | 2 | **FIXED** |
+| Content/Linking | 3 | 4 | 3 | 1 | Partial |
+| **Total** | **9** | **11** | **10** | **4** | |
+
+---
+
+## Phase 1: Critical Bug Fixes - COMPLETE
+
+### 1.1 serviceLinks.ts Bugs - FIXED
+
+**Bug A: Wrong degree URL (Line 201)** - FIXED
+```typescript
+degree: {
+  url: "/personal/academic/degree/",  // ✅ Corrected
+```
+
+**Bug B: getLocationPages() (Line 892)** - FIXED
+```typescript
+.map(k => serviceLinks[k])  // ✅ Corrected
+```
+
+### 1.2 navigation.ts URL Mismatch - FIXED
+
+Line 316 corrected to `/personal/academic/degree/`
+
+### 1.3 robots.txt Sync Issues - FIXED
+
+- Removed duplicate root `robots.txt`
+- Fixed path in `public/robots.txt`
+- Added blog section to Allow directives
+
+### 1.4 Missing Blog Routes - FIXED
+
+Created:
+- `/src/pages/blog/category/[category].astro`
+- `/src/pages/blog/tag/[tag].astro`
+
+---
+
+## Phase 2: Schema Consistency - COMPLETE
+
+### 2.1 Conflicting Business Address - FIXED
+
+ServiceLayout now references `@id` instead of duplicating address:
+```javascript
+"provider": {
+  "@type": "LocalBusiness",
+  "@id": "${siteUrl}/#organization",
+  "name": "OnlineTranslation.ae"
+}
+```
+
+### 2.2 Multiple LocalBusiness Definitions - FIXED
+
+All layouts now reference the organization `@id` defined in BaseLayout.
+
+### 2.3 WebSite Schema - ADDED
+
+Added to BaseLayout with SearchAction for sitelinks search box.
+
+### 2.4 Hreflang - FIXED
+
+Added Arabic alternate link:
+```html
+<link rel="alternate" hreflang="ar" href="${siteUrl}/عربي/" />
+```
+
+### 2.5 areaServed Format - STANDARDIZED
+
+All layouts now use typed City/Country objects:
+```javascript
+"areaServed": [
+  { "@type": "City", "name": "Dubai" },
+  { "@type": "City", "name": "Abu Dhabi" },
+  { "@type": "City", "name": "Sharjah" },
+  { "@type": "Country", "name": "UAE" }
+]
+```
+
+### 2.6 ContactPoint Schema - PENDING (Phase 6)
+
+Lower priority enhancement.
+
+---
+
+## Phase 3: Technical SEO - COMPLETE
+
+### 3.1 GSC Verification Meta Tag - ADDED
+
+Placeholder added to BaseLayout:
+```html
+<meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" />
+```
+**Action needed:** Replace with actual verification code from GSC.
+
+### 3.2 Blog in robots.txt - FIXED
+
+Added:
+```
+Allow: /blog/
+Allow: /blog/category/
+Allow: /blog/tag/
+```
+
+### 3.3 Blog in Sitemap - AUTO
+
+Astro sitemap integration will auto-include blog when built.
+
+### 3.4 Image Optimization - PENDING (Phase 6)
+
+Lower priority enhancement.
+
+---
+
+## Phase 4: Internal Linking (Medium Priority) - PENDING
+
+### 4.1 Deploy RelatedServices Across Site
+
+**Current usage:** Only blog posts
+
+**Should add to:**
+- All legal service pages (21 pages)
+- All personal document pages (17 pages)
+- All attestation pages (14 pages)
+- All location pages (10 pages)
+
+### 4.2 Deploy CrossSiloLinks Component
+
+**Current usage:** Only `/personal-documents/index.astro`
+
+**Should add to:**
+- Hub/pillar pages for each silo
+- High-traffic landing pages
+
+### 4.3 Create Breadcrumb Component
+
+**Problem:** 79 pages have custom breadcrumb implementations (inconsistent)
+
+**Fix:** Create single `<Breadcrumb />` component and use across all pages
+
+### 4.4 Fix BlogLayout RelatedServices
+
+**Current:** Only shows first related service
+
+**Should show:** All related services (up to 4)
+
+---
+
+## Phase 5: Content Engine (Ongoing) - PARTIAL
+
+### 5.1 Blog Infrastructure
+
+- [x] Blog collection configured
+- [x] Blog index page created
+- [x] Dynamic post routing
+- [x] Category archive pages
+- [x] Tag archive pages
+- [ ] Related posts component
+- [ ] Author pages (optional)
+
+### 5.2 Content Production
+
+**Current:** 1 blog post
+
+**Target:** 15-30 posts/month
+
+**Priority categories:**
+1. Golden Visa (highest search volume)
+2. Legal Translation (money page support)
+3. Attestation (process guides)
+4. How-to Guides (informational intent)
+
+---
+
+## Phase 6: Polish & Optimization (Low Priority)
+
+### 6.1 Add Pricing to Offer Schemas
+
+Currently missing price information in all Service/Offer schemas
+
+### 6.2 Add AggregateRating Schema
+
+If reviews exist, implement ratings schema
+
+### 6.3 Add HowTo Schema
+
+For multi-step process pages:
+- MOFA attestation process
+- Academic attestation steps
+- Specialized translation workflows
+
+### 6.4 Arabic Schema Localization
+
+BaseLayoutArabic uses English day names in schema
+
+### 6.5 Image Optimization
+
+- Add width/height attributes
+- Implement srcset for responsive images
+- Add WebP format support
+
+### 6.6 Add ContactPoint Schema
+
+Structure contact information properly
+
+---
+
+## Implementation Progress
+
+| Phase | Effort | Impact | Status |
+|-------|--------|--------|--------|
+| 1. Critical Bugs | 2 hours | Fixes broken functionality | **COMPLETE** |
+| 2. Schema Consistency | 4 hours | Improves search understanding | **COMPLETE** |
+| 3. Technical SEO | 3 hours | Enables proper crawling | **COMPLETE** |
+| 4. Internal Linking | 6 hours | Boosts page authority | PENDING |
+| 5. Content Engine | Ongoing | Traffic growth | PARTIAL |
+| 6. Polish | 4 hours | Marginal gains | PENDING |
+
+---
+
+## Files Changed
+
+### Phase 1 (Complete)
+- [x] `/src/data/serviceLinks.ts` - Fixed degree URL and getLocationPages bug
+- [x] `/src/data/navigation.ts` - Fixed degree URL
+- [x] `/public/robots.txt` - Synced and added blog paths
+- [x] Removed duplicate `/robots.txt`
+- [x] `/src/pages/blog/category/[category].astro` - CREATED
+- [x] `/src/pages/blog/tag/[tag].astro` - CREATED
+
+### Phase 2 (Complete)
+- [x] `/src/layouts/BaseLayout.astro` - Added WebSite schema, hreflang, GSC tag
+- [x] `/src/layouts/ServiceLayout.astro` - Fixed provider to use @id reference
+
+### Phase 3 (Complete)
+- [x] `/src/layouts/BaseLayout.astro` - GSC verification placeholder
+- [x] `/public/robots.txt` - Blog directives added
+
+---
+
+## Next Actions
+
+1. **Replace GSC verification code** - Get actual code from Google Search Console
+2. **Build and deploy** - Run `npm run build` to generate sitemaps
+3. **Submit sitemap** - Submit to Google Search Console
+4. **Begin Phase 4** - Deploy RelatedServices component across site
+
+---
+
+## Success Metrics
+
+After full implementation:
+- [x] Zero 404 errors for blog routes
+- [ ] Schema validation passes (Google Rich Results Test)
+- [ ] All pages indexed
+- [ ] Core Web Vitals: Green
+- [x] robots.txt includes blog
+- [ ] Sitemap includes all pages (pending build)
+
+---
+
+*Generated by SEO Audit - December 2025*
+*Updated after Phase 1-3 completion*

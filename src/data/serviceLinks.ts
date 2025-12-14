@@ -198,7 +198,7 @@ export const serviceLinks: Record<string, ServiceLink> = {
     icon: "fas fa-graduation-cap"
   },
   degree: {
-    url: "/personal/education/degree/",
+    url: "/personal/academic/degree/",
     text: "degree translation",
     full: "university degree certificate translation",
     icon: "fas fa-scroll"
@@ -889,7 +889,7 @@ export const getLocationPages = (key: string): ServiceLink[] => {
   if (!relationships?.locations) return [];
   
   return relationships.locations
-    .map(k => serviceLinks[key])
+    .map(k => serviceLinks[k])
     .filter(Boolean);
 };
 

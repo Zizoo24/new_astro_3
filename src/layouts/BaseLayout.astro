@@ -46,8 +46,9 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
   <meta name="googlebot" content="index, follow">
   <link rel="canonical" href={fullCanonical}>
 
-  <!-- Hreflang tags for internationalization (prepared for Arabic) -->
+  <!-- Hreflang tags for internationalization -->
   <link rel="alternate" hreflang="en-AE" href={fullCanonical} />
+  <link rel="alternate" hreflang="ar" href={`${siteUrl}/عربي/`} />
   <link rel="alternate" hreflang="x-default" href={fullCanonical} />
 
   <!-- Open Graph -->
@@ -153,6 +154,28 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
           }
         }
       ]
+    }
+  })} />
+
+  <!-- WebSite Schema for Sitelinks Search Box -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
+    "url": siteUrl,
+    "name": "OnlineTranslation.ae",
+    "description": "Professional legal translation and document attestation services in Dubai, UAE",
+    "publisher": {
+      "@id": `${siteUrl}/#organization`
+    },
+    "inLanguage": ["en-AE", "ar"],
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": `${siteUrl}/search?q={search_term_string}`
+      },
+      "query-input": "required name=search_term_string"
     }
   })} />
 
