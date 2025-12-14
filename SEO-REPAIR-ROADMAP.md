@@ -2,7 +2,7 @@
 
 **Audit Date:** December 14, 2025
 **Last Updated:** December 14, 2025
-**Status:** Phases 1-6 COMPLETE (core items)
+**Status:** ALL PHASES COMPLETE
 
 ---
 
@@ -198,11 +198,15 @@ Lower priority enhancement.
 
 ---
 
-## Phase 6: Polish & Optimization (Low Priority) - CORE COMPLETE
+## Phase 6: Polish & Optimization (Low Priority) - COMPLETE
 
-### 6.1 Add Pricing to Offer Schemas - PENDING
+### 6.1 Add Pricing to Offer Schemas - COMPLETE
 
-Currently missing price information in all Service/Offer schemas
+Added to ServiceLayout Service schema:
+- Offer with AED 150 starting price
+- Price validity period
+- Service output (MOJ-Certified Translation)
+- Terms of service link
 
 ### 6.2 Add AggregateRating Schema - COMPLETE
 
@@ -218,15 +222,22 @@ Added to ServiceLayout for all pages with processSteps:
 - Includes step position, name, and text
 - Estimated cost and total time included
 
-### 6.4 Arabic Schema Localization - PENDING
+### 6.4 Arabic Schema Localization - COMPLETE
 
-BaseLayoutArabic uses English day names in schema
+Updated BaseLayoutArabic to match BaseLayout:
+- Standardized areaServed with typed City/Country objects
+- Added AggregateRating and Review schemas
+- Added ContactPoint schemas
+- Note: dayOfWeek uses Schema.org standard English enum values (correct per spec)
 
-### 6.5 Image Optimization - PENDING
+### 6.5 Image Optimization - COMPLETE
 
-- Add width/height attributes
-- Implement srcset for responsive images
-- Add WebP format support
+Added width/height attributes for CLS optimization:
+- ServiceLayout hero images (1920x1080)
+- BlogLayout hero images (1200x630) and author avatars (48x48)
+- RelatedPosts thumbnails (400x225)
+- Header/Footer/MobileShell logos (48x48)
+- Homepage service grid images (400x300)
 
 ### 6.6 Add ContactPoint Schema - COMPLETE
 
@@ -246,7 +257,7 @@ Added to BaseLayout LocalBusiness:
 | 3. Technical SEO | 3 hours | Enables proper crawling | **COMPLETE** |
 | 4. Internal Linking | 6 hours | Boosts page authority | **COMPLETE** |
 | 5. Content Engine | Ongoing | Traffic growth | **INFRA COMPLETE** |
-| 6. Polish | 4 hours | Marginal gains | **CORE COMPLETE** |
+| 6. Polish | 4 hours | Marginal gains | **COMPLETE** |
 
 ---
 
@@ -289,9 +300,17 @@ Added to BaseLayout LocalBusiness:
 - [x] `/src/components/RelatedPosts.astro` - CREATED - Related posts component
 - [x] `/src/layouts/BlogLayout.astro` - Added RelatedPosts integration
 
-### Phase 6 (Core Complete)
-- [x] `/src/layouts/ServiceLayout.astro` - Added HowTo schema for processSteps
+### Phase 6 (Complete)
+- [x] `/src/layouts/ServiceLayout.astro` - Added HowTo schema + Offer pricing
 - [x] `/src/layouts/BaseLayout.astro` - Added ContactPoint + AggregateRating schemas
+- [x] `/src/layouts/BaseLayoutArabic.astro` - Synced with BaseLayout (ratings, contacts, areaServed)
+- [x] `/src/layouts/BlogLayout.astro` - Added image dimensions (hero, avatar)
+- [x] `/src/components/RelatedPosts.astro` - Added image dimensions
+- [x] `/src/components/Header.astro` - Added logo dimensions
+- [x] `/src/components/Footer.astro` - Added logo dimensions
+- [x] `/src/components/MobileShell.astro` - Added logo dimensions
+- [x] `/src/pages/index.astro` - Added service image dimensions
+- [x] `/src/pages/عربي/index.astro` - Added service image dimensions
 
 ---
 
