@@ -272,96 +272,116 @@ export const mainNav: (NavLink | NavGroup)[] = [
 
 export const mobileNav = {
   home: { label: 'Home', href: '/', icon: 'fas fa-home' },
-  
+
   accordions: [
-    // SILO 1: Legal
+    // SILO 1: Legal & Corporate (matches navigation-porto.ts)
     {
       id: 'legal',
-      label: 'Legal Translation',
+      label: 'Legal',
       href: '/legal-translation-dubai/',
       children: [
         { label: 'Legal Translation Hub', href: '/legal-translation-dubai/' },
-        { label: 'Contract Translation', href: '/legal/contracts/' },
+        { label: 'Contracts', href: '/legal/contracts/' },
         { label: 'NDA Translation', href: '/legal/contracts/nda/' },
+        { label: 'Sales Purchase Agreement', href: '/legal/contracts/spa/' },
+        { label: 'MOU Translation', href: '/legal/contracts/mou/' },
+        { label: 'Commercial Leases', href: '/legal/contracts/lease/' },
+        { label: 'Corporate Documents', href: '/legal/corporate/' },
         { label: 'MOA Translation', href: '/legal/corporate/moa/' },
+        { label: 'Board Resolutions', href: '/legal/corporate/resolution/' },
         { label: 'Power of Attorney', href: '/legal/corporate/poa/' },
         { label: 'Court Documents', href: '/legal/litigation/' },
+        { label: 'Court Verdicts', href: '/legal/litigation/verdict/' },
+        { label: 'Arbitration Awards', href: '/legal/litigation/arbitration/' },
         { label: 'Will Translation', href: '/legal/wills/' },
       ],
     },
-    
-    // SILO 2: Personal ✅ Pillar page exists
+
+    // SILO 2: Personal & Civil Documents (matches navigation-porto.ts)
     {
       id: 'personal',
-      label: 'Personal Documents',
+      label: 'Documents',
       href: '/personal-documents/',
       children: [
-        { label: 'Personal Docs Hub', href: '/personal-documents/' },
+        { label: 'Vital Records Hub', href: '/personal/vital-records/' },
         { label: 'Birth Certificate', href: '/personal/vital-records/birth/' },
         { label: 'Marriage Certificate', href: '/personal/vital-records/marriage/' },
-        { label: 'University Degree', href: '/personal/academic/degree/' },
-        { label: 'Police Clearance', href: '/personal/immigration/pcc/' },
-        { label: 'Bank Statement', href: '/personal/immigration/bank/' },
+        { label: 'Divorce Certificate', href: '/personal/vital-records/divorce/' },
+        { label: 'Death Certificate', href: '/personal/vital-records/death/' },
+        { label: 'Immigration Hub', href: '/personal/immigration/' },
+        { label: 'Police Clearance (PCC)', href: '/personal/immigration/pcc/' },
+        { label: 'Bank Statements', href: '/personal/immigration/bank/' },
         { label: 'Driving License', href: '/personal/immigration/license/' },
+        { label: 'Academic Hub', href: '/personal/academic/' },
+        { label: 'Degree Translation', href: '/personal/education/degree/' },
+        { label: 'Transcripts', href: '/personal/academic/transcripts/' },
       ],
     },
-    
-    // SILO 3: Attestation
+
+    // SILO 3: Attestation & Legalization (matches navigation-porto.ts)
     {
       id: 'attestation',
-      label: 'Attestation Services',
+      label: 'Attestation',
       href: '/services/attestation/',
       children: [
-        { label: 'Attestation Guide', href: '/services/attestation/' },
-        { label: 'India Attestation', href: '/services/attestation/india/' },
-        { label: 'UK Attestation', href: '/services/attestation/uk/' },
-        { label: 'US Attestation', href: '/services/attestation/us/' },
-        { label: 'MOFA Attestation', href: '/services/attestation/mofa/' },
+        { label: 'Attestation Hub', href: '/services/attestation/' },
+        { label: 'Indian Certificate Attestation', href: '/services/attestation/india/' },
+        { label: 'UK Document Attestation', href: '/services/attestation/uk/' },
+        { label: 'US Document Attestation', href: '/services/attestation/us/' },
+        { label: 'Golden Visa Documents', href: '/services/golden-visa-translation/' },
       ],
     },
-    
-    // SILO 4: Specialized + Golden Visa
+
+    // SILO 4: Specialized Translation Services (matches navigation-porto.ts)
     {
       id: 'specialized',
-      label: 'Specialized & Packages',
+      label: 'Specialized',
       href: '/specialized-translation/',
       children: [
-        { label: 'Golden Visa Package', href: '/services/golden-visa-translation/' },
-        { label: 'Medical Reports', href: '/specialized/medical/' },
-        { label: 'Technical Manuals', href: '/specialized/technical/' },
-        { label: 'Corporate Translation', href: '/services/corporate-translation/' },
+        { label: 'Specialized Hub', href: '/specialized-translation/' },
+        { label: 'Medical Translation', href: '/specialized/medical/' },
+        { label: 'Technical Translation', href: '/specialized/technical/' },
+        { label: 'Hospitality Translation', href: '/specialized/hospitality/' },
+        { label: 'Digital Content', href: '/specialized/digital/' },
       ],
     },
-    
-    // SILO 5: Locations
+
+    // SILO 5: Service Locations (matches navigation-porto.ts)
     {
       id: 'locations',
       label: 'Locations',
       href: '/locations/',
       children: [
-        { label: 'Dubai', href: '/locations/dubai/' },
+        { label: 'All Locations', href: '/locations/' },
         { label: 'Palm Jumeirah', href: '/locations/dubai/palm-jumeirah/' },
+        { label: 'JLT (Jumeirah Lake Towers)', href: '/locations/dubai/jlt/' },
+        { label: 'Business Bay', href: '/locations/dubai/business-bay/' },
         { label: 'DIFC', href: '/locations/dubai/difc/' },
+        { label: 'Dubai Marina', href: '/locations/dubai/marina/' },
         { label: 'Abu Dhabi', href: '/locations/abu-dhabi/' },
+        { label: 'Sharjah', href: '/locations/sharjah/' },
       ],
     },
-    
-    // SILO 6: Resources
+
+    // SILO 6: Guides & Resources (matches navigation-porto.ts)
     {
       id: 'resources',
       label: 'Resources',
       href: '/resources/',
       children: [
+        { label: 'Resource Hub', href: '/resources/' },
         { label: 'Pricing Guide', href: '/resources/pricing-guide/' },
         { label: 'Document Checklist', href: '/resources/document-checklist/' },
+        { label: 'Attestation Guide', href: '/resources/attestation-guide/' },
+        { label: 'Golden Visa Checklist', href: '/resources/golden-visa-checklist/' },
         { label: 'FAQ', href: '/resources/faq/' },
+        { label: 'Contact Us', href: '/contact/' },
       ],
     },
   ],
-  
+
   singleLinks: [
     { label: 'About & Licensing', href: '/about/', icon: 'fas fa-building' },
-    { label: 'Contact Us', href: '/contact/', icon: 'fas fa-envelope' },
   ],
 };
 
