@@ -5,6 +5,7 @@
  */
 import BaseLayout from './BaseLayout.astro';
 import RelatedServices from '../components/RelatedServices.astro';
+import { serviceLinks } from '../data/serviceLinks';
 
 interface Props {
   title: string;
@@ -210,11 +211,25 @@ const breadcrumbSchema = {
         {relatedServices.length > 0 && (
           <div class="related-services-section">
             <h2>Related Services</h2>
-            <RelatedServices
-              pageKey={relatedServices[0]}
-              title="You May Also Need"
-              maxItems={4}
-            />
+            <div class="related-services-grid">
+              {relatedServices.map(key => {
+                const service = serviceLinks[key];
+                return service ? (
+                  <a href={service.url} class="related-service-card">
+                    {service.icon && <i class={service.icon}></i>}
+                    <span class="service-text">{service.full || service.text}</span>
+                    <i class="fas fa-arrow-right service-arrow"></i>
+                  </a>
+                ) : null;
+              })}
+            </div>
+            {relatedServices[0] && (
+              <RelatedServices
+                pageKey={relatedServices[0]}
+                title="You May Also Need"
+                maxItems={4}
+              />
+            )}
           </div>
         )}
 
@@ -501,6 +516,59 @@ const breadcrumbSchema = {
   .related-services-section h2 {
     font-size: 1.25rem;
     margin-bottom: 1rem;
+  }
+
+  .related-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .related-service-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    background: var(--bg-light, #f8f9fa);
+    border-radius: 0.75rem;
+    text-decoration: none;
+    color: var(--text-primary, #1a1a1a);
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+  }
+
+  .related-service-card:hover {
+    border-color: var(--accent-color, #FF1654);
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .related-service-card i:first-child {
+    font-size: 1.25rem;
+    color: var(--primary-color, #0E2B48);
+    min-width: 24px;
+    text-align: center;
+  }
+
+  .service-text {
+    flex: 1;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  .service-arrow {
+    font-size: 0.75rem;
+    color: var(--text-muted, #5a6a7a);
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: all 0.3s ease;
+  }
+
+  .related-service-card:hover .service-arrow {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--accent-color, #FF1654);
   }
 
   .share-section {
