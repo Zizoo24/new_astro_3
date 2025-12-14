@@ -19,10 +19,10 @@
     "document-translation"
   ],
   "scripts": {
-    "dev": "astro dev --port 5000 --host 0.0.0.0",
-    "build": "astro build",
+    "dev": "tinacms dev -c \"astro dev --port 5000 --host 0.0.0.0\"",
+    "build": "tinacms build && astro build",
     "preview": "astro preview --port 5000 --host 0.0.0.0",
-    "start": "astro dev --port 5000 --host 0.0.0.0",
+    "start": "tinacms dev -c \"astro dev --port 5000 --host 0.0.0.0\"",
     "check": "astro check",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --fix",
@@ -37,7 +37,9 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",
-    "astro": "^5.16.4"
+    "@tinacms/cli": "^2.0.3",
+    "astro": "^5.16.4",
+    "tinacms": "^3.1.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.6",
