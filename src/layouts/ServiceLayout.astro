@@ -104,7 +104,27 @@ const serviceSchema = {
     { "@type": "City", "name": "Sharjah" },
     { "@type": "Country", "name": "UAE" }
   ],
-  "serviceType": [serviceType, "Legal Translation"]
+  "serviceType": [serviceType, "Legal Translation"],
+  "offers": {
+    "@type": "Offer",
+    "price": "150",
+    "priceCurrency": "AED",
+    "priceValidUntil": "2025-12-31",
+    "availability": "https://schema.org/InStock",
+    "validFrom": "2025-01-01",
+    "url": `${siteUrl}${Astro.url.pathname}`,
+    "description": "Standard service starting price. Final quote based on document review.",
+    "seller": {
+      "@type": "LocalBusiness",
+      "@id": `${siteUrl}/#organization`
+    }
+  },
+  "termsOfService": `${siteUrl}/terms/`,
+  "serviceOutput": {
+    "@type": "Thing",
+    "name": "MOJ-Certified Translation",
+    "description": "Ministry of Justice certified legal translation accepted by UAE courts and government entities"
+  }
 };
 
 const breadcrumbSchema = {
@@ -180,7 +200,7 @@ const howToSchema = processSteps && processSteps.length > 0 ? {
   <!-- Hero Section -->
   <section class={`section section--hero bg-dark ${heroImage ? 'has-hero-image' : ''}`}>
     {heroImage && (
-      <img src={heroImage} alt="" class="hero-bg-image" loading="eager" />
+      <img src={heroImage} alt="" class="hero-bg-image" loading="eager" width="1920" height="1080" />
     )}
     {heroImage && <div class="hero-gradient-overlay"></div>}
     <div class="container">
