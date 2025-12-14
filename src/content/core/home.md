@@ -150,7 +150,7 @@ faqSection:
     - question: "Do you provide attestation services?"
       answer: "Yes. When your legal documents require attestation from MOFA or other government entities, we coordinate the complete process including secure courier handling of originals."
     - question: "Can you handle Arabic to English and English to Arabic?"
-      answer: "Yes. Our certified translators work in both directions for comprehensive Arabic translation services."
+      answer: "Yes. Our certified translators work in both directions for Arabic to English and English to Arabic translation."
 
 ctaBanner:
   title: "Let Us Handle the Compliance. You Focus on What Matters."
