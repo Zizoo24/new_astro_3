@@ -6,8 +6,8 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-// Category configuration
-const categories = [
+// Category configuration - defined as a function to be accessible in getStaticPaths
+const getCategories = () => [
   { key: 'legal-translation', label: 'Legal Translation', color: '#0E2B48', description: 'Expert insights on legal document translation, court-certified translations, and regulatory requirements in the UAE.' },
   { key: 'personal-documents', label: 'Personal Documents', color: '#2563EB', description: 'Guides for translating birth certificates, marriage certificates, academic records, and other personal documents.' },
   { key: 'attestation', label: 'Attestation', color: '#7C3AED', description: 'Step-by-step guides for document attestation, MOFA procedures, embassy legalization, and apostille services.' },
@@ -18,9 +18,12 @@ const categories = [
   { key: 'news', label: 'News', color: '#0891B2', description: 'Latest news and updates about translation services, regulatory changes, and company announcements.' }
 ];
 
+const categories = getCategories();
+
 // Generate static paths for all categories
 export async function getStaticPaths() {
-  return categories.map(cat => ({
+  const cats = getCategories();
+  return cats.map(cat => ({
     params: { category: cat.key },
   }));
 }
