@@ -1,0 +1,161 @@
+---
+/**
+ * /industries/[slug] - Dynamic Industry Page
+ * Renders industry pages from the content collection (CMS-created)
+ */
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+
+export async function getStaticPaths() {
+  const industries = await getCollection('industries');
+  return industries.map(industry => ({
+    params: { slug: industry.slug },
+    props: { industry }
+  }));
+}
+
+const { industry } = Astro.props;
+const { Content } = await industry.render();
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Industries', url: '/industries/' },
+  { name: industry.data.title, url: `/industries/${industry.slug}/` }
+];
+---
+
+<BaseLayout
+  title={industry.data.pageTitle || industry.data.title}
+  description={industry.data.metaDescription || industry.data.description || ''}
+>
+  <Breadcrumb items={breadcrumbs} theme="dark" />
+
+  <!-- Hero Section -->
+  <section class="section section--hero bg-dark">
+    <div class="container">
+      <div class="row">
+        <div class="col col--8">
+          <h1 class="hero-title">{industry.data.heroHeading || industry.data.title}</h1>
+          {industry.data.heroSubheading && (
+            <h2 class="hero-subtitle">{industry.data.heroSubheading}</h2>
+          )}
+          {industry.data.description && (
+            <p class="hero-intro">{industry.data.description}</p>
+          )}
+          <div class="hero-cta-group">
+            <a href="https://wa.me/971508620217" class="btn btn--primary btn--lg">
+              <i class="fab fa-whatsapp"></i>
+              Get Industry Quote
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  {industry.data.features && industry.data.features.length > 0 && (
+    <section class="section bg-light">
+      <div class="container">
+        <h2>Industry Expertise</h2>
+        <div class="features-grid">
+          {industry.data.features.map((feature: { icon?: string; title: string; text: string }) => (
+            <div class="feature-card">
+              {feature.icon && <i class={feature.icon}></i>}
+              <h3>{feature.title}</h3>
+              <p>{feature.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Main Content -->
+  <section class="section">
+    <div class="container">
+      <div class="content-body">
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-dark">
+    <div class="container text-center">
+      <h2>Need Industry-Specific Translation?</h2>
+      <p style="max-width: 600px; margin: 0 auto 2rem;">
+        Our translators specialize in your industry's terminology and requirements.
+      </p>
+      <a href="https://wa.me/971508620217" class="btn btn--primary btn--lg">
+        <i class="fab fa-whatsapp"></i>
+        Start on WhatsApp
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin: 0 0 0.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    color: var(--accent-color, #FF1654);
+    margin: 0 0 1.5rem;
+  }
+
+  .hero-intro {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    max-width: 700px;
+  }
+
+  .hero-cta-group {
+    margin-top: 2rem;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .feature-card i {
+    font-size: 2rem;
+    color: var(--accent-color, #FF1654);
+    margin-bottom: 1rem;
+  }
+
+  .feature-card h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+  }
+
+  .feature-card p {
+    margin: 0;
+    color: var(--text-muted);
+  }
+
+  .content-body {
+    max-width: 800px;
+    line-height: 1.8;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+</style>
