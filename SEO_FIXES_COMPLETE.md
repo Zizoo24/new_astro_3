@@ -5,6 +5,14 @@
 
 ---
 
+> ⚠️ **SUPERSEDED:** This document is now outdated. Key URL mappings were incorrect.
+> The degree page exists at `/personal/academic/degree/` (NOT `/personal/education/degree/`).
+>
+> **Current Reference:** See `MASTER STRATEGIC BLUEPRINT_ The Digital Concierge Model.md` Part VIII
+> and `SEO-REPAIR-ROADMAP.md` for current SEO status.
+
+---
+
 ## Executive Summary
 
 All critical SEO issues have been resolved:

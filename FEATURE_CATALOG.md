@@ -1,8 +1,10 @@
 # Feature Catalog: Original HTML vs Astro Implementation
 
+> **Primary Reference:** See `MASTER STRATEGIC BLUEPRINT_ The Digital Concierge Model.md` for all strategic guidance.
+
 This document catalogs all features from the original static HTML site to track migration completeness.
 
-## Last Updated: December 6, 2025
+## Last Updated: December 14, 2025
 
 ---
 
@@ -124,7 +126,7 @@ This document catalogs all features from the original static HTML site to track 
 - [x] Marriage Certificate `/personal/vital-records/marriage/`
 - [x] Divorce Certificate `/personal/vital-records/divorce/`
 - [x] Death Certificate `/personal/vital-records/death/`
-- [x] Degree Certificate `/personal/education/degree/`
+- [x] Degree Certificate `/personal/academic/degree/`
 - [x] Academic Transcripts `/personal/academic/transcripts/`
 - [x] Police Clearance `/personal/immigration/pcc/`
 - [x] Driving License `/personal/immigration/license/`
