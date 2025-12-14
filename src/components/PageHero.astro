@@ -1,4 +1,6 @@
 ---
+import Breadcrumb from './Breadcrumb.astro';
+
 interface Props {
   title: string;
   subtitle?: string;
@@ -7,8 +9,8 @@ interface Props {
   theme?: 'dark' | 'light';
 }
 
-const { 
-  title, 
+const {
+  title,
   subtitle,
   intro,
   breadcrumbs,
@@ -16,23 +18,18 @@ const {
 } = Astro.props;
 
 const bgClass = theme === 'dark' ? 'bg-dark' : 'bg-light';
+
+// Transform breadcrumbs to Breadcrumb component format
+const breadcrumbItems = breadcrumbs.map(crumb => ({
+  name: crumb.label,
+  url: crumb.href
+}));
 ---
 
 <section class={`hero-section ${bgClass}`} data-theme={theme}>
   <div class="container">
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      {breadcrumbs.map((crumb, i) => (
-        <>
-          {crumb.href ? (
-            <a href={crumb.href}>{crumb.label}</a>
-          ) : (
-            <span class="current">{crumb.label}</span>
-          )}
-          {i < breadcrumbs.length - 1 && <span class="separator">&gt;</span>}
-        </>
-      ))}
-    </nav>
-    
+    <Breadcrumb items={breadcrumbItems} theme={theme} inline={true} />
+
     <h1>{title}</h1>
     {subtitle && <p class="hero-subtitle">{subtitle}</p>}
     {intro && <p class="hero-intro">{intro}</p>}
@@ -43,90 +40,46 @@ const bgClass = theme === 'dark' ? 'bg-dark' : 'bg-light';
   .hero-section {
     padding: 8rem 0 4rem;
   }
-  
+
   .hero-section.bg-dark {
     background: var(--primary-color);
     color: #fff;
   }
-  
+
   .hero-section.bg-light {
     background: var(--bg-light, #f8f9fa);
     color: var(--text-dark, #1a1a1a);
   }
-  
-  .breadcrumb {
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    margin-bottom: 2rem;
-  }
-  
-  /* Dark theme breadcrumbs */
-  .bg-dark .breadcrumb a {
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-  }
-  
-  .bg-dark .breadcrumb a:hover {
-    color: #fff;
-  }
-  
-  .bg-dark .breadcrumb .separator {
-    margin: 0 0.75rem;
-    color: rgba(255, 255, 255, 0.4);
-  }
-  
-  .bg-dark .breadcrumb .current {
-    color: #fff;
-  }
-  
+
   .bg-dark h1 {
     color: #fff;
   }
-  
+
   .bg-dark .hero-intro {
     color: rgba(255, 255, 255, 0.9);
   }
-  
-  /* Light theme breadcrumbs */
-  .bg-light .breadcrumb a {
-    color: var(--text-muted, #666);
-    text-decoration: none;
-  }
-  
-  .bg-light .breadcrumb a:hover {
-    color: var(--primary-color);
-  }
-  
-  .bg-light .breadcrumb .separator {
-    margin: 0 0.75rem;
-    color: var(--text-muted, #666);
-  }
-  
-  .bg-light .breadcrumb .current {
-    color: var(--text-dark, #1a1a1a);
-  }
-  
+
   .bg-light h1 {
     color: var(--primary-color);
   }
-  
+
   .bg-light .hero-intro {
     color: var(--text-muted, #666);
   }
-  
+
   .hero-section h1 {
     font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 700;
     margin-bottom: 1rem;
   }
-  
+
   .hero-subtitle {
     font-size: 1.25rem;
     color: var(--accent-color);
     font-weight: 600;
     margin-bottom: 1rem;
   }
-  
+
   .hero-intro {
     font-size: 1.1rem;
     max-width: 700px;
