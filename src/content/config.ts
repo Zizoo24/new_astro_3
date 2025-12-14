@@ -471,6 +471,57 @@ const settings = defineCollection({
 });
 
 // =============================================
+// BLOG COLLECTION
+// =============================================
+
+const blogAuthorSchema = z.object({
+  name: z.string(),
+  title: z.string().optional(),
+  avatar: z.string().optional(),
+});
+
+const blog = defineCollection({
+  type: 'content',
+  schema: z.object({
+    // Required fields
+    title: z.string(),
+    description: z.string(),
+    publishDate: z.coerce.date(),
+
+    // Optional metadata
+    updatedDate: z.coerce.date().optional(),
+    author: blogAuthorSchema.optional(),
+
+    // Categorization (aligned with silos)
+    category: z.enum([
+      'legal-translation',
+      'personal-documents',
+      'attestation',
+      'golden-visa',
+      'corporate',
+      'industry-insights',
+      'how-to-guides',
+      'news'
+    ]),
+    tags: z.array(z.string()).optional(),
+
+    // SEO
+    keywords: z.string().optional(),
+    canonicalUrl: z.string().optional(),
+
+    // Display
+    heroImage: z.string().optional(),
+    heroImageAlt: z.string().optional(),
+    featured: z.boolean().default(false),
+    draft: z.boolean().default(false),
+
+    // Related content
+    relatedServices: z.array(z.string()).optional(), // pageKeys from serviceLinks
+    relatedPosts: z.array(z.string()).optional(), // slugs of related posts
+  }),
+});
+
+// =============================================
 // EXPORT COLLECTIONS
 // =============================================
 
@@ -481,4 +532,5 @@ export const collections = {
   locations,
   specialized,
   settings,
+  blog,
 };

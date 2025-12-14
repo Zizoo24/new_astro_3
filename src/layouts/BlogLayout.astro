@@ -1,0 +1,622 @@
+---
+/**
+ * BlogLayout.astro
+ * Layout for blog posts with Article schema and social sharing
+ */
+import BaseLayout from './BaseLayout.astro';
+import RelatedServices from '../components/RelatedServices.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  publishDate: Date;
+  updatedDate?: Date;
+  author?: {
+    name: string;
+    title?: string;
+    avatar?: string;
+  };
+  category: string;
+  tags?: string[];
+  heroImage?: string;
+  heroImageAlt?: string;
+  relatedServices?: string[];
+  keywords?: string;
+}
+
+const {
+  title,
+  description,
+  publishDate,
+  updatedDate,
+  author = { name: 'OnlineTranslation.ae Team' },
+  category,
+  tags = [],
+  heroImage,
+  heroImageAlt,
+  relatedServices = [],
+  keywords = ''
+} = Astro.props;
+
+const siteUrl = Astro.site?.origin || 'https://onlinetranslation.ae';
+const canonicalUrl = `${siteUrl}${Astro.url.pathname}`;
+
+// Format dates
+const formatDate = (date: Date) => date.toLocaleDateString('en-AE', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+
+// Category labels and colors
+const categoryConfig: Record<string, { label: string; color: string }> = {
+  'legal-translation': { label: 'Legal Translation', color: '#0E2B48' },
+  'personal-documents': { label: 'Personal Documents', color: '#2563EB' },
+  'attestation': { label: 'Attestation', color: '#7C3AED' },
+  'golden-visa': { label: 'Golden Visa', color: '#D4AF37' },
+  'corporate': { label: 'Corporate', color: '#059669' },
+  'industry-insights': { label: 'Industry Insights', color: '#DC2626' },
+  'how-to-guides': { label: 'How-To Guides', color: '#EA580C' },
+  'news': { label: 'News', color: '#0891B2' }
+};
+
+const categoryInfo = categoryConfig[category] || { label: category, color: '#0E2B48' };
+
+// Article schema
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "image": heroImage ? `${siteUrl}${heroImage}` : `${siteUrl}/assets/images/og-image.jpg`,
+  "datePublished": publishDate.toISOString(),
+  "dateModified": (updatedDate || publishDate).toISOString(),
+  "author": {
+    "@type": "Person",
+    "name": author.name
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "OnlineTranslation.ae",
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}/assets/images/logo/brand/emblem-256.png`
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": canonicalUrl
+  },
+  "keywords": tags.join(', ')
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": siteUrl
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": `${siteUrl}/blog/`
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": title,
+      "item": canonicalUrl
+    }
+  ]
+};
+---
+
+<BaseLayout title={`${title} | OnlineTranslation.ae Blog`} description={description}>
+  <Fragment slot="head">
+    {keywords && <meta name="keywords" content={keywords} />}
+    <meta property="article:published_time" content={publishDate.toISOString()} />
+    {updatedDate && <meta property="article:modified_time" content={updatedDate.toISOString()} />}
+    <meta property="article:author" content={author.name} />
+    <meta property="article:section" content={categoryInfo.label} />
+    {tags.map(tag => <meta property="article:tag" content={tag} />)}
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumbs -->
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <div class="container">
+      <a href="/" class="breadcrumb-link">Home</a>
+      <span class="breadcrumb-sep"><i class="fas fa-chevron-right"></i></span>
+      <a href="/blog/" class="breadcrumb-link">Blog</a>
+      <span class="breadcrumb-sep"><i class="fas fa-chevron-right"></i></span>
+      <span class="breadcrumb-current">{title}</span>
+    </div>
+  </nav>
+
+  <!-- Article Header -->
+  <header class="article-header">
+    <div class="container">
+      <div class="article-meta">
+        <span class="category-badge" style={`background-color: ${categoryInfo.color}`}>
+          {categoryInfo.label}
+        </span>
+        <time datetime={publishDate.toISOString()} class="publish-date">
+          <i class="far fa-calendar-alt"></i>
+          {formatDate(publishDate)}
+        </time>
+        {updatedDate && (
+          <span class="updated-date">
+            <i class="fas fa-sync-alt"></i>
+            Updated {formatDate(updatedDate)}
+          </span>
+        )}
+      </div>
+
+      <h1 class="article-title">{title}</h1>
+      <p class="article-description">{description}</p>
+
+      <div class="author-info">
+        {author.avatar ? (
+          <img src={author.avatar} alt={author.name} class="author-avatar" />
+        ) : (
+          <div class="author-avatar-placeholder">
+            <i class="fas fa-user"></i>
+          </div>
+        )}
+        <div class="author-details">
+          <span class="author-name">{author.name}</span>
+          {author.title && <span class="author-title">{author.title}</span>}
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Image -->
+  {heroImage && (
+    <div class="article-hero">
+      <div class="container">
+        <img src={heroImage} alt={heroImageAlt || title} class="hero-image" loading="eager" />
+      </div>
+    </div>
+  )}
+
+  <!-- Article Content -->
+  <article class="article-content">
+    <div class="container">
+      <div class="content-wrapper">
+        <div class="prose">
+          <slot />
+        </div>
+
+        <!-- Tags -->
+        {tags.length > 0 && (
+          <div class="article-tags">
+            <span class="tags-label"><i class="fas fa-tags"></i> Tags:</span>
+            {tags.map(tag => (
+              <a href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}/`} class="tag">
+                {tag}
+              </a>
+            ))}
+          </div>
+        )}
+
+        <!-- Related Services -->
+        {relatedServices.length > 0 && (
+          <div class="related-services-section">
+            <h2>Related Services</h2>
+            <RelatedServices
+              pageKey={relatedServices[0]}
+              title="You May Also Need"
+              maxItems={4}
+            />
+          </div>
+        )}
+
+        <!-- Share Buttons -->
+        <div class="share-section">
+          <span class="share-label">Share this article:</span>
+          <div class="share-buttons">
+            <a
+              href={`https://wa.me/?text=${encodeURIComponent(title + ' ' + canonicalUrl)}`}
+              class="share-btn share-whatsapp"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(canonicalUrl)}`}
+              class="share-btn share-linkedin"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(canonicalUrl)}`}
+              class="share-btn share-twitter"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fab fa-x-twitter"></i>
+            </a>
+            <button
+              class="share-btn share-copy"
+              onclick={`navigator.clipboard.writeText('${canonicalUrl}'); this.innerHTML = '<i class="fas fa-check"></i>'; setTimeout(() => this.innerHTML = '<i class="fas fa-link"></i>', 2000)`}
+            >
+              <i class="fas fa-link"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- CTA Section -->
+  <section class="article-cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Need Translation Services?</h2>
+        <p>Send your documents via WhatsApp for a free assessment and quote.</p>
+        <a href="https://wa.me/971508620217" class="btn btn--primary btn--lg">
+          <i class="fab fa-whatsapp"></i>
+          Start on WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .breadcrumbs {
+    background: var(--primary-color, #0E2B48);
+    padding: 0.75rem 0;
+  }
+
+  .breadcrumbs .container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .breadcrumb-link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .breadcrumb-link:hover {
+    color: #ffffff;
+  }
+
+  .breadcrumb-sep {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.7rem;
+  }
+
+  .breadcrumb-current {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 0.85rem;
+  }
+
+  .article-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #1a3a5c 100%);
+    color: white;
+    padding: 3rem 0;
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .category-badge {
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: white;
+  }
+
+  .publish-date,
+  .updated-date {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .article-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 0 0 1rem;
+    max-width: 800px;
+  }
+
+  .article-description {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 700px;
+    margin: 0 0 2rem;
+  }
+
+  .author-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .author-avatar,
+  .author-avatar-placeholder {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .author-avatar-placeholder {
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+
+  .author-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .author-name {
+    font-weight: 600;
+  }
+
+  .author-title {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .article-hero {
+    margin-top: -2rem;
+    padding: 0 0 2rem;
+  }
+
+  .hero-image {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  .article-content {
+    padding: 3rem 0;
+  }
+
+  .content-wrapper {
+    max-width: 800px;
+  }
+
+  .prose {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-dark, #1a1a1a);
+  }
+
+  .prose :global(h2) {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 2.5rem 0 1rem;
+    color: var(--primary-color);
+  }
+
+  .prose :global(h3) {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 2rem 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .prose :global(p) {
+    margin-bottom: 1.5rem;
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .prose :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .prose :global(a) {
+    color: var(--accent-color, #FF1654);
+    text-decoration: underline;
+  }
+
+  .prose :global(blockquote) {
+    border-left: 4px solid var(--accent-color);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: var(--text-muted);
+  }
+
+  .article-tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .tags-label {
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  .tag {
+    padding: 0.35rem 0.75rem;
+    background: var(--bg-light, #f8f9fa);
+    border-radius: 4px;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: all 0.2s;
+  }
+
+  .tag:hover {
+    background: var(--primary-color);
+    color: white;
+  }
+
+  .related-services-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .related-services-section h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .share-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .share-label {
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  .share-buttons {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .share-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: transform 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .share-btn:hover {
+    transform: scale(1.1);
+  }
+
+  .share-whatsapp { background: #25D366; }
+  .share-linkedin { background: #0A66C2; }
+  .share-twitter { background: #000; }
+  .share-copy { background: var(--primary-color); }
+
+  .article-cta {
+    background: var(--bg-light, #f8f9fa);
+    padding: 4rem 0;
+  }
+
+  .cta-card {
+    max-width: 600px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .cta-card h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .cta-card p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .btn--primary {
+    background: var(--accent-color, #FF1654);
+    color: white;
+  }
+
+  .btn--primary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+
+  .btn--lg {
+    font-size: 1.1rem;
+    padding: 1rem 2.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .article-header {
+      padding: 2rem 0;
+    }
+
+    .article-title {
+      font-size: 1.5rem;
+    }
+
+    .article-description {
+      font-size: 1rem;
+    }
+
+    .article-content {
+      padding: 2rem 0;
+    }
+
+    .prose {
+      font-size: 1rem;
+    }
+
+    .share-section {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

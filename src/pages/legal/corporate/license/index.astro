@@ -1,5 +1,6 @@
 ---
 import ServiceLayout from '../../../../layouts/ServiceLayout.astro';
+import RelatedServices from '../../../../components/RelatedServices.astro';
 
 const breadcrumbs = [
   { name: 'Home', url: '/' },
@@ -153,29 +154,13 @@ const accordionSections = [
 
   <section class="section">
     <div class="container">
-      <h2>Related Services</h2>
-      <div class="related-grid">
-        <a href="/legal/corporate/" class="related-card">
-          <h3>Corporate Documents</h3>
-          <p>MOA, resolutions, shareholder docs</p>
-        </a>
-        <a href="/legal/corporate/moa/" class="related-card">
-          <h3>MOA Translation</h3>
-          <p>Memorandum of Association</p>
-        </a>
-        <a href="/legal-translation-dubai/" class="related-card">
-          <h3>Legal Translation Hub</h3>
-          <p>All legal document services</p>
-        </a>
-      </div>
+      <RelatedServices
+        pageKey="tradeLicense"
+        title="Related Corporate Services"
+        showFamily={true}
+        showCrossSilo={true}
+        maxItems={6}
+      />
     </div>
   </section>
 </ServiceLayout>
-
-<style>
-  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
-  .related-card { padding: 1.5rem; background: var(--bg-light, #f8f9fa); border-radius: 8px; text-decoration: none; color: inherit; border-left: 3px solid var(--primary-color); transition: all 0.2s; }
-  .related-card:hover { border-left-color: var(--accent-color); background: white; }
-  .related-card h3 { font-size: 1.1rem; margin: 0 0 0.5rem; color: var(--primary-color); }
-  .related-card p { font-size: 0.9rem; color: var(--text-muted); margin: 0; }
-</style>
