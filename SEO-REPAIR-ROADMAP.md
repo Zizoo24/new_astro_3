@@ -2,7 +2,7 @@
 
 **Audit Date:** December 14, 2025
 **Last Updated:** December 14, 2025
-**Status:** ALL PHASES COMPLETE
+**Status:** Phases 1-6 Complete
 
 ---
 
@@ -123,7 +123,7 @@ Lower priority enhancement.
 
 ## Phase 4: Internal Linking (Medium Priority) - COMPLETE
 
-### 4.1 Deploy RelatedServices Across Site
+### 4.1 Deploy RelatedServices Across Site - COMPLETE
 
 **Status:** 14 key pages complete (all high-priority pages covered)
 
@@ -143,23 +143,24 @@ Lower priority enhancement.
 - [x] `/locations/dubai/jlt/index.astro`
 - [x] `/locations/dubai/palm-jumeirah/index.astro`
 
-**Remaining (lower priority):**
-- Additional attestation pages (India, UK, Philippines already have manual links)
-- Secondary location pages
+### 4.2 Deploy CrossSiloLinks Component - COMPLETE
 
-### 4.2 Deploy CrossSiloLinks Component
+**Target pages:**
+- [x] `/legal-translation-dubai/index.astro` (via showCrossSilo prop in RelatedServices)
+- [x] `/services/attestation/index.astro`
+- [x] `/services/golden-visa-translation/index.astro`
 
-**Current usage:** Only `/personal-documents/index.astro`
+### 4.3 Create Breadcrumb Component - COMPLETE
 
-**Should add to:**
-- Hub/pillar pages for each silo
-- High-traffic landing pages
+**Created:** `/src/components/Breadcrumb.astro`
 
-### 4.3 Create Breadcrumb Component
+**Features:**
+- Schema.org BreadcrumbList JSON-LD markup
+- Consistent styling (dark/light themes)
+- Props: `items: Array<{name: string, url?: string}>`, `theme`, `inline`
+- Integrated into ServiceLayout (40+ pages) and PageHero
 
-**Problem:** 79 pages have custom breadcrumb implementations (inconsistent)
-
-**Fix:** Create single `<Breadcrumb />` component and use across all pages
+**Remaining:** ~40 pages with inline breadcrumbs can be migrated incrementally
 
 ### 4.4 Fix BlogLayout RelatedServices - COMPLETE
 
@@ -292,9 +293,14 @@ Added to BaseLayout LocalBusiness:
 - [x] `/src/pages/legal-translation-dubai/index.astro` - Added RelatedServices
 - [x] `/src/pages/personal-documents/index.astro` - Added RelatedServices
 - [x] `/src/pages/services/attestation/us/index.astro` - Added RelatedServices
-- [x] `/src/pages/locations/dubai/difc/index.astro` - Added RelatedServices
-- [x] `/src/pages/locations/dubai/jlt/index.astro` - Added RelatedServices
-- [x] `/src/pages/locations/dubai/palm-jumeirah/index.astro` - Added RelatedServices
+- [x] `/src/locations/dubai/difc/index.astro` - Added RelatedServices
+- [x] `/src/locations/dubai/jlt/index.astro` - Added RelatedServices
+- [x] `/src/locations/dubai/palm-jumeirah/index.astro` - Added RelatedServices
+- [x] `/src/pages/services/attestation/index.astro` - Added CrossSiloLinks
+- [x] `/src/pages/services/golden-visa-translation/index.astro` - Added CrossSiloLinks
+- [x] `/src/components/Breadcrumb.astro` - CREATED - Unified breadcrumb with Schema.org
+- [x] `/src/layouts/ServiceLayout.astro` - Updated to use Breadcrumb component
+- [x] `/src/components/PageHero.astro` - Updated to use Breadcrumb component
 
 ### Phase 5 (Infrastructure Complete)
 - [x] `/src/components/RelatedPosts.astro` - CREATED - Related posts component

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
 import TrustStrip from '../components/TrustStrip.astro';
 import ProcessSteps from '../components/ProcessSteps.astro';
 import BenefitCards from '../components/BenefitCards.astro';
@@ -127,17 +128,6 @@ const serviceSchema = {
   }
 };
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": breadcrumbs.map((crumb, i) => ({
-    "@type": "ListItem",
-    "position": i + 1,
-    "name": crumb.name,
-    "item": crumb.url.startsWith('http') ? crumb.url : `${siteUrl}${crumb.url}`
-  }))
-};
-
 const faqSchema = faqs.length > 0 ? {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -176,26 +166,12 @@ const howToSchema = processSteps && processSteps.length > 0 ? {
   <Fragment slot="head">
     {keywords && <meta name="keywords" content={keywords} />}
     <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
-    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
     {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
     {howToSchema && <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />}
   </Fragment>
 
   <!-- Breadcrumbs -->
-  <nav class="breadcrumbs" aria-label="Breadcrumb">
-    <div class="container">
-      {breadcrumbs.map((crumb, i) => (
-        <Fragment>
-          {i > 0 && <span class="breadcrumb-sep"><i class="fas fa-chevron-right"></i></span>}
-          {i === breadcrumbs.length - 1 ? (
-            <span class="breadcrumb-current">{crumb.name}</span>
-          ) : (
-            <a href={crumb.url} class="breadcrumb-link">{crumb.name}</a>
-          )}
-        </Fragment>
-      ))}
-    </div>
-  </nav>
+  <Breadcrumb items={breadcrumbs} theme="dark" />
 
   <!-- Hero Section -->
   <section class={`section section--hero bg-dark ${heroImage ? 'has-hero-image' : ''}`}>
@@ -291,42 +267,6 @@ const howToSchema = processSteps && processSteps.length > 0 ? {
 </BaseLayout>
 
 <style>
-  .breadcrumbs {
-    background: var(--primary-color, #0E2B48);
-    padding: 0.75rem 0;
-  }
-  
-  .breadcrumbs .container {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  
-  .breadcrumb-link {
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  
-  .breadcrumb-link:hover {
-    color: #ffffff;
-  }
-  
-  .breadcrumb-sep {
-    color: rgba(255, 255, 255, 0.4);
-    font-size: 0.7rem;
-  }
-  
-  .breadcrumb-current {
-    color: rgba(255, 255, 255, 0.95);
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  
   .hero-title {
     font-family: var(--font-primary);
     font-size: clamp(2rem, 5vw, 3.5rem);

@@ -1,0 +1,187 @@
+---
+/**
+ * Breadcrumb.astro
+ * Unified breadcrumb component with Schema.org BreadcrumbList markup
+ *
+ * Usage (standalone with background):
+ * <Breadcrumb items={[
+ *   { name: "Home", url: "/" },
+ *   { name: "Personal Documents", url: "/personal-documents/" },
+ *   { name: "Degree Translation" }
+ * ]} />
+ *
+ * Usage (inline within a section):
+ * <Breadcrumb items={[...]} inline={true} theme="dark" />
+ *
+ * Note: The last item should not have a URL (current page)
+ */
+
+interface BreadcrumbItem {
+  name: string;
+  url?: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+  theme?: 'dark' | 'light';
+  containerClass?: string;
+  inline?: boolean;
+}
+
+const {
+  items,
+  theme = 'dark',
+  containerClass = 'container',
+  inline = false
+} = Astro.props;
+
+// Use Astro.site from config for consistent URL handling
+const siteUrl = Astro.site?.origin || 'https://onlinetranslation.ae';
+
+// Generate Schema.org BreadcrumbList
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": items.map((crumb, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "name": crumb.name,
+    "item": crumb.url
+      ? (crumb.url.startsWith('http') ? crumb.url : `${siteUrl}${crumb.url}`)
+      : `${siteUrl}${Astro.url.pathname}`
+  }))
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+<nav class={`breadcrumb-nav breadcrumb-nav--${theme}${inline ? ' breadcrumb-nav--inline' : ''}`} aria-label="Breadcrumb">
+  {inline ? (
+    <ol class="breadcrumb-list">
+      {items.map((crumb, i) => (
+        <li class="breadcrumb-item">
+          {i > 0 && <span class="breadcrumb-sep"><i class="fas fa-chevron-right"></i></span>}
+          {i === items.length - 1 || !crumb.url ? (
+            <span class="breadcrumb-current" aria-current="page">{crumb.name}</span>
+          ) : (
+            <a href={crumb.url} class="breadcrumb-link">{crumb.name}</a>
+          )}
+        </li>
+      ))}
+    </ol>
+  ) : (
+    <div class={containerClass}>
+      <ol class="breadcrumb-list">
+        {items.map((crumb, i) => (
+          <li class="breadcrumb-item">
+            {i > 0 && <span class="breadcrumb-sep"><i class="fas fa-chevron-right"></i></span>}
+            {i === items.length - 1 || !crumb.url ? (
+              <span class="breadcrumb-current" aria-current="page">{crumb.name}</span>
+            ) : (
+              <a href={crumb.url} class="breadcrumb-link">{crumb.name}</a>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  )}
+</nav>
+
+<style>
+  .breadcrumb-nav {
+    padding: 0.75rem 0;
+  }
+
+  .breadcrumb-nav--dark {
+    background: var(--primary-color, #0E2B48);
+  }
+
+  .breadcrumb-nav--light {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  .breadcrumb-nav--inline {
+    background: transparent;
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+
+  .breadcrumb-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .breadcrumb-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .breadcrumb-link {
+    font-size: 0.85rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color 0.2s ease;
+  }
+
+  .breadcrumb-sep {
+    font-size: 0.7rem;
+  }
+
+  .breadcrumb-current {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Dark theme styles */
+  .breadcrumb-nav--dark .breadcrumb-link {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .breadcrumb-nav--dark .breadcrumb-link:hover {
+    color: #ffffff;
+  }
+
+  .breadcrumb-nav--dark .breadcrumb-sep {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .breadcrumb-nav--dark .breadcrumb-current {
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  /* Light theme styles */
+  .breadcrumb-nav--light .breadcrumb-link {
+    color: var(--text-muted, #5a6a7a);
+  }
+
+  .breadcrumb-nav--light .breadcrumb-link:hover {
+    color: var(--primary-color, #0E2B48);
+  }
+
+  .breadcrumb-nav--light .breadcrumb-sep {
+    color: var(--border-color, #d1d5db);
+  }
+
+  .breadcrumb-nav--light .breadcrumb-current {
+    color: var(--text-dark, #1a1a1a);
+  }
+
+  @media (max-width: 768px) {
+    .breadcrumb-link,
+    .breadcrumb-current {
+      font-size: 0.75rem;
+    }
+
+    .breadcrumb-sep {
+      font-size: 0.6rem;
+    }
+  }
+</style>
