@@ -1,6 +1,9 @@
 # OnlineTranslation.ae - Task Backlog
 
-This document tracks all tasks for the project, organized by status.
+> **Primary Reference:** See `MASTER STRATEGIC BLUEPRINT_ The Digital Concierge Model.md` for all strategic guidance.
+> SEO tasks tracked in Part VIII of the master blueprint.
+
+This document tracks component/UI tasks. For SEO tasks, see `SEO-REPAIR-ROADMAP.md`.
 
 ---
 
