@@ -95,17 +95,15 @@ const serviceSchema = {
   "description": description,
   "provider": {
     "@type": "LocalBusiness",
-    "name": "OnlineTranslation.ae",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Palm Jumeirah",
-      "addressLocality": "Dubai",
-      "addressCountry": "AE"
-    },
-    "telephone": "+971508620217",
-    "email": "info@onlinetranslation.ae"
+    "@id": `${siteUrl}/#organization`,
+    "name": "OnlineTranslation.ae"
   },
-  "areaServed": ["Dubai", "Abu Dhabi", "Sharjah", "UAE"],
+  "areaServed": [
+    { "@type": "City", "name": "Dubai" },
+    { "@type": "City", "name": "Abu Dhabi" },
+    { "@type": "City", "name": "Sharjah" },
+    { "@type": "Country", "name": "UAE" }
+  ],
   "serviceType": [serviceType, "Legal Translation"]
 };
 

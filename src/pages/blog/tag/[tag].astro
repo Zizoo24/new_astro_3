@@ -1,0 +1,599 @@
+---
+/**
+ * /blog/tag/[tag]/ - Blog Tag Archive Page
+ * Lists all posts with a specific tag
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Category configuration (for displaying badges)
+const categories = [
+  { key: 'legal-translation', label: 'Legal Translation', color: '#0E2B48' },
+  { key: 'personal-documents', label: 'Personal Documents', color: '#2563EB' },
+  { key: 'attestation', label: 'Attestation', color: '#7C3AED' },
+  { key: 'golden-visa', label: 'Golden Visa', color: '#D4AF37' },
+  { key: 'corporate', label: 'Corporate', color: '#059669' },
+  { key: 'industry-insights', label: 'Industry Insights', color: '#DC2626' },
+  { key: 'how-to-guides', label: 'How-To Guides', color: '#EA580C' },
+  { key: 'news', label: 'News', color: '#0891B2' }
+];
+
+// Generate static paths for all unique tags
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+
+  // Collect all unique tags
+  const tagSet = new Set<string>();
+  allPosts.forEach(post => {
+    if (post.data.tags) {
+      post.data.tags.forEach(tag => tagSet.add(tag));
+    }
+  });
+
+  return Array.from(tagSet).map(tag => ({
+    params: { tag },
+  }));
+}
+
+const { tag } = Astro.params;
+
+// Get all posts with this tag
+const allPosts = await getCollection('blog', ({ data }) =>
+  !data.draft && data.tags?.includes(tag)
+);
+const sortedPosts = allPosts.sort((a, b) =>
+  b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+
+// Format tag for display (capitalize, replace hyphens)
+const formatTag = (t: string) =>
+  t.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+
+const displayTag = formatTag(tag);
+
+// Format date helper
+const formatDate = (date: Date) => date.toLocaleDateString('en-AE', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric'
+});
+
+// Get category info helper
+const getCategoryInfo = (key: string) =>
+  categories.find(c => c.key === key) || { label: key, color: '#0E2B48' };
+
+// Get all tags for sidebar (with counts)
+const allPostsForTags = await getCollection('blog', ({ data }) => !data.draft);
+const tagCounts = new Map<string, number>();
+allPostsForTags.forEach(post => {
+  if (post.data.tags) {
+    post.data.tags.forEach(t => {
+      tagCounts.set(t, (tagCounts.get(t) || 0) + 1);
+    });
+  }
+});
+const popularTags = Array.from(tagCounts.entries())
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 15);
+---
+
+<BaseLayout
+  title={`#${displayTag} | Blog | OnlineTranslation.ae`}
+  description={`Browse all articles tagged with "${displayTag}" - Expert insights on translation, attestation, and document services in Dubai, UAE.`}
+>
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li aria-current="page">#{displayTag}</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="tag-hero">
+    <div class="container">
+      <span class="tag-icon"><i class="fas fa-hashtag"></i></span>
+      <h1>{displayTag}</h1>
+      <p class="post-count">{sortedPosts.length} article{sortedPosts.length !== 1 ? 's' : ''} with this tag</p>
+    </div>
+  </section>
+
+  <div class="content-wrapper">
+    <div class="container">
+      <div class="content-grid">
+        <!-- Main Content -->
+        <main class="posts-main">
+          {sortedPosts.length > 0 ? (
+            <div class="posts-list">
+              {sortedPosts.map(post => {
+                const catInfo = getCategoryInfo(post.data.category);
+                return (
+                  <article class="post-card">
+                    {post.data.heroImage && (
+                      <a href={`/blog/${post.slug}/`} class="post-image-link">
+                        <img
+                          src={post.data.heroImage}
+                          alt={post.data.heroImageAlt || post.data.title}
+                          class="post-image"
+                          loading="lazy"
+                        />
+                      </a>
+                    )}
+                    <div class="post-content">
+                      <div class="post-meta">
+                        <a href={`/blog/category/${post.data.category}/`} class="category-badge" style={`background-color: ${catInfo.color}`}>
+                          {catInfo.label}
+                        </a>
+                        <time datetime={post.data.publishDate.toISOString()}>
+                          {formatDate(post.data.publishDate)}
+                        </time>
+                      </div>
+                      <h2>
+                        <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+                      </h2>
+                      <p>{post.data.description}</p>
+                      {post.data.tags && post.data.tags.length > 0 && (
+                        <div class="post-tags">
+                          {post.data.tags.map(t => (
+                            <a
+                              href={`/blog/tag/${t}/`}
+                              class={`tag ${t === tag ? 'tag--active' : ''}`}
+                            >
+                              #{t}
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                      <a href={`/blog/${post.slug}/`} class="read-more">
+                        Read More <i class="fas fa-arrow-right"></i>
+                      </a>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          ) : (
+            <div class="no-posts">
+              <i class="fas fa-search"></i>
+              <h2>No Articles Found</h2>
+              <p>No articles have been tagged with "{displayTag}" yet.</p>
+              <a href="/blog/" class="btn btn--primary">View All Articles</a>
+            </div>
+          )}
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <div class="sidebar-section">
+            <h3>Popular Tags</h3>
+            <div class="tag-cloud">
+              {popularTags.map(([t, count]) => (
+                <a
+                  href={`/blog/tag/${t}/`}
+                  class={`tag-pill ${t === tag ? 'tag-pill--active' : ''}`}
+                >
+                  #{t} <span class="tag-count">{count}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div class="sidebar-section">
+            <h3>Browse by Category</h3>
+            <ul class="category-list">
+              {categories.map(cat => (
+                <li>
+                  <a href={`/blog/category/${cat.key}/`} class="category-link">
+                    <span class="category-dot" style={`background-color: ${cat.color}`}></span>
+                    {cat.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Blog -->
+  <section class="back-section">
+    <div class="container">
+      <a href="/blog/" class="back-link">
+        <i class="fas fa-arrow-left"></i>
+        Back to All Articles
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .breadcrumb-nav {
+    background: var(--bg-light, #f8f9fa);
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .breadcrumb-list {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.9rem;
+  }
+
+  .breadcrumb-list li:not(:last-child)::after {
+    content: '/';
+    margin-left: 0.5rem;
+    color: var(--text-muted, #5a6a7a);
+  }
+
+  .breadcrumb-list a {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+
+  .breadcrumb-list a:hover {
+    color: var(--primary-color);
+  }
+
+  .breadcrumb-list li:last-child {
+    color: var(--primary-color);
+    font-weight: 600;
+  }
+
+  .tag-hero {
+    background: linear-gradient(135deg, var(--primary-color, #0E2B48) 0%, #1a3a5c 100%);
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .tag-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+
+  .tag-icon i {
+    font-size: 1.5rem;
+  }
+
+  .tag-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    margin: 0 0 0.5rem;
+  }
+
+  .post-count {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+  }
+
+  .content-wrapper {
+    padding: 3rem 0;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 3rem;
+  }
+
+  .posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .post-card {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s;
+  }
+
+  .post-card:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .post-image-link {
+    display: block;
+    overflow: hidden;
+  }
+
+  .post-image {
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  .post-card:hover .post-image {
+    transform: scale(1.05);
+  }
+
+  .post-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .category-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .category-badge:hover {
+    opacity: 0.85;
+  }
+
+  .post-meta time {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .post-content h2 {
+    font-size: 1.25rem;
+    margin: 0 0 0.75rem;
+    line-height: 1.3;
+  }
+
+  .post-content h2 a {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+
+  .post-content h2 a:hover {
+    color: var(--accent-color);
+  }
+
+  .post-content p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0 0 1rem;
+    flex: 1;
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .tag {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .tag:hover {
+    color: var(--primary-color);
+  }
+
+  .tag--active {
+    color: var(--accent-color);
+    font-weight: 600;
+  }
+
+  .read-more {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .read-more:hover {
+    gap: 0.75rem;
+  }
+
+  .sidebar-section {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .sidebar-section h3 {
+    font-size: 1rem;
+    margin: 0 0 1rem;
+    color: var(--primary-color);
+    font-weight: 700;
+  }
+
+  .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.75rem;
+    background: var(--bg-light, #f8f9fa);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .tag-pill:hover {
+    background: var(--primary-color);
+    color: white;
+  }
+
+  .tag-pill--active {
+    background: var(--accent-color);
+    color: white;
+  }
+
+  .tag-count {
+    font-size: 0.7rem;
+    opacity: 0.7;
+  }
+
+  .category-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .category-list li {
+    margin-bottom: 0.75rem;
+  }
+
+  .category-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+
+  .category-link:hover {
+    color: var(--primary-color);
+  }
+
+  .category-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .no-posts {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: white;
+    border-radius: 12px;
+  }
+
+  .no-posts i {
+    font-size: 3rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .no-posts h2 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .no-posts p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .btn--primary {
+    background: var(--accent-color, #FF1654);
+    color: white;
+  }
+
+  .btn--primary:hover {
+    opacity: 0.9;
+  }
+
+  .back-section {
+    padding: 2rem 0 4rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover {
+    color: var(--primary-color);
+  }
+
+  @media (max-width: 1024px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+      order: -1;
+    }
+
+    .sidebar-section {
+      display: none;
+    }
+
+    .sidebar-section:first-child {
+      display: block;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .tag-hero {
+      padding: 3rem 0;
+    }
+
+    .post-card {
+      grid-template-columns: 1fr;
+    }
+
+    .post-image {
+      min-height: 180px;
+    }
+  }
+</style>

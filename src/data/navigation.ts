@@ -313,7 +313,7 @@ export const mobileNav = {
         { label: 'Bank Statements', href: '/personal/immigration/bank/' },
         { label: 'Driving License', href: '/personal/immigration/license/' },
         { label: 'Academic Hub', href: '/personal/academic/' },
-        { label: 'Degree Translation', href: '/personal/education/degree/' },
+        { label: 'Degree Translation', href: '/personal/academic/degree/' },
         { label: 'Transcripts', href: '/personal/academic/transcripts/' },
       ],
     },
