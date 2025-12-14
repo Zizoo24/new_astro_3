@@ -4,6 +4,7 @@
  * URL: /legal/wills/
  */
 import ServiceLayout from '../../../layouts/ServiceLayout.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
 
 const breadcrumbs = [
   { name: 'Home', url: '/' },
@@ -215,46 +216,7 @@ const accordionSections = [
   <!-- Related Services -->
   <section class="section bg-light">
     <div class="container">
-      <h2>Related Estate & Legal Services</h2>
-      <p style="max-width: 700px; margin-bottom: 2rem;">
-        Will translation is often part of a larger estate administration process. We support the complete documentation requirements.
-      </p>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-        
-        <a href="/personal/vital-records/death/" style="display: block; padding: 1.25rem; background: var(--surface-raised, #f8f9fa); border-radius: 8px; text-decoration: none; color: inherit;">
-          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
-            <i class="fas fa-file-alt" style="color: var(--accent-color, #d4af37);"></i>
-            <strong>Death Certificate Translation</strong>
-          </div>
-          <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">Required for all probate proceedings</p>
-        </a>
-        
-        <a href="/legal/corporate/poa/" style="display: block; padding: 1.25rem; background: var(--surface-raised, #f8f9fa); border-radius: 8px; text-decoration: none; color: inherit;">
-          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
-            <i class="fas fa-file-signature" style="color: var(--accent-color, #d4af37);"></i>
-            <strong>Power of Attorney</strong>
-          </div>
-          <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">For representatives acting on behalf of estates</p>
-        </a>
-        
-        <a href="/services/attestation/" style="display: block; padding: 1.25rem; background: var(--surface-raised, #f8f9fa); border-radius: 8px; text-decoration: none; color: inherit;">
-          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
-            <i class="fas fa-stamp" style="color: var(--accent-color, #d4af37);"></i>
-            <strong>Attestation Services</strong>
-          </div>
-          <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">MOFA and embassy legalization</p>
-        </a>
-        
-        <a href="/legal-translation-dubai/" style="display: block; padding: 1.25rem; background: var(--surface-raised, #f8f9fa); border-radius: 8px; text-decoration: none; color: inherit;">
-          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
-            <i class="fas fa-gavel" style="color: var(--accent-color, #d4af37);"></i>
-            <strong>All Legal Translation</strong>
-          </div>
-          <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">Contracts, court documents, corporate</p>
-        </a>
-        
-      </div>
+      <RelatedServices pageKey="wills" showFamily={false} showNextSteps={true} />
     </div>
   </section>
 

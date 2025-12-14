@@ -1,5 +1,6 @@
 ---
 import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
 
 const breadcrumbs = [
   { name: 'Home', url: '/' },
@@ -245,24 +246,7 @@ const faqs = [
 
   <section class="section bg-white">
     <div class="container">
-      <h2>Related Services</h2>
-      
-      <div class="related-grid">
-        <a href="/services/attestation/" class="related-card">
-          <h3>Document Attestation</h3>
-          <p>MOFA attestation and embassy legalization services for foreign documents</p>
-        </a>
-        
-        <a href="/services/corporate-translation/" class="related-card">
-          <h3>Corporate Translation</h3>
-          <p>Business setup documentation for DED, DMCC, JAFZA, and free zone authorities</p>
-        </a>
-        
-        <a href="/personal-documents/" class="related-card">
-          <h3>Personal Documents</h3>
-          <p>Certificates, immigration documents, and academic credentials</p>
-        </a>
-      </div>
+      <RelatedServices pageKey="legalTranslation" showFamily={false} showNextSteps={true} showCrossSilo={true} />
     </div>
   </section>
 
