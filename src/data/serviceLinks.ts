@@ -326,6 +326,18 @@ export const serviceLinks: Record<string, ServiceLink> = {
     full: "website and app localization",
     icon: "fas fa-globe"
   },
+  financial: {
+    url: "/specialized/financial/",
+    text: "financial translation",
+    full: "financial document translation",
+    icon: "fas fa-chart-line"
+  },
+  tradeLicense: {
+    url: "/legal/corporate/license/",
+    text: "trade license translation",
+    full: "trade license and commercial registration",
+    icon: "fas fa-id-badge"
+  },
 
   // ========================================
   // SILO 5: LOCATIONS
@@ -696,6 +708,17 @@ export const pageRelationships: Record<string, PageRelationships> = {
     related: ["technical", "ecommerceIndustry", "hospitality"],
     crossSilo: ["ecommerceIndustry"],
     locations: ["difc", "businessBay"]
+  },
+  financial: {
+    related: ["corporateTranslation", "bankStatement", "moa"],
+    crossSilo: ["corporate", "realEstateIndustry"],
+    locations: ["difc", "businessBay", "abuDhabi"]
+  },
+  tradeLicense: {
+    related: ["moa", "poa", "corporateTranslation"],
+    family: ["moa", "resolution"],
+    crossSilo: ["corporate", "legalTranslation"],
+    locations: ["difc", "businessBay", "jlt"]
   },
 
   // ========================================

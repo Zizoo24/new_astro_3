@@ -10,6 +10,7 @@
  * Type: Service Page
  */
 import CategoryLayout from '../../../layouts/CategoryLayout.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
 
 const breadcrumbs = [
   { label: 'Home', href: '/' },
@@ -326,29 +327,13 @@ const documentChecklist = [
   <!-- Related Services -->
   <section class="section bg-light">
     <div class="container">
-      <h2>Related Services</h2>
-      <div class="related-grid">
-        <a href="/services/attestation/" class="related-card">
-          <i class="fas fa-stamp"></i>
-          <h3>Attestation Services</h3>
-          <p>MOFA, embassy, and MOHESR attestation coordination</p>
-        </a>
-        <a href="/personal/education/degree/" class="related-card">
-          <i class="fas fa-graduation-cap"></i>
-          <h3>Degree Translation</h3>
-          <p>Academic credential translation and verification</p>
-        </a>
-        <a href="/personal/immigration/bank/" class="related-card">
-          <i class="fas fa-university"></i>
-          <h3>Bank Statement Translation</h3>
-          <p>Financial document translation for visa applications</p>
-        </a>
-        <a href="/legal/corporate/" class="related-card">
-          <i class="fas fa-building"></i>
-          <h3>Corporate Documents</h3>
-          <p>Business documents for investor category applications</p>
-        </a>
-      </div>
+      <RelatedServices
+        pageKey="goldenVisa"
+        title="Related Services"
+        showPrerequisites={true}
+        showNextSteps={true}
+        maxItems={6}
+      />
     </div>
   </section>
 
