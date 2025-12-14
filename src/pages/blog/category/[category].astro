@@ -6,8 +6,8 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-// Category configuration - defined as a function to be accessible in getStaticPaths
-const getCategories = () => [
+// Category configuration - duplicated in getStaticPaths for Astro SSG compatibility
+const categories = [
   { key: 'legal-translation', label: 'Legal Translation', color: '#0E2B48', description: 'Expert insights on legal document translation, court-certified translations, and regulatory requirements in the UAE.' },
   { key: 'personal-documents', label: 'Personal Documents', color: '#2563EB', description: 'Guides for translating birth certificates, marriage certificates, academic records, and other personal documents.' },
   { key: 'attestation', label: 'Attestation', color: '#7C3AED', description: 'Step-by-step guides for document attestation, MOFA procedures, embassy legalization, and apostille services.' },
@@ -18,14 +18,18 @@ const getCategories = () => [
   { key: 'news', label: 'News', color: '#0891B2', description: 'Latest news and updates about translation services, regulatory changes, and company announcements.' }
 ];
 
-const categories = getCategories();
-
-// Generate static paths for all categories
+// Generate static paths for all categories - categories inlined for Astro build compatibility
 export async function getStaticPaths() {
-  const cats = getCategories();
-  return cats.map(cat => ({
-    params: { category: cat.key },
-  }));
+  return [
+    { params: { category: 'legal-translation' } },
+    { params: { category: 'personal-documents' } },
+    { params: { category: 'attestation' } },
+    { params: { category: 'golden-visa' } },
+    { params: { category: 'corporate' } },
+    { params: { category: 'industry-insights' } },
+    { params: { category: 'how-to-guides' } },
+    { params: { category: 'news' } }
+  ];
 }
 
 const { category } = Astro.params;
