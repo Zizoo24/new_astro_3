@@ -5,6 +5,7 @@
  */
 import BaseLayout from './BaseLayout.astro';
 import RelatedServices from '../components/RelatedServices.astro';
+import RelatedPosts from '../components/RelatedPosts.astro';
 import { serviceLinks } from '../data/serviceLinks';
 
 interface Props {
@@ -22,7 +23,9 @@ interface Props {
   heroImage?: string;
   heroImageAlt?: string;
   relatedServices?: string[];
+  relatedPosts?: string[];
   keywords?: string;
+  slug?: string;
 }
 
 const {
@@ -36,11 +39,16 @@ const {
   heroImage,
   heroImageAlt,
   relatedServices = [],
-  keywords = ''
+  relatedPosts = [],
+  keywords = '',
+  slug: providedSlug
 } = Astro.props;
 
 const siteUrl = Astro.site?.origin || 'https://onlinetranslation.ae';
 const canonicalUrl = `${siteUrl}${Astro.url.pathname}`;
+
+// Extract slug from URL path (e.g., /blog/my-post/ -> my-post)
+const currentSlug = providedSlug || Astro.url.pathname.replace(/^\/blog\//, '').replace(/\/$/, '');
 
 // Format dates
 const formatDate = (date: Date) => date.toLocaleDateString('en-AE', {
@@ -272,6 +280,19 @@ const breadcrumbSchema = {
       </div>
     </div>
   </article>
+
+  <!-- Related Posts -->
+  <section class="related-posts-section">
+    <div class="container">
+      <RelatedPosts
+        currentSlug={currentSlug}
+        category={category}
+        tags={tags}
+        relatedSlugs={relatedPosts}
+        maxPosts={3}
+      />
+    </div>
+  </section>
 
   <!-- CTA Section -->
   <section class="article-cta">

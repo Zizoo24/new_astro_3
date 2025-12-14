@@ -1,0 +1,270 @@
+---
+/**
+ * RelatedPosts.astro
+ * Displays related blog posts based on category, tags, or manual selection
+ *
+ * Usage:
+ * <RelatedPosts currentSlug="my-post" category="golden-visa" tags={["Immigration"]} />
+ * <RelatedPosts currentSlug="my-post" relatedSlugs={["post-1", "post-2"]} />
+ */
+import { getCollection } from 'astro:content';
+
+interface Props {
+  currentSlug: string;
+  category?: string;
+  tags?: string[];
+  relatedSlugs?: string[];
+  maxPosts?: number;
+  title?: string;
+}
+
+const {
+  currentSlug,
+  category,
+  tags = [],
+  relatedSlugs = [],
+  maxPosts = 3,
+  title = "Related Articles"
+} = Astro.props;
+
+// Get all published blog posts
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+
+// Filter out current post
+const otherPosts = allPosts.filter(post => post.slug !== currentSlug);
+
+// Score posts by relevance
+const scoredPosts = otherPosts.map(post => {
+  let score = 0;
+
+  // Manually specified related posts get highest priority
+  if (relatedSlugs.includes(post.slug)) {
+    score += 100;
+  }
+
+  // Same category gets high score
+  if (category && post.data.category === category) {
+    score += 50;
+  }
+
+  // Matching tags add to score
+  if (tags.length > 0 && post.data.tags) {
+    const matchingTags = tags.filter(tag =>
+      post.data.tags?.some(t => t.toLowerCase() === tag.toLowerCase())
+    );
+    score += matchingTags.length * 20;
+  }
+
+  // Featured posts get a small boost
+  if (post.data.featured) {
+    score += 10;
+  }
+
+  // Newer posts get slight preference
+  const ageInDays = (Date.now() - post.data.publishDate.getTime()) / (1000 * 60 * 60 * 24);
+  score += Math.max(0, 5 - Math.floor(ageInDays / 30)); // Up to 5 points for posts < 5 months old
+
+  return { post, score };
+});
+
+// Sort by score and take top posts
+const relatedPosts = scoredPosts
+  .filter(({ score }) => score > 0)
+  .sort((a, b) => b.score - a.score)
+  .slice(0, maxPosts)
+  .map(({ post }) => post);
+
+// Category display config
+const categoryConfig: Record<string, { label: string; color: string }> = {
+  'legal-translation': { label: 'Legal Translation', color: '#0E2B48' },
+  'personal-documents': { label: 'Personal Documents', color: '#2563EB' },
+  'attestation': { label: 'Attestation', color: '#7C3AED' },
+  'golden-visa': { label: 'Golden Visa', color: '#D4AF37' },
+  'corporate': { label: 'Corporate', color: '#059669' },
+  'industry-insights': { label: 'Industry Insights', color: '#DC2626' },
+  'how-to-guides': { label: 'How-To Guides', color: '#EA580C' },
+  'news': { label: 'News', color: '#0891B2' }
+};
+
+const formatDate = (date: Date) => date.toLocaleDateString('en-AE', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric'
+});
+---
+
+{relatedPosts.length > 0 && (
+  <section class="related-posts" aria-labelledby="related-posts-heading">
+    <h3 id="related-posts-heading" class="related-posts-title">
+      <i class="fas fa-newspaper"></i>
+      {title}
+    </h3>
+
+    <div class="related-posts-grid">
+      {relatedPosts.map(post => {
+        const catInfo = categoryConfig[post.data.category] || { label: post.data.category, color: '#0E2B48' };
+        return (
+          <a href={`/blog/${post.slug}/`} class="related-post-card">
+            {post.data.heroImage && (
+              <div class="related-post-image">
+                <img src={post.data.heroImage} alt={post.data.heroImageAlt || post.data.title} loading="lazy" />
+              </div>
+            )}
+            <div class="related-post-content">
+              <span class="related-post-category" style={`background-color: ${catInfo.color}`}>
+                {catInfo.label}
+              </span>
+              <h4 class="related-post-title">{post.data.title}</h4>
+              <p class="related-post-excerpt">{post.data.description}</p>
+              <time class="related-post-date" datetime={post.data.publishDate.toISOString()}>
+                {formatDate(post.data.publishDate)}
+              </time>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+)}
+
+<style>
+  .related-posts {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: var(--surface-secondary, #f8f9fa);
+    border-radius: 1rem;
+  }
+
+  .related-posts-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary-navy, #0E2B48);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .related-posts-title i {
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .related-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .related-post-card {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid var(--border-light, #e5e7eb);
+    transition: all 0.3s ease;
+  }
+
+  .related-post-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    border-color: var(--accent-coral, #FF1654);
+  }
+
+  .related-post-image {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+  }
+
+  .related-post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .related-post-card:hover .related-post-image img {
+    transform: scale(1.05);
+  }
+
+  .related-post-content {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .related-post-category {
+    display: inline-block;
+    align-self: flex-start;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+  }
+
+  .related-post-title {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0 0 0.5rem;
+    color: var(--primary-navy, #0E2B48);
+  }
+
+  .related-post-excerpt {
+    font-size: 0.875rem;
+    color: var(--text-muted, #5a6a7a);
+    line-height: 1.5;
+    margin: 0 0 auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .related-post-date {
+    font-size: 0.75rem;
+    color: var(--text-muted, #5a6a7a);
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .related-posts {
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .related-posts-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  :global(body.theme-dark) .related-posts {
+    background: rgba(14, 43, 72, 0.3);
+  }
+
+  :global(body.theme-dark) .related-post-card {
+    background: rgba(22, 27, 34, 0.8);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :global(body.theme-dark) .related-post-card:hover {
+    border-color: var(--accent-coral, #FF1654);
+  }
+
+  :global(body.theme-dark) .related-post-title {
+    color: #e6edf3;
+  }
+
+  :global(body.theme-dark) .related-posts-title {
+    color: #e6edf3;
+  }
+</style>
