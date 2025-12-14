@@ -236,11 +236,18 @@ function isActive(href: string): boolean {
           </div>
         </div>
 
-        <!-- Theme Toggle -->
+        <!-- Search Toggle & Theme Toggle -->
         <div class="header-column header-column-actions">
           <button
+            id="desktopSearchToggle"
+            class="header-action-btn search-toggle"
+            aria-label="Search"
+          >
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </button>
+          <button
             id="portoThemeToggle"
-            class="theme-toggle"
+            class="header-action-btn theme-toggle"
             aria-label="Toggle dark mode"
           >
             <i class="fas fa-moon theme-icon-dark" aria-hidden="true"></i>
@@ -393,9 +400,13 @@ function isActive(href: string): boolean {
     height: 36px;
   }
 
-  .site-header.scrolled .theme-toggle {
+  .site-header.scrolled .header-action-btn {
     width: 32px;
     height: 32px;
+  }
+
+  .site-header.scrolled .header-action-btn i {
+    font-size: 0.9rem;
   }
 
   .header-row {
@@ -468,8 +479,14 @@ function isActive(href: string): boolean {
     gap: 15px;
   }
 
-  /* Theme Toggle */
-  .theme-toggle {
+  /* Header Action Buttons (Search & Theme Toggle) */
+  .header-column-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .header-action-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -483,8 +500,12 @@ function isActive(href: string): boolean {
     transition: all 0.2s ease;
   }
 
-  .theme-toggle:hover {
+  .header-action-btn:hover {
     background: rgba(255, 255, 255, 0.2);
+  }
+
+  .header-action-btn i {
+    font-size: 1rem;
   }
 
   .theme-icon-light {
@@ -580,6 +601,26 @@ function isActive(href: string): boolean {
         menuSidebar.classList.add('is-open');
         if (sidebarOverlay) sidebarOverlay.classList.add('is-visible');
         document.body.style.overflow = 'hidden';
+      });
+    }
+
+    // ========================================
+    // DESKTOP SEARCH TOGGLE
+    // ========================================
+    const desktopSearchToggle = document.getElementById('desktopSearchToggle');
+    const searchOverlay = document.getElementById('search-overlay');
+    const searchInput = document.getElementById('searchInput');
+
+    if (desktopSearchToggle) {
+      desktopSearchToggle.addEventListener('click', () => {
+        if (searchOverlay) {
+          searchOverlay.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+          // Focus input after overlay animation
+          setTimeout(() => {
+            searchInput?.focus();
+          }, 100);
+        }
       });
     }
 
