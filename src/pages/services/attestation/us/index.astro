@@ -4,6 +4,7 @@
  * URL: /services/attestation/us/
  */
 import ServiceLayout from '../../../../layouts/ServiceLayout.astro';
+import RelatedServices from '../../../../components/RelatedServices.astro';
 
 const breadcrumbs = [
   { name: 'Home', url: '/' },
@@ -268,13 +269,7 @@ const accordionSections = [
   <!-- Related Services -->
   <section class="section bg-white">
     <div class="container">
-      <h2>Related Services</h2>
-      <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
-        <a href="/services/attestation/india/" style="padding: 0.75rem 1.25rem; background: var(--surface-raised); border-radius: 8px; text-decoration: none; color: inherit;">India Attestation</a>
-        <a href="/services/attestation/uk/" style="padding: 0.75rem 1.25rem; background: var(--surface-raised); border-radius: 8px; text-decoration: none; color: inherit;">UK Attestation</a>
-        <a href="/personal/education/degree/" style="padding: 0.75rem 1.25rem; background: var(--surface-raised); border-radius: 8px; text-decoration: none; color: inherit;">Degree Translation</a>
-        <a href="/services/attestation/" style="padding: 0.75rem 1.25rem; background: var(--surface-raised); border-radius: 8px; text-decoration: none; color: inherit;">All Attestation Services</a>
-      </div>
+      <RelatedServices pageKey="usAttestation" showFamily={true} showNextSteps={true} />
     </div>
   </section>
 </ServiceLayout>
