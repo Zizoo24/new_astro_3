@@ -466,11 +466,19 @@ function isActive(href: string): boolean {
     transition: font-size 0.3s ease;
   }
 
-  /* Navigation Column */
+  /* Logo Column - lower z-index so dropdowns appear above */
+  .header-column-logo {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Navigation Column - higher z-index for dropdowns */
   .header-column-nav {
     flex: 1;
     display: flex;
     justify-content: flex-end;
+    position: relative;
+    z-index: 10;
   }
 
   .header-nav {
