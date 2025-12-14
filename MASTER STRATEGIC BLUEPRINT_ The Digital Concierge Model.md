@@ -1262,4 +1262,153 @@ This handbook contains:
 
 **CRITICAL:** Refer to handbook before making ANY UI changes. All design decisions documented there align with this strategic blueprint.
 
- 
+---
+
+## **PART VIII: SEO REPAIR ROADMAP (December 2025)**
+
+**Status:** Phases 1-3 COMPLETE, Phase 4 IN PROGRESS
+
+### **8.1 Audit Summary**
+
+| Area | Critical | High | Medium | Low | Status |
+|------|----------|------|--------|-----|--------|
+| Technical | 2 | 3 | 2 | 1 | **FIXED** |
+| Schema | 4 | 4 | 5 | 2 | **FIXED** |
+| Content/Linking | 3 | 4 | 3 | 1 | In Progress |
+| **Total** | **9** | **11** | **10** | **4** | |
+
+### **8.2 Phase 1: Critical Bug Fixes - COMPLETE**
+
+**Bug A: serviceLinks.ts Wrong URL (Line 201)**
+- Fixed degree URL from `/personal/education/degree/` to `/personal/academic/degree/`
+
+**Bug B: serviceLinks.ts getLocationPages (Line 892)**
+- Fixed variable reference from `serviceLinks[key]` to `serviceLinks[k]`
+
+**Bug C: navigation.ts URL Mismatch (Line 316)**
+- Synced degree URL with serviceLinks
+
+**Bug D: robots.txt Sync Issues**
+- Removed duplicate root robots.txt
+- Fixed path in public/robots.txt
+- Added blog section to Allow directives
+
+**Bug E: Missing Blog Routes**
+- Created `/src/pages/blog/category/[category].astro`
+- Created `/src/pages/blog/tag/[tag].astro`
+
+### **8.3 Phase 2: Schema Consistency - COMPLETE**
+
+**Issue A: Conflicting Business Address**
+- ServiceLayout now references `@id` instead of duplicating address
+- All layouts reference organization `@id` defined in BaseLayout
+
+**Issue B: WebSite Schema Missing**
+- Added to BaseLayout with SearchAction for sitelinks search box
+
+**Issue C: Hreflang Incomplete**
+- Added Arabic alternate: `<link rel="alternate" hreflang="ar" href="${siteUrl}/عربي/" />`
+
+**Issue D: areaServed Format Inconsistent**
+- Standardized to typed City/Country objects across all layouts
+
+### **8.4 Phase 3: Technical SEO - COMPLETE**
+
+**GSC Verification:** Already verified via DNS TXT record (migrated from WordPress)
+
+**Blog in robots.txt:** Added directives
+```
+Allow: /blog/
+Allow: /blog/category/
+Allow: /blog/tag/
+```
+
+**Blog in Sitemap:** Auto-included via Astro sitemap integration
+
+### **8.5 Phase 4: Internal Linking - IN PROGRESS**
+
+**4.5.1 RelatedServices Deployment**
+
+Status: 5/62 pages complete
+
+Completed:
+- `/personal/academic/degree/index.astro`
+- `/personal/immigration/pcc/index.astro`
+- `/personal/immigration/bank/index.astro`
+- `/legal/corporate/poa/index.astro`
+- `/legal/corporate/moa/index.astro`
+
+Remaining priority pages:
+- Legal service pages (~16)
+- Personal document pages (~12)
+- Attestation pages (~14)
+- Location pages (~10)
+
+**4.5.2 CrossSiloLinks Deployment**
+
+Current: Only `/personal-documents/index.astro`
+
+Target: All hub/pillar pages for each silo
+
+**4.5.3 BlogLayout RelatedServices - COMPLETE**
+
+Fixed: Now shows all related services (up to 6) instead of only the first
+
+### **8.6 Phase 5: Content Engine (Ongoing)**
+
+Blog Infrastructure:
+- [x] Blog collection configured
+- [x] Blog index page created
+- [x] Dynamic post routing
+- [x] Category archive pages
+- [x] Tag archive pages
+- [ ] Related posts component
+- [ ] Author pages (optional)
+
+Content Production Target: 15-30 posts/month
+
+Priority categories:
+1. Golden Visa (highest search volume)
+2. Legal Translation (money page support)
+3. Attestation (process guides)
+4. How-to Guides (informational intent)
+
+### **8.7 Phase 6: Polish & Optimization (Pending)**
+
+- Add Pricing to Offer Schemas
+- Add AggregateRating Schema (if reviews exist)
+- Add HowTo Schema for process pages
+- Arabic Schema Localization
+- Image Optimization (width/height, srcset, WebP)
+- Add ContactPoint Schema
+
+### **8.8 Files Changed (SEO Repair)**
+
+**Phase 1:**
+- `/src/data/serviceLinks.ts`
+- `/src/data/navigation.ts`
+- `/public/robots.txt`
+- `/src/pages/blog/category/[category].astro` (CREATED)
+- `/src/pages/blog/tag/[tag].astro` (CREATED)
+
+**Phase 2:**
+- `/src/layouts/BaseLayout.astro`
+- `/src/layouts/ServiceLayout.astro`
+
+**Phase 4:**
+- `/src/layouts/BlogLayout.astro`
+- 5 service pages with RelatedServices added
+
+### **8.9 Success Metrics**
+
+- [x] Zero 404 errors for blog routes
+- [x] GSC verified (DNS TXT record)
+- [ ] Schema validation passes (Google Rich Results Test)
+- [ ] All pages indexed
+- [ ] Core Web Vitals: Green
+- [x] robots.txt includes blog
+- [ ] Sitemap includes all pages
+- [ ] Internal linking coverage >80% of pages
+
+**Reference:** See `SEO-REPAIR-ROADMAP.md` for detailed tracking
+
