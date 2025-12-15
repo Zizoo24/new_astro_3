@@ -8,6 +8,8 @@
  * Target: 2,200+ words
  */
 import CategoryLayout from '../../../layouts/CategoryLayout.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../components/CrossSiloLinks.astro';
 
 const breadcrumbs = [
   { label: 'Home', href: '/' },
@@ -301,7 +303,7 @@ const jurisdictions = [
     <div class="container">
       <h2>Related Services</h2>
       <p class="section-intro">Corporate document translation often connects with other services. Explore related offerings to address your complete documentation needs.</p>
-      
+
       <div class="related-grid">
         <a href="/legal-translation-dubai/" class="related-card">
           <i class="fas fa-balance-scale"></i>
@@ -324,6 +326,18 @@ const jurisdictions = [
           <p>Complete document translation for investor and entrepreneur visa applications.</p>
         </a>
       </div>
+
+      <RelatedServices
+        pageKey="corporate"
+        title="You May Also Need"
+        showFamily={true}
+        showPrerequisites={true}
+        showNextSteps={true}
+        showCrossSilo={true}
+        maxItems={8}
+      />
+
+      <CrossSiloLinks pageKey="corporate" title="Explore Other Services" maxLinks={6} />
     </div>
   </section>
 
