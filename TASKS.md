@@ -41,14 +41,72 @@ This document tracks component/UI tasks. For SEO tasks, see `SEO-REPAIR-ROADMAP.
 
 ---
 
+## RelatedServices Deployment (Internal Linking Enhancement)
+
+### Phase A: Completed (December 2024)
+
+| Silo | Pages Updated | Status |
+|------|---------------|--------|
+| Legal/Contracts | lease, mou, spa, hub (4 pages) | ✅ Complete |
+| Legal/Corporate | resolution (1 page) | ✅ Complete |
+| Legal/Litigation | arbitration, verdict (2 pages) | ✅ Complete |
+| Services/Attestation | mofa, embassy, philippines, pakistan (4 pages) | ✅ Complete |
+
+**Total Completed:** 11 pages with RelatedServices component
+
+### Phase B: Pending (Next Session)
+
+| Silo | Pages to Update | Priority |
+|------|-----------------|----------|
+| Locations | business-bay, downtown, marina, abu-dhabi (4 pages) | High |
+| Specialized | digital, hospitality, technical (3 pages) | High |
+| Industries | healthcare, real-estate, legal, e-commerce (4 pages) | Medium |
+| Resources | attestation-guide, document-checklist, golden-visa-checklist, pricing-guide, faq (5 pages) | Medium |
+
+### Phase C: Hub/Category Pages (Final)
+
+| Page | URL | Status |
+|------|-----|--------|
+| Legal Hub | /legal/ | Pending |
+| Services Hub | /services/ | Pending |
+| Locations Hub | /locations/ | Pending |
+| Dubai Hub | /locations/dubai/ | Pending |
+| Personal Hub | /personal/ | Pending |
+| Industries Hub | /industries/ | Pending |
+| Resources Hub | /resources/ | Pending |
+| Specialized Hub | /specialized-translation/ | Pending |
+
+**Implementation Pattern:**
+```astro
+---
+import RelatedServices from '../components/RelatedServices.astro';
+---
+<!-- Add before CTA section -->
+<section class="section">
+  <div class="container">
+    <RelatedServices
+      pageKey="pageKeyFromServiceLinks"
+      title="You May Also Need"
+      showFamily={true}
+      showNextSteps={true}
+      maxItems={6}
+    />
+  </div>
+</section>
+```
+
+---
+
 ## Future Tasks (Backlog)
 
 ### High Priority
 
 | Task | Description | Notes |
 |------|-------------|-------|
+| Complete RelatedServices deployment | Finish remaining ~24 pages | Phase B & C above |
 | Migrate high-traffic pages to ServiceLayout | Use the birth-certificate-style data-driven structure | ServiceLayout already supports this pattern |
 | Expand 4 category pages to 2,000+ words | SEO requirement for organic reach | Legal & Corporate, Personal & Civil, Industry Specialized, Locations |
+| Fix navigation URL bug | `/personal/education/degree/` should be `/personal/academic/degree/` | Verify in navigation.ts |
 
 ### Medium Priority
 
@@ -56,6 +114,7 @@ This document tracks component/UI tasks. For SEO tasks, see `SEO-REPAIR-ROADMAP.
 |------|-------------|-------|
 | CSS consolidation | Remove redundant overrides and unused styles from public/styles/ | Wait until component migrations stabilize |
 | Add more service pages | Target: 55+ pages total (currently 49) | Follow ServiceLayout pattern |
+| Blog content production | Target: 15-30 posts/month | Infrastructure ready, 0 posts published |
 
 ### Low Priority / Ideas
 
@@ -63,6 +122,20 @@ This document tracks component/UI tasks. For SEO tasks, see `SEO-REPAIR-ROADMAP.
 |------|-------------|-------|
 | Dark mode refinements | Ensure all components respect theme-dark class | Some pages may need testing |
 | PWA enhancements | App-like experience improvements | Offline support, push notifications |
+| Service worker re-enablement | Implement Workbox-based solution | Deferred until other priorities complete |
+
+---
+
+## SEO Implementation Status (Per Master Blueprint Part VIII)
+
+| Phase | Description | Status |
+|-------|-------------|--------|
+| Phase 1 | Bug Fixes (serviceLinks.ts, navigation.ts, robots.txt) | ✅ Complete |
+| Phase 2 | Schema Enhancement | ✅ Complete |
+| Phase 3 | Technical SEO | ✅ Complete |
+| Phase 4 | Internal Linking (RelatedServices) | 🔄 In Progress (11/62 pages) |
+| Phase 5 | Content Engine (Blog) | ⏳ Infrastructure ready |
+| Phase 6 | Polish (Pricing schemas, image optimization) | ⏳ Pending |
 
 ---
 
@@ -118,4 +191,4 @@ This document tracks component/UI tasks. For SEO tasks, see `SEO-REPAIR-ROADMAP.
 
 ---
 
-*Last updated: December 2024*
+*Last updated: December 15, 2024*

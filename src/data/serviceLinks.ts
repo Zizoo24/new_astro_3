@@ -396,6 +396,12 @@ export const serviceLinks: Record<string, ServiceLink> = {
     full: "legal translation in Sharjah",
     icon: "fas fa-university"
   },
+  downtown: {
+    url: "/locations/dubai/downtown/",
+    text: "Downtown Dubai",
+    full: "legal translation in Downtown Dubai",
+    icon: "fas fa-building"
+  },
 
   // ========================================
   // SILO 6: RESOURCES
@@ -780,6 +786,147 @@ export const pageRelationships: Record<string, PageRelationships> = {
     related: ["digital", "technical"],
     crossSilo: ["corporateTranslation"],
     locations: ["difc", "businessBay", "jlt"]
+  },
+
+  // ========================================
+  // ATTESTATION SERVICES (ADDITIONAL)
+  // ========================================
+  embassyAttestation: {
+    related: ["mofaAttestation", "apostille", "attestation"],
+    family: ["mofaAttestation", "apostille"],
+    crossSilo: ["goldenVisa", "immigration", "birthCertificate", "degree"],
+    locations: ["dubai", "abuDhabi"]
+  },
+  apostille: {
+    related: ["mofaAttestation", "embassyAttestation", "ukAttestation", "usAttestation"],
+    family: ["mofaAttestation", "embassyAttestation"],
+    crossSilo: ["goldenVisa", "immigration", "degree"],
+    locations: ["dubai", "abuDhabi"]
+  },
+  philippinesAttestation: {
+    related: ["mofaAttestation", "embassyAttestation", "birthCertificate", "degree"],
+    family: ["indiaAttestation", "ukAttestation", "usAttestation", "pakistanAttestation"],
+    crossSilo: ["goldenVisa", "immigration"],
+    locations: ["dubai", "sharjah"]
+  },
+  pakistanAttestation: {
+    related: ["mofaAttestation", "embassyAttestation", "birthCertificate", "degree"],
+    family: ["indiaAttestation", "ukAttestation", "philippinesAttestation"],
+    crossSilo: ["goldenVisa", "immigration"],
+    locations: ["dubai", "sharjah"]
+  },
+
+  // ========================================
+  // SERVICE HUBS
+  // ========================================
+  legalTranslation: {
+    related: ["contracts", "corporate", "litigation", "wills"],
+    crossSilo: ["goldenVisa", "attestation", "corporateTranslation"],
+    locations: ["difc", "businessBay", "dubai"]
+  },
+  corporateTranslation: {
+    related: ["moa", "poa", "resolution", "tradeLicense"],
+    crossSilo: ["legalTranslation", "contracts", "goldenVisa"],
+    locations: ["difc", "businessBay", "jlt"]
+  },
+  certificateTranslation: {
+    related: ["birthCertificate", "marriageCertificate", "degree", "pcc"],
+    crossSilo: ["attestation", "goldenVisa", "immigration"],
+    locations: ["dubai", "abuDhabi", "sharjah"]
+  },
+
+  // ========================================
+  // RESOURCES
+  // ========================================
+  pricingGuide: {
+    related: ["legalTranslation", "attestation", "goldenVisa", "certificateTranslation"],
+    crossSilo: ["birthCertificate", "marriageCertificate", "degree", "contracts"]
+  },
+  documentChecklist: {
+    related: ["goldenVisaChecklist", "attestationGuide", "pricingGuide"],
+    crossSilo: ["goldenVisa", "attestation", "immigration", "birthCertificate"]
+  },
+  attestationGuide: {
+    related: ["mofaAttestation", "embassyAttestation", "apostille"],
+    crossSilo: ["goldenVisa", "birthCertificate", "degree", "marriageCertificate"]
+  },
+  goldenVisaChecklist: {
+    related: ["goldenVisa", "attestationGuide", "documentChecklist"],
+    prerequisites: ["birthCertificate", "marriageCertificate", "degree", "pcc"],
+    crossSilo: ["attestation", "mofaAttestation"]
+  },
+  faq: {
+    related: ["pricingGuide", "attestationGuide", "documentChecklist"],
+    crossSilo: ["legalTranslation", "goldenVisa", "attestation"]
+  },
+
+  // ========================================
+  // CATEGORY HUB PAGES
+  // ========================================
+  contracts: {
+    related: ["nda", "lease", "spa", "mou"],
+    crossSilo: ["legalTranslation", "corporateTranslation", "realEstateIndustry"],
+    locations: ["difc", "businessBay"]
+  },
+  corporate: {
+    related: ["poa", "moa", "resolution", "tradeLicense"],
+    crossSilo: ["legalTranslation", "corporateTranslation", "contracts"],
+    locations: ["difc", "businessBay", "jlt"]
+  },
+  litigation: {
+    related: ["verdict", "arbitration", "legalTranslation"],
+    crossSilo: ["contracts", "wills", "legalIndustry"],
+    locations: ["dubai", "difc"]
+  },
+  legal: {
+    related: ["contracts", "corporate", "litigation", "wills"],
+    crossSilo: ["legalTranslation", "corporateTranslation", "attestation"],
+    locations: ["difc", "businessBay", "dubai"]
+  },
+  vitalRecords: {
+    related: ["birthCertificate", "marriageCertificate", "divorceCertificate", "deathCertificate"],
+    crossSilo: ["attestation", "goldenVisa", "immigration"],
+    locations: ["dubai", "abuDhabi"]
+  },
+  immigration: {
+    related: ["pcc", "bankStatement", "drivingLicense"],
+    crossSilo: ["goldenVisa", "vitalRecords", "degree"],
+    locations: ["dubai", "abuDhabi", "sharjah"]
+  },
+  academic: {
+    related: ["degree", "transcripts"],
+    crossSilo: ["goldenVisa", "immigration", "attestation"],
+    locations: ["dubai", "abuDhabi"]
+  },
+  services: {
+    related: ["legalTranslation", "goldenVisa", "attestation", "corporateTranslation"],
+    crossSilo: ["birthCertificate", "marriageCertificate", "degree", "poa"]
+  },
+  locations: {
+    related: ["dubai", "abuDhabi", "sharjah"],
+    crossSilo: ["legalTranslation", "goldenVisa", "attestation"]
+  },
+  industries: {
+    related: ["healthcareIndustry", "realEstateIndustry", "legalIndustry", "ecommerceIndustry"],
+    crossSilo: ["legalTranslation", "corporateTranslation", "contracts"]
+  },
+  resources: {
+    related: ["pricingGuide", "attestationGuide", "documentChecklist", "faq"],
+    crossSilo: ["goldenVisa", "attestation", "legalTranslation"]
+  },
+  specialized: {
+    related: ["medical", "technical", "financial", "hospitality", "digital"],
+    crossSilo: ["corporateTranslation", "legalTranslation", "healthcareIndustry"]
+  },
+  dubai: {
+    related: ["palmJumeirah", "difc", "jlt", "businessBay", "marina"],
+    family: ["abuDhabi", "sharjah"],
+    crossSilo: ["legalTranslation", "goldenVisa", "attestation"]
+  },
+  downtown: {
+    related: ["businessBay", "difc", "dubai"],
+    family: ["palmJumeirah", "jlt", "marina"],
+    crossSilo: ["goldenVisa", "realEstateIndustry", "legalTranslation"]
   },
 
   // ========================================
