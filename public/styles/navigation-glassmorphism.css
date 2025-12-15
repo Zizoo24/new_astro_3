@@ -1,12 +1,81 @@
 /* ========================================
    DARK GLASSMORPHISM NAVIGATION
    Premium dark glass with white text
-   
+
    This file is the single source of truth
    for desktop header/navigation styles.
    Loads after porto-desktop.css so no
    !important needed.
    ======================================== */
+
+/* ========================================
+   FIX: Logo/Nav Overlap in Non-Scrolled State
+   Constrains logo width and ensures nav has space
+   ======================================== */
+
+.exodus-header .header-logo {
+    max-width: 280px;
+    flex-shrink: 0;
+}
+
+.exodus-header .header-nav {
+    flex: 1;
+    min-width: 0;
+    overflow: visible;
+}
+
+.exodus-header .nav-menu {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2px;
+}
+
+/* Smaller screens - tighter logo to prevent overlap */
+@media (max-width: 1400px) {
+    .exodus-header .header-logo {
+        max-width: 240px;
+    }
+
+    .exodus-header .logo-text-block {
+        display: none;
+    }
+
+    .exodus-header .header-logo img {
+        height: 40px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .exodus-header .header-logo {
+        max-width: 60px;
+    }
+}
+
+/* ========================================
+   FIX: Announcement Bar Text - Ensure White
+   Top coral bar should have white text
+   ======================================== */
+
+.header-announcement,
+.header-announcement .announcement-label,
+.header-announcement .announcement-btn,
+.header-announcement .announcement-cta {
+    color: #ffffff !important;
+}
+
+.header-announcement .announcement-btn--whatsapp {
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.header-announcement .announcement-btn--call {
+    color: #FF1654 !important;
+    background: #ffffff;
+}
+
+.header-announcement .announcement-cta i {
+    color: #ffffff !important;
+}
 
 /* Dark glassmorphism - initial state */
 .header-desktop.exodus-header {
