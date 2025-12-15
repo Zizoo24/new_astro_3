@@ -1,15 +1,15 @@
 ---
 /**
  * /services/ - Translation Services Hub
- * 
+ *
  * CONVERTED: BaseLayout → CategoryLayout
  * Added: BreadcrumbList, Service, FAQPage schemas (auto-generated)
  * Added: 10 FAQs for rich snippets
- * 
+ *
  * Type: Main Services Hub Page
  */
 import CategoryLayout from '../../layouts/CategoryLayout.astro';
-import RelatedServices from '../../components/RelatedServices.astro';
+import { getServicesHubCards } from '../../data/servicesGrid';
 
 const breadcrumbs = [
   { label: 'Home', href: '/' },
@@ -59,50 +59,8 @@ const faqs = [
   }
 ];
 
-const services = [
-  {
-    icon: "balance-scale",
-    title: "Legal Translation",
-    desc: "Court documents, contracts, judgments, and litigation materials translated by MOJ-certified specialists. Formatted for Dubai Courts, DIFC, and ADGM.",
-    features: ["MOJ certification included", "Court formatting standards", "Rush processing available"],
-    href: "/legal-translation-dubai/"
-  },
-  {
-    icon: "star",
-    title: "Golden Visa Translation",
-    desc: "Complete document packages for UAE Golden Visa applications. Academic credentials, professional certificates, and investment documentation.",
-    features: ["ICP/GDRFA accepted format", "Full document package review", "Application guidance included"],
-    href: "/services/golden-visa-translation/"
-  },
-  {
-    icon: "certificate",
-    title: "Certificate Translation",
-    desc: "Birth certificates, marriage certificates, degree certificates, and professional credentials. Certified for government submission.",
-    features: ["Vital records specialists", "Academic credential experts", "Attestation coordination"],
-    href: "/services/certificate-translation/"
-  },
-  {
-    icon: "building",
-    title: "Corporate Translation",
-    desc: "Trade licenses, MOAs, shareholder agreements, and regulatory filings. Free zone documentation and DED submissions.",
-    features: ["All free zone authorities", "DMCC, JAFZA, DAFZA ready", "Bulk pricing available"],
-    href: "/services/corporate-translation/"
-  },
-  {
-    icon: "stamp",
-    title: "Attestation Services",
-    desc: "Complete attestation chain from your home country to UAE acceptance. MOFA, embassy, and ministry attestations handled.",
-    features: ["Full chain attestation", "Secure document handling", "Status tracking provided"],
-    href: "/services/attestation/"
-  },
-  {
-    icon: "user-friends",
-    title: "Personal Documents",
-    desc: "Immigration documents, bank statements, driving licenses, and police clearance certificates for visa and residency applications.",
-    features: ["GDRFA/ICA formats", "Name consistency verification", "Express processing"],
-    href: "/personal/"
-  }
-];
+// Services data from centralized source
+const services = getServicesHubCards();
 
 const processSteps = [
   {
@@ -292,13 +250,33 @@ const documentTypes = [
   <!-- Related Links Section -->
   <section class="section bg-light">
     <div class="container">
-      <RelatedServices
-        pageKey="services"
-        title="Browse by Category"
-        showFamily={true}
-        showCrossSilo={true}
-        maxItems={6}
-      />
+      <h2>Browse by Category</h2>
+      <div class="category-links-grid">
+        <a href="/legal-translation-dubai/" class="category-link">
+          <i class="fas fa-balance-scale"></i>
+          <span>Legal Translation</span>
+        </a>
+        <a href="/personal-documents/" class="category-link">
+          <i class="fas fa-user"></i>
+          <span>Personal Documents</span>
+        </a>
+        <a href="/services/attestation/" class="category-link">
+          <i class="fas fa-stamp"></i>
+          <span>Attestation</span>
+        </a>
+        <a href="/locations/dubai/" class="category-link">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Dubai Services</span>
+        </a>
+        <a href="/resources/pricing-guide/" class="category-link">
+          <i class="fas fa-tag"></i>
+          <span>Pricing Guide</span>
+        </a>
+        <a href="/resources/faq/" class="category-link">
+          <i class="fas fa-question-circle"></i>
+          <span>FAQ</span>
+        </a>
+      </div>
     </div>
   </section>
 
