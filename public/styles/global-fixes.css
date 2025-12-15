@@ -1,0 +1,471 @@
+/**
+ * Global Fixes CSS - December 2024
+ *
+ * Addresses:
+ * 1. FAQ collapsible icons - consistent chevron across site
+ * 2. "Send your documents" button - centered with clear borders
+ * 3. Hero images with dark gradient on desktop
+ * 4. No hero images on mobile except homepage
+ * 5. Gray on white contrast fixes
+ */
+
+/* ============================================
+   1. FAQ CONSISTENT COLLAPSIBLE ICONS
+   Using chevron icon with smooth rotation
+   ============================================ */
+
+/* Universal FAQ styling for all pages */
+.faq-item,
+.faq-list details,
+details.faq-item {
+  border: 1px solid var(--border-light, #e2e8f0);
+  border-radius: 12px;
+  margin-bottom: 0.75rem;
+  background: var(--surface-base, #ffffff);
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.faq-item:hover,
+.faq-list details:hover {
+  border-color: var(--accent-color, #FF1654);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Question/Summary styling */
+.faq-question,
+.faq-item summary,
+details.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--text-heading, #0E2B48);
+  cursor: pointer;
+  list-style: none;
+  gap: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.faq-question:hover,
+.faq-item summary:hover {
+  background: rgba(14, 43, 72, 0.02);
+}
+
+/* Remove default marker */
+.faq-item summary::-webkit-details-marker,
+details.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::marker,
+details.faq-item summary::marker {
+  display: none;
+  content: '';
+}
+
+/* Chevron icon - consistent across all FAQs */
+.faq-question::after,
+.faq-item summary::after,
+details.faq-item summary::after,
+.faq-item .faq-question i,
+.faq-list .faq-question i {
+  content: '';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border: 2px solid var(--accent-color, #FF1654);
+  border-radius: 50%;
+  background: transparent;
+  transition: transform 0.25s ease, background-color 0.25s ease;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23FF1654' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 12px;
+}
+
+/* Hide Font Awesome icons in FAQ questions */
+.faq-question i.fas,
+.faq-question i.fa,
+.faq-question i.fab {
+  display: none !important;
+}
+
+/* Open state - rotate chevron */
+.faq-item.is-open .faq-question::after,
+.faq-item[open] summary::after,
+details.faq-item[open] summary::after {
+  transform: rotate(180deg);
+  background-color: var(--accent-color, #FF1654);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+}
+
+/* Answer styling */
+.faq-answer,
+.faq-item .faq-answer {
+  padding: 0 1.5rem 1.25rem;
+  line-height: 1.75;
+  color: var(--text-body, #2d3748);
+}
+
+.faq-answer p {
+  margin: 0 0 0.75rem;
+  color: var(--text-body, #2d3748);
+}
+
+.faq-answer p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================
+   2. SEND YOUR DOCUMENTS BUTTON
+   Centered with clear visible borders
+   ============================================ */
+
+/* Hero CTA group - center aligned */
+.hero-cta-group,
+.section--hero .hero-cta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+/* Primary CTA button with clear borders */
+.hero-cta-group .btn,
+.hero-cta-group .btn--primary,
+.hero-cta-group a.btn,
+.section--hero .btn--primary,
+.btn.btn--primary.btn--lg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: var(--accent-color, #FF1654);
+  border: 3px solid var(--accent-color, #FF1654);
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(255, 22, 84, 0.35);
+  transition: all 0.3s ease;
+}
+
+.hero-cta-group .btn:hover,
+.hero-cta-group .btn--primary:hover,
+.section--hero .btn--primary:hover {
+  background: #e01346;
+  border-color: #e01346;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(255, 22, 84, 0.45);
+}
+
+/* Secondary/outline button */
+.hero-cta-group .btn--outline,
+.hero-cta-group a.hero-cta-secondary {
+  color: #ffffff;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  padding: 0.875rem 2rem;
+  border-radius: 10px;
+}
+
+.hero-cta-group .btn--outline:hover,
+.hero-cta-group a.hero-cta-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* ============================================
+   3. HERO IMAGES WITH DARK GRADIENT - DESKTOP
+   All pages should have hero images on desktop
+   ============================================ */
+
+/* Default hero background for pages without explicit image */
+.hero-section,
+.page-hero,
+.category-hero,
+.section--hero {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Desktop: Show hero background image */
+@media (min-width: 769px) {
+  .hero-section::before,
+  .page-hero::before,
+  .category-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/assets/images/onedrive/hero/office-team.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    opacity: 0.15;
+  }
+
+  /* Dark gradient overlay */
+  .hero-section::after,
+  .page-hero::after,
+  .category-hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      rgba(14, 43, 72, 0.95) 0%,
+      rgba(14, 43, 72, 0.9) 40%,
+      rgba(26, 54, 93, 0.85) 100%
+    );
+    z-index: 1;
+  }
+
+  /* Content above overlays */
+  .hero-section .container,
+  .page-hero .container,
+  .category-hero .container {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Pages with explicit hero backgrounds */
+  .page-hero.contact-hero::before {
+    background-image: url('/assets/images/onedrive/contact-dxb.png');
+    opacity: 0.2;
+  }
+
+  /* Service layout hero with image */
+  .section--hero.has-hero-image::before {
+    display: none; /* Uses its own image */
+  }
+
+  .section--hero.has-hero-image::after {
+    display: none; /* Uses its own gradient */
+  }
+}
+
+/* ============================================
+   4. NO HERO IMAGES ON MOBILE (except homepage)
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Hide hero background images on mobile */
+  .hero-section::before,
+  .page-hero::before,
+  .category-hero::before,
+  .section--hero.has-hero-image .hero-bg-image {
+    display: none !important;
+  }
+
+  /* Remove gradient overlay on mobile */
+  .hero-section::after,
+  .page-hero::after,
+  .category-hero::after {
+    display: none !important;
+  }
+
+  /* Keep solid background color */
+  .hero-section,
+  .page-hero,
+  .category-hero,
+  .section--hero {
+    background: var(--primary-color, #0E2B48) !important;
+  }
+
+  /* EXCEPTION: Homepage keeps hero image on mobile */
+  body.is-homepage .hero-section.exodus-hero::before,
+  body.is-homepage .hero-section.exodus-hero .hero-background {
+    display: block !important;
+  }
+
+  body.is-homepage .hero-section.exodus-hero::after {
+    display: none !important;
+  }
+
+  /* Homepage hero background visibility */
+  .exodus-hero .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .exodus-hero .hero-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .exodus-hero .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      rgba(14, 43, 72, 0.92) 0%,
+      rgba(14, 43, 72, 0.88) 100%
+    );
+    z-index: 1;
+  }
+
+  .exodus-hero .container {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+/* ============================================
+   5. GRAY ON WHITE CONTRAST FIXES
+   Improving readability across the site
+   ============================================ */
+
+/* Fix muted text contrast - minimum 4.5:1 ratio */
+.text-muted,
+p.text-muted,
+span.text-muted,
+.service-card p,
+.faq-answer p,
+.section-intro,
+.card-desc,
+.area-card p,
+.authority-card p,
+.feature-card p,
+.benefit-card p,
+.document-card p,
+.pricing-card li,
+.info-card p,
+.info-card li,
+.process-card p,
+.use-case-card p {
+  color: var(--text-secondary, #4a5568) !important;
+}
+
+/* Ensure body text is dark enough */
+.content-prose p,
+.content-main p,
+article p,
+.policy-content p,
+.policy-content li {
+  color: var(--text-body, #2d3748);
+}
+
+/* Fix light gray labels */
+.pricing-time,
+.pricing-unit,
+.form-note,
+.hero-intro,
+.category-hero .hero-intro {
+  color: var(--text-secondary, #4a5568);
+}
+
+/* On dark backgrounds, ensure proper contrast */
+.bg-dark .text-muted,
+.bg-dark p,
+.bg-dark .section-intro {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Breadcrumb contrast on dark */
+.breadcrumb a,
+.breadcrumb-list a {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.breadcrumb .current,
+.breadcrumb-list span[aria-current] {
+  color: #ffffff;
+}
+
+/* Form labels and placeholders */
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  color: var(--text-secondary, #4a5568);
+  opacity: 1;
+}
+
+label {
+  color: var(--text-heading, #0E2B48);
+}
+
+/* Table and list item contrast */
+table td,
+table th,
+li {
+  color: var(--text-body, #2d3748);
+}
+
+/* Card title contrast */
+.service-card h3,
+.document-card h3,
+.category-card h3,
+.feature-card h3,
+.benefit-card h3,
+.use-case-card h3,
+.area-card h3,
+.authority-card h3 {
+  color: var(--text-heading, #0E2B48);
+}
+
+/* Links should be clearly visible */
+a:not(.btn):not(.service-card):not(.document-card):not(.category-card) {
+  color: var(--link-color, #0077b6);
+}
+
+a:not(.btn):not(.service-card):not(.document-card):not(.category-card):hover {
+  color: var(--link-hover, #005f8a);
+}
+
+/* ============================================
+   ADDITIONAL REFINEMENTS
+   ============================================ */
+
+/* Ensure accordion content is properly styled */
+.ot-accordion-content p,
+.ot-accordion-content li {
+  color: var(--text-body, #2d3748) !important;
+}
+
+/* Fix service card description contrast */
+.services-grid .service-card p,
+.service-grid .service-card p {
+  color: var(--text-secondary, #4a5568);
+}
+
+/* Trust metrics contrast */
+.trust-label,
+.ot-metric-label {
+  color: var(--text-secondary, #4a5568);
+}
+
+/* Footer text contrast */
+footer p,
+footer li,
+footer a {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+footer a:hover {
+  color: #ffffff;
+}
