@@ -13,9 +13,16 @@
    Constrains logo width and ensures nav has space
    ======================================== */
 
+/* Let the logo share space instead of forcing a hard minimum width */
 .exodus-header .header-logo {
     max-width: 280px;
-    flex-shrink: 0;
+    min-width: 180px;
+    flex: 0 1 240px;
+    white-space: normal;
+}
+
+.exodus-header .logo-text-block {
+    min-width: 0;
 }
 
 .exodus-header .header-nav {
@@ -806,6 +813,7 @@ body.theme-dark .dropdown-menu .view-all:hover {
 .nav-item.has-dropdown .dropdown-menu li a,
 .exodus-header .dropdown-menu li a,
 .header-desktop .dropdown-menu li a {
+    font-family: var(--font-primary, 'Montserrat', sans-serif) !important;
     color: rgba(255, 255, 255, 0.85) !important;
     font-weight: 500 !important;
     font-size: 0.875rem !important;
