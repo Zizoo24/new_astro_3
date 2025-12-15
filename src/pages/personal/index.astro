@@ -11,6 +11,7 @@
  * Type: Hub Page
  */
 import CategoryLayout from '../../layouts/CategoryLayout.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
 
 const breadcrumbs = [
   { label: 'Home', href: '/' },
@@ -367,29 +368,13 @@ const useCases = [
   <!-- Related Services -->
   <section class="section bg-light">
     <div class="container">
-      <h2>Related Services</h2>
-      <div class="related-grid">
-        <a href="/legal-translation-dubai/" class="related-card">
-          <i class="fas fa-balance-scale"></i>
-          <h3>Legal Translation</h3>
-          <p>Court documents, contracts, and corporate filings</p>
-        </a>
-        <a href="/services/attestation/" class="related-card">
-          <i class="fas fa-stamp"></i>
-          <h3>Document Attestation</h3>
-          <p>MOFA and embassy legalization services</p>
-        </a>
-        <a href="/services/golden-visa-translation/" class="related-card">
-          <i class="fas fa-star"></i>
-          <h3>Golden Visa Package</h3>
-          <p>Complete document packages for investor visas</p>
-        </a>
-        <a href="/resources/document-checklist/" class="related-card">
-          <i class="fas fa-list-check"></i>
-          <h3>Document Checklist</h3>
-          <p>Requirements by visa and application type</p>
-        </a>
-      </div>
+      <RelatedServices
+        pageKey="personal"
+        title="Related Services"
+        showFamily={true}
+        showCrossSilo={true}
+        maxItems={6}
+      />
     </div>
   </section>
 
