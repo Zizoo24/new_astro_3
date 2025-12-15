@@ -2,12 +2,70 @@
  * Global Fixes CSS - December 2024
  *
  * Addresses:
+ * 0. Logo overlap fix, coral bar text color, hero button colors
  * 1. FAQ collapsible icons - consistent chevron across site
  * 2. "Send your documents" button - centered with clear borders
  * 3. Hero images with dark gradient on desktop
  * 4. No hero images on mobile except homepage
  * 5. Gray on white contrast fixes
  */
+
+/* ============================================
+   0. CRITICAL UI FIXES
+   Logo overlap, coral bar, hero buttons
+   ============================================ */
+
+/* Fix logo overlapping menu items */
+.header-desktop .site-logo,
+.header-nav .site-logo,
+.exodus-header .site-logo {
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
+  max-width: 180px;
+}
+
+.header-desktop .header-nav,
+.exodus-header .header-nav {
+  margin-left: auto;
+  flex-shrink: 1;
+}
+
+/* Ensure nav items don't get overlapped */
+.header-nav .nav-list {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: nowrap;
+}
+
+/* Top coral bar - text MUST be white */
+.header-announcement,
+.header-announcement * {
+  color: #ffffff !important;
+}
+
+.header-announcement .announcement-label,
+.header-announcement .announcement-btn,
+.header-announcement .announcement-cta {
+  color: #ffffff !important;
+}
+
+/* Exception for call button which has coral text on white background */
+.header-announcement .announcement-btn--call {
+  color: var(--accent-color, #FF1654) !important;
+  background: #ffffff !important;
+}
+
+/* Homepage hero buttons - text MUST be white */
+.hero-cta.exodus-cta,
+.exodus-hero .hero-cta {
+  color: #ffffff !important;
+}
+
+.hero-cta-secondary,
+.exodus-hero .hero-cta-secondary {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
 
 /* ============================================
    1. FAQ CONSISTENT COLLAPSIBLE ICONS
