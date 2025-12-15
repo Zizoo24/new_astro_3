@@ -1,6 +1,7 @@
 ---
 import ServiceLayout from '../../../../layouts/ServiceLayout.astro';
 import RelatedServices from '../../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../../components/CrossSiloLinks.astro';
 
 const breadcrumbs = [
   { name: 'Home', url: '/' },
@@ -154,13 +155,23 @@ const accordionSections = [
 
   <section class="section bg-white">
     <div class="container">
+      <h2>Transcript Translation Across the UAE</h2>
+      <div class="content-prose">
+        <p>Students and professionals across <a href="/locations/dubai/">Dubai</a>, <a href="/locations/abu-dhabi/">Abu Dhabi</a>, and <a href="/locations/sharjah/">Sharjah</a> use our transcript translation services. For <a href="/services/golden-visa/">Golden Visa</a> applications, transcripts complement <a href="/personal/academic/degree/">degree certificates</a> in demonstrating educational qualifications.</p>
+
+        <p><a href="/industries/healthcare/">Healthcare professionals</a> require transcript translation for DHA and DOH licensing applications. Combined with <a href="/services/attestation/">attestation services</a>, we provide complete credential packages. For university admissions, see our <a href="/services/legal-translation/">MOJ-certified translation services</a>.</p>
+      </div>
+
       <RelatedServices
         pageKey="transcripts"
         title="You May Also Need"
         showFamily={true}
+        showPrerequisites={true}
         showNextSteps={true}
-        maxItems={6}
+        showCrossSilo={true}
+        maxItems={8}
       />
+      <CrossSiloLinks maxLinks={6} />
     </div>
   </section>
 </ServiceLayout>
