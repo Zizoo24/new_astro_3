@@ -189,10 +189,12 @@ details.faq-item[open] summary::after {
 /* ============================================
    3. HERO IMAGES WITH DARK GRADIENT - DESKTOP
    All pages should have hero images on desktop
+   EXCLUDES: Homepage (.exodus-hero) - has its own styling
    ============================================ */
 
 /* Default hero background for pages without explicit image */
-.hero-section,
+/* EXCLUDE homepage exodus-hero which has its own styling */
+.hero-section:not(.exodus-hero),
 .page-hero,
 .category-hero,
 .section--hero {
@@ -202,7 +204,8 @@ details.faq-item[open] summary::after {
 
 /* Desktop: Show hero background image */
 @media (min-width: 769px) {
-  .hero-section::before,
+  /* EXCLUDE homepage exodus-hero */
+  .hero-section:not(.exodus-hero)::before,
   .page-hero::before,
   .category-hero::before {
     content: '';
@@ -218,8 +221,8 @@ details.faq-item[open] summary::after {
     opacity: 0.15;
   }
 
-  /* Dark gradient overlay */
-  .hero-section::after,
+  /* Dark gradient overlay - EXCLUDE homepage exodus-hero */
+  .hero-section:not(.exodus-hero)::after,
   .page-hero::after,
   .category-hero::after {
     content: '';
@@ -237,8 +240,8 @@ details.faq-item[open] summary::after {
     z-index: 1;
   }
 
-  /* Content above overlays */
-  .hero-section .container,
+  /* Content above overlays - EXCLUDE homepage exodus-hero */
+  .hero-section:not(.exodus-hero) .container,
   .page-hero .container,
   .category-hero .container {
     position: relative;
@@ -263,75 +266,31 @@ details.faq-item[open] summary::after {
 
 /* ============================================
    4. NO HERO IMAGES ON MOBILE (except homepage)
+   Homepage (.exodus-hero) uses its own styles - DO NOT OVERRIDE
    ============================================ */
 
 @media (max-width: 768px) {
-  /* Hide hero background images on mobile */
-  .hero-section::before,
+  /* Hide hero background images on mobile - EXCLUDE homepage */
+  .hero-section:not(.exodus-hero)::before,
   .page-hero::before,
   .category-hero::before,
   .section--hero.has-hero-image .hero-bg-image {
     display: none !important;
   }
 
-  /* Remove gradient overlay on mobile */
-  .hero-section::after,
+  /* Remove gradient overlay on mobile - EXCLUDE homepage */
+  .hero-section:not(.exodus-hero)::after,
   .page-hero::after,
   .category-hero::after {
     display: none !important;
   }
 
-  /* Keep solid background color */
-  .hero-section,
+  /* Keep solid background color - EXCLUDE homepage */
+  .hero-section:not(.exodus-hero),
   .page-hero,
   .category-hero,
-  .section--hero {
+  .section--hero:not(.exodus-hero) {
     background: var(--primary-color, #0E2B48) !important;
-  }
-
-  /* EXCEPTION: Homepage keeps hero image on mobile */
-  body.is-homepage .hero-section.exodus-hero::before,
-  body.is-homepage .hero-section.exodus-hero .hero-background {
-    display: block !important;
-  }
-
-  body.is-homepage .hero-section.exodus-hero::after {
-    display: none !important;
-  }
-
-  /* Homepage hero background visibility */
-  .exodus-hero .hero-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-  }
-
-  .exodus-hero .hero-background img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .exodus-hero .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      135deg,
-      rgba(14, 43, 72, 0.92) 0%,
-      rgba(14, 43, 72, 0.88) 100%
-    );
-    z-index: 1;
-  }
-
-  .exodus-hero .container {
-    position: relative;
-    z-index: 2;
   }
 }
 
