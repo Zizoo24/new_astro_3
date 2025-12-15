@@ -9,6 +9,7 @@
  * Type: Main Services Hub Page
  */
 import CategoryLayout from '../../layouts/CategoryLayout.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
 
 const breadcrumbs = [
   { label: 'Home', href: '/' },
@@ -291,33 +292,13 @@ const documentTypes = [
   <!-- Related Links Section -->
   <section class="section bg-light">
     <div class="container">
-      <h2>Browse by Category</h2>
-      <div class="category-links-grid">
-        <a href="/legal-translation-dubai/" class="category-link">
-          <i class="fas fa-balance-scale"></i>
-          <span>Legal Translation</span>
-        </a>
-        <a href="/personal/" class="category-link">
-          <i class="fas fa-user"></i>
-          <span>Personal Documents</span>
-        </a>
-        <a href="/services/attestation/" class="category-link">
-          <i class="fas fa-stamp"></i>
-          <span>Attestation</span>
-        </a>
-        <a href="/locations/dubai/" class="category-link">
-          <i class="fas fa-map-marker-alt"></i>
-          <span>Dubai Services</span>
-        </a>
-        <a href="/resources/pricing-guide/" class="category-link">
-          <i class="fas fa-tag"></i>
-          <span>Pricing Guide</span>
-        </a>
-        <a href="/resources/faq/" class="category-link">
-          <i class="fas fa-question-circle"></i>
-          <span>FAQ</span>
-        </a>
-      </div>
+      <RelatedServices
+        pageKey="services"
+        title="Browse by Category"
+        showFamily={true}
+        showCrossSilo={true}
+        maxItems={6}
+      />
     </div>
   </section>
 

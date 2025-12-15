@@ -10,6 +10,7 @@
  * Type: Silo Hub Page
  */
 import CategoryLayout from '../../layouts/CategoryLayout.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
 
 const breadcrumbs = [
   { label: 'Home', href: '/' },
@@ -274,29 +275,13 @@ const documentTypes = [
   <!-- Related Services -->
   <section class="section">
     <div class="container">
-      <h2>Related Services</h2>
-      <div class="related-grid">
-        <a href="/personal/" class="related-card">
-          <i class="fas fa-user"></i>
-          <h3>Personal Documents</h3>
-          <p>Birth certificates, marriage certificates, degrees, immigration documents</p>
-        </a>
-        <a href="/services/attestation/" class="related-card">
-          <i class="fas fa-stamp"></i>
-          <h3>Attestation Services</h3>
-          <p>MOFA attestation and embassy legalization coordination</p>
-        </a>
-        <a href="/services/golden-visa-translation/" class="related-card">
-          <i class="fas fa-star"></i>
-          <h3>Golden Visa Package</h3>
-          <p>Complete document packages for investor visa applications</p>
-        </a>
-        <a href="/locations/dubai/" class="related-card">
-          <i class="fas fa-map-marker-alt"></i>
-          <h3>Dubai Services</h3>
-          <p>Same-day delivery across all Dubai areas</p>
-        </a>
-      </div>
+      <RelatedServices
+        pageKey="legal"
+        title="Related Services"
+        showFamily={true}
+        showCrossSilo={true}
+        maxItems={6}
+      />
     </div>
   </section>
 
