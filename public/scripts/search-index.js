@@ -170,7 +170,7 @@ const searchIndex = [
     },
     {
         title: "University Degree Translation",
-        url: "/personal/education/degree/",
+        url: "/personal/academic/degree/",
         category: "Personal Documents",
         keywords: "degree diploma university translation attestation equivalency golden visa bachelor master"
     },

@@ -144,7 +144,7 @@ const menuConfigs = {
                 icon: 'fas fa-graduation-cap',
                 url: '/personal/academic/',
                 children: [
-                    { label: 'University Degree', url: '/personal/education/degree/', icon: 'fas fa-scroll' },
+                    { label: 'University Degree', url: '/personal/academic/degree/', icon: 'fas fa-scroll' },
                     { label: 'Academic Transcripts', url: '/personal/academic/transcripts/', icon: 'fas fa-list-alt' }
                 ]
             },
