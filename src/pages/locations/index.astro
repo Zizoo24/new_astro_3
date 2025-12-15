@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import RelatedServices from '../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../components/CrossSiloLinks.astro';
 
 const breadcrumbs = [
   { name: 'Home', url: '/' },
@@ -116,19 +117,19 @@ const otherEmirates = [
       <div class="content-grid">
         <div class="content-main">
           <h2>How Our Location-Independent Service Works</h2>
-          <p>Traditional translation services require you to visit an office, wait in line, and return to collect documents. We've eliminated all of that.</p>
-          
-          <p>Our WhatsApp-based workflow means you can get MOJ-certified translations from anywhere in the UAE—whether you're in a Dubai Marina apartment, an Abu Dhabi villa, or a Sharjah office. The process is identical regardless of your location:</p>
+          <p>Traditional translation services require you to visit an office, wait in line, and return to collect documents. We've eliminated all of that with our digital-first approach to <a href="/legal-translation-dubai/">MOJ-certified legal translation</a>.</p>
+
+          <p>Our WhatsApp-based workflow means you can get certified translations from anywhere in the UAE—whether you're in a <a href="/locations/dubai/marina/">Dubai Marina</a> apartment, an <a href="/locations/abu-dhabi/">Abu Dhabi</a> villa, or a <a href="/locations/sharjah/">Sharjah</a> office. The process is identical regardless of your location:</p>
 
           <ol class="process-list">
             <li><strong>Send your document via WhatsApp</strong> — Photo or PDF, we accept both</li>
-            <li><strong>Receive instant quote</strong> — Price and turnaround confirmed within minutes</li>
+            <li><strong>Receive instant quote</strong> — Price and turnaround confirmed within minutes (see our <a href="/resources/pricing-guide/">pricing guide</a>)</li>
             <li><strong>Approve and pay online</strong> — Bank transfer or card payment</li>
             <li><strong>Get certified PDF</strong> — Digital delivery, typically within hours</li>
             <li><strong>Physical delivery (optional)</strong> — Courier to your address anywhere in UAE</li>
           </ol>
 
-          <p>This approach saves you time, eliminates travel, and delivers the same MOJ-certified quality that government entities and courts require.</p>
+          <p>This approach saves you time, eliminates travel, and delivers the same <a href="/legal-translation-dubai/">MOJ-certified quality</a> that government entities and courts require.</p>
         </div>
 
         <div class="content-sidebar">
@@ -192,15 +193,42 @@ const otherEmirates = [
     </div>
   </section>
 
+  <section class="section bg-white">
+    <div class="container">
+      <div class="content-block">
+        <h2>Services by Location Type</h2>
+        <p>Different areas of the UAE tend to have different translation needs based on the businesses and residents there:</p>
+
+        <ul class="location-services-list">
+          <li><strong><a href="/locations/dubai/difc/">DIFC</a> & <a href="/locations/dubai/business-bay/">Business Bay</a>:</strong> <a href="/services/corporate-translation/">Corporate translation</a>, <a href="/legal/contracts/">contract translation</a>, <a href="/specialized/financial/">financial documents</a>, <a href="/legal/litigation/arbitration/">arbitration materials</a></li>
+          <li><strong><a href="/locations/dubai/palm-jumeirah/">Palm Jumeirah</a> & <a href="/locations/dubai/marina/">Marina</a>:</strong> <a href="/legal/contracts/spa/">Property SPAs</a>, <a href="/legal/contracts/lease/">lease agreements</a>, <a href="/services/golden-visa-translation/">Golden Visa packages</a>, <a href="/industries/real-estate/">real estate documentation</a></li>
+          <li><strong><a href="/locations/dubai/jlt/">JLT</a> & DMCC:</strong> <a href="/legal/corporate/license/">Trade license translation</a>, <a href="/legal/corporate/moa/">MOA documents</a>, <a href="/legal/contracts/mou/">MOUs</a>, free zone documentation</li>
+          <li><strong><a href="/locations/abu-dhabi/">Abu Dhabi</a>:</strong> <a href="/services/attestation/">Attestation services</a>, <a href="/legal/corporate/poa/">powers of attorney</a>, government submissions, <a href="/industries/legal/">legal industry</a> support</li>
+          <li><strong><a href="/locations/sharjah/">Sharjah</a>:</strong> <a href="/personal/vital-records/">Personal documents</a>, <a href="/personal/academic/degree/">academic certificates</a>, <a href="/services/certificate-translation/">certificate translation</a>, family documentation</li>
+        </ul>
+
+        <p>Regardless of your location, all translations are <a href="/legal-translation-dubai/">MOJ-certified</a> and accepted by courts, government entities, and private institutions across the UAE. Need <a href="/services/attestation/mofa/">MOFA attestation</a>? We coordinate that too.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container">
       <RelatedServices
         pageKey="locations"
         title="Popular Services"
         showFamily={true}
+        showPrerequisites={true}
+        showNextSteps={true}
         showCrossSilo={true}
-        maxItems={6}
+        maxItems={8}
       />
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <CrossSiloLinks pageKey="locations" title="Explore Our Services" />
     </div>
   </section>
 
@@ -274,9 +302,51 @@ const otherEmirates = [
   .btn--primary { background: var(--accent-color); color: white; }
   .btn--lg { padding: 1.125rem 2.25rem; }
 
-  @media (max-width: 991px) { 
-    .content-grid { grid-template-columns: 1fr; } 
+  @media (max-width: 991px) {
+    .content-grid { grid-template-columns: 1fr; }
     .govt-grid { grid-template-columns: 1fr; }
     .locations-grid.cols-3 { grid-template-columns: 1fr; }
+  }
+
+  .content-block {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .content-block h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+  }
+
+  .content-block p {
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .content-block a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .content-block a:hover {
+    text-decoration: underline;
+  }
+
+  .location-services-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+  }
+
+  .location-services-list li {
+    padding: 0.75rem 0;
+    line-height: 1.7;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .location-services-list li:last-child {
+    border-bottom: none;
   }
 </style>
