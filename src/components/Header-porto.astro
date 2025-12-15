@@ -328,10 +328,17 @@ function isActive(href: string): boolean {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.95);
     text-decoration: none;
     transition: color 0.2s ease;
     font-weight: 500;
+  }
+
+  /* Force coral bar content to stay white even when global link styles change */
+  .coral-top-bar .coral-top-link,
+  .coral-top-bar .coral-top-hours,
+  .coral-top-bar .coral-top-link:visited {
+    color: #ffffff !important;
   }
 
   .coral-top-link:hover {
@@ -424,6 +431,13 @@ function isActive(href: string): boolean {
     text-decoration: none;
   }
 
+  /* Keep breathing room between the logo block and the navigation */
+  .header-column-logo {
+    position: relative;
+    z-index: 1;
+    margin-right: 18px;
+  }
+
   .logo-emblem {
     height: 44px;
     width: auto;
@@ -466,12 +480,6 @@ function isActive(href: string): boolean {
     transition: font-size 0.3s ease;
   }
 
-  /* Logo Column - lower z-index so dropdowns appear above */
-  .header-column-logo {
-    position: relative;
-    z-index: 1;
-  }
-
   /* Navigation Column - higher z-index for dropdowns */
   .header-column-nav {
     flex: 1;
@@ -485,6 +493,18 @@ function isActive(href: string): boolean {
     display: flex;
     align-items: center;
     gap: 15px;
+  }
+
+  /* Ensure nav links stay white on the navy gradient header */
+  .header-body .nav-link,
+  .header-body .nav-link i {
+    color: #ffffff !important;
+  }
+
+  .header-body .nav-link:hover,
+  .header-body .nav-link:focus,
+  .header-body .nav-link.active {
+    color: #ffffff !important;
   }
 
   /* Header Action Buttons (Search & Theme Toggle) */
