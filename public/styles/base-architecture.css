@@ -268,7 +268,6 @@ body.theme-dark a:visited {
 .hero-section a,
 .header-desktop a,
 .header-mobile a,
-.footer a,
 .sidebar a {
     color: var(--link-on-dark);
 }
@@ -277,12 +276,20 @@ body.theme-dark a:visited {
 .hero-section a:hover,
 .header-desktop a:hover,
 .header-mobile a:hover,
-.footer a:hover,
 .sidebar a:hover {
     color: var(--link-on-dark-hover);
 }
 
-/* Button-style links should NOT follow link colors */
+/* Footer links - use muted text color, not bright link color */
+.footer a {
+    color: var(--text-on-dark-muted, #c5d4e8);
+}
+
+.footer a:hover {
+    color: var(--accent-coral, #FF1654);
+}
+
+/* Button-style links should have WHITE text, not inherit */
 a.btn-coral,
 a.hero-cta,
 a.header-cta,
@@ -290,8 +297,16 @@ a.sidebar-cta,
 a.announcement-btn,
 a.announcement-cta,
 a[class*="btn-"],
+a.btn,
+a.btn--primary,
 button {
-    color: inherit;
+    color: #ffffff !important;
+}
+
+/* Exception for outline/secondary buttons */
+a.btn--outline,
+a.btn-outline {
+    color: inherit !important;
 }
 
 /* ============================================

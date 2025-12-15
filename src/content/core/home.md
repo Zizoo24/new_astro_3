@@ -131,6 +131,8 @@ faqSection:
       answer: "Yes. When your legal documents require attestation from MOFA or other government entities, we coordinate the complete process including secure courier handling of originals."
     - question: "Can you handle Arabic to English and English to Arabic?"
       answer: "Yes. Our certified translators work in both directions for comprehensive Arabic translation services."
+    - question: "What's the difference between MOJ Legal Translation and Certified Translation?"
+      answer: "MOJ Legal Translation (from AED 1,400) uses a sworn translator with a judiciary-recognized seal—required for UAE courts and government ministries. Certified Translation (from AED 700) uses our agency stamp and is accepted by HR departments, banks, private companies, and most embassies. Same quality, same turnaround—different authority. We'll help you choose the right one for your destination."
 
 ctaBanner:
   title: "Let Us Handle the Compliance. You Focus on What Matters."

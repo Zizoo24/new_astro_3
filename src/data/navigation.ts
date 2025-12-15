@@ -255,6 +255,7 @@ export const mainNav: (NavLink | NavGroup)[] = [
     href: '/resources/',
     children: [
       { label: 'Resource Center', href: '/resources/' },
+      { label: 'MOJ vs Certified Guide', href: '/resources/moj-vs-certified/', badge: 'NEW' },
       { label: 'Pricing Guide', href: '/resources/pricing-guide/' },
       { label: 'Document Checklist', href: '/resources/document-checklist/' },
       { label: 'Attestation Guide', href: '/resources/attestation-guide/' },
@@ -370,6 +371,7 @@ export const mobileNav = {
       href: '/resources/',
       children: [
         { label: 'Resource Hub', href: '/resources/' },
+        { label: 'MOJ vs Certified Guide', href: '/resources/moj-vs-certified/' },
         { label: 'Pricing Guide', href: '/resources/pricing-guide/' },
         { label: 'Document Checklist', href: '/resources/document-checklist/' },
         { label: 'Attestation Guide', href: '/resources/attestation-guide/' },
