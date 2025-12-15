@@ -6,6 +6,8 @@ import AuthorityLogos from '../components/AuthorityLogos.astro';
 import TrustBar from '../components/TrustBar.astro';
 import { getEntry } from 'astro:content';
 import { getHomepageServices, servicesGridDefaults } from '../data/servicesGrid';
+import { Image } from 'astro:assets';
+import heroImageSrc from '../assets/images/hero/office-team.png';
 
 const homeEntry = await getEntry('core', 'home');
 const data = homeEntry?.data || {};
@@ -281,12 +283,18 @@ const contactSection =
   <!-- Hero Section - Exodus Style -->
   <section id="home" class="hero-section exodus-hero">
     <div class="hero-background">
-      <img
-        src={heroImage}
+      <Image
+        src={heroImageSrc}
         alt="OnlineTranslation.ae Professional Team"
         class="hero-image"
+        width={1920}
+        height={1080}
+        format="webp"
+        quality={80}
         loading="eager"
-      >
+        fetchpriority="high"
+        decoding="async"
+      />
       <div class="hero-overlay exodus-overlay"></div>
     </div>
     <div class="container">
@@ -322,6 +330,7 @@ const contactSection =
     <!-- Exodus Overlap Cards - Trust Stack -->
     <div class="overlap-cards-wrapper">
       <div class="container">
+        <h2 class="sr-only">Our Credentials</h2>
         <div class="overlap-cards">
           {overlapCards.map((card) => (
             <article class="overlap-card">
@@ -355,6 +364,7 @@ const contactSection =
   <!-- iOS Feature Cards - Hidden by default, shown via os-detect.js -->
   <section class="feature-cards-section os-ios-only" style="display: none;">
     <div class="container">
+      <h2 class="sr-only">Contact Options for iOS</h2>
       <div class="feature-cards ios-unified-channel">
         <article class="feature-card messaging-card unified-messaging">
           <div class="card-icons-dual">
