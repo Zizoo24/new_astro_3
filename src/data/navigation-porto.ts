@@ -195,7 +195,7 @@ export const mainNavigation: MainNavItem[] = [
             },
             {
               label: 'Degree Translation',
-              href: '/personal/education/degree/',
+              href: '/personal/academic/degree/',
               icon: 'fas fa-certificate'
             },
             {

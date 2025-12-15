@@ -53,28 +53,8 @@ iosBlock:
 
 servicesSection:
   label: "Our Services"
-  title: "Professional Translation Services Across Four Practice Areas"
-  items:
-    - href: "/services/legal-translation/"
-      image: "/assets/images/onedrive/tiles/tile-courts.png"
-      imageAlt: "Legal Translation Services"
-      heading: "Legal & Corporate"
-      text: "Contracts, court judgments, corporate governance, powers of attorney, and litigation documents with MOJ certification."
-    - href: "/services/certificate-translation/"
-      image: "/assets/images/onedrive/tiles/tile-immigration.png"
-      imageAlt: "Certificate Translation"
-      heading: "Personal Certificates"
-      text: "Birth, marriage, divorce, educational, and police certificates for immigration, HR, and court requirements."
-    - href: "/services/attestation/"
-      image: "/assets/images/onedrive/services/services-4.jpg"
-      imageAlt: "Attestation Services"
-      heading: "Attestation & Legalisation"
-      text: "MOFA, embassy, and notary workflows coordinated end-to-end so your documents are ready for submission."
-    - href: "/industries/"
-      image: "/assets/images/onedrive/tiles/tile-corporate.png"
-      imageAlt: "Industry Translation"
-      heading: "Industry & Specialist"
-      text: "Sector-specific translation for real estate, healthcare, technology, and financial services."
+  title: "Professional Translation Services Across Six Practice Areas"
+  # Items now controlled by src/data/servicesGrid.ts for consistency across the site
 
 metrics:
   - value: "43+"
