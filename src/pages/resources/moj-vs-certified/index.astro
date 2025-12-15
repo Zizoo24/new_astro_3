@@ -1,0 +1,458 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+
+const faqs = [
+  {
+    question: "Can I use Certified Translation for court submissions?",
+    answer: "No. UAE courts require MOJ Legal Translation with the judiciary-recognized seal. Certified Translation will be rejected for court filings."
+  },
+  {
+    question: "Will banks accept Certified Translation?",
+    answer: "Yes. Banks in the UAE accept Certified Translation for account opening, loan applications, and proof of income documents."
+  },
+  {
+    question: "My employer said 'legal translation'—which type do they mean?",
+    answer: "Most likely Certified Translation. 'Legal translation' is often used as a catch-all term. Unless they specifically mention 'MOJ,' 'sworn translator,' or 'judiciary seal,' Certified Translation is usually what they need. Send us their exact requirements and we'll confirm."
+  },
+  {
+    question: "Is MOJ Legal Translation higher quality?",
+    answer: "No. Both services deliver identical translation quality and accuracy. The only difference is the certification authority (agency stamp vs MOJ seal). Choose based on your recipient's requirements, not perceived quality."
+  },
+  {
+    question: "How long does each type take?",
+    answer: "Same turnaround for both. Standard documents are typically ready within 3-6 business hours. Express options available for urgent requirements."
+  },
+  {
+    question: "Can you help me figure out which type I need?",
+    answer: "Absolutely. Send us the recipient's exact wording or checklist via WhatsApp. We'll confirm which stamp you need—no upselling, just the right option for your destination."
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<BaseLayout
+  title="MOJ Legal vs Certified Translation: Which Do You Need? | Dubai Guide"
+  description="Save up to 50% by choosing the right translation type. MOJ Legal Translation for courts (AED 1,400+). Certified Translation for HR, banks, private companies (AED 700+). Same quality, different authority."
+>
+  <Fragment slot="head">
+    <meta name="keywords" content="moj translation vs certified translation, legal translation dubai price, certified translation uae, hr translation dubai, sworn translator uae" />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="hero-section bg-dark" data-theme="dark">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">HOME</a>
+        <span class="separator">&gt;</span>
+        <a href="/resources/">RESOURCES</a>
+        <span class="separator">&gt;</span>
+        <span class="current">MOJ VS CERTIFIED</span>
+      </nav>
+
+      <h1>MOJ Legal vs Certified Translation</h1>
+      <p class="hero-subtitle">Choose the Right Service & Save Up to 50%</p>
+      <p class="hero-intro">Most HR teams say "legal translation" as a catch-all, but in the UAE there are two distinct products with different stamps, destinations, and prices. Choosing correctly can save you AED 700+ per document.</p>
+
+      <div class="service-snapshot">
+        <div class="snapshot-item">
+          <i class="fas fa-balance-scale"></i>
+          <span><strong>Two Types:</strong> MOJ Legal vs Certified</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-tags"></i>
+          <span><strong>Price Difference:</strong> ~50% savings possible</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-check-circle"></i>
+          <span><strong>Same Quality:</strong> Different authority</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table Section -->
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Side-by-Side Comparison</h2>
+      <div class="comparison-table-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th class="certified-col">Certified Translation</th>
+              <th class="moj-col">MOJ Legal Translation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Authority</strong></td>
+              <td>Agency stamp</td>
+              <td>MOJ-approved sworn translator</td>
+            </tr>
+            <tr>
+              <td><strong>Seal Type</strong></td>
+              <td>Company letterhead + translator declaration</td>
+              <td>Judiciary-recognized seal</td>
+            </tr>
+            <tr>
+              <td><strong>Starting Price</strong></td>
+              <td class="price-highlight certified">AED 700</td>
+              <td class="price-highlight moj">AED 1,400</td>
+            </tr>
+            <tr>
+              <td><strong>Turnaround</strong></td>
+              <td>3-6 hours (standard)</td>
+              <td>3-6 hours (standard)</td>
+            </tr>
+            <tr>
+              <td><strong>Quality</strong></td>
+              <td>Professional, accurate</td>
+              <td>Professional, accurate</td>
+            </tr>
+            <tr>
+              <td><strong>Best For</strong></td>
+              <td>HR, banks, private companies, universities</td>
+              <td>Courts, ministries, notary submissions</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Real Client Story -->
+  <section class="section bg-light">
+    <div class="container content-container">
+      <div class="client-story">
+        <h2>A Real Example</h2>
+        <blockquote>
+          <p>Last week, a client brought Italian HR documents. Her employer said "legal translation," so she ordered the full MOJ service at AED 1,400.</p>
+          <p>After reviewing her requirements, we confirmed she only needed Certified Translation at AED 700. Her employer's HR department accepted it without issue.</p>
+          <p><strong>She saved AED 700—and her documents were ready in the same timeframe.</strong></p>
+        </blockquote>
+        <p class="story-note">This happens frequently. We always verify requirements before processing to ensure you get the right service at the right price.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Decision Flowchart -->
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Quick Decision Guide</h2>
+      <div class="decision-flowchart">
+        <div class="decision-step">
+          <div class="step-question">Where is this document going?</div>
+          <div class="step-branches">
+            <div class="branch branch-moj">
+              <div class="branch-label">Court, Ministry, Notary</div>
+              <div class="branch-arrow"><i class="fas fa-arrow-down"></i></div>
+              <div class="branch-result moj">MOJ Legal Translation<br><span class="price">AED 1,400+</span></div>
+            </div>
+            <div class="branch branch-certified">
+              <div class="branch-label">HR, Bank, Private Company</div>
+              <div class="branch-arrow"><i class="fas fa-arrow-down"></i></div>
+              <div class="branch-question">Does recipient explicitly require "MOJ"?</div>
+              <div class="sub-branches">
+                <div class="sub-branch">
+                  <span class="answer yes">YES</span> <i class="fas fa-arrow-right"></i> MOJ Legal
+                </div>
+                <div class="sub-branch">
+                  <span class="answer no">NO</span> <i class="fas fa-arrow-right"></i> <strong class="certified">Certified Translation<br>AED 700+ <i class="fas fa-check"></i> Save 50%</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Understanding Types -->
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Understanding the Two Types</h2>
+
+      <div class="type-cards">
+        <div class="type-card certified">
+          <div class="type-header">
+            <i class="fas fa-stamp"></i>
+            <h3>Certified Translation (Agency Stamp)</h3>
+          </div>
+          <p>Certified Translation uses our agency letterhead with a translator's declaration and company stamp. It confirms the translation is accurate and complete.</p>
+          <div class="type-details">
+            <p><strong>Price:</strong> From AED 700</p>
+            <p><strong>Accepted by:</strong> HR departments, private companies, banks, universities, most embassies, private hospitals, insurance companies.</p>
+            <p><strong>Best for:</strong> Employment onboarding, internal HR records, bank account opening, university admissions, visa applications (non-judicial), insurance claims.</p>
+          </div>
+        </div>
+
+        <div class="type-card moj">
+          <div class="type-header">
+            <i class="fas fa-gavel"></i>
+            <h3>MOJ Legal Translation (Sworn Translator)</h3>
+          </div>
+          <p>MOJ Legal Translation is performed by a translator approved by the UAE Ministry of Justice. It carries a judiciary-recognized seal that courts and government entities require.</p>
+          <div class="type-details">
+            <p><strong>Price:</strong> From AED 1,400</p>
+            <p><strong>Accepted by:</strong> UAE courts (Dubai, Abu Dhabi, Federal), DIFC Courts, ADGM Courts, government ministries, official notary transactions.</p>
+            <p><strong>Best for:</strong> Court submissions, litigation documents, government ministry filings, notarized contracts, official judicial proceedings.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="quality-note">
+        <i class="fas fa-info-circle"></i>
+        <div>
+          <strong>Is the quality different?</strong>
+          <p>No. Both services deliver the same translation quality and accuracy. The only difference is the certification authority—agency stamp vs judiciary-recognized seal. Think of it like regular mail vs registered mail. Same letter, different delivery confirmation. Choose based on what your recipient requires, not perceived quality.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who Accepts What -->
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Who Accepts What</h2>
+
+      <div class="acceptance-grid">
+        <div class="acceptance-card certified">
+          <h3><i class="fas fa-check-circle"></i> Certified Translation is accepted by:</h3>
+          <ul>
+            <li><strong>HR Departments:</strong> Employee onboarding, employment contracts, credential verification</li>
+            <li><strong>Banks:</strong> Account opening, loan applications, proof of income</li>
+            <li><strong>Private Companies:</strong> Internal records, vendor agreements, compliance files</li>
+            <li><strong>Universities:</strong> Admission applications, transcript evaluation</li>
+            <li><strong>Embassies:</strong> Visa applications, document legalization (most cases)</li>
+            <li><strong>Insurance Companies:</strong> Claims processing, medical records</li>
+            <li><strong>Private Hospitals:</strong> Patient records, medical history</li>
+          </ul>
+        </div>
+
+        <div class="acceptance-card moj">
+          <h3><i class="fas fa-balance-scale"></i> MOJ Legal Translation is required by:</h3>
+          <ul>
+            <li><strong>UAE Courts:</strong> Dubai Courts, Abu Dhabi Judicial Department, Federal Courts</li>
+            <li><strong>DIFC Courts:</strong> Common law jurisdiction in Dubai</li>
+            <li><strong>ADGM Courts:</strong> Abu Dhabi Global Market jurisdiction</li>
+            <li><strong>Government Ministries:</strong> When explicitly requested</li>
+            <li><strong>Notary Public:</strong> For officially notarized documents</li>
+            <li><strong>GDRFA:</strong> Specific immigration cases (not all)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="doubt-box">
+        <h4><i class="fas fa-question-circle"></i> When in doubt, how do I know?</h4>
+        <ol>
+          <li>Is this going to a court or government ministry? <i class="fas fa-arrow-right"></i> <strong>MOJ Legal</strong></li>
+          <li>Does the recipient explicitly say "MOJ" or "sworn translator"? <i class="fas fa-arrow-right"></i> <strong>MOJ Legal</strong></li>
+          <li>Is it for HR, a bank, or a private company? <i class="fas fa-arrow-right"></i> <strong>Certified is usually sufficient</strong></li>
+        </ol>
+        <p><strong>Still unsure?</strong> Send us the recipient's exact wording or checklist via WhatsApp. We'll confirm which stamp you need—no upselling, just the right option.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HR Department Guide -->
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>HR Department Guide</h2>
+
+      <div class="hr-guide">
+        <div class="guide-block">
+          <h3><i class="fas fa-exclamation-triangle"></i> Why HR teams often overpay</h3>
+          <p>HR professionals commonly say "legal translation" when requesting document translation. This generic term often triggers the assumption that MOJ certification is required.</p>
+          <p>The reality: HR handles internal employment files, not judicial submissions. For onboarding, payroll, insurance verification, and routine compliance, Certified Translation is fit-for-purpose and cost-efficient.</p>
+        </div>
+
+        <div class="guide-block">
+          <h3><i class="fas fa-clipboard-check"></i> Smart HR checklist before ordering</h3>
+          <p>Before ordering "MOJ translation," ask:</p>
+          <ul>
+            <li>Is this document going to a court or ministry? (Probably not for HR purposes)</li>
+            <li>Does anyone in the approval chain explicitly require "MOJ" or "sworn translator"?</li>
+            <li>Is this for internal records or external judicial submission?</li>
+          </ul>
+          <p>If the answers are "no," "no," and "internal"—Certified Translation is correct and saves ~50%.</p>
+        </div>
+
+        <div class="guide-block">
+          <h3><i class="fas fa-edit"></i> Updating your HR translation policy</h3>
+          <p>Consider updating your internal guidelines to specify:</p>
+          <ul>
+            <li><strong>Standard employee onboarding:</strong> Certified Translation</li>
+            <li><strong>Employment contract translations:</strong> Certified Translation</li>
+            <li><strong>Credential verification:</strong> Certified Translation</li>
+            <li><strong>Court-related matters:</strong> MOJ Legal Translation</li>
+            <li><strong>Ministry submissions:</strong> MOJ Legal Translation</li>
+          </ul>
+          <p>This cuts costs, speeds onboarding, and prevents resubmissions while staying compliant.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services -->
+  <section class="section">
+    <div class="container">
+      <RelatedServices
+        pageKey="mojVsCertified"
+        title="Related Services"
+        showFamily={true}
+        showCrossSilo={true}
+        maxItems={6}
+      />
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map(faq => (
+          <details class="faq-item">
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-white">
+    <div class="container cta-section">
+      <h2>Not Sure Which You Need?</h2>
+      <p>Send us the recipient's exact wording or checklist via WhatsApp. We'll confirm which stamp you need—no upselling, just the right option for your destination.</p>
+      <a href="https://wa.me/971508620217" class="btn btn-primary">
+        <i class="fab fa-whatsapp"></i> Send Document for Quote
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-section { padding: 8rem 0 4rem; background: var(--primary-color); }
+  .breadcrumb { font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 2rem; }
+  .breadcrumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: #ffffff; }
+  .breadcrumb .separator { margin: 0 0.5rem; color: rgba(255, 255, 255, 0.5); }
+  .breadcrumb .current { color: #ffffff; }
+  h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: #ffffff; }
+  .hero-subtitle { font-size: 1.25rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+  .hero-intro { font-size: 1.1rem; line-height: 1.8; max-width: 700px; color: rgba(255, 255, 255, 0.9); }
+  .content-container { max-width: 900px; }
+
+  /* Comparison Table */
+  .comparison-table-wrapper { overflow-x: auto; margin: 2rem 0; }
+  .comparison-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  .comparison-table th, .comparison-table td { padding: 1rem; text-align: left; border-bottom: 1px solid rgba(0,0,0,0.1); }
+  .comparison-table th { background: var(--primary-color, #0E2B48); color: white; font-weight: 600; }
+  .certified-col { background: #1a5f7a !important; }
+  .moj-col { background: #8B2635 !important; }
+  .price-highlight { font-size: 1.25rem; font-weight: 700; }
+  .price-highlight.certified { color: #1a5f7a; }
+  .price-highlight.moj { color: #8B2635; }
+
+  /* Client Story */
+  .client-story { max-width: 800px; margin: 0 auto; }
+  .client-story blockquote { background: white; padding: 2rem; border-left: 4px solid var(--accent-color, #FF1654); margin: 1.5rem 0; border-radius: 0 8px 8px 0; }
+  .client-story blockquote p { margin-bottom: 1rem; color: var(--text-body, #2d3748); }
+  .story-note { font-style: italic; color: var(--text-muted); }
+
+  /* Decision Flowchart */
+  .decision-flowchart { max-width: 700px; margin: 2rem auto; text-align: center; }
+  .step-question { background: var(--primary-color, #0E2B48); color: white; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; font-size: 1.1rem; margin-bottom: 1.5rem; }
+  .step-branches { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .branch { padding: 1rem; border-radius: 8px; background: #f8f9fa; }
+  .branch-label { font-weight: 600; margin-bottom: 0.5rem; color: var(--text-heading); }
+  .branch-arrow { font-size: 1.5rem; margin: 0.5rem 0; color: var(--accent-color); }
+  .branch-result { padding: 1rem; border-radius: 8px; font-weight: 600; }
+  .branch-result.moj { background: #8B2635; color: white; }
+  .branch-result .price { display: block; font-size: 0.9rem; opacity: 0.9; }
+  .branch-question { font-size: 0.9rem; margin: 0.5rem 0; color: var(--text-body); }
+  .sub-branches { margin-top: 0.5rem; }
+  .sub-branch { margin: 0.5rem 0; color: var(--text-body); }
+  .sub-branch .answer { font-weight: 600; padding: 0.25rem 0.5rem; border-radius: 4px; }
+  .sub-branch .answer.yes { background: #fee; color: #8B2635; }
+  .sub-branch .answer.no { background: #efe; color: #1a5f7a; }
+  .sub-branch .certified { color: #1a5f7a; }
+
+  /* Type Cards */
+  .type-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0; }
+  .type-card { background: white; padding: 2rem; border-radius: 12px; border: 2px solid #eee; }
+  .type-card.certified { border-color: #1a5f7a; }
+  .type-card.moj { border-color: #8B2635; }
+  .type-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+  .type-header i { font-size: 2rem; }
+  .type-card.certified .type-header i { color: #1a5f7a; }
+  .type-card.moj .type-header i { color: #8B2635; }
+  .type-header h3 { margin: 0; font-size: 1.1rem; color: var(--text-heading); }
+  .type-card p { color: var(--text-body); line-height: 1.7; }
+  .type-details { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee; }
+  .type-details p { margin: 0.5rem 0; font-size: 0.95rem; }
+
+  .quality-note { display: flex; gap: 1rem; background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary-color); margin-top: 2rem; }
+  .quality-note i { font-size: 1.5rem; color: var(--primary-color); flex-shrink: 0; }
+  .quality-note strong { color: var(--text-heading); }
+  .quality-note p { margin: 0.5rem 0 0; color: var(--text-body); line-height: 1.7; }
+
+  /* Acceptance Grid */
+  .acceptance-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0; }
+  .acceptance-card { background: #f8f9fa; padding: 1.5rem; border-radius: 12px; }
+  .acceptance-card h3 { display: flex; align-items: center; gap: 0.5rem; font-size: 1rem; margin-bottom: 1rem; color: var(--text-heading); }
+  .acceptance-card.certified h3 i { color: #1a5f7a; }
+  .acceptance-card.moj h3 i { color: #8B2635; }
+  .acceptance-card ul { list-style: none; padding: 0; margin: 0; }
+  .acceptance-card li { padding: 0.5rem 0; border-bottom: 1px solid #eee; color: var(--text-body); }
+  .acceptance-card li:last-child { border-bottom: none; }
+  .acceptance-card li strong { color: var(--text-heading); }
+
+  .doubt-box { background: white; padding: 2rem; border-radius: 12px; border: 2px solid var(--accent-color); margin-top: 2rem; }
+  .doubt-box h4 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 1rem; color: var(--text-heading); }
+  .doubt-box h4 i { color: var(--accent-color); }
+  .doubt-box ol { padding-left: 1.5rem; margin: 1rem 0; }
+  .doubt-box li { margin: 0.5rem 0; color: var(--text-body); }
+  .doubt-box p { margin: 1rem 0 0; color: var(--text-body); }
+
+  /* HR Guide */
+  .hr-guide { display: flex; flex-direction: column; gap: 2rem; }
+  .guide-block { background: white; padding: 2rem; border-radius: 12px; }
+  .guide-block h3 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 1rem; font-size: 1.1rem; color: var(--text-heading); }
+  .guide-block h3 i { color: var(--accent-color); }
+  .guide-block p { color: var(--text-body); line-height: 1.7; margin: 0.75rem 0; }
+  .guide-block ul { padding-left: 1.5rem; margin: 1rem 0; }
+  .guide-block li { margin: 0.5rem 0; color: var(--text-body); }
+  .guide-block li strong { color: var(--text-heading); }
+
+  /* CTA Section */
+  .cta-section { text-align: center; max-width: 600px; margin: 0 auto; }
+  .cta-section h2 { margin-bottom: 1rem; }
+  .cta-section p { margin-bottom: 2rem; color: var(--text-muted); }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
+  .btn-primary { background: var(--accent-color); color: #ffffff !important; }
+  .btn-primary:hover { background: #e0144c; transform: translateY(-2px); }
+
+  @media (max-width: 600px) {
+    .step-branches { grid-template-columns: 1fr; }
+    .type-cards { grid-template-columns: 1fr; }
+    .acceptance-grid { grid-template-columns: 1fr; }
+  }
+</style>
