@@ -5,6 +5,7 @@ import DulBadge from '../components/DulBadge.astro';
 import AuthorityLogos from '../components/AuthorityLogos.astro';
 import TrustBar from '../components/TrustBar.astro';
 import { getEntry } from 'astro:content';
+import { getHomepageServices, servicesGridDefaults } from '../data/servicesGrid';
 
 const homeEntry = await getEntry('core', 'home');
 const data = homeEntry?.data || {};
@@ -122,66 +123,11 @@ const expressCard =
     linkLabel: 'Urgent Request',
   };
 
-// SERVICES SECTION
+// SERVICES SECTION - Uses centralized data from servicesGrid.ts
 const servicesSection = data.servicesSection ?? {};
-const servicesLabel =
-  servicesSection.label ?? 'Our Services';
-const servicesTitle =
-  servicesSection.title ??
-  'Professional Translation Services Across Four Practice Areas';
-
-const servicesItems =
-  servicesSection.items ??
-  [
-    {
-      href: '/services/legal-translation/',
-      image: '/assets/images/onedrive/tiles/tile-courts.png',
-      imageAlt: 'Legal Translation Services',
-      heading: 'Legal & Corporate',
-      text:
-        'Contracts, court judgments, corporate governance, powers of attorney, and litigation documents with MOJ certification.',
-    },
-    {
-      href: '/personal/',
-      image: '/assets/images/onedrive/tiles/tile-immigration.png',
-      imageAlt: 'Personal Document Translation',
-      heading: 'Personal Documents',
-      text:
-        'Birth certificates, marriage certificates, academic credentials, police clearance, and immigration documentation.',
-    },
-    {
-      href: '/services/attestation/',
-      image: '/assets/images/onedrive/services/services-4.jpg',
-      imageAlt: 'Attestation & MOFAIC',
-      heading: 'Attestation Services',
-      text:
-        'Document attestation for MOFA and government entities. Complete legalization services including secure courier handling.',
-    },
-    {
-      href: '/services/certificate-translation/',
-      image: '/assets/images/onedrive/services/services-5.jpg',
-      imageAlt: 'Business Localization',
-      heading: 'Business Localization',
-      text:
-        'Website and app localization, marketing adaptation, menu translation, and technical documentation for UAE market entry.',
-    },
-    {
-      href: '/locations/',
-      image: '/assets/images/onedrive/tiles/tile-corporate.png',
-      imageAlt: 'Location Services',
-      heading: 'Location Services',
-      text:
-        'On-site collection and delivery across Dubai, Abu Dhabi, and Northern Emirates. Doorstep service for busy professionals.',
-    },
-    {
-      href: '/services/golden-visa-translation/',
-      image: '/assets/images/onedrive/tiles/tile-immigration.png',
-      imageAlt: 'Golden Visa Translation',
-      heading: 'Golden Visa',
-      text:
-        'Complete document packages for UAE Golden Visa applications. Academic, professional, and investment documentation.',
-    },
-  ];
+const servicesLabel = servicesSection.label ?? servicesGridDefaults.label;
+const servicesTitle = servicesSection.title ?? servicesGridDefaults.title;
+const servicesItems = servicesSection.items ?? getHomepageServices();
 
 // METRICS STRIP
 const metrics =
