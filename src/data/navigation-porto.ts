@@ -408,6 +408,17 @@ export const mainNavigation: MainNavItem[] = [
               icon: 'fas fa-book-open',
             },
             {
+              label: 'Blog',
+              href: '/blog/',
+              icon: 'fas fa-rss',
+              badge: 'new'
+            },
+            {
+              label: 'MOJ vs Certified Guide',
+              href: '/resources/moj-vs-certified/',
+              icon: 'fas fa-balance-scale'
+            },
+            {
               label: 'Pricing Guide',
               href: '/resources/pricing-guide/',
               icon: 'fas fa-tags'
