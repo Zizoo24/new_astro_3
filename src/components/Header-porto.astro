@@ -288,13 +288,9 @@ function isActive(href: string): boolean {
   }
 
   .header-spacer {
+    /* Match the actual header height via inline style set in script */
     height: 120px;
-    /* NO transition - instant height change to avoid reflow during scroll */
-  }
-
-  /* Scrolled spacer height - controlled via CSS sibling selector */
-  .header-wrapper.is-scrolled + .header-spacer {
-    height: 52px;
+    transition: height 0.3s ease;
   }
 
   @media (max-width: 991px) {
@@ -310,22 +306,22 @@ function isActive(href: string): boolean {
 <style>
   /* ====================================
      CORAL TOP BAR - Disappears on scroll
-     Only transform/opacity transitions (GPU composited, no reflow)
      ==================================== */
   .coral-top-bar {
     background: var(--ot-coral, #FF1654);
     padding: 10px 0;
     font-family: var(--font-primary, 'Montserrat', sans-serif);
     font-size: 0.85rem;
-    /* ONLY transform/opacity - no max-height/padding transitions */
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    transform: translateY(0);
-    opacity: 1;
+    transition: transform 0.3s ease, opacity 0.3s ease, max-height 0.3s ease;
+    max-height: 60px;
+    overflow: hidden;
   }
 
   .coral-top-bar.hidden {
-    transform: translateY(-100%);
+    max-height: 0;
+    padding: 0;
     opacity: 0;
+    transform: translateY(-100%);
     pointer-events: none;
   }
 
@@ -676,30 +672,32 @@ function isActive(href: string): boolean {
     const headerSpacer = document.querySelector('.header-spacer');
     const scrollThreshold = 50;
 
-    // Track last state to avoid unnecessary DOM updates
-    let lastScrollState = false;
-
-    function handleScrollBehavior() {
-      const isScrolled = window.scrollY > scrollThreshold;
-
-      // Only update DOM if state changed
-      if (isScrolled !== lastScrollState) {
-        lastScrollState = isScrolled;
-
-        if (isScrolled) {
-          coralTopBar?.classList.add('hidden');
-          header?.classList.add('scrolled');
-          headerWrapper?.classList.add('is-scrolled');
-        } else {
-          coralTopBar?.classList.remove('hidden');
-          header?.classList.remove('scrolled');
-          headerWrapper?.classList.remove('is-scrolled');
-        }
+    function syncSpacerHeight() {
+      if (headerWrapper && headerSpacer) {
+        headerSpacer.style.height = `${headerWrapper.offsetHeight}px`;
       }
     }
 
+    function handleScrollBehavior() {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > scrollThreshold) {
+        coralTopBar?.classList.add('hidden');
+        header?.classList.add('scrolled');
+        headerWrapper?.classList.add('is-scrolled');
+      } else {
+        coralTopBar?.classList.remove('hidden');
+        header?.classList.remove('scrolled');
+        headerWrapper?.classList.remove('is-scrolled');
+      }
+
+      syncSpacerHeight();
+    }
+
     window.addEventListener('scroll', handleScrollBehavior, { passive: true });
+    window.addEventListener('resize', syncSpacerHeight);
     handleScrollBehavior();
+    syncSpacerHeight();
 
     // ========================================
     // DESKTOP SIDEBAR TOGGLE
