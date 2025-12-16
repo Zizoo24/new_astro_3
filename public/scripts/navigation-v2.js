@@ -214,47 +214,92 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // ========================================
-  // Sticky Header Behavior
+  // Sticky Header Behavior - 2025 Best Practices
+  // Uses requestAnimationFrame for smooth GPU-accelerated transitions
   // ========================================
-  
+
   const header = document.getElementById('header');
   const announcementBar = document.querySelector('.header-announcement');
   let lastScrollTop = 0;
   const scrollThreshold = 100;
-  
-  if (header) {
-    window.addEventListener('scroll', function() {
-      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-      
-      // Hide announcement bar once user scrolls past 50px
-      if (announcementBar) {
-        if (currentScroll > 50) {
-          announcementBar.classList.add('hidden');
-        } else {
-          announcementBar.classList.remove('hidden');
-        }
-      }
-      
-      // Add scrolled class when scrolling down
-      if (currentScroll > 50) {
+  let ticking = false;
+  let isScrolled = false;
+  let isHidden = false;
+
+  /**
+   * Update header state based on scroll position
+   * Called via requestAnimationFrame for optimal performance
+   */
+  function updateHeaderState(currentScroll) {
+    if (!header) return;
+
+    const shouldBeScrolled = currentScroll > 50;
+    const shouldBeHidden = currentScroll > scrollThreshold && currentScroll > lastScrollTop;
+
+    // Only update if state changed - prevents unnecessary repaints
+    if (shouldBeScrolled !== isScrolled) {
+      isScrolled = shouldBeScrolled;
+
+      // Add transitioning class for will-change management
+      header.classList.add('transitioning');
+
+      if (isScrolled) {
         header.classList.add('scrolled');
+        announcementBar?.classList.add('hidden');
       } else {
         header.classList.remove('scrolled');
+        announcementBar?.classList.remove('hidden');
       }
-      
-      // Hide header when scrolling down, show when scrolling up
-      if (currentScroll > scrollThreshold) {
-        if (currentScroll > lastScrollTop) {
-          // Scrolling down
+
+      // Remove transitioning class after animation completes
+      setTimeout(() => {
+        header.classList.remove('transitioning');
+      }, 400);
+    }
+
+    // Hide/show header on scroll direction (only after threshold)
+    if (currentScroll > scrollThreshold) {
+      if (shouldBeHidden !== isHidden) {
+        isHidden = shouldBeHidden;
+        if (isHidden) {
           header.classList.add('header-hidden');
         } else {
-          // Scrolling up
           header.classList.remove('header-hidden');
         }
       }
-      
-      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-    }, { passive: true });
+    } else if (isHidden) {
+      isHidden = false;
+      header.classList.remove('header-hidden');
+    }
+
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    ticking = false;
+  }
+
+  /**
+   * Scroll event handler - throttled via requestAnimationFrame
+   */
+  function onScroll() {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateHeaderState(currentScroll);
+      });
+      ticking = true;
+    }
+  }
+
+  if (header) {
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Initial state check on page load
+    const initialScroll = window.pageYOffset || document.documentElement.scrollTop;
+    if (initialScroll > 50) {
+      header.classList.add('scrolled');
+      announcementBar?.classList.add('hidden');
+      isScrolled = true;
+    }
   }
 
   // ========================================
