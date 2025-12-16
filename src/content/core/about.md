@@ -89,9 +89,9 @@ sections:
       - year: "2022"
         title: "Partnership with Arkan Legal"
         description: "Established official partnership with Arkan Legal Translation for MOJ-certified services and expanded to corporate clients."
-      - year: "2024"
+      - year: "2023"
         title: "Licensed & Expanded"
-        description: "Company licensed on 20 March 2024. Launched specialized verticals for Golden Visa, medical translation, and enterprise document management."
+        description: "Company licensed on 20 March 2023. Launched specialized verticals for Golden Visa, medical translation, and enterprise document management."
 
   - type: "cta"
     heading: "Ready to Get Started?"
