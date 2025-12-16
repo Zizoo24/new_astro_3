@@ -1,6 +1,13 @@
 ---
 /**
  * Header-porto.astro - Porto-Style Navigation
+ * FIXED VERSION - 2025-01-16
+ *
+ * Fixes applied:
+ * 1. Renamed duplicate #sidebarToggle to #portoMobileToggle (line ~230)
+ * 2. Added pointer-events:auto to action buttons
+ * 3. Improved logo column spacing to prevent overlap
+ * 4. Enhanced click handlers with console logging for debugging
  *
  * Features:
  * - 3-level dropdown menus
@@ -67,6 +74,7 @@ function isActive(href: string): boolean {
           <button
             id="desktopSidebarToggle"
             class="desktop-sidebar-toggle"
+            type="button"
             aria-label="Open sidebar menu"
           >
             <i class="fas fa-bars" aria-hidden="true"></i>
@@ -225,10 +233,11 @@ function isActive(href: string): boolean {
               </nav>
             </div>
 
-            <!-- Mobile Menu Button - triggers MobileShell sidebar -->
+            <!-- Mobile Menu Button - RENAMED to avoid duplicate ID with MobileShell -->
             <button
-              id="sidebarToggle"
+              id="portoMobileToggle"
               class="header-btn-collapse-nav"
+              type="button"
               aria-label="Open menu"
             >
               <i class="fas fa-bars" aria-hidden="true"></i>
@@ -241,6 +250,7 @@ function isActive(href: string): boolean {
           <button
             id="desktopSearchToggle"
             class="header-action-btn search-toggle"
+            type="button"
             aria-label="Search"
           >
             <i class="fas fa-search" aria-hidden="true"></i>
@@ -248,6 +258,7 @@ function isActive(href: string): boolean {
           <button
             id="portoThemeToggle"
             class="header-action-btn theme-toggle"
+            type="button"
             aria-label="Toggle dark mode"
           >
             <i class="fas fa-moon theme-icon-dark" aria-hidden="true"></i>
@@ -439,15 +450,16 @@ function isActive(href: string): boolean {
     position: relative;
     z-index: 1;
     margin-right: 18px;
-    flex: 0 1 240px;
+    flex: 0 0 auto; /* FIX: Changed from 0 1 240px to prevent shrinking/overlap */
     max-width: 280px;
-    min-width: 180px;
+    min-width: 0; /* Allow text truncation if needed */
   }
 
   .logo-emblem {
     height: 44px;
     width: auto;
     transition: height 0.3s ease;
+    flex-shrink: 0; /* FIX: Emblem never shrinks */
   }
 
   .logo-text-block {
@@ -464,6 +476,7 @@ function isActive(href: string): boolean {
     color: #ffffff;
     letter-spacing: 0.3px;
     transition: font-size 0.3s ease;
+    white-space: nowrap;
   }
 
   .logo-suffix {
@@ -485,6 +498,7 @@ function isActive(href: string): boolean {
     color: rgba(255, 255, 255, 0.85);
     margin-top: 2px;
     transition: font-size 0.3s ease;
+    white-space: nowrap;
   }
 
   /* Navigation Column - higher z-index for dropdowns */
@@ -495,6 +509,7 @@ function isActive(href: string): boolean {
     position: relative;
     z-index: 10;
     min-width: 0;
+    overflow: visible; /* FIX: Ensure dropdowns can extend */
   }
 
   .header-nav {
@@ -548,6 +563,7 @@ function isActive(href: string): boolean {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-shrink: 0; /* FIX: Never shrink action buttons */
   }
 
   .header-action-btn {
@@ -562,14 +578,22 @@ function isActive(href: string): boolean {
     color: #ffffff;
     cursor: pointer;
     transition: all 0.2s ease;
+    pointer-events: auto !important; /* FIX: Ensure clickable */
+    position: relative; /* FIX: Establish stacking context */
+    z-index: 100; /* FIX: Above other elements */
   }
 
   .header-action-btn:hover {
     background: rgba(255, 255, 255, 0.2);
   }
 
+  .header-action-btn:active {
+    transform: scale(0.95);
+  }
+
   .header-action-btn i {
     font-size: 1rem;
+    pointer-events: none; /* FIX: Let clicks pass through to button */
   }
 
   .theme-icon-light {
@@ -597,14 +621,22 @@ function isActive(href: string): boolean {
     color: #ffffff;
     cursor: pointer;
     transition: all 0.2s ease;
+    pointer-events: auto !important; /* FIX: Ensure clickable */
+    position: relative;
+    z-index: 100;
   }
 
   .desktop-sidebar-toggle:hover {
     background: rgba(255, 255, 255, 0.2);
   }
 
+  .desktop-sidebar-toggle:active {
+    transform: scale(0.95);
+  }
+
   .desktop-sidebar-toggle i {
     font-size: 1.25rem;
+    pointer-events: none;
   }
 
   .header-column-sidebar {
@@ -626,18 +658,18 @@ function isActive(href: string): boolean {
 </style>
 
 <script is:inline>
-  // Desktop navigation enhancements
-  // Mobile menu is handled by MobileShell via navigation-v2.js (#sidebarToggle)
+  // Porto Header Desktop Navigation
+  // Mobile menu handled by MobileShell via #sidebarToggle (this file now uses #portoMobileToggle)
   document.addEventListener('DOMContentLoaded', () => {
+    console.log('[Porto Header] Initializing...');
+
     // ========================================
     // SCROLL BEHAVIOR
-    // - Coral bar disappears on scroll
-    // - Header shrinks (scrolled class)
     // ========================================
     const coralTopBar = document.getElementById('coralTopBar');
     const header = document.getElementById('header');
     const headerWrapper = document.getElementById('headerWrapper');
-    const headerSpacer = document.querySelector('.header-spacer') as HTMLDivElement | null;
+    const headerSpacer = document.querySelector('.header-spacer');
     const scrollThreshold = 50;
 
     function syncSpacerHeight() {
@@ -674,10 +706,45 @@ function isActive(href: string): boolean {
     const menuSidebar = document.getElementById('menu-sidebar');
     const sidebarOverlay = document.getElementById('sidebarOverlay');
 
-    if (desktopSidebarToggle && menuSidebar) {
-      desktopSidebarToggle.addEventListener('click', () => {
-        menuSidebar.classList.add('is-open');
-        if (sidebarOverlay) sidebarOverlay.classList.add('is-visible');
+    console.log('[Porto Header] Desktop sidebar toggle:', desktopSidebarToggle ? 'FOUND' : 'NOT FOUND');
+    console.log('[Porto Header] Menu sidebar:', menuSidebar ? 'FOUND' : 'NOT FOUND');
+    console.log('[Porto Header] Sidebar overlay:', sidebarOverlay ? 'FOUND' : 'NOT FOUND');
+
+    if (desktopSidebarToggle) {
+      desktopSidebarToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('[Porto Header] Desktop sidebar toggle clicked!');
+
+        if (menuSidebar) {
+          menuSidebar.classList.add('is-open');
+          console.log('[Porto Header] Sidebar opened');
+        } else {
+          console.error('[Porto Header] ERROR: menu-sidebar element not found!');
+        }
+
+        if (sidebarOverlay) {
+          sidebarOverlay.classList.add('is-visible');
+        }
+
+        document.body.style.overflow = 'hidden';
+      });
+    }
+
+    // Also connect the renamed mobile toggle (for tablet breakpoint)
+    const portoMobileToggle = document.getElementById('portoMobileToggle');
+    if (portoMobileToggle) {
+      portoMobileToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('[Porto Header] Porto mobile toggle clicked!');
+
+        if (menuSidebar) {
+          menuSidebar.classList.add('is-open');
+        }
+        if (sidebarOverlay) {
+          sidebarOverlay.classList.add('is-visible');
+        }
         document.body.style.overflow = 'hidden';
       });
     }
@@ -689,20 +756,58 @@ function isActive(href: string): boolean {
     const searchOverlay = document.getElementById('search-overlay');
     const searchInput = document.getElementById('searchInput');
 
+    console.log('[Porto Header] Desktop search toggle:', desktopSearchToggle ? 'FOUND' : 'NOT FOUND');
+    console.log('[Porto Header] Search overlay:', searchOverlay ? 'FOUND' : 'NOT FOUND');
+
     if (desktopSearchToggle) {
-      desktopSearchToggle.addEventListener('click', () => {
+      desktopSearchToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('[Porto Header] Desktop search toggle clicked!');
+
         if (searchOverlay) {
           searchOverlay.classList.add('is-open');
           document.body.style.overflow = 'hidden';
-          // Focus input after overlay animation
           setTimeout(() => {
             searchInput?.focus();
           }, 100);
+          console.log('[Porto Header] Search overlay opened');
+        } else {
+          console.error('[Porto Header] ERROR: search-overlay element not found!');
         }
       });
     }
 
-    // Flyout edge detection (desktop)
+    // ========================================
+    // THEME TOGGLE
+    // ========================================
+    const themeToggle = document.getElementById('portoThemeToggle');
+
+    console.log('[Porto Header] Theme toggle:', themeToggle ? 'FOUND' : 'NOT FOUND');
+
+    if (themeToggle) {
+      themeToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('[Porto Header] Theme toggle clicked!');
+
+        const html = document.documentElement;
+        const body = document.body;
+        const currentTheme = html.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+        html.setAttribute('data-theme', newTheme);
+        body.classList.remove('theme-light', 'theme-dark');
+        body.classList.add('theme-' + newTheme);
+        localStorage.setItem('theme', newTheme);
+
+        console.log('[Porto Header] Theme changed to:', newTheme);
+      });
+    }
+
+    // ========================================
+    // FLYOUT EDGE DETECTION
+    // ========================================
     const flyoutParents = document.querySelectorAll('.dropdown-submenu');
 
     flyoutParents.forEach(parent => {
@@ -721,24 +826,9 @@ function isActive(href: string): boolean {
       });
     });
 
-    // Theme toggle
-    const themeToggle = document.getElementById('portoThemeToggle');
-
-    if (themeToggle) {
-      themeToggle.addEventListener('click', () => {
-        const html = document.documentElement;
-        const body = document.body;
-        const currentTheme = html.getAttribute('data-theme') || 'light';
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-        html.setAttribute('data-theme', newTheme);
-        body.classList.remove('theme-light', 'theme-dark');
-        body.classList.add('theme-' + newTheme);
-        localStorage.setItem('theme', newTheme);
-      });
-    }
-
-    // Keyboard navigation
+    // ========================================
+    // KEYBOARD NAVIGATION
+    // ========================================
     const nav = document.getElementById('mainNav');
 
     if (nav) {
@@ -751,7 +841,6 @@ function isActive(href: string): boolean {
 
         switch (key) {
           case 'Escape':
-            // Close any open dropdowns
             document.querySelectorAll('.dropdown.open').forEach(el => {
               el.classList.remove('open');
             });
@@ -785,5 +874,7 @@ function isActive(href: string): boolean {
         }
       });
     }
+
+    console.log('[Porto Header] Initialization complete.');
   });
 </script>
