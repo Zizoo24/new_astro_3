@@ -333,29 +333,49 @@ function isActive(href: string): boolean {
 <style>
   /* ====================================
      CORAL TOP BAR - Disappears on scroll
-     Uses transform for GPU-accelerated hide (no reflow)
+     Position absolute so it doesn't affect layout when hidden
      ==================================== */
   .coral-top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     background: var(--ot-coral, #FF1654);
     height: var(--header-coral-height);
     font-family: var(--font-primary, 'Montserrat', sans-serif);
     font-size: 0.85rem;
     display: flex;
     align-items: center;
-    /* GPU-accelerated transitions - no layout reflow */
+    /* GPU-accelerated transitions */
     will-change: transform, opacity;
     transform: translateY(0);
     opacity: 1;
     transition:
       transform var(--header-transition-duration) var(--header-transition-easing),
       opacity var(--header-transition-duration) var(--header-transition-easing);
+    z-index: 1;
   }
 
-  /* Hidden state - use transform instead of height for smoothness */
+  /* Hidden state - slides up and out */
   .coral-top-bar.hidden {
     transform: translateY(-100%);
     opacity: 0;
     pointer-events: none;
+  }
+
+  /* Main header sits below coral bar by default */
+  .site-header {
+    width: 100%;
+    margin-top: var(--header-coral-height);
+    /* GPU acceleration hint */
+    will-change: transform;
+    transform: translateZ(0);
+    transition: margin-top var(--header-transition-duration) var(--header-transition-easing);
+  }
+
+  /* When scrolled, main header moves to top */
+  .header-wrapper.is-scrolled .site-header {
+    margin-top: 0;
   }
 
   .coral-top-content {
@@ -411,13 +431,8 @@ function isActive(href: string): boolean {
 
   /* ====================================
      NAVY HEADER (inside fixed wrapper)
+     Note: margin-top transitions defined above for coral bar behavior
      ==================================== */
-  .site-header {
-    width: 100%;
-    /* GPU acceleration hint */
-    will-change: transform;
-    transform: translateZ(0);
-  }
 
   .header-body {
     background: linear-gradient(135deg, var(--ot-header-dark, #0a1628) 0%, var(--ot-header-gradient, #1a365d) 100%);
