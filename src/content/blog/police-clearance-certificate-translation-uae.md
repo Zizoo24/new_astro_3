@@ -2,7 +2,7 @@
 title: "Police Clearance Certificate Translation for UAE: What You Need to Know"
 description: "Complete guide to PCC translation for UAE employment visas and Golden Visa. Requirements by country, attestation chain, and how to avoid common rejection issues."
 publishDate: 2024-12-14
-category: immigration
+category: personal-documents
 tags:
   - Police Clearance
   - PCC
