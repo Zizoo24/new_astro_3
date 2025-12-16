@@ -132,30 +132,15 @@ export const mainNavigation: MainNavItem[] = [
           header: 'Vital Records',
           items: [
             {
-              label: 'Vital Records Hub',
+              label: 'Vital Records',
               href: '/personal/vital-records/',
               icon: 'fas fa-heart',
-            },
-            {
-              label: 'Birth Certificate',
-              href: '/personal/vital-records/birth/',
-              icon: 'fas fa-baby',
-              badge: 'popular'
-            },
-            {
-              label: 'Marriage Certificate',
-              href: '/personal/vital-records/marriage/',
-              icon: 'fas fa-ring'
-            },
-            {
-              label: 'Divorce Certificate',
-              href: '/personal/vital-records/divorce/',
-              icon: 'fas fa-file-alt'
-            },
-            {
-              label: 'Death Certificate',
-              href: '/personal/vital-records/death/',
-              icon: 'fas fa-dove'
+              children: [
+                { label: 'Birth Certificate', href: '/personal/vital-records/birth/', badge: 'popular' },
+                { label: 'Marriage Certificate', href: '/personal/vital-records/marriage/' },
+                { label: 'Divorce Certificate', href: '/personal/vital-records/divorce/' },
+                { label: 'Death Certificate', href: '/personal/vital-records/death/' }
+              ]
             }
           ]
         },
@@ -163,25 +148,14 @@ export const mainNavigation: MainNavItem[] = [
           header: 'Immigration Documents',
           items: [
             {
-              label: 'Immigration Hub',
+              label: 'Immigration',
               href: '/personal/immigration/',
               icon: 'fas fa-passport',
-            },
-            {
-              label: 'Police Clearance (PCC)',
-              href: '/personal/immigration/pcc/',
-              icon: 'fas fa-shield-alt',
-              badge: 'popular'
-            },
-            {
-              label: 'Bank Statements',
-              href: '/personal/immigration/bank/',
-              icon: 'fas fa-university'
-            },
-            {
-              label: 'Driving License',
-              href: '/personal/immigration/license/',
-              icon: 'fas fa-id-card'
+              children: [
+                { label: 'Police Clearance (PCC)', href: '/personal/immigration/pcc/', badge: 'popular' },
+                { label: 'Bank Statements', href: '/personal/immigration/bank/' },
+                { label: 'Driving License', href: '/personal/immigration/license/' }
+              ]
             }
           ]
         },
@@ -189,19 +163,13 @@ export const mainNavigation: MainNavItem[] = [
           header: 'Academic Documents',
           items: [
             {
-              label: 'Academic Hub',
+              label: 'Academic',
               href: '/personal/academic/',
               icon: 'fas fa-graduation-cap',
-            },
-            {
-              label: 'Degree Translation',
-              href: '/personal/academic/degree/',
-              icon: 'fas fa-certificate'
-            },
-            {
-              label: 'Transcripts',
-              href: '/personal/academic/transcripts/',
-              icon: 'fas fa-list-alt'
+              children: [
+                { label: 'Degree Translation', href: '/personal/academic/degree/' },
+                { label: 'Transcripts', href: '/personal/academic/transcripts/' }
+              ]
             }
           ]
         }
@@ -224,28 +192,19 @@ export const mainNavigation: MainNavItem[] = [
       href: '/services/attestation/',
       categories: [
         {
-          header: 'Country-Specific Attestation',
+          header: 'Country-Specific',
           items: [
             {
-              label: 'Attestation Hub',
+              label: 'By Country',
               href: '/services/attestation/',
               icon: 'fas fa-stamp',
-            },
-            {
-              label: 'Indian Certificate Attestation',
-              href: '/services/attestation/india/',
-              icon: 'fas fa-flag',
-              badge: 'popular'
-            },
-            {
-              label: 'UK Document Attestation',
-              href: '/services/attestation/uk/',
-              icon: 'fas fa-flag'
-            },
-            {
-              label: 'US Document Attestation',
-              href: '/services/attestation/us/',
-              icon: 'fas fa-flag'
+              children: [
+                { label: 'India Attestation', href: '/services/attestation/india/', badge: 'popular' },
+                { label: 'UK Attestation', href: '/services/attestation/uk/' },
+                { label: 'US Attestation', href: '/services/attestation/us/' },
+                { label: 'Philippines', href: '/services/attestation/philippines/' },
+                { label: 'Pakistan', href: '/services/attestation/pakistan/' }
+              ]
             }
           ]
         },
@@ -253,10 +212,15 @@ export const mainNavigation: MainNavItem[] = [
           header: 'Special Services',
           items: [
             {
-              label: 'Golden Visa Documents',
+              label: 'Premium',
               href: '/services/golden-visa-translation/',
               icon: 'fas fa-star',
-              badge: 'hot'
+              badge: 'hot',
+              children: [
+                { label: 'Golden Visa Docs', href: '/services/golden-visa-translation/' },
+                { label: 'Embassy Attestation', href: '/services/embassy-attestation/' },
+                { label: 'Apostille Service', href: '/services/apostille/' }
+              ]
             }
           ]
         }
@@ -282,33 +246,36 @@ export const mainNavigation: MainNavItem[] = [
           header: 'Industry Expertise',
           items: [
             {
-              label: 'Specialized Hub',
-              href: '/specialized-translation/',
-              icon: 'fas fa-cogs',
-            },
-            {
-              label: 'Medical Translation',
+              label: 'Medical',
               href: '/specialized/medical/',
               icon: 'fas fa-heartbeat',
-              badge: 'express'
+              badge: 'express',
+              children: [
+                { label: 'Medical Reports', href: '/specialized/medical/reports/' },
+                { label: 'Prescriptions', href: '/specialized/medical/prescriptions/' },
+                { label: 'Clinical Trials', href: '/specialized/medical/clinical/' }
+              ]
             },
             {
-              label: 'Technical Translation',
+              label: 'Technical',
               href: '/specialized/technical/',
               icon: 'fas fa-tools',
-              badge: 'new'
+              badge: 'new',
+              children: [
+                { label: 'Engineering Docs', href: '/specialized/technical/engineering/' },
+                { label: 'Manuals', href: '/specialized/technical/manuals/' },
+                { label: 'Patents', href: '/specialized/technical/patents/' }
+              ]
             },
             {
-              label: 'Hospitality Translation',
-              href: '/specialized/hospitality/',
-              icon: 'fas fa-concierge-bell',
-              badge: 'new'
-            },
-            {
-              label: 'Digital Content',
-              href: '/specialized/digital/',
-              icon: 'fas fa-globe',
-              badge: 'new'
+              label: 'Business',
+              href: '/specialized/business/',
+              icon: 'fas fa-briefcase',
+              children: [
+                { label: 'Hospitality', href: '/specialized/hospitality/' },
+                { label: 'Digital Content', href: '/specialized/digital/' },
+                { label: 'Financial', href: '/specialized/financial/' }
+              ]
             }
           ]
         }
@@ -331,38 +298,20 @@ export const mainNavigation: MainNavItem[] = [
       href: '/locations/',
       categories: [
         {
-          header: 'Dubai Locations',
+          header: 'Dubai',
           items: [
             {
-              label: 'All Locations',
-              href: '/locations/',
+              label: 'Dubai',
+              href: '/locations/dubai/',
               icon: 'fas fa-map-marker-alt',
-            },
-            {
-              label: 'Palm Jumeirah',
-              href: '/locations/dubai/palm-jumeirah/',
-              icon: 'fas fa-palm-tree'
-            },
-            {
-              label: 'JLT (Jumeirah Lake Towers)',
-              href: '/locations/dubai/jlt/',
-              icon: 'fas fa-building'
-            },
-            {
-              label: 'Business Bay',
-              href: '/locations/dubai/business-bay/',
-              icon: 'fas fa-building'
-            },
-            {
-              label: 'DIFC',
-              href: '/locations/dubai/difc/',
-              icon: 'fas fa-landmark'
-            },
-            {
-              label: 'Dubai Marina',
-              href: '/locations/dubai/marina/',
-              icon: 'fas fa-ship',
-              badge: 'new'
+              children: [
+                { label: 'Palm Jumeirah', href: '/locations/dubai/palm-jumeirah/' },
+                { label: 'JLT', href: '/locations/dubai/jlt/' },
+                { label: 'Business Bay', href: '/locations/dubai/business-bay/' },
+                { label: 'DIFC', href: '/locations/dubai/difc/' },
+                { label: 'Dubai Marina', href: '/locations/dubai/marina/', badge: 'new' },
+                { label: 'Deira', href: '/locations/dubai/deira/' }
+              ]
             }
           ]
         },
@@ -372,12 +321,21 @@ export const mainNavigation: MainNavItem[] = [
             {
               label: 'Abu Dhabi',
               href: '/locations/abu-dhabi/',
-              icon: 'fas fa-mosque'
+              icon: 'fas fa-mosque',
+              children: [
+                { label: 'Downtown', href: '/locations/abu-dhabi/downtown/' },
+                { label: 'Yas Island', href: '/locations/abu-dhabi/yas/' }
+              ]
             },
             {
-              label: 'Sharjah',
-              href: '/locations/sharjah/',
-              icon: 'fas fa-city'
+              label: 'Northern',
+              href: '/locations/northern/',
+              icon: 'fas fa-city',
+              children: [
+                { label: 'Sharjah', href: '/locations/sharjah/' },
+                { label: 'Ajman', href: '/locations/ajman/' },
+                { label: 'RAK', href: '/locations/rak/' }
+              ]
             }
           ]
         }
@@ -400,44 +358,25 @@ export const mainNavigation: MainNavItem[] = [
       href: '/resources/',
       categories: [
         {
-          header: 'Helpful Guides',
+          header: 'Guides',
           items: [
             {
-              label: 'Resource Hub',
+              label: 'Guides',
               href: '/resources/',
               icon: 'fas fa-book-open',
+              children: [
+                { label: 'MOJ vs Certified', href: '/resources/moj-vs-certified/' },
+                { label: 'Pricing Guide', href: '/resources/pricing-guide/' },
+                { label: 'Document Checklist', href: '/resources/document-checklist/' },
+                { label: 'Attestation Guide', href: '/resources/attestation-guide/' },
+                { label: 'Golden Visa Checklist', href: '/resources/golden-visa-checklist/', badge: 'popular' }
+              ]
             },
             {
               label: 'Blog',
               href: '/blog/',
               icon: 'fas fa-rss',
               badge: 'new'
-            },
-            {
-              label: 'MOJ vs Certified Guide',
-              href: '/resources/moj-vs-certified/',
-              icon: 'fas fa-balance-scale'
-            },
-            {
-              label: 'Pricing Guide',
-              href: '/resources/pricing-guide/',
-              icon: 'fas fa-tags'
-            },
-            {
-              label: 'Document Checklist',
-              href: '/resources/document-checklist/',
-              icon: 'fas fa-tasks'
-            },
-            {
-              label: 'Attestation Guide',
-              href: '/resources/attestation-guide/',
-              icon: 'fas fa-clipboard-list'
-            },
-            {
-              label: 'Golden Visa Checklist',
-              href: '/resources/golden-visa-checklist/',
-              icon: 'fas fa-check-double',
-              badge: 'popular'
             }
           ]
         },
@@ -445,14 +384,14 @@ export const mainNavigation: MainNavItem[] = [
           header: 'Support',
           items: [
             {
-              label: 'FAQ',
+              label: 'Help',
               href: '/resources/faq/',
-              icon: 'fas fa-question-circle'
-            },
-            {
-              label: 'Contact Us',
-              href: '/contact/',
-              icon: 'fas fa-envelope'
+              icon: 'fas fa-question-circle',
+              children: [
+                { label: 'FAQ', href: '/resources/faq/' },
+                { label: 'Contact Us', href: '/contact/' },
+                { label: 'Get Quote', href: '/quote/' }
+              ]
             }
           ]
         }
