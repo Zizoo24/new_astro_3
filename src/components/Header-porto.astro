@@ -288,9 +288,13 @@ function isActive(href: string): boolean {
   }
 
   .header-spacer {
-    /* Match the actual header height via inline style set in script */
     height: 120px;
     transition: height 0.3s ease;
+  }
+
+  /* Scrolled spacer height - controlled via CSS sibling selector */
+  .header-wrapper.is-scrolled + .header-spacer {
+    height: 52px;
   }
 
   @media (max-width: 991px) {
@@ -672,32 +676,30 @@ function isActive(href: string): boolean {
     const headerSpacer = document.querySelector('.header-spacer');
     const scrollThreshold = 50;
 
-    function syncSpacerHeight() {
-      if (headerWrapper && headerSpacer) {
-        headerSpacer.style.height = `${headerWrapper.offsetHeight}px`;
-      }
-    }
+    // Track last state to avoid unnecessary DOM updates
+    let lastScrollState = false;
 
     function handleScrollBehavior() {
-      const currentScrollY = window.scrollY;
+      const isScrolled = window.scrollY > scrollThreshold;
 
-      if (currentScrollY > scrollThreshold) {
-        coralTopBar?.classList.add('hidden');
-        header?.classList.add('scrolled');
-        headerWrapper?.classList.add('is-scrolled');
-      } else {
-        coralTopBar?.classList.remove('hidden');
-        header?.classList.remove('scrolled');
-        headerWrapper?.classList.remove('is-scrolled');
+      // Only update DOM if state changed
+      if (isScrolled !== lastScrollState) {
+        lastScrollState = isScrolled;
+
+        if (isScrolled) {
+          coralTopBar?.classList.add('hidden');
+          header?.classList.add('scrolled');
+          headerWrapper?.classList.add('is-scrolled');
+        } else {
+          coralTopBar?.classList.remove('hidden');
+          header?.classList.remove('scrolled');
+          headerWrapper?.classList.remove('is-scrolled');
+        }
       }
-
-      syncSpacerHeight();
     }
 
     window.addEventListener('scroll', handleScrollBehavior, { passive: true });
-    window.addEventListener('resize', syncSpacerHeight);
     handleScrollBehavior();
-    syncSpacerHeight();
 
     // ========================================
     // DESKTOP SIDEBAR TOGGLE
