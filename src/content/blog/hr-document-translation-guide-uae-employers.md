@@ -2,7 +2,7 @@
 title: "HR Document Translation Guide for UAE Employers"
 description: "What HR professionals need to know about employee document translation. MOJ vs Certified translation, which documents need what, and how to avoid overpaying."
 publishDate: 2024-12-13
-category: business
+category: corporate
 tags:
   - HR Documents
   - Employment
