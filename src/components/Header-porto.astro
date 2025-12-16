@@ -289,7 +289,7 @@ function isActive(href: string): boolean {
 
   .header-spacer {
     height: 120px;
-    transition: height 0.3s ease;
+    /* NO transition - instant height change to avoid reflow during scroll */
   }
 
   /* Scrolled spacer height - controlled via CSS sibling selector */
@@ -310,22 +310,22 @@ function isActive(href: string): boolean {
 <style>
   /* ====================================
      CORAL TOP BAR - Disappears on scroll
+     Only transform/opacity transitions (GPU composited, no reflow)
      ==================================== */
   .coral-top-bar {
     background: var(--ot-coral, #FF1654);
     padding: 10px 0;
     font-family: var(--font-primary, 'Montserrat', sans-serif);
     font-size: 0.85rem;
-    transition: transform 0.3s ease, opacity 0.3s ease, max-height 0.3s ease;
-    max-height: 60px;
-    overflow: hidden;
+    /* ONLY transform/opacity - no max-height/padding transitions */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateY(0);
+    opacity: 1;
   }
 
   .coral-top-bar.hidden {
-    max-height: 0;
-    padding: 0;
-    opacity: 0;
     transform: translateY(-100%);
+    opacity: 0;
     pointer-events: none;
   }
 
