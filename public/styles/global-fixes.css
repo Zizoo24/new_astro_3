@@ -751,107 +751,135 @@ button:focus:not(:focus-visible) {
 }
 
 /* ============================================
-   8. FOOTER MOBILE ALIGNMENT FIX - 2025 BEST PRACTICES
+   8. FOOTER MOBILE ALIGNMENT - COMPLETE OVERHAUL
 
-   ROOT CAUSE: Contact items using inline-flex with
-   justify-content: center but parent not centering them.
-
-   FIX: Proper flexbox centering hierarchy.
+   Using maximum specificity to override component styles
    ============================================ */
 
-/* Mobile footer - proper centering stack */
-@media (max-width: 767px) {
-  /* Footer grid - center everything */
-  .footer .footer-grid {
+/* Mobile footer - FORCE single column centered layout */
+@media screen and (max-width: 767px) {
+  /* NUCLEAR OPTION: Override everything */
+  footer.footer .footer-grid,
+  .footer .footer-grid,
+  footer .footer-grid {
+    display: block !important;
+    grid-template-columns: none !important;
+    text-align: center !important;
+  }
+
+  /* All direct children - stacked and centered */
+  footer.footer .footer-grid > *,
+  .footer .footer-grid > *,
+  footer .footer-grid > * {
+    display: block !important;
+    width: 100% !important;
+    margin-bottom: 32px !important;
+    text-align: center !important;
+    float: none !important;
+  }
+
+  footer.footer .footer-grid > *:last-child,
+  .footer .footer-grid > *:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  /* Brand section - centered flex column */
+  footer.footer .footer-brand,
+  .footer .footer-brand {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
-    gap: 32px !important;
   }
 
-  /* All footer sections - full width, centered content */
-  .footer .footer-brand,
+  /* Links sections - centered */
+  footer.footer .footer-links,
+  footer.footer .footer-services,
+  footer.footer .footer-contact,
   .footer .footer-links,
   .footer .footer-services,
   .footer .footer-contact {
-    width: 100% !important;
-    max-width: 400px !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
   }
 
-  /* Footer links list - centered */
-  .footer .footer-links ul,
-  .footer .footer-services ul {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 8px !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    list-style: none !important;
-  }
-
-  /* Footer headings - centered with underline */
+  /* Headings - centered with inline-block for proper underline */
+  footer.footer .footer-links h4,
+  footer.footer .footer-services h4,
+  footer.footer .footer-contact h4,
   .footer .footer-links h4,
   .footer .footer-services h4,
   .footer .footer-contact h4 {
+    display: inline-block !important;
+    width: auto !important;
     text-align: center !important;
-    width: 100% !important;
     position: relative !important;
   }
 
+  /* Underline - FORCE centered */
+  footer.footer .footer-links h4::after,
+  footer.footer .footer-services h4::after,
+  footer.footer .footer-contact h4::after,
   .footer .footer-links h4::after,
   .footer .footer-services h4::after,
   .footer .footer-contact h4::after {
     left: 50% !important;
+    right: auto !important;
     transform: translateX(-50%) !important;
   }
 
-  /* Contact list - CENTER ALIGNMENT FIX */
+  /* Lists - centered column */
+  footer.footer .footer-links ul,
+  footer.footer .footer-services ul,
+  footer.footer .footer-contact ul,
+  .footer .footer-links ul,
+  .footer .footer-services ul,
   .footer .footer-contact ul {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    gap: 12px !important;
+    gap: 10px !important;
     padding: 0 !important;
     margin: 0 !important;
     list-style: none !important;
     width: 100% !important;
   }
 
-  /* Contact items - CRITICAL: inline-flex centered within centered parent */
+  /* List items in links - centered */
+  footer.footer .footer-links li,
+  footer.footer .footer-services li,
+  .footer .footer-links li,
+  .footer .footer-services li {
+    margin-bottom: 0 !important;
+    text-align: center !important;
+  }
+
+  /* Contact items - inline-flex, icon + text, centered in parent */
+  footer.footer .footer-contact li,
   .footer .footer-contact li {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: flex-start !important;
     gap: 10px !important;
     text-align: left !important;
+    margin-bottom: 0 !important;
     width: auto !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
   }
 
-  /* Contact icons - consistent sizing */
+  /* Contact icons */
+  footer.footer .footer-contact li i,
   .footer .footer-contact li i {
     flex-shrink: 0 !important;
     width: 18px !important;
     text-align: center !important;
     color: var(--accent-coral, #FF1654) !important;
+    margin-top: 0 !important;
   }
 
-  /* Contact text/links - allow natural width */
-  .footer .footer-contact li span,
-  .footer .footer-contact li a {
-    white-space: normal !important;
-    word-break: break-word !important;
-  }
-
-  /* Social icons - centered row */
+  /* Social icons row */
+  footer.footer .footer-social,
   .footer .footer-social {
     display: flex !important;
     justify-content: center !important;
@@ -859,7 +887,19 @@ button:focus:not(:focus-visible) {
     width: 100% !important;
   }
 
-  /* Footer bottom - centered with proper spacing */
+  /* Partnership pill */
+  footer.footer .footer-partnership,
+  .footer .footer-partnership {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+    display: inline-flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+
+  /* Footer bottom */
+  footer.footer .footer-bottom,
   .footer .footer-bottom {
     text-align: center !important;
     width: 100% !important;
@@ -867,30 +907,27 @@ button:focus:not(:focus-visible) {
     margin-top: 24px !important;
   }
 
+  footer.footer .footer-bottom p,
   .footer .footer-bottom p {
     font-size: 0.8rem !important;
     line-height: 1.6 !important;
     margin: 0 !important;
   }
-
-  /* Partnership pill - centered */
-  .footer .footer-partnership {
-    margin-left: auto !important;
-    margin-right: auto !important;
-    text-align: center !important;
-  }
 }
 
-/* Extra small mobile - tighter spacing */
-@media (max-width: 480px) {
-  .footer .footer-grid {
-    gap: 24px !important;
+/* Extra small mobile */
+@media screen and (max-width: 480px) {
+  footer.footer .footer-grid > *,
+  .footer .footer-grid > * {
+    margin-bottom: 24px !important;
   }
 
+  footer.footer .footer-contact li,
   .footer .footer-contact li {
     font-size: 0.9rem !important;
   }
 
+  footer.footer .container,
   .footer .container {
     padding-left: 16px !important;
     padding-right: 16px !important;
