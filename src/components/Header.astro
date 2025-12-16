@@ -193,16 +193,39 @@ const { isHomepage = false } = Astro.props;
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const header = document.getElementById('header');
+    const announcementBar = document.querySelector('.header-announcement');
+    let isScrolled = false;
+    let ticking = false;
 
-    // Scroll behavior for header
-    window.addEventListener('scroll', () => {
+    // Optimized scroll handler using requestAnimationFrame
+    function handleScroll() {
       const currentScroll = window.pageYOffset;
-      if (currentScroll > 50) {
-        header?.classList.add('scrolled');
-      } else {
-        header?.classList.remove('scrolled');
+      const shouldBeScrolled = currentScroll > 50;
+
+      // Only update if state changed
+      if (shouldBeScrolled !== isScrolled) {
+        isScrolled = shouldBeScrolled;
+        header?.classList.add('transitioning');
+
+        if (isScrolled) {
+          header?.classList.add('scrolled');
+          announcementBar?.classList.add('hidden');
+        } else {
+          header?.classList.remove('scrolled');
+          announcementBar?.classList.remove('hidden');
+        }
+
+        setTimeout(() => header?.classList.remove('transitioning'), 400);
       }
-    });
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(handleScroll);
+        ticking = true;
+      }
+    }, { passive: true });
 
     // Desktop dropdown behavior - click-toggle for touch, hover for desktop
     const dropdownItems = document.querySelectorAll('.nav-item.has-dropdown');

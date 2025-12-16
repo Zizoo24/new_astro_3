@@ -613,3 +613,286 @@ a:focus:not(:focus-visible),
 button:focus:not(:focus-visible) {
   outline: none;
 }
+
+/* ============================================
+   7. HEADER SCROLL TRANSITION FIX - 2025 BEST PRACTICES
+
+   ROOT CAUSE: Using max-height/padding transitions causes
+   layout recalculation (reflow) which creates visual glitches.
+
+   FIX: Use transform-based animations for GPU acceleration.
+   - Coral bar uses transform: translateY() to collapse
+   - Header uses CSS custom properties for height calc
+   - will-change hint applied only during transition
+   ============================================ */
+
+/* CSS Custom Properties for header height calculations */
+:root {
+  --header-coral-height: 38px;
+  --header-main-height: 64px;
+  --header-main-height-scrolled: 52px;
+  --header-total-height: calc(var(--header-coral-height) + var(--header-main-height));
+  --header-total-height-scrolled: var(--header-main-height-scrolled);
+}
+
+/* Nav Shell - stable container that doesn't change height */
+.exodus-header .nav-shell {
+  position: relative;
+  overflow: hidden;
+  /* GPU acceleration for smooth rendering */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Coral Announcement Bar - TRANSFORM-BASED collapse */
+.header-announcement {
+  /* Remove max-height transition - use transform instead */
+  max-height: none !important;
+  height: var(--header-coral-height);
+  overflow: visible !important;
+  padding: 8px 0 !important;
+  opacity: 1 !important;
+
+  /* GPU-accelerated transform */
+  transform: translateY(0);
+  transform-origin: top center;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s ease !important;
+
+  /* Ensure it's positioned for transform */
+  position: relative;
+  z-index: 2;
+  will-change: transform, opacity;
+}
+
+/* Coral bar HIDDEN state - slide up, don't collapse height */
+.header-announcement.hidden {
+  transform: translateY(-100%);
+  opacity: 0 !important;
+  pointer-events: none;
+  /* Height stays the same - parent clips it */
+  max-height: none !important;
+  height: var(--header-coral-height) !important;
+  padding: 8px 0 !important;
+}
+
+/* Header Main - STABLE height transitions */
+.exodus-header .header-main {
+  padding: 12px 0;
+  transition: padding 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.3s ease !important;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.exodus-header.scrolled .header-main {
+  padding: 8px 0;
+}
+
+/* When coral bar is hidden, adjust nav-shell to clip properly */
+.exodus-header:has(.header-announcement.hidden) .nav-shell {
+  /* Negative margin pulls up content to fill gap */
+  margin-top: calc(-1 * var(--header-coral-height));
+  transition: margin-top 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Fallback for browsers without :has() - use scrolled class */
+.exodus-header.scrolled .nav-shell {
+  margin-top: calc(-1 * var(--header-coral-height));
+  transition: margin-top 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* When NOT scrolled, reset margin */
+.exodus-header:not(.scrolled) .nav-shell {
+  margin-top: 0;
+  transition: margin-top 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Ensure header stays fixed and stable */
+.header-desktop.exodus-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* Prevent any layout-caused jank */
+  contain: layout style;
+}
+
+/* Remove will-change when idle to free GPU memory */
+.header-desktop.exodus-header:not(.transitioning) .header-announcement {
+  will-change: auto;
+}
+
+/* Background transitions - use opacity layer instead of direct bg change */
+.header-desktop.exodus-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 43, 72, 0.95);
+  opacity: 0;
+  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.header-desktop.exodus-header.scrolled::before {
+  opacity: 1;
+}
+
+/* Reduced motion - respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+  .header-announcement,
+  .header-announcement.hidden,
+  .exodus-header .header-main,
+  .exodus-header .nav-shell,
+  .header-desktop.exodus-header::before {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   8. FOOTER MOBILE ALIGNMENT FIX - 2025 BEST PRACTICES
+
+   ROOT CAUSE: Contact items using inline-flex with
+   justify-content: center but parent not centering them.
+
+   FIX: Proper flexbox centering hierarchy.
+   ============================================ */
+
+/* Mobile footer - proper centering stack */
+@media (max-width: 767px) {
+  /* Footer grid - center everything */
+  .footer .footer-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 32px !important;
+  }
+
+  /* All footer sections - full width, centered content */
+  .footer .footer-brand,
+  .footer .footer-links,
+  .footer .footer-services,
+  .footer .footer-contact {
+    width: 100% !important;
+    max-width: 400px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  /* Footer links list - centered */
+  .footer .footer-links ul,
+  .footer .footer-services ul {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    list-style: none !important;
+  }
+
+  /* Footer headings - centered with underline */
+  .footer .footer-links h4,
+  .footer .footer-services h4,
+  .footer .footer-contact h4 {
+    text-align: center !important;
+    width: 100% !important;
+    position: relative !important;
+  }
+
+  .footer .footer-links h4::after,
+  .footer .footer-services h4::after,
+  .footer .footer-contact h4::after {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  /* Contact list - CENTER ALIGNMENT FIX */
+  .footer .footer-contact ul {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    list-style: none !important;
+    width: 100% !important;
+  }
+
+  /* Contact items - CRITICAL: inline-flex centered within centered parent */
+  .footer .footer-contact li {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    text-align: left !important;
+    width: auto !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Contact icons - consistent sizing */
+  .footer .footer-contact li i {
+    flex-shrink: 0 !important;
+    width: 18px !important;
+    text-align: center !important;
+    color: var(--accent-coral, #FF1654) !important;
+  }
+
+  /* Contact text/links - allow natural width */
+  .footer .footer-contact li span,
+  .footer .footer-contact li a {
+    white-space: normal !important;
+    word-break: break-word !important;
+  }
+
+  /* Social icons - centered row */
+  .footer .footer-social {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  /* Footer bottom - centered with proper spacing */
+  .footer .footer-bottom {
+    text-align: center !important;
+    width: 100% !important;
+    padding: 20px 16px !important;
+    margin-top: 24px !important;
+  }
+
+  .footer .footer-bottom p {
+    font-size: 0.8rem !important;
+    line-height: 1.6 !important;
+    margin: 0 !important;
+  }
+
+  /* Partnership pill - centered */
+  .footer .footer-partnership {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+}
+
+/* Extra small mobile - tighter spacing */
+@media (max-width: 480px) {
+  .footer .footer-grid {
+    gap: 24px !important;
+  }
+
+  .footer .footer-contact li {
+    font-size: 0.9rem !important;
+  }
+
+  .footer .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
