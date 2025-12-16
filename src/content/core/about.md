@@ -23,8 +23,8 @@ sections:
     sectionTitle: "Licensed & Certified"
     mojLabel: "Certified Partner"
     mojTitle: "MOJ Legal Translation"
-    mojSubtitle: "In partnership with Arkan Legal Translation"
-    note: "All translations are prepared by Ministry of Justice certified translators and carry official certification designed for acceptance by UAE courts and government authorities."
+    mojSubtitle: "In partnership with Arkan, MOJ-licensed legal translator"
+    note: "All MOJ-certified translations are executed by Arkan, our partner and a Ministry of Justice licensed legal translator. MOJ licensing is a matter of personal liability—individual translators are licensed by the Ministry of Justice, not companies. This ensures every certified document carries the personal accountability of a registered professional."
 
   - type: "authorityLogos"
     title: "Our translations are formatted for acceptance by:"
@@ -90,8 +90,8 @@ sections:
         title: "Partnership with Arkan Legal"
         description: "Established official partnership with Arkan Legal Translation for MOJ-certified services and expanded to corporate clients."
       - year: "2024"
-        title: "Expanded Services"
-        description: "Launched specialized verticals for Golden Visa, medical translation, and enterprise document management."
+        title: "Licensed & Expanded"
+        description: "Company licensed on 20 March 2024. Launched specialized verticals for Golden Visa, medical translation, and enterprise document management."
 
   - type: "cta"
     heading: "Ready to Get Started?"
