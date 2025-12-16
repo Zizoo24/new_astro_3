@@ -1,26 +1,23 @@
 ---
 /**
  * Header-porto.astro - Porto-Style Navigation
- * FIXED VERSION v2 - 2025-01-16
+ * VERSION 3 - December 2025
  *
- * Fixes applied:
- * 1. Renamed duplicate #sidebarToggle to #portoMobileToggle
- * 2. Added pointer-events:auto to action buttons
- * 3. Improved logo column spacing to prevent overlap
- * 4. SCROLL GLITCH FIX: Use CSS-driven heights instead of JS measurement
- * 5. Added will-change hints for GPU acceleration
- * 6. Removed syncSpacerHeight() that caused reflow during transitions
- * 7. Throttled scroll handler (~60fps) with state change detection
+ * SCROLL GLITCH FIX - Transform-Only Approach
+ * ============================================
+ * Previous versions tried to transition height/margin properties which
+ * cause layout reflow even with throttling. This version uses:
  *
- * Features:
- * - 3-level dropdown menus
- * - White dropdown panels with teal accent
- * - Flyout submenus
- * - Section headers
- * - Badges (NEW, Express, Popular, Hot)
- * - Mobile accordion navigation
- * - Dark mode support
- * - Accessibility compliant
+ * 1. FIXED spacer height (no transition) - changes instantly on state change
+ * 2. Transform-only visual transitions (GPU composited, no reflow)
+ * 3. Single RAF-based scroll handler with hysteresis
+ * 4. CSS containment for isolation
+ *
+ * Visual Effect:
+ * - Coral bar slides up (translateY)
+ * - Main header scales down slightly (transform: scale)
+ * - Logo/buttons scale down (transform: scale)
+ * - NO height/margin/padding animations
  */
 
 import { mainNavigation } from '../data/navigation-porto';
@@ -33,293 +30,305 @@ interface Props {
 
 const { currentPath = Astro.url.pathname, isHomepage = false } = Astro.props;
 
-// Check if current path matches or is child of a nav item
 function isActive(href: string): boolean {
   if (href === '/') return currentPath === '/';
   return currentPath.startsWith(href);
 }
 ---
 
-<!-- Fixed Header Wrapper -->
-<div class="header-wrapper" id="headerWrapper">
-  <!-- Coral Top Bar - Disappears on scroll -->
-  <div class="coral-top-bar" id="coralTopBar">
-    <div class="container">
-      <div class="coral-top-content">
-        <div class="coral-top-left">
-          <a href={`tel:${siteContact.phone.replace(/\s/g, '')}`} class="coral-top-link">
-            <i class="fas fa-phone-alt"></i>
-            <span>{siteContact.phoneDisplay}</span>
-          </a>
-          <a href={`mailto:${siteContact.email}`} class="coral-top-link coral-top-email">
-            <i class="fas fa-envelope"></i>
-            <span>{siteContact.email}</span>
-          </a>
-        </div>
-        <div class="coral-top-right">
-          <span class="coral-top-hours">
-            <i class="fas fa-clock"></i>
-            Daily: 8:00 AM - 10:00 PM
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Sticky Navy Header -->
-  <header id="header" class:list={["site-header", { "header-homepage": isHomepage }]}>
-  <div class="header-body">
-    <!-- Main Header -->
-    <div class="header-container container">
-      <div class="header-row">
-        <!-- Desktop Sidebar Toggle -->
-        <div class="header-column header-column-sidebar">
-          <button
-            id="desktopSidebarToggle"
-            class="desktop-sidebar-toggle"
-            type="button"
-            aria-label="Open sidebar menu"
-          >
-            <i class="fas fa-bars" aria-hidden="true"></i>
-          </button>
-        </div>
-
-        <!-- Logo -->
-        <div class="header-column header-column-logo">
-          <a href="/" class="header-logo">
-            <img
-              src="/assets/images/logo/brand/emblem-clean.png"
-              alt="OnlineTranslation.ae"
-              width="45"
-              height="45"
-              class="logo-emblem"
-              loading="eager"
-            />
-            <div class="logo-text-block">
-              <span class="logo-text">Online<span class="logo-suffix">Translation</span><span class="logo-domain">.ae</span></span>
-              <span class="logo-tagline">Boutique Legal Translation</span>
-            </div>
-          </a>
-        </div>
-
-        <!-- Navigation -->
-        <div class="header-column header-column-nav">
-          <div class="header-nav">
-            <div class="header-nav-main header-nav-main-effect-1">
-              <nav id="mainNav" aria-label="Main navigation">
-                <ul class="nav nav-pills" role="menubar">
-                  {mainNavigation.map((item) => (
-                    <li
-                      class:list={[
-                        item.dropdown ? 'dropdown' : '',
-                        isActive(item.href) ? 'active' : '',
-                        item.isButton ? 'nav-item-button' : ''
-                      ]}
-                      role="none"
-                    >
-                      {item.isButton ? (
-                        <a
-                          href={item.href}
-                          class={`btn ${item.buttonClass || 'btn-primary'}`}
-                          target={item.href.startsWith('http') ? '_blank' : undefined}
-                          rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                        >
-                          {item.icon && <i class={item.icon}></i>}
-                          <span>{item.label}</span>
-                        </a>
-                      ) : item.dropdown ? (
-                        <>
-                          <a
-                            href={item.href}
-                            class:list={[
-                              'nav-link',
-                              'dropdown-toggle',
-                              isActive(item.href) ? 'active' : ''
-                            ]}
-                            role="menuitem"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                          >
-                            {item.label}
-                            <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
-                          </a>
-
-                          <ul class="dropdown-menu" role="menu" aria-label={item.dropdown.label}>
-                            {item.dropdown.categories.map((category, catIndex) => (
-                              <>
-                                {category.header && (
-                                  <li class="dropdown-header" role="presentation">
-                                    {category.header}
-                                  </li>
-                                )}
-
-                                {category.items.map((subItem) => (
-                                  <li
-                                    class:list={[
-                                      subItem.children ? 'dropdown-submenu' : '',
-                                      isActive(subItem.href) ? 'active' : ''
-                                    ]}
-                                    role="none"
-                                  >
-                                    <a
-                                      href={subItem.href}
-                                      class="dropdown-item"
-                                      role="menuitem"
-                                      aria-haspopup={subItem.children ? 'true' : undefined}
-                                    >
-                                      {subItem.icon && (
-                                        <i class={subItem.icon} aria-hidden="true"></i>
-                                      )}
-                                      <span>{subItem.label}</span>
-                                      {subItem.badge && (
-                                        <span class={`badge badge-${subItem.badge}`}>
-                                          {subItem.badge.toUpperCase()}
-                                        </span>
-                                      )}
-                                    </a>
-
-                                    {subItem.children && (
-                                      <ul class="dropdown-menu" role="menu">
-                                        {subItem.children.map((child) => (
-                                          <li
-                                            class:list={[isActive(child.href) ? 'active' : '']}
-                                            role="none"
-                                          >
-                                            <a
-                                              href={child.href}
-                                              class="dropdown-item"
-                                              role="menuitem"
-                                            >
-                                              <span>{child.label}</span>
-                                              {child.badge && (
-                                                <span class={`badge badge-${child.badge}`}>
-                                                  {child.badge.toUpperCase()}
-                                                </span>
-                                              )}
-                                            </a>
-                                          </li>
-                                        ))}
-                                      </ul>
-                                    )}
-                                  </li>
-                                ))}
-                              </>
-                            ))}
-
-                            {item.dropdown.footerLink && (
-                              <li role="none">
-                                <a
-                                  href={item.dropdown.footerLink.href}
-                                  class="dropdown-footer"
-                                  role="menuitem"
-                                >
-                                  {item.dropdown.footerLink.label}
-                                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                                </a>
-                              </li>
-                            )}
-                          </ul>
-                        </>
-                      ) : (
-                        <a
-                          href={item.href}
-                          class:list={['nav-link', isActive(item.href) ? 'active' : '']}
-                          role="menuitem"
-                        >
-                          {item.icon && <i class={item.icon}></i>}
-                          {item.label}
-                        </a>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            </div>
-
-            <!-- Mobile Menu Button - RENAMED to avoid duplicate ID with MobileShell -->
-            <button
-              id="portoMobileToggle"
-              class="header-btn-collapse-nav"
-              type="button"
-              aria-label="Open menu"
-            >
-              <i class="fas fa-bars" aria-hidden="true"></i>
-            </button>
+<!-- Header System Container -->
+<div class="header-system" id="headerSystem">
+  <!-- Fixed Header Wrapper -->
+  <div class="header-wrapper" id="headerWrapper">
+    <!-- Coral Top Bar -->
+    <div class="coral-top-bar" id="coralTopBar">
+      <div class="container">
+        <div class="coral-top-content">
+          <div class="coral-top-left">
+            <a href={`tel:${siteContact.phone.replace(/\s/g, '')}`} class="coral-top-link">
+              <i class="fas fa-phone-alt"></i>
+              <span>{siteContact.phoneDisplay}</span>
+            </a>
+            <a href={`mailto:${siteContact.email}`} class="coral-top-link coral-top-email">
+              <i class="fas fa-envelope"></i>
+              <span>{siteContact.email}</span>
+            </a>
+          </div>
+          <div class="coral-top-right">
+            <span class="coral-top-hours">
+              <i class="fas fa-clock"></i>
+              Daily: 8:00 AM - 10:00 PM
+            </span>
           </div>
         </div>
-
-        <!-- Search Toggle & Theme Toggle -->
-        <div class="header-column header-column-actions">
-          <button
-            id="desktopSearchToggle"
-            class="header-action-btn search-toggle"
-            type="button"
-            aria-label="Search"
-          >
-            <i class="fas fa-search" aria-hidden="true"></i>
-          </button>
-          <button
-            id="portoThemeToggle"
-            class="header-action-btn theme-toggle"
-            type="button"
-            aria-label="Toggle dark mode"
-          >
-            <i class="fas fa-moon theme-icon-dark" aria-hidden="true"></i>
-            <i class="fas fa-sun theme-icon-light" aria-hidden="true"></i>
-          </button>
-        </div>
       </div>
     </div>
-  </div>
-</header>
-</div><!-- /.header-wrapper -->
 
-<!-- Spacer for fixed header -->
-<div class="header-spacer"></div>
+    <!-- Main Navy Header -->
+    <header id="header" class:list={["site-header", { "header-homepage": isHomepage }]}>
+      <div class="header-body">
+        <div class="header-container container">
+          <div class="header-row">
+            <!-- Desktop Sidebar Toggle -->
+            <div class="header-column header-column-sidebar">
+              <button
+                id="desktopSidebarToggle"
+                class="desktop-sidebar-toggle"
+                type="button"
+                aria-label="Open sidebar menu"
+              >
+                <i class="fas fa-bars" aria-hidden="true"></i>
+              </button>
+            </div>
+
+            <!-- Logo -->
+            <div class="header-column header-column-logo">
+              <a href="/" class="header-logo">
+                <div class="logo-emblem-wrap">
+                  <img
+                    src="/assets/images/logo/brand/emblem-clean.png"
+                    alt="OnlineTranslation.ae"
+                    width="45"
+                    height="45"
+                    class="logo-emblem"
+                    loading="eager"
+                  />
+                </div>
+                <div class="logo-text-block">
+                  <span class="logo-text">Online<span class="logo-suffix">Translation</span><span class="logo-domain">.ae</span></span>
+                  <span class="logo-tagline">Boutique Legal Translation</span>
+                </div>
+              </a>
+            </div>
+
+            <!-- Navigation -->
+            <div class="header-column header-column-nav">
+              <div class="header-nav">
+                <div class="header-nav-main header-nav-main-effect-1">
+                  <nav id="mainNav" aria-label="Main navigation">
+                    <ul class="nav nav-pills" role="menubar">
+                      {mainNavigation.map((item) => (
+                        <li
+                          class:list={[
+                            item.dropdown ? 'dropdown' : '',
+                            isActive(item.href) ? 'active' : '',
+                            item.isButton ? 'nav-item-button' : ''
+                          ]}
+                          role="none"
+                        >
+                          {item.isButton ? (
+                            <a
+                              href={item.href}
+                              class={`btn ${item.buttonClass || 'btn-primary'}`}
+                              target={item.href.startsWith('http') ? '_blank' : undefined}
+                              rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                            >
+                              {item.icon && <i class={item.icon}></i>}
+                              <span>{item.label}</span>
+                            </a>
+                          ) : item.dropdown ? (
+                            <>
+                              <a
+                                href={item.href}
+                                class:list={[
+                                  'nav-link',
+                                  'dropdown-toggle',
+                                  isActive(item.href) ? 'active' : ''
+                                ]}
+                                role="menuitem"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                              >
+                                {item.label}
+                                <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
+                              </a>
+
+                              <ul class="dropdown-menu" role="menu" aria-label={item.dropdown.label}>
+                                {item.dropdown.categories.map((category, catIndex) => (
+                                  <>
+                                    {category.header && (
+                                      <li class="dropdown-header" role="presentation">
+                                        {category.header}
+                                      </li>
+                                    )}
+
+                                    {category.items.map((subItem) => (
+                                      <li
+                                        class:list={[
+                                          subItem.children ? 'dropdown-submenu' : '',
+                                          isActive(subItem.href) ? 'active' : ''
+                                        ]}
+                                        role="none"
+                                      >
+                                        <a
+                                          href={subItem.href}
+                                          class="dropdown-item"
+                                          role="menuitem"
+                                          aria-haspopup={subItem.children ? 'true' : undefined}
+                                        >
+                                          {subItem.icon && (
+                                            <i class={subItem.icon} aria-hidden="true"></i>
+                                          )}
+                                          <span>{subItem.label}</span>
+                                          {subItem.badge && (
+                                            <span class={`badge badge-${subItem.badge}`}>
+                                              {subItem.badge.toUpperCase()}
+                                            </span>
+                                          )}
+                                        </a>
+
+                                        {subItem.children && (
+                                          <ul class="dropdown-menu" role="menu">
+                                            {subItem.children.map((child) => (
+                                              <li
+                                                class:list={[isActive(child.href) ? 'active' : '']}
+                                                role="none"
+                                              >
+                                                <a
+                                                  href={child.href}
+                                                  class="dropdown-item"
+                                                  role="menuitem"
+                                                >
+                                                  <span>{child.label}</span>
+                                                  {child.badge && (
+                                                    <span class={`badge badge-${child.badge}`}>
+                                                      {child.badge.toUpperCase()}
+                                                    </span>
+                                                  )}
+                                                </a>
+                                              </li>
+                                            ))}
+                                          </ul>
+                                        )}
+                                      </li>
+                                    ))}
+                                  </>
+                                ))}
+
+                                {item.dropdown.footerLink && (
+                                  <li role="none">
+                                    <a
+                                      href={item.dropdown.footerLink.href}
+                                      class="dropdown-footer"
+                                      role="menuitem"
+                                    >
+                                      {item.dropdown.footerLink.label}
+                                      <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                                    </a>
+                                  </li>
+                                )}
+                              </ul>
+                            </>
+                          ) : (
+                            <a
+                              href={item.href}
+                              class:list={['nav-link', isActive(item.href) ? 'active' : '']}
+                              role="menuitem"
+                            >
+                              {item.icon && <i class={item.icon}></i>}
+                              {item.label}
+                            </a>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </nav>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button
+                  id="portoMobileToggle"
+                  class="header-btn-collapse-nav"
+                  type="button"
+                  aria-label="Open menu"
+                >
+                  <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="header-column header-column-actions">
+              <button
+                id="desktopSearchToggle"
+                class="header-action-btn search-toggle"
+                type="button"
+                aria-label="Search"
+              >
+                <i class="fas fa-search" aria-hidden="true"></i>
+              </button>
+              <button
+                id="portoThemeToggle"
+                class="header-action-btn theme-toggle"
+                type="button"
+                aria-label="Toggle dark mode"
+              >
+                <i class="fas fa-moon theme-icon-dark" aria-hidden="true"></i>
+                <i class="fas fa-sun theme-icon-light" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <!-- Spacer - NO TRANSITION, changes height instantly -->
+  <div class="header-spacer" id="headerSpacer"></div>
+</div>
 
 <style>
-  /* ====================================
-     CSS CUSTOM PROPERTIES FOR HEIGHTS
-     Predefined values prevent JS reflow
-     ==================================== */
+  /* ============================================
+     V3 CORE PRINCIPLE: Transform-only animations
+     Heights change INSTANTLY (no CSS transition)
+     Visual changes use transform (GPU composited)
+     ============================================ */
+
+  /* Fixed dimensions - these values are constants */
   :root {
     --header-coral-height: 44px;
     --header-main-height: 76px;
     --header-main-scrolled: 52px;
-    --header-total: calc(var(--header-coral-height) + var(--header-main-height));
-    --header-total-scrolled: var(--header-main-scrolled);
-    --header-transition-duration: 0.3s;
-    --header-transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
+    --header-total-unscrolled: 120px; /* 44 + 76 */
+    --header-total-scrolled: 52px;
+
+    /* Animation timing - only for transforms */
+    --header-transform-duration: 0.25s;
+    --header-transform-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
-  /* ====================================
+  /* ============================================
+     HEADER SYSTEM - Contains everything
+     ============================================ */
+  .header-system {
+    contain: layout style;
+  }
+
+  /* ============================================
      FIXED HEADER WRAPPER
-     ==================================== */
+     ============================================ */
   .header-wrapper {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1030;
-    width: 100%;
-    /* GPU acceleration for smooth transitions */
+    /* GPU layer promotion */
     will-change: transform;
     transform: translateZ(0);
-    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
   }
 
-  /* Spacer uses CSS variables - no JS measurement needed */
+  /* ============================================
+     SPACER - NO TRANSITION
+     Height changes instantly via JS
+     ============================================ */
   .header-spacer {
-    height: var(--header-total);
-    transition: height var(--header-transition-duration) var(--header-transition-easing);
+    height: var(--header-total-unscrolled);
+    /* CRITICAL: No transition property here */
   }
 
-  /* When scrolled, spacer shrinks via CSS sibling selector */
-  .header-wrapper.is-scrolled + .header-spacer {
-    height: var(--header-total-scrolled);
-  }
-
+  /* Hide on mobile */
   @media (max-width: 991px) {
     .header-wrapper {
       display: none !important;
@@ -328,54 +337,32 @@ function isActive(href: string): boolean {
       display: none;
     }
   }
-</style>
 
-<style>
-  /* ====================================
-     CORAL TOP BAR - Disappears on scroll
-     Position absolute so it doesn't affect layout when hidden
-     ==================================== */
+  /* ============================================
+     CORAL TOP BAR
+     Uses transform for hide/show (no height change)
+     ============================================ */
   .coral-top-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
     background: var(--ot-coral, #FF1654);
     height: var(--header-coral-height);
     font-family: var(--font-primary, 'Montserrat', sans-serif);
     font-size: 0.85rem;
     display: flex;
     align-items: center;
-    /* GPU-accelerated transitions */
+    /* Transform-only animation */
     will-change: transform, opacity;
     transform: translateY(0);
     opacity: 1;
     transition:
-      transform var(--header-transition-duration) var(--header-transition-easing),
-      opacity var(--header-transition-duration) var(--header-transition-easing);
-    z-index: 1;
+      transform var(--header-transform-duration) var(--header-transform-easing),
+      opacity var(--header-transform-duration) var(--header-transform-easing);
   }
 
-  /* Hidden state - slides up and out */
-  .coral-top-bar.hidden {
+  /* Scrolled state - slides up */
+  .header-wrapper.is-scrolled .coral-top-bar {
     transform: translateY(-100%);
     opacity: 0;
     pointer-events: none;
-  }
-
-  /* Main header sits below coral bar by default */
-  .site-header {
-    width: 100%;
-    margin-top: var(--header-coral-height);
-    /* GPU acceleration hint */
-    will-change: transform;
-    transform: translateZ(0);
-    transition: margin-top var(--header-transition-duration) var(--header-transition-easing);
-  }
-
-  /* When scrolled, main header moves to top */
-  .header-wrapper.is-scrolled .site-header {
-    margin-top: 0;
   }
 
   .coral-top-content {
@@ -394,91 +381,58 @@ function isActive(href: string): boolean {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: rgba(255, 255, 255, 0.95);
-    text-decoration: none;
-    transition: color 0.2s ease;
-    font-weight: 500;
-  }
-
-  /* Force coral bar content to stay white even when global link styles change */
-  .coral-top-bar .coral-top-link,
-  .coral-top-bar .coral-top-hours,
-  .coral-top-bar .coral-top-link:visited {
     color: #ffffff !important;
+    text-decoration: none;
+    font-weight: 500;
   }
 
   .coral-top-link:hover {
     color: #ffffff;
+    opacity: 0.9;
   }
 
   .coral-top-hours {
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.9) !important;
   }
 
-  /* Hide coral bar on mobile */
   @media (max-width: 991px) {
     .coral-top-bar {
       display: none !important;
     }
   }
 
-  /* Hide email on smaller desktops */
   @media (max-width: 1200px) and (min-width: 992px) {
     .coral-top-email {
       display: none;
     }
   }
 
-  /* ====================================
-     NAVY HEADER (inside fixed wrapper)
-     Note: margin-top transitions defined above for coral bar behavior
-     ==================================== */
+  /* ============================================
+     MAIN HEADER
+     Uses transform: translateY to shift up when scrolled
+     ============================================ */
+  .site-header {
+    width: 100%;
+    /* Transform-only animation for position shift */
+    will-change: transform;
+    transform: translateY(0);
+    transition: transform var(--header-transform-duration) var(--header-transform-easing);
+  }
+
+  /* When scrolled, shift up by coral bar height */
+  .header-wrapper.is-scrolled .site-header {
+    transform: translateY(calc(-1 * var(--header-coral-height)));
+  }
 
   .header-body {
     background: linear-gradient(135deg, var(--ot-header-dark, #0a1628) 0%, var(--ot-header-gradient, #1a365d) 100%);
   }
 
-  /* Header Container - uses fixed height instead of padding */
+  /* Header container - FIXED height, no transition */
   .header-container {
     height: var(--header-main-height);
     display: flex;
     align-items: center;
-    transition: height var(--header-transition-duration) var(--header-transition-easing);
-  }
-
-  /* ====================================
-     SCROLLED STATE - Compact header
-     ==================================== */
-  .site-header.scrolled .header-container {
-    height: var(--header-main-scrolled);
-  }
-
-  .site-header.scrolled .logo-emblem {
-    height: 32px;
-    width: 32px;
-  }
-
-  .site-header.scrolled .logo-text {
-    font-size: 16px;
-  }
-
-  .site-header.scrolled .logo-tagline {
-    font-size: 8px;
-    letter-spacing: 2px;
-  }
-
-  .site-header.scrolled .desktop-sidebar-toggle {
-    width: 36px;
-    height: 36px;
-  }
-
-  .site-header.scrolled .header-action-btn {
-    width: 32px;
-    height: 32px;
-  }
-
-  .site-header.scrolled .header-action-btn i {
-    font-size: 0.9rem;
   }
 
   .header-row {
@@ -487,41 +441,51 @@ function isActive(href: string): boolean {
     justify-content: space-between;
     gap: 20px;
     flex-wrap: nowrap;
+    width: 100%;
   }
 
-  /* Logo */
+  /* ============================================
+     LOGO - Uses transform: scale for size change
+     ============================================ */
+  .header-column-logo {
+    position: relative;
+    z-index: 1;
+    margin-right: 18px;
+    flex: 0 0 auto;
+    max-width: 280px;
+  }
+
   .header-logo {
     display: flex;
     align-items: center;
     gap: 12px;
     text-decoration: none;
+    /* Transform origin for scaling */
+    transform-origin: left center;
+    will-change: transform;
+    transition: transform var(--header-transform-duration) var(--header-transform-easing);
   }
 
-  /* Keep breathing room between the logo block and the navigation */
-  .header-column-logo {
-    position: relative;
-    z-index: 1;
-    margin-right: 18px;
-    flex: 0 0 auto; /* FIX: Changed from 0 1 240px to prevent shrinking/overlap */
-    max-width: 280px;
-    min-width: 0; /* Allow text truncation if needed */
+  /* Scale down logo when scrolled */
+  .header-wrapper.is-scrolled .header-logo {
+    transform: scale(0.85);
+  }
+
+  .logo-emblem-wrap {
+    flex-shrink: 0;
   }
 
   .logo-emblem {
     height: 44px;
     width: 44px;
     object-fit: contain;
-    flex-shrink: 0; /* FIX: Emblem never shrinks */
-    transition:
-      height var(--header-transition-duration) var(--header-transition-easing),
-      width var(--header-transition-duration) var(--header-transition-easing);
+    display: block;
   }
 
   .logo-text-block {
     display: flex;
     flex-direction: column;
     line-height: 1.15;
-    min-width: 0;
   }
 
   .logo-text {
@@ -531,7 +495,6 @@ function isActive(href: string): boolean {
     color: #ffffff;
     letter-spacing: 0.3px;
     white-space: nowrap;
-    transition: font-size var(--header-transition-duration) var(--header-transition-easing);
   }
 
   .logo-suffix {
@@ -553,47 +516,15 @@ function isActive(href: string): boolean {
     color: rgba(255, 255, 255, 0.85);
     margin-top: 2px;
     white-space: nowrap;
-    transition:
-      font-size var(--header-transition-duration) var(--header-transition-easing),
-      letter-spacing var(--header-transition-duration) var(--header-transition-easing);
   }
 
-  /* Navigation Column - higher z-index for dropdowns */
-  .header-column-nav {
-    flex: 1 1 0;
-    display: flex;
-    justify-content: flex-end;
-    position: relative;
-    z-index: 10;
-    min-width: 0;
-    overflow: visible; /* FIX: Ensure dropdowns can extend */
-  }
-
-  .header-nav {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    min-width: 0;
-  }
-
-  /* Keep nav pills from forcing the logo to shrink to zero when space is tight */
-  .header-nav-main > nav > ul.nav {
-    flex-wrap: nowrap;
-    min-width: 0;
-  }
-
-  /* Tighter logo on slightly smaller screens to leave room for nav */
+  /* Responsive logo adjustments */
   @media (max-width: 1400px) {
     .header-column-logo {
       max-width: 240px;
     }
-
     .logo-text-block {
       display: none;
-    }
-
-    .logo-emblem {
-      height: 40px;
     }
   }
 
@@ -603,7 +534,31 @@ function isActive(href: string): boolean {
     }
   }
 
-  /* Ensure nav links stay white on the navy gradient header */
+  /* ============================================
+     NAVIGATION COLUMN
+     ============================================ */
+  .header-column-nav {
+    flex: 1 1 0;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    z-index: 10;
+    min-width: 0;
+    overflow: visible;
+  }
+
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .header-nav-main > nav > ul.nav {
+    flex-wrap: nowrap;
+    min-width: 0;
+  }
+
+  /* Nav link colors */
   .header-body .nav-link,
   .header-body .nav-link i {
     color: #ffffff !important;
@@ -615,12 +570,23 @@ function isActive(href: string): boolean {
     color: #ffffff !important;
   }
 
-  /* Header Action Buttons (Search & Theme Toggle) */
+  /* ============================================
+     ACTION BUTTONS - Uses transform: scale
+     ============================================ */
   .header-column-actions {
     display: flex;
     align-items: center;
     gap: 10px;
-    flex-shrink: 0; /* FIX: Never shrink action buttons */
+    flex-shrink: 0;
+    /* Scale from right side */
+    transform-origin: right center;
+    will-change: transform;
+    transition: transform var(--header-transform-duration) var(--header-transform-easing);
+  }
+
+  /* Scale down when scrolled */
+  .header-wrapper.is-scrolled .header-column-actions {
+    transform: scale(0.85);
   }
 
   .header-action-btn {
@@ -634,13 +600,10 @@ function isActive(href: string): boolean {
     border-radius: 50%;
     color: #ffffff;
     cursor: pointer;
-    pointer-events: auto !important; /* FIX: Ensure clickable */
-    position: relative; /* FIX: Establish stacking context */
-    z-index: 100; /* FIX: Above other elements */
-    transition:
-      all 0.2s ease,
-      width var(--header-transition-duration) var(--header-transition-easing),
-      height var(--header-transition-duration) var(--header-transition-easing);
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 100;
+    transition: background 0.2s ease;
   }
 
   .header-action-btn:hover {
@@ -648,15 +611,15 @@ function isActive(href: string): boolean {
   }
 
   .header-action-btn:active {
-    transform: scale(0.95);
+    opacity: 0.8;
   }
 
   .header-action-btn i {
     font-size: 1rem;
-    pointer-events: none; /* FIX: Let clicks pass through to button */
-    transition: font-size var(--header-transition-duration) var(--header-transition-easing);
+    pointer-events: none;
   }
 
+  /* Theme toggle icons */
   .theme-icon-light {
     display: none;
   }
@@ -669,7 +632,20 @@ function isActive(href: string): boolean {
     display: block;
   }
 
-  /* Desktop Sidebar Toggle */
+  /* ============================================
+     SIDEBAR TOGGLE - Uses transform: scale
+     ============================================ */
+  .header-column-sidebar {
+    flex-shrink: 0;
+    transform-origin: left center;
+    will-change: transform;
+    transition: transform var(--header-transform-duration) var(--header-transform-easing);
+  }
+
+  .header-wrapper.is-scrolled .header-column-sidebar {
+    transform: scale(0.85);
+  }
+
   .desktop-sidebar-toggle {
     display: flex;
     align-items: center;
@@ -681,13 +657,10 @@ function isActive(href: string): boolean {
     border-radius: 8px;
     color: #ffffff;
     cursor: pointer;
-    pointer-events: auto !important; /* FIX: Ensure clickable */
+    pointer-events: auto !important;
     position: relative;
     z-index: 100;
-    transition:
-      all 0.2s ease,
-      width var(--header-transition-duration) var(--header-transition-easing),
-      height var(--header-transition-duration) var(--header-transition-easing);
+    transition: background 0.2s ease;
   }
 
   .desktop-sidebar-toggle:hover {
@@ -695,7 +668,7 @@ function isActive(href: string): boolean {
   }
 
   .desktop-sidebar-toggle:active {
-    transform: scale(0.95);
+    opacity: 0.8;
   }
 
   .desktop-sidebar-toggle i {
@@ -703,82 +676,91 @@ function isActive(href: string): boolean {
     pointer-events: none;
   }
 
-  .header-column-sidebar {
-    flex-shrink: 0;
-  }
-
-  /* Mobile Menu Button */
+  /* Mobile menu button - hidden on desktop */
   .header-btn-collapse-nav {
     display: none;
   }
 
-  /* Hide entire Porto header on mobile - use original header-mobile instead */
   @media (max-width: 991px) {
     .site-header {
       display: none !important;
     }
   }
-
 </style>
 
 <script is:inline>
-  // Porto Header Desktop Navigation - Optimized for smooth scrolling
-  // SCROLL GLITCH FIX: Removed syncSpacerHeight() that caused layout reflow during transitions
-  // Now uses CSS-driven heights via sibling selector (.header-wrapper.is-scrolled + .header-spacer)
+  /**
+   * Header Scroll Handler - V3
+   *
+   * Key changes from V2:
+   * 1. Spacer height changes INSTANTLY (no CSS transition)
+   * 2. Visual changes use transform only (GPU composited)
+   * 3. Hysteresis prevents flickering at threshold
+   * 4. Single RAF-based handler
+   */
   (function() {
     'use strict';
 
-    // Throttle function for scroll performance (~60fps)
-    function throttle(func, limit) {
-      let inThrottle;
-      return function(...args) {
-        if (!inThrottle) {
-          func.apply(this, args);
-          inThrottle = true;
-          setTimeout(() => inThrottle = false, limit);
-        }
-      };
-    }
-
     document.addEventListener('DOMContentLoaded', () => {
-      // ========================================
-      // SCROLL BEHAVIOR - Optimized
-      // ========================================
+      const headerWrapper = document.getElementById('headerWrapper');
+      const headerSpacer = document.getElementById('headerSpacer');
       const coralTopBar = document.getElementById('coralTopBar');
       const header = document.getElementById('header');
-      const headerWrapper = document.getElementById('headerWrapper');
-      const scrollThreshold = 50;
 
-      // Track last scroll state to avoid unnecessary DOM updates
-      let lastScrollState = false;
+      if (!headerWrapper || !headerSpacer) return;
 
-      // Optimized scroll handler - only updates DOM on state change
-      const handleScroll = throttle(() => {
-        const isScrolled = window.scrollY > scrollThreshold;
+      // Scroll thresholds with hysteresis to prevent flickering
+      const SCROLL_DOWN_THRESHOLD = 60;  // Trigger scrolled state
+      const SCROLL_UP_THRESHOLD = 20;    // Trigger unscrolled state
 
-        // Only update DOM if state changed - prevents reflow during transitions
-        if (isScrolled !== lastScrollState) {
-          lastScrollState = isScrolled;
+      // Heights (must match CSS variables)
+      const HEIGHT_UNSCROLLED = 120;
+      const HEIGHT_SCROLLED = 52;
+
+      let isScrolled = false;
+      let ticking = false;
+
+      function updateHeaderState(scrollY) {
+        // Hysteresis: different thresholds for scroll up vs down
+        const shouldBeScrolled = isScrolled
+          ? scrollY > SCROLL_UP_THRESHOLD    // Already scrolled: need to go above threshold to unscroll
+          : scrollY > SCROLL_DOWN_THRESHOLD; // Not scrolled: need to pass threshold to scroll
+
+        if (shouldBeScrolled !== isScrolled) {
+          isScrolled = shouldBeScrolled;
 
           if (isScrolled) {
-            coralTopBar?.classList.add('hidden');
-            header?.classList.add('scrolled');
-            headerWrapper?.classList.add('is-scrolled');
+            // Scrolled state
+            headerWrapper.classList.add('is-scrolled');
+            // INSTANT spacer height change (no CSS transition)
+            headerSpacer.style.height = HEIGHT_SCROLLED + 'px';
           } else {
-            coralTopBar?.classList.remove('hidden');
-            header?.classList.remove('scrolled');
-            headerWrapper?.classList.remove('is-scrolled');
+            // Unscrolled state
+            headerWrapper.classList.remove('is-scrolled');
+            // INSTANT spacer height change
+            headerSpacer.style.height = HEIGHT_UNSCROLLED + 'px';
           }
         }
-      }, 16); // ~60fps throttle
+      }
 
-      window.addEventListener('scroll', handleScroll, { passive: true });
+      function onScroll() {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            updateHeaderState(window.scrollY);
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }
 
-      // Initial state check
-      handleScroll();
+      // Use passive listener for performance
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // Initial state
+      updateHeaderState(window.scrollY);
 
       // ========================================
-      // DESKTOP SIDEBAR TOGGLE
+      // SIDEBAR TOGGLE
       // ========================================
       const desktopSidebarToggle = document.getElementById('desktopSidebarToggle');
       const menuSidebar = document.getElementById('menu-sidebar');
@@ -794,7 +776,6 @@ function isActive(href: string): boolean {
         });
       }
 
-      // Porto mobile toggle (tablet breakpoint)
       const portoMobileToggle = document.getElementById('portoMobileToggle');
       if (portoMobileToggle && menuSidebar) {
         portoMobileToggle.addEventListener('click', (e) => {
@@ -807,7 +788,7 @@ function isActive(href: string): boolean {
       }
 
       // ========================================
-      // DESKTOP SEARCH TOGGLE
+      // SEARCH TOGGLE
       // ========================================
       const desktopSearchToggle = document.getElementById('desktopSearchToggle');
       const searchOverlay = document.getElementById('search-overlay');
@@ -848,19 +829,13 @@ function isActive(href: string): boolean {
       // ========================================
       // FLYOUT EDGE DETECTION
       // ========================================
-      const flyoutParents = document.querySelectorAll('.dropdown-submenu');
-
-      flyoutParents.forEach(parent => {
+      document.querySelectorAll('.dropdown-submenu').forEach(parent => {
         parent.addEventListener('mouseenter', () => {
           const flyout = parent.querySelector('.dropdown-menu');
           if (!flyout || window.innerWidth < 992) return;
 
           const rect = flyout.getBoundingClientRect();
-          if (rect.right > window.innerWidth - 20) {
-            parent.classList.add('dropdown-reverse');
-          } else {
-            parent.classList.remove('dropdown-reverse');
-          }
+          parent.classList.toggle('dropdown-reverse', rect.right > window.innerWidth - 20);
         });
       });
 
@@ -871,8 +846,7 @@ function isActive(href: string): boolean {
 
       if (nav) {
         nav.addEventListener('keydown', (e) => {
-          const target = e.target;
-          const parent = target.closest('li');
+          const parent = e.target.closest('li');
           if (!parent) return;
 
           switch (e.key) {
