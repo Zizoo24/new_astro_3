@@ -442,6 +442,13 @@ export const serviceLinks: Record<string, ServiceLink> = {
     full: "frequently asked questions",
     icon: "fas fa-question-circle"
   },
+  mojVsCertified: {
+    url: "/resources/moj-vs-certified/",
+    text: "MOJ vs Certified Guide",
+    full: "MOJ Legal vs Certified Translation comparison",
+    icon: "fas fa-balance-scale",
+    badge: "NEW"
+  },
 
   // ========================================
   // INDUSTRIES
@@ -858,6 +865,10 @@ export const pageRelationships: Record<string, PageRelationships> = {
   faq: {
     related: ["pricingGuide", "attestationGuide", "documentChecklist"],
     crossSilo: ["legalTranslation", "goldenVisa", "attestation"]
+  },
+  mojVsCertified: {
+    related: ["legalTranslation", "certificateTranslation", "pricingGuide", "attestation"],
+    crossSilo: ["goldenVisa", "contracts", "poa", "birthCertificate", "marriageCertificate", "degree"]
   },
 
   // ========================================
