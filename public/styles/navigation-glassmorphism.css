@@ -11,50 +11,126 @@
 /* ========================================
    FIX: Logo/Nav Overlap in Non-Scrolled State
    Constrains logo width and ensures nav has space
+
+   CRITICAL: Must override porto-desktop.css which sets
+   flex-shrink: 0 on .header-logo
    ======================================== */
 
-/* Let the logo share space instead of forcing a hard minimum width */
+/* Header row - ensure proper flex distribution */
+.exodus-header .header-main-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    gap: clamp(8px, 1vw, 16px) !important;
+    flex-wrap: nowrap !important;
+}
+
+/* Logo - MUST be able to shrink, override flex-shrink: 0 from porto-desktop.css */
 .exodus-header .header-logo {
-    max-width: 280px;
-    min-width: 180px;
-    flex: 0 1 240px;
-    white-space: normal;
+    flex: 0 1 auto !important; /* Can shrink! */
+    max-width: 220px !important;
+    min-width: 48px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+}
+
+.exodus-header .header-logo a {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    text-decoration: none !important;
 }
 
 .exodus-header .logo-text-block {
-    min-width: 0;
+    min-width: 0 !important;
+    overflow: hidden !important;
 }
 
+/* Nav - takes remaining space but won't push other elements */
 .exodus-header .header-nav {
-    flex: 1;
-    min-width: 0;
-    overflow: visible;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+    display: flex !important;
+    justify-content: center !important;
 }
 
 .exodus-header .nav-menu {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 2px;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
 }
 
-/* Smaller screens - tighter logo to prevent overlap */
-@media (max-width: 1400px) {
-    .exodus-header .header-logo {
-        max-width: 240px;
+/* Nav links - compact for better fit */
+.exodus-header .nav-link {
+    padding: 6px 8px !important;
+    font-size: 11px !important;
+    white-space: nowrap !important;
+}
+
+/* Contact button and actions - don't shrink */
+.exodus-header .header-contact-btn {
+    flex-shrink: 0 !important;
+}
+
+.exodus-header .header-actions {
+    flex-shrink: 0 !important;
+}
+
+/* Hide logo text at 1600px to give nav more room */
+@media (max-width: 1600px) {
+    .exodus-header .logo-text-block {
+        display: none !important;
     }
 
-    .exodus-header .logo-text-block {
-        display: none;
+    .exodus-header .header-logo {
+        max-width: 60px !important;
     }
 
     .exodus-header .header-logo img {
-        height: 40px;
+        height: 44px !important;
+        width: auto !important;
     }
 }
 
+/* Tighter nav links at 1400px */
+@media (max-width: 1400px) {
+    .exodus-header .nav-link {
+        padding: 5px 6px !important;
+        font-size: 10px !important;
+        letter-spacing: 0.2px !important;
+    }
+
+    .exodus-header .header-logo img {
+        height: 40px !important;
+    }
+}
+
+/* Even tighter at 1200px */
 @media (max-width: 1200px) {
-    .exodus-header .header-logo {
-        max-width: 60px;
+    .exodus-header .nav-link {
+        padding: 4px 5px !important;
+        font-size: 9.5px !important;
+    }
+
+    .exodus-header .header-contact-btn {
+        padding: 4px 8px !important;
+        font-size: 9px !important;
+    }
+
+    .exodus-header .header-logo img {
+        height: 36px !important;
+    }
+}
+
+/* Below 1100px - hide desktop header entirely (mobile should take over) */
+@media (max-width: 1100px) {
+    .exodus-header .header-logo img {
+        height: 32px !important;
     }
 }
 
