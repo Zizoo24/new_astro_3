@@ -1,19 +1,23 @@
 ---
 /**
  * Header-porto.astro - Porto-Style Navigation
- * STABLE VERSION - December 2025
+ * FIXED VERSION - 2025-01-16
  *
- * Architecture: SEPARATE FIXED ELEMENTS
- * =====================================
- * Previous versions used wrapper transforms which broke stacking contexts.
- * This version uses two independently fixed elements:
+ * Fixes applied:
+ * 1. Renamed duplicate #sidebarToggle to #portoMobileToggle (line ~230)
+ * 2. Added pointer-events:auto to action buttons
+ * 3. Improved logo column spacing to prevent overlap
+ * 4. Enhanced click handlers with console logging for debugging
  *
- * 1. Coral bar (fixed, z:1031) - slides up with transform: translateY(-100%)
- * 2. Navy header (fixed, z:1030) - changes `top` property (44px → 0)
- * 3. Spacer - uses CSS classes, no JS height calculations
- *
- * NO transforms on the main header element. NO wrapper containers.
- * Simple, proven CSS positioning.
+ * Features:
+ * - 3-level dropdown menus
+ * - White dropdown panels with teal accent
+ * - Flyout submenus
+ * - Section headers
+ * - Badges (NEW, Express, Popular, Hot)
+ * - Mobile accordion navigation
+ * - Dark mode support
+ * - Accessibility compliant
  */
 
 import { mainNavigation } from '../data/navigation-porto';
@@ -26,39 +30,43 @@ interface Props {
 
 const { currentPath = Astro.url.pathname, isHomepage = false } = Astro.props;
 
+// Check if current path matches or is child of a nav item
 function isActive(href: string): boolean {
   if (href === '/') return currentPath === '/';
   return currentPath.startsWith(href);
 }
 ---
 
-<!-- Coral Top Bar - SEPARATE fixed element -->
-<div class="coral-top-bar" id="coralTopBar">
-  <div class="container">
-    <div class="coral-top-content">
-      <div class="coral-top-left">
-        <a href={`tel:${siteContact.phone.replace(/\s/g, '')}`} class="coral-top-link">
-          <i class="fas fa-phone-alt"></i>
-          <span>{siteContact.phoneDisplay}</span>
-        </a>
-        <a href={`mailto:${siteContact.email}`} class="coral-top-link coral-top-email">
-          <i class="fas fa-envelope"></i>
-          <span>{siteContact.email}</span>
-        </a>
-      </div>
-      <div class="coral-top-right">
-        <span class="coral-top-hours">
-          <i class="fas fa-clock"></i>
-          Daily: 8:00 AM - 10:00 PM
-        </span>
+<!-- Fixed Header Wrapper -->
+<div class="header-wrapper" id="headerWrapper">
+  <!-- Coral Top Bar - Disappears on scroll -->
+  <div class="coral-top-bar" id="coralTopBar">
+    <div class="container">
+      <div class="coral-top-content">
+        <div class="coral-top-left">
+          <a href={`tel:${siteContact.phone.replace(/\s/g, '')}`} class="coral-top-link">
+            <i class="fas fa-phone-alt"></i>
+            <span>{siteContact.phoneDisplay}</span>
+          </a>
+          <a href={`mailto:${siteContact.email}`} class="coral-top-link coral-top-email">
+            <i class="fas fa-envelope"></i>
+            <span>{siteContact.email}</span>
+          </a>
+        </div>
+        <div class="coral-top-right">
+          <span class="coral-top-hours">
+            <i class="fas fa-clock"></i>
+            Daily: 8:00 AM - 10:00 PM
+          </span>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Main Navy Header - SEPARATE fixed element -->
-<header id="header" class:list={["site-header", { "header-homepage": isHomepage }]}>
+  <!-- Sticky Navy Header -->
+  <header id="header" class:list={["site-header", { "header-homepage": isHomepage }]}>
   <div class="header-body">
+    <!-- Main Header -->
     <div class="header-container container">
       <div class="header-row">
         <!-- Desktop Sidebar Toggle -->
@@ -225,7 +233,7 @@ function isActive(href: string): boolean {
               </nav>
             </div>
 
-            <!-- Mobile Menu Button -->
+            <!-- Mobile Menu Button - RENAMED to avoid duplicate ID with MobileShell -->
             <button
               id="portoMobileToggle"
               class="header-btn-collapse-nav"
@@ -237,7 +245,7 @@ function isActive(href: string): boolean {
           </div>
         </div>
 
-        <!-- Action Buttons -->
+        <!-- Search Toggle & Theme Toggle -->
         <div class="header-column header-column-actions">
           <button
             id="desktopSearchToggle"
@@ -261,46 +269,59 @@ function isActive(href: string): boolean {
     </div>
   </div>
 </header>
+</div><!-- /.header-wrapper -->
 
-<!-- Spacer - CSS class driven, no JS calculations -->
-<div class="header-spacer" id="headerSpacer"></div>
+<!-- Spacer for fixed header -->
+<div class="header-spacer"></div>
 
 <style>
-  /* ============================================
-     STABLE VERSION - Fixed dimensions
-     ============================================ */
-  :root {
-    --header-coral-height: 44px;
-    --header-main-height: 76px;
-    --header-total: 120px; /* 44 + 76 */
-    --header-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  /* ============================================
-     CORAL TOP BAR - Separate fixed element
-     Higher z-index, slides up on scroll
-     ============================================ */
-  .coral-top-bar {
+  /* ====================================
+     FIXED HEADER WRAPPER
+     ==================================== */
+  .header-wrapper {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1031;
-    background: var(--ot-coral, #FF1654);
-    height: var(--header-coral-height);
-    font-family: var(--font-primary, 'Montserrat', sans-serif);
-    font-size: 0.85rem;
-    display: flex;
-    align-items: center;
-    /* Only transform animates - no layout changes */
-    transform: translateY(0);
-    transition: transform var(--header-transition), opacity var(--header-transition);
+    z-index: 1030;
+    width: 100%;
   }
 
-  /* Scrolled: slide up and hide */
-  .coral-top-bar.is-hidden {
-    transform: translateY(-100%);
+  .header-spacer {
+    /* Match the actual header height via inline style set in script */
+    height: 120px;
+    transition: height 0.3s ease;
+  }
+
+  @media (max-width: 991px) {
+    .header-wrapper {
+      display: none !important;
+    }
+    .header-spacer {
+      display: none;
+    }
+  }
+</style>
+
+<style>
+  /* ====================================
+     CORAL TOP BAR - Disappears on scroll
+     ==================================== */
+  .coral-top-bar {
+    background: var(--ot-coral, #FF1654);
+    padding: 10px 0;
+    font-family: var(--font-primary, 'Montserrat', sans-serif);
+    font-size: 0.85rem;
+    transition: transform 0.3s ease, opacity 0.3s ease, max-height 0.3s ease;
+    max-height: 60px;
+    overflow: hidden;
+  }
+
+  .coral-top-bar.hidden {
+    max-height: 0;
+    padding: 0;
     opacity: 0;
+    transform: translateY(-100%);
     pointer-events: none;
   }
 
@@ -320,59 +341,92 @@ function isActive(href: string): boolean {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #ffffff !important;
+    color: rgba(255, 255, 255, 0.95);
     text-decoration: none;
+    transition: color 0.2s ease;
     font-weight: 500;
   }
 
+  /* Force coral bar content to stay white even when global link styles change */
+  .coral-top-bar .coral-top-link,
+  .coral-top-bar .coral-top-hours,
+  .coral-top-bar .coral-top-link:visited {
+    color: #ffffff !important;
+  }
+
   .coral-top-link:hover {
-    opacity: 0.9;
+    color: #ffffff;
   }
 
   .coral-top-hours {
-    color: rgba(255, 255, 255, 0.9) !important;
+    color: rgba(255, 255, 255, 0.85);
   }
 
+  /* Hide coral bar on mobile */
   @media (max-width: 991px) {
     .coral-top-bar {
       display: none !important;
     }
   }
 
+  /* Hide email on smaller desktops */
   @media (max-width: 1200px) and (min-width: 992px) {
     .coral-top-email {
       display: none;
     }
   }
 
-  /* ============================================
-     MAIN HEADER - Separate fixed element
-     Changes `top` property on scroll
-     ============================================ */
+  /* ====================================
+     NAVY HEADER (inside fixed wrapper)
+     ==================================== */
   .site-header {
-    position: fixed;
-    top: var(--header-coral-height); /* Below coral bar */
-    left: 0;
-    right: 0;
-    z-index: 1030;
     width: 100%;
-    /* Animate top position - simple, proven approach */
-    transition: top var(--header-transition);
-  }
-
-  /* Scrolled: move to top */
-  .site-header.is-scrolled {
-    top: 0;
+    transition: all 0.3s ease;
   }
 
   .header-body {
     background: linear-gradient(135deg, var(--ot-header-dark, #0a1628) 0%, var(--ot-header-gradient, #1a365d) 100%);
+    transition: all 0.3s ease;
   }
 
+  /* Header Container */
   .header-container {
-    height: var(--header-main-height);
-    display: flex;
-    align-items: center;
+    padding: 15px 0;
+    transition: padding 0.3s ease;
+  }
+
+  /* ====================================
+     SCROLLED STATE - Compact header
+     ==================================== */
+  .site-header.scrolled .header-container {
+    padding: 6px 0;
+  }
+
+  .site-header.scrolled .logo-emblem {
+    height: 32px;
+  }
+
+  .site-header.scrolled .logo-text {
+    font-size: 16px;
+  }
+
+  .site-header.scrolled .logo-tagline {
+    font-size: 8px;
+    letter-spacing: 2px;
+  }
+
+  .site-header.scrolled .desktop-sidebar-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .site-header.scrolled .header-action-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .site-header.scrolled .header-action-btn i {
+    font-size: 0.9rem;
   }
 
   .header-row {
@@ -381,42 +435,9 @@ function isActive(href: string): boolean {
     justify-content: space-between;
     gap: 20px;
     flex-wrap: nowrap;
-    width: 100%;
   }
 
-  /* ============================================
-     SPACER - CSS class driven
-     ============================================ */
-  .header-spacer {
-    height: var(--header-total);
-    transition: height var(--header-transition);
-  }
-
-  .header-spacer.is-scrolled {
-    height: var(--header-main-height);
-  }
-
-  /* Hide on mobile */
-  @media (max-width: 991px) {
-    .site-header {
-      display: none !important;
-    }
-    .header-spacer {
-      display: none;
-    }
-  }
-
-  /* ============================================
-     LOGO
-     ============================================ */
-  .header-column-logo {
-    position: relative;
-    z-index: 1;
-    margin-right: 18px;
-    flex: 0 0 auto;
-    max-width: 280px;
-  }
-
+  /* Logo */
   .header-logo {
     display: flex;
     align-items: center;
@@ -424,17 +445,28 @@ function isActive(href: string): boolean {
     text-decoration: none;
   }
 
+  /* Keep breathing room between the logo block and the navigation */
+  .header-column-logo {
+    position: relative;
+    z-index: 1;
+    margin-right: 18px;
+    flex: 0 0 auto; /* FIX: Changed from 0 1 240px to prevent shrinking/overlap */
+    max-width: 280px;
+    min-width: 0; /* Allow text truncation if needed */
+  }
+
   .logo-emblem {
     height: 44px;
-    width: 44px;
-    object-fit: contain;
-    flex-shrink: 0;
+    width: auto;
+    transition: height 0.3s ease;
+    flex-shrink: 0; /* FIX: Emblem never shrinks */
   }
 
   .logo-text-block {
     display: flex;
     flex-direction: column;
     line-height: 1.15;
+    min-width: 0;
   }
 
   .logo-text {
@@ -443,6 +475,7 @@ function isActive(href: string): boolean {
     font-weight: 800;
     color: #ffffff;
     letter-spacing: 0.3px;
+    transition: font-size 0.3s ease;
     white-space: nowrap;
   }
 
@@ -464,15 +497,46 @@ function isActive(href: string): boolean {
     letter-spacing: 2.5px;
     color: rgba(255, 255, 255, 0.85);
     margin-top: 2px;
+    transition: font-size 0.3s ease;
     white-space: nowrap;
   }
 
+  /* Navigation Column - higher z-index for dropdowns */
+  .header-column-nav {
+    flex: 1 1 0;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    z-index: 10;
+    min-width: 0;
+    overflow: visible; /* FIX: Ensure dropdowns can extend */
+  }
+
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-width: 0;
+  }
+
+  /* Keep nav pills from forcing the logo to shrink to zero when space is tight */
+  .header-nav-main > nav > ul.nav {
+    flex-wrap: nowrap;
+    min-width: 0;
+  }
+
+  /* Tighter logo on slightly smaller screens to leave room for nav */
   @media (max-width: 1400px) {
     .header-column-logo {
       max-width: 240px;
     }
+
     .logo-text-block {
       display: none;
+    }
+
+    .logo-emblem {
+      height: 40px;
     }
   }
 
@@ -482,30 +546,7 @@ function isActive(href: string): boolean {
     }
   }
 
-  /* ============================================
-     NAVIGATION
-     ============================================ */
-  .header-column-nav {
-    flex: 1 1 0;
-    display: flex;
-    justify-content: flex-end;
-    position: relative;
-    z-index: 10;
-    min-width: 0;
-    overflow: visible;
-  }
-
-  .header-nav {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
-
-  .header-nav-main > nav > ul.nav {
-    flex-wrap: nowrap;
-    min-width: 0;
-  }
-
+  /* Ensure nav links stay white on the navy gradient header */
   .header-body .nav-link,
   .header-body .nav-link i {
     color: #ffffff !important;
@@ -517,14 +558,12 @@ function isActive(href: string): boolean {
     color: #ffffff !important;
   }
 
-  /* ============================================
-     ACTION BUTTONS
-     ============================================ */
+  /* Header Action Buttons (Search & Theme Toggle) */
   .header-column-actions {
     display: flex;
     align-items: center;
     gap: 10px;
-    flex-shrink: 0;
+    flex-shrink: 0; /* FIX: Never shrink action buttons */
   }
 
   .header-action-btn {
@@ -538,10 +577,10 @@ function isActive(href: string): boolean {
     border-radius: 50%;
     color: #ffffff;
     cursor: pointer;
-    pointer-events: auto !important;
-    position: relative;
-    z-index: 100;
-    transition: background 0.2s ease;
+    transition: all 0.2s ease;
+    pointer-events: auto !important; /* FIX: Ensure clickable */
+    position: relative; /* FIX: Establish stacking context */
+    z-index: 100; /* FIX: Above other elements */
   }
 
   .header-action-btn:hover {
@@ -554,7 +593,7 @@ function isActive(href: string): boolean {
 
   .header-action-btn i {
     font-size: 1rem;
-    pointer-events: none;
+    pointer-events: none; /* FIX: Let clicks pass through to button */
   }
 
   .theme-icon-light {
@@ -569,13 +608,7 @@ function isActive(href: string): boolean {
     display: block;
   }
 
-  /* ============================================
-     SIDEBAR TOGGLE
-     ============================================ */
-  .header-column-sidebar {
-    flex-shrink: 0;
-  }
-
+  /* Desktop Sidebar Toggle */
   .desktop-sidebar-toggle {
     display: flex;
     align-items: center;
@@ -587,10 +620,10 @@ function isActive(href: string): boolean {
     border-radius: 8px;
     color: #ffffff;
     cursor: pointer;
-    pointer-events: auto !important;
+    transition: all 0.2s ease;
+    pointer-events: auto !important; /* FIX: Ensure clickable */
     position: relative;
     z-index: 100;
-    transition: background 0.2s ease;
   }
 
   .desktop-sidebar-toggle:hover {
@@ -606,180 +639,242 @@ function isActive(href: string): boolean {
     pointer-events: none;
   }
 
+  .header-column-sidebar {
+    flex-shrink: 0;
+  }
+
+  /* Mobile Menu Button */
   .header-btn-collapse-nav {
     display: none;
   }
+
+  /* Hide entire Porto header on mobile - use original header-mobile instead */
+  @media (max-width: 991px) {
+    .site-header {
+      display: none !important;
+    }
+  }
+
 </style>
 
 <script is:inline>
-  /**
-   * Header Scroll Handler - STABLE VERSION
-   *
-   * Simple class toggling:
-   * - Coral bar: .is-hidden (slides up via transform)
-   * - Header: .is-scrolled (moves up via top property)
-   * - Spacer: .is-scrolled (shrinks via CSS class)
-   *
-   * NO JS height calculations. NO wrapper transforms.
-   */
-  (function() {
-    'use strict';
+  // Porto Header Desktop Navigation
+  // Mobile menu handled by MobileShell via #sidebarToggle (this file now uses #portoMobileToggle)
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log('[Porto Header] Initializing...');
 
-    document.addEventListener('DOMContentLoaded', () => {
-      const coralTopBar = document.getElementById('coralTopBar');
-      const header = document.getElementById('header');
-      const headerSpacer = document.getElementById('headerSpacer');
+    // ========================================
+    // SCROLL BEHAVIOR
+    // ========================================
+    const coralTopBar = document.getElementById('coralTopBar');
+    const header = document.getElementById('header');
+    const headerWrapper = document.getElementById('headerWrapper');
+    const headerSpacer = document.querySelector('.header-spacer');
+    const scrollThreshold = 50;
 
-      if (!header) return;
+    function syncSpacerHeight() {
+      if (headerWrapper && headerSpacer) {
+        headerSpacer.style.height = `${headerWrapper.offsetHeight}px`;
+      }
+    }
 
-      const SCROLL_THRESHOLD = 50;
-      let lastScrollState = false;
-      let ticking = false;
+    function handleScrollBehavior() {
+      const currentScrollY = window.scrollY;
 
-      function updateHeader() {
-        const isScrolled = window.scrollY > SCROLL_THRESHOLD;
-
-        // Only update DOM if state changed
-        if (isScrolled !== lastScrollState) {
-          lastScrollState = isScrolled;
-
-          if (isScrolled) {
-            coralTopBar?.classList.add('is-hidden');
-            header.classList.add('is-scrolled');
-            headerSpacer?.classList.add('is-scrolled');
-          } else {
-            coralTopBar?.classList.remove('is-hidden');
-            header.classList.remove('is-scrolled');
-            headerSpacer?.classList.remove('is-scrolled');
-          }
-        }
+      if (currentScrollY > scrollThreshold) {
+        coralTopBar?.classList.add('hidden');
+        header?.classList.add('scrolled');
+        headerWrapper?.classList.add('is-scrolled');
+      } else {
+        coralTopBar?.classList.remove('hidden');
+        header?.classList.remove('scrolled');
+        headerWrapper?.classList.remove('is-scrolled');
       }
 
-      function onScroll() {
-        if (!ticking) {
-          requestAnimationFrame(() => {
-            updateHeader();
-            ticking = false;
-          });
-          ticking = true;
-        }
-      }
+      syncSpacerHeight();
+    }
 
-      window.addEventListener('scroll', onScroll, { passive: true });
-      updateHeader(); // Initial state
+    window.addEventListener('scroll', handleScrollBehavior, { passive: true });
+    window.addEventListener('resize', syncSpacerHeight);
+    handleScrollBehavior();
+    syncSpacerHeight();
 
-      // ========================================
-      // SIDEBAR TOGGLE
-      // ========================================
-      const desktopSidebarToggle = document.getElementById('desktopSidebarToggle');
-      const menuSidebar = document.getElementById('menu-sidebar');
-      const sidebarOverlay = document.getElementById('sidebarOverlay');
+    // ========================================
+    // DESKTOP SIDEBAR TOGGLE
+    // ========================================
+    const desktopSidebarToggle = document.getElementById('desktopSidebarToggle');
+    const menuSidebar = document.getElementById('menu-sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
 
-      if (desktopSidebarToggle && menuSidebar) {
-        desktopSidebarToggle.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
+    console.log('[Porto Header] Desktop sidebar toggle:', desktopSidebarToggle ? 'FOUND' : 'NOT FOUND');
+    console.log('[Porto Header] Menu sidebar:', menuSidebar ? 'FOUND' : 'NOT FOUND');
+    console.log('[Porto Header] Sidebar overlay:', sidebarOverlay ? 'FOUND' : 'NOT FOUND');
+
+    if (desktopSidebarToggle) {
+      desktopSidebarToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('[Porto Header] Desktop sidebar toggle clicked!');
+
+        if (menuSidebar) {
           menuSidebar.classList.add('is-open');
-          if (sidebarOverlay) sidebarOverlay.classList.add('is-visible');
-          document.body.style.overflow = 'hidden';
-        });
-      }
+          console.log('[Porto Header] Sidebar opened');
+        } else {
+          console.error('[Porto Header] ERROR: menu-sidebar element not found!');
+        }
 
-      const portoMobileToggle = document.getElementById('portoMobileToggle');
-      if (portoMobileToggle && menuSidebar) {
-        portoMobileToggle.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
+        if (sidebarOverlay) {
+          sidebarOverlay.classList.add('is-visible');
+        }
+
+        document.body.style.overflow = 'hidden';
+      });
+    }
+
+    // Also connect the renamed mobile toggle (for tablet breakpoint)
+    const portoMobileToggle = document.getElementById('portoMobileToggle');
+    if (portoMobileToggle) {
+      portoMobileToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('[Porto Header] Porto mobile toggle clicked!');
+
+        if (menuSidebar) {
           menuSidebar.classList.add('is-open');
-          if (sidebarOverlay) sidebarOverlay.classList.add('is-visible');
-          document.body.style.overflow = 'hidden';
-        });
-      }
+        }
+        if (sidebarOverlay) {
+          sidebarOverlay.classList.add('is-visible');
+        }
+        document.body.style.overflow = 'hidden';
+      });
+    }
 
-      // ========================================
-      // SEARCH TOGGLE
-      // ========================================
-      const desktopSearchToggle = document.getElementById('desktopSearchToggle');
-      const searchOverlay = document.getElementById('search-overlay');
-      const searchInput = document.getElementById('searchInput');
+    // ========================================
+    // DESKTOP SEARCH TOGGLE
+    // ========================================
+    const desktopSearchToggle = document.getElementById('desktopSearchToggle');
+    const searchOverlay = document.getElementById('search-overlay');
+    const searchInput = document.getElementById('searchInput');
 
-      if (desktopSearchToggle && searchOverlay) {
-        desktopSearchToggle.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
+    console.log('[Porto Header] Desktop search toggle:', desktopSearchToggle ? 'FOUND' : 'NOT FOUND');
+    console.log('[Porto Header] Search overlay:', searchOverlay ? 'FOUND' : 'NOT FOUND');
+
+    if (desktopSearchToggle) {
+      desktopSearchToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('[Porto Header] Desktop search toggle clicked!');
+
+        if (searchOverlay) {
           searchOverlay.classList.add('is-open');
           document.body.style.overflow = 'hidden';
-          setTimeout(() => searchInput?.focus(), 100);
-        });
-      }
-
-      // ========================================
-      // THEME TOGGLE
-      // ========================================
-      const themeToggle = document.getElementById('portoThemeToggle');
-
-      if (themeToggle) {
-        themeToggle.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-
-          const html = document.documentElement;
-          const body = document.body;
-          const currentTheme = html.getAttribute('data-theme') || 'light';
-          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-          html.setAttribute('data-theme', newTheme);
-          body.classList.remove('theme-light', 'theme-dark');
-          body.classList.add('theme-' + newTheme);
-          localStorage.setItem('theme', newTheme);
-        });
-      }
-
-      // ========================================
-      // FLYOUT EDGE DETECTION
-      // ========================================
-      document.querySelectorAll('.dropdown-submenu').forEach(parent => {
-        parent.addEventListener('mouseenter', () => {
-          const flyout = parent.querySelector('.dropdown-menu');
-          if (!flyout || window.innerWidth < 992) return;
-
-          const rect = flyout.getBoundingClientRect();
-          parent.classList.toggle('dropdown-reverse', rect.right > window.innerWidth - 20);
-        });
+          setTimeout(() => {
+            searchInput?.focus();
+          }, 100);
+          console.log('[Porto Header] Search overlay opened');
+        } else {
+          console.error('[Porto Header] ERROR: search-overlay element not found!');
+        }
       });
+    }
 
-      // ========================================
-      // KEYBOARD NAVIGATION
-      // ========================================
-      const nav = document.getElementById('mainNav');
+    // ========================================
+    // THEME TOGGLE
+    // ========================================
+    const themeToggle = document.getElementById('portoThemeToggle');
 
-      if (nav) {
-        nav.addEventListener('keydown', (e) => {
-          const parent = e.target.closest('li');
-          if (!parent) return;
+    console.log('[Porto Header] Theme toggle:', themeToggle ? 'FOUND' : 'NOT FOUND');
 
-          switch (e.key) {
-            case 'Escape':
-              document.querySelectorAll('.dropdown.open').forEach(el => el.classList.remove('open'));
-              break;
-            case 'Enter':
-            case ' ':
-              if (parent.classList.contains('dropdown')) {
-                e.preventDefault();
-                parent.classList.toggle('open');
-              }
-              break;
-            case 'ArrowDown':
-              e.preventDefault();
-              parent.nextElementSibling?.querySelector('a')?.focus();
-              break;
-            case 'ArrowUp':
-              e.preventDefault();
-              parent.previousElementSibling?.querySelector('a')?.focus();
-              break;
-          }
-        });
-      }
+    if (themeToggle) {
+      themeToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('[Porto Header] Theme toggle clicked!');
+
+        const html = document.documentElement;
+        const body = document.body;
+        const currentTheme = html.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+        html.setAttribute('data-theme', newTheme);
+        body.classList.remove('theme-light', 'theme-dark');
+        body.classList.add('theme-' + newTheme);
+        localStorage.setItem('theme', newTheme);
+
+        console.log('[Porto Header] Theme changed to:', newTheme);
+      });
+    }
+
+    // ========================================
+    // FLYOUT EDGE DETECTION
+    // ========================================
+    const flyoutParents = document.querySelectorAll('.dropdown-submenu');
+
+    flyoutParents.forEach(parent => {
+      parent.addEventListener('mouseenter', () => {
+        const flyout = parent.querySelector('.dropdown-menu');
+        if (!flyout || window.innerWidth < 992) return;
+
+        const rect = flyout.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+
+        if (rect.right > viewportWidth - 20) {
+          parent.classList.add('dropdown-reverse');
+        } else {
+          parent.classList.remove('dropdown-reverse');
+        }
+      });
     });
-  })();
+
+    // ========================================
+    // KEYBOARD NAVIGATION
+    // ========================================
+    const nav = document.getElementById('mainNav');
+
+    if (nav) {
+      nav.addEventListener('keydown', (e) => {
+        const key = e.key;
+        const target = e.target;
+        const parent = target.closest('li');
+
+        if (!parent) return;
+
+        switch (key) {
+          case 'Escape':
+            document.querySelectorAll('.dropdown.open').forEach(el => {
+              el.classList.remove('open');
+            });
+            break;
+
+          case 'Enter':
+          case ' ':
+            if (parent.classList.contains('dropdown')) {
+              e.preventDefault();
+              parent.classList.toggle('open');
+            }
+            break;
+
+          case 'ArrowDown':
+            e.preventDefault();
+            const nextSibling = parent.nextElementSibling;
+            if (nextSibling) {
+              const nextLink = nextSibling.querySelector('a');
+              nextLink?.focus();
+            }
+            break;
+
+          case 'ArrowUp':
+            e.preventDefault();
+            const prevSibling = parent.previousElementSibling;
+            if (prevSibling) {
+              const prevLink = prevSibling.querySelector('a');
+              prevLink?.focus();
+            }
+            break;
+        }
+      });
+    }
+
+    console.log('[Porto Header] Initialization complete.');
+  });
 </script>
