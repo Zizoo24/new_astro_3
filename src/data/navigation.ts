@@ -255,7 +255,8 @@ export const mainNav: (NavLink | NavGroup)[] = [
     href: '/resources/',
     children: [
       { label: 'Resource Center', href: '/resources/' },
-      { label: 'MOJ vs Certified Guide', href: '/resources/moj-vs-certified/', badge: 'NEW' },
+      { label: 'Blog', href: '/blog/', badge: 'NEW' },
+      { label: 'MOJ vs Certified Guide', href: '/resources/moj-vs-certified/' },
       { label: 'Pricing Guide', href: '/resources/pricing-guide/' },
       { label: 'Document Checklist', href: '/resources/document-checklist/' },
       { label: 'Attestation Guide', href: '/resources/attestation-guide/' },
@@ -371,6 +372,7 @@ export const mobileNav = {
       href: '/resources/',
       children: [
         { label: 'Resource Hub', href: '/resources/' },
+        { label: 'Blog', href: '/blog/' },
         { label: 'MOJ vs Certified Guide', href: '/resources/moj-vs-certified/' },
         { label: 'Pricing Guide', href: '/resources/pricing-guide/' },
         { label: 'Document Checklist', href: '/resources/document-checklist/' },
@@ -409,7 +411,7 @@ export const footerNav = {
     { label: 'Legal Translation', href: '/legal-translation-dubai/' },
     { label: 'Personal Documents', href: '/personal-documents/' },
     { label: 'Attestation', href: '/services/attestation/' },
-    { label: 'Locations', href: '/locations/' },
+    { label: 'Blog', href: '/blog/' },
     { label: 'About', href: '/about/' },
     { label: 'Contact', href: '/contact/' },
   ],
