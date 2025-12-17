@@ -88,7 +88,7 @@
     display: flex;
     flex-direction: column;
     background: transparent;
-    border-top: 3px solid var(--header-coral);
+    border: none;
     transition: box-shadow var(--header-transition);
   }
 
@@ -98,21 +98,19 @@
 
   #header .header-top {
     background: var(--header-coral);
-    min-height: var(--header-top-height);
+    height: var(--header-top-height);
     overflow: hidden;
     transition:
-      min-height var(--header-transition),
-      max-height var(--header-transition),
       height var(--header-transition),
-      opacity var(--header-transition),
-      padding var(--header-transition);
+      opacity var(--header-transition);
   }
 
   #header .header-top-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 6px 15px;
+    height: 100%;
+    padding: 0 30px;
   }
 
   #header .header-top-left {
@@ -187,13 +185,13 @@
 
   #header .header-container {
     background: linear-gradient(135deg, var(--header-navy) 0%, var(--header-navy-light) 100%);
-    min-height: var(--header-container-height);
-    transition: min-height var(--header-transition);
+    height: var(--header-container-height);
+    transition: height var(--header-transition);
     /* Full width - override container class */
     max-width: 100% !important;
     width: 100% !important;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
   }
 
   #header .header-row {
@@ -201,8 +199,8 @@
     align-items: center !important;
     justify-content: flex-start !important;
     gap: 20px !important;
-    padding: 10px 0;
-    transition: padding var(--header-transition);
+    height: 100%;
+    padding: 0;
     flex-wrap: nowrap !important;
   }
 
@@ -262,9 +260,10 @@
   }
 
   #header .header-logo-img {
-    width: 38px !important;
-    height: 38px !important;
-    min-width: 38px !important;
+    width: auto;
+    height: 40px;
+    max-height: 40px;
+    object-fit: contain;
     transition: transform var(--header-transition);
     transform-origin: left center;
   }
@@ -447,27 +446,13 @@
 
   /* Collapse coral top bar completely */
   html.sticky-header-active #header .header-top {
-    min-height: 0;
-    max-height: 0;
     height: 0;
     opacity: 0;
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
-  }
-
-  html.sticky-header-active #header .header-top-container {
-    padding: 0;
-    height: 0;
   }
 
   /* Shrink navy container */
   html.sticky-header-active #header .header-container {
-    min-height: var(--header-container-height-sticky);
-  }
-
-  html.sticky-header-active #header .header-row {
-    padding: 6px 0;
+    height: var(--header-container-height-sticky);
   }
 
   /* Shrink logo via CSS scale (no duplicate images) */
