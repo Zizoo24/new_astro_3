@@ -217,9 +217,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // Sticky Header Behavior
   // REMOVED: Duplicate scroll handler
   // Header-porto.astro has its own scroll handler that manages:
-  // - .coral-top-bar.hidden (at 50px scroll)
-  // - .site-header.scrolled (at 50px scroll)
-  // - .header-spacer height sync
+  // - html.sticky-header-active class (Porto pattern)
+  // - Single class on <html> controls all header state via CSS
   // ========================================
 
   // ========================================

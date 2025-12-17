@@ -1,32 +1,37 @@
 /**
- * header-unified.css - Unified Desktop Header Styles
+ * header-unified.css - Porto-Authentic Desktop Header Styles
  * ==========================================================================
  *
- * SINGLE SOURCE OF TRUTH for desktop header (Header-porto.astro)
+ * SINGLE SOURCE OF TRUTH for desktop header
+ * Based on Porto Theme v13.0.0 demo-business-consulting-2
  *
  * Created: 2025-01-17
- * Purpose: Consolidate all header CSS rules, eliminate conflicts
  *
- * Structure:
+ * STRUCTURE:
+ * #header.header-effect-shrink
+ *   └── .header-body
+ *       ├── .header-top (coral bar)
+ *       └── .header-container (navy nav)
+ *
+ * STICKY TRIGGER: html.sticky-header-active
+ * - One class on <html> controls all state changes
+ * - No spacer div needed - fixed positioning handles layout
+ *
+ * SECTIONS:
  * 1. CSS Custom Properties
- * 2. Fixed Header Wrapper
- * 3. Coral Top Bar
- * 4. Navy Header Body
- * 5. Logo
- * 6. Navigation
- * 7. Action Buttons
- * 8. Scroll State (Compact)
- * 9. Dark Mode Support
- * 10. Responsive / Mobile Hide
- * 11. Print Styles
- *
- * Classes used by Header-porto.astro:
- * - .header-wrapper (fixed container)
- * - .coral-top-bar (announcement bar)
- * - #header.site-header (main header)
- * - .header-body (gradient background)
- * - .header-container (content wrapper)
- * - .scrolled (scroll state class)
+ * 2. Mobile Hide (below 992px)
+ * 3. Base Header Structure
+ * 4. Coral Top Bar
+ * 5. Navy Header Container
+ * 6. Sidebar Toggle
+ * 7. Logo (with CSS scale shrink)
+ * 8. Navigation Column
+ * 9. Action Buttons
+ * 10. Sticky State (html.sticky-header-active)
+ * 11. Homepage Transparent Mode
+ * 12. Dark Mode Support
+ * 13. Dropdown Menus
+ * 14. Print Styles
  *
  * ==========================================================================
  */
@@ -45,11 +50,9 @@
   --header-text-muted: rgba(255, 255, 255, 0.85);
 
   /* Header Dimensions */
-  --header-coral-height: 42px;
-  --header-main-height: 78px;
-  --header-main-height-scrolled: 58px;
-  --header-total-height: calc(var(--header-coral-height) + var(--header-main-height));
-  --header-total-height-scrolled: var(--header-main-height-scrolled);
+  --header-top-height: 50px;
+  --header-container-height: 100px;
+  --header-container-height-sticky: 70px;
 
   /* Transitions */
   --header-transition: 0.3s ease;
@@ -57,588 +60,644 @@
 }
 
 /* ==========================================================================
-   2. FIXED HEADER WRAPPER
+   2. MOBILE HIDE (below 992px)
+   MobileShell handles mobile navigation
    ========================================================================== */
 
-.header-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1030;
-  width: 100%;
-}
-
-.header-spacer {
-  height: 120px;
-  transition: height var(--header-transition);
-}
-
-/* ==========================================================================
-   3. CORAL TOP BAR
-   ========================================================================== */
-
-.coral-top-bar {
-  background: var(--header-coral);
-  padding: 10px 0;
-  font-family: var(--font-primary, 'Montserrat', sans-serif);
-  font-size: 0.85rem;
-  transition:
-    transform var(--header-transition),
-    opacity var(--header-transition),
-    max-height var(--header-transition);
-  max-height: 60px;
-  overflow: hidden;
-}
-
-.coral-top-bar.hidden {
-  max-height: 0;
-  padding: 0;
-  opacity: 0;
-  transform: translateY(-100%);
-  pointer-events: none;
-}
-
-.coral-top-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.coral-top-left {
-  display: flex;
-  gap: 20px;
-}
-
-.coral-top-link,
-.coral-top-hours {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: rgba(255, 255, 255, 0.95);
-  text-decoration: none;
-  transition: color var(--header-transition-fast);
-  font-weight: 500;
-}
-
-/* Force coral bar links to stay white */
-.coral-top-bar .coral-top-link,
-.coral-top-bar .coral-top-hours,
-.coral-top-bar .coral-top-link:visited {
-  color: #ffffff !important;
-}
-
-.coral-top-link:hover {
-  color: #ffffff !important;
-  opacity: 0.9;
-}
-
-.coral-top-hours {
-  color: rgba(255, 255, 255, 0.85);
-}
-
-/* ==========================================================================
-   4. NAVY HEADER BODY
-   ========================================================================== */
-
-.site-header {
-  width: 100%;
-  transition: all var(--header-transition);
-}
-
-.header-body {
-  background: linear-gradient(135deg, var(--header-navy) 0%, var(--header-navy-light) 100%);
-  transition: all var(--header-transition);
-}
-
-.header-container {
-  padding: 15px 0;
-  transition: padding var(--header-transition);
-}
-
-.header-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: nowrap;
-}
-
-/* ==========================================================================
-   5. LOGO
-   ========================================================================== */
-
-.header-column-logo {
-  position: relative;
-  z-index: 1;
-  margin-right: 18px;
-  flex: 0 0 auto;
-  max-width: 280px;
-  min-width: 0;
-}
-
-.header-logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-}
-
-.logo-emblem {
-  height: 44px;
-  width: auto;
-  transition: height var(--header-transition);
-  flex-shrink: 0;
-}
-
-.logo-text-block {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.15;
-  min-width: 0;
-}
-
-.logo-text {
-  font-family: var(--font-primary, 'Montserrat', sans-serif);
-  font-size: 20px;
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: 0.3px;
-  transition: font-size var(--header-transition);
-  white-space: nowrap;
-}
-
-.logo-suffix {
-  font-weight: 600;
-  color: #ffffff;
-}
-
-.logo-domain {
-  color: var(--header-coral);
-  font-weight: 800;
-}
-
-.logo-tagline {
-  font-family: var(--font-secondary, 'Open Sans', sans-serif);
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2.5px;
-  color: rgba(255, 255, 255, 0.85);
-  margin-top: 2px;
-  transition: font-size var(--header-transition);
-  white-space: nowrap;
-}
-
-/* ==========================================================================
-   6. NAVIGATION
-   ========================================================================== */
-
-.header-column-nav {
-  flex: 1 1 0;
-  display: flex;
-  justify-content: flex-end;
-  position: relative;
-  z-index: 10;
-  min-width: 0;
-  overflow: visible;
-}
-
-.header-nav {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  min-width: 0;
-}
-
-.header-nav-main > nav > ul.nav {
-  flex-wrap: nowrap;
-  min-width: 0;
-}
-
-/* Nav Links - force white on navy header */
-.header-body .nav-link,
-.header-body .nav-link i {
-  color: #ffffff !important;
-}
-
-.header-body .nav-link:hover,
-.header-body .nav-link:focus,
-.header-body .nav-link.active {
-  color: #ffffff !important;
-}
-
-/* Desktop Sidebar Toggle */
-.header-column-sidebar {
-  flex-shrink: 0;
-}
-
-.desktop-sidebar-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 0;
-  border-radius: 8px;
-  color: #ffffff;
-  cursor: pointer;
-  transition: all var(--header-transition-fast);
-  pointer-events: auto !important;
-  position: relative;
-  z-index: 100;
-}
-
-.desktop-sidebar-toggle:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.desktop-sidebar-toggle:active {
-  transform: scale(0.95);
-}
-
-.desktop-sidebar-toggle i {
-  font-size: 1.25rem;
-  pointer-events: none;
-}
-
-/* Mobile Menu Button - hidden on desktop */
-.header-btn-collapse-nav {
-  display: none;
-}
-
-/* ==========================================================================
-   7. ACTION BUTTONS
-   ========================================================================== */
-
-.header-column-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-}
-
-.header-action-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 0;
-  border-radius: 50%;
-  color: #ffffff;
-  cursor: pointer;
-  transition: all var(--header-transition-fast);
-  pointer-events: auto !important;
-  position: relative;
-  z-index: 100;
-}
-
-.header-action-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.header-action-btn:active {
-  transform: scale(0.95);
-}
-
-.header-action-btn i {
-  font-size: 1rem;
-  pointer-events: none;
-}
-
-/* Theme Toggle Icons */
-.theme-icon-light {
-  display: none;
-}
-
-[data-theme="dark"] .theme-icon-dark {
-  display: none;
-}
-
-[data-theme="dark"] .theme-icon-light {
-  display: block;
-}
-
-/* ==========================================================================
-   8. SCROLL STATE (COMPACT HEADER)
-   ========================================================================== */
-
-.site-header.scrolled .header-container {
-  padding: 6px 0;
-}
-
-.site-header.scrolled .logo-emblem {
-  height: 32px;
-}
-
-.site-header.scrolled .logo-text {
-  font-size: 16px;
-}
-
-.site-header.scrolled .logo-tagline {
-  font-size: 8px;
-  letter-spacing: 2px;
-}
-
-.site-header.scrolled .desktop-sidebar-toggle {
-  width: 36px;
-  height: 36px;
-}
-
-.site-header.scrolled .header-action-btn {
-  width: 32px;
-  height: 32px;
-}
-
-.site-header.scrolled .header-action-btn i {
-  font-size: 0.9rem;
-}
-
-/* ==========================================================================
-   9. DARK MODE SUPPORT
-   ========================================================================== */
-
-body.theme-dark .site-header .header-body,
-[data-theme="dark"] .site-header .header-body {
-  background: linear-gradient(135deg, #0d1a2d 0%, #1e3a5f 100%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-body.theme-dark .coral-top-bar,
-[data-theme="dark"] .coral-top-bar {
-  background: #cc1143;
-}
-
-/* ==========================================================================
-   10. RESPONSIVE / MOBILE HIDE
-   ========================================================================== */
-
-/* Hide logo text on narrower desktops */
-@media (max-width: 1400px) {
-  .header-column-logo {
-    max-width: 240px;
-  }
-
-  .logo-text-block {
-    display: none;
-  }
-
-  .logo-emblem {
-    height: 40px;
-  }
-}
-
-@media (max-width: 1200px) {
-  .header-column-logo {
-    max-width: 60px;
-  }
-
-  .coral-top-email {
-    display: none;
-  }
-}
-
-/* CRITICAL: Hide desktop header on mobile */
 @media (max-width: 991px) {
-  .header-wrapper {
-    display: none !important;
-    pointer-events: none !important;
-  }
-
-  .header-spacer {
-    display: none;
-  }
-
-  .site-header {
-    display: none !important;
-  }
-
-  .coral-top-bar {
+  #header {
     display: none !important;
   }
 }
 
 /* ==========================================================================
-   11. PRINT STYLES
+   3. BASE HEADER STRUCTURE (desktop only)
+   ========================================================================== */
+
+@media (min-width: 992px) {
+  #header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    width: 100%;
+  }
+
+  #header .header-body {
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    border-top: 3px solid var(--header-coral);
+    transition: box-shadow var(--header-transition);
+  }
+
+  /* ==========================================================================
+     4. CORAL TOP BAR
+     ========================================================================== */
+
+  #header .header-top {
+    background: var(--header-coral);
+    min-height: var(--header-top-height);
+    overflow: hidden;
+    transition:
+      min-height var(--header-transition),
+      opacity var(--header-transition);
+  }
+
+  #header .header-top-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+  }
+
+  #header .header-top-left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  #header .header-top-phone,
+  #header .header-top-email,
+  #header .header-top-hours {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--header-text);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: opacity var(--header-transition-fast);
+  }
+
+  #header .header-top-phone:hover,
+  #header .header-top-email:hover {
+    opacity: 0.85;
+    color: var(--header-text);
+  }
+
+  #header .header-top-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    font-size: 12px;
+  }
+
+  #header .header-top-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    color: var(--header-text);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: all var(--header-transition-fast);
+  }
+
+  #header .header-top-cta:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: var(--header-text);
+  }
+
+  /* Hide email on smaller desktops */
+  @media (max-width: 1200px) {
+    #header .header-top-email {
+      display: none;
+    }
+  }
+
+  /* ==========================================================================
+     5. NAVY HEADER CONTAINER
+     ========================================================================== */
+
+  #header .header-container {
+    background: linear-gradient(135deg, var(--header-navy) 0%, var(--header-navy-light) 100%);
+    min-height: var(--header-container-height);
+    transition: min-height var(--header-transition);
+  }
+
+  #header .header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 15px 0;
+    transition: padding var(--header-transition);
+  }
+
+  /* ==========================================================================
+     6. SIDEBAR TOGGLE BUTTON
+     ========================================================================== */
+
+  #header .header-column-sidebar {
+    flex: 0 0 auto;
+  }
+
+  #header .btn-sidebar-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 8px;
+    color: var(--header-text);
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: all var(--header-transition-fast);
+  }
+
+  #header .btn-sidebar-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  #header .btn-sidebar-toggle:active {
+    transform: scale(0.95);
+  }
+
+  /* ==========================================================================
+     7. LOGO (with CSS scale shrink - no duplicate images needed)
+     ========================================================================== */
+
+  #header .header-column-logo {
+    flex: 0 0 auto;
+    margin-right: 20px;
+  }
+
+  #header .header-logo a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  #header .header-logo-img {
+    width: 44px;
+    height: 44px;
+    transition: transform var(--header-transition);
+    transform-origin: left center;
+  }
+
+  #header .logo-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+
+  #header .logo-text {
+    font-family: var(--font-primary, 'Montserrat', sans-serif);
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--header-text);
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    transition: font-size var(--header-transition);
+  }
+
+  #header .logo-suffix {
+    font-weight: 600;
+  }
+
+  #header .logo-domain {
+    color: var(--header-coral);
+    font-weight: 800;
+  }
+
+  #header .logo-tagline {
+    font-family: var(--font-secondary, 'Open Sans', sans-serif);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--header-text-muted);
+    margin-top: 2px;
+    white-space: nowrap;
+    transition:
+      font-size var(--header-transition),
+      opacity var(--header-transition);
+  }
+
+  /* Hide text on smaller desktops */
+  @media (max-width: 1400px) {
+    #header .logo-text-wrapper {
+      display: none;
+    }
+    #header .header-column-logo {
+      margin-right: 15px;
+    }
+  }
+
+  /* ==========================================================================
+     8. NAVIGATION COLUMN
+     ========================================================================== */
+
+  #header .header-column-nav {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: flex-end;
+    min-width: 0;
+  }
+
+  #header .header-nav {
+    display: flex;
+    align-items: center;
+  }
+
+  #header .header-nav-main {
+    display: flex;
+  }
+
+  #header .nav.nav-pills {
+    display: flex;
+    flex-wrap: nowrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 4px;
+  }
+
+  #header .nav.nav-pills > li {
+    position: relative;
+  }
+
+  #header .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    color: var(--header-text);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: -0.3px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all var(--header-transition-fast);
+  }
+
+  #header .nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--header-text);
+  }
+
+  #header .nav-link.active {
+    color: var(--header-coral);
+  }
+
+  #header .nav-chevron {
+    font-size: 8px;
+    transition: transform var(--header-transition-fast);
+  }
+
+  #header .dropdown:hover .nav-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* ==========================================================================
+     9. ACTION BUTTONS
+     ========================================================================== */
+
+  #header .header-column-actions {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  #header .btn-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    color: var(--header-text);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all var(--header-transition-fast);
+  }
+
+  #header .btn-action:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  #header .btn-action:active {
+    transform: scale(0.95);
+  }
+
+  /* Theme toggle icons */
+  #header .btn-theme .theme-icon-light {
+    display: none;
+  }
+
+  [data-theme="dark"] #header .btn-theme .theme-icon-dark {
+    display: none;
+  }
+
+  [data-theme="dark"] #header .btn-theme .theme-icon-light {
+    display: block;
+  }
+
+  /* ==========================================================================
+     10. STICKY STATE (Porto Pattern)
+     Triggered by: html.sticky-header-active
+     One class controls all transitions
+     ========================================================================== */
+
+  /* Add shadow when sticky */
+  html.sticky-header-active #header .header-body {
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Collapse coral top bar */
+  html.sticky-header-active #header .header-top {
+    min-height: 0;
+    opacity: 0;
+    overflow: hidden;
+  }
+
+  html.sticky-header-active #header .header-top-container {
+    padding: 0;
+  }
+
+  /* Shrink navy container */
+  html.sticky-header-active #header .header-container {
+    min-height: var(--header-container-height-sticky);
+  }
+
+  html.sticky-header-active #header .header-row {
+    padding: 8px 0;
+  }
+
+  /* Shrink logo via CSS scale (no duplicate images) */
+  html.sticky-header-active #header .header-logo-img {
+    transform: scale(0.82); /* 36/44 = 0.818 */
+  }
+
+  /* Shrink text */
+  html.sticky-header-active #header .logo-text {
+    font-size: 16px;
+  }
+
+  html.sticky-header-active #header .logo-tagline {
+    font-size: 8px;
+    letter-spacing: 2px;
+    opacity: 0.8;
+  }
+
+  /* Shrink buttons */
+  html.sticky-header-active #header .btn-sidebar-toggle {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+  }
+
+  html.sticky-header-active #header .btn-action {
+    width: 34px;
+    height: 34px;
+    font-size: 0.9rem;
+  }
+
+  /* Shrink nav links slightly */
+  html.sticky-header-active #header .nav-link {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  /* ==========================================================================
+     11. HOMEPAGE TRANSPARENT MODE
+     ========================================================================== */
+
+  #header.header-homepage .header-body {
+    border-top-color: transparent;
+  }
+
+  #header.header-homepage .header-top {
+    background: rgba(255, 22, 84, 0.9);
+  }
+
+  #header.header-homepage .header-container {
+    background: linear-gradient(
+      135deg,
+      rgba(10, 22, 40, 0.85) 0%,
+      rgba(26, 54, 93, 0.85) 100%
+    );
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  /* When scrolled on homepage, restore solid backgrounds */
+  html.sticky-header-active #header.header-homepage .header-container {
+    background: linear-gradient(135deg, var(--header-navy) 0%, var(--header-navy-light) 100%);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  /* ==========================================================================
+     12. DARK MODE SUPPORT
+     ========================================================================== */
+
+  body.theme-dark #header .header-container,
+  [data-theme="dark"] #header .header-container {
+    background: linear-gradient(135deg, #0d1a2d 0%, #1e3a5f 100%);
+  }
+
+  body.theme-dark #header .header-top,
+  [data-theme="dark"] #header .header-top {
+    background: #cc1143;
+  }
+}
+
+/* ==========================================================================
+   13. DROPDOWN MENUS (Porto-style white panels)
+   ========================================================================== */
+
+@media (min-width: 992px) {
+  #header .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    padding: 8px 0;
+    margin-top: 0;
+    background: #ffffff;
+    border: 0;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition:
+      opacity var(--header-transition-fast),
+      transform var(--header-transition-fast),
+      visibility var(--header-transition-fast);
+    z-index: 1000;
+    list-style: none;
+  }
+
+  #header .dropdown:hover > .dropdown-menu,
+  #header .dropdown.open > .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  #header .dropdown-menu .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    color: #333;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition:
+      background var(--header-transition-fast),
+      color var(--header-transition-fast);
+  }
+
+  #header .dropdown-menu .dropdown-item:hover {
+    background: #f8f9fa;
+    color: var(--header-coral);
+  }
+
+  #header .dropdown-menu .dropdown-item i {
+    width: 16px;
+    color: var(--header-coral);
+    font-size: 12px;
+  }
+
+  #header .dropdown-header {
+    padding: 8px 20px;
+    color: #999;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  #header .dropdown-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    margin-top: 8px;
+    border-top: 1px solid #eee;
+    color: var(--header-coral);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  #header .dropdown-footer:hover {
+    background: #f8f9fa;
+  }
+
+  /* Flyout Submenus */
+  #header .dropdown-submenu {
+    position: relative;
+  }
+
+  #header .dropdown-submenu > .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -8px;
+    margin-left: 0;
+  }
+
+  #header .dropdown-submenu:hover > .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Reverse flyout when near edge */
+  #header .dropdown-submenu.dropdown-reverse > .dropdown-menu {
+    left: auto;
+    right: 100%;
+  }
+
+  /* Badges */
+  #header .badge {
+    padding: 2px 6px;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 3px;
+    margin-left: auto;
+  }
+
+  #header .badge-new {
+    background: #28a745;
+    color: #fff;
+  }
+
+  #header .badge-express {
+    background: var(--header-coral);
+    color: #fff;
+  }
+
+  #header .badge-popular {
+    background: #007bff;
+    color: #fff;
+  }
+
+  #header .badge-hot {
+    background: #dc3545;
+    color: #fff;
+  }
+
+  /* Dark mode dropdowns */
+  body.theme-dark #header .dropdown-menu,
+  [data-theme="dark"] #header .dropdown-menu {
+    background: #1e2d3d;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  body.theme-dark #header .dropdown-menu .dropdown-item,
+  [data-theme="dark"] #header .dropdown-menu .dropdown-item {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  body.theme-dark #header .dropdown-menu .dropdown-item:hover,
+  [data-theme="dark"] #header .dropdown-menu .dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--header-coral);
+  }
+
+  body.theme-dark #header .dropdown-header,
+  [data-theme="dark"] #header .dropdown-header {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  body.theme-dark #header .dropdown-footer,
+  [data-theme="dark"] #header .dropdown-footer {
+    border-top-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* ==========================================================================
+   14. PRINT STYLES
    ========================================================================== */
 
 @media print {
-  .header-wrapper,
-  .coral-top-bar,
-  .site-header {
+  #header {
     display: none !important;
   }
-
-  .header-spacer {
-    display: none !important;
-  }
-}
-
-/* ==========================================================================
-   DROPDOWN STYLES (Porto-style white dropdowns)
-   ========================================================================== */
-
-.site-header .dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  min-width: 220px;
-  padding: 8px 0;
-  margin-top: 0;
-  background: #ffffff;
-  border: 0;
-  border-radius: 4px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition:
-    opacity var(--header-transition-fast),
-    transform var(--header-transition-fast),
-    visibility var(--header-transition-fast);
-  z-index: 1000;
-}
-
-.site-header .dropdown:hover > .dropdown-menu,
-.site-header .dropdown.open > .dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.site-header .dropdown-menu .dropdown-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 20px;
-  color: #333;
-  font-size: 13px;
-  font-weight: 500;
-  text-decoration: none;
-  transition:
-    background var(--header-transition-fast),
-    color var(--header-transition-fast);
-}
-
-.site-header .dropdown-menu .dropdown-item:hover {
-  background: #f8f9fa;
-  color: var(--header-coral);
-}
-
-.site-header .dropdown-menu .dropdown-item i {
-  width: 16px;
-  color: var(--header-coral);
-  font-size: 12px;
-}
-
-.site-header .dropdown-header {
-  padding: 8px 20px;
-  color: #999;
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.site-header .dropdown-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 20px;
-  margin-top: 8px;
-  border-top: 1px solid #eee;
-  color: var(--header-coral);
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.site-header .dropdown-footer:hover {
-  background: #f8f9fa;
-}
-
-/* Flyout Submenus */
-.site-header .dropdown-submenu {
-  position: relative;
-}
-
-.site-header .dropdown-submenu > .dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -8px;
-  margin-left: 0;
-}
-
-.site-header .dropdown-submenu:hover > .dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-/* Reverse flyout when near edge */
-.site-header .dropdown-submenu.dropdown-reverse > .dropdown-menu {
-  left: auto;
-  right: 100%;
-}
-
-/* Badges */
-.site-header .badge {
-  padding: 2px 6px;
-  font-size: 9px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  border-radius: 3px;
-  margin-left: auto;
-}
-
-.site-header .badge-new {
-  background: #28a745;
-  color: #fff;
-}
-
-.site-header .badge-express {
-  background: var(--header-coral);
-  color: #fff;
-}
-
-.site-header .badge-popular {
-  background: #007bff;
-  color: #fff;
-}
-
-.site-header .badge-hot {
-  background: #dc3545;
-  color: #fff;
-}
-
-/* Dark mode dropdowns */
-body.theme-dark .site-header .dropdown-menu,
-[data-theme="dark"] .site-header .dropdown-menu {
-  background: #1e2d3d;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-body.theme-dark .site-header .dropdown-menu .dropdown-item,
-[data-theme="dark"] .site-header .dropdown-menu .dropdown-item {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-body.theme-dark .site-header .dropdown-menu .dropdown-item:hover,
-[data-theme="dark"] .site-header .dropdown-menu .dropdown-item:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--header-coral);
-}
-
-body.theme-dark .site-header .dropdown-header,
-[data-theme="dark"] .site-header .dropdown-header {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-body.theme-dark .site-header .dropdown-footer,
-[data-theme="dark"] .site-header .dropdown-footer {
-  border-top-color: rgba(255, 255, 255, 0.1);
 }

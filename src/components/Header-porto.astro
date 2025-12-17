@@ -1,24 +1,24 @@
 ---
 /**
- * Header-porto.astro - Desktop Navigation Component
+ * Header-porto.astro - Porto-Authentic Desktop Navigation
  * REFACTORED: 2025-01-17
  *
- * CSS: All styles moved to /styles/header-unified.css
- * JS: Scroll handler is self-contained (no external dependencies)
+ * Built from Porto Theme v13.0.0 demo-business-consulting-2 patterns
  *
- * Structure:
- * - .header-wrapper (fixed container)
- * - .coral-top-bar (announcement bar, hides on scroll)
- * - #header.site-header (main navigation)
- * - .header-spacer (prevents content jump)
+ * CSS: /styles/header-unified.css
  *
- * Features:
- * - 3-level dropdown menus
- * - White dropdown panels with coral accent
- * - Flyout submenus with edge detection
- * - Section headers & badges
- * - Dark mode support
- * - Keyboard navigation (A11y)
+ * BEHAVIORS:
+ * 1. Unscrolled: Coral bar visible (50px), navy container full size (100px)
+ * 2. Scrolled (>70px): Coral bar collapses to 0, navy shrinks to 70px
+ * 3. Logo shrinks via CSS scale when scrolled
+ *
+ * STRUCTURE (Porto-native):
+ * #header.header-effect-shrink
+ *   └── .header-body
+ *       ├── .header-top (coral bar)
+ *       └── .header-container (navy nav)
+ *
+ * STICKY TRIGGER: html.sticky-header-active (Porto pattern)
  */
 
 import { mainNavigation } from '../data/navigation-porto';
@@ -31,78 +31,87 @@ interface Props {
 
 const { currentPath = Astro.url.pathname, isHomepage = false } = Astro.props;
 
-// Check if current path matches or is child of a nav item
 function isActive(href: string): boolean {
   if (href === '/') return currentPath === '/';
   return currentPath.startsWith(href);
 }
 ---
 
-<!-- Fixed Header Wrapper -->
-<div class="header-wrapper" id="headerWrapper">
-  <!-- Coral Top Bar - Disappears on scroll -->
-  <div class="coral-top-bar" id="coralTopBar">
-    <div class="container">
-      <div class="coral-top-content">
-        <div class="coral-top-left">
-          <a href={`tel:${siteContact.phone.replace(/\s/g, '')}`} class="coral-top-link">
-            <i class="fas fa-phone-alt"></i>
-            <span>{siteContact.phoneDisplay}</span>
+<header
+  id="header"
+  class:list={["header-effect-shrink", { "header-homepage": isHomepage }]}
+  data-plugin-options={JSON.stringify({
+    stickyEnabled: true,
+    stickyEffect: "shrink",
+    stickyStartAt: 70,
+    stickyHeaderContainerHeight: 70
+  })}
+>
+  <div class="header-body">
+    <!-- Coral Top Bar -->
+    <div class="header-top header-top-default">
+      <div class="header-top-container container">
+        <div class="header-top-left">
+          <a href={`tel:${siteContact.phone.replace(/\s/g, '')}`} class="header-top-phone">
+            <span class="header-top-icon"><i class="fas fa-phone-alt"></i></span>
+            <span class="header-top-text">{siteContact.phoneDisplay}</span>
           </a>
-          <a href={`mailto:${siteContact.email}`} class="coral-top-link coral-top-email">
-            <i class="fas fa-envelope"></i>
-            <span>{siteContact.email}</span>
+          <a href={`mailto:${siteContact.email}`} class="header-top-email">
+            <span class="header-top-icon"><i class="fas fa-envelope"></i></span>
+            <span class="header-top-text">{siteContact.email}</span>
           </a>
-        </div>
-        <div class="coral-top-right">
-          <span class="coral-top-hours">
-            <i class="fas fa-clock"></i>
-            Daily: 8:00 AM - 10:00 PM
+          <span class="header-top-hours">
+            <span class="header-top-icon"><i class="fas fa-clock"></i></span>
+            <span class="header-top-text">Daily: 8AM - 10PM</span>
           </span>
+        </div>
+        <div class="header-top-right">
+          <a href={siteContact.whatsapp} class="header-top-cta" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-whatsapp"></i>
+            <span>Get Free Quote</span>
+          </a>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Sticky Navy Header -->
-  <header id="header" class:list={["site-header", { "header-homepage": isHomepage }]}>
-  <div class="header-body">
-    <!-- Main Header -->
+    <!-- Navy Navigation Container -->
     <div class="header-container container">
       <div class="header-row">
-        <!-- Desktop Sidebar Toggle -->
+        <!-- Sidebar Toggle -->
         <div class="header-column header-column-sidebar">
           <button
-            id="desktopSidebarToggle"
-            class="desktop-sidebar-toggle"
+            id="headerSidebarToggle"
+            class="btn-sidebar-toggle"
             type="button"
             aria-label="Open sidebar menu"
           >
-            <i class="fas fa-bars" aria-hidden="true"></i>
+            <i class="fas fa-bars"></i>
           </button>
         </div>
 
-        <!-- Logo -->
+        <!-- Logo (single image, CSS scale on scroll) -->
         <div class="header-column header-column-logo">
-          <a href="/" class="header-logo">
-            <img
-              src="/assets/images/logo/brand/emblem-clean.png"
-              alt="OnlineTranslation.ae"
-              width="45"
-              height="45"
-              class="logo-emblem"
-              loading="eager"
-            />
-            <div class="logo-text-block">
-              <span class="logo-text">Online<span class="logo-suffix">Translation</span><span class="logo-domain">.ae</span></span>
-              <span class="logo-tagline">Boutique Legal Translation</span>
-            </div>
-          </a>
+          <div class="header-logo">
+            <a href="/">
+              <img
+                src="/assets/images/logo/brand/emblem-clean.png"
+                alt="OnlineTranslation.ae"
+                width="44"
+                height="44"
+                class="header-logo-img"
+                loading="eager"
+              />
+              <span class="logo-text-wrapper">
+                <span class="logo-text">Online<span class="logo-suffix">Translation</span><span class="logo-domain">.ae</span></span>
+                <span class="logo-tagline">Boutique Legal Translation</span>
+              </span>
+            </a>
+          </div>
         </div>
 
         <!-- Navigation -->
         <div class="header-column header-column-nav">
-          <div class="header-nav">
+          <div class="header-nav header-nav-links">
             <div class="header-nav-main header-nav-main-effect-1">
               <nav id="mainNav" aria-label="Main navigation">
                 <ul class="nav nav-pills" role="menubar">
@@ -129,11 +138,7 @@ function isActive(href: string): boolean {
                         <>
                           <a
                             href={item.href}
-                            class:list={[
-                              'nav-link',
-                              'dropdown-toggle',
-                              isActive(item.href) ? 'active' : ''
-                            ]}
+                            class:list={['nav-link', 'dropdown-toggle', isActive(item.href) ? 'active' : '']}
                             role="menuitem"
                             aria-haspopup="true"
                             aria-expanded="false"
@@ -141,16 +146,12 @@ function isActive(href: string): boolean {
                             {item.label}
                             <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
                           </a>
-
                           <ul class="dropdown-menu" role="menu" aria-label={item.dropdown.label}>
-                            {item.dropdown.categories.map((category, catIndex) => (
+                            {item.dropdown.categories.map((category) => (
                               <>
                                 {category.header && (
-                                  <li class="dropdown-header" role="presentation">
-                                    {category.header}
-                                  </li>
+                                  <li class="dropdown-header" role="presentation">{category.header}</li>
                                 )}
-
                                 {category.items.map((subItem) => (
                                   <li
                                     class:list={[
@@ -165,34 +166,20 @@ function isActive(href: string): boolean {
                                       role="menuitem"
                                       aria-haspopup={subItem.children ? 'true' : undefined}
                                     >
-                                      {subItem.icon && (
-                                        <i class={subItem.icon} aria-hidden="true"></i>
-                                      )}
+                                      {subItem.icon && <i class={subItem.icon} aria-hidden="true"></i>}
                                       <span>{subItem.label}</span>
                                       {subItem.badge && (
-                                        <span class={`badge badge-${subItem.badge}`}>
-                                          {subItem.badge.toUpperCase()}
-                                        </span>
+                                        <span class={`badge badge-${subItem.badge}`}>{subItem.badge.toUpperCase()}</span>
                                       )}
                                     </a>
-
                                     {subItem.children && (
                                       <ul class="dropdown-menu" role="menu">
                                         {subItem.children.map((child) => (
-                                          <li
-                                            class:list={[isActive(child.href) ? 'active' : '']}
-                                            role="none"
-                                          >
-                                            <a
-                                              href={child.href}
-                                              class="dropdown-item"
-                                              role="menuitem"
-                                            >
+                                          <li class:list={[isActive(child.href) ? 'active' : '']} role="none">
+                                            <a href={child.href} class="dropdown-item" role="menuitem">
                                               <span>{child.label}</span>
                                               {child.badge && (
-                                                <span class={`badge badge-${child.badge}`}>
-                                                  {child.badge.toUpperCase()}
-                                                </span>
+                                                <span class={`badge badge-${child.badge}`}>{child.badge.toUpperCase()}</span>
                                               )}
                                             </a>
                                           </li>
@@ -203,14 +190,9 @@ function isActive(href: string): boolean {
                                 ))}
                               </>
                             ))}
-
                             {item.dropdown.footerLink && (
                               <li role="none">
-                                <a
-                                  href={item.dropdown.footerLink.href}
-                                  class="dropdown-footer"
-                                  role="menuitem"
-                                >
+                                <a href={item.dropdown.footerLink.href} class="dropdown-footer" role="menuitem">
                                   {item.dropdown.footerLink.label}
                                   <i class="fas fa-arrow-right" aria-hidden="true"></i>
                                 </a>
@@ -233,285 +215,164 @@ function isActive(href: string): boolean {
                 </ul>
               </nav>
             </div>
-
-            <!-- Mobile Menu Button - RENAMED to avoid duplicate ID with MobileShell -->
-            <button
-              id="portoMobileToggle"
-              class="header-btn-collapse-nav"
-              type="button"
-              aria-label="Open menu"
-            >
-              <i class="fas fa-bars" aria-hidden="true"></i>
-            </button>
           </div>
         </div>
 
-        <!-- Search Toggle & Theme Toggle -->
+        <!-- Action Buttons -->
         <div class="header-column header-column-actions">
-          <button
-            id="desktopSearchToggle"
-            class="header-action-btn search-toggle"
-            type="button"
-            aria-label="Search"
-          >
-            <i class="fas fa-search" aria-hidden="true"></i>
+          <button id="headerSearchToggle" class="btn-action" type="button" aria-label="Search">
+            <i class="fas fa-search"></i>
           </button>
-          <button
-            id="portoThemeToggle"
-            class="header-action-btn theme-toggle"
-            type="button"
-            aria-label="Toggle dark mode"
-          >
-            <i class="fas fa-moon theme-icon-dark" aria-hidden="true"></i>
-            <i class="fas fa-sun theme-icon-light" aria-hidden="true"></i>
+          <button id="headerThemeToggle" class="btn-action btn-theme" type="button" aria-label="Toggle theme">
+            <i class="fas fa-moon theme-icon-dark"></i>
+            <i class="fas fa-sun theme-icon-light"></i>
           </button>
         </div>
       </div>
     </div>
   </div>
 </header>
-</div><!-- /.header-wrapper -->
-
-<!-- Spacer for fixed header -->
-<div class="header-spacer"></div>
 
 <!--
-  CSS STYLES MOVED TO: /styles/header-unified.css
-
-  All header styles are now consolidated in a single external file
-  for easier maintenance and to avoid cascade conflicts.
-
-  The unified CSS includes:
-  - Fixed header wrapper
-  - Coral top bar
-  - Navy header body
-  - Logo styling
-  - Navigation
-  - Action buttons
-  - Scroll state (compact)
-  - Dark mode support
-  - Mobile hide rules
-  - Dropdown styles
+  CSS: All styles in /styles/header-unified.css
+  Using Porto-authentic html.sticky-header-active pattern
 -->
 
 <script is:inline>
-  // Porto Header Desktop Navigation
-  // Mobile menu handled by MobileShell via #sidebarToggle (this file now uses #portoMobileToggle)
-  document.addEventListener('DOMContentLoaded', () => {
-    console.log('[Porto Header] Initializing...');
+/**
+ * Porto Header - Sticky Behavior
+ * Uses html.sticky-header-active class (Porto pattern)
+ */
+(function() {
+  const header = document.getElementById('header');
+  if (!header) return;
 
-    // ========================================
-    // SCROLL BEHAVIOR
-    // ========================================
-    const coralTopBar = document.getElementById('coralTopBar');
-    const header = document.getElementById('header');
-    const headerWrapper = document.getElementById('headerWrapper');
-    const headerSpacer = document.querySelector('.header-spacer');
-    const scrollThreshold = 50;
+  // Parse options from data attribute
+  let options = {
+    stickyEnabled: true,
+    stickyEffect: 'shrink',
+    stickyStartAt: 70,
+    stickyHeaderContainerHeight: 70
+  };
 
-    function syncSpacerHeight() {
-      if (headerWrapper && headerSpacer) {
-        headerSpacer.style.height = `${headerWrapper.offsetHeight}px`;
-      }
+  try {
+    const dataOptions = header.getAttribute('data-plugin-options');
+    if (dataOptions) {
+      options = { ...options, ...JSON.parse(dataOptions) };
     }
+  } catch (e) {
+    console.warn('[Header] Could not parse options:', e);
+  }
 
-    function handleScrollBehavior() {
-      const currentScrollY = window.scrollY;
+  if (!options.stickyEnabled) return;
 
-      if (currentScrollY > scrollThreshold) {
-        coralTopBar?.classList.add('hidden');
-        header?.classList.add('scrolled');
-        headerWrapper?.classList.add('is-scrolled');
+  const html = document.documentElement;
+  let isSticky = false;
+  let ticking = false;
+
+  function updateSticky() {
+    const scrollY = window.scrollY || window.pageYOffset;
+    const shouldBeSticky = scrollY > options.stickyStartAt;
+
+    if (shouldBeSticky !== isSticky) {
+      isSticky = shouldBeSticky;
+      if (isSticky) {
+        html.classList.add('sticky-header-active');
       } else {
-        coralTopBar?.classList.remove('hidden');
-        header?.classList.remove('scrolled');
-        headerWrapper?.classList.remove('is-scrolled');
+        html.classList.remove('sticky-header-active');
       }
-
-      syncSpacerHeight();
     }
+    ticking = false;
+  }
 
-    window.addEventListener('scroll', handleScrollBehavior, { passive: true });
-    window.addEventListener('resize', syncSpacerHeight);
-    handleScrollBehavior();
-    syncSpacerHeight();
-
-    // ========================================
-    // DESKTOP SIDEBAR TOGGLE
-    // ========================================
-    const desktopSidebarToggle = document.getElementById('desktopSidebarToggle');
-    const menuSidebar = document.getElementById('menu-sidebar');
-    const sidebarOverlay = document.getElementById('sidebarOverlay');
-
-    console.log('[Porto Header] Desktop sidebar toggle:', desktopSidebarToggle ? 'FOUND' : 'NOT FOUND');
-    console.log('[Porto Header] Menu sidebar:', menuSidebar ? 'FOUND' : 'NOT FOUND');
-    console.log('[Porto Header] Sidebar overlay:', sidebarOverlay ? 'FOUND' : 'NOT FOUND');
-
-    if (desktopSidebarToggle) {
-      desktopSidebarToggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        console.log('[Porto Header] Desktop sidebar toggle clicked!');
-
-        if (menuSidebar) {
-          menuSidebar.classList.add('is-open');
-          console.log('[Porto Header] Sidebar opened');
-        } else {
-          console.error('[Porto Header] ERROR: menu-sidebar element not found!');
-        }
-
-        if (sidebarOverlay) {
-          sidebarOverlay.classList.add('is-visible');
-        }
-
-        document.body.style.overflow = 'hidden';
-      });
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(updateSticky);
+      ticking = true;
     }
+  }
 
-    // Also connect the renamed mobile toggle (for tablet breakpoint)
-    const portoMobileToggle = document.getElementById('portoMobileToggle');
-    if (portoMobileToggle) {
-      portoMobileToggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        console.log('[Porto Header] Porto mobile toggle clicked!');
+  window.addEventListener('scroll', onScroll, { passive: true });
+  updateSticky(); // Initial check
 
-        if (menuSidebar) {
-          menuSidebar.classList.add('is-open');
-        }
-        if (sidebarOverlay) {
-          sidebarOverlay.classList.add('is-visible');
-        }
-        document.body.style.overflow = 'hidden';
-      });
-    }
+  // ========================================
+  // BUTTON HANDLERS
+  // ========================================
 
-    // ========================================
-    // DESKTOP SEARCH TOGGLE
-    // ========================================
-    const desktopSearchToggle = document.getElementById('desktopSearchToggle');
-    const searchOverlay = document.getElementById('search-overlay');
-    const searchInput = document.getElementById('searchInput');
+  // Sidebar Toggle
+  const sidebarToggle = document.getElementById('headerSidebarToggle');
+  const menuSidebar = document.getElementById('menu-sidebar');
+  const sidebarOverlay = document.getElementById('sidebarOverlay');
 
-    console.log('[Porto Header] Desktop search toggle:', desktopSearchToggle ? 'FOUND' : 'NOT FOUND');
-    console.log('[Porto Header] Search overlay:', searchOverlay ? 'FOUND' : 'NOT FOUND');
+  if (sidebarToggle) {
+    sidebarToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
 
-    if (desktopSearchToggle) {
-      desktopSearchToggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        console.log('[Porto Header] Desktop search toggle clicked!');
-
-        if (searchOverlay) {
-          searchOverlay.classList.add('is-open');
-          document.body.style.overflow = 'hidden';
-          setTimeout(() => {
-            searchInput?.focus();
-          }, 100);
-          console.log('[Porto Header] Search overlay opened');
-        } else {
-          console.error('[Porto Header] ERROR: search-overlay element not found!');
-        }
-      });
-    }
-
-    // ========================================
-    // THEME TOGGLE
-    // ========================================
-    const themeToggle = document.getElementById('portoThemeToggle');
-
-    console.log('[Porto Header] Theme toggle:', themeToggle ? 'FOUND' : 'NOT FOUND');
-
-    if (themeToggle) {
-      themeToggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        console.log('[Porto Header] Theme toggle clicked!');
-
-        const html = document.documentElement;
-        const body = document.body;
-        const currentTheme = html.getAttribute('data-theme') || 'light';
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-        html.setAttribute('data-theme', newTheme);
-        body.classList.remove('theme-light', 'theme-dark');
-        body.classList.add('theme-' + newTheme);
-        localStorage.setItem('theme', newTheme);
-
-        console.log('[Porto Header] Theme changed to:', newTheme);
-      });
-    }
-
-    // ========================================
-    // FLYOUT EDGE DETECTION
-    // ========================================
-    const flyoutParents = document.querySelectorAll('.dropdown-submenu');
-
-    flyoutParents.forEach(parent => {
-      parent.addEventListener('mouseenter', () => {
-        const flyout = parent.querySelector('.dropdown-menu');
-        if (!flyout || window.innerWidth < 992) return;
-
-        const rect = flyout.getBoundingClientRect();
-        const viewportWidth = window.innerWidth;
-
-        if (rect.right > viewportWidth - 20) {
-          parent.classList.add('dropdown-reverse');
-        } else {
-          parent.classList.remove('dropdown-reverse');
-        }
-      });
+      if (menuSidebar) {
+        menuSidebar.classList.add('is-open');
+      }
+      if (sidebarOverlay) {
+        sidebarOverlay.classList.add('is-visible');
+      }
+      document.body.style.overflow = 'hidden';
     });
+  }
 
-    // ========================================
-    // KEYBOARD NAVIGATION
-    // ========================================
-    const nav = document.getElementById('mainNav');
+  // Search Toggle
+  const searchToggle = document.getElementById('headerSearchToggle');
+  const searchOverlay = document.getElementById('search-overlay');
+  const searchInput = document.getElementById('searchInput');
 
-    if (nav) {
-      nav.addEventListener('keydown', (e) => {
-        const key = e.key;
-        const target = e.target;
-        const parent = target.closest('li');
+  if (searchToggle) {
+    searchToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
 
-        if (!parent) return;
+      if (searchOverlay) {
+        searchOverlay.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        setTimeout(function() {
+          if (searchInput) searchInput.focus();
+        }, 100);
+      }
+    });
+  }
 
-        switch (key) {
-          case 'Escape':
-            document.querySelectorAll('.dropdown.open').forEach(el => {
-              el.classList.remove('open');
-            });
-            break;
+  // Theme Toggle
+  const themeToggle = document.getElementById('headerThemeToggle');
 
-          case 'Enter':
-          case ' ':
-            if (parent.classList.contains('dropdown')) {
-              e.preventDefault();
-              parent.classList.toggle('open');
-            }
-            break;
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
 
-          case 'ArrowDown':
-            e.preventDefault();
-            const nextSibling = parent.nextElementSibling;
-            if (nextSibling) {
-              const nextLink = nextSibling.querySelector('a');
-              nextLink?.focus();
-            }
-            break;
+      const currentTheme = html.getAttribute('data-theme') || 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
-          case 'ArrowUp':
-            e.preventDefault();
-            const prevSibling = parent.previousElementSibling;
-            if (prevSibling) {
-              const prevLink = prevSibling.querySelector('a');
-              prevLink?.focus();
-            }
-            break;
-        }
-      });
-    }
+      html.setAttribute('data-theme', newTheme);
+      document.body.classList.remove('theme-light', 'theme-dark');
+      document.body.classList.add('theme-' + newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+  }
 
-    console.log('[Porto Header] Initialization complete.');
+  // ========================================
+  // FLYOUT EDGE DETECTION
+  // ========================================
+  document.querySelectorAll('.dropdown-submenu').forEach(function(parent) {
+    parent.addEventListener('mouseenter', function() {
+      const flyout = parent.querySelector('.dropdown-menu');
+      if (!flyout || window.innerWidth < 992) return;
+
+      const rect = flyout.getBoundingClientRect();
+      if (rect.right > window.innerWidth - 20) {
+        parent.classList.add('dropdown-reverse');
+      } else {
+        parent.classList.remove('dropdown-reverse');
+      }
+    });
   });
+
+})();
 </script>
