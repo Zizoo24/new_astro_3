@@ -215,47 +215,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // ========================================
   // Sticky Header Behavior
+  // REMOVED: Duplicate scroll handler
+  // Header-porto.astro has its own scroll handler that manages:
+  // - .coral-top-bar.hidden (at 50px scroll)
+  // - .site-header.scrolled (at 50px scroll)
+  // - .header-spacer height sync
   // ========================================
-  
-  const header = document.getElementById('header');
-  const announcementBar = document.querySelector('.header-announcement');
-  let lastScrollTop = 0;
-  const scrollThreshold = 100;
-  
-  if (header) {
-    window.addEventListener('scroll', function() {
-      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-      
-      // Hide announcement bar once user scrolls past 50px
-      if (announcementBar) {
-        if (currentScroll > 50) {
-          announcementBar.classList.add('hidden');
-        } else {
-          announcementBar.classList.remove('hidden');
-        }
-      }
-      
-      // Add scrolled class when scrolling down
-      if (currentScroll > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-      
-      // Hide header when scrolling down, show when scrolling up
-      if (currentScroll > scrollThreshold) {
-        if (currentScroll > lastScrollTop) {
-          // Scrolling down
-          header.classList.add('header-hidden');
-        } else {
-          // Scrolling up
-          header.classList.remove('header-hidden');
-        }
-      }
-      
-      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-    }, { passive: true });
-  }
 
   // ========================================
   // Mobile Footer Bar Active State

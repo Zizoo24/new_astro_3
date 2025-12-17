@@ -1,23 +1,24 @@
 ---
 /**
- * Header-porto.astro - Porto-Style Navigation
- * FIXED VERSION - 2025-01-16
+ * Header-porto.astro - Desktop Navigation Component
+ * REFACTORED: 2025-01-17
  *
- * Fixes applied:
- * 1. Renamed duplicate #sidebarToggle to #portoMobileToggle (line ~230)
- * 2. Added pointer-events:auto to action buttons
- * 3. Improved logo column spacing to prevent overlap
- * 4. Enhanced click handlers with console logging for debugging
+ * CSS: All styles moved to /styles/header-unified.css
+ * JS: Scroll handler is self-contained (no external dependencies)
+ *
+ * Structure:
+ * - .header-wrapper (fixed container)
+ * - .coral-top-bar (announcement bar, hides on scroll)
+ * - #header.site-header (main navigation)
+ * - .header-spacer (prevents content jump)
  *
  * Features:
  * - 3-level dropdown menus
- * - White dropdown panels with teal accent
- * - Flyout submenus
- * - Section headers
- * - Badges (NEW, Express, Popular, Hot)
- * - Mobile accordion navigation
+ * - White dropdown panels with coral accent
+ * - Flyout submenus with edge detection
+ * - Section headers & badges
  * - Dark mode support
- * - Accessibility compliant
+ * - Keyboard navigation (A11y)
  */
 
 import { mainNavigation } from '../data/navigation-porto';
@@ -274,388 +275,24 @@ function isActive(href: string): boolean {
 <!-- Spacer for fixed header -->
 <div class="header-spacer"></div>
 
-<style>
-  /* ====================================
-     FIXED HEADER WRAPPER
-     ==================================== */
-  .header-wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1030;
-    width: 100%;
-  }
+<!--
+  CSS STYLES MOVED TO: /styles/header-unified.css
 
-  .header-spacer {
-    /* Match the actual header height via inline style set in script */
-    height: 120px;
-    transition: height 0.3s ease;
-  }
+  All header styles are now consolidated in a single external file
+  for easier maintenance and to avoid cascade conflicts.
 
-  @media (max-width: 991px) {
-    .header-wrapper {
-      display: none !important;
-    }
-    .header-spacer {
-      display: none;
-    }
-  }
-</style>
-
-<style>
-  /* ====================================
-     CORAL TOP BAR - Disappears on scroll
-     ==================================== */
-  .coral-top-bar {
-    background: var(--ot-coral, #FF1654);
-    padding: 10px 0;
-    font-family: var(--font-primary, 'Montserrat', sans-serif);
-    font-size: 0.85rem;
-    transition: transform 0.3s ease, opacity 0.3s ease, max-height 0.3s ease;
-    max-height: 60px;
-    overflow: hidden;
-  }
-
-  .coral-top-bar.hidden {
-    max-height: 0;
-    padding: 0;
-    opacity: 0;
-    transform: translateY(-100%);
-    pointer-events: none;
-  }
-
-  .coral-top-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .coral-top-left {
-    display: flex;
-    gap: 20px;
-  }
-
-  .coral-top-link,
-  .coral-top-hours {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: rgba(255, 255, 255, 0.95);
-    text-decoration: none;
-    transition: color 0.2s ease;
-    font-weight: 500;
-  }
-
-  /* Force coral bar content to stay white even when global link styles change */
-  .coral-top-bar .coral-top-link,
-  .coral-top-bar .coral-top-hours,
-  .coral-top-bar .coral-top-link:visited {
-    color: #ffffff !important;
-  }
-
-  .coral-top-link:hover {
-    color: #ffffff;
-  }
-
-  .coral-top-hours {
-    color: rgba(255, 255, 255, 0.85);
-  }
-
-  /* Hide coral bar on mobile */
-  @media (max-width: 991px) {
-    .coral-top-bar {
-      display: none !important;
-    }
-  }
-
-  /* Hide email on smaller desktops */
-  @media (max-width: 1200px) and (min-width: 992px) {
-    .coral-top-email {
-      display: none;
-    }
-  }
-
-  /* ====================================
-     NAVY HEADER (inside fixed wrapper)
-     ==================================== */
-  .site-header {
-    width: 100%;
-    transition: all 0.3s ease;
-  }
-
-  .header-body {
-    background: linear-gradient(135deg, var(--ot-header-dark, #0a1628) 0%, var(--ot-header-gradient, #1a365d) 100%);
-    transition: all 0.3s ease;
-  }
-
-  /* Header Container */
-  .header-container {
-    padding: 15px 0;
-    transition: padding 0.3s ease;
-  }
-
-  /* ====================================
-     SCROLLED STATE - Compact header
-     ==================================== */
-  .site-header.scrolled .header-container {
-    padding: 6px 0;
-  }
-
-  .site-header.scrolled .logo-emblem {
-    height: 32px;
-  }
-
-  .site-header.scrolled .logo-text {
-    font-size: 16px;
-  }
-
-  .site-header.scrolled .logo-tagline {
-    font-size: 8px;
-    letter-spacing: 2px;
-  }
-
-  .site-header.scrolled .desktop-sidebar-toggle {
-    width: 36px;
-    height: 36px;
-  }
-
-  .site-header.scrolled .header-action-btn {
-    width: 32px;
-    height: 32px;
-  }
-
-  .site-header.scrolled .header-action-btn i {
-    font-size: 0.9rem;
-  }
-
-  .header-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: nowrap;
-  }
-
-  /* Logo */
-  .header-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-  }
-
-  /* Keep breathing room between the logo block and the navigation */
-  .header-column-logo {
-    position: relative;
-    z-index: 1;
-    margin-right: 18px;
-    flex: 0 0 auto; /* FIX: Changed from 0 1 240px to prevent shrinking/overlap */
-    max-width: 280px;
-    min-width: 0; /* Allow text truncation if needed */
-  }
-
-  .logo-emblem {
-    height: 44px;
-    width: auto;
-    transition: height 0.3s ease;
-    flex-shrink: 0; /* FIX: Emblem never shrinks */
-  }
-
-  .logo-text-block {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.15;
-    min-width: 0;
-  }
-
-  .logo-text {
-    font-family: var(--font-primary, 'Montserrat', sans-serif);
-    font-size: 20px;
-    font-weight: 800;
-    color: #ffffff;
-    letter-spacing: 0.3px;
-    transition: font-size 0.3s ease;
-    white-space: nowrap;
-  }
-
-  .logo-suffix {
-    font-weight: 600;
-    color: #ffffff;
-  }
-
-  .logo-domain {
-    color: var(--ot-coral, #FF1654);
-    font-weight: 800;
-  }
-
-  .logo-tagline {
-    font-family: var(--font-secondary, 'Open Sans', sans-serif);
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    color: rgba(255, 255, 255, 0.85);
-    margin-top: 2px;
-    transition: font-size 0.3s ease;
-    white-space: nowrap;
-  }
-
-  /* Navigation Column - higher z-index for dropdowns */
-  .header-column-nav {
-    flex: 1 1 0;
-    display: flex;
-    justify-content: flex-end;
-    position: relative;
-    z-index: 10;
-    min-width: 0;
-    overflow: visible; /* FIX: Ensure dropdowns can extend */
-  }
-
-  .header-nav {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    min-width: 0;
-  }
-
-  /* Keep nav pills from forcing the logo to shrink to zero when space is tight */
-  .header-nav-main > nav > ul.nav {
-    flex-wrap: nowrap;
-    min-width: 0;
-  }
-
-  /* Tighter logo on slightly smaller screens to leave room for nav */
-  @media (max-width: 1400px) {
-    .header-column-logo {
-      max-width: 240px;
-    }
-
-    .logo-text-block {
-      display: none;
-    }
-
-    .logo-emblem {
-      height: 40px;
-    }
-  }
-
-  @media (max-width: 1200px) {
-    .header-column-logo {
-      max-width: 60px;
-    }
-  }
-
-  /* Ensure nav links stay white on the navy gradient header */
-  .header-body .nav-link,
-  .header-body .nav-link i {
-    color: #ffffff !important;
-  }
-
-  .header-body .nav-link:hover,
-  .header-body .nav-link:focus,
-  .header-body .nav-link.active {
-    color: #ffffff !important;
-  }
-
-  /* Header Action Buttons (Search & Theme Toggle) */
-  .header-column-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0; /* FIX: Never shrink action buttons */
-  }
-
-  .header-action-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 0;
-    border-radius: 50%;
-    color: #ffffff;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    pointer-events: auto !important; /* FIX: Ensure clickable */
-    position: relative; /* FIX: Establish stacking context */
-    z-index: 100; /* FIX: Above other elements */
-  }
-
-  .header-action-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-  }
-
-  .header-action-btn:active {
-    transform: scale(0.95);
-  }
-
-  .header-action-btn i {
-    font-size: 1rem;
-    pointer-events: none; /* FIX: Let clicks pass through to button */
-  }
-
-  .theme-icon-light {
-    display: none;
-  }
-
-  [data-theme="dark"] .theme-icon-dark {
-    display: none;
-  }
-
-  [data-theme="dark"] .theme-icon-light {
-    display: block;
-  }
-
-  /* Desktop Sidebar Toggle */
-  .desktop-sidebar-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 0;
-    border-radius: 8px;
-    color: #ffffff;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    pointer-events: auto !important; /* FIX: Ensure clickable */
-    position: relative;
-    z-index: 100;
-  }
-
-  .desktop-sidebar-toggle:hover {
-    background: rgba(255, 255, 255, 0.2);
-  }
-
-  .desktop-sidebar-toggle:active {
-    transform: scale(0.95);
-  }
-
-  .desktop-sidebar-toggle i {
-    font-size: 1.25rem;
-    pointer-events: none;
-  }
-
-  .header-column-sidebar {
-    flex-shrink: 0;
-  }
-
-  /* Mobile Menu Button */
-  .header-btn-collapse-nav {
-    display: none;
-  }
-
-  /* Hide entire Porto header on mobile - use original header-mobile instead */
-  @media (max-width: 991px) {
-    .site-header {
-      display: none !important;
-    }
-  }
-
-</style>
+  The unified CSS includes:
+  - Fixed header wrapper
+  - Coral top bar
+  - Navy header body
+  - Logo styling
+  - Navigation
+  - Action buttons
+  - Scroll state (compact)
+  - Dark mode support
+  - Mobile hide rules
+  - Dropdown styles
+-->
 
 <script is:inline>
   // Porto Header Desktop Navigation
