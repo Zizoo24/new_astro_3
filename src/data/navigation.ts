@@ -29,6 +29,7 @@ export interface NavLink {
   href: string;
   icon?: string;
   badge?: string;  // "NEW", "POPULAR", etc.
+  children?: NavLink[];  // For flyout submenus
 }
 
 export interface NavGroup {
@@ -122,6 +123,7 @@ export const mainNav: (NavLink | NavGroup)[] = [
   // ========================================
   // SILO 2: PERSONAL & CIVIL (High Volume)
   // Pillar: /personal-documents/ ✅ CREATED
+  // Uses FLYOUT submenus for compact desktop display
   // ========================================
   {
     id: 'personal',
@@ -129,33 +131,48 @@ export const mainNav: (NavLink | NavGroup)[] = [
     href: '/personal-documents/',
     children: [
       // Pillar page ✅ EXISTS
-      { label: 'Personal Documents Hub', href: '/personal-documents/', badge: 'HUB' },
-      
-      // Vital Records cluster
-      { label: 'Vital Records', href: '/personal/vital-records/' },
-      { label: 'Birth Certificate', href: '/personal/vital-records/birth/' },
-      { label: 'Marriage Certificate', href: '/personal/vital-records/marriage/' },
-      { label: 'Divorce Certificate', href: '/personal/vital-records/divorce/' },
-      { label: 'Death Certificate', href: '/personal/vital-records/death/' },
-      
-      // Immigration cluster
-      { label: 'Visa & Immigration', href: '/personal/immigration/' },
-      { label: 'Police Clearance (PCC)', href: '/personal/immigration/pcc/' },
-      { label: 'Bank Statements', href: '/personal/immigration/bank/' },
-      { label: 'Driving License', href: '/personal/immigration/license/' },
-      
-      // Academic cluster
-      { label: 'Academic Documents', href: '/personal/academic/' },
-      { label: 'University Degree', href: '/personal/academic/degree/' },
-      { label: 'Transcripts', href: '/personal/academic/transcripts/' },
+      { label: 'Personal Documents Hub', href: '/personal-documents/', icon: 'fas fa-home', badge: 'HUB' },
+
+      // Vital Records cluster - with flyout
+      {
+        label: 'Vital Records',
+        href: '/personal/vital-records/',
+        icon: 'fas fa-file-certificate',
+        children: [
+          { label: 'Birth Certificate', href: '/personal/vital-records/birth/', icon: 'fas fa-baby' },
+          { label: 'Marriage Certificate', href: '/personal/vital-records/marriage/', icon: 'fas fa-rings-wedding' },
+          { label: 'Divorce Certificate', href: '/personal/vital-records/divorce/', icon: 'fas fa-file-signature' },
+          { label: 'Death Certificate', href: '/personal/vital-records/death/', icon: 'fas fa-scroll' },
+        ]
+      },
+
+      // Immigration cluster - with flyout
+      {
+        label: 'Visa & Immigration',
+        href: '/personal/immigration/',
+        icon: 'fas fa-passport',
+        children: [
+          { label: 'Police Clearance (PCC)', href: '/personal/immigration/pcc/', icon: 'fas fa-shield-check' },
+          { label: 'Bank Statements', href: '/personal/immigration/bank/', icon: 'fas fa-landmark' },
+          { label: 'Driving License', href: '/personal/immigration/license/', icon: 'fas fa-id-card' },
+        ]
+      },
+
+      // Academic cluster - with flyout
+      {
+        label: 'Academic Documents',
+        href: '/personal/academic/',
+        icon: 'fas fa-graduation-cap',
+        children: [
+          { label: 'University Degree', href: '/personal/academic/degree/', icon: 'fas fa-diploma' },
+          { label: 'Transcripts', href: '/personal/academic/transcripts/', icon: 'fas fa-file-alt' },
+        ]
+      },
     ],
     headers: [
       { index: 0, label: 'Expat Document Services' },
-      { index: 1, label: 'Vital Records' },
-      { index: 6, label: 'Immigration' },
-      { index: 10, label: 'Academic' },
     ],
-    dividers: [0, 5, 9],
+    dividers: [],
   },
   
   // ========================================

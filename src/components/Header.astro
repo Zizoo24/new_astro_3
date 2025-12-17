@@ -51,21 +51,51 @@ const { isHomepage = false } = Astro.props;
                     <ul class="dropdown-menu">
                       {group.children.map((child, index) => {
                         const elements = [];
-                        
+
                         // Check if we need a header before this item
                         const header = group.headers?.find(h => h.index === index);
                         if (header) {
                           elements.push(<li class="dropdown-header">{header.label}</li>);
                         }
-                        
-                        // Add the link
-                        elements.push(<li><a href={child.href}>{child.label}</a></li>);
-                        
+
+                        // Check if child has nested children (flyout submenu)
+                        if (child.children && child.children.length > 0) {
+                          elements.push(
+                            <li class="dropdown-submenu">
+                              <a href={child.href}>
+                                {child.icon && <i class={child.icon}></i>}
+                                <span>{child.label}</span>
+                              </a>
+                              <ul class="dropdown-menu">
+                                {child.children.map((subChild) => (
+                                  <li>
+                                    <a href={subChild.href}>
+                                      {subChild.icon && <i class={subChild.icon}></i>}
+                                      <span>{subChild.label}</span>
+                                    </a>
+                                  </li>
+                                ))}
+                              </ul>
+                            </li>
+                          );
+                        } else {
+                          // Regular link without flyout
+                          elements.push(
+                            <li>
+                              <a href={child.href}>
+                                {child.icon && <i class={child.icon}></i>}
+                                <span>{child.label}</span>
+                                {child.badge && <span class={`badge badge-${child.badge.toLowerCase()}`}>{child.badge}</span>}
+                              </a>
+                            </li>
+                          );
+                        }
+
                         // Check if we need a divider after this item
                         if (group.dividers?.includes(index)) {
                           elements.push(<li class="dropdown-divider"></li>);
                         }
-                        
+
                         return elements;
                       })}
                     </ul>
