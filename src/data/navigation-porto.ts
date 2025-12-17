@@ -120,6 +120,7 @@ export const mainNavigation: MainNavItem[] = [
 
   // ─────────────────────────────────────────
   // PERSONAL DOCUMENTS SILO
+  // Uses flyout submenus for compact display
   // ─────────────────────────────────────────
   {
     label: 'Documents',
@@ -129,79 +130,42 @@ export const mainNavigation: MainNavItem[] = [
       href: '/personal-documents/',
       categories: [
         {
-          header: 'Vital Records',
+          header: 'Document Services',
           items: [
             {
-              label: 'Vital Records Hub',
+              label: 'Personal Documents Hub',
+              href: '/personal-documents/',
+              icon: 'fas fa-folder-open',
+            },
+            {
+              label: 'Vital Records',
               href: '/personal/vital-records/',
               icon: 'fas fa-heart',
+              children: [
+                { label: 'Birth Certificate', href: '/personal/vital-records/birth/', badge: 'popular' },
+                { label: 'Marriage Certificate', href: '/personal/vital-records/marriage/' },
+                { label: 'Divorce Certificate', href: '/personal/vital-records/divorce/' },
+                { label: 'Death Certificate', href: '/personal/vital-records/death/' }
+              ]
             },
             {
-              label: 'Birth Certificate',
-              href: '/personal/vital-records/birth/',
-              icon: 'fas fa-baby',
-              badge: 'popular'
-            },
-            {
-              label: 'Marriage Certificate',
-              href: '/personal/vital-records/marriage/',
-              icon: 'fas fa-ring'
-            },
-            {
-              label: 'Divorce Certificate',
-              href: '/personal/vital-records/divorce/',
-              icon: 'fas fa-file-alt'
-            },
-            {
-              label: 'Death Certificate',
-              href: '/personal/vital-records/death/',
-              icon: 'fas fa-dove'
-            }
-          ]
-        },
-        {
-          header: 'Immigration Documents',
-          items: [
-            {
-              label: 'Immigration Hub',
+              label: 'Immigration Documents',
               href: '/personal/immigration/',
               icon: 'fas fa-passport',
+              children: [
+                { label: 'Police Clearance (PCC)', href: '/personal/immigration/pcc/', badge: 'popular' },
+                { label: 'Bank Statements', href: '/personal/immigration/bank/' },
+                { label: 'Driving License', href: '/personal/immigration/license/' }
+              ]
             },
             {
-              label: 'Police Clearance (PCC)',
-              href: '/personal/immigration/pcc/',
-              icon: 'fas fa-shield-alt',
-              badge: 'popular'
-            },
-            {
-              label: 'Bank Statements',
-              href: '/personal/immigration/bank/',
-              icon: 'fas fa-university'
-            },
-            {
-              label: 'Driving License',
-              href: '/personal/immigration/license/',
-              icon: 'fas fa-id-card'
-            }
-          ]
-        },
-        {
-          header: 'Academic Documents',
-          items: [
-            {
-              label: 'Academic Hub',
+              label: 'Academic Documents',
               href: '/personal/academic/',
               icon: 'fas fa-graduation-cap',
-            },
-            {
-              label: 'Degree Translation',
-              href: '/personal/academic/degree/',
-              icon: 'fas fa-certificate'
-            },
-            {
-              label: 'Transcripts',
-              href: '/personal/academic/transcripts/',
-              icon: 'fas fa-list-alt'
+              children: [
+                { label: 'Degree Translation', href: '/personal/academic/degree/' },
+                { label: 'Transcripts', href: '/personal/academic/transcripts/' }
+              ]
             }
           ]
         }
