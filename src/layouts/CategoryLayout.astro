@@ -52,14 +52,17 @@ const siteUrl = Astro.site?.origin || 'https://onlinetranslation.ae';
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": breadcrumbs.map((crumb, i) => ({
-    "@type": "ListItem",
-    "position": i + 1,
-    "name": crumb.label,
-    "item": crumb.href 
-      ? (crumb.href.startsWith('http') ? crumb.href : `${siteUrl}${crumb.href}`)
-      : undefined
-  }))
+  "itemListElement": breadcrumbs.map((crumb, i) => {
+    const item: Record<string, any> = {
+      "@type": "ListItem",
+      "position": i + 1,
+      "name": crumb.label
+    };
+    if (crumb.href) {
+      item["item"] = crumb.href.startsWith('http') ? crumb.href : `${siteUrl}${crumb.href}`;
+    }
+    return item;
+  })
 };
 
 // Service Schema

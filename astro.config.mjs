@@ -30,6 +30,10 @@ export default defineConfig({
       host: '0.0.0.0',
       allowedHosts: ['.replit.dev', '.repl.co', 'localhost'],
       hmr: false
+    },
+    build: {
+      minify: 'esbuild',
+      cssMinify: true
     }
   }
 });
