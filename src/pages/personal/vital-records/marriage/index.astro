@@ -140,11 +140,48 @@ const accordionSections = [
   <section class="section bg-light">
     <div class="container">
       <h2>Marriage Certificate Translation for UAE Life</h2>
-      <p>Your marriage certificate is referenced throughout your UAE experience—from the initial spouse visa application to property purchases, bank accounts, and eventually inheritance planning. The Arabic translation becomes part of your permanent record with UAE authorities.</p>
       
-      <p>Different certificate formats present different challenges. A Nikah Nama includes religious terminology that must be rendered appropriately. A UK civil certificate uses formal legal language. An Indian marriage certificate may be in Hindi or a regional language. Our translators have experience with all formats.</p>
+      <p>Your marriage certificate follows you everywhere in the UAE. Visa applications. Bank accounts. Property purchases. Inheritance. The Arabic translation becomes your permanent record.</p>
       
-      <p>We pay particular attention to name consistency. Your spouse's name must appear exactly as it does on their passport. Any variation—even Mohamed vs Mohammed—can cause visa rejections or banking complications. We verify this detail before finalizing your translation.</p>
+      <div class="usage-grid">
+        <div class="usage-item">
+          <i class="fas fa-passport"></i>
+          <h4>Spouse Visa</h4>
+          <p>GDRFA requires proof of marriage for residency</p>
+        </div>
+        <div class="usage-item">
+          <i class="fas fa-university"></i>
+          <h4>Bank Accounts</h4>
+          <p>Joint accounts and name changes</p>
+        </div>
+        <div class="usage-item">
+          <i class="fas fa-home"></i>
+          <h4>Property</h4>
+          <p>DLD joint ownership registration</p>
+        </div>
+        <div class="usage-item">
+          <i class="fas fa-balance-scale"></i>
+          <h4>Court Matters</h4>
+          <p>Personal Status Court records</p>
+        </div>
+      </div>
+
+      <h3>All Certificate Types</h3>
+      <p>We translate every format:</p>
+      <ul class="cert-types">
+        <li><strong>Religious:</strong> Nikah Nama, Christian, Hindu certificates</li>
+        <li><strong>Civil:</strong> Government-issued from any country</li>
+        <li><strong>Court:</strong> Court-registered marriages</li>
+        <li><strong>Consular:</strong> Embassy-registered marriages</li>
+      </ul>
+      <p>Each format has specific terminology. Our translators know them all.</p>
+
+      <div class="name-warning">
+        <h4><i class="fas fa-user-check"></i> Name Matching is Critical</h4>
+        <p><strong>Problem:</strong> Certificate says "Mohammad" but passport says "Mohammed"</p>
+        <p><strong>Result:</strong> Visa rejection. Banking complications.</p>
+        <p><strong>Solution:</strong> We verify names against passports before finalizing.</p>
+      </div>
     </div>
   </section>
 
@@ -162,3 +199,93 @@ const accordionSections = [
     </div>
   </section>
 </ServiceLayout>
+
+<style>
+  .usage-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .usage-item {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    padding: 1.25rem;
+    text-align: center;
+  }
+
+  .usage-item i {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .usage-item h4 {
+    font-size: 0.95rem;
+    margin: 0 0 0.35rem;
+    color: var(--primary-color);
+  }
+
+  .usage-item p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .cert-types {
+    margin: 0.75rem 0;
+    padding-left: 1.25rem;
+  }
+
+  .cert-types li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  .name-warning {
+    background: linear-gradient(135deg, #e6f7ff 0%, #d6f0ff 100%);
+    border-left: 4px solid var(--accent-color);
+    padding: 1.25rem 1.5rem;
+    border-radius: 0 0.75rem 0.75rem 0;
+    margin: 1.5rem 0;
+  }
+
+  .name-warning h4 {
+    margin: 0 0 0.75rem;
+    color: var(--primary-color);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .name-warning h4 i {
+    color: var(--accent-color);
+  }
+
+  .name-warning p {
+    margin: 0 0 0.35rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .name-warning p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    .usage-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .usage-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
