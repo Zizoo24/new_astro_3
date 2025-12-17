@@ -15,46 +15,7 @@
    Logo overlap, coral bar, hero buttons
    ============================================ */
 
-/* Fix logo overlapping menu items */
-.header-desktop .site-logo,
-.header-nav .site-logo,
-.exodus-header .site-logo {
-  position: relative;
-  z-index: 10;
-  flex-shrink: 0;
-  max-width: 180px;
-}
-
-.header-desktop .header-nav,
-.exodus-header .header-nav {
-  margin-left: auto;
-  flex-shrink: 1;
-}
-
-/* Ensure nav items don't get overlapped */
-.header-nav .nav-list {
-  display: flex;
-  gap: 1.5rem;
-  flex-wrap: nowrap;
-}
-
-/* Top coral bar - text MUST be white */
-.header-announcement,
-.header-announcement * {
-  color: #ffffff !important;
-}
-
-.header-announcement .announcement-label,
-.header-announcement .announcement-btn,
-.header-announcement .announcement-cta {
-  color: #ffffff !important;
-}
-
-/* Exception for call button which has coral text on white background */
-.header-announcement .announcement-btn--call {
-  color: var(--accent-color, #FF1654) !important;
-  background: #ffffff !important;
-}
+/* OLD HEADER FIXES REMOVED - See /styles/header-unified.css */
 
 /* Homepage hero buttons - text MUST be white */
 .hero-cta.exodus-cta,
@@ -615,140 +576,14 @@ button:focus:not(:focus-visible) {
 }
 
 /* ============================================
-   7. HEADER SCROLL TRANSITION FIX - 2025 BEST PRACTICES
+   7. HEADER STYLES REMOVED
 
-   ROOT CAUSE: Using max-height/padding transitions causes
-   layout recalculation (reflow) which creates visual glitches.
+   All header scroll transition styles moved to:
+   /styles/header-unified.css
 
-   FIX: Use transform-based animations for GPU acceleration.
-   - Coral bar uses transform: translateY() to collapse
-   - Header uses CSS custom properties for height calc
-   - will-change hint applied only during transition
+   See Header-porto.astro for the component.
+   Removed: 2025-01-17
    ============================================ */
-
-/* CSS Custom Properties for header height calculations */
-:root {
-  --header-coral-height: 38px;
-  --header-main-height: 64px;
-  --header-main-height-scrolled: 52px;
-  --header-total-height: calc(var(--header-coral-height) + var(--header-main-height));
-  --header-total-height-scrolled: var(--header-main-height-scrolled);
-}
-
-/* Nav Shell - stable container that doesn't change height */
-.exodus-header .nav-shell {
-  position: relative;
-  overflow: hidden;
-  /* GPU acceleration for smooth rendering */
-  transform: translateZ(0);
-  backface-visibility: hidden;
-}
-
-/* Coral Announcement Bar - TRANSFORM-BASED collapse */
-.header-announcement {
-  /* Remove max-height transition - use transform instead */
-  max-height: none !important;
-  height: var(--header-coral-height);
-  overflow: visible !important;
-  padding: 8px 0 !important;
-  opacity: 1 !important;
-
-  /* GPU-accelerated transform */
-  transform: translateY(0);
-  transform-origin: top center;
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity 0.3s ease !important;
-
-  /* Ensure it's positioned for transform */
-  position: relative;
-  z-index: 2;
-  will-change: transform, opacity;
-}
-
-/* Coral bar HIDDEN state - slide up, don't collapse height */
-.header-announcement.hidden {
-  transform: translateY(-100%);
-  opacity: 0 !important;
-  pointer-events: none;
-  /* Height stays the same - parent clips it */
-  max-height: none !important;
-  height: var(--header-coral-height) !important;
-  padding: 8px 0 !important;
-}
-
-/* Header Main - STABLE height transitions */
-.exodus-header .header-main {
-  padding: 12px 0;
-  transition: padding 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-              background 0.3s ease !important;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-}
-
-.exodus-header.scrolled .header-main {
-  padding: 8px 0;
-}
-
-/* When coral bar is hidden, adjust nav-shell to clip properly */
-.exodus-header:has(.header-announcement.hidden) .nav-shell {
-  /* Negative margin pulls up content to fill gap */
-  margin-top: calc(-1 * var(--header-coral-height));
-  transition: margin-top 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Fallback for browsers without :has() - use scrolled class */
-.exodus-header.scrolled .nav-shell {
-  margin-top: calc(-1 * var(--header-coral-height));
-  transition: margin-top 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* When NOT scrolled, reset margin */
-.exodus-header:not(.scrolled) .nav-shell {
-  margin-top: 0;
-  transition: margin-top 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Ensure header stays fixed and stable */
-.header-desktop.exodus-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  /* Prevent any layout-caused jank */
-  contain: layout style;
-}
-
-/* Remove will-change when idle to free GPU memory */
-.header-desktop.exodus-header:not(.transitioning) .header-announcement {
-  will-change: auto;
-}
-
-/* Background transitions - use opacity layer instead of direct bg change */
-.header-desktop.exodus-header::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(14, 43, 72, 0.95);
-  opacity: 0;
-  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: -1;
-  pointer-events: none;
-}
-
-.header-desktop.exodus-header.scrolled::before {
-  opacity: 1;
-}
-
-/* Reduced motion - respect user preferences */
-@media (prefers-reduced-motion: reduce) {
-  .header-announcement,
-  .header-announcement.hidden,
-  .exodus-header .header-main,
-  .exodus-header .nav-shell,
-  .header-desktop.exodus-header::before {
-    transition-duration: 0.01ms !important;
-  }
-}
 
 /* ============================================
    8. FOOTER MOBILE ALIGNMENT - COMPLETE OVERHAUL

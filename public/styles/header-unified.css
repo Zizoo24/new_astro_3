@@ -189,12 +189,13 @@
   }
 
   #header .header-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 20px !important;
     padding: 15px 0;
     transition: padding var(--header-transition);
+    flex-wrap: nowrap !important;
   }
 
   /* ==========================================================================
@@ -202,15 +203,18 @@
      ========================================================================== */
 
   #header .header-column-sidebar {
-    flex: 0 0 auto;
+    flex: 0 0 auto !important;
+    display: flex !important;
+    order: 1;
   }
 
   #header .btn-sidebar-toggle {
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
     background: rgba(255, 255, 255, 0.1);
     border: none;
     border-radius: 8px;
@@ -233,20 +237,26 @@
      ========================================================================== */
 
   #header .header-column-logo {
-    flex: 0 0 auto;
-    margin-right: 20px;
+    flex: 0 0 auto !important;
+    margin-right: 30px !important;
+    order: 2;
+  }
+
+  #header .header-logo {
+    display: block !important;
   }
 
   #header .header-logo a {
-    display: flex;
+    display: flex !important;
     align-items: center;
     gap: 12px;
     text-decoration: none;
   }
 
   #header .header-logo-img {
-    width: 44px;
-    height: 44px;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
     transition: transform var(--header-transition);
     transform-origin: left center;
   }
@@ -305,19 +315,29 @@
      ========================================================================== */
 
   #header .header-column-nav {
-    flex: 1 1 auto;
-    display: flex;
-    justify-content: flex-end;
+    flex: 1 1 auto !important;
+    display: flex !important;
+    justify-content: flex-end !important;
     min-width: 0;
+    order: 3;
   }
 
   #header .header-nav {
-    display: flex;
+    display: flex !important;
     align-items: center;
   }
 
   #header .header-nav-main {
-    display: flex;
+    display: flex !important;
+  }
+
+  #header .header-column-actions {
+    flex: 0 0 auto !important;
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    order: 4;
+    margin-left: 15px !important;
   }
 
   #header .nav.nav-pills {
@@ -369,13 +389,6 @@
   /* ==========================================================================
      9. ACTION BUTTONS
      ========================================================================== */
-
-  #header .header-column-actions {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
 
   #header .btn-action {
     display: flex;
