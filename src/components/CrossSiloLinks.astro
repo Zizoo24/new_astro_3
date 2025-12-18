@@ -70,10 +70,14 @@ const crossLinks = getCrossLinks(pageKey).slice(0, maxLinks);
     border: 1px solid var(--border-light, #e5e7eb);
     border-radius: 2rem;
     text-decoration: none;
-    color: var(--text-primary, #1a1a1a);
+    color: #1a1a1a !important; /* Override global white link color */
     font-size: 0.875rem;
     font-weight: 500;
     transition: all 0.2s ease;
+  }
+
+  .cross-text {
+    color: #1a1a1a !important; /* Explicit text color - override white link */
   }
 
   .cross-card:hover {
@@ -114,7 +118,7 @@ const crossLinks = getCrossLinks(pageKey).slice(0, maxLinks);
   :global(body.theme-dark) .cross-card {
     background: rgba(22, 27, 34, 0.8);
     border-color: rgba(255, 255, 255, 0.1);
-    color: #e6edf3;
+    color: #e6edf3 !important; /* Override global white link color */
   }
 
   :global(body.theme-dark) .cross-card:hover {
@@ -124,5 +128,9 @@ const crossLinks = getCrossLinks(pageKey).slice(0, maxLinks);
 
   :global(body.theme-dark) .cross-card i {
     color: #8b949e;
+  }
+
+  :global(body.theme-dark) .cross-text {
+    color: #e6edf3 !important; /* Dark mode text color */
   }
 </style>

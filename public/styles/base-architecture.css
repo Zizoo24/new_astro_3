@@ -66,9 +66,9 @@ html {
     --text-on-dark-subtle: #9fb2c9;    /* 6.4:1 - Subtle on dark */
     
     /* === LINK COLORS === */
-    /* Global white link color */
-    --link-color: #ffffff;             /* White links */
-    --link-hover: #e0e0e0;             /* Light gray on hover */
+    /* Link colors for light backgrounds */
+    --link-color: #0E2B48;             /* Navy links on light bg */
+    --link-hover: #FF1654;             /* Coral on hover */
     --link-on-dark: #7fd1ff;           /* 11.2:1 on navy - Cyan on dark */
     --link-on-dark-hover: #ffe178;     /* 14.8:1 on navy - Gold hover */
     
@@ -321,6 +321,54 @@ a.footer-item {
 a.footer-item.footer-whatsapp,
 a.footer-item.footer-whatsapp i {
     color: #25D366 !important;
+}
+
+/* ============================================
+   CARD/TILE LINK TEXT - Override white link color
+   Cards on light backgrounds need dark text
+   ============================================ */
+a.related-card,
+a.cross-card,
+a.service-card,
+a.document-card,
+a.category-card,
+a.tip-card,
+a.info-card a,
+.card a,
+.related-grid a,
+.cross-grid a,
+.services-grid a,
+.documents-grid a {
+    color: #1a1a1a !important;
+}
+
+a.related-card span,
+a.cross-card span,
+a.service-card span,
+a.document-card span,
+.card a span,
+.related-grid a span,
+.cross-grid a span {
+    color: #1a1a1a !important;
+}
+
+/* Dark mode card text */
+[data-theme="dark"] a.related-card,
+[data-theme="dark"] a.cross-card,
+[data-theme="dark"] a.service-card,
+[data-theme="dark"] a.document-card,
+body.theme-dark a.related-card,
+body.theme-dark a.cross-card,
+body.theme-dark a.service-card,
+body.theme-dark a.document-card {
+    color: #e6edf3 !important;
+}
+
+[data-theme="dark"] a.related-card span,
+[data-theme="dark"] a.cross-card span,
+body.theme-dark a.related-card span,
+body.theme-dark a.cross-card span {
+    color: #e6edf3 !important;
 }
 
 /* Mobile header title - navy, excluded from global white link rule */

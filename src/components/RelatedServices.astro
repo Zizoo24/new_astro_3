@@ -124,7 +124,7 @@ const uniqueLinks = allLinks
     background: white;
     border-radius: 0.75rem;
     text-decoration: none;
-    color: var(--text-primary, #1a1a1a);
+    color: #1a1a1a !important; /* Override global white link color */
     border: 1px solid var(--border-light, #e5e7eb);
     transition: all 0.3s ease;
     position: relative;
@@ -147,6 +147,7 @@ const uniqueLinks = allLinks
     flex: 1;
     font-weight: 500;
     line-height: 1.3;
+    color: #1a1a1a !important; /* Explicit text color - override white link */
   }
 
   .related-arrow {
@@ -228,7 +229,7 @@ const uniqueLinks = allLinks
   :global(body.theme-dark) .related-card {
     background: rgba(22, 27, 34, 0.8);
     border-color: rgba(255, 255, 255, 0.1);
-    color: #e6edf3;
+    color: #e6edf3 !important; /* Override global white link color */
   }
 
   :global(body.theme-dark) .related-card:hover {
@@ -237,5 +238,9 @@ const uniqueLinks = allLinks
 
   :global(body.theme-dark) .related-card i:first-child {
     color: #8b949e;
+  }
+
+  :global(body.theme-dark) .related-text {
+    color: #e6edf3 !important; /* Dark mode text color */
   }
 </style>
