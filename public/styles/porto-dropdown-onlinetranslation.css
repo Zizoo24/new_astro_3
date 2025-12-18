@@ -111,9 +111,9 @@ body.theme-dark {
     white-space: nowrap;
     color: rgba(255, 255, 255, 0.9);
     font-family: var(--font-primary, 'Montserrat', sans-serif);
-    font-size: 14px;
+    font-size: 12px; /* Reduced from 14px */
     font-weight: 600;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.55rem; /* Reduced horizontal padding */
     letter-spacing: -0.5px;
     text-transform: uppercase;
     text-decoration: none;
@@ -155,8 +155,8 @@ body.theme-dark {
   /* Chevron icon */
   .header-nav-main nav > ul > li > a .nav-chevron {
     display: inline-block;
-    margin-left: 6px;
-    font-size: 0.6em;
+    margin-left: 4px;
+    font-size: 0.5em; /* Smaller chevron */
     transition: transform var(--dropdown-transition);
   }
 
@@ -170,14 +170,27 @@ body.theme-dark {
    SMALLER DESKTOP - Prevent Nav Overlap
    Reduce padding on screens 992px - 1200px
    =========================================== */
-@media (min-width: 992px) and (max-width: 1200px) {
+/* Medium-large desktops (1200-1400px) */
+@media (min-width: 1200px) and (max-width: 1400px) {
   .header-nav-main nav > ul > li > a {
-    padding: 0.5rem 0.65rem;
-    font-size: 13px;
+    padding: 0.5rem 0.6rem;
+    font-size: 12px;
   }
 
   .header-nav-main nav > ul > li > a .nav-chevron {
     margin-left: 4px;
+  }
+}
+
+/* Smaller desktops (992-1200px) */
+@media (min-width: 992px) and (max-width: 1200px) {
+  .header-nav-main nav > ul > li > a {
+    padding: 0.4rem 0.5rem;
+    font-size: 11px;
+  }
+
+  .header-nav-main nav > ul > li > a .nav-chevron {
+    margin-left: 3px;
   }
 }
 

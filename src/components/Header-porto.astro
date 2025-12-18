@@ -285,27 +285,37 @@ function isActive(href: string): boolean {
     right: 0;
     z-index: 1030;
     width: 100%;
-    /* FIX: Remove any background leaking through */
     background: transparent;
+    /* FIX: Smooth transition when coral bar collapses */
+    transition: transform 0.3s ease;
+  }
+
+  /* FIX: When scrolled, shift entire header up to eliminate gap */
+  .header-wrapper.is-scrolled {
+    /* Coral bar was ~40px, translate header up to cover the gap */
+    transform: translateY(0);
   }
 
   .header-spacer {
-    /* Fixed height to prevent CLS - matches coral bar (40px) + header (~80px) */
-    height: 120px;
+    /* Fixed height to prevent CLS - matches coral bar (40px) + header (~70px) */
+    height: 110px;
     transition: none; /* No transition to prevent CLS */
-    /* FIX: Ensure no white background */
     background: transparent;
+    /* FIX: Match the page background */
+    background: var(--surface-base, #ffffff);
+  }
+  
+  [data-theme="dark"] .header-spacer,
+  body.theme-dark .header-spacer {
+    background: var(--surface-navy, #0a1628);
   }
 
-  /* When scrolled, coral bar is hidden - reduce spacer */
+  /* When scrolled, coral bar is hidden - reduce spacer to match compact header */
   .header-wrapper.is-scrolled + .header-spacer {
-    height: 56px; /* FIX: Reduced to match compact header exactly */
+    height: 50px; /* Compact header height only */
   }
 
-  /* FIX: When scrolled, shift entire wrapper up to eliminate gap */
-  .header-wrapper.is-scrolled {
-    /* Coral bar is 40px, we translate up to hide the gap it leaves */
-  }
+
 
   @media (max-width: 991px) {
     .header-wrapper {
@@ -339,13 +349,16 @@ function isActive(href: string): boolean {
   }
 
   .coral-top-bar.hidden {
-    /* FIX: Completely collapse coral bar without leaving gap */
-    max-height: 0;
-    padding: 0;
-    margin: 0;
+    /* FIX: Completely collapse coral bar - no gap */
+    max-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
     opacity: 0;
     pointer-events: none;
     overflow: hidden;
+    border: none;
+    line-height: 0;
+    font-size: 0;
   }
 
   .coral-top-content {
@@ -410,6 +423,9 @@ function isActive(href: string): boolean {
   .header-body {
     background: linear-gradient(135deg, var(--ot-header-dark, #0a1628) 0%, var(--ot-header-gradient, #1a365d) 100%);
     transition: all 0.3s ease;
+    /* FIX: Ensure no white gaps */
+    margin: 0;
+    padding: 0;
   }
 
   /* Header Container */
@@ -422,7 +438,7 @@ function isActive(href: string): boolean {
      SCROLLED STATE - Compact header
      ==================================== */
   .site-header.scrolled .header-container {
-    padding: 6px 0;
+    padding: 4px 0; /* Tighter padding when scrolled */
   }
 
   .site-header.scrolled .logo-emblem {
@@ -453,11 +469,11 @@ function isActive(href: string): boolean {
   }
 
   .header-row {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto 1fr auto; /* sidebar, logo, nav (flexible), actions (fixed) */
     align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: nowrap;
+    gap: 12px; /* Slightly reduced gap */
+    width: 100%;
   }
 
   /* Logo */
@@ -468,14 +484,10 @@ function isActive(href: string): boolean {
     text-decoration: none;
   }
 
-  /* Keep breathing room between the logo block and the navigation */
+  /* Logo - auto width in grid */
   .header-column-logo {
     position: relative;
     z-index: 1;
-    margin-right: 18px;
-    flex: 0 0 auto; /* FIX: Changed from 0 1 240px to prevent shrinking/overlap */
-    max-width: 280px;
-    min-width: 0; /* Allow text truncation if needed */
   }
 
   .logo-emblem {
@@ -524,36 +536,55 @@ function isActive(href: string): boolean {
     white-space: nowrap;
   }
 
-  /* Navigation Column - higher z-index for dropdowns */
+  /* Navigation Column - uses grid area, aligns content to end */
   .header-column-nav {
-    flex: 1 1 0;
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-end; /* Push nav to right side of its grid cell */
     position: relative;
     z-index: 10;
-    min-width: 0;
-    overflow: visible; /* FIX: Ensure dropdowns can extend */
+    min-width: 0; /* Allow grid to shrink this column */
   }
 
   .header-nav {
     display: flex;
     align-items: center;
-    gap: 15px;
-    min-width: 0;
+    gap: 10px;
+    min-width: 0; /* Allow shrinking */
+    max-width: 100%;
   }
 
-  /* Keep nav pills from forcing the logo to shrink to zero when space is tight */
+  .header-nav-main {
+    min-width: 0; /* Allow shrinking */
+    max-width: 100%;
+    overflow: visible; /* Allow dropdowns to show */
+  }
+
+  /* Keep nav pills from forcing width - allow truncation */
   .header-nav-main > nav > ul.nav {
+    display: flex;
     flex-wrap: nowrap;
+    gap: 2px;
     min-width: 0;
+    justify-content: flex-end;
   }
 
-  /* Tighter logo on slightly smaller screens to leave room for nav */
-  @media (max-width: 1400px) {
-    .header-column-logo {
-      max-width: 240px;
-    }
+  .header-nav-main > nav > ul.nav > li {
+    flex-shrink: 0; /* Don't shrink individual items - hide via CSS if needed */
+  }
 
+  /* Very large screens (1600px+) - show full logo */
+  @media (min-width: 1600px) {
+    .logo-text-block {
+      display: flex;
+    }
+    
+    .header-row {
+      gap: 20px;
+    }
+  }
+
+  /* Large screens (1200-1600px) - hide logo text for more nav room */
+  @media (max-width: 1599px) {
     .logo-text-block {
       display: none;
     }
@@ -563,9 +594,14 @@ function isActive(href: string): boolean {
     }
   }
 
+  /* Medium screens (992-1200px) - tighter spacing */
   @media (max-width: 1200px) {
-    .header-column-logo {
-      max-width: 60px;
+    .header-row {
+      gap: 10px;
+    }
+    
+    .logo-emblem {
+      height: 36px;
     }
   }
 
@@ -581,14 +617,18 @@ function isActive(href: string): boolean {
     color: #ffffff !important;
   }
 
-  /* Header Action Buttons (Search & Theme Toggle) */
+  /* Header Action Buttons (Search & Theme Toggle) - fixed width in grid */
   .header-column-actions {
     display: flex;
     align-items: center;
-    gap: 10px;
-    flex-shrink: 0; /* FIX: Never shrink action buttons */
+    justify-content: flex-end;
+    gap: 8px;
+    min-width: 100px; /* Guarantee space for 2 buttons */
+    padding-left: 15px; /* FIX: Separation from nav items */
     margin-left: auto; /* FIX: Push to far right */
-    padding-left: 30px; /* FIX: Guaranteed space from nav items */
+    position: relative;
+    z-index: 50; /* Above nav items */
+    flex-shrink: 0; /* Never shrink */
   }
 
   .header-action-btn {
