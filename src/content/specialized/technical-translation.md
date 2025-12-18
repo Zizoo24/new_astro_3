@@ -1,6 +1,6 @@
 ---
 title: "Technical Translation"
-pageTitle: "Technical Translation Services Dubai | Engineering & IT Documents"
+pageTitle: "Technical Translation Dubai | Engineering & IT Docs"
 metaDescription: "Professional technical translation services in Dubai. Expert translators for engineering, IT, manufacturing, and technical documentation. Accurate terminology."
 description: "Specialized technical translation for engineering, IT, and manufacturing documentation."
 heroHeading: "Technical Translation Services"

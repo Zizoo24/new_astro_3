@@ -1,6 +1,6 @@
 ---
 title: "Healthcare Translation"
-pageTitle: "Healthcare & Medical Translation Dubai | Medical Document Services"
+pageTitle: "Healthcare & Medical Translation Dubai | MOJ Certified"
 metaDescription: "Professional medical and healthcare translation services in Dubai. Certified translators for medical reports, clinical documents, and pharmaceutical materials."
 description: "Specialized medical translation services for healthcare providers, pharmaceutical companies, and patients."
 heroHeading: "Healthcare Translation Services"

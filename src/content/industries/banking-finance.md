@@ -1,6 +1,6 @@
 ---
 title: "Banking & Finance Translation"
-pageTitle: "Banking & Finance Translation Dubai | Financial Document Services"
+pageTitle: "Banking & Finance Translation Dubai | MOJ Certified"
 metaDescription: "Specialized translation services for banking and finance sector in Dubai. Expert translators for financial reports, regulatory documents, and banking contracts."
 description: "Expert translation services for the banking and financial services industry with deep understanding of financial terminology."
 heroHeading: "Banking & Finance Translation"

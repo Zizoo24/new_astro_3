@@ -1,7 +1,7 @@
 ---
 title: "Dubai Marina Translation Services"
 pageTitle: "Legal Translation Dubai Marina | MOJ Certified Services"
-metaDescription: "Professional legal translation services in Dubai Marina. MOJ certified translators, convenient location, fast turnaround. Serving JBR, JLT, and Marina residents."
+metaDescription: "Legal translation services in Dubai Marina. MOJ certified translators, fast turnaround. Serving JBR, JLT, and Marina."
 description: "Convenient legal translation services for Dubai Marina residents and businesses. Fast, certified, professional."
 heroHeading: "Dubai Marina Translation"
 heroSubheading: "Your Local Translation Partner"

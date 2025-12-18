@@ -1,7 +1,7 @@
 ---
 title: "Medical Translation"
 pageTitle: "Medical Translation Services Dubai | Healthcare Documents"
-metaDescription: "Specialized medical translation services in Dubai. Expert translators for medical reports, clinical documents, and healthcare records. Accurate and confidential."
+metaDescription: "Medical translation services in Dubai. Expert translators for medical reports, clinical documents. Accurate and confidential."
 description: "Expert medical translation for healthcare documents, clinical records, and pharmaceutical materials."
 heroHeading: "Medical Translation Services"
 heroSubheading: "Precision for Patient Care"

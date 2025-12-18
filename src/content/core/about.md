@@ -1,5 +1,5 @@
 ---
-pageTitle: "About OnlineTranslation.ae - Licensed Legal Translation in Dubai"
+pageTitle: "About Us | OnlineTranslation.ae Dubai"
 metaDescription: "Learn about OnlineTranslation.ae, your digital document concierge for MOJ-certified legal translation services in Dubai."
 heroHeading: "About OnlineTranslation.ae"
 heroSubheading: "Your Digital Document Concierge in Dubai"
