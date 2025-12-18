@@ -3,6 +3,7 @@ import HeaderPorto from '../components/Header-porto.astro';
 import Footer from '../components/Footer.astro';
 import MobileShell from '../components/MobileShell.astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
   title: string;
@@ -302,6 +303,9 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
   <link rel="stylesheet" href="/styles/print.css">
   
   <slot name="head" />
+  
+  <!-- Vercel Web Analytics -->
+  <Analytics />
 </head>
 <body class={isHomepage ? 'homepage is-homepage' : ''}>
 
