@@ -249,18 +249,23 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous">
+  
+  <!-- Font Awesome - load async to not block render -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous"></noscript>
   
   <!-- ============================================
-       CSS - SAFE CONFIGURATION
+       CSS - OPTIMIZED LOADING ORDER
        
-       Changes from original:
-       - Merged 4 contrast-fix files → contrast-fixes.css
-       - Merged 3 visual-relief files → visual-relief.css  
-       - Replaced dark-mode.css → dark-mode-tokenized.css
-       
-       Everything else unchanged.
+       Critical CSS loaded first (preload)
+       Non-critical CSS loaded with lower priority
        ============================================ -->
+  
+  <!-- CRITICAL: Preload essential CSS -->
+  <link rel="preload" href="/styles/base-architecture.css" as="style">
+  <link rel="preload" href="/styles/porto-desktop.css" as="style">
+  <link rel="preload" href="/styles/sticky-mobile.css" as="style">
+  <link rel="preload" href="/styles/hero-enhancements.css" as="style">
   
   <!-- FOUNDATION -->
   <link rel="stylesheet" href="/styles/base-architecture.css">
@@ -271,18 +276,18 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
   <link rel="stylesheet" href="/styles/document-pages.css">
   <link rel="stylesheet" href="/styles/visibility-fixes.css">
   
-  <!-- NAVIGATION -->
+  <!-- NAVIGATION (desktop-only styles deferred on mobile) -->
   <link rel="stylesheet" href="/styles/subsection-menu.css">
-  <link rel="stylesheet" href="/styles/megamenu.css">
-  <link rel="stylesheet" href="/styles/porto-dropdown-onlinetranslation.css">
-  <link rel="stylesheet" href="/styles/navigation-glassmorphism.css">
+  <link rel="stylesheet" href="/styles/megamenu.css" media="(min-width: 992px)">
+  <link rel="stylesheet" href="/styles/porto-dropdown-onlinetranslation.css" media="(min-width: 992px)">
+  <link rel="stylesheet" href="/styles/navigation-glassmorphism.css" media="(min-width: 992px)">
   
   <!-- MOBILE -->
   <link rel="stylesheet" href="/styles/sticky-mobile.css">
   <link rel="stylesheet" href="/styles/mobile-action-bar.css">
   <link rel="stylesheet" href="/styles/mobile-ios.css">
   <link rel="stylesheet" href="/styles/mobile-android.css">
-  <link rel="stylesheet" href="/styles/desktop-macos.css">
+  <link rel="stylesheet" href="/styles/desktop-macos.css" media="(min-width: 992px)">
   
   <!-- COMPONENTS -->
   <link rel="stylesheet" href="/styles/hero-enhancements.css">
@@ -299,8 +304,8 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
   <!-- DARK MODE (NEW - tokenized, replaces dark-mode.css) -->
   <link rel="stylesheet" href="/styles/dark-mode-tokenized.css">
   
-  <!-- PRINT -->
-  <link rel="stylesheet" href="/styles/print.css">
+  <!-- PRINT (non-blocking) -->
+  <link rel="stylesheet" href="/styles/print.css" media="print">
   
   <slot name="head" />
   
