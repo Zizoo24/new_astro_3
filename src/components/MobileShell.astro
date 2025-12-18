@@ -146,11 +146,53 @@ import { mobileNavHubs, searchQuickLinks, siteContact } from '../data/navigation
 
 <style>
 /* ============================================
-   SIDEBAR LINK OVERRIDES
-   Forces text visibility on dark background
+   SIDEBAR CONTRAST FIX - Light & Dark Mode
+   Forces white text on dark navy background
    ============================================ */
 
-/* Hub link styling - stands out from regular links */
+/* Sidebar always has dark background - force white text */
+.sidebar-menu,
+.sidebar-menu * {
+  --sidebar-text: #ffffff;
+  --sidebar-text-muted: rgba(255, 255, 255, 0.85);
+  --sidebar-accent: #e8491d;
+}
+
+/* Accordion headings - ALWAYS white */
+.sidebar-accordion-heading {
+  color: #ffffff !important;
+}
+
+.sidebar-accordion-heading:hover,
+.sidebar-accordion-heading:active,
+.sidebar-accordion-heading.is-open {
+  color: #ffffff !important;
+}
+
+.sidebar-accordion-heading .heading-text {
+  color: #ffffff !important;
+}
+
+.sidebar-accordion-heading .heading-text i {
+  color: #e8491d !important;
+}
+
+.sidebar-accordion-heading .accordion-chevron {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Accordion panel links - white text */
+.sidebar-accordion-panel a {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.sidebar-accordion-panel a:hover,
+.sidebar-accordion-panel a:active {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Hub link styling - coral accent */
 .sidebar-hub-link {
   display: flex !important;
   align-items: center !important;
@@ -174,7 +216,7 @@ import { mobileNavHubs, searchQuickLinks, siteContact } from '../data/navigation
   width: 16px !important;
 }
 
-/* Home link styling */
+/* Home link styling - white */
 .sidebar-home-link {
   display: flex !important;
   align-items: center !important;
@@ -200,7 +242,7 @@ import { mobileNavHubs, searchQuickLinks, siteContact } from '../data/navigation
   font-size: 1rem !important;
 }
 
-/* Single links (About, Contact) */
+/* Single links (About, Contact) - white */
 .sidebar-single-link {
   display: flex !important;
   align-items: center !important;
@@ -226,9 +268,26 @@ import { mobileNavHubs, searchQuickLinks, siteContact } from '../data/navigation
   font-size: 1rem !important;
 }
 
-/* Accordion heading icon color */
-.sidebar-accordion-heading .heading-text i {
+/* Sidebar brand text - always white */
+.sidebar-brand-name {
+  color: #ffffff !important;
+}
+
+.sidebar-brand-name .brand-suffix {
   color: #e8491d !important;
+}
+
+.sidebar-tagline {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* CTA buttons in sidebar */
+.sidebar-cta {
+  color: #ffffff !important;
+}
+
+.sidebar-cta.secondary {
+  color: #ffffff !important;
 }
 </style>
 

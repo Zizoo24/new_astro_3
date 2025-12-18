@@ -248,6 +248,11 @@ a.footer-item:active {
     overflow-y: auto;
     overflow-x: hidden;
     box-shadow: var(--shadow-lg);
+    /* CONTRAST FIX: Force light text vars for dark background */
+    --text-on-dark: #ffffff;
+    --text-light: #ffffff;
+    --accent-color: #e8491d;
+    color: #ffffff;
 }
 
 .sidebar-menu.is-open {
@@ -343,7 +348,7 @@ a.footer-item:active {
     align-items: center;
     gap: 12px;
     padding: 12px 20px;
-    color: var(--text-on-dark);
+    color: #ffffff; /* CONTRAST FIX: Explicit white */
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 600;
@@ -380,7 +385,7 @@ a.footer-item:active {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: rgba(255, 255, 255, 0.85);
+    color: #ffffff; /* CONTRAST FIX: Explicit white, not rgba */
     background: transparent;
     border: none;
     cursor: pointer;
@@ -420,7 +425,7 @@ a.footer-item:active {
 .sidebar-accordion-panel a {
     display: block;
     padding: 10px 20px 10px 32px;
-    color: rgba(255, 255, 255, 0.85);
+    color: #ffffff; /* CONTRAST FIX: Explicit white */
     text-decoration: none;
     font-size: 0.85rem;
     font-weight: 500;
@@ -466,7 +471,7 @@ a.footer-item:active {
     align-items: center;
     gap: 12px;
     padding: 12px 20px;
-    color: var(--text-on-dark);
+    color: #ffffff; /* CONTRAST FIX: Explicit white */
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 600;
@@ -516,7 +521,7 @@ a.footer-item:active {
 
 .sidebar-cta.secondary {
     background: rgba(255, 255, 255, 0.15);
-    color: var(--text-on-dark);
+    color: #ffffff; /* CONTRAST FIX: Explicit white */
     box-shadow: none;
 }
 
