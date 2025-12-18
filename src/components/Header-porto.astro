@@ -288,9 +288,14 @@ function isActive(href: string): boolean {
   }
 
   .header-spacer {
-    /* Match the actual header height via inline style set in script */
+    /* Fixed height to prevent CLS - matches coral bar (40px) + header (~80px) */
     height: 120px;
-    transition: height 0.3s ease;
+    transition: none; /* No transition to prevent CLS */
+  }
+
+  /* When scrolled, coral bar is hidden - reduce spacer */
+  .header-wrapper.is-scrolled + .header-spacer {
+    height: 70px;
   }
 
   @media (max-width: 991px) {
@@ -310,19 +315,20 @@ function isActive(href: string): boolean {
   .coral-top-bar {
     background: var(--ot-coral, #FF1654);
     padding: 10px 0;
-    font-family: var(--font-primary, 'Montserrat', sans-serif);
-    font-size: 0.85rem;
+    font-family: var(--font-secondary, 'Open Sans', sans-serif);
+    font-size: 0.8rem;
+    font-weight: 500;
     transition: transform 0.3s ease, opacity 0.3s ease, max-height 0.3s ease;
     max-height: 60px;
     overflow: hidden;
   }
 
   .coral-top-bar.hidden {
-    max-height: 0;
-    padding: 0;
-    opacity: 0;
+    /* Use transform instead of max-height to avoid CLS */
     transform: translateY(-100%);
+    opacity: 0;
     pointer-events: none;
+    /* Keep max-height to maintain space initially, let transform handle visual hiding */
   }
 
   .coral-top-content {
@@ -564,6 +570,7 @@ function isActive(href: string): boolean {
     align-items: center;
     gap: 10px;
     flex-shrink: 0; /* FIX: Never shrink action buttons */
+    margin-left: 20px; /* FIX: Space from nav dropdowns */
   }
 
   .header-action-btn {
@@ -669,14 +676,10 @@ function isActive(href: string): boolean {
     const coralTopBar = document.getElementById('coralTopBar');
     const header = document.getElementById('header');
     const headerWrapper = document.getElementById('headerWrapper');
-    const headerSpacer = document.querySelector('.header-spacer');
     const scrollThreshold = 50;
 
-    function syncSpacerHeight() {
-      if (headerWrapper && headerSpacer) {
-        headerSpacer.style.height = `${headerWrapper.offsetHeight}px`;
-      }
-    }
+    // REMOVED: Dynamic spacer height sync - causes CLS
+    // Spacer height is now handled purely via CSS
 
     function handleScrollBehavior() {
       const currentScrollY = window.scrollY;
@@ -690,14 +693,10 @@ function isActive(href: string): boolean {
         header?.classList.remove('scrolled');
         headerWrapper?.classList.remove('is-scrolled');
       }
-
-      syncSpacerHeight();
     }
 
     window.addEventListener('scroll', handleScrollBehavior, { passive: true });
-    window.addEventListener('resize', syncSpacerHeight);
     handleScrollBehavior();
-    syncSpacerHeight();
 
     // ========================================
     // DESKTOP SIDEBAR TOGGLE
