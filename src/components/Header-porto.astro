@@ -572,36 +572,42 @@ function isActive(href: string): boolean {
     flex-shrink: 0; /* Don't shrink individual items - hide via CSS if needed */
   }
 
-  /* Very large screens (1600px+) - show full logo */
+  /* Very large screens (1600px+) - full spacing */
   @media (min-width: 1600px) {
-    .logo-text-block {
-      display: flex;
-    }
-    
     .header-row {
       gap: 20px;
     }
   }
 
-  /* Large screens (1200-1600px) - hide logo text for more nav room */
-  @media (max-width: 1599px) {
-    .logo-text-block {
-      display: none;
+  /* Large screens (1200-1600px) - slightly smaller logo text */
+  @media (max-width: 1599px) and (min-width: 1200px) {
+    .logo-text {
+      font-size: 18px;
     }
-
-    .logo-emblem {
-      height: 40px;
+    
+    .logo-tagline {
+      font-size: 9px;
+      letter-spacing: 2px;
     }
   }
 
-  /* Medium screens (992-1200px) - tighter spacing */
-  @media (max-width: 1200px) {
-    .header-row {
-      gap: 10px;
+  /* Medium screens (992-1200px) - compact logo */
+  @media (max-width: 1199px) and (min-width: 992px) {
+    .logo-text {
+      font-size: 16px;
+    }
+    
+    .logo-tagline {
+      font-size: 8px;
+      letter-spacing: 1.5px;
     }
     
     .logo-emblem {
       height: 36px;
+    }
+    
+    .header-row {
+      gap: 8px;
     }
   }
 
