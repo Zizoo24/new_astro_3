@@ -1,6 +1,6 @@
 ---
-pageTitle: "MOJ Certified Legal Translation Dubai | Court-Ready Documents | OnlineTranslation.ae"
-metaDescription: "Professional legal translation services in Dubai designed for UAE court acceptance. Ministry of Justice certified translators for documents, contracts, and attestation. Fast, secure, reliable."
+pageTitle: "MOJ Certified Legal Translation Dubai | OnlineTranslation.ae"
+metaDescription: "Professional legal translation services in Dubai. MOJ certified translators for court documents, contracts, and attestation. Fast, secure service."
 
 hero:
   titleLine: "MOJ Certified Legal Translation in Dubai"
