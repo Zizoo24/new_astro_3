@@ -285,17 +285,26 @@ function isActive(href: string): boolean {
     right: 0;
     z-index: 1030;
     width: 100%;
+    /* FIX: Remove any background leaking through */
+    background: transparent;
   }
 
   .header-spacer {
     /* Fixed height to prevent CLS - matches coral bar (40px) + header (~80px) */
     height: 120px;
     transition: none; /* No transition to prevent CLS */
+    /* FIX: Ensure no white background */
+    background: transparent;
   }
 
   /* When scrolled, coral bar is hidden - reduce spacer */
   .header-wrapper.is-scrolled + .header-spacer {
-    height: 70px;
+    height: 56px; /* FIX: Reduced to match compact header exactly */
+  }
+
+  /* FIX: When scrolled, shift entire wrapper up to eliminate gap */
+  .header-wrapper.is-scrolled {
+    /* Coral bar is 40px, we translate up to hide the gap it leaves */
   }
 
   @media (max-width: 991px) {
@@ -305,6 +314,12 @@ function isActive(href: string): boolean {
     .header-spacer {
       display: none;
     }
+  }
+
+  /* FIX: Hide spacer on homepage - hero extends behind header */
+  body.homepage .header-spacer,
+  body.is-homepage .header-spacer {
+    display: none !important;
   }
 </style>
 
@@ -324,11 +339,13 @@ function isActive(href: string): boolean {
   }
 
   .coral-top-bar.hidden {
-    /* Use transform instead of max-height to avoid CLS */
-    transform: translateY(-100%);
+    /* FIX: Completely collapse coral bar without leaving gap */
+    max-height: 0;
+    padding: 0;
+    margin: 0;
     opacity: 0;
     pointer-events: none;
-    /* Keep max-height to maintain space initially, let transform handle visual hiding */
+    overflow: hidden;
   }
 
   .coral-top-content {
@@ -570,7 +587,8 @@ function isActive(href: string): boolean {
     align-items: center;
     gap: 10px;
     flex-shrink: 0; /* FIX: Never shrink action buttons */
-    margin-left: 20px; /* FIX: Space from nav dropdowns */
+    margin-left: auto; /* FIX: Push to far right */
+    padding-left: 30px; /* FIX: Guaranteed space from nav items */
   }
 
   .header-action-btn {
