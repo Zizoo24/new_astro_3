@@ -67,9 +67,9 @@ export const siteContact = {
 
 export const socialLinks: SocialLink[] = [
   { platform: 'whatsapp', url: 'https://wa.me/971508620217', icon: 'fab fa-whatsapp', label: 'WhatsApp' },
-  { platform: 'facebook', url: 'https://facebook.com/onlinetranslationae', icon: 'fab fa-facebook', label: 'Facebook' },
-  { platform: 'instagram', url: 'https://instagram.com/onlinetranslationae', icon: 'fab fa-instagram', label: 'Instagram' },
-  { platform: 'linkedin', url: 'https://linkedin.com/company/onlinetranslationae', icon: 'fab fa-linkedin', label: 'LinkedIn' },
+  { platform: 'facebook', url: 'https://www.facebook.com/DXBTranslate', icon: 'fab fa-facebook', label: 'Facebook' },
+  { platform: 'instagram', url: 'https://www.instagram.com/onlinetranslation.ae/', icon: 'fab fa-instagram', label: 'Instagram' },
+  { platform: 'linkedin', url: 'https://www.linkedin.com/company/online-translation-agency-dubai/', icon: 'fab fa-linkedin', label: 'LinkedIn' },
 ];
 
 // ============================================
