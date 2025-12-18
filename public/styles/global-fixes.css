@@ -38,33 +38,35 @@
   flex-wrap: nowrap;
 }
 
-/* Top coral bar - text MUST be white */
+/* Top coral bar - text MUST be white
+   !important needed to override dark mode global link color */
 .header-announcement,
 .header-announcement * {
-  color: #ffffff !important;
+  color: var(--text-on-dark) !important;
 }
 
 .header-announcement .announcement-label,
 .header-announcement .announcement-btn,
 .header-announcement .announcement-cta {
-  color: #ffffff !important;
+  color: var(--text-on-dark) !important;
 }
 
 /* Exception for call button which has coral text on white background */
 .header-announcement .announcement-btn--call {
-  color: var(--accent-color, #FF1654) !important;
-  background: #ffffff !important;
+  color: var(--accent-coral) !important;
+  background: var(--surface-base) !important;
 }
 
-/* Homepage hero buttons - text MUST be white */
+/* Homepage hero buttons - text MUST be white
+   !important needed to override dark mode global link color */
 .hero-cta.exodus-cta,
 .exodus-hero .hero-cta {
-  color: #ffffff !important;
+  color: var(--text-on-dark) !important;
 }
 
 .hero-cta-secondary,
 .exodus-hero .hero-cta-secondary {
-  color: rgba(255, 255, 255, 0.9) !important;
+  color: var(--text-on-dark-muted) !important;
 }
 
 /* ============================================
@@ -76,17 +78,17 @@
 .faq-item,
 .faq-list details,
 details.faq-item {
-  border: 1px solid var(--border-light, #e2e8f0);
+  border: 1px solid var(--border-light);
   border-radius: 12px;
   margin-bottom: 0.75rem;
-  background: var(--surface-base, #ffffff);
+  background: var(--surface-base);
   overflow: hidden;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .faq-item:hover,
 .faq-list details:hover {
-  border-color: var(--accent-color, #FF1654);
+  border-color: var(--accent-coral);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
@@ -100,7 +102,7 @@ details.faq-item summary {
   padding: 1.25rem 1.5rem;
   font-weight: 600;
   font-size: 1.05rem;
-  color: var(--text-heading, #0E2B48);
+  color: var(--text-heading);
   cursor: pointer;
   list-style: none;
   gap: 1rem;
@@ -137,10 +139,11 @@ details.faq-item summary::after,
   width: 28px;
   height: 28px;
   min-width: 28px;
-  border: 2px solid var(--accent-color, #FF1654);
+  border: 2px solid var(--accent-coral);
   border-radius: 50%;
   background: transparent;
   transition: transform 0.25s ease, background-color 0.25s ease;
+  /* SVG chevron in coral color */
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23FF1654' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
@@ -159,7 +162,8 @@ details.faq-item summary::after,
 .faq-item[open] summary::after,
 details.faq-item[open] summary::after {
   transform: rotate(180deg);
-  background-color: var(--accent-color, #FF1654);
+  background-color: var(--accent-coral);
+  /* White chevron when open */
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
 }
 
@@ -168,12 +172,12 @@ details.faq-item[open] summary::after {
 .faq-item .faq-answer {
   padding: 0 1.5rem 1.25rem;
   line-height: 1.75;
-  color: var(--text-body, #2d3748);
+  color: var(--text-body);
 }
 
 .faq-answer p {
   margin: 0 0 0.75rem;
-  color: var(--text-body, #2d3748);
+  color: var(--text-body);
 }
 
 .faq-answer p:last-child {
@@ -210,9 +214,9 @@ details.faq-item[open] summary::after {
   padding: 1rem 2.5rem;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #ffffff;
-  background: var(--accent-color, #FF1654);
-  border: 3px solid var(--accent-color, #FF1654);
+  color: var(--text-on-dark);
+  background: var(--accent-coral);
+  border: 3px solid var(--accent-coral);
   border-radius: 12px;
   text-decoration: none;
   box-shadow: 0 4px 20px rgba(255, 22, 84, 0.35);
@@ -222,8 +226,8 @@ details.faq-item[open] summary::after {
 .hero-cta-group .btn:hover,
 .hero-cta-group .btn--primary:hover,
 .section--hero .btn--primary:hover {
-  background: #e01346;
-  border-color: #e01346;
+  background: var(--accent-coral-hover);
+  border-color: var(--accent-coral-hover);
   transform: translateY(-3px);
   box-shadow: 0 8px 30px rgba(255, 22, 84, 0.45);
 }
@@ -231,7 +235,7 @@ details.faq-item[open] summary::after {
 /* Secondary/outline button */
 .hero-cta-group .btn--outline,
 .hero-cta-group a.hero-cta-secondary {
-  color: #ffffff;
+  color: var(--text-on-dark);
   background: transparent;
   border: 2px solid rgba(255, 255, 255, 0.4);
   padding: 0.875rem 2rem;
@@ -357,7 +361,8 @@ details.faq-item[open] summary::after {
    Improving readability across the site
    ============================================ */
 
-/* Fix muted text contrast - minimum 4.5:1 ratio */
+/* Fix muted text contrast - minimum 4.5:1 ratio
+   !important needed to override inline styles and component defaults */
 .text-muted,
 p.text-muted,
 span.text-muted,
@@ -375,7 +380,7 @@ span.text-muted,
 .info-card li,
 .process-card p,
 .use-case-card p {
-  color: var(--text-secondary, #4a5568) !important;
+  color: var(--text-secondary) !important;
 }
 
 /* Ensure body text is dark enough */
@@ -384,7 +389,7 @@ span.text-muted,
 article p,
 .policy-content p,
 .policy-content li {
-  color: var(--text-body, #2d3748);
+  color: var(--text-body);
 }
 
 /* Fix light gray labels */
@@ -393,14 +398,14 @@ article p,
 .form-note,
 .hero-intro,
 .category-hero .hero-intro {
-  color: var(--text-secondary, #4a5568);
+  color: var(--text-secondary);
 }
 
 /* On dark backgrounds, ensure proper contrast */
 .bg-dark .text-muted,
 .bg-dark p,
 .bg-dark .section-intro {
-  color: rgba(255, 255, 255, 0.85) !important;
+  color: var(--text-on-dark-muted) !important;
 }
 
 /* Breadcrumb contrast on dark - WCAG AA compliant */
@@ -408,38 +413,38 @@ article p,
 .breadcrumb-list a,
 .category-hero .breadcrumb a,
 .hero-section .breadcrumb a {
-  color: rgba(255, 255, 255, 0.85) !important;
+  color: var(--text-on-dark-muted) !important;
 }
 
 .breadcrumb .separator,
 .breadcrumb-sep,
 .category-hero .breadcrumb .separator,
 .hero-section .breadcrumb .separator {
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: var(--text-on-dark-subtle) !important;
 }
 
 .breadcrumb .current,
 .breadcrumb-list span[aria-current] {
-  color: #ffffff;
+  color: var(--text-on-dark);
 }
 
 /* Form labels and placeholders */
 input::placeholder,
 textarea::placeholder,
 select::placeholder {
-  color: var(--text-secondary, #4a5568);
+  color: var(--text-secondary);
   opacity: 1;
 }
 
 label {
-  color: var(--text-heading, #0E2B48);
+  color: var(--text-heading);
 }
 
 /* Table and list item contrast */
 table td,
 table th,
 li {
-  color: var(--text-body, #2d3748);
+  color: var(--text-body);
 }
 
 /* Card title contrast */
@@ -451,16 +456,16 @@ li {
 .use-case-card h3,
 .area-card h3,
 .authority-card h3 {
-  color: var(--text-heading, #0E2B48);
+  color: var(--text-heading);
 }
 
 /* Links should be clearly visible */
 a:not(.btn):not(.service-card):not(.document-card):not(.category-card) {
-  color: var(--link-color, #0077b6);
+  color: var(--link-color);
 }
 
 a:not(.btn):not(.service-card):not(.document-card):not(.category-card):hover {
-  color: var(--link-hover, #005f8a);
+  color: var(--link-hover);
 }
 
 /* ============================================
@@ -470,35 +475,35 @@ a:not(.btn):not(.service-card):not(.document-card):not(.category-card):hover {
 /* Ensure accordion content is properly styled */
 .ot-accordion-content p,
 .ot-accordion-content li {
-  color: var(--text-body, #2d3748) !important;
+  color: var(--text-body) !important;
 }
 
 /* Fix service card description contrast */
 .services-grid .service-card p,
 .service-grid .service-card p {
-  color: var(--text-secondary, #4a5568);
+  color: var(--text-secondary);
 }
 
 /* Trust metrics contrast */
 .trust-label,
 .ot-metric-label {
-  color: var(--text-secondary, #4a5568);
+  color: var(--text-secondary);
 }
 
 /* Footer text contrast */
 footer p,
 footer li {
-  color: var(--text-on-dark-muted, #c5d4e8);
+  color: var(--text-on-dark-muted);
 }
 
 footer a,
 .footer a {
-  color: var(--text-on-dark-muted, #c5d4e8);
+  color: var(--text-on-dark-muted);
 }
 
 footer a:hover,
 .footer a:hover {
-  color: var(--accent-coral, #FF1654);
+  color: var(--accent-coral);
 }
 
 /* ============================================
@@ -510,100 +515,100 @@ footer a:hover,
 /* Languages section - ensure high contrast text */
 .languages-section.bg-dark,
 .exodus-languages {
-  background: var(--surface-navy, #0E2B48);
+  background: var(--surface-navy);
 }
 
 .languages-section.bg-dark h2,
 .languages-section.bg-dark .section-title {
-  color: #ffffff;
+  color: var(--text-on-dark);
 }
 
 .languages-section .language-item {
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--text-on-dark);
   font-weight: 500;
 }
 
 .languages-section .language-item i {
-  color: var(--accent-gold-light, #d4a54c);
+  color: var(--accent-gold-light);
 }
 
 .languages-section .language-item.highlight {
-  color: var(--accent-coral, #FF6B6B);
+  color: var(--accent-coral);
   font-weight: 600;
 }
 
 .languages-note {
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--text-on-dark-muted);
 }
 
 /* CTA Banner - high contrast text */
 .cta-banner,
 .cta-banner.bg-dark {
-  background: linear-gradient(135deg, #0E2B48 0%, #072035 100%);
+  background: linear-gradient(135deg, var(--surface-navy) 0%, var(--surface-navy-dark) 100%);
 }
 
 .cta-banner h2 {
-  color: #ffffff;
+  color: var(--text-on-dark);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .cta-banner p {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-on-dark-muted);
 }
 
 .cta-banner .cta-btn {
-  color: #ffffff;
-  background: var(--accent-coral, #FF1654);
+  color: var(--text-on-dark);
+  background: var(--accent-coral);
 }
 
 /* Contact section - high contrast form and text */
 .contact-section.bg-dark {
-  background: var(--surface-navy-dark, #072035);
+  background: var(--surface-navy-dark);
 }
 
 .contact-section.bg-dark .section-label {
-  color: var(--accent-coral, #FF6B6B);
+  color: var(--accent-coral);
 }
 
 .contact-section.bg-dark .section-title,
 .contact-section.bg-dark h2 {
-  color: #ffffff;
+  color: var(--text-on-dark);
 }
 
 .contact-section.bg-dark .contact-description,
 .contact-section.bg-dark p {
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--text-on-dark-muted);
 }
 
 .contact-section.bg-dark label {
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--text-on-dark);
 }
 
 .contact-section.bg-dark input,
 .contact-section.bg-dark textarea {
   background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
+  border-color: var(--border-on-dark);
+  color: var(--text-on-dark);
 }
 
 .contact-section.bg-dark input::placeholder,
 .contact-section.bg-dark textarea::placeholder {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-on-dark-subtle);
 }
 
 .contact-section.bg-dark input:focus,
 .contact-section.bg-dark textarea:focus {
-  border-color: var(--accent-coral, #FF6B6B);
+  border-color: var(--accent-coral);
   background: rgba(255, 255, 255, 0.15);
 }
 
 .contact-section.bg-dark .submit-btn {
-  color: #ffffff;
-  background: var(--accent-coral, #FF1654);
+  color: var(--text-on-dark);
+  background: var(--accent-coral);
 }
 
 .contact-section.bg-dark .contact-btn {
-  color: #ffffff;
+  color: var(--text-on-dark);
 }
 
 /* Focus visible rings for keyboard navigation */
@@ -613,7 +618,7 @@ input:focus-visible,
 textarea:focus-visible,
 select:focus-visible,
 [tabindex]:focus-visible {
-  outline: 3px solid var(--accent-coral, #FF1654);
+  outline: 3px solid var(--accent-coral);
   outline-offset: 2px;
 }
 

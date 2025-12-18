@@ -5,6 +5,9 @@
    
    NOTE: Header and dropdown styles are in
    navigation-glassmorphism.css (loads after this)
+   
+   PHASE 2: All hardcoded colors replaced with
+   CSS custom properties for consistency
    ============================================ */
 
 /* ==========================================
@@ -15,7 +18,7 @@
 .sidebar-menu,
 .mobile-menu,
 #menu-sidebar {
-    background: rgba(14, 43, 72, 0.98);
+    background: rgba(14, 43, 72, 0.98); /* Navy glass - intentional rgba for blur effect */
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
 }
@@ -23,67 +26,68 @@
 .sidebar-nav a,
 .sidebar-menu a,
 .mobile-menu a {
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--text-on-dark);
 }
 
 .sidebar-nav a:hover,
 .sidebar-menu a:hover,
 .mobile-menu a:hover {
-    color: #ffffff;
+    color: var(--text-on-dark);
 }
 
 .sidebar-brand-name {
-    color: #ffffff;
+    color: var(--text-on-dark);
 }
 
 .sidebar-tagline {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-on-dark-muted);
 }
 
 .brand-suffix {
-    color: var(--accent-coral, #FF1654);
+    color: var(--accent-coral);
 }
 
 .sidebar-section-title {
-    color: rgba(255, 255, 255, 0.85);
-    border-top-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-on-dark-muted);
+    border-top-color: var(--border-on-dark);
 }
 
 .sidebar-section-title:hover {
-    color: #ffffff;
+    color: var(--text-on-dark);
     background: rgba(255, 255, 255, 0.08);
 }
 
 .sidebar-section-title .section-link {
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--text-on-dark-muted);
 }
 
 .sidebar-section-title .section-link:hover {
-    color: #ffffff;
+    color: var(--text-on-dark);
 }
 
 .sidebar-accordion-content li a {
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--text-on-dark-muted);
 }
 
 .sidebar-accordion-content li a:hover {
-    color: #ffffff;
+    color: var(--text-on-dark);
     background: rgba(255, 255, 255, 0.08);
 }
 
 .sidebar-nav ul li a i {
-    color: var(--accent-coral, #FF1654);
+    color: var(--accent-coral);
 }
 
 /* ==========================================
    BUTTONS - PROPER CONTRAST
    ========================================== */
 
-/* WhatsApp buttons - white text on green */
+/* WhatsApp buttons - brand green with white text */
 .btn-whatsapp,
 .mobile-action-btn--whatsapp {
-    background: #25D366;
-    color: #ffffff;
+    --whatsapp-green: #25D366;
+    background: var(--whatsapp-green);
+    color: var(--text-on-dark);
 }
 
 /* ==========================================
@@ -94,21 +98,21 @@
 /* Breadcrumbs on dark hero backgrounds */
 .hero-section .breadcrumbs,
 .hero-section .breadcrumb,
-[data-theme="dark"] .breadcrumbs,
-[data-theme="dark"] .breadcrumb {
-    color: rgba(255, 255, 255, 0.7);
+body.theme-dark .breadcrumbs,
+body.theme-dark .breadcrumb {
+    color: var(--text-on-dark-subtle);
 }
 
 .hero-section .breadcrumbs a,
 .hero-section .breadcrumb a,
-[data-theme="dark"] .breadcrumbs a,
-[data-theme="dark"] .breadcrumb a {
-    color: rgba(255, 255, 255, 0.7);
+body.theme-dark .breadcrumbs a,
+body.theme-dark .breadcrumb a {
+    color: var(--text-on-dark-subtle);
 }
 
 .hero-section .breadcrumbs a:hover,
 .hero-section .breadcrumb a:hover {
-    color: #ffffff;
+    color: var(--text-on-dark);
 }
 
 /* ==========================================
@@ -145,30 +149,6 @@
 /* Dark mode header styles are in navigation-glassmorphism.css */
 
 /* ==========================================
-   CARD LINK TEXT - CRITICAL FIX
-   Override global white link color for cards
+   CARD LINK TEXT - MOVED TO contrast-fixes.css
+   Removed duplicate rules - single source of truth
    ========================================== */
-
-/* Light mode - dark text on light card backgrounds */
-a.related-card,
-a.related-card span,
-a.cross-card,
-a.cross-card span,
-.related-grid a,
-.related-grid a span,
-.cross-grid a,
-.cross-grid a span {
-    color: #1a1a1a !important;
-}
-
-/* Dark mode - light text on dark card backgrounds */
-[data-theme="dark"] a.related-card,
-[data-theme="dark"] a.related-card span,
-[data-theme="dark"] a.cross-card,
-[data-theme="dark"] a.cross-card span,
-body.theme-dark a.related-card,
-body.theme-dark a.related-card span,
-body.theme-dark a.cross-card,
-body.theme-dark a.cross-card span {
-    color: #e6edf3 !important;
-}

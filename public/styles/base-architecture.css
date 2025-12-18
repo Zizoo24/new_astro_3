@@ -326,6 +326,11 @@ a.footer-item.footer-whatsapp i {
 /* ============================================
    CARD/TILE LINK TEXT - Override white link color
    Cards on light backgrounds need dark text
+   
+   NOTE: !important is required here because the
+   global dark mode rule (body.theme-dark a) sets
+   all links to white. Cards need dark text on
+   their light backgrounds.
    ============================================ */
 a.related-card,
 a.cross-card,
@@ -339,7 +344,7 @@ a.info-card a,
 .cross-grid a,
 .services-grid a,
 .documents-grid a {
-    color: #1a1a1a !important;
+    color: var(--text-heading) !important;
 }
 
 a.related-card span,
@@ -349,41 +354,42 @@ a.document-card span,
 .card a span,
 .related-grid a span,
 .cross-grid a span {
-    color: #1a1a1a !important;
+    color: var(--text-heading) !important;
 }
 
-/* Dark mode card text */
-[data-theme="dark"] a.related-card,
-[data-theme="dark"] a.cross-card,
-[data-theme="dark"] a.service-card,
-[data-theme="dark"] a.document-card,
+/* Dark mode card text - uses light text on dark card backgrounds */
 body.theme-dark a.related-card,
 body.theme-dark a.cross-card,
 body.theme-dark a.service-card,
-body.theme-dark a.document-card {
-    color: #e6edf3 !important;
+body.theme-dark a.document-card,
+body.theme-dark a.category-card,
+body.theme-dark .card a,
+body.theme-dark .related-grid a,
+body.theme-dark .cross-grid a {
+    color: var(--text-heading) !important;
 }
 
-[data-theme="dark"] a.related-card span,
-[data-theme="dark"] a.cross-card span,
 body.theme-dark a.related-card span,
-body.theme-dark a.cross-card span {
-    color: #e6edf3 !important;
+body.theme-dark a.cross-card span,
+body.theme-dark a.service-card span,
+body.theme-dark .card a span,
+body.theme-dark .related-grid a span,
+body.theme-dark .cross-grid a span {
+    color: var(--text-heading) !important;
 }
 
 /* Mobile header title - navy, excluded from global white link rule */
 .header-mobile a.header-title {
-    color: var(--surface-navy, #0E2B48) !important;
+    color: var(--surface-navy) !important;
 }
 
 .header-mobile a.header-title span {
-    color: var(--accent-coral, #FF1654) !important;
+    color: var(--accent-coral) !important;
 }
 
 /* Dark mode mobile header title stays visible */
-[data-theme="dark"] .header-mobile a.header-title,
 body.theme-dark .header-mobile a.header-title {
-    color: var(--text-heading, #f4f7fc) !important;
+    color: var(--text-heading) !important;
 }
 
 /* ============================================
@@ -519,11 +525,11 @@ body.theme-dark p, body.theme-dark li {
     gap: 12px;
     font-family: var(--font-secondary);
     font-size: 16px;
-    color: rgba(255, 255, 255, 0.95);
+    color: var(--text-on-dark);
 }
 
 .snapshot-item i {
-    color: var(--accent-color, #FF1654);
+    color: var(--accent-coral);
     font-size: 14px;
     width: 20px;
     text-align: center;
@@ -531,7 +537,7 @@ body.theme-dark p, body.theme-dark li {
 }
 
 .snapshot-item strong {
-    color: #ffffff;
+    color: var(--text-on-dark);
 }
 
 /* ============================================

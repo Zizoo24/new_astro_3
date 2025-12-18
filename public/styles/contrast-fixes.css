@@ -2,37 +2,17 @@
    CONTRAST FIXES - CONSOLIDATED
    OnlineTranslation.ae
    
-   Merged from:
-   - contrast-fix-1.css
-   - contrast-fix-2.css
-   - contrast-fix-3.css
-   - contrast-fix-4.css
+   PHASE 2 CLEANUP:
+   - Removed duplicate card link rules (now in base-architecture.css)
+   - Replaced hardcoded colors with CSS tokens
+   - Removed unnecessary !important declarations
+   - All dark mode rules use body.theme-dark
    
-   All fixes use CSS tokens - no hardcoded colors
+   This file handles DARK MODE component overrides
+   that aren't covered by base-architecture.css
    ============================================ */
 
 @layer states {
-
-  /* ============================================
-     RELATED SERVICES CARD TEXT - CRITICAL
-     Override global white link color
-     ============================================ */
-  
-  /* Light mode - dark text on white card background */
-  a.related-card,
-  a.related-card span.related-text,
-  a.cross-card,
-  a.cross-card span.cross-text {
-    color: #1a1a1a !important;
-  }
-
-  /* Dark mode - light text on dark card background */
-  body.theme-dark a.related-card,
-  body.theme-dark a.related-card span.related-text,
-  body.theme-dark a.cross-card,
-  body.theme-dark a.cross-card span.cross-text {
-    color: #e6edf3 !important;
-  }
 
   /* ============================================
      SIDEBAR CONTRAST FIXES
@@ -346,31 +326,11 @@
 }
 
 /* ============================================
-   UNLAYERED OVERRIDES - HIGHEST PRIORITY
-   These override ALL other styles including global link color
+   NOTE: Card link text overrides moved to 
+   base-architecture.css (single source of truth)
+   
+   The !important declarations there are necessary
+   because the global link color rule (body.theme-dark a)
+   sets all links to white, and cards need dark text
+   on their light backgrounds.
    ============================================ */
-
-/* Related Services & Cross-Silo card text - CRITICAL FIX */
-a.related-card,
-a.related-card span,
-a.related-card .related-text,
-a.cross-card,
-a.cross-card span,
-a.cross-card .cross-text,
-.related-grid a,
-.related-grid a span,
-.cross-grid a,
-.cross-grid a span {
-    color: #1a1a1a !important;
-}
-
-[data-theme="dark"] a.related-card,
-[data-theme="dark"] a.related-card span,
-[data-theme="dark"] a.cross-card,
-[data-theme="dark"] a.cross-card span,
-body.theme-dark a.related-card,
-body.theme-dark a.related-card span,
-body.theme-dark a.cross-card,
-body.theme-dark a.cross-card span {
-    color: #e6edf3 !important;
-}
