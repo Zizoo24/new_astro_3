@@ -268,7 +268,7 @@ body.theme-dark a:visited {
 .hero-section a,
 .header-desktop a,
 .header-mobile a,
-.sidebar a {
+.sidebar-menu a {
     color: var(--link-on-dark);
 }
 
@@ -276,8 +276,46 @@ body.theme-dark a:visited {
 .hero-section a:hover,
 .header-desktop a:hover,
 .header-mobile a:hover,
-.sidebar a:hover {
+.sidebar-menu a:hover {
     color: var(--link-on-dark-hover);
+}
+
+/* ============================================
+   SIDEBAR-MENU DARK CONTEXT
+   Forces dark-mode color tokens regardless of page theme
+   ============================================ */
+.sidebar-menu {
+    /* Override ALL color tokens to dark-mode values */
+    --text-heading: #f4f7fc;
+    --text-body: #ffffff;
+    --text-secondary: #e0e8f2;
+    --text-muted: #c5d4e8;
+    --text-subtle: #9fb2c9;
+    --text-on-dark: #ffffff;
+    --text-on-dark-muted: #c5d4e8;
+    --link-color: #ffffff;
+    --link-hover: #7fd1ff;
+    --accent-color: #e8491d;
+    
+    /* Base text color for all content */
+    color: #ffffff;
+}
+
+/* Ensure all text elements inherit white */
+.sidebar-menu,
+.sidebar-menu *:not(i) {
+    color: inherit;
+}
+
+.sidebar-menu a,
+.sidebar-menu button,
+.sidebar-menu span,
+.sidebar-menu p {
+    color: #ffffff;
+}
+
+.sidebar-menu a:hover {
+    color: #7fd1ff;
 }
 
 /* Footer links - use muted text color, not bright link color */

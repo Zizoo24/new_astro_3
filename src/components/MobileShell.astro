@@ -146,148 +146,41 @@ import { mobileNavHubs, searchQuickLinks, siteContact } from '../data/navigation
 
 <style>
 /* ============================================
-   SIDEBAR CONTRAST FIX - Light & Dark Mode
-   Forces white text on dark navy background
+   SIDEBAR COMPONENT STYLES
+   Colors now handled by base-architecture.css
    ============================================ */
-
-/* Sidebar always has dark background - force white text */
-.sidebar-menu,
-.sidebar-menu * {
-  --sidebar-text: #ffffff;
-  --sidebar-text-muted: rgba(255, 255, 255, 0.85);
-  --sidebar-accent: #e8491d;
-}
-
-/* Accordion headings - ALWAYS white */
-.sidebar-accordion-heading {
-  color: #ffffff !important;
-}
-
-.sidebar-accordion-heading:hover,
-.sidebar-accordion-heading:active,
-.sidebar-accordion-heading.is-open {
-  color: #ffffff !important;
-}
-
-.sidebar-accordion-heading .heading-text {
-  color: #ffffff !important;
-}
-
-.sidebar-accordion-heading .heading-text i {
-  color: #e8491d !important;
-}
-
-.sidebar-accordion-heading .accordion-chevron {
-  color: rgba(255, 255, 255, 0.6) !important;
-}
-
-/* Accordion panel links - white text */
-.sidebar-accordion-panel a {
-  color: rgba(255, 255, 255, 0.9) !important;
-}
-
-.sidebar-accordion-panel a:hover,
-.sidebar-accordion-panel a:active {
-  color: #ffffff !important;
-  background: rgba(255, 255, 255, 0.08) !important;
-}
 
 /* Hub link styling - coral accent */
 .sidebar-hub-link {
-  display: flex !important;
-  align-items: center !important;
-  padding: 10px 20px 10px 32px !important;
-  background: rgba(255, 255, 255, 0.08) !important;
-  font-weight: 600 !important;
-  font-size: 0.85rem !important;
-  color: #e8491d !important;
-  border-left: 3px solid #e8491d !important;
-  text-decoration: none !important;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px 10px 32px;
+  background: rgba(255, 255, 255, 0.08);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #e8491d !important; /* Coral stands out */
+  border-left: 3px solid #e8491d;
+  text-decoration: none;
 }
 
 .sidebar-hub-link:hover {
-  background: rgba(255, 255, 255, 0.12) !important;
-  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .sidebar-hub-link i {
-  color: #e8491d !important;
-  margin-right: 8px !important;
-  width: 16px !important;
+  color: #e8491d;
+  margin-right: 8px;
+  width: 16px;
 }
 
-/* Home link styling - white */
-.sidebar-home-link {
-  display: flex !important;
-  align-items: center !important;
-  gap: 12px !important;
-  padding: 14px 20px !important;
-  color: #ffffff !important;
-  font-weight: 600 !important;
-  font-size: 0.9rem !important;
-  text-decoration: none !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-left: 3px solid transparent !important;
+/* Accent icons stay coral */
+.sidebar-menu i {
+  color: #e8491d;
 }
 
-.sidebar-home-link:hover,
-.sidebar-home-link:active {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-left-color: #e8491d !important;
-}
-
-.sidebar-home-link i {
-  width: 20px !important;
-  color: #e8491d !important;
-  font-size: 1rem !important;
-}
-
-/* Single links (About, Contact) - white */
-.sidebar-single-link {
-  display: flex !important;
-  align-items: center !important;
-  gap: 12px !important;
-  padding: 14px 20px !important;
-  color: #ffffff !important;
-  font-weight: 600 !important;
-  font-size: 0.9rem !important;
-  text-decoration: none !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-left: 3px solid transparent !important;
-}
-
-.sidebar-single-link:hover,
-.sidebar-single-link:active {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-left-color: #e8491d !important;
-}
-
-.sidebar-single-link i {
-  width: 20px !important;
-  color: #e8491d !important;
-  font-size: 1rem !important;
-}
-
-/* Sidebar brand text - always white */
-.sidebar-brand-name {
-  color: #ffffff !important;
-}
-
-.sidebar-brand-name .brand-suffix {
-  color: #e8491d !important;
-}
-
-.sidebar-tagline {
-  color: rgba(255, 255, 255, 0.8) !important;
-}
-
-/* CTA buttons in sidebar */
-.sidebar-cta {
-  color: #ffffff !important;
-}
-
-.sidebar-cta.secondary {
-  color: #ffffff !important;
+/* Chevron stays muted */
+.sidebar-accordion-heading .accordion-chevron {
+  color: rgba(255, 255, 255, 0.5);
 }
 </style>
 
