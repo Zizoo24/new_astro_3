@@ -407,6 +407,97 @@ export const mobileNav = {
 };
 
 // ============================================
+// MOBILE NAVIGATION - HUB SYSTEM (Simplified)
+// Only 3-5 items per section to avoid overwhelming users
+// ============================================
+
+export const mobileNavHubs = [
+  // LEGAL - Just hub + key sub-hubs
+  {
+    id: 'legal',
+    label: 'Legal Translation',
+    href: '/legal-translation-dubai/',
+    hubLabel: 'All Legal Services',
+    icon: 'fas fa-gavel',
+    children: [
+      { label: 'Contracts & Agreements', href: '/legal/contracts/', icon: 'fas fa-file-contract' },
+      { label: 'Corporate Documents', href: '/legal/corporate/', icon: 'fas fa-building' },
+      { label: 'Court Documents', href: '/legal/litigation/', icon: 'fas fa-balance-scale' },
+    ],
+  },
+
+  // PERSONAL - Hub + 3 sub-hubs
+  {
+    id: 'personal',
+    label: 'Personal Documents',
+    href: '/personal-documents/',
+    hubLabel: 'All Personal Documents',
+    icon: 'fas fa-user-circle',
+    children: [
+      { label: 'Vital Records (Birth, Marriage)', href: '/personal/vital-records/', icon: 'fas fa-certificate' },
+      { label: 'Visa & Immigration', href: '/personal/immigration/', icon: 'fas fa-passport' },
+      { label: 'Academic Documents', href: '/personal/academic/', icon: 'fas fa-graduation-cap' },
+    ],
+  },
+
+  // ATTESTATION - Hub + popular countries
+  {
+    id: 'attestation',
+    label: 'Attestation',
+    href: '/services/attestation/',
+    hubLabel: 'Attestation Guide',
+    icon: 'fas fa-stamp',
+    children: [
+      { label: 'India Attestation', href: '/services/attestation/india/', icon: 'fas fa-globe-asia' },
+      { label: 'UK Attestation', href: '/services/attestation/uk/', icon: 'fas fa-globe-europe' },
+      { label: 'MOFA Attestation', href: '/services/attestation/mofa/', icon: 'fas fa-landmark' },
+    ],
+  },
+
+  // SPECIALIZED - Hub + key services
+  {
+    id: 'specialized',
+    label: 'Specialized',
+    href: '/specialized-translation/',
+    hubLabel: 'All Specialized Services',
+    icon: 'fas fa-microscope',
+    children: [
+      { label: 'Medical Translation', href: '/specialized/medical/', icon: 'fas fa-heartbeat' },
+      { label: 'Technical Translation', href: '/specialized/technical/', icon: 'fas fa-cogs' },
+      { label: 'Golden Visa Package', href: '/services/golden-visa-translation/', icon: 'fas fa-star' },
+    ],
+  },
+
+  // LOCATIONS - Hub + main areas
+  {
+    id: 'locations',
+    label: 'Locations',
+    href: '/locations/',
+    hubLabel: 'All Locations',
+    icon: 'fas fa-map-marker-alt',
+    children: [
+      { label: 'Dubai Areas', href: '/locations/dubai/', icon: 'fas fa-city' },
+      { label: 'Abu Dhabi', href: '/locations/abu-dhabi/', icon: 'fas fa-mosque' },
+      { label: 'Sharjah', href: '/locations/sharjah/', icon: 'fas fa-university' },
+    ],
+  },
+
+  // RESOURCES - Hub + key guides
+  {
+    id: 'resources',
+    label: 'Resources',
+    href: '/resources/',
+    hubLabel: 'Resource Center',
+    icon: 'fas fa-book-open',
+    children: [
+      { label: 'MOJ vs Certified Guide', href: '/resources/moj-vs-certified/', icon: 'fas fa-question-circle' },
+      { label: 'Pricing Guide', href: '/resources/pricing-guide/', icon: 'fas fa-tag' },
+      { label: 'FAQ', href: '/resources/faq/', icon: 'fas fa-comments' },
+    ],
+  },
+];
+
+// ============================================
 // SEARCH QUICK LINKS
 // ============================================
 
