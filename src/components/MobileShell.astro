@@ -145,12 +145,22 @@ import { mobileNavHubs, searchQuickLinks, siteContact } from '../data/navigation
 </button>
 
 <style>
+/* ============================================
+   SIDEBAR LINK OVERRIDES
+   Forces text visibility on dark background
+   ============================================ */
+
 /* Hub link styling - stands out from regular links */
 .sidebar-hub-link {
+  display: flex !important;
+  align-items: center !important;
+  padding: 10px 20px 10px 32px !important;
   background: rgba(255, 255, 255, 0.08) !important;
   font-weight: 600 !important;
-  color: var(--accent-color, #e8491d) !important;
-  border-left: 3px solid var(--accent-color, #e8491d) !important;
+  font-size: 0.85rem !important;
+  color: #e8491d !important;
+  border-left: 3px solid #e8491d !important;
+  text-decoration: none !important;
 }
 
 .sidebar-hub-link:hover {
@@ -159,8 +169,66 @@ import { mobileNavHubs, searchQuickLinks, siteContact } from '../data/navigation
 }
 
 .sidebar-hub-link i {
-  color: var(--accent-color, #e8491d) !important;
-  margin-right: 8px;
+  color: #e8491d !important;
+  margin-right: 8px !important;
+  width: 16px !important;
+}
+
+/* Home link styling */
+.sidebar-home-link {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 14px 20px !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  text-decoration: none !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-left: 3px solid transparent !important;
+}
+
+.sidebar-home-link:hover,
+.sidebar-home-link:active {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-left-color: #e8491d !important;
+}
+
+.sidebar-home-link i {
+  width: 20px !important;
+  color: #e8491d !important;
+  font-size: 1rem !important;
+}
+
+/* Single links (About, Contact) */
+.sidebar-single-link {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 14px 20px !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-left: 3px solid transparent !important;
+}
+
+.sidebar-single-link:hover,
+.sidebar-single-link:active {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-left-color: #e8491d !important;
+}
+
+.sidebar-single-link i {
+  width: 20px !important;
+  color: #e8491d !important;
+  font-size: 1rem !important;
+}
+
+/* Accordion heading icon color */
+.sidebar-accordion-heading .heading-text i {
+  color: #e8491d !important;
 }
 </style>
 
