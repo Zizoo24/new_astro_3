@@ -20,7 +20,7 @@
   ],
   "scripts": {
     "dev": "astro dev --port 5000 --host 0.0.0.0",
-    "build": "astro build",
+    "build": "astro build && node scripts/minify-assets.js",
     "preview": "astro preview --port 5000 --host 0.0.0.0",
     "start": "astro dev --port 5000 --host 0.0.0.0",
     "check": "astro check",
@@ -43,6 +43,9 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.6",
+    "cssnano": "^7.0.0",
+    "postcss": "^8.4.35",
+    "terser": "^5.27.0",
     "@eslint/js": "^9.39.2",
     "@typescript-eslint/eslint-plugin": "^8.49.0",
     "@typescript-eslint/parser": "^8.49.0",
