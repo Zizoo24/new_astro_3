@@ -23,6 +23,62 @@ import RelatedServices from '../../../components/RelatedServices.astro';
     </div>
   </section>
 
+  <!-- Pricing Assistant Chatbot - ChatGPT Style -->
+  <section class="section chatbot-section">
+    <div class="container">
+      <div class="chatbot-wrapper">
+        <div class="chatbot-header">
+          <div class="chatbot-header-icon">
+            <i class="fas fa-robot"></i>
+          </div>
+          <div class="chatbot-header-text">
+            <h2>Pricing Assistant</h2>
+            <span class="chatbot-status"><span class="status-dot"></span> Online</span>
+          </div>
+        </div>
+
+        <div class="chatbot-instructions">
+          <div class="instruction-card">
+            <i class="fas fa-comment-dots"></i>
+            <div>
+              <strong>Ask About Pricing</strong>
+              <p>Get instant quotes for any document type - birth certificates, contracts, degrees, and more.</p>
+            </div>
+          </div>
+          <div class="instruction-card">
+            <i class="fas fa-clock"></i>
+            <div>
+              <strong>Turnaround Times</strong>
+              <p>Ask about delivery options and express services for urgent translations.</p>
+            </div>
+          </div>
+          <div class="instruction-card">
+            <i class="fas fa-file-invoice"></i>
+            <div>
+              <strong>Volume Discounts</strong>
+              <p>Inquire about special rates for multiple documents or ongoing projects.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="chatbot-hint">
+          <i class="fas fa-lightbulb"></i>
+          <span>Try asking: <em>"How much to translate a birth certificate?"</em> or <em>"What's included in the price?"</em></span>
+        </div>
+
+        <div class="chatbot-frame-container">
+          <iframe
+            src="https://www.chatbase.co/chatbot-iframe/XHyFbKkbLOseA1xEcMAm6"
+            width="100%"
+            style="height: 100%; min-height: 600px"
+            frameborder="0"
+            title="Translation Pricing Assistant"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section bg-white">
     <div class="container content-container">
       <h2>Factors That Affect Pricing</h2>
@@ -125,22 +181,6 @@ import RelatedServices from '../../../components/RelatedServices.astro';
     </div>
   </section>
 
-  <section class="section bg-white">
-    <div class="container cta-section">
-      <h2>Get an Instant Quote</h2>
-      <p>Chat with our AI assistant to get pricing information for your specific document.</p>
-      <div class="chatbot-container">
-        <iframe
-          src="https://www.chatbase.co/chatbot-iframe/XHyFbKkbLOseA1xEcMAm6"
-          width="100%"
-          style="height: 100%; min-height: 700px"
-          frameborder="0"
-          title="Translation Pricing Assistant"
-        ></iframe>
-      </div>
-    </div>
-  </section>
-
   <section class="section bg-light">
     <div class="container cta-section">
       <h2>Need a Detailed Quote?</h2>
@@ -182,6 +222,191 @@ import RelatedServices from '../../../components/RelatedServices.astro';
   .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
   .btn-primary { background: var(--accent-color); color: #ffffff; }
   .btn-primary:hover { background: #e0144c; transform: translateY(-2px); }
-  .chatbot-container { width: 100%; max-width: 800px; margin: 2rem auto 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); }
-  .chatbot-container iframe { display: block; border: none; }
+
+  /* ChatGPT-Style Chatbot Section */
+  .chatbot-section {
+    background: linear-gradient(135deg, #f7f7f8 0%, #ececf1 100%);
+    padding: 3rem 0 4rem;
+  }
+
+  .chatbot-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+  }
+
+  .chatbot-header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .chatbot-header-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.4rem;
+  }
+
+  .chatbot-header-text h2 {
+    color: #ffffff;
+    font-size: 1.25rem;
+    margin: 0 0 0.25rem;
+    font-weight: 600;
+  }
+
+  .chatbot-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #10b981;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .chatbot-instructions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    padding: 1.5rem;
+    background: #fafafa;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .instruction-card {
+    display: flex;
+    gap: 0.875rem;
+    padding: 1rem;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e8e8e8;
+    transition: all 0.2s ease;
+  }
+
+  .instruction-card:hover {
+    border-color: #d1d1d1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .instruction-card i {
+    font-size: 1.25rem;
+    color: #667eea;
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+  }
+
+  .instruction-card strong {
+    display: block;
+    font-size: 0.95rem;
+    color: #1a1a2e;
+    margin-bottom: 0.25rem;
+  }
+
+  .instruction-card p {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .chatbot-hint {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: #fffbeb;
+    border-bottom: 1px solid #fde68a;
+    font-size: 0.9rem;
+    color: #92400e;
+  }
+
+  .chatbot-hint i {
+    color: #f59e0b;
+    font-size: 1.1rem;
+  }
+
+  .chatbot-hint em {
+    background: #fef3c7;
+    padding: 0.125rem 0.5rem;
+    border-radius: 4px;
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  .chatbot-frame-container {
+    padding: 0;
+  }
+
+  .chatbot-frame-container iframe {
+    display: block;
+    border: none;
+    width: 100%;
+  }
+
+  @media (max-width: 640px) {
+    .chatbot-section {
+      padding: 2rem 0 3rem;
+    }
+
+    .chatbot-wrapper {
+      margin: 0 1rem;
+      border-radius: 12px;
+    }
+
+    .chatbot-header {
+      padding: 1rem;
+    }
+
+    .chatbot-header-icon {
+      width: 40px;
+      height: 40px;
+      font-size: 1.2rem;
+    }
+
+    .chatbot-header-text h2 {
+      font-size: 1.1rem;
+    }
+
+    .chatbot-instructions {
+      padding: 1rem;
+      gap: 0.75rem;
+    }
+
+    .instruction-card {
+      padding: 0.875rem;
+    }
+
+    .chatbot-hint {
+      padding: 0.875rem 1rem;
+      flex-wrap: wrap;
+    }
+
+    .chatbot-hint span {
+      flex: 1;
+      min-width: 200px;
+    }
+  }
 </style>
