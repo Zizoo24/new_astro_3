@@ -4,6 +4,7 @@ import Footer from '../components/Footer.astro';
 import MobileShell from '../components/MobileShell.astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
 import Analytics from '@vercel/analytics/astro';
+import ChatbaseWidget from '../components/ChatbaseWidget.astro';
 
 interface Props {
   title: string;
@@ -337,6 +338,8 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
   <script defer src="/scripts/search-index.js"></script>
   <script defer src="/scripts/form-handler.js"></script>
   <script defer src="/scripts/testimonials-carousel.js"></script>
+
+  <ChatbaseWidget />
 
   <SpeedInsights />
 
