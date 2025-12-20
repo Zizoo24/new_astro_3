@@ -21,7 +21,7 @@ const metaDescription =
   data.metaDescription ??
   'Professional legal translation services in Dubai designed for UAE court acceptance. Ministry of Justice certified translators for documents, contracts, and attestation. Fast, secure, reliable.';
 
-// HERO
+// HERO - Desktop (original)
 const hero = data.hero ?? {};
 const heroTitle =
   hero.titleLine ?? 'MOJ Certified Legal Translation in Dubai';
@@ -58,6 +58,35 @@ const secondaryCta =
     label: 'Or request a written quotation',
     url: '/contact/',
   };
+
+// HERO - Mobile (new concise copy)
+const mobileHero = {
+  eyebrow: 'Your Digital Document Concierge',
+  title: 'MOJ CERTIFIED LEGAL TRANSLATION IN DUBAI',
+  lead: 'Arabic, English & 30+ languages. Accepted by all UAE courts & government bodies.',
+  bullets: [
+    {
+      icon: 'fas fa-bolt',
+      text: 'Certified translation in 60 minutes (certificates, contracts, immigration docs)',
+    },
+    {
+      icon: 'fas fa-stamp',
+      text: 'Accepted by Dubai Courts, DIFC, ADGM & ministries',
+    },
+    {
+      icon: 'fab fa-whatsapp',
+      text: 'Send on WhatsApp — receive stamped PDF',
+    },
+  ],
+  primaryCta: {
+    label: 'Send Documents on WhatsApp',
+    url: 'https://wa.me/971508620217',
+  },
+  secondaryCta: {
+    label: 'See prices',
+    url: '/pricing/',
+  },
+};
 
 // OVERLAP CARDS
 const overlapCards =
@@ -299,7 +328,8 @@ const contactSection =
     </div>
     <div class="container">
       <div class="hero-content">
-        <div class="hero-text">
+        <!-- Desktop Hero Content -->
+        <div class="hero-text hero-text-desktop">
           <h1 class="hero-title exodus-title">
             <span class="title-line">{heroTitle}</span>
           </h1>
@@ -322,6 +352,32 @@ const contactSection =
                 {secondaryCta.label}
               </a>
             )}
+          </div>
+        </div>
+
+        <!-- Mobile Hero Content (Concise Copy) -->
+        <div class="hero-text hero-text-mobile">
+          <span class="hero-eyebrow">{mobileHero.eyebrow}</span>
+          <h1 class="hero-title exodus-title">
+            <span class="title-line">{mobileHero.title}</span>
+          </h1>
+          <p class="hero-lead">{mobileHero.lead}</p>
+          <ul class="hero-bullets">
+            {mobileHero.bullets.map((item) => (
+              <li>
+                {item.icon && <i class={item.icon}></i>}
+                {item.text}
+              </li>
+            ))}
+          </ul>
+
+          <div class="hero-cta-group">
+            <a href={mobileHero.primaryCta.url} class="hero-cta exodus-cta">
+              <i class="fab fa-whatsapp"></i> {mobileHero.primaryCta.label}
+            </a>
+            <a href={mobileHero.secondaryCta.url} class="hero-cta-secondary">
+              {mobileHero.secondaryCta.label}
+            </a>
           </div>
         </div>
       </div>

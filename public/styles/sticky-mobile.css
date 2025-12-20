@@ -1205,3 +1205,64 @@ body.theme-dark .sidebar-nav ul li a:active {
         font-size: 12px;
     }
 }
+
+/* ============================================
+   MOBILE HERO CONTENT SWITCHER
+   Shows optimized copy on mobile, original on desktop
+   ============================================ */
+
+/* Default (Desktop): Hide mobile hero, show desktop hero */
+.hero-text-mobile {
+    display: none;
+}
+
+.hero-text-desktop {
+    display: block;
+}
+
+/* Mobile: Show mobile hero, hide desktop hero */
+@media (max-width: 991px) {
+    .hero-text-mobile {
+        display: block;
+    }
+
+    .hero-text-desktop {
+        display: none;
+    }
+
+    /* Mobile Eyebrow Text Styling */
+    .hero-eyebrow {
+        display: block;
+        font-family: var(--font-secondary, 'Open Sans', sans-serif);
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 0.75rem;
+    }
+
+    /* Mobile Hero Title - Uppercase for scannability */
+    .hero-text-mobile .hero-title {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+        letter-spacing: 0.02em;
+    }
+
+    /* Mobile Lead - Concise, scannable */
+    .hero-text-mobile .hero-lead {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+    }
+
+    /* Mobile Bullets - Tighter spacing */
+    .hero-text-mobile .hero-bullets {
+        margin-bottom: 1.25rem;
+    }
+
+    .hero-text-mobile .hero-bullets li {
+        font-size: 0.875rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.4;
+    }
+}
