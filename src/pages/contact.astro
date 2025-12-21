@@ -70,7 +70,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <h2>Send a Message</h2>
           <p class="form-intro">For written quotes or general inquiries. We typically respond within 2 hours during business hours.</p>
 
-          <form id="contactForm" class="contact-form" action="https://wa.me/971508620217" method="get">
+          <form id="contactForm" class="contact-form">
             <div class="form-group">
               <label for="name">Your Name</label>
               <input type="text" id="name" name="name" required placeholder="Full name">
@@ -101,14 +101,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
             <div class="form-group">
               <label for="message">Your Message</label>
-              <textarea id="message" name="text" rows="4" placeholder="Describe your document or requirement..."></textarea>
+              <textarea id="message" name="message" rows="4" placeholder="Describe your document or requirement..."></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary btn-full">
-              <i class="fab fa-whatsapp"></i> Send via WhatsApp
+              <i class="fas fa-paper-plane"></i> Send Message
             </button>
 
-            <p class="form-note">This form opens WhatsApp with your message pre-filled. You can also attach documents directly in WhatsApp.</p>
+            <div id="formResult"></div>
+
+            <p class="form-note">Your inquiry will be sent directly to our team. We respond within 2 hours during business hours.</p>
           </form>
         </div>
       </div>

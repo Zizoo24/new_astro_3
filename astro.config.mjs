@@ -1,9 +1,13 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import node from '@astrojs/node';
 
 export default defineConfig({
   site: 'https://onlinetranslation.ae',
-  output: 'static',
+  output: 'hybrid',
+  adapter: node({
+    mode: 'standalone'
+  }),
   trailingSlash: 'always',
   compressHTML: true,
   prefetch: {
