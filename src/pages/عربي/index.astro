@@ -268,25 +268,23 @@ const contactSection = {
       <div class="container">
         <div class="overlap-cards">
           {overlapCards.map((card) => (
-            <article class="overlap-card">
-              <a
-                href={card.url || '#'}
-                class="overlap-card-link"
-                target={card.url?.startsWith('http') ? '_blank' : undefined}
-                rel={card.url?.startsWith('http') ? 'noopener noreferrer' : undefined}
-              >
-                <div class="overlap-card-icon">
-                  {card.icon && <i class={card.icon}></i>}
-                </div>
-                <div class="overlap-card-content">
-                  <h3 class="overlap-card-title">{card.title}</h3>
-                  <p class="overlap-card-desc">{card.desc}</p>
-                  {card.badge && (
-                    <span class="overlap-card-badge">{card.badge}</span>
-                  )}
-                </div>
-              </a>
-            </article>
+            <a
+              href={card.url || '#'}
+              class="overlap-card"
+              target={card.url?.startsWith('http') ? '_blank' : undefined}
+              rel={card.url?.startsWith('http') ? 'noopener noreferrer' : undefined}
+            >
+              <div class="overlap-card-icon">
+                {card.icon && <i class={card.icon}></i>}
+              </div>
+              <div class="overlap-card-content">
+                <h3 class="overlap-card-title">{card.title}</h3>
+                <p class="overlap-card-desc">{card.desc}</p>
+                {card.badge && (
+                  <span class="overlap-card-badge">{card.badge}</span>
+                )}
+              </div>
+            </a>
           ))}
         </div>
       </div>
