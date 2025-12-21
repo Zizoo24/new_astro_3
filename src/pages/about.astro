@@ -2,97 +2,115 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import DulBadge from '../components/DulBadge.astro';
 import AuthorityLogos from '../components/AuthorityLogos.astro';
-import { getEntry } from 'astro:content';
 
-type IntroWithImage = {
-  type: 'introWithImage';
-  heading: string;
-  p1: string;
-  p2?: string;
-  features: { label: string; text: string }[];
-  image: string;
-  imageAlt: string;
+// Page metadata
+const pageTitle = "About Us | OnlineTranslation.ae Dubai";
+const metaDescription = "Learn about OnlineTranslation.ae, your digital document concierge for MOJ-certified legal translation services in Dubai.";
+const heroHeading = "About OnlineTranslation.ae";
+const heroSubheading = "Your Digital Document Concierge in Dubai";
+const heroLead = "OnlineTranslation.ae operates as a digital document concierge, coordinating MOJ-certified legal translation through a WhatsApp-first workflow.";
+
+// Intro section
+const intro = {
+  heading: "Document Clearing with a Personal Touch",
+  p1: "OnlineTranslation.ae operates as a Digital Concierge for legal and official documents. Instead of treating translation as a simple word-swap, we design every engagement around acceptance by UAE courts, government departments, embassies and free zones.",
+  p2: "Our team coordinates translation, certification, stamping and delivery, so you deal with a single point of contact while we handle the back-and-forth with partners and authorities.",
+  features: [
+    {
+      label: "60-Minute Promise",
+      text: "Standard digital drafts are typically delivered within an hour of receiving clear scans of your documents, during working hours."
+    },
+    {
+      label: "White-Glove Shield",
+      text: "We pre-validate documents and flag issues before submission, to minimize rejections and wasted visits to government counters."
+    }
+  ],
+  image: "/assets/images/onedrive/contact-office.png",
+  imageAlt: "OnlineTranslation.ae Office"
 };
 
-type Licensing = {
-  type: 'licensing';
-  sectionLabel: string;
-  sectionTitle: string;
-  mojLabel: string;
-  mojTitle: string;
-  mojSubtitle: string;
-  note: string;
+// Licensing section
+const licensing = {
+  sectionLabel: "Official Credentials",
+  sectionTitle: "Licensed & Certified",
+  mojLabel: "Certified Partner",
+  mojTitle: "MOJ Legal Translation",
+  mojSubtitle: "In partnership with Arkan, MOJ-licensed legal translator",
+  note: "All MOJ-certified translations are executed by Arkan, our partner and a Ministry of Justice licensed legal translator. MOJ licensing is a matter of personal liability—individual translators are licensed by the Ministry of Justice, not companies. This ensures every certified document carries the personal accountability of a registered professional."
 };
 
-type AuthorityLogosSection = {
-  type: 'authorityLogos';
-  title: string;
+// Values section
+const values = {
+  sectionLabel: "Our Approach",
+  sectionTitle: "How We Work",
+  items: [
+    {
+      title: "Radical Transparency",
+      text: "We provide clear pricing and realistic timelines from the start. If a document requires extra steps or we believe a deadline is not achievable, we tell you before you commit."
+    },
+    {
+      title: "Speed Without Compromise",
+      text: "Our WhatsApp-first workflow allows fast responses while maintaining legal accuracy and proper review of every document."
+    },
+    {
+      title: "Relationship Mindset",
+      text: "We act as your single point of contact for translation, certification and delivery, so you can focus on your case or business while we handle the paperwork."
+    }
+  ]
 };
 
-type ValuesSection = {
-  type: 'values';
-  sectionLabel: string;
-  sectionTitle: string;
-  items: { title: string; text: string }[];
+// Mission section
+const mission = {
+  sectionLabel: "Our Purpose",
+  sectionTitle: "Mission Statement",
+  statement: "To eliminate document-related stress for expats, businesses, and legal professionals in the UAE by delivering fast, accurate, and officially-accepted translations with complete transparency in pricing and timelines.",
+  vision: "To become the most trusted name in legal document services across the GCC, known for speed, accuracy, and genuine care for our clients' success."
 };
 
-type CtaSection = {
-  type: 'cta';
-  heading: string;
-  body: string;
-  buttonLabel: string;
-  buttonUrl: string;
+// Languages section
+const languages = {
+  sectionLabel: "Our Capabilities",
+  sectionTitle: "Supported Languages",
+  intro: "We provide MOJ-certified translation services for a wide range of language pairs. Arabic is our specialty, but we support documents from over 50 languages.",
+  items: [
+    {
+      name: "Primary Languages",
+      pairs: ["Arabic ↔ English", "Arabic ↔ French", "Arabic ↔ German", "Arabic ↔ Spanish"]
+    },
+    {
+      name: "South Asian",
+      pairs: ["Arabic ↔ Hindi", "Arabic ↔ Urdu", "Arabic ↔ Malayalam", "Arabic ↔ Tagalog"]
+    },
+    {
+      name: "European",
+      pairs: ["Arabic ↔ Russian", "Arabic ↔ Italian", "Arabic ↔ Portuguese", "Arabic ↔ Dutch"]
+    },
+    {
+      name: "Asian",
+      pairs: ["Arabic ↔ Chinese", "Arabic ↔ Japanese", "Arabic ↔ Korean", "Arabic ↔ Thai"]
+    }
+  ]
 };
 
-type MissionSection = {
-  type: 'mission';
-  sectionLabel: string;
-  sectionTitle: string;
-  statement: string;
-  vision?: string;
+// License info section
+const licenseInfo = {
+  sectionLabel: "Official Registration",
+  sectionTitle: "License Information",
+  items: [
+    { title: "License Number", text: "1333628 — E-Trader (Professional) License" },
+    { title: "Trade Name", text: "OT.AE for Translation, Editing & Proofreading Services" },
+    { title: "Legal Type", text: "Sole Establishment" },
+    { title: "Activities", text: "Translation, Editing & Proofreading Services" }
+  ]
 };
 
-type LanguagesSection = {
-  type: 'languages';
-  sectionLabel: string;
-  sectionTitle: string;
-  intro: string;
-  languages: { name: string; pairs: string[] }[];
+// CTA section
+const cta = {
+  heading: "Ready to Get Started?",
+  body: "Send your documents via WhatsApp for a free assessment. We will review your files, confirm whether legal translation is required, and provide a clear quote before we begin.",
+  buttonLabel: "Send Documents on WhatsApp",
+  buttonUrl: "https://wa.me/971508620217"
 };
-
-type HistorySection = {
-  type: 'history';
-  sectionLabel: string;
-  sectionTitle: string;
-  timeline: { year: string; title: string; description: string }[];
-};
-
-type Section =
-  | IntroWithImage
-  | Licensing
-  | AuthorityLogosSection
-  | ValuesSection
-  | CtaSection
-  | MissionSection
-  | LanguagesSection
-  | HistorySection;
-
-const aboutEntry = await getEntry('core', 'about');
-const data = aboutEntry?.data as {
-  pageTitle: string;
-  metaDescription: string;
-  heroHeading: string;
-  heroSubheading?: string;
-  heroLead?: string;
-  sections?: Section[];
-};
-
-const pageTitle = data.pageTitle;
-const metaDescription = data.metaDescription;
-const heroHeading = data.heroHeading;
-const heroSubheading = data.heroSubheading ?? '';
-const heroLead = data.heroLead ?? '';
-const sections: Section[] = data.sections ?? [];
 ---
 <BaseLayout
   title={pageTitle}
@@ -110,239 +128,176 @@ const sections: Section[] = data.sections ?? [];
         <span class="current">About</span>
       </nav>
       <h1 class="page-title">{heroHeading}</h1>
-      {heroSubheading && <p class="page-subtitle">{heroSubheading}</p>}
-      {heroLead && <p class="page-lead">{heroLead}</p>}
+      <p class="page-subtitle">{heroSubheading}</p>
+      <p class="page-lead">{heroLead}</p>
     </div>
   </section>
 
-  {sections.map((section) => {
-    if (section.type === 'introWithImage') {
-      const s = section as IntroWithImage;
-      return (
-        <section class="section about-intro">
-          <div class="container">
-            <div class="about-content-grid">
-              <div class="about-text">
-                <h2>{s.heading}</h2>
-                <p>{s.p1}</p>
-                {s.p2 && <p>{s.p2}</p>}
+  <!-- Intro Section -->
+  <section class="section about-intro">
+    <div class="container">
+      <div class="about-content-grid">
+        <div class="about-text">
+          <h2>{intro.heading}</h2>
+          <p>{intro.p1}</p>
+          <p>{intro.p2}</p>
+          <p>Our service model is built around two core promises:</p>
+          <ul class="about-features">
+            {intro.features.map((f) => (
+              <li>
+                <strong>{f.label}:</strong> {f.text}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="about-image">
+          <img src={intro.image} alt={intro.imageAlt} loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
 
-                <p>Our service model is built around two core promises:</p>
-
-                <ul class="about-features">
-                  {s.features.map((f) => (
-                    <li>
-                      <strong>{f.label}:</strong> {f.text}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div class="about-image">
-                <img
-                  src={s.image}
-                  alt={s.imageAlt}
-                  loading="lazy"
-                />
-              </div>
-            </div>
+  <!-- Licensing Section -->
+  <section class="section licensing-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">{licensing.sectionLabel}</span>
+        <h2 class="section-title">{licensing.sectionTitle}</h2>
+      </div>
+      <div class="licensing-grid">
+        <div class="licensing-card">
+          <DulBadge variant="detailed" />
+        </div>
+        <div class="licensing-card moj-card">
+          <div class="moj-badge-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
+            </svg>
           </div>
-        </section>
-      );
-    }
-
-    if (section.type === 'licensing') {
-      const s = section as Licensing;
-      return (
-        <section class="section licensing-section">
-          <div class="container">
-            <div class="section-header">
-              <span class="section-label">{s.sectionLabel}</span>
-              <h2 class="section-title">{s.sectionTitle}</h2>
-            </div>
-
-            <div class="licensing-grid">
-              <div class="licensing-card">
-                <DulBadge variant="detailed" />
-              </div>
-
-              <div class="licensing-card moj-card">
-                <div class="moj-badge-icon">
-                  <svg
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                  >
-                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                    <path d="M2 17l10 5 10-5" />
-                    <path d="M2 12l10 5 10-5" />
-                  </svg>
-                </div>
-                <div class="moj-badge-content">
-                  <span class="moj-badge-label">{s.mojLabel}</span>
-                  <span class="moj-badge-title">{s.mojTitle}</span>
-                  <span class="moj-badge-subtitle">{s.mojSubtitle}</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="compliance-note">
-              <p>{s.note}</p>
-            </div>
+          <div class="moj-badge-content">
+            <span class="moj-badge-label">{licensing.mojLabel}</span>
+            <span class="moj-badge-title">{licensing.mojTitle}</span>
+            <span class="moj-badge-subtitle">{licensing.mojSubtitle}</span>
           </div>
-        </section>
-      );
-    }
+        </div>
+      </div>
+      <div class="compliance-note">
+        <p>{licensing.note}</p>
+      </div>
+    </div>
+  </section>
 
-    if (section.type === 'authorityLogos') {
-      const s = section as AuthorityLogosSection;
-      return (
-        <section class="section authority-section">
-          <div class="container">
-            <AuthorityLogos title={s.title} />
-          </div>
-        </section>
-      );
-    }
+  <!-- Authority Logos Section -->
+  <section class="section authority-section">
+    <div class="container">
+      <AuthorityLogos title="Our translations are formatted for acceptance by:" />
+    </div>
+  </section>
 
-    if (section.type === 'values') {
-      const s = section as ValuesSection;
-      return (
-        <section class="section values-section">
-          <div class="container">
-            <div class="section-header">
-              <span class="section-label">{s.sectionLabel}</span>
-              <h2 class="section-title">{s.sectionTitle}</h2>
+  <!-- Values Section -->
+  <section class="section values-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">{values.sectionLabel}</span>
+        <h2 class="section-title">{values.sectionTitle}</h2>
+      </div>
+      <div class="values-grid">
+        {values.items.map((item) => (
+          <article class="value-card">
+            <div class="value-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
             </div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
 
-            <div class="values-grid">
-              {s.items.map((item) => (
-                <article class="value-card">
-                  <div class="value-icon">
-                    {/* keep existing SVG icons, or use one shared icon */}
-                    <svg
-                      width="28"
-                      height="28"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <circle cx="12" cy="12" r="10" />
-                      <polyline points="12 6 12 12 16 14" />
-                    </svg>
-                  </div>
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
-                </article>
+  <!-- Mission Section -->
+  <section class="section mission-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">{mission.sectionLabel}</span>
+        <h2 class="section-title">{mission.sectionTitle}</h2>
+      </div>
+      <div class="mission-content">
+        <blockquote class="mission-statement">
+          <p>{mission.statement}</p>
+        </blockquote>
+        <div class="vision-statement">
+          <h3>Our Vision</h3>
+          <p>{mission.vision}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Languages Section -->
+  <section class="section languages-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">{languages.sectionLabel}</span>
+        <h2 class="section-title">{languages.sectionTitle}</h2>
+      </div>
+      <p class="languages-intro">{languages.intro}</p>
+      <div class="languages-grid">
+        {languages.items.map((lang) => (
+          <div class="language-card">
+            <h3>{lang.name}</h3>
+            <ul>
+              {lang.pairs.map((pair) => (
+                <li>{pair}</li>
               ))}
-            </div>
+            </ul>
           </div>
-        </section>
-      );
-    }
+        ))}
+      </div>
+    </div>
+  </section>
 
-    if (section.type === 'cta') {
-      const s = section as CtaSection;
-      return (
-        <section class="section cta-section">
-          <div class="container">
-            <div class="cta-card">
-              <h2>{s.heading}</h2>
-              <p>{s.body}</p>
-              <a href={s.buttonUrl} class="cta-button">
-                <i class="fab fa-whatsapp"></i> {s.buttonLabel}
-              </a>
+  <!-- License Info Section -->
+  <section class="section values-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">{licenseInfo.sectionLabel}</span>
+        <h2 class="section-title">{licenseInfo.sectionTitle}</h2>
+      </div>
+      <div class="values-grid">
+        {licenseInfo.items.map((item) => (
+          <article class="value-card">
+            <div class="value-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
             </div>
-          </div>
-        </section>
-      );
-    }
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
 
-    if (section.type === 'mission') {
-      const s = section as MissionSection;
-      return (
-        <section class="section mission-section">
-          <div class="container">
-            <div class="section-header">
-              <span class="section-label">{s.sectionLabel}</span>
-              <h2 class="section-title">{s.sectionTitle}</h2>
-            </div>
-            <div class="mission-content">
-              <blockquote class="mission-statement">
-                <p>{s.statement}</p>
-              </blockquote>
-              {s.vision && (
-                <div class="vision-statement">
-                  <h3>Our Vision</h3>
-                  <p>{s.vision}</p>
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
-      );
-    }
-
-    if (section.type === 'languages') {
-      const s = section as LanguagesSection;
-      return (
-        <section class="section languages-section">
-          <div class="container">
-            <div class="section-header">
-              <span class="section-label">{s.sectionLabel}</span>
-              <h2 class="section-title">{s.sectionTitle}</h2>
-            </div>
-            <p class="languages-intro">{s.intro}</p>
-            <div class="languages-grid">
-              {s.languages.map((lang) => (
-                <div class="language-card">
-                  <h3>{lang.name}</h3>
-                  <ul>
-                    {lang.pairs.map((pair) => (
-                      <li>{pair}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      );
-    }
-
-    if (section.type === 'history') {
-      const s = section as HistorySection;
-      return (
-        <section class="section history-section">
-          <div class="container">
-            <div class="section-header">
-              <span class="section-label">{s.sectionLabel}</span>
-              <h2 class="section-title">{s.sectionTitle}</h2>
-            </div>
-            <div class="timeline">
-              {s.timeline.map((item, index) => (
-                <div class="timeline-item">
-                  <div class="timeline-marker">
-                    <span class="timeline-year">{item.year}</span>
-                  </div>
-                  <div class="timeline-content">
-                    <h3>{item.title}</h3>
-                    <p>{item.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      );
-    }
-
-    return null;
-  })}
+  <!-- CTA Section -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-card">
+        <h2>{cta.heading}</h2>
+        <p>{cta.body}</p>
+        <a href={cta.buttonUrl} class="cta-button">
+          <i class="fab fa-whatsapp"></i> {cta.buttonLabel}
+        </a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
@@ -762,72 +717,6 @@ const sections: Section[] = data.sections ?? [];
     border-bottom: none;
   }
 
-  /* History Section */
-  .history-section {
-    background: var(--bg-light, #f8f9fa);
-    padding: 3rem 0;
-  }
-
-  .timeline {
-    max-width: 700px;
-    margin: 0 auto;
-    position: relative;
-  }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 50px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: var(--accent-coral, #FF1654);
-  }
-
-  .timeline-item {
-    display: flex;
-    gap: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .timeline-marker {
-    flex-shrink: 0;
-    width: 100px;
-    text-align: center;
-  }
-
-  .timeline-year {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background: var(--primary-navy, #0E2B48);
-    color: #ffffff;
-    font-size: 0.9rem;
-    font-weight: 700;
-    border-radius: 2rem;
-  }
-
-  .timeline-content {
-    flex: 1;
-    background: #ffffff;
-    padding: 1.5rem;
-    border-radius: 0.75rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  }
-
-  .timeline-content h3 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--primary-navy, #0E2B48);
-    margin-bottom: 0.5rem;
-  }
-
-  .timeline-content p {
-    font-size: 0.95rem;
-    color: var(--text-muted, #5a6a7a);
-    line-height: 1.6;
-    margin: 0;
-  }
-
   @media (max-width: 992px) {
     .languages-grid {
       grid-template-columns: repeat(2, 1fr);
@@ -842,19 +731,6 @@ const sections: Section[] = data.sections ?? [];
     .mission-statement {
       font-size: 1.2rem;
       padding: 1.5rem;
-    }
-
-    .timeline::before {
-      left: 20px;
-    }
-
-    .timeline-marker {
-      width: 60px;
-    }
-
-    .timeline-year {
-      font-size: 0.8rem;
-      padding: 0.4rem 0.75rem;
     }
   }
 
@@ -891,21 +767,5 @@ const sections: Section[] = data.sections ?? [];
   :global(body.theme-dark) .language-card li {
     color: #a8b3c2;
     border-color: rgba(255, 255, 255, 0.1);
-  }
-
-  :global(body.theme-dark) .history-section {
-    background: #161b22;
-  }
-
-  :global(body.theme-dark) .timeline-content {
-    background: #21262d;
-  }
-
-  :global(body.theme-dark) .timeline-content h3 {
-    color: #f0f6fc;
-  }
-
-  :global(body.theme-dark) .timeline-content p {
-    color: #a8b3c2;
   }
 </style>

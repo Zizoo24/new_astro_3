@@ -1,80 +1,8 @@
 // Auto-generated search index - DO NOT EDIT MANUALLY
-// Generated at: 2025-12-21T07:41:38.453Z
+// Generated at: 2025-12-21T09:01:38.247Z
 // Run 'npm run search:generate' to regenerate
 
 const searchIndex = [
-    {
-        "title": "Golden Visa Document Requirements: Complete 2024 Guide",
-        "url": "/blog/golden-visa-document-requirements-2024/",
-        "category": "Blog",
-        "keywords": "golden visa document requirements complete guide everything need know document translation attestation uae golden visa"
-    },
-    {
-        "title": "HR Document Translation Guide for UAE Employers",
-        "url": "/blog/hr-document-translation-guide-uae-employers/",
-        "category": "Blog",
-        "keywords": "document translation guide uae employers professionals need know employee document translation moj certified translation documents"
-    },
-    {
-        "title": "MOFA Attestation Process in UAE: Complete 2024 Guide",
-        "url": "/blog/mofa-attestation-process-complete-guide/",
-        "category": "Blog",
-        "keywords": "mofa attestation process uae complete guide step step guide mofa ministry foreign affairs attestation uae"
-    },
-    {
-        "title": "Police Clearance Certificate Translation for UAE: What You Need to Know",
-        "url": "/blog/police-clearance-certificate-translation-uae/",
-        "category": "Blog",
-        "keywords": "police clearance certificate translation uae need know complete guide pcc translation uae employment visas golden"
-    },
-    {
-        "title": "Contract Translation",
-        "url": "/services/contract-translation/",
-        "category": "Services",
-        "keywords": "contract translation specialized contract translation commercial employment legal agreements full legal certification"
-    },
-    {
-        "title": "Document Translation",
-        "url": "/services/document-translation/",
-        "category": "Services",
-        "keywords": "document translation comprehensive document translation services personal legal business documents moj certification"
-    },
-    {
-        "title": "Banking & Finance Translation",
-        "url": "/industries/banking-finance/",
-        "category": "Industries",
-        "keywords": "banking finance translation expert translation services banking financial services industry deep understanding financial terminology"
-    },
-    {
-        "title": "Healthcare Translation",
-        "url": "/industries/healthcare/",
-        "category": "Industries",
-        "keywords": "healthcare translation specialized medical translation services healthcare providers pharmaceutical companies patients"
-    },
-    {
-        "title": "Business Bay Translation Services",
-        "url": "/locations/business-bay/",
-        "category": "Locations",
-        "keywords": "business bay translation services professional translation services business bay corporate community specialized business legal documents"
-    },
-    {
-        "title": "Dubai Marina Translation Services",
-        "url": "/locations/dubai-marina/",
-        "category": "Locations",
-        "keywords": "dubai marina translation services convenient legal translation services dubai marina residents businesses fast certified professional"
-    },
-    {
-        "title": "Medical Translation",
-        "url": "/specialized/medical-translation/",
-        "category": "Specialized",
-        "keywords": "medical translation expert medical translation healthcare documents clinical records pharmaceutical materials"
-    },
-    {
-        "title": "Technical Translation",
-        "url": "/specialized/technical-translation/",
-        "category": "Specialized",
-        "keywords": "technical translation specialized technical translation engineering manufacturing documentation"
-    },
     {
         "title": "Legal Translation Dubai",
         "url": "/legal-translation-dubai/",

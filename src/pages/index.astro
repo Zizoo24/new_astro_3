@@ -4,60 +4,43 @@ import TestimonialsCarousel from '../components/TestimonialsCarousel.astro';
 import DulBadge from '../components/DulBadge.astro';
 import AuthorityLogos from '../components/AuthorityLogos.astro';
 import TrustBar from '../components/TrustBar.astro';
-import { getEntry } from 'astro:content';
 import { getHomepageServices, servicesGridDefaults } from '../data/servicesGrid';
 import { Image } from 'astro:assets';
 import heroImageSrc from '../assets/images/hero/office-team.png';
 
-const homeEntry = await getEntry('core', 'home');
-const data = homeEntry?.data || {};
-
 // SEO
-const pageTitle =
-  data.pageTitle ??
-  'OnlineTranslation.ae | MOJ Certified Translation Dubai';
+const pageTitle = 'OnlineTranslation.ae | MOJ Certified Translation Dubai';
 
-const metaDescription =
-  data.metaDescription ??
-  'Professional legal translation services in Dubai designed for UAE court acceptance. Ministry of Justice certified translators for documents, contracts, and attestation. Fast, secure, reliable.';
+const metaDescription = 'Professional legal translation services in Dubai designed for UAE court acceptance. Ministry of Justice certified translators for documents, contracts, and attestation. Fast, secure, reliable.';
 
 // HERO - Desktop (original)
-const hero = data.hero ?? {};
-const heroTitle =
-  hero.titleLine ?? 'MOJ Certified Legal Translation in Dubai';
-const heroLead =
-  hero.lead ?? 'Your Digital Document Concierge Across the UAE';
-const heroImage =
-  hero.image ?? '/assets/images/onedrive/hero/office-team.png';
+const heroTitle = 'MOJ Certified Legal Translation in Dubai';
+const heroLead = 'Your Digital Document Concierge Across the UAE';
 
-const heroBullets =
-  hero.bullets ??
-  [
-    {
-      icon: 'fas fa-stamp',
-      text: 'MOJ certified for Dubai Courts, DIFC and ADGM',
-    },
-    {
-      icon: 'fas fa-bolt',
-      text: 'Standard draft ready in 60 minutes',
-    },
-    {
-      icon: 'fas fa-comments',
-      text: 'WhatsApp evidence for Police & Courts (formatted for legal submission)',
-    },
-  ];
+const heroBullets = [
+  {
+    icon: 'fas fa-stamp',
+    text: 'MOJ certified for Dubai Courts, DIFC and ADGM',
+  },
+  {
+    icon: 'fas fa-bolt',
+    text: 'Standard draft ready in 60 minutes',
+  },
+  {
+    icon: 'fas fa-comments',
+    text: 'WhatsApp evidence for Police & Courts (formatted for legal submission)',
+  },
+];
 
-const primaryCta =
-  hero.primaryCta ?? {
-    label: 'Send Documents on WhatsApp',
-    url: 'https://wa.me/971508620217',
-  };
+const primaryCta = {
+  label: 'Send Documents on WhatsApp',
+  url: 'https://wa.me/971508620217',
+};
 
-const secondaryCta =
-  hero.secondaryCta ?? {
-    label: 'Or request a written quotation',
-    url: '/contact/',
-  };
+const secondaryCta = {
+  label: 'Or request a written quotation',
+  url: '/contact/',
+};
 
 // HERO - Mobile (new concise copy)
 const mobileHero = {
@@ -89,219 +72,161 @@ const mobileHero = {
 };
 
 // OVERLAP CARDS - Ordered by buyer psychology: Speed hook → Reassurance → Trust proof
-const overlapCards =
-  data.overlapCards ??
-  [
-    {
-      icon: 'fas fa-bolt',
-      title: '60-Minute Certified Delivery',
-      desc: 'Standard documents translated & certified in 60 minutes',
-      badge: 'Conditions apply',
-      url: '/services/legal-translation/',
-    },
-    {
-      icon: 'fas fa-building',
-      title: 'Accepted by UAE Courts & Government',
-      desc: 'Certified translations formatted for Dubai Courts, ministries & embassy submissions',
-      badge: 'See acceptance details',
-      url: '/services/legal-translation/',
-    },
-    {
-      icon: 'fas fa-shield-alt',
-      title: 'Dubai Licensed & Verified',
-      desc: 'Registered with Dubai Economy — click to verify our license',
-      badge: 'Verify on DED registry',
-      url: 'https://app.invest.dubai.ae/DUL/1DE9D8AA-768A-4CFC-BC27-A6F23017B858',
-    },
-  ];
+const overlapCards = [
+  {
+    icon: 'fas fa-bolt',
+    title: '60-Minute Certified Delivery',
+    desc: 'Standard documents translated & certified in 60 minutes',
+    badge: 'Conditions apply',
+    url: '/services/legal-translation/',
+  },
+  {
+    icon: 'fas fa-building',
+    title: 'Accepted by UAE Courts & Government',
+    desc: 'Certified translations formatted for Dubai Courts, ministries & embassy submissions',
+    badge: 'See acceptance details',
+    url: '/services/legal-translation/',
+  },
+  {
+    icon: 'fas fa-shield-alt',
+    title: 'Dubai Licensed & Verified',
+    desc: 'Registered with Dubai Economy — click to verify our license',
+    badge: 'Verify on DED registry',
+    url: 'https://app.invest.dubai.ae/DUL/1DE9D8AA-768A-4CFC-BC27-A6F23017B858',
+  },
+];
 
 // iOS / CONCIERGE BLOCK
-const ios = data.iosBlock ?? {};
-const iosLabel =
-  ios.label ?? 'Your Legal Concierge in Your Pocket';
-const iosTitle =
-  ios.title ?? "It's like having an in-house coordinator inside your phone.";
-const iosBody =
-  ios.body ??
-  "Send your documents once and we coordinate between legal translators, attestation providers, and couriers so you don't have to chase anyone.";
+const iosLabel = 'Your Legal Concierge in Your Pocket';
+const iosTitle = "It's like having an in-house coordinator inside your phone.";
+const iosBody = "Send your documents once and we coordinate between legal translators, attestation providers, and couriers so you don't have to chase anyone.";
 
-// Backward compatible: support both nested objects and flat label/url fields
-const whatsappConfig =
-  ios.whatsapp ??
-  {
-    label: ios.whatsappLabel ?? 'WhatsApp',
-    url:
-      ios.whatsappUrl ??
-      'https://wa.me/971508620217',
-  };
+const whatsappConfig = {
+  label: 'WhatsApp',
+  url: 'https://wa.me/971508620217',
+};
 
-const imessageConfig =
-  ios.imessage ??
-  {
-    label: ios.imessageLabel ?? 'iMessage',
-    url:
-      ios.imessageUrl ??
-      'sms:+971508620217&body=Hi, I need a translation quote',
-  };
+const imessageConfig = {
+  label: 'iMessage',
+  url: 'sms:+971508620217&body=Hi, I need a translation quote',
+};
 
-const expressCard =
-  ios.expressCard ??
-  {
-    title: 'Express Service',
-    text: 'Ultra-urgent translation for critical deadlines. Same-day certified delivery available.',
-    url:
-      'https://wa.me/971508620217?text=URGENT:%20I%20need%20express%20translation',
-    linkLabel: 'Urgent Request',
-  };
+const expressCard = {
+  title: 'Express Service',
+  text: 'Ultra-urgent translation for critical deadlines. Same-day certified delivery available.',
+  url: 'https://wa.me/971508620217?text=URGENT:%20I%20need%20express%20translation',
+  linkLabel: 'Urgent Request',
+};
 
 // SERVICES SECTION - Uses centralized data from servicesGrid.ts
-const servicesSection = data.servicesSection ?? {};
-const servicesLabel = servicesSection.label ?? servicesGridDefaults.label;
-const servicesTitle = servicesSection.title ?? servicesGridDefaults.title;
-const servicesItems = servicesSection.items ?? getHomepageServices();
+const servicesLabel = servicesGridDefaults.label;
+const servicesTitle = servicesGridDefaults.title;
+const servicesItems = getHomepageServices();
 
 // METRICS STRIP
-const metrics =
-  data.metrics ??
-  [
-    { value: '43+', label: 'Languages', note: 'Certified pairs' },
-    { value: '7', label: 'Days a Week', note: 'Always available' },
-    { value: 'Court', label: 'Ready Docs', note: 'MOJ certified' },
-    { value: '60min', label: 'Standard Draft', note: 'Digital delivery' },
-  ];
+const metrics = [
+  { value: '43+', label: 'Languages', note: 'Certified pairs' },
+  { value: '7', label: 'Days a Week', note: 'Always available' },
+  { value: 'Court', label: 'Ready Docs', note: 'MOJ certified' },
+  { value: '60min', label: 'Standard Draft', note: 'Digital delivery' },
+];
 
 // SPECIALISTS SECTION
-const specialistsSection = data.specialistsSection ?? {};
-const specialistsLabel =
-  specialistsSection.label ?? 'Our Specialists';
-const specialistsTitle =
-  specialistsSection.title ??
-  'Trusted Legal Translation Services in Dubai';
+const specialistsLabel = 'Our Specialists';
+const specialistsTitle = 'Trusted Legal Translation Services in Dubai';
 
-const rawSpecialistCards =
-  specialistsSection.cards ??
-  [
-    {
-      href: '/services/legal-translation/',
-      icon: 'fas fa-gavel',
-      title: 'Court & Litigation Translation',
-      bullets: [
-        'Pleadings, memoranda, judgments',
-        'Evidence bundles and exhibits',
-        'UAE legal terminology',
-      ],
-      tags: ['Dubai Courts', 'DIFC', 'ADGM'],
-    },
-    {
-      href: '/services/golden-visa-translation/',
-      icon: 'fas fa-passport',
-      title: 'Immigration & Residency Translation',
-      bullets: [
-        'Golden Visa applications',
-        'Family visa documents',
-        'Emirates ID and ICP/GDRFA',
-      ],
-      tags: ['Golden Visa', 'Family Visa', 'ICP/GDRFA'],
-    },
-    {
-      href: '/industries/real-estate/',
-      icon: 'fas fa-building',
-      title: 'Real Estate & DLD Translation',
-      bullets: [
-        'Property contracts and POAs',
-        'Title deeds and RERA docs',
-        'DLD submission format',
-      ],
-      tags: ['DLD', 'RERA', 'Property POA'],
-    },
-    {
-      href: '/services/corporate-translation/',
-      icon: 'fas fa-briefcase',
-      title: 'Corporate & Commercial Translation',
-      bullets: [
-        'Trade licenses and MOAs',
-        'Shareholder agreements',
-        'Free zone documentation',
-      ],
-      tags: ['DMCC', 'Free Zones', 'DED'],
-    },
-  ];
-
-// Normalize bullets/tags (string OR { bullet } / { tag })
-const specialistsCards = rawSpecialistCards.map((card) => ({
-  ...card,
-  bullets: (card.bullets ?? []).map((b: any) =>
-    typeof b === 'string' ? b : b?.bullet ?? '',
-  ),
-  tags: (card.tags ?? []).map((t: any) =>
-    typeof t === 'string' ? t : t?.tag ?? '',
-  ),
-}));
+const specialistsCards = [
+  {
+    href: '/services/legal-translation/',
+    icon: 'fas fa-gavel',
+    title: 'Court & Litigation Translation',
+    bullets: [
+      'Pleadings, memoranda, judgments',
+      'Evidence bundles and exhibits',
+      'UAE legal terminology',
+    ],
+    tags: ['Dubai Courts', 'DIFC', 'ADGM'],
+  },
+  {
+    href: '/services/golden-visa-translation/',
+    icon: 'fas fa-passport',
+    title: 'Immigration & Residency Translation',
+    bullets: [
+      'Golden Visa applications',
+      'Family visa documents',
+      'Emirates ID and ICP/GDRFA',
+    ],
+    tags: ['Golden Visa', 'Family Visa', 'ICP/GDRFA'],
+  },
+  {
+    href: '/industries/real-estate/',
+    icon: 'fas fa-building',
+    title: 'Real Estate & DLD Translation',
+    bullets: [
+      'Property contracts and POAs',
+      'Title deeds and RERA docs',
+      'DLD submission format',
+    ],
+    tags: ['DLD', 'RERA', 'Property POA'],
+  },
+  {
+    href: '/services/corporate-translation/',
+    icon: 'fas fa-briefcase',
+    title: 'Corporate & Commercial Translation',
+    bullets: [
+      'Trade licenses and MOAs',
+      'Shareholder agreements',
+      'Free zone documentation',
+    ],
+    tags: ['DMCC', 'Free Zones', 'DED'],
+  },
+];
 
 // FAQ SECTION
-const faqSection = data.faqSection ?? {};
-const faqLabel =
-  faqSection.label ?? 'Common Questions';
-const faqTitle =
-  faqSection.title ??
-  'Common Questions About Legal Translation in Dubai';
+const faqLabel = 'Common Questions';
+const faqTitle = 'Common Questions About Legal Translation in Dubai';
 
-const faqItems =
-  faqSection.items ??
-  [
-    {
-      question:
-        'What makes your translation service different from other translation companies?',
-      answer:
-        'We operate as a document concierge, not a traditional translation office. This means you get the compliance guarantees of working with certified legal translation providers without the friction of conventional agencies.',
-    },
-    {
-      question: 'Are your translations accepted by UAE courts?',
-      answer:
-        'Yes. Every legal translation service we coordinate is executed by translators certified by the Ministry of Justice. Our translations are formatted specifically for Dubai Courts, DIFC, ADGM, and federal judicial bodies.',
-    },
-    {
-      question: 'How quickly can you provide certified legal translation?',
-      answer:
-        'Standard documents (birth certificates, marriage certificates, educational credentials) are typically ready within 3–6 business hours. Express processing available for urgent legal requirements.',
-    },
-    {
-      question: 'Do you provide attestation services?',
-      answer:
-        'Yes. When your legal documents require attestation from MOFA or other government entities, we coordinate the complete process including secure courier handling of originals.',
-    },
-    {
-      question: 'Can you handle Arabic to English and English to Arabic?',
-      answer:
-        'Yes. Our certified translators work in both directions for comprehensive Arabic translation services.',
-    },
-  ];
+const faqItems = [
+  {
+    question: 'What makes your translation service different from other translation companies?',
+    answer: 'We operate as a document concierge, not a traditional translation office. This means you get the compliance guarantees of working with certified legal translation providers without the friction of conventional agencies.',
+  },
+  {
+    question: 'Are your translations accepted by UAE courts?',
+    answer: 'Yes. Every legal translation service we coordinate is executed by translators certified by the Ministry of Justice. Our translations are formatted specifically for Dubai Courts, DIFC, ADGM, and federal judicial bodies.',
+  },
+  {
+    question: 'How quickly can you provide certified legal translation?',
+    answer: 'Standard documents (birth certificates, marriage certificates, educational credentials) are typically ready within 3–6 business hours. Express processing available for urgent legal requirements.',
+  },
+  {
+    question: 'Do you provide attestation services?',
+    answer: 'Yes. When your legal documents require attestation from MOFA or other government entities, we coordinate the complete process including secure courier handling of originals.',
+  },
+  {
+    question: 'Can you handle Arabic to English and English to Arabic?',
+    answer: 'Yes. Our certified translators work in both directions for comprehensive Arabic translation services.',
+  },
+];
 
 // CTA BANNER
-const ctaBanner =
-  data.ctaBanner ??
-  {
-    title: 'Let Us Handle the Compliance. You Focus on What Matters.',
-    body:
-      'Join the businesses and individuals across Dubai, Abu Dhabi, and the Northern Emirates who trust OnlineTranslation.ae as their provider of legal translation services.',
-    buttonLabel: 'Send Documents on WhatsApp',
-    buttonUrl: 'https://wa.me/971508620217',
-  };
+const ctaBanner = {
+  title: 'Let Us Handle the Compliance. You Focus on What Matters.',
+  body: 'Join the businesses and individuals across Dubai, Abu Dhabi, and the Northern Emirates who trust OnlineTranslation.ae as their provider of legal translation services.',
+  buttonLabel: 'Send Documents on WhatsApp',
+  buttonUrl: 'https://wa.me/971508620217',
+};
 
 // CONTACT SECTION
-const contactSection =
-  data.contactSection ??
-  {
-    label: 'Get In Touch',
-    title: 'Request a Free Quotation',
-    description:
-      'Share your documents. We will confirm price and delivery time within minutes.',
-    namePlaceholder: 'Enter your full name',
-    emailPlaceholder: 'your@email.com',
-    phonePlaceholder: '+971 XX XXX XXXX',
-    messagePlaceholder:
-      'Describe your document(s) and requirements...',
-  };
+const contactSection = {
+  label: 'Get In Touch',
+  title: 'Request a Free Quotation',
+  description: 'Share your documents. We will confirm price and delivery time within minutes.',
+  namePlaceholder: 'Enter your full name',
+  emailPlaceholder: 'your@email.com',
+  phonePlaceholder: '+971 XX XXX XXXX',
+  messagePlaceholder: 'Describe your document(s) and requirements...',
+};
 ---
 
 <BaseLayout
