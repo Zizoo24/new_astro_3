@@ -1,34 +1,33 @@
 // Contact Form Handler for OnlineTranslation.ae
-// Sends form submissions via API with WhatsApp fallback
+// Sends form submissions via Formspree with WhatsApp fallback
 
 const WHATSAPP_NUMBER = '971508620217';
-const API_ENDPOINT = '/api/contact/';
 const THANK_YOU_PAGE = '/thank-you/';
+
+// IMPORTANT: Replace with your Formspree form ID
+// 1. Go to https://formspree.io and sign up (free)
+// 2. Create a new form with email: info@onlinetranslation.ae
+// 3. Copy your form ID (e.g., 'xyzabcde') and paste it below
+const FORMSPREE_ID = 'YOUR_FORM_ID';
+const FORMSPREE_ENDPOINT = `https://formspree.io/f/${FORMSPREE_ID}`;
 
 // Contact Form Submission Handler
 async function submitContactForm(formData) {
-  const data = {
-    name: formData.get('name') || '',
-    email: formData.get('email') || '',
-    phone: formData.get('phone') || '',
-    message: formData.get('message') || formData.get('text') || '',
-    service: formData.get('service') || '',
-    document_type: formData.get('document_type') || '',
-    source_page: window.location.href
-  };
+  // Add source page to form data
+  formData.append('_source_page', window.location.href);
 
   try {
-    const response = await fetch(API_ENDPOINT, {
+    const response = await fetch(FORMSPREE_ENDPOINT, {
       method: 'POST',
+      body: formData,
       headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data)
+        'Accept': 'application/json'
+      }
     });
 
     const result = await response.json();
 
-    if (result.success) {
+    if (response.ok) {
       // Redirect to thank you page
       window.location.href = THANK_YOU_PAGE;
       return {
@@ -38,20 +37,14 @@ async function submitContactForm(formData) {
       };
     }
 
-    // If API suggests WhatsApp fallback
-    if (result.fallback === 'whatsapp') {
-      return redirectToWhatsApp(data);
-    }
-
-    return {
-      success: false,
-      message: result.message || 'Failed to send message. Please try WhatsApp.'
-    };
+    // If Formspree returns an error
+    console.error('Formspree error:', result);
+    return redirectToWhatsApp(Object.fromEntries(formData));
 
   } catch (error) {
     console.error('Form submission error:', error);
     // Network error - fallback to WhatsApp
-    return redirectToWhatsApp(data);
+    return redirectToWhatsApp(Object.fromEntries(formData));
   }
 }
 
@@ -59,7 +52,7 @@ async function submitContactForm(formData) {
 function redirectToWhatsApp(data) {
   const name = data.name || '';
   const service = data.service || data.document_type || '';
-  const message = data.message || '';
+  const message = data.message || data.text || '';
 
   const serviceLabel = service ? `Service: ${service.replace(/_/g, ' ')}. ` : '';
   const whatsappMessage = encodeURIComponent(
