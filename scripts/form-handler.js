@@ -3,6 +3,7 @@
 
 const WHATSAPP_NUMBER = '971508620217';
 const API_ENDPOINT = '/api/contact/';
+const THANK_YOU_PAGE = '/thank-you/';
 
 // Contact Form Submission Handler
 async function submitContactForm(formData) {
@@ -28,9 +29,12 @@ async function submitContactForm(formData) {
     const result = await response.json();
 
     if (result.success) {
+      // Redirect to thank you page
+      window.location.href = THANK_YOU_PAGE;
       return {
         success: true,
-        message: result.message || 'Message sent successfully!'
+        redirect: true,
+        message: 'Redirecting...'
       };
     }
 
