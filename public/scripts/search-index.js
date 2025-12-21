@@ -1,460 +1,343 @@
+// Auto-generated search index - DO NOT EDIT MANUALLY
+// Generated at: 2025-12-21T07:41:38.453Z
+// Run 'npm run search:generate' to regenerate
+
 const searchIndex = [
-    // ============================================
-    // LEGAL & CORPORATE (Silo 1)
-    // ============================================
     {
-        title: "Legal Translation Dubai",
-        url: "/legal-translation-dubai/",
-        category: "Legal",
-        keywords: "legal translation dubai moj certified court documents contracts corporate official"
+        "title": "Golden Visa Document Requirements: Complete 2024 Guide",
+        "url": "/blog/golden-visa-document-requirements-2024/",
+        "category": "Blog",
+        "keywords": "golden visa document requirements complete guide everything need know document translation attestation uae golden visa"
     },
     {
-        title: "Legal Translation Services",
-        url: "/services/legal-translation/",
-        category: "Legal",
-        keywords: "legal translation moj certified court documents contracts agreements powers of attorney"
+        "title": "HR Document Translation Guide for UAE Employers",
+        "url": "/blog/hr-document-translation-guide-uae-employers/",
+        "category": "Blog",
+        "keywords": "document translation guide uae employers professionals need know employee document translation moj certified translation documents"
     },
     {
-        title: "Contract Translation",
-        url: "/legal/contracts/",
-        category: "Legal",
-        keywords: "contracts agreements legal binding nda employment lease commercial"
+        "title": "MOFA Attestation Process in UAE: Complete 2024 Guide",
+        "url": "/blog/mofa-attestation-process-complete-guide/",
+        "category": "Blog",
+        "keywords": "mofa attestation process uae complete guide step step guide mofa ministry foreign affairs attestation uae"
     },
     {
-        title: "NDA Translation",
-        url: "/legal/contracts/nda/",
-        category: "Legal",
-        keywords: "nda non disclosure agreement translation confidentiality ip intellectual property"
+        "title": "Police Clearance Certificate Translation for UAE: What You Need to Know",
+        "url": "/blog/police-clearance-certificate-translation-uae/",
+        "category": "Blog",
+        "keywords": "police clearance certificate translation uae need know complete guide pcc translation uae employment visas golden"
     },
     {
-        title: "Sales Purchase Agreement (SPA)",
-        url: "/legal/contracts/spa/",
-        category: "Legal",
-        keywords: "spa sales purchase agreement property real estate dld transaction"
+        "title": "Contract Translation",
+        "url": "/services/contract-translation/",
+        "category": "Services",
+        "keywords": "contract translation specialized contract translation commercial employment legal agreements full legal certification"
     },
     {
-        title: "MOU Translation",
-        url: "/legal/contracts/mou/",
-        category: "Legal",
-        keywords: "mou memorandum of understanding agreement partnership joint venture"
+        "title": "Document Translation",
+        "url": "/services/document-translation/",
+        "category": "Services",
+        "keywords": "document translation comprehensive document translation services personal legal business documents moj certification"
     },
     {
-        title: "Commercial Lease Translation",
-        url: "/legal/contracts/lease/",
-        category: "Legal",
-        keywords: "lease contract rental agreement commercial property tenancy ejari"
+        "title": "Banking & Finance Translation",
+        "url": "/industries/banking-finance/",
+        "category": "Industries",
+        "keywords": "banking finance translation expert translation services banking financial services industry deep understanding financial terminology"
     },
     {
-        title: "Corporate Documents",
-        url: "/legal/corporate/",
-        category: "Legal",
-        keywords: "corporate documents company formation moa poa trade license resolution"
+        "title": "Healthcare Translation",
+        "url": "/industries/healthcare/",
+        "category": "Industries",
+        "keywords": "healthcare translation specialized medical translation services healthcare providers pharmaceutical companies patients"
     },
     {
-        title: "MOA Translation",
-        url: "/legal/corporate/moa/",
-        category: "Legal",
-        keywords: "moa memorandum association translation company formation freezone mainland"
+        "title": "Business Bay Translation Services",
+        "url": "/locations/business-bay/",
+        "category": "Locations",
+        "keywords": "business bay translation services professional translation services business bay corporate community specialized business legal documents"
     },
     {
-        title: "Board Resolution Translation",
-        url: "/legal/corporate/resolution/",
-        category: "Legal",
-        keywords: "board resolution corporate decision shareholder meeting minutes"
+        "title": "Dubai Marina Translation Services",
+        "url": "/locations/dubai-marina/",
+        "category": "Locations",
+        "keywords": "dubai marina translation services convenient legal translation services dubai marina residents businesses fast certified professional"
     },
     {
-        title: "Power of Attorney Translation",
-        url: "/legal/corporate/poa/",
-        category: "Legal",
-        keywords: "power of attorney poa translation general special dld property representative"
+        "title": "Medical Translation",
+        "url": "/specialized/medical-translation/",
+        "category": "Specialized",
+        "keywords": "medical translation expert medical translation healthcare documents clinical records pharmaceutical materials"
     },
     {
-        title: "Trade License Translation",
-        url: "/legal/corporate/license/",
-        category: "Legal",
-        keywords: "trade license business permit commercial registration ded freezone"
+        "title": "Technical Translation",
+        "url": "/specialized/technical-translation/",
+        "category": "Specialized",
+        "keywords": "technical translation specialized technical translation engineering manufacturing documentation"
     },
     {
-        title: "Court Documents",
-        url: "/legal/litigation/",
-        category: "Legal",
-        keywords: "litigation court documents legal proceedings claims judgments dubai courts"
+        "title": "Legal Translation Dubai",
+        "url": "/legal-translation-dubai/",
+        "category": "Legal",
+        "keywords": "legal translation dubai moj certified court documents contracts corporate official"
     },
     {
-        title: "Court Verdict Translation",
-        url: "/legal/litigation/verdict/",
-        category: "Legal",
-        keywords: "court verdict judgment ruling decision translation legal outcome"
+        "title": "Personal Documents Hub",
+        "url": "/personal-documents/",
+        "category": "Personal Documents",
+        "keywords": "personal documents certificates vital records immigration academic expat"
     },
     {
-        title: "Arbitration Award Translation",
-        url: "/legal/litigation/arbitration/",
-        category: "Legal",
-        keywords: "arbitration award difc diac dispute resolution settlement"
+        "title": "Vital Records",
+        "url": "/personal/vital-records/",
+        "category": "Personal Documents",
+        "keywords": "vital records birth marriage death divorce certificates civil status"
     },
     {
-        title: "Will Translation",
-        url: "/legal/wills/",
-        category: "Legal",
-        keywords: "will testament inheritance estate planning succession difc wills"
+        "title": "Birth Certificate Translation",
+        "url": "/personal/vital-records/birth/",
+        "category": "Personal Documents",
+        "keywords": "birth certificate translation gdrfa sponsor child golden visa icp mofa newborn"
     },
-
-    // ============================================
-    // PERSONAL DOCUMENTS (Silo 2)
-    // ============================================
     {
-        title: "Personal Documents Hub",
-        url: "/personal-documents/",
-        category: "Personal Documents",
-        keywords: "personal documents certificates vital records immigration academic expat"
+        "title": "Marriage Certificate Translation",
+        "url": "/personal/vital-records/marriage/",
+        "category": "Personal Documents",
+        "keywords": "marriage certificate translation spouse visa gdrfa sponsorship wedding"
     },
     {
-        title: "Vital Records",
-        url: "/personal/vital-records/",
-        category: "Personal Documents",
-        keywords: "vital records birth marriage death divorce certificates civil status"
+        "title": "Divorce Certificate Translation",
+        "url": "/personal/vital-records/divorce/",
+        "category": "Personal Documents",
+        "keywords": "divorce certificate decree translation court family law separation"
     },
     {
-        title: "Birth Certificate Translation",
-        url: "/personal/vital-records/birth/",
-        category: "Personal Documents",
-        keywords: "birth certificate translation gdrfa sponsor child golden visa icp mofa newborn"
+        "title": "Death Certificate Translation",
+        "url": "/personal/vital-records/death/",
+        "category": "Personal Documents",
+        "keywords": "death certificate translation estate inheritance probate succession"
     },
     {
-        title: "Marriage Certificate Translation",
-        url: "/personal/vital-records/marriage/",
-        category: "Personal Documents",
-        keywords: "marriage certificate translation spouse visa gdrfa sponsorship wedding"
+        "title": "Immigration Documents",
+        "url": "/personal/immigration/",
+        "category": "Personal Documents",
+        "keywords": "immigration documents visa residence permit sponsorship gdrfa icp"
     },
     {
-        title: "Divorce Certificate Translation",
-        url: "/personal/vital-records/divorce/",
-        category: "Personal Documents",
-        keywords: "divorce certificate decree translation court family law separation"
+        "title": "Police Clearance Certificate (PCC)",
+        "url": "/personal/immigration/pcc/",
+        "category": "Personal Documents",
+        "keywords": "police clearance pcc good conduct certificate fbi acro translation visa background"
     },
     {
-        title: "Death Certificate Translation",
-        url: "/personal/vital-records/death/",
-        category: "Personal Documents",
-        keywords: "death certificate translation estate inheritance probate succession"
+        "title": "Bank Statement Translation",
+        "url": "/personal/immigration/bank/",
+        "category": "Personal Documents",
+        "keywords": "bank statement translation golden visa 6 months financial proof income"
     },
     {
-        title: "Immigration Documents",
-        url: "/personal/immigration/",
-        category: "Personal Documents",
-        keywords: "immigration documents visa residence permit sponsorship gdrfa icp"
+        "title": "Driving License Translation",
+        "url": "/personal/immigration/license/",
+        "category": "Personal Documents",
+        "keywords": "driving license translation rta conversion dubai uae exchange"
     },
     {
-        title: "Police Clearance Certificate (PCC)",
-        url: "/personal/immigration/pcc/",
-        category: "Personal Documents",
-        keywords: "police clearance pcc good conduct certificate fbi acro translation visa background"
+        "title": "Academic Documents",
+        "url": "/personal/academic/",
+        "category": "Personal Documents",
+        "keywords": "academic documents degree diploma transcript equivalency education"
     },
     {
-        title: "Bank Statement Translation",
-        url: "/personal/immigration/bank/",
-        category: "Personal Documents",
-        keywords: "bank statement translation golden visa 6 months financial proof income"
+        "title": "University Degree Translation",
+        "url": "/personal/academic/degree/",
+        "category": "Personal Documents",
+        "keywords": "degree diploma university translation attestation equivalency golden visa bachelor master"
     },
     {
-        title: "Driving License Translation",
-        url: "/personal/immigration/license/",
-        category: "Personal Documents",
-        keywords: "driving license translation rta conversion dubai uae exchange"
+        "title": "Transcript Translation",
+        "url": "/personal/academic/transcripts/",
+        "category": "Personal Documents",
+        "keywords": "transcript academic record grades university college translation gpa"
     },
     {
-        title: "Academic Documents",
-        url: "/personal/academic/",
-        category: "Personal Documents",
-        keywords: "academic documents degree diploma transcript equivalency education"
+        "title": "Contract Translation",
+        "url": "/legal/contracts/",
+        "category": "Legal",
+        "keywords": "contracts agreements legal binding nda employment lease commercial"
     },
     {
-        title: "University Degree Translation",
-        url: "/personal/academic/degree/",
-        category: "Personal Documents",
-        keywords: "degree diploma university translation attestation equivalency golden visa bachelor master"
+        "title": "NDA Translation",
+        "url": "/legal/contracts/nda/",
+        "category": "Legal",
+        "keywords": "nda non disclosure agreement translation confidentiality ip intellectual property"
     },
     {
-        title: "Transcript Translation",
-        url: "/personal/academic/transcripts/",
-        category: "Personal Documents",
-        keywords: "transcript academic record grades university college translation gpa"
+        "title": "Corporate Documents",
+        "url": "/legal/corporate/",
+        "category": "Legal",
+        "keywords": "corporate documents company formation moa poa trade license resolution"
     },
-
-    // ============================================
-    // ATTESTATION SERVICES (Silo 3)
-    // ============================================
     {
-        title: "Attestation Services",
-        url: "/services/attestation/",
-        category: "Attestation",
-        keywords: "attestation mofa ministry foreign affairs legalization apostille embassy"
+        "title": "MOA Translation",
+        "url": "/legal/corporate/moa/",
+        "category": "Legal",
+        "keywords": "moa memorandum association translation company formation freezone mainland"
     },
     {
-        title: "India Attestation",
-        url: "/services/attestation/india/",
-        category: "Attestation",
-        keywords: "india attestation indian documents certificate hrd mea embassy"
+        "title": "Power of Attorney Translation",
+        "url": "/legal/corporate/poa/",
+        "category": "Legal",
+        "keywords": "power of attorney poa translation general special dld property representative"
     },
     {
-        title: "UK Attestation",
-        url: "/services/attestation/uk/",
-        category: "Attestation",
-        keywords: "uk attestation british documents fcdo apostille embassy legalization"
+        "title": "Court Documents",
+        "url": "/legal/litigation/",
+        "category": "Legal",
+        "keywords": "litigation court documents legal proceedings claims judgments dubai courts"
     },
     {
-        title: "US Attestation",
-        url: "/services/attestation/us/",
-        category: "Attestation",
-        keywords: "us usa attestation american documents state department apostille embassy"
+        "title": "Attestation Services",
+        "url": "/services/attestation/",
+        "category": "Attestation",
+        "keywords": "attestation mofa ministry foreign affairs legalization apostille embassy"
     },
     {
-        title: "Philippines Attestation",
-        url: "/services/attestation/philippines/",
-        category: "Attestation",
-        keywords: "philippines attestation filipino documents dfa red ribbon embassy"
+        "title": "Golden Visa Translation",
+        "url": "/services/golden-visa-translation/",
+        "category": "Services",
+        "keywords": "golden visa uae residence permit investor entrepreneur specialist talent documents package"
     },
     {
-        title: "Pakistan Attestation",
-        url: "/services/attestation/pakistan/",
-        category: "Attestation",
-        keywords: "pakistan attestation pakistani documents hec mofa embassy"
+        "title": "Certificate Translation",
+        "url": "/services/certificate-translation/",
+        "category": "Services",
+        "keywords": "certificate birth marriage death degree diploma academic educational"
     },
     {
-        title: "MOFA Attestation",
-        url: "/services/attestation/mofa/",
-        category: "Attestation",
-        keywords: "mofa ministry foreign affairs uae attestation legalization"
+        "title": "Corporate Translation",
+        "url": "/services/corporate-translation/",
+        "category": "Services",
+        "keywords": "corporate business company trade license memorandum articles association"
     },
     {
-        title: "Embassy Legalization",
-        url: "/services/attestation/embassy/",
-        category: "Attestation",
-        keywords: "embassy legalization consular attestation diplomatic authentication"
+        "title": "Legal Translation Services",
+        "url": "/services/legal-translation/",
+        "category": "Legal",
+        "keywords": "legal translation moj certified court documents contracts agreements powers of attorney"
     },
     {
-        title: "Apostille Services",
-        url: "/services/attestation/apostille/",
-        category: "Attestation",
-        keywords: "apostille hague convention legalization international documents"
+        "title": "Resources Hub",
+        "url": "/resources/",
+        "category": "Resources",
+        "keywords": "resources guides checklists help information"
     },
-
-    // ============================================
-    // SPECIALIZED TRANSLATION (Silo 4)
-    // ============================================
     {
-        title: "Specialized Translation",
-        url: "/specialized-translation/",
-        category: "Specialized",
-        keywords: "specialized translation technical medical hospitality digital industry expert"
+        "title": "Pricing Guide",
+        "url": "/resources/pricing-guide/",
+        "category": "Resources",
+        "keywords": "pricing price cost rates fees quote estimate"
     },
     {
-        title: "Medical Translation",
-        url: "/specialized/medical/",
-        category: "Specialized",
-        keywords: "medical report translation dha moh haad healthcare hospital diagnosis"
+        "title": "FAQ",
+        "url": "/resources/faq/",
+        "category": "Resources",
+        "keywords": "faq questions answers help support common"
     },
     {
-        title: "Technical Translation",
-        url: "/specialized/technical/",
-        category: "Specialized",
-        keywords: "technical translation manual engineering specifications industrial"
+        "title": "Golden Visa Checklist 2025",
+        "url": "/resources/golden-visa-checklist/",
+        "category": "Resources",
+        "keywords": "golden visa checklist 2025 investor entrepreneur specialist documents required"
     },
     {
-        title: "Hospitality Translation",
-        url: "/specialized/hospitality/",
-        category: "Specialized",
-        keywords: "hospitality translation menu restaurant hotel tourism f&b"
+        "title": "Attestation Guide 2025",
+        "url": "/resources/attestation-guide/",
+        "category": "Resources",
+        "keywords": "attestation guide mofa hague apostille legalization chain process"
     },
     {
-        title: "Digital Content Translation",
-        url: "/specialized/digital/",
-        category: "Specialized",
-        keywords: "website localization app translation digital content software ui ux"
+        "title": "Document Checklist",
+        "url": "/resources/document-checklist/",
+        "category": "Resources",
+        "keywords": "documents checklist requirements prepare list"
     },
     {
-        title: "Financial Translation",
-        url: "/specialized/financial/",
-        category: "Specialized",
-        keywords: "financial translation audit report statements banking investment"
+        "title": "Contact Us",
+        "url": "/contact/",
+        "category": "Contact",
+        "keywords": "contact whatsapp email phone call quote request"
     },
     {
-        title: "Golden Visa Translation",
-        url: "/services/golden-visa-translation/",
-        category: "Specialized",
-        keywords: "golden visa uae residence permit investor entrepreneur specialist talent documents package"
+        "title": "About Us",
+        "url": "/about/",
+        "category": "About",
+        "keywords": "about company team moj certified translators licensed"
     },
     {
-        title: "Certificate Translation",
-        url: "/services/certificate-translation/",
-        category: "Services",
-        keywords: "certificate birth marriage death degree diploma academic educational"
+        "title": "Privacy Policy",
+        "url": "/privacy/",
+        "category": "Legal",
+        "keywords": "privacy policy data protection gdpr personal information"
     },
     {
-        title: "Corporate Translation",
-        url: "/services/corporate-translation/",
-        category: "Services",
-        keywords: "corporate business company trade license memorandum articles association"
+        "title": "Terms of Service",
+        "url": "/terms/",
+        "category": "Legal",
+        "keywords": "terms service conditions agreement legal"
     },
-
-    // ============================================
-    // LOCATIONS (Silo 5)
-    // ============================================
     {
-        title: "All Locations",
-        url: "/locations/",
-        category: "Locations",
-        keywords: "locations dubai abu dhabi sharjah uae emirates service areas"
+        "title": "All Locations",
+        "url": "/locations/",
+        "category": "Locations",
+        "keywords": "locations dubai abu dhabi sharjah uae emirates service areas"
     },
     {
-        title: "Dubai",
-        url: "/locations/dubai/",
-        category: "Locations",
-        keywords: "dubai translation services all areas legal certified moj"
+        "title": "Dubai",
+        "url": "/locations/dubai/",
+        "category": "Locations",
+        "keywords": "dubai translation services all areas legal certified moj"
     },
     {
-        title: "Palm Jumeirah",
-        url: "/locations/dubai/palm-jumeirah/",
-        category: "Locations",
-        keywords: "palm jumeirah dubai translation service hnw high net worth luxury"
+        "title": "Palm Jumeirah",
+        "url": "/locations/dubai/palm-jumeirah/",
+        "category": "Locations",
+        "keywords": "palm jumeirah dubai translation service hnw high net worth luxury"
     },
     {
-        title: "JLT - Jumeirah Lake Towers",
-        url: "/locations/dubai/jlt/",
-        category: "Locations",
-        keywords: "jlt jumeirah lake towers free zone dmcc translation business"
+        "title": "JLT - Jumeirah Lake Towers",
+        "url": "/locations/dubai/jlt/",
+        "category": "Locations",
+        "keywords": "jlt jumeirah lake towers free zone dmcc translation business"
     },
     {
-        title: "Business Bay",
-        url: "/locations/dubai/business-bay/",
-        category: "Locations",
-        keywords: "business bay dubai downtown translation corporate tower"
+        "title": "DIFC",
+        "url": "/locations/dubai/difc/",
+        "category": "Locations",
+        "keywords": "difc dubai international financial centre legal translation courts"
     },
     {
-        title: "DIFC",
-        url: "/locations/dubai/difc/",
-        category: "Locations",
-        keywords: "difc dubai international financial centre legal translation courts"
+        "title": "Downtown Dubai",
+        "url": "/locations/dubai/downtown/",
+        "category": "Locations",
+        "keywords": "downtown dubai burj khalifa mall translation central"
     },
     {
-        title: "Downtown Dubai",
-        url: "/locations/dubai/downtown/",
-        category: "Locations",
-        keywords: "downtown dubai burj khalifa mall translation central"
+        "title": "Dubai Marina",
+        "url": "/locations/dubai/marina/",
+        "category": "Locations",
+        "keywords": "dubai marina jbr translation waterfront residential"
     },
     {
-        title: "Dubai Marina",
-        url: "/locations/dubai/marina/",
-        category: "Locations",
-        keywords: "dubai marina jbr translation waterfront residential"
+        "title": "Abu Dhabi",
+        "url": "/locations/abu-dhabi/",
+        "category": "Locations",
+        "keywords": "abu dhabi capital uae translation adgm government"
     },
     {
-        title: "Abu Dhabi",
-        url: "/locations/abu-dhabi/",
-        category: "Locations",
-        keywords: "abu dhabi capital uae translation adgm government"
-    },
-    {
-        title: "Sharjah",
-        url: "/locations/sharjah/",
-        category: "Locations",
-        keywords: "sharjah emirate translation services saif zone"
-    },
-
-    // ============================================
-    // RESOURCES (Silo 6)
-    // ============================================
-    {
-        title: "Resources Hub",
-        url: "/resources/",
-        category: "Resources",
-        keywords: "resources guides checklists help information"
-    },
-    {
-        title: "Pricing Guide",
-        url: "/resources/pricing-guide/",
-        category: "Resources",
-        keywords: "pricing price cost rates fees quote estimate"
-    },
-    {
-        title: "Document Checklist",
-        url: "/resources/document-checklist/",
-        category: "Resources",
-        keywords: "documents checklist requirements prepare list"
-    },
-    {
-        title: "Attestation Guide 2025",
-        url: "/resources/attestation-guide/",
-        category: "Resources",
-        keywords: "attestation guide mofa hague apostille legalization chain process"
-    },
-    {
-        title: "Golden Visa Checklist 2025",
-        url: "/resources/golden-visa-checklist/",
-        category: "Resources",
-        keywords: "golden visa checklist 2025 investor entrepreneur specialist documents required"
-    },
-    {
-        title: "FAQ",
-        url: "/resources/faq/",
-        category: "Resources",
-        keywords: "faq questions answers help support common"
-    },
-
-    // ============================================
-    // INDUSTRIES
-    // ============================================
-    {
-        title: "Legal Industry",
-        url: "/industries/legal/",
-        category: "Industries",
-        keywords: "legal law firms lawyers attorneys court litigation"
-    },
-    {
-        title: "Healthcare Industry",
-        url: "/industries/healthcare/",
-        category: "Industries",
-        keywords: "healthcare medical hospital clinic doctors patients"
-    },
-    {
-        title: "Real Estate Industry",
-        url: "/industries/real-estate/",
-        category: "Industries",
-        keywords: "real estate property dld poa power of attorney developers"
-    },
-    {
-        title: "E-commerce Industry",
-        url: "/industries/e-commerce/",
-        category: "Industries",
-        keywords: "ecommerce online business digital marketplace retail"
-    },
-
-    // ============================================
-    // OTHER PAGES
-    // ============================================
-    {
-        title: "Contact Us",
-        url: "/contact/",
-        category: "Contact",
-        keywords: "contact whatsapp email phone call quote request"
-    },
-    {
-        title: "About Us",
-        url: "/about/",
-        category: "About",
-        keywords: "about company team moj certified translators licensed"
-    },
-    {
-        title: "Privacy Policy",
-        url: "/privacy/",
-        category: "Legal",
-        keywords: "privacy policy data protection gdpr personal information"
-    },
-    {
-        title: "Terms of Service",
-        url: "/terms/",
-        category: "Legal",
-        keywords: "terms service conditions agreement legal"
+        "title": "Sharjah",
+        "url": "/locations/sharjah/",
+        "category": "Locations",
+        "keywords": "sharjah emirate translation services saif zone"
     }
 ];
 
