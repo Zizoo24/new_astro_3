@@ -1,0 +1,563 @@
+---
+/**
+ * Blog Post: Why Machine Translation Still Fails Where It Matters
+ * Category: Industry Insights
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const postDate = '2024-12-22';
+const postTitle = '"Meat in Bread Cylinder" — Why Machine Translation Still Fails Where It Matters';
+const postDescription = 'AI translation has improved dramatically, but for contracts, marketing, and brand voice, the gap between correct and effective still costs businesses.';
+const postCategory = 'Industry Insights';
+const readTime = '6 min read';
+
+// Article structured data
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": postTitle,
+  "description": postDescription,
+  "datePublished": postDate,
+  "dateModified": postDate,
+  "author": {
+    "@type": "Organization",
+    "name": "OnlineTranslation.ae",
+    "url": "https://onlinetranslation.ae"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "OnlineTranslation.ae",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://onlinetranslation.ae/assets/images/logo/brand/emblem-256.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://onlinetranslation.ae/blog/why-machine-translation-fails/"
+  },
+  "articleSection": postCategory,
+  "keywords": ["machine translation", "AI translation", "business translation", "Arabic translation", "UAE translation services", "legal translation Dubai"]
+};
+---
+
+<BaseLayout
+  title={`${postTitle} | OnlineTranslation.ae Blog`}
+  description={postDescription}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  </Fragment>
+
+  <!-- Article Hero -->
+  <section class="article-hero">
+    <div class="container">
+      <div class="article-meta">
+        <a href="/blog/" class="back-link">
+          <i class="fas fa-arrow-left"></i> Back to Blog
+        </a>
+        <span class="category-badge">{postCategory}</span>
+      </div>
+      <h1>{postTitle}</h1>
+      <div class="post-info">
+        <time datetime={postDate}>
+          <i class="far fa-calendar-alt"></i>
+          {new Date(postDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+        <span class="read-time">
+          <i class="far fa-clock"></i>
+          {readTime}
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Article Content -->
+  <article class="article-content">
+    <div class="container">
+      <div class="content-wrapper">
+
+        <p class="lead">"Meat in bread cylinder."</p>
+
+        <p>That's how one AI tool translated <span lang="ar" dir="rtl">شاورما</span>.</p>
+
+        <p>Technically accurate. Completely useless.</p>
+
+        <p>And this is the problem with machine translation in business. The grammar checks out. The meaning doesn't land.</p>
+
+        <h2>The gap between correct and effective</h2>
+
+        <p>AI translation has improved dramatically. Five years ago, the output was often unusable. Today, it handles straightforward text reasonably well.</p>
+
+        <p>But "reasonably well" has limits.</p>
+
+        <p>When I run client documents through AI tools—contracts, marketing copy, website content—the errors aren't always obvious. The sentences are grammatically correct. The vocabulary is appropriate. Everything looks fine on the surface.</p>
+
+        <p>Then you read it as a native speaker, and something feels off.</p>
+
+        <p>A legal clause that sounds threatening instead of standard. A product description that's technically right but emotionally flat. A tagline that makes sense but carries zero impact.</p>
+
+        <p><strong>The words are there. The intent isn't.</strong></p>
+
+        <h2>Where this actually hurts businesses</h2>
+
+        <p>Most companies don't notice the problem because they're not reading their translated content the way their audience does.</p>
+
+        <p>A few real examples I've seen:</p>
+
+        <div class="example-card">
+          <h3><i class="fas fa-file-contract"></i> Contracts and agreements</h3>
+          <p>A service agreement translated from Arabic to English used phrasing that sounded adversarial. The original Arabic was standard, neutral, professional. The English version read like the company was preparing for a lawsuit. The client didn't notice until a potential partner asked why the tone was so aggressive.</p>
+        </div>
+
+        <div class="example-card">
+          <h3><i class="fas fa-bullhorn"></i> Marketing materials</h3>
+          <p>A Dubai-based brand translated their campaign from English to Arabic using AI. The translated version was grammatically correct but felt foreign—like something written by someone who learned Arabic from a textbook. It didn't sound like how their audience actually speaks. Engagement was low. They assumed the campaign failed. The campaign was fine. The translation wasn't.</p>
+        </div>
+
+        <div class="example-card">
+          <h3><i class="fas fa-globe"></i> Website copy</h3>
+          <p>A services company used AI to translate their homepage. The English version said "We deliver results." The Arabic version said something closer to "We bring outcomes to you." Not wrong. But flat, generic, forgettable. It didn't carry the confidence of the original.</p>
+        </div>
+
+        <p>These aren't catastrophic failures. No one sued. No deals collapsed. But in each case, the company's message came across weaker than it should have.</p>
+
+        <h2>AI is a tool, not a replacement</h2>
+
+        <p>This isn't an argument against using AI for translation. I use it regularly. Most professionals in this space do.</p>
+
+        <p>AI is excellent for:</p>
+
+        <ul class="check-list">
+          <li>First drafts and internal documents</li>
+          <li>Getting the general meaning of a text quickly</li>
+          <li>Handling high-volume, low-stakes content</li>
+          <li>Speeding up the initial translation process</li>
+        </ul>
+
+        <p>But there's a difference between content that only needs to be <em>understood</em> and content that needs to <em>perform</em>.</p>
+
+        <div class="comparison-table">
+          <div class="comparison-row">
+            <div class="comparison-cell ai-ok">
+              <span class="label">AI is fine</span>
+              <p>Internal memos</p>
+            </div>
+            <div class="comparison-cell human-needed">
+              <span class="label">Needs a human</span>
+              <p>A contract going to a government ministry</p>
+            </div>
+          </div>
+          <div class="comparison-row">
+            <div class="comparison-cell ai-ok">
+              <span class="label">AI works</span>
+              <p>A quick summary for your own reference</p>
+            </div>
+            <div class="comparison-cell human-needed">
+              <span class="label">Needs expertise</span>
+              <p>Your website homepage, the first thing potential clients read</p>
+            </div>
+          </div>
+        </div>
+
+        <h2>The UAE context adds another layer</h2>
+
+        <p>Working in this market means dealing with content that often needs to work in both Arabic and English—sometimes for the same audience.</p>
+
+        <p>A professional in Dubai might read your English website, then switch to Arabic when reviewing a contract. Or they'll see your Arabic ad, then visit your English landing page.</p>
+
+        <p>If the tone doesn't match across languages, it creates a subtle disconnect. The brand feels inconsistent. Less trustworthy. Less professional.</p>
+
+        <p><strong>This is something AI genuinely cannot handle. It translates language. It doesn't translate brand voice.</strong></p>
+
+        <h2>The real question to ask</h2>
+
+        <p>Before deciding how to handle translation, the question isn't "Can AI do this?"</p>
+
+        <p>It's <strong>"What happens if this text is 90% right instead of 100% right?"</strong></p>
+
+        <p>For some content, 90% is fine. For other content, that 10% gap is where you lose the client, confuse the reader, or weaken your position.</p>
+
+        <p>Machine translation is fast and cheap. But speed and cost aren't the only factors.</p>
+
+        <p>The question is whether the content represents you the way you'd represent yourself.</p>
+
+        <h2>Final thought</h2>
+
+        <p>AI will keep improving. The tools available today are better than last year, and next year's will be better still.</p>
+
+        <p>But translation isn't just about converting words. It's about carrying meaning, tone, and intent from one language to another.</p>
+
+        <p>That's a human skill. And for anything that matters—your contracts, your brand, your first impression—it's still worth investing in.</p>
+
+        <div class="article-cta">
+          <h3>Need translation that performs?</h3>
+          <p>For contracts, marketing, and content that represents your brand, we combine AI efficiency with human expertise.</p>
+          <a href="/contact/" class="btn btn--primary">
+            <i class="fas fa-envelope"></i> Get a Quote
+          </a>
+          <a href="https://wa.me/971508620217" class="btn btn--whatsapp">
+            <i class="fab fa-whatsapp"></i> WhatsApp Us
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </article>
+
+  <!-- Related Content -->
+  <section class="related-section">
+    <div class="container">
+      <h2>Related Services</h2>
+      <div class="related-grid">
+        <a href="/services/legal-translation/" class="related-card">
+          <i class="fas fa-gavel"></i>
+          <h3>Legal Translation</h3>
+          <p>MOJ-certified translation for contracts, agreements, and court documents</p>
+        </a>
+        <a href="/services/business-translation/" class="related-card">
+          <i class="fas fa-briefcase"></i>
+          <h3>Business Translation</h3>
+          <p>Professional translation for marketing, websites, and corporate content</p>
+        </a>
+        <a href="/services/arabic-translation/" class="related-card">
+          <i class="fas fa-language"></i>
+          <h3>Arabic Translation</h3>
+          <p>Native Arabic translators who understand nuance and cultural context</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .article-hero {
+    background: linear-gradient(135deg, var(--primary-color, #0E2B48) 0%, #1a3a5c 100%);
+    color: white;
+    padding: 3rem 0 4rem;
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .back-link {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover {
+    color: white;
+  }
+
+  .category-badge {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .article-hero h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 0 0 1.5rem;
+    max-width: 800px;
+  }
+
+  .post-info {
+    display: flex;
+    gap: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+  }
+
+  .post-info time,
+  .post-info .read-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .article-content {
+    padding: 3rem 0 4rem;
+    background: var(--bg-primary, white);
+  }
+
+  .content-wrapper {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-primary, #1a1a1a);
+  }
+
+  .content-wrapper p {
+    margin-bottom: 1.5rem;
+  }
+
+  .content-wrapper .lead {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color, #0E2B48);
+    margin-bottom: 0.5rem;
+  }
+
+  .content-wrapper h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color, #0E2B48);
+    margin: 3rem 0 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .content-wrapper h2:first-of-type {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .content-wrapper strong {
+    color: var(--primary-color, #0E2B48);
+  }
+
+  .content-wrapper [lang="ar"] {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+
+  .example-card {
+    background: var(--bg-secondary, #f8f9fa);
+    border-left: 4px solid var(--primary-color, #0E2B48);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .example-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color, #0E2B48);
+    margin: 0 0 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .example-card h3 i {
+    color: var(--accent-color, #FF1654);
+  }
+
+  .example-card p {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .check-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+  }
+
+  .check-list li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .check-list li::before {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: #059669;
+  }
+
+  .comparison-table {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .comparison-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .comparison-cell {
+    padding: 1.25rem;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .comparison-cell .label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+  }
+
+  .comparison-cell p {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .comparison-cell.ai-ok {
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+  }
+
+  .comparison-cell.ai-ok .label {
+    color: #059669;
+  }
+
+  .comparison-cell.human-needed {
+    background: #fef3c7;
+    border: 1px solid #fcd34d;
+  }
+
+  .comparison-cell.human-needed .label {
+    color: #d97706;
+  }
+
+  .article-cta {
+    background: linear-gradient(135deg, var(--primary-color, #0E2B48) 0%, #1a3a5c 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  .article-cta h3 {
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .article-cta p {
+    margin: 0 0 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .article-cta .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    margin: 0.25rem;
+    transition: all 0.2s;
+  }
+
+  .article-cta .btn--primary {
+    background: var(--accent-color, #FF1654);
+    color: white;
+  }
+
+  .article-cta .btn--whatsapp {
+    background: #25D366;
+    color: white;
+  }
+
+  .article-cta .btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+  }
+
+  .related-section {
+    background: var(--bg-secondary, #f8f9fa);
+    padding: 4rem 0;
+  }
+
+  .related-section h2 {
+    text-align: center;
+    font-size: 1.75rem;
+    color: var(--primary-color, #0E2B48);
+    margin: 0 0 2rem;
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .related-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .related-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .related-card i {
+    font-size: 2rem;
+    color: var(--primary-color, #0E2B48);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .related-card h3 {
+    font-size: 1.1rem;
+    color: var(--primary-color, #0E2B48);
+    margin: 0 0 0.5rem;
+  }
+
+  .related-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted, #5a6a7a);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .article-hero {
+      padding: 2rem 0 3rem;
+    }
+
+    .content-wrapper {
+      font-size: 1rem;
+    }
+
+    .comparison-row {
+      grid-template-columns: 1fr;
+    }
+
+    .article-cta .btn {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+  }
+</style>
