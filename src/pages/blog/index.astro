@@ -20,6 +20,16 @@ const categories = [
 // Blog posts data
 const posts = [
   {
+    slug: 'us-citizens-dubai-documents',
+    title: "US Citizens Moving to Dubai: The Complete Guide to Apostilles, Attestation & Translation",
+    excerpt: "Everything Americans need to know about getting US documents ready for UAE. Apostilles, IVF Global, UAE Embassy attestation, MOFA, and MOJ translation explained step by step.",
+    date: '2024-12-22',
+    category: 'how-to-guides',
+    categoryLabel: 'How-To Guides',
+    readTime: '12 min read',
+    featured: true
+  },
+  {
     slug: 'uae-arrival-paperwork',
     title: "Just Landed in the UAE? Here's the Paperwork You'll Actually Need to Handle First",
     excerpt: "New to the UAE? From driving licenses to rental contracts and family sponsorship, here's what documents actually need translation in your first month.",
@@ -72,11 +82,12 @@ const posts = [
       {posts.length > 0 ? (
         <div class="posts-grid">
           {posts.map(post => (
-            <a href={`/blog/${post.slug}/`} class="post-card">
+            <a href={`/blog/${post.slug}/`} class={`post-card ${post.featured ? 'featured' : ''}`}>
               <div class="post-card-content">
                 <div class="post-meta">
                   <span class="category-tag" data-category={post.category}>{post.categoryLabel}</span>
                   <span class="read-time">{post.readTime}</span>
+                  {post.featured && <span class="featured-badge"><i class="fas fa-star"></i> Featured</span>}
                 </div>
                 <h2>{post.title}</h2>
                 <p>{post.excerpt}</p>
@@ -297,6 +308,67 @@ const posts = [
 
   .post-card:hover .read-more i {
     transform: translateX(4px);
+  }
+
+  .post-card.featured {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, #0E2B48 0%, #1a3a5c 100%);
+    color: white;
+  }
+
+  .post-card.featured .post-card-content {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 768px) {
+    .post-card.featured .post-card-content {
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+    }
+
+    .post-card.featured h2 {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .post-card.featured h2 {
+    font-size: 1.5rem;
+    color: white;
+  }
+
+  .post-card.featured p {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .post-card.featured .post-footer {
+    border-top-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .post-card.featured .post-footer time {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .post-card.featured .read-more {
+    color: var(--accent-color, #FF1654);
+  }
+
+  .featured-badge {
+    background: #f1c40f;
+    color: #1a1a1a;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .featured-badge i {
+    font-size: 0.6rem;
   }
 
   .no-posts {
