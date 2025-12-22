@@ -16,6 +16,28 @@ const categories = [
   { key: 'how-to-guides', label: 'How-To Guides', color: '#EA580C' },
   { key: 'news', label: 'News', color: '#0891B2' }
 ];
+
+// Blog posts data
+const posts = [
+  {
+    slug: 'uae-arrival-paperwork',
+    title: "Just Landed in the UAE? Here's the Paperwork You'll Actually Need to Handle First",
+    excerpt: "New to the UAE? From driving licenses to rental contracts and family sponsorship, here's what documents actually need translation in your first month.",
+    date: '2024-12-22',
+    category: 'how-to-guides',
+    categoryLabel: 'How-To Guides',
+    readTime: '5 min read'
+  },
+  {
+    slug: 'why-machine-translation-fails',
+    title: '"Meat in Bread Cylinder" — Why Machine Translation Still Fails Where It Matters',
+    excerpt: 'AI translation has improved dramatically, but for contracts, marketing, and brand voice, the gap between correct and effective still costs businesses.',
+    date: '2024-12-22',
+    category: 'industry-insights',
+    categoryLabel: 'Industry Insights',
+    readTime: '6 min read'
+  }
+];
 ---
 
 <BaseLayout
@@ -44,15 +66,38 @@ const categories = [
     </div>
   </section>
 
-  <!-- Coming Soon Section -->
+  <!-- Blog Posts Grid -->
   <section class="posts-section">
     <div class="container">
-      <div class="no-posts">
-        <i class="fas fa-newspaper"></i>
-        <h2>Coming Soon</h2>
-        <p>We're preparing expert insights and guides on legal translation, attestation processes, and document requirements in the UAE. Check back soon!</p>
-        <a href="/" class="btn btn--primary">Return Home</a>
-      </div>
+      {posts.length > 0 ? (
+        <div class="posts-grid">
+          {posts.map(post => (
+            <a href={`/blog/${post.slug}/`} class="post-card">
+              <div class="post-card-content">
+                <div class="post-meta">
+                  <span class="category-tag" data-category={post.category}>{post.categoryLabel}</span>
+                  <span class="read-time">{post.readTime}</span>
+                </div>
+                <h2>{post.title}</h2>
+                <p>{post.excerpt}</p>
+                <div class="post-footer">
+                  <time datetime={post.date}>
+                    {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </time>
+                  <span class="read-more">Read more <i class="fas fa-arrow-right"></i></span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="no-posts">
+          <i class="fas fa-newspaper"></i>
+          <h2>Coming Soon</h2>
+          <p>We're preparing expert insights and guides on legal translation, attestation processes, and document requirements in the UAE. Check back soon!</p>
+          <a href="/" class="btn btn--primary">Return Home</a>
+        </div>
+      )}
     </div>
   </section>
 
@@ -138,6 +183,120 @@ const categories = [
 
   .posts-section {
     padding: 3rem 0 4rem;
+    background: var(--bg-primary, white);
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .post-card {
+    background: var(--bg-secondary, #f8f9fa);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .post-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .post-card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .category-tag {
+    background: var(--primary-color, #0E2B48);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .category-tag[data-category="industry-insights"] {
+    background: #DC2626;
+  }
+
+  .category-tag[data-category="legal-translation"] {
+    background: #0E2B48;
+  }
+
+  .category-tag[data-category="how-to-guides"] {
+    background: #EA580C;
+  }
+
+  .read-time {
+    font-size: 0.8rem;
+    color: var(--text-muted, #5a6a7a);
+  }
+
+  .post-card h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary, #1a1a1a);
+    margin: 0 0 0.75rem;
+    line-height: 1.35;
+  }
+
+  .post-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted, #5a6a7a);
+    line-height: 1.6;
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  .post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .post-footer time {
+    font-size: 0.85rem;
+    color: var(--text-muted, #5a6a7a);
+  }
+
+  .read-more {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary-color, #0E2B48);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .read-more i {
+    font-size: 0.7rem;
+    transition: transform 0.2s;
+  }
+
+  .post-card:hover .read-more i {
+    transform: translateX(4px);
   }
 
   .no-posts {
@@ -218,6 +377,10 @@ const categories = [
   @media (max-width: 768px) {
     .blog-hero {
       padding: 3rem 0;
+    }
+
+    .posts-grid {
+      grid-template-columns: 1fr;
     }
 
     .newsletter-card {
