@@ -1,0 +1,85 @@
+---
+import BaseLayoutMultilingual from '../../layouts/BaseLayoutMultilingual.astro';
+import TestimonialsCarousel from '../../components/TestimonialsCarousel.astro';
+import TrustBar from '../../components/TrustBar.astro';
+
+// SEO - Chinese (Simplified)
+const pageTitle = '迪拜法律翻译服务 | MOJ认证 | OnlineTranslation.ae';
+const metaDescription = '迪拜专业法律翻译服务。司法部(MOJ)认证翻译员。用于法院、移民和政府文件。快速可靠的服务。';
+
+const heroTitle = '迪拜MOJ认证法律翻译';
+const heroLead = '您的数字文档管家 — 覆盖全阿联酋';
+const heroImage = '/assets/images/onedrive/hero/office-team.png';
+
+const heroBullets = [
+  { icon: 'fas fa-stamp', text: '迪拜法院、DIFC和ADGM的MOJ认证' },
+  { icon: 'fas fa-bolt', text: '60分钟内完成初稿' },
+  { icon: 'fas fa-comments', text: '警方和法院的WhatsApp证据（法律格式）' },
+];
+
+const primaryCta = { label: '通过WhatsApp发送文件', url: 'https://wa.me/971508620217' };
+const secondaryCta = { label: '或获取书面报价', url: '/contact/' };
+
+const overlapCards = [
+  { icon: 'fas fa-shield-alt', title: '迪拜统一许可证', desc: '官方迪拜商业登记 — 验证', badge: '官方许可', url: 'https://app.invest.dubai.ae/DUL/1DE9D8AA-768A-4CFC-BC27-A6F23017B858' },
+  { icon: 'fas fa-building', title: '政府认可', desc: '法院、大使馆和部委接受', badge: '', url: '/services/legal-translation/' },
+  { icon: 'fas fa-bolt', title: '60分钟交付', desc: '迪拜最快的认证翻译服务', badge: '', url: '/services/legal-translation/' },
+];
+
+const servicesLabel = '我们的服务';
+const servicesTitle = '四大专业领域的专业翻译服务';
+
+const servicesItems = [
+  { href: '/services/legal-translation/', image: '/assets/images/onedrive/tiles/tile-courts.png', imageAlt: '法律翻译服务', heading: '法律与企业', text: '合同、法院命令、公司治理、授权委托书和诉讼文件，附MOJ认证。' },
+  { href: '/personal/', image: '/assets/images/onedrive/tiles/tile-immigration.png', imageAlt: '个人文件翻译', heading: '个人文件', text: '出生证明、结婚证、学历证书、无犯罪证明和移民文件。' },
+  { href: '/services/attestation/', image: '/assets/images/onedrive/services/services-4.jpg', imageAlt: '认证和MOFA', heading: '认证服务', text: 'MOFA和政府机构的文件认证。包括安全运输在内的完整认证服务。' },
+  { href: '/services/certificate-translation/', image: '/assets/images/onedrive/services/services-5.jpg', imageAlt: '商业本地化', heading: '商业本地化', text: '网站和应用本地化、营销改编、菜单翻译和阿联酋市场的技术文档。' },
+  { href: '/locations/', image: '/assets/images/onedrive/tiles/tile-corporate.png', imageAlt: '位置服务', heading: '位置服务', text: '迪拜、阿布扎比和北部酋长国的取件和送达。为繁忙专业人士提供上门服务。' },
+  { href: '/services/golden-visa-translation/', image: '/assets/images/onedrive/tiles/tile-immigration.png', imageAlt: '黄金签证翻译', heading: '黄金签证', text: '阿联酋黄金签证申请的完整文件包。学术、专业和投资文件。' },
+];
+
+const metrics = [
+  { value: '43+', label: '语言', note: '认证配对' },
+  { value: '7', label: '天/周', note: '随时可用' },
+  { value: '就绪', label: '法院', note: 'MOJ认证' },
+  { value: '60分钟', label: '初稿', note: '数字交付' },
+];
+
+const faqLabel = '常见问题';
+const faqTitle = '关于迪拜法律翻译的常见问题';
+
+const faqItems = [
+  { question: '你们的翻译服务与其他翻译公司有何不同？', answer: '我们作为文档管家运营，而非传统翻译办公室。这意味着您可以获得与认证法律翻译提供商合作的合规保证，而无需传统机构的复杂性。' },
+  { question: '你们的翻译在阿联酋法院被接受吗？', answer: '是的。我们协调的每项法律翻译服务都由MOJ认证翻译员执行。我们的翻译专门为迪拜法院、DIFC、ADGM和联邦司法机构格式化。' },
+  { question: '获得认证法律翻译需要多长时间？', answer: '标准文件（出生证明、结婚证、学历证书）通常在3-6个工作小时内完成。紧急法律需求可提供加急处理。' },
+  { question: '你们提供认证服务吗？', answer: '是的。当您的法律文件需要MOFA或其他政府机构的认证时，我们协调整个流程，包括原件的安全运输。' },
+  { question: '你们翻译阿拉伯语到英语和英语到阿拉伯语吗？', answer: '是的。我们的认证翻译员双向工作，提供全面的阿拉伯语翻译服务。' },
+];
+
+const ctaBanner = {
+  title: '我们处理合规事务。您专注于重要的事情。',
+  body: '加入迪拜、阿布扎比和北部酋长国信任OnlineTranslation.ae的企业和个人。',
+  buttonLabel: '通过WhatsApp发送文件',
+  buttonUrl: 'https://wa.me/971508620217',
+};
+---
+
+<BaseLayoutMultilingual title={pageTitle} description={metaDescription} lang="zh" dir="ltr" isHomepage={true} canonicalOverride="https://onlinetranslation.ae/">
+  <section id="home" class="hero-section exodus-hero">
+    <div class="hero-background"><img src={heroImage} alt="OnlineTranslation.ae专业团队" class="hero-image" loading="eager"><div class="hero-overlay exodus-overlay"></div></div>
+    <div class="container"><div class="hero-content"><div class="hero-text">
+      <h1 class="hero-title exodus-title"><span class="title-line">{heroTitle}</span></h1>
+      <p class="hero-lead">{heroLead}</p>
+      <ul class="hero-bullets">{heroBullets.map((item) => (<li>{item.icon && <i class={item.icon}></i>}{item.text}</li>))}</ul>
+      <div class="hero-cta-group"><a href={primaryCta.url} class="hero-cta exodus-cta"><i class="fab fa-whatsapp"></i> {primaryCta.label}</a>{secondaryCta?.url && (<a href={secondaryCta.url} class="hero-cta-secondary">{secondaryCta.label}</a>)}</div>
+    </div></div></div>
+    <div class="overlap-cards-wrapper"><div class="container"><div class="overlap-cards">{overlapCards.map((card) => (<a href={card.url || '#'} class="overlap-card" target={card.url?.startsWith('http') ? '_blank' : undefined} rel={card.url?.startsWith('http') ? 'noopener noreferrer' : undefined}><div class="overlap-card-icon">{card.icon && <i class={card.icon}></i>}</div><div class="overlap-card-content"><h3 class="overlap-card-title">{card.title}</h3><p class="overlap-card-desc">{card.desc}</p>{card.badge && (<span class="overlap-card-badge">{card.badge}</span>)}</div></a>))}</div></div></div>
+  </section>
+  <TrustBar />
+  <section id="services" class="section bg-white services-section"><div class="container"><div class="section-header"><span class="section-label">{servicesLabel}</span><h2 class="section-title">{servicesTitle}</h2></div><div class="services-grid-enhanced">{servicesItems.map((service) => (<a href={service.href} class="service-card-v2"><div class="card-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div><div class="card-image"><img src={service.image} alt={service.imageAlt} loading="lazy" width="400" height="300"></div><div class="card-body"><h3>{service.heading}</h3><p>{service.text}</p><span class="card-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg></span></div></a>))}</div></div></section>
+  <section class="ot-metrics"><div class="ot-metrics-inner">{metrics.map((metric) => (<article class="ot-metric"><span class="ot-metric-value">{metric.value}</span><span class="ot-metric-label">{metric.label}</span>{metric.note && (<span class="ot-metric-note">{metric.note}</span>)}</article>))}</div></section>
+  <section id="faq" class="section bg-white faq-section"><div class="container container--narrow"><div class="section-header"><span class="section-label">{faqLabel}</span><h2 class="section-title">{faqTitle}</h2></div><div class="faq-list">{faqItems.map((item) => (<article class="faq-item"><button class="faq-question">{item.question}<i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>{item.answer}</p></div></article>))}</div></div></section>
+  <section class="section bg-dark cta-banner"><div class="container text-center"><h2>{ctaBanner.title}</h2><p>{ctaBanner.body}</p><a href={ctaBanner.buttonUrl} class="cta-btn"><i class="fab fa-whatsapp"></i> {ctaBanner.buttonLabel}</a></div></section>
+  <TestimonialsCarousel />
+</BaseLayoutMultilingual>
+<script>document.addEventListener('DOMContentLoaded', () => { const faqItems = document.querySelectorAll('.faq-item'); faqItems.forEach((item) => { const question = item.querySelector('.faq-question'); question?.addEventListener('click', () => { const isOpen = item.classList.contains('is-open'); faqItems.forEach((i) => i.classList.remove('is-open')); if (!isOpen) item.classList.add('is-open'); }); }); });</script>

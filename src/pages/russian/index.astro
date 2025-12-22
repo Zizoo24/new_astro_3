@@ -1,0 +1,95 @@
+---
+import BaseLayoutMultilingual from '../../layouts/BaseLayoutMultilingual.astro';
+import TestimonialsCarousel from '../../components/TestimonialsCarousel.astro';
+import TrustBar from '../../components/TrustBar.astro';
+
+// SEO - Russian
+const pageTitle = 'Юридический перевод в Дубае | Сертификация MOJ | OnlineTranslation.ae';
+const metaDescription = 'Профессиональные услуги юридического перевода в Дубае. Сертифицированные переводчики MOJ. Для судов, иммиграции и государственных документов. Быстрый и надежный сервис.';
+
+const heroTitle = 'Сертифицированный юридический перевод MOJ в Дубае';
+const heroLead = 'Ваш цифровой документ-консьерж — по всем ОАЭ';
+const heroImage = '/assets/images/onedrive/hero/office-team.png';
+
+const heroBullets = [
+  { icon: 'fas fa-stamp', text: 'Сертификация MOJ для судов Дубая, DIFC и ADGM' },
+  { icon: 'fas fa-bolt', text: 'Первый черновик готов за 60 минут' },
+  { icon: 'fas fa-comments', text: 'Доказательства WhatsApp для полиции и судов (юридический формат)' },
+];
+
+const primaryCta = { label: 'Отправить документы в WhatsApp', url: 'https://wa.me/971508620217' };
+const secondaryCta = { label: 'Или получить письменное предложение', url: '/contact/' };
+
+const overlapCards = [
+  { icon: 'fas fa-shield-alt', title: 'Единая лицензия Дубая', desc: 'Официальный бизнес-реестр Дубая — проверить', badge: 'Официально лицензировано', url: 'https://app.invest.dubai.ae/DUL/1DE9D8AA-768A-4CFC-BC27-A6F23017B858' },
+  { icon: 'fas fa-building', title: 'Признано государством', desc: 'Принимается судами, посольствами и министерствами', badge: '', url: '/services/legal-translation/' },
+  { icon: 'fas fa-bolt', title: 'Доставка за 60 минут', desc: 'Самый быстрый сертифицированный перевод в Дубае', badge: '', url: '/services/legal-translation/' },
+];
+
+const servicesLabel = 'Наши услуги';
+const servicesTitle = 'Профессиональные услуги перевода в четырех специализированных областях';
+
+const servicesItems = [
+  { href: '/services/legal-translation/', image: '/assets/images/onedrive/tiles/tile-courts.png', imageAlt: 'Юридический перевод', heading: 'Юридические и корпоративные', text: 'Контракты, судебные решения, корпоративное управление, доверенности и судебные документы с сертификацией MOJ.' },
+  { href: '/personal/', image: '/assets/images/onedrive/tiles/tile-immigration.png', imageAlt: 'Перевод личных документов', heading: 'Личные документы', text: 'Свидетельства о рождении, браке, образовательные документы, справки о несудимости и иммиграционные документы.' },
+  { href: '/services/attestation/', image: '/assets/images/onedrive/services/services-4.jpg', imageAlt: 'Легализация и MOFA', heading: 'Услуги легализации', text: 'Легализация документов для MOFA и государственных органов. Полный комплекс услуг включая безопасную доставку.' },
+  { href: '/services/certificate-translation/', image: '/assets/images/onedrive/services/services-5.jpg', imageAlt: 'Бизнес-локализация', heading: 'Бизнес-локализация', text: 'Локализация сайтов и приложений, адаптация маркетинга, перевод меню и технической документации для рынка ОАЭ.' },
+  { href: '/locations/', image: '/assets/images/onedrive/tiles/tile-corporate.png', imageAlt: 'Услуги по локациям', heading: 'Услуги по локациям', text: 'Забор и доставка в Дубае, Абу-Даби и северных эмиратах. Услуга «от двери до двери» для занятых профессионалов.' },
+  { href: '/services/golden-visa-translation/', image: '/assets/images/onedrive/tiles/tile-immigration.png', imageAlt: 'Перевод для Golden Visa', heading: 'Golden Visa', text: 'Полный пакет документов для заявок на Golden Visa ОАЭ. Образовательные, профессиональные и инвестиционные документы.' },
+];
+
+const metrics = [
+  { value: '43+', label: 'Языка', note: 'Сертифицированные пары' },
+  { value: '7', label: 'Дней/неделю', note: 'Всегда доступны' },
+  { value: 'Готово', label: 'Для суда', note: 'Сертификация MOJ' },
+  { value: '60 мин', label: 'Первый черновик', note: 'Цифровая доставка' },
+];
+
+const faqLabel = 'Часто задаваемые вопросы';
+const faqTitle = 'Общие вопросы о юридическом переводе в Дубае';
+
+const faqItems = [
+  { question: 'Чем ваш сервис перевода отличается от других компаний?', answer: 'Мы работаем как документ-консьерж, а не традиционное бюро переводов. Это означает, что вы получаете гарантии соответствия при работе с сертифицированными поставщиками юридических переводов без сложностей традиционных агентств.' },
+  { question: 'Принимаются ли ваши переводы в судах ОАЭ?', answer: 'Да. Каждый наш юридический перевод выполняется сертифицированными переводчиками MOJ. Наши переводы специально отформатированы для судов Дубая, DIFC, ADGM и федеральных судебных органов.' },
+  { question: 'Сколько времени занимает сертифицированный юридический перевод?', answer: 'Стандартные документы (свидетельства о рождении, браке, образовательные документы) обычно готовы за 3-6 рабочих часов. Доступна срочная обработка для неотложных юридических требований.' },
+  { question: 'Предоставляете ли вы услуги легализации?', answer: 'Да. Когда вашим юридическим документам требуется легализация от MOFA или других государственных органов, мы координируем весь процесс, включая безопасную транспортировку оригиналов.' },
+  { question: 'Переводите ли вы с арабского на английский и с английского на арабский?', answer: 'Да. Наши сертифицированные переводчики работают в обоих направлениях, предоставляя комплексные услуги арабского перевода.' },
+];
+
+const ctaBanner = {
+  title: 'Мы позаботимся о соответствии. Вы сосредоточьтесь на важном.',
+  body: 'Присоединяйтесь к компаниям и частным лицам в Дубае, Абу-Даби и северных эмиратах, которые доверяют OnlineTranslation.ae.',
+  buttonLabel: 'Отправить документы в WhatsApp',
+  buttonUrl: 'https://wa.me/971508620217',
+};
+---
+
+<BaseLayoutMultilingual title={pageTitle} description={metaDescription} lang="ru" dir="ltr" isHomepage={true} canonicalOverride="https://onlinetranslation.ae/">
+  <section id="home" class="hero-section exodus-hero">
+    <div class="hero-background">
+      <img src={heroImage} alt="Профессиональная команда OnlineTranslation.ae" class="hero-image" loading="eager">
+      <div class="hero-overlay exodus-overlay"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title exodus-title"><span class="title-line">{heroTitle}</span></h1>
+          <p class="hero-lead">{heroLead}</p>
+          <ul class="hero-bullets">{heroBullets.map((item) => (<li>{item.icon && <i class={item.icon}></i>}{item.text}</li>))}</ul>
+          <div class="hero-cta-group">
+            <a href={primaryCta.url} class="hero-cta exodus-cta"><i class="fab fa-whatsapp"></i> {primaryCta.label}</a>
+            {secondaryCta?.url && (<a href={secondaryCta.url} class="hero-cta-secondary">{secondaryCta.label}</a>)}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlap-cards-wrapper"><div class="container"><div class="overlap-cards">{overlapCards.map((card) => (<a href={card.url || '#'} class="overlap-card" target={card.url?.startsWith('http') ? '_blank' : undefined} rel={card.url?.startsWith('http') ? 'noopener noreferrer' : undefined}><div class="overlap-card-icon">{card.icon && <i class={card.icon}></i>}</div><div class="overlap-card-content"><h3 class="overlap-card-title">{card.title}</h3><p class="overlap-card-desc">{card.desc}</p>{card.badge && (<span class="overlap-card-badge">{card.badge}</span>)}</div></a>))}</div></div></div>
+  </section>
+  <TrustBar />
+  <section id="services" class="section bg-white services-section"><div class="container"><div class="section-header"><span class="section-label">{servicesLabel}</span><h2 class="section-title">{servicesTitle}</h2></div><div class="services-grid-enhanced">{servicesItems.map((service) => (<a href={service.href} class="service-card-v2"><div class="card-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div><div class="card-image"><img src={service.image} alt={service.imageAlt} loading="lazy" width="400" height="300"></div><div class="card-body"><h3>{service.heading}</h3><p>{service.text}</p><span class="card-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg></span></div></a>))}</div></div></section>
+  <section class="ot-metrics"><div class="ot-metrics-inner">{metrics.map((metric) => (<article class="ot-metric"><span class="ot-metric-value">{metric.value}</span><span class="ot-metric-label">{metric.label}</span>{metric.note && (<span class="ot-metric-note">{metric.note}</span>)}</article>))}</div></section>
+  <section id="faq" class="section bg-white faq-section"><div class="container container--narrow"><div class="section-header"><span class="section-label">{faqLabel}</span><h2 class="section-title">{faqTitle}</h2></div><div class="faq-list">{faqItems.map((item) => (<article class="faq-item"><button class="faq-question">{item.question}<i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>{item.answer}</p></div></article>))}</div></div></section>
+  <section class="section bg-dark cta-banner"><div class="container text-center"><h2>{ctaBanner.title}</h2><p>{ctaBanner.body}</p><a href={ctaBanner.buttonUrl} class="cta-btn"><i class="fab fa-whatsapp"></i> {ctaBanner.buttonLabel}</a></div></section>
+  <TestimonialsCarousel />
+</BaseLayoutMultilingual>
+<script>document.addEventListener('DOMContentLoaded', () => { const faqItems = document.querySelectorAll('.faq-item'); faqItems.forEach((item) => { const question = item.querySelector('.faq-question'); question?.addEventListener('click', () => { const isOpen = item.classList.contains('is-open'); faqItems.forEach((i) => i.classList.remove('is-open')); if (!isOpen) item.classList.add('is-open'); }); }); });</script>

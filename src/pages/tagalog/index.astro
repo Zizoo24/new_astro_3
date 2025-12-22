@@ -1,0 +1,171 @@
+---
+import BaseLayoutMultilingual from '../../layouts/BaseLayoutMultilingual.astro';
+import TestimonialsCarousel from '../../components/TestimonialsCarousel.astro';
+import TrustBar from '../../components/TrustBar.astro';
+
+// SEO - Tagalog
+const pageTitle = 'Legal na Pagsasalin sa Dubai | MOJ Certified | OnlineTranslation.ae';
+const metaDescription = 'Propesyonal na serbisyo ng legal na pagsasalin sa Dubai. MOJ certified na mga tagasalin. Para sa mga korte, imigrasyon at mga dokumento ng gobyerno. Mabilis at mapagkakatiwalaang serbisyo.';
+
+const heroTitle = 'MOJ Certified Legal na Pagsasalin sa Dubai';
+const heroLead = 'Ang Iyong Digital Document Concierge - Buong UAE';
+const heroImage = '/assets/images/onedrive/hero/office-team.png';
+
+const heroBullets = [
+  { icon: 'fas fa-stamp', text: 'MOJ certified para sa Dubai Courts, DIFC at ADGM' },
+  { icon: 'fas fa-bolt', text: 'Unang draft handa sa loob ng 60 minuto' },
+  { icon: 'fas fa-comments', text: 'WhatsApp evidence para sa pulis at korte (legal format)' },
+];
+
+const primaryCta = { label: 'Magpadala ng Dokumento sa WhatsApp', url: 'https://wa.me/971508620217' };
+const secondaryCta = { label: 'O kumuha ng nakasulat na quotation', url: '/contact/' };
+
+const overlapCards = [
+  { icon: 'fas fa-shield-alt', title: 'Dubai Unified License', desc: 'Opisyal na Dubai Business Register - I-verify', badge: 'Opisyal na May Lisensya', url: 'https://app.invest.dubai.ae/DUL/1DE9D8AA-768A-4CFC-BC27-A6F23017B858' },
+  { icon: 'fas fa-building', title: 'Kinikilala ng Gobyerno', desc: 'Tinatanggap ng mga korte, embahada at ministries', badge: '', url: '/services/legal-translation/' },
+  { icon: 'fas fa-bolt', title: '60-Minutong Delivery', desc: 'Pinakamabilis na certified translation service sa Dubai', badge: '', url: '/services/legal-translation/' },
+];
+
+const servicesLabel = 'Aming Mga Serbisyo';
+const servicesTitle = 'Propesyonal na Serbisyo ng Pagsasalin sa Apat na Espesyalistang Larangan';
+
+const servicesItems = [
+  { href: '/services/legal-translation/', image: '/assets/images/onedrive/tiles/tile-courts.png', imageAlt: 'Legal translation services', heading: 'Legal at Corporate', text: 'Mga kontrata, utos ng korte, corporate governance, power of attorney at litigation documents na may MOJ certification.' },
+  { href: '/personal/', image: '/assets/images/onedrive/tiles/tile-immigration.png', imageAlt: 'Personal document translation', heading: 'Personal na Dokumento', text: 'Birth certificate, marriage certificate, educational credentials, police clearance at immigration documents.' },
+  { href: '/services/attestation/', image: '/assets/images/onedrive/services/services-4.jpg', imageAlt: 'Attestation at MOFA', heading: 'Serbisyo ng Attestation', text: 'Document attestation para sa MOFA at government bodies. Kumpletong attestation services kasama ang secure transport.' },
+  { href: '/services/certificate-translation/', image: '/assets/images/onedrive/services/services-5.jpg', imageAlt: 'Business localization', heading: 'Business Localization', text: 'Website at app localization, marketing adaptation, menu translation at technical documents para sa UAE market.' },
+  { href: '/locations/', image: '/assets/images/onedrive/tiles/tile-corporate.png', imageAlt: 'Location services', heading: 'Mga Serbisyo sa Lokasyon', text: 'Pick-up at delivery sa Dubai, Abu Dhabi at Northern Emirates. Door-to-door service para sa mga busy professionals.' },
+  { href: '/services/golden-visa-translation/', image: '/assets/images/onedrive/tiles/tile-immigration.png', imageAlt: 'Golden Visa translation', heading: 'Golden Visa', text: 'Kumpletong document packages para sa UAE Golden Visa applications. Academic, professional at investment documents.' },
+];
+
+const metrics = [
+  { value: '43+', label: 'Mga Wika', note: 'Certified pairs' },
+  { value: '7', label: 'Araw/Linggo', note: 'Laging available' },
+  { value: 'Handa', label: 'Para sa Korte', note: 'MOJ certified' },
+  { value: '60 min', label: 'Unang Draft', note: 'Digital delivery' },
+];
+
+const faqLabel = 'Mga Madalas Itanong';
+const faqTitle = 'Mga Karaniwang Tanong Tungkol sa Legal na Pagsasalin sa Dubai';
+
+const faqItems = [
+  { question: 'Paano naiiba ang inyong translation service sa ibang translation companies?', answer: 'Nagtatrabaho kami bilang document concierge, hindi tradisyonal na translation office. Ibig sabihin, makukuha mo ang compliance guarantees ng pagtatrabaho sa certified legal translation providers nang walang mga kumplikasyon ng tradisyonal na agencies.' },
+  { question: 'Tinatanggap ba ang inyong mga pagsasalin sa mga korte ng UAE?', answer: 'Oo. Bawat legal translation service na aming inaayos ay ginagawa ng MOJ certified translators. Ang aming mga pagsasalin ay espesyal na formatted para sa Dubai Courts, DIFC, ADGM at federal judicial bodies.' },
+  { question: 'Gaano katagal bago makuha ang certified legal translation?', answer: 'Ang standard documents (birth certificates, marriage certificates, educational certificates) ay karaniwang handa sa loob ng 3-6 business hours. May express processing para sa urgent legal requirements.' },
+  { question: 'Nag-aalok ba kayo ng attestation services?', answer: 'Oo. Kapag kailangan ng inyong legal documents ng attestation mula sa MOFA o ibang government bodies, inaayos namin ang buong proseso kasama ang secure original transport.' },
+  { question: 'Nagta-translate ba kayo ng Arabic to English at English to Arabic?', answer: 'Oo. Ang aming certified translators ay nagtatrabaho sa parehong direksyon para magbigay ng komprehensibong Arabic translation services.' },
+];
+
+const ctaBanner = {
+  title: 'Kami ang bahala sa compliance. Ikaw ay mag-focus sa mahalaga.',
+  body: 'Sumali sa mga negosyo at indibidwal sa Dubai, Abu Dhabi at Northern Emirates na nagtitiwala sa OnlineTranslation.ae.',
+  buttonLabel: 'Magpadala ng Dokumento sa WhatsApp',
+  buttonUrl: 'https://wa.me/971508620217',
+};
+---
+
+<BaseLayoutMultilingual title={pageTitle} description={metaDescription} lang="tl" dir="ltr" isHomepage={true} canonicalOverride="https://onlinetranslation.ae/">
+  <section id="home" class="hero-section exodus-hero">
+    <div class="hero-background">
+      <img src={heroImage} alt="OnlineTranslation.ae professional team" class="hero-image" loading="eager">
+      <div class="hero-overlay exodus-overlay"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title exodus-title"><span class="title-line">{heroTitle}</span></h1>
+          <p class="hero-lead">{heroLead}</p>
+          <ul class="hero-bullets">
+            {heroBullets.map((item) => (<li>{item.icon && <i class={item.icon}></i>}{item.text}</li>))}
+          </ul>
+          <div class="hero-cta-group">
+            <a href={primaryCta.url} class="hero-cta exodus-cta"><i class="fab fa-whatsapp"></i> {primaryCta.label}</a>
+            {secondaryCta?.url && (<a href={secondaryCta.url} class="hero-cta-secondary">{secondaryCta.label}</a>)}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlap-cards-wrapper">
+      <div class="container">
+        <div class="overlap-cards">
+          {overlapCards.map((card) => (
+            <a href={card.url || '#'} class="overlap-card" target={card.url?.startsWith('http') ? '_blank' : undefined} rel={card.url?.startsWith('http') ? 'noopener noreferrer' : undefined}>
+              <div class="overlap-card-icon">{card.icon && <i class={card.icon}></i>}</div>
+              <div class="overlap-card-content">
+                <h3 class="overlap-card-title">{card.title}</h3>
+                <p class="overlap-card-desc">{card.desc}</p>
+                {card.badge && (<span class="overlap-card-badge">{card.badge}</span>)}
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <TrustBar />
+
+  <section id="services" class="section bg-white services-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">{servicesLabel}</span>
+        <h2 class="section-title">{servicesTitle}</h2>
+      </div>
+      <div class="services-grid-enhanced">
+        {servicesItems.map((service) => (
+          <a href={service.href} class="service-card-v2">
+            <div class="card-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div>
+            <div class="card-image"><img src={service.image} alt={service.imageAlt} loading="lazy" width="400" height="300"></div>
+            <div class="card-body">
+              <h3>{service.heading}</h3>
+              <p>{service.text}</p>
+              <span class="card-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg></span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="ot-metrics">
+    <div class="ot-metrics-inner">
+      {metrics.map((metric) => (<article class="ot-metric"><span class="ot-metric-value">{metric.value}</span><span class="ot-metric-label">{metric.label}</span>{metric.note && (<span class="ot-metric-note">{metric.note}</span>)}</article>))}
+    </div>
+  </section>
+
+  <section id="faq" class="section bg-white faq-section">
+    <div class="container container--narrow">
+      <div class="section-header">
+        <span class="section-label">{faqLabel}</span>
+        <h2 class="section-title">{faqTitle}</h2>
+      </div>
+      <div class="faq-list">
+        {faqItems.map((item) => (<article class="faq-item"><button class="faq-question">{item.question}<i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>{item.answer}</p></div></article>))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-dark cta-banner">
+    <div class="container text-center">
+      <h2>{ctaBanner.title}</h2>
+      <p>{ctaBanner.body}</p>
+      <a href={ctaBanner.buttonUrl} class="cta-btn"><i class="fab fa-whatsapp"></i> {ctaBanner.buttonLabel}</a>
+    </div>
+  </section>
+
+  <TestimonialsCarousel />
+</BaseLayoutMultilingual>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach((item) => {
+      const question = item.querySelector('.faq-question');
+      question?.addEventListener('click', () => {
+        const isOpen = item.classList.contains('is-open');
+        faqItems.forEach((i) => i.classList.remove('is-open'));
+        if (!isOpen) item.classList.add('is-open');
+      });
+    });
+  });
+</script>

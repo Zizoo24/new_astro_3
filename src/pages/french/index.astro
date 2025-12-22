@@ -1,0 +1,85 @@
+---
+import BaseLayoutMultilingual from '../../layouts/BaseLayoutMultilingual.astro';
+import TestimonialsCarousel from '../../components/TestimonialsCarousel.astro';
+import TrustBar from '../../components/TrustBar.astro';
+
+// SEO - French
+const pageTitle = 'Traduction juridique à Dubaï | Certifié MOJ | OnlineTranslation.ae';
+const metaDescription = 'Services de traduction juridique professionnelle à Dubaï. Traducteurs certifiés MOJ. Pour les tribunaux, l\'immigration et les documents gouvernementaux. Service rapide et fiable.';
+
+const heroTitle = 'Traduction juridique certifiée MOJ à Dubaï';
+const heroLead = 'Votre concierge documentaire numérique — Dans tous les EAU';
+const heroImage = '/assets/images/onedrive/hero/office-team.png';
+
+const heroBullets = [
+  { icon: 'fas fa-stamp', text: 'Certifié MOJ pour les tribunaux de Dubaï, DIFC et ADGM' },
+  { icon: 'fas fa-bolt', text: 'Premier brouillon prêt en 60 minutes' },
+  { icon: 'fas fa-comments', text: 'Preuves WhatsApp pour la police et les tribunaux (format juridique)' },
+];
+
+const primaryCta = { label: 'Envoyer documents via WhatsApp', url: 'https://wa.me/971508620217' };
+const secondaryCta = { label: 'Ou obtenir un devis écrit', url: '/contact/' };
+
+const overlapCards = [
+  { icon: 'fas fa-shield-alt', title: 'Licence unifiée de Dubaï', desc: 'Registre officiel des entreprises de Dubaï — Vérifier', badge: 'Officiellement licencié', url: 'https://app.invest.dubai.ae/DUL/1DE9D8AA-768A-4CFC-BC27-A6F23017B858' },
+  { icon: 'fas fa-building', title: 'Reconnu par le gouvernement', desc: 'Accepté par les tribunaux, ambassades et ministères', badge: '', url: '/services/legal-translation/' },
+  { icon: 'fas fa-bolt', title: 'Livraison en 60 minutes', desc: 'Le service de traduction certifiée le plus rapide à Dubaï', badge: '', url: '/services/legal-translation/' },
+];
+
+const servicesLabel = 'Nos services';
+const servicesTitle = 'Services de traduction professionnelle dans quatre domaines spécialisés';
+
+const servicesItems = [
+  { href: '/services/legal-translation/', image: '/assets/images/onedrive/tiles/tile-courts.png', imageAlt: 'Services de traduction juridique', heading: 'Juridique et entreprise', text: 'Contrats, décisions de justice, gouvernance d\'entreprise, procurations et documents de litige avec certification MOJ.' },
+  { href: '/personal/', image: '/assets/images/onedrive/tiles/tile-immigration.png', imageAlt: 'Traduction de documents personnels', heading: 'Documents personnels', text: 'Actes de naissance, de mariage, diplômes, casier judiciaire et documents d\'immigration.' },
+  { href: '/services/attestation/', image: '/assets/images/onedrive/services/services-4.jpg', imageAlt: 'Légalisation et MOFA', heading: 'Services de légalisation', text: 'Légalisation de documents pour MOFA et organismes gouvernementaux. Services complets incluant transport sécurisé.' },
+  { href: '/services/certificate-translation/', image: '/assets/images/onedrive/services/services-5.jpg', imageAlt: 'Localisation commerciale', heading: 'Localisation commerciale', text: 'Localisation de sites web et applications, adaptation marketing, traduction de menus et documents techniques pour le marché des EAU.' },
+  { href: '/locations/', image: '/assets/images/onedrive/tiles/tile-corporate.png', imageAlt: 'Services par localisation', heading: 'Services par localisation', text: 'Collecte et livraison à Dubaï, Abu Dhabi et émirats du nord. Service porte-à-porte pour les professionnels occupés.' },
+  { href: '/services/golden-visa-translation/', image: '/assets/images/onedrive/tiles/tile-immigration.png', imageAlt: 'Traduction Golden Visa', heading: 'Golden Visa', text: 'Dossiers complets pour les demandes de Golden Visa des EAU. Documents académiques, professionnels et d\'investissement.' },
+];
+
+const metrics = [
+  { value: '43+', label: 'Langues', note: 'Paires certifiées' },
+  { value: '7', label: 'Jours/semaine', note: 'Toujours disponible' },
+  { value: 'Prêt', label: 'Pour tribunal', note: 'Certifié MOJ' },
+  { value: '60 min', label: 'Premier brouillon', note: 'Livraison numérique' },
+];
+
+const faqLabel = 'Questions fréquentes';
+const faqTitle = 'Questions courantes sur la traduction juridique à Dubaï';
+
+const faqItems = [
+  { question: 'En quoi votre service de traduction diffère-t-il des autres sociétés?', answer: 'Nous fonctionnons comme concierge documentaire, pas bureau de traduction traditionnel. Cela signifie que vous obtenez des garanties de conformité en travaillant avec des prestataires certifiés sans les complications des agences traditionnelles.' },
+  { question: 'Vos traductions sont-elles acceptées par les tribunaux des EAU?', answer: 'Oui. Chaque service de traduction juridique que nous coordonnons est effectué par des traducteurs certifiés MOJ. Nos traductions sont spécialement formatées pour les tribunaux de Dubaï, DIFC, ADGM et les organismes judiciaires fédéraux.' },
+  { question: 'Combien de temps pour obtenir une traduction juridique certifiée?', answer: 'Les documents standards (actes de naissance, mariage, diplômes) sont généralement prêts en 3-6 heures ouvrables. Traitement express disponible pour les besoins juridiques urgents.' },
+  { question: 'Offrez-vous des services de légalisation?', answer: 'Oui. Lorsque vos documents juridiques nécessitent une légalisation par MOFA ou d\'autres organismes gouvernementaux, nous coordonnons l\'ensemble du processus, y compris le transport sécurisé des originaux.' },
+  { question: 'Traduisez-vous de l\'arabe vers l\'anglais et vice versa?', answer: 'Oui. Nos traducteurs certifiés travaillent dans les deux sens pour fournir des services de traduction arabe complets.' },
+];
+
+const ctaBanner = {
+  title: 'Nous gérons la conformité. Concentrez-vous sur l\'essentiel.',
+  body: 'Rejoignez les entreprises et particuliers à Dubaï, Abu Dhabi et les émirats du nord qui font confiance à OnlineTranslation.ae.',
+  buttonLabel: 'Envoyer documents via WhatsApp',
+  buttonUrl: 'https://wa.me/971508620217',
+};
+---
+
+<BaseLayoutMultilingual title={pageTitle} description={metaDescription} lang="fr" dir="ltr" isHomepage={true} canonicalOverride="https://onlinetranslation.ae/">
+  <section id="home" class="hero-section exodus-hero">
+    <div class="hero-background"><img src={heroImage} alt="Équipe professionnelle OnlineTranslation.ae" class="hero-image" loading="eager"><div class="hero-overlay exodus-overlay"></div></div>
+    <div class="container"><div class="hero-content"><div class="hero-text">
+      <h1 class="hero-title exodus-title"><span class="title-line">{heroTitle}</span></h1>
+      <p class="hero-lead">{heroLead}</p>
+      <ul class="hero-bullets">{heroBullets.map((item) => (<li>{item.icon && <i class={item.icon}></i>}{item.text}</li>))}</ul>
+      <div class="hero-cta-group"><a href={primaryCta.url} class="hero-cta exodus-cta"><i class="fab fa-whatsapp"></i> {primaryCta.label}</a>{secondaryCta?.url && (<a href={secondaryCta.url} class="hero-cta-secondary">{secondaryCta.label}</a>)}</div>
+    </div></div></div>
+    <div class="overlap-cards-wrapper"><div class="container"><div class="overlap-cards">{overlapCards.map((card) => (<a href={card.url || '#'} class="overlap-card" target={card.url?.startsWith('http') ? '_blank' : undefined} rel={card.url?.startsWith('http') ? 'noopener noreferrer' : undefined}><div class="overlap-card-icon">{card.icon && <i class={card.icon}></i>}</div><div class="overlap-card-content"><h3 class="overlap-card-title">{card.title}</h3><p class="overlap-card-desc">{card.desc}</p>{card.badge && (<span class="overlap-card-badge">{card.badge}</span>)}</div></a>))}</div></div></div>
+  </section>
+  <TrustBar />
+  <section id="services" class="section bg-white services-section"><div class="container"><div class="section-header"><span class="section-label">{servicesLabel}</span><h2 class="section-title">{servicesTitle}</h2></div><div class="services-grid-enhanced">{servicesItems.map((service) => (<a href={service.href} class="service-card-v2"><div class="card-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div><div class="card-image"><img src={service.image} alt={service.imageAlt} loading="lazy" width="400" height="300"></div><div class="card-body"><h3>{service.heading}</h3><p>{service.text}</p><span class="card-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg></span></div></a>))}</div></div></section>
+  <section class="ot-metrics"><div class="ot-metrics-inner">{metrics.map((metric) => (<article class="ot-metric"><span class="ot-metric-value">{metric.value}</span><span class="ot-metric-label">{metric.label}</span>{metric.note && (<span class="ot-metric-note">{metric.note}</span>)}</article>))}</div></section>
+  <section id="faq" class="section bg-white faq-section"><div class="container container--narrow"><div class="section-header"><span class="section-label">{faqLabel}</span><h2 class="section-title">{faqTitle}</h2></div><div class="faq-list">{faqItems.map((item) => (<article class="faq-item"><button class="faq-question">{item.question}<i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>{item.answer}</p></div></article>))}</div></div></section>
+  <section class="section bg-dark cta-banner"><div class="container text-center"><h2>{ctaBanner.title}</h2><p>{ctaBanner.body}</p><a href={ctaBanner.buttonUrl} class="cta-btn"><i class="fab fa-whatsapp"></i> {ctaBanner.buttonLabel}</a></div></section>
+  <TestimonialsCarousel />
+</BaseLayoutMultilingual>
+<script>document.addEventListener('DOMContentLoaded', () => { const faqItems = document.querySelectorAll('.faq-item'); faqItems.forEach((item) => { const question = item.querySelector('.faq-question'); question?.addEventListener('click', () => { const isOpen = item.classList.contains('is-open'); faqItems.forEach((i) => i.classList.remove('is-open')); if (!isOpen) item.classList.add('is-open'); }); }); });</script>

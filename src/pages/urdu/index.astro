@@ -1,0 +1,341 @@
+---
+import BaseLayoutMultilingual from '../../layouts/BaseLayoutMultilingual.astro';
+import TestimonialsCarousel from '../../components/TestimonialsCarousel.astro';
+import TrustBar from '../../components/TrustBar.astro';
+
+// SEO - Urdu
+const pageTitle = 'دبئی میں قانونی ترجمہ خدمات | MOJ تصدیق شدہ | OnlineTranslation.ae';
+const metaDescription = 'دبئی میں پیشہ ورانہ قانونی ترجمہ خدمات۔ وزارت انصاف (MOJ) سے تصدیق شدہ مترجمین۔ عدالتوں، امیگریشن اور سرکاری دستاویزات کے لیے۔ تیز اور قابل اعتماد سروس۔';
+
+// HERO - Urdu
+const heroTitle = 'دبئی میں MOJ تصدیق شدہ قانونی ترجمہ';
+const heroLead = 'آپ کا ڈیجیٹل دستاویز معاون - پورے UAE میں خدمات';
+const heroImage = '/assets/images/onedrive/hero/office-team.png';
+
+const heroBullets = [
+  {
+    icon: 'fas fa-stamp',
+    text: 'دبئی کورٹ، DIFC اور ADGM کے لیے MOJ تصدیق شدہ',
+  },
+  {
+    icon: 'fas fa-bolt',
+    text: '60 منٹ میں پہلا ڈرافٹ تیار',
+  },
+  {
+    icon: 'fas fa-comments',
+    text: 'پولیس اور عدالتوں کے لیے WhatsApp ثبوت (قانونی فارمیٹ میں)',
+  },
+];
+
+const primaryCta = {
+  label: 'WhatsApp پر دستاویزات بھیجیں',
+  url: 'https://wa.me/971508620217',
+};
+
+const secondaryCta = {
+  label: 'یا تحریری کوٹیشن حاصل کریں',
+  url: '/contact/',
+};
+
+// OVERLAP CARDS - Urdu
+const overlapCards = [
+  {
+    icon: 'fas fa-shield-alt',
+    title: 'دبئی یونیفائیڈ لائسنس',
+    desc: 'سرکاری دبئی بزنس رجسٹر - تصدیق کریں',
+    badge: 'سرکاری طور پر لائسنس یافتہ',
+    url: 'https://app.invest.dubai.ae/DUL/1DE9D8AA-768A-4CFC-BC27-A6F23017B858',
+  },
+  {
+    icon: 'fas fa-building',
+    title: 'حکومت کی منظوری',
+    desc: 'عدالتوں، سفارت خانوں اور وزارتوں سے منظور شدہ',
+    badge: '',
+    url: '/services/legal-translation/',
+  },
+  {
+    icon: 'fas fa-bolt',
+    title: '60 منٹ میں ڈیلیوری',
+    desc: 'معیاری دستاویزات کے لیے دبئی کی سب سے تیز تصدیق شدہ ترجمہ سروس',
+    badge: '',
+    url: '/services/legal-translation/',
+  },
+];
+
+// SERVICES SECTION - Urdu
+const servicesLabel = 'ہماری خدمات';
+const servicesTitle = 'چار ماہر شعبوں میں پیشہ ورانہ ترجمہ خدمات';
+
+const servicesItems = [
+  {
+    href: '/services/legal-translation/',
+    image: '/assets/images/onedrive/tiles/tile-courts.png',
+    imageAlt: 'قانونی ترجمہ خدمات',
+    heading: 'قانونی اور کارپوریٹ',
+    text: 'معاہدے، عدالتی احکامات، کارپوریٹ گورننس، پاور آف اٹارنی اور مقدمہ بازی کی دستاویزات MOJ تصدیق کے ساتھ۔',
+  },
+  {
+    href: '/personal/',
+    image: '/assets/images/onedrive/tiles/tile-immigration.png',
+    imageAlt: 'ذاتی دستاویزات کا ترجمہ',
+    heading: 'ذاتی دستاویزات',
+    text: 'پیدائش کا سرٹیفکیٹ، شادی کا سرٹیفکیٹ، تعلیمی سرٹیفکیٹس، پولیس کلیئرنس اور امیگریشن دستاویزات۔',
+  },
+  {
+    href: '/services/attestation/',
+    image: '/assets/images/onedrive/services/services-4.jpg',
+    imageAlt: 'تصدیق اور MOFA',
+    heading: 'تصدیقی خدمات',
+    text: 'MOFA اور سرکاری اداروں کے لیے دستاویزات کی تصدیق۔ محفوظ نقل و حمل سمیت مکمل تصدیقی خدمات۔',
+  },
+  {
+    href: '/services/certificate-translation/',
+    image: '/assets/images/onedrive/services/services-5.jpg',
+    imageAlt: 'کاروباری لوکلائزیشن',
+    heading: 'کاروباری لوکلائزیشن',
+    text: 'ویب سائٹ اور ایپ لوکلائزیشن، مارکیٹنگ موافقت، مینو ترجمہ اور UAE مارکیٹ میں داخلے کے لیے تکنیکی دستاویزات۔',
+  },
+  {
+    href: '/locations/',
+    image: '/assets/images/onedrive/tiles/tile-corporate.png',
+    imageAlt: 'لوکیشن سروسز',
+    heading: 'مقامی خدمات',
+    text: 'دبئی، ابوظہبی اور شمالی امارات میں پک اپ اور ڈیلیوری۔ مصروف پیشہ ور افراد کے لیے گھر تک سروس۔',
+  },
+  {
+    href: '/services/golden-visa-translation/',
+    image: '/assets/images/onedrive/tiles/tile-immigration.png',
+    imageAlt: 'گولڈن ویزا ترجمہ',
+    heading: 'گولڈن ویزا',
+    text: 'UAE گولڈن ویزا درخواستوں کے لیے مکمل دستاویزی پیکج۔ تعلیمی، پیشہ ورانہ اور سرمایہ کاری کی دستاویزات۔',
+  },
+];
+
+// METRICS STRIP - Urdu
+const metrics = [
+  { value: '43+', label: 'زبانیں', note: 'تصدیق شدہ جوڑے' },
+  { value: '7', label: 'دن/ہفتہ', note: 'ہمیشہ دستیاب' },
+  { value: 'تیار', label: 'عدالت کے لیے', note: 'MOJ تصدیق شدہ' },
+  { value: '60 منٹ', label: 'پہلا ڈرافٹ', note: 'ڈیجیٹل ڈیلیوری' },
+];
+
+// FAQ SECTION - Urdu
+const faqLabel = 'اکثر پوچھے گئے سوالات';
+const faqTitle = 'دبئی میں قانونی ترجمے کے بارے میں عام سوالات';
+
+const faqItems = [
+  {
+    question: 'آپ کی ترجمہ سروس دوسری ترجمہ کمپنیوں سے کیسے مختلف ہے؟',
+    answer: 'ہم ایک دستاویز معاون کے طور پر کام کرتے ہیں، روایتی ترجمہ دفتر نہیں۔ اس کا مطلب ہے کہ آپ کو تصدیق شدہ قانونی ترجمہ فراہم کنندگان کے ساتھ کام کرنے کی تعمیل کی ضمانت ملتی ہے، روایتی ایجنسیوں کی پیچیدگیوں کے بغیر۔',
+  },
+  {
+    question: 'کیا آپ کے ترجمے UAE کی عدالتوں میں قبول کیے جاتے ہیں؟',
+    answer: 'ہاں۔ ہماری ہر قانونی ترجمہ سروس MOJ تصدیق شدہ مترجمین کی طرف سے کی جاتی ہے۔ ہمارے ترجمے خاص طور پر دبئی کورٹ، DIFC، ADGM اور وفاقی عدالتی اداروں کے لیے تیار کیے جاتے ہیں۔',
+  },
+  {
+    question: 'تصدیق شدہ قانونی ترجمہ دینے میں کتنا وقت لگتا ہے؟',
+    answer: 'معیاری دستاویزات (پیدائش کا سرٹیفکیٹ، شادی کا سرٹیفکیٹ، تعلیمی سرٹیفکیٹ) عام طور پر 3-6 کاروباری گھنٹوں میں تیار ہو جاتے ہیں۔ فوری قانونی ضروریات کے لیے ایکسپریس پروسیسنگ دستیاب ہے۔',
+  },
+  {
+    question: 'کیا آپ تصدیقی خدمات فراہم کرتے ہیں؟',
+    answer: 'ہاں۔ جب آپ کی قانونی دستاویزات کو MOFA یا دیگر سرکاری اداروں سے تصدیق کی ضرورت ہو، تو ہم محفوظ اصل نقل و حمل سمیت پوری عمل کا انتظام کرتے ہیں۔',
+  },
+  {
+    question: 'کیا آپ عربی سے انگریزی اور انگریزی سے عربی دونوں ترجمہ کرتے ہیں؟',
+    answer: 'ہاں۔ ہمارے تصدیق شدہ مترجمین دونوں سمتوں میں کام کرتے ہیں اور جامع عربی ترجمہ خدمات فراہم کرتے ہیں۔',
+  },
+];
+
+// CTA BANNER - Urdu
+const ctaBanner = {
+  title: 'تعمیل ہم سنبھالیں۔ آپ اہم چیزوں پر توجہ دیں۔',
+  body: 'دبئی، ابوظہبی اور شمالی امارات میں ان کاروباروں اور افراد سے جڑیں جو OnlineTranslation.ae پر بھروسہ کرتے ہیں۔',
+  buttonLabel: 'WhatsApp پر دستاویزات بھیجیں',
+  buttonUrl: 'https://wa.me/971508620217',
+};
+---
+
+<BaseLayoutMultilingual
+  title={pageTitle}
+  description={metaDescription}
+  lang="ur"
+  dir="rtl"
+  isHomepage={true}
+  canonicalOverride="https://onlinetranslation.ae/"
+>
+  <!-- Hero Section -->
+  <section id="home" class="hero-section exodus-hero">
+    <div class="hero-background">
+      <img
+        src={heroImage}
+        alt="OnlineTranslation.ae پیشہ ور ٹیم"
+        class="hero-image"
+        loading="eager"
+      >
+      <div class="hero-overlay exodus-overlay"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title exodus-title">
+            <span class="title-line">{heroTitle}</span>
+          </h1>
+          <p class="hero-lead">{heroLead}</p>
+          <ul class="hero-bullets">
+            {heroBullets.map((item) => (
+              <li>
+                {item.icon && <i class={item.icon}></i>}
+                {item.text}
+              </li>
+            ))}
+          </ul>
+
+          <div class="hero-cta-group">
+            <a href={primaryCta.url} class="hero-cta exodus-cta">
+              <i class="fab fa-whatsapp"></i> {primaryCta.label}
+            </a>
+            {secondaryCta?.url && (
+              <a href={secondaryCta.url} class="hero-cta-secondary">
+                {secondaryCta.label}
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Overlap Cards -->
+    <div class="overlap-cards-wrapper">
+      <div class="container">
+        <div class="overlap-cards">
+          {overlapCards.map((card) => (
+            <a
+              href={card.url || '#'}
+              class="overlap-card"
+              target={card.url?.startsWith('http') ? '_blank' : undefined}
+              rel={card.url?.startsWith('http') ? 'noopener noreferrer' : undefined}
+            >
+              <div class="overlap-card-icon">
+                {card.icon && <i class={card.icon}></i>}
+              </div>
+              <div class="overlap-card-content">
+                <h3 class="overlap-card-title">{card.title}</h3>
+                <p class="overlap-card-desc">{card.desc}</p>
+                {card.badge && (
+                  <span class="overlap-card-badge">{card.badge}</span>
+                )}
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <TrustBar />
+
+  <!-- Services Section -->
+  <section id="services" class="section bg-white services-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">{servicesLabel}</span>
+        <h2 class="section-title">{servicesTitle}</h2>
+      </div>
+      <div class="services-grid-enhanced">
+        {servicesItems.map((service) => (
+          <a href={service.href} class="service-card-v2">
+            <div class="card-badge">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                <path d="M2 17l10 5 10-5"></path>
+                <path d="M2 12l10 5 10-5"></path>
+              </svg>
+            </div>
+            <div class="card-image">
+              <img src={service.image} alt={service.imageAlt} loading="lazy" width="400" height="300">
+            </div>
+            <div class="card-body">
+              <h3>{service.heading}</h3>
+              <p>{service.text}</p>
+              <span class="card-arrow">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14"></path>
+                  <path d="M12 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Metrics Strip -->
+  <section class="ot-metrics">
+    <div class="ot-metrics-inner">
+      {metrics.map((metric) => (
+        <article class="ot-metric">
+          <span class="ot-metric-value">{metric.value}</span>
+          <span class="ot-metric-label">{metric.label}</span>
+          {metric.note && (
+            <span class="ot-metric-note">{metric.note}</span>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="section bg-white faq-section">
+    <div class="container container--narrow">
+      <div class="section-header">
+        <span class="section-label">{faqLabel}</span>
+        <h2 class="section-title">{faqTitle}</h2>
+      </div>
+      <div class="faq-list">
+        {faqItems.map((item) => (
+          <article class="faq-item">
+            <button class="faq-question">
+              {item.question}
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>{item.answer}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="section bg-dark cta-banner">
+    <div class="container text-center">
+      <h2>{ctaBanner.title}</h2>
+      <p>{ctaBanner.body}</p>
+      <a href={ctaBanner.buttonUrl} class="cta-btn">
+        <i class="fab fa-whatsapp"></i> {ctaBanner.buttonLabel}
+      </a>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <TestimonialsCarousel />
+</BaseLayoutMultilingual>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach((item) => {
+      const question = item.querySelector('.faq-question');
+      question?.addEventListener('click', () => {
+        const isOpen = item.classList.contains('is-open');
+        faqItems.forEach((i) => i.classList.remove('is-open'));
+        if (!isOpen) {
+          item.classList.add('is-open');
+        }
+      });
+    });
+  });
+</script>

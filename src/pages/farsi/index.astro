@@ -1,0 +1,85 @@
+---
+import BaseLayoutMultilingual from '../../layouts/BaseLayoutMultilingual.astro';
+import TestimonialsCarousel from '../../components/TestimonialsCarousel.astro';
+import TrustBar from '../../components/TrustBar.astro';
+
+// SEO - Farsi/Persian
+const pageTitle = 'خدمات ترجمه حقوقی در دبی | گواهی MOJ | OnlineTranslation.ae';
+const metaDescription = 'خدمات ترجمه حقوقی حرفه‌ای در دبی. مترجمان دارای گواهی وزارت دادگستری (MOJ). برای دادگاه‌ها، مهاجرت و اسناد دولتی. خدمات سریع و قابل اعتماد.';
+
+const heroTitle = 'ترجمه حقوقی دارای گواهی MOJ در دبی';
+const heroLead = 'دستیار دیجیتال اسناد شما - در سراسر امارات';
+const heroImage = '/assets/images/onedrive/hero/office-team.png';
+
+const heroBullets = [
+  { icon: 'fas fa-stamp', text: 'گواهی MOJ برای دادگاه‌های دبی، DIFC و ADGM' },
+  { icon: 'fas fa-bolt', text: 'پیش‌نویس اول در ۶۰ دقیقه آماده' },
+  { icon: 'fas fa-comments', text: 'مدارک واتساپ برای پلیس و دادگاه‌ها (فرمت حقوقی)' },
+];
+
+const primaryCta = { label: 'ارسال اسناد از طریق واتساپ', url: 'https://wa.me/971508620217' };
+const secondaryCta = { label: 'یا دریافت پیشنهاد قیمت کتبی', url: '/contact/' };
+
+const overlapCards = [
+  { icon: 'fas fa-shield-alt', title: 'مجوز یکپارچه دبی', desc: 'ثبت تجاری رسمی دبی - تأیید کنید', badge: 'دارای مجوز رسمی', url: 'https://app.invest.dubai.ae/DUL/1DE9D8AA-768A-4CFC-BC27-A6F23017B858' },
+  { icon: 'fas fa-building', title: 'مورد تأیید دولت', desc: 'پذیرفته شده توسط دادگاه‌ها، سفارت‌ها و وزارتخانه‌ها', badge: '', url: '/services/legal-translation/' },
+  { icon: 'fas fa-bolt', title: 'تحویل در ۶۰ دقیقه', desc: 'سریع‌ترین خدمات ترجمه گواهی‌شده در دبی', badge: '', url: '/services/legal-translation/' },
+];
+
+const servicesLabel = 'خدمات ما';
+const servicesTitle = 'خدمات ترجمه حرفه‌ای در چهار حوزه تخصصی';
+
+const servicesItems = [
+  { href: '/services/legal-translation/', image: '/assets/images/onedrive/tiles/tile-courts.png', imageAlt: 'خدمات ترجمه حقوقی', heading: 'حقوقی و شرکتی', text: 'قراردادها، احکام دادگاه، حکمرانی شرکتی، وکالت‌نامه و اسناد دادرسی با گواهی MOJ.' },
+  { href: '/personal/', image: '/assets/images/onedrive/tiles/tile-immigration.png', imageAlt: 'ترجمه اسناد شخصی', heading: 'اسناد شخصی', text: 'شناسنامه، گواهی ازدواج، مدارک تحصیلی، گواهی عدم سوء‌پیشینه و اسناد مهاجرت.' },
+  { href: '/services/attestation/', image: '/assets/images/onedrive/services/services-4.jpg', imageAlt: 'تصدیق و MOFA', heading: 'خدمات تصدیق', text: 'تصدیق اسناد برای MOFA و نهادهای دولتی. خدمات تصدیق کامل شامل حمل و نقل امن.' },
+  { href: '/services/certificate-translation/', image: '/assets/images/onedrive/services/services-5.jpg', imageAlt: 'بومی‌سازی کسب‌وکار', heading: 'بومی‌سازی کسب‌وکار', text: 'بومی‌سازی وب‌سایت و اپلیکیشن، انطباق بازاریابی، ترجمه منو و اسناد فنی برای بازار امارات.' },
+  { href: '/locations/', image: '/assets/images/onedrive/tiles/tile-corporate.png', imageAlt: 'خدمات مکانی', heading: 'خدمات مکانی', text: 'دریافت و تحویل در دبی، ابوظبی و امارات شمالی. خدمات درب به درب برای متخصصان پرمشغله.' },
+  { href: '/services/golden-visa-translation/', image: '/assets/images/onedrive/tiles/tile-immigration.png', imageAlt: 'ترجمه ویزای طلایی', heading: 'ویزای طلایی', text: 'بسته‌های کامل اسناد برای درخواست‌های ویزای طلایی امارات. اسناد تحصیلی، حرفه‌ای و سرمایه‌گذاری.' },
+];
+
+const metrics = [
+  { value: '+۴۳', label: 'زبان', note: 'جفت‌های گواهی‌شده' },
+  { value: '۷', label: 'روز/هفته', note: 'همیشه در دسترس' },
+  { value: 'آماده', label: 'برای دادگاه', note: 'گواهی MOJ' },
+  { value: '۶۰ دقیقه', label: 'پیش‌نویس اول', note: 'تحویل دیجیتال' },
+];
+
+const faqLabel = 'سوالات متداول';
+const faqTitle = 'سوالات رایج درباره ترجمه حقوقی در دبی';
+
+const faqItems = [
+  { question: 'خدمات ترجمه شما چه تفاوتی با سایر شرکت‌های ترجمه دارد؟', answer: 'ما به عنوان دستیار اسناد کار می‌کنیم، نه دفتر ترجمه سنتی. این یعنی شما ضمانت‌های انطباق کار با ارائه‌دهندگان ترجمه حقوقی گواهی‌شده را بدون پیچیدگی‌های آژانس‌های سنتی دریافت می‌کنید.' },
+  { question: 'آیا ترجمه‌های شما در دادگاه‌های امارات پذیرفته می‌شوند؟', answer: 'بله. هر خدمات ترجمه حقوقی که ما هماهنگ می‌کنیم توسط مترجمان دارای گواهی MOJ انجام می‌شود. ترجمه‌های ما به طور خاص برای دادگاه‌های دبی، DIFC، ADGM و نهادهای قضایی فدرال فرمت‌بندی شده‌اند.' },
+  { question: 'چقدر طول می‌کشد تا ترجمه حقوقی گواهی‌شده دریافت کنم؟', answer: 'اسناد استاندارد (شناسنامه، گواهی ازدواج، مدارک تحصیلی) معمولاً در ۳-۶ ساعت کاری آماده می‌شوند. پردازش فوری برای نیازهای حقوقی اضطراری در دسترس است.' },
+  { question: 'آیا خدمات تصدیق ارائه می‌دهید؟', answer: 'بله. وقتی اسناد حقوقی شما نیاز به تصدیق از MOFA یا سایر نهادهای دولتی دارند، ما کل فرآیند را شامل حمل و نقل امن اصل اسناد هماهنگ می‌کنیم.' },
+  { question: 'آیا عربی به انگلیسی و انگلیسی به عربی ترجمه می‌کنید؟', answer: 'بله. مترجمان گواهی‌شده ما در هر دو جهت کار می‌کنند و خدمات ترجمه عربی جامع ارائه می‌دهند.' },
+];
+
+const ctaBanner = {
+  title: 'ما انطباق را مدیریت می‌کنیم. شما روی مهم‌ترین‌ها تمرکز کنید.',
+  body: 'به کسب‌وکارها و افرادی در دبی، ابوظبی و امارات شمالی بپیوندید که به OnlineTranslation.ae اعتماد می‌کنند.',
+  buttonLabel: 'ارسال اسناد از طریق واتساپ',
+  buttonUrl: 'https://wa.me/971508620217',
+};
+---
+
+<BaseLayoutMultilingual title={pageTitle} description={metaDescription} lang="fa" dir="rtl" isHomepage={true} canonicalOverride="https://onlinetranslation.ae/">
+  <section id="home" class="hero-section exodus-hero">
+    <div class="hero-background"><img src={heroImage} alt="تیم حرفه‌ای OnlineTranslation.ae" class="hero-image" loading="eager"><div class="hero-overlay exodus-overlay"></div></div>
+    <div class="container"><div class="hero-content"><div class="hero-text">
+      <h1 class="hero-title exodus-title"><span class="title-line">{heroTitle}</span></h1>
+      <p class="hero-lead">{heroLead}</p>
+      <ul class="hero-bullets">{heroBullets.map((item) => (<li>{item.icon && <i class={item.icon}></i>}{item.text}</li>))}</ul>
+      <div class="hero-cta-group"><a href={primaryCta.url} class="hero-cta exodus-cta"><i class="fab fa-whatsapp"></i> {primaryCta.label}</a>{secondaryCta?.url && (<a href={secondaryCta.url} class="hero-cta-secondary">{secondaryCta.label}</a>)}</div>
+    </div></div></div>
+    <div class="overlap-cards-wrapper"><div class="container"><div class="overlap-cards">{overlapCards.map((card) => (<a href={card.url || '#'} class="overlap-card" target={card.url?.startsWith('http') ? '_blank' : undefined} rel={card.url?.startsWith('http') ? 'noopener noreferrer' : undefined}><div class="overlap-card-icon">{card.icon && <i class={card.icon}></i>}</div><div class="overlap-card-content"><h3 class="overlap-card-title">{card.title}</h3><p class="overlap-card-desc">{card.desc}</p>{card.badge && (<span class="overlap-card-badge">{card.badge}</span>)}</div></a>))}</div></div></div>
+  </section>
+  <TrustBar />
+  <section id="services" class="section bg-white services-section"><div class="container"><div class="section-header"><span class="section-label">{servicesLabel}</span><h2 class="section-title">{servicesTitle}</h2></div><div class="services-grid-enhanced">{servicesItems.map((service) => (<a href={service.href} class="service-card-v2"><div class="card-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div><div class="card-image"><img src={service.image} alt={service.imageAlt} loading="lazy" width="400" height="300"></div><div class="card-body"><h3>{service.heading}</h3><p>{service.text}</p><span class="card-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg></span></div></a>))}</div></div></section>
+  <section class="ot-metrics"><div class="ot-metrics-inner">{metrics.map((metric) => (<article class="ot-metric"><span class="ot-metric-value">{metric.value}</span><span class="ot-metric-label">{metric.label}</span>{metric.note && (<span class="ot-metric-note">{metric.note}</span>)}</article>))}</div></section>
+  <section id="faq" class="section bg-white faq-section"><div class="container container--narrow"><div class="section-header"><span class="section-label">{faqLabel}</span><h2 class="section-title">{faqTitle}</h2></div><div class="faq-list">{faqItems.map((item) => (<article class="faq-item"><button class="faq-question">{item.question}<i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>{item.answer}</p></div></article>))}</div></div></section>
+  <section class="section bg-dark cta-banner"><div class="container text-center"><h2>{ctaBanner.title}</h2><p>{ctaBanner.body}</p><a href={ctaBanner.buttonUrl} class="cta-btn"><i class="fab fa-whatsapp"></i> {ctaBanner.buttonLabel}</a></div></section>
+  <TestimonialsCarousel />
+</BaseLayoutMultilingual>
+<script>document.addEventListener('DOMContentLoaded', () => { const faqItems = document.querySelectorAll('.faq-item'); faqItems.forEach((item) => { const question = item.querySelector('.faq-question'); question?.addEventListener('click', () => { const isOpen = item.classList.contains('is-open'); faqItems.forEach((i) => i.classList.remove('is-open')); if (!isOpen) item.classList.add('is-open'); }); }); });</script>
