@@ -21,9 +21,9 @@ const primaryCta = { label: 'ارسال اسناد از طریق واتساپ', 
 const secondaryCta = { label: 'یا دریافت پیشنهاد قیمت کتبی', url: '/contact/' };
 
 const overlapCards = [
-  { icon: 'fas fa-shield-alt', title: 'مجوز یکپارچه دبی', desc: 'ثبت تجاری رسمی دبی - تأیید کنید', badge: 'دارای مجوز رسمی', url: 'https://app.invest.dubai.ae/DUL/1DE9D8AA-768A-4CFC-BC27-A6F23017B858' },
-  { icon: 'fas fa-building', title: 'مورد تأیید دولت', desc: 'پذیرفته شده توسط دادگاه‌ها، سفارت‌ها و وزارتخانه‌ها', badge: '', url: '/services/legal-translation/' },
-  { icon: 'fas fa-bolt', title: 'تحویل در ۶۰ دقیقه', desc: 'سریع‌ترین خدمات ترجمه گواهی‌شده در دبی', badge: '', url: '/services/legal-translation/' },
+  { icon: 'fas fa-bolt', title: 'تحویل گواهی‌شده در ۶۰ دقیقه', desc: 'اسناد استاندارد در ۶۰ دقیقه ترجمه و گواهی می‌شوند', badge: 'شرایط اعمال می‌شود', url: '/services/legal-translation/' },
+  { icon: 'fas fa-building', title: 'مورد قبول دادگاه‌ها و دولت امارات', desc: 'ترجمه‌های گواهی‌شده برای دادگاه‌های دبی، وزارتخانه‌ها و سفارت‌ها', badge: 'مشاهده جزئیات پذیرش', url: '/services/legal-translation/' },
+  { icon: 'fas fa-shield-alt', title: 'دارای مجوز و تأیید دبی', desc: 'ثبت شده در اقتصاد دبی — مجوز ما را تأیید کنید', badge: 'تأیید در رجیستری DED', url: 'https://app.invest.dubai.ae/DUL/1DE9D8AA-768A-4CFC-BC27-A6F23017B858' },
 ];
 
 const servicesLabel = 'خدمات ما';
@@ -38,6 +38,23 @@ const servicesItems = [
   { href: '/services/golden-visa-translation/', image: '/assets/images/onedrive/tiles/tile-immigration.png', imageAlt: 'ترجمه ویزای طلایی', heading: 'ویزای طلایی', text: 'بسته‌های کامل اسناد برای درخواست‌های ویزای طلایی امارات. اسناد تحصیلی، حرفه‌ای و سرمایه‌گذاری.' },
 ];
 
+const whyLabel = 'چرا ما را انتخاب کنید؟';
+const whyTitle = 'استاندارد مدیریت ریسک برای خدمات ترجمه حقوقی در دبی';
+const whyCards = [
+  { icon: 'fas fa-gavel', title: 'گواهی MOJ', text: 'ترجمه حقوقی گواهی‌شده توسط وزارت دادگستری امارات، مورد قبول تمام دادگاه‌ها و نهادهای دولتی.' },
+  { icon: 'fas fa-id-card', title: 'همه اسناد', text: 'تولد، ازدواج، تحصیلات، گواهی عدم سوء‌پیشینه و موارد دیگر، فرمت‌شده برای مقامات امارات.' },
+  { icon: 'fas fa-building', title: 'آماده شرکتی', text: 'تفاهم‌نامه‌ها، قراردادها، اسناد سهامداران، قراردادهای اجاره، SPA و فرم‌های DLD.' },
+  { icon: 'fas fa-bolt', title: 'سریع و آنلاین', text: 'گردش کار واتساپ، گزینه‌های همان روز و پیشنهادات قیمت کتبی واضح.' },
+];
+
+const processLabel = 'فرآیند کار ما';
+const processTitle = 'خدمات ترجمه کارآمد. ساده‌شده.';
+const processSteps = [
+  { index: '۰۱', icon: 'fas fa-paper-plane', title: 'سند خود را ارسال کنید', desc: 'از طریق واتساپ بفرستید یا از طریق پورتال امن ما آپلود کنید. فرمت‌های پذیرفته: PDF، JPG، PNG، DOCX.' },
+  { index: '۰۲', icon: 'fas fa-file-invoice-dollar', title: 'بررسی فوری انطباق', desc: 'ما نوع سند را تأیید می‌کنیم و تأیید می‌کنیم که آیا خدمات تصدیق اضافی مورد نیاز است.' },
+  { index: '۰۳', icon: 'fas fa-certificate', title: 'تحویل فوری', desc: 'ترجمه گواهی‌شده خود را به صورت دیجیتال در عرض چند ساعت دریافت کنید. کپی‌های فیزیکی در صورت نیاز پست می‌شوند.' },
+];
+
 const metrics = [
   { value: '+۴۳', label: 'زبان', note: 'جفت‌های گواهی‌شده' },
   { value: '۷', label: 'روز/هفته', note: 'همیشه در دسترس' },
@@ -45,9 +62,27 @@ const metrics = [
   { value: '۶۰ دقیقه', label: 'پیش‌نویس اول', note: 'تحویل دیجیتال' },
 ];
 
+const specialistsLabel = 'متخصصان ما';
+const specialistsTitle = 'خدمات ترجمه حقوقی قابل اعتماد در دبی';
+const specialistsCards = [
+  { href: '/services/legal-translation/', icon: 'fas fa-gavel', title: 'ترجمه دادگاه و دادرسی', bullets: ['لوایح، یادداشت‌ها، احکام', 'بسته‌های مدرک و مستندات', 'اصطلاحات حقوقی امارات'], tags: ['دادگاه‌های دبی', 'DIFC', 'ADGM'] },
+  { href: '/services/golden-visa-translation/', icon: 'fas fa-passport', title: 'ترجمه مهاجرت و اقامت', bullets: ['درخواست‌های ویزای طلایی', 'اسناد ویزای خانوادگی', 'کارت شناسایی امارات و ICP/GDRFA'], tags: ['ویزای طلایی', 'ویزای خانوادگی', 'ICP/GDRFA'] },
+  { href: '/industries/real-estate/', icon: 'fas fa-building', title: 'ترجمه املاک و DLD', bullets: ['قراردادهای ملکی و وکالت‌نامه‌ها', 'سند مالکیت و اسناد RERA', 'فرمت ارسال DLD'], tags: ['DLD', 'RERA', 'وکالت‌نامه ملکی'] },
+  { href: '/services/corporate-translation/', icon: 'fas fa-briefcase', title: 'ترجمه شرکتی و تجاری', bullets: ['مجوزهای تجاری و اساسنامه', 'توافق‌نامه‌های سهامداران', 'مستندات منطقه آزاد'], tags: ['DMCC', 'مناطق آزاد', 'DED'] },
+];
+
+const languagesLabel = 'زبان‌هایی که پشتیبانی می‌کنیم';
+const languagesTitle = 'خدمات ترجمه در بیش از ۴۳ زبان';
+const languages = ['عربی', 'انگلیسی', 'روسی', 'فرانسوی', 'چینی', 'هندی', 'اردو', 'اسپانیایی', 'آلمانی', 'پرتغالی', 'ایتالیایی', 'ترکی', 'فارسی', 'ژاپنی', 'کره‌ای', 'هلندی', 'لهستانی', 'رومانیایی', 'بنگالی', 'تامیلی', 'تاگالوگ', 'اندونزیایی', 'تایلندی'];
+const languagesNote = 'زبان خود را نمی‌بینید؟ با ما تماس بگیرید - ما با مترجمان بومی در بیش از ۴۳ زبان کار می‌کنیم.';
+
+const aboutLabel = 'رویکرد ما';
+const aboutTitle = 'طراحی شده برای پذیرش دادگاه. نتایج ثابت.';
+const aboutFeatures = ['فرمت آماده دادگاه', 'تأیید انطباق MOJ', 'پردازش فوری موجود', 'به‌روزرسانی وضعیت در لحظه', 'ردیابی سند رمزگذاری‌شده', 'امنیت سند اصلی'];
+const aboutSummary = 'رویکرد ما بر یک اصل استوار است: آماده‌سازی دقیق برای هر ارسال.';
+
 const faqLabel = 'سوالات متداول';
 const faqTitle = 'سوالات رایج درباره ترجمه حقوقی در دبی';
-
 const faqItems = [
   { question: 'خدمات ترجمه شما چه تفاوتی با سایر شرکت‌های ترجمه دارد؟', answer: 'ما به عنوان دستیار اسناد کار می‌کنیم، نه دفتر ترجمه سنتی. این یعنی شما ضمانت‌های انطباق کار با ارائه‌دهندگان ترجمه حقوقی گواهی‌شده را بدون پیچیدگی‌های آژانس‌های سنتی دریافت می‌کنید.' },
   { question: 'آیا ترجمه‌های شما در دادگاه‌های امارات پذیرفته می‌شوند؟', answer: 'بله. هر خدمات ترجمه حقوقی که ما هماهنگ می‌کنیم توسط مترجمان دارای گواهی MOJ انجام می‌شود. ترجمه‌های ما به طور خاص برای دادگاه‌های دبی، DIFC، ADGM و نهادهای قضایی فدرال فرمت‌بندی شده‌اند.' },
@@ -56,12 +91,9 @@ const faqItems = [
   { question: 'آیا عربی به انگلیسی و انگلیسی به عربی ترجمه می‌کنید؟', answer: 'بله. مترجمان گواهی‌شده ما در هر دو جهت کار می‌کنند و خدمات ترجمه عربی جامع ارائه می‌دهند.' },
 ];
 
-const ctaBanner = {
-  title: 'ما انطباق را مدیریت می‌کنیم. شما روی مهم‌ترین‌ها تمرکز کنید.',
-  body: 'به کسب‌وکارها و افرادی در دبی، ابوظبی و امارات شمالی بپیوندید که به OnlineTranslation.ae اعتماد می‌کنند.',
-  buttonLabel: 'ارسال اسناد از طریق واتساپ',
-  buttonUrl: 'https://wa.me/971508620217',
-};
+const ctaBanner = { title: 'ما انطباق را مدیریت می‌کنیم. شما روی مهم‌ترین‌ها تمرکز کنید.', body: 'به کسب‌وکارها و افرادی در دبی، ابوظبی و امارات شمالی بپیوندید که به OnlineTranslation.ae اعتماد می‌کنند.', buttonLabel: 'ارسال اسناد از طریق واتساپ', buttonUrl: 'https://wa.me/971508620217' };
+
+const contactSection = { label: 'تماس با ما', title: 'درخواست پیشنهاد قیمت رایگان', description: 'اسناد خود را به اشتراک بگذارید. ما قیمت و زمان تحویل را در عرض چند دقیقه تأیید خواهیم کرد.', namePlaceholder: 'نام کامل خود را وارد کنید', emailPlaceholder: 'your@email.com', phonePlaceholder: '+971 XX XXX XXXX', messagePlaceholder: 'اسناد و نیازهای خود را شرح دهید...' };
 ---
 
 <BaseLayoutMultilingual title={pageTitle} description={metaDescription} lang="fa" dir="rtl" isHomepage={true} canonicalOverride="https://onlinetranslation.ae/">
@@ -70,16 +102,82 @@ const ctaBanner = {
     <div class="container"><div class="hero-content"><div class="hero-text">
       <h1 class="hero-title exodus-title"><span class="title-line">{heroTitle}</span></h1>
       <p class="hero-lead">{heroLead}</p>
-      <ul class="hero-bullets">{heroBullets.map((item) => (<li>{item.icon && <i class={item.icon}></i>}{item.text}</li>))}</ul>
-      <div class="hero-cta-group"><a href={primaryCta.url} class="hero-cta exodus-cta"><i class="fab fa-whatsapp"></i> {primaryCta.label}</a>{secondaryCta?.url && (<a href={secondaryCta.url} class="hero-cta-secondary">{secondaryCta.label}</a>)}</div>
+      <ul class="hero-bullets">{heroBullets.map((item) => (<li><i class={item.icon}></i> {item.text}</li>))}</ul>
+      <div class="hero-cta-group"><a href={primaryCta.url} class="hero-cta exodus-cta"><i class="fab fa-whatsapp"></i> {primaryCta.label}</a><a href={secondaryCta.url} class="hero-cta-secondary">{secondaryCta.label}</a></div>
     </div></div></div>
-    <div class="overlap-cards-wrapper"><div class="container"><div class="overlap-cards">{overlapCards.map((card) => (<a href={card.url || '#'} class="overlap-card" target={card.url?.startsWith('http') ? '_blank' : undefined} rel={card.url?.startsWith('http') ? 'noopener noreferrer' : undefined}><div class="overlap-card-icon">{card.icon && <i class={card.icon}></i>}</div><div class="overlap-card-content"><h3 class="overlap-card-title">{card.title}</h3><p class="overlap-card-desc">{card.desc}</p>{card.badge && (<span class="overlap-card-badge">{card.badge}</span>)}</div></a>))}</div></div></div>
+    <div class="overlap-cards-wrapper"><div class="container"><div class="overlap-cards">
+      {overlapCards.map((card) => (<a href={card.url} class="overlap-card" target={card.url?.startsWith('http') ? '_blank' : undefined} rel={card.url?.startsWith('http') ? 'noopener noreferrer' : undefined}><div class="overlap-card-icon"><i class={card.icon}></i></div><div class="overlap-card-content"><h3 class="overlap-card-title">{card.title}</h3><p class="overlap-card-desc">{card.desc}</p>{card.badge && <span class="overlap-card-badge">{card.badge}</span>}</div></a>))}
+    </div></div></div>
   </section>
+
   <TrustBar />
-  <section id="services" class="section bg-white services-section"><div class="container"><div class="section-header"><span class="section-label">{servicesLabel}</span><h2 class="section-title">{servicesTitle}</h2></div><div class="services-grid-enhanced">{servicesItems.map((service) => (<a href={service.href} class="service-card-v2"><div class="card-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div><div class="card-image"><img src={service.image} alt={service.imageAlt} loading="lazy" width="400" height="300"></div><div class="card-body"><h3>{service.heading}</h3><p>{service.text}</p><span class="card-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg></span></div></a>))}</div></div></section>
-  <section class="ot-metrics"><div class="ot-metrics-inner">{metrics.map((metric) => (<article class="ot-metric"><span class="ot-metric-value">{metric.value}</span><span class="ot-metric-label">{metric.label}</span>{metric.note && (<span class="ot-metric-note">{metric.note}</span>)}</article>))}</div></section>
-  <section id="faq" class="section bg-white faq-section"><div class="container container--narrow"><div class="section-header"><span class="section-label">{faqLabel}</span><h2 class="section-title">{faqTitle}</h2></div><div class="faq-list">{faqItems.map((item) => (<article class="faq-item"><button class="faq-question">{item.question}<i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>{item.answer}</p></div></article>))}</div></div></section>
-  <section class="section bg-dark cta-banner"><div class="container text-center"><h2>{ctaBanner.title}</h2><p>{ctaBanner.body}</p><a href={ctaBanner.buttonUrl} class="cta-btn"><i class="fab fa-whatsapp"></i> {ctaBanner.buttonLabel}</a></div></section>
+
+  <section id="services" class="section bg-white services-section">
+    <div class="container"><div class="section-header"><span class="section-label">{servicesLabel}</span><h2 class="section-title">{servicesTitle}</h2></div>
+      <div class="services-grid-enhanced">{servicesItems.map((service) => (<a href={service.href} class="service-card-v2"><div class="card-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div><div class="card-image"><img src={service.image} alt={service.imageAlt} loading="lazy" width="400" height="300"></div><div class="card-body"><h3>{service.heading}</h3><p>{service.text}</p><span class="card-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg></span></div></a>))}</div>
+    </div>
+  </section>
+
+  <section id="why" class="section bg-light why-section">
+    <div class="container"><div class="section-header"><span class="section-label">{whyLabel}</span><h2 class="section-title">{whyTitle}</h2><div class="section-divider"></div></div>
+      <div class="grid grid-4 grid--auto-fit why-grid">{whyCards.map((card) => (<article class="why-card"><i class={card.icon}></i><h3>{card.title}</h3><p>{card.text}</p></article>))}</div>
+    </div>
+  </section>
+
+  <section id="process" class="section bg-white process-section exodus-process">
+    <div class="container"><div class="section-header"><span class="section-label exodus-label">{processLabel}</span><h2 class="section-title exodus-section-title">{processTitle}</h2></div>
+      <div class="grid grid-3 grid--auto-fit process-steps exodus-process-steps">{processSteps.map((step) => (<article class="process-step exodus-step"><div class="step-header"><span class="step-index">{step.index}</span><div class="step-icon"><i class={step.icon}></i></div></div><h3 class="step-title">{step.title}</h3><p class="step-desc">{step.desc}</p></article>))}</div>
+    </div>
+  </section>
+
+  <section class="ot-metrics"><div class="ot-metrics-inner">{metrics.map((metric) => (<article class="ot-metric"><span class="ot-metric-value">{metric.value}</span><span class="ot-metric-label">{metric.label}</span><span class="ot-metric-note">{metric.note}</span></article>))}</div></section>
+
+  <section id="team" class="section bg-alt specialists-section">
+    <div class="container"><div class="section-header"><span class="section-label exodus-label">{specialistsLabel}</span><h2 class="section-title exodus-section-title">{specialistsTitle}</h2></div>
+      <div class="grid grid-4 grid--auto-fit specialists-grid">{specialistsCards.map((card) => (<a href={card.href} class="specialist-card"><div class="specialist-icon"><i class={card.icon}></i></div><h3>{card.title}</h3><ul class="specialist-bullets">{card.bullets.map((b) => (<li>{b}</li>))}</ul><div class="specialist-tags">{card.tags.map((t) => (<span class="tag">{t}</span>))}</div></a>))}</div>
+      <div class="team-cta-wrapper"><p class="team-tagline">اسناد شما توسط متخصصان اختصاصی رسیدگی و قبل از تحویل بررسی می‌شوند.</p><a href="https://wa.me/971508620217" class="team-cta"><i class="fab fa-whatsapp"></i> ارسال اسناد از طریق واتساپ</a></div>
+    </div>
+  </section>
+
+  <section class="section bg-dark languages-section exodus-languages">
+    <div class="container"><div class="section-header"><span class="section-label exodus-label">{languagesLabel}</span><h2 class="section-title exodus-section-title">{languagesTitle}</h2></div>
+      <div class="grid grid-3 grid--auto-fit languages-grid">{languages.map((lang) => (<div class="language-item"><i class="fas fa-globe"></i> {lang}</div>))}<div class="language-item highlight"><i class="fas fa-plus-circle"></i> +۲۰ بیشتر</div></div>
+      <p class="languages-note">{languagesNote}</p>
+    </div>
+  </section>
+
+  <section id="about" class="section bg-white about-section exodus-about">
+    <div class="container"><div class="about-grid exodus-about-grid">
+      <div class="about-image exodus-about-image"><img src="/assets/images/onedrive/contact-office.png" alt="ترجمه حقوقی حرفه‌ای دبی" loading="lazy" width="600" height="400"><div class="experience-badge exodus-badge"><span class="years">دادگاه</span><span class="text">آماده</span></div></div>
+      <div class="about-content exodus-about-content"><span class="section-label exodus-label">{aboutLabel}</span><h2 class="section-title exodus-section-title">{aboutTitle}</h2>
+        <div class="exodus-features-list">{aboutFeatures.map((feature) => (<div class="exodus-feature-item"><i class="fas fa-check-circle"></i><span>{feature}</span></div>))}</div>
+        <p class="about-summary">{aboutSummary}</p><a href="https://wa.me/971508620217" class="about-cta exodus-cta-btn"><i class="fab fa-whatsapp"></i> ارسال اسناد از طریق واتساپ</a>
+      </div>
+    </div></div>
+  </section>
+
   <TestimonialsCarousel />
+
+  <section id="faq" class="section bg-white faq-section">
+    <div class="container container--narrow"><div class="section-header"><span class="section-label">{faqLabel}</span><h2 class="section-title">{faqTitle}</h2></div>
+      <div class="faq-list">{faqItems.map((item) => (<article class="faq-item"><button class="faq-question">{item.question}<i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>{item.answer}</p></div></article>))}</div>
+    </div>
+  </section>
+
+  <section class="section bg-dark cta-banner"><div class="container text-center"><h2>{ctaBanner.title}</h2><p>{ctaBanner.body}</p><a href={ctaBanner.buttonUrl} class="cta-btn"><i class="fab fa-whatsapp"></i> {ctaBanner.buttonLabel}</a></div></section>
+
+  <section id="contact" class="section bg-dark contact-section">
+    <div class="container"><div class="contact-wrapper">
+      <span class="section-label">{contactSection.label}</span><h2 class="section-title">{contactSection.title}</h2><p class="contact-description">{contactSection.description}</p>
+      <form class="contact-form" id="contactForm" method="POST">
+        <div class="form-row"><div class="form-group"><label for="name">نام شما</label><input type="text" id="name" name="name" placeholder={contactSection.namePlaceholder} required></div><div class="form-group"><label for="email">ایمیل</label><input type="email" id="email" name="email" placeholder={contactSection.emailPlaceholder} required></div></div>
+        <div class="form-group"><label for="phone">تلفن / واتساپ</label><input type="tel" id="phone" name="phone" placeholder={contactSection.phonePlaceholder}></div>
+        <div class="form-group"><label for="message">جزئیات سند</label><textarea id="message" name="message" placeholder={contactSection.messagePlaceholder} rows="5"></textarea></div>
+        <button type="submit" class="submit-btn">ارسال درخواست</button><div id="formResult" class="form-result"></div>
+      </form>
+      <div class="contact-buttons"><a href="https://wa.me/971508620217" class="contact-btn whatsapp"><i class="fab fa-whatsapp"></i> واتساپ</a><a href="tel:+971508620217" class="contact-btn phone"><i class="fas fa-phone"></i> تماس</a><a href="mailto:info@onlinetranslation.ae" class="contact-btn email"><i class="fas fa-envelope"></i> ایمیل</a></div>
+    </div></div>
+  </section>
 </BaseLayoutMultilingual>
+
 <script>document.addEventListener('DOMContentLoaded', () => { const faqItems = document.querySelectorAll('.faq-item'); faqItems.forEach((item) => { const question = item.querySelector('.faq-question'); question?.addEventListener('click', () => { const isOpen = item.classList.contains('is-open'); faqItems.forEach((i) => i.classList.remove('is-open')); if (!isOpen) item.classList.add('is-open'); }); }); });</script>

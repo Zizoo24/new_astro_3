@@ -7,111 +7,60 @@ import TrustBar from '../../components/TrustBar.astro';
 const pageTitle = 'दुबई में कानूनी अनुवाद सेवाएं | MOJ प्रमाणित | OnlineTranslation.ae';
 const metaDescription = 'दुबई में पेशेवर कानूनी अनुवाद सेवाएं। न्याय मंत्रालय (MOJ) प्रमाणित अनुवादक। अदालतों, आव्रजन और सरकारी दस्तावेजों के लिए। तेज, विश्वसनीय सेवा।';
 
-// HERO - Hindi
+// HERO
 const heroTitle = 'दुबई में MOJ प्रमाणित कानूनी अनुवाद';
 const heroLead = 'आपका डिजिटल दस्तावेज़ सहायक - पूरे UAE में सेवा';
 const heroImage = '/assets/images/onedrive/hero/office-team.png';
 
 const heroBullets = [
-  {
-    icon: 'fas fa-stamp',
-    text: 'दुबई कोर्ट, DIFC और ADGM के लिए MOJ प्रमाणित',
-  },
-  {
-    icon: 'fas fa-bolt',
-    text: '60 मिनट में पहला ड्राफ्ट तैयार',
-  },
-  {
-    icon: 'fas fa-comments',
-    text: 'पुलिस और अदालतों के लिए WhatsApp साक्ष्य (कानूनी प्रारूप में)',
-  },
+  { icon: 'fas fa-stamp', text: 'दुबई कोर्ट, DIFC और ADGM के लिए MOJ प्रमाणित' },
+  { icon: 'fas fa-bolt', text: '60 मिनट में पहला ड्राफ्ट तैयार' },
+  { icon: 'fas fa-comments', text: 'पुलिस और अदालतों के लिए WhatsApp साक्ष्य (कानूनी प्रारूप में)' },
 ];
 
-const primaryCta = {
-  label: 'WhatsApp पर दस्तावेज़ भेजें',
-  url: 'https://wa.me/971508620217',
-};
+const primaryCta = { label: 'WhatsApp पर दस्तावेज़ भेजें', url: 'https://wa.me/971508620217' };
+const secondaryCta = { label: 'या लिखित कोटेशन प्राप्त करें', url: '/contact/' };
 
-const secondaryCta = {
-  label: 'या लिखित कोटेशन प्राप्त करें',
-  url: '/contact/',
-};
-
-// OVERLAP CARDS - Hindi
+// OVERLAP CARDS
 const overlapCards = [
-  {
-    icon: 'fas fa-shield-alt',
-    title: 'दुबई एकीकृत लाइसेंस',
-    desc: 'आधिकारिक दुबई व्यापार रजिस्टर - सत्यापित करें',
-    badge: 'आधिकारिक रूप से लाइसेंस प्राप्त',
-    url: 'https://app.invest.dubai.ae/DUL/1DE9D8AA-768A-4CFC-BC27-A6F23017B858',
-  },
-  {
-    icon: 'fas fa-building',
-    title: 'सरकार द्वारा मान्यता प्राप्त',
-    desc: 'अदालतों, दूतावासों और मंत्रालयों द्वारा स्वीकृत',
-    badge: '',
-    url: '/services/legal-translation/',
-  },
-  {
-    icon: 'fas fa-bolt',
-    title: '60 मिनट में डिलीवरी',
-    desc: 'मानक दस्तावेजों के लिए दुबई की सबसे तेज प्रमाणित अनुवाद सेवा',
-    badge: '',
-    url: '/services/legal-translation/',
-  },
+  { icon: 'fas fa-bolt', title: '60 मिनट में प्रमाणित डिलीवरी', desc: 'मानक दस्तावेज़ 60 मिनट में अनुवादित और प्रमाणित', badge: 'शर्तें लागू', url: '/services/legal-translation/' },
+  { icon: 'fas fa-building', title: 'UAE अदालतों और सरकार द्वारा स्वीकृत', desc: 'दुबई कोर्ट, मंत्रालयों और दूतावास के लिए प्रमाणित अनुवाद', badge: 'स्वीकृति विवरण देखें', url: '/services/legal-translation/' },
+  { icon: 'fas fa-shield-alt', title: 'दुबई लाइसेंस प्राप्त और सत्यापित', desc: 'दुबई इकोनॉमी में पंजीकृत — हमारा लाइसेंस सत्यापित करें', badge: 'DED रजिस्ट्री पर सत्यापित करें', url: 'https://app.invest.dubai.ae/DUL/1DE9D8AA-768A-4CFC-BC27-A6F23017B858' },
 ];
 
-// SERVICES SECTION - Hindi
+// SERVICES
 const servicesLabel = 'हमारी सेवाएं';
 const servicesTitle = 'चार विशेषज्ञ क्षेत्रों में पेशेवर अनुवाद सेवाएं';
 
 const servicesItems = [
-  {
-    href: '/services/legal-translation/',
-    image: '/assets/images/onedrive/tiles/tile-courts.png',
-    imageAlt: 'कानूनी अनुवाद सेवाएं',
-    heading: 'कानूनी और कॉर्पोरेट',
-    text: 'अनुबंध, अदालती आदेश, कॉर्पोरेट गवर्नेंस, पावर ऑफ अटॉर्नी और मुकदमेबाजी दस्तावेज़ MOJ प्रमाणन के साथ।',
-  },
-  {
-    href: '/personal/',
-    image: '/assets/images/onedrive/tiles/tile-immigration.png',
-    imageAlt: 'व्यक्तिगत दस्तावेज़ अनुवाद',
-    heading: 'व्यक्तिगत दस्तावेज़',
-    text: 'जन्म प्रमाण पत्र, विवाह प्रमाण पत्र, शैक्षिक प्रमाण पत्र, पुलिस क्लीयरेंस और आव्रजन दस्तावेज़।',
-  },
-  {
-    href: '/services/attestation/',
-    image: '/assets/images/onedrive/services/services-4.jpg',
-    imageAlt: 'सत्यापन और MOFA',
-    heading: 'सत्यापन सेवाएं',
-    text: 'MOFA और सरकारी निकायों के लिए दस्तावेज़ सत्यापन। सुरक्षित परिवहन सहित पूर्ण सत्यापन सेवाएं।',
-  },
-  {
-    href: '/services/certificate-translation/',
-    image: '/assets/images/onedrive/services/services-5.jpg',
-    imageAlt: 'व्यापार स्थानीयकरण',
-    heading: 'व्यापार स्थानीयकरण',
-    text: 'वेबसाइट और ऐप स्थानीयकरण, मार्केटिंग अनुकूलन, मेनू अनुवाद और UAE बाजार प्रवेश के लिए तकनीकी दस्तावेज़।',
-  },
-  {
-    href: '/locations/',
-    image: '/assets/images/onedrive/tiles/tile-corporate.png',
-    imageAlt: 'स्थान सेवाएं',
-    heading: 'स्थान सेवाएं',
-    text: 'दुबई, अबू धाबी और उत्तरी अमीरात में पिकअप और डिलीवरी। व्यस्त पेशेवरों के लिए डोर-टू-डोर सेवा।',
-  },
-  {
-    href: '/services/golden-visa-translation/',
-    image: '/assets/images/onedrive/tiles/tile-immigration.png',
-    imageAlt: 'गोल्डन वीज़ा अनुवाद',
-    heading: 'गोल्डन वीज़ा',
-    text: 'UAE गोल्डन वीज़ा आवेदनों के लिए पूर्ण दस्तावेज़ पैकेज। शैक्षिक, पेशेवर और निवेश दस्तावेज़।',
-  },
+  { href: '/services/legal-translation/', image: '/assets/images/onedrive/tiles/tile-courts.png', imageAlt: 'कानूनी अनुवाद सेवाएं', heading: 'कानूनी और कॉर्पोरेट', text: 'अनुबंध, अदालती आदेश, कॉर्पोरेट गवर्नेंस, पावर ऑफ अटॉर्नी और मुकदमेबाजी दस्तावेज़ MOJ प्रमाणन के साथ।' },
+  { href: '/personal/', image: '/assets/images/onedrive/tiles/tile-immigration.png', imageAlt: 'व्यक्तिगत दस्तावेज़ अनुवाद', heading: 'व्यक्तिगत दस्तावेज़', text: 'जन्म प्रमाण पत्र, विवाह प्रमाण पत्र, शैक्षिक प्रमाण पत्र, पुलिस क्लीयरेंस और आव्रजन दस्तावेज़।' },
+  { href: '/services/attestation/', image: '/assets/images/onedrive/services/services-4.jpg', imageAlt: 'सत्यापन और MOFA', heading: 'सत्यापन सेवाएं', text: 'MOFA और सरकारी निकायों के लिए दस्तावेज़ सत्यापन। सुरक्षित परिवहन सहित पूर्ण सत्यापन सेवाएं।' },
+  { href: '/services/certificate-translation/', image: '/assets/images/onedrive/services/services-5.jpg', imageAlt: 'व्यापार स्थानीयकरण', heading: 'व्यापार स्थानीयकरण', text: 'वेबसाइट और ऐप स्थानीयकरण, मार्केटिंग अनुकूलन, मेनू अनुवाद और UAE बाजार प्रवेश के लिए तकनीकी दस्तावेज़।' },
+  { href: '/locations/', image: '/assets/images/onedrive/tiles/tile-corporate.png', imageAlt: 'स्थान सेवाएं', heading: 'स्थान सेवाएं', text: 'दुबई, अबू धाबी और उत्तरी अमीरात में पिकअप और डिलीवरी। व्यस्त पेशेवरों के लिए डोर-टू-डोर सेवा।' },
+  { href: '/services/golden-visa-translation/', image: '/assets/images/onedrive/tiles/tile-immigration.png', imageAlt: 'गोल्डन वीज़ा अनुवाद', heading: 'गोल्डन वीज़ा', text: 'UAE गोल्डन वीज़ा आवेदनों के लिए पूर्ण दस्तावेज़ पैकेज। शैक्षिक, पेशेवर और निवेश दस्तावेज़।' },
 ];
 
-// METRICS STRIP - Hindi
+// WHY CHOOSE US
+const whyLabel = 'हमें क्यों चुनें?';
+const whyTitle = 'दुबई में कानूनी अनुवाद सेवाओं के लिए जोखिम प्रबंधन मानक';
+const whyCards = [
+  { icon: 'fas fa-gavel', title: 'MOJ प्रमाणित', text: 'UAE न्याय मंत्रालय प्रमाणित कानूनी अनुवाद सभी अदालतों और सरकारी संस्थाओं द्वारा स्वीकृत।' },
+  { icon: 'fas fa-id-card', title: 'सभी दस्तावेज़', text: 'जन्म, विवाह, शिक्षा, पुलिस क्लीयरेंस और अधिक, UAE अधिकारियों के लिए स्वरूपित।' },
+  { icon: 'fas fa-building', title: 'कॉर्पोरेट तैयार', text: 'MOUs, अनुबंध, शेयरधारक दस्तावेज़, किराया अनुबंध, SPAs और DLD फॉर्म।' },
+  { icon: 'fas fa-bolt', title: 'तेज़ और ऑनलाइन', text: 'WhatsApp-आधारित वर्कफ़्लो, उसी दिन विकल्प और स्पष्ट लिखित कोटेशन।' },
+];
+
+// PROCESS
+const processLabel = 'हमारी कार्य प्रक्रिया';
+const processTitle = 'कुशल अनुवाद सेवाएं। सरलीकृत।';
+const processSteps = [
+  { index: '01', icon: 'fas fa-paper-plane', title: 'अपना दस्तावेज़ जमा करें', desc: 'WhatsApp के माध्यम से भेजें या हमारे सुरक्षित पोर्टल के माध्यम से अपलोड करें। स्वीकृत प्रारूप: PDF, JPG, PNG, DOCX।' },
+  { index: '02', icon: 'fas fa-file-invoice-dollar', title: 'तत्काल अनुपालन समीक्षा', desc: 'हम दस्तावेज़ प्रकार सत्यापित करते हैं और पुष्टि करते हैं कि क्या अतिरिक्त सत्यापन सेवाओं की आवश्यकता है।' },
+  { index: '03', icon: 'fas fa-certificate', title: 'तत्काल डिलीवरी', desc: 'घंटों के भीतर अपना प्रमाणित अनुवाद डिजिटल रूप से प्राप्त करें। आवश्यकता होने पर भौतिक प्रतियां कूरियर की जाती हैं।' },
+];
+
+// METRICS
 const metrics = [
   { value: '43+', label: 'भाषाएं', note: 'प्रमाणित जोड़े' },
   { value: '7', label: 'दिन/सप्ताह', note: 'हमेशा उपलब्ध' },
@@ -119,209 +68,224 @@ const metrics = [
   { value: '60 मिनट', label: 'पहला ड्राफ्ट', note: 'डिजिटल डिलीवरी' },
 ];
 
-// FAQ SECTION - Hindi
-const faqLabel = 'अक्सर पूछे जाने वाले प्रश्न';
-const faqTitle = 'दुबई में कानूनी अनुवाद के बारे में सामान्य प्रश्न';
-
-const faqItems = [
-  {
-    question: 'आपकी अनुवाद सेवा अन्य अनुवाद कंपनियों से कैसे अलग है?',
-    answer: 'हम एक दस्तावेज़ सहायक के रूप में काम करते हैं, पारंपरिक अनुवाद कार्यालय नहीं। इसका मतलब है कि आपको प्रमाणित कानूनी अनुवाद प्रदाताओं के साथ काम करने की अनुपालन गारंटी मिलती है, बिना पारंपरिक एजेंसियों की जटिलताओं के।',
-  },
-  {
-    question: 'क्या आपके अनुवाद UAE अदालतों में स्वीकार किए जाते हैं?',
-    answer: 'हां। हमारी हर कानूनी अनुवाद सेवा MOJ प्रमाणित अनुवादकों द्वारा की जाती है। हमारे अनुवाद विशेष रूप से दुबई कोर्ट, DIFC, ADGM और संघीय न्यायिक निकायों के लिए तैयार किए जाते हैं।',
-  },
-  {
-    question: 'प्रमाणित कानूनी अनुवाद देने में कितना समय लगता है?',
-    answer: 'मानक दस्तावेज़ (जन्म प्रमाण पत्र, विवाह प्रमाण पत्र, शैक्षिक प्रमाण पत्र) आमतौर पर 3-6 कार्य घंटों में तैयार हो जाते हैं। तत्काल कानूनी आवश्यकताओं के लिए एक्सप्रेस प्रोसेसिंग उपलब्ध है।',
-  },
-  {
-    question: 'क्या आप सत्यापन सेवाएं प्रदान करते हैं?',
-    answer: 'हां। जब आपके कानूनी दस्तावेज़ों को MOFA या अन्य सरकारी निकायों से सत्यापन की आवश्यकता होती है, तो हम सुरक्षित मूल परिवहन सहित पूरी प्रक्रिया का समन्वय करते हैं।',
-  },
-  {
-    question: 'क्या आप अरबी से अंग्रेजी और अंग्रेजी से अरबी दोनों अनुवाद करते हैं?',
-    answer: 'हां। हमारे प्रमाणित अनुवादक दोनों दिशाओं में काम करते हैं और व्यापक अरबी अनुवाद सेवाएं प्रदान करते हैं।',
-  },
+// SPECIALISTS
+const specialistsLabel = 'हमारे विशेषज्ञ';
+const specialistsTitle = 'दुबई में विश्वसनीय कानूनी अनुवाद सेवाएं';
+const specialistsCards = [
+  { href: '/services/legal-translation/', icon: 'fas fa-gavel', title: 'अदालत और मुकदमेबाजी अनुवाद', bullets: ['याचिकाएं, ज्ञापन, निर्णय', 'साक्ष्य बंडल और प्रदर्शनियां', 'UAE कानूनी शब्दावली'], tags: ['दुबई कोर्ट', 'DIFC', 'ADGM'] },
+  { href: '/services/golden-visa-translation/', icon: 'fas fa-passport', title: 'आव्रजन और निवास अनुवाद', bullets: ['गोल्डन वीज़ा आवेदन', 'पारिवारिक वीज़ा दस्तावेज़', 'एमिरेट्स आईडी और ICP/GDRFA'], tags: ['गोल्डन वीज़ा', 'पारिवारिक वीज़ा', 'ICP/GDRFA'] },
+  { href: '/industries/real-estate/', icon: 'fas fa-building', title: 'रियल एस्टेट और DLD अनुवाद', bullets: ['संपत्ति अनुबंध और POAs', 'स्वामित्व विलेख और RERA दस्तावेज़', 'DLD सबमिशन प्रारूप'], tags: ['DLD', 'RERA', 'संपत्ति POA'] },
+  { href: '/services/corporate-translation/', icon: 'fas fa-briefcase', title: 'कॉर्पोरेट और वाणिज्यिक अनुवाद', bullets: ['व्यापार लाइसेंस और MOAs', 'शेयरधारक समझौते', 'फ्री ज़ोन दस्तावेज़ीकरण'], tags: ['DMCC', 'फ्री ज़ोन', 'DED'] },
 ];
 
-// CTA BANNER - Hindi
-const ctaBanner = {
-  title: 'अनुपालन हम संभालें। आप महत्वपूर्ण चीजों पर ध्यान दें।',
-  body: 'दुबई, अबू धाबी और उत्तरी अमीरात में उन व्यवसायों और व्यक्तियों से जुड़ें जो OnlineTranslation.ae पर भरोसा करते हैं।',
-  buttonLabel: 'WhatsApp पर दस्तावेज़ भेजें',
-  buttonUrl: 'https://wa.me/971508620217',
-};
+// LANGUAGES
+const languagesLabel = 'हम जिन भाषाओं का समर्थन करते हैं';
+const languagesTitle = '43+ भाषाओं में अनुवाद सेवाएं';
+const languages = ['अरबी', 'अंग्रेज़ी', 'रूसी', 'फ्रेंच', 'चीनी', 'हिंदी', 'उर्दू', 'स्पेनिश', 'जर्मन', 'पुर्तगाली', 'इतालवी', 'तुर्की', 'फ़ारसी', 'जापानी', 'कोरियाई', 'डच', 'पोलिश', 'रोमानियाई', 'बंगाली', 'तमिल', 'तागालोग', 'इंडोनेशियाई', 'थाई'];
+const languagesNote = 'अपनी भाषा नहीं दिख रही? हमसे संपर्क करें - हम 43+ भाषाओं में देशी अनुवादकों के साथ काम करते हैं।';
+
+// ABOUT/APPROACH
+const aboutLabel = 'हमारा दृष्टिकोण';
+const aboutTitle = 'अदालत स्वीकृति के लिए डिज़ाइन किया गया। सुसंगत परिणाम।';
+const aboutFeatures = ['अदालत-तैयार स्वरूपण', 'MOJ अनुपालन सत्यापन', 'एक्सप्रेस प्रोसेसिंग उपलब्ध', 'रीयल-टाइम स्थिति अपडेट', 'एन्क्रिप्टेड दस्तावेज़ ट्रेल', 'मूल दस्तावेज़ सुरक्षा'];
+const aboutSummary = 'हमारा दृष्टिकोण एक सिद्धांत पर बना है: हर सबमिशन के लिए सावधानीपूर्वक तैयारी।';
+
+// FAQ
+const faqLabel = 'अक्सर पूछे जाने वाले प्रश्न';
+const faqTitle = 'दुबई में कानूनी अनुवाद के बारे में सामान्य प्रश्न';
+const faqItems = [
+  { question: 'आपकी अनुवाद सेवा अन्य अनुवाद कंपनियों से कैसे अलग है?', answer: 'हम एक दस्तावेज़ सहायक के रूप में काम करते हैं, पारंपरिक अनुवाद कार्यालय नहीं। इसका मतलब है कि आपको प्रमाणित कानूनी अनुवाद प्रदाताओं के साथ काम करने की अनुपालन गारंटी मिलती है, बिना पारंपरिक एजेंसियों की जटिलताओं के।' },
+  { question: 'क्या आपके अनुवाद UAE अदालतों में स्वीकार किए जाते हैं?', answer: 'हां। हमारी हर कानूनी अनुवाद सेवा MOJ प्रमाणित अनुवादकों द्वारा की जाती है। हमारे अनुवाद विशेष रूप से दुबई कोर्ट, DIFC, ADGM और संघीय न्यायिक निकायों के लिए तैयार किए जाते हैं।' },
+  { question: 'प्रमाणित कानूनी अनुवाद देने में कितना समय लगता है?', answer: 'मानक दस्तावेज़ (जन्म प्रमाण पत्र, विवाह प्रमाण पत्र, शैक्षिक प्रमाण पत्र) आमतौर पर 3-6 कार्य घंटों में तैयार हो जाते हैं। तत्काल कानूनी आवश्यकताओं के लिए एक्सप्रेस प्रोसेसिंग उपलब्ध है।' },
+  { question: 'क्या आप सत्यापन सेवाएं प्रदान करते हैं?', answer: 'हां। जब आपके कानूनी दस्तावेज़ों को MOFA या अन्य सरकारी निकायों से सत्यापन की आवश्यकता होती है, तो हम सुरक्षित मूल परिवहन सहित पूरी प्रक्रिया का समन्वय करते हैं।' },
+  { question: 'क्या आप अरबी से अंग्रेजी और अंग्रेजी से अरबी दोनों अनुवाद करते हैं?', answer: 'हां। हमारे प्रमाणित अनुवादक दोनों दिशाओं में काम करते हैं और व्यापक अरबी अनुवाद सेवाएं प्रदान करते हैं।' },
+];
+
+// CTA BANNER
+const ctaBanner = { title: 'अनुपालन हम संभालें। आप महत्वपूर्ण चीजों पर ध्यान दें।', body: 'दुबई, अबू धाबी और उत्तरी अमीरात में उन व्यवसायों और व्यक्तियों से जुड़ें जो OnlineTranslation.ae पर भरोसा करते हैं।', buttonLabel: 'WhatsApp पर दस्तावेज़ भेजें', buttonUrl: 'https://wa.me/971508620217' };
+
+// CONTACT
+const contactSection = { label: 'संपर्क करें', title: 'मुफ्त कोटेशन का अनुरोध करें', description: 'अपने दस्तावेज़ साझा करें। हम मिनटों में कीमत और डिलीवरी समय की पुष्टि करेंगे।', namePlaceholder: 'अपना पूरा नाम दर्ज करें', emailPlaceholder: 'your@email.com', phonePlaceholder: '+971 XX XXX XXXX', messagePlaceholder: 'अपने दस्तावेज़ और आवश्यकताओं का वर्णन करें...' };
 ---
 
-<BaseLayoutMultilingual
-  title={pageTitle}
-  description={metaDescription}
-  lang="hi"
-  dir="ltr"
-  isHomepage={true}
-  canonicalOverride="https://onlinetranslation.ae/"
->
+<BaseLayoutMultilingual title={pageTitle} description={metaDescription} lang="hi" dir="ltr" isHomepage={true} canonicalOverride="https://onlinetranslation.ae/">
   <!-- Hero Section -->
   <section id="home" class="hero-section exodus-hero">
     <div class="hero-background">
-      <img
-        src={heroImage}
-        alt="OnlineTranslation.ae पेशेवर टीम"
-        class="hero-image"
-        loading="eager"
-      >
+      <img src={heroImage} alt="OnlineTranslation.ae पेशेवर टीम" class="hero-image" loading="eager">
       <div class="hero-overlay exodus-overlay"></div>
     </div>
     <div class="container">
       <div class="hero-content">
         <div class="hero-text">
-          <h1 class="hero-title exodus-title">
-            <span class="title-line">{heroTitle}</span>
-          </h1>
+          <h1 class="hero-title exodus-title"><span class="title-line">{heroTitle}</span></h1>
           <p class="hero-lead">{heroLead}</p>
-          <ul class="hero-bullets">
-            {heroBullets.map((item) => (
-              <li>
-                {item.icon && <i class={item.icon}></i>}
-                {item.text}
-              </li>
-            ))}
-          </ul>
-
+          <ul class="hero-bullets">{heroBullets.map((item) => (<li><i class={item.icon}></i> {item.text}</li>))}</ul>
           <div class="hero-cta-group">
-            <a href={primaryCta.url} class="hero-cta exodus-cta">
-              <i class="fab fa-whatsapp"></i> {primaryCta.label}
-            </a>
-            {secondaryCta?.url && (
-              <a href={secondaryCta.url} class="hero-cta-secondary">
-                {secondaryCta.label}
-              </a>
-            )}
+            <a href={primaryCta.url} class="hero-cta exodus-cta"><i class="fab fa-whatsapp"></i> {primaryCta.label}</a>
+            <a href={secondaryCta.url} class="hero-cta-secondary">{secondaryCta.label}</a>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- Overlap Cards -->
-    <div class="overlap-cards-wrapper">
-      <div class="container">
-        <div class="overlap-cards">
-          {overlapCards.map((card) => (
-            <a
-              href={card.url || '#'}
-              class="overlap-card"
-              target={card.url?.startsWith('http') ? '_blank' : undefined}
-              rel={card.url?.startsWith('http') ? 'noopener noreferrer' : undefined}
-            >
-              <div class="overlap-card-icon">
-                {card.icon && <i class={card.icon}></i>}
-              </div>
-              <div class="overlap-card-content">
-                <h3 class="overlap-card-title">{card.title}</h3>
-                <p class="overlap-card-desc">{card.desc}</p>
-                {card.badge && (
-                  <span class="overlap-card-badge">{card.badge}</span>
-                )}
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
-    </div>
+    <div class="overlap-cards-wrapper"><div class="container"><div class="overlap-cards">
+      {overlapCards.map((card) => (
+        <a href={card.url} class="overlap-card" target={card.url?.startsWith('http') ? '_blank' : undefined} rel={card.url?.startsWith('http') ? 'noopener noreferrer' : undefined}>
+          <div class="overlap-card-icon"><i class={card.icon}></i></div>
+          <div class="overlap-card-content">
+            <h3 class="overlap-card-title">{card.title}</h3>
+            <p class="overlap-card-desc">{card.desc}</p>
+            {card.badge && <span class="overlap-card-badge">{card.badge}</span>}
+          </div>
+        </a>
+      ))}
+    </div></div></div>
   </section>
 
-  <!-- Trust Bar -->
   <TrustBar />
 
   <!-- Services Section -->
   <section id="services" class="section bg-white services-section">
     <div class="container">
-      <div class="section-header">
-        <span class="section-label">{servicesLabel}</span>
-        <h2 class="section-title">{servicesTitle}</h2>
-      </div>
+      <div class="section-header"><span class="section-label">{servicesLabel}</span><h2 class="section-title">{servicesTitle}</h2></div>
       <div class="services-grid-enhanced">
         {servicesItems.map((service) => (
           <a href={service.href} class="service-card-v2">
-            <div class="card-badge">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                <path d="M2 17l10 5 10-5"></path>
-                <path d="M2 12l10 5 10-5"></path>
-              </svg>
-            </div>
-            <div class="card-image">
-              <img src={service.image} alt={service.imageAlt} loading="lazy" width="400" height="300">
-            </div>
-            <div class="card-body">
-              <h3>{service.heading}</h3>
-              <p>{service.text}</p>
-              <span class="card-arrow">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M5 12h14"></path>
-                  <path d="M12 5l7 7-7 7"></path>
-                </svg>
-              </span>
-            </div>
+            <div class="card-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div>
+            <div class="card-image"><img src={service.image} alt={service.imageAlt} loading="lazy" width="400" height="300"></div>
+            <div class="card-body"><h3>{service.heading}</h3><p>{service.text}</p><span class="card-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg></span></div>
           </a>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Metrics Strip -->
-  <section class="ot-metrics">
-    <div class="ot-metrics-inner">
-      {metrics.map((metric) => (
-        <article class="ot-metric">
-          <span class="ot-metric-value">{metric.value}</span>
-          <span class="ot-metric-label">{metric.label}</span>
-          {metric.note && (
-            <span class="ot-metric-note">{metric.note}</span>
-          )}
-        </article>
-      ))}
+  <!-- Why Choose Us Section -->
+  <section id="why" class="section bg-light why-section">
+    <div class="container">
+      <div class="section-header"><span class="section-label">{whyLabel}</span><h2 class="section-title">{whyTitle}</h2><div class="section-divider"></div></div>
+      <div class="grid grid-4 grid--auto-fit why-grid">
+        {whyCards.map((card) => (<article class="why-card"><i class={card.icon}></i><h3>{card.title}</h3><p>{card.text}</p></article>))}
+      </div>
     </div>
   </section>
 
-  <!-- FAQ Section -->
-  <section id="faq" class="section bg-white faq-section">
-    <div class="container container--narrow">
-      <div class="section-header">
-        <span class="section-label">{faqLabel}</span>
-        <h2 class="section-title">{faqTitle}</h2>
-      </div>
-      <div class="faq-list">
-        {faqItems.map((item) => (
-          <article class="faq-item">
-            <button class="faq-question">
-              {item.question}
-              <i class="fas fa-chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-              <p>{item.answer}</p>
-            </div>
+  <!-- Process Section -->
+  <section id="process" class="section bg-white process-section exodus-process">
+    <div class="container">
+      <div class="section-header"><span class="section-label exodus-label">{processLabel}</span><h2 class="section-title exodus-section-title">{processTitle}</h2></div>
+      <div class="grid grid-3 grid--auto-fit process-steps exodus-process-steps">
+        {processSteps.map((step) => (
+          <article class="process-step exodus-step">
+            <div class="step-header"><span class="step-index">{step.index}</span><div class="step-icon"><i class={step.icon}></i></div></div>
+            <h3 class="step-title">{step.title}</h3><p class="step-desc">{step.desc}</p>
           </article>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- CTA Banner -->
-  <section class="section bg-dark cta-banner">
-    <div class="container text-center">
-      <h2>{ctaBanner.title}</h2>
-      <p>{ctaBanner.body}</p>
-      <a href={ctaBanner.buttonUrl} class="cta-btn">
-        <i class="fab fa-whatsapp"></i> {ctaBanner.buttonLabel}
-      </a>
+  <!-- Metrics Strip -->
+  <section class="ot-metrics"><div class="ot-metrics-inner">
+    {metrics.map((metric) => (<article class="ot-metric"><span class="ot-metric-value">{metric.value}</span><span class="ot-metric-label">{metric.label}</span><span class="ot-metric-note">{metric.note}</span></article>))}
+  </div></section>
+
+  <!-- Specialists Section -->
+  <section id="team" class="section bg-alt specialists-section">
+    <div class="container">
+      <div class="section-header"><span class="section-label exodus-label">{specialistsLabel}</span><h2 class="section-title exodus-section-title">{specialistsTitle}</h2></div>
+      <div class="grid grid-4 grid--auto-fit specialists-grid">
+        {specialistsCards.map((card) => (
+          <a href={card.href} class="specialist-card">
+            <div class="specialist-icon"><i class={card.icon}></i></div>
+            <h3>{card.title}</h3>
+            <ul class="specialist-bullets">{card.bullets.map((b) => (<li>{b}</li>))}</ul>
+            <div class="specialist-tags">{card.tags.map((t) => (<span class="tag">{t}</span>))}</div>
+          </a>
+        ))}
+      </div>
+      <div class="team-cta-wrapper">
+        <p class="team-tagline">आपके दस्तावेज़ समर्पित विशेषज्ञों द्वारा संभाले जाते हैं और डिलीवरी से पहले समीक्षा की जाती है।</p>
+        <a href="https://wa.me/971508620217" class="team-cta"><i class="fab fa-whatsapp"></i> WhatsApp पर दस्तावेज़ भेजें</a>
+      </div>
     </div>
   </section>
 
-  <!-- Testimonials -->
+  <!-- Languages Section -->
+  <section class="section bg-dark languages-section exodus-languages">
+    <div class="container">
+      <div class="section-header"><span class="section-label exodus-label">{languagesLabel}</span><h2 class="section-title exodus-section-title">{languagesTitle}</h2></div>
+      <div class="grid grid-3 grid--auto-fit languages-grid">
+        {languages.map((lang) => (<div class="language-item"><i class="fas fa-globe"></i> {lang}</div>))}
+        <div class="language-item highlight"><i class="fas fa-plus-circle"></i> 20+ और</div>
+      </div>
+      <p class="languages-note">{languagesNote}</p>
+    </div>
+  </section>
+
+  <!-- Our Approach Section -->
+  <section id="about" class="section bg-white about-section exodus-about">
+    <div class="container">
+      <div class="about-grid exodus-about-grid">
+        <div class="about-image exodus-about-image">
+          <img src="/assets/images/onedrive/contact-office.png" alt="पेशेवर कानूनी अनुवाद दुबई" loading="lazy" width="600" height="400">
+          <div class="experience-badge exodus-badge"><span class="years">अदालत</span><span class="text">तैयार</span></div>
+        </div>
+        <div class="about-content exodus-about-content">
+          <span class="section-label exodus-label">{aboutLabel}</span>
+          <h2 class="section-title exodus-section-title">{aboutTitle}</h2>
+          <div class="exodus-features-list">
+            {aboutFeatures.map((feature) => (<div class="exodus-feature-item"><i class="fas fa-check-circle"></i><span>{feature}</span></div>))}
+          </div>
+          <p class="about-summary">{aboutSummary}</p>
+          <a href="https://wa.me/971508620217" class="about-cta exodus-cta-btn"><i class="fab fa-whatsapp"></i> WhatsApp पर दस्तावेज़ भेजें</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <TestimonialsCarousel />
+
+  <!-- FAQ Section -->
+  <section id="faq" class="section bg-white faq-section">
+    <div class="container container--narrow">
+      <div class="section-header"><span class="section-label">{faqLabel}</span><h2 class="section-title">{faqTitle}</h2></div>
+      <div class="faq-list">
+        {faqItems.map((item) => (<article class="faq-item"><button class="faq-question">{item.question}<i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>{item.answer}</p></div></article>))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="section bg-dark cta-banner">
+    <div class="container text-center"><h2>{ctaBanner.title}</h2><p>{ctaBanner.body}</p><a href={ctaBanner.buttonUrl} class="cta-btn"><i class="fab fa-whatsapp"></i> {ctaBanner.buttonLabel}</a></div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section bg-dark contact-section">
+    <div class="container">
+      <div class="contact-wrapper">
+        <span class="section-label">{contactSection.label}</span>
+        <h2 class="section-title">{contactSection.title}</h2>
+        <p class="contact-description">{contactSection.description}</p>
+        <form class="contact-form" id="contactForm" method="POST">
+          <div class="form-row">
+            <div class="form-group"><label for="name">आपका नाम</label><input type="text" id="name" name="name" placeholder={contactSection.namePlaceholder} required></div>
+            <div class="form-group"><label for="email">ईमेल पता</label><input type="email" id="email" name="email" placeholder={contactSection.emailPlaceholder} required></div>
+          </div>
+          <div class="form-group"><label for="phone">फ़ोन / WhatsApp नंबर</label><input type="tel" id="phone" name="phone" placeholder={contactSection.phonePlaceholder}></div>
+          <div class="form-group"><label for="message">दस्तावेज़ विवरण</label><textarea id="message" name="message" placeholder={contactSection.messagePlaceholder} rows="5"></textarea></div>
+          <button type="submit" class="submit-btn">अनुरोध जमा करें</button>
+          <div id="formResult" class="form-result"></div>
+        </form>
+        <div class="contact-buttons">
+          <a href="https://wa.me/971508620217" class="contact-btn whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          <a href="tel:+971508620217" class="contact-btn phone"><i class="fas fa-phone"></i> कॉल करें</a>
+          <a href="mailto:info@onlinetranslation.ae" class="contact-btn email"><i class="fas fa-envelope"></i> ईमेल</a>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayoutMultilingual>
 
 <script>
@@ -332,9 +296,7 @@ const ctaBanner = {
       question?.addEventListener('click', () => {
         const isOpen = item.classList.contains('is-open');
         faqItems.forEach((i) => i.classList.remove('is-open'));
-        if (!isOpen) {
-          item.classList.add('is-open');
-        }
+        if (!isOpen) item.classList.add('is-open');
       });
     });
   });

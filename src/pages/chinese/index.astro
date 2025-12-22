@@ -3,7 +3,7 @@ import BaseLayoutMultilingual from '../../layouts/BaseLayoutMultilingual.astro';
 import TestimonialsCarousel from '../../components/TestimonialsCarousel.astro';
 import TrustBar from '../../components/TrustBar.astro';
 
-// SEO - Chinese (Simplified)
+// SEO - Chinese
 const pageTitle = '迪拜法律翻译服务 | MOJ认证 | OnlineTranslation.ae';
 const metaDescription = '迪拜专业法律翻译服务。司法部(MOJ)认证翻译员。用于法院、移民和政府文件。快速可靠的服务。';
 
@@ -21,9 +21,9 @@ const primaryCta = { label: '通过WhatsApp发送文件', url: 'https://wa.me/97
 const secondaryCta = { label: '或获取书面报价', url: '/contact/' };
 
 const overlapCards = [
-  { icon: 'fas fa-shield-alt', title: '迪拜统一许可证', desc: '官方迪拜商业登记 — 验证', badge: '官方许可', url: 'https://app.invest.dubai.ae/DUL/1DE9D8AA-768A-4CFC-BC27-A6F23017B858' },
-  { icon: 'fas fa-building', title: '政府认可', desc: '法院、大使馆和部委接受', badge: '', url: '/services/legal-translation/' },
-  { icon: 'fas fa-bolt', title: '60分钟交付', desc: '迪拜最快的认证翻译服务', badge: '', url: '/services/legal-translation/' },
+  { icon: 'fas fa-bolt', title: '60分钟认证交付', desc: '标准文件60分钟内翻译并认证', badge: '适用条款', url: '/services/legal-translation/' },
+  { icon: 'fas fa-building', title: '阿联酋法院和政府认可', desc: '为迪拜法院、部委和大使馆格式化的认证翻译', badge: '查看认可详情', url: '/services/legal-translation/' },
+  { icon: 'fas fa-shield-alt', title: '迪拜执照和验证', desc: '在迪拜经济部注册 — 验证我们的执照', badge: '在DED注册处验证', url: 'https://app.invest.dubai.ae/DUL/1DE9D8AA-768A-4CFC-BC27-A6F23017B858' },
 ];
 
 const servicesLabel = '我们的服务';
@@ -38,6 +38,23 @@ const servicesItems = [
   { href: '/services/golden-visa-translation/', image: '/assets/images/onedrive/tiles/tile-immigration.png', imageAlt: '黄金签证翻译', heading: '黄金签证', text: '阿联酋黄金签证申请的完整文件包。学术、专业和投资文件。' },
 ];
 
+const whyLabel = '为什么选择我们？';
+const whyTitle = '迪拜法律翻译服务的风险管理标准';
+const whyCards = [
+  { icon: 'fas fa-gavel', title: 'MOJ认证', text: '阿联酋司法部认证的法律翻译，被所有法院和政府机构接受。' },
+  { icon: 'fas fa-id-card', title: '所有文件', text: '出生、结婚、教育、无犯罪证明等，为阿联酋当局格式化。' },
+  { icon: 'fas fa-building', title: '企业就绪', text: '谅解备忘录、合同、股东文件、租赁合同、SPA和DLD表格。' },
+  { icon: 'fas fa-bolt', title: '快速在线', text: 'WhatsApp工作流程、当天选项和清晰的书面报价。' },
+];
+
+const processLabel = '我们的工作流程';
+const processTitle = '高效的翻译服务。简化。';
+const processSteps = [
+  { index: '01', icon: 'fas fa-paper-plane', title: '提交您的文件', desc: '通过WhatsApp发送或通过我们的安全门户上传。接受的格式：PDF、JPG、PNG、DOCX。' },
+  { index: '02', icon: 'fas fa-file-invoice-dollar', title: '即时合规审查', desc: '我们验证文件类型并确认是否需要额外的认证服务。' },
+  { index: '03', icon: 'fas fa-certificate', title: '即时交付', desc: '在数小时内以数字方式收到您的认证翻译。需要时快递实体副本。' },
+];
+
 const metrics = [
   { value: '43+', label: '语言', note: '认证配对' },
   { value: '7', label: '天/周', note: '随时可用' },
@@ -45,23 +62,38 @@ const metrics = [
   { value: '60分钟', label: '初稿', note: '数字交付' },
 ];
 
+const specialistsLabel = '我们的专家';
+const specialistsTitle = '迪拜可信赖的法律翻译服务';
+const specialistsCards = [
+  { href: '/services/legal-translation/', icon: 'fas fa-gavel', title: '法院和诉讼翻译', bullets: ['诉状、备忘录、判决', '证据包和展品', '阿联酋法律术语'], tags: ['迪拜法院', 'DIFC', 'ADGM'] },
+  { href: '/services/golden-visa-translation/', icon: 'fas fa-passport', title: '移民和居留翻译', bullets: ['黄金签证申请', '家庭签证文件', '酋长国身份证和ICP/GDRFA'], tags: ['黄金签证', '家庭签证', 'ICP/GDRFA'] },
+  { href: '/industries/real-estate/', icon: 'fas fa-building', title: '房地产和DLD翻译', bullets: ['房产合同和授权书', '产权证和RERA文件', 'DLD提交格式'], tags: ['DLD', 'RERA', '房产授权书'] },
+  { href: '/services/corporate-translation/', icon: 'fas fa-briefcase', title: '企业和商业翻译', bullets: ['营业执照和章程', '股东协议', '自由区文件'], tags: ['DMCC', '自由区', 'DED'] },
+];
+
+const languagesLabel = '我们支持的语言';
+const languagesTitle = '43+语言的翻译服务';
+const languages = ['阿拉伯语', '英语', '俄语', '法语', '中文', '印地语', '乌尔都语', '西班牙语', '德语', '葡萄牙语', '意大利语', '土耳其语', '波斯语', '日语', '韩语', '荷兰语', '波兰语', '罗马尼亚语', '孟加拉语', '泰米尔语', '他加禄语', '印尼语', '泰语'];
+const languagesNote = '没看到您的语言？联系我们 — 我们与43+语言的母语翻译员合作。';
+
+const aboutLabel = '我们的方法';
+const aboutTitle = '为法院接受而设计。一致的结果。';
+const aboutFeatures = ['法院就绪格式', 'MOJ合规验证', '加急处理可用', '实时状态更新', '加密文件追踪', '原件安全'];
+const aboutSummary = '我们的方法基于一个原则：为每次提交进行细致准备。';
+
 const faqLabel = '常见问题';
 const faqTitle = '关于迪拜法律翻译的常见问题';
-
 const faqItems = [
-  { question: '你们的翻译服务与其他翻译公司有何不同？', answer: '我们作为文档管家运营，而非传统翻译办公室。这意味着您可以获得与认证法律翻译提供商合作的合规保证，而无需传统机构的复杂性。' },
+  { question: '你们的翻译服务与其他翻译公司有何不同？', answer: '我们作为文档管家运营，而非传统翻译办公室。您可以获得与认证法律翻译提供商合作的合规保证，而无需传统机构的复杂性。' },
   { question: '你们的翻译在阿联酋法院被接受吗？', answer: '是的。我们协调的每项法律翻译服务都由MOJ认证翻译员执行。我们的翻译专门为迪拜法院、DIFC、ADGM和联邦司法机构格式化。' },
   { question: '获得认证法律翻译需要多长时间？', answer: '标准文件（出生证明、结婚证、学历证书）通常在3-6个工作小时内完成。紧急法律需求可提供加急处理。' },
   { question: '你们提供认证服务吗？', answer: '是的。当您的法律文件需要MOFA或其他政府机构的认证时，我们协调整个流程，包括原件的安全运输。' },
   { question: '你们翻译阿拉伯语到英语和英语到阿拉伯语吗？', answer: '是的。我们的认证翻译员双向工作，提供全面的阿拉伯语翻译服务。' },
 ];
 
-const ctaBanner = {
-  title: '我们处理合规事务。您专注于重要的事情。',
-  body: '加入迪拜、阿布扎比和北部酋长国信任OnlineTranslation.ae的企业和个人。',
-  buttonLabel: '通过WhatsApp发送文件',
-  buttonUrl: 'https://wa.me/971508620217',
-};
+const ctaBanner = { title: '我们处理合规事务。您专注于重要的事情。', body: '加入迪拜、阿布扎比和北部酋长国信任OnlineTranslation.ae的企业和个人。', buttonLabel: '通过WhatsApp发送文件', buttonUrl: 'https://wa.me/971508620217' };
+
+const contactSection = { label: '联系我们', title: '请求免费报价', description: '分享您的文件。我们将在几分钟内确认价格和交付时间。', namePlaceholder: '输入您的全名', emailPlaceholder: 'your@email.com', phonePlaceholder: '+971 XX XXX XXXX', messagePlaceholder: '描述您的文件和要求...' };
 ---
 
 <BaseLayoutMultilingual title={pageTitle} description={metaDescription} lang="zh" dir="ltr" isHomepage={true} canonicalOverride="https://onlinetranslation.ae/">
@@ -70,16 +102,82 @@ const ctaBanner = {
     <div class="container"><div class="hero-content"><div class="hero-text">
       <h1 class="hero-title exodus-title"><span class="title-line">{heroTitle}</span></h1>
       <p class="hero-lead">{heroLead}</p>
-      <ul class="hero-bullets">{heroBullets.map((item) => (<li>{item.icon && <i class={item.icon}></i>}{item.text}</li>))}</ul>
-      <div class="hero-cta-group"><a href={primaryCta.url} class="hero-cta exodus-cta"><i class="fab fa-whatsapp"></i> {primaryCta.label}</a>{secondaryCta?.url && (<a href={secondaryCta.url} class="hero-cta-secondary">{secondaryCta.label}</a>)}</div>
+      <ul class="hero-bullets">{heroBullets.map((item) => (<li><i class={item.icon}></i> {item.text}</li>))}</ul>
+      <div class="hero-cta-group"><a href={primaryCta.url} class="hero-cta exodus-cta"><i class="fab fa-whatsapp"></i> {primaryCta.label}</a><a href={secondaryCta.url} class="hero-cta-secondary">{secondaryCta.label}</a></div>
     </div></div></div>
-    <div class="overlap-cards-wrapper"><div class="container"><div class="overlap-cards">{overlapCards.map((card) => (<a href={card.url || '#'} class="overlap-card" target={card.url?.startsWith('http') ? '_blank' : undefined} rel={card.url?.startsWith('http') ? 'noopener noreferrer' : undefined}><div class="overlap-card-icon">{card.icon && <i class={card.icon}></i>}</div><div class="overlap-card-content"><h3 class="overlap-card-title">{card.title}</h3><p class="overlap-card-desc">{card.desc}</p>{card.badge && (<span class="overlap-card-badge">{card.badge}</span>)}</div></a>))}</div></div></div>
+    <div class="overlap-cards-wrapper"><div class="container"><div class="overlap-cards">
+      {overlapCards.map((card) => (<a href={card.url} class="overlap-card" target={card.url?.startsWith('http') ? '_blank' : undefined} rel={card.url?.startsWith('http') ? 'noopener noreferrer' : undefined}><div class="overlap-card-icon"><i class={card.icon}></i></div><div class="overlap-card-content"><h3 class="overlap-card-title">{card.title}</h3><p class="overlap-card-desc">{card.desc}</p>{card.badge && <span class="overlap-card-badge">{card.badge}</span>}</div></a>))}
+    </div></div></div>
   </section>
+
   <TrustBar />
-  <section id="services" class="section bg-white services-section"><div class="container"><div class="section-header"><span class="section-label">{servicesLabel}</span><h2 class="section-title">{servicesTitle}</h2></div><div class="services-grid-enhanced">{servicesItems.map((service) => (<a href={service.href} class="service-card-v2"><div class="card-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div><div class="card-image"><img src={service.image} alt={service.imageAlt} loading="lazy" width="400" height="300"></div><div class="card-body"><h3>{service.heading}</h3><p>{service.text}</p><span class="card-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg></span></div></a>))}</div></div></section>
-  <section class="ot-metrics"><div class="ot-metrics-inner">{metrics.map((metric) => (<article class="ot-metric"><span class="ot-metric-value">{metric.value}</span><span class="ot-metric-label">{metric.label}</span>{metric.note && (<span class="ot-metric-note">{metric.note}</span>)}</article>))}</div></section>
-  <section id="faq" class="section bg-white faq-section"><div class="container container--narrow"><div class="section-header"><span class="section-label">{faqLabel}</span><h2 class="section-title">{faqTitle}</h2></div><div class="faq-list">{faqItems.map((item) => (<article class="faq-item"><button class="faq-question">{item.question}<i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>{item.answer}</p></div></article>))}</div></div></section>
-  <section class="section bg-dark cta-banner"><div class="container text-center"><h2>{ctaBanner.title}</h2><p>{ctaBanner.body}</p><a href={ctaBanner.buttonUrl} class="cta-btn"><i class="fab fa-whatsapp"></i> {ctaBanner.buttonLabel}</a></div></section>
+
+  <section id="services" class="section bg-white services-section">
+    <div class="container"><div class="section-header"><span class="section-label">{servicesLabel}</span><h2 class="section-title">{servicesTitle}</h2></div>
+      <div class="services-grid-enhanced">{servicesItems.map((service) => (<a href={service.href} class="service-card-v2"><div class="card-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div><div class="card-image"><img src={service.image} alt={service.imageAlt} loading="lazy" width="400" height="300"></div><div class="card-body"><h3>{service.heading}</h3><p>{service.text}</p><span class="card-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg></span></div></a>))}</div>
+    </div>
+  </section>
+
+  <section id="why" class="section bg-light why-section">
+    <div class="container"><div class="section-header"><span class="section-label">{whyLabel}</span><h2 class="section-title">{whyTitle}</h2><div class="section-divider"></div></div>
+      <div class="grid grid-4 grid--auto-fit why-grid">{whyCards.map((card) => (<article class="why-card"><i class={card.icon}></i><h3>{card.title}</h3><p>{card.text}</p></article>))}</div>
+    </div>
+  </section>
+
+  <section id="process" class="section bg-white process-section exodus-process">
+    <div class="container"><div class="section-header"><span class="section-label exodus-label">{processLabel}</span><h2 class="section-title exodus-section-title">{processTitle}</h2></div>
+      <div class="grid grid-3 grid--auto-fit process-steps exodus-process-steps">{processSteps.map((step) => (<article class="process-step exodus-step"><div class="step-header"><span class="step-index">{step.index}</span><div class="step-icon"><i class={step.icon}></i></div></div><h3 class="step-title">{step.title}</h3><p class="step-desc">{step.desc}</p></article>))}</div>
+    </div>
+  </section>
+
+  <section class="ot-metrics"><div class="ot-metrics-inner">{metrics.map((metric) => (<article class="ot-metric"><span class="ot-metric-value">{metric.value}</span><span class="ot-metric-label">{metric.label}</span><span class="ot-metric-note">{metric.note}</span></article>))}</div></section>
+
+  <section id="team" class="section bg-alt specialists-section">
+    <div class="container"><div class="section-header"><span class="section-label exodus-label">{specialistsLabel}</span><h2 class="section-title exodus-section-title">{specialistsTitle}</h2></div>
+      <div class="grid grid-4 grid--auto-fit specialists-grid">{specialistsCards.map((card) => (<a href={card.href} class="specialist-card"><div class="specialist-icon"><i class={card.icon}></i></div><h3>{card.title}</h3><ul class="specialist-bullets">{card.bullets.map((b) => (<li>{b}</li>))}</ul><div class="specialist-tags">{card.tags.map((t) => (<span class="tag">{t}</span>))}</div></a>))}</div>
+      <div class="team-cta-wrapper"><p class="team-tagline">您的文件由专业专家处理，并在交付前进行审核。</p><a href="https://wa.me/971508620217" class="team-cta"><i class="fab fa-whatsapp"></i> 通过WhatsApp发送文件</a></div>
+    </div>
+  </section>
+
+  <section class="section bg-dark languages-section exodus-languages">
+    <div class="container"><div class="section-header"><span class="section-label exodus-label">{languagesLabel}</span><h2 class="section-title exodus-section-title">{languagesTitle}</h2></div>
+      <div class="grid grid-3 grid--auto-fit languages-grid">{languages.map((lang) => (<div class="language-item"><i class="fas fa-globe"></i> {lang}</div>))}<div class="language-item highlight"><i class="fas fa-plus-circle"></i> 20+更多</div></div>
+      <p class="languages-note">{languagesNote}</p>
+    </div>
+  </section>
+
+  <section id="about" class="section bg-white about-section exodus-about">
+    <div class="container"><div class="about-grid exodus-about-grid">
+      <div class="about-image exodus-about-image"><img src="/assets/images/onedrive/contact-office.png" alt="迪拜专业法律翻译" loading="lazy" width="600" height="400"><div class="experience-badge exodus-badge"><span class="years">法院</span><span class="text">就绪</span></div></div>
+      <div class="about-content exodus-about-content"><span class="section-label exodus-label">{aboutLabel}</span><h2 class="section-title exodus-section-title">{aboutTitle}</h2>
+        <div class="exodus-features-list">{aboutFeatures.map((feature) => (<div class="exodus-feature-item"><i class="fas fa-check-circle"></i><span>{feature}</span></div>))}</div>
+        <p class="about-summary">{aboutSummary}</p><a href="https://wa.me/971508620217" class="about-cta exodus-cta-btn"><i class="fab fa-whatsapp"></i> 通过WhatsApp发送文件</a>
+      </div>
+    </div></div>
+  </section>
+
   <TestimonialsCarousel />
+
+  <section id="faq" class="section bg-white faq-section">
+    <div class="container container--narrow"><div class="section-header"><span class="section-label">{faqLabel}</span><h2 class="section-title">{faqTitle}</h2></div>
+      <div class="faq-list">{faqItems.map((item) => (<article class="faq-item"><button class="faq-question">{item.question}<i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>{item.answer}</p></div></article>))}</div>
+    </div>
+  </section>
+
+  <section class="section bg-dark cta-banner"><div class="container text-center"><h2>{ctaBanner.title}</h2><p>{ctaBanner.body}</p><a href={ctaBanner.buttonUrl} class="cta-btn"><i class="fab fa-whatsapp"></i> {ctaBanner.buttonLabel}</a></div></section>
+
+  <section id="contact" class="section bg-dark contact-section">
+    <div class="container"><div class="contact-wrapper">
+      <span class="section-label">{contactSection.label}</span><h2 class="section-title">{contactSection.title}</h2><p class="contact-description">{contactSection.description}</p>
+      <form class="contact-form" id="contactForm" method="POST">
+        <div class="form-row"><div class="form-group"><label for="name">您的姓名</label><input type="text" id="name" name="name" placeholder={contactSection.namePlaceholder} required></div><div class="form-group"><label for="email">电子邮件</label><input type="email" id="email" name="email" placeholder={contactSection.emailPlaceholder} required></div></div>
+        <div class="form-group"><label for="phone">电话 / WhatsApp</label><input type="tel" id="phone" name="phone" placeholder={contactSection.phonePlaceholder}></div>
+        <div class="form-group"><label for="message">文件详情</label><textarea id="message" name="message" placeholder={contactSection.messagePlaceholder} rows="5"></textarea></div>
+        <button type="submit" class="submit-btn">提交请求</button><div id="formResult" class="form-result"></div>
+      </form>
+      <div class="contact-buttons"><a href="https://wa.me/971508620217" class="contact-btn whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="tel:+971508620217" class="contact-btn phone"><i class="fas fa-phone"></i> 致电</a><a href="mailto:info@onlinetranslation.ae" class="contact-btn email"><i class="fas fa-envelope"></i> 邮件</a></div>
+    </div></div>
+  </section>
 </BaseLayoutMultilingual>
+
 <script>document.addEventListener('DOMContentLoaded', () => { const faqItems = document.querySelectorAll('.faq-item'); faqItems.forEach((item) => { const question = item.querySelector('.faq-question'); question?.addEventListener('click', () => { const isOpen = item.classList.contains('is-open'); faqItems.forEach((i) => i.classList.remove('is-open')); if (!isOpen) item.classList.add('is-open'); }); }); });</script>

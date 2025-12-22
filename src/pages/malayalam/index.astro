@@ -21,9 +21,9 @@ const primaryCta = { label: 'WhatsApp വഴി രേഖകൾ അയയ്ക�
 const secondaryCta = { label: 'അല്ലെങ്കിൽ എഴുതിയ ക്വോട്ടേഷൻ നേടുക', url: '/contact/' };
 
 const overlapCards = [
-  { icon: 'fas fa-shield-alt', title: 'ദുബായ് യൂണിഫൈഡ് ലൈസൻസ്', desc: 'ഔദ്യോഗിക ദുബായ് ബിസിനസ് രജിസ്റ്റർ - പരിശോധിക്കുക', badge: 'ഔദ്യോഗികമായി ലൈസൻസുള്ളത്', url: 'https://app.invest.dubai.ae/DUL/1DE9D8AA-768A-4CFC-BC27-A6F23017B858' },
-  { icon: 'fas fa-building', title: 'സർക്കാർ അംഗീകൃതം', desc: 'കോടതികൾ, എംബസികൾ, മന്ത്രാലയങ്ങൾ എന്നിവ സ്വീകരിക്കുന്നു', badge: '', url: '/services/legal-translation/' },
-  { icon: 'fas fa-bolt', title: '60 മിനിറ്റ് ഡെലിവറി', desc: 'ദുബായിലെ ഏറ്റവും വേഗതയേറിയ സർട്ടിഫൈഡ് വിവർത്തന സേവനം', badge: '', url: '/services/legal-translation/' },
+  { icon: 'fas fa-bolt', title: '60 മിനിറ്റ് സർട്ടിഫൈഡ് ഡെലിവറി', desc: 'സ്റ്റാൻഡേർഡ് രേഖകൾ 60 മിനിറ്റിൽ വിവർത്തനവും സർട്ടിഫൈഡും', badge: 'നിബന്ധനകൾ ബാധകം', url: '/services/legal-translation/' },
+  { icon: 'fas fa-building', title: 'UAE കോടതികളും സർക്കാരും അംഗീകരിക്കുന്നു', desc: 'ദുബായ് കോർട്ടുകൾ, മന്ത്രാലയങ്ങൾ, എംബസികൾ എന്നിവയ്ക്കുള്ള സർട്ടിഫൈഡ് വിവർത്തനങ്ങൾ', badge: 'അംഗീകാര വിശദാംശങ്ങൾ കാണുക', url: '/services/legal-translation/' },
+  { icon: 'fas fa-shield-alt', title: 'ദുബായ് ലൈസൻസുള്ളതും പരിശോധിച്ചതും', desc: 'ദുബായ് ഇക്കോണമിയിൽ രജിസ്റ്റർ ചെയ്തത് — ഞങ്ങളുടെ ലൈസൻസ് പരിശോധിക്കുക', badge: 'DED രജിസ്ട്രിയിൽ പരിശോധിക്കുക', url: 'https://app.invest.dubai.ae/DUL/1DE9D8AA-768A-4CFC-BC27-A6F23017B858' },
 ];
 
 const servicesLabel = 'ഞങ്ങളുടെ സേവനങ്ങൾ';
@@ -38,6 +38,23 @@ const servicesItems = [
   { href: '/services/golden-visa-translation/', image: '/assets/images/onedrive/tiles/tile-immigration.png', imageAlt: 'ഗോൾഡൻ വിസ വിവർത്തനം', heading: 'ഗോൾഡൻ വിസ', text: 'UAE ഗോൾഡൻ വിസ അപേക്ഷകൾക്കുള്ള പൂർണ്ണ ഡോക്യുമെന്റ് പാക്കേജുകൾ. അക്കാദമിക്, പ്രൊഫഷണൽ, നിക്ഷേപ രേഖകൾ.' },
 ];
 
+const whyLabel = 'എന്തുകൊണ്ട് ഞങ്ങളെ തിരഞ്ഞെടുക്കണം?';
+const whyTitle = 'ദുബായിലെ നിയമ വിവർത്തന സേവനങ്ങൾക്കുള്ള റിസ്ക് മാനേജ്മെന്റ് സ്റ്റാൻഡേർഡ്';
+const whyCards = [
+  { icon: 'fas fa-gavel', title: 'MOJ സർട്ടിഫൈഡ്', text: 'UAE നീതിന്യായ മന്ത്രാലയം സർട്ടിഫൈഡ് നിയമ വിവർത്തനം എല്ലാ കോടതികളും സർക്കാർ സ്ഥാപനങ്ങളും അംഗീകരിക്കുന്നു.' },
+  { icon: 'fas fa-id-card', title: 'എല്ലാ രേഖകളും', text: 'ജനനം, വിവാഹം, വിദ്യാഭ്യാസം, പോലീസ് ക്ലിയറൻസ് എന്നിവയും മറ്റും, UAE അധികാരികൾക്കായി ഫോർമാറ്റ് ചെയ്തത്.' },
+  { icon: 'fas fa-building', title: 'കോർപ്പറേറ്റ് റെഡി', text: 'MOUs, കരാറുകൾ, ഷെയർഹോൾഡർ രേഖകൾ, വാടക കരാറുകൾ, SPAs, DLD ഫോമുകൾ.' },
+  { icon: 'fas fa-bolt', title: 'വേഗതയേറിയതും ഓൺലൈനും', text: 'WhatsApp അടിസ്ഥാനമാക്കിയ വർക്ക്ഫ്ലോ, അതേ ദിവസം ഓപ്ഷനുകൾ, വ്യക്തമായ എഴുതിയ ക്വോട്ടേഷനുകൾ.' },
+];
+
+const processLabel = 'ഞങ്ങളുടെ പ്രവർത്തന പ്രക്രിയ';
+const processTitle = 'കാര്യക്ഷമമായ വിവർത്തന സേവനങ്ങൾ. ലളിതമാക്കി.';
+const processSteps = [
+  { index: '01', icon: 'fas fa-paper-plane', title: 'നിങ്ങളുടെ രേഖ സമർപ്പിക്കുക', desc: 'WhatsApp വഴി അയയ്ക്കുക അല്ലെങ്കിൽ ഞങ്ങളുടെ സുരക്ഷിത പോർട്ടലിലൂടെ അപ്ലോഡ് ചെയ്യുക. സ്വീകരിക്കുന്ന ഫോർമാറ്റുകൾ: PDF, JPG, PNG, DOCX.' },
+  { index: '02', icon: 'fas fa-file-invoice-dollar', title: 'തൽക്ഷണ കംപ്ലയൻസ് അവലോകനം', desc: 'ഞങ്ങൾ രേഖ തരം പരിശോധിച്ച് അധിക അറ്റസ്റ്റേഷൻ സേവനങ്ങൾ ആവശ്യമാണോ എന്ന് സ്ഥിരീകരിക്കുന്നു.' },
+  { index: '03', icon: 'fas fa-certificate', title: 'തൽക്ഷണ ഡെലിവറി', desc: 'മണിക്കൂറുകൾക്കുള്ളിൽ നിങ്ങളുടെ സർട്ടിഫൈഡ് വിവർത്തനം ഡിജിറ്റലായി സ്വീകരിക്കുക. ആവശ്യമെങ്കിൽ ഫിസിക്കൽ കോപ്പികൾ കൊറിയർ ചെയ്യും.' },
+];
+
 const metrics = [
   { value: '43+', label: 'ഭാഷകൾ', note: 'സർട്ടിഫൈഡ് ജോഡികൾ' },
   { value: '7', label: 'ദിവസം/ആഴ്ച', note: 'എപ്പോഴും ലഭ്യം' },
@@ -45,9 +62,27 @@ const metrics = [
   { value: '60 മിനിറ്റ്', label: 'ആദ്യ ഡ്രാഫ്റ്റ്', note: 'ഡിജിറ്റൽ ഡെലിവറി' },
 ];
 
+const specialistsLabel = 'ഞങ്ങളുടെ വിദഗ്ധർ';
+const specialistsTitle = 'ദുബായിലെ വിശ്വസനീയ നിയമ വിവർത്തന സേവനങ്ങൾ';
+const specialistsCards = [
+  { href: '/services/legal-translation/', icon: 'fas fa-gavel', title: 'കോടതി & വ്യവഹാര വിവർത്തനം', bullets: ['ഹർജികൾ, മെമ്മോറാണ്ടകൾ, വിധിന്യായങ്ങൾ', 'തെളിവ് ബണ്ടിലുകളും എക്സിബിറ്റുകളും', 'UAE നിയമ പദാവലി'], tags: ['ദുബായ് കോർട്ട്', 'DIFC', 'ADGM'] },
+  { href: '/services/golden-visa-translation/', icon: 'fas fa-passport', title: 'ഇമിഗ്രേഷൻ & റെസിഡൻസി വിവർത്തനം', bullets: ['ഗോൾഡൻ വിസ അപേക്ഷകൾ', 'ഫാമിലി വിസ രേഖകൾ', 'എമിറേറ്റ്സ് ഐഡിയും ICP/GDRFA-യും'], tags: ['ഗോൾഡൻ വിസ', 'ഫാമിലി വിസ', 'ICP/GDRFA'] },
+  { href: '/industries/real-estate/', icon: 'fas fa-building', title: 'റിയൽ എസ്റ്റേറ്റ് & DLD വിവർത്തനം', bullets: ['പ്രോപ്പർട്ടി കരാറുകളും POA-കളും', 'ടൈറ്റിൽ ഡീഡുകളും RERA രേഖകളും', 'DLD സമർപ്പണ ഫോർമാറ്റ്'], tags: ['DLD', 'RERA', 'പ്രോപ്പർട്ടി POA'] },
+  { href: '/services/corporate-translation/', icon: 'fas fa-briefcase', title: 'കോർപ്പറേറ്റ് & കൊമേഴ്സ്യൽ വിവർത്തനം', bullets: ['ട്രേഡ് ലൈസൻസുകളും MOA-കളും', 'ഷെയർഹോൾഡർ കരാറുകൾ', 'ഫ്രീ സോൺ ഡോക്യുമെന്റേഷൻ'], tags: ['DMCC', 'ഫ്രീ സോണുകൾ', 'DED'] },
+];
+
+const languagesLabel = 'ഞങ്ങൾ പിന്തുണയ്ക്കുന്ന ഭാഷകൾ';
+const languagesTitle = '43+ ഭാഷകളിൽ വിവർത്തന സേവനങ്ങൾ';
+const languages = ['അറബിക്', 'ഇംഗ്ലീഷ്', 'റഷ്യൻ', 'ഫ്രഞ്ച്', 'ചൈനീസ്', 'ഹിന്ദി', 'ഉറുദു', 'സ്പാനിഷ്', 'ജർമ്മൻ', 'പോർച്ചുഗീസ്', 'ഇറ്റാലിയൻ', 'ടർക്കിഷ്', 'പേർഷ്യൻ', 'ജാപ്പനീസ്', 'കൊറിയൻ', 'ഡച്ച്', 'പോളിഷ്', 'റൊമാനിയൻ', 'ബംഗാളി', 'തമിഴ്', 'തഗാലോഗ്', 'ഇന്തോനേഷ്യൻ', 'തായ്'];
+const languagesNote = 'നിങ്ങളുടെ ഭാഷ കാണുന്നില്ലേ? ഞങ്ങളെ ബന്ധപ്പെടുക — ഞങ്ങൾ 43+ ഭാഷകളിൽ നേറ്റീവ് വിവർത്തകരുമായി പ്രവർത്തിക്കുന്നു.';
+
+const aboutLabel = 'ഞങ്ങളുടെ സമീപനം';
+const aboutTitle = 'കോടതി അംഗീകാരത്തിനായി രൂപകൽപ്പന ചെയ്തത്. സ്ഥിരമായ ഫലങ്ങൾ.';
+const aboutFeatures = ['കോടതി-തയ്യാർ ഫോർമാറ്റിംഗ്', 'MOJ കംപ്ലയൻസ് പരിശോധന', 'എക്സ്പ്രസ് പ്രോസസ്സിംഗ് ലഭ്യം', 'റിയൽ-ടൈം സ്റ്റാറ്റസ് അപ്ഡേറ്റുകൾ', 'എൻക്രിപ്റ്റഡ് ഡോക്യുമെന്റ് ട്രെയിൽ', 'ഒറിജിനൽ ഡോക്യുമെന്റ് സുരക്ഷ'];
+const aboutSummary = 'ഞങ്ങളുടെ സമീപനം ഒരു തത്വത്തിൽ നിർമ്മിച്ചതാണ്: ഓരോ സമർപ്പണത്തിനും സൂക്ഷ്മമായ തയ്യാറെടുപ്പ്.';
+
 const faqLabel = 'പതിവ് ചോദ്യങ്ങൾ';
 const faqTitle = 'ദുബായിലെ നിയമ വിവർത്തനത്തെക്കുറിച്ചുള്ള സാധാരണ ചോദ്യങ്ങൾ';
-
 const faqItems = [
   { question: 'നിങ്ങളുടെ വിവർത്തന സേവനം മറ്റ് വിവർത്തന കമ്പനികളിൽ നിന്ന് എങ്ങനെ വ്യത്യാസപ്പെട്ടിരിക്കുന്നു?', answer: 'ഞങ്ങൾ ഒരു ഡോക്യുമെന്റ് കൺസിയർജായി പ്രവർത്തിക്കുന്നു, പരമ്പരാഗത വിവർത്തന ഓഫീസല്ല. ഇതിനർത്ഥം പരമ്പരാഗത ഏജൻസികളുടെ സങ്കീർണ്ണതകളില്ലാതെ സർട്ടിഫൈഡ് നിയമ വിവർത്തന ദാതാക്കളുമായി പ്രവർത്തിക്കുന്നതിന്റെ കംപ്ലയൻസ് ഗ്യാരണ്ടികൾ നിങ്ങൾക്ക് ലഭിക്കുന്നു.' },
   { question: 'നിങ്ങളുടെ വിവർത്തനങ്ങൾ UAE കോടതികളിൽ സ്വീകരിക്കുമോ?', answer: 'അതെ. ഞങ്ങൾ ഏകോപിപ്പിക്കുന്ന ഓരോ നിയമ വിവർത്തന സേവനവും MOJ സർട്ടിഫൈഡ് വിവർത്തകർ നിർവ്വഹിക്കുന്നു. ഞങ്ങളുടെ വിവർത്തനങ്ങൾ ദുബായ് കോർട്ടുകൾ, DIFC, ADGM, ഫെഡറൽ ജുഡീഷ്യൽ ബോഡികൾ എന്നിവയ്ക്കായി പ്രത്യേകം ഫോർമാറ്റ് ചെയ്തിരിക്കുന്നു.' },
@@ -56,12 +91,9 @@ const faqItems = [
   { question: 'അറബിയിൽ നിന്ന് ഇംഗ്ലീഷിലേക്കും ഇംഗ്ലീഷിൽ നിന്ന് അറബിയിലേക്കും വിവർത്തനം ചെയ്യുന്നുണ്ടോ?', answer: 'അതെ. ഞങ്ങളുടെ സർട്ടിഫൈഡ് വിവർത്തകർ സമഗ്രമായ അറബി വിവർത്തന സേവനങ്ങൾ നൽകാൻ രണ്ട് ദിശകളിലും പ്രവർത്തിക്കുന്നു.' },
 ];
 
-const ctaBanner = {
-  title: 'കംപ്ലയൻസ് ഞങ്ങൾ കൈകാര്യം ചെയ്യും. പ്രധാനപ്പെട്ടവയിൽ ശ്രദ്ധ കേന്ദ്രീകരിക്കുക.',
-  body: 'OnlineTranslation.ae-യിൽ വിശ്വസിക്കുന്ന ദുബായ്, അബുദാബി, വടക്കൻ എമിറേറ്റുകളിലെ ബിസിനസുകളും വ്യക്തികളും ചേരുക.',
-  buttonLabel: 'WhatsApp വഴി രേഖകൾ അയയ്ക്കുക',
-  buttonUrl: 'https://wa.me/971508620217',
-};
+const ctaBanner = { title: 'കംപ്ലയൻസ് ഞങ്ങൾ കൈകാര്യം ചെയ്യും. പ്രധാനപ്പെട്ടവയിൽ ശ്രദ്ധ കേന്ദ്രീകരിക്കുക.', body: 'ദുബായ്, അബുദാബി, വടക്കൻ എമിറേറ്റുകളിൽ OnlineTranslation.ae-യിൽ വിശ്വസിക്കുന്ന ബിസിനസുകളും വ്യക്തികളും ചേരുക.', buttonLabel: 'WhatsApp വഴി രേഖകൾ അയയ്ക്കുക', buttonUrl: 'https://wa.me/971508620217' };
+
+const contactSection = { label: 'ബന്ധപ്പെടുക', title: 'സൗജന്യ ക്വോട്ടേഷൻ അഭ്യർത്ഥിക്കുക', description: 'നിങ്ങളുടെ രേഖകൾ പങ്കിടുക. മിനിറ്റുകൾക്കുള്ളിൽ വില, ഡെലിവറി സമയം എന്നിവ സ്ഥിരീകരിക്കും.', namePlaceholder: 'നിങ്ങളുടെ പൂർണ്ണ നാമം നൽകുക', emailPlaceholder: 'your@email.com', phonePlaceholder: '+971 XX XXX XXXX', messagePlaceholder: 'നിങ്ങളുടെ രേഖകളും ആവശ്യകതകളും വിവരിക്കുക...' };
 ---
 
 <BaseLayoutMultilingual title={pageTitle} description={metaDescription} lang="ml" dir="ltr" isHomepage={true} canonicalOverride="https://onlinetranslation.ae/">
@@ -70,16 +102,82 @@ const ctaBanner = {
     <div class="container"><div class="hero-content"><div class="hero-text">
       <h1 class="hero-title exodus-title"><span class="title-line">{heroTitle}</span></h1>
       <p class="hero-lead">{heroLead}</p>
-      <ul class="hero-bullets">{heroBullets.map((item) => (<li>{item.icon && <i class={item.icon}></i>}{item.text}</li>))}</ul>
-      <div class="hero-cta-group"><a href={primaryCta.url} class="hero-cta exodus-cta"><i class="fab fa-whatsapp"></i> {primaryCta.label}</a>{secondaryCta?.url && (<a href={secondaryCta.url} class="hero-cta-secondary">{secondaryCta.label}</a>)}</div>
+      <ul class="hero-bullets">{heroBullets.map((item) => (<li><i class={item.icon}></i> {item.text}</li>))}</ul>
+      <div class="hero-cta-group"><a href={primaryCta.url} class="hero-cta exodus-cta"><i class="fab fa-whatsapp"></i> {primaryCta.label}</a><a href={secondaryCta.url} class="hero-cta-secondary">{secondaryCta.label}</a></div>
     </div></div></div>
-    <div class="overlap-cards-wrapper"><div class="container"><div class="overlap-cards">{overlapCards.map((card) => (<a href={card.url || '#'} class="overlap-card" target={card.url?.startsWith('http') ? '_blank' : undefined} rel={card.url?.startsWith('http') ? 'noopener noreferrer' : undefined}><div class="overlap-card-icon">{card.icon && <i class={card.icon}></i>}</div><div class="overlap-card-content"><h3 class="overlap-card-title">{card.title}</h3><p class="overlap-card-desc">{card.desc}</p>{card.badge && (<span class="overlap-card-badge">{card.badge}</span>)}</div></a>))}</div></div></div>
+    <div class="overlap-cards-wrapper"><div class="container"><div class="overlap-cards">
+      {overlapCards.map((card) => (<a href={card.url} class="overlap-card" target={card.url?.startsWith('http') ? '_blank' : undefined} rel={card.url?.startsWith('http') ? 'noopener noreferrer' : undefined}><div class="overlap-card-icon"><i class={card.icon}></i></div><div class="overlap-card-content"><h3 class="overlap-card-title">{card.title}</h3><p class="overlap-card-desc">{card.desc}</p>{card.badge && <span class="overlap-card-badge">{card.badge}</span>}</div></a>))}
+    </div></div></div>
   </section>
+
   <TrustBar />
-  <section id="services" class="section bg-white services-section"><div class="container"><div class="section-header"><span class="section-label">{servicesLabel}</span><h2 class="section-title">{servicesTitle}</h2></div><div class="services-grid-enhanced">{servicesItems.map((service) => (<a href={service.href} class="service-card-v2"><div class="card-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div><div class="card-image"><img src={service.image} alt={service.imageAlt} loading="lazy" width="400" height="300"></div><div class="card-body"><h3>{service.heading}</h3><p>{service.text}</p><span class="card-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg></span></div></a>))}</div></div></section>
-  <section class="ot-metrics"><div class="ot-metrics-inner">{metrics.map((metric) => (<article class="ot-metric"><span class="ot-metric-value">{metric.value}</span><span class="ot-metric-label">{metric.label}</span>{metric.note && (<span class="ot-metric-note">{metric.note}</span>)}</article>))}</div></section>
-  <section id="faq" class="section bg-white faq-section"><div class="container container--narrow"><div class="section-header"><span class="section-label">{faqLabel}</span><h2 class="section-title">{faqTitle}</h2></div><div class="faq-list">{faqItems.map((item) => (<article class="faq-item"><button class="faq-question">{item.question}<i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>{item.answer}</p></div></article>))}</div></div></section>
-  <section class="section bg-dark cta-banner"><div class="container text-center"><h2>{ctaBanner.title}</h2><p>{ctaBanner.body}</p><a href={ctaBanner.buttonUrl} class="cta-btn"><i class="fab fa-whatsapp"></i> {ctaBanner.buttonLabel}</a></div></section>
+
+  <section id="services" class="section bg-white services-section">
+    <div class="container"><div class="section-header"><span class="section-label">{servicesLabel}</span><h2 class="section-title">{servicesTitle}</h2></div>
+      <div class="services-grid-enhanced">{servicesItems.map((service) => (<a href={service.href} class="service-card-v2"><div class="card-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div><div class="card-image"><img src={service.image} alt={service.imageAlt} loading="lazy" width="400" height="300"></div><div class="card-body"><h3>{service.heading}</h3><p>{service.text}</p><span class="card-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg></span></div></a>))}</div>
+    </div>
+  </section>
+
+  <section id="why" class="section bg-light why-section">
+    <div class="container"><div class="section-header"><span class="section-label">{whyLabel}</span><h2 class="section-title">{whyTitle}</h2><div class="section-divider"></div></div>
+      <div class="grid grid-4 grid--auto-fit why-grid">{whyCards.map((card) => (<article class="why-card"><i class={card.icon}></i><h3>{card.title}</h3><p>{card.text}</p></article>))}</div>
+    </div>
+  </section>
+
+  <section id="process" class="section bg-white process-section exodus-process">
+    <div class="container"><div class="section-header"><span class="section-label exodus-label">{processLabel}</span><h2 class="section-title exodus-section-title">{processTitle}</h2></div>
+      <div class="grid grid-3 grid--auto-fit process-steps exodus-process-steps">{processSteps.map((step) => (<article class="process-step exodus-step"><div class="step-header"><span class="step-index">{step.index}</span><div class="step-icon"><i class={step.icon}></i></div></div><h3 class="step-title">{step.title}</h3><p class="step-desc">{step.desc}</p></article>))}</div>
+    </div>
+  </section>
+
+  <section class="ot-metrics"><div class="ot-metrics-inner">{metrics.map((metric) => (<article class="ot-metric"><span class="ot-metric-value">{metric.value}</span><span class="ot-metric-label">{metric.label}</span><span class="ot-metric-note">{metric.note}</span></article>))}</div></section>
+
+  <section id="team" class="section bg-alt specialists-section">
+    <div class="container"><div class="section-header"><span class="section-label exodus-label">{specialistsLabel}</span><h2 class="section-title exodus-section-title">{specialistsTitle}</h2></div>
+      <div class="grid grid-4 grid--auto-fit specialists-grid">{specialistsCards.map((card) => (<a href={card.href} class="specialist-card"><div class="specialist-icon"><i class={card.icon}></i></div><h3>{card.title}</h3><ul class="specialist-bullets">{card.bullets.map((b) => (<li>{b}</li>))}</ul><div class="specialist-tags">{card.tags.map((t) => (<span class="tag">{t}</span>))}</div></a>))}</div>
+      <div class="team-cta-wrapper"><p class="team-tagline">നിങ്ങളുടെ രേഖകൾ സമർപ്പിത വിദഗ്ധർ കൈകാര്യം ചെയ്യുകയും ഡെലിവറിക്ക് മുമ്പ് അവലോകനം ചെയ്യുകയും ചെയ്യുന്നു.</p><a href="https://wa.me/971508620217" class="team-cta"><i class="fab fa-whatsapp"></i> WhatsApp വഴി രേഖകൾ അയയ്ക്കുക</a></div>
+    </div>
+  </section>
+
+  <section class="section bg-dark languages-section exodus-languages">
+    <div class="container"><div class="section-header"><span class="section-label exodus-label">{languagesLabel}</span><h2 class="section-title exodus-section-title">{languagesTitle}</h2></div>
+      <div class="grid grid-3 grid--auto-fit languages-grid">{languages.map((lang) => (<div class="language-item"><i class="fas fa-globe"></i> {lang}</div>))}<div class="language-item highlight"><i class="fas fa-plus-circle"></i> 20+ കൂടുതൽ</div></div>
+      <p class="languages-note">{languagesNote}</p>
+    </div>
+  </section>
+
+  <section id="about" class="section bg-white about-section exodus-about">
+    <div class="container"><div class="about-grid exodus-about-grid">
+      <div class="about-image exodus-about-image"><img src="/assets/images/onedrive/contact-office.png" alt="ദുബായിലെ പ്രൊഫഷണൽ നിയമ വിവർത്തനം" loading="lazy" width="600" height="400"><div class="experience-badge exodus-badge"><span class="years">കോടതി</span><span class="text">റെഡി</span></div></div>
+      <div class="about-content exodus-about-content"><span class="section-label exodus-label">{aboutLabel}</span><h2 class="section-title exodus-section-title">{aboutTitle}</h2>
+        <div class="exodus-features-list">{aboutFeatures.map((feature) => (<div class="exodus-feature-item"><i class="fas fa-check-circle"></i><span>{feature}</span></div>))}</div>
+        <p class="about-summary">{aboutSummary}</p><a href="https://wa.me/971508620217" class="about-cta exodus-cta-btn"><i class="fab fa-whatsapp"></i> WhatsApp വഴി രേഖകൾ അയയ്ക്കുക</a>
+      </div>
+    </div></div>
+  </section>
+
   <TestimonialsCarousel />
+
+  <section id="faq" class="section bg-white faq-section">
+    <div class="container container--narrow"><div class="section-header"><span class="section-label">{faqLabel}</span><h2 class="section-title">{faqTitle}</h2></div>
+      <div class="faq-list">{faqItems.map((item) => (<article class="faq-item"><button class="faq-question">{item.question}<i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>{item.answer}</p></div></article>))}</div>
+    </div>
+  </section>
+
+  <section class="section bg-dark cta-banner"><div class="container text-center"><h2>{ctaBanner.title}</h2><p>{ctaBanner.body}</p><a href={ctaBanner.buttonUrl} class="cta-btn"><i class="fab fa-whatsapp"></i> {ctaBanner.buttonLabel}</a></div></section>
+
+  <section id="contact" class="section bg-dark contact-section">
+    <div class="container"><div class="contact-wrapper">
+      <span class="section-label">{contactSection.label}</span><h2 class="section-title">{contactSection.title}</h2><p class="contact-description">{contactSection.description}</p>
+      <form class="contact-form" id="contactForm" method="POST">
+        <div class="form-row"><div class="form-group"><label for="name">നിങ്ങളുടെ പേര്</label><input type="text" id="name" name="name" placeholder={contactSection.namePlaceholder} required></div><div class="form-group"><label for="email">ഇമെയിൽ</label><input type="email" id="email" name="email" placeholder={contactSection.emailPlaceholder} required></div></div>
+        <div class="form-group"><label for="phone">ഫോൺ / WhatsApp</label><input type="tel" id="phone" name="phone" placeholder={contactSection.phonePlaceholder}></div>
+        <div class="form-group"><label for="message">രേഖ വിശദാംശങ്ങൾ</label><textarea id="message" name="message" placeholder={contactSection.messagePlaceholder} rows="5"></textarea></div>
+        <button type="submit" class="submit-btn">അഭ്യർത്ഥന സമർപ്പിക്കുക</button><div id="formResult" class="form-result"></div>
+      </form>
+      <div class="contact-buttons"><a href="https://wa.me/971508620217" class="contact-btn whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="tel:+971508620217" class="contact-btn phone"><i class="fas fa-phone"></i> വിളിക്കുക</a><a href="mailto:info@onlinetranslation.ae" class="contact-btn email"><i class="fas fa-envelope"></i> ഇമെയിൽ</a></div>
+    </div></div>
+  </section>
 </BaseLayoutMultilingual>
+
 <script>document.addEventListener('DOMContentLoaded', () => { const faqItems = document.querySelectorAll('.faq-item'); faqItems.forEach((item) => { const question = item.querySelector('.faq-question'); question?.addEventListener('click', () => { const isOpen = item.classList.contains('is-open'); faqItems.forEach((i) => i.classList.remove('is-open')); if (!isOpen) item.classList.add('is-open'); }); }); });</script>

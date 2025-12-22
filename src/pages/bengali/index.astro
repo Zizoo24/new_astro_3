@@ -4,82 +4,180 @@ import TestimonialsCarousel from '../../components/TestimonialsCarousel.astro';
 import TrustBar from '../../components/TrustBar.astro';
 
 // SEO - Bengali
-const pageTitle = 'দুবাইতে আইনি অনুবাদ সেবা | MOJ সার্টিফাইড | OnlineTranslation.ae';
-const metaDescription = 'দুবাইতে পেশাদার আইনি অনুবাদ সেবা। বিচার মন্ত্রণালয় (MOJ) সার্টিফাইড অনুবাদক। আদালত, ইমিগ্রেশন এবং সরকারি নথির জন্য। দ্রুত এবং নির্ভরযোগ্য সেবা।';
+const pageTitle = 'দুবাইতে আইনি অনুবাদ সেবা | MOJ প্রত্যয়িত | OnlineTranslation.ae';
+const metaDescription = 'দুবাইতে পেশাদার আইনি অনুবাদ সেবা। বিচার মন্ত্রণালয় (MOJ) প্রত্যয়িত অনুবাদক। আদালত, অভিবাসন এবং সরকারি নথির জন্য। দ্রুত এবং নির্ভরযোগ্য সেবা।';
 
-const heroTitle = 'দুবাইতে MOJ সার্টিফাইড আইনি অনুবাদ';
-const heroLead = 'আপনার ডিজিটাল ডকুমেন্ট কনসিয়ার্জ — সমগ্র UAE জুড়ে';
+const heroTitle = 'দুবাইতে MOJ প্রত্যয়িত আইনি অনুবাদ';
+const heroLead = 'আপনার ডিজিটাল ডকুমেন্ট সহায়ক — সমগ্র UAE জুড়ে';
 const heroImage = '/assets/images/onedrive/hero/office-team.png';
 
 const heroBullets = [
-  { icon: 'fas fa-stamp', text: 'দুবাই কোর্ট, DIFC এবং ADGM এর জন্য MOJ সার্টিফাইড' },
-  { icon: 'fas fa-bolt', text: '৬০ মিনিটে প্রথম ড্রাফট তৈরি' },
-  { icon: 'fas fa-comments', text: 'পুলিশ এবং আদালতের জন্য WhatsApp প্রমাণ (আইনি ফরম্যাট)' },
+  { icon: 'fas fa-stamp', text: 'দুবাই কোর্ট, DIFC এবং ADGM-এর জন্য MOJ প্রত্যয়িত' },
+  { icon: 'fas fa-bolt', text: '৬০ মিনিটে প্রথম খসড়া প্রস্তুত' },
+  { icon: 'fas fa-comments', text: 'পুলিশ ও আদালতের জন্য WhatsApp প্রমাণ (আইনি ফরম্যাট)' },
 ];
 
-const primaryCta = { label: 'WhatsApp এ নথি পাঠান', url: 'https://wa.me/971508620217' };
+const primaryCta = { label: 'WhatsApp-এ ডকুমেন্ট পাঠান', url: 'https://wa.me/971508620217' };
 const secondaryCta = { label: 'অথবা লিখিত কোটেশন নিন', url: '/contact/' };
 
 const overlapCards = [
-  { icon: 'fas fa-shield-alt', title: 'দুবাই ইউনিফাইড লাইসেন্স', desc: 'অফিসিয়াল দুবাই বিজনেস রেজিস্টার - যাচাই করুন', badge: 'অফিসিয়ালি লাইসেন্সপ্রাপ্ত', url: 'https://app.invest.dubai.ae/DUL/1DE9D8AA-768A-4CFC-BC27-A6F23017B858' },
-  { icon: 'fas fa-building', title: 'সরকার স্বীকৃত', desc: 'আদালত, দূতাবাস এবং মন্ত্রণালয় দ্বারা গৃহীত', badge: '', url: '/services/legal-translation/' },
-  { icon: 'fas fa-bolt', title: '৬০ মিনিটে ডেলিভারি', desc: 'দুবাইতে সবচেয়ে দ্রুত সার্টিফাইড অনুবাদ সেবা', badge: '', url: '/services/legal-translation/' },
+  { icon: 'fas fa-bolt', title: '৬০ মিনিটে প্রত্যয়িত ডেলিভারি', desc: 'স্ট্যান্ডার্ড ডকুমেন্ট ৬০ মিনিটে অনুবাদ ও প্রত্যয়িত', badge: 'শর্তাবলী প্রযোজ্য', url: '/services/legal-translation/' },
+  { icon: 'fas fa-building', title: 'UAE আদালত ও সরকার কর্তৃক গৃহীত', desc: 'দুবাই কোর্ট, মন্ত্রণালয় ও দূতাবাসের জন্য প্রত্যয়িত অনুবাদ', badge: 'গ্রহণযোগ্যতার বিবরণ দেখুন', url: '/services/legal-translation/' },
+  { icon: 'fas fa-shield-alt', title: 'দুবাই লাইসেন্সপ্রাপ্ত ও যাচাইকৃত', desc: 'দুবাই ইকোনমিতে নিবন্ধিত — আমাদের লাইসেন্স যাচাই করুন', badge: 'DED রেজিস্ট্রিতে যাচাই করুন', url: 'https://app.invest.dubai.ae/DUL/1DE9D8AA-768A-4CFC-BC27-A6F23017B858' },
 ];
 
-const servicesLabel = 'আমাদের সেবা';
+const servicesLabel = 'আমাদের সেবাসমূহ';
 const servicesTitle = 'চারটি বিশেষজ্ঞ ক্ষেত্রে পেশাদার অনুবাদ সেবা';
 
 const servicesItems = [
-  { href: '/services/legal-translation/', image: '/assets/images/onedrive/tiles/tile-courts.png', imageAlt: 'আইনি অনুবাদ সেবা', heading: 'আইনি এবং কর্পোরেট', text: 'চুক্তি, আদালতের আদেশ, কর্পোরেট গভর্ন্যান্স, পাওয়ার অফ অ্যাটর্নি এবং মামলার নথি MOJ সার্টিফিকেশন সহ।' },
-  { href: '/personal/', image: '/assets/images/onedrive/tiles/tile-immigration.png', imageAlt: 'ব্যক্তিগত নথি অনুবাদ', heading: 'ব্যক্তিগত নথি', text: 'জন্ম সনদ, বিবাহ সনদ, শিক্ষাগত যোগ্যতা, পুলিশ ক্লিয়ারেন্স এবং ইমিগ্রেশন নথি।' },
-  { href: '/services/attestation/', image: '/assets/images/onedrive/services/services-4.jpg', imageAlt: 'অ্যাটেস্টেশন এবং MOFA', heading: 'অ্যাটেস্টেশন সেবা', text: 'MOFA এবং সরকারি সংস্থার জন্য নথি অ্যাটেস্টেশন। নিরাপদ পরিবহন সহ সম্পূর্ণ অ্যাটেস্টেশন সেবা।' },
-  { href: '/services/certificate-translation/', image: '/assets/images/onedrive/services/services-5.jpg', imageAlt: 'ব্যবসা স্থানীয়করণ', heading: 'ব্যবসা স্থানীয়করণ', text: 'ওয়েবসাইট এবং অ্যাপ স্থানীয়করণ, মার্কেটিং অভিযোজন, মেনু অনুবাদ এবং UAE বাজারের জন্য প্রযুক্তিগত নথি।' },
-  { href: '/locations/', image: '/assets/images/onedrive/tiles/tile-corporate.png', imageAlt: 'লোকেশন সেবা', heading: 'লোকেশন সেবা', text: 'দুবাই, আবুধাবি এবং উত্তর আমিরাতে পিকআপ এবং ডেলিভারি। ব্যস্ত পেশাদারদের জন্য ডোর-টু-ডোর সেবা।' },
-  { href: '/services/golden-visa-translation/', image: '/assets/images/onedrive/tiles/tile-immigration.png', imageAlt: 'গোল্ডেন ভিসা অনুবাদ', heading: 'গোল্ডেন ভিসা', text: 'UAE গোল্ডেন ভিসা আবেদনের জন্য সম্পূর্ণ নথি প্যাকেজ। একাডেমিক, পেশাদার এবং বিনিয়োগ নথি।' },
+  { href: '/services/legal-translation/', image: '/assets/images/onedrive/tiles/tile-courts.png', imageAlt: 'আইনি অনুবাদ সেবা', heading: 'আইনি ও কর্পোরেট', text: 'চুক্তি, আদালতের আদেশ, কর্পোরেট গভর্ন্যান্স, পাওয়ার অফ অ্যাটর্নি এবং মামলার নথি MOJ প্রত্যয়নসহ।' },
+  { href: '/personal/', image: '/assets/images/onedrive/tiles/tile-immigration.png', imageAlt: 'ব্যক্তিগত নথি অনুবাদ', heading: 'ব্যক্তিগত নথি', text: 'জন্ম সনদ, বিবাহ সনদ, শিক্ষাগত সনদ, পুলিশ ক্লিয়ারেন্স এবং অভিবাসন নথি।' },
+  { href: '/services/attestation/', image: '/assets/images/onedrive/services/services-4.jpg', imageAlt: 'সত্যায়ন ও MOFA', heading: 'সত্যায়ন সেবা', text: 'MOFA এবং সরকারি সংস্থার জন্য নথি সত্যায়ন। নিরাপদ পরিবহনসহ সম্পূর্ণ সত্যায়ন সেবা।' },
+  { href: '/services/certificate-translation/', image: '/assets/images/onedrive/services/services-5.jpg', imageAlt: 'ব্যবসায়িক স্থানীয়করণ', heading: 'ব্যবসায়িক স্থানীয়করণ', text: 'ওয়েবসাইট ও অ্যাপ স্থানীয়করণ, মার্কেটিং অভিযোজন, মেনু অনুবাদ এবং UAE বাজারের জন্য প্রযুক্তিগত নথি।' },
+  { href: '/locations/', image: '/assets/images/onedrive/tiles/tile-corporate.png', imageAlt: 'লোকেশন সেবা', heading: 'লোকেশন সেবা', text: 'দুবাই, আবুধাবি এবং উত্তরাঞ্চলীয় আমিরাতে পিকআপ ও ডেলিভারি। ব্যস্ত পেশাদারদের জন্য ডোর-টু-ডোর সেবা।' },
+  { href: '/services/golden-visa-translation/', image: '/assets/images/onedrive/tiles/tile-immigration.png', imageAlt: 'গোল্ডেন ভিসা অনুবাদ', heading: 'গোল্ডেন ভিসা', text: 'UAE গোল্ডেন ভিসা আবেদনের জন্য সম্পূর্ণ ডকুমেন্ট প্যাকেজ। শিক্ষাগত, পেশাদার এবং বিনিয়োগ নথি।' },
+];
+
+const whyLabel = 'কেন আমাদের বেছে নেবেন?';
+const whyTitle = 'দুবাইতে আইনি অনুবাদ সেবার জন্য ঝুঁকি ব্যবস্থাপনা মান';
+const whyCards = [
+  { icon: 'fas fa-gavel', title: 'MOJ প্রত্যয়িত', text: 'UAE বিচার মন্ত্রণালয় প্রত্যয়িত আইনি অনুবাদ সকল আদালত ও সরকারি সংস্থা কর্তৃক গৃহীত।' },
+  { icon: 'fas fa-id-card', title: 'সকল নথি', text: 'জন্ম, বিবাহ, শিক্ষা, পুলিশ ক্লিয়ারেন্স এবং আরও, UAE কর্তৃপক্ষের জন্য ফরম্যাটেড।' },
+  { icon: 'fas fa-building', title: 'কর্পোরেট প্রস্তুত', text: 'MOUs, চুক্তি, শেয়ারহোল্ডার নথি, ভাড়া চুক্তি, SPAs এবং DLD ফর্ম।' },
+  { icon: 'fas fa-bolt', title: 'দ্রুত ও অনলাইন', text: 'WhatsApp-ভিত্তিক ওয়ার্কফ্লো, একই দিনের অপশন এবং স্পষ্ট লিখিত কোটেশন।' },
+];
+
+const processLabel = 'আমাদের কাজের প্রক্রিয়া';
+const processTitle = 'দক্ষ অনুবাদ সেবা। সরলীকৃত।';
+const processSteps = [
+  { index: '০১', icon: 'fas fa-paper-plane', title: 'আপনার নথি জমা দিন', desc: 'WhatsApp-এ পাঠান অথবা আমাদের নিরাপদ পোর্টালে আপলোড করুন। গৃহীত ফরম্যাট: PDF, JPG, PNG, DOCX।' },
+  { index: '০২', icon: 'fas fa-file-invoice-dollar', title: 'তাৎক্ষণিক কমপ্লায়েন্স পর্যালোচনা', desc: 'আমরা নথির ধরন যাচাই করি এবং অতিরিক্ত সত্যায়ন সেবা প্রয়োজন কিনা নিশ্চিত করি।' },
+  { index: '০৩', icon: 'fas fa-certificate', title: 'তাৎক্ষণিক ডেলিভারি', desc: 'কয়েক ঘণ্টার মধ্যে ডিজিটালভাবে আপনার প্রত্যয়িত অনুবাদ পান। প্রয়োজনে ফিজিক্যাল কপি কুরিয়ার করা হয়।' },
 ];
 
 const metrics = [
-  { value: '৪৩+', label: 'ভাষা', note: 'সার্টিফাইড জোড়া' },
-  { value: '৭', label: 'দিন/সপ্তাহ', note: 'সবসময় উপলব্ধ' },
-  { value: 'প্রস্তুত', label: 'আদালতের জন্য', note: 'MOJ সার্টিফাইড' },
-  { value: '৬০ মিনিট', label: 'প্রথম ড্রাফট', note: 'ডিজিটাল ডেলিভারি' },
+  { value: '৪৩+', label: 'ভাষা', note: 'প্রত্যয়িত জোড়া' },
+  { value: '৭', label: 'দিন/সপ্তাহ', note: 'সর্বদা উপলব্ধ' },
+  { value: 'প্রস্তুত', label: 'আদালতের জন্য', note: 'MOJ প্রত্যয়িত' },
+  { value: '৬০ মিনিট', label: 'প্রথম খসড়া', note: 'ডিজিটাল ডেলিভারি' },
 ];
 
-const faqLabel = 'সচরাচর জিজ্ঞাসা';
+const specialistsLabel = 'আমাদের বিশেষজ্ঞগণ';
+const specialistsTitle = 'দুবাইতে বিশ্বস্ত আইনি অনুবাদ সেবা';
+const specialistsCards = [
+  { href: '/services/legal-translation/', icon: 'fas fa-gavel', title: 'আদালত ও মামলা অনুবাদ', bullets: ['আবেদনপত্র, স্মারকলিপি, রায়', 'প্রমাণ বান্ডেল ও প্রদর্শনী', 'UAE আইনি পরিভাষা'], tags: ['দুবাই কোর্ট', 'DIFC', 'ADGM'] },
+  { href: '/services/golden-visa-translation/', icon: 'fas fa-passport', title: 'অভিবাসন ও বসবাস অনুবাদ', bullets: ['গোল্ডেন ভিসা আবেদন', 'পারিবারিক ভিসা নথি', 'এমিরেটস আইডি ও ICP/GDRFA'], tags: ['গোল্ডেন ভিসা', 'পারিবারিক ভিসা', 'ICP/GDRFA'] },
+  { href: '/industries/real-estate/', icon: 'fas fa-building', title: 'রিয়েল এস্টেট ও DLD অনুবাদ', bullets: ['সম্পত্তি চুক্তি ও POAs', 'মালিকানা দলিল ও RERA নথি', 'DLD জমা ফরম্যাট'], tags: ['DLD', 'RERA', 'সম্পত্তি POA'] },
+  { href: '/services/corporate-translation/', icon: 'fas fa-briefcase', title: 'কর্পোরেট ও বাণিজ্যিক অনুবাদ', bullets: ['ট্রেড লাইসেন্স ও MOAs', 'শেয়ারহোল্ডার চুক্তি', 'ফ্রি জোন ডকুমেন্টেশন'], tags: ['DMCC', 'ফ্রি জোন', 'DED'] },
+];
+
+const languagesLabel = 'আমরা যে ভাষাগুলি সমর্থন করি';
+const languagesTitle = '৪৩+ ভাষায় অনুবাদ সেবা';
+const languages = ['আরবি', 'ইংরেজি', 'রাশিয়ান', 'ফরাসি', 'চীনা', 'হিন্দি', 'উর্দু', 'স্প্যানিশ', 'জার্মান', 'পর্তুগিজ', 'ইতালীয়', 'তুর্কি', 'ফার্সি', 'জাপানি', 'কোরিয়ান', 'ডাচ', 'পোলিশ', 'রোমানিয়ান', 'বাংলা', 'তামিল', 'তাগালগ', 'ইন্দোনেশিয়ান', 'থাই'];
+const languagesNote = 'আপনার ভাষা দেখতে পাচ্ছেন না? আমাদের সাথে যোগাযোগ করুন - আমরা ৪৩+ ভাষায় নেটিভ অনুবাদকদের সাথে কাজ করি।';
+
+const aboutLabel = 'আমাদের পদ্ধতি';
+const aboutTitle = 'আদালতে গ্রহণযোগ্যতার জন্য ডিজাইন করা। সামঞ্জস্যপূর্ণ ফলাফল।';
+const aboutFeatures = ['আদালত-প্রস্তুত ফরম্যাটিং', 'MOJ কমপ্লায়েন্স যাচাই', 'এক্সপ্রেস প্রসেসিং উপলব্ধ', 'রিয়েল-টাইম স্ট্যাটাস আপডেট', 'এনক্রিপ্টেড ডকুমেন্ট ট্রেইল', 'মূল নথির নিরাপত্তা'];
+const aboutSummary = 'আমাদের পদ্ধতি একটি নীতির উপর ভিত্তি করে: প্রতিটি জমার জন্য সতর্ক প্রস্তুতি।';
+
+const faqLabel = 'সাধারণ প্রশ্নাবলী';
 const faqTitle = 'দুবাইতে আইনি অনুবাদ সম্পর্কে সাধারণ প্রশ্ন';
-
 const faqItems = [
-  { question: 'আপনার অনুবাদ সেবা অন্যান্য অনুবাদ কোম্পানি থেকে কীভাবে আলাদা?', answer: 'আমরা ডকুমেন্ট কনসিয়ার্জ হিসেবে কাজ করি, প্রচলিত অনুবাদ অফিস নয়। এর মানে আপনি সার্টিফাইড আইনি অনুবাদ প্রদানকারীদের সাথে কাজ করার কমপ্লায়েন্স গ্যারান্টি পান প্রচলিত এজেন্সির জটিলতা ছাড়াই।' },
-  { question: 'আপনার অনুবাদ কি UAE আদালতে গৃহীত হয়?', answer: 'হ্যাঁ। আমাদের সমন্বয় করা প্রতিটি আইনি অনুবাদ সেবা MOJ সার্টিফাইড অনুবাদকদের দ্বারা সম্পাদিত হয়। আমাদের অনুবাদ বিশেষভাবে দুবাই কোর্ট, DIFC, ADGM এবং ফেডারেল বিচার বিভাগীয় সংস্থার জন্য ফরম্যাট করা।' },
-  { question: 'সার্টিফাইড আইনি অনুবাদ পেতে কত সময় লাগে?', answer: 'স্ট্যান্ডার্ড নথি (জন্ম সনদ, বিবাহ সনদ, শিক্ষাগত সনদ) সাধারণত ৩-৬ কাজের ঘণ্টায় প্রস্তুত হয়। জরুরি আইনি প্রয়োজনের জন্য এক্সপ্রেস প্রসেসিং উপলব্ধ।' },
-  { question: 'আপনারা কি অ্যাটেস্টেশন সেবা প্রদান করেন?', answer: 'হ্যাঁ। যখন আপনার আইনি নথির MOFA বা অন্যান্য সরকারি সংস্থা থেকে অ্যাটেস্টেশন প্রয়োজন, আমরা নিরাপদ মূল পরিবহন সহ সম্পূর্ণ প্রক্রিয়া সমন্বয় করি।' },
-  { question: 'আপনারা কি আরবি থেকে ইংরেজি এবং ইংরেজি থেকে আরবি উভয় অনুবাদ করেন?', answer: 'হ্যাঁ। আমাদের সার্টিফাইড অনুবাদকরা উভয় দিকে কাজ করেন ব্যাপক আরবি অনুবাদ সেবা প্রদান করতে।' },
+  { question: 'আপনার অনুবাদ সেবা অন্যান্য অনুবাদ কোম্পানি থেকে কীভাবে আলাদা?', answer: 'আমরা একটি ডকুমেন্ট কনসিয়ার্জ হিসেবে কাজ করি, ঐতিহ্যবাহী অনুবাদ অফিস নয়। এর মানে আপনি প্রত্যয়িত আইনি অনুবাদ প্রদানকারীদের সাথে কাজ করার কমপ্লায়েন্স গ্যারান্টি পান, প্রচলিত এজেন্সিগুলির জটিলতা ছাড়াই।' },
+  { question: 'আপনার অনুবাদ কি UAE আদালতে গৃহীত হয়?', answer: 'হ্যাঁ। আমরা যে প্রতিটি আইনি অনুবাদ সেবা সমন্বয় করি তা MOJ প্রত্যয়িত অনুবাদকদের দ্বারা সম্পাদিত হয়। আমাদের অনুবাদ বিশেষভাবে দুবাই কোর্ট, DIFC, ADGM এবং ফেডারেল বিচার বিভাগীয় সংস্থাগুলির জন্য ফরম্যাট করা হয়।' },
+  { question: 'প্রত্যয়িত আইনি অনুবাদ পেতে কতক্ষণ সময় লাগে?', answer: 'স্ট্যান্ডার্ড নথি (জন্ম সনদ, বিবাহ সনদ, শিক্ষাগত সনদ) সাধারণত ৩-৬ কার্যঘণ্টায় প্রস্তুত হয়। জরুরি আইনি প্রয়োজনের জন্য এক্সপ্রেস প্রসেসিং উপলব্ধ।' },
+  { question: 'আপনারা কি সত্যায়ন সেবা প্রদান করেন?', answer: 'হ্যাঁ। যখন আপনার আইনি নথিগুলির MOFA বা অন্যান্য সরকারি সংস্থা থেকে সত্যায়ন প্রয়োজন হয়, আমরা মূল নথির নিরাপদ পরিবহনসহ সম্পূর্ণ প্রক্রিয়া সমন্বয় করি।' },
+  { question: 'আপনারা কি আরবি থেকে ইংরেজি এবং ইংরেজি থেকে আরবি উভয় অনুবাদ করেন?', answer: 'হ্যাঁ। আমাদের প্রত্যয়িত অনুবাদকরা ব্যাপক আরবি অনুবাদ সেবা প্রদান করতে উভয় দিকে কাজ করেন।' },
 ];
 
-const ctaBanner = {
-  title: 'কমপ্লায়েন্স আমরা সামলাই। আপনি গুরুত্বপূর্ণ বিষয়ে মনোযোগ দিন।',
-  body: 'দুবাই, আবুধাবি এবং উত্তর আমিরাতে ব্যবসা এবং ব্যক্তিদের সাথে যোগ দিন যারা OnlineTranslation.ae এ বিশ্বাস করেন।',
-  buttonLabel: 'WhatsApp এ নথি পাঠান',
-  buttonUrl: 'https://wa.me/971508620217',
-};
+const ctaBanner = { title: 'কমপ্লায়েন্স আমরা সামলাই। আপনি গুরুত্বপূর্ণ বিষয়ে মনোযোগ দিন।', body: 'দুবাই, আবুধাবি এবং উত্তরাঞ্চলীয় আমিরাতে OnlineTranslation.ae-তে বিশ্বাসী ব্যবসা ও ব্যক্তিদের সাথে যোগ দিন।', buttonLabel: 'WhatsApp-এ ডকুমেন্ট পাঠান', buttonUrl: 'https://wa.me/971508620217' };
+
+const contactSection = { label: 'যোগাযোগ করুন', title: 'বিনামূল্যে কোটেশনের অনুরোধ করুন', description: 'আপনার নথি শেয়ার করুন। আমরা কয়েক মিনিটের মধ্যে মূল্য এবং ডেলিভারি সময় নিশ্চিত করব।', namePlaceholder: 'আপনার পুরো নাম লিখুন', emailPlaceholder: 'your@email.com', phonePlaceholder: '+971 XX XXX XXXX', messagePlaceholder: 'আপনার নথি এবং প্রয়োজনীয়তা বর্ণনা করুন...' };
 ---
 
 <BaseLayoutMultilingual title={pageTitle} description={metaDescription} lang="bn" dir="ltr" isHomepage={true} canonicalOverride="https://onlinetranslation.ae/">
   <section id="home" class="hero-section exodus-hero">
-    <div class="hero-background"><img src={heroImage} alt="OnlineTranslation.ae পেশাদার দল" class="hero-image" loading="eager"><div class="hero-overlay exodus-overlay"></div></div>
+    <div class="hero-background"><img src={heroImage} alt="OnlineTranslation.ae পেশাদার টিম" class="hero-image" loading="eager"><div class="hero-overlay exodus-overlay"></div></div>
     <div class="container"><div class="hero-content"><div class="hero-text">
       <h1 class="hero-title exodus-title"><span class="title-line">{heroTitle}</span></h1>
       <p class="hero-lead">{heroLead}</p>
-      <ul class="hero-bullets">{heroBullets.map((item) => (<li>{item.icon && <i class={item.icon}></i>}{item.text}</li>))}</ul>
-      <div class="hero-cta-group"><a href={primaryCta.url} class="hero-cta exodus-cta"><i class="fab fa-whatsapp"></i> {primaryCta.label}</a>{secondaryCta?.url && (<a href={secondaryCta.url} class="hero-cta-secondary">{secondaryCta.label}</a>)}</div>
+      <ul class="hero-bullets">{heroBullets.map((item) => (<li><i class={item.icon}></i> {item.text}</li>))}</ul>
+      <div class="hero-cta-group"><a href={primaryCta.url} class="hero-cta exodus-cta"><i class="fab fa-whatsapp"></i> {primaryCta.label}</a><a href={secondaryCta.url} class="hero-cta-secondary">{secondaryCta.label}</a></div>
     </div></div></div>
-    <div class="overlap-cards-wrapper"><div class="container"><div class="overlap-cards">{overlapCards.map((card) => (<a href={card.url || '#'} class="overlap-card" target={card.url?.startsWith('http') ? '_blank' : undefined} rel={card.url?.startsWith('http') ? 'noopener noreferrer' : undefined}><div class="overlap-card-icon">{card.icon && <i class={card.icon}></i>}</div><div class="overlap-card-content"><h3 class="overlap-card-title">{card.title}</h3><p class="overlap-card-desc">{card.desc}</p>{card.badge && (<span class="overlap-card-badge">{card.badge}</span>)}</div></a>))}</div></div></div>
+    <div class="overlap-cards-wrapper"><div class="container"><div class="overlap-cards">
+      {overlapCards.map((card) => (<a href={card.url} class="overlap-card" target={card.url?.startsWith('http') ? '_blank' : undefined} rel={card.url?.startsWith('http') ? 'noopener noreferrer' : undefined}><div class="overlap-card-icon"><i class={card.icon}></i></div><div class="overlap-card-content"><h3 class="overlap-card-title">{card.title}</h3><p class="overlap-card-desc">{card.desc}</p>{card.badge && <span class="overlap-card-badge">{card.badge}</span>}</div></a>))}
+    </div></div></div>
   </section>
+
   <TrustBar />
-  <section id="services" class="section bg-white services-section"><div class="container"><div class="section-header"><span class="section-label">{servicesLabel}</span><h2 class="section-title">{servicesTitle}</h2></div><div class="services-grid-enhanced">{servicesItems.map((service) => (<a href={service.href} class="service-card-v2"><div class="card-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div><div class="card-image"><img src={service.image} alt={service.imageAlt} loading="lazy" width="400" height="300"></div><div class="card-body"><h3>{service.heading}</h3><p>{service.text}</p><span class="card-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg></span></div></a>))}</div></div></section>
-  <section class="ot-metrics"><div class="ot-metrics-inner">{metrics.map((metric) => (<article class="ot-metric"><span class="ot-metric-value">{metric.value}</span><span class="ot-metric-label">{metric.label}</span>{metric.note && (<span class="ot-metric-note">{metric.note}</span>)}</article>))}</div></section>
-  <section id="faq" class="section bg-white faq-section"><div class="container container--narrow"><div class="section-header"><span class="section-label">{faqLabel}</span><h2 class="section-title">{faqTitle}</h2></div><div class="faq-list">{faqItems.map((item) => (<article class="faq-item"><button class="faq-question">{item.question}<i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>{item.answer}</p></div></article>))}</div></div></section>
-  <section class="section bg-dark cta-banner"><div class="container text-center"><h2>{ctaBanner.title}</h2><p>{ctaBanner.body}</p><a href={ctaBanner.buttonUrl} class="cta-btn"><i class="fab fa-whatsapp"></i> {ctaBanner.buttonLabel}</a></div></section>
+
+  <section id="services" class="section bg-white services-section">
+    <div class="container"><div class="section-header"><span class="section-label">{servicesLabel}</span><h2 class="section-title">{servicesTitle}</h2></div>
+      <div class="services-grid-enhanced">{servicesItems.map((service) => (<a href={service.href} class="service-card-v2"><div class="card-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div><div class="card-image"><img src={service.image} alt={service.imageAlt} loading="lazy" width="400" height="300"></div><div class="card-body"><h3>{service.heading}</h3><p>{service.text}</p><span class="card-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg></span></div></a>))}</div>
+    </div>
+  </section>
+
+  <section id="why" class="section bg-light why-section">
+    <div class="container"><div class="section-header"><span class="section-label">{whyLabel}</span><h2 class="section-title">{whyTitle}</h2><div class="section-divider"></div></div>
+      <div class="grid grid-4 grid--auto-fit why-grid">{whyCards.map((card) => (<article class="why-card"><i class={card.icon}></i><h3>{card.title}</h3><p>{card.text}</p></article>))}</div>
+    </div>
+  </section>
+
+  <section id="process" class="section bg-white process-section exodus-process">
+    <div class="container"><div class="section-header"><span class="section-label exodus-label">{processLabel}</span><h2 class="section-title exodus-section-title">{processTitle}</h2></div>
+      <div class="grid grid-3 grid--auto-fit process-steps exodus-process-steps">{processSteps.map((step) => (<article class="process-step exodus-step"><div class="step-header"><span class="step-index">{step.index}</span><div class="step-icon"><i class={step.icon}></i></div></div><h3 class="step-title">{step.title}</h3><p class="step-desc">{step.desc}</p></article>))}</div>
+    </div>
+  </section>
+
+  <section class="ot-metrics"><div class="ot-metrics-inner">{metrics.map((metric) => (<article class="ot-metric"><span class="ot-metric-value">{metric.value}</span><span class="ot-metric-label">{metric.label}</span><span class="ot-metric-note">{metric.note}</span></article>))}</div></section>
+
+  <section id="team" class="section bg-alt specialists-section">
+    <div class="container"><div class="section-header"><span class="section-label exodus-label">{specialistsLabel}</span><h2 class="section-title exodus-section-title">{specialistsTitle}</h2></div>
+      <div class="grid grid-4 grid--auto-fit specialists-grid">{specialistsCards.map((card) => (<a href={card.href} class="specialist-card"><div class="specialist-icon"><i class={card.icon}></i></div><h3>{card.title}</h3><ul class="specialist-bullets">{card.bullets.map((b) => (<li>{b}</li>))}</ul><div class="specialist-tags">{card.tags.map((t) => (<span class="tag">{t}</span>))}</div></a>))}</div>
+      <div class="team-cta-wrapper"><p class="team-tagline">আপনার নথিগুলি নিবেদিত বিশেষজ্ঞদের দ্বারা পরিচালিত হয় এবং ডেলিভারির আগে পর্যালোচনা করা হয়।</p><a href="https://wa.me/971508620217" class="team-cta"><i class="fab fa-whatsapp"></i> WhatsApp-এ ডকুমেন্ট পাঠান</a></div>
+    </div>
+  </section>
+
+  <section class="section bg-dark languages-section exodus-languages">
+    <div class="container"><div class="section-header"><span class="section-label exodus-label">{languagesLabel}</span><h2 class="section-title exodus-section-title">{languagesTitle}</h2></div>
+      <div class="grid grid-3 grid--auto-fit languages-grid">{languages.map((lang) => (<div class="language-item"><i class="fas fa-globe"></i> {lang}</div>))}<div class="language-item highlight"><i class="fas fa-plus-circle"></i> ২০+ আরও</div></div>
+      <p class="languages-note">{languagesNote}</p>
+    </div>
+  </section>
+
+  <section id="about" class="section bg-white about-section exodus-about">
+    <div class="container"><div class="about-grid exodus-about-grid">
+      <div class="about-image exodus-about-image"><img src="/assets/images/onedrive/contact-office.png" alt="দুবাইতে পেশাদার আইনি অনুবাদ" loading="lazy" width="600" height="400"><div class="experience-badge exodus-badge"><span class="years">আদালত</span><span class="text">প্রস্তুত</span></div></div>
+      <div class="about-content exodus-about-content"><span class="section-label exodus-label">{aboutLabel}</span><h2 class="section-title exodus-section-title">{aboutTitle}</h2>
+        <div class="exodus-features-list">{aboutFeatures.map((feature) => (<div class="exodus-feature-item"><i class="fas fa-check-circle"></i><span>{feature}</span></div>))}</div>
+        <p class="about-summary">{aboutSummary}</p><a href="https://wa.me/971508620217" class="about-cta exodus-cta-btn"><i class="fab fa-whatsapp"></i> WhatsApp-এ ডকুমেন্ট পাঠান</a>
+      </div>
+    </div></div>
+  </section>
+
   <TestimonialsCarousel />
+
+  <section id="faq" class="section bg-white faq-section">
+    <div class="container container--narrow"><div class="section-header"><span class="section-label">{faqLabel}</span><h2 class="section-title">{faqTitle}</h2></div>
+      <div class="faq-list">{faqItems.map((item) => (<article class="faq-item"><button class="faq-question">{item.question}<i class="fas fa-chevron-down"></i></button><div class="faq-answer"><p>{item.answer}</p></div></article>))}</div>
+    </div>
+  </section>
+
+  <section class="section bg-dark cta-banner"><div class="container text-center"><h2>{ctaBanner.title}</h2><p>{ctaBanner.body}</p><a href={ctaBanner.buttonUrl} class="cta-btn"><i class="fab fa-whatsapp"></i> {ctaBanner.buttonLabel}</a></div></section>
+
+  <section id="contact" class="section bg-dark contact-section">
+    <div class="container"><div class="contact-wrapper">
+      <span class="section-label">{contactSection.label}</span><h2 class="section-title">{contactSection.title}</h2><p class="contact-description">{contactSection.description}</p>
+      <form class="contact-form" id="contactForm" method="POST">
+        <div class="form-row"><div class="form-group"><label for="name">আপনার নাম</label><input type="text" id="name" name="name" placeholder={contactSection.namePlaceholder} required></div><div class="form-group"><label for="email">ইমেইল</label><input type="email" id="email" name="email" placeholder={contactSection.emailPlaceholder} required></div></div>
+        <div class="form-group"><label for="phone">ফোন / WhatsApp</label><input type="tel" id="phone" name="phone" placeholder={contactSection.phonePlaceholder}></div>
+        <div class="form-group"><label for="message">নথির বিবরণ</label><textarea id="message" name="message" placeholder={contactSection.messagePlaceholder} rows="5"></textarea></div>
+        <button type="submit" class="submit-btn">অনুরোধ জমা দিন</button><div id="formResult" class="form-result"></div>
+      </form>
+      <div class="contact-buttons"><a href="https://wa.me/971508620217" class="contact-btn whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="tel:+971508620217" class="contact-btn phone"><i class="fas fa-phone"></i> কল করুন</a><a href="mailto:info@onlinetranslation.ae" class="contact-btn email"><i class="fas fa-envelope"></i> ইমেইল</a></div>
+    </div></div>
+  </section>
 </BaseLayoutMultilingual>
+
 <script>document.addEventListener('DOMContentLoaded', () => { const faqItems = document.querySelectorAll('.faq-item'); faqItems.forEach((item) => { const question = item.querySelector('.faq-question'); question?.addEventListener('click', () => { const isOpen = item.classList.contains('is-open'); faqItems.forEach((i) => i.classList.remove('is-open')); if (!isOpen) item.classList.add('is-open'); }); }); });</script>
