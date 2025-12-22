@@ -1046,3 +1046,45 @@ body.theme-dark .form-error {
 .bg-dark .form-error i {
   color: #ff4f6d;
 }
+
+/* ============================================
+   FORM CONTRAST FIXES FOR LIGHT BACKGROUNDS
+   ============================================ */
+
+/* Forms on white/light backgrounds need dark text */
+.bg-white .form-group label,
+.bg-light .form-group label,
+section:not(.bg-dark):not(.contact-section) .form-group label {
+  color: var(--text-heading, #1a202c) !important;
+}
+
+.bg-white .form-group input,
+.bg-white .form-group select,
+.bg-white .form-group textarea,
+.bg-light .form-group input,
+.bg-light .form-group select,
+.bg-light .form-group textarea {
+  background: #ffffff !important;
+  color: var(--text-body, #2d3748) !important;
+  border: 1px solid #d1d5db;
+}
+
+.bg-white .form-group input::placeholder,
+.bg-white .form-group select::placeholder,
+.bg-white .form-group textarea::placeholder,
+.bg-light .form-group input::placeholder,
+.bg-light .form-group select::placeholder,
+.bg-light .form-group textarea::placeholder {
+  color: #6b7280 !important;
+  opacity: 1;
+}
+
+.bg-white .form-group input:focus,
+.bg-white .form-group select:focus,
+.bg-white .form-group textarea:focus,
+.bg-light .form-group input:focus,
+.bg-light .form-group select:focus,
+.bg-light .form-group textarea:focus {
+  border-color: var(--primary-color, #0a1628);
+  box-shadow: 0 0 0 3px rgba(10, 22, 40, 0.1);
+}

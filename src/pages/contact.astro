@@ -261,7 +261,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .form-intro {
-    color: var(--text-muted);
+    color: var(--text-secondary, #4a5568);
     margin-bottom: 2rem;
   }
 
@@ -273,6 +273,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
+    color: var(--text-heading, #1a202c) !important;
   }
 
   .form-group input,
@@ -284,6 +285,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     border-radius: 0.5rem;
     font-size: 1rem;
     transition: border-color 0.3s ease;
+    background: #ffffff !important;
+    color: var(--text-body, #2d3748) !important;
+  }
+
+  .form-group input::placeholder,
+  .form-group select::placeholder,
+  .form-group textarea::placeholder {
+    color: #6b7280 !important;
+    opacity: 1;
   }
 
   .form-group input:focus,
@@ -291,6 +301,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .form-group textarea:focus {
     outline: none;
     border-color: var(--primary-color);
+    background: #ffffff !important;
   }
 
   .btn {
