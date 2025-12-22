@@ -1,8 +1,8 @@
 // Contact Form Handler for OnlineTranslation.ae
 // Formspree integration with WhatsApp fallback
 
-// Formspree endpoint - Replace YOUR_FORM_ID with actual form ID
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+// Formspree endpoint
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mykgddbe';
 
 // Contact Form Submission Handler via Formspree
 async function submitToFormspree(formData, form) {
@@ -16,9 +16,11 @@ async function submitToFormspree(formData, form) {
         });
 
         if (response.ok) {
+            // Redirect to thank you page on success
+            window.location.href = '/thank-you/';
             return {
                 success: true,
-                message: 'Message sent successfully! We will respond within 2 hours.'
+                message: 'Message sent successfully! Redirecting...'
             };
         } else {
             const data = await response.json();
