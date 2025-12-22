@@ -263,30 +263,212 @@ body.theme-dark a:visited {
     color: var(--link-color);
 }
 
-/* Links on dark backgrounds (navy headers, hero, etc.) */
+/* ============================================
+   LIGHT MODE - LINK CONTRAST ON DARK BACKGROUNDS
+   Ensures all links on dark/navy backgrounds have
+   proper contrast in light mode (desktop + mobile)
+   Uses cyan (#7fd1ff) which has 11.2:1 contrast on navy
+   ============================================ */
+
+/* Primary dark background elements */
 .bg-dark a,
+.bg-navy a,
 .hero-section a,
+.page-hero a,
+.category-hero a,
 .header-desktop a,
 .header-mobile a,
-.sidebar a {
+.sidebar a,
+.sidebar-menu a,
+.sidebar-header a {
     color: var(--link-on-dark);
 }
 
 .bg-dark a:hover,
+.bg-dark a:focus,
+.bg-navy a:hover,
+.bg-navy a:focus,
 .hero-section a:hover,
+.hero-section a:focus,
+.page-hero a:hover,
+.page-hero a:focus,
+.category-hero a:hover,
+.category-hero a:focus,
 .header-desktop a:hover,
+.header-desktop a:focus,
 .header-mobile a:hover,
-.sidebar a:hover {
+.header-mobile a:focus,
+.sidebar a:hover,
+.sidebar a:focus,
+.sidebar-menu a:hover,
+.sidebar-menu a:focus,
+.sidebar-header a:hover,
+.sidebar-header a:focus {
+    color: var(--link-on-dark-hover);
+}
+
+/* Announcement bar / Top bar (often has dark background) */
+.header-announcement a,
+.announcement-bar a,
+.top-bar a {
+    color: var(--link-on-dark);
+}
+
+.header-announcement a:hover,
+.header-announcement a:focus,
+.announcement-bar a:hover,
+.announcement-bar a:focus,
+.top-bar a:hover,
+.top-bar a:focus {
+    color: var(--link-on-dark-hover);
+}
+
+/* CTA Banner sections with gradient/dark backgrounds */
+.cta-banner a:not(.btn):not([class*="btn-"]),
+.cta-strip a:not(.btn):not([class*="btn-"]) {
+    color: var(--link-on-dark);
+}
+
+.cta-banner a:not(.btn):not([class*="btn-"]):hover,
+.cta-banner a:not(.btn):not([class*="btn-"]):focus,
+.cta-strip a:not(.btn):not([class*="btn-"]):hover,
+.cta-strip a:not(.btn):not([class*="btn-"]):focus {
+    color: var(--link-on-dark-hover);
+}
+
+/* Contact sections with dark backgrounds */
+.contact-section.bg-dark a:not(.btn):not([class*="btn-"]),
+.contact-section.bg-navy a:not(.btn):not([class*="btn-"]) {
+    color: var(--link-on-dark);
+}
+
+.contact-section.bg-dark a:not(.btn):not([class*="btn-"]):hover,
+.contact-section.bg-dark a:not(.btn):not([class*="btn-"]):focus,
+.contact-section.bg-navy a:not(.btn):not([class*="btn-"]):hover,
+.contact-section.bg-navy a:not(.btn):not([class*="btn-"]):focus {
+    color: var(--link-on-dark-hover);
+}
+
+/* Languages section with dark background */
+.languages-section.bg-dark a,
+.languages-section.bg-navy a {
+    color: var(--link-on-dark);
+}
+
+.languages-section.bg-dark a:hover,
+.languages-section.bg-dark a:focus,
+.languages-section.bg-navy a:hover,
+.languages-section.bg-navy a:focus {
+    color: var(--link-on-dark-hover);
+}
+
+/* Breadcrumbs on dark backgrounds (hero sections) */
+.bg-dark .breadcrumb a,
+.bg-navy .breadcrumb a,
+.page-hero .breadcrumb a,
+.category-hero .breadcrumb a,
+.hero-section .breadcrumb a {
+    color: var(--text-on-dark-muted);
+}
+
+.bg-dark .breadcrumb a:hover,
+.bg-dark .breadcrumb a:focus,
+.bg-navy .breadcrumb a:hover,
+.bg-navy .breadcrumb a:focus,
+.page-hero .breadcrumb a:hover,
+.page-hero .breadcrumb a:focus,
+.category-hero .breadcrumb a:hover,
+.category-hero .breadcrumb a:focus,
+.hero-section .breadcrumb a:hover,
+.hero-section .breadcrumb a:focus {
+    color: var(--link-on-dark);
+}
+
+/* Megamenu on dark backgrounds */
+.header-desktop .megamenu a,
+.megamenu.bg-dark a {
+    color: var(--link-on-dark);
+}
+
+.header-desktop .megamenu a:hover,
+.header-desktop .megamenu a:focus,
+.megamenu.bg-dark a:hover,
+.megamenu.bg-dark a:focus {
+    color: var(--link-on-dark-hover);
+}
+
+/* Trust bar on dark backgrounds */
+.trust-bar.bg-dark a,
+.trust-bar.bg-navy a {
+    color: var(--link-on-dark);
+}
+
+.trust-bar.bg-dark a:hover,
+.trust-bar.bg-dark a:focus,
+.trust-bar.bg-navy a:hover,
+.trust-bar.bg-navy a:focus {
+    color: var(--link-on-dark-hover);
+}
+
+/* Process/Steps sections with dark backgrounds */
+.process-section.bg-dark a,
+.steps-section.bg-dark a,
+.timeline-section.bg-dark a {
+    color: var(--link-on-dark);
+}
+
+.process-section.bg-dark a:hover,
+.process-section.bg-dark a:focus,
+.steps-section.bg-dark a:hover,
+.steps-section.bg-dark a:focus,
+.timeline-section.bg-dark a:hover,
+.timeline-section.bg-dark a:focus {
+    color: var(--link-on-dark-hover);
+}
+
+/* Generic inline style dark backgrounds */
+[style*="background-color: #0E2B48"] a,
+[style*="background-color:#0E2B48"] a,
+[style*="background: #0E2B48"] a,
+[style*="background:#0E2B48"] a,
+[style*="background-color: var(--surface-navy)"] a,
+[style*="background: var(--surface-navy)"] a {
+    color: var(--link-on-dark);
+}
+
+[style*="background-color: #0E2B48"] a:hover,
+[style*="background-color:#0E2B48"] a:hover,
+[style*="background: #0E2B48"] a:hover,
+[style*="background:#0E2B48"] a:hover,
+[style*="background-color: var(--surface-navy)"] a:hover,
+[style*="background: var(--surface-navy)"] a:hover {
     color: var(--link-on-dark-hover);
 }
 
 /* Footer links - use muted text color, not bright link color */
-.footer a {
+.footer a,
+footer a {
     color: var(--text-on-dark-muted, #c5d4e8);
 }
 
-.footer a:hover {
+.footer a:hover,
+.footer a:focus,
+footer a:hover,
+footer a:focus {
     color: var(--accent-coral, #FF1654);
+}
+
+/* Footer social links */
+.footer-social a,
+.social-links a {
+    color: var(--text-on-dark-muted);
+}
+
+.footer-social a:hover,
+.footer-social a:focus,
+.social-links a:hover,
+.social-links a:focus {
+    color: var(--link-on-dark);
 }
 
 /* Button-style links should have WHITE text, not inherit */
@@ -741,30 +923,116 @@ body.theme-dark p, body.theme-dark li {
         --space-3xl: 60px;
         --gutter: 16px;
     }
-    
+
     .section { padding: var(--space-xl) 0; }
-    .section--hero { 
-        min-height: auto; 
-        padding-top: 80px; 
+    .section--hero {
+        min-height: auto;
+        padding-top: 80px;
         padding-bottom: 40px;
     }
-    
+
     .container {
         padding-left: var(--space-sm);
         padding-right: var(--space-sm);
     }
-    
+
     [class*="col-"] { flex: 0 0 100%; max-width: 100%; }
     .col-sm-6 { flex: 0 0 50%; max-width: 50%; }
     .col-sm-12 { flex: 0 0 100%; max-width: 100%; }
-    
+
     .grid-2, .grid-3, .grid-4, .grid-5 { grid-template-columns: 1fr; }
     .grid-2--mobile { grid-template-columns: repeat(2, 1fr); }
-    
+
     .row { margin-left: calc(var(--gutter) / -2); margin-right: calc(var(--gutter) / -2); }
-    
+
     .hide-mobile { display: none; }
     .show-mobile { display: block; }
+
+    /* ============================================
+       MOBILE - LINK CONTRAST ON DARK BACKGROUNDS
+       Additional mobile-specific overrides
+       ============================================ */
+
+    /* Mobile sidebar/menu links on dark backgrounds */
+    .sidebar-menu a,
+    .mobile-menu a,
+    .mobile-nav a,
+    .nav-drawer a {
+        color: var(--link-on-dark);
+    }
+
+    .sidebar-menu a:hover,
+    .sidebar-menu a:focus,
+    .sidebar-menu a:active,
+    .mobile-menu a:hover,
+    .mobile-menu a:focus,
+    .mobile-menu a:active,
+    .mobile-nav a:hover,
+    .mobile-nav a:focus,
+    .mobile-nav a:active,
+    .nav-drawer a:hover,
+    .nav-drawer a:focus,
+    .nav-drawer a:active {
+        color: var(--link-on-dark-hover);
+    }
+
+    /* Mobile header on dark background */
+    .header-mobile.bg-dark a,
+    .header-mobile.bg-navy a {
+        color: var(--link-on-dark);
+    }
+
+    .header-mobile.bg-dark a:hover,
+    .header-mobile.bg-dark a:active,
+    .header-mobile.bg-navy a:hover,
+    .header-mobile.bg-navy a:active {
+        color: var(--link-on-dark-hover);
+    }
+
+    /* Mobile footer bar - ensure proper contrast */
+    .mobile-footer-bar a,
+    .footer-bar-mobile a {
+        color: var(--text-on-dark-muted);
+    }
+
+    .mobile-footer-bar a:active,
+    .footer-bar-mobile a:active {
+        color: var(--link-on-dark);
+    }
+
+    /* Mobile CTA sections */
+    .cta-section a:not(.btn):not([class*="btn-"]),
+    .cta-banner a:not(.btn):not([class*="btn-"]) {
+        color: var(--link-on-dark);
+    }
+
+    /* Mobile hero sections */
+    .hero-section a,
+    .page-hero a,
+    .category-hero a {
+        color: var(--link-on-dark);
+    }
+
+    /* Mobile accordion/FAQ on dark backgrounds */
+    .accordion.bg-dark a,
+    .faq-section.bg-dark a,
+    .accordion.bg-navy a,
+    .faq-section.bg-navy a {
+        color: var(--link-on-dark);
+    }
+
+    .accordion.bg-dark a:active,
+    .faq-section.bg-dark a:active,
+    .accordion.bg-navy a:active,
+    .faq-section.bg-navy a:active {
+        color: var(--link-on-dark-hover);
+    }
+
+    /* Touch-friendly larger tap targets maintain contrast */
+    .bg-dark a,
+    .bg-navy a {
+        padding: 2px 0;
+    }
 }
 
 /* Small phones (max-width 480px) */
