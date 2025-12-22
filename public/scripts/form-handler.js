@@ -1,127 +1,64 @@
 // Contact Form Handler for OnlineTranslation.ae
-// Graceful fallback when Supabase is not configured
+// Formspree integration with WhatsApp fallback
 
-// Check for Supabase availability
-let supabase = null;
+// Formspree endpoint - Replace YOUR_FORM_ID with actual form ID
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
 
-async function initSupabase() {
-    const supabaseUrl = window.SUPABASE_URL || document.querySelector('meta[name="supabase-url"]')?.content;
-    const supabaseKey = window.SUPABASE_ANON_KEY || document.querySelector('meta[name="supabase-key"]')?.content;
-
-    if (!supabaseUrl || !supabaseKey) {
-        console.info('Supabase not configured - forms will redirect to WhatsApp');
-        return null;
-    }
-
+// Contact Form Submission Handler via Formspree
+async function submitToFormspree(formData, form) {
     try {
-        const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
-        return createClient(supabaseUrl, supabaseKey);
+        const response = await fetch(FORMSPREE_ENDPOINT, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            return {
+                success: true,
+                message: 'Message sent successfully! We will respond within 2 hours.'
+            };
+        } else {
+            const data = await response.json();
+            if (data.errors) {
+                return {
+                    success: false,
+                    message: data.errors.map(e => e.message).join(', ')
+                };
+            }
+            throw new Error('Form submission failed');
+        }
     } catch (error) {
-        console.warn('Failed to load Supabase client:', error.message);
-        return null;
+        console.error('Formspree submission error:', error);
+        // Fallback to WhatsApp
+        return fallbackToWhatsApp(formData);
     }
 }
 
-// Contact Form Submission Handler
-async function submitContactForm(formData) {
-    if (!supabase) {
-        const name = formData.get('name') || '';
-        const docType = formData.get('document_type') || '';
-        const message = formData.get('message') || '';
-        const docLabel = docType ? `Document: ${docType.replace(/_/g, ' ')}. ` : '';
-        const whatsappMessage = encodeURIComponent(`Hi, I'm ${name}. ${docLabel}${message}`);
-        window.open(`https://wa.me/971508620217?text=${whatsappMessage}`, '_blank');
-        return {
-            success: true,
-            message: 'Redirecting to WhatsApp...',
-            redirect: true
-        };
-    }
+// WhatsApp fallback
+function fallbackToWhatsApp(formData) {
+    const name = formData.get('name') || '';
+    const email = formData.get('email') || '';
+    const phone = formData.get('phone') || '';
+    const message = formData.get('message') || '';
 
-    try {
-        const { data, error } = await supabase
-            .from('contact_submissions')
-            .insert([
-                {
-                    name: formData.get('name'),
-                    email: formData.get('email'),
-                    phone: formData.get('phone') || null,
-                    message: formData.get('message'),
-                    source_page: window.location.href,
-                    status: 'new'
-                }
-            ])
-            .select();
+    let text = `Hi, I'm ${name}.\n`;
+    if (email) text += `Email: ${email}\n`;
+    if (phone) text += `Phone: ${phone}\n`;
+    if (message) text += `\n${message}`;
 
-        if (error) throw error;
-
-        return {
-            success: true,
-            message: 'Message sent successfully. We will respond within 2 hours.',
-            data: data
-        };
-    } catch (error) {
-        console.error('Form submission error:', error);
-        return {
-            success: false,
-            message: 'Unable to send message. Please try WhatsApp instead.',
-            error: error
-        };
-    }
-}
-
-// Document Request Handler
-async function submitDocumentRequest(formData) {
-    if (!supabase) {
-        const docType = formData.get('document_type') || 'document';
-        const whatsappMessage = encodeURIComponent(`Hi, I need ${docType} translation. Please send a quote.`);
-        window.open(`https://wa.me/971508620217?text=${whatsappMessage}`, '_blank');
-        return {
-            success: true,
-            message: 'Redirecting to WhatsApp...',
-            redirect: true
-        };
-    }
-
-    try {
-        const { data, error } = await supabase
-            .from('document_requests')
-            .insert([
-                {
-                    client_name: formData.get('name'),
-                    client_email: formData.get('email'),
-                    client_phone: formData.get('phone'),
-                    document_type: formData.get('document_type') || 'General',
-                    source_language: formData.get('source_language') || 'Unknown',
-                    target_language: formData.get('target_language') || 'English',
-                    urgency: formData.get('urgency') || 'standard',
-                    notes: formData.get('message') || formData.get('notes'),
-                    status: 'submitted'
-                }
-            ])
-            .select();
-
-        if (error) throw error;
-
-        return {
-            success: true,
-            message: 'Request submitted successfully. We will send a quotation within minutes.',
-            data: data
-        };
-    } catch (error) {
-        console.error('Document request error:', error);
-        return {
-            success: false,
-            message: 'Unable to submit request. Please try WhatsApp instead.',
-            error: error
-        };
-    }
+    window.open(`https://wa.me/971508620217?text=${encodeURIComponent(text)}`, '_blank');
+    return {
+        success: true,
+        message: 'Redirecting to WhatsApp...',
+        redirect: true
+    };
 }
 
 // Initialize form handlers on page load
-document.addEventListener('DOMContentLoaded', async function() {
-    supabase = await initSupabase();
-    
+document.addEventListener('DOMContentLoaded', function() {
     const contactForms = document.querySelectorAll('.contact-form');
 
     contactForms.forEach(function(form) {
@@ -131,6 +68,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             const formData = new FormData(form);
             const resultDiv = form.querySelector('#formResult') || document.getElementById('formResult');
             const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn ? submitBtn.textContent : 'Submit';
 
             // Show loading state
             if (submitBtn) {
@@ -139,15 +77,11 @@ document.addEventListener('DOMContentLoaded', async function() {
             }
             if (resultDiv) resultDiv.innerHTML = '';
 
-            // Determine form type and submit accordingly
-            const formType = form.dataset.formType || 'contact';
+            // Add source page to form data
+            formData.append('_source', window.location.href);
 
-            let result;
-            if (formType === 'document') {
-                result = await submitDocumentRequest(formData);
-            } else {
-                result = await submitContactForm(formData);
-            }
+            // Submit to Formspree
+            const result = await submitToFormspree(formData, form);
 
             // Display result
             if (resultDiv && !result.redirect) {
@@ -156,9 +90,6 @@ document.addEventListener('DOMContentLoaded', async function() {
                         <div class="form-success">
                             <i class="fas fa-check-circle"></i>
                             <span>${result.message}</span>
-                            <a href="https://wa.me/971508620217" target="_blank" class="whatsapp-link">
-                                <i class="fab fa-whatsapp"></i> Need faster response? WhatsApp us
-                            </a>
                         </div>
                     `;
                     form.reset();
@@ -178,7 +109,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             // Reset button
             if (submitBtn) {
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'Send Message';
+                submitBtn.textContent = originalBtnText;
             }
         });
     });
