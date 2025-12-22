@@ -948,3 +948,143 @@ button:focus:not(:focus-visible) {
     padding-right: 16px !important;
   }
 }
+
+/* ============================================
+   9. FORM RESULT MESSAGES
+   Success and error states for contact forms
+   ============================================ */
+
+.form-success,
+.form-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.form-success {
+  background: rgba(4, 120, 87, 0.1);
+  border: 1px solid var(--state-success, #047857);
+  color: var(--state-success, #047857);
+}
+
+.form-success i {
+  font-size: 2rem;
+  color: var(--state-success, #047857);
+}
+
+.form-error {
+  background: rgba(220, 38, 38, 0.1);
+  border: 1px solid var(--state-danger, #dc2626);
+  color: var(--state-danger, #dc2626);
+}
+
+.form-error i {
+  font-size: 1.5rem;
+  color: var(--state-danger, #dc2626);
+}
+
+.form-error .whatsapp-link,
+.form-success .whatsapp-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #25D366;
+  color: white !important;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  margin-top: 0.5rem;
+  transition: background 0.2s ease;
+}
+
+.form-error .whatsapp-link:hover,
+.form-success .whatsapp-link:hover {
+  background: #1da851;
+}
+
+/* Dark mode form results */
+body.theme-dark .form-success {
+  background: rgba(74, 222, 128, 0.1);
+  border-color: var(--state-success);
+  color: var(--state-success);
+}
+
+body.theme-dark .form-error {
+  background: rgba(255, 79, 109, 0.1);
+  border-color: var(--state-danger);
+  color: var(--state-danger);
+}
+
+/* Contact section form on dark background */
+.contact-section.bg-dark .form-success,
+.bg-dark .form-success {
+  background: rgba(74, 222, 128, 0.15);
+  border-color: #4ade80;
+  color: #4ade80;
+}
+
+.contact-section.bg-dark .form-error,
+.bg-dark .form-error {
+  background: rgba(255, 79, 109, 0.15);
+  border-color: #ff4f6d;
+  color: #ff4f6d;
+}
+
+.contact-section.bg-dark .form-success i,
+.bg-dark .form-success i {
+  color: #4ade80;
+}
+
+.contact-section.bg-dark .form-error i,
+.bg-dark .form-error i {
+  color: #ff4f6d;
+}
+
+/* ============================================
+   FORM CONTRAST FIXES FOR LIGHT BACKGROUNDS
+   ============================================ */
+
+/* Forms on white/light backgrounds need dark text */
+.bg-white .form-group label,
+.bg-light .form-group label,
+section:not(.bg-dark):not(.contact-section) .form-group label {
+  color: var(--text-heading, #1a202c) !important;
+}
+
+.bg-white .form-group input,
+.bg-white .form-group select,
+.bg-white .form-group textarea,
+.bg-light .form-group input,
+.bg-light .form-group select,
+.bg-light .form-group textarea {
+  background: #ffffff !important;
+  color: var(--text-body, #2d3748) !important;
+  border: 1px solid #d1d5db;
+}
+
+.bg-white .form-group input::placeholder,
+.bg-white .form-group select::placeholder,
+.bg-white .form-group textarea::placeholder,
+.bg-light .form-group input::placeholder,
+.bg-light .form-group select::placeholder,
+.bg-light .form-group textarea::placeholder {
+  color: #6b7280 !important;
+  opacity: 1;
+}
+
+.bg-white .form-group input:focus,
+.bg-white .form-group select:focus,
+.bg-white .form-group textarea:focus,
+.bg-light .form-group input:focus,
+.bg-light .form-group select:focus,
+.bg-light .form-group textarea:focus {
+  border-color: var(--primary-color, #0a1628);
+  box-shadow: 0 0 0 3px rgba(10, 22, 40, 0.1);
+}
