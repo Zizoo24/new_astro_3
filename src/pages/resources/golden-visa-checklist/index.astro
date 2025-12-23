@@ -1,12 +1,64 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import RelatedServices from '../../../components/RelatedServices.astro';
+
+const faqs = [
+  {
+    question: "Do I need MOJ translation for Golden Visa documents?",
+    answer: "Yes, all non-Arabic documents submitted for Golden Visa applications must be translated by an MOJ-certified translator. This includes educational certificates, professional licenses, employment contracts, and financial statements. We provide MOJ-certified translations accepted by ICP and all UAE authorities."
+  },
+  {
+    question: "Which Golden Visa documents need attestation?",
+    answer: "Educational documents (degrees, transcripts) typically need attestation from your home country followed by UAE Embassy and MOFA attestation. Professional licenses may also require attestation. Documents issued within UAE (like trade licenses or Emirates ID) do not need attestation. We can advise on the specific attestation requirements for your document set."
+  },
+  {
+    question: "What about degree equivalency (MOE attestation)?",
+    answer: "Some Golden Visa categories require degree equivalency from the UAE Ministry of Education (MOE). This is separate from translation and MOFA attestation. The MOE equivalency confirms your degree is recognized in the UAE. We translate your documents; you will need to apply for MOE equivalency separately through their portal."
+  },
+  {
+    question: "How long do Golden Visa translations take?",
+    answer: "Most Golden Visa documents (certificates, licenses, contracts) are translated same-day or next-day. Complex documents like financial statements or lengthy MOAs may take 1-2 days. Rush service is available if you have an urgent application deadline—contact us via WhatsApp to discuss your timeline."
+  },
+  {
+    question: "Do you handle the full attestation process?",
+    answer: "We handle UAE-side attestation (MOFA) and translation. For home country attestation, we provide detailed guidance and can recommend agents. The full attestation chain must be completed before translation for most Golden Visa submissions. See our attestation guide for country-specific steps."
+  },
+  {
+    question: "What if my documents are not in English?",
+    answer: "We translate from most major languages including Arabic, Hindi, Urdu, Tagalog, French, German, Spanish, Chinese, and more. Documents in languages other than Arabic or English need translation for Golden Visa submission. Send us your documents for a quote regardless of the source language."
+  },
+  {
+    question: "Are there different requirements by visa category?",
+    answer: "Yes, each Golden Visa category (investor, entrepreneur, professional, student) has different document requirements. Investors need property documents and valuations. Professionals need employment contracts and salary certificates. Students need academic transcripts. The checklists on this page outline typical requirements by category."
+  },
+  {
+    question: "Can you translate bank statements for Golden Visa?",
+    answer: "Yes, we translate bank statements, salary certificates, and other financial documents. For Golden Visa applications, these documents prove investment amounts or salary thresholds. We ensure accurate translation of figures, account details, and bank letterheads."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
 ---
 
-<BaseLayout 
+<BaseLayout
   title="Golden Visa Document Checklist Dubai | UAE"
-  description="Complete document requirements for UAE Golden Visa applications. Checklists for investors, entrepreneurs, professionals, and students."
+  description="Complete document requirements for UAE Golden Visa applications. Checklists for investors, entrepreneurs, professionals, and students. Translation and attestation guidance."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
   <section class="hero-section bg-dark" data-theme="dark">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -16,7 +68,7 @@ import RelatedServices from '../../../components/RelatedServices.astro';
         <span class="separator">&gt;</span>
         <span class="current">GOLDEN VISA CHECKLIST</span>
       </nav>
-      
+
       <h1>Golden Visa Document Checklist</h1>
       <p class="hero-subtitle">By Application Category</p>
       <p class="hero-intro">The UAE Golden Visa requires specific documents depending on your application category. These checklists outline the typical requirements. Always verify current requirements with ICP or your visa processing center.</p>
@@ -25,89 +77,111 @@ import RelatedServices from '../../../components/RelatedServices.astro';
 
   <section class="section bg-white">
     <div class="container content-container">
+
+      <div class="translation-callout">
+        <div class="callout-icon"><i class="fas fa-language"></i></div>
+        <div class="callout-content">
+          <h3>Translation Requirements</h3>
+          <p>All non-Arabic documents need <strong>MOJ-certified translation</strong> for Golden Visa submission. Some documents also require <a href="/resources/attestation-guide/">attestation</a> before translation.</p>
+          <div class="callout-links">
+            <a href="/resources/moj-vs-certified/">MOJ vs Certified Guide</a>
+            <a href="/resources/attestation-guide/">Attestation Guide</a>
+          </div>
+        </div>
+      </div>
+
       <h2>Investors</h2>
       <p class="category-intro">For property investors and business investors applying for the 10-year Golden Visa.</p>
-      
+
       <div class="checklist-box">
-        <h4>Property Investment (AED 2 Million+)</h4>
+        <h4><i class="fas fa-building"></i> Property Investment (AED 2 Million+)</h4>
         <ul>
           <li>Valid passport (minimum 6 months validity)</li>
           <li>Passport-size photos (white background)</li>
-          <li>Title deed(s) showing minimum AED 2 million value</li>
+          <li>Title deed(s) showing minimum AED 2 million value <span class="doc-note">Translation required if in Arabic only</span></li>
           <li>Property valuation letter (if required)</li>
           <li>Emirates ID (if resident)</li>
           <li>Current visa copy (if applicable)</li>
           <li>Health insurance</li>
         </ul>
       </div>
-      
+
       <div class="checklist-box">
-        <h4>Business Investment</h4>
+        <h4><i class="fas fa-briefcase"></i> Business Investment</h4>
         <ul>
           <li>Valid passport</li>
-          <li>Trade license</li>
-          <li>Memorandum of Association</li>
-          <li>Bank statements showing investment</li>
-          <li>Company financial statements (audited)</li>
+          <li>Trade license <span class="doc-note">Translation if Arabic only</span></li>
+          <li>Memorandum of Association <span class="doc-note">Translation + attestation</span></li>
+          <li>Bank statements showing investment <span class="doc-note">Translation required</span></li>
+          <li>Company financial statements (audited) <span class="doc-note">Translation required</span></li>
           <li>Letter from relevant authority</li>
         </ul>
       </div>
-      
+
       <h2>Entrepreneurs</h2>
       <p class="category-intro">For startup founders and business owners.</p>
-      
+
       <div class="checklist-box">
+        <h4><i class="fas fa-rocket"></i> Startup Founders</h4>
         <ul>
           <li>Valid passport</li>
           <li>Business plan</li>
           <li>Trade license or startup registration</li>
           <li>Proof of minimum revenue (varies by category)</li>
           <li>Recommendation from authorized incubator</li>
-          <li>Academic qualifications</li>
+          <li>Academic qualifications <span class="doc-note">Attestation + translation</span></li>
           <li>CV/resume</li>
         </ul>
       </div>
-      
+
       <h2>Specialized Talents and Professionals</h2>
       <p class="category-intro">For doctors, engineers, scientists, executives, and other professionals.</p>
-      
+
       <div class="checklist-box">
+        <h4><i class="fas fa-user-md"></i> Professionals (Salary AED 30,000+)</h4>
         <ul>
           <li>Valid passport</li>
-          <li>Educational certificates (attested)</li>
-          <li>Professional license (if applicable)</li>
-          <li>Employment contract (minimum salary AED 30,000)</li>
+          <li>Educational certificates <span class="doc-note">Attestation + translation required</span></li>
+          <li>Professional license (if applicable) <span class="doc-note">Translation if not in Arabic</span></li>
+          <li>Employment contract (minimum salary AED 30,000) <span class="doc-note">Translation required</span></li>
           <li>Salary certificate from employer</li>
           <li>Professional CV</li>
-          <li>Letters of recommendation</li>
+          <li>Letters of recommendation <span class="doc-note">Translation if not in Arabic/English</span></li>
           <li>Publications or patents (for researchers)</li>
         </ul>
       </div>
-      
+
       <h2>Outstanding Students</h2>
       <p class="category-intro">For high-achieving students from UAE secondary schools and universities.</p>
-      
+
       <div class="checklist-box">
+        <h4><i class="fas fa-graduation-cap"></i> Student Category</h4>
         <ul>
           <li>Valid passport</li>
-          <li>Academic transcripts showing required GPA</li>
-          <li>Graduation certificate</li>
+          <li>Academic transcripts showing required GPA <span class="doc-note">Translation if not in Arabic</span></li>
+          <li>Graduation certificate <span class="doc-note">Translation if not in Arabic</span></li>
           <li>Letter from educational institution</li>
           <li>Parents passport copies</li>
           <li>Emirates ID</li>
         </ul>
       </div>
-      
+
       <div class="note-box">
-        <h4>Translation Requirements</h4>
-        <p>All non-Arabic documents must be translated by MOJ-certified translators. We provide certified translations for:</p>
-        <ul>
-          <li>Academic certificates and transcripts</li>
-          <li>Professional licenses</li>
-          <li>Company documents (MOA, financial statements)</li>
-          <li>Reference letters</li>
-          <li>Any supporting documentation</li>
-        </ul>
+        <h4><i class="fas fa-info-circle"></i> What We Translate for Golden Visa</h4>
+        <p>We provide MOJ-certified translations for all Golden Visa supporting documents:</p>
+        <div class="note-grid">
+          <ul>
+            <li>Academic certificates and transcripts</li>
+            <li>Professional licenses</li>
+            <li>Employment contracts</li>
+          </ul>
+          <ul>
+            <li>Company documents (MOA, financials)</li>
+            <li>Bank statements</li>
+            <li>Reference letters</li>
+          </ul>
+        </div>
+        <p class="note-cta">Send documents via WhatsApp for same-day quotes.</p>
       </div>
     </div>
   </section>
@@ -124,13 +198,35 @@ import RelatedServices from '../../../components/RelatedServices.astro';
     </div>
   </section>
 
-  <section class="section bg-light">
+  <section class="section bg-light faq-section">
+    <div class="container content-container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
     <div class="container cta-section">
       <h2>Need Document Translation?</h2>
       <p>Send us your Golden Visa documents for certified translation. We ensure all translations meet the requirements for your application.</p>
       <a href="https://wa.me/971508620217" class="btn btn-primary">
         <i class="fab fa-whatsapp"></i> Send Your Documents
       </a>
+      <div class="related-links">
+        <span>Related:</span>
+        <a href="/services/golden-visa-translation/">Golden Visa Translation</a>
+        <a href="/resources/attestation-guide/">Attestation Guide</a>
+        <a href="/resources/moj-vs-certified/">MOJ vs Certified</a>
+      </div>
     </div>
   </section>
 </BaseLayout>
@@ -145,22 +241,63 @@ import RelatedServices from '../../../components/RelatedServices.astro';
   h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: #ffffff; }
   .hero-subtitle { font-size: 1.25rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
   .hero-intro { font-size: 1.1rem; line-height: 1.8; max-width: 700px; color: rgba(255, 255, 255, 0.9); }
+
+  .section { padding: 4rem 0; }
   .content-container { max-width: 800px; }
+
+  /* Translation Callout */
+  .translation-callout { display: flex; gap: 1.25rem; background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border: 1px solid #bae6fd; border-radius: 1rem; padding: 1.5rem; margin-bottom: 2.5rem; }
+  .callout-icon { font-size: 2rem; color: #0077b6; flex-shrink: 0; }
+  .callout-content h3 { margin: 0 0 0.5rem; font-size: 1.1rem; color: var(--primary-color); }
+  .callout-content p { margin: 0 0 0.75rem; line-height: 1.6; }
+  .callout-content a { color: var(--accent-color); }
+  .callout-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .callout-links a { font-size: 0.9rem; color: #0077b6; text-decoration: none; font-weight: 500; }
+  .callout-links a:hover { text-decoration: underline; }
+
   h2 { margin-top: 2.5rem; margin-bottom: 0.5rem; }
   .category-intro { color: var(--text-muted); margin-bottom: 1.5rem; }
+
   .checklist-box { background: #f8f9fa; padding: 1.5rem; border-radius: 0.75rem; margin-bottom: 1rem; }
-  .checklist-box h4 { margin: 0 0 1rem; font-size: 1rem; color: var(--primary-color); }
+  .checklist-box h4 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 1rem; font-size: 1rem; color: var(--primary-color); }
+  .checklist-box h4 i { color: var(--accent-color); }
   .checklist-box ul { margin: 0; padding-left: 1.25rem; }
   .checklist-box li { margin-bottom: 0.5rem; line-height: 1.6; }
+  .doc-note { display: inline-block; background: #fef3c7; color: #92400e; font-size: 0.75rem; padding: 0.15rem 0.5rem; border-radius: 0.25rem; margin-left: 0.5rem; font-weight: 500; }
+
   .note-box { background: var(--primary-color); color: #fff; padding: 2rem; border-radius: 0.75rem; margin-top: 2rem; }
-  .note-box h4 { margin: 0 0 1rem; }
+  .note-box h4 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 1rem; }
   .note-box p { margin-bottom: 1rem; color: rgba(255, 255, 255, 0.9); }
+  .note-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .note-box ul { margin: 0; padding-left: 1.25rem; }
-  .note-box li { margin-bottom: 0.5rem; color: rgba(255, 255, 255, 0.9); }
+  .note-box li { margin-bottom: 0.4rem; color: rgba(255, 255, 255, 0.9); }
+  .note-cta { margin-top: 1rem; margin-bottom: 0; font-weight: 600; color: var(--accent-color); }
+
+  /* FAQ Section */
+  .faq-section h2 { margin-bottom: 2rem; }
+  .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { background: #fff; border-radius: 0.75rem; border: 1px solid rgba(0,0,0,0.08); overflow: hidden; }
+  .faq-question { padding: 1.25rem 1.5rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; font-size: 1.5rem; color: var(--accent-color); transition: transform 0.2s; }
+  details[open] .faq-question::after { content: '−'; }
+  .faq-answer { padding: 0 1.5rem 1.25rem; }
+  .faq-answer p { margin: 0; line-height: 1.7; color: var(--text-body); }
+
+  /* CTA Section */
   .cta-section { text-align: center; max-width: 600px; margin: 0 auto; }
   .cta-section h2 { margin-bottom: 1rem; }
-  .cta-section p { margin-bottom: 2rem; color: var(--text-muted); }
+  .cta-section > p { margin-bottom: 2rem; color: var(--text-muted); }
   .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
   .btn-primary { background: var(--accent-color); color: #ffffff; }
   .btn-primary:hover { background: #e0144c; transform: translateY(-2px); }
+  .related-links { margin-top: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; font-size: 0.9rem; }
+  .related-links span { color: var(--text-muted); }
+  .related-links a { color: var(--primary-color); text-decoration: none; }
+  .related-links a:hover { color: var(--accent-color); text-decoration: underline; }
+
+  @media (max-width: 768px) {
+    .translation-callout { flex-direction: column; gap: 1rem; }
+    .note-grid { grid-template-columns: 1fr; }
+  }
 </style>
