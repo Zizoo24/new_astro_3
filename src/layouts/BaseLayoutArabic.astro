@@ -24,7 +24,12 @@ const {
 // Use Astro.site from config for consistent URL handling
 const siteUrl = Astro.site?.origin || 'https://onlinetranslation.ae';
 const fullCanonical = canonicalOverride || (canonical.startsWith('http') ? canonical : `${siteUrl}${canonical}`);
-const englishEquivalent = fullCanonical.replace('/ar/', '/').replace('/ar', '/');
+// Map Arabic URLs to English equivalents
+const englishEquivalent = fullCanonical
+  .replace('/عربي/', '/')
+  .replace('/عربي', '/')
+  .replace('/ar/', '/')
+  .replace('/ar', '/');
 ---
 
 <!DOCTYPE html>
