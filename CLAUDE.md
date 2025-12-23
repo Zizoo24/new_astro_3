@@ -288,12 +288,14 @@ Every single page must contain these JSON-LD Schema blocks:
 3. **`FAQPage` Schema:** Feeding the Q\&A directly into search snippets.  
 4. **`BreadcrumbList`:** Defining the hierarchy (Home \> Services \> Personal \> Birth).
 
-### **4.2 The "Hreflang" Strategy (Future Proofing)**
+### **4.2 The "Hreflang" Strategy (Implemented)**
 
-Even if we only launch in English now, the code must support Arabic immediately.
+Arabic language support is live. The code uses:
 
-●       `<link rel="alternate" hreflang="en-ae" href="https://onlinetranslation.ae/..." />`  
-●       `<link rel="alternate" hreflang="ar-ae" href="https://onlinetranslation.ae/ar/..." />`
+●       `<link rel="alternate" hreflang="en" href="https://onlinetranslation.ae/..." />`
+●       `<link rel="alternate" hreflang="ar" href="https://onlinetranslation.ae/عربي/..." />`
+
+**Note:** Arabic URLs use Arabic script path (`/عربي/`) per actual implementation.
 
 ### **4.3 Mobile Performance (Core Web Vitals)**
 
@@ -346,9 +348,9 @@ The "Fusion" strategy fails if the customer service feels like a bot.
 
 Comply with styles css file (usually named porto desktop.css) ask user to upload it if u can’t find (important\!)
 
-# Brand Codex
+---
 
-Brand Codex
+## **BRAND CODEX: Voice & Tone Guidelines**
 
 This is the **Revised Brand Codex & Linguistic Algorithm (v2.0)**.
 
@@ -585,11 +587,11 @@ How do we say "We are small but good"?
 
 Don’t actually mention amounts or competitors by name.
 
-# Accordion Kingdom
+---
 
-Accordion Kingdom
+## **ACCORDION KINGDOM: Mobile UX Technical Analysis**
 
-# **Mobile Interface Architecture: A Comprehensive Technical Analysis of Text Compression Tools, Accordion Implementations, and Accessibility Standards**
+### **Mobile Interface Architecture: Text Compression Tools, Accordion Implementations, and Accessibility Standards**
 
 ## **Executive Summary**
 
@@ -1167,23 +1169,17 @@ Technical Requirements:
 
 ## **7.5 Visual Identity System**
 
-**Color Palette (Brand Consistency):**
+**Color Palette:** See Part X for authoritative color tokens.
 
- 
+**Key Brand Colors (Quick Reference):**
 
-• Brand Blue: \#1a5f7a (professional, trustworthy)
+• Coral: #FF1654 (Primary CTAs, Accent)
 
-• Accent Blue: \#2d8fb8 (lighter variant)
+• Navy: #0E2B48 (Headers, Hero sections)
 
-• WhatsApp Green: \#25D366 (primary CTAs)
+• Teal: #0077b6 (Links)
 
-• Success Green: \#10B981 (acceptance indicators)
-
-• Warning Amber: \#F59E0B (express/urgent)
-
-• Info Blue: \#3B82F6 (general information)
-
-• VIP Purple: \#8B5CF6 (concierge tier)
+• WhatsApp Green: #25D366 (WhatsApp CTAs)
 
  
 
@@ -1339,7 +1335,7 @@ This handbook contains:
 |------|----------|------|--------|-----|--------|
 | Technical | 2 | 3 | 2 | 1 | **FIXED** |
 | Schema | 4 | 4 | 5 | 2 | **FIXED** |
-| Content/Linking | 3 | 4 | 3 | 1 | In Progress |
+| Content/Linking | 3 | 4 | 3 | 1 | **FIXED** |
 | **Total** | **9** | **11** | **10** | **4** | |
 
 ### **8.2 Phase 1: Critical Bug Fixes - COMPLETE**
@@ -1371,8 +1367,9 @@ This handbook contains:
 **Issue B: WebSite Schema Missing**
 - Added to BaseLayout with SearchAction for sitelinks search box
 
-**Issue C: Hreflang Incomplete**
-- Added Arabic alternate: `<link rel="alternate" hreflang="ar" href="${siteUrl}/عربي/" />`
+**Issue C: Hreflang Complete**
+- Arabic alternate uses Arabic script path: `hreflang="ar" href="${siteUrl}/عربي/"`
+- English uses standard: `hreflang="en" href="${siteUrl}/..."`
 
 **Issue D: areaServed Format Inconsistent**
 - Standardized to typed City/Country objects across all layouts
