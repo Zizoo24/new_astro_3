@@ -19,11 +19,11 @@ const sectionId = id || title.toLowerCase().replace(/\s+/g, '-');
     <h2 class="ot-accordion-title">{title}</h2>
     <div class="ot-accordion" data-accordion>
       {items.map((item, i) => (
-        <article class="ot-accordion-item">
-          <button 
-            class="ot-accordion-header" 
+        <article class={`ot-accordion-item ${i === 0 ? 'is-open' : ''}`}>
+          <button
+            class="ot-accordion-header"
             type="button"
-            aria-expanded="false"
+            aria-expanded={i === 0 ? "true" : "false"}
             aria-controls={`${sectionId}-panel-${i}`}
           >
             <span>{item.heading}</span>
@@ -47,13 +47,18 @@ const sectionId = id || title.toLowerCase().replace(/\s+/g, '-');
     document.querySelectorAll('[data-accordion]').forEach(accordion => {
       const items = accordion.querySelectorAll('.ot-accordion-item');
       
-      items.forEach(item => {
+      items.forEach((item, index) => {
         const header = item.querySelector('.ot-accordion-header') as HTMLButtonElement;
         const body = item.querySelector('.ot-accordion-body') as HTMLElement;
-        
+
         if (!header || !body) return;
-        
-        body.style.maxHeight = '0px';
+
+        // First item starts expanded for SEO - content visible without JS interaction
+        if (index === 0) {
+          body.style.maxHeight = body.scrollHeight + 'px';
+        } else {
+          body.style.maxHeight = '0px';
+        }
         
         header.addEventListener('click', () => {
           const isOpen = item.classList.contains('is-open');
@@ -165,6 +170,11 @@ const sectionId = id || title.toLowerCase().replace(/\s+/g, '-');
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
+  }
+
+  /* First item expanded by default - content visible without JS for SEO */
+  .ot-accordion-item.is-open .ot-accordion-body {
+    max-height: 1000px;
   }
   
   .ot-accordion-content {
