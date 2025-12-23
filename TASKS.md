@@ -1,9 +1,9 @@
 # OnlineTranslation.ae - Task Backlog
 
-> **Primary Reference:** See `MASTER STRATEGIC BLUEPRINT_ The Digital Concierge Model.md` for all strategic guidance.
-> SEO tasks tracked in Part VIII of the master blueprint.
+> **Primary Reference:** See `CLAUDE.md` for all strategic guidance.
+> SEO tasks tracked in Part VIII of CLAUDE.md.
 
-This document tracks component/UI tasks. For SEO tasks, see `SEO-REPAIR-ROADMAP.md`.
+This document tracks component/UI tasks. For SEO tasks, see CLAUDE.md Part VIII.
 
 ---
 

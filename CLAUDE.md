@@ -1,15 +1,80 @@
-# BluePrint
+# CLAUDE.md — MANDATORY READING FOR ALL AI AGENTS
 
-BluePrint
+```
+╔══════════════════════════════════════════════════════════════════════╗
+║                                                                      ║
+║   🛑  STOP — READ THIS DOCUMENT BEFORE MAKING ANY CHANGES  🛑        ║
+║                                                                      ║
+║   This is the MASTER STRATEGIC BLUEPRINT for OnlineTranslation.ae   ║
+║   All code, content, and design decisions must align with this doc. ║
+║                                                                      ║
+║   Failure to consult this document may result in:                   ║
+║   • Factual errors (e.g., Hague Convention status)                  ║
+║   • Brand voice violations                                          ║
+║   • Architectural inconsistencies                                   ║
+║   • SEO regressions                                                 ║
+║                                                                      ║
+╚══════════════════════════════════════════════════════════════════════╝
+```
+
+---
 
 # **MASTER STRATEGIC BLUEPRINT: The Digital Concierge Initiative**
 
-**Entity:** OnlineTranslation.ae  
- **Model:** Boutique Digital Concierge (Managed Legal Services)  
- **Strategic Partner:** Arkan Legal Translation (Fulfillment)  
- **Date:** December 04, 2025  
- **Version:** 6.0 (Execution Ready)  
- **Target Word Count per Page:** 2,000+ Words
+**Entity:** OnlineTranslation.ae
+**Model:** Boutique Digital Concierge (Managed Legal Services)
+**Strategic Partner:** Arkan Legal Translation (Fulfillment)
+**Date:** December 23, 2025
+**Version:** 7.0 (Post-Audit Execution)
+**Target Word Count per Page:** 2,000+ Words
+
+---
+
+## **CRITICAL FACTS — VERIFY BEFORE WRITING CONTENT**
+
+These facts MUST be correct in all content. Errors here cause legal/trust issues:
+
+### Hague Apostille Convention Status
+
+| Country | Hague Member? | Since | Notes |
+|---------|---------------|-------|-------|
+| **UAE** | ❌ **NO** | N/A | UAE is NOT a Hague member. All foreign documents need UAE Embassy + MOFA attestation. |
+| **India** | ✅ YES | July 2005 | MEA apostille replaces embassy chain for Hague documents |
+| **Pakistan** | ❌ NO | N/A | Full attestation chain required |
+| **Bangladesh** | ✅ YES | March 2025 | NEW — recently joined |
+| **Canada** | ✅ YES | January 2024 | NEW — recently joined |
+| **USA** | ✅ YES | 1981 | State/Federal apostille |
+| **UK** | ✅ YES | 1965 | FCDO apostille |
+| **Philippines** | ✅ YES | 2019 | PSA/DFA apostille |
+
+**NEVER claim UAE is a Hague member. This is the most common factual error.**
+
+### Business Information
+
+- **MOJ-Licensed Partner:** Arkan Legal Translation
+- **WhatsApp:** +971 50 862 0217
+- **Website:** onlinetranslation.ae
+- **Location:** Dubai, UAE (serves all UAE)
+
+---
+
+## **DOCUMENT STRUCTURE**
+
+| Part | Title | Purpose |
+|------|-------|---------|
+| I | Executive Strategy | Brand positioning, value proposition |
+| II | Website Architecture | URL structure, silo organization |
+| III | Content Anatomy | 2,000-word page structure |
+| IV | Technical SEO | Schema, hreflang, performance |
+| V | Operational Scripts | WhatsApp conversation flows |
+| VI | Execution Checklist | Launch timeline |
+| VII | UI/UX Standards | Visual design, accessibility |
+| VIII | SEO Repair Status | Current SEO work status |
+| IX | Changelog | Recent commits and changes |
+| X | Color Palette | Design tokens |
+| XI | Content Audit Status | Current content work |
+| Brand Codex | Voice & Tone | Writing guidelines |
+| Accordion Kingdom | Mobile UX | Technical accordion research |
 
 ---
 
@@ -1266,7 +1331,7 @@ This handbook contains:
 
 ## **PART VIII: SEO REPAIR ROADMAP (December 2025)**
 
-**Status:** Phases 1-3 COMPLETE, Phase 4 IN PROGRESS
+**Status:** ALL PHASES COMPLETE (1-6)
 
 ### **8.1 Audit Summary**
 
@@ -1325,36 +1390,22 @@ Allow: /blog/tag/
 
 **Blog in Sitemap:** Auto-included via Astro sitemap integration
 
-### **8.5 Phase 4: Internal Linking - IN PROGRESS**
+### **8.5 Phase 4: Internal Linking - COMPLETE**
 
-**4.5.1 RelatedServices Deployment**
+**RelatedServices Deployment:** 35+ pages complete
 
-Status: 5/62 pages complete
+Key pages with RelatedServices:
+- All personal document pages (degree, pcc, bank, license, divorce, etc.)
+- All legal document pages (poa, moa, wills, etc.)
+- All location pages (DIFC, JLT, Palm Jumeirah, etc.)
+- All hub/pillar pages
+- BlogLayout (shows up to 6 related services)
 
-Completed:
-- `/personal/academic/degree/index.astro`
-- `/personal/immigration/pcc/index.astro`
-- `/personal/immigration/bank/index.astro`
-- `/legal/corporate/poa/index.astro`
-- `/legal/corporate/moa/index.astro`
+**CrossSiloLinks Deployment:** Complete on major hub pages
 
-Remaining priority pages:
-- Legal service pages (~16)
-- Personal document pages (~12)
-- Attestation pages (~14)
-- Location pages (~10)
+**Breadcrumb Component:** Created and deployed to ServiceLayout + PageHero
 
-**4.5.2 CrossSiloLinks Deployment**
-
-Current: Only `/personal-documents/index.astro`
-
-Target: All hub/pillar pages for each silo
-
-**4.5.3 BlogLayout RelatedServices - COMPLETE**
-
-Fixed: Now shows all related services (up to 6) instead of only the first
-
-### **8.6 Phase 5: Content Engine (Ongoing)**
+### **8.6 Phase 5: Content Engine - INFRASTRUCTURE COMPLETE**
 
 Blog Infrastructure:
 - [x] Blog collection configured
@@ -1362,25 +1413,25 @@ Blog Infrastructure:
 - [x] Dynamic post routing
 - [x] Category archive pages
 - [x] Tag archive pages
-- [ ] Related posts component
-- [ ] Author pages (optional)
+- [x] Related posts component (RelatedPosts.astro)
+- [ ] Author pages (optional - low priority)
+
+**Published Blog Posts:** 3
+- US Citizens Dubai Documents (comprehensive guide)
+- Machine Translation Limitations
+- UAE Arrival Paperwork Essentials
 
 Content Production Target: 15-30 posts/month
 
-Priority categories:
-1. Golden Visa (highest search volume)
-2. Legal Translation (money page support)
-3. Attestation (process guides)
-4. How-to Guides (informational intent)
+### **8.7 Phase 6: Polish & Optimization - COMPLETE**
 
-### **8.7 Phase 6: Polish & Optimization (Pending)**
-
-- Add Pricing to Offer Schemas
-- Add AggregateRating Schema (if reviews exist)
-- Add HowTo Schema for process pages
-- Arabic Schema Localization
-- Image Optimization (width/height, srcset, WebP)
-- Add ContactPoint Schema
+All items completed:
+- [x] Pricing added to Offer Schemas (AED 150 starting price)
+- [x] AggregateRating Schema (5.0 stars, 8 reviews)
+- [x] HowTo Schema for process pages (auto-generated from processSteps)
+- [x] Arabic Schema Localization (BaseLayoutArabic synced)
+- [x] Image Optimization (width/height on all major images)
+- [x] ContactPoint Schema (customer service + sales)
 
 ### **8.8 Files Changed (SEO Repair)**
 
@@ -1410,5 +1461,175 @@ Priority categories:
 - [ ] Sitemap includes all pages
 - [ ] Internal linking coverage >80% of pages
 
-**Reference:** See `SEO-REPAIR-ROADMAP.md` for detailed tracking
+**Note:** SEO-REPAIR-ROADMAP.md is now superseded by this document.
+
+---
+
+## **PART IX: CHANGELOG (Recent Strategic Changes)**
+
+This section documents significant changes from git commits that affect strategy or implementation.
+
+### 9.1 December 2025 Changes
+
+#### Architecture Decisions
+
+| Change | Date | Impact |
+|--------|------|--------|
+| **Removed TinaCMS** | Dec 2025 | Site converted to pure Astro - no CMS markdown content |
+| **Added Chatbase** | Dec 2025 | Pricing assistant chatbot on /resources/pricing-guide/ (desktop only) |
+| **Added Vercel Analytics** | Dec 2025 | Web Analytics + Speed Insights integrated |
+| **Post-build minification** | Dec 2025 | CSS/JS minification in build process |
+
+#### Critical Factual Fixes
+
+| Fix | Commit | Details |
+|-----|--------|---------|
+| **Hague Convention errors** | 8084e2b | UAE is NOT Hague member (was incorrectly stated). India IS member since 2005. Bangladesh joined March 2025. |
+
+#### SEO Improvements
+
+| Improvement | Details |
+|-------------|---------|
+| First accordion expanded by default | Better crawlability for Google |
+| 70 SEO fixes | Titles, descriptions, alt attributes |
+| LocalBusiness structured data fixed | Removed invalid postalCode |
+| 404 redirects added | Legacy URLs redirect properly |
+| Dynamic search index generator | Auto-generates search index |
+
+#### Navigation/UX Improvements
+
+| Improvement | Details |
+|-------------|---------|
+| Flyout submenus | Documents dropdown restructured |
+| Header scroll behavior | Stable, no glitches |
+| Footer mobile layout | Complete overhaul at 991px breakpoint |
+| Mobile-optimized hero copy | Legal translation landing page |
+
+#### Content Additions
+
+| Page/Post | Type | Status |
+|-----------|------|--------|
+| MOJ vs Certified Translation | Resource guide | Complete |
+| US Citizens Dubai Documents | Blog post | Complete |
+| Machine Translation Limitations | Blog post | Complete |
+| UAE Arrival Paperwork | Blog post | Complete |
+
+#### Form Integration
+
+- Formspree form on contact page
+- Thank you page with redirect
+
+### 9.2 Deprecated Documents
+
+These MD files are now superseded by this CLAUDE.md:
+
+| File | Status | Notes |
+|------|--------|-------|
+| `SEO-REPAIR-ROADMAP.md` | Superseded | Content in Part VIII |
+| `SEO_FIXES_COMPLETE.md` | Superseded | Outdated URL mappings |
+| `SEO-FIXES-PLAN.md` | Superseded | Completed |
+| `TINACMS_MIGRATION_PLAN.md` | Deprecated | CMS was removed |
+| `TASKS.md` | Active | Component/UI tasks (see file) |
+| `FEATURE_CATALOG.md` | Active | Migration tracking (see file) |
+| `COLOR_PALETTE_BLUEPRINT.md` | Active | Design tokens (see Part X) |
+| `SEO-ISSUES-DEFERRED.md` | Active | Human decisions needed |
+
+---
+
+## **PART X: COLOR PALETTE & DESIGN TOKENS**
+
+**Source of Truth:** `public/styles/base-architecture.css`
+
+### 10.1 Brand Identity Colors
+
+| Name | Light Mode | Dark Mode | Usage |
+|------|------------|-----------|-------|
+| **Coral** | `#FF1654` | `#ff6b6b` | CTAs, Accent, Announcement Bar |
+| **Navy** | `#0E2B48` | `#243347` | Headers, Hero sections |
+| **Teal** | `#0077b6` | `#7fd1ff` | Links, Secondary accent |
+| **Gold** | `#d4a54c` | `#ffe178` | Premium indicators, Hover states |
+
+### 10.2 CSS Token Usage
+
+**Always use tokens, never raw hex:**
+
+```css
+/* DO: */
+.card {
+  background: var(--surface-raised);
+  color: var(--text-body);
+}
+
+/* DON'T: */
+.card {
+  background: #f8f9fa;
+  color: #2d3748;
+}
+```
+
+### 10.3 Key Token Reference
+
+| Token | Purpose |
+|-------|---------|
+| `--surface-base` | Page background |
+| `--surface-raised` | Cards, elevated |
+| `--surface-navy` | Headers, dark sections |
+| `--text-heading` | Headings (14.4:1 contrast) |
+| `--text-body` | Body copy (10.7:1 contrast) |
+| `--text-on-dark` | Text on navy backgrounds |
+| `--accent-coral` | Primary CTA color |
+| `--link-color` | Links (5.2:1 contrast) |
+
+**Full reference:** See `COLOR_PALETTE_BLUEPRINT.md`
+
+---
+
+## **PART XI: CONTENT AUDIT STATUS (December 2025)**
+
+### 11.1 Current Execution Plan
+
+**Phase:** Post-Audit Phase 2 (Thin Content + Content Gaps)
+
+| Category | Items | Status |
+|----------|-------|--------|
+| Thin Content Expansion | 3 pages | In Progress |
+| Missing Pages (Gaps) | 3 priority pages | Pending |
+| FAQ Additions | 2 pages | Pending |
+
+### 11.2 Phase 2A: Thin Content Expansion
+
+| Page | Current | Target | Status |
+|------|---------|--------|--------|
+| `/industries/e-commerce/` | 141 lines | 400+ lines, 10 FAQs | ✅ COMPLETE |
+| `/resources/attestation-guide/` | 166 lines | 600+ lines, 15 FAQs | 🔄 In Progress |
+| `/resources/golden-visa-checklist/` | 167 lines | 300+ lines, 8 FAQs | Pending |
+
+### 11.3 Phase 2B: New Pages to Create
+
+| Page | Priority | Status |
+|------|----------|--------|
+| `/resources/turnaround-times/` | HIGH | Pending |
+| `/services/attestation/canada/` | MEDIUM | Pending (Canada joined Hague Jan 2024) |
+| `/services/title-deed-translation-dubai/` | MEDIUM | Pending |
+
+### 11.4 Phase 2C: FAQ Additions
+
+| Page | Current FAQs | Target | Status |
+|------|--------------|--------|--------|
+| `/specialized/digital/` | 0 | 8 FAQs | Pending |
+| `/specialized/hospitality/` | 0 | 8 FAQs | Pending |
+
+### 11.5 Content QA Checklist
+
+Before publishing any content, verify:
+
+- [ ] UAE-specific details present (MOJ, MOFA, DLD, DIFC/ADGM)
+- [ ] 8+ internal links per page
+- [ ] FAQ block with 6-15 questions
+- [ ] No Hague factual errors (check Part I table)
+- [ ] Pricing approach mentioned (ranges, not exact)
+- [ ] Turnaround expectations set
+- [ ] WhatsApp CTA visible
+- [ ] Title/meta unique
+- [ ] Schema-ready FAQ format
 
