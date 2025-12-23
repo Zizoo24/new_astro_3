@@ -24,13 +24,13 @@ For each page:
 
 ---
 
-## Phase 2: Legal Cluster (4 pages)
+## Phase 2: Legal Cluster (4 pages) - COMPLETE
 | Page | URL | Status |
 |------|-----|--------|
-| Contract Translation | `/legal/contracts/` | [ ] |
-| Corporate Documents | `/legal/corporate/` | [ ] |
-| Power of Attorney | `/legal/corporate/poa/` | [ ] |
-| Wills Translation | `/legal/wills/` | [ ] |
+| Contract Translation | `/legal/contracts/` | [x] |
+| Corporate Documents | `/legal/corporate/` | [x] |
+| Power of Attorney | `/legal/corporate/poa/` | [x] |
+| Wills Translation | `/legal/wills/` | [x] |
 
 ---
 
@@ -78,7 +78,7 @@ For each page:
 | Phase | Pages | Status |
 |-------|-------|--------|
 | Phase 1 | 3 | COMPLETE |
-| Phase 2 | 4 | Not Started |
+| Phase 2 | 4 | COMPLETE |
 | Phase 3 | 6 | Not Started |
 | Phase 4 | 4 | Not Started |
 | Phase 5 | 2 | Not Started |

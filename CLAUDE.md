@@ -13,6 +13,7 @@
 ║   • Brand voice violations                                          ║
 ║   • Architectural inconsistencies                                   ║
 ║   • SEO regressions                                                 ║
+║   • Readability score failures (Part XII)                           ║
 ║                                                                      ║
 ╚══════════════════════════════════════════════════════════════════════╝
 ```
@@ -73,6 +74,7 @@ These facts MUST be correct in all content. Errors here cause legal/trust issues
 | IX | Changelog | Recent commits and changes |
 | X | Color Palette | Design tokens |
 | XI | Content Audit Status | Current content work |
+| **XII** | **Content Readability** | **MANDATORY sentence/word limits** |
 | Brand Codex | Voice & Tone | Writing guidelines |
 | Accordion Kingdom | Mobile UX | Technical accordion research |
 
@@ -1629,4 +1631,102 @@ Before publishing any content, verify:
 - [ ] WhatsApp CTA visible
 - [ ] Title/meta unique
 - [ ] Schema-ready FAQ format
+- [ ] **Readability check passed (see Part XII)**
+
+---
+
+## **PART XII: CONTENT READABILITY STANDARDS**
+
+```
+╔══════════════════════════════════════════════════════════════════════╗
+║  🚨 MANDATORY FOR ALL AI AGENTS CREATING OR EDITING CONTENT 🚨       ║
+║                                                                      ║
+║  Low readability scores hurt SEO rankings and user engagement.      ║
+║  All content MUST follow these rules BEFORE committing.             ║
+╚══════════════════════════════════════════════════════════════════════╝
+```
+
+### 12.1 Sentence Length Rules
+
+**HARD LIMIT: Maximum 25 words per sentence. Target: 15-20 words.**
+
+| Sentence Type | Word Limit | Example |
+|---------------|------------|---------|
+| FAQ answers | 15-20 words | "We translate all documents for UAE government use." |
+| Body paragraphs | 20-25 words | "Our MOJ-certified translators complete standard documents within 24 hours." |
+| Hero/intro text | 20-25 words | Short, punchy opening lines that hook the reader. |
+
+**BAD (41 words):**
+> "We translate all document types required for UAE government, court, and business use including birth certificates, marriage certificates, divorce decrees, death certificates, academic degrees, transcripts, police clearance certificates, bank statements, driving licenses, contracts, court judgments, and corporate filings."
+
+**GOOD (split into 3 sentences, avg 14 words):**
+> "We translate all documents for UAE government, court, and business use. Personal documents include birth, marriage, divorce, and death certificates. We also handle academic records, police clearance, and corporate filings."
+
+### 12.2 FAQ Answer Structure
+
+**RULE: Break long answers into 2-3 short sentences.**
+
+| Element | Guideline |
+|---------|-----------|
+| First sentence | Direct answer to the question |
+| Second sentence | Key details or specifications |
+| Third sentence | Call-to-action or additional context |
+
+**BAD FAQ Answer:**
+> "Standard personal documents like birth certificates, marriage certificates, and single-page certificates complete within 4-6 hours, while multi-page documents such as academic transcripts (5-10 pages) take 24 hours, and bank statements depend on page count—typically 24-48 hours for 3-6 months of statements."
+
+**GOOD FAQ Answer:**
+> "Birth certificates and marriage certificates complete in 4-6 hours. Academic transcripts (5-10 pages) take 24 hours. Bank statements take 24-48 hours depending on page count."
+
+### 12.3 Word Choice Rules
+
+**REPLACE complex words with simpler alternatives:**
+
+| Avoid | Use Instead |
+|-------|-------------|
+| "utilize" | "use" |
+| "facilitate" | "help" |
+| "approximately" | "about" |
+| "requirements" | "needs" |
+| "methodology" | "process" |
+| "subsequently" | "then" |
+| "notwithstanding" | "despite" |
+| "aforementioned" | (delete or use "this") |
+
+### 12.4 Paragraph Structure
+
+- **Maximum 3-4 sentences per paragraph**
+- **Use bullet lists for 3+ items** instead of comma-separated lists
+- **Add subheadings every 2-3 paragraphs** to break up content
+
+### 12.5 Pre-Commit Readability Checklist
+
+Before committing ANY content changes, verify:
+
+- [ ] No sentence exceeds 25 words
+- [ ] FAQ answers use 2-3 short sentences (not one long sentence)
+- [ ] Lists with 3+ items use bullet points
+- [ ] No paragraphs exceed 4 sentences
+- [ ] Complex legal terms are explained simply
+- [ ] Passive voice is minimized
+
+### 12.6 Common Readability Failures (Avoid These)
+
+1. **Run-on FAQ answers** - One sentence trying to cover multiple points
+2. **Comma-separated mega-lists** - Use bullet points instead
+3. **Dense paragraphs** - Break into smaller chunks with subheadings
+4. **Legal jargon without explanation** - Define terms for general audience
+5. **Passive voice overuse** - "Documents are translated by us" → "We translate documents"
+
+### 12.7 AI Agent Binding Protocol
+
+**ALL AI agents working on this repository MUST:**
+
+1. **READ this document FIRST** before making any content changes
+2. **CHECK Part XII** specifically for readability rules
+3. **VERIFY sentence lengths** before committing
+4. **SPLIT long sentences** that exceed 25 words
+5. **USE the checklist** in Section 12.5 before every commit
+
+**If you are an AI agent and have not read this entire document, STOP and read it now.**
 
