@@ -2,12 +2,63 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import RelatedServices from '../../../components/RelatedServices.astro';
 import CrossSiloLinks from '../../../components/CrossSiloLinks.astro';
+
+const faqs = [
+  {
+    question: "Do you translate SaaS agreements and terms of use?",
+    answer: "Yes. We translate SaaS agreements, terms of service, privacy policies, and user agreements. For UAE consumer-facing products, Arabic versions may be required by Consumer Protection Law. We ensure legal accuracy while maintaining readability for your users."
+  },
+  {
+    question: "Can you translate privacy policies for UAE compliance?",
+    answer: "Yes. We translate privacy policies and data protection documentation. While UAE data protection law is evolving, having Arabic privacy policies demonstrates compliance commitment and builds trust with Arabic-speaking users. We handle GDPR-compliant policies too."
+  },
+  {
+    question: "Do DIFC/ADGM contracts require specific legal style?",
+    answer: "DIFC and ADGM use common law English, so contracts are typically in English. If Arabic translation is needed for local courts or government submissions, we ensure the translation maintains the common law terminology structure. We understand both civil and common law contexts."
+  },
+  {
+    question: "Can you translate UI strings and app copy?",
+    answer: "Yes. We localize app interfaces, button labels, error messages, and in-app content. Arabic UI requires RTL consideration and often text expansion (Arabic is typically 20-30% longer than English). We provide translations in developer-friendly formats like JSON, PO, or XLIFF."
+  },
+  {
+    question: "What's your process for frequent product updates?",
+    answer: "For clients with regular updates, we maintain translation memory and terminology glossaries. This ensures consistency across versions and speeds turnaround. We can integrate with your development workflow—submit strings via WhatsApp or through file sharing."
+  },
+  {
+    question: "Can you keep terminology consistent across documents?",
+    answer: "Yes. We maintain client-specific glossaries for recurring projects. Technical terms, brand names, and product terminology are translated consistently across all your content. This is especially important for SaaS products with documentation, help centers, and marketing materials."
+  },
+  {
+    question: "Do you translate pitch decks and investor materials?",
+    answer: "Yes. We translate pitch decks, investor presentations, and fundraising materials. For Dubai startups presenting to Arabic-speaking investors, a professionally translated deck shows commitment to the regional market. We maintain your visual layout."
+  },
+  {
+    question: "What file formats do you accept?",
+    answer: "We work with all common formats: Word, PDF, PowerPoint, Excel, HTML, JSON, XML, PO, XLIFF, InDesign, and more. For websites, we can work from exported content or directly with your CMS. Send whatever format you have—we'll handle the rest."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
 ---
 
 <BaseLayout
   title="Website Localization Dubai | Arabic SEO Translation"
   description="Website localization services in Dubai. Arabic website translation, SEO optimization, app localization, and digital marketing content for MENA markets."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
   <section class="hero-section bg-dark" data-theme="dark">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -128,6 +179,22 @@ import CrossSiloLinks from '../../../components/CrossSiloLinks.astro';
     </div>
   </section>
 
+  <section class="section bg-light faq-section">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <section class="section bg-primary">
     <div class="container cta-section">
       <h2>Need Website Localization?</h2>
@@ -175,5 +242,15 @@ import CrossSiloLinks from '../../../components/CrossSiloLinks.astro';
   .btn-accent { background: var(--accent-color); color: #fff; }
   .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255, 255, 255, 0.5); }
   @media (max-width: 992px) { .digital-grid { grid-template-columns: repeat(2, 1fr); } .tech-grid { grid-template-columns: repeat(2, 1fr); } }
+  /* FAQ Styles */
+  .faq-section h2 { margin-bottom: 2rem; }
+  .faq-list { max-width: 800px; display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { background: #fff; border-radius: 0.75rem; border: 1px solid rgba(0,0,0,0.08); overflow: hidden; }
+  .faq-question { padding: 1.25rem 1.5rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; font-size: 1.5rem; color: var(--accent-color); }
+  details[open] .faq-question::after { content: '−'; }
+  .faq-answer { padding: 0 1.5rem 1.25rem; }
+  .faq-answer p { margin: 0; line-height: 1.7; color: var(--text-body); }
   @media (max-width: 768px) { h1 { font-size: 2rem; } .digital-grid, .tech-grid { grid-template-columns: 1fr; } .hero-section { padding: 6rem 0 3rem; } }
 </style>

@@ -1,12 +1,194 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import RelatedServices from '../../../components/RelatedServices.astro';
+
+const faqs = [
+  {
+    question: "Do all documents need attestation for UAE?",
+    answer: "Not all documents require attestation. Documents already issued in the UAE (like Emirates ID, trade licenses, or UAE court documents) do not need attestation. Foreign documents intended for official use in UAE—employment, visa applications, education enrollment, business setup, or court proceedings—typically require the full attestation chain ending with MOFA UAE."
+  },
+  {
+    question: "What's the difference between apostille and attestation?",
+    answer: "An apostille is a simplified form of authentication used between countries that have joined the Hague Apostille Convention. Attestation (or legalisation) is the full chain of authentication required for non-Hague countries. Since the UAE is NOT a Hague member, all foreign documents still need UAE Embassy attestation and MOFA attestation, even if they have an apostille from the issuing country."
+  },
+  {
+    question: "Is UAE a Hague Convention member?",
+    answer: "No. The UAE has NOT joined the Hague Apostille Convention. This means documents from Hague member countries (like USA, UK, India) still need UAE Embassy attestation and MOFA attestation after the apostille. The apostille simplifies the home country authentication step, but does not eliminate the UAE attestation requirement."
+  },
+  {
+    question: "Is India a Hague Convention member?",
+    answer: "Yes. India joined the Hague Apostille Convention in July 2005. Indian documents can receive an MEA (Ministry of External Affairs) apostille, which replaces the old embassy chain in the home country. However, since UAE is not a Hague member, Indian documents still need UAE Embassy attestation and MOFA attestation after the MEA apostille."
+  },
+  {
+    question: "Do I translate before or after attestation?",
+    answer: "Generally, you complete attestation first, then translate. The attested original document is what gets translated. Some authorities want to see that the translation was done from a properly attested document. We can advise on the specific sequence for your use case—in some situations (like urgent visa applications), we may be able to work in parallel."
+  },
+  {
+    question: "How long does the full attestation process take?",
+    answer: "Timelines vary significantly by country and document type. Home country authentication can take 1-2 weeks (or same-day if using expedited services). UAE Embassy attestation typically takes 3-5 business days. MOFA UAE attestation takes 1-3 business days. Total time from start to finish is usually 2-4 weeks, though rush services can compress this."
+  },
+  {
+    question: "Can I do attestation from inside UAE?",
+    answer: "Partially. You can complete MOFA attestation in UAE. However, home country authentication and UAE Embassy attestation must be done in the issuing country before the document arrives in UAE. Some people have family members or agents handle the home country steps while they are in UAE."
+  },
+  {
+    question: "What if my document is rejected?",
+    answer: "Rejections usually happen due to: missing steps in the attestation chain, photocopies instead of originals, name mismatches between documents, or laminated documents. We can review your documents before you begin to identify potential issues. If rejection occurs, we help identify the specific problem and guide you on remediation."
+  },
+  {
+    question: "Do banks require MOFA attestation?",
+    answer: "Requirements vary by bank and document type. For account opening, some banks accept certified translations without full attestation. For loan applications or large transactions involving foreign documents, banks often require MOFA-attested documents. We recommend checking with your specific bank before starting the attestation process."
+  },
+  {
+    question: "Can you coordinate the full attestation chain for me?",
+    answer: "We coordinate the UAE-side steps: MOFA attestation and translation. For the home country steps (authentication, embassy attestation), we provide detailed guidance and can recommend trusted agents in major countries. We do not directly handle overseas authentication, but we ensure you have clear instructions for each step."
+  },
+  {
+    question: "What about laminated documents?",
+    answer: "Laminated documents are typically rejected for attestation. The authentication authorities cannot verify that the document hasn't been tampered with. If your document is laminated, you may need to request a new unlaminated copy from the issuing authority before starting the attestation process."
+  },
+  {
+    question: "Do I need originals or are copies okay?",
+    answer: "Originals are required for attestation. The stamps and signatures are applied to the original document. Photocopies cannot be attested. After attestation is complete, you can make certified copies of the attested original if you need multiple copies for different purposes."
+  },
+  {
+    question: "How much does full attestation cost?",
+    answer: "Costs vary by country and document. Home country apostille: $10-100 depending on country. UAE Embassy attestation: typically $50-100 per document. MOFA UAE: AED 150-200 per document. Translation: AED 100-300 per page. Total cost for a single document usually ranges from AED 500-1,000, depending on the country of origin and urgency."
+  },
+  {
+    question: "Which countries need full embassy attestation chain?",
+    answer: "Countries that are NOT Hague members require the full traditional attestation chain (notary → ministry → embassy). This includes Pakistan, China, Egypt, Saudi Arabia, and several others. Hague member countries (USA, UK, India, Canada, Philippines) use apostille for the home country step, but still need UAE Embassy and MOFA attestation."
+  },
+  {
+    question: "What's changed with Bangladesh and Canada?",
+    answer: "Bangladesh joined the Hague Apostille Convention in March 2025, and Canada joined in January 2024. Documents from these countries can now use the apostille route instead of the old embassy chain for home country authentication. The UAE Embassy and MOFA attestation requirements remain unchanged since UAE is not a Hague member."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+const countryChains = [
+  {
+    country: "India",
+    hagueStatus: "YES (since July 2005)",
+    steps: [
+      "Notarization (if required by document type)",
+      "MEA Apostille (Ministry of External Affairs)",
+      "UAE Embassy Attestation (Delhi/Mumbai/other consulates)",
+      "MOFA UAE Attestation",
+      "Translation (if required)"
+    ],
+    notes: "India joined Hague in 2005. MEA apostille replaces old state HRD + MEA chain. UAE Embassy still required."
+  },
+  {
+    country: "Pakistan",
+    hagueStatus: "NO",
+    steps: [
+      "Notarization",
+      "HEC/IBCC attestation (for educational docs)",
+      "MOFA Pakistan attestation",
+      "UAE Embassy Attestation (Islamabad/Karachi)",
+      "MOFA UAE Attestation",
+      "Translation (if required)"
+    ],
+    notes: "Full traditional chain required. No apostille available. HEC for degrees, IBCC for school certificates."
+  },
+  {
+    country: "USA",
+    hagueStatus: "YES (since 1981)",
+    steps: [
+      "State-level authentication (Secretary of State)",
+      "Federal apostille (US Department of State) - OR state apostille if accepted",
+      "UAE Embassy Attestation (Washington DC/consulates)",
+      "MOFA UAE Attestation",
+      "Translation (if required)"
+    ],
+    notes: "Process varies by state. Some states issue apostilles directly. Federal apostille for federal documents."
+  },
+  {
+    country: "UK",
+    hagueStatus: "YES (since 1965)",
+    steps: [
+      "Solicitor certification (if required)",
+      "FCDO Apostille (Foreign, Commonwealth & Development Office)",
+      "UAE Embassy Attestation (London)",
+      "MOFA UAE Attestation",
+      "Translation (if required)"
+    ],
+    notes: "FCDO handles all UK apostilles. Legalisation Office in Milton Keynes. Online application available."
+  },
+  {
+    country: "Philippines",
+    hagueStatus: "YES (since 2019)",
+    steps: [
+      "DFA Apostille (Department of Foreign Affairs) - for DFA-authenticated docs",
+      "PSA Apostille (Philippine Statistics Authority) - for civil registry docs",
+      "UAE Embassy Attestation (Manila)",
+      "MOFA UAE Attestation",
+      "Translation (if required)"
+    ],
+    notes: "Philippines joined Hague in 2019. PSA handles birth/marriage/death certificates. DFA for other documents."
+  },
+  {
+    country: "Canada",
+    hagueStatus: "YES (since January 2024)",
+    steps: [
+      "Provincial authentication (varies by province) - OR",
+      "GAC Apostille (Global Affairs Canada) for federal documents",
+      "UAE Embassy Attestation (Ottawa/consulates)",
+      "MOFA UAE Attestation",
+      "Translation (if required)"
+    ],
+    notes: "NEW: Canada joined Hague in January 2024. Provincial authorities handle most apostilles. GAC for federal docs."
+  },
+  {
+    country: "Bangladesh",
+    hagueStatus: "YES (since March 2025)",
+    steps: [
+      "Notarization",
+      "Ministry of Foreign Affairs Bangladesh - Apostille (NEW)",
+      "UAE Embassy Attestation (Dhaka)",
+      "MOFA UAE Attestation",
+      "Translation (if required)"
+    ],
+    notes: "NEW: Bangladesh joined Hague in March 2025. Apostille route now available, replacing old attestation chain."
+  }
+];
+
+const documentTypes = [
+  { category: "Personal", items: ["Birth certificates", "Marriage certificates", "Divorce decrees", "Death certificates", "Name change documents"] },
+  { category: "Educational", items: ["University degrees", "Academic transcripts", "Professional certifications", "School certificates", "Training certificates"] },
+  { category: "Commercial", items: ["Trade licenses", "Company registration", "Power of Attorney", "Board resolutions", "Commercial contracts"] }
+];
+
+const commonMistakes = [
+  { mistake: "Submitting photocopies", solution: "Only originals can be attested. Request new originals if needed." },
+  { mistake: "Missing steps in chain", solution: "Each step must be completed in order. Skipping steps invalidates the chain." },
+  { mistake: "Name mismatches", solution: "Names must match exactly across all documents. Get corrections before attestation." },
+  { mistake: "Laminated documents", solution: "Authorities cannot verify laminated docs. Request unlaminated copies." },
+  { mistake: "Expired documents", solution: "Some documents (like PCCs) expire. Check validity before starting." }
+];
 ---
 
-<BaseLayout 
-  title="Attestation Guide Dubai | MOFA & Embassy"
-  description="Complete guide to document attestation in UAE. MOFA attestation, embassy legalization, and authentication procedures explained step by step."
+<BaseLayout
+  title="Attestation Guide Dubai | Apostille vs Legalisation | MOFA"
+  description="Complete guide to document attestation for UAE. Understand apostille vs legalisation, country-specific chains, MOFA requirements. UAE is NOT a Hague member."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
   <section class="hero-section bg-dark" data-theme="dark">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -16,96 +198,277 @@ import RelatedServices from '../../../components/RelatedServices.astro';
         <span class="separator">&gt;</span>
         <span class="current">ATTESTATION GUIDE</span>
       </nav>
-      
+
       <h1>Attestation Guide</h1>
-      <p class="hero-subtitle">MOFA & Embassy Legalization</p>
-      <p class="hero-intro">Document attestation verifies the authenticity of your documents for use in the UAE or abroad. This guide explains the process, requirements, and how we can assist you.</p>
+      <p class="hero-subtitle">Apostille, Legalisation & MOFA</p>
+      <p class="hero-intro">Foreign documents need authentication before they are accepted in the UAE. This guide explains the full process—from apostille to MOFA—and clarifies what is required for your specific country of origin.</p>
+
+      <div class="quick-answer">
+        <div class="quick-answer-header">
+          <i class="fas fa-bolt"></i>
+          <span>Quick Answer: Do I need attestation?</span>
+        </div>
+        <p>If your document was issued outside the UAE and you need it for visa, employment, education, business setup, or legal proceedings in UAE—yes, you likely need attestation ending with MOFA UAE.</p>
+      </div>
     </div>
   </section>
 
   <section class="section bg-white">
     <div class="container content-container">
-      <h2>What is Document Attestation?</h2>
-      <p>Attestation is the process of verifying that a document is genuine. It involves authentication by various authorities, culminating in acceptance by the country where you intend to use the document. For documents used in the UAE, this typically includes MOFA (Ministry of Foreign Affairs) attestation.</p>
-      
-      <h2>The Attestation Process</h2>
-      
-      <div class="step-list">
-        <div class="step-item">
-          <div class="step-number">1</div>
-          <div class="step-content">
-            <h4>Home Country Authentication</h4>
-            <p>Documents must first be authenticated in the country of origin. This typically includes notarization, state/provincial attestation, and national foreign affairs department authentication.</p>
+      <h2>Apostille vs Legalisation: What's the Difference?</h2>
+
+      <div class="concept-grid">
+        <div class="concept-card apostille">
+          <div class="concept-header">
+            <i class="fas fa-certificate"></i>
+            <h3>Apostille</h3>
+          </div>
+          <p>A simplified form of document authentication used between countries that are members of the <strong>Hague Apostille Convention</strong> (1961). An apostille from the issuing country confirms the document is genuine.</p>
+          <div class="concept-note">
+            <strong>Countries with apostille:</strong> USA, UK, India, Canada (2024), Philippines, Bangladesh (2025), and 100+ others
           </div>
         </div>
-        
-        <div class="step-item">
-          <div class="step-number">2</div>
-          <div class="step-content">
-            <h4>UAE Embassy Attestation</h4>
-            <p>The UAE Embassy or Consulate in your home country attests the document, confirming the home country's authentication is genuine.</p>
+
+        <div class="concept-card legalisation">
+          <div class="concept-header">
+            <i class="fas fa-stamp"></i>
+            <h3>Legalisation / Attestation</h3>
           </div>
-        </div>
-        
-        <div class="step-item">
-          <div class="step-number">3</div>
-          <div class="step-content">
-            <h4>MOFA Attestation in UAE</h4>
-            <p>Once in the UAE, documents require final attestation by the Ministry of Foreign Affairs (MOFA). This is the last step before the document can be used for official purposes.</p>
-          </div>
-        </div>
-        
-        <div class="step-item">
-          <div class="step-number">4</div>
-          <div class="step-content">
-            <h4>Translation (If Required)</h4>
-            <p>If the document is not in Arabic, MOJ-certified translation is required for use in UAE courts and government departments.</p>
+          <p>The traditional chain of authentication required when the destination country is NOT a Hague member. Involves multiple steps: notary → government ministry → embassy of the destination country.</p>
+          <div class="concept-note">
+            <strong>Required for:</strong> Documents going to non-Hague countries like UAE, Saudi Arabia, China
           </div>
         </div>
       </div>
-      
-      <h2>Common Documents Requiring Attestation</h2>
-      
-      <div class="doc-grid">
-        <div class="doc-category">
-          <h4>Personal Documents</h4>
+
+      <div class="critical-notice">
+        <div class="notice-icon"><i class="fas fa-exclamation-triangle"></i></div>
+        <div class="notice-content">
+          <h4>Critical Fact: UAE is NOT a Hague Member</h4>
+          <p>The United Arab Emirates has not joined the Hague Apostille Convention. This means:</p>
           <ul>
-            <li>Birth certificates</li>
-            <li>Marriage certificates</li>
-            <li>Divorce decrees</li>
-            <li>Death certificates</li>
-          </ul>
-        </div>
-        
-        <div class="doc-category">
-          <h4>Educational Documents</h4>
-          <ul>
-            <li>University degrees</li>
-            <li>Academic transcripts</li>
-            <li>Professional certifications</li>
-            <li>School certificates</li>
-          </ul>
-        </div>
-        
-        <div class="doc-category">
-          <h4>Commercial Documents</h4>
-          <ul>
-            <li>Company registration</li>
-            <li>Articles of incorporation</li>
-            <li>Power of Attorney</li>
-            <li>Board resolutions</li>
+            <li>Documents from Hague countries (USA, UK, India, etc.) still need UAE Embassy + MOFA attestation</li>
+            <li>The apostille simplifies your home country step, but does not eliminate UAE requirements</li>
+            <li>You cannot skip UAE Embassy attestation just because you have an apostille</li>
           </ul>
         </div>
       </div>
-      
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>The Two Paths to UAE Acceptance</h2>
+      <p class="section-intro">Whether your country uses apostille or traditional attestation, the UAE steps remain the same.</p>
+
+      <div class="path-grid">
+        <div class="path-card">
+          <div class="path-header hague">
+            <span class="path-label">Path A</span>
+            <h3>From Hague Country</h3>
+            <p class="path-examples">USA, UK, India, Canada, Philippines, Bangladesh</p>
+          </div>
+          <div class="path-steps">
+            <div class="path-step">
+              <span class="step-num">1</span>
+              <span class="step-text">Get apostille in home country</span>
+            </div>
+            <div class="path-step">
+              <span class="step-num">2</span>
+              <span class="step-text">UAE Embassy attestation</span>
+            </div>
+            <div class="path-step">
+              <span class="step-num">3</span>
+              <span class="step-text">MOFA UAE attestation</span>
+            </div>
+            <div class="path-step">
+              <span class="step-num">4</span>
+              <span class="step-text">Translation (if needed)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="path-card">
+          <div class="path-header non-hague">
+            <span class="path-label">Path B</span>
+            <h3>From Non-Hague Country</h3>
+            <p class="path-examples">Pakistan, China, Egypt, Saudi Arabia</p>
+          </div>
+          <div class="path-steps">
+            <div class="path-step">
+              <span class="step-num">1</span>
+              <span class="step-text">Notary + Ministry attestation</span>
+            </div>
+            <div class="path-step">
+              <span class="step-num">2</span>
+              <span class="step-text">Home country MFA attestation</span>
+            </div>
+            <div class="path-step">
+              <span class="step-num">3</span>
+              <span class="step-text">UAE Embassy attestation</span>
+            </div>
+            <div class="path-step">
+              <span class="step-num">4</span>
+              <span class="step-text">MOFA UAE attestation</span>
+            </div>
+            <div class="path-step">
+              <span class="step-num">5</span>
+              <span class="step-text">Translation (if needed)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Country-Specific Attestation Chains</h2>
+      <p class="section-intro">Select your country to see the exact steps required. Each country has specific authorities and procedures.</p>
+
+      <div class="country-accordion">
+        {countryChains.map((country, index) => (
+          <details class="country-item" open={index === 0}>
+            <summary class="country-header">
+              <span class="country-name">{country.country}</span>
+              <span class={`hague-badge ${country.hagueStatus.startsWith('YES') ? 'hague-yes' : 'hague-no'}`}>
+                {country.hagueStatus.startsWith('YES') ? 'Hague Member' : 'Non-Hague'}
+              </span>
+            </summary>
+            <div class="country-content">
+              <div class="country-steps">
+                <h4>Attestation Chain:</h4>
+                <ol>
+                  {country.steps.map(step => (
+                    <li>{step}</li>
+                  ))}
+                </ol>
+              </div>
+              <div class="country-notes">
+                <i class="fas fa-info-circle"></i>
+                <p>{country.notes}</p>
+              </div>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Document Types Requiring Attestation</h2>
+
+      <div class="doc-type-grid">
+        {documentTypes.map(type => (
+          <div class="doc-type-card">
+            <h4>{type.category} Documents</h4>
+            <ul>
+              {type.items.map(item => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Costs & Timelines</h2>
+      <p class="section-intro">Approximate costs and timelines. Actual figures vary by country, document type, and whether you use expedited services.</p>
+
+      <div class="table-wrapper">
+        <table class="cost-table">
+          <thead>
+            <tr>
+              <th>Step</th>
+              <th>Estimated Cost</th>
+              <th>Timeline</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Home country apostille/attestation</td>
+              <td>$10 - $100</td>
+              <td>Same day - 2 weeks</td>
+            </tr>
+            <tr>
+              <td>UAE Embassy attestation</td>
+              <td>$50 - $100</td>
+              <td>3-5 business days</td>
+            </tr>
+            <tr>
+              <td>MOFA UAE attestation</td>
+              <td>AED 150 - 200</td>
+              <td>1-3 business days</td>
+            </tr>
+            <tr>
+              <td>Translation (per page)</td>
+              <td>AED 100 - 300</td>
+              <td>Same day - next day</td>
+            </tr>
+            <tr class="total-row">
+              <td><strong>Typical Total (single document)</strong></td>
+              <td><strong>AED 500 - 1,000</strong></td>
+              <td><strong>2-4 weeks</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="table-note">Rush services available at most steps for additional fees. Contact us for urgent timelines.</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Common Mistakes to Avoid</h2>
+
+      <div class="mistakes-grid">
+        {commonMistakes.map(item => (
+          <div class="mistake-card">
+            <div class="mistake-header">
+              <i class="fas fa-times-circle"></i>
+              <span>{item.mistake}</span>
+            </div>
+            <div class="mistake-solution">
+              <i class="fas fa-check-circle"></i>
+              <span>{item.solution}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
       <h2>How We Help</h2>
-      <p>We provide:</p>
-      <ul>
-        <li>Guidance on attestation requirements for your specific documents</li>
-        <li>MOFA attestation service (submission and collection)</li>
-        <li>MOJ-certified translation of attested documents</li>
-        <li>Coordination with embassy attestation when required</li>
-      </ul>
+
+      <div class="help-grid">
+        <div class="help-card">
+          <i class="fas fa-file-signature"></i>
+          <h4>MOFA Attestation</h4>
+          <p>We handle MOFA submission and collection in UAE. Submit your UAE Embassy-attested documents and we coordinate the final step.</p>
+        </div>
+        <div class="help-card">
+          <i class="fas fa-language"></i>
+          <h4>Translation After Attestation</h4>
+          <p>Once attestation is complete, we provide <a href="/resources/moj-vs-certified/">MOJ-certified translation</a> of your documents for courts, visa applications, and government departments.</p>
+        </div>
+        <div class="help-card">
+          <i class="fas fa-route"></i>
+          <h4>Process Guidance</h4>
+          <p>Not sure which steps apply to your situation? Send us your documents and we advise on the specific chain required for your country and use case.</p>
+        </div>
+        <div class="help-card">
+          <i class="fas fa-users"></i>
+          <h4>Agent Referrals</h4>
+          <p>For home country authentication, we can recommend trusted agents in major countries (India, Pakistan, Philippines, UK, USA) who handle the overseas steps.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -113,7 +476,7 @@ import RelatedServices from '../../../components/RelatedServices.astro';
     <div class="container">
       <RelatedServices
         pageKey="attestationGuide"
-        title="You May Also Need"
+        title="Related Attestation Services"
         showFamily={true}
         showCrossSilo={true}
         maxItems={6}
@@ -121,13 +484,36 @@ import RelatedServices from '../../../components/RelatedServices.astro';
     </div>
   </section>
 
-  <section class="section bg-light">
+  <section class="section bg-light faq-section">
+    <div class="container content-container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
     <div class="container cta-section">
-      <h2>Need Attestation Assistance?</h2>
-      <p>Send us your documents and tell us what you need them for. We will advise on the specific attestation steps required and provide a quote for our services.</p>
+      <h2>Need Attestation Guidance?</h2>
+      <p>Send us your documents and tell us what you need them for. We will advise on the specific attestation steps required and provide a quote for MOFA coordination and translation.</p>
       <a href="https://wa.me/971508620217" class="btn btn-primary">
         <i class="fab fa-whatsapp"></i> Get Attestation Advice
       </a>
+      <div class="related-links">
+        <span>Related:</span>
+        <a href="/services/attestation/india/">India Attestation</a>
+        <a href="/services/attestation/uk/">UK Attestation</a>
+        <a href="/services/attestation/us/">US Attestation</a>
+        <a href="/services/attestation/pakistan/">Pakistan Attestation</a>
+      </div>
     </div>
   </section>
 </BaseLayout>
@@ -141,25 +527,133 @@ import RelatedServices from '../../../components/RelatedServices.astro';
   .breadcrumb .current { color: #ffffff; }
   h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: #ffffff; }
   .hero-subtitle { font-size: 1.25rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
-  .hero-intro { font-size: 1.1rem; line-height: 1.8; max-width: 700px; color: rgba(255, 255, 255, 0.9); }
-  .content-container { max-width: 800px; }
-  h2 { margin-top: 2.5rem; margin-bottom: 1rem; }
-  p { line-height: 1.8; margin-bottom: 1rem; }
-  .step-list { margin: 2rem 0; }
-  .step-item { display: flex; gap: 1.5rem; margin-bottom: 1.5rem; }
-  .step-number { width: 48px; height: 48px; border-radius: 50%; background: var(--primary-color); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.25rem; flex-shrink: 0; }
-  .step-content { flex: 1; }
-  .step-content h4 { margin: 0 0 0.5rem; font-size: 1.1rem; }
-  .step-content p { margin: 0; color: var(--text-muted); }
-  .doc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
-  .doc-category { background: #f8f9fa; padding: 1.5rem; border-radius: 0.75rem; }
-  .doc-category h4 { margin: 0 0 1rem; font-size: 1rem; color: var(--primary-color); }
-  .doc-category ul { margin: 0; padding-left: 1.25rem; }
-  .doc-category li { margin-bottom: 0.5rem; color: var(--text-dark); }
+  .hero-intro { font-size: 1.1rem; line-height: 1.8; max-width: 700px; color: rgba(255, 255, 255, 0.9); margin-bottom: 2rem; }
+
+  .quick-answer { background: rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.25rem 1.5rem; max-width: 600px; border-left: 4px solid var(--accent-color); }
+  .quick-answer-header { display: flex; align-items: center; gap: 0.5rem; color: var(--accent-color); font-weight: 600; margin-bottom: 0.5rem; }
+  .quick-answer p { margin: 0; color: rgba(255,255,255,0.9); font-size: 0.95rem; line-height: 1.6; }
+
+  .section { padding: 4rem 0; }
+  .section h2 { font-size: 1.75rem; margin-bottom: 1rem; color: var(--primary-color); }
+  .section-intro { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; max-width: 700px; }
+  .content-container { max-width: 900px; }
+
+  /* Concept Cards */
+  .concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+  .concept-card { background: #fff; border-radius: 1rem; padding: 1.5rem; border: 1px solid rgba(0,0,0,0.08); }
+  .concept-card.apostille { border-top: 4px solid #059669; }
+  .concept-card.legalisation { border-top: 4px solid #0077b6; }
+  .concept-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+  .concept-header i { font-size: 1.5rem; }
+  .concept-card.apostille .concept-header i { color: #059669; }
+  .concept-card.legalisation .concept-header i { color: #0077b6; }
+  .concept-header h3 { margin: 0; font-size: 1.25rem; }
+  .concept-card p { line-height: 1.7; margin-bottom: 1rem; }
+  .concept-note { background: #f8f9fa; padding: 0.75rem 1rem; border-radius: 0.5rem; font-size: 0.9rem; }
+
+  /* Critical Notice */
+  .critical-notice { display: flex; gap: 1rem; background: #fef2f2; border: 1px solid #fecaca; border-radius: 0.75rem; padding: 1.5rem; margin-top: 2rem; }
+  .notice-icon { color: #dc2626; font-size: 1.5rem; flex-shrink: 0; }
+  .notice-content h4 { margin: 0 0 0.5rem; color: #dc2626; }
+  .notice-content p { margin: 0 0 0.75rem; line-height: 1.6; }
+  .notice-content ul { margin: 0; padding-left: 1.25rem; }
+  .notice-content li { margin-bottom: 0.25rem; }
+
+  /* Path Cards */
+  .path-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .path-card { background: #fff; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  .path-header { padding: 1.5rem; color: #fff; }
+  .path-header.hague { background: linear-gradient(135deg, #059669, #10b981); }
+  .path-header.non-hague { background: linear-gradient(135deg, #0077b6, #00a8e8); }
+  .path-label { display: inline-block; background: rgba(255,255,255,0.2); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .path-header h3 { margin: 0 0 0.25rem; font-size: 1.25rem; }
+  .path-examples { margin: 0; font-size: 0.9rem; opacity: 0.9; }
+  .path-steps { padding: 1.5rem; }
+  .path-step { display: flex; align-items: center; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid #f0f0f0; }
+  .path-step:last-child { border-bottom: none; }
+  .step-num { width: 28px; height: 28px; background: var(--primary-color); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 600; flex-shrink: 0; }
+  .step-text { font-size: 0.95rem; }
+
+  /* Country Accordion */
+  .country-accordion { display: flex; flex-direction: column; gap: 0.75rem; }
+  .country-item { background: #fff; border-radius: 0.75rem; border: 1px solid rgba(0,0,0,0.08); overflow: hidden; }
+  .country-header { padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; cursor: pointer; list-style: none; font-weight: 600; }
+  .country-header::-webkit-details-marker { display: none; }
+  .country-name { font-size: 1.1rem; }
+  .hague-badge { padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+  .hague-badge.hague-yes { background: #d1fae5; color: #059669; }
+  .hague-badge.hague-no { background: #fee2e2; color: #dc2626; }
+  .country-content { padding: 0 1.5rem 1.5rem; }
+  .country-steps h4 { margin: 0 0 0.75rem; font-size: 1rem; color: var(--primary-color); }
+  .country-steps ol { margin: 0; padding-left: 1.25rem; }
+  .country-steps li { margin-bottom: 0.5rem; line-height: 1.5; }
+  .country-notes { display: flex; gap: 0.75rem; background: #f0f9ff; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem; }
+  .country-notes i { color: #0077b6; flex-shrink: 0; margin-top: 0.2rem; }
+  .country-notes p { margin: 0; font-size: 0.9rem; line-height: 1.5; }
+
+  /* Document Types */
+  .doc-type-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+  .doc-type-card { background: #fff; padding: 1.5rem; border-radius: 0.75rem; }
+  .doc-type-card h4 { margin: 0 0 1rem; color: var(--primary-color); font-size: 1rem; }
+  .doc-type-card ul { margin: 0; padding-left: 1.25rem; }
+  .doc-type-card li { margin-bottom: 0.4rem; color: var(--text-body); }
+
+  /* Cost Table */
+  .table-wrapper { overflow-x: auto; margin-bottom: 1rem; }
+  .cost-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 0.75rem; overflow: hidden; }
+  .cost-table th { background: var(--primary-color); color: #fff; padding: 1rem; text-align: left; font-weight: 600; }
+  .cost-table td { padding: 1rem; border-bottom: 1px solid #f0f0f0; }
+  .cost-table .total-row { background: #f8f9fa; }
+  .table-note { font-size: 0.9rem; color: var(--text-muted); }
+
+  /* Mistakes Grid */
+  .mistakes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+  .mistake-card { background: #fff; border-radius: 0.75rem; padding: 1.25rem; }
+  .mistake-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; color: #dc2626; font-weight: 600; }
+  .mistake-solution { display: flex; align-items: flex-start; gap: 0.75rem; color: #059669; font-size: 0.9rem; }
+  .mistake-solution i { margin-top: 0.2rem; }
+
+  /* Help Grid */
+  .help-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+  .help-card { text-align: center; }
+  .help-card i { font-size: 2rem; color: var(--accent-color); margin-bottom: 1rem; }
+  .help-card h4 { margin: 0 0 0.5rem; font-size: 1.1rem; }
+  .help-card p { margin: 0; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+  .help-card a { color: var(--accent-color); }
+
+  /* FAQ Section */
+  .faq-section h2 { margin-bottom: 2rem; }
+  .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { background: #fff; border-radius: 0.75rem; border: 1px solid rgba(0,0,0,0.08); overflow: hidden; }
+  .faq-question { padding: 1.25rem 1.5rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; font-size: 1.5rem; color: var(--accent-color); transition: transform 0.2s; }
+  details[open] .faq-question::after { content: '−'; }
+  .faq-answer { padding: 0 1.5rem 1.25rem; }
+  .faq-answer p { margin: 0; line-height: 1.7; color: var(--text-body); }
+
+  /* CTA Section */
   .cta-section { text-align: center; max-width: 600px; margin: 0 auto; }
   .cta-section h2 { margin-bottom: 1rem; }
-  .cta-section p { margin-bottom: 2rem; color: var(--text-muted); }
+  .cta-section > p { margin-bottom: 2rem; color: var(--text-muted); }
   .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
   .btn-primary { background: var(--accent-color); color: #ffffff; }
   .btn-primary:hover { background: #e0144c; transform: translateY(-2px); }
+  .related-links { margin-top: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; font-size: 0.9rem; }
+  .related-links span { color: var(--text-muted); }
+  .related-links a { color: var(--primary-color); text-decoration: none; }
+  .related-links a:hover { color: var(--accent-color); text-decoration: underline; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .concept-grid { grid-template-columns: 1fr; }
+    .path-grid { grid-template-columns: 1fr; }
+    .critical-notice { flex-direction: column; }
+    .help-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .help-grid { grid-template-columns: 1fr; }
+    .related-links { flex-direction: column; gap: 0.5rem; }
+  }
 </style>

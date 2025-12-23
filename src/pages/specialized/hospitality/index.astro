@@ -2,12 +2,63 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import RelatedServices from '../../../components/RelatedServices.astro';
 import CrossSiloLinks from '../../../components/CrossSiloLinks.astro';
+
+const faqs = [
+  {
+    question: "Do Dubai restaurants need Arabic menus?",
+    answer: "While not universally mandated, many Dubai municipalities encourage or require Arabic menus, especially for restaurants in certain areas or hotel classifications. More importantly, Arabic menus expand your customer base and show respect for local guests. We translate menus with appetizing descriptions that sell."
+  },
+  {
+    question: "Can you translate guest policies and liability waivers?",
+    answer: "Yes. We translate guest policies, liability waivers, activity disclaimers, and terms and conditions. For adventure tourism, spa waivers, or activity centers, Arabic versions ensure Arabic-speaking guests understand the terms. We maintain legal accuracy while keeping the language accessible."
+  },
+  {
+    question: "Do you handle hotel T&Cs and booking policies?",
+    answer: "Yes. We translate hotel terms and conditions, booking policies, cancellation policies, and guest agreements. For international hotel chains operating in UAE, we ensure brand consistency while adapting content for local requirements and cultural expectations."
+  },
+  {
+    question: "Can you translate in-room notices and signage?",
+    answer: "Yes. We translate in-room directories, safety notices, Wi-Fi instructions, minibar menus, and all guest-facing signage. We can work with your designer to deliver print-ready bilingual PDFs or provide text for your layout team."
+  },
+  {
+    question: "How do you handle menu items with no Arabic equivalent?",
+    answer: "For specialty dishes, fusion cuisine, or chef's creations without direct Arabic equivalents, we use transliteration (phonetic Arabic) plus a brief Arabic description. This approach maintains the dish's identity while helping Arabic-speaking guests understand what they're ordering."
+  },
+  {
+    question: "Can you produce print-ready bilingual PDFs?",
+    answer: "Yes. We can deliver bilingual layouts with English and Arabic side-by-side or on facing pages. For menus, we work with RTL formatting and appropriate Arabic fonts. Send your InDesign file or PDF and we'll return a print-ready bilingual version."
+  },
+  {
+    question: "Do you translate spa and wellness content?",
+    answer: "Yes. We translate spa menus, treatment descriptions, wellness program guides, and health disclaimers. Arabic wellness content requires sensitivity to cultural preferences—we adapt descriptions appropriately while maintaining the spa's brand voice and luxury positioning."
+  },
+  {
+    question: "What about seasonal menu updates?",
+    answer: "For hotels and restaurants with frequent menu changes, we offer quick turnaround on updates. Send your new menu items via WhatsApp and we typically return translations same-day. For regular clients, we maintain terminology consistency across all menu versions."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
 ---
 
 <BaseLayout
   title="Hospitality Translation Dubai | Menu & Tourism"
   description="Hospitality translation services in Dubai. Restaurant menus, hotel collateral, tourism content, and guest communications. Culturally-adapted for Arabic markets."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
   <section class="hero-section bg-dark" data-theme="dark">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -122,6 +173,22 @@ import CrossSiloLinks from '../../../components/CrossSiloLinks.astro';
     </div>
   </section>
 
+  <section class="section bg-light faq-section">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <section class="section bg-primary">
     <div class="container cta-section">
       <h2>Need Hospitality Translation?</h2>
@@ -169,5 +236,15 @@ import CrossSiloLinks from '../../../components/CrossSiloLinks.astro';
   .btn-accent { background: var(--accent-color); color: #fff; }
   .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255, 255, 255, 0.5); }
   @media (max-width: 992px) { .hosp-grid, .approach-grid { grid-template-columns: repeat(2, 1fr); } }
+  /* FAQ Styles */
+  .faq-section h2 { margin-bottom: 2rem; }
+  .faq-list { max-width: 800px; display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { background: #fff; border-radius: 0.75rem; border: 1px solid rgba(0,0,0,0.08); overflow: hidden; }
+  .faq-question { padding: 1.25rem 1.5rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; font-size: 1.5rem; color: var(--accent-color); }
+  details[open] .faq-question::after { content: '−'; }
+  .faq-answer { padding: 0 1.5rem 1.25rem; }
+  .faq-answer p { margin: 0; line-height: 1.7; color: var(--text-body); }
   @media (max-width: 768px) { h1 { font-size: 2rem; } .hosp-grid, .approach-grid { grid-template-columns: 1fr; } .hero-section { padding: 6rem 0 3rem; } }
 </style>

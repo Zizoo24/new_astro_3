@@ -1,0 +1,298 @@
+---
+/**
+ * Canada Attestation - Country-Specific Attestation Page
+ * URL: /services/attestation/canada/
+ * Note: Canada joined Hague Apostille Convention January 11, 2024
+ */
+import ServiceLayout from '../../../../layouts/ServiceLayout.astro';
+import RelatedServices from '../../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../../components/CrossSiloLinks.astro';
+import InlineCallout from '../../../../components/InlineCallout.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Services', url: '/services/' },
+  { name: 'Attestation', url: '/services/attestation/' },
+  { name: 'Canada', url: '/services/attestation/canada/' }
+];
+
+const snapshot = [
+  { icon: 'maple-leaf', bold: 'Hague Member', text: 'since January 2024' },
+  { icon: 'clock', bold: '10-14 Days', text: 'complete chain processing' },
+  { icon: 'map-marked-alt', bold: 'Provincial Apostilles', text: 'varies by document type' },
+  { icon: 'shield-alt', bold: 'Full Service', text: 'Canada and UAE steps' }
+];
+
+const processSteps = [
+  {
+    number: 1,
+    title: 'Send Your Document',
+    text: 'WhatsApp your Canadian document. We identify whether you need a provincial or federal apostille and outline the complete attestation chain for your document type.',
+    icon: 'paper-plane'
+  },
+  {
+    number: 2,
+    title: 'Canadian Apostille',
+    text: 'Document is apostilled by the appropriate Canadian authority: provincial government for provincial documents, or Global Affairs Canada (GAC) for federal documents.',
+    icon: 'stamp'
+  },
+  {
+    number: 3,
+    title: 'UAE Embassy Attestation',
+    text: 'UAE Embassy in Ottawa or consulate attests the apostilled document. This is still required because UAE is not a Hague member.',
+    icon: 'building'
+  },
+  {
+    number: 4,
+    title: 'MOFA UAE & Translation',
+    text: 'MOFA in UAE completes the attestation chain. We then provide MOJ-certified Arabic translation so your document is ready for submission.',
+    icon: 'check-circle'
+  }
+];
+
+const benefitCards = [
+  {
+    icon: 'graduation-cap',
+    title: 'Canadian Degrees & Diplomas',
+    text: 'University degrees, college diplomas, professional certifications (CPA, P.Eng), and academic transcripts attested for employment visas and licensing in UAE.'
+  },
+  {
+    icon: 'ring',
+    title: 'Canadian Vital Records',
+    text: 'Birth certificates, marriage certificates, divorce certificates, and death certificates attested for UAE family visa, legal recognition, and official submissions.'
+  },
+  {
+    icon: 'fingerprint',
+    title: 'RCMP Police Clearance',
+    text: 'Canadian Police Information Centre (CPIC) certificates from RCMP attested for UAE employment visa, residency applications, and professional licensing.'
+  }
+];
+
+const faqs = [
+  {
+    question: 'Does Canada accept apostille now?',
+    answer: 'Yes. Canada joined the Hague Apostille Convention on January 11, 2024. This is a significant change from the old process. Canadian documents can now receive an apostille from provincial or federal authorities, simplifying the first steps of international authentication. However, for UAE use, embassy attestation is still required.'
+  },
+  {
+    question: 'Where do I get a Canadian apostille?',
+    answer: 'It depends on your document type. Provincial documents (birth/marriage certificates, educational credentials) are apostilled by the provincial government. Federal documents (RCMP police clearance, federal court orders) are apostilled by Global Affairs Canada (GAC). We advise on the correct authority for your specific document.'
+  },
+  {
+    question: 'Do I still need UAE Embassy attestation?',
+    answer: 'Yes. Because the UAE is NOT a member of the Hague Convention, UAE Embassy attestation is still required after the Canadian apostille. The apostille simplifies the Canadian authentication step, but does not eliminate UAE requirements. Your document needs: Canadian apostille → UAE Embassy → MOFA UAE.'
+  },
+  {
+    question: 'What about documents issued before 2024?',
+    answer: 'Documents issued before January 2024 can still receive an apostille. The apostille confirms the document is genuine as of the date it was issued. There is no requirement that the document was issued after Canada joined the Hague Convention.'
+  },
+  {
+    question: 'How long does the full process take?',
+    answer: 'Canadian apostille takes 5-10 business days depending on the issuing authority. UAE Embassy attestation in Ottawa takes 3-5 business days. MOFA UAE takes 1-3 business days. Total time is typically 10-14 business days. Rush services are available at some steps.'
+  },
+  {
+    question: 'Can you coordinate the UAE steps for me?',
+    answer: 'Yes. Once your document has a Canadian apostille, we coordinate UAE Embassy attestation, MOFA attestation, and translation. You can send the apostilled document to us in Dubai, or our partners can handle the Ottawa embassy step before forwarding to UAE.'
+  },
+  {
+    question: 'Do I need translation for MOFA?',
+    answer: 'MOFA does not require translation for attestation—they attest the original document. However, the UAE authority you are ultimately submitting to (immigration, court, employer) typically requires Arabic translation. We provide MOJ-certified translation after attestation is complete.'
+  },
+  {
+    question: 'What is different from the old process?',
+    answer: 'Before January 2024, Canadian documents required a longer authentication chain: provincial authentication → Global Affairs Canada → UAE Embassy → MOFA. The apostille now replaces the first two steps with a single apostille certificate. This saves time and simplifies the process.'
+  }
+];
+
+const accordionSections = [
+  {
+    title: 'The Canadian Apostille Process (New 2024)',
+    id: 'process',
+    items: [
+      {
+        heading: 'What Changed in January 2024',
+        body: 'Canada became the 125th country to join the Hague Apostille Convention on January 11, 2024. This replaced the old double-authentication process with a single apostille certificate. Provincial vital statistics offices, educational institutions, and federal bodies like RCMP now have their documents apostilled rather than going through multiple authentication layers.'
+      },
+      {
+        heading: 'Provincial vs Federal Apostilles',
+        body: 'Provincial governments apostille documents they issue: birth certificates, marriage certificates, death certificates, and educational credentials from provincial institutions. Global Affairs Canada (GAC) apostilles federal documents: RCMP police clearances, federal court orders, and documents from federal agencies. Knowing which authority to approach is the first step.'
+      },
+      {
+        heading: 'The Complete Chain for UAE',
+        body: 'Since UAE is NOT a Hague member, the chain is: Canadian Apostille → UAE Embassy Attestation → MOFA UAE Attestation → Translation. The apostille simplifies step one, but UAE Embassy and MOFA are still required. Do not skip these steps thinking the apostille is sufficient for UAE.'
+      }
+    ]
+  },
+  {
+    title: 'Documents by Province',
+    id: 'provinces',
+    items: [
+      {
+        heading: 'Ontario',
+        body: 'Birth, marriage, and death certificates from ServiceOntario. Educational documents from Ontario universities and colleges. Apostilled by the Ontario Ministry of Public and Business Service Delivery.'
+      },
+      {
+        heading: 'British Columbia',
+        body: 'Vital statistics certificates from BC Vital Statistics Agency. Educational credentials from BC institutions. Apostilled by the BC Ministry of Citizens Services.'
+      },
+      {
+        heading: 'Quebec',
+        body: "Civil status documents from Directeur de l'état civil. Educational documents from Quebec universities and CEGEPs. Note: Quebec documents may be in French and require translation to Arabic."
+      },
+      {
+        heading: 'Alberta',
+        body: 'Vital statistics from Alberta Vital Statistics. Educational credentials from Alberta post-secondary institutions. Apostilled by Service Alberta.'
+      },
+      {
+        heading: 'Other Provinces',
+        body: 'Each province has its own apostille authority for documents it issues. Contact your provincial government or ask us for guidance on the specific authority for your document.'
+      }
+    ]
+  },
+  {
+    title: 'Common Canadian Documents',
+    id: 'documents',
+    items: [
+      {
+        heading: 'Birth Certificates',
+        body: 'Provincial vital statistics birth certificates for family visa sponsorship, citizenship applications, and official UAE records. Must be official copies (not commemorative versions).'
+      },
+      {
+        heading: 'Marriage Certificates',
+        body: 'Provincial marriage certificates for spouse visa, family status, and legal recognition in UAE. Both civil and religious marriage certificates can be apostilled if registered with provincial authorities.'
+      },
+      {
+        heading: 'University Degrees',
+        body: 'Degrees from Canadian universities for employment visa, professional licensing, and equivalency applications. Official transcripts may also be required. Apostilled by the province where the institution is located.'
+      },
+      {
+        heading: 'RCMP Police Clearance',
+        body: 'Criminal record check from RCMP (Canadian Police Information Centre) for employment visa and UAE residency. This is a federal document apostilled by Global Affairs Canada, not provincial authorities.'
+      },
+      {
+        heading: 'Corporate Documents',
+        body: 'Certificates of incorporation, articles of association, and corporate resolutions. Federal corporations use GAC apostille; provincial corporations use provincial apostille.'
+      }
+    ]
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<ServiceLayout
+  title="Canadian Document Attestation for UAE | Apostille 2024"
+  description="Canadian document attestation for UAE. Canada joined Hague Convention January 2024. Provincial apostilles, UAE Embassy, MOFA attestation. Complete service."
+  category="attestation"
+  language="english"
+  breadcrumbs={breadcrumbs}
+  snapshot={snapshot}
+  processSteps={processSteps}
+  benefitCards={benefitCards}
+  accordionSections={accordionSections}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <Fragment slot="intro">
+    <p>
+      Canada joined the <strong>Hague Apostille Convention on January 11, 2024</strong>, changing how Canadian documents are authenticated for international use. For UAE purposes, this simplifies the Canadian steps but does not eliminate UAE Embassy and MOFA attestation requirements.
+    </p>
+    <InlineCallout
+      type="info"
+      title="New Apostille Process"
+      text="Since January 2024, Canadian documents receive a single apostille instead of the old multi-step authentication. However, UAE is NOT a Hague member, so UAE Embassy + MOFA attestation are still required after the apostille."
+    />
+  </Fragment>
+
+  <section class="faq-section bg-light">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <RelatedServices
+        pageKey="canadaAttestation"
+        title="Related Services"
+        showFamily={true}
+        showCrossSilo={true}
+        maxItems={6}
+      />
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <CrossSiloLinks
+        currentSilo="attestation"
+        title="Document Translation Services"
+      />
+    </div>
+  </section>
+
+  <section class="cta-section bg-white">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Need Canadian Document Attestation?</h2>
+        <p>Send your Canadian document via WhatsApp. We advise on the apostille authority, coordinate UAE attestation, and provide certified translation for your submission.</p>
+        <a href="https://wa.me/971508620217" class="btn btn-primary">
+          <i class="fab fa-whatsapp"></i> Send Your Document
+        </a>
+        <div class="related-links">
+          <span>Related:</span>
+          <a href="/resources/attestation-guide/">Attestation Guide</a>
+          <a href="/services/attestation/us/">US Attestation</a>
+          <a href="/services/attestation/uk/">UK Attestation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</ServiceLayout>
+
+<style>
+  .faq-section { padding: 4rem 0; }
+  .faq-section h2 { font-size: 1.75rem; margin-bottom: 2rem; color: var(--primary-color); }
+  .faq-list { max-width: 800px; display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { background: #fff; border-radius: 0.75rem; border: 1px solid rgba(0,0,0,0.08); overflow: hidden; }
+  .faq-question { padding: 1.25rem 1.5rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; font-size: 1.5rem; color: var(--accent-color); }
+  details[open] .faq-question::after { content: '−'; }
+  .faq-answer { padding: 0 1.5rem 1.25rem; }
+  .faq-answer p { margin: 0; line-height: 1.7; color: var(--text-body); }
+
+  .cta-section { padding: 4rem 0; }
+  .cta-content { text-align: center; max-width: 600px; margin: 0 auto; }
+  .cta-content h2 { margin-bottom: 1rem; color: var(--primary-color); }
+  .cta-content > p { margin-bottom: 2rem; color: var(--text-muted); }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
+  .btn-primary { background: var(--accent-color); color: #ffffff; }
+  .btn-primary:hover { background: #e0144c; transform: translateY(-2px); }
+  .related-links { margin-top: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; font-size: 0.9rem; }
+  .related-links span { color: var(--text-muted); }
+  .related-links a { color: var(--primary-color); text-decoration: none; }
+  .related-links a:hover { color: var(--accent-color); text-decoration: underline; }
+</style>

@@ -1,0 +1,373 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+
+const faqs = [
+  {
+    question: "Can you do same-day translation?",
+    answer: "Yes. Most standard documents (birth certificates, marriage certificates, degrees, police clearances, contracts under 5 pages) can be completed same-day if submitted before 12 PM. We provide the digital PDF first, with hard copies available for collection or delivery the same evening or next morning."
+  },
+  {
+    question: "What's the rush fee?",
+    answer: "Rush fees vary by document type and urgency. For same-day service on standard documents, expect a 25-50% premium. For urgent requests needed within 2-3 hours, fees may be higher. Contact us via WhatsApp with your specific deadline for an exact quote."
+  },
+  {
+    question: "Do weekends affect turnaround?",
+    answer: "We process translations 7 days a week. However, MOJ stamping is only available during government working hours (Sunday-Thursday). If you need physical MOJ stamps, factor in that weekend submissions will be stamped on the next working day."
+  },
+  {
+    question: "What if I need it in 2 hours?",
+    answer: "Ultra-urgent requests are possible for simple documents like certificates or short contracts. Contact us immediately via WhatsApp with the document. We will assess feasibility and quote accordingly. Complex or lengthy documents cannot be rushed to this extent without risking quality."
+  },
+  {
+    question: "Does MOJ stamping add time?",
+    answer: "MOJ stamping adds 1-3 hours for in-person submission, or next-day if submitted late in the day. During peak periods, it may take slightly longer. We coordinate the stamping process and can provide the unstamped PDF immediately while the physical stamp is being obtained."
+  },
+  {
+    question: "How do I submit urgent requests?",
+    answer: "WhatsApp is fastest for urgent requests. Send your document with a clear note of your deadline. We prioritize based on urgency and provide immediate confirmation of whether we can meet your timeline. Phone calls work too, but WhatsApp allows us to see the document immediately."
+  },
+  {
+    question: "What's the cutoff for same-day?",
+    answer: "For guaranteed same-day completion, submit by 12 PM (noon). Documents submitted between 12 PM and 3 PM may still complete same-day depending on our workload. Submissions after 3 PM are typically delivered next morning."
+  },
+  {
+    question: "Do you work on UAE public holidays?",
+    answer: "We accept submissions on public holidays and process what we can digitally. MOJ stamping is not available on public holidays. For holiday deadlines, contact us in advance so we can plan around the closure."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+const turnaroundData = [
+  { docType: "Birth/Marriage Certificate", standard: "Same day", rush: "Yes (2-3 hrs)", notes: "Single-page documents" },
+  { docType: "Degree/Diploma", standard: "Same day", rush: "Yes", notes: "Standard format" },
+  { docType: "Academic Transcript", standard: "Same day - next day", rush: "Yes", notes: "Depends on length" },
+  { docType: "Police Clearance (PCC)", standard: "Same day", rush: "Yes", notes: "Standard format" },
+  { docType: "Driving License", standard: "Same day", rush: "Yes", notes: "Quick turnaround" },
+  { docType: "Contract (1-5 pages)", standard: "Same day", rush: "Yes", notes: "Standard legal" },
+  { docType: "Contract (6-15 pages)", standard: "1-2 days", rush: "Yes", notes: "Review needed" },
+  { docType: "Contract (15+ pages)", standard: "2-3 days", rush: "Case by case", notes: "Complex legal" },
+  { docType: "MOA/Articles", standard: "1-2 days", rush: "Yes", notes: "Corporate docs" },
+  { docType: "Financial Statements", standard: "1-2 days", rush: "Case by case", notes: "Volume dependent" },
+  { docType: "Technical Manual", standard: "3-7 days", rush: "Case by case", notes: "Specialized vocab" },
+  { docType: "Website/App Content", standard: "3-7 days", rush: "Case by case", notes: "Volume dependent" },
+  { docType: "Product Catalog", standard: "5-10 days", rush: "Case by case", notes: "Large volume" }
+];
+
+const processTimeline = [
+  { step: "Quote", time: "Within 60 minutes", desc: "Send documents, receive detailed pricing" },
+  { step: "Translation", time: "Per table above", desc: "Professional translation by certified linguist" },
+  { step: "QA Review", time: "Included", desc: "Second-linguist review for accuracy" },
+  { step: "PDF Delivery", time: "Immediate", desc: "Digital copy sent via WhatsApp/email" },
+  { step: "MOJ Stamping", time: "1-3 hours", desc: "Physical stamp application (if needed)" },
+  { step: "Hard Copy", time: "Same day / courier", desc: "Collection or delivery arranged" }
+];
+---
+
+<BaseLayout
+  title="Translation Turnaround Times Dubai | Same-Day Service"
+  description="Translation turnaround times for Dubai. Same-day service for most documents. Rush options available. See our complete timeline by document type."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="hero-section bg-dark" data-theme="dark">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">HOME</a>
+        <span class="separator">&gt;</span>
+        <a href="/resources/">RESOURCES</a>
+        <span class="separator">&gt;</span>
+        <span class="current">TURNAROUND TIMES</span>
+      </nav>
+
+      <h1>Turnaround Times</h1>
+      <p class="hero-subtitle">How Long Does Translation Take?</p>
+      <p class="hero-intro">Most standard documents complete same-day or next-day. This guide shows typical timelines by document type, plus rush options for urgent deadlines.</p>
+
+      <div class="quick-stats">
+        <div class="stat-item">
+          <i class="fas fa-bolt"></i>
+          <span><strong>Quote:</strong> 60 minutes</span>
+        </div>
+        <div class="stat-item">
+          <i class="fas fa-clock"></i>
+          <span><strong>Most docs:</strong> Same day</span>
+        </div>
+        <div class="stat-item">
+          <i class="fas fa-rocket"></i>
+          <span><strong>Rush:</strong> Available</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Turnaround by Document Type</h2>
+      <p class="section-intro">Standard timelines assume submission before 12 PM. Rush service available for most document types.</p>
+
+      <div class="table-wrapper">
+        <table class="turnaround-table">
+          <thead>
+            <tr>
+              <th>Document Type</th>
+              <th>Standard</th>
+              <th>Rush Available</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {turnaroundData.map(row => (
+              <tr>
+                <td>{row.docType}</td>
+                <td><span class="time-badge">{row.standard}</span></td>
+                <td>{row.rush}</td>
+                <td class="notes-cell">{row.notes}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>What Affects Turnaround?</h2>
+
+      <div class="factors-grid">
+        <div class="factor-card">
+          <i class="fas fa-file-alt"></i>
+          <h4>Document Length</h4>
+          <p>A 1-page certificate is faster than a 50-page contract. Longer documents require more translation and review time.</p>
+        </div>
+        <div class="factor-card">
+          <i class="fas fa-cogs"></i>
+          <h4>Technical Complexity</h4>
+          <p>Legal contracts, medical reports, and technical manuals require specialized vocabulary and additional review.</p>
+        </div>
+        <div class="factor-card">
+          <i class="fas fa-palette"></i>
+          <h4>Formatting Requirements</h4>
+          <p>Documents requiring exact layout matching (like certificates) take longer than plain text translations.</p>
+        </div>
+        <div class="factor-card">
+          <i class="fas fa-clock"></i>
+          <h4>Time of Submission</h4>
+          <p>Morning submissions complete faster. After 3 PM, expect next-day delivery for standard service.</p>
+        </div>
+        <div class="factor-card">
+          <i class="fas fa-calendar-alt"></i>
+          <h4>Current Workload</h4>
+          <p>Peak periods (visa deadlines, school enrollment) may extend timelines. Contact us for current availability.</p>
+        </div>
+        <div class="factor-card">
+          <i class="fas fa-stamp"></i>
+          <h4>Stamping Requirements</h4>
+          <p>MOJ physical stamping adds 1-3 hours. PDF delivery is immediate; hard copies follow.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Our Process Timeline</h2>
+
+      <div class="timeline">
+        {processTimeline.map((item, index) => (
+          <div class="timeline-item">
+            <div class="timeline-marker">{index + 1}</div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h4>{item.step}</h4>
+                <span class="timeline-time">{item.time}</span>
+              </div>
+              <p>{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Rush Service</h2>
+
+      <div class="rush-info">
+        <div class="rush-main">
+          <h3><i class="fas fa-bolt"></i> Same-Day Guaranteed</h3>
+          <p>For standard documents submitted by 12 PM, we guarantee same-day completion with rush service. This includes:</p>
+          <ul>
+            <li>Priority queue assignment</li>
+            <li>Dedicated translator allocation</li>
+            <li>Expedited QA review</li>
+            <li>Same-day MOJ stamping coordination</li>
+          </ul>
+          <p class="rush-note">Rush fees apply. Contact us via WhatsApp for exact pricing based on your document.</p>
+        </div>
+
+        <div class="rush-cta">
+          <h4>Urgent Request?</h4>
+          <p>WhatsApp is fastest for rush jobs. Send your document with your deadline and we'll confirm immediately.</p>
+          <a href="https://wa.me/971508620217" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i> Send Urgent Request
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <RelatedServices
+        pageKey="turnaroundTimes"
+        title="Translation Services"
+        showFamily={true}
+        showCrossSilo={true}
+        maxItems={6}
+      />
+    </div>
+  </section>
+
+  <section class="section bg-light faq-section">
+    <div class="container content-container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container cta-section">
+      <h2>Check Your Timeline</h2>
+      <p>Send your document via WhatsApp and we'll confirm the exact turnaround time for your specific case. Quote provided within 60 minutes.</p>
+      <a href="https://wa.me/971508620217" class="btn btn-primary">
+        <i class="fab fa-whatsapp"></i> Get Turnaround Estimate
+      </a>
+      <div class="related-links">
+        <span>Related:</span>
+        <a href="/resources/pricing-guide/">Pricing Guide</a>
+        <a href="/resources/moj-vs-certified/">MOJ vs Certified</a>
+        <a href="/services/">All Services</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-section { padding: 8rem 0 4rem; background: var(--primary-color); }
+  .breadcrumb { font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 2rem; }
+  .breadcrumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: #ffffff; }
+  .breadcrumb .separator { margin: 0 0.5rem; color: rgba(255, 255, 255, 0.5); }
+  .breadcrumb .current { color: #ffffff; }
+  h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: #ffffff; }
+  .hero-subtitle { font-size: 1.25rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+  .hero-intro { font-size: 1.1rem; line-height: 1.8; max-width: 700px; color: rgba(255, 255, 255, 0.9); margin-bottom: 2rem; }
+
+  .quick-stats { display: flex; flex-wrap: wrap; gap: 2rem; }
+  .stat-item { display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.9); }
+  .stat-item i { color: var(--accent-color); }
+
+  .section { padding: 4rem 0; }
+  .section h2 { font-size: 1.75rem; margin-bottom: 1rem; color: var(--primary-color); }
+  .section-intro { color: var(--text-muted); margin-bottom: 2rem; max-width: 700px; }
+  .content-container { max-width: 900px; }
+
+  /* Turnaround Table */
+  .table-wrapper { overflow-x: auto; }
+  .turnaround-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 0.75rem; overflow: hidden; }
+  .turnaround-table th { background: var(--primary-color); color: #fff; padding: 1rem; text-align: left; font-weight: 600; font-size: 0.9rem; }
+  .turnaround-table td { padding: 0.875rem 1rem; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem; }
+  .turnaround-table tr:last-child td { border-bottom: none; }
+  .turnaround-table tr:hover { background: #f8f9fa; }
+  .time-badge { display: inline-block; background: #d1fae5; color: #059669; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.85rem; font-weight: 500; }
+  .notes-cell { color: var(--text-muted); font-size: 0.85rem; }
+
+  /* Factors Grid */
+  .factors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+  .factor-card { background: #fff; padding: 1.5rem; border-radius: 0.75rem; text-align: center; }
+  .factor-card i { font-size: 2rem; color: var(--accent-color); margin-bottom: 1rem; }
+  .factor-card h4 { margin: 0 0 0.5rem; font-size: 1.1rem; }
+  .factor-card p { margin: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+
+  /* Timeline */
+  .timeline { display: flex; flex-direction: column; gap: 1rem; }
+  .timeline-item { display: flex; gap: 1.25rem; }
+  .timeline-marker { width: 36px; height: 36px; background: var(--primary-color); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+  .timeline-content { flex: 1; background: #f8f9fa; padding: 1rem 1.25rem; border-radius: 0.5rem; }
+  .timeline-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem; }
+  .timeline-header h4 { margin: 0; font-size: 1rem; }
+  .timeline-time { background: var(--accent-color); color: #fff; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+  .timeline-content p { margin: 0; color: var(--text-muted); font-size: 0.9rem; }
+
+  /* Rush Info */
+  .rush-info { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: start; }
+  .rush-main { background: #fff; padding: 2rem; border-radius: 0.75rem; }
+  .rush-main h3 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 1rem; color: var(--primary-color); }
+  .rush-main h3 i { color: var(--accent-color); }
+  .rush-main p { line-height: 1.7; margin-bottom: 1rem; }
+  .rush-main ul { margin: 0 0 1rem; padding-left: 1.25rem; }
+  .rush-main li { margin-bottom: 0.4rem; }
+  .rush-note { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0; }
+  .rush-cta { background: var(--primary-color); color: #fff; padding: 2rem; border-radius: 0.75rem; text-align: center; }
+  .rush-cta h4 { margin: 0 0 0.5rem; }
+  .rush-cta p { margin: 0 0 1.5rem; color: rgba(255,255,255,0.9); font-size: 0.95rem; }
+
+  /* FAQ Section */
+  .faq-section h2 { margin-bottom: 2rem; }
+  .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { background: #fff; border-radius: 0.75rem; border: 1px solid rgba(0,0,0,0.08); overflow: hidden; }
+  .faq-question { padding: 1.25rem 1.5rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; font-size: 1.5rem; color: var(--accent-color); }
+  details[open] .faq-question::after { content: '−'; }
+  .faq-answer { padding: 0 1.5rem 1.25rem; }
+  .faq-answer p { margin: 0; line-height: 1.7; color: var(--text-body); }
+
+  /* CTA Section */
+  .cta-section { text-align: center; max-width: 600px; margin: 0 auto; }
+  .cta-section h2 { margin-bottom: 1rem; }
+  .cta-section > p { margin-bottom: 2rem; color: var(--text-muted); }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
+  .btn-primary { background: var(--accent-color); color: #ffffff; }
+  .btn-primary:hover { background: #e0144c; transform: translateY(-2px); }
+  .related-links { margin-top: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; font-size: 0.9rem; }
+  .related-links span { color: var(--text-muted); }
+  .related-links a { color: var(--primary-color); text-decoration: none; }
+  .related-links a:hover { color: var(--accent-color); text-decoration: underline; }
+
+  @media (max-width: 768px) {
+    .rush-info { grid-template-columns: 1fr; }
+    .factors-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .factors-grid { grid-template-columns: 1fr; }
+    .quick-stats { flex-direction: column; gap: 1rem; }
+  }
+</style>
