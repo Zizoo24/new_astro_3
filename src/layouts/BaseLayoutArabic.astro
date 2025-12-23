@@ -83,107 +83,22 @@ const englishEquivalent = fullCanonical
   <meta name="twitter:description" content={description}>
   <meta name="twitter:image" content={`${siteUrl}${ogImage}`}>
 
-  <!-- JSON-LD Structured Data -->
+  <!-- JSON-LD Structured Data (Optimized for text-to-HTML ratio) -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": `${siteUrl}/#organization`,
     "name": "OnlineTranslation.ae",
-    "alternateName": "ترجمة أونلاين الإمارات",
-    "description": "خدمات الترجمة القانونية المعتمدة من وزارة العدل في دبي. ترجمة احترافية للمحاكم والهجرة والوثائق التجارية.",
+    "description": "خدمات الترجمة القانونية المعتمدة من وزارة العدل في دبي",
     "url": siteUrl,
     "logo": `${siteUrl}/assets/images/logo/brand/emblem-256.png`,
-    "image": `${siteUrl}/assets/images/og-image.jpg`,
     "telephone": "+971508620217",
     "email": "info@onlinetranslation.ae",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "أم الشيف",
-      "addressLocality": "دبي",
-      "addressRegion": "دبي",
-      "addressCountry": "AE"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 25.1124,
-      "longitude": 55.1880
-    },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      "opens": "08:00",
-      "closes": "22:00"
-    },
+    "address": {"@type": "PostalAddress", "addressLocality": "دبي", "addressCountry": "AE"},
+    "geo": {"@type": "GeoCoordinates", "latitude": 25.1124, "longitude": 55.1880},
+    "openingHours": "Mo-Su 08:00-22:00",
     "priceRange": "$$",
-    "currenciesAccepted": "AED, USD",
-    "paymentAccepted": "نقداً، بطاقة ائتمان، تحويل بنكي",
-    "areaServed": [
-      { "@type": "City", "name": "Dubai" },
-      { "@type": "City", "name": "Abu Dhabi" },
-      { "@type": "City", "name": "Sharjah" },
-      { "@type": "Country", "name": "UAE" }
-    ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": 5.0,
-      "bestRating": 5,
-      "worstRating": 1,
-      "ratingCount": 4,
-      "reviewCount": 4
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Legal Translator" },
-        "datePublished": "2025-11-14",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-        "reviewBody": "Highly recommended, trusted and reliable translation firm."
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Ali Pourtaheri" },
-        "datePublished": "2025-10-08",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-        "reviewBody": "Professional and fast service. Excellent quality translations."
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Ahmed Khalaf" },
-        "datePublished": "2025-09-15",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-        "reviewBody": "Outstanding legal translation service. Documents accepted without issues."
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Sara Mohamed" },
-        "datePublished": "2025-08-22",
-        "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-        "reviewBody": "Very efficient service. Got my documents translated same day."
-      }
-    ],
-    "contactPoint": [
-      {
-        "@type": "ContactPoint",
-        "telephone": "+971508620217",
-        "contactType": "customer service",
-        "availableLanguage": ["English", "Arabic"],
-        "contactOption": "TollFree",
-        "areaServed": "AE"
-      },
-      {
-        "@type": "ContactPoint",
-        "telephone": "+971508620217",
-        "contactType": "sales",
-        "availableLanguage": ["English", "Arabic"],
-        "areaServed": "AE"
-      }
-    ],
-    "sameAs": [
-      "https://wa.me/971508620217",
-      "https://facebook.com/onlinetranslationae",
-      "https://instagram.com/onlinetranslationae",
-      "https://linkedin.com/company/onlinetranslationae"
-    ]
+    "aggregateRating": {"@type": "AggregateRating", "ratingValue": 5.0, "ratingCount": 4}
   })} />
 
   <!-- Theme -->
@@ -202,31 +117,41 @@ const englishEquivalent = fullCanonical
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous">
 
-  <!-- CSS -->
+  <!-- Font Awesome - load async -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous"></noscript>
+
+  <!-- CSS - Consolidated for improved text-to-HTML ratio -->
+  <link rel="preload" href="/styles/base-architecture.css" as="style">
   <link rel="stylesheet" href="/styles/base-architecture.css">
   <link rel="stylesheet" href="/styles/porto-desktop.css">
   <link rel="stylesheet" href="/styles/services-enhanced.css">
   <link rel="stylesheet" href="/styles/document-pages.css">
   <link rel="stylesheet" href="/styles/visibility-fixes.css">
-  <link rel="stylesheet" href="/styles/subsection-menu.css">
-  <link rel="stylesheet" href="/styles/megamenu.css">
-  <link rel="stylesheet" href="/styles/porto-dropdown-onlinetranslation.css">
-  <link rel="stylesheet" href="/styles/navigation-glassmorphism.css">
-  <link rel="stylesheet" href="/styles/sticky-mobile.css">
-  <link rel="stylesheet" href="/styles/mobile-action-bar.css">
-  <link rel="stylesheet" href="/styles/mobile-ios.css">
-  <link rel="stylesheet" href="/styles/mobile-android.css">
-  <link rel="stylesheet" href="/styles/desktop-macos.css">
   <link rel="stylesheet" href="/styles/hero-enhancements.css">
+
+  <!-- NAVIGATION (desktop-only) -->
+  <link rel="stylesheet" href="/styles/subsection-menu.css" media="(min-width: 992px)">
+  <link rel="stylesheet" href="/styles/megamenu.css" media="(min-width: 992px)">
+  <link rel="stylesheet" href="/styles/porto-dropdown-onlinetranslation.css" media="(min-width: 992px)">
+  <link rel="stylesheet" href="/styles/navigation-glassmorphism.css" media="(min-width: 992px)">
+  <link rel="stylesheet" href="/styles/desktop-macos.css" media="(min-width: 992px)">
+
+  <!-- MOBILE (mobile-only) -->
+  <link rel="stylesheet" href="/styles/sticky-mobile.css" media="(max-width: 991px)">
+  <link rel="stylesheet" href="/styles/mobile-action-bar.css" media="(max-width: 991px)">
+  <link rel="stylesheet" href="/styles/mobile-ios.css" media="(max-width: 991px)">
+  <link rel="stylesheet" href="/styles/mobile-android.css" media="(max-width: 991px)">
+
+  <!-- COMPONENTS & POLISH -->
   <link rel="stylesheet" href="/styles/footer-redesign.css">
   <link rel="stylesheet" href="/styles/trust-bar.css">
   <link rel="stylesheet" href="/styles/visual-relief.css">
   <link rel="stylesheet" href="/styles/contrast-fixes.css">
   <link rel="stylesheet" href="/styles/dark-mode-tokenized.css">
   <link rel="stylesheet" href="/styles/rtl.css">
-  <link rel="stylesheet" href="/styles/print.css">
+  <link rel="stylesheet" href="/styles/print.css" media="print">
 
   <slot name="head" />
 </head>
