@@ -1,0 +1,375 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+
+const faqs = [
+  {
+    question: "Do I need MOJ translation for DLD submissions?",
+    answer: "For Dubai Land Department (DLD) transactions, requirements vary by document and situation. Standard property transfers between Arabic-speaking parties may not require translation. However, if you're a foreign buyer, or if the document is being used in court, MOJ-certified translation is typically required. We can advise based on your specific transaction."
+  },
+  {
+    question: "Can you translate Arabic title deed to English?",
+    answer: "Yes. We translate title deeds (ملكية عقارية) from Arabic to English for bank mortgages, international transactions, legal proceedings, and personal records. The translation includes all property details, ownership information, and DLD registration numbers exactly as they appear on the original."
+  },
+  {
+    question: "What about developer contracts and SPAs?",
+    answer: "We translate Sale and Purchase Agreements (SPAs), developer contracts, and off-plan purchase agreements. These are often lengthy documents (30-100+ pages), so we provide accurate quotes based on page count. Rush service is available for closing deadlines."
+  },
+  {
+    question: "How long does title deed translation take?",
+    answer: "A standard title deed (1-2 pages) completes same-day. SPAs and developer contracts vary by length: 5-10 pages typically next-day, larger documents 2-3 days. Rush service available for urgent closings or court deadlines."
+  },
+  {
+    question: "Do you handle Ejari contracts?",
+    answer: "Yes. We translate Ejari tenancy contracts for visa applications, bank requirements, and legal proceedings. Ejari contracts are typically straightforward and complete same-day. Both Arabic-to-English and English-to-Arabic available."
+  },
+  {
+    question: "What if my SPA is 50+ pages?",
+    answer: "Large SPAs and developer contracts are priced per page with volume consideration. We provide a detailed quote after reviewing the document. For very large documents, we may assign multiple translators to meet urgent deadlines while maintaining terminology consistency."
+  },
+  {
+    question: "Can you come to my location?",
+    answer: "Document collection and delivery is available across Dubai. For busy professionals, we can collect documents from your office or residence and deliver the completed translation. WhatsApp coordination makes this seamless."
+  },
+  {
+    question: "Do you work with real estate agents and brokers?",
+    answer: "Yes. Many Dubai real estate agencies use our services for client document translation. We offer priority turnaround for agency partners and can coordinate directly with your clients when needed. Contact us about partnership arrangements."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+const documents = [
+  { icon: "file-contract", title: "Title Deeds", arabic: "ملكية عقارية", desc: "Property ownership certificates from DLD" },
+  { icon: "handshake", title: "Sale & Purchase Agreements", arabic: "عقد بيع وشراء", desc: "SPAs for property transactions" },
+  { icon: "user-tie", title: "Powers of Attorney", arabic: "وكالة", desc: "Property POAs for buying/selling" },
+  { icon: "building", title: "Developer Agreements", arabic: "عقد المطور", desc: "Off-plan and developer contracts" },
+  { icon: "file-signature", title: "NOC Letters", arabic: "شهادة عدم ممانعة", desc: "No Objection Certificates from developers" },
+  { icon: "home", title: "Ejari Contracts", arabic: "عقد إيجاري", desc: "Tenancy contracts registered with Ejari" },
+  { icon: "university", title: "Mortgage Documents", arabic: "وثائق الرهن العقاري", desc: "Bank mortgage and loan documentation" },
+  { icon: "balance-scale", title: "Court Property Documents", arabic: "وثائق المحكمة", desc: "Inheritance, dispute, ownership cases" }
+];
+
+const useCases = [
+  { title: "DLD Registration", desc: "Property transfer and registration with Dubai Land Department", icon: "landmark" },
+  { title: "Bank Mortgages", desc: "Mortgage applications and refinancing documentation", icon: "university" },
+  { title: "Court Proceedings", desc: "Property disputes, inheritance cases, legal claims", icon: "gavel" },
+  { title: "Golden Visa", desc: "Property proof for investor visa applications", icon: "passport" },
+  { title: "Foreign Buyer Docs", desc: "Documentation for international property buyers", icon: "globe" },
+  { title: "Tenancy Disputes", desc: "Rental Dispute Center submissions", icon: "file-alt" }
+];
+
+const processSteps = [
+  { number: 1, title: "Send Document", desc: "WhatsApp photo or scan of your property document. We accept all formats." },
+  { number: 2, title: "Receive Quote", desc: "Detailed pricing within 60 minutes based on document type and length." },
+  { number: 3, title: "Translation", desc: "Professional translation with property terminology expertise." },
+  { number: 4, title: "Delivery", desc: "PDF immediately, hard copy and MOJ stamp available same-day." }
+];
+---
+
+<BaseLayout
+  title="Title Deed Translation Dubai | Property Documents | DLD"
+  description="Title deed translation Dubai. Property documents, SPAs, Ejari contracts. For DLD, banks, courts, Golden Visa. Same-day service. MOJ-certified."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="hero-section bg-dark" data-theme="dark">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">HOME</a>
+        <span class="separator">&gt;</span>
+        <a href="/services/">SERVICES</a>
+        <span class="separator">&gt;</span>
+        <span class="current">TITLE DEED TRANSLATION</span>
+      </nav>
+
+      <h1>Title Deed Translation</h1>
+      <p class="hero-subtitle">Property Documents for Dubai</p>
+      <p class="hero-intro">Professional translation of title deeds, SPAs, and property documents for DLD submissions, bank mortgages, court proceedings, and Golden Visa applications. Same-day service available.</p>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <i class="fas fa-clock"></i>
+          <span>Title deeds: same-day</span>
+        </div>
+        <div class="stat-item">
+          <i class="fas fa-certificate"></i>
+          <span>MOJ-certified</span>
+        </div>
+        <div class="stat-item">
+          <i class="fas fa-building"></i>
+          <span>DLD accepted</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <h2>Documents We Translate</h2>
+      <p class="section-intro">Complete property document translation for Dubai real estate transactions and legal proceedings.</p>
+
+      <div class="doc-grid">
+        {documents.map(doc => (
+          <div class="doc-card">
+            <div class="doc-icon"><i class={`fas fa-${doc.icon}`}></i></div>
+            <div class="doc-content">
+              <h3>{doc.title}</h3>
+              <p class="arabic-name">{doc.arabic}</p>
+              <p class="doc-desc">{doc.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>When You Need Translation</h2>
+
+      <div class="use-case-grid">
+        {useCases.map(uc => (
+          <div class="use-case-card">
+            <i class={`fas fa-${uc.icon}`}></i>
+            <h4>{uc.title}</h4>
+            <p>{uc.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>MOJ vs Certified: Property Documents</h2>
+
+      <div class="certification-grid">
+        <div class="cert-card moj">
+          <h4><i class="fas fa-stamp"></i> MOJ Legal Translation Required</h4>
+          <ul>
+            <li>Court proceedings (property disputes, inheritance)</li>
+            <li>Some DLD transactions with foreign parties</li>
+            <li>Notarized property documents</li>
+            <li>Property-related visa applications</li>
+          </ul>
+        </div>
+
+        <div class="cert-card certified">
+          <h4><i class="fas fa-check-circle"></i> Certified Translation Often Sufficient</h4>
+          <ul>
+            <li>Bank mortgage applications (check with your bank)</li>
+            <li>Personal records and reference</li>
+            <li>Internal company documentation</li>
+            <li>Real estate agency requirements</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="cert-note">Not sure which you need? Send us your document and tell us the intended use—we advise on the appropriate certification level. See our <a href="/resources/moj-vs-certified/">complete guide to MOJ vs Certified translation</a>.</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Our Process</h2>
+
+      <div class="process-grid">
+        {processSteps.map(step => (
+          <div class="process-step">
+            <div class="step-number">{step.number}</div>
+            <h4>{step.title}</h4>
+            <p>{step.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Pricing</h2>
+
+      <div class="pricing-info">
+        <p>Property document translation is priced based on document type and length:</p>
+
+        <div class="pricing-table">
+          <div class="pricing-row">
+            <span class="pricing-item">Title Deed (1-2 pages)</span>
+            <span class="pricing-range">From AED 150</span>
+          </div>
+          <div class="pricing-row">
+            <span class="pricing-item">Ejari Contract</span>
+            <span class="pricing-range">From AED 150</span>
+          </div>
+          <div class="pricing-row">
+            <span class="pricing-item">Power of Attorney</span>
+            <span class="pricing-range">From AED 150</span>
+          </div>
+          <div class="pricing-row">
+            <span class="pricing-item">SPA / Developer Contract (per page)</span>
+            <span class="pricing-range">From AED 50/page</span>
+          </div>
+          <div class="pricing-row">
+            <span class="pricing-item">MOJ Stamping</span>
+            <span class="pricing-range">Additional fee</span>
+          </div>
+        </div>
+
+        <p class="pricing-note">Send your document for an exact quote. Volume discounts available for large contracts and agency partnerships.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <RelatedServices
+        pageKey="titleDeedTranslation"
+        title="Related Services"
+        showFamily={true}
+        showCrossSilo={true}
+        maxItems={6}
+      />
+    </div>
+  </section>
+
+  <section class="section bg-light faq-section">
+    <div class="container content-container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container cta-section">
+      <h2>Property Document Translation</h2>
+      <p>Send your title deed, SPA, or property document via WhatsApp. Quote within 60 minutes, most documents same-day.</p>
+      <a href="https://wa.me/971508620217" class="btn btn-primary">
+        <i class="fab fa-whatsapp"></i> Send Your Document
+      </a>
+      <div class="related-links">
+        <span>Related:</span>
+        <a href="/legal-translation-dubai/">Legal Translation</a>
+        <a href="/resources/moj-vs-certified/">MOJ vs Certified</a>
+        <a href="/services/golden-visa-translation/">Golden Visa Translation</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-section { padding: 8rem 0 4rem; background: var(--primary-color); }
+  .breadcrumb { font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 2rem; }
+  .breadcrumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: #ffffff; }
+  .breadcrumb .separator { margin: 0 0.5rem; color: rgba(255, 255, 255, 0.5); }
+  .breadcrumb .current { color: #ffffff; }
+  h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: #ffffff; }
+  .hero-subtitle { font-size: 1.25rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+  .hero-intro { font-size: 1.1rem; line-height: 1.8; max-width: 700px; color: rgba(255, 255, 255, 0.9); margin-bottom: 2rem; }
+  .hero-stats { display: flex; flex-wrap: wrap; gap: 2rem; }
+  .stat-item { display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.9); }
+  .stat-item i { color: var(--accent-color); }
+
+  .section { padding: 4rem 0; }
+  .section h2 { font-size: 1.75rem; margin-bottom: 1rem; color: var(--primary-color); }
+  .section-intro { color: var(--text-muted); margin-bottom: 2rem; max-width: 700px; }
+  .content-container { max-width: 900px; }
+
+  /* Document Grid */
+  .doc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+  .doc-card { display: flex; gap: 1rem; background: #f8f9fa; padding: 1.25rem; border-radius: 0.75rem; }
+  .doc-icon { width: 48px; height: 48px; background: var(--primary-color); color: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0; }
+  .doc-content h3 { margin: 0 0 0.25rem; font-size: 1rem; }
+  .arabic-name { margin: 0 0 0.25rem; color: var(--accent-color); font-size: 0.9rem; direction: rtl; }
+  .doc-desc { margin: 0; color: var(--text-muted); font-size: 0.85rem; }
+
+  /* Use Cases */
+  .use-case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.25rem; }
+  .use-case-card { background: #fff; padding: 1.5rem; border-radius: 0.75rem; text-align: center; }
+  .use-case-card i { font-size: 1.75rem; color: var(--accent-color); margin-bottom: 0.75rem; }
+  .use-case-card h4 { margin: 0 0 0.5rem; font-size: 1rem; }
+  .use-case-card p { margin: 0; color: var(--text-muted); font-size: 0.85rem; }
+
+  /* Certification Grid */
+  .certification-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem; }
+  .cert-card { background: #fff; padding: 1.5rem; border-radius: 0.75rem; }
+  .cert-card.moj { border-left: 4px solid #dc2626; }
+  .cert-card.certified { border-left: 4px solid #059669; }
+  .cert-card h4 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 1rem; font-size: 1rem; }
+  .cert-card.moj h4 i { color: #dc2626; }
+  .cert-card.certified h4 i { color: #059669; }
+  .cert-card ul { margin: 0; padding-left: 1.25rem; }
+  .cert-card li { margin-bottom: 0.4rem; font-size: 0.9rem; }
+  .cert-note { color: var(--text-muted); font-size: 0.95rem; }
+  .cert-note a { color: var(--accent-color); }
+
+  /* Process */
+  .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .process-step { text-align: center; }
+  .step-number { width: 44px; height: 44px; background: var(--accent-color); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-weight: 700; font-size: 1.1rem; }
+  .process-step h4 { margin: 0 0 0.5rem; font-size: 1rem; }
+  .process-step p { margin: 0; color: var(--text-muted); font-size: 0.9rem; }
+
+  /* Pricing */
+  .pricing-info { background: #f8f9fa; padding: 2rem; border-radius: 0.75rem; }
+  .pricing-info > p { margin-bottom: 1.5rem; }
+  .pricing-table { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; }
+  .pricing-row { display: flex; justify-content: space-between; padding: 0.75rem 1rem; background: #fff; border-radius: 0.5rem; }
+  .pricing-item { font-weight: 500; }
+  .pricing-range { color: var(--accent-color); font-weight: 600; }
+  .pricing-note { color: var(--text-muted); font-size: 0.9rem; margin: 0; }
+
+  /* FAQ */
+  .faq-section h2 { margin-bottom: 2rem; }
+  .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { background: #fff; border-radius: 0.75rem; border: 1px solid rgba(0,0,0,0.08); overflow: hidden; }
+  .faq-question { padding: 1.25rem 1.5rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; font-size: 1.5rem; color: var(--accent-color); }
+  details[open] .faq-question::after { content: '−'; }
+  .faq-answer { padding: 0 1.5rem 1.25rem; }
+  .faq-answer p { margin: 0; line-height: 1.7; color: var(--text-body); }
+
+  /* CTA */
+  .cta-section { text-align: center; max-width: 600px; margin: 0 auto; }
+  .cta-section h2 { margin-bottom: 1rem; }
+  .cta-section > p { margin-bottom: 2rem; color: var(--text-muted); }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
+  .btn-primary { background: var(--accent-color); color: #ffffff; }
+  .btn-primary:hover { background: #e0144c; transform: translateY(-2px); }
+  .related-links { margin-top: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; font-size: 0.9rem; }
+  .related-links span { color: var(--text-muted); }
+  .related-links a { color: var(--primary-color); text-decoration: none; }
+  .related-links a:hover { color: var(--accent-color); text-decoration: underline; }
+
+  @media (max-width: 768px) {
+    .process-grid { grid-template-columns: 1fr 1fr; }
+    .hero-stats { flex-direction: column; gap: 1rem; }
+  }
+  @media (max-width: 480px) {
+    .process-grid { grid-template-columns: 1fr; }
+  }
+</style>
