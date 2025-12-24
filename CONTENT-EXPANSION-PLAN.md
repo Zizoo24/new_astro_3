@@ -1,5 +1,9 @@
 # Content Expansion Plan: 600+ Word Client-Focused Sections
 
+> **Primary Reference:** See `CLAUDE.md` Part V for content standards.  
+> **Status:** ✅ Active  
+> **Last Updated:** December 24, 2025
+
 ## Objective
 
 Add a comprehensive content section (under H2: "What You Need to Know") to each service page containing:

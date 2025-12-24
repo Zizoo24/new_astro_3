@@ -1,0 +1,172 @@
+---
+/**
+ * Schema.astro
+ * Unified structured data component for JSON-LD markup
+ * 
+ * This component provides a clean interface for adding Schema.org
+ * structured data to any page. It supports multiple schema types
+ * and automatically handles serialization.
+ * 
+ * Usage:
+ * 
+ * Basic (single schema):
+ * <Schema type="service" data={{ name: "...", description: "..." }} />
+ * 
+ * Multiple schemas:
+ * <Schema schemas={[
+ *   { type: 'service', data: {...} },
+ *   { type: 'faq', data: {...} }
+ * ]} />
+ * 
+ * Raw JSON-LD:
+ * <Schema json={customSchemaObject} />
+ */
+
+import {
+  generateServiceSchema,
+  generateFAQSchema,
+  generateBreadcrumbSchema,
+  generateHowToSchema,
+  generateArticleSchema,
+  generateOrganizationSchema,
+  serializeSchema,
+  createSchemaGraph,
+} from '../lib/schema-utils';
+import { siteConfig } from '../config/site';
+
+type SchemaType = 'organization' | 'service' | 'faq' | 'breadcrumb' | 'howto' | 'article';
+
+interface ServiceData {
+  name: string;
+  description: string;
+  serviceType?: string;
+  price?: number;
+}
+
+interface FAQData {
+  items: Array<{ question: string; answer: string }>;
+}
+
+interface BreadcrumbData {
+  items: Array<{ name: string; url?: string }>;
+}
+
+interface HowToData {
+  name: string;
+  description?: string;
+  steps: Array<{ title: string; text: string }>;
+  totalTime?: string;
+  estimatedCost?: number;
+}
+
+interface ArticleData {
+  headline: string;
+  description: string;
+  image?: string;
+  datePublished: Date;
+  dateModified?: Date;
+  authorName?: string;
+}
+
+interface SchemaEntry {
+  type: SchemaType;
+  data: ServiceData | FAQData | BreadcrumbData | HowToData | ArticleData | Record<string, unknown>;
+}
+
+interface Props {
+  /** Single schema type */
+  type?: SchemaType;
+  /** Data for single schema */
+  data?: Record<string, unknown>;
+  /** Multiple schemas */
+  schemas?: SchemaEntry[];
+  /** Raw JSON-LD object (bypasses generation) */
+  json?: Record<string, unknown>;
+}
+
+const { type, data, schemas, json } = Astro.props;
+
+// Get URLs
+const siteUrl = Astro.site?.origin || siteConfig.url;
+const pageUrl = `${siteUrl}${Astro.url.pathname}`;
+
+/**
+ * Generate schema based on type
+ */
+function generateSchema(schemaType: SchemaType, schemaData: Record<string, unknown>): Record<string, unknown> | null {
+  switch (schemaType) {
+    case 'organization':
+      return generateOrganizationSchema(siteUrl);
+    
+    case 'service':
+      const serviceData = schemaData as ServiceData;
+      return generateServiceSchema({
+        name: serviceData.name,
+        description: serviceData.description,
+        siteUrl,
+        pageUrl,
+        serviceType: serviceData.serviceType,
+        price: serviceData.price,
+      });
+    
+    case 'faq':
+      const faqData = schemaData as FAQData;
+      return generateFAQSchema(faqData.items);
+    
+    case 'breadcrumb':
+      const breadcrumbData = schemaData as BreadcrumbData;
+      return generateBreadcrumbSchema(breadcrumbData.items, siteUrl, Astro.url.pathname);
+    
+    case 'howto':
+      const howtoData = schemaData as HowToData;
+      return generateHowToSchema({
+        name: howtoData.name,
+        description: howtoData.description,
+        steps: howtoData.steps,
+        totalTime: howtoData.totalTime,
+        estimatedCost: howtoData.estimatedCost,
+      });
+    
+    case 'article':
+      const articleData = schemaData as ArticleData;
+      return generateArticleSchema({
+        headline: articleData.headline,
+        description: articleData.description,
+        siteUrl,
+        pageUrl,
+        image: articleData.image,
+        datePublished: articleData.datePublished,
+        dateModified: articleData.dateModified,
+        authorName: articleData.authorName,
+      });
+    
+    default:
+      console.warn(`[Schema] Unknown schema type: ${schemaType}`);
+      return null;
+  }
+}
+
+// Generate output
+let jsonLdOutput = '';
+
+if (json) {
+  // Raw JSON-LD provided
+  jsonLdOutput = serializeSchema(json);
+} else if (schemas && schemas.length > 0) {
+  // Multiple schemas - combine into graph
+  const generatedSchemas = schemas
+    .map(s => generateSchema(s.type, s.data as Record<string, unknown>))
+    .filter(Boolean);
+  jsonLdOutput = createSchemaGraph(...generatedSchemas);
+} else if (type && data) {
+  // Single schema
+  const schema = generateSchema(type, data);
+  if (schema) {
+    jsonLdOutput = serializeSchema(schema);
+  }
+}
+---
+
+{jsonLdOutput && (
+  <script type="application/ld+json" set:html={jsonLdOutput} />
+)}

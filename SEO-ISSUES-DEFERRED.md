@@ -1,6 +1,10 @@
 # SEO Issues - Deferred / Requires Human Decision
 
-**Created**: 2025-12-17
+**Created**: 2025-12-17  
+**Last Updated**: 2025-12-24  
+**Status**: ✅ Active  
+**Master Reference**: See `CLAUDE.md` Part VIII Section 8.6
+
 **Purpose**: Document SEO issues that cannot be automatically fixed and require human decision-making or content creation.
 
 ---

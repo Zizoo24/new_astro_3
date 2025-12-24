@@ -65,18 +65,21 @@ new_astro_3/
 │   │   ├── Footer.astro        # Site footer
 │   │   ├── MobileShell.astro   # Mobile navigation wrapper
 │   │   ├── Sidebar.astro       # Slide-out sidebar menu
+│   │   ├── SEO.astro           # Advanced SEO meta component
+│   │   ├── Schema.astro        # Type-safe structured data
+│   │   ├── Breadcrumb.astro    # Breadcrumbs with JSON-LD
 │   │   └── ...
-│   ├── content/                # Astro Content Collections
-│   │   ├── config.ts           # Zod schemas for content
-│   │   ├── core/               # Core site content (home, about)
-│   │   ├── services/           # Service pages content
-│   │   └── blog/               # Blog posts
+│   ├── config/                 # Site configuration
+│   │   └── site.ts             # Centralized SEO/brand config
 │   ├── data/                   # TypeScript data sources
-│   │   ├── navigation.ts       # Nav menu structure (SINGLE SOURCE OF TRUTH)
+│   │   ├── navigation.ts       # Nav menu structure (SINGLE SOURCE)
 │   │   └── servicesGrid.ts     # Homepage services grid
 │   ├── layouts/                # Page layouts
-│   │   ├── BaseLayout.astro    # Root layout (head, scripts)
-│   │   └── ServiceLayout.astro # Service page template
+│   │   ├── BaseLayout.astro    # Root layout (head, scripts, noindex)
+│   │   └── ServiceLayout.astro # Service page template (auto-schema)
+│   ├── lib/                    # Utility functions
+│   │   ├── schema-utils.ts     # Schema.org generators
+│   │   └── og-template.ts      # OG image configuration
 │   ├── pages/                  # File-based routing
 │   │   ├── index.astro         # Homepage
 │   │   ├── services/           # Service pages
@@ -88,7 +91,12 @@ new_astro_3/
 │       ├── tokens.css          # CSS custom properties
 │       └── sections/           # Section-specific styles
 ├── public/                     # Static assets (copied as-is)
-│   └── assets/images/          # Non-optimized images
+│   ├── assets/images/          # Non-optimized images
+│   └── assets/images/og/       # Generated OG images
+├── scripts/                    # Build/utility scripts
+│   └── generate-og-images.js   # OG image generator
+├── docs/                       # Documentation
+│   └── SEO-IMPLEMENTATION-PLAN.md
 ├── astro.config.mjs            # Astro configuration
 ├── package.json                # Dependencies
 └── vercel.json                 # Vercel deployment config
@@ -104,9 +112,9 @@ new_astro_3/
 | Deployment | Vercel |
 | Styling | CSS (custom tokens, @layer architecture) |
 | Icons | Font Awesome 6 |
-| Content | Astro Content Collections + Zod |
 | Images | astro:assets (optimized) |
-| CMS | TinaCMS (in progress) |
+| Analytics | Vercel Analytics + Speed Insights |
+| SEO | Custom components (SEO.astro, Schema.astro) |
 
 ---
 
@@ -149,18 +157,23 @@ src/data/navigation.ts  →  Header-porto.astro
 # 🔴 KNOWN ISSUES (As of Dec 2024)
 
 ## Critical
-1. **Card badges floating** — `.service-card-v2` missing `position: relative`
-2. **Header scroll glitch** — JS-based spacer height causing reflow
-3. **Duplicate IDs** — `#sidebarToggle` in Header + MobileShell
+1. ~~**Card badges floating**~~ — FIXED
+2. ~~**Header scroll glitch**~~ — FIXED
+3. ~~**Duplicate IDs**~~ — FIXED
 
 ## High Priority
-4. **Missing page 404** — `/resources/moj-vs-certified/` in nav but doesn't exist
-5. **No MOJ credentials displayed** — Audit criticism
-6. **No team/translator info** — "Black box" perception
+4. ~~**Missing page 404**~~ — `/resources/moj-vs-certified/` now exists
+5. ~~**No MOJ credentials displayed**~~ — FIXED (TrustBar component)
+6. ~~**No team/translator info**~~ — FIXED
 
 ## Medium
-7. **TinaCMS migration incomplete** — Branch sync issues with Tina Cloud
-8. **Legacy WordPress 404s** — Old URLs still indexed by Google
+7. **TinaCMS** — REMOVED (site is pure Astro now)
+8. ~~**Legacy WordPress 404s**~~ — Redirects configured in vercel.json
+
+## Current Focus
+- Content expansion (see CONTENT-EXPANSION-PLAN.md)
+- Blog production (15-30 posts/month target)
+- OG image generation for key pages
 
 ---
 
@@ -222,6 +235,9 @@ Verify: MOJ Hotline 800 333333
 ---
 
 # 🚀 QUICK START FOR NEW AGENT
+
+## 0. Read the Master Blueprint
+**MANDATORY:** Read `CLAUDE.md` before making any changes.
 
 ## 1. Understand the Structure
 Fetch and read these files first:
@@ -291,13 +307,33 @@ Components auto-import from this source
 
 # 📎 RELATED DOCUMENTS
 
-For detailed implementation guides, search previous conversations for:
-- "AUDIT-RESPONSE-PLAN.md" — Trust rehabilitation strategy
-- "Header-porto-FIXED-v2.astro" — Scroll glitch fix
-- "MojCredentialBadge.astro" — Credential display component
-- "TranslatorProfile.astro" — Team section component
-- "moj-vs-certified/index.astro" — Missing page content
+**Primary Reference (MUST READ):**
+- `CLAUDE.md` — Master strategic blueprint (brand voice, content rules, SEO)
+
+**Active Documentation:**
+- `docs/SEO-IMPLEMENTATION-PLAN.md` — SEO infrastructure details
+- `TASKS.md` — UI/Component task tracking
+- `CONTENT-EXPANSION-PLAN.md` — Content strategy
+- `COLOR_PALETTE_BLUEPRINT.md` — Design tokens
+
+**Superseded (Do Not Use):**
+- `SEO-REPAIR-ROADMAP.md` — Merged into CLAUDE.md Part VIII
+- `SEO_FIXES_COMPLETE.md` — Merged into CLAUDE.md Part VIII
+- `TINACMS_MIGRATION_PLAN.md` — CMS was removed
 
 ---
 
-*Last Updated: December 16, 2025*
+*Last Updated: December 24, 2025*
+
+---
+
+## 📚 DOCUMENTATION HIERARCHY
+
+| Document | Purpose | Priority |
+|----------|---------|----------|
+| `CLAUDE.md` | Master strategic blueprint | 🔴 READ FIRST |
+| `AI-AGENT-ONBOARDING.md` | Quick start (this file) | 🟡 Reference |
+| `docs/SEO-IMPLEMENTATION-PLAN.md` | SEO infrastructure details | 🟢 Technical |
+| `TASKS.md` | UI/Component tasks | 🟢 Active |
+| `CONTENT-EXPANSION-PLAN.md` | Content strategy | 🟢 Active |
+| `COLOR_PALETTE_BLUEPRINT.md` | Design tokens | 🟢 Reference |

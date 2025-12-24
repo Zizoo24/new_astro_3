@@ -1,9 +1,18 @@
 # OnlineTranslation.ae - Task Backlog
 
 > **Primary Reference:** See `CLAUDE.md` for all strategic guidance.
-> SEO tasks tracked in Part VIII of CLAUDE.md.
+> **SEO Infrastructure:** See `CLAUDE.md` Part IV and `docs/SEO-IMPLEMENTATION-PLAN.md`
 
-This document tracks component/UI tasks. For SEO tasks, see CLAUDE.md Part VIII.
+This document tracks component/UI tasks only.
+
+---
+
+## Quick Links
+
+- **Master Blueprint:** `CLAUDE.md`
+- **SEO Details:** `docs/SEO-IMPLEMENTATION-PLAN.md`
+- **Content Plan:** `CONTENT-EXPANSION-PLAN.md`
+- **Colors:** `COLOR_PALETTE_BLUEPRINT.md`
 
 ---
 

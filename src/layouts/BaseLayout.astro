@@ -11,6 +11,10 @@ interface Props {
   canonical?: string;
   ogImage?: string;
   isHomepage?: boolean;
+  /** Set to true to add noindex meta tag (use for thank-you pages, 404, etc.) */
+  noindex?: boolean;
+  /** Set to true to add nofollow meta tag */
+  nofollow?: boolean;
 }
 
 const {
@@ -18,8 +22,18 @@ const {
   description,
   canonical = Astro.url.pathname,
   ogImage = '/assets/images/og-image.jpg',
-  isHomepage = false
+  isHomepage = false,
+  noindex = false,
+  nofollow = false
 } = Astro.props;
+
+// Generate robots meta content based on props
+const robotsContent = (() => {
+  const directives: string[] = [];
+  directives.push(noindex ? 'noindex' : 'index');
+  directives.push(nofollow ? 'nofollow' : 'follow');
+  return directives.join(', ');
+})();
 
 // Use Astro.site from config for consistent URL handling
 const siteUrl = Astro.site?.origin || 'https://onlinetranslation.ae';
@@ -52,8 +66,8 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
   <title>{title}</title>
   <meta name="description" content={description}>
   <meta name="author" content="OnlineTranslation.ae">
-  <meta name="robots" content="index, follow">
-  <meta name="googlebot" content="index, follow">
+  <meta name="robots" content={robotsContent}>
+  <meta name="googlebot" content={robotsContent}>
   <link rel="canonical" href={fullCanonical}>
 
   <!-- Hreflang tags for internationalization -->

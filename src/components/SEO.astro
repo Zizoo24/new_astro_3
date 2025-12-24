@@ -1,0 +1,137 @@
+---
+/**
+ * SEO.astro
+ * Advanced SEO meta component with validation and structured output
+ * 
+ * This component provides:
+ * - Title templating with site name
+ * - Length validation warnings (dev mode)
+ * - Robots meta control
+ * - Open Graph and Twitter cards
+ * - Canonical URL generation
+ * 
+ * Usage:
+ * <SEO 
+ *   title="Birth Certificate Translation Dubai"
+ *   description="Professional MOJ-certified birth certificate translation..."
+ * />
+ */
+
+import { siteConfig, generateTitle, validateTitle, validateDescription } from '../config/site';
+
+interface Props {
+  /** Page title (without site name - will be appended automatically) */
+  title: string;
+  /** Meta description (aim for 70-155 characters) */
+  description: string;
+  /** Override canonical URL (defaults to current page) */
+  canonical?: string;
+  /** Open Graph image path */
+  ogImage?: string;
+  /** Prevent indexing (for thank-you, 404, etc.) */
+  noindex?: boolean;
+  /** Prevent following links */
+  nofollow?: boolean;
+  /** Page type for Open Graph (default: website) */
+  ogType?: 'website' | 'article' | 'product';
+  /** Article publish date (for og:article) */
+  publishedTime?: Date;
+  /** Article modified date */
+  modifiedTime?: Date;
+  /** Article author */
+  author?: string;
+  /** Focus keywords for content (informational, not meta keywords) */
+  keywords?: string[];
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage = siteConfig.seo.defaultOgImage,
+  noindex = false,
+  nofollow = false,
+  ogType = 'website',
+  publishedTime,
+  modifiedTime,
+  author,
+  keywords = [],
+} = Astro.props;
+
+// Generate full title with template
+const fullTitle = generateTitle(title);
+
+// Get site URL
+const siteUrl = Astro.site?.origin || siteConfig.url;
+
+// Generate canonical URL
+const canonicalUrl = canonical 
+  ? (canonical.startsWith('http') ? canonical : `${siteUrl}${canonical}`)
+  : `${siteUrl}${Astro.url.pathname}`;
+
+// Generate full OG image URL
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+
+// Build robots directive
+const robotsContent = [
+  noindex ? 'noindex' : 'index',
+  nofollow ? 'nofollow' : 'follow',
+].join(', ');
+
+// Development-only validation warnings
+const isDev = import.meta.env.DEV;
+const titleWarning = isDev ? validateTitle(fullTitle) : null;
+const descWarning = isDev ? validateDescription(description) : null;
+
+// Log warnings in development
+if (isDev && titleWarning) {
+  console.warn(`[SEO] ${Astro.url.pathname}: ${titleWarning}`);
+}
+if (isDev && descWarning) {
+  console.warn(`[SEO] ${Astro.url.pathname}: ${descWarning}`);
+}
+---
+
+<!-- Primary Meta Tags -->
+<title>{fullTitle}</title>
+<meta name="title" content={fullTitle} />
+<meta name="description" content={description} />
+<meta name="author" content={author || siteConfig.name} />
+<meta name="robots" content={robotsContent} />
+<meta name="googlebot" content={robotsContent} />
+<link rel="canonical" href={canonicalUrl} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:locale" content={siteConfig.locales.default.replace('-', '_')} />
+<meta property="og:site_name" content={siteConfig.name} />
+
+{ogType === 'article' && publishedTime && (
+  <meta property="article:published_time" content={publishedTime.toISOString()} />
+)}
+{ogType === 'article' && modifiedTime && (
+  <meta property="article:modified_time" content={modifiedTime.toISOString()} />
+)}
+{ogType === 'article' && author && (
+  <meta property="article:author" content={author} />
+)}
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalUrl} />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+
+<!-- Hreflang for internationalization -->
+<link rel="alternate" hreflang={siteConfig.locales.default} href={canonicalUrl} />
+<link rel="alternate" hreflang="ar" href={`${siteUrl}/عربي/`} />
+<link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+
+{/* Development warnings as HTML comments */}
+{isDev && titleWarning && <Fragment set:html={`<!-- SEO WARNING: ${titleWarning} -->`} />}
+{isDev && descWarning && <Fragment set:html={`<!-- SEO WARNING: ${descWarning} -->`} />}

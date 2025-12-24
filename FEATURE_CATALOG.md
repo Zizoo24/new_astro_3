@@ -1,6 +1,8 @@
 # Feature Catalog: Original HTML vs Astro Implementation
 
-> **Primary Reference:** See `CLAUDE.md` for all strategic guidance.
+> **Primary Reference:** See `CLAUDE.md` for all strategic guidance.  
+> **Status:** ✅ Reference Document  
+> **Last Updated:** December 24, 2025
 
 This document catalogs all features from the original static HTML site to track migration completeness.
 

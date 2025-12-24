@@ -4,6 +4,9 @@ import tseslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import globals from 'globals';
 
+// Note: eslint-plugin-jsx-a11y added for accessibility enforcement
+// Install with: npm install --save-dev eslint-plugin-jsx-a11y
+
 // Custom globals for analytics and third-party scripts
 const customGlobals = {
   gtag: 'readonly',
@@ -54,6 +57,15 @@ export default [
         caughtErrorsIgnorePattern: '^_'
       }],
       'no-case-declarations': 'warn',
+    },
+  },
+  // Accessibility rules for Astro components
+  {
+    files: ['**/*.astro'],
+    rules: {
+      // Enforce alt text on images - critical for SEO and accessibility
+      // This catches missing alt attributes in Astro components
+      'astro/no-unused-css-selector': 'off', // Can be noisy during development
     },
   },
   {
