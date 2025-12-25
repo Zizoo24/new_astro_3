@@ -805,6 +805,69 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
+/* Hero Highlight Box - Checklist Style */
+.hero-highlight-box {
+  background: linear-gradient(135deg, rgba(255, 22, 84, 0.08) 0%, rgba(255, 22, 84, 0.04) 100%);
+  border: 1px solid rgba(255, 22, 84, 0.2);
+  border-left: 4px solid var(--accent-coral, #FF1654);
+  border-radius: 0 0.75rem 0.75rem 0;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.hero-highlight-box h4 {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-heading, #0E2B48);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hero-highlight-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hero-highlight-box li {
+  position: relative;
+  padding: 0.5rem 0 0.5rem 1.75rem;
+  line-height: 1.6;
+  border-bottom: 1px solid rgba(255, 22, 84, 0.1);
+}
+
+.hero-highlight-box li:last-child {
+  border-bottom: none;
+}
+
+.hero-highlight-box li::before {
+  content: '☐';
+  position: absolute;
+  left: 0;
+  color: var(--accent-coral, #FF1654);
+  font-size: 1rem;
+}
+
+/* Hero Feature Grid with SVG Icons */
+.hero-feature-item svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--accent-coral, #FF1654);
+  margin-bottom: 0.5rem;
+}
+
+/* Dark mode for highlight box */
+body.theme-dark .hero-highlight-box {
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(255, 107, 107, 0.05) 100%);
+  border-color: rgba(255, 107, 107, 0.3);
+}
+
+body.theme-dark .hero-highlight-box li {
+  border-bottom-color: rgba(255, 107, 107, 0.15);
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .hero-feature-grid {
