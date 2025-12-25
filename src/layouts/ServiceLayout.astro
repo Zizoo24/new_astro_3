@@ -184,7 +184,7 @@ const howToSchema = processSteps && processSteps.length > 0 ? {
         <div class="col col--8">
           <h1 class="hero-title">{heroTitle}</h1>
           {heroSubtitle && <h2 class="hero-subtitle-accent">{heroSubtitle}</h2>}
-          <p class="hero-intro">{heroIntro}</p>
+          <div class="hero-intro" set:html={heroIntro} />
 
           <div class="service-snapshot">
             {snapshot.map(item => (
@@ -289,9 +289,52 @@ const howToSchema = processSteps && processSteps.length > 0 ? {
   
   .hero-intro {
     font-size: 1.1rem;
-    line-height: 1.7;
+    line-height: 1.8;
     margin-bottom: 1.5rem;
-    max-width: 700px;
+    max-width: 70ch; /* Optimal reading width */
+  }
+
+  /* Prose styling for heroIntro content */
+  .hero-intro p {
+    margin-bottom: 1.25em;
+  }
+
+  .hero-intro p:last-child {
+    margin-bottom: 0;
+  }
+
+  .hero-intro a {
+    color: var(--accent-color, #FF1654);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s ease;
+  }
+
+  .hero-intro a:hover {
+    color: var(--accent-coral-hover, #e0134a);
+  }
+
+  .hero-intro strong {
+    font-weight: 600;
+    color: inherit;
+  }
+
+  .hero-intro ul,
+  .hero-intro ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .hero-intro li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  .hero-intro h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 1.5rem 0 0.75rem;
+    color: inherit;
   }
   
   .hero-cta-group {
