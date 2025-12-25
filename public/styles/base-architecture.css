@@ -1311,10 +1311,11 @@ body.theme-dark p, body.theme-dark li {
 
 /* ============================================
    METRICS STRIP - Compact 4-Column Grid
+   FIXED: White text on coral for proper contrast
    ============================================ */
 .ot-metrics {
     background: linear-gradient(135deg, var(--brand-coral, #FF1654) 0%, var(--brand-coral-dark, #e01346) 100%);
-    color: var(--text-light, #ffffff);
+    color: #ffffff;
     padding-block: var(--space-lg);
 }
 
@@ -1334,12 +1335,13 @@ body.theme-dark p, body.theme-dark li {
     gap: var(--space-xs);
 }
 
+/* FIXED: Metric values now white for contrast on coral */
 .ot-metric-value {
     font-family: var(--font-primary, 'Montserrat', sans-serif);
     font-size: var(--fs-xl);
     font-weight: 700;
     line-height: 1;
-    color: var(--brand-navy, #0E2B48);
+    color: #ffffff !important;
 }
 
 .ot-metric-label {
@@ -1347,12 +1349,14 @@ body.theme-dark p, body.theme-dark li {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    color: #ffffff !important;
     opacity: 0.95;
 }
 
 .ot-metric-note {
     font-size: var(--fs-xs);
-    opacity: 0.8;
+    color: #ffffff !important;
+    opacity: 0.85;
 }
 
 /* Metrics - Tablet (2 columns) */
@@ -1379,15 +1383,19 @@ body.theme-dark p, body.theme-dark li {
     }
 }
 
-/* Dark mode metrics */
+/* Dark mode metrics - white text maintained */
 [data-theme="dark"] .ot-metrics,
 body.theme-dark .ot-metrics {
     background: linear-gradient(135deg, #8b1a1f 0%, #6b1419 100%);
 }
 
 [data-theme="dark"] .ot-metric-value,
-body.theme-dark .ot-metric-value {
-    color: var(--text-light, #ffffff);
+body.theme-dark .ot-metric-value,
+[data-theme="dark"] .ot-metric-label,
+body.theme-dark .ot-metric-label,
+[data-theme="dark"] .ot-metric-note,
+body.theme-dark .ot-metric-note {
+    color: #ffffff;
 }
 
 /* ============================================

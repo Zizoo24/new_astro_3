@@ -107,6 +107,12 @@ details.faq-item summary {
   list-style: none;
   gap: 1rem;
   transition: background-color 0.2s ease;
+  /* Ensure button is clickable */
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
 }
 
 .faq-question:hover,
@@ -167,21 +173,32 @@ details.faq-item[open] summary::after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
 }
 
-/* Answer styling */
+/* Answer styling - FIXED: Hidden by default, shown when open */
 .faq-answer,
 .faq-item .faq-answer {
-  padding: 0 1.5rem 1.25rem;
-  line-height: 1.75;
-  color: var(--text-body);
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 1.5rem;
+    line-height: 1.75;
+    color: var(--text-body);
+    transition: max-height 0.35s ease, padding 0.35s ease;
+}
+
+/* Show answer when FAQ item is open - CRITICAL FIX */
+.faq-item.is-open .faq-answer,
+.faq-item[open] .faq-answer,
+details.faq-item[open] .faq-answer {
+    max-height: 500px; /* Large enough for any answer */
+    padding: 0 1.5rem 1.25rem;
 }
 
 .faq-answer p {
-  margin: 0 0 0.75rem;
-  color: var(--text-body);
+    margin: 0 0 0.75rem;
+    color: var(--text-body);
 }
 
 .faq-answer p:last-child {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 /* ============================================
@@ -1087,4 +1104,167 @@ section:not(.bg-dark):not(.contact-section) .form-group label {
 .bg-light .form-group textarea:focus {
   border-color: var(--primary-color, #0a1628);
   box-shadow: 0 0 0 3px rgba(10, 22, 40, 0.1);
+}
+
+/* ============================================
+   10. BUTTON TEXT COLOR FIXES
+   Ensures all buttons have proper white text
+   regardless of background color inheritance
+   ============================================ */
+
+/* ============================================
+   BUTTON TEXT COLOR SYSTEM
+   CRITICAL: Buttons must have white text on 
+   colored backgrounds regardless of parent
+   link color inheritance.
+   
+   This overrides the global link color system
+   for interactive buttons and CTAs.
+   ============================================ */
+
+/* Primary CTA buttons - MUST have white text */
+.hero-cta,
+.exodus-cta,
+.cta-btn,
+.team-cta,
+.about-cta,
+.submit-btn,
+.btn--primary,
+.btn-primary,
+.btn-coral,
+.btn,
+a.hero-cta,
+a.exodus-cta,
+a.cta-btn,
+a.team-cta,
+a.about-cta,
+a.btn,
+a.btn--primary,
+a.btn-primary,
+a.btn-coral,
+button.submit-btn,
+button.btn,
+button.btn--primary {
+    color: #ffffff !important;
+}
+
+.hero-cta:hover,
+.exodus-cta:hover,
+.cta-btn:hover,
+.team-cta:hover,
+.about-cta:hover,
+.submit-btn:hover,
+.btn:hover,
+.btn--primary:hover,
+a.btn:hover {
+    color: #ffffff !important;
+}
+
+/* Contact buttons on dark background */
+.contact-btn {
+    color: #ffffff !important;
+}
+
+.contact-btn:hover {
+    color: #ffffff !important;
+}
+
+/* WhatsApp buttons - always white text */
+.contact-btn.whatsapp,
+a.contact-btn.whatsapp {
+    background: #25D366;
+    color: #ffffff !important;
+}
+
+/* Hero CTA group buttons */
+.hero-cta-group .hero-cta,
+.hero-cta-group a.hero-cta {
+    color: #ffffff !important;
+}
+
+/* Secondary/outline CTAs can have different color */
+.hero-cta-secondary,
+a.hero-cta-secondary {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.hero-cta-secondary:hover,
+a.hero-cta-secondary:hover {
+    color: #ffffff !important;
+}
+
+/* Dark mode button text - still white */
+body.theme-dark .hero-cta,
+body.theme-dark .exodus-cta,
+body.theme-dark .cta-btn,
+body.theme-dark .team-cta,
+body.theme-dark .about-cta,
+body.theme-dark .submit-btn,
+body.theme-dark .btn,
+body.theme-dark .btn--primary,
+body.theme-dark a.btn {
+    color: #ffffff !important;
+}
+
+/* ============================================
+   BUTTONS ON CORAL BACKGROUNDS
+   Coral strip, metrics, CTA banners
+   ============================================ */
+.ot-metrics a,
+.ot-metrics button,
+.bg-accent a,
+.bg-accent button,
+[style*="background: #FF1654"] a,
+[style*="background:#FF1654"] a,
+[style*="background: var(--accent-coral)"] a {
+    color: #ffffff !important;
+}
+
+/* Light mode: Any link/button on coral background = white */
+.ot-metrics .btn,
+.bg-coral .btn,
+.coral-strip a,
+.coral-banner a {
+    color: #ffffff !important;
+}
+
+/* ============================================
+   11. LANGUAGES SECTION - ICON COLOR FIX
+   Golden icons on navy background, proper 
+   highlight for "20+ More" item
+   ============================================ */
+
+/* Language items on dark navy background */
+.languages-section .language-item,
+.exodus-languages .language-item {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 500;
+}
+
+/* Globe icons - golden for visibility on navy */
+.languages-section .language-item i,
+.exodus-languages .language-item i {
+    color: var(--accent-gold-light, #d4a54c) !important;
+    font-size: 1.1em;
+}
+
+/* Highlight "20+ More" item - use white text with gold accent */
+.languages-section .language-item.highlight,
+.exodus-languages .language-item.highlight {
+    background: linear-gradient(135deg, rgba(212, 165, 76, 0.25), rgba(255, 255, 255, 0.1));
+    color: #ffffff !important;
+    font-weight: 600;
+    border: 1px solid rgba(212, 165, 76, 0.4);
+}
+
+/* Gold icon for highlight item */
+.languages-section .language-item.highlight i,
+.exodus-languages .language-item.highlight i {
+    color: var(--accent-gold-light, #d4a54c) !important;
 }
