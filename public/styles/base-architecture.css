@@ -653,6 +653,61 @@ body.theme-dark .header-mobile a.header-title {
 }
 
 /* ============================================
+   INLINE LINKS IN CONTENT - Light Mode
+   ============================================ */
+
+/* Section paragraph links - visible teal with underline */
+.section p a,
+section p a,
+.container p a,
+main p a {
+    color: var(--link-color, #0077b6);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: color 0.2s ease;
+}
+
+.section p a:hover,
+section p a:hover,
+.container p a:hover,
+main p a:hover {
+    color: var(--accent-coral, #FF1654);
+    text-decoration-thickness: 2px;
+}
+
+/* List item links */
+.section li a,
+section li a,
+.container li a,
+main li a {
+    color: var(--link-color, #0077b6);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: color 0.2s ease;
+}
+
+.section li a:hover,
+section li a:hover,
+.container li a:hover,
+main li a:hover {
+    color: var(--accent-coral, #FF1654);
+}
+
+/* Dark background links - ensure visibility */
+.bg-dark p a,
+.bg-dark li a {
+    color: var(--accent-coral, #ff6b6b);
+    text-decoration: underline;
+}
+
+.bg-dark p a:hover,
+.bg-dark li a:hover {
+    color: var(--text-on-dark, #ffffff);
+}
+
+/* ============================================
    CTA SECTIONS - Navy Background Text Override
    Ensures proper contrast when cta-section has
    navy/dark background (either via bg class or inline)
