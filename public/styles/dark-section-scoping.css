@@ -1,0 +1,544 @@
+/**
+ * dark-section-scoping.css
+ * 
+ * ROOT CAUSE FIX: Proper scoping for [data-theme="dark"] sections
+ * 
+ * PROBLEM: Sections like .hero-section have data-theme="dark" but CSS variables
+ * only change when body.theme-dark is set. This causes gray text on navy backgrounds.
+ * 
+ * SOLUTION: Use @layer cascade to ensure dark section styles always win,
+ * regardless of body theme state.
+ * 
+ * REPLACES: visibility-fixes.css, contrast-fixes.css, visual-relief.css, global-fixes.css
+ */
+
+/* ==========================================================================
+   LAYER DEFINITIONS - Establishes cascade order
+   ========================================================================== */
+@layer base, components, dark-sections, utilities;
+
+/* ==========================================================================
+   DARK SECTION SCOPING - The actual fix
+   
+   Any element with [data-theme="dark"] or within a dark background class
+   gets proper light-on-dark text colors regardless of body theme state.
+   ========================================================================== */
+@layer dark-sections {
+  
+  /* --------------------------------------------------------------------------
+     Primary dark section containers
+     -------------------------------------------------------------------------- */
+  [data-theme="dark"],
+  .bg-dark,
+  .bg-navy,
+  .hero-section,
+  .page-hero,
+  .category-hero,
+  .cta-section,
+  .cta-banner,
+  .languages-section,
+  .footer,
+  footer,
+  .surface-navy,
+  [style*="background: #0E2B48"],
+  [style*="background:#0E2B48"],
+  [style*="background-color: #0E2B48"],
+  [style*="background-color:#0E2B48"],
+  [style*="background: var(--surface-navy)"],
+  [style*="background-color: var(--surface-navy)"] {
+    /* Force light text on dark backgrounds */
+    --text-heading: #f4f7fc;
+    --text-body: #dfe8f5;
+    --text-secondary: #c5d4e8;
+    --text-muted: #9fb2c9;
+    --text-subtle: #7a8fa6;
+    --link-color: #7fd1ff;
+    --link-hover: #ffe178;
+  }
+
+  /* --------------------------------------------------------------------------
+     Headings in dark sections
+     -------------------------------------------------------------------------- */
+  [data-theme="dark"] h1,
+  [data-theme="dark"] h2,
+  [data-theme="dark"] h3,
+  [data-theme="dark"] h4,
+  [data-theme="dark"] h5,
+  [data-theme="dark"] h6,
+  .bg-dark h1, .bg-dark h2, .bg-dark h3, .bg-dark h4, .bg-dark h5, .bg-dark h6,
+  .bg-navy h1, .bg-navy h2, .bg-navy h3, .bg-navy h4, .bg-navy h5, .bg-navy h6,
+  .hero-section h1, .hero-section h2, .hero-section h3,
+  .page-hero h1, .page-hero h2, .page-hero h3,
+  .cta-section h2, .cta-section h3,
+  .cta-banner h2, .cta-banner h3,
+  .languages-section h2,
+  .footer h3, .footer h4,
+  footer h3, footer h4 {
+    color: #f4f7fc;
+    color: var(--text-on-dark, #f4f7fc);
+  }
+
+  /* --------------------------------------------------------------------------
+     Paragraphs and body text in dark sections
+     -------------------------------------------------------------------------- */
+  [data-theme="dark"] p,
+  [data-theme="dark"] li,
+  .bg-dark p, .bg-dark li,
+  .bg-navy p, .bg-navy li,
+  .hero-section p, .hero-section li,
+  .hero-section .hero-intro,
+  .hero-section .hero-lead,
+  .page-hero p, .page-hero li,
+  .cta-section p,
+  .cta-banner p,
+  .languages-section p,
+  .footer p, .footer li,
+  footer p, footer li {
+    color: #dfe8f5;
+    color: var(--text-on-dark-muted, #dfe8f5);
+  }
+
+  /* --------------------------------------------------------------------------
+     Links in dark sections
+     -------------------------------------------------------------------------- */
+  [data-theme="dark"] a:not(.btn):not([class*="btn-"]),
+  .bg-dark a:not(.btn):not([class*="btn-"]),
+  .bg-navy a:not(.btn):not([class*="btn-"]),
+  .hero-section a:not(.btn):not([class*="btn-"]):not(.breadcrumb a),
+  .cta-section a:not(.btn):not([class*="btn-"]),
+  .cta-banner a:not(.btn):not([class*="btn-"]),
+  .languages-section a:not(.btn):not([class*="btn-"]) {
+    color: #7fd1ff;
+    color: var(--link-on-dark, #7fd1ff);
+  }
+
+  [data-theme="dark"] a:not(.btn):not([class*="btn-"]):hover,
+  .bg-dark a:not(.btn):not([class*="btn-"]):hover,
+  .bg-navy a:not(.btn):not([class*="btn-"]):hover,
+  .hero-section a:not(.btn):not([class*="btn-"]):not(.breadcrumb a):hover,
+  .cta-section a:not(.btn):not([class*="btn-"]):hover,
+  .cta-banner a:not(.btn):not([class*="btn-"]):hover {
+    color: #ffe178;
+    color: var(--link-on-dark-hover, #ffe178);
+  }
+
+  /* --------------------------------------------------------------------------
+     Breadcrumbs in dark sections
+     -------------------------------------------------------------------------- */
+  [data-theme="dark"] .breadcrumb,
+  [data-theme="dark"] .breadcrumb a,
+  [data-theme="dark"] .breadcrumbs,
+  [data-theme="dark"] .breadcrumbs a,
+  .hero-section .breadcrumb,
+  .hero-section .breadcrumb a,
+  .page-hero .breadcrumb,
+  .page-hero .breadcrumb a,
+  .bg-dark .breadcrumb,
+  .bg-dark .breadcrumb a,
+  .bg-navy .breadcrumb,
+  .bg-navy .breadcrumb a {
+    color: rgba(244, 247, 252, 0.85);
+  }
+
+  [data-theme="dark"] .breadcrumb a:hover,
+  .hero-section .breadcrumb a:hover,
+  .page-hero .breadcrumb a:hover,
+  .bg-dark .breadcrumb a:hover,
+  .bg-navy .breadcrumb a:hover {
+    color: #fff;
+  }
+
+  [data-theme="dark"] .breadcrumb .separator,
+  .hero-section .breadcrumb .separator,
+  .page-hero .breadcrumb .separator {
+    color: rgba(244, 247, 252, 0.6);
+  }
+
+  [data-theme="dark"] .breadcrumb .current,
+  .hero-section .breadcrumb .current,
+  .page-hero .breadcrumb .current {
+    color: #fff;
+  }
+
+  /* --------------------------------------------------------------------------
+     Snapshot/stats items in hero sections
+     -------------------------------------------------------------------------- */
+  .hero-section .snapshot-item,
+  .hero-section .snapshot-item span,
+  .page-hero .snapshot-item,
+  .page-hero .snapshot-item span,
+  [data-theme="dark"] .snapshot-item,
+  [data-theme="dark"] .snapshot-item span {
+    color: #f4f7fc;
+  }
+
+  .hero-section .snapshot-item strong,
+  .page-hero .snapshot-item strong,
+  [data-theme="dark"] .snapshot-item strong {
+    color: #fff;
+  }
+
+  .hero-section .snapshot-item i,
+  .page-hero .snapshot-item i,
+  [data-theme="dark"] .snapshot-item i {
+    color: #7fd1ff;
+  }
+
+  /* --------------------------------------------------------------------------
+     Hero badge/eyebrow
+     -------------------------------------------------------------------------- */
+  .hero-section .hero-badge,
+  .hero-section .hero-eyebrow,
+  .page-hero .hero-badge,
+  [data-theme="dark"] .hero-badge {
+    color: #7fd1ff;
+  }
+
+  /* --------------------------------------------------------------------------
+     Hero bullets
+     -------------------------------------------------------------------------- */
+  .hero-section .hero-bullets li,
+  .page-hero .hero-bullets li,
+  [data-theme="dark"] .hero-bullets li {
+    color: #f4f7fc;
+  }
+
+  .hero-section .hero-bullets i,
+  .page-hero .hero-bullets i,
+  [data-theme="dark"] .hero-bullets i {
+    color: var(--accent-coral, #ff1654);
+  }
+
+  /* --------------------------------------------------------------------------
+     Section labels in dark areas
+     -------------------------------------------------------------------------- */
+  [data-theme="dark"] .section-label,
+  .bg-dark .section-label,
+  .bg-navy .section-label,
+  .languages-section .section-label {
+    color: #7fd1ff;
+  }
+
+  /* --------------------------------------------------------------------------
+     Languages grid items
+     -------------------------------------------------------------------------- */
+  .languages-section .language-item {
+    color: #f4f7fc;
+  }
+
+  .languages-section .language-item i {
+    color: var(--accent-coral, #ff1654);
+  }
+
+  .languages-section .language-item.highlight {
+    color: #ffe178;
+  }
+
+  .languages-section .languages-note {
+    color: #c5d4e8;
+  }
+
+  /* --------------------------------------------------------------------------
+     Sidebar and mobile navigation (always dark)
+     -------------------------------------------------------------------------- */
+  #menu-sidebar,
+  .sidebar-menu,
+  .mobile-menu {
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(14, 43, 72, 0.98);
+  }
+
+  .sidebar-menu a,
+  .sidebar-menu a:hover,
+  .sidebar-nav a,
+  .sidebar-nav a:hover,
+  .mobile-menu a,
+  .mobile-menu a:hover,
+  .sidebar-brand-name {
+    color: var(--text-on-dark, #f4f7fc);
+  }
+
+  .sidebar-tagline {
+    color: var(--text-on-dark-muted, #c5d4e8);
+  }
+
+  .brand-suffix {
+    color: var(--accent-coral, #ff1654);
+  }
+
+  .sidebar-section-title {
+    border-top-color: var(--border-on-dark, rgba(255,255,255,0.2));
+    color: var(--text-on-dark-muted, #c5d4e8);
+  }
+
+  .sidebar-section-title:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-on-dark, #f4f7fc);
+  }
+
+  .sidebar-accordion-content li a {
+    color: var(--text-on-dark-muted, #c5d4e8);
+  }
+
+  .sidebar-accordion-content li a:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-on-dark, #f4f7fc);
+  }
+
+  .sidebar-nav ul li a i {
+    color: var(--accent-coral, #ff1654);
+  }
+
+  /* --------------------------------------------------------------------------
+     WhatsApp buttons (always green with white text)
+     -------------------------------------------------------------------------- */
+  .btn-whatsapp,
+  .mobile-action-btn--whatsapp {
+    --whatsapp-green: #25d366;
+    background: var(--whatsapp-green);
+    color: #fff;
+  }
+
+  /* --------------------------------------------------------------------------
+     Contact section in dark mode
+     -------------------------------------------------------------------------- */
+  .contact-section.bg-dark,
+  .contact-section.bg-navy {
+    color: #f4f7fc;
+  }
+
+  .contact-section.bg-dark h2,
+  .contact-section.bg-navy h2 {
+    color: #f4f7fc;
+  }
+
+  .contact-section.bg-dark p,
+  .contact-section.bg-navy p,
+  .contact-section.bg-dark .contact-description {
+    color: #dfe8f5;
+  }
+
+  .contact-section.bg-dark label,
+  .contact-section.bg-navy label {
+    color: #f4f7fc;
+  }
+
+  .contact-section.bg-dark input,
+  .contact-section.bg-dark textarea,
+  .contact-section.bg-navy input,
+  .contact-section.bg-navy textarea {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #f4f7fc;
+  }
+
+  .contact-section.bg-dark input::placeholder,
+  .contact-section.bg-dark textarea::placeholder,
+  .contact-section.bg-navy input::placeholder,
+  .contact-section.bg-navy textarea::placeholder {
+    color: rgba(244, 247, 252, 0.6);
+  }
+
+}
+
+/* ==========================================================================
+   METRICS STRIP - Coral background, always white text
+   ========================================================================== */
+@layer dark-sections {
+  
+  .ot-metrics {
+    background: linear-gradient(135deg, var(--brand-coral, #ff1654) 0%, var(--brand-coral-dark, #e01346) 100%);
+    color: #fff;
+  }
+
+  .ot-metric-value,
+  .ot-metric-label,
+  .ot-metric-note {
+    color: #fff !important;
+  }
+
+  /* Dark theme variant */
+  [data-theme="dark"] .ot-metrics,
+  body.theme-dark .ot-metrics {
+    background: linear-gradient(135deg, #8b1a1f 0%, #6b1419 100%);
+  }
+
+}
+
+/* ==========================================================================
+   BUTTON TEXT COLORS - Ensure buttons always have proper text
+   ========================================================================== */
+@layer dark-sections {
+
+  /* All buttons with colored backgrounds should have white text */
+  a.btn,
+  a.btn--primary,
+  a.btn-coral,
+  a.hero-cta,
+  a.sidebar-cta,
+  a.header-cta,
+  a.announcement-btn,
+  a.announcement-cta,
+  a[class*="btn-"],
+  button.btn,
+  button.btn--primary,
+  button.btn-coral {
+    color: #fff !important;
+  }
+
+  /* Outline buttons inherit context color */
+  a.btn--outline,
+  a.btn-outline {
+    color: inherit !important;
+  }
+
+}
+
+/* ==========================================================================
+   CARD PRESERVATION - Cards inside dark sections keep their own colors
+   ========================================================================== */
+@layer dark-sections {
+
+  /* Cards are light surfaces even in dark sections */
+  [data-theme="dark"] .card,
+  [data-theme="dark"] .service-card,
+  [data-theme="dark"] .service-card-v2,
+  .bg-dark .card,
+  .bg-dark .service-card,
+  .bg-dark .service-card-v2,
+  .bg-navy .card,
+  .bg-navy .service-card,
+  .bg-navy .service-card-v2 {
+    /* Cards retain light background */
+    background: var(--surface-base, #fff);
+    color: var(--text-heading, #0e2b48);
+  }
+
+  [data-theme="dark"] .card h3,
+  [data-theme="dark"] .card h4,
+  [data-theme="dark"] .card-title,
+  .bg-dark .card h3,
+  .bg-dark .card h4,
+  .bg-dark .card-title {
+    color: var(--text-heading, #0e2b48);
+  }
+
+  [data-theme="dark"] .card p,
+  [data-theme="dark"] .card-description,
+  .bg-dark .card p,
+  .bg-dark .card-description {
+    color: var(--text-muted, #5a6a7a);
+  }
+
+}
+
+/* ==========================================================================
+   FOOTER SPECIFIC - Always dark
+   ========================================================================== */
+@layer dark-sections {
+
+  .footer,
+  footer {
+    background-color: var(--surface-navy, #0e2b48);
+    color: #f4f7fc;
+  }
+
+  .footer a,
+  footer a {
+    color: #c5d4e8;
+  }
+
+  .footer a:hover,
+  footer a:hover {
+    color: var(--accent-coral, #ff1654);
+  }
+
+  .footer-social a,
+  .social-links a {
+    color: #c5d4e8;
+  }
+
+  .footer-social a:hover,
+  .social-links a:hover {
+    color: #7fd1ff;
+  }
+
+}
+
+/* ==========================================================================
+   OVERLAP CARDS (Trust Stack) - Special handling
+   ========================================================================== */
+@layer dark-sections {
+
+  .overlap-cards-wrapper .overlap-card {
+    background: var(--surface-base, #fff);
+    color: var(--text-heading, #0e2b48);
+  }
+
+  .overlap-cards-wrapper .overlap-card-title {
+    color: var(--text-heading, #0e2b48);
+  }
+
+  .overlap-cards-wrapper .overlap-card-desc {
+    color: var(--text-muted, #5a6a7a);
+  }
+
+  .overlap-cards-wrapper .overlap-card-icon {
+    color: var(--accent-coral, #ff1654);
+  }
+
+  .overlap-cards-wrapper .overlap-card-badge {
+    color: var(--accent-coral, #ff1654);
+  }
+
+}
+
+/* ==========================================================================
+   ACCORDION FIXES IN DARK SECTIONS
+   ========================================================================== */
+@layer dark-sections {
+
+  .sidebar-accordion-heading {
+    color: var(--text-on-dark, #f4f7fc);
+  }
+
+  .sidebar-accordion-heading .accordion-chevron {
+    color: var(--text-on-dark-muted, #c5d4e8);
+  }
+
+  .sidebar-accordion-panel a {
+    color: var(--text-on-dark-muted, #c5d4e8);
+  }
+
+  .sidebar-accordion-panel a:hover {
+    color: var(--text-on-dark, #f4f7fc);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+}
+
+/* ==========================================================================
+   PRINT OVERRIDE - Ensure dark sections print properly
+   ========================================================================== */
+@media print {
+  [data-theme="dark"],
+  .bg-dark,
+  .bg-navy,
+  .hero-section,
+  .cta-section,
+  .footer,
+  footer {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  [data-theme="dark"] h1,
+  [data-theme="dark"] h2,
+  [data-theme="dark"] h3,
+  [data-theme="dark"] p,
+  .hero-section h1,
+  .hero-section p {
+    color: #000 !important;
+  }
+}
