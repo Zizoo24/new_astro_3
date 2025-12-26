@@ -449,6 +449,12 @@ export const serviceLinks: Record<string, ServiceLink> = {
     icon: "fas fa-balance-scale",
     badge: "NEW"
   },
+  mojCertified: {
+    url: "/resources/moj-certified/",
+    text: "Authenticated Translation Guide",
+    full: "Complete guide to authenticated translation in UAE",
+    icon: "fas fa-stamp"
+  },
 
   // ========================================
   // INDUSTRIES
@@ -867,8 +873,13 @@ export const pageRelationships: Record<string, PageRelationships> = {
     crossSilo: ["legalTranslation", "goldenVisa", "attestation"]
   },
   mojVsCertified: {
-    related: ["legalTranslation", "certificateTranslation", "pricingGuide", "attestation"],
+    related: ["legalTranslation", "certificateTranslation", "pricingGuide", "attestation", "mojCertified"],
     crossSilo: ["goldenVisa", "contracts", "poa", "birthCertificate", "marriageCertificate", "degree"]
+  },
+  mojCertified: {
+    related: ["mojVsCertified", "legalTranslation", "attestation", "mofaAttestation", "certificateTranslation"],
+    family: ["mojVsCertified", "attestationGuide", "pricingGuide"],
+    crossSilo: ["goldenVisa", "birthCertificate", "marriageCertificate", "degree", "pcc", "poa", "contracts"]
   },
 
   // ========================================
