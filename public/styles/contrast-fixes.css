@@ -13,60 +13,117 @@
    ============================================ */
 
 /* ============================================
-   CRITICAL: GRAY TEXT ON NAVY PREVENTION
+   CRITICAL: GRAY TEXT ON NAVY PREVENTION - LIGHT MODE
 
    NEVER use muted/gray text colors on navy backgrounds.
    This rule enforces high-contrast text on all dark
-   sections in both light and dark mode.
+   sections in LIGHT MODE specifically.
 
-   Affected classes: .bg-dark, [data-theme="dark"],
-   .hero-section, .surface-navy
+   Affected classes: .bg-dark, .hero-section, .surface-navy
+   Uses !important to override global-fixes.css rules
    ============================================ */
 
-/* Force bright text on navy/dark sections - LIGHT MODE */
-.bg-dark,
-[data-theme="dark"],
-.hero-section,
-.surface-navy,
-section[class*="navy"],
-div[class*="navy"] {
-  /* Override any gray/muted text colors */
-  --text-color-override: var(--text-on-dark);
+/* Force bright text on navy/dark sections - LIGHT MODE ONLY */
+/* These rules apply when NOT in dark theme mode */
+body:not(.theme-dark) .bg-dark,
+body:not(.theme-dark) .hero-section,
+body:not(.theme-dark) .surface-navy,
+body:not(.theme-dark) section[class*="navy"],
+body:not(.theme-dark) div[class*="navy"],
+body:not(.theme-dark) .cta-section {
+  color: #f4f7fc !important;
 }
 
-.bg-dark *,
-[data-theme="dark"] *,
-.hero-section *,
-.surface-navy * {
-  /* Ensure all text uses high-contrast colors */
-  color: inherit;
+/* Hero section headings - LIGHT MODE */
+body:not(.theme-dark) .hero-section h1,
+body:not(.theme-dark) .hero-section h2,
+body:not(.theme-dark) .hero-section h3,
+body:not(.theme-dark) .bg-dark h1,
+body:not(.theme-dark) .bg-dark h2,
+body:not(.theme-dark) .bg-dark h3 {
+  color: #f4f7fc !important;
 }
 
-/* Specific overrides for text elements on dark backgrounds */
-.bg-dark p,
-.bg-dark span:not(.keyword):not(.badge):not(.table-badge),
-.bg-dark li,
-[data-theme="dark"] p,
-[data-theme="dark"] span:not(.keyword):not(.badge):not(.table-badge),
-[data-theme="dark"] li,
-.hero-section p,
-.hero-section span:not(.keyword):not(.badge):not(.table-badge),
-.hero-section li {
-  color: var(--text-on-dark) !important;
+/* Hero intro text - CRITICAL FIX for gray-on-navy */
+body:not(.theme-dark) .hero-section .hero-intro,
+body:not(.theme-dark) .hero-section p,
+body:not(.theme-dark) .bg-dark .hero-intro,
+body:not(.theme-dark) .bg-dark p:not(.card p) {
+  color: #f4f7fc !important;
   opacity: 0.95;
 }
 
-/* Preserve link colors on dark backgrounds */
-.bg-dark a:not(.btn),
-[data-theme="dark"] a:not(.btn),
-.hero-section a:not(.btn) {
-  color: var(--link-on-dark) !important;
+/* Hero badge/label text */
+body:not(.theme-dark) .hero-section .hero-badge,
+body:not(.theme-dark) .bg-dark .hero-badge {
+  color: #7fd1ff !important;
 }
 
-.bg-dark a:not(.btn):hover,
-[data-theme="dark"] a:not(.btn):hover,
-.hero-section a:not(.btn):hover {
-  color: var(--link-on-dark-hover) !important;
+/* Service snapshot items in hero */
+body:not(.theme-dark) .hero-section .snapshot-item,
+body:not(.theme-dark) .hero-section .snapshot-item span,
+body:not(.theme-dark) .bg-dark .snapshot-item,
+body:not(.theme-dark) .bg-dark .snapshot-item span {
+  color: #f4f7fc !important;
+}
+
+body:not(.theme-dark) .hero-section .snapshot-item strong,
+body:not(.theme-dark) .bg-dark .snapshot-item strong {
+  color: #ffffff !important;
+}
+
+body:not(.theme-dark) .hero-section .snapshot-item i,
+body:not(.theme-dark) .bg-dark .snapshot-item i {
+  color: #7fd1ff !important;
+}
+
+/* Breadcrumb on hero sections - LIGHT MODE */
+body:not(.theme-dark) .hero-section .breadcrumb,
+body:not(.theme-dark) .hero-section .breadcrumb a,
+body:not(.theme-dark) .bg-dark .breadcrumb,
+body:not(.theme-dark) .bg-dark .breadcrumb a {
+  color: rgba(244, 247, 252, 0.85) !important;
+}
+
+body:not(.theme-dark) .hero-section .breadcrumb a:hover,
+body:not(.theme-dark) .bg-dark .breadcrumb a:hover {
+  color: #ffffff !important;
+}
+
+body:not(.theme-dark) .hero-section .breadcrumb .separator,
+body:not(.theme-dark) .bg-dark .breadcrumb .separator {
+  color: rgba(244, 247, 252, 0.6) !important;
+}
+
+body:not(.theme-dark) .hero-section .breadcrumb .current,
+body:not(.theme-dark) .bg-dark .breadcrumb .current {
+  color: #ffffff !important;
+}
+
+/* CTA section text on navy background - LIGHT MODE */
+body:not(.theme-dark) .cta-section h2 {
+  color: #f4f7fc !important;
+}
+
+body:not(.theme-dark) .cta-section p {
+  color: rgba(244, 247, 252, 0.9) !important;
+}
+
+/* List items on dark backgrounds */
+body:not(.theme-dark) .hero-section li,
+body:not(.theme-dark) .bg-dark li:not(.card li) {
+  color: #f4f7fc !important;
+}
+
+/* Preserve link colors on dark backgrounds */
+body:not(.theme-dark) .bg-dark a:not(.btn):not(.card a),
+body:not(.theme-dark) .hero-section a:not(.btn):not(.breadcrumb a) {
+  color: #7fd1ff !important;
+}
+
+body:not(.theme-dark) .bg-dark a:not(.btn):not(.card a):hover,
+body:not(.theme-dark) .hero-section a:not(.btn):not(.breadcrumb a):hover {
+  color: #ffe178 !important;
 }
 
 @layer states {

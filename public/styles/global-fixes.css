@@ -424,40 +424,117 @@ article p,
   color: var(--text-body);
 }
 
-/* Fix light gray labels */
+/* Fix light gray labels - EXCLUDE hero sections on dark backgrounds */
 .pricing-time,
 .pricing-unit,
-.form-note,
-.hero-intro,
-.category-hero .hero-intro {
+.form-note {
   color: var(--text-secondary);
 }
 
-/* On dark backgrounds, ensure proper contrast */
+/* Hero intro - default gray for light backgrounds */
+/* NOTE: Don't use :not() with descendant selectors - browsers don't support it */
+.category-hero:not(.bg-dark) .hero-intro {
+  color: var(--text-secondary);
+}
+
+/* CRITICAL: Hero/dark background text must be BRIGHT - hardcoded for reliability */
+/* These rules override any CSS variable issues */
+.hero-section .hero-intro,
+.bg-dark .hero-intro,
+[data-theme="dark"] .hero-intro {
+  color: #f4f7fc !important;
+  opacity: 0.95;
+}
+
+.hero-section p,
+.bg-dark p:not(.card p),
+[data-theme="dark"] p:not(.card p) {
+  color: #f4f7fc !important;
+  opacity: 0.95;
+}
+
+.hero-section h1,
+.hero-section h2,
+.hero-section h3,
+.bg-dark h1,
+.bg-dark h2,
+.bg-dark h3 {
+  color: #f4f7fc !important;
+}
+
+/* On dark backgrounds - ensure all text is bright */
 .bg-dark .text-muted,
-.bg-dark p,
 .bg-dark .section-intro {
-  color: var(--text-on-dark-muted) !important;
+  color: #c5d4e8 !important;
 }
 
 /* Breadcrumb contrast on dark - WCAG AA compliant */
 .breadcrumb a,
 .breadcrumb-list a,
 .category-hero .breadcrumb a,
-.hero-section .breadcrumb a {
-  color: var(--text-on-dark-muted) !important;
+.hero-section .breadcrumb a,
+.bg-dark .breadcrumb a {
+  color: rgba(244, 247, 252, 0.85) !important;
+}
+
+.hero-section .breadcrumb,
+.bg-dark .breadcrumb {
+  color: rgba(244, 247, 252, 0.85) !important;
+}
+
+.hero-section .breadcrumb .separator,
+.bg-dark .breadcrumb .separator {
+  color: rgba(244, 247, 252, 0.6) !important;
+}
+
+.hero-section .breadcrumb .current,
+.bg-dark .breadcrumb .current {
+  color: #ffffff !important;
+}
+
+/* Hero badge/label - teal accent */
+.hero-section .hero-badge,
+.bg-dark .hero-badge,
+[data-theme="dark"] .hero-badge {
+  color: #7fd1ff !important;
+}
+
+/* Service snapshot items in hero */
+.hero-section .snapshot-item,
+.hero-section .snapshot-item span,
+.bg-dark .snapshot-item,
+.bg-dark .snapshot-item span,
+.hero-section .service-snapshot,
+.bg-dark .service-snapshot {
+  color: #f4f7fc !important;
+}
+
+.hero-section .snapshot-item strong,
+.bg-dark .snapshot-item strong {
+  color: #ffffff !important;
+}
+
+.hero-section .snapshot-item i,
+.bg-dark .snapshot-item i {
+  color: #7fd1ff !important;
+}
+
+/* List items on dark backgrounds */
+.hero-section li,
+.bg-dark li:not(.card li) {
+  color: #f4f7fc !important;
 }
 
 .breadcrumb .separator,
 .breadcrumb-sep,
 .category-hero .breadcrumb .separator,
 .hero-section .breadcrumb .separator {
-  color: var(--text-on-dark-subtle) !important;
+  color: rgba(244, 247, 252, 0.6) !important;
 }
 
 .breadcrumb .current,
 .breadcrumb-list span[aria-current] {
-  color: var(--text-on-dark);
+  color: #f4f7fc !important;
 }
 
 /* Form labels and placeholders */
