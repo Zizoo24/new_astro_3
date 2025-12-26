@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotation - OnlineTranslation.ae</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           OnlineTranslation.ae Quotation Template
+           Matches website theme and branding
+           ============================================ */
+
+        :root {
+            /* Brand Colors */
+            --brand-navy: #0E2B48;
+            --brand-navy-dark: #072035;
+            --brand-coral: #FF1654;
+            --brand-coral-dark: #e01346;
+            --brand-gold: #d4a54c;
+            --brand-gold-light: #f0e6d3;
+
+            /* Text Colors */
+            --text-heading: #0E2B48;
+            --text-body: #2d3748;
+            --text-muted: #5a6a7a;
+            --text-light: #f4f7fc;
+
+            /* Surfaces */
+            --surface-white: #ffffff;
+            --surface-light: #f8f9fa;
+            --surface-muted: #f0f2f5;
+
+            /* Borders */
+            --border-light: #e2e8f0;
+            --border-medium: #cbd5e1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-body);
+            background: var(--surface-white);
+        }
+
+        /* ============================================
+           Document Container
+           ============================================ */
+        .quotation {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background: var(--surface-white);
+        }
+
+        /* ============================================
+           Header Section
+           ============================================ */
+        .quotation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom: 30px;
+            border-bottom: 3px solid var(--brand-navy);
+            margin-bottom: 30px;
+        }
+
+        .company-info {
+            flex: 1;
+        }
+
+        .company-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--brand-navy);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--surface-white);
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .company-name {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--brand-navy);
+            letter-spacing: -0.5px;
+        }
+
+        .company-name span {
+            color: var(--brand-coral);
+        }
+
+        .company-tagline {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .company-details {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .company-details strong {
+            color: var(--text-heading);
+            font-weight: 600;
+        }
+
+        .quotation-meta {
+            text-align: right;
+            min-width: 200px;
+        }
+
+        .quotation-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--brand-navy);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .quotation-number,
+        .quotation-date,
+        .quotation-valid {
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .quotation-number strong,
+        .quotation-date strong,
+        .quotation-valid strong {
+            color: var(--text-heading);
+            font-weight: 600;
+        }
+
+        .quotation-number span,
+        .quotation-date span,
+        .quotation-valid span {
+            color: var(--text-muted);
+            display: block;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ============================================
+           Client Section
+           ============================================ */
+        .client-section {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .client-box {
+            flex: 1;
+            padding: 20px;
+            background: var(--surface-light);
+            border-radius: 8px;
+            border-left: 4px solid var(--brand-navy);
+        }
+
+        .client-box-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--brand-coral);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .client-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+
+        .client-details {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .editable {
+            border-bottom: 1px dashed var(--border-medium);
+            min-width: 150px;
+            display: inline-block;
+            padding: 2px 4px;
+            background: var(--surface-white);
+        }
+
+        /* ============================================
+           Service Table
+           ============================================ */
+        .services-section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--brand-navy);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--brand-coral);
+            display: inline-block;
+        }
+
+        .services-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .services-table thead {
+            background: var(--brand-navy);
+            color: var(--text-light);
+        }
+
+        .services-table th {
+            padding: 12px 15px;
+            text-align: left;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .services-table th:last-child,
+        .services-table th:nth-child(3),
+        .services-table th:nth-child(4) {
+            text-align: right;
+        }
+
+        .services-table tbody tr {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .services-table tbody tr:nth-child(even) {
+            background: var(--surface-light);
+        }
+
+        .services-table td {
+            padding: 15px;
+            font-size: 13px;
+        }
+
+        .services-table td:last-child,
+        .services-table td:nth-child(3),
+        .services-table td:nth-child(4) {
+            text-align: right;
+        }
+
+        .service-name {
+            font-weight: 600;
+            color: var(--text-heading);
+        }
+
+        .service-description {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* ============================================
+           Totals Section
+           ============================================ */
+        .totals-section {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 30px;
+        }
+
+        .totals-box {
+            width: 320px;
+            border: 2px solid var(--brand-navy);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .totals-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .totals-row:last-child {
+            border-bottom: none;
+        }
+
+        .totals-row.subtotal {
+            background: var(--surface-light);
+        }
+
+        .totals-row.grand-total {
+            background: var(--brand-navy);
+            color: var(--text-light);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .totals-label {
+            font-size: 13px;
+        }
+
+        .totals-value {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .totals-row.grand-total .totals-label,
+        .totals-row.grand-total .totals-value {
+            font-size: 16px;
+        }
+
+        .currency {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-right: 4px;
+        }
+
+        .totals-row.grand-total .currency {
+            color: var(--text-light);
+            opacity: 0.8;
+        }
+
+        /* ============================================
+           Notes & Terms Section
+           ============================================ */
+        .notes-terms {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .notes-box,
+        .terms-box {
+            flex: 1;
+        }
+
+        .box-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--brand-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--brand-gold);
+        }
+
+        .notes-content,
+        .terms-content {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .terms-content ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+
+        .terms-content li {
+            margin-bottom: 4px;
+        }
+
+        /* ============================================
+           Payment Info
+           ============================================ */
+        .payment-section {
+            background: var(--surface-light);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--brand-gold);
+        }
+
+        .payment-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--brand-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 30px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .payment-method strong {
+            color: var(--text-heading);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* ============================================
+           Footer Section
+           ============================================ */
+        .quotation-footer {
+            border-top: 3px solid var(--brand-navy);
+            padding-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .footer-contact {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .footer-contact strong {
+            color: var(--text-heading);
+            font-weight: 600;
+        }
+
+        .footer-contact a {
+            color: var(--brand-coral);
+            text-decoration: none;
+        }
+
+        .footer-legal {
+            text-align: right;
+            font-size: 11px;
+            color: var(--text-muted);
+            max-width: 280px;
+        }
+
+        .moj-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--brand-navy);
+            color: var(--text-light);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            margin-bottom: 10px;
+        }
+
+        .moj-badge strong {
+            font-weight: 700;
+        }
+
+        /* ============================================
+           Signature Section
+           ============================================ */
+        .signature-section {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+            padding-top: 20px;
+        }
+
+        .signature-box {
+            flex: 1;
+            text-align: center;
+        }
+
+        .signature-line {
+            border-bottom: 1px solid var(--text-heading);
+            height: 50px;
+            margin-bottom: 8px;
+        }
+
+        .signature-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ============================================
+           Print Styles
+           ============================================ */
+        @media print {
+            body {
+                background: white;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .quotation {
+                max-width: 100%;
+                margin: 0;
+                padding: 20px;
+            }
+
+            .services-table thead {
+                background: var(--brand-navy) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .totals-row.grand-total {
+                background: var(--brand-navy) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .moj-badge {
+                background: var(--brand-navy) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .editable {
+                border-bottom: none;
+                background: transparent;
+            }
+
+            @page {
+                size: A4;
+                margin: 15mm;
+            }
+        }
+
+        /* ============================================
+           Responsive
+           ============================================ */
+        @media (max-width: 600px) {
+            .quotation {
+                padding: 20px;
+            }
+
+            .quotation-header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .quotation-meta {
+                text-align: left;
+            }
+
+            .client-section {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .notes-terms {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .services-table {
+                font-size: 12px;
+            }
+
+            .services-table th,
+            .services-table td {
+                padding: 10px 8px;
+            }
+
+            .quotation-footer {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .footer-legal {
+                text-align: center;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quotation">
+        <!-- Header -->
+        <header class="quotation-header">
+            <div class="company-info">
+                <div class="company-logo">
+                    <div class="logo-icon">OT</div>
+                    <div class="company-name">OnlineTranslation<span>.ae</span></div>
+                </div>
+                <div class="company-tagline">MOJ-Certified Legal Translation Services</div>
+                <div class="company-details">
+                    <strong>Partner:</strong> Arkan Legal Translation<br>
+                    <strong>Location:</strong> Dubai, United Arab Emirates<br>
+                    <strong>WhatsApp:</strong> +971 50 862 0217<br>
+                    <strong>Email:</strong> info@onlinetranslation.ae
+                </div>
+            </div>
+            <div class="quotation-meta">
+                <div class="quotation-title">Quotation</div>
+                <div class="quotation-number">
+                    <span>Quote Number</span>
+                    <strong class="editable" contenteditable="true">QT-2025-001</strong>
+                </div>
+                <div class="quotation-date">
+                    <span>Date Issued</span>
+                    <strong class="editable" contenteditable="true">December 26, 2025</strong>
+                </div>
+                <div class="quotation-valid">
+                    <span>Valid Until</span>
+                    <strong class="editable" contenteditable="true">January 26, 2026</strong>
+                </div>
+            </div>
+        </header>
+
+        <!-- Client Information -->
+        <section class="client-section">
+            <div class="client-box">
+                <div class="client-box-title">Bill To</div>
+                <div class="client-name editable" contenteditable="true">Client Name / Company</div>
+                <div class="client-details">
+                    <span class="editable" contenteditable="true">Client Address Line 1</span><br>
+                    <span class="editable" contenteditable="true">City, Country</span><br>
+                    <span class="editable" contenteditable="true">client@email.com</span><br>
+                    <span class="editable" contenteditable="true">+971 XX XXX XXXX</span>
+                </div>
+            </div>
+            <div class="client-box">
+                <div class="client-box-title">Project Details</div>
+                <div class="client-details">
+                    <strong>Project:</strong> <span class="editable" contenteditable="true">Document Translation</span><br>
+                    <strong>Language Pair:</strong> <span class="editable" contenteditable="true">Arabic to English</span><br>
+                    <strong>Service Type:</strong> <span class="editable" contenteditable="true">MOJ Legal Translation</span><br>
+                    <strong>Urgency:</strong> <span class="editable" contenteditable="true">Standard (24-48 hours)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Table -->
+        <section class="services-section">
+            <h2 class="section-title">Services & Pricing</h2>
+            <table class="services-table">
+                <thead>
+                    <tr>
+                        <th style="width: 45%">Service Description</th>
+                        <th style="width: 15%">Qty / Pages</th>
+                        <th style="width: 20%">Unit Price</th>
+                        <th style="width: 20%">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="service-name editable" contenteditable="true">MOJ Legal Translation - Birth Certificate</div>
+                            <div class="service-description">Arabic to English, MOJ-certified with stamp</div>
+                        </td>
+                        <td class="editable" contenteditable="true">1</td>
+                        <td><span class="currency">AED</span><span class="editable" contenteditable="true">150.00</span></td>
+                        <td><span class="currency">AED</span><span class="editable" contenteditable="true">150.00</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="service-name editable" contenteditable="true">MOJ Legal Translation - Marriage Certificate</div>
+                            <div class="service-description">Arabic to English, MOJ-certified with stamp</div>
+                        </td>
+                        <td class="editable" contenteditable="true">1</td>
+                        <td><span class="currency">AED</span><span class="editable" contenteditable="true">150.00</span></td>
+                        <td><span class="currency">AED</span><span class="editable" contenteditable="true">150.00</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="service-name editable" contenteditable="true">Express Delivery</div>
+                            <div class="service-description">Same-day completion within 4 hours</div>
+                        </td>
+                        <td class="editable" contenteditable="true">1</td>
+                        <td><span class="currency">AED</span><span class="editable" contenteditable="true">50.00</span></td>
+                        <td><span class="currency">AED</span><span class="editable" contenteditable="true">50.00</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="service-name editable" contenteditable="true">[Additional Service]</div>
+                            <div class="service-description editable" contenteditable="true">Description of service</div>
+                        </td>
+                        <td class="editable" contenteditable="true">-</td>
+                        <td><span class="currency">AED</span><span class="editable" contenteditable="true">0.00</span></td>
+                        <td><span class="currency">AED</span><span class="editable" contenteditable="true">0.00</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Totals -->
+        <section class="totals-section">
+            <div class="totals-box">
+                <div class="totals-row subtotal">
+                    <span class="totals-label">Subtotal</span>
+                    <span class="totals-value"><span class="currency">AED</span><span class="editable" contenteditable="true">350.00</span></span>
+                </div>
+                <div class="totals-row">
+                    <span class="totals-label">VAT (5%)</span>
+                    <span class="totals-value"><span class="currency">AED</span><span class="editable" contenteditable="true">17.50</span></span>
+                </div>
+                <div class="totals-row">
+                    <span class="totals-label">Discount</span>
+                    <span class="totals-value"><span class="currency">AED</span><span class="editable" contenteditable="true">0.00</span></span>
+                </div>
+                <div class="totals-row grand-total">
+                    <span class="totals-label">Grand Total</span>
+                    <span class="totals-value"><span class="currency">AED</span><span class="editable" contenteditable="true">367.50</span></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notes & Terms -->
+        <section class="notes-terms">
+            <div class="notes-box">
+                <h3 class="box-title">Notes</h3>
+                <div class="notes-content editable" contenteditable="true">
+                    Thank you for choosing OnlineTranslation.ae for your translation needs.
+                    This quotation is valid for 30 days from the date of issue.
+                    Prices may vary based on document complexity and urgency requirements.
+                </div>
+            </div>
+            <div class="terms-box">
+                <h3 class="box-title">Terms & Conditions</h3>
+                <div class="terms-content">
+                    <ul>
+                        <li>50% advance payment required to begin work</li>
+                        <li>Balance due upon completion before delivery</li>
+                        <li>All translations are MOJ-certified</li>
+                        <li>Revisions included at no extra cost</li>
+                        <li>Digital delivery via WhatsApp/Email</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Payment Information -->
+        <section class="payment-section">
+            <h3 class="payment-title">Payment Methods</h3>
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <strong>Bank Transfer</strong>
+                    Bank Name: [Bank Name]<br>
+                    Account: [Account Number]<br>
+                    IBAN: [IBAN]
+                </div>
+                <div class="payment-method">
+                    <strong>WhatsApp Pay</strong>
+                    Send payment via WhatsApp to:<br>
+                    +971 50 862 0217
+                </div>
+                <div class="payment-method">
+                    <strong>Cash on Delivery</strong>
+                    Available for Dubai<br>
+                    delivery locations
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="quotation-footer">
+            <div class="footer-contact">
+                <strong>Questions about this quote?</strong><br>
+                WhatsApp: <a href="https://wa.me/971508620217">+971 50 862 0217</a><br>
+                Email: <a href="mailto:info@onlinetranslation.ae">info@onlinetranslation.ae</a><br>
+                Website: <a href="https://onlinetranslation.ae">onlinetranslation.ae</a>
+            </div>
+            <div class="footer-legal">
+                <div class="moj-badge">
+                    <span>MOJ License</span>
+                    <strong>#701</strong>
+                </div>
+                <p>
+                    Services executed by MOJ-Licensed Partner: Arkan Legal Translation.<br>
+                    Translator: Khaled Mohamed Abdulwahab Al-Adl<br>
+                    Verify: MOJ Hotline 800 333333
+                </p>
+            </div>
+        </footer>
+
+        <!-- Optional Signature Section -->
+        <section class="signature-section">
+            <div class="signature-box">
+                <div class="signature-line"></div>
+                <div class="signature-label">Client Signature & Date</div>
+            </div>
+            <div class="signature-box">
+                <div class="signature-line"></div>
+                <div class="signature-label">OnlineTranslation.ae Representative</div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Auto-calculate totals (optional enhancement)
+        // This is a simple placeholder - can be expanded for auto-calculation
+        document.querySelectorAll('.editable').forEach(el => {
+            el.addEventListener('blur', function() {
+                // Placeholder for auto-calculation logic
+                console.log('Field updated:', this.textContent);
+            });
+        });
+    </script>
+</body>
+</html>

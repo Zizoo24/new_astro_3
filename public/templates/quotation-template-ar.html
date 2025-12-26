@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عرض سعر - OnlineTranslation.ae</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           OnlineTranslation.ae Quotation Template
+           Arabic RTL Version
+           ============================================ */
+
+        :root {
+            /* Brand Colors */
+            --brand-navy: #0E2B48;
+            --brand-navy-dark: #072035;
+            --brand-coral: #FF1654;
+            --brand-coral-dark: #e01346;
+            --brand-gold: #d4a54c;
+            --brand-gold-light: #f0e6d3;
+
+            /* Text Colors */
+            --text-heading: #0E2B48;
+            --text-body: #2d3748;
+            --text-muted: #5a6a7a;
+            --text-light: #f4f7fc;
+
+            /* Surfaces */
+            --surface-white: #ffffff;
+            --surface-light: #f8f9fa;
+            --surface-muted: #f0f2f5;
+
+            /* Borders */
+            --border-light: #e2e8f0;
+            --border-medium: #cbd5e1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Kufi Arabic', 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 14px;
+            line-height: 1.8;
+            color: var(--text-body);
+            background: var(--surface-white);
+            direction: rtl;
+        }
+
+        /* ============================================
+           Document Container
+           ============================================ */
+        .quotation {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background: var(--surface-white);
+        }
+
+        /* ============================================
+           Header Section
+           ============================================ */
+        .quotation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom: 30px;
+            border-bottom: 3px solid var(--brand-navy);
+            margin-bottom: 30px;
+        }
+
+        .company-info {
+            flex: 1;
+        }
+
+        .company-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--brand-navy);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--surface-white);
+            font-size: 24px;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .company-name {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--brand-navy);
+            letter-spacing: -0.5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .company-name span {
+            color: var(--brand-coral);
+        }
+
+        .company-tagline {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .company-details {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 2;
+        }
+
+        .company-details strong {
+            color: var(--text-heading);
+            font-weight: 600;
+        }
+
+        .quotation-meta {
+            text-align: left;
+            min-width: 200px;
+        }
+
+        .quotation-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--brand-navy);
+            margin-bottom: 20px;
+        }
+
+        .quotation-number,
+        .quotation-date,
+        .quotation-valid {
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .quotation-number strong,
+        .quotation-date strong,
+        .quotation-valid strong {
+            color: var(--text-heading);
+            font-weight: 600;
+        }
+
+        .quotation-number span,
+        .quotation-date span,
+        .quotation-valid span {
+            color: var(--text-muted);
+            display: block;
+            font-size: 11px;
+        }
+
+        /* ============================================
+           Client Section
+           ============================================ */
+        .client-section {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .client-box {
+            flex: 1;
+            padding: 20px;
+            background: var(--surface-light);
+            border-radius: 8px;
+            border-right: 4px solid var(--brand-navy);
+            border-left: none;
+        }
+
+        .client-box-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--brand-coral);
+            margin-bottom: 12px;
+        }
+
+        .client-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 8px;
+        }
+
+        .client-details {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.9;
+        }
+
+        .editable {
+            border-bottom: 1px dashed var(--border-medium);
+            min-width: 150px;
+            display: inline-block;
+            padding: 2px 4px;
+            background: var(--surface-white);
+        }
+
+        /* ============================================
+           Service Table
+           ============================================ */
+        .services-section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--brand-navy);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--brand-coral);
+            display: inline-block;
+        }
+
+        .services-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .services-table thead {
+            background: var(--brand-navy);
+            color: var(--text-light);
+        }
+
+        .services-table th {
+            padding: 12px 15px;
+            text-align: right;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .services-table th:first-child {
+            text-align: right;
+        }
+
+        .services-table th:nth-child(3),
+        .services-table th:nth-child(4) {
+            text-align: left;
+        }
+
+        .services-table tbody tr {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .services-table tbody tr:nth-child(even) {
+            background: var(--surface-light);
+        }
+
+        .services-table td {
+            padding: 15px;
+            font-size: 13px;
+        }
+
+        .services-table td:nth-child(3),
+        .services-table td:nth-child(4) {
+            text-align: left;
+        }
+
+        .service-name {
+            font-weight: 600;
+            color: var(--text-heading);
+        }
+
+        .service-description {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* ============================================
+           Totals Section
+           ============================================ */
+        .totals-section {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .totals-box {
+            width: 320px;
+            border: 2px solid var(--brand-navy);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .totals-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .totals-row:last-child {
+            border-bottom: none;
+        }
+
+        .totals-row.subtotal {
+            background: var(--surface-light);
+        }
+
+        .totals-row.grand-total {
+            background: var(--brand-navy);
+            color: var(--text-light);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .totals-label {
+            font-size: 13px;
+        }
+
+        .totals-value {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .totals-row.grand-total .totals-label,
+        .totals-row.grand-total .totals-value {
+            font-size: 16px;
+        }
+
+        .currency {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-left: 4px;
+        }
+
+        .totals-row.grand-total .currency {
+            color: var(--text-light);
+            opacity: 0.8;
+        }
+
+        /* ============================================
+           Notes & Terms Section
+           ============================================ */
+        .notes-terms {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .notes-box,
+        .terms-box {
+            flex: 1;
+        }
+
+        .box-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--brand-navy);
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--brand-gold);
+        }
+
+        .notes-content,
+        .terms-content {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 2;
+        }
+
+        .terms-content ul {
+            margin: 0;
+            padding-right: 18px;
+            padding-left: 0;
+        }
+
+        .terms-content li {
+            margin-bottom: 4px;
+        }
+
+        /* ============================================
+           Payment Info
+           ============================================ */
+        .payment-section {
+            background: var(--surface-light);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-right: 4px solid var(--brand-gold);
+            border-left: none;
+        }
+
+        .payment-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--brand-navy);
+            margin-bottom: 12px;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 30px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .payment-method strong {
+            color: var(--text-heading);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* ============================================
+           Footer Section
+           ============================================ */
+        .quotation-footer {
+            border-top: 3px solid var(--brand-navy);
+            padding-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .footer-contact {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .footer-contact strong {
+            color: var(--text-heading);
+            font-weight: 600;
+        }
+
+        .footer-contact a {
+            color: var(--brand-coral);
+            text-decoration: none;
+        }
+
+        .footer-legal {
+            text-align: left;
+            font-size: 11px;
+            color: var(--text-muted);
+            max-width: 300px;
+        }
+
+        .moj-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--brand-navy);
+            color: var(--text-light);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            margin-bottom: 10px;
+        }
+
+        .moj-badge strong {
+            font-weight: 700;
+        }
+
+        .translator-name {
+            font-family: 'Noto Kufi Arabic', sans-serif;
+        }
+
+        /* ============================================
+           Signature Section
+           ============================================ */
+        .signature-section {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+            padding-top: 20px;
+        }
+
+        .signature-box {
+            flex: 1;
+            text-align: center;
+        }
+
+        .signature-line {
+            border-bottom: 1px solid var(--text-heading);
+            height: 50px;
+            margin-bottom: 8px;
+        }
+
+        .signature-label {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        /* ============================================
+           Print Styles
+           ============================================ */
+        @media print {
+            body {
+                background: white;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .quotation {
+                max-width: 100%;
+                margin: 0;
+                padding: 20px;
+            }
+
+            .services-table thead {
+                background: var(--brand-navy) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .totals-row.grand-total {
+                background: var(--brand-navy) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .moj-badge {
+                background: var(--brand-navy) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .editable {
+                border-bottom: none;
+                background: transparent;
+            }
+
+            @page {
+                size: A4;
+                margin: 15mm;
+            }
+        }
+
+        /* ============================================
+           Responsive
+           ============================================ */
+        @media (max-width: 600px) {
+            .quotation {
+                padding: 20px;
+            }
+
+            .quotation-header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .quotation-meta {
+                text-align: right;
+            }
+
+            .client-section {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .notes-terms {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .services-table {
+                font-size: 12px;
+            }
+
+            .services-table th,
+            .services-table td {
+                padding: 10px 8px;
+            }
+
+            .quotation-footer {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .footer-legal {
+                text-align: center;
+                max-width: 100%;
+            }
+
+            .payment-methods {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quotation">
+        <!-- Header -->
+        <header class="quotation-header">
+            <div class="company-info">
+                <div class="company-logo">
+                    <div class="logo-icon">OT</div>
+                    <div class="company-name">OnlineTranslation<span>.ae</span></div>
+                </div>
+                <div class="company-tagline">خدمات الترجمة القانونية المعتمدة من وزارة العدل</div>
+                <div class="company-details">
+                    <strong>الشريك:</strong> أركان للترجمة القانونية<br>
+                    <strong>الموقع:</strong> دبي، الإمارات العربية المتحدة<br>
+                    <strong>واتساب:</strong> <span dir="ltr">+971 50 862 0217</span><br>
+                    <strong>البريد الإلكتروني:</strong> info@onlinetranslation.ae
+                </div>
+            </div>
+            <div class="quotation-meta">
+                <div class="quotation-title">عرض سعر</div>
+                <div class="quotation-number">
+                    <span>رقم العرض</span>
+                    <strong class="editable" contenteditable="true" dir="ltr">QT-2025-001</strong>
+                </div>
+                <div class="quotation-date">
+                    <span>تاريخ الإصدار</span>
+                    <strong class="editable" contenteditable="true">26 ديسمبر 2025</strong>
+                </div>
+                <div class="quotation-valid">
+                    <span>صالح حتى</span>
+                    <strong class="editable" contenteditable="true">26 يناير 2026</strong>
+                </div>
+            </div>
+        </header>
+
+        <!-- Client Information -->
+        <section class="client-section">
+            <div class="client-box">
+                <div class="client-box-title">فاتورة إلى</div>
+                <div class="client-name editable" contenteditable="true">اسم العميل / الشركة</div>
+                <div class="client-details">
+                    <span class="editable" contenteditable="true">عنوان العميل - السطر الأول</span><br>
+                    <span class="editable" contenteditable="true">المدينة، الدولة</span><br>
+                    <span class="editable" contenteditable="true" dir="ltr">client@email.com</span><br>
+                    <span class="editable" contenteditable="true" dir="ltr">+971 XX XXX XXXX</span>
+                </div>
+            </div>
+            <div class="client-box">
+                <div class="client-box-title">تفاصيل المشروع</div>
+                <div class="client-details">
+                    <strong>المشروع:</strong> <span class="editable" contenteditable="true">ترجمة وثائق</span><br>
+                    <strong>اللغات:</strong> <span class="editable" contenteditable="true">من العربية إلى الإنجليزية</span><br>
+                    <strong>نوع الخدمة:</strong> <span class="editable" contenteditable="true">ترجمة قانونية معتمدة من وزارة العدل</span><br>
+                    <strong>الأولوية:</strong> <span class="editable" contenteditable="true">عادي (24-48 ساعة)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Table -->
+        <section class="services-section">
+            <h2 class="section-title">الخدمات والأسعار</h2>
+            <table class="services-table">
+                <thead>
+                    <tr>
+                        <th style="width: 45%">وصف الخدمة</th>
+                        <th style="width: 15%">الكمية / الصفحات</th>
+                        <th style="width: 20%">سعر الوحدة</th>
+                        <th style="width: 20%">المبلغ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="service-name editable" contenteditable="true">ترجمة شهادة ميلاد - معتمدة من وزارة العدل</div>
+                            <div class="service-description">من العربية إلى الإنجليزية، مع ختم وزارة العدل</div>
+                        </td>
+                        <td class="editable" contenteditable="true">1</td>
+                        <td><span class="editable" contenteditable="true" dir="ltr">150.00</span><span class="currency">د.إ</span></td>
+                        <td><span class="editable" contenteditable="true" dir="ltr">150.00</span><span class="currency">د.إ</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="service-name editable" contenteditable="true">ترجمة عقد زواج - معتمدة من وزارة العدل</div>
+                            <div class="service-description">من العربية إلى الإنجليزية، مع ختم وزارة العدل</div>
+                        </td>
+                        <td class="editable" contenteditable="true">1</td>
+                        <td><span class="editable" contenteditable="true" dir="ltr">150.00</span><span class="currency">د.إ</span></td>
+                        <td><span class="editable" contenteditable="true" dir="ltr">150.00</span><span class="currency">د.إ</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="service-name editable" contenteditable="true">خدمة التوصيل السريع</div>
+                            <div class="service-description">إنجاز في نفس اليوم خلال 4 ساعات</div>
+                        </td>
+                        <td class="editable" contenteditable="true">1</td>
+                        <td><span class="editable" contenteditable="true" dir="ltr">50.00</span><span class="currency">د.إ</span></td>
+                        <td><span class="editable" contenteditable="true" dir="ltr">50.00</span><span class="currency">د.إ</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="service-name editable" contenteditable="true">[خدمة إضافية]</div>
+                            <div class="service-description editable" contenteditable="true">وصف الخدمة</div>
+                        </td>
+                        <td class="editable" contenteditable="true">-</td>
+                        <td><span class="editable" contenteditable="true" dir="ltr">0.00</span><span class="currency">د.إ</span></td>
+                        <td><span class="editable" contenteditable="true" dir="ltr">0.00</span><span class="currency">د.إ</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Totals -->
+        <section class="totals-section">
+            <div class="totals-box">
+                <div class="totals-row subtotal">
+                    <span class="totals-label">المجموع الفرعي</span>
+                    <span class="totals-value"><span class="editable" contenteditable="true" dir="ltr">350.00</span><span class="currency">د.إ</span></span>
+                </div>
+                <div class="totals-row">
+                    <span class="totals-label">ضريبة القيمة المضافة (5%)</span>
+                    <span class="totals-value"><span class="editable" contenteditable="true" dir="ltr">17.50</span><span class="currency">د.إ</span></span>
+                </div>
+                <div class="totals-row">
+                    <span class="totals-label">الخصم</span>
+                    <span class="totals-value"><span class="editable" contenteditable="true" dir="ltr">0.00</span><span class="currency">د.إ</span></span>
+                </div>
+                <div class="totals-row grand-total">
+                    <span class="totals-label">الإجمالي</span>
+                    <span class="totals-value"><span class="editable" contenteditable="true" dir="ltr">367.50</span><span class="currency">د.إ</span></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notes & Terms -->
+        <section class="notes-terms">
+            <div class="notes-box">
+                <h3 class="box-title">ملاحظات</h3>
+                <div class="notes-content editable" contenteditable="true">
+                    شكراً لاختياركم OnlineTranslation.ae لخدمات الترجمة.
+                    هذا العرض صالح لمدة 30 يوماً من تاريخ الإصدار.
+                    قد تختلف الأسعار بناءً على تعقيد الوثيقة ومتطلبات السرعة.
+                </div>
+            </div>
+            <div class="terms-box">
+                <h3 class="box-title">الشروط والأحكام</h3>
+                <div class="terms-content">
+                    <ul>
+                        <li>يلزم دفع 50% مقدماً لبدء العمل</li>
+                        <li>يُستحق الرصيد المتبقي عند الإنجاز قبل التسليم</li>
+                        <li>جميع الترجمات معتمدة من وزارة العدل</li>
+                        <li>المراجعات مشمولة بدون تكلفة إضافية</li>
+                        <li>التسليم الرقمي عبر واتساب / البريد الإلكتروني</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Payment Information -->
+        <section class="payment-section">
+            <h3 class="payment-title">طرق الدفع</h3>
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <strong>تحويل بنكي</strong>
+                    اسم البنك: [اسم البنك]<br>
+                    رقم الحساب: [رقم الحساب]<br>
+                    <span dir="ltr">IBAN: [IBAN]</span>
+                </div>
+                <div class="payment-method">
+                    <strong>الدفع عبر واتساب</strong>
+                    أرسل الدفعة عبر واتساب إلى:<br>
+                    <span dir="ltr">+971 50 862 0217</span>
+                </div>
+                <div class="payment-method">
+                    <strong>الدفع عند الاستلام</strong>
+                    متاح لمواقع التوصيل<br>
+                    في دبي
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="quotation-footer">
+            <div class="footer-contact">
+                <strong>أسئلة حول هذا العرض؟</strong><br>
+                واتساب: <a href="https://wa.me/971508620217" dir="ltr">+971 50 862 0217</a><br>
+                البريد: <a href="mailto:info@onlinetranslation.ae">info@onlinetranslation.ae</a><br>
+                الموقع: <a href="https://onlinetranslation.ae">onlinetranslation.ae</a>
+            </div>
+            <div class="footer-legal">
+                <div class="moj-badge">
+                    <span>ترخيص وزارة العدل</span>
+                    <strong dir="ltr">#701</strong>
+                </div>
+                <p>
+                    الخدمات تُنفذ بواسطة الشريك المرخص: أركان للترجمة القانونية<br>
+                    <span class="translator-name">المترجم: خالد محمد عبدالوهاب العدل</span><br>
+                    للتحقق: خط وزارة العدل <span dir="ltr">800 333333</span>
+                </p>
+            </div>
+        </footer>
+
+        <!-- Optional Signature Section -->
+        <section class="signature-section">
+            <div class="signature-box">
+                <div class="signature-line"></div>
+                <div class="signature-label">توقيع العميل والتاريخ</div>
+            </div>
+            <div class="signature-box">
+                <div class="signature-line"></div>
+                <div class="signature-label">ممثل OnlineTranslation.ae</div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Auto-calculate totals (optional enhancement)
+        document.querySelectorAll('.editable').forEach(el => {
+            el.addEventListener('blur', function() {
+                console.log('Field updated:', this.textContent);
+            });
+        });
+    </script>
+</body>
+</html>
