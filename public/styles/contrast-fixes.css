@@ -1,0 +1,203 @@
+/* ============================================
+   CONTRAST FIXES - Global Accessibility Overrides
+   Ensures WCAG AA compliance (4.5:1 minimum contrast)
+
+   CRITICAL: Never use gray/muted text on navy backgrounds
+   ============================================ */
+
+/* ============================================
+   MOBILE SIDEBAR - Force High Contrast
+   ============================================ */
+
+/* Sidebar always dark navy with white text */
+.sidebar-menu,
+.sidebar-menu *:not(i):not(.brand-suffix) {
+    --text-color: #ffffff;
+}
+
+/* Prevent any gray/muted text in sidebar */
+.sidebar-menu .text-muted,
+.sidebar-menu .text-secondary,
+.sidebar-menu [class*="text-gray"] {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Force white text on all sidebar text elements */
+.sidebar-menu p,
+.sidebar-menu span:not(.brand-suffix),
+.sidebar-menu label,
+.sidebar-menu .heading-text {
+    color: #ffffff !important;
+}
+
+/* ============================================
+   DARK BACKGROUNDS - Global Override
+   Applies to .bg-dark, .bg-navy, and navy sections
+   ============================================ */
+
+/* Never use gray text on dark backgrounds */
+.bg-dark .text-muted,
+.bg-dark .text-secondary,
+.bg-navy .text-muted,
+.bg-navy .text-secondary,
+[style*="background: #0E2B48"] .text-muted,
+[style*="background:#0E2B48"] .text-muted,
+[style*="background-color: #0E2B48"] .text-muted,
+[style*="background-color:#0E2B48"] .text-muted {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Hero sections - white text only */
+.hero-section .text-muted,
+.page-hero .text-muted,
+.category-hero .text-muted {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* ============================================
+   FOOTER BAR - Ensure Proper Contrast
+   ============================================ */
+
+/* Footer bar text on light background */
+.footer-bar .footer-item {
+    color: #4a5568 !important; /* Dark gray on white */
+}
+
+.footer-bar .footer-item.active-nav,
+.footer-bar .footer-item:active {
+    color: #FF1654 !important;
+}
+
+.footer-bar .footer-whatsapp,
+.footer-bar .footer-whatsapp i {
+    color: #25D366 !important;
+}
+
+/* ============================================
+   CTA SECTIONS - Text Contrast
+   ============================================ */
+
+/* CTA banners with gradient/dark backgrounds */
+.cta-banner,
+.cta-section,
+.cta-strip {
+    color: #ffffff;
+}
+
+.cta-banner h2,
+.cta-section h2,
+.cta-banner h3,
+.cta-section h3 {
+    color: #ffffff !important;
+}
+
+.cta-banner p,
+.cta-section p {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* ============================================
+   FORM INPUTS - Ensure Readability
+   ============================================ */
+
+/* Input placeholder contrast */
+input::placeholder,
+textarea::placeholder {
+    color: #6b7280 !important;
+    opacity: 1;
+}
+
+/* Dark theme input placeholders */
+body.theme-dark input::placeholder,
+body.theme-dark textarea::placeholder,
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+    color: #9ca3af !important;
+}
+
+/* ============================================
+   BUTTON TEXT - Always Readable
+   ============================================ */
+
+/* Primary buttons - white text */
+.btn-coral,
+.btn-primary,
+.btn--primary,
+.hero-cta,
+.sidebar-cta:not(.secondary) {
+    color: #ffffff !important;
+}
+
+/* Secondary buttons on dark backgrounds */
+.bg-dark .btn-outline,
+.bg-navy .btn-outline,
+.sidebar-cta.secondary {
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* ============================================
+   FOCUS STATES - Visible for All Users
+   ============================================ */
+
+/* Default focus ring */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+    outline: 2px solid #FF1654 !important;
+    outline-offset: 2px;
+}
+
+/* Focus within dark sections */
+.bg-dark a:focus-visible,
+.bg-dark button:focus-visible,
+.bg-navy a:focus-visible,
+.bg-navy button:focus-visible,
+.sidebar-menu a:focus-visible,
+.sidebar-menu button:focus-visible {
+    outline: 2px solid #ffffff !important;
+    outline-offset: 2px;
+}
+
+/* ============================================
+   ICONS - Consistent Sizing and Color
+   ============================================ */
+
+/* Sidebar icons */
+.sidebar-menu i,
+.sidebar-nav i {
+    font-size: 1.1rem;
+    width: 24px;
+    min-width: 24px;
+}
+
+/* Accordion heading icons - coral accent */
+.sidebar-accordion-heading i {
+    color: #FF1654 !important;
+}
+
+/* Panel link icons - slightly muted white */
+.sidebar-accordion-panel a i {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* ============================================
+   DARK MODE SPECIFIC
+   ============================================ */
+
+body.theme-dark .sidebar-menu,
+[data-theme="dark"] .sidebar-menu {
+    background: #0b111a !important;
+}
+
+body.theme-dark .sidebar-menu a,
+body.theme-dark .sidebar-menu button,
+body.theme-dark .sidebar-menu span:not(.brand-suffix),
+[data-theme="dark"] .sidebar-menu a,
+[data-theme="dark"] .sidebar-menu button,
+[data-theme="dark"] .sidebar-menu span:not(.brand-suffix) {
+    color: #ffffff !important;
+}
