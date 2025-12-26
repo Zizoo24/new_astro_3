@@ -424,12 +424,17 @@ article p,
   color: var(--text-body);
 }
 
-/* Fix light gray labels */
+/* Fix light gray labels - EXCLUDE hero sections on dark backgrounds */
 .pricing-time,
 .pricing-unit,
-.form-note,
-.hero-intro,
-.category-hero .hero-intro {
+.form-note {
+  color: var(--text-secondary);
+}
+
+/* Hero intro on LIGHT backgrounds only */
+/* Dark background hero intros handled in contrast-fixes.css */
+.hero-intro:not(.hero-section .hero-intro):not(.bg-dark .hero-intro),
+.category-hero:not(.bg-dark) .hero-intro {
   color: var(--text-secondary);
 }
 
