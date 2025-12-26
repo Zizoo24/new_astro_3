@@ -146,131 +146,226 @@ import { mobileNavHubs, searchQuickLinks, siteContact } from '../data/navigation
 
 <style>
 /* ============================================
-   SIDEBAR CONTRAST FIX - Light & Dark Mode
-   Forces white text on dark navy background
+   MOBILE MENU ACCESSIBILITY FIX
+   Comprehensive contrast and UI improvements
+   WCAG AA compliant (4.5:1 minimum contrast)
    ============================================ */
 
-/* Sidebar always has dark background - force white text */
-.sidebar-menu,
-.sidebar-menu * {
+/* Force dark navy background on entire sidebar */
+.sidebar-menu {
+  background: #0E2B48 !important;
   --sidebar-text: #ffffff;
-  --sidebar-text-muted: rgba(255, 255, 255, 0.85);
+  --sidebar-text-muted: rgba(255, 255, 255, 0.9);
   --sidebar-accent: #FF1654;
 }
 
-/* Accordion headings - ALWAYS white */
+/* Navigation area - ensure dark background inherited */
+.sidebar-nav {
+  background: transparent !important;
+  padding: 16px 0 !important;
+}
+
+/* ============================================
+   ACCORDION HEADINGS - High Contrast
+   ============================================ */
 .sidebar-accordion-heading {
   color: #ffffff !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  padding: 16px 20px !important;
+  min-height: 56px !important; /* WCAG touch target */
 }
 
 .sidebar-accordion-heading:hover,
+.sidebar-accordion-heading:focus,
 .sidebar-accordion-heading:active,
 .sidebar-accordion-heading.is-open {
   color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Focus state for keyboard navigation */
+.sidebar-accordion-heading:focus-visible {
+  outline: 2px solid #FF1654 !important;
+  outline-offset: -2px !important;
 }
 
 .sidebar-accordion-heading .heading-text {
   color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
+/* Icons in accordion headings - larger, more visible */
 .sidebar-accordion-heading .heading-text i {
   color: #FF1654 !important;
+  font-size: 1.1rem !important;
+  width: 24px !important;
+  min-width: 24px !important;
 }
 
+/* Chevrons - MUCH more visible */
 .sidebar-accordion-heading .accordion-chevron {
-  color: rgba(255, 255, 255, 0.6) !important;
+  color: #ffffff !important;
+  opacity: 0.9 !important;
+  font-size: 0.9rem !important;
+  transition: transform 0.3s ease !important;
 }
 
-/* Accordion panel links - white text */
+.sidebar-accordion-heading.is-open .accordion-chevron {
+  transform: rotate(180deg) !important;
+}
+
+/* ============================================
+   ACCORDION PANEL LINKS - High Contrast
+   ============================================ */
+.sidebar-accordion-panel {
+  background: rgba(0, 0, 0, 0.2) !important;
+}
+
 .sidebar-accordion-panel a {
-  color: rgba(255, 255, 255, 0.9) !important;
+  color: #ffffff !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  padding: 14px 20px 14px 48px !important;
+  min-height: 48px !important; /* WCAG touch target */
+  display: flex !important;
+  align-items: center !important;
 }
 
 .sidebar-accordion-panel a:hover,
+.sidebar-accordion-panel a:focus,
 .sidebar-accordion-panel a:active {
   color: #ffffff !important;
-  background: rgba(255, 255, 255, 0.08) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-left: 3px solid #FF1654 !important;
 }
 
-/* Hub link styling - coral accent */
+.sidebar-accordion-panel a:focus-visible {
+  outline: 2px solid #FF1654 !important;
+  outline-offset: -2px !important;
+}
+
+/* Sub-link icons */
+.sidebar-accordion-panel a i {
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-size: 0.9rem !important;
+  width: 20px !important;
+  min-width: 20px !important;
+}
+
+/* Hub link styling - highlighted */
 .sidebar-hub-link {
   display: flex !important;
   align-items: center !important;
-  padding: 10px 20px 10px 32px !important;
-  background: rgba(255, 255, 255, 0.08) !important;
+  padding: 14px 20px 14px 32px !important;
+  background: rgba(255, 22, 84, 0.15) !important;
   font-weight: 600 !important;
-  font-size: 0.85rem !important;
-  color: #FF1654 !important;
+  font-size: 0.9rem !important;
+  color: #ffffff !important;
   border-left: 3px solid #FF1654 !important;
   text-decoration: none !important;
+  min-height: 48px !important;
 }
 
-.sidebar-hub-link:hover {
-  background: rgba(255, 255, 255, 0.12) !important;
+.sidebar-hub-link:hover,
+.sidebar-hub-link:focus {
+  background: rgba(255, 22, 84, 0.25) !important;
   color: #ffffff !important;
 }
 
 .sidebar-hub-link i {
   color: #FF1654 !important;
-  margin-right: 8px !important;
-  width: 16px !important;
-}
-
-/* Home link styling - white */
-.sidebar-home-link {
-  display: flex !important;
-  align-items: center !important;
-  gap: 12px !important;
-  padding: 14px 20px !important;
-  color: #ffffff !important;
-  font-weight: 600 !important;
-  font-size: 0.9rem !important;
-  text-decoration: none !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-left: 3px solid transparent !important;
-}
-
-.sidebar-home-link:hover,
-.sidebar-home-link:active {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-left-color: #FF1654 !important;
-}
-
-.sidebar-home-link i {
-  width: 20px !important;
-  color: #FF1654 !important;
+  margin-right: 10px !important;
+  width: 18px !important;
   font-size: 1rem !important;
 }
 
-/* Single links (About, Contact) - white */
+/* ============================================
+   HOME LINK - Prominent Active State
+   ============================================ */
+.sidebar-home-link {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  padding: 16px 20px !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+  text-decoration: none !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-left: 3px solid #FF1654 !important;
+  background: rgba(255, 22, 84, 0.1) !important;
+  min-height: 56px !important;
+}
+
+.sidebar-home-link:hover,
+.sidebar-home-link:focus,
+.sidebar-home-link:active {
+  background: rgba(255, 22, 84, 0.2) !important;
+}
+
+.sidebar-home-link:focus-visible {
+  outline: 2px solid #FF1654 !important;
+  outline-offset: -2px !important;
+}
+
+.sidebar-home-link i {
+  width: 24px !important;
+  min-width: 24px !important;
+  color: #FF1654 !important;
+  font-size: 1.2rem !important;
+}
+
+/* ============================================
+   SINGLE LINKS (About, Contact) - High Contrast
+   ============================================ */
 .sidebar-single-link {
   display: flex !important;
   align-items: center !important;
-  gap: 12px !important;
-  padding: 14px 20px !important;
+  gap: 14px !important;
+  padding: 16px 20px !important;
   color: #ffffff !important;
   font-weight: 600 !important;
-  font-size: 0.9rem !important;
+  font-size: 0.95rem !important;
   text-decoration: none !important;
   border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-left: 3px solid transparent !important;
+  min-height: 56px !important;
 }
 
 .sidebar-single-link:hover,
+.sidebar-single-link:focus,
 .sidebar-single-link:active {
   background: rgba(255, 255, 255, 0.08) !important;
   border-left-color: #FF1654 !important;
 }
 
-.sidebar-single-link i {
-  width: 20px !important;
-  color: #FF1654 !important;
-  font-size: 1rem !important;
+.sidebar-single-link:focus-visible {
+  outline: 2px solid #FF1654 !important;
+  outline-offset: -2px !important;
 }
 
-/* Sidebar brand text - always white */
+.sidebar-single-link i {
+  width: 24px !important;
+  min-width: 24px !important;
+  color: #FF1654 !important;
+  font-size: 1.1rem !important;
+}
+
+/* ============================================
+   SIDEBAR HEADER - Improved Spacing
+   ============================================ */
+.sidebar-header {
+  padding: 20px !important;
+  gap: 16px !important;
+}
+
 .sidebar-brand-name {
   color: #ffffff !important;
+  font-size: 1.1rem !important;
 }
 
 .sidebar-brand-name .brand-suffix {
@@ -278,16 +373,77 @@ import { mobileNavHubs, searchQuickLinks, siteContact } from '../data/navigation
 }
 
 .sidebar-tagline {
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-size: 0.7rem !important;
+  letter-spacing: 0.08em !important;
 }
 
-/* CTA buttons in sidebar */
+/* Close button - more visible */
+.sidebar-close {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  font-size: 1.2rem !important;
+}
+
+.sidebar-close:hover,
+.sidebar-close:focus {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+.sidebar-close:focus-visible {
+  outline: 2px solid #FF1654 !important;
+  outline-offset: 2px !important;
+}
+
+/* ============================================
+   CTA SECTION - Phone as Button
+   ============================================ */
+.sidebar-contact {
+  padding: 20px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+/* WhatsApp button - primary */
 .sidebar-cta {
   color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  padding: 16px 24px !important;
+  border-radius: 12px !important;
+  min-height: 56px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
 }
 
+.sidebar-cta i {
+  font-size: 1.3rem !important;
+}
+
+/* Phone button - styled as secondary button */
 .sidebar-cta.secondary {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
   color: #ffffff !important;
+}
+
+.sidebar-cta.secondary:hover,
+.sidebar-cta.secondary:focus {
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.sidebar-cta.secondary:focus-visible {
+  outline: 2px solid #FF1654 !important;
+  outline-offset: 2px !important;
 }
 </style>
 

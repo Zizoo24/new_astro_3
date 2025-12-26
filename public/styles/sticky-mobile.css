@@ -143,16 +143,16 @@ button.footer-item {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 5px;
-    padding: 10px 14px;
-    color: var(--text-muted) !important;
+    gap: 4px;
+    padding: 8px 12px;
+    color: #4a5568 !important; /* CONTRAST FIX: Dark gray on white background */
     text-decoration: none;
     font-size: 10px;
     font-weight: 600;
     transition: var(--transition-fast);
-    border-radius: 12px;
-    min-width: 48px;  /* Touch target - WCAG 2.1 minimum */
-    min-height: 48px; /* Touch target - WCAG 2.1 minimum */
+    border-radius: 10px;
+    min-width: 56px;  /* Touch target - WCAG 2.1 minimum */
+    min-height: 52px; /* Touch target - WCAG 2.1 minimum */
     position: relative;
     /* Reset button defaults */
     background: transparent;
@@ -164,10 +164,18 @@ button.footer-item {
     appearance: none;
 }
 
+/* Focus visible state for keyboard navigation */
+.footer-item:focus-visible,
+a.footer-item:focus-visible,
+button.footer-item:focus-visible {
+    outline: 2px solid #FF1654;
+    outline-offset: 2px;
+}
+
 .footer-item i,
 a.footer-item i,
 button.footer-item i {
-    font-size: 22px;
+    font-size: 20px;
     transition: var(--transition-fast);
     color: inherit;
 }
@@ -176,7 +184,12 @@ button.footer-item i {
 .footer-item:active,
 a.footer-item.active-nav,
 a.footer-item:active {
-    color: var(--accent-color) !important;
+    color: #FF1654 !important; /* CONTRAST FIX: Use explicit coral */
+}
+
+.footer-item.active-nav i,
+a.footer-item.active-nav i {
+    color: #FF1654 !important;
 }
 
 /* No wrapper/background for active footer items */
@@ -232,7 +245,8 @@ a.footer-item:active {
     color: #128C7E !important;
 }
 
-/* Sidebar Menu - Dark navy glass background for brand consistency */
+/* Sidebar Menu - Dark navy background for brand consistency */
+/* ACCESSIBILITY: Forces dark background with white text for WCAG AA compliance */
 .sidebar-menu {
     position: fixed;
     top: 0;
@@ -240,7 +254,7 @@ a.footer-item:active {
     width: 300px;
     max-width: 85vw;
     height: 100%;
-    background: rgba(14, 43, 72, 0.98);
+    background: #0E2B48 !important; /* Solid navy - not transparent */
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     z-index: 2000;
@@ -380,28 +394,37 @@ a.footer-item:active {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 12px 20px;
-    font-size: 0.85rem;
+    padding: 16px 20px;
+    font-size: 0.95rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #ffffff; /* CONTRAST FIX: Explicit white, not rgba */
+    letter-spacing: 0.05em;
+    color: #ffffff !important; /* CONTRAST FIX: Explicit white */
     background: transparent;
     border: none;
     cursor: pointer;
     transition: all 0.2s ease;
     -webkit-tap-highlight-color: transparent;
+    min-height: 56px; /* WCAG touch target */
 }
 
 .sidebar-accordion-heading:hover,
+.sidebar-accordion-heading:focus,
 .sidebar-accordion-heading:active {
-    background: rgba(255, 255, 255, 0.05);
-    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff !important;
 }
 
+.sidebar-accordion-heading:focus-visible {
+    outline: 2px solid #FF1654;
+    outline-offset: -2px;
+}
+
+/* Chevrons - High visibility */
 .sidebar-accordion-heading .accordion-chevron {
-    font-size: 0.7rem;
-    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+    color: #ffffff !important; /* CONTRAST FIX: White instead of faint */
+    opacity: 0.9;
     transition: transform 0.3s ease;
 }
 
@@ -423,21 +446,29 @@ a.footer-item:active {
 }
 
 .sidebar-accordion-panel a {
-    display: block;
-    padding: 10px 20px 10px 32px;
-    color: #ffffff; /* CONTRAST FIX: Explicit white */
+    display: flex;
+    align-items: center;
+    padding: 14px 20px 14px 48px;
+    color: #ffffff !important; /* CONTRAST FIX: Explicit white */
     text-decoration: none;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 500;
     transition: all 0.2s ease;
     border-left: 3px solid transparent;
+    min-height: 48px; /* WCAG touch target */
 }
 
 .sidebar-accordion-panel a:hover,
+.sidebar-accordion-panel a:focus,
 .sidebar-accordion-panel a:active {
-    background: rgba(255, 255, 255, 0.05);
-    color: #ffffff;
-    border-left-color: var(--accent-color);
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff !important;
+    border-left-color: #FF1654;
+}
+
+.sidebar-accordion-panel a:focus-visible {
+    outline: 2px solid #FF1654;
+    outline-offset: -2px;
 }
 
 .sidebar-viewall {
