@@ -278,6 +278,19 @@ function isActive(href: string): boolean {
   /* ====================================
      FIXED HEADER WRAPPER
      ==================================== */
+  
+  /* 
+   * CORAL BAR SCROLL FIX (Dec 2024)
+   * Problem: Height-based collapse caused jarring layout shifts
+   * Solution: Use transform to slide header up, keeping spacer fixed
+   */
+  
+  :root {
+    --coral-bar-height: 40px;  /* Height of coral bar when visible */
+    --header-height: 70px;     /* Height of navy header */
+    --header-compact: 50px;    /* Height of navy header when scrolled */
+  }
+  
   .header-wrapper {
     position: fixed;
     top: 0;
@@ -286,33 +299,25 @@ function isActive(href: string): boolean {
     z-index: 1030;
     width: 100%;
     background: transparent;
-    /* FIX: Smooth transition when coral bar collapses */
-    transition: transform 0.3s ease;
+    /* Smooth slide-up transition */
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
   }
 
-  /* FIX: When scrolled, shift entire header up to eliminate gap */
+  /* When scrolled, slide entire header UP by coral bar height */
   .header-wrapper.is-scrolled {
-    /* Coral bar was ~40px, translate header up to cover the gap */
-    transform: translateY(0);
+    transform: translateY(calc(-1 * var(--coral-bar-height)));
   }
 
   .header-spacer {
-    /* Fixed height to prevent CLS - matches coral bar (40px) + header (~70px) */
-    height: 110px;
-    transition: none; /* No transition to prevent CLS */
-    background: transparent;
-    /* FIX: Match the page background */
+    /* FIXED height - never changes, prevents all layout shift */
+    height: calc(var(--coral-bar-height) + var(--header-compact));
     background: var(--surface-base, #ffffff);
   }
   
   [data-theme="dark"] .header-spacer,
   body.theme-dark .header-spacer {
     background: var(--surface-navy, #0a1628);
-  }
-
-  /* When scrolled, coral bar is hidden - reduce spacer to match compact header */
-  .header-wrapper.is-scrolled + .header-spacer {
-    height: 50px; /* Compact header height only */
   }
 
 
@@ -343,22 +348,16 @@ function isActive(href: string): boolean {
     font-family: var(--font-secondary, 'Open Sans', sans-serif);
     font-size: 0.8rem;
     font-weight: 500;
-    transition: transform 0.3s ease, opacity 0.3s ease, max-height 0.3s ease;
-    max-height: 60px;
-    overflow: hidden;
+    height: var(--coral-bar-height);
+    box-sizing: border-box;
+    /* Fade out when scrolled (header slides up to hide it) */
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .coral-top-bar.hidden {
-    /* FIX: Completely collapse coral bar - no gap */
-    max-height: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
+    /* Just fade - the transform on .header-wrapper handles the slide */
     opacity: 0;
     pointer-events: none;
-    overflow: hidden;
-    border: none;
-    line-height: 0;
-    font-size: 0;
   }
 
   .coral-top-content {
