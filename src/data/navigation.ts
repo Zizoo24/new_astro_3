@@ -273,8 +273,13 @@ export const mainNav: (NavLink | NavGroup)[] = [
     children: [
       { label: 'Resource Center', href: '/resources/' },
       { label: 'Blog', href: '/blog/', badge: 'NEW' },
-      { label: 'MOJ vs Certified Guide', href: '/resources/moj-vs-certified/' },
-      { label: 'Authenticated Translation', href: '/resources/moj-certified/' },
+      {
+        label: 'MOJ vs Certified Guide',
+        href: '/resources/moj-vs-certified/',
+        children: [
+          { label: 'Authenticated Translation', href: '/resources/authenticated-translation/' }
+        ]
+      },
       { label: 'Pricing Guide', href: '/resources/pricing-guide/' },
       { label: 'Document Checklist', href: '/resources/document-checklist/' },
       { label: 'Attestation Guide', href: '/resources/attestation-guide/' },
@@ -392,7 +397,7 @@ export const mobileNav = {
         { label: 'Resource Hub', href: '/resources/' },
         { label: 'Blog', href: '/blog/' },
         { label: 'MOJ vs Certified Guide', href: '/resources/moj-vs-certified/' },
-        { label: 'Authenticated Translation', href: '/resources/moj-certified/' },
+        { label: 'Authenticated Translation', href: '/resources/authenticated-translation/' },
         { label: 'Pricing Guide', href: '/resources/pricing-guide/' },
         { label: 'Document Checklist', href: '/resources/document-checklist/' },
         { label: 'Attestation Guide', href: '/resources/attestation-guide/' },

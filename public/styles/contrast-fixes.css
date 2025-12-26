@@ -1,16 +1,73 @@
 /* ============================================
    CONTRAST FIXES - CONSOLIDATED
    OnlineTranslation.ae
-   
+
    PHASE 2 CLEANUP:
    - Removed duplicate card link rules (now in base-architecture.css)
    - Replaced hardcoded colors with CSS tokens
    - Removed unnecessary !important declarations
    - All dark mode rules use body.theme-dark
-   
+
    This file handles DARK MODE component overrides
    that aren't covered by base-architecture.css
    ============================================ */
+
+/* ============================================
+   CRITICAL: GRAY TEXT ON NAVY PREVENTION
+
+   NEVER use muted/gray text colors on navy backgrounds.
+   This rule enforces high-contrast text on all dark
+   sections in both light and dark mode.
+
+   Affected classes: .bg-dark, [data-theme="dark"],
+   .hero-section, .surface-navy
+   ============================================ */
+
+/* Force bright text on navy/dark sections - LIGHT MODE */
+.bg-dark,
+[data-theme="dark"],
+.hero-section,
+.surface-navy,
+section[class*="navy"],
+div[class*="navy"] {
+  /* Override any gray/muted text colors */
+  --text-color-override: var(--text-on-dark);
+}
+
+.bg-dark *,
+[data-theme="dark"] *,
+.hero-section *,
+.surface-navy * {
+  /* Ensure all text uses high-contrast colors */
+  color: inherit;
+}
+
+/* Specific overrides for text elements on dark backgrounds */
+.bg-dark p,
+.bg-dark span:not(.keyword):not(.badge):not(.table-badge),
+.bg-dark li,
+[data-theme="dark"] p,
+[data-theme="dark"] span:not(.keyword):not(.badge):not(.table-badge),
+[data-theme="dark"] li,
+.hero-section p,
+.hero-section span:not(.keyword):not(.badge):not(.table-badge),
+.hero-section li {
+  color: var(--text-on-dark) !important;
+  opacity: 0.95;
+}
+
+/* Preserve link colors on dark backgrounds */
+.bg-dark a:not(.btn),
+[data-theme="dark"] a:not(.btn),
+.hero-section a:not(.btn) {
+  color: var(--link-on-dark) !important;
+}
+
+.bg-dark a:not(.btn):hover,
+[data-theme="dark"] a:not(.btn):hover,
+.hero-section a:not(.btn):hover {
+  color: var(--link-on-dark-hover) !important;
+}
 
 @layer states {
 
