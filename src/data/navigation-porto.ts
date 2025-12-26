@@ -380,7 +380,10 @@ export const mainNavigation: MainNavItem[] = [
             {
               label: 'MOJ vs Certified Guide',
               href: '/resources/moj-vs-certified/',
-              icon: 'fas fa-balance-scale'
+              icon: 'fas fa-balance-scale',
+              children: [
+                { label: 'Authenticated Translation', href: '/resources/authenticated-translation/' }
+              ]
             },
             {
               label: 'Pricing Guide',
