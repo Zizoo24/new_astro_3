@@ -386,6 +386,24 @@ You are a Personal Assistant to a busy executive:
 
 **Always use CSS tokens:** `var(--accent-coral)`, not raw hex.
 
+### 7.1.1 CRITICAL: Gray Text on Navy Backgrounds — FORBIDDEN
+
+**⚠️ NEVER use gray or muted text colors on navy backgrounds. This is a mandatory contrast rule.**
+
+| Background | ❌ NEVER Use | ✅ ALWAYS Use |
+|------------|--------------|---------------|
+| Navy (`--surface-navy`) | `--text-muted`, `--text-secondary`, gray colors | `--text-on-dark`, `--text-on-dark-muted` (min 9:1 contrast) |
+| Dark sections (`.bg-dark`) | Any gray text | Bright white or light blue text |
+| Hero sections | Muted/subtle colors | High-contrast text with opacity if needed |
+
+**Implementation:**
+- Use `var(--text-on-dark)` for primary text on dark backgrounds
+- Use `opacity: 0.95` for subtle hierarchy, NOT gray colors
+- CSS file `contrast-fixes.css` enforces this globally
+- Hero section text must be white/bright, not gray
+
+**Why this matters:** Gray text on navy fails WCAG contrast requirements and creates an inaccessible, hard-to-read experience. The site has enforced CSS rules in `public/styles/contrast-fixes.css` that override gray text on dark sections.
+
 ### 7.2 Typography
 
 | Element | Size | Weight |
