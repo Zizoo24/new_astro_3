@@ -1,0 +1,133 @@
+---
+/**
+ * KickerHeadline.astro
+ *
+ * Kicker (small label) + Headline combo for visual hierarchy.
+ * Use instead of plain H1/H2 for more visual interest.
+ *
+ * Usage:
+ * <KickerHeadline
+ *   kicker="MOJ CERTIFIED"
+ *   headline="Legal Translation Services"
+ *   accent="Dubai"
+ *   level="h1"
+ * />
+ */
+
+interface Props {
+  kicker?: string;
+  headline: string;
+  accent?: string; // Part of headline to highlight
+  level?: 'h1' | 'h2' | 'h3';
+  align?: 'left' | 'center';
+  class?: string;
+}
+
+const {
+  kicker,
+  headline,
+  accent,
+  level = 'h1',
+  align = 'left',
+  class: className = ''
+} = Astro.props;
+
+const HeadingTag = level;
+
+// Split headline to insert accent span if provided
+let headlineContent = headline;
+let beforeAccent = '';
+let afterAccent = '';
+
+if (accent && headline.includes(accent)) {
+  const parts = headline.split(accent);
+  beforeAccent = parts[0];
+  afterAccent = parts.slice(1).join(accent);
+}
+---
+
+<div class:list={['kicker-headline', `kicker-headline--${align}`, className]}>
+  {kicker && <span class="kicker">{kicker}</span>}
+  <HeadingTag class="kicker-headline__heading">
+    {accent && headline.includes(accent) ? (
+      <>
+        {beforeAccent}<span class="headline-accent">{accent}</span>{afterAccent}
+      </>
+    ) : (
+      headline
+    )}
+  </HeadingTag>
+</div>
+
+<style>
+  .kicker-headline {
+    margin-bottom: 1.5rem;
+  }
+
+  .kicker-headline--center {
+    text-align: center;
+  }
+
+  .kicker-headline--center .kicker {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .kicker {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent-coral, #FF1654);
+    margin-bottom: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    background: rgba(255, 22, 84, 0.1);
+    border-radius: 4px;
+  }
+
+  /* Dark background kicker */
+  :global(.bg-dark) .kicker,
+  :global(.hero-section) .kicker,
+  :global(.category-hero) .kicker {
+    background: rgba(255, 22, 84, 0.2);
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .kicker-headline__heading {
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  h1.kicker-headline__heading {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  h2.kicker-headline__heading {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700;
+  }
+
+  h3.kicker-headline__heading {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    font-weight: 600;
+  }
+
+  .headline-accent {
+    color: var(--accent-coral, #FF1654);
+  }
+
+  /* Light background context */
+  :global(.bg-white) .headline-accent,
+  :global(.bg-light) .headline-accent {
+    color: var(--accent-coral, #FF1654);
+  }
+
+  :global(.bg-white) .kicker-headline__heading,
+  :global(.bg-light) .kicker-headline__heading {
+    color: var(--surface-navy, #0E2B48);
+  }
+</style>

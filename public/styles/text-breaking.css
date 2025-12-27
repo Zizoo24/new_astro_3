@@ -1,0 +1,456 @@
+/* ============================================
+   TEXT BREAKING UTILITIES
+   Visual relief system for breaking wall-of-text content
+   ============================================ */
+
+/* ============================================
+   1. LEAD PARAGRAPH
+   Larger, lighter intro text for hero sections
+   ============================================ */
+.lead-text {
+  font-size: var(--fs-lg, 1.25rem);
+  font-weight: 300;
+  line-height: 1.7;
+  color: inherit;
+  margin-bottom: 1.5rem;
+}
+
+/* Lead text on dark backgrounds */
+.bg-dark .lead-text,
+.hero-section .lead-text,
+.category-hero .lead-text {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* ============================================
+   2. TEXT HIGHLIGHTING
+   <mark> tag and .text-highlight class
+   ============================================ */
+mark,
+.text-highlight {
+  background-color: rgba(255, 22, 84, 0.12);
+  color: inherit;
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+/* Dark mode/dark background highlighting */
+.bg-dark mark,
+.bg-dark .text-highlight,
+.hero-section mark,
+.hero-section .text-highlight,
+.category-hero mark,
+.category-hero .text-highlight {
+  background-color: rgba(255, 22, 84, 0.25);
+  color: #ffffff;
+}
+
+/* Gold highlight variant */
+.text-highlight--gold {
+  background-color: rgba(212, 165, 76, 0.15);
+}
+
+/* Navy highlight variant */
+.text-highlight--navy {
+  background-color: rgba(14, 43, 72, 0.1);
+}
+
+/* ============================================
+   3. VERTICAL ACCENT BORDERS
+   Left border accents for visual break
+   ============================================ */
+.accent-border-left {
+  padding-left: 1rem;
+  border-left: 4px solid var(--accent-coral, #FF1654);
+}
+
+.accent-border-left--navy {
+  border-left-color: var(--surface-navy, #0E2B48);
+}
+
+.accent-border-left--gold {
+  border-left-color: var(--accent-gold, #d4a54c);
+}
+
+/* Thicker border for emphasis */
+.accent-border-left--thick {
+  border-left-width: 6px;
+}
+
+/* ============================================
+   4. KICKER LABELS
+   Small uppercase label above headings
+   ============================================ */
+.kicker {
+  display: block;
+  font-size: var(--fs-xs, 0.75rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-coral, #FF1654);
+  margin-bottom: 0.5rem;
+}
+
+/* Dark background kicker */
+.bg-dark .kicker,
+.hero-section .kicker,
+.category-hero .kicker {
+  color: var(--accent-coral, #FF1654);
+}
+
+/* Navy kicker variant */
+.kicker--navy {
+  color: var(--surface-navy, #0E2B48);
+}
+
+/* ============================================
+   5. TEXT BREATHE (Optimal Reading Width)
+   Limits paragraph width for readability
+   ============================================ */
+.text-breathe {
+  max-width: 65ch;
+  line-height: 1.8;
+}
+
+.text-breathe p {
+  margin-bottom: 1.25em;
+}
+
+.text-breathe p:last-child {
+  margin-bottom: 0;
+}
+
+/* Centered variant */
+.text-breathe--center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* ============================================
+   6. DUAL-TONE HEADLINES
+   Accent color for part of heading
+   ============================================ */
+.headline-accent {
+  color: var(--accent-coral, #FF1654);
+}
+
+/* Navy accent variant */
+.headline-accent--navy {
+  color: var(--surface-navy, #0E2B48);
+}
+
+/* ============================================
+   7. SERVICE TAGS / BADGES
+   Inline tag pills for document types
+   ============================================ */
+.service-tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--surface-muted, #f0f2f5);
+  color: var(--text-heading, #0E2B48);
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 0.25rem 0.25rem 0.25rem 0;
+  white-space: nowrap;
+}
+
+/* Coral variant */
+.service-tag--coral {
+  background: rgba(255, 22, 84, 0.1);
+  color: var(--accent-coral, #FF1654);
+}
+
+/* Navy variant */
+.service-tag--navy {
+  background: rgba(14, 43, 72, 0.1);
+  color: var(--surface-navy, #0E2B48);
+}
+
+/* Outline variant */
+.service-tag--outline {
+  background: transparent;
+  border: 1px solid var(--border-medium, #cbd5e1);
+}
+
+/* Dark background tags */
+.bg-dark .service-tag,
+.hero-section .service-tag,
+.category-hero .service-tag {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================
+   8. HERO SPLIT SECTIONS
+   Two-column intro for breaking dense text
+   ============================================ */
+.hero-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 1.5rem 0;
+}
+
+.hero-split > * {
+  padding-left: 1rem;
+  border-left: 3px solid var(--accent-coral, #FF1654);
+}
+
+@media (max-width: 768px) {
+  .hero-split {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* ============================================
+   9. QUICK FACT BOX
+   Sidebar-style credential/stat display
+   ============================================ */
+.quick-fact-box {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.quick-fact-box__title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-coral, #FF1654);
+  margin-bottom: 0.75rem;
+}
+
+.quick-fact-box__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quick-fact-box__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.95rem;
+}
+
+.quick-fact-box__item:last-child {
+  border-bottom: none;
+}
+
+.quick-fact-box__item i {
+  color: var(--accent-coral, #FF1654);
+  font-size: 0.85rem;
+  width: 20px;
+}
+
+/* Light background variant */
+.quick-fact-box--light {
+  background: var(--surface-muted, #f0f2f5);
+  border-color: var(--border-light, #e2e8f0);
+}
+
+.quick-fact-box--light .quick-fact-box__item {
+  border-bottom-color: var(--border-light, #e2e8f0);
+}
+
+/* ============================================
+   10. HERO FEATURE HIGHLIGHTS
+   Icon + text pairs for key selling points
+   ============================================ */
+.hero-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.hero-highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.hero-highlight-item i {
+  color: var(--accent-coral, #FF1654);
+}
+
+/* ============================================
+   11. CONTENT DIVIDER
+   Visual separator between sections
+   ============================================ */
+.content-divider {
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0.2) 80%,
+    transparent 100%
+  );
+  margin: 2rem 0;
+}
+
+/* Light background divider */
+.content-divider--light {
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.1) 20%,
+    rgba(0, 0, 0, 0.1) 80%,
+    transparent 100%
+  );
+}
+
+/* Accent divider */
+.content-divider--accent {
+  height: 3px;
+  background: linear-gradient(90deg,
+    var(--accent-coral, #FF1654) 0%,
+    transparent 100%
+  );
+  max-width: 100px;
+}
+
+/* ============================================
+   12. METRIC BADGES (Inline Stats)
+   Compact stat display for hero sections
+   ============================================ */
+.metric-inline {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  margin-right: 1.5rem;
+}
+
+.metric-inline__value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-coral, #FF1654);
+}
+
+.metric-inline__label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+/* ============================================
+   13. HERO RESOURCE LIST
+   Styled link list for resource hub pages
+   ============================================ */
+.hero-resource-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.hero-resource-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-resource-list li:last-child {
+  border-bottom: none;
+}
+
+.hero-resource-list li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--accent-coral, #FF1654);
+  border-radius: 50%;
+  margin-top: 0.5rem;
+  flex-shrink: 0;
+}
+
+.hero-resource-list a {
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.hero-resource-list a:hover {
+  color: var(--accent-coral, #FF1654);
+}
+
+.hero-resource-list .resource-desc {
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 400;
+}
+
+/* ============================================
+   14. CALLOUT BLOCK
+   Highlighted important information
+   ============================================ */
+.callout-block {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-left: 4px solid var(--accent-coral, #FF1654);
+  border-radius: 0 8px 8px 0;
+  margin: 1.5rem 0;
+}
+
+.callout-block__icon {
+  font-size: 1.25rem;
+  color: var(--accent-coral, #FF1654);
+  flex-shrink: 0;
+}
+
+.callout-block__content {
+  flex: 1;
+}
+
+.callout-block__content p {
+  margin: 0;
+}
+
+/* Light background variant */
+.callout-block--light {
+  background: var(--surface-info, #eff6ff);
+  border-left-color: var(--state-info, #0369a1);
+}
+
+.callout-block--light .callout-block__icon {
+  color: var(--state-info, #0369a1);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 768px) {
+  .lead-text {
+    font-size: 1.1rem;
+  }
+
+  .hero-highlights {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .metric-inline {
+    display: flex;
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .quick-fact-box {
+    padding: 1rem;
+  }
+}
