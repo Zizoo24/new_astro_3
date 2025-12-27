@@ -173,6 +173,25 @@ const accordionSections = [
 <h3>DHA Licensing Package</h3>
 <p>Healthcare professionals applying for <strong>Dubai Health Authority</strong> licensing need a complete credential translation package. We handle <a href='/personal/academic/degree/'>medical degrees</a>, specialty certifications, good standing certificates from medical councils, internship completion letters, and experience certificates. Each document is formatted to DHA submission standards. For credentials requiring <strong>DataFlow</strong> primary source verification, we coordinate timing so your translated documents are ready when verification completes.</p>
 
+<div class="hero-subpage-mosaic">
+<a href="/specialized/medical/dha-dataflow/" class="mosaic-tile mosaic-tile--new">
+<span class="mosaic-badge">NEW</span>
+<span class="mosaic-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+<span class="mosaic-label">DHA DataFlow Guide</span>
+<span class="mosaic-desc">Complete Healthcare Licensing Package</span>
+</a>
+<a href="/personal/academic/degree/" class="mosaic-tile">
+<span class="mosaic-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+<span class="mosaic-label">Medical Degrees</span>
+<span class="mosaic-desc">MBBS, MD, Specialty Certs</span>
+</a>
+<a href="/services/attestation/" class="mosaic-tile">
+<span class="mosaic-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
+<span class="mosaic-label">Attestation</span>
+<span class="mosaic-desc">MOFA & Embassy Chain</span>
+</a>
+</div>
+
 <div class="hero-highlight-box">
 <h4>Medical Document Checklist</h4>
 <ul>
@@ -447,5 +466,97 @@ const accordionSections = [
   .info-callout p {
     margin: 0;
     line-height: 1.6;
+  }
+
+  /* Hero Subpage Mosaic - Visual Navigation Tiles */
+  .hero-subpage-mosaic {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+  }
+
+  .mosaic-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.25s ease;
+    text-align: center;
+    position: relative;
+  }
+
+  .mosaic-tile:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: var(--accent-coral, #FF1654);
+    transform: translateY(-3px);
+  }
+
+  .mosaic-tile--new {
+    background: linear-gradient(135deg, rgba(0, 200, 83, 0.15) 0%, rgba(0, 255, 136, 0.08) 100%);
+    border-color: rgba(0, 200, 83, 0.3);
+  }
+
+  .mosaic-tile--new:hover {
+    border-color: #00c853;
+    background: linear-gradient(135deg, rgba(0, 200, 83, 0.25) 0%, rgba(0, 255, 136, 0.15) 100%);
+  }
+
+  .mosaic-badge {
+    position: absolute;
+    top: -8px;
+    right: -5px;
+    background: #00c853;
+    color: white;
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+
+  .mosaic-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: var(--accent-coral, #FF1654);
+    border-radius: 10px;
+    margin-bottom: 0.6rem;
+    color: white;
+  }
+
+  .mosaic-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .mosaic-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: white;
+    margin-bottom: 0.25rem;
+  }
+
+  .mosaic-desc {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.3;
+  }
+
+  @media (max-width: 768px) {
+    .hero-subpage-mosaic {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

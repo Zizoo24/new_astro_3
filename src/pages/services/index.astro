@@ -125,6 +125,34 @@ const documentTypes = [
 <li><strong><a href="/services/attestation/">Attestation</a></strong> MOFA, embassy legalization, apostille coordination</li>
 </ul>
 
+<div class="hero-subpage-mosaic">
+<a href="/legal-translation-dubai/" class="mosaic-tile">
+<span class="mosaic-icon"><i class="fas fa-gavel"></i></span>
+<span class="mosaic-label">Legal</span>
+<span class="mosaic-desc">Courts & Contracts</span>
+</a>
+<a href="/personal-documents/" class="mosaic-tile">
+<span class="mosaic-icon"><i class="fas fa-file-alt"></i></span>
+<span class="mosaic-label">Personal</span>
+<span class="mosaic-desc">Certificates & IDs</span>
+</a>
+<a href="/specialized-translation/" class="mosaic-tile">
+<span class="mosaic-icon"><i class="fas fa-microscope"></i></span>
+<span class="mosaic-label">Specialized</span>
+<span class="mosaic-desc">Medical, Technical</span>
+</a>
+<a href="/services/attestation/" class="mosaic-tile">
+<span class="mosaic-icon"><i class="fas fa-stamp"></i></span>
+<span class="mosaic-label">Attestation</span>
+<span class="mosaic-desc">MOFA & Embassy</span>
+</a>
+<a href="/services/golden-visa-translation/" class="mosaic-tile mosaic-tile--featured">
+<span class="mosaic-icon"><i class="fas fa-star"></i></span>
+<span class="mosaic-label">Golden Visa</span>
+<span class="mosaic-desc">Complete Package</span>
+</a>
+</div>
+
 <div class="hero-stats">
 <div class="hero-stat"><span class="hero-stat-value">43+</span><span class="hero-stat-label">Languages</span></div>
 <div class="hero-stat"><span class="hero-stat-value">4-6hr</span><span class="hero-stat-label">Standard</span></div>
@@ -668,6 +696,92 @@ const documentTypes = [
     }
 
     .category-links-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
+
+<style is:global>
+  /* Hero Subpage Mosaic */
+  .hero-subpage-mosaic {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.6rem;
+    margin: 1.5rem 0;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+  }
+
+  .mosaic-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.75rem 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.25s ease;
+    text-align: center;
+  }
+
+  .mosaic-tile:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: var(--accent-coral, #FF1654);
+    transform: translateY(-2px);
+  }
+
+  .mosaic-tile--featured {
+    background: linear-gradient(135deg, rgba(212, 165, 76, 0.25) 0%, rgba(255, 225, 120, 0.15) 100%);
+    border-color: rgba(212, 165, 76, 0.4);
+  }
+
+  .mosaic-tile--featured:hover {
+    border-color: #d4a54c;
+    background: linear-gradient(135deg, rgba(212, 165, 76, 0.35) 0%, rgba(255, 225, 120, 0.25) 100%);
+  }
+
+  .mosaic-tile--featured .mosaic-icon {
+    background: linear-gradient(135deg, #d4a54c 0%, #f0c14b 100%);
+  }
+
+  .mosaic-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--accent-coral, #FF1654);
+    border-radius: 8px;
+    margin-bottom: 0.4rem;
+    color: white;
+    font-size: 1.1rem;
+  }
+
+  .mosaic-label {
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: white;
+    margin-bottom: 0.15rem;
+  }
+
+  .mosaic-desc {
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.2;
+  }
+
+  @media (max-width: 768px) {
+    .hero-subpage-mosaic {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-subpage-mosaic {
       grid-template-columns: repeat(2, 1fr);
     }
   }

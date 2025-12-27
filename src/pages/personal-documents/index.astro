@@ -40,7 +40,30 @@ const pageData = {
 <p>GDRFA's system matches names character by character. If your birth certificate says "Mohammad" but your passport says "Mohammed," the system flags a mismatch. We check name consistency before translation and advise on resolutions—sometimes a statutory declaration, sometimes embassy documentation.</p>
 
 <h3>What This Guide Covers</h3>
-<p>We walk through each document type with specific UAE requirements, attestation chains by country, common rejection reasons and how to avoid them, and realistic timelines. Whether you're a new expatriate or long-term resident, we translate with the precision UAE authorities demand.</p>`,
+<p>We walk through each document type with specific UAE requirements, attestation chains by country, common rejection reasons and how to avoid them, and realistic timelines. Whether you're a new expatriate or long-term resident, we translate with the precision UAE authorities demand.</p>
+
+<div class="hero-subpage-mosaic">
+<a href="/personal/vital-records/" class="mosaic-tile">
+<span class="mosaic-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><circle cx="12" cy="13" r="2"/><path d="M12 15v3"/></svg></span>
+<span class="mosaic-label">Vital Records</span>
+<span class="mosaic-desc">Birth, Marriage, Divorce</span>
+</a>
+<a href="/personal/immigration/" class="mosaic-tile">
+<span class="mosaic-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M7 15h.01"/><path d="M11 15h2"/></svg></span>
+<span class="mosaic-label">Immigration</span>
+<span class="mosaic-desc">PCC, Bank, License</span>
+</a>
+<a href="/personal/academic/" class="mosaic-tile">
+<span class="mosaic-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+<span class="mosaic-label">Academic</span>
+<span class="mosaic-desc">Degrees, Transcripts</span>
+</a>
+<a href="/services/golden-visa-translation/" class="mosaic-tile mosaic-tile--featured">
+<span class="mosaic-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+<span class="mosaic-label">Golden Visa</span>
+<span class="mosaic-desc">Complete Package</span>
+</a>
+</div>`,
   
   // Service Snapshot
   snapshot: [
@@ -684,9 +707,123 @@ const pageData = {
     .link-grid {
       grid-template-columns: 1fr;
     }
-    
+
     .related-grid {
       grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<style is:global>
+  /* Hero Subpage Mosaic - Visual Navigation Tiles */
+  .hero-subpage-mosaic {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+  }
+
+  .mosaic-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.25s ease;
+    text-align: center;
+  }
+
+  .mosaic-tile:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: var(--accent-coral, #FF1654);
+    transform: translateY(-3px);
+  }
+
+  .mosaic-tile--featured {
+    background: linear-gradient(135deg, rgba(212, 165, 76, 0.25) 0%, rgba(255, 225, 120, 0.15) 100%);
+    border-color: rgba(212, 165, 76, 0.4);
+  }
+
+  .mosaic-tile--featured:hover {
+    border-color: #d4a54c;
+    background: linear-gradient(135deg, rgba(212, 165, 76, 0.35) 0%, rgba(255, 225, 120, 0.25) 100%);
+  }
+
+  .mosaic-tile--featured .mosaic-icon {
+    background: linear-gradient(135deg, #d4a54c 0%, #f0c14b 100%);
+  }
+
+  .mosaic-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: var(--accent-coral, #FF1654);
+    border-radius: 10px;
+    margin-bottom: 0.6rem;
+    color: white;
+  }
+
+  .mosaic-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .mosaic-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: white;
+    margin-bottom: 0.25rem;
+  }
+
+  .mosaic-desc {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.3;
+  }
+
+  @media (max-width: 768px) {
+    .hero-subpage-mosaic {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-subpage-mosaic {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      padding: 0.75rem;
+    }
+
+    .mosaic-tile {
+      padding: 0.75rem 0.5rem;
+    }
+
+    .mosaic-icon {
+      width: 36px;
+      height: 36px;
+    }
+
+    .mosaic-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .mosaic-label {
+      font-size: 0.8rem;
+    }
+
+    .mosaic-desc {
+      font-size: 0.7rem;
     }
   }
 </style>
