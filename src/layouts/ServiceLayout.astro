@@ -55,6 +55,14 @@ interface Props {
   heroSubtitle?: string;
   heroIntro: string;
   heroImage?: string;
+  /** Pre-title badge/eyebrow text (e.g., "CERTIFIED MOJ TRANSLATION") */
+  heroBadge?: string;
+  /** Show scroll indicator at bottom of hero */
+  showScrollIndicator?: boolean;
+  /** Show star rating near CTA */
+  showRating?: boolean;
+  /** Under-CTA note text (e.g., "Ready in 2-3 business days") */
+  ctaNote?: string;
   snapshot: SnapshotItem[];
   breadcrumbs: Breadcrumb[];
   faqs?: FAQ[];
@@ -75,6 +83,10 @@ const {
   heroSubtitle = '',
   heroIntro,
   heroImage = '',
+  heroBadge = '',
+  showScrollIndicator = true,
+  showRating = true,
+  ctaNote = '',
   snapshot,
   breadcrumbs,
   faqs = [],
@@ -182,8 +194,15 @@ const howToSchema = processSteps && processSteps.length > 0 ? {
     <div class="container">
       <div class="row">
         <div class="col col--8">
+          {/* Pre-title badge */}
+          {heroBadge && <span class="hero-badge">{heroBadge}</span>}
+
           <h1 class="hero-title">{heroTitle}</h1>
           {heroSubtitle && <h2 class="hero-subtitle-accent">{heroSubtitle}</h2>}
+
+          {/* Micro-divider for visual separation */}
+          <div class="hero-divider" aria-hidden="true"></div>
+
           <div class="hero-intro" set:html={heroIntro} />
 
           <div class="service-snapshot">
@@ -200,10 +219,38 @@ const howToSchema = processSteps && processSteps.length > 0 ? {
               <i class="fab fa-whatsapp"></i>
               Send Your Document
             </a>
+            {/* Inline star rating */}
+            {showRating && (
+              <span class="hero-rating">
+                <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+                <span class="rating-text">5.0 on Google</span>
+              </span>
+            )}
           </div>
+
+          {/* Under-CTA note */}
+          {ctaNote ? (
+            <span class="hero-cta-note">
+              <i class="fas fa-check-circle"></i> {ctaNote}
+            </span>
+          ) : (
+            <span class="hero-cta-note">
+              <i class="fas fa-check-circle"></i> Free quote within 15 minutes
+            </span>
+          )}
         </div>
       </div>
     </div>
+
+    {/* Scroll indicator */}
+    {showScrollIndicator && (
+      <div class="hero-scroll-indicator" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="scroll-mouse">
+          <div class="scroll-wheel"></div>
+        </div>
+      </div>
+    )}
   </section>
 
   <!-- Trust Strip (Optional) -->
