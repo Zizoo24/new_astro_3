@@ -1580,3 +1580,78 @@ body.theme-dark .ot-metric-note {
     font-size: 0.85rem;
     font-weight: 500;
 }
+
+/* ============================================
+   HERO FEATURE GRID - Visual Relief Components
+   Used in service pages for feature highlights
+   ============================================ */
+
+.hero-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem 2rem;
+    margin: 1.5rem 0;
+}
+
+/* Feature item - both .hero-feature and .hero-feature-item */
+.hero-feature,
+.hero-feature-item {
+    display: flex;
+    gap: 0.75rem;
+    padding-left: 1rem;
+    border-left: 3px solid var(--accent-coral, #FF1654);
+    line-height: 1.6;
+}
+
+.hero-feature svg,
+.hero-feature-item svg {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    color: var(--accent-coral, #FF1654);
+    margin-top: 0.1rem;
+}
+
+/* Inner container for text content */
+.hero-feature > div,
+.hero-feature-item > div {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Bold term - display as block with spacing */
+.hero-feature strong,
+.hero-feature-item strong {
+    display: block;
+    color: var(--text-on-dark, #f4f7fc);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+/* Description text */
+.hero-feature span,
+.hero-feature-item span {
+    color: var(--text-on-dark-muted, #c5d4e8);
+    font-size: 0.95em;
+}
+
+/* When strong and span are siblings without wrapper div */
+.hero-feature-grid li,
+.hero-feature-item:not(:has(> div)) {
+    flex-direction: column;
+}
+
+.hero-feature-grid li strong {
+    display: block;
+    color: var(--text-on-dark, #f4f7fc);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .hero-feature-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+}
