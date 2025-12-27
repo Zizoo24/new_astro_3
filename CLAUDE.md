@@ -1,682 +1,332 @@
-# CLAUDE.md — MANDATORY READING FOR ALL AI AGENTS
+# CLAUDE.md
 
-```
-╔══════════════════════════════════════════════════════════════════════╗
-║                                                                      ║
-║   🛑  STOP — READ THIS DOCUMENT BEFORE MAKING ANY CHANGES  🛑        ║
-║                                                                      ║
-║   This is the MASTER STRATEGIC BLUEPRINT for OnlineTranslation.ae   ║
-║   All code, content, and design decisions must align with this doc. ║
-║                                                                      ║
-║   Failure to consult this document may result in:                   ║
-║   • Factual errors (e.g., Hague Convention status)                  ║
-║   • Brand voice violations                                          ║
-║   • Architectural inconsistencies                                   ║
-║   • SEO regressions                                                 ║
-║                                                                      ║
-╚══════════════════════════════════════════════════════════════════════╝
-```
+> **OnlineTranslation.ae** — Boutique Digital Concierge for Legal Translation
+> Partner: Arkan Legal Translation (MOJ License #701) | Version 8.1 | December 27, 2025
 
 ---
 
-# **MASTER STRATEGIC BLUEPRINT: The Digital Concierge Initiative**
+## Quick Reference
 
-**Entity:** OnlineTranslation.ae  
-**Model:** Boutique Digital Concierge (Managed Legal Services)  
-**Strategic Partner:** Arkan Legal Translation (Fulfillment)  
-**Version:** 8.1 (DHA DataFlow & Hub Visual Navigation)
-**Last Updated:** December 27, 2025
+**Before ANY changes, verify:**
 
----
+1. Check [Critical Facts](#critical-facts) — UAE is NOT a Hague member
+2. Follow [Readability Rules](#readability-rules) — 25 word max sentences
+3. Use [Brand Voice](#brand-voice) — no hype, no "best in Dubai"
+4. Reference [File Locations](#file-reference) — single source of truth
 
-## **DOCUMENT STRUCTURE**
-
-| Part | Title | Purpose |
-|------|-------|---------|
-| I | Critical Facts | Hague Convention, business info |
-| II | Executive Strategy | Brand positioning, value proposition |
-| III | Website Architecture | URL structure, silo organization |
-| IV | SEO Infrastructure | Schema, metadata, technical implementation |
-| V | Content Standards | Page structure, readability rules |
-| VI | Brand Codex | Voice, tone, writing guidelines |
-| VII | UI/UX Standards | Visual design, accessibility |
-| VIII | Implementation Status | Completed work, current state |
-| IX | File Reference | Key files and their purposes |
+**Key files:**
+- `src/config/site.ts` — Site/SEO configuration
+- `src/data/navigation.ts` — All navigation (single source)
+- `src/components/Schema.astro` — Structured data
+- `docs/SEO-IMPLEMENTATION-PLAN.md` — SEO details
 
 ---
 
-## **PART I: CRITICAL FACTS — VERIFY BEFORE WRITING**
+## Critical Facts
 
-These facts MUST be correct in all content. Errors cause legal/trust issues.
+### Hague Apostille Convention
 
-### 1.1 Hague Apostille Convention Status
+| Country | Member? | Notes |
+|---------|---------|-------|
+| **UAE** | ❌ NO | Embassy + MOFA attestation required |
+| India | ✅ Yes | MEA apostille (since 2005) |
+| Pakistan | ❌ No | Full attestation chain |
+| Bangladesh | ✅ Yes | Since March 2025 |
+| Canada | ✅ Yes | Since January 2024 |
+| USA | ✅ Yes | State/Federal apostille |
+| UK | ✅ Yes | FCDO apostille |
+| Philippines | ✅ Yes | PSA/DFA apostille |
 
-| Country | Hague Member? | Since | Notes |
-|---------|---------------|-------|-------|
-| **UAE** | ❌ **NO** | N/A | UAE is NOT a Hague member. Foreign documents need Embassy + MOFA attestation. |
-| **India** | ✅ YES | July 2005 | MEA apostille replaces embassy chain |
-| **Pakistan** | ❌ NO | N/A | Full attestation chain required |
-| **Bangladesh** | ✅ YES | March 2025 | Recently joined |
-| **Canada** | ✅ YES | January 2024 | Recently joined |
-| **USA** | ✅ YES | 1981 | State/Federal apostille |
-| **UK** | ✅ YES | 1965 | FCDO apostille |
-| **Philippines** | ✅ YES | 2019 | PSA/DFA apostille |
+> ⚠️ **NEVER claim UAE is a Hague member.** Most common factual error.
 
-**⚠️ NEVER claim UAE is a Hague member. This is the most common factual error.**
-
-### 1.2 Business Information
+### Business Info
 
 | Field | Value |
 |-------|-------|
-| MOJ-Licensed Partner | Arkan Legal Translation |
-| MOJ License | #701 |
-| Translator | خالد محمد عبدالوهاب العدل (Khaled Mohamed Abdulwahab Al-Adl) |
-| License Valid Until | October 15, 2026 |
+| MOJ Partner | Arkan Legal Translation (#701) |
+| Translator | Khaled Mohamed Abdulwahab Al-Adl |
+| License Valid | October 15, 2026 |
 | WhatsApp | +971 50 862 0217 |
-| Website | onlinetranslation.ae |
-| Location | Dubai, UAE (serves all UAE) |
 | Verify | MOJ Hotline 800 333333 |
 
 ---
 
-## **PART II: EXECUTIVE STRATEGY & IDENTITY**
+## Brand Position
 
-### 2.1 The Market Gap
-
-The Dubai translation market is polarized:
-
-- **Legacy Agencies (Alsun):** High trust, but slow. Email chains, quote forms.
-- **Street Shops (Al Syed):** Fast, but low trust. Cluttered, cheap-looking.
-
-**Our Position:** The "Apple Store" of Translation — premium simplicity.
-
-### 2.2 The "Concierge" Value Proposition
+**Market gap:** Legacy agencies are slow; street shops lack trust.
+**Our position:** "Apple Store" of Translation — premium simplicity.
 
 | Differentiator | Description |
 |----------------|-------------|
-| 60-Minute Promise | Standard documents delivered within 1 hour |
+| 60-Minute Promise | Standard docs within 1 hour |
 | WhatsApp-First | No emails. Upload, approve, pay via WhatsApp |
-| White-Glove Shield | Pre-validate documents before payment |
-| Right-Selling | Tell clients what they actually need (MOJ vs Certified) |
+| White-Glove Shield | Pre-validate before payment |
+| Right-Selling | Tell clients what they actually need |
 
-### 2.3 Service Tiers
+### Service Tiers
 
-| Service | Starting Price | Use Case |
-|---------|----------------|----------|
-| MOJ Legal Translation | AED 150+ | Courts, ministries, government |
-| Certified Translation | AED 150+ | HR, banks, private companies |
+| Service | Price | Use Case |
+|---------|-------|----------|
+| MOJ Legal | AED 150+ | Courts, ministries, government |
+| Certified | AED 150+ | HR, banks, private companies |
 
-**Key Distinction:** MOJ certification required for government. Certified sufficient for private use. We help clients avoid overpaying.
-
-### 2.4 Legal Framework
-
-- **Operating Model:** Document Clearing & Project Management
-- **Disclaimer:** "Services executed by MOJ-Licensed Partners"
-- **Partner Role (Arkan):** License, stamp, signature
-- **Our Role:** Platform, customer service, logistics
+**Key:** MOJ required for government. Certified sufficient for private use.
 
 ---
 
-## **PART III: WEBSITE ARCHITECTURE**
+## Website Architecture
 
-### 3.1 The 6-Silo Structure
+### 6-Silo Structure
 
-| Silo | URL Pattern | Target Audience |
-|------|-------------|-----------------|
-| **Legal & Corporate** | `/legal/`, `/legal/contracts/`, `/legal/corporate/` | Lawyers, PROs, CEOs |
-| **Personal & Civil** | `/personal/`, `/personal/vital-records/`, `/personal/immigration/` | Residents, Golden Visa applicants |
-| **Attestation** | `/services/attestation/` | International document users |
-| **Specialized** | `/specialized/` | B2B procurement |
-| **Locations** | `/locations/` | Local search traffic |
-| **Resources** | `/resources/`, `/blog/` | Informational intent |
+| Silo | URL Pattern | Audience |
+|------|-------------|----------|
+| Legal & Corporate | `/legal/`, `/legal/contracts/` | Lawyers, PROs |
+| Personal & Civil | `/personal/`, `/personal/vital-records/` | Residents |
+| Attestation | `/services/attestation/` | International docs |
+| Specialized | `/specialized/` | B2B |
+| Locations | `/locations/` | Local SEO |
+| Resources | `/resources/`, `/blog/` | Informational |
 
-### 3.2 Key URL Mappings
+### Key URLs
 
-**Legal & Corporate:**
-- `/legal/` — Hub page
-- `/legal/contracts/nda/`, `/legal/contracts/spa/`, `/legal/contracts/mou/`, `/legal/contracts/lease/`
-- `/legal/corporate/moa/`, `/legal/corporate/poa/`, `/legal/corporate/resolution/`, `/legal/corporate/license/`
-- `/legal/litigation/verdict/`, `/legal/litigation/arbitration/`
-- `/legal/wills/`
+**Legal:** `/legal/` (hub), `/legal/contracts/nda/`, `/legal/corporate/moa/`, `/legal/litigation/verdict/`, `/legal/wills/`
 
-**Personal & Civil:**
-- `/personal/` — Hub page
-- `/personal/vital-records/birth/`, `/personal/vital-records/marriage/`, `/personal/vital-records/divorce/`, `/personal/vital-records/death/`
-- `/personal/immigration/pcc/`, `/personal/immigration/bank/`, `/personal/immigration/license/`
-- `/personal/academic/degree/`, `/personal/academic/transcripts/`
+**Personal:** `/personal/` (hub), `/personal/vital-records/birth/`, `/personal/immigration/pcc/`, `/personal/academic/degree/`
 
-**Specialized:**
-- `/specialized-translation/` — Hub page
-- `/specialized/medical/` — Medical hub
-- `/specialized/medical/dha-dataflow/` — DHA DataFlow healthcare licensing (NEW)
-- `/specialized/technical/`, `/specialized/hospitality/`, `/specialized/digital/`, `/specialized/financial/`
+**Specialized:** `/specialized-translation/` (hub), `/specialized/medical/`, `/specialized/medical/dha-dataflow/`
 
-**Locations:**
-- `/locations/dubai/`, `/locations/dubai/difc/`, `/locations/dubai/jlt/`, `/locations/dubai/marina/`, `/locations/dubai/palm-jumeirah/`, `/locations/dubai/business-bay/`, `/locations/dubai/downtown/`
-- `/locations/abu-dhabi/`, `/locations/sharjah/`
+**Locations:** `/locations/dubai/`, `/locations/dubai/difc/`, `/locations/abu-dhabi/`
 
-### 3.3 Navigation Data Flow
+### Navigation Flow
 
 ```
-src/data/navigation.ts  →  Header-porto.astro
-                        →  Sidebar.astro
-                        →  MobileShell.astro
-                        →  Footer.astro
+src/data/navigation.ts → Header-porto.astro, Sidebar.astro, MobileShell.astro, Footer.astro
 ```
 
-**IMPORTANT:** All navigation changes go through `navigation.ts` — components import from this single source.
+> 💡 All navigation changes go through `navigation.ts`.
 
 ---
 
-## **PART IV: SEO INFRASTRUCTURE**
+## SEO Infrastructure
 
-### 4.1 Architecture Overview
-
-The SEO system is built with type-safe, build-time components. No runtime database queries.
+### File Structure
 
 ```
-src/
-├── config/
-│   └── site.ts              # Centralized site configuration
-├── components/
-│   ├── SEO.astro            # Advanced meta component (optional)
-│   ├── Schema.astro         # Type-safe structured data
-│   └── Breadcrumb.astro     # Breadcrumbs with JSON-LD
-├── lib/
-│   ├── schema-utils.ts      # Schema.org generators
-│   └── og-template.ts       # OG image configuration
-└── layouts/
-    ├── BaseLayout.astro     # Core layout with noindex support
-    └── ServiceLayout.astro  # Service pages with auto-schemas
+src/config/site.ts        # Site configuration
+src/components/SEO.astro  # Meta component
+src/components/Schema.astro # Structured data
+src/lib/schema-utils.ts   # Schema generators
+layouts/BaseLayout.astro  # Core layout, noindex support
+layouts/ServiceLayout.astro # Auto-generates Service/FAQ/HowTo schemas
 ```
 
-### 4.2 Site Configuration (`src/config/site.ts`)
+### Schema Usage
 
-Centralized configuration replacing WordPress/Rank Math database settings:
-
-```typescript
-export const siteConfig = {
-  name: 'OnlineTranslation.ae',
-  url: 'https://onlinetranslation.ae',
-  seo: {
-    titleSeparator: ' | ',
-    titleTemplate: '%title% | OnlineTranslation.ae',
-    limits: { titleMax: 60, descriptionMax: 155 }
-  },
-  business: { phone, email, address, geo, openingHours },
-  translator: { license, name, validUntil }
-};
-```
-
-### 4.3 Schema Implementation
-
-**BaseLayout.astro** includes:
-- `LocalBusiness` schema with `@id` reference
-- `WebSite` schema with SearchAction
-- `AggregateRating` from Google reviews
-
-**ServiceLayout.astro** auto-generates:
-- `Service` schema from page props
-- `FAQPage` schema from `faqs` array
-- `HowTo` schema from `processSteps` array
-- `BreadcrumbList` via Breadcrumb component
-
-**Usage (Schema.astro component):**
 ```astro
-<!-- Single schema -->
 <Schema type="service" data={{ name: "...", description: "..." }} />
 
-<!-- Multiple schemas -->
 <Schema schemas={[
   { type: 'service', data: {...} },
   { type: 'faq', data: { items: [...] } }
 ]} />
 ```
 
-### 4.4 Robots Meta Control
-
-BaseLayout supports per-page indexing control:
+### Robots Control
 
 ```astro
-<BaseLayout
-  title="Thank You"
-  description="..."
-  noindex={true}   <!-- Prevents indexing -->
-  nofollow={false} <!-- Default: follow links -->
-/>
+<BaseLayout noindex={true} />  <!-- Prevents indexing -->
 ```
 
-**Pages with noindex:**
-- `/404/` — Error page
-- `/thank-you/` — Form confirmation
-- `/offline/` — PWA offline page
+**Noindex pages:** `/404/`, `/thank-you/`, `/offline/`
 
-### 4.5 Hreflang Implementation
-
-```html
-<link rel="alternate" hreflang="en-AE" href="https://onlinetranslation.ae/..." />
-<link rel="alternate" hreflang="ar" href="https://onlinetranslation.ae/عربي/" />
-<link rel="alternate" hreflang="x-default" href="https://onlinetranslation.ae/..." />
-```
-
-### 4.6 Sitemap & Robots
-
-**Sitemap:** Auto-generated via `@astrojs/sitemap` with filtering:
-```javascript
-sitemap({
-  filter: (page) => !page.includes('/404') && !page.includes('/private/')
-})
-```
-
-**robots.txt:** Located at `/public/robots.txt`
-- Allows all crawlers
-- Includes blog paths
-- References sitemap
-- Blocks admin/private paths
-
-### 4.7 OG Image System
-
-**Configuration:** `src/lib/og-template.ts`  
-**Generator:** `scripts/generate-og-images.js`  
-**Output:** `public/assets/images/og/`
+### OG Images
 
 ```bash
-npm install --save-dev puppeteer  # One-time
-npm run og:generate                # Generate images
+npm run og:generate  # Generate images to public/assets/images/og/
 ```
 
 ---
 
-## **PART V: CONTENT STANDARDS**
+## Content Standards
 
-### 5.1 Page Structure (2,000+ Words Target)
+### Page Structure
 
-Every service page follows this hierarchy:
+1. **Hero** — Badge, H1, intro, bullets, CTA
+2. **Compliance Checklist** — Prerequisites (accordion)
+3. **Process** — 4-step timeline
+4. **After-Care** — Next steps
+5. **Pricing** — Tier cards (no exact prices)
+6. **FAQ** — 6-15 schema-optimized Q&A
 
-1. **Hero Section** — Service badge, H1, intro, snapshot bullets, CTA
-2. **Module A: Compliance Checklist** — Prerequisites (accordion)
-3. **Module B: Step-by-Step Process** — 4-step timeline
-4. **Module C: After-Care Guide** — What to do next
-5. **Module D: Pricing & Timelines** — Tier cards (no exact prices)
-6. **Module E: FAQ** — Schema-optimized Q&A
-
-### 5.2 Readability Rules
-
-**MANDATORY — All content must follow these rules:**
+### Readability Rules
 
 | Rule | Limit |
 |------|-------|
-| Sentence length | Maximum 25 words, target 15-20 |
-| Paragraph length | Maximum 3-4 sentences |
+| Sentence length | Max 25 words, target 15-20 |
+| Paragraph length | Max 3-4 sentences |
 | Lists | Use bullets for 3+ items |
 | Subheadings | Every 2-3 paragraphs |
 
-**BAD (41 words):**
+**Bad (41 words):**
 > "We translate all document types required for UAE government, court, and business use including birth certificates, marriage certificates, divorce decrees, death certificates, academic degrees, transcripts, police clearance certificates, bank statements, driving licenses, contracts, court judgments, and corporate filings."
 
-**GOOD (3 sentences, avg 14 words):**
+**Good (3 sentences, avg 14 words):**
 > "We translate all documents for UAE government, court, and business use. Personal documents include birth, marriage, divorce, and death certificates. We also handle academic records, police clearance, and corporate filings."
 
-### 5.3 FAQ Answer Structure
+### UAE-Specific Elements
 
-- **First sentence:** Direct answer
-- **Second sentence:** Key details
-- **Third sentence:** CTA or context
-
-### 5.4 UAE-Specific Elements to Include
-
-- Government entities: GDRFA, MOFA, DLD, KHDA, MOHRE, DHA
-- Portal names: ICP, GDRFA app, Amer
-- Typing center references
-- Attestation chain specifics
-- Hague Convention status (accurate per Part I)
+Include: GDRFA, MOFA, DLD, KHDA, MOHRE, DHA, ICP, Amer portal, typing centers, attestation chains
 
 ---
 
-## **PART VI: BRAND CODEX — Voice & Tone**
+## Brand Voice
 
-### 6.1 Core Philosophy: "The Anti-Agency"
+**Persona:** Personal Assistant to a busy executive — polite but not servile, honest, calm.
 
-We don't sell "Magic Words." We sell **Stress Management**:
-- We answer WhatsApp in 2 minutes
-- We check files before payment
-- We own and fix mistakes immediately
-
-### 6.2 Writing Persona: "The Capable Assistant"
-
-You are a Personal Assistant to a busy executive:
-- **Polite** but not servile
-- **Honest** even when inconvenient
-- **Calm** especially when the client panics
-
-### 6.3 The 4 Pillars of Boutique Style
+### 4 Pillars
 
 | Pillar | Description |
 |--------|-------------|
-| **No-Nonsense** | Direct, no flowery intros |
-| **Service Spotlight** | Focus on experience, not paper |
-| **Partner Dynamic** | Use "We" and "You" together |
-| **Quiet Authority** | No exclamation points, no ALL-CAPS |
+| No-Nonsense | Direct, no flowery intros |
+| Service Spotlight | Focus on experience, not paper |
+| Partner Dynamic | "We" and "You" together |
+| Quiet Authority | No exclamation points, no ALL-CAPS |
 
-### 6.4 Banned Vocabulary
+### Banned Words
 
-**Never use:**
-- "Market Leader" / "Best in Dubai" / "#1"
-- "State-of-the-Art" / "Revolutionary"
-- "Unrivaled" / "Best Prices"
-- "One-Stop Shop"
-- Exclamation points (!)
+❌ "Market Leader" / "Best in Dubai" / "#1" / "State-of-the-Art" / "Revolutionary" / "Unrivaled" / "One-Stop Shop" / Exclamation points
 
-**Use instead:**
-- "Dedicated Support" / "Managed Process"
-- "Attention to Detail" / "Personalized"
-- "Transparent"
-
-### 6.5 Handling Criticism
-
-**Don't say:** "We offer 100% Error-Free Guarantees!"  
-**Say:** "We use a double-check system. If an error slips through, we correct it instantly and redeliver at our cost."
+✅ "Dedicated Support" / "Managed Process" / "Personalized" / "Transparent"
 
 ---
 
-## **PART VII: UI/UX STANDARDS**
+## UI/UX Standards
 
-### 7.1 Color Palette
+### Colors
 
-| Name | Light Mode | Dark Mode | Usage |
-|------|------------|-----------|-------|
-| Coral | `#FF1654` | `#ff6b6b` | CTAs, Accent |
-| Navy | `#0E2B48` | `#243347` | Headers, Hero |
+| Name | Light | Dark | Usage |
+|------|-------|------|-------|
+| Coral | `#FF1654` | `#ff6b6b` | CTAs |
+| Navy | `#0E2B48` | `#243347` | Headers |
 | Teal | `#0077b6` | `#7fd1ff` | Links |
-| Gold | `#d4a54c` | `#ffe178` | Premium indicators |
+| Gold | `#d4a54c` | `#ffe178` | Premium |
 
-**Always use CSS tokens:** `var(--accent-coral)`, not raw hex.
+Use CSS tokens: `var(--accent-coral)`, not raw hex.
 
-### 7.1.1 CRITICAL: Gray Text on Navy Backgrounds — FORBIDDEN
+> ⚠️ **NEVER use gray text on navy backgrounds.** Use `var(--text-on-dark)` for dark sections. See `contrast-fixes.css`.
 
-**⚠️ NEVER use gray or muted text colors on navy backgrounds. This is a mandatory contrast rule.**
-
-| Background | ❌ NEVER Use | ✅ ALWAYS Use |
-|------------|--------------|---------------|
-| Navy (`--surface-navy`) | `--text-muted`, `--text-secondary`, gray colors | `--text-on-dark`, `--text-on-dark-muted` (min 9:1 contrast) |
-| Dark sections (`.bg-dark`) | Any gray text | Bright white or light blue text |
-| Hero sections | Muted/subtle colors | High-contrast text with opacity if needed |
-
-**Implementation:**
-- Use `var(--text-on-dark)` for primary text on dark backgrounds
-- Use `opacity: 0.95` for subtle hierarchy, NOT gray colors
-- CSS file `contrast-fixes.css` enforces this globally
-- Hero section text must be white/bright, not gray
-
-**Why this matters:** Gray text on navy fails WCAG contrast requirements and creates an inaccessible, hard-to-read experience. The site has enforced CSS rules in `public/styles/contrast-fixes.css` that override gray text on dark sections.
-
-### 7.2 Typography
+### Typography
 
 | Element | Size | Weight |
 |---------|------|--------|
-| H1 | 2.5rem (40px) | 800 |
-| H2 | 2rem (32px) | 700 |
-| H3 | 1.4rem (22px) | 700 |
-| Body | 1rem (16px) | 400 |
+| H1 | 2.5rem | 800 |
+| H2 | 2rem | 700 |
+| H3 | 1.4rem | 700 |
+| Body | 1rem | 400 |
 
-### 7.3 Mobile Architecture
+### Mobile
 
-**NO FLOATING CTAs** — They signal desperation and obscure content.
+- No floating CTAs
+- Bottom Action Bar: WhatsApp, Call, Send Docs
+- Fixed bottom, iPhone notch-safe, <768px only
 
-**Instead:** Bottom Action Bar (Sticky Mobile Pattern)
-- Fixed to bottom, iPhone notch-safe
-- Three actions: WhatsApp, Call, Send Docs
-- Shows only on mobile (<768px)
+### Accordions
 
-### 7.4 Accordion Implementation
+Use `<details>`/`<summary>` elements. Content in DOM at load (not AJAX).
 
-**MANDATORY:** All accordion content must be in DOM at page load.
-
-- Use HTML5 `<details>` and `<summary>` elements
-- `name` attribute for exclusive behavior
-- Content hidden via CSS, NOT lazy-loaded via AJAX
-- Google indexes hidden-but-present content equally
-
-### 7.5 Performance Targets
+### Performance
 
 | Metric | Target |
 |--------|--------|
-| First Contentful Paint | < 1.0s |
-| Largest Contentful Paint | < 2.0s |
-| Cumulative Layout Shift | < 0.05 |
-| Total Page Size | < 1.5MB |
+| FCP | < 1.0s |
+| LCP | < 2.0s |
+| CLS | < 0.05 |
+| Page Size | < 1.5MB |
 
-### 7.6 Accessibility (WCAG AA)
+### Accessibility (WCAG AA)
 
-- Visible focus rings (outline: 2px solid)
-- Touch targets: 44px × 44px minimum
-- Color contrast: 4.5:1 for text
-- ARIA labels on all buttons/links
-- Skip-to-content link
-
----
-
-## **PART VIII: IMPLEMENTATION STATUS**
-
-### 8.1 SEO Infrastructure — ✅ COMPLETE
-
-| Component | File | Status |
-|-----------|------|--------|
-| Site Config | `src/config/site.ts` | ✅ Complete |
-| SEO Component | `src/components/SEO.astro` | ✅ Complete |
-| Schema Component | `src/components/Schema.astro` | ✅ Complete |
-| Schema Utilities | `src/lib/schema-utils.ts` | ✅ Complete |
-| OG Template | `src/lib/og-template.ts` | ✅ Complete |
-| OG Generator | `scripts/generate-og-images.js` | ✅ Complete |
-| Noindex Support | `BaseLayout.astro` | ✅ Complete |
-| Breadcrumb Schema | `Breadcrumb.astro` | ✅ Complete |
-
-### 8.2 Schema Implementation — ✅ COMPLETE
-
-| Schema Type | Location | Status |
-|-------------|----------|--------|
-| LocalBusiness | BaseLayout | ✅ With @id reference |
-| WebSite | BaseLayout | ✅ With SearchAction |
-| AggregateRating | BaseLayout | ✅ 5.0 stars, 8 reviews |
-| ContactPoint | BaseLayout | ✅ Customer service + sales |
-| Service | ServiceLayout | ✅ Auto-generated |
-| FAQPage | ServiceLayout | ✅ From faqs prop |
-| HowTo | ServiceLayout | ✅ From processSteps prop |
-| BreadcrumbList | Breadcrumb.astro | ✅ All pages |
-
-### 8.3 Internal Linking — ✅ COMPLETE
-
-| Component | Pages Deployed | Status |
-|-----------|----------------|--------|
-| RelatedServices | 35+ pages | ✅ Complete |
-| CrossSiloLinks | Hub pages | ✅ Complete |
-| Breadcrumbs | All service pages | ✅ Complete |
-
-### 8.4 Content Status
-
-| Category | Status |
-|----------|--------|
-| Thin Content Expansion | ✅ 3 pages expanded |
-| Missing Pages Created | ✅ 3 priority pages |
-| FAQ Additions | ✅ 2 pages enhanced |
-| Blog Infrastructure | ✅ Ready (3 posts published) |
-
-### 8.5 Pages with Noindex
-
-- [x] `/404/`
-- [x] `/thank-you/`
-- [x] `/offline/`
-
-### 8.6 Deferred Issues (Require Human Decision)
-
-These issues are documented in `SEO-ISSUES-DEFERRED.md` and require manual intervention:
-
-| Issue | Count | Action Needed |
-|-------|-------|---------------|
-| Long page titles (>60 chars) | 53 | Shorten while preserving keywords |
-| Low text-to-HTML ratio | 45 | Add more content |
-| Content not optimized | 24 | Keyword research + integration |
-| Missing pages | 3 | Create or remove links |
-| Duplicate title patterns | 2 | Differentiate location pages |
+- Focus rings: 2px solid
+- Touch targets: 44px min
+- Contrast: 4.5:1
+- ARIA labels on buttons/links
 
 ---
 
-## **PART IX: FILE REFERENCE**
+## File Reference
 
-### 9.1 Core Configuration
+### Core Config
 
 | File | Purpose |
 |------|---------|
-| `astro.config.mjs` | Astro configuration, sitemap |
-| `src/config/site.ts` | Centralized site/SEO config |
-| `src/data/navigation.ts` | Navigation structure (single source) |
-| `src/data/serviceLinks.ts` | Service page relationships |
+| `astro.config.mjs` | Astro config, sitemap |
+| `src/config/site.ts` | Site/SEO config |
+| `src/data/navigation.ts` | Navigation (single source) |
+| `src/data/serviceLinks.ts` | Service relationships |
 | `public/robots.txt` | Crawler directives |
-| `vercel.json` | Deployment config, cache headers |
 
-### 9.2 Layouts
-
-| File | Purpose |
-|------|---------|
-| `BaseLayout.astro` | Root layout, global schemas, noindex support |
-| `ServiceLayout.astro` | Service pages with auto-schema |
-| `BlogLayout.astro` | Blog posts with Article schema |
-| `CategoryLayout.astro` | Category/hub pages |
-
-### 9.3 SEO Components
+### Layouts
 
 | File | Purpose |
 |------|---------|
-| `SEO.astro` | Advanced meta with validation |
-| `Schema.astro` | Type-safe structured data |
-| `Breadcrumb.astro` | Breadcrumbs with JSON-LD |
+| `BaseLayout.astro` | Root layout, schemas, noindex |
+| `ServiceLayout.astro` | Service pages, auto-schema |
+| `BlogLayout.astro` | Blog posts |
 
-### 9.4 SEO Utilities
-
-| File | Purpose |
-|------|---------|
-| `src/lib/schema-utils.ts` | Schema.org generators |
-| `src/lib/og-template.ts` | OG image configuration |
-| `scripts/generate-og-images.js` | Puppeteer OG generator |
-
-### 9.5 Styles (Canonical Location: `public/styles/`)
+### Components
 
 | File | Purpose |
 |------|---------|
-| `base-architecture.css` | CSS tokens, foundation |
-| `porto-desktop.css` | Desktop styles |
-| `sticky-mobile.css` | Mobile bottom bar |
+| `SEO.astro` | Meta with validation |
+| `Schema.astro` | Structured data |
+| `Breadcrumb.astro` | Breadcrumbs + JSON-LD |
+
+### Styles (`public/styles/`)
+
+| File | Purpose |
+|------|---------|
+| `base-architecture.css` | CSS tokens |
+| `porto-desktop.css` | Desktop |
+| `sticky-mobile.css` | Mobile bar |
 | `dark-mode-tokenized.css` | Dark theme |
-| `contrast-fixes.css` | Accessibility fixes |
+| `contrast-fixes.css` | A11y fixes |
 
-### 9.6 Documentation
+### Documentation
 
-| File | Purpose | Status |
-|------|---------|--------|
-| `CLAUDE.md` | Master blueprint (this file) | ✅ Primary |
-| `docs/SEO-IMPLEMENTATION-PLAN.md` | SEO infrastructure details | ✅ Active |
-| `AI-AGENT-ONBOARDING.md` | Quick start for AI agents | ✅ Active |
-| `TASKS.md` | Component/UI task tracking | ✅ Active |
-| `CONTENT-EXPANSION-PLAN.md` | Content strategy | ✅ Active |
-| `SEO-ISSUES-DEFERRED.md` | Issues requiring human decisions | ✅ Active |
-| `FEATURE_CATALOG.md` | Migration tracking from HTML | ✅ Reference |
-| `COLOR_PALETTE_BLUEPRINT.md` | Design tokens | ✅ Reference |
-| `IMAGE_CATALOG.md` | Image asset inventory | ✅ Reference |
-
-### 9.7 Deprecated/Superseded Files
-
-| File | Status | Notes |
-|------|--------|-------|
-| `SEO-REPAIR-ROADMAP.md` | Superseded | Content in Part VIII |
-| `SEO_FIXES_COMPLETE.md` | Superseded | Outdated |
-| `SEO-FIXES-PLAN.md` | Superseded | Completed |
-| `SEO-TITLE-AUDIT.md` | Superseded | Merged into SEO-ISSUES-DEFERRED.md |
-| `READABILITY-OPTIMIZATION-PLAN.md` | Superseded | Rules now in Part V |
-| `TINACMS_MIGRATION_PLAN.md` | Deprecated | CMS removed |
+| File | Purpose |
+|------|---------|
+| `docs/SEO-IMPLEMENTATION-PLAN.md` | SEO details |
+| `AI-AGENT-ONBOARDING.md` | Quick start |
+| `TASKS.md` | Task tracking |
+| `SEO-ISSUES-DEFERRED.md` | Human decisions needed |
 
 ---
 
-## **CHANGELOG**
+## Deferred Issues
 
-### December 27, 2025 — DHA DataFlow & Hub Visual Navigation (v8.1)
+See `SEO-ISSUES-DEFERRED.md` for full details:
 
-**New Page Created:**
-- `/specialized/medical/dha-dataflow/` — Complete DHA DataFlow healthcare licensing page with FAQs, process steps, pricing packages, and DataFlow verification guidance
-
-**Hub Pages Enhanced:**
-- Added "Hero Subpage Mosaic" visual navigation component to all hub pages
-- Legal hub (`/legal-translation-dubai/`) — 4-tile mosaic: Contracts, Corporate, Litigation, Wills
-- Personal hub (`/personal-documents/`) — 4-tile mosaic: Vital Records, Immigration, Academic, Golden Visa
-- Specialized hub (`/specialized-translation/`) — 6-tile mosaic with NEW badge for DHA DataFlow
-- Medical hub (`/specialized/medical/`) — 3-tile mosaic: DHA DataFlow, Medical Degrees, Attestation
-- Services hub (`/services/`) — 5-tile mosaic with featured Golden Visa package
-
-**Navigation Updates:**
-- Added DHA DataFlow to desktop dropdown under Specialized (with NEW badge)
-- Added DHA DataFlow to mobile accordion navigation
-- Added DHA DataFlow to hub navigation cards
-- Updated `serviceLinks.ts` with dhaDataflow relationships
-
-**Internal Linking:**
-- Medical hub: DHA DataFlow callout and visual tiles
-- Specialized hub: DHA DataFlow service card with NEW indicator
-- Degree page: Healthcare requirements cross-reference
-
-### December 24, 2025 — SEO Infrastructure (v8.0)
-
-**New Files Created:**
-- `src/config/site.ts` — Centralized site configuration
-- `src/config/index.ts` — Clean exports
-- `src/components/SEO.astro` — Advanced SEO meta component
-- `src/components/Schema.astro` — Type-safe structured data
-- `src/lib/schema-utils.ts` — Schema.org generators
-- `src/lib/og-template.ts` — OG image configuration
-- `src/lib/index.ts` — Clean exports
-- `scripts/generate-og-images.js` — Puppeteer OG generator
-- `public/assets/images/og/` — OG image output directory
-- `docs/SEO-IMPLEMENTATION-PLAN.md` — Implementation documentation
-
-**Files Modified:**
-- `BaseLayout.astro` — Added noindex/nofollow props
-- `404.astro` — Added noindex
-- `thank-you.astro` — Added noindex
-- `offline.astro` — Added noindex
-- `eslint.config.mjs` — Added accessibility rules
-- `package.json` — Added og:generate script
-
-### December 2025 — Previous Updates
-
-- Removed TinaCMS (pure Astro)
-- Added Chatbase pricing assistant
-- Added Vercel Analytics
-- Fixed Hague Convention errors
-- 70+ SEO fixes (titles, descriptions, alt)
-- RelatedServices deployed to 35+ pages
-- Blog infrastructure complete (3 posts)
+| Issue | Count |
+|-------|-------|
+| Long titles (>60 chars) | 53 |
+| Low text-to-HTML ratio | 45 |
+| Content not optimized | 24 |
 
 ---
 
-## **AI AGENT PROTOCOL**
+## Changelog
 
-**Before making ANY changes:**
+### v8.1 (Dec 27, 2025)
+- Added `/specialized/medical/dha-dataflow/`
+- Added Hero Subpage Mosaic to all hub pages
+- Updated navigation with DHA DataFlow
 
-1. ✅ Read this entire document
-2. ✅ Check Part I for factual accuracy (Hague Convention)
-3. ✅ Follow Part V readability rules (25 word max sentences)
-4. ✅ Use Part VI brand voice (no hype, no "best in Dubai")
-5. ✅ Reference Part IX for correct file locations
+### v8.0 (Dec 24, 2025)
+- Created `src/config/site.ts`, `Schema.astro`, `schema-utils.ts`
+- Added noindex support to BaseLayout
+- Added OG image generator
 
-**For SEO changes:**
-- Use components in `src/components/` (SEO.astro, Schema.astro)
-- Reference `src/config/site.ts` for configuration
-- Check `docs/SEO-IMPLEMENTATION-PLAN.md` for details
-
-**For content changes:**
-- Follow Part V structure (Hero → Checklist → Process → After-Care → Pricing → FAQ)
-- Include UAE-specific entities (GDRFA, MOFA, DLD, etc.)
-- Add 8+ internal links per page
-- Include 6-15 FAQ questions
-
----
-
-*Last Updated: December 27, 2025 — Version 8.1*
+### Previous
+- Removed TinaCMS
+- Added Chatbase, Vercel Analytics
+- 70+ SEO fixes
+- RelatedServices on 35+ pages
