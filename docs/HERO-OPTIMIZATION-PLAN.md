@@ -1,8 +1,8 @@
 # Hero Section Optimization Plan
 
 **Created:** December 27, 2025
-**Status:** Phase 1 Complete (Infrastructure)
-**Affects:** 35+ service pages using ServiceLayout.astro
+**Status:** Phase 1 & 3 Complete (Infrastructure + Hub Pages)
+**Affects:** 35+ service pages (ServiceLayout) + 8+ hub pages (CategoryLayout)
 
 ---
 
@@ -83,16 +83,23 @@ ctaNote="DataFlow-ready translations in 2-3 days"
 
 ---
 
-### Phase 3: Category Hub Pages
+### Phase 3: Category Hub Pages (COMPLETE)
 
-Update CategoryLayout.astro with same enhancements:
+CategoryLayout.astro updated with same enhancements as ServiceLayout:
 
-| Hub Page | heroBadge |
+| Hub Page | heroBadge (to customize) |
 |----------|-----------|
 | `/legal-translation-dubai/` | `LEGAL TRANSLATION HUB` |
 | `/personal-documents/` | `PERSONAL DOCUMENTS` |
 | `/specialized-translation/` | `SPECIALIZED SERVICES` |
 | `/services/` | `ALL SERVICES` |
+
+**Automatic enhancements applied:**
+- Entrance fade animations
+- Scroll indicator (desktop)
+- Micro-divider between title and intro
+- CTA group with inline star rating
+- Under-CTA note ("Free quote within 15 minutes")
 
 ---
 
