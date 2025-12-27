@@ -54,6 +54,40 @@ import CrossSiloLinks from '../../components/CrossSiloLinks.astro';
       <p class="hero-subtitle">Industry Experts for Technical Accuracy</p>
       <p class="hero-intro">Generic translation doesn't work for specialized content. <a href="/specialized/medical/">Medical terminology</a>, <a href="/specialized/technical/">technical specifications</a>, <a href="/industries/legal/">legal jargon</a>, and industry-specific language require translators with subject matter expertise. Our specialized translation teams combine <a href="/legal-translation-dubai/">MOJ-certified</a> linguistic skills with deep industry knowledge to deliver translations that professionals trust.</p>
 
+      <div class="hero-subpage-mosaic">
+        <a href="/specialized/medical/" class="mosaic-tile">
+          <span class="mosaic-icon"><i class="fas fa-heartbeat"></i></span>
+          <span class="mosaic-label">Medical</span>
+          <span class="mosaic-desc">DHA Reports, Licensing</span>
+        </a>
+        <a href="/specialized/medical/dha-dataflow/" class="mosaic-tile mosaic-tile--new">
+          <span class="mosaic-badge">NEW</span>
+          <span class="mosaic-icon"><i class="fas fa-user-md"></i></span>
+          <span class="mosaic-label">DHA DataFlow</span>
+          <span class="mosaic-desc">Healthcare Licensing</span>
+        </a>
+        <a href="/specialized/technical/" class="mosaic-tile">
+          <span class="mosaic-icon"><i class="fas fa-cogs"></i></span>
+          <span class="mosaic-label">Technical</span>
+          <span class="mosaic-desc">Manuals, Specs</span>
+        </a>
+        <a href="/specialized/hospitality/" class="mosaic-tile">
+          <span class="mosaic-icon"><i class="fas fa-utensils"></i></span>
+          <span class="mosaic-label">Hospitality</span>
+          <span class="mosaic-desc">Menus, Tourism</span>
+        </a>
+        <a href="/specialized/digital/" class="mosaic-tile">
+          <span class="mosaic-icon"><i class="fas fa-globe"></i></span>
+          <span class="mosaic-label">Digital</span>
+          <span class="mosaic-desc">Web, SEO, Apps</span>
+        </a>
+        <a href="/specialized/financial/" class="mosaic-tile">
+          <span class="mosaic-icon"><i class="fas fa-chart-line"></i></span>
+          <span class="mosaic-label">Financial</span>
+          <span class="mosaic-desc">Reports, Statements</span>
+        </a>
+      </div>
+
       <div class="hero-cta">
         <a href="https://wa.me/971508620217?text=I%20need%20specialized%20translation" class="btn btn-accent">
           <i class="fab fa-whatsapp"></i> Discuss Your Project
@@ -891,6 +925,118 @@ import CrossSiloLinks from '../../components/CrossSiloLinks.astro';
 
     .hero-section {
       padding: 6rem 0 4rem;
+    }
+  }
+
+  /* Hero Subpage Mosaic */
+  .hero-subpage-mosaic {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.75rem;
+    margin: 2rem 0;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+  }
+
+  .mosaic-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.25s ease;
+    text-align: center;
+    position: relative;
+  }
+
+  .mosaic-tile:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+  }
+
+  .mosaic-tile--new {
+    background: linear-gradient(135deg, rgba(0, 200, 83, 0.15) 0%, rgba(0, 255, 136, 0.08) 100%);
+    border-color: rgba(0, 200, 83, 0.3);
+  }
+
+  .mosaic-tile--new:hover {
+    border-color: #00c853;
+    background: linear-gradient(135deg, rgba(0, 200, 83, 0.25) 0%, rgba(0, 255, 136, 0.15) 100%);
+  }
+
+  .mosaic-badge {
+    position: absolute;
+    top: -8px;
+    right: -5px;
+    background: #00c853;
+    color: white;
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+
+  .mosaic-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: var(--accent-color);
+    border-radius: 10px;
+    margin-bottom: 0.6rem;
+    color: white;
+  }
+
+  .mosaic-icon i {
+    font-size: 1.25rem;
+  }
+
+  .mosaic-label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: white;
+    margin-bottom: 0.2rem;
+  }
+
+  .mosaic-desc {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.2;
+  }
+
+  @media (max-width: 992px) {
+    .hero-subpage-mosaic {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-subpage-mosaic {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+      padding: 0.75rem;
+    }
+
+    .mosaic-tile {
+      padding: 0.75rem 0.4rem;
+    }
+
+    .mosaic-icon {
+      width: 36px;
+      height: 36px;
+    }
+
+    .mosaic-icon i {
+      font-size: 1rem;
     }
   }
 </style>

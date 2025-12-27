@@ -24,8 +24,8 @@
 **Entity:** OnlineTranslation.ae  
 **Model:** Boutique Digital Concierge (Managed Legal Services)  
 **Strategic Partner:** Arkan Legal Translation (Fulfillment)  
-**Version:** 8.0 (SEO Infrastructure Complete)  
-**Last Updated:** December 24, 2025
+**Version:** 8.1 (DHA DataFlow & Hub Visual Navigation)
+**Last Updated:** December 27, 2025
 
 ---
 
@@ -144,6 +144,12 @@ The Dubai translation market is polarized:
 - `/personal/vital-records/birth/`, `/personal/vital-records/marriage/`, `/personal/vital-records/divorce/`, `/personal/vital-records/death/`
 - `/personal/immigration/pcc/`, `/personal/immigration/bank/`, `/personal/immigration/license/`
 - `/personal/academic/degree/`, `/personal/academic/transcripts/`
+
+**Specialized:**
+- `/specialized-translation/` — Hub page
+- `/specialized/medical/` — Medical hub
+- `/specialized/medical/dha-dataflow/` — DHA DataFlow healthcare licensing (NEW)
+- `/specialized/technical/`, `/specialized/hospitality/`, `/specialized/digital/`, `/specialized/financial/`
 
 **Locations:**
 - `/locations/dubai/`, `/locations/dubai/difc/`, `/locations/dubai/jlt/`, `/locations/dubai/marina/`, `/locations/dubai/palm-jumeirah/`, `/locations/dubai/business-bay/`, `/locations/dubai/downtown/`
@@ -592,6 +598,30 @@ These issues are documented in `SEO-ISSUES-DEFERRED.md` and require manual inter
 
 ## **CHANGELOG**
 
+### December 27, 2025 — DHA DataFlow & Hub Visual Navigation (v8.1)
+
+**New Page Created:**
+- `/specialized/medical/dha-dataflow/` — Complete DHA DataFlow healthcare licensing page with FAQs, process steps, pricing packages, and DataFlow verification guidance
+
+**Hub Pages Enhanced:**
+- Added "Hero Subpage Mosaic" visual navigation component to all hub pages
+- Legal hub (`/legal-translation-dubai/`) — 4-tile mosaic: Contracts, Corporate, Litigation, Wills
+- Personal hub (`/personal-documents/`) — 4-tile mosaic: Vital Records, Immigration, Academic, Golden Visa
+- Specialized hub (`/specialized-translation/`) — 6-tile mosaic with NEW badge for DHA DataFlow
+- Medical hub (`/specialized/medical/`) — 3-tile mosaic: DHA DataFlow, Medical Degrees, Attestation
+- Services hub (`/services/`) — 5-tile mosaic with featured Golden Visa package
+
+**Navigation Updates:**
+- Added DHA DataFlow to desktop dropdown under Specialized (with NEW badge)
+- Added DHA DataFlow to mobile accordion navigation
+- Added DHA DataFlow to hub navigation cards
+- Updated `serviceLinks.ts` with dhaDataflow relationships
+
+**Internal Linking:**
+- Medical hub: DHA DataFlow callout and visual tiles
+- Specialized hub: DHA DataFlow service card with NEW indicator
+- Degree page: Healthcare requirements cross-reference
+
 ### December 24, 2025 — SEO Infrastructure (v8.0)
 
 **New Files Created:**
@@ -649,4 +679,4 @@ These issues are documented in `SEO-ISSUES-DEFERRED.md` and require manual inter
 
 ---
 
-*Last Updated: December 24, 2025 — Version 8.0*
+*Last Updated: December 27, 2025 — Version 8.1*
