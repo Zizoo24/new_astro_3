@@ -1,0 +1,122 @@
+---
+/**
+ * DeviceSlot.astro - Device-Specific Content Rendering (Method 21)
+ *
+ * Renders different content for desktop vs mobile using CSS-only approach.
+ * Content is in the DOM (SEO-friendly) but hidden via CSS media queries.
+ *
+ * Usage:
+ * <DeviceSlot>
+ *   <div slot="desktop"><Table data={...} /></div>
+ *   <div slot="mobile"><Accordion items={...} /></div>
+ * </DeviceSlot>
+ *
+ * Or for single-slot with automatic transformation:
+ * <DeviceSlot mode="table-to-accordion">
+ *   <Table data={...} />
+ * </DeviceSlot>
+ */
+
+interface Props {
+  /** Breakpoint for switching (default: 768px) */
+  breakpoint?: number;
+  /** Optional mode for automatic content transformation */
+  mode?: 'default' | 'table-to-accordion' | 'grid-to-stack' | 'columns-to-tabs';
+  /** CSS class for wrapper */
+  class?: string;
+}
+
+const {
+  breakpoint = 768,
+  mode = 'default',
+  class: className = ''
+} = Astro.props;
+
+const hasDesktopSlot = Astro.slots.has('desktop');
+const hasMobileSlot = Astro.slots.has('mobile');
+---
+
+<div class={`device-slot ${className}`} data-breakpoint={breakpoint}>
+  {/* Desktop Content */}
+  {hasDesktopSlot && (
+    <div class="device-slot__desktop">
+      <slot name="desktop" />
+    </div>
+  )}
+
+  {/* Mobile Content */}
+  {hasMobileSlot && (
+    <div class="device-slot__mobile">
+      <slot name="mobile" />
+    </div>
+  )}
+
+  {/* Default slot when no named slots provided */}
+  {!hasDesktopSlot && !hasMobileSlot && (
+    <div class={`device-slot__auto device-slot__auto--${mode}`}>
+      <slot />
+    </div>
+  )}
+</div>
+
+<style define:vars={{ breakpoint: `${breakpoint}px` }}>
+  .device-slot {
+    width: 100%;
+  }
+
+  /* Desktop: Show desktop content, hide mobile */
+  .device-slot__desktop {
+    display: block;
+  }
+
+  .device-slot__mobile {
+    display: none;
+  }
+
+  /* Mobile: Show mobile content, hide desktop */
+  @media (max-width: var(--breakpoint)) {
+    .device-slot__desktop {
+      display: none;
+    }
+
+    .device-slot__mobile {
+      display: block;
+    }
+  }
+
+  /* Auto-mode transformations */
+  .device-slot__auto--table-to-accordion {
+    /* Desktop: normal table display */
+  }
+
+  @media (max-width: var(--breakpoint)) {
+    .device-slot__auto--table-to-accordion :global(table) {
+      display: none;
+    }
+
+    .device-slot__auto--table-to-accordion :global(.accordion-fallback) {
+      display: block;
+    }
+  }
+
+  .device-slot__auto--grid-to-stack :global(.grid) {
+    display: grid;
+  }
+
+  @media (max-width: var(--breakpoint)) {
+    .device-slot__auto--grid-to-stack :global(.grid) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .device-slot__auto--columns-to-tabs {
+    /* Desktop: side-by-side columns */
+  }
+
+  @media (max-width: var(--breakpoint)) {
+    .device-slot__auto--columns-to-tabs :global(.column-layout) {
+      /* Transform to tab interface on mobile */
+    }
+  }
+</style>

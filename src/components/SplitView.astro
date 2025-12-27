@@ -1,0 +1,309 @@
+---
+/**
+ * SplitView.astro - Side-by-Side Comparison (Methods 3, 32)
+ *
+ * Desktop: Two panels side-by-side with optional sticky behavior
+ * Mobile: Stacked with tab navigation option
+ *
+ * Usage:
+ * <SplitView>
+ *   <div slot="left">Original Document</div>
+ *   <div slot="right">Translated Output</div>
+ * </SplitView>
+ */
+
+interface Props {
+  /** Left panel title */
+  leftTitle?: string;
+  /** Right panel title */
+  rightTitle?: string;
+  /** Split ratio (e.g., '50-50', '60-40', '70-30') */
+  ratio?: '50-50' | '60-40' | '40-60' | '70-30' | '30-70';
+  /** Sticky right panel (for forms, contact info) */
+  stickyRight?: boolean;
+  /** Mobile behavior */
+  mobileMode?: 'stack' | 'tabs' | 'accordion';
+  /** Add visual divider between panels */
+  divider?: boolean;
+  /** CSS class */
+  class?: string;
+}
+
+const {
+  leftTitle = '',
+  rightTitle = '',
+  ratio = '50-50',
+  stickyRight = false,
+  mobileMode = 'stack',
+  divider = false,
+  class: className = ''
+} = Astro.props;
+
+const [leftRatio, rightRatio] = ratio.split('-').map(Number);
+---
+
+<div
+  class={`split-view split-view--${mobileMode} ${divider ? 'split-view--divider' : ''} ${className}`}
+  class:list={{
+    'split-view--sticky-right': stickyRight
+  }}
+  data-ratio={ratio}
+>
+  {/* Mobile Tabs Navigation */}
+  {mobileMode === 'tabs' && (
+    <div class="split-view__tabs" role="tablist">
+      <button
+        class="split-view__tab active"
+        role="tab"
+        aria-selected="true"
+        data-panel="left"
+      >
+        {leftTitle || 'Panel 1'}
+      </button>
+      <button
+        class="split-view__tab"
+        role="tab"
+        aria-selected="false"
+        data-panel="right"
+      >
+        {rightTitle || 'Panel 2'}
+      </button>
+    </div>
+  )}
+
+  <div class="split-view__container">
+    {/* Left Panel */}
+    <div class="split-view__panel split-view__left" role="tabpanel" id="panel-left">
+      {leftTitle && <h3 class="split-view__panel-title">{leftTitle}</h3>}
+      <div class="split-view__content">
+        <slot name="left" />
+      </div>
+    </div>
+
+    {/* Divider */}
+    {divider && <div class="split-view__divider" aria-hidden="true"></div>}
+
+    {/* Right Panel */}
+    <div class="split-view__panel split-view__right" role="tabpanel" id="panel-right">
+      {rightTitle && <h3 class="split-view__panel-title">{rightTitle}</h3>}
+      <div class="split-view__content">
+        <slot name="right" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Tab switching for mobile
+  document.querySelectorAll('.split-view--tabs').forEach(splitView => {
+    const tabs = splitView.querySelectorAll('.split-view__tab');
+    const panels = splitView.querySelectorAll('.split-view__panel');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const panelId = (tab as HTMLElement).dataset.panel;
+
+        // Update tabs
+        tabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+
+        // Update panels
+        panels.forEach(panel => {
+          panel.classList.remove('active');
+          if (panel.id === `panel-${panelId}`) {
+            panel.classList.add('active');
+          }
+        });
+      });
+    });
+  });
+</script>
+
+<style define:vars={{ leftRatio: `${leftRatio}fr`, rightRatio: `${rightRatio}fr` }}>
+  .split-view {
+    width: 100%;
+  }
+
+  /* ============================================
+     DESKTOP: Side-by-Side Layout
+     ============================================ */
+  .split-view__container {
+    display: grid;
+    grid-template-columns: var(--leftRatio) var(--rightRatio);
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  .split-view--divider .split-view__container {
+    grid-template-columns: var(--leftRatio) auto var(--rightRatio);
+  }
+
+  .split-view__panel {
+    min-width: 0; /* Prevent grid blowout */
+  }
+
+  .split-view__panel-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-heading);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 2px solid var(--accent-coral);
+  }
+
+  .split-view__content {
+    background: var(--surface-base);
+    border-radius: 12px;
+    padding: var(--space-md);
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* Sticky Right Panel (Method 32) */
+  .split-view--sticky-right .split-view__right {
+    position: sticky;
+    top: calc(var(--os-nav-height, 64px) + var(--space-md));
+  }
+
+  /* Divider */
+  .split-view__divider {
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      var(--border-medium) 20%,
+      var(--border-medium) 80%,
+      transparent
+    );
+    align-self: stretch;
+  }
+
+  /* Desktop tabs hidden */
+  .split-view__tabs {
+    display: none;
+  }
+
+  /* ============================================
+     MOBILE: Stacked Layout (Default)
+     ============================================ */
+  @media (max-width: 768px) {
+    .split-view__container {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    .split-view--divider .split-view__container {
+      grid-template-columns: 1fr;
+    }
+
+    .split-view__divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        var(--border-medium) 20%,
+        var(--border-medium) 80%,
+        transparent
+      );
+    }
+
+    .split-view--sticky-right .split-view__right {
+      position: relative;
+      top: 0;
+    }
+
+    /* Tab Mode */
+    .split-view--tabs .split-view__tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: var(--space-md);
+      background: var(--surface-raised);
+      border-radius: 8px;
+      padding: 4px;
+    }
+
+    .split-view__tab {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      background: transparent;
+      border: none;
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .split-view__tab.active {
+      background: var(--surface-base);
+      color: var(--text-heading);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .split-view--tabs .split-view__panel {
+      display: none;
+    }
+
+    .split-view--tabs .split-view__panel.active,
+    .split-view--tabs .split-view__left {
+      display: block;
+    }
+
+    /* Initially show left panel */
+    .split-view--tabs .split-view__left {
+      display: block;
+    }
+
+    .split-view--tabs .split-view__left:not(.active) {
+      display: none;
+    }
+  }
+
+  /* ============================================
+     COMPARISON MODE - Before/After Labels
+     ============================================ */
+  .split-view__panel::before {
+    content: attr(data-label);
+    display: none;
+  }
+
+  .split-view[data-comparison] .split-view__left::before {
+    content: 'Before';
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--state-danger);
+    margin-bottom: var(--space-sm);
+  }
+
+  .split-view[data-comparison] .split-view__right::before {
+    content: 'After';
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--state-success);
+    margin-bottom: var(--space-sm);
+  }
+
+  /* ============================================
+     DARK MODE
+     ============================================ */
+  :global([data-theme="dark"]) .split-view__content,
+  :global(body.theme-dark) .split-view__content {
+    background: var(--surface-muted);
+  }
+
+  :global([data-theme="dark"]) .split-view__tab.active,
+  :global(body.theme-dark) .split-view__tab.active {
+    background: var(--surface-navy);
+    color: var(--text-on-dark);
+  }
+</style>

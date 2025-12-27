@@ -1,0 +1,345 @@
+---
+/**
+ * BottomSheet.astro - Mobile Swipe-Up Menu (Methods 11, 17)
+ *
+ * Mobile PWA-style bottom sheet for service selection.
+ * Includes swipe gestures and progressive disclosure.
+ *
+ * Usage:
+ * <BottomSheet
+ *   trigger="quote"
+ *   title="Get a Quote"
+ * >
+ *   <QuoteForm />
+ * </BottomSheet>
+ */
+
+interface Props {
+  /** Unique ID for the sheet */
+  id?: string;
+  /** Sheet title */
+  title?: string;
+  /** Trigger element ID to open sheet */
+  trigger?: string;
+  /** Initial height when partially open */
+  peekHeight?: string;
+  /** Allow swipe to expand/collapse */
+  swipeable?: boolean;
+  /** Show drag handle */
+  showHandle?: boolean;
+  /** CSS class */
+  class?: string;
+}
+
+const {
+  id = `sheet-${Math.random().toString(36).slice(2, 9)}`,
+  title = '',
+  trigger = '',
+  peekHeight = '30vh',
+  swipeable = true,
+  showHandle = true,
+  class: className = ''
+} = Astro.props;
+---
+
+{/* Bottom Sheet Component - Mobile Only */}
+<div
+  class={`bottom-sheet ${className}`}
+  id={id}
+  data-trigger={trigger}
+  data-swipeable={swipeable}
+  aria-hidden="true"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby={`${id}-title`}
+>
+  {/* Overlay */}
+  <div class="bottom-sheet__overlay" data-close></div>
+
+  {/* Sheet Container */}
+  <div class="bottom-sheet__container">
+    {/* Drag Handle */}
+    {showHandle && (
+      <div class="bottom-sheet__handle" aria-hidden="true">
+        <span class="bottom-sheet__handle-bar"></span>
+      </div>
+    )}
+
+    {/* Header */}
+    {title && (
+      <div class="bottom-sheet__header">
+        <h3 class="bottom-sheet__title" id={`${id}-title`}>{title}</h3>
+        <button
+          class="bottom-sheet__close"
+          data-close
+          aria-label="Close"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    )}
+
+    {/* Content */}
+    <div class="bottom-sheet__content">
+      <slot />
+    </div>
+  </div>
+</div>
+
+<script>
+  class BottomSheet {
+    sheet: HTMLElement;
+    container: HTMLElement;
+    overlay: HTMLElement;
+    startY: number = 0;
+    currentY: number = 0;
+    isDragging: boolean = false;
+    isOpen: boolean = false;
+
+    constructor(element: HTMLElement) {
+      this.sheet = element;
+      this.container = element.querySelector('.bottom-sheet__container') as HTMLElement;
+      this.overlay = element.querySelector('.bottom-sheet__overlay') as HTMLElement;
+
+      this.init();
+    }
+
+    init() {
+      // Trigger binding
+      const triggerId = this.sheet.dataset.trigger;
+      if (triggerId) {
+        document.querySelectorAll(`[data-open="${triggerId}"]`).forEach(btn => {
+          btn.addEventListener('click', () => this.open());
+        });
+      }
+
+      // Close handlers
+      this.sheet.querySelectorAll('[data-close]').forEach(btn => {
+        btn.addEventListener('click', () => this.close());
+      });
+
+      // Swipe gestures
+      if (this.sheet.dataset.swipeable === 'true') {
+        this.initSwipe();
+      }
+
+      // Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && this.isOpen) {
+          this.close();
+        }
+      });
+    }
+
+    initSwipe() {
+      const handle = this.container.querySelector('.bottom-sheet__handle');
+      const target = handle || this.container;
+
+      target.addEventListener('touchstart', (e: TouchEvent) => {
+        this.startY = e.touches[0].clientY;
+        this.isDragging = true;
+        this.container.style.transition = 'none';
+      }, { passive: true });
+
+      target.addEventListener('touchmove', (e: TouchEvent) => {
+        if (!this.isDragging) return;
+        this.currentY = e.touches[0].clientY;
+        const diff = this.currentY - this.startY;
+
+        if (diff > 0) {
+          this.container.style.transform = `translateY(${diff}px)`;
+        }
+      }, { passive: true });
+
+      target.addEventListener('touchend', () => {
+        if (!this.isDragging) return;
+        this.isDragging = false;
+        this.container.style.transition = '';
+
+        const diff = this.currentY - this.startY;
+
+        if (diff > 100) {
+          this.close();
+        } else {
+          this.container.style.transform = '';
+        }
+      });
+    }
+
+    open() {
+      this.sheet.classList.add('is-open');
+      this.sheet.setAttribute('aria-hidden', 'false');
+      this.isOpen = true;
+      document.body.style.overflow = 'hidden';
+
+      // Focus trap
+      const firstFocusable = this.container.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])') as HTMLElement;
+      firstFocusable?.focus();
+    }
+
+    close() {
+      this.sheet.classList.remove('is-open');
+      this.sheet.setAttribute('aria-hidden', 'true');
+      this.container.style.transform = '';
+      this.isOpen = false;
+      document.body.style.overflow = '';
+    }
+  }
+
+  // Initialize all bottom sheets
+  document.querySelectorAll('.bottom-sheet').forEach(sheet => {
+    new BottomSheet(sheet as HTMLElement);
+  });
+</script>
+
+<style define:vars={{ peekHeight }}>
+  .bottom-sheet {
+    display: none;
+  }
+
+  /* ============================================
+     MOBILE ONLY - Show bottom sheet UI
+     ============================================ */
+  @media (max-width: 768px) {
+    .bottom-sheet {
+      display: block;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      pointer-events: none;
+      visibility: hidden;
+    }
+
+    .bottom-sheet.is-open {
+      pointer-events: auto;
+      visibility: visible;
+    }
+
+    /* Overlay */
+    .bottom-sheet__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0);
+      transition: background 0.3s ease;
+    }
+
+    .bottom-sheet.is-open .bottom-sheet__overlay {
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    /* Container */
+    .bottom-sheet__container {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      max-height: 90vh;
+      background: var(--surface-base);
+      border-radius: 24px 24px 0 0;
+      transform: translateY(100%);
+      transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: env(safe-area-inset-bottom, 0);
+    }
+
+    .bottom-sheet.is-open .bottom-sheet__container {
+      transform: translateY(0);
+    }
+
+    /* Handle */
+    .bottom-sheet__handle {
+      display: flex;
+      justify-content: center;
+      padding: 12px;
+      cursor: grab;
+      touch-action: none;
+    }
+
+    .bottom-sheet__handle:active {
+      cursor: grabbing;
+    }
+
+    .bottom-sheet__handle-bar {
+      width: 40px;
+      height: 4px;
+      background: var(--border-medium);
+      border-radius: 2px;
+    }
+
+    /* Header */
+    .bottom-sheet__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--space-md) var(--space-md);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .bottom-sheet__title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-heading);
+      margin: 0;
+    }
+
+    .bottom-sheet__close {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface-raised);
+      border: none;
+      border-radius: 50%;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .bottom-sheet__close:hover {
+      background: var(--surface-muted);
+      color: var(--text-heading);
+    }
+
+    /* Content */
+    .bottom-sheet__content {
+      flex: 1;
+      overflow-y: auto;
+      padding: var(--space-md);
+      overscroll-behavior: contain;
+    }
+
+    /* Thumb-zone focus (Method 12) */
+    .bottom-sheet__content :global(button),
+    .bottom-sheet__content :global(.btn),
+    .bottom-sheet__content :global(a.action) {
+      min-height: 56px;
+      width: 100%;
+      margin-bottom: var(--space-sm);
+    }
+  }
+
+  /* ============================================
+     DESKTOP: Alternative rendering
+     ============================================ */
+  @media (min-width: 769px) {
+    .bottom-sheet {
+      display: none !important;
+    }
+  }
+
+  /* ============================================
+     DARK MODE
+     ============================================ */
+  :global([data-theme="dark"]) .bottom-sheet__container,
+  :global(body.theme-dark) .bottom-sheet__container {
+    background: var(--surface-navy);
+  }
+
+  :global([data-theme="dark"]) .bottom-sheet__handle-bar,
+  :global(body.theme-dark) .bottom-sheet__handle-bar {
+    background: var(--border-dark);
+  }
+</style>

@@ -1,0 +1,317 @@
+---
+/**
+ * DashboardLayout.astro - Desktop Information Dashboard (Methods 1, 31)
+ *
+ * Triple-column layout for desktop: Navigation | Main Body | Sticky Trust/Pricing
+ * Collapses to single column on mobile with sticky bottom bar.
+ *
+ * Usage:
+ * <DashboardLayout>
+ *   <nav slot="sidebar">Side navigation</nav>
+ *   <main slot="main">Main content</main>
+ *   <aside slot="aside">Trust badges, pricing</aside>
+ * </DashboardLayout>
+ */
+
+interface Props {
+  /** Sidebar width on desktop (default: 250px) */
+  sidebarWidth?: string;
+  /** Aside width on desktop (default: 300px) */
+  asideWidth?: string;
+  /** Sticky aside on desktop */
+  stickyAside?: boolean;
+  /** Sticky sidebar on desktop */
+  stickySidebar?: boolean;
+  /** Hide sidebar on tablet */
+  hideSidebarTablet?: boolean;
+  /** CSS class */
+  class?: string;
+}
+
+const {
+  sidebarWidth = '250px',
+  asideWidth = '300px',
+  stickyAside = true,
+  stickySidebar = true,
+  hideSidebarTablet = true,
+  class: className = ''
+} = Astro.props;
+
+const hasSidebar = Astro.slots.has('sidebar');
+const hasAside = Astro.slots.has('aside');
+---
+
+<div
+  class={`dashboard-layout ${className}`}
+  class:list={{
+    'dashboard-layout--has-sidebar': hasSidebar,
+    'dashboard-layout--has-aside': hasAside,
+    'dashboard-layout--sticky-aside': stickyAside,
+    'dashboard-layout--sticky-sidebar': stickySidebar,
+    'dashboard-layout--hide-sidebar-tablet': hideSidebarTablet
+  }}
+>
+  {/* Left Sidebar - Desktop Navigation */}
+  {hasSidebar && (
+    <nav class="dashboard-sidebar">
+      <div class="dashboard-sidebar__inner">
+        <slot name="sidebar" />
+      </div>
+    </nav>
+  )}
+
+  {/* Main Content Area */}
+  <main class="dashboard-main">
+    <slot name="main" />
+    <slot />
+  </main>
+
+  {/* Right Aside - Trust/Pricing */}
+  {hasAside && (
+    <aside class="dashboard-aside">
+      <div class="dashboard-aside__inner">
+        <slot name="aside" />
+      </div>
+    </aside>
+  )}
+</div>
+
+<style define:vars={{ sidebarWidth, asideWidth }}>
+  .dashboard-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    max-width: var(--container-wide);
+    margin: 0 auto;
+    padding: var(--space-lg);
+  }
+
+  /* ============================================
+     DESKTOP: Triple Column Layout
+     ============================================ */
+  @media (min-width: 1200px) {
+    .dashboard-layout--has-sidebar.dashboard-layout--has-aside {
+      grid-template-columns: var(--sidebarWidth) 1fr var(--asideWidth);
+    }
+
+    .dashboard-layout--has-sidebar:not(.dashboard-layout--has-aside) {
+      grid-template-columns: var(--sidebarWidth) 1fr;
+    }
+
+    .dashboard-layout--has-aside:not(.dashboard-layout--has-sidebar) {
+      grid-template-columns: 1fr var(--asideWidth);
+    }
+  }
+
+  /* ============================================
+     TABLET: Two Column (hide sidebar option)
+     ============================================ */
+  @media (min-width: 768px) and (max-width: 1199px) {
+    .dashboard-layout--has-aside {
+      grid-template-columns: 1fr var(--asideWidth);
+    }
+
+    .dashboard-layout--hide-sidebar-tablet .dashboard-sidebar {
+      display: none;
+    }
+  }
+
+  /* ============================================
+     SIDEBAR STYLES
+     ============================================ */
+  .dashboard-sidebar {
+    position: relative;
+  }
+
+  .dashboard-sidebar__inner {
+    position: relative;
+  }
+
+  .dashboard-layout--sticky-sidebar .dashboard-sidebar__inner {
+    position: sticky;
+    top: calc(var(--os-nav-height, 64px) + var(--space-md));
+  }
+
+  .dashboard-sidebar :global(.sidebar-nav) {
+    background: var(--surface-base);
+    border-radius: 12px;
+    padding: var(--space-md);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .dashboard-sidebar :global(.sidebar-nav-item) {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--text-body);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    margin-bottom: 0.25rem;
+  }
+
+  .dashboard-sidebar :global(.sidebar-nav-item:hover) {
+    background: var(--surface-raised);
+    color: var(--accent-coral);
+  }
+
+  .dashboard-sidebar :global(.sidebar-nav-item.active) {
+    background: var(--surface-navy);
+    color: var(--text-on-dark);
+    font-weight: 600;
+  }
+
+  /* Auto-highlight current section (Method 36) */
+  .dashboard-sidebar :global([data-current="true"]) {
+    background: var(--surface-navy);
+    color: var(--text-on-dark);
+    font-weight: 600;
+  }
+
+  /* ============================================
+     MAIN CONTENT STYLES
+     ============================================ */
+  .dashboard-main {
+    min-width: 0; /* Prevent grid blowout */
+  }
+
+  /* ============================================
+     ASIDE STYLES (Trust/Pricing Sticky)
+     ============================================ */
+  .dashboard-aside {
+    position: relative;
+  }
+
+  .dashboard-aside__inner {
+    position: relative;
+  }
+
+  .dashboard-layout--sticky-aside .dashboard-aside__inner {
+    position: sticky;
+    top: calc(var(--os-nav-height, 64px) + var(--space-md));
+    max-height: calc(100vh - var(--os-nav-height, 64px) - var(--space-xl));
+    overflow-y: auto;
+  }
+
+  /* Trust Badge Card */
+  .dashboard-aside :global(.trust-card) {
+    background: var(--surface-base);
+    border-radius: 12px;
+    padding: var(--space-md);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--space-md);
+    border-left: 4px solid var(--accent-coral);
+  }
+
+  /* Pricing Card */
+  .dashboard-aside :global(.pricing-card) {
+    background: linear-gradient(135deg, var(--surface-navy), var(--surface-navy-dark));
+    color: var(--text-on-dark);
+    border-radius: 12px;
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-md);
+  }
+
+  .dashboard-aside :global(.pricing-card h3) {
+    color: var(--text-on-dark);
+    margin-bottom: var(--space-sm);
+  }
+
+  .dashboard-aside :global(.pricing-card .price) {
+    font-size: var(--fs-xxl);
+    font-weight: 700;
+    color: var(--accent-coral);
+  }
+
+  /* Quick Action Buttons */
+  .dashboard-aside :global(.quick-action) {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: var(--surface-raised);
+    border-radius: 8px;
+    color: var(--text-heading);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    margin-bottom: 0.5rem;
+  }
+
+  .dashboard-aside :global(.quick-action:hover) {
+    background: var(--surface-muted);
+    transform: translateX(4px);
+  }
+
+  .dashboard-aside :global(.quick-action i) {
+    color: var(--accent-coral);
+    font-size: 1.25rem;
+    width: 24px;
+  }
+
+  /* ============================================
+     MOBILE: Stacked Layout
+     ============================================ */
+  @media (max-width: 767px) {
+    .dashboard-layout {
+      padding: var(--space-sm);
+      gap: var(--space-md);
+    }
+
+    .dashboard-sidebar {
+      display: none;
+    }
+
+    .dashboard-aside {
+      order: -1; /* Show aside first on mobile (pricing context) */
+    }
+
+    .dashboard-layout--sticky-aside .dashboard-aside__inner {
+      position: relative;
+      top: 0;
+      max-height: none;
+    }
+  }
+
+  /* ============================================
+     FLOATING ACTION SIDEBAR - Desktop Only (Method 4)
+     ============================================ */
+  .dashboard-layout :global(.floating-actions) {
+    display: none;
+  }
+
+  @media (min-width: 1400px) {
+    .dashboard-layout :global(.floating-actions) {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      gap: 0.5rem;
+      z-index: 100;
+    }
+
+    .dashboard-layout :global(.floating-action-btn) {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface-navy);
+      color: var(--text-on-dark);
+      box-shadow: var(--shadow-md);
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .dashboard-layout :global(.floating-action-btn:hover) {
+      transform: scale(1.1);
+      background: var(--accent-coral);
+    }
+
+    .dashboard-layout :global(.floating-action-btn.whatsapp) {
+      background: #25D366;
+    }
+  }
+</style>

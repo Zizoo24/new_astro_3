@@ -1,0 +1,341 @@
+---
+/**
+ * HorizontalSteps.astro - Process Timeline with Connectors (Method 2)
+ *
+ * Desktop: Horizontal steps with CSS :after connectors
+ * Mobile: Vertical timeline with progress line
+ *
+ * Usage:
+ * <HorizontalSteps
+ *   steps={[
+ *     { title: 'Upload', icon: 'upload', description: 'Send your document' },
+ *     { title: 'Review', icon: 'search', description: 'We verify requirements' },
+ *     { title: 'Translate', icon: 'language', description: 'MOJ-certified translation' },
+ *     { title: 'Deliver', icon: 'check-circle', description: 'Download or pickup' }
+ *   ]}
+ * />
+ */
+
+interface Step {
+  title: string;
+  icon?: string;
+  description?: string;
+  /** Optional status for progress tracking */
+  status?: 'pending' | 'active' | 'completed';
+}
+
+interface Props {
+  steps: Step[];
+  /** Title above the steps */
+  title?: string;
+  /** Subtitle text */
+  subtitle?: string;
+  /** Color theme */
+  variant?: 'coral' | 'navy' | 'gold';
+  /** Numbered steps instead of icons */
+  numbered?: boolean;
+  /** CSS class */
+  class?: string;
+}
+
+const {
+  steps,
+  title = '',
+  subtitle = '',
+  variant = 'coral',
+  numbered = false,
+  class: className = ''
+} = Astro.props;
+---
+
+<section class={`horizontal-steps horizontal-steps--${variant} ${className}`}>
+  {(title || subtitle) && (
+    <div class="horizontal-steps__header">
+      {title && <h2 class="horizontal-steps__title">{title}</h2>}
+      {subtitle && <p class="horizontal-steps__subtitle">{subtitle}</p>}
+    </div>
+  )}
+
+  <div class="horizontal-steps__container">
+    {steps.map((step, index) => (
+      <div
+        class={`step ${step.status ? `step--${step.status}` : ''}`}
+        data-step={index + 1}
+      >
+        <div class="step__indicator">
+          {numbered ? (
+            <span class="step__number">{index + 1}</span>
+          ) : (
+            <i class={`fas fa-${step.icon || 'circle'}`} aria-hidden="true"></i>
+          )}
+        </div>
+        <div class="step__content">
+          <h3 class="step__title">{step.title}</h3>
+          {step.description && (
+            <p class="step__description">{step.description}</p>
+          )}
+        </div>
+        {/* Connector line - CSS handles visibility */}
+        {index < steps.length - 1 && (
+          <div class="step__connector" aria-hidden="true"></div>
+        )}
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .horizontal-steps {
+    padding: var(--space-xl) 0;
+  }
+
+  .horizontal-steps__header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .horizontal-steps__title {
+    font-size: var(--fs-xl);
+    color: var(--text-heading);
+    margin-bottom: var(--space-sm);
+  }
+
+  .horizontal-steps__subtitle {
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* ============================================
+     DESKTOP: Horizontal Layout with Connectors
+     ============================================ */
+  .horizontal-steps__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 0 var(--space-md);
+  }
+
+  .step__indicator {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: var(--space-md);
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+  }
+
+  /* Coral variant (default) */
+  .horizontal-steps--coral .step__indicator {
+    background: var(--surface-raised);
+    color: var(--accent-coral);
+    border: 3px solid var(--accent-coral);
+  }
+
+  .horizontal-steps--coral .step--completed .step__indicator {
+    background: var(--accent-coral);
+    color: white;
+  }
+
+  .horizontal-steps--coral .step--active .step__indicator {
+    box-shadow: 0 0 0 4px rgba(255, 22, 84, 0.2);
+    animation: pulse 2s infinite;
+  }
+
+  /* Navy variant */
+  .horizontal-steps--navy .step__indicator {
+    background: var(--surface-raised);
+    color: var(--surface-navy);
+    border: 3px solid var(--surface-navy);
+  }
+
+  .horizontal-steps--navy .step--completed .step__indicator {
+    background: var(--surface-navy);
+    color: white;
+  }
+
+  /* Gold variant */
+  .horizontal-steps--gold .step__indicator {
+    background: var(--surface-raised);
+    color: var(--accent-gold);
+    border: 3px solid var(--accent-gold);
+  }
+
+  .horizontal-steps--gold .step--completed .step__indicator {
+    background: var(--accent-gold);
+    color: white;
+  }
+
+  .step__number {
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+
+  .step__content {
+    max-width: 180px;
+  }
+
+  .step__title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-heading);
+    margin-bottom: var(--space-xs);
+  }
+
+  .step__description {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* ============================================
+     CONNECTORS - CSS :after Lines (Method 2)
+     ============================================ */
+  .step__connector {
+    position: absolute;
+    top: 32px; /* Center of indicator */
+    left: calc(50% + 40px); /* Start after indicator */
+    right: calc(-50% + 40px); /* End before next indicator */
+    height: 3px;
+    background: var(--border-light);
+    z-index: 1;
+  }
+
+  .horizontal-steps--coral .step--completed .step__connector {
+    background: var(--accent-coral);
+  }
+
+  .horizontal-steps--coral .step--completed + .step--completed .step__connector,
+  .horizontal-steps--coral .step--completed + .step--active .step__connector {
+    background: linear-gradient(90deg, var(--accent-coral), var(--border-light));
+  }
+
+  .horizontal-steps--navy .step--completed .step__connector {
+    background: var(--surface-navy);
+  }
+
+  .horizontal-steps--gold .step--completed .step__connector {
+    background: var(--accent-gold);
+  }
+
+  /* Animated connector for active step */
+  .step--active .step__connector::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    background: linear-gradient(90deg, var(--accent-coral), transparent);
+    animation: progress-flow 1.5s ease-in-out infinite;
+  }
+
+  @keyframes progress-flow {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(200%); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(255, 22, 84, 0.2); }
+    50% { box-shadow: 0 0 0 8px rgba(255, 22, 84, 0.1); }
+  }
+
+  /* ============================================
+     MOBILE: Vertical Timeline (Method 16)
+     ============================================ */
+  @media (max-width: 768px) {
+    .horizontal-steps__container {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-left: 40px;
+    }
+
+    .step {
+      flex-direction: row;
+      align-items: flex-start;
+      text-align: left;
+      padding: 0 0 var(--space-lg) 0;
+      width: 100%;
+    }
+
+    .step:last-child {
+      padding-bottom: 0;
+    }
+
+    .step__indicator {
+      width: 48px;
+      height: 48px;
+      font-size: 1.25rem;
+      margin-bottom: 0;
+      margin-right: var(--space-md);
+      flex-shrink: 0;
+    }
+
+    .step__content {
+      max-width: none;
+      padding-top: 0.5rem;
+    }
+
+    .step__connector {
+      position: absolute;
+      top: 48px;
+      left: 24px;
+      right: auto;
+      width: 3px;
+      height: calc(100% - 48px + var(--space-lg));
+      transform: translateX(-50%);
+    }
+
+    .step:last-child .step__connector {
+      display: none;
+    }
+  }
+
+  /* ============================================
+     VERTICAL SCROLL PROGRESS (Method 16)
+     ============================================ */
+  @media (max-width: 768px) {
+    .horizontal-steps__container::before {
+      content: '';
+      position: absolute;
+      left: 24px;
+      top: 24px;
+      bottom: 24px;
+      width: 3px;
+      background: var(--border-light);
+      transform: translateX(-50%);
+      z-index: 0;
+    }
+  }
+
+  /* ============================================
+     DARK MODE
+     ============================================ */
+  :global([data-theme="dark"]) .step__indicator,
+  :global(body.theme-dark) .step__indicator {
+    background: var(--surface-muted);
+  }
+
+  :global([data-theme="dark"]) .step__connector,
+  :global(body.theme-dark) .step__connector {
+    background: var(--border-dark);
+  }
+</style>

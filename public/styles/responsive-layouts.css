@@ -1,0 +1,1109 @@
+/* ============================================
+   RESPONSIVE LAYOUTS CSS - 100 Methods Implementation
+   OnlineTranslation.ae
+
+   Desktop: "Information Dashboard"
+   Mobile: "Step-by-Step Task Runner"
+   ============================================ */
+
+/* ============================================
+   I. DESKTOP DASHBOARD LAYOUTS
+   ============================================ */
+
+/* Method 1: Triple-Column Sync */
+.layout-triple {
+  display: grid;
+  grid-template-columns: 250px 1fr 300px;
+  gap: var(--space-lg);
+  max-width: var(--container-wide);
+  margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+  .layout-triple {
+    grid-template-columns: 1fr 280px;
+  }
+  .layout-triple > :first-child {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout-triple {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Method 2: Horizontal Step Connectors */
+.steps-horizontal {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.steps-horizontal::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: var(--border-light);
+  z-index: 0;
+}
+
+.steps-horizontal .step {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  flex: 1;
+}
+
+.steps-horizontal .step::after {
+  content: '';
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  width: calc(100% - 48px);
+  height: 2px;
+  background: var(--accent-coral);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+
+.steps-horizontal .step.completed::after {
+  transform: scaleX(1);
+}
+
+@media (max-width: 768px) {
+  .steps-horizontal {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 30px;
+  }
+
+  .steps-horizontal::before {
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    right: auto;
+    width: 2px;
+    height: auto;
+  }
+}
+
+/* Method 4: Floating Action Sidebar */
+.floating-sidebar {
+  position: fixed;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 100;
+}
+
+.floating-sidebar__btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-navy);
+  color: var(--text-on-dark);
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: all 0.2s ease;
+}
+
+.floating-sidebar__btn:hover {
+  transform: scale(1.1);
+  background: var(--accent-coral);
+}
+
+.floating-sidebar__btn--whatsapp {
+  background: #25D366;
+}
+
+@media (max-width: 1400px) {
+  .floating-sidebar {
+    display: none;
+  }
+}
+
+/* Method 6: Full-Width Data Tables */
+.table-full-width {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table-full-width table {
+  min-width: 800px;
+  width: 100%;
+}
+
+/* Method 9: Mega-Footers */
+.mega-footer {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-lg);
+}
+
+@media (max-width: 992px) {
+  .mega-footer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .mega-footer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Method 10: Parallax Depth Layers */
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-layer {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+}
+
+.parallax-layer--back {
+  transform: translateZ(-2px) scale(3);
+}
+
+.parallax-layer--mid {
+  transform: translateZ(-1px) scale(2);
+}
+
+/* ============================================
+   II. MOBILE PWA APP-STYLE METHODS
+   ============================================ */
+
+/* Method 12: Thumb-Zone Focus */
+@media (max-width: 768px) {
+  .thumb-zone {
+    padding-bottom: 40vh;
+  }
+
+  .thumb-zone .cta-primary {
+    position: fixed;
+    bottom: calc(70px + env(safe-area-inset-bottom));
+    left: var(--space-md);
+    right: var(--space-md);
+    z-index: 90;
+  }
+}
+
+/* Method 13: Progressive Disclosure */
+.progressive-disclosure {
+  max-height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressive-disclosure::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(transparent, var(--surface-base));
+  pointer-events: none;
+}
+
+.progressive-disclosure.is-expanded {
+  max-height: none;
+}
+
+.progressive-disclosure.is-expanded::after {
+  display: none;
+}
+
+.progressive-disclosure__toggle {
+  display: block;
+  width: 100%;
+  padding: var(--space-md);
+  background: var(--surface-raised);
+  border: none;
+  color: var(--accent-coral);
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* Method 14: Full-Width Tappable Rows */
+@media (max-width: 768px) {
+  .tap-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 60px;
+    padding: var(--space-md);
+    background: var(--surface-base);
+    border-bottom: 1px solid var(--border-light);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .tap-row:active {
+    background: var(--surface-raised);
+  }
+
+  .tap-row__icon {
+    width: 44px;
+    height: 44px;
+    margin-right: var(--space-md);
+  }
+
+  .tap-row__arrow {
+    margin-left: auto;
+    color: var(--text-muted);
+  }
+}
+
+/* Method 15: Haptic Feedback Simulation */
+@media (max-width: 768px) {
+  .haptic {
+    transition: transform 0.1s ease;
+  }
+
+  .haptic:active {
+    transform: scale(0.97);
+  }
+}
+
+/* Method 16: Vertical Timeline Navigation */
+.timeline-progress {
+  position: fixed;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 100;
+}
+
+.timeline-progress__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--border-medium);
+  transition: all 0.3s ease;
+}
+
+.timeline-progress__dot.active {
+  background: var(--accent-coral);
+  transform: scale(1.3);
+}
+
+.timeline-progress__line {
+  position: absolute;
+  left: 5px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border-light);
+  z-index: -1;
+}
+
+@media (min-width: 769px) {
+  .timeline-progress {
+    display: none;
+  }
+}
+
+/* Method 18: Gesture-Based Sliders */
+.swipe-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  gap: var(--space-md);
+  padding: var(--space-sm) 0;
+}
+
+.swipe-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.swipe-carousel > * {
+  flex: 0 0 85%;
+  scroll-snap-align: center;
+}
+
+@media (min-width: 769px) {
+  .swipe-carousel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    overflow: visible;
+  }
+
+  .swipe-carousel > * {
+    flex: none;
+  }
+}
+
+/* ============================================
+   III. ASTRO-SPECIFIC PATTERNS
+   ============================================ */
+
+/* Method 24: Responsive Image Sets */
+.responsive-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Method 26: Conditional CSS Loading indicator */
+.desktop-only {
+  display: block;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+}
+
+/* ============================================
+   IV. VISUAL RELIEF & WHITE SPACE
+   ============================================ */
+
+/* Method 31: Gutter Expansion */
+@media (min-width: 1400px) {
+  .wide-gutters {
+    padding-left: 15vw;
+    padding-right: 15vw;
+  }
+}
+
+/* Method 32: Z-Pattern Alternation */
+.z-pattern > *:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+@media (max-width: 768px) {
+  .z-pattern > * {
+    flex-direction: column !important;
+  }
+}
+
+/* Method 33: Vertical Rhythm (8px Grid) */
+.rhythm-8 {
+  --rhythm: 8px;
+}
+
+.rhythm-8 * {
+  margin-bottom: calc(var(--rhythm) * 2);
+}
+
+.rhythm-8 h1,
+.rhythm-8 h2 {
+  margin-bottom: calc(var(--rhythm) * 3);
+}
+
+/* Method 34: Soft Contrast Sections */
+.section-alt:nth-child(even) {
+  background: var(--surface-raised);
+}
+
+/* Method 35: Empty/Quote Section */
+.quote-break {
+  padding: var(--space-3xl) var(--space-lg);
+  text-align: center;
+  background: var(--surface-raised);
+}
+
+.quote-break blockquote {
+  font-size: var(--fs-xl);
+  font-style: italic;
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.quote-break blockquote::before {
+  content: '"';
+  font-size: 4rem;
+  color: var(--accent-coral);
+  position: absolute;
+  top: -1rem;
+  left: -2rem;
+  opacity: 0.3;
+}
+
+/* Method 36: Faded Dividers */
+.divider-fade {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--border-medium) 20%,
+    var(--border-medium) 80%,
+    transparent
+  );
+  margin: var(--space-xl) 0;
+}
+
+/* Method 37: Inset Shadows */
+.card-inset {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+/* Method 38: Letter Spacing Control */
+@media (min-width: 1200px) {
+  .wide-spacing {
+    letter-spacing: 0.02em;
+  }
+}
+
+@media (max-width: 768px) {
+  .wide-spacing {
+    letter-spacing: 0;
+  }
+}
+
+/* Method 39: Variable Line Heights */
+.prose-desktop {
+  line-height: 2;
+}
+
+@media (max-width: 768px) {
+  .prose-desktop {
+    line-height: 1.6;
+  }
+}
+
+/* Method 40: Skeleton States */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--surface-raised) 25%,
+    var(--surface-muted) 50%,
+    var(--surface-raised) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeleton-text {
+  height: 1em;
+  margin-bottom: 0.5em;
+}
+
+.skeleton-heading {
+  height: 1.5em;
+  width: 60%;
+  margin-bottom: 1em;
+}
+
+.skeleton-image {
+  height: 200px;
+  width: 100%;
+}
+
+/* ============================================
+   V. PC DESKTOP POWER USER FEATURES
+   ============================================ */
+
+/* Method 41: Keyboard Shortcuts Hint */
+.keyboard-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.keyboard-hint kbd {
+  padding: 2px 6px;
+  background: var(--surface-raised);
+  border: 1px solid var(--border-medium);
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.7rem;
+}
+
+@media (max-width: 768px) {
+  .keyboard-hint {
+    display: none;
+  }
+}
+
+/* Method 42: Multi-Tab Layout */
+.tabs-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.tabs-nav {
+  display: flex;
+  border-bottom: 2px solid var(--border-light);
+  gap: 0;
+}
+
+.tabs-nav button {
+  padding: var(--space-sm) var(--space-md);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  color: var(--text-muted);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tabs-nav button:hover {
+  color: var(--text-heading);
+}
+
+.tabs-nav button.active {
+  color: var(--accent-coral);
+  border-bottom-color: var(--accent-coral);
+}
+
+.tabs-content > * {
+  display: none;
+}
+
+.tabs-content > .active {
+  display: block;
+}
+
+/* Method 45: Interactive Pricing Slider */
+.pricing-slider {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.pricing-slider input[type="range"] {
+  width: 100%;
+  height: 8px;
+  background: var(--border-light);
+  border-radius: 4px;
+  -webkit-appearance: none;
+}
+
+.pricing-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  background: var(--accent-coral);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+.pricing-slider__output {
+  font-size: var(--fs-xxl);
+  font-weight: 700;
+  color: var(--accent-coral);
+}
+
+/* Method 46: Side-Nav Auto-Highlight */
+.side-nav-scroll {
+  position: sticky;
+  top: calc(var(--os-nav-height) + var(--space-md));
+}
+
+.side-nav-scroll a {
+  display: block;
+  padding: var(--space-sm) var(--space-md);
+  color: var(--text-muted);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.side-nav-scroll a:hover {
+  color: var(--text-heading);
+}
+
+.side-nav-scroll a.is-active {
+  color: var(--accent-coral);
+  border-left-color: var(--accent-coral);
+  font-weight: 600;
+}
+
+/* ============================================
+   VI. MOBILE PWA EFFICIENCY FEATURES
+   ============================================ */
+
+/* Method 51: One-Tap Dialing */
+@media (max-width: 768px) {
+  .phone-tap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 56px;
+    background: var(--accent-coral);
+    color: white;
+    border-radius: 28px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .phone-tap i {
+    margin-right: var(--space-sm);
+  }
+}
+
+/* Method 52: App-Like Header */
+@media (max-width: 768px) {
+  .app-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    padding: 0 var(--space-md);
+    background: var(--surface-base);
+    box-shadow: var(--shadow-sm);
+    z-index: 100;
+  }
+
+  .app-header__back {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--space-sm);
+  }
+
+  .app-header__title {
+    flex: 1;
+    font-weight: 600;
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* Method 56: Overscroll Behavior */
+.no-overscroll {
+  overscroll-behavior: contain;
+}
+
+/* Method 58: Tap-to-Zoom Images */
+.lightbox-trigger {
+  cursor: zoom-in;
+  transition: transform 0.2s ease;
+}
+
+.lightbox-trigger:active {
+  transform: scale(0.98);
+}
+
+/* Method 59: Minimalist Forms (Typeform style) */
+@media (max-width: 768px) {
+  .form-typeform .form-group {
+    display: none;
+  }
+
+  .form-typeform .form-group.active {
+    display: block;
+  }
+
+  .form-typeform input,
+  .form-typeform textarea {
+    font-size: 1.25rem;
+    border: none;
+    border-bottom: 2px solid var(--border-medium);
+    padding: var(--space-md) 0;
+    width: 100%;
+    background: transparent;
+  }
+
+  .form-typeform input:focus,
+  .form-typeform textarea:focus {
+    outline: none;
+    border-bottom-color: var(--accent-coral);
+  }
+}
+
+/* ============================================
+   VII. TYPOGRAPHY & READABILITY
+   ============================================ */
+
+/* Method 61: Drop-Caps */
+.drop-cap::first-letter {
+  float: left;
+  font-size: 3.5rem;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--accent-coral);
+  margin-right: 0.5rem;
+  margin-top: 0.1rem;
+}
+
+/* Method 62: Variable Weight Headlines */
+.headline-variable {
+  font-weight: 700;
+}
+
+.headline-variable span {
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* Method 63: Keyword Bolding */
+.keyword-bold strong {
+  color: var(--accent-coral);
+  font-weight: 600;
+}
+
+/* Method 64: Checkmark Lists */
+.list-checks {
+  list-style: none;
+  padding: 0;
+}
+
+.list-checks li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.list-checks li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--state-success);
+  font-weight: 700;
+}
+
+.list-checks li.warning::before {
+  content: '!';
+  color: var(--state-warning);
+}
+
+.list-checks li.error::before {
+  content: '✕';
+  color: var(--state-danger);
+}
+
+/* Method 67: Reading Time Indicator */
+.reading-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.reading-time i {
+  font-size: 0.75rem;
+}
+
+/* Method 69: Widow Protection */
+.no-widows {
+  text-wrap: balance;
+}
+
+/* ============================================
+   VIII. DEPTH & DIMENSION
+   ============================================ */
+
+/* Method 71: Neumorphic Buttons */
+.btn-neumorphic {
+  background: var(--surface-raised);
+  border: none;
+  border-radius: 12px;
+  padding: var(--space-md) var(--space-lg);
+  box-shadow:
+    5px 5px 10px rgba(0, 0, 0, 0.1),
+    -5px -5px 10px rgba(255, 255, 255, 0.8);
+  transition: all 0.2s ease;
+}
+
+.btn-neumorphic:active {
+  box-shadow:
+    inset 3px 3px 6px rgba(0, 0, 0, 0.1),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+}
+
+/* Method 72: Stacked Section Cards */
+.stack-cards {
+  position: relative;
+}
+
+.stack-cards::before,
+.stack-cards::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  height: 8px;
+  background: var(--surface-base);
+  border-radius: 4px 4px 0 0;
+  z-index: -1;
+}
+
+.stack-cards::before {
+  top: -8px;
+  opacity: 0.6;
+}
+
+.stack-cards::after {
+  top: -4px;
+  opacity: 0.8;
+}
+
+/* Method 77: Glassmorphism Overlays */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+}
+
+[data-theme="dark"] .glass {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Method 80: Soft Rounded Corners */
+.radius-soft { border-radius: 12px; }
+.radius-soft-sm { border-radius: 8px; }
+.radius-soft-lg { border-radius: 16px; }
+
+/* ============================================
+   IX. CONVERSION-DRIVEN VISUALS
+   ============================================ */
+
+/* Method 81: Urgency Banner */
+.urgency-banner {
+  background: var(--accent-coral);
+  color: white;
+  padding: var(--space-xs) var(--space-md);
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.urgency-banner strong {
+  color: white;
+}
+
+/* Method 82: Live Stats */
+.live-stats {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.live-stats::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--state-success);
+  border-radius: 50%;
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Method 83: Social Proof Count */
+.social-proof {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.social-proof__avatars {
+  display: flex;
+}
+
+.social-proof__avatars img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--surface-base);
+  margin-left: -8px;
+}
+
+.social-proof__avatars img:first-child {
+  margin-left: 0;
+}
+
+.social-proof__text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.social-proof__text strong {
+  color: var(--text-heading);
+}
+
+/* Method 85: Pricing Tiers */
+.pricing-tiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  align-items: stretch;
+}
+
+.pricing-tier {
+  padding: var(--space-lg);
+  background: var(--surface-base);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.pricing-tier--featured {
+  transform: scale(1.05);
+  border-color: var(--accent-coral);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+.pricing-tier--featured::before {
+  content: 'Popular';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent-coral);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .pricing-tiers {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-tier--featured {
+    transform: none;
+    order: -1;
+  }
+}
+
+/* Method 90: Final Question CTA */
+.final-cta {
+  text-align: center;
+  padding: var(--space-2xl);
+  background: var(--surface-raised);
+  border-radius: 16px;
+  margin-top: var(--space-xl);
+}
+
+.final-cta__question {
+  font-size: var(--fs-lg);
+  color: var(--text-heading);
+  margin-bottom: var(--space-md);
+}
+
+.final-cta__button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* ============================================
+   X. PERFORMANCE & ANIMATION LOGIC
+   ============================================ */
+
+/* Method 91: Intersection Observer Ready */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Method 95: Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Method 96: GPU-Accelerated Transitions */
+.gpu-accelerate {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Method 99: Content Visibility */
+.content-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
+}
+
+/* Method 100: Clean Footer */
+.footer-clean {
+  padding: var(--space-xl) 0;
+  background: var(--surface-navy);
+  color: var(--text-on-dark);
+  text-align: center;
+}
+
+.footer-clean a {
+  color: var(--text-on-dark-muted);
+}
+
+.footer-clean a:hover {
+  color: var(--accent-coral);
+}
