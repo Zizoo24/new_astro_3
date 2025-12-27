@@ -1,0 +1,430 @@
+---
+/**
+ * MultiCardGrid.astro - Service Card Grid (Methods 5, 7, 8)
+ *
+ * Desktop: 4+ cards per row with hover expansion
+ * Tablet: 2 cards per row
+ * Mobile: Full-width tappable rows
+ *
+ * Features:
+ * - Hover-expansion cards (Method 7)
+ * - Contextual tooltips (Method 8)
+ * - Touch-optimized mobile cards
+ *
+ * Usage:
+ * <MultiCardGrid
+ *   cards={[
+ *     { title: 'DHA', icon: 'hospital', href: '/dha', badge: 'NEW' },
+ *     { title: 'MOH', icon: 'building', href: '/moh' },
+ *   ]}
+ * />
+ */
+
+interface Card {
+  title: string;
+  description?: string;
+  icon?: string;
+  href?: string;
+  badge?: string;
+  tooltip?: string;
+  highlight?: boolean;
+}
+
+interface Props {
+  cards: Card[];
+  /** Number of columns on desktop (3-6) */
+  columns?: 3 | 4 | 5 | 6;
+  /** Card style variant */
+  variant?: 'default' | 'compact' | 'icon-top' | 'horizontal';
+  /** Enable hover expansion on desktop */
+  hoverExpand?: boolean;
+  /** Enable tooltips on desktop */
+  showTooltips?: boolean;
+  /** Section title */
+  title?: string;
+  /** CSS class */
+  class?: string;
+}
+
+const {
+  cards,
+  columns = 4,
+  variant = 'default',
+  hoverExpand = true,
+  showTooltips = true,
+  title = '',
+  class: className = ''
+} = Astro.props;
+---
+
+<section class={`multi-card-grid multi-card-grid--${variant} ${className}`}>
+  {title && (
+    <h2 class="multi-card-grid__title">{title}</h2>
+  )}
+
+  <div class="multi-card-grid__container" data-columns={columns}>
+    {cards.map(card => (
+      <a
+        href={card.href || '#'}
+        class={`card-item ${card.highlight ? 'card-item--highlight' : ''} ${hoverExpand ? 'card-item--expandable' : ''}`}
+        data-tooltip={showTooltips && card.tooltip ? card.tooltip : undefined}
+      >
+        {/* Badge */}
+        {card.badge && (
+          <span class="card-item__badge">{card.badge}</span>
+        )}
+
+        {/* Icon */}
+        {card.icon && (
+          <div class="card-item__icon">
+            <i class={`fas fa-${card.icon}`} aria-hidden="true"></i>
+          </div>
+        )}
+
+        {/* Content */}
+        <div class="card-item__content">
+          <h3 class="card-item__title">{card.title}</h3>
+          {card.description && (
+            <p class="card-item__description">{card.description}</p>
+          )}
+        </div>
+
+        {/* Expand indicator */}
+        {hoverExpand && (
+          <div class="card-item__expand" aria-hidden="true">
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        )}
+
+        {/* Tooltip (desktop only) */}
+        {showTooltips && card.tooltip && (
+          <div class="card-item__tooltip" role="tooltip">
+            {card.tooltip}
+          </div>
+        )}
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .multi-card-grid {
+    padding: var(--space-xl) 0;
+  }
+
+  .multi-card-grid__title {
+    text-align: center;
+    font-size: var(--fs-xl);
+    color: var(--text-heading);
+    margin-bottom: var(--space-lg);
+  }
+
+  /* ============================================
+     GRID CONTAINER - Responsive Columns
+     ============================================ */
+  .multi-card-grid__container {
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .multi-card-grid__container[data-columns="3"] {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .multi-card-grid__container[data-columns="4"] {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .multi-card-grid__container[data-columns="5"] {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .multi-card-grid__container[data-columns="6"] {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  /* ============================================
+     CARD ITEM - Base Styles
+     ============================================ */
+  .card-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-lg);
+    background: var(--surface-base);
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+
+  .card-item:hover {
+    border-color: var(--accent-coral);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+  }
+
+  .card-item--highlight {
+    border-color: var(--accent-coral);
+    background: linear-gradient(135deg, var(--surface-base), rgba(255, 22, 84, 0.05));
+  }
+
+  /* ============================================
+     HOVER EXPANSION (Method 7)
+     ============================================ */
+  .card-item--expandable {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @media (hover: hover) {
+    .card-item--expandable:hover {
+      z-index: 10;
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .card-item--expandable .card-item__description {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .card-item--expandable:hover .card-item__description {
+      max-height: 100px;
+      opacity: 1;
+      margin-top: var(--space-sm);
+    }
+
+    .card-item--expandable .card-item__expand {
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: all 0.3s ease;
+    }
+
+    .card-item--expandable:hover .card-item__expand {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* ============================================
+     CARD ELEMENTS
+     ============================================ */
+  .card-item__badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 4px 8px;
+    background: var(--accent-coral);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+  }
+
+  .card-item__icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--surface-navy), var(--surface-navy-dark));
+    border-radius: 12px;
+    margin-bottom: var(--space-md);
+    transition: transform 0.3s ease;
+  }
+
+  .card-item:hover .card-item__icon {
+    transform: scale(1.1);
+  }
+
+  .card-item__icon i {
+    font-size: 1.5rem;
+    color: var(--text-on-dark);
+  }
+
+  .card-item__title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-heading);
+    margin: 0;
+  }
+
+  .card-item__description {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .card-item__expand {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    color: var(--accent-coral);
+    font-size: 0.875rem;
+  }
+
+  /* ============================================
+     TOOLTIP (Method 8)
+     ============================================ */
+  .card-item__tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    padding: 8px 12px;
+    background: var(--surface-navy);
+    color: var(--text-on-dark);
+    font-size: 0.8rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  .card-item__tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--surface-navy);
+  }
+
+  @media (hover: hover) {
+    .card-item:hover .card-item__tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+
+  /* ============================================
+     TABLET: 2 Columns
+     ============================================ */
+  @media (max-width: 992px) {
+    .multi-card-grid__container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* ============================================
+     MOBILE: Full-Width Tappable Rows (Method 14)
+     ============================================ */
+  @media (max-width: 768px) {
+    .multi-card-grid__container {
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+    }
+
+    .card-item {
+      flex-direction: row;
+      text-align: left;
+      padding: var(--space-md);
+      min-height: 60px; /* Touch target */
+    }
+
+    .card-item__icon {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 0;
+      margin-right: var(--space-md);
+      flex-shrink: 0;
+    }
+
+    .card-item__icon i {
+      font-size: 1.25rem;
+    }
+
+    .card-item__content {
+      flex: 1;
+    }
+
+    .card-item__badge {
+      position: static;
+      margin-left: auto;
+      align-self: center;
+    }
+
+    .card-item__tooltip {
+      display: none;
+    }
+
+    .card-item__expand {
+      position: static;
+      margin-left: var(--space-sm);
+      opacity: 0.5;
+    }
+
+    .card-item--expandable .card-item__description {
+      max-height: none;
+      opacity: 1;
+    }
+
+    /* Haptic feedback simulation (Method 15) */
+    .card-item:active {
+      transform: scale(0.98);
+      transition: transform 0.1s ease;
+    }
+  }
+
+  /* ============================================
+     VARIANT: Compact
+     ============================================ */
+  .multi-card-grid--compact .card-item {
+    padding: var(--space-md);
+  }
+
+  .multi-card-grid--compact .card-item__icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: var(--space-sm);
+  }
+
+  /* ============================================
+     VARIANT: Icon Top
+     ============================================ */
+  .multi-card-grid--icon-top .card-item__icon {
+    width: 72px;
+    height: 72px;
+  }
+
+  /* ============================================
+     VARIANT: Horizontal
+     ============================================ */
+  .multi-card-grid--horizontal .card-item {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .multi-card-grid--horizontal .card-item__icon {
+    margin-bottom: 0;
+    margin-right: var(--space-md);
+  }
+
+  /* ============================================
+     DARK MODE
+     ============================================ */
+  :global([data-theme="dark"]) .card-item,
+  :global(body.theme-dark) .card-item {
+    background: var(--surface-muted);
+    border-color: var(--border-medium);
+  }
+
+  :global([data-theme="dark"]) .card-item--highlight,
+  :global(body.theme-dark) .card-item--highlight {
+    background: linear-gradient(135deg, var(--surface-muted), rgba(255, 107, 107, 0.1));
+  }
+</style>

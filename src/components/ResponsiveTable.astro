@@ -1,0 +1,306 @@
+---
+/**
+ * ResponsiveTable.astro - Table (Desktop) / Accordion (Mobile) (Method 21)
+ *
+ * Renders a data table on desktop and an accordion list on mobile.
+ * Both versions are in the DOM for SEO; CSS handles visibility.
+ *
+ * Usage:
+ * <ResponsiveTable
+ *   headers={['Document', 'Turnaround', 'Price']}
+ *   rows={[
+ *     { cells: ['Birth Certificate', '24 hours', 'AED 150'] },
+ *     { cells: ['Marriage Certificate', '24 hours', 'AED 150'] }
+ *   ]}
+ *   caption="Translation Pricing"
+ * />
+ */
+
+interface TableRow {
+  cells: string[];
+  highlight?: boolean;
+}
+
+interface Props {
+  /** Table headers */
+  headers: string[];
+  /** Table rows */
+  rows: TableRow[];
+  /** Optional caption for accessibility */
+  caption?: string;
+  /** First column becomes accordion title on mobile */
+  accordionTitleColumn?: number;
+  /** Show striped rows */
+  striped?: boolean;
+  /** Compact mode */
+  compact?: boolean;
+  /** CSS class */
+  class?: string;
+}
+
+const {
+  headers,
+  rows,
+  caption = '',
+  accordionTitleColumn = 0,
+  striped = true,
+  compact = false,
+  class: className = ''
+} = Astro.props;
+---
+
+<div class={`responsive-table ${striped ? 'responsive-table--striped' : ''} ${compact ? 'responsive-table--compact' : ''} ${className}`}>
+
+  {/* Desktop: Full Table */}
+  <div class="responsive-table__desktop">
+    <table>
+      {caption && <caption class="sr-only">{caption}</caption>}
+      <thead>
+        <tr>
+          {headers.map(header => (
+            <th>{header}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map(row => (
+          <tr class={row.highlight ? 'highlight' : ''}>
+            {row.cells.map(cell => (
+              <td set:html={cell} />
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  {/* Mobile: Accordion */}
+  <div class="responsive-table__mobile">
+    {caption && <h3 class="responsive-table__caption">{caption}</h3>}
+    <div class="responsive-table__accordion">
+      {rows.map((row, index) => (
+        <details class={`accordion-item ${row.highlight ? 'highlight' : ''}`} open={index === 0}>
+          <summary class="accordion-trigger">
+            <span class="accordion-title">{row.cells[accordionTitleColumn]}</span>
+            <i class="fas fa-chevron-down accordion-icon" aria-hidden="true"></i>
+          </summary>
+          <div class="accordion-content">
+            <dl class="accordion-details">
+              {headers.map((header, colIndex) => (
+                colIndex !== accordionTitleColumn && (
+                  <div class="detail-row">
+                    <dt>{header}</dt>
+                    <dd set:html={row.cells[colIndex]} />
+                  </div>
+                )
+              ))}
+            </dl>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .responsive-table {
+    width: 100%;
+  }
+
+  /* ============================================
+     DESKTOP TABLE STYLES
+     ============================================ */
+  .responsive-table__desktop {
+    display: block;
+  }
+
+  .responsive-table__desktop table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface-base);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .responsive-table__desktop th {
+    background: var(--surface-navy);
+    color: var(--text-on-dark);
+    font-weight: 600;
+    text-align: left;
+    padding: 1rem 1.25rem;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .responsive-table__desktop td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-body);
+    font-size: 0.95rem;
+  }
+
+  .responsive-table__desktop tr:last-child td {
+    border-bottom: none;
+  }
+
+  .responsive-table--striped .responsive-table__desktop tbody tr:nth-child(even) {
+    background: var(--surface-raised);
+  }
+
+  .responsive-table--compact .responsive-table__desktop th,
+  .responsive-table--compact .responsive-table__desktop td {
+    padding: 0.75rem 1rem;
+  }
+
+  .responsive-table__desktop tr.highlight {
+    background: var(--surface-info) !important;
+  }
+
+  .responsive-table__desktop tr.highlight td {
+    color: var(--text-heading);
+    font-weight: 500;
+  }
+
+  /* Hover effect for desktop */
+  @media (hover: hover) {
+    .responsive-table__desktop tbody tr:hover {
+      background: var(--surface-muted);
+    }
+  }
+
+  /* ============================================
+     MOBILE ACCORDION STYLES
+     ============================================ */
+  .responsive-table__mobile {
+    display: none;
+  }
+
+  .responsive-table__caption {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-heading);
+    margin-bottom: 1rem;
+  }
+
+  .responsive-table__accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .accordion-item {
+    background: var(--surface-base);
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+    overflow: hidden;
+  }
+
+  .accordion-item.highlight {
+    border-color: var(--accent-coral);
+    border-width: 2px;
+  }
+
+  .accordion-trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
+    list-style: none;
+    font-weight: 600;
+    color: var(--text-heading);
+    background: var(--surface-raised);
+    transition: background 0.2s ease;
+  }
+
+  .accordion-trigger::-webkit-details-marker {
+    display: none;
+  }
+
+  .accordion-trigger:hover {
+    background: var(--surface-muted);
+  }
+
+  .accordion-title {
+    flex: 1;
+    font-size: 1rem;
+  }
+
+  .accordion-icon {
+    color: var(--accent-coral);
+    font-size: 0.875rem;
+    transition: transform 0.2s ease;
+  }
+
+  .accordion-item[open] .accordion-icon {
+    transform: rotate(180deg);
+  }
+
+  .accordion-content {
+    padding: 1rem;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .accordion-details {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .detail-row dt {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    min-width: 100px;
+  }
+
+  .detail-row dd {
+    margin: 0;
+    text-align: right;
+    color: var(--text-body);
+    font-size: 0.95rem;
+    flex: 1;
+  }
+
+  /* ============================================
+     RESPONSIVE SWITCHING
+     ============================================ */
+  @media (max-width: 768px) {
+    .responsive-table__desktop {
+      display: none;
+    }
+
+    .responsive-table__mobile {
+      display: block;
+    }
+  }
+
+  /* ============================================
+     DARK MODE
+     ============================================ */
+  :global([data-theme="dark"]) .responsive-table__desktop table,
+  :global(body.theme-dark) .responsive-table__desktop table {
+    background: var(--surface-muted);
+  }
+
+  :global([data-theme="dark"]) .accordion-item,
+  :global(body.theme-dark) .accordion-item {
+    background: var(--surface-muted);
+    border-color: var(--border-medium);
+  }
+
+  :global([data-theme="dark"]) .accordion-trigger,
+  :global(body.theme-dark) .accordion-trigger {
+    background: var(--surface-navy);
+  }
+</style>
