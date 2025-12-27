@@ -221,6 +221,7 @@ export const mainNav: (NavLink | NavGroup)[] = [
       
       // Industry verticals
       { label: 'Medical Reports', href: '/specialized/medical/' },
+      { label: 'DHA DataFlow', href: '/specialized/medical/dha-dataflow/', badge: 'NEW' },
       { label: 'Technical Manuals', href: '/specialized/technical/' },
       { label: 'Menu Translation', href: '/specialized/hospitality/' },
       { label: 'Website Localization', href: '/specialized/digital/' },
@@ -232,9 +233,9 @@ export const mainNav: (NavLink | NavGroup)[] = [
     headers: [
       { index: 0, label: 'Technical Translation' },
       { index: 1, label: 'Industry Verticals' },
-      { index: 6, label: 'Packages' },
+      { index: 7, label: 'Packages' },
     ],
-    dividers: [0, 5],
+    dividers: [0, 6],
   },
   
   // ========================================
@@ -365,6 +366,7 @@ export const mobileNav = {
       children: [
         { label: 'Specialized Hub', href: '/specialized-translation/' },
         { label: 'Medical Translation', href: '/specialized/medical/' },
+        { label: 'DHA DataFlow', href: '/specialized/medical/dha-dataflow/' },
         { label: 'Technical Translation', href: '/specialized/technical/' },
         { label: 'Hospitality Translation', href: '/specialized/hospitality/' },
         { label: 'Digital Content', href: '/specialized/digital/' },
@@ -470,6 +472,7 @@ export const mobileNavHubs = [
     icon: 'fas fa-microscope',
     children: [
       { label: 'Medical Translation', href: '/specialized/medical/', icon: 'fas fa-heartbeat' },
+      { label: 'DHA DataFlow', href: '/specialized/medical/dha-dataflow/', icon: 'fas fa-user-md' },
       { label: 'Technical Translation', href: '/specialized/technical/', icon: 'fas fa-cogs' },
       { label: 'Golden Visa Package', href: '/services/golden-visa-translation/', icon: 'fas fa-star' },
     ],

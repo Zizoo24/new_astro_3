@@ -24,8 +24,8 @@
 **Entity:** OnlineTranslation.ae  
 **Model:** Boutique Digital Concierge (Managed Legal Services)  
 **Strategic Partner:** Arkan Legal Translation (Fulfillment)  
-**Version:** 8.0 (SEO Infrastructure Complete)  
-**Last Updated:** December 24, 2025
+**Version:** 8.1 (DHA DataFlow Page Added)  
+**Last Updated:** December 27, 2025
 
 ---
 
@@ -148,6 +148,10 @@ The Dubai translation market is polarized:
 **Locations:**
 - `/locations/dubai/`, `/locations/dubai/difc/`, `/locations/dubai/jlt/`, `/locations/dubai/marina/`, `/locations/dubai/palm-jumeirah/`, `/locations/dubai/business-bay/`, `/locations/dubai/downtown/`
 - `/locations/abu-dhabi/`, `/locations/sharjah/`
+
+**Specialized (Medical Hub):**
+- `/specialized/medical/` — Medical translation hub
+- `/specialized/medical/dha-dataflow/` — DHA DataFlow healthcare licensing translation (NEW)
 
 ### 3.3 Navigation Data Flow
 
@@ -592,6 +596,19 @@ These issues are documented in `SEO-ISSUES-DEFERRED.md` and require manual inter
 
 ## **CHANGELOG**
 
+### December 27, 2025 — DHA DataFlow Page (v8.1)
+
+**New Files Created:**
+- `src/pages/specialized/medical/dha-dataflow/index.astro` — DHA DataFlow healthcare licensing translation page
+
+**Files Modified:**
+- `src/data/navigation.ts` — Added DHA DataFlow to desktop, mobile, and hub navigation
+- `src/data/serviceLinks.ts` — Added dhaDataflow entry with relationships
+- `src/pages/specialized/medical/index.astro` — Added links to DHA DataFlow page
+- `src/pages/specialized-translation/index.astro` — Added DHA DataFlow service card
+- `src/pages/personal/academic/degree/index.astro` — Added DHA DataFlow link
+- `CLAUDE.md` — Updated URL mappings with medical hub pages
+
 ### December 24, 2025 — SEO Infrastructure (v8.0)
 
 **New Files Created:**
@@ -649,4 +666,4 @@ These issues are documented in `SEO-ISSUES-DEFERRED.md` and require manual inter
 
 ---
 
-*Last Updated: December 24, 2025 — Version 8.0*
+*Last Updated: December 27, 2025 — Version 8.1*
