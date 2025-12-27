@@ -30,10 +30,19 @@ interface Props {
   // NEW: Schema support
   serviceType?: string;
   faqs?: FAQ[];
+  // Hero optimization props
+  /** Pre-title badge/eyebrow text (e.g., "LEGAL TRANSLATION HUB") */
+  heroBadge?: string;
+  /** Show scroll indicator at bottom of hero */
+  showScrollIndicator?: boolean;
+  /** Show star rating near CTA */
+  showRating?: boolean;
+  /** Under-CTA note text */
+  ctaNote?: string;
 }
 
-const { 
-  title, 
+const {
+  title,
   description,
   canonical,
   keywords = '',
@@ -42,7 +51,11 @@ const {
   heroIntro,
   breadcrumbs,
   serviceType = 'Translation Service',
-  faqs = []
+  faqs = [],
+  heroBadge = '',
+  showScrollIndicator = true,
+  showRating = true,
+  ctaNote = ''
 } = Astro.props;
 
 // Use Astro.site from config for consistent URL handling
@@ -107,7 +120,7 @@ const faqSchema = faqs.length > 0 ? {
     {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
   </Fragment>
 
-  <section class="category-hero" data-theme="dark">
+  <section class="category-hero section--hero" data-theme="dark">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         {breadcrumbs.map((crumb, i) => (
@@ -121,11 +134,54 @@ const faqSchema = faqs.length > 0 ? {
           </>
         ))}
       </nav>
-      
-      <h1>{heroTitle}</h1>
+
+      {/* Pre-title badge */}
+      {heroBadge && <span class="hero-badge">{heroBadge}</span>}
+
+      <h1 class="hero-title">{heroTitle}</h1>
       <p class="hero-subtitle">{heroSubtitle}</p>
+
+      {/* Micro-divider for visual separation */}
+      <div class="hero-divider" aria-hidden="true"></div>
+
       <div class="hero-intro" set:html={heroIntro} />
+
+      {/* CTA Group with rating */}
+      <div class="hero-cta-group">
+        <a href="https://wa.me/971508620217" class="btn btn--primary btn--lg">
+          <i class="fab fa-whatsapp"></i>
+          Get Started
+        </a>
+        {/* Inline star rating */}
+        {showRating && (
+          <span class="hero-rating">
+            <span class="stars" aria-label="5 out of 5 stars">★★★★★</span>
+            <span class="rating-text">5.0 on Google</span>
+          </span>
+        )}
+      </div>
+
+      {/* Under-CTA note */}
+      {ctaNote ? (
+        <span class="hero-cta-note">
+          <i class="fas fa-check-circle"></i> {ctaNote}
+        </span>
+      ) : (
+        <span class="hero-cta-note">
+          <i class="fas fa-check-circle"></i> Free quote within 15 minutes
+        </span>
+      )}
     </div>
+
+    {/* Scroll indicator */}
+    {showScrollIndicator && (
+      <div class="hero-scroll-indicator" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="scroll-mouse">
+          <div class="scroll-wheel"></div>
+        </div>
+      </div>
+    )}
   </section>
 
   <slot />
@@ -192,10 +248,14 @@ const faqSchema = faqs.length > 0 ? {
     color: #fff;
   }
   
-  .category-hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+  .category-hero h1,
+  .category-hero .hero-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 0.5rem;
     color: #fff;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
   
   .category-hero .hero-subtitle {
