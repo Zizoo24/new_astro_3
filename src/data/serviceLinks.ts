@@ -308,6 +308,12 @@ export const serviceLinks: Record<string, ServiceLink> = {
     full: "medical report translation",
     icon: "fas fa-notes-medical"
   },
+  dhaDataflow: {
+    url: "/specialized/medical/dha-dataflow/",
+    text: "DHA DataFlow translation",
+    full: "DHA DataFlow healthcare licensing translation",
+    icon: "fas fa-user-md"
+  },
   technical: {
     url: "/specialized/technical/",
     text: "technical translation",
@@ -710,8 +716,17 @@ export const pageRelationships: Record<string, PageRelationships> = {
   // SPECIALIZED SERVICES
   // ========================================
   medical: {
-    related: ["healthcareIndustry", "certificateTranslation", "legalTranslation"],
+    related: ["dhaDataflow", "healthcareIndustry", "certificateTranslation", "legalTranslation"],
+    family: ["dhaDataflow"],
     crossSilo: ["healthcareIndustry", "immigration"],
+    locations: ["dubai", "abuDhabi"]
+  },
+  dhaDataflow: {
+    related: ["medical", "degree", "healthcareIndustry", "certificateTranslation"],
+    family: ["medical"],
+    prerequisites: ["degree", "transcripts"],
+    nextSteps: ["attestation", "mofaAttestation"],
+    crossSilo: ["healthcareIndustry", "immigration", "goldenVisa"],
     locations: ["dubai", "abuDhabi"]
   },
   technical: {
