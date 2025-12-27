@@ -1,5 +1,5 @@
 // Auto-generated search index - DO NOT EDIT MANUALLY
-// Generated at: 2025-12-26T21:12:04.529Z
+// Generated at: 2025-12-27T12:25:35.652Z
 // Run 'npm run search:generate' to regenerate
 
 const searchIndex = [

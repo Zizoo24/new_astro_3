@@ -1,0 +1,744 @@
+---
+import ServiceLayout from '../../../../layouts/ServiceLayout.astro';
+import RelatedServices from '../../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../../components/CrossSiloLinks.astro';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Specialized Translation', url: '/specialized-translation/' },
+  { name: 'Medical Translation', url: '/specialized/medical/' },
+  { name: 'DHA DataFlow Translation', url: '/specialized/medical/dha-dataflow/' }
+];
+
+const snapshot = [
+  { icon: 'user-md', bold: 'Healthcare Licensing', text: 'For doctors, nurses, pharmacists' },
+  { icon: 'file-medical', bold: 'DataFlow Ready', text: 'PSV-aligned timing' },
+  { icon: 'certificate', bold: 'MOJ Certified', text: 'Accepted by DHA, DOH, MOH' },
+  { icon: 'clock', bold: '2-3 Days', text: 'Complete credential packages' }
+];
+
+const processSteps = [
+  {
+    number: 1,
+    title: 'Document Collection',
+    text: 'Send your degree, transcripts, good standing certificate, and experience letters. We assess completeness and identify any missing documents.',
+    icon: 'folder-open'
+  },
+  {
+    number: 2,
+    title: 'Medical Terminology Review',
+    text: 'Translators with healthcare backgrounds handle your credentials. Drug names follow INN standards, anatomical terms maintain precision.',
+    icon: 'stethoscope'
+  },
+  {
+    number: 3,
+    title: 'DHA Format Compliance',
+    text: 'Documents formatted according to DHA submission requirements. Experience letters highlight exact dates, job titles, and responsibilities.',
+    icon: 'file-alt'
+  },
+  {
+    number: 4,
+    title: 'MOJ Certification',
+    text: 'Final review and MOJ stamp applied. Digital delivery plus optional physical copies for Sheryan portal submission.',
+    icon: 'stamp'
+  }
+];
+
+const faqs = [
+  {
+    question: 'Does DataFlow require translated documents?',
+    answer: 'DataFlow\'s Primary Source Verification (PSV) process does not require translations—they contact issuing institutions directly using your original documents. However, DHA licensing after DataFlow verification does require MOJ-certified Arabic translations.'
+  },
+  {
+    question: 'Can I start translation before DataFlow completes?',
+    answer: 'Yes, and we recommend it. Starting translation when you submit your DataFlow application means documents are ready when PSV completes, saving 2-3 days in your licensing timeline.'
+  },
+  {
+    question: 'What if my documents are not in English?',
+    answer: 'DataFlow accepts documents in many languages since they verify with original sources. However, DHA licensing requires Arabic translations. We translate from English, Hindi, Urdu, Tagalog, French, German, Chinese, Russian, and most other languages.'
+  },
+  {
+    question: 'Are your translations accepted by DHA?',
+    answer: 'Yes. Our translations are certified by translators licensed with the UAE Ministry of Justice (MOJ). These certifications are accepted by DHA, DOH, MOH, and all UAE government authorities.'
+  },
+  {
+    question: 'What if DataFlow finds a discrepancy?',
+    answer: 'Discrepancies usually result from document issues at the source institution. If you need corrected documents translated after resolving issues with DataFlow, we offer expedited service for re-translations.'
+  },
+  {
+    question: 'Can I transfer my DataFlow report between authorities?',
+    answer: 'Yes. If you initially applied for DHA but decide to practice in Abu Dhabi (DOH), your DataFlow verification can be transferred. The same translations serve both authorities.'
+  },
+  {
+    question: 'How long are DataFlow reports valid?',
+    answer: 'DataFlow reports remain valid indefinitely, but DHA eligibility letters must be renewed annually. Good standing certificates must be less than 6 months old at application time.'
+  },
+  {
+    question: 'Do you provide attestation services?',
+    answer: 'We focus on MOJ-certified translation. For document attestation (MOFA, embassy, educational ministry), we can recommend partners or you can handle separately. Attestation is typically needed before translation for some foreign-issued documents.'
+  }
+];
+
+const accordionSections = [
+  {
+    title: 'Documents Required for DHA DataFlow',
+    id: 'documents',
+    items: [
+      {
+        heading: 'Educational Documents',
+        body: 'Medical degree certificate (MBBS, BDS, PharmD, BSN, etc.), academic transcripts showing courses completed, internship or house job completion certificate, specialty or residency completion certificates, and fellowship credentials.'
+      },
+      {
+        heading: 'Professional Credentials',
+        body: 'Current medical council registration, good standing certificate (valid within 6 months), specialist registration certificates, board certification documents, and professional indemnity records.'
+      },
+      {
+        heading: 'Employment History',
+        body: 'Experience letters from all previous employers, job descriptions and responsibilities, hospital appointment letters, and department head letters for specialists.'
+      },
+      {
+        heading: 'Identity Documents',
+        body: 'Valid passport (photo and data pages), recent passport-size photograph (white background), and name change certificate if applicable.'
+      }
+    ]
+  },
+  {
+    title: 'Healthcare Professionals We Support',
+    id: 'professionals',
+    items: [
+      {
+        heading: 'Physicians',
+        body: 'General practitioners, specialists, consultants—we translate MBBS degrees, MD/MS certificates, fellowship credentials, and specialty board certifications for DataFlow applications across all medical disciplines.'
+      },
+      {
+        heading: 'Nurses',
+        body: 'RN, BSN, MSN credentials plus nursing council registrations and specialty certifications. We understand DHA nursing license requirements and format translations accordingly.'
+      },
+      {
+        heading: 'Pharmacists',
+        body: 'PharmD, B.Pharm degrees, pharmacy council registrations, and clinical pharmacy certifications translated for DHA and Dubai Municipality licensing.'
+      },
+      {
+        heading: 'Dentists',
+        body: 'BDS, MDS credentials, dental council registrations, and specialty certificates for DHA dental license applications.'
+      },
+      {
+        heading: 'Allied Health Professionals',
+        body: 'Physiotherapists, laboratory technicians, radiographers, optometrists, and other allied health credentials translated for DHA verification.'
+      }
+    ]
+  }
+];
+---
+
+<ServiceLayout
+  title="DHA DataFlow Translation Dubai | Healthcare Licensing"
+  description="MOJ-certified translations for DHA DataFlow and healthcare professional licensing. Medical degrees, good standing certificates, experience letters formatted for Sheryan portal."
+  keywords="dha dataflow translation, healthcare licensing dubai, medical credential translation, dha sheryan translation, doctor license uae, nurse license dubai"
+  heroTitle="DHA DataFlow Document Translation"
+  heroSubtitle="Healthcare Professional Licensing"
+  heroIntro={`<p>Healthcare professionals applying for <strong>Dubai Health Authority (DHA)</strong> licensing need certified document translations that meet DataFlow submission standards. OnlineTranslation.ae provides MOJ-certified translations specifically formatted for DHA DataFlow verification, helping doctors, nurses, pharmacists, and allied health professionals complete their credential verification without delays.</p>
+
+<h3>What is DHA DataFlow?</h3>
+<p>DataFlow is the Dubai Health Authority's mandatory Primary Source Verification (PSV) process. Before any healthcare professional can practice in Dubai, their credentials must be verified directly with the issuing institutions—universities, medical councils, licensing bodies, and former employers.</p>
+
+<p>The DataFlow Group, DHA's trusted verification partner since 2007, contacts these institutions to confirm that every degree, certificate, and experience letter is authentic. This rigorous screening protects Dubai's healthcare system and ensures only qualified professionals receive licenses.</p>
+
+<table class="hero-table">
+<thead><tr><th>DataFlow Verification</th><th>What Gets Verified</th></tr></thead>
+<tbody>
+<tr><td>Educational Qualifications</td><td>Medical degrees, nursing diplomas, pharmacy certificates verified with universities</td></tr>
+<tr><td>Professional Licenses</td><td>Home country medical council registrations confirmed with issuing authorities</td></tr>
+<tr><td>Work Experience</td><td>Employment letters verified directly with hospitals and clinics</td></tr>
+<tr><td>Good Standing</td><td>Professional conduct certificates confirmed with medical boards</td></tr>
+<tr><td>Specialty Certifications</td><td>Board certifications and fellowship credentials authenticated</td></tr>
+</tbody>
+</table>
+
+<div class="hero-feature-grid">
+<div class="hero-feature">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+<div><strong>Medical Terminology</strong><span>Healthcare-background translators ensure clinical precision</span></div>
+</div>
+<div class="hero-feature">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+<div><strong>DHA Format Compliance</strong><span>Sheryan portal-ready documentation</span></div>
+</div>
+<div class="hero-feature">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+<div><strong>Timeline Coordination</strong><span>Ready when PSV completes</span></div>
+</div>
+</div>
+
+<div class="hero-stats">
+<div class="hero-stat"><span class="stat-number">DHA</span><span class="stat-label">Licensing Ready</span></div>
+<div class="hero-stat"><span class="stat-number">DOH</span><span class="stat-label">Abu Dhabi Accepted</span></div>
+<div class="hero-stat"><span class="stat-number">MOH</span><span class="stat-label">Federal Compliant</span></div>
+</div>`}
+  snapshot={snapshot}
+  breadcrumbs={breadcrumbs}
+  faqs={faqs}
+  serviceType="DHA DataFlow Translation Service"
+  processSteps={processSteps}
+  processTitle="DataFlow Translation Process"
+  accordionSections={accordionSections}
+>
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Why Document Translation Matters for DataFlow</h2>
+
+      <p>While DataFlow does not require translated documents for the PSV verification process itself, the DHA licensing system that follows does require Arabic translations of all credentials. Many healthcare professionals also need translations during the DataFlow application stage for specific reasons.</p>
+
+      <div class="use-case-grid">
+        <div class="use-case-card">
+          <h4>Pre-Eligibility Assessment</h4>
+          <p>DHA reviewers assess whether your qualifications meet UAE Professional Qualification Requirements (PQR) before DataFlow begins. Clear, accurate translations help demonstrate eligibility.</p>
+        </div>
+        <div class="use-case-card">
+          <h4>Sheryan Portal Submission</h4>
+          <p>The DHA's Sheryan system requires documentation in formats that reviewers can assess. Properly translated credentials streamline this process.</p>
+        </div>
+        <div class="use-case-card">
+          <h4>Post-Verification Licensing</h4>
+          <p>Once DataFlow confirms your credentials are authentic, DHA licensing requires MOJ-certified Arabic translations for final registration.</p>
+        </div>
+        <div class="use-case-card">
+          <h4>Employer Requirements</h4>
+          <p>Many UAE healthcare employers request translated credentials alongside DataFlow reports when processing work visas and contracts.</p>
+        </div>
+      </div>
+
+      <h2>DataFlow Process: Where Translation Fits</h2>
+
+      <p>Understanding when translations are needed in the DataFlow journey:</p>
+
+      <div class="timeline-section">
+        <div class="timeline-step">
+          <div class="step-marker">1</div>
+          <div class="step-content">
+            <h4>Pre-Eligibility Check</h4>
+            <p>Register on Sheryan portal and complete self-assessment. DHA evaluates whether your qualifications meet UAE requirements. <em>Translation may help demonstrate eligibility.</em></p>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-marker">2</div>
+          <div class="step-content">
+            <h4>DataFlow Registration</h4>
+            <p>Create account on DataFlow gateway, select DHA as your authority, upload scanned credentials. <em>Original documents in English may be sufficient for verification; translations prepared in parallel.</em></p>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-marker">3</div>
+          <div class="step-content">
+            <h4>Primary Source Verification</h4>
+            <p>DataFlow contacts your universities, medical councils, and employers to verify authenticity. Processing time: 15-45 working days. <em>No translation needed for this step.</em></p>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-marker">4</div>
+          <div class="step-content">
+            <h4>PSV Report</h4>
+            <p>Receive verification results. Positive = credentials confirmed. <em>Translation should be complete by this point.</em></p>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-marker">5</div>
+          <div class="step-content">
+            <h4>DHA Licensing</h4>
+            <p>Submit verified credentials plus MOJ-certified Arabic translations through Sheryan. Book Computer Based Testing (CBT) if required. <em>MOJ-certified translations mandatory.</em></p>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="step-marker">6</div>
+          <div class="step-content">
+            <h4>Final Registration</h4>
+            <p>Complete examination, submit all documentation, receive DHA license. <em>Translations form part of official record.</em></p>
+          </div>
+        </div>
+      </div>
+
+      <h2>How OnlineTranslation.ae Supports DataFlow Applications</h2>
+
+      <p>Our MOJ-certified translations are specifically prepared for healthcare licensing applications. What makes our service suitable for DataFlow-related submissions:</p>
+
+      <div class="feature-grid">
+        <div class="feature-item">
+          <h4>Medical Terminology Expertise</h4>
+          <p>Our translators include healthcare professionals who understand clinical terminology. Drug names follow International Nonproprietary Names (INN) standards. Anatomical terms maintain precision across Arabic and English. Medical abbreviations are correctly interpreted.</p>
+        </div>
+        <div class="feature-item">
+          <h4>DHA Format Compliance</h4>
+          <p>We format credentials according to DHA submission requirements. Good standing certificates, experience letters, and academic credentials are presented in layouts that reviewers expect and can efficiently process.</p>
+        </div>
+        <div class="feature-item">
+          <h4>Coordination with DataFlow Timelines</h4>
+          <p>DataFlow verification typically takes 15-45 working days. We time translation delivery so your documents are ready when verification completes, preventing gaps in your licensing timeline.</p>
+        </div>
+        <div class="feature-item">
+          <h4>Complete Credential Packages</h4>
+          <p>Rather than translating documents piecemeal, we offer complete healthcare professional packages covering all required credentials—degree, transcripts, certificates, and experience letters formatted as a cohesive submission.</p>
+        </div>
+      </div>
+
+      <h2>Common DataFlow Challenges We Help Prevent</h2>
+
+      <div class="challenge-list">
+        <div class="challenge-item">
+          <span class="challenge-icon">⚠</span>
+          <div>
+            <strong>Name Discrepancies</strong>
+            <p>When your name appears differently on your passport versus degree certificate, DHA flags this. We ensure translations use consistent name formatting and recommend name change certificates where needed.</p>
+          </div>
+        </div>
+        <div class="challenge-item">
+          <span class="challenge-icon">⚠</span>
+          <div>
+            <strong>Date Format Inconsistencies</strong>
+            <p>Academic documents from different countries use varying date formats. Our translations standardize dates to prevent confusion in verification.</p>
+          </div>
+        </div>
+        <div class="challenge-item">
+          <span class="challenge-icon">⚠</span>
+          <div>
+            <strong>Institution Name Accuracy</strong>
+            <p>University names must match exactly what issuing institutions use. We verify official English names before translation to prevent verification failures.</p>
+          </div>
+        </div>
+        <div class="challenge-item">
+          <span class="challenge-icon">⚠</span>
+          <div>
+            <strong>Credential Terminology</strong>
+            <p>"House Officer" vs "Intern" vs "Junior Resident"—different countries use different terms for the same training. We translate using terminology DHA reviewers recognize.</p>
+          </div>
+        </div>
+        <div class="challenge-item">
+          <span class="challenge-icon">⚠</span>
+          <div>
+            <strong>Experience Letter Details</strong>
+            <p>DHA requires specific information in experience letters: exact dates, job title, department, responsibilities, and authorized signatures. We format translations to highlight this information clearly.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>Translation Requirements by Authority</h2>
+
+      <p>While this page focuses on DHA, healthcare professionals should know that similar requirements exist across UAE health authorities:</p>
+
+      <table class="authority-table">
+        <thead>
+          <tr>
+            <th>Authority</th>
+            <th>Jurisdiction</th>
+            <th>Translation Requirements</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>DHA</strong></td>
+            <td>Dubai</td>
+            <td>MOJ-certified Arabic translations for licensing</td>
+          </tr>
+          <tr>
+            <td><strong>DOH/HAAD</strong></td>
+            <td>Abu Dhabi</td>
+            <td>MOJ-certified translations required</td>
+          </tr>
+          <tr>
+            <td><strong>MOH</strong></td>
+            <td>Northern Emirates</td>
+            <td>MOJ-certified Arabic translations mandatory</td>
+          </tr>
+          <tr>
+            <td><strong>DHCC</strong></td>
+            <td>Healthcare City</td>
+            <td>Same as DHA requirements</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>If you're applying to multiple authorities or transferring your DataFlow verification between them, the same translations typically serve all applications.</p>
+
+      <h2>DataFlow Timeline Expectations</h2>
+
+      <table class="timeline-table">
+        <thead>
+          <tr>
+            <th>Stage</th>
+            <th>Timeline</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pre-eligibility assessment</td>
+            <td>1-3 days</td>
+          </tr>
+          <tr>
+            <td>DataFlow application submission</td>
+            <td>1 day</td>
+          </tr>
+          <tr>
+            <td>Primary Source Verification</td>
+            <td>15-45 working days</td>
+          </tr>
+          <tr>
+            <td>Document translation (parallel)</td>
+            <td>2-3 working days</td>
+          </tr>
+          <tr>
+            <td>DHA licensing submission</td>
+            <td>1-2 weeks</td>
+          </tr>
+          <tr>
+            <td>CBT examination (if required)</td>
+            <td>Varies by specialty</td>
+          </tr>
+          <tr>
+            <td>License issuance</td>
+            <td>1-2 weeks</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="info-callout">
+        <h4><i class="fas fa-lightbulb"></i> Timeline Tip</h4>
+        <p>Begin document translation immediately after submitting your DataFlow application. This ensures translations are ready when PSV completes, eliminating delays in the licensing stage.</p>
+      </div>
+
+      <h2>Pricing for Healthcare Credential Packages</h2>
+
+      <p>We offer complete translation packages for healthcare professionals rather than per-page pricing:</p>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h4>DHA Licensing Package</h4>
+          <p>Includes: Medical degree, transcripts, internship certificate, good standing, 2 experience letters</p>
+          <a href="https://wa.me/971508620217?text=DHA%20Licensing%20Package%20inquiry" class="pricing-cta">Get Quote</a>
+        </div>
+        <div class="pricing-card">
+          <h4>Specialist Package</h4>
+          <p>Includes: Basic package plus specialty certificates, board certifications, fellowship credentials</p>
+          <a href="https://wa.me/971508620217?text=Specialist%20Package%20inquiry" class="pricing-cta">Get Quote</a>
+        </div>
+        <div class="pricing-card">
+          <h4>Nursing Package</h4>
+          <p>Includes: Nursing degree, nursing council registration, good standing, experience letters</p>
+          <a href="https://wa.me/971508620217?text=Nursing%20Package%20inquiry" class="pricing-cta">Get Quote</a>
+        </div>
+      </div>
+
+      <p>All packages include MOJ certification, DHA-compliant formatting, and digital delivery.</p>
+
+      <h2>How to Get Started</h2>
+
+      <div class="start-options">
+        <div class="start-option">
+          <h4>Option 1: WhatsApp Order</h4>
+          <p>Send your documents via WhatsApp to <a href="https://wa.me/971508620217">+971 50 862 0217</a>. We'll assess what you have, identify any missing documents, and provide a quote within 15 minutes during working hours.</p>
+        </div>
+        <div class="start-option">
+          <h4>Option 2: Email Submission</h4>
+          <p>Email scanned documents to info@onlinetranslation.ae with "DHA DataFlow Translation" in subject line. Include your DataFlow case number if you've already applied.</p>
+        </div>
+        <div class="start-option">
+          <h4>Option 3: Coordinate with Your Consultant</h4>
+          <p>If you're using a healthcare licensing consultant, we can coordinate directly with them to align translation delivery with your DataFlow timeline.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <RelatedServices
+        pageKey="dhaDataflow"
+        title="You May Also Need"
+        showFamily={true}
+        showPrerequisites={true}
+        showNextSteps={true}
+        showCrossSilo={true}
+        maxItems={8}
+      />
+      <CrossSiloLinks maxLinks={6} />
+    </div>
+  </section>
+</ServiceLayout>
+
+<style>
+  .use-case-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .use-case-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-left: 4px solid var(--accent-color, #FF1654);
+  }
+
+  .use-case-card h4 {
+    margin: 0 0 0.75rem;
+    font-size: 1.1rem;
+    color: var(--primary-color, #0E2B48);
+  }
+
+  .use-case-card p {
+    margin: 0;
+    line-height: 1.6;
+    color: var(--text-secondary, #4a5568);
+  }
+
+  .timeline-section {
+    margin: 2rem 0;
+    position: relative;
+  }
+
+  .timeline-step {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+
+  .timeline-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 1.25rem;
+    top: 2.5rem;
+    bottom: -0.5rem;
+    width: 2px;
+    background: var(--accent-color, #FF1654);
+    opacity: 0.3;
+  }
+
+  .step-marker {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: var(--accent-color, #FF1654);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .step-content {
+    flex: 1;
+    background: #ffffff;
+    border-radius: 0.75rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .step-content h4 {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+    color: var(--primary-color, #0E2B48);
+  }
+
+  .step-content p {
+    margin: 0;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .step-content em {
+    color: var(--accent-color, #FF1654);
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .feature-item {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
+
+  .feature-item h4 {
+    margin: 0 0 0.75rem;
+    font-size: 1.1rem;
+    color: var(--primary-color, #0E2B48);
+  }
+
+  .feature-item p {
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .challenge-list {
+    background: #fff5f5;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .challenge-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .challenge-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .challenge-item:first-child {
+    padding-top: 0;
+  }
+
+  .challenge-icon {
+    color: #dc3545;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .challenge-item strong {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: var(--primary-color, #0E2B48);
+  }
+
+  .challenge-item p {
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .authority-table,
+  .timeline-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background: #ffffff;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .authority-table th,
+  .timeline-table th {
+    background: var(--primary-color, #0E2B48);
+    color: white;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+  }
+
+  .authority-table td,
+  .timeline-table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .authority-table tr:last-child td,
+  .timeline-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .info-callout {
+    background: linear-gradient(135deg, #e8f4f8 0%, #d4ecf4 100%);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-left: 4px solid #0077b6;
+  }
+
+  .info-callout h4 {
+    margin: 0 0 0.75rem;
+    font-size: 1rem;
+    color: #0077b6;
+  }
+
+  .info-callout h4 i {
+    margin-right: 0.5rem;
+  }
+
+  .info-callout p {
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .pricing-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    text-align: center;
+  }
+
+  .pricing-card h4 {
+    margin: 0 0 1rem;
+    font-size: 1.2rem;
+    color: var(--primary-color, #0E2B48);
+  }
+
+  .pricing-card p {
+    margin: 0 0 1.5rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .pricing-cta {
+    display: inline-block;
+    background: var(--accent-color, #FF1654);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s ease;
+  }
+
+  .pricing-cta:hover {
+    background: #e01348;
+  }
+
+  .start-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .start-option {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .start-option h4 {
+    margin: 0 0 0.75rem;
+    font-size: 1.1rem;
+    color: var(--primary-color, #0E2B48);
+  }
+
+  .start-option p {
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .start-option a {
+    color: var(--accent-color, #FF1654);
+  }
+</style>
