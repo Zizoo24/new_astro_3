@@ -1584,6 +1584,7 @@ body.theme-dark .ot-metric-note {
 /* ============================================
    HERO FEATURE GRID - Visual Relief Components
    Used in service pages for feature highlights
+   Must override Astro scoped styles, so use !important
    ============================================ */
 
 .hero-feature-grid {
@@ -1612,26 +1613,37 @@ body.theme-dark .ot-metric-note {
     margin-top: 0.1rem;
 }
 
-/* Inner container for text content */
+/* Inner container for text content - CRITICAL for spacing */
 .hero-feature > div,
-.hero-feature-item > div {
-    display: flex;
-    flex-direction: column;
+.hero-feature-item > div,
+.hero-intro .hero-feature > div,
+.hero-intro .hero-feature-item > div {
+    display: flex !important;
+    flex-direction: column !important;
 }
 
-/* Bold term - display as block with spacing */
+/* Bold term - MUST display as block with spacing */
 .hero-feature strong,
-.hero-feature-item strong {
-    display: block;
-    color: var(--text-on-dark, #f4f7fc);
-    font-weight: 600;
-    margin-bottom: 0.25rem;
+.hero-feature-item strong,
+.hero-intro .hero-feature strong,
+.hero-intro .hero-feature-item strong,
+.hero-feature > div > strong,
+.hero-feature-item > div > strong {
+    display: block !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    margin-bottom: 0.25rem !important;
 }
 
 /* Description text */
 .hero-feature span,
-.hero-feature-item span {
-    color: var(--text-on-dark-muted, #c5d4e8);
+.hero-feature-item span,
+.hero-intro .hero-feature span,
+.hero-intro .hero-feature-item span,
+.hero-feature > div > span,
+.hero-feature-item > div > span {
+    display: block !important;
+    color: rgba(255, 255, 255, 0.85) !important;
     font-size: 0.95em;
 }
 
@@ -1642,10 +1654,10 @@ body.theme-dark .ot-metric-note {
 }
 
 .hero-feature-grid li strong {
-    display: block;
-    color: var(--text-on-dark, #f4f7fc);
-    font-weight: 600;
-    margin-bottom: 0.25rem;
+    display: block !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    margin-bottom: 0.25rem !important;
 }
 
 /* Mobile responsive */
