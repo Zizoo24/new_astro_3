@@ -470,7 +470,7 @@ export const mobileNavHubs = [
     ],
   },
 
-  // SPECIALIZED - Hub + key services (DHA DataFlow nested under Medical)
+  // SPECIALIZED - Hub + key services (DHA DataFlow shown under Medical with indent)
   {
     id: 'specialized',
     label: 'Specialized',
@@ -478,14 +478,8 @@ export const mobileNavHubs = [
     hubLabel: 'All Specialized Services',
     icon: 'fas fa-microscope',
     children: [
-      {
-        label: 'Medical Translation',
-        href: '/specialized/medical/',
-        icon: 'fas fa-heartbeat',
-        children: [
-          { label: 'DHA DataFlow', href: '/specialized/medical/dha-dataflow/', icon: 'fas fa-user-md', badge: 'NEW' },
-        ]
-      },
+      { label: 'Medical Translation', href: '/specialized/medical/', icon: 'fas fa-heartbeat' },
+      { label: '↳ DHA DataFlow', href: '/specialized/medical/dha-dataflow/', icon: 'fas fa-user-md', badge: 'NEW' },
       { label: 'Technical Translation', href: '/specialized/technical/', icon: 'fas fa-cogs' },
       { label: 'Golden Visa Package', href: '/services/golden-visa-translation/', icon: 'fas fa-star' },
     ],
