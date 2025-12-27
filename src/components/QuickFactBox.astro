@@ -1,0 +1,125 @@
+---
+/**
+ * QuickFactBox.astro
+ *
+ * Sidebar-style credential/stat display for visual break.
+ * Use in hero sections to highlight key facts.
+ *
+ * Usage:
+ * <QuickFactBox
+ *   title="Quick Facts"
+ *   facts={[
+ *     { icon: "clock", text: "60-Minute Delivery" },
+ *     { icon: "certificate", text: "MOJ License #701" }
+ *   ]}
+ * />
+ */
+
+interface Fact {
+  icon?: string;
+  text: string;
+}
+
+interface Props {
+  title?: string;
+  facts: Fact[];
+  variant?: 'dark' | 'light';
+  class?: string;
+}
+
+const {
+  title = 'Quick Facts',
+  facts,
+  variant = 'dark',
+  class: className = ''
+} = Astro.props;
+---
+
+<div class:list={['quick-fact-box', `quick-fact-box--${variant}`, className]}>
+  {title && <div class="quick-fact-box__title">{title}</div>}
+  <ul class="quick-fact-box__list">
+    {facts.map(fact => (
+      <li class="quick-fact-box__item">
+        {fact.icon && <i class={`fas fa-${fact.icon}`}></i>}
+        <span>{fact.text}</span>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .quick-fact-box {
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+  }
+
+  .quick-fact-box--dark {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .quick-fact-box--light {
+    background: var(--surface-muted, #f0f2f5);
+    border: 1px solid var(--border-light, #e2e8f0);
+  }
+
+  .quick-fact-box__title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-coral, #FF1654);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .quick-fact-box--light .quick-fact-box__title {
+    border-bottom-color: var(--border-light, #e2e8f0);
+  }
+
+  .quick-fact-box__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .quick-fact-box__item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  .quick-fact-box__item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .quick-fact-box__item i {
+    color: var(--accent-coral, #FF1654);
+    font-size: 0.9rem;
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .quick-fact-box--light .quick-fact-box__item {
+    border-bottom-color: rgba(0, 0, 0, 0.06);
+    color: var(--text-heading, #0E2B48);
+  }
+
+  @media (max-width: 768px) {
+    .quick-fact-box {
+      padding: 1rem;
+    }
+
+    .quick-fact-box__item {
+      font-size: 0.9rem;
+    }
+  }
+</style>

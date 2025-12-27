@@ -1,0 +1,203 @@
+---
+/**
+ * IconBulletList.astro
+ *
+ * Visual bullet list with icons and optional descriptions.
+ * Breaks up wall-of-text content with styled list items.
+ *
+ * Usage:
+ * <IconBulletList
+ *   items={[
+ *     { text: "MOJ Certified", description: "Court-ready translations" },
+ *     { text: "60 Minute Delivery" }
+ *   ]}
+ *   icon="check"
+ *   variant="coral"
+ * />
+ */
+
+interface ListItem {
+  text: string;
+  description?: string;
+  href?: string;
+}
+
+interface Props {
+  items: ListItem[];
+  icon?: 'check' | 'shield' | 'star' | 'arrow' | 'file' | 'clock' | 'certificate';
+  variant?: 'coral' | 'navy' | 'gold' | 'white';
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+}
+
+const {
+  items,
+  icon = 'check',
+  variant = 'coral',
+  size = 'md',
+  class: className = ''
+} = Astro.props;
+
+const iconMap = {
+  check: 'fa-check-circle',
+  shield: 'fa-shield-alt',
+  star: 'fa-star',
+  arrow: 'fa-arrow-right',
+  file: 'fa-file-alt',
+  clock: 'fa-clock',
+  certificate: 'fa-certificate'
+};
+
+const iconClass = iconMap[icon] || 'fa-check-circle';
+---
+
+<ul class:list={['icon-bullet-list', `icon-bullet-list--${variant}`, `icon-bullet-list--${size}`, className]}>
+  {items.map(item => (
+    <li class="icon-bullet-item">
+      <i class={`fas ${iconClass}`}></i>
+      <div class="icon-bullet-content">
+        {item.href ? (
+          <a href={item.href} class="icon-bullet-text">{item.text}</a>
+        ) : (
+          <span class="icon-bullet-text">{item.text}</span>
+        )}
+        {item.description && (
+          <span class="icon-bullet-desc">{item.description}</span>
+        )}
+      </div>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .icon-bullet-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+  }
+
+  .icon-bullet-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .icon-bullet-item:last-child {
+    border-bottom: none;
+  }
+
+  .icon-bullet-item i {
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+  }
+
+  .icon-bullet-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .icon-bullet-text {
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  a.icon-bullet-text {
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  a.icon-bullet-text:hover {
+    text-decoration: underline;
+  }
+
+  .icon-bullet-desc {
+    font-weight: 400;
+    opacity: 0.85;
+    font-size: 0.95em;
+    line-height: 1.5;
+  }
+
+  /* Variant: Coral */
+  .icon-bullet-list--coral .icon-bullet-item i {
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .icon-bullet-list--coral a.icon-bullet-text {
+    color: #ffffff;
+  }
+
+  .icon-bullet-list--coral a.icon-bullet-text:hover {
+    color: var(--accent-coral, #FF1654);
+  }
+
+  /* Variant: Navy */
+  .icon-bullet-list--navy .icon-bullet-item i {
+    color: var(--surface-navy, #0E2B48);
+  }
+
+  .icon-bullet-list--navy .icon-bullet-item {
+    border-bottom-color: rgba(14, 43, 72, 0.1);
+  }
+
+  /* Variant: Gold */
+  .icon-bullet-list--gold .icon-bullet-item i {
+    color: var(--accent-gold, #d4a54c);
+  }
+
+  /* Variant: White (for light backgrounds) */
+  .icon-bullet-list--white .icon-bullet-item {
+    border-bottom-color: rgba(0, 0, 0, 0.08);
+  }
+
+  .icon-bullet-list--white a.icon-bullet-text {
+    color: var(--text-heading, #0E2B48);
+  }
+
+  .icon-bullet-list--white a.icon-bullet-text:hover {
+    color: var(--accent-coral, #FF1654);
+  }
+
+  /* Size: Small */
+  .icon-bullet-list--sm .icon-bullet-item {
+    padding: 0.4rem 0;
+  }
+
+  .icon-bullet-list--sm .icon-bullet-item i {
+    font-size: 0.85rem;
+  }
+
+  .icon-bullet-list--sm .icon-bullet-text {
+    font-size: 0.9rem;
+  }
+
+  .icon-bullet-list--sm .icon-bullet-desc {
+    font-size: 0.85rem;
+  }
+
+  /* Size: Large */
+  .icon-bullet-list--lg .icon-bullet-item {
+    padding: 0.75rem 0;
+    gap: 1rem;
+  }
+
+  .icon-bullet-list--lg .icon-bullet-item i {
+    font-size: 1.25rem;
+  }
+
+  .icon-bullet-list--lg .icon-bullet-text {
+    font-size: 1.1rem;
+  }
+
+  /* Dark background context */
+  :global(.bg-dark) .icon-bullet-list--white .icon-bullet-item {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :global(.bg-dark) .icon-bullet-list--white a.icon-bullet-text {
+    color: #ffffff;
+  }
+</style>
