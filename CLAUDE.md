@@ -1,7 +1,7 @@
 # CLAUDE.md
 
 > **OnlineTranslation.ae** — Boutique Digital Concierge for Legal Translation
-> Partner: Arkan Legal Translation (MOJ License #701) | Version 8.1 | December 27, 2025
+> Partner: Arkan Legal Translation (MOJ License #701) | Version 8.2 | December 27, 2025
 
 ---
 
@@ -10,7 +10,7 @@
 **Before ANY changes, verify:**
 
 1. Check [Critical Facts](#critical-facts) — UAE is NOT a Hague member
-2. Follow [Readability Rules](#readability-rules) — 25 word max sentences
+2. Follow [Content Creation](#content-creation) — readability + visual relief
 3. Use [Brand Voice](#brand-voice) — no hype, no "best in Dubai"
 4. Reference [File Locations](#file-reference) — single source of truth
 
@@ -147,16 +147,18 @@ npm run og:generate  # Generate images to public/assets/images/og/
 
 ---
 
-## Content Standards
+## Content Creation
 
 ### Page Structure
 
-1. **Hero** — Badge, H1, intro, bullets, CTA
+1. **Hero** — Badge, H1, intro (1-2 sentences), bullets, CTA
 2. **Compliance Checklist** — Prerequisites (accordion)
 3. **Process** — 4-step timeline
 4. **After-Care** — Next steps
 5. **Pricing** — Tier cards (no exact prices)
 6. **FAQ** — 6-15 schema-optimized Q&A
+
+---
 
 ### Readability Rules
 
@@ -164,7 +166,8 @@ npm run og:generate  # Generate images to public/assets/images/og/
 |------|-------|
 | Sentence length | Max 25 words, target 15-20 |
 | Paragraph length | Max 3-4 sentences |
-| Lists | Use bullets for 3+ items |
+| Line width | Max 65 characters |
+| Lists | Bullets for 3+ items |
 | Subheadings | Every 2-3 paragraphs |
 
 **Bad (41 words):**
@@ -173,9 +176,93 @@ npm run og:generate  # Generate images to public/assets/images/og/
 **Good (3 sentences, avg 14 words):**
 > "We translate all documents for UAE government, court, and business use. Personal documents include birth, marriage, divorce, and death certificates. We also handle academic records, police clearance, and corporate filings."
 
+---
+
+### Visual Relief Techniques
+
+Break walls of text using these CSS utilities from `text-breaking.css`:
+
+| Technique | Class | Use Case |
+|-----------|-------|----------|
+| **Lead Text** | `.lead-text` | Larger intro paragraph below hero |
+| **Kicker** | `.kicker` | Uppercase label above headings |
+| **Highlight** | `.text-highlight` | Inline emphasis with background |
+| **Accent Border** | `.accent-border-left` | Left border for pullquotes |
+| **Quick Fact Box** | `<QuickFactBox>` | Sidebar credential display |
+| **Icon Bullet List** | `<IconBulletList>` | Styled list with icons |
+
+**Hero Split Pattern** — For dense intros, use two-column layout:
+```html
+<div class="hero-split">
+  <div class="hero-split__content">  <!-- Lead text -->
+  <div class="hero-split__aside">    <!-- QuickFactBox -->
+</div>
+```
+
+---
+
+### Hero Intro Guidelines
+
+| Rule | Target |
+|------|--------|
+| Length | 1-2 sentences max |
+| Characters/line | 45-75 (optimal scanning) |
+| Font size | `clamp(1.1rem, 1rem + 0.5vw, 1.25rem)` |
+| Line height | 1.6 (not 1.8) |
+| Max width | 65ch |
+| Text wrap | `text-wrap: balance` |
+
+**Copy Pattern:**
+- Lead with value: "Courts accept our translations" not "We provide translations"
+- Front-load keywords in first 5 words
+- Include entity names (DHA, GDRFA, MOHRE)
+
+> 💡 Centralized styles in `hero-intro-optimized.css`. Remove inline hero styles.
+
+---
+
+### Content Expansion Template
+
+For 600+ word sections, use this H2 structure:
+
+```
+## What You Need to Know About [Service]
+
+### The Real Question: [Primary Client Concern]
+150-200 words addressing the main worry
+
+### How It Works in the UAE
+150-200 words on UAE-specific requirements
+
+### Mistakes That Cause Rejections
+100-150 words on what to avoid
+
+### Do You Need Attestation First?
+100-150 words on attestation chain
+
+### Realistic Timeline
+50-100 words on expectations
+```
+
+---
+
 ### UAE-Specific Elements
 
-Include: GDRFA, MOFA, DLD, KHDA, MOHRE, DHA, ICP, Amer portal, typing centers, attestation chains
+**Government entities:** GDRFA, MOFA, DLD, KHDA, MOHRE, DHA
+**Portals:** ICP, GDRFA app, Amer
+**Process terms:** Typing centers, attestation chains, MOJ stamp
+
+---
+
+### Content Quality Checklist
+
+- [ ] 600+ words for service pages
+- [ ] Sentences under 25 words
+- [ ] 3+ UAE entity references
+- [ ] No banned vocabulary (see Brand Voice)
+- [ ] 8+ internal links
+- [ ] Visual relief elements used
+- [ ] Hero intro under 2 sentences
 
 ---
 
@@ -279,6 +366,9 @@ Use `<details>`/`<summary>` elements. Content in DOM at load (not AJAX).
 | `SEO.astro` | Meta with validation |
 | `Schema.astro` | Structured data |
 | `Breadcrumb.astro` | Breadcrumbs + JSON-LD |
+| `IconBulletList.astro` | Styled bullet list with icons |
+| `KickerHeadline.astro` | Kicker + headline combo |
+| `QuickFactBox.astro` | Sidebar credential box |
 
 ### Styles (`public/styles/`)
 
@@ -289,6 +379,8 @@ Use `<details>`/`<summary>` elements. Content in DOM at load (not AJAX).
 | `sticky-mobile.css` | Mobile bar |
 | `dark-mode-tokenized.css` | Dark theme |
 | `contrast-fixes.css` | A11y fixes |
+| `text-breaking.css` | Visual relief utilities |
+| `hero-intro-optimized.css` | Hero intro typography |
 
 ### Documentation
 
@@ -314,6 +406,11 @@ See `SEO-ISSUES-DEFERRED.md` for full details:
 ---
 
 ## Changelog
+
+### v8.2 (Dec 27, 2025)
+- Consolidated Content Creation section with visual relief techniques
+- Added hero intro guidelines, content expansion template
+- Added text-breaking components to file reference
 
 ### v8.1 (Dec 27, 2025)
 - Added `/specialized/medical/dha-dataflow/`
