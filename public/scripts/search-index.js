@@ -1,5 +1,5 @@
 // Auto-generated search index - DO NOT EDIT MANUALLY
-// Generated at: 2025-12-28T07:20:01.791Z
+// Generated at: 2025-12-28T07:51:42.203Z
 // Run 'npm run search:generate' to regenerate
 
 const searchIndex = [
@@ -202,6 +202,30 @@ const searchIndex = [
         "keywords": "about company team moj certified translators licensed"
     },
     {
+        "title": "Meet Khaled Al-Adl - MOJ Licensed Translator",
+        "url": "/about/translator/",
+        "category": "About",
+        "keywords": "translator khaled al-adl moj license 701 arkan certified experience qualifications"
+    },
+    {
+        "title": "Our Credentials - MOJ License Verification",
+        "url": "/about/credentials/",
+        "category": "About",
+        "keywords": "credentials moj license 701 verification arkan legal translation certified dubai"
+    },
+    {
+        "title": "Client Reviews & Testimonials",
+        "url": "/about/reviews/",
+        "category": "About",
+        "keywords": "reviews testimonials client feedback ratings google 5 star trust verified"
+    },
+    {
+        "title": "Case Studies - Real Client Outcomes",
+        "url": "/resources/case-studies/",
+        "category": "Resources",
+        "keywords": "case studies client outcomes success stories examples results translations"
+    },
+    {
         "title": "Privacy Policy",
         "url": "/privacy/",
         "category": "Legal",
@@ -266,6 +290,12 @@ const searchIndex = [
         "url": "/locations/sharjah/",
         "category": "Locations",
         "keywords": "sharjah emirate translation services saif zone"
+    },
+    {
+        "title": "Sharjah Tenancy Contract Translation",
+        "url": "/locations/sharjah/tenancy-translation/",
+        "category": "Locations",
+        "keywords": "sharjah tenancy rental contract translation municipality 4 percent fee landlord tenant ejari"
     }
 ];
 

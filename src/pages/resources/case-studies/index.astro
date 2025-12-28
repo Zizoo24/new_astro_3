@@ -4,6 +4,7 @@
  * E-E-A-T: Demonstrates Experience through documented outcomes
  */
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
 import CaseStudyCard from '../../../components/eeat/CaseStudyCard.astro';
 import RelatedServices from '../../../components/RelatedServices.astro';
 
@@ -49,15 +50,13 @@ const stats = [
   title="Case Studies | Real Client Success Stories | OnlineTranslation.ae"
   description="Explore real case studies showing how we handle urgent translations, court rejections, and complex document packages. Documented outcomes from Dubai-based clients."
 >
+  <Breadcrumb items={[
+    { name: "Home", url: "/" },
+    { name: "Resources", url: "/resources/" },
+    { name: "Case Studies" }
+  ]} />
   <section class="hero-section bg-dark" data-theme="dark">
     <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">HOME</a>
-        <span class="separator">&gt;</span>
-        <a href="/resources/">RESOURCES</a>
-        <span class="separator">&gt;</span>
-        <span class="current">CASE STUDIES</span>
-      </nav>
 
       <span class="kicker">Real Client Stories</span>
       <h1>Case Studies</h1>

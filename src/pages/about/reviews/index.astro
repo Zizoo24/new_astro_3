@@ -5,6 +5,7 @@
  * URL: /about/reviews/
  */
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
 import ReviewCard from '../../../components/eeat/ReviewCard.astro';
 import { siteConfig } from '../../../config/site';
 
@@ -178,14 +179,12 @@ const aggregateRatingSchema = {
     <div class="hero-background">
       <div class="hero-overlay"></div>
     </div>
+    <Breadcrumb items={[
+      { name: "Home", url: "/" },
+      { name: "About", url: "/about/" },
+      { name: "Reviews" }
+    ]} inline={true} theme="light" />
     <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a>
-        <span class="separator">&gt;</span>
-        <a href="/about/">About</a>
-        <span class="separator">&gt;</span>
-        <span class="current">Reviews</span>
-      </nav>
       <h1 class="page-title">What Our Clients Say</h1>
       <p class="page-lead">
         Real feedback from real clients. We're proud of our 5.0 Google rating and

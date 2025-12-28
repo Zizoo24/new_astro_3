@@ -4,6 +4,7 @@
  * E-E-A-T: Experience through documented deadline management
  */
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../../components/Breadcrumb.astro';
 
 const documents = [
   { name: "Marriage Certificate", source: "Egypt", status: "Translated + Attested" },
@@ -39,18 +40,14 @@ const timeline = [
   title="Case Study: 12 Documents in 24 Hours for Family Visa | OnlineTranslation.ae"
   description="With a spouse visa interview scheduled for the next day, we translated and attested 12 documents in 24 hours. Family visa approved at first interview."
 >
+  <Breadcrumb items={[
+    { name: "Home", url: "/" },
+    { name: "Resources", url: "/resources/" },
+    { name: "Case Studies", url: "/resources/case-studies/" },
+    { name: "Urgent Family Visa" }
+  ]} />
   <section class="hero-section bg-dark" data-theme="dark">
     <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">HOME</a>
-        <span class="separator">&gt;</span>
-        <a href="/resources/">RESOURCES</a>
-        <span class="separator">&gt;</span>
-        <a href="/resources/case-studies/">CASE STUDIES</a>
-        <span class="separator">&gt;</span>
-        <span class="current">URGENT FAMILY VISA</span>
-      </nav>
-
       <div class="case-meta">
         <span class="case-category">👨‍👩‍👧 Immigration</span>
         <span class="case-date">February 2024</span>

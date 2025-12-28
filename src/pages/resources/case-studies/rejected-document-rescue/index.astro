@@ -4,6 +4,7 @@
  * E-E-A-T: Experience through documented problem-solving
  */
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../../components/Breadcrumb.astro';
 import RelatedServices from '../../../../components/RelatedServices.astro';
 
 const timeline = [
@@ -43,18 +44,14 @@ const issues = [
   title="Case Study: Court Document Rejection Rescued in 2 Hours | OnlineTranslation.ae"
   description="How we identified 4 formatting errors in a rejected power of attorney translation and delivered court-accepted corrections in 2 hours. Real Dubai Courts case study."
 >
+  <Breadcrumb items={[
+    { name: "Home", url: "/" },
+    { name: "Resources", url: "/resources/" },
+    { name: "Case Studies", url: "/resources/case-studies/" },
+    { name: "Document Rescue" }
+  ]} />
   <section class="hero-section bg-dark" data-theme="dark">
     <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">HOME</a>
-        <span class="separator">&gt;</span>
-        <a href="/resources/">RESOURCES</a>
-        <span class="separator">&gt;</span>
-        <a href="/resources/case-studies/">CASE STUDIES</a>
-        <span class="separator">&gt;</span>
-        <span class="current">REJECTED DOCUMENT RESCUE</span>
-      </nav>
-
       <div class="case-meta">
         <span class="case-category">⚖️ Court Documents</span>
         <span class="case-date">March 2024</span>

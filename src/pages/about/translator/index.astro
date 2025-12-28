@@ -5,6 +5,7 @@
  * URL: /about/translator/
  */
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
 import PersonSchema from '../../../components/eeat/PersonSchema.astro';
 import TranslatorHero from '../../../components/eeat/TranslatorHero.astro';
 import CredentialsGrid from '../../../components/eeat/CredentialsGrid.astro';
@@ -149,6 +150,13 @@ const expertiseAreas = [
     validUntil={translator.validUntil}
     verifyHotline={translator.verifyHotline}
   />
+
+  <!-- Breadcrumbs -->
+  <Breadcrumb items={[
+    { name: "Home", url: "/" },
+    { name: "About", url: "/about/" },
+    { name: "Meet Our Translator" }
+  ]} />
 
   <!-- The Oath Section -->
   <section class="section oath-section">
