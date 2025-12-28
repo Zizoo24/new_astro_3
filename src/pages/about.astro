@@ -287,6 +287,38 @@ const cta = {
     </div>
   </section>
 
+  <!-- Trust & Credentials Section -->
+  <section class="section trust-links-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Trust & Credentials</span>
+        <h2 class="section-title">Verify Our Credentials</h2>
+      </div>
+      <div class="trust-links-grid">
+        <a href="/about/translator/" class="trust-link-card">
+          <div class="trust-icon"><i class="fas fa-user-tie"></i></div>
+          <h3>Meet the Translator</h3>
+          <p>Learn about Khaled Al-Adl, our MOJ-licensed translator with credentials you can verify.</p>
+        </a>
+        <a href="/about/credentials/" class="trust-link-card">
+          <div class="trust-icon"><i class="fas fa-certificate"></i></div>
+          <h3>Our Credentials</h3>
+          <p>MOJ License #701, DUL registration, and security protocols we follow.</p>
+        </a>
+        <a href="/about/reviews/" class="trust-link-card">
+          <div class="trust-icon"><i class="fas fa-star"></i></div>
+          <h3>Client Reviews</h3>
+          <p>Verified testimonials with real outcomes from visa approvals and court cases.</p>
+        </a>
+        <a href="/resources/case-studies/" class="trust-link-card">
+          <div class="trust-icon"><i class="fas fa-briefcase"></i></div>
+          <h3>Case Studies</h3>
+          <p>Documented outcomes from urgent deadlines and complex document situations.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA Section -->
   <section class="section cta-section">
     <div class="container">
@@ -493,6 +525,73 @@ const cta = {
     font-size: 0.9rem;
     color: var(--text-muted, #5a6a7a);
     line-height: 1.7;
+  }
+
+  /* Trust Links Section */
+  .trust-links-section {
+    padding: 3rem 0;
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  .trust-links-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .trust-link-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+  }
+
+  .trust-link-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    border-color: var(--accent-coral, #FF1654);
+  }
+
+  .trust-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--primary-navy, #0E2B48);
+    color: #fff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .trust-link-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-navy, #0E2B48);
+    margin-bottom: 0.5rem;
+  }
+
+  .trust-link-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted, #5a6a7a);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 991px) {
+    .trust-links-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .trust-links-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   .cta-section {

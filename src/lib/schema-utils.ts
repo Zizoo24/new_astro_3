@@ -164,7 +164,7 @@ export function generateOrganizationSchema(siteUrl: string): OrganizationSchema 
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: 5.0,
-      ratingCount: 4,
+      ratingCount: 15,
     },
   };
 }
