@@ -505,6 +505,38 @@ export const serviceLinks: Record<string, ServiceLink> = {
     full: "about OnlineTranslation.ae",
     icon: "fas fa-info-circle"
   },
+  translator: {
+    url: "/about/translator/",
+    text: "meet the translator",
+    full: "Meet Khaled Al-Adl, MOJ-licensed translator",
+    icon: "fas fa-user-tie",
+    badge: "NEW"
+  },
+  credentials: {
+    url: "/about/credentials/",
+    text: "our credentials",
+    full: "MOJ License #701 and verification details",
+    icon: "fas fa-certificate"
+  },
+  reviews: {
+    url: "/about/reviews/",
+    text: "client reviews",
+    full: "verified client testimonials and outcomes",
+    icon: "fas fa-star"
+  },
+  caseStudies: {
+    url: "/resources/case-studies/",
+    text: "case studies",
+    full: "real client success stories",
+    icon: "fas fa-briefcase",
+    badge: "NEW"
+  },
+  sharjahTenancy: {
+    url: "/locations/sharjah/tenancy-translation/",
+    text: "Sharjah tenancy translation",
+    full: "Sharjah rental contract translation with 4% attestation",
+    icon: "fas fa-home"
+  },
   contact: {
     url: "/contact/",
     text: "contact us",
@@ -788,8 +820,8 @@ export const pageRelationships: Record<string, PageRelationships> = {
     crossSilo: ["goldenVisa", "immigration", "attestation"]
   },
   sharjah: {
-    related: ["dubai", "abuDhabi"],
-    crossSilo: ["immigration", "attestation"]
+    related: ["dubai", "abuDhabi", "sharjahTenancy"],
+    crossSilo: ["immigration", "attestation", "lease"]
   },
 
   // ========================================
@@ -948,7 +980,7 @@ export const pageRelationships: Record<string, PageRelationships> = {
     crossSilo: ["legalTranslation", "corporateTranslation", "contracts"]
   },
   resources: {
-    related: ["pricingGuide", "attestationGuide", "documentChecklist", "faq"],
+    related: ["pricingGuide", "attestationGuide", "documentChecklist", "faq", "caseStudies"],
     crossSilo: ["goldenVisa", "attestation", "legalTranslation"]
   },
   specialized: {
@@ -980,6 +1012,42 @@ export const pageRelationships: Record<string, PageRelationships> = {
   personalDocuments: {
     related: ["birthCertificate", "marriageCertificate", "deathCertificate", "degree", "pcc"],
     crossSilo: ["legalTranslation", "attestation", "goldenVisa", "dubai", "abuDhabi"]
+  },
+
+  // ========================================
+  // E-E-A-T TRUST PAGES
+  // ========================================
+  about: {
+    related: ["translator", "credentials", "reviews", "caseStudies"],
+    crossSilo: ["legalTranslation", "goldenVisa", "attestation"]
+  },
+  translator: {
+    related: ["credentials", "reviews", "legalTranslation"],
+    family: ["credentials", "reviews", "caseStudies"],
+    crossSilo: ["legalTranslation", "attestation", "goldenVisa"]
+  },
+  credentials: {
+    related: ["translator", "reviews", "attestation", "mofaAttestation"],
+    family: ["translator", "reviews", "caseStudies"],
+    crossSilo: ["legalTranslation", "goldenVisa"]
+  },
+  reviews: {
+    related: ["translator", "credentials", "caseStudies", "goldenVisa"],
+    family: ["translator", "credentials", "caseStudies"],
+    crossSilo: ["legalTranslation", "birthCertificate", "marriageCertificate"]
+  },
+  caseStudies: {
+    related: ["reviews", "credentials", "translator", "goldenVisa"],
+    family: ["translator", "credentials", "reviews"],
+    crossSilo: ["legalTranslation", "immigration", "dhaDataflow", "attestation"]
+  },
+  sharjahTenancy: {
+    related: ["lease", "sharjah", "attestation", "mofaAttestation"],
+    family: ["sharjah"],
+    prerequisites: ["lease"],
+    nextSteps: ["mofaAttestation", "embassyAttestation"],
+    crossSilo: ["legalTranslation", "realEstateIndustry"],
+    locations: ["sharjah", "dubai"]
   }
 };
 

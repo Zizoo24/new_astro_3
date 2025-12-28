@@ -5,6 +5,7 @@
  * URL: /locations/sharjah/tenancy-translation/
  */
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../../components/Breadcrumb.astro';
 import ProcessSteps from '../../../../components/ProcessSteps.astro';
 import SharjahFeeCalculator from '../../../../components/eeat/SharjahFeeCalculator.astro';
 import RelatedServices from '../../../../components/RelatedServices.astro';
@@ -105,17 +106,13 @@ const serviceSchema = {
     <div class="hero-background">
       <div class="hero-overlay"></div>
     </div>
+    <Breadcrumb items={[
+      { name: "Home", url: "/" },
+      { name: "Locations", url: "/locations/" },
+      { name: "Sharjah", url: "/locations/sharjah/" },
+      { name: "Tenancy Translation" }
+    ]} inline={true} theme="light" />
     <div class="container">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a>
-        <span class="separator">&gt;</span>
-        <a href="/locations/">Locations</a>
-        <span class="separator">&gt;</span>
-        <a href="/locations/sharjah/">Sharjah</a>
-        <span class="separator">&gt;</span>
-        <span class="current">Tenancy Translation</span>
-      </nav>
-
       <span class="hero-badge">Sharjah Municipality Specialist</span>
       <h1 class="page-title">Tenancy Contract Translation for Sharjah</h1>
       <p class="page-lead">

@@ -204,6 +204,10 @@ function buildSearchIndex() {
     { title: 'Document Checklist', url: '/resources/document-checklist/', category: 'Resources', keywords: 'documents checklist requirements prepare list' },
     { title: 'Contact Us', url: '/contact/', category: 'Contact', keywords: 'contact whatsapp email phone call quote request' },
     { title: 'About Us', url: '/about/', category: 'About', keywords: 'about company team moj certified translators licensed' },
+    { title: 'Meet Khaled Al-Adl - MOJ Licensed Translator', url: '/about/translator/', category: 'About', keywords: 'translator khaled al-adl moj license 701 arkan certified experience qualifications' },
+    { title: 'Our Credentials - MOJ License Verification', url: '/about/credentials/', category: 'About', keywords: 'credentials moj license 701 verification arkan legal translation certified dubai' },
+    { title: 'Client Reviews & Testimonials', url: '/about/reviews/', category: 'About', keywords: 'reviews testimonials client feedback ratings google 5 star trust verified' },
+    { title: 'Case Studies - Real Client Outcomes', url: '/resources/case-studies/', category: 'Resources', keywords: 'case studies client outcomes success stories examples results translations' },
     { title: 'Privacy Policy', url: '/privacy/', category: 'Legal', keywords: 'privacy policy data protection gdpr personal information' },
     { title: 'Terms of Service', url: '/terms/', category: 'Legal', keywords: 'terms service conditions agreement legal' },
     { title: 'All Locations', url: '/locations/', category: 'Locations', keywords: 'locations dubai abu dhabi sharjah uae emirates service areas' },
@@ -215,6 +219,7 @@ function buildSearchIndex() {
     { title: 'Dubai Marina', url: '/locations/dubai/marina/', category: 'Locations', keywords: 'dubai marina jbr translation waterfront residential' },
     { title: 'Abu Dhabi', url: '/locations/abu-dhabi/', category: 'Locations', keywords: 'abu dhabi capital uae translation adgm government' },
     { title: 'Sharjah', url: '/locations/sharjah/', category: 'Locations', keywords: 'sharjah emirate translation services saif zone' },
+    { title: 'Sharjah Tenancy Contract Translation', url: '/locations/sharjah/tenancy-translation/', category: 'Locations', keywords: 'sharjah tenancy rental contract translation municipality 4 percent fee landlord tenant ejari' },
   ];
 
   // Add static pages, avoiding duplicates
