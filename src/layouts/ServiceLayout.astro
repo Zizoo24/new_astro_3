@@ -1,15 +1,10 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import Breadcrumb from '../components/Breadcrumb.astro';
+import BreadcrumbComponent from '../components/Breadcrumb.astro';
 import TrustStrip from '../components/TrustStrip.astro';
 import ProcessSteps from '../components/ProcessSteps.astro';
 import BenefitCards from '../components/BenefitCards.astro';
 import AccordionSection from '../components/AccordionSection.astro';
-// Responsive layout components - available for slot content
-import HorizontalSteps from '../components/HorizontalSteps.astro';
-import ResponsiveTable from '../components/ResponsiveTable.astro';
-import DeviceSlot from '../components/DeviceSlot.astro';
-import SplitView from '../components/SplitView.astro';
 
 interface SnapshotItem {
   icon: string;
@@ -17,7 +12,7 @@ interface SnapshotItem {
   text: string;
 }
 
-interface Breadcrumb {
+interface BreadcrumbItem {
   name: string;
   url: string;
 }
@@ -69,7 +64,7 @@ interface Props {
   /** Under-CTA note text (e.g., "Ready in 2-3 business days") */
   ctaNote?: string;
   snapshot: SnapshotItem[];
-  breadcrumbs: Breadcrumb[];
+  breadcrumbs: BreadcrumbItem[];
   faqs?: FAQ[];
   serviceType?: string;
   trustStrip?: string[];
@@ -188,7 +183,7 @@ const howToSchema = processSteps && processSteps.length > 0 ? {
   </Fragment>
 
   <!-- Breadcrumbs -->
-  <Breadcrumb items={breadcrumbs} theme="dark" />
+  <BreadcrumbComponent items={breadcrumbs} theme="dark" />
 
   <!-- Hero Section -->
   <section class={`section section--hero bg-dark ${heroImage ? 'has-hero-image' : ''}`}>

@@ -102,7 +102,7 @@ function getRedirects() {
           }
         });
       }
-    } catch (e) {
+    } catch (_e) {
       console.warn('Warning: Could not parse vercel.json for redirects');
     }
   }

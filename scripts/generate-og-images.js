@@ -15,7 +15,7 @@
  */
 
 import puppeteer from 'puppeteer';
-import { mkdir, writeFile } from 'fs/promises';
+import { mkdir } from 'fs/promises';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 

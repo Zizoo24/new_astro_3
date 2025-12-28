@@ -98,7 +98,7 @@ function generateSchema(schemaType: SchemaType, schemaData: Record<string, unkno
     case 'organization':
       return generateOrganizationSchema(siteUrl);
     
-    case 'service':
+    case 'service': {
       const serviceData = schemaData as ServiceData;
       return generateServiceSchema({
         name: serviceData.name,
@@ -108,16 +108,19 @@ function generateSchema(schemaType: SchemaType, schemaData: Record<string, unkno
         serviceType: serviceData.serviceType,
         price: serviceData.price,
       });
-    
-    case 'faq':
+    }
+
+    case 'faq': {
       const faqData = schemaData as FAQData;
       return generateFAQSchema(faqData.items);
-    
-    case 'breadcrumb':
+    }
+
+    case 'breadcrumb': {
       const breadcrumbData = schemaData as BreadcrumbData;
       return generateBreadcrumbSchema(breadcrumbData.items, siteUrl, Astro.url.pathname);
-    
-    case 'howto':
+    }
+
+    case 'howto': {
       const howtoData = schemaData as HowToData;
       return generateHowToSchema({
         name: howtoData.name,
@@ -126,8 +129,9 @@ function generateSchema(schemaType: SchemaType, schemaData: Record<string, unkno
         totalTime: howtoData.totalTime,
         estimatedCost: howtoData.estimatedCost,
       });
-    
-    case 'article':
+    }
+
+    case 'article': {
       const articleData = schemaData as ArticleData;
       return generateArticleSchema({
         headline: articleData.headline,
@@ -139,6 +143,7 @@ function generateSchema(schemaType: SchemaType, schemaData: Record<string, unkno
         dateModified: articleData.dateModified,
         authorName: articleData.authorName,
       });
+    }
     
     default:
       console.warn(`[Schema] Unknown schema type: ${schemaType}`);

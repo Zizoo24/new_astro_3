@@ -348,8 +348,9 @@ export function createSchemaGraph(...schemas: Array<Record<string, unknown> | nu
     '@context': 'https://schema.org',
     '@graph': validSchemas.map(schema => {
       // Remove @context from individual schemas when in graph
-      const { '@context': _, ...rest } = schema;
-      return rest;
+      const schemaWithoutContext = { ...schema };
+      delete schemaWithoutContext['@context'];
+      return schemaWithoutContext;
     }),
   });
 }
