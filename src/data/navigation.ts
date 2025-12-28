@@ -281,6 +281,7 @@ export const mainNav: (NavLink | NavGroup)[] = [
     children: [
       { label: 'Resource Center', href: '/resources/' },
       { label: 'Blog', href: '/blog/', badge: 'NEW' },
+      { label: 'Case Studies', href: '/resources/case-studies/', badge: 'NEW' },
       {
         label: 'MOJ vs Certified Guide',
         href: '/resources/moj-vs-certified/',
@@ -295,8 +296,26 @@ export const mainNav: (NavLink | NavGroup)[] = [
       { label: 'FAQ', href: '/resources/faq/' },
     ],
   },
-  
-  { label: 'About', href: '/about/' },
+
+  // ========================================
+  // ABOUT & TRUST (E-E-A-T Pages)
+  // ========================================
+  {
+    id: 'about',
+    label: 'About',
+    href: '/about/',
+    children: [
+      { label: 'About Us', href: '/about/' },
+      { label: 'Meet the Translator', href: '/about/translator/', badge: 'NEW' },
+      { label: 'Our Credentials', href: '/about/credentials/' },
+      { label: 'Client Reviews', href: '/about/reviews/' },
+      { label: 'Contact', href: '/contact/' },
+    ],
+    headers: [
+      { index: 0, label: 'Trust & Expertise' },
+    ],
+    dividers: [],
+  },
 ];
 
 // ============================================
@@ -405,6 +424,7 @@ export const mobileNav = {
       children: [
         { label: 'Resource Hub', href: '/resources/' },
         { label: 'Blog', href: '/blog/' },
+        { label: 'Case Studies', href: '/resources/case-studies/' },
         { label: 'MOJ vs Certified Guide', href: '/resources/moj-vs-certified/' },
         { label: 'Authenticated Translation', href: '/resources/authenticated-translation/' },
         { label: 'Pricing Guide', href: '/resources/pricing-guide/' },
@@ -412,14 +432,25 @@ export const mobileNav = {
         { label: 'Attestation Guide', href: '/resources/attestation-guide/' },
         { label: 'Golden Visa Checklist', href: '/resources/golden-visa-checklist/' },
         { label: 'FAQ', href: '/resources/faq/' },
+      ],
+    },
+
+    // ABOUT & TRUST (E-E-A-T)
+    {
+      id: 'about',
+      label: 'About',
+      href: '/about/',
+      children: [
+        { label: 'About Us', href: '/about/' },
+        { label: 'Meet the Translator', href: '/about/translator/' },
+        { label: 'Our Credentials', href: '/about/credentials/' },
+        { label: 'Client Reviews', href: '/about/reviews/' },
         { label: 'Contact Us', href: '/contact/' },
       ],
     },
   ],
 
-  singleLinks: [
-    { label: 'About & Licensing', href: '/about/', icon: 'fas fa-building' },
-  ],
+  singleLinks: [],
 };
 
 // ============================================
@@ -507,9 +538,24 @@ export const mobileNavHubs = [
     hubLabel: 'Resource Center',
     icon: 'fas fa-book-open',
     children: [
+      { label: 'Case Studies', href: '/resources/case-studies/', icon: 'fas fa-briefcase', badge: 'NEW' },
       { label: 'MOJ vs Certified Guide', href: '/resources/moj-vs-certified/', icon: 'fas fa-question-circle' },
       { label: 'Pricing Guide', href: '/resources/pricing-guide/', icon: 'fas fa-tag' },
       { label: 'FAQ', href: '/resources/faq/', icon: 'fas fa-comments' },
+    ],
+  },
+
+  // ABOUT & TRUST - E-E-A-T pages
+  {
+    id: 'about',
+    label: 'About',
+    href: '/about/',
+    hubLabel: 'About Us',
+    icon: 'fas fa-shield-alt',
+    children: [
+      { label: 'Meet the Translator', href: '/about/translator/', icon: 'fas fa-user-tie', badge: 'NEW' },
+      { label: 'Our Credentials', href: '/about/credentials/', icon: 'fas fa-certificate' },
+      { label: 'Client Reviews', href: '/about/reviews/', icon: 'fas fa-star' },
     ],
   },
 ];
@@ -536,8 +582,8 @@ export const footerNav = {
     { label: 'Legal Translation', href: '/legal-translation-dubai/' },
     { label: 'Personal Documents', href: '/personal-documents/' },
     { label: 'Attestation', href: '/services/attestation/' },
-    { label: 'Blog', href: '/blog/' },
-    { label: 'About', href: '/about/' },
+    { label: 'Case Studies', href: '/resources/case-studies/' },
+    { label: 'Our Credentials', href: '/about/credentials/' },
     { label: 'Contact', href: '/contact/' },
   ],
   

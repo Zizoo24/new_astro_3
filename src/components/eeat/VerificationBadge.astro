@@ -1,0 +1,147 @@
+---
+/**
+ * VerificationBadge.astro
+ * MOJ verification callout with hotline
+ */
+interface Props {
+  licenseNumber: string;
+  hotline?: string;
+  variant?: 'inline' | 'card';
+  translatorName?: string;
+}
+
+const {
+  licenseNumber,
+  hotline = '800 333333',
+  variant = 'card',
+  translatorName = 'our translator'
+} = Astro.props;
+---
+
+{variant === 'card' ? (
+  <div class="verification-card">
+    <div class="verification-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <path d="M9 12l2 2 4-4"/>
+      </svg>
+    </div>
+    <div class="verification-content">
+      <h4 class="verification-title">Verify Our License</h4>
+      <p class="verification-text">
+        Call the Ministry of Justice hotline to verify {translatorName}'s license #{licenseNumber}.
+        The MOJ maintains a public registry of all licensed legal translators.
+      </p>
+      <a href={`tel:${hotline.replace(/\s/g, '')}`} class="verification-hotline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        {hotline}
+      </a>
+    </div>
+  </div>
+) : (
+  <span class="verification-inline">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+    </svg>
+    Verify License #{licenseNumber}: <a href={`tel:${hotline.replace(/\s/g, '')}`}>{hotline}</a>
+  </span>
+)}
+
+<style>
+  .verification-card {
+    display: flex;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+    border: 1px solid #a7f3d0;
+    border-radius: 0.75rem;
+  }
+
+  .verification-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    background: #10b981;
+    border-radius: 50%;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .verification-content {
+    flex: 1;
+  }
+
+  .verification-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #065f46;
+    margin: 0 0 0.35rem;
+  }
+
+  .verification-text {
+    font-size: 0.9rem;
+    color: #047857;
+    margin: 0 0 0.75rem;
+    line-height: 1.5;
+  }
+
+  .verification-hotline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #059669;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background: #ffffff;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+  }
+
+  .verification-hotline:hover {
+    background: #059669;
+    color: #ffffff;
+  }
+
+  .verification-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.85rem;
+    color: #059669;
+  }
+
+  .verification-inline a {
+    color: inherit;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  /* Dark mode */
+  :global(body.theme-dark) .verification-card {
+    background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+    border-color: #059669;
+  }
+
+  :global(body.theme-dark) .verification-title {
+    color: #d1fae5;
+  }
+
+  :global(body.theme-dark) .verification-text {
+    color: #a7f3d0;
+  }
+
+  :global(body.theme-dark) .verification-hotline {
+    background: #10b981;
+    color: #ffffff;
+  }
+
+  :global(body.theme-dark) .verification-hotline:hover {
+    background: #34d399;
+  }
+</style>

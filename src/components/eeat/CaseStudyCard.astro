@@ -1,0 +1,178 @@
+---
+/**
+ * CaseStudyCard.astro
+ * Preview card for case studies on the hub page
+ */
+interface Props {
+  title: string;
+  category: string;
+  excerpt: string;
+  outcome: string;
+  turnaround: string;
+  slug: string;
+  icon?: string;
+}
+
+const { title, category, excerpt, outcome, turnaround, slug, icon = '📄' } = Astro.props;
+
+const categoryColors: Record<string, string> = {
+  'Court Documents': '#6B7280',
+  'Immigration': '#3B82F6',
+  'Healthcare': '#10B981',
+  'Corporate': '#8B5CF6',
+  'Academic': '#F59E0B'
+};
+
+const categoryColor = categoryColors[category] || '#6B7280';
+---
+
+<article class="case-study-card">
+  <div class="card-header">
+    <span class="card-icon">{icon}</span>
+    <span class="card-category" style={`--category-color: ${categoryColor}`}>
+      {category}
+    </span>
+  </div>
+
+  <h3 class="card-title">{title}</h3>
+  <p class="card-excerpt">{excerpt}</p>
+
+  <div class="card-outcomes">
+    <div class="outcome-item">
+      <span class="outcome-icon">✅</span>
+      <span class="outcome-text">{outcome}</span>
+    </div>
+    <div class="outcome-item">
+      <span class="outcome-icon">⏱️</span>
+      <span class="outcome-text">{turnaround}</span>
+    </div>
+  </div>
+
+  <a href={`/resources/case-studies/${slug}/`} class="card-link">
+    Read Full Story
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </svg>
+  </a>
+</article>
+
+<style>
+  .case-study-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    height: 100%;
+  }
+
+  .case-study-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .card-icon {
+    font-size: 1.5rem;
+  }
+
+  .card-category {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--category-color) 15%, transparent);
+    color: var(--category-color);
+  }
+
+  .card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--primary-navy, #0E2B48);
+    margin: 0 0 0.75rem;
+    line-height: 1.3;
+  }
+
+  .card-excerpt {
+    font-size: 0.9rem;
+    color: var(--text-muted, #5a6a7a);
+    line-height: 1.6;
+    margin: 0 0 1rem;
+    flex-grow: 1;
+  }
+
+  .card-outcomes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .outcome-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .outcome-icon {
+    font-size: 0.9rem;
+  }
+
+  .outcome-text {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-dark, #1a1a1a);
+  }
+
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-coral, #FF1654);
+    text-decoration: none;
+    transition: gap 0.2s ease;
+    margin-top: auto;
+  }
+
+  .card-link:hover {
+    gap: 0.75rem;
+  }
+
+  /* Dark mode */
+  :global(body.theme-dark) .case-study-card {
+    background: #21262d;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :global(body.theme-dark) .card-title {
+    color: #f0f6fc;
+  }
+
+  :global(body.theme-dark) .card-excerpt {
+    color: #8b949e;
+  }
+
+  :global(body.theme-dark) .card-outcomes {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  :global(body.theme-dark) .outcome-text {
+    color: #e6edf3;
+  }
+</style>

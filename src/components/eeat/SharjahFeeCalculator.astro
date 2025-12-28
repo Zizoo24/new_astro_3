@@ -1,0 +1,315 @@
+---
+/**
+ * SharjahFeeCalculator.astro
+ * Interactive calculator for Sharjah Municipality 4% attestation fee
+ */
+interface Props {
+  defaultRent?: number;
+}
+
+const { defaultRent = 50000 } = Astro.props;
+const initialFee = (defaultRent * 0.04).toLocaleString();
+---
+
+<div class="fee-calculator">
+  <h3 class="calculator-title">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="2" y="4" width="20" height="16" rx="2"/>
+      <path d="M12 9v6M9 12h6"/>
+    </svg>
+    Sharjah Attestation Fee Calculator
+  </h3>
+
+  <div class="calculator-body">
+    <label class="input-group">
+      <span class="input-label">Annual Rent (AED)</span>
+      <div class="input-wrapper">
+        <span class="input-prefix">AED</span>
+        <input
+          type="number"
+          id="sharjah-rent-input"
+          value={defaultRent}
+          min="0"
+          step="1000"
+          class="rent-input"
+        />
+      </div>
+    </label>
+
+    <div class="result-group">
+      <div class="result-row">
+        <span class="result-label">Municipality Attestation Fee (4%)</span>
+        <span class="result-value">AED <span id="sharjah-fee-amount">{initialFee}</span></span>
+      </div>
+      <div class="result-breakdown">
+        <span class="breakdown-text">This fee is payable directly to Sharjah Municipality</span>
+      </div>
+    </div>
+
+    <div class="total-section">
+      <div class="total-row">
+        <span class="total-label">Translation Fee (from)</span>
+        <span class="total-value">AED 150</span>
+      </div>
+      <div class="total-row highlight">
+        <span class="total-label">Estimated Total</span>
+        <span class="total-value">AED <span id="sharjah-total-amount">{(defaultRent * 0.04 + 150).toLocaleString()}</span></span>
+      </div>
+    </div>
+  </div>
+
+  <p class="calculator-note">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M12 16v-4M12 8h.01"/>
+    </svg>
+    Attestation fee varies by property. Final fee confirmed by municipality at time of submission.
+  </p>
+</div>
+
+<script>
+  const rentInput = document.getElementById('sharjah-rent-input') as HTMLInputElement;
+  const feeAmount = document.getElementById('sharjah-fee-amount');
+  const totalAmount = document.getElementById('sharjah-total-amount');
+
+  if (rentInput && feeAmount && totalAmount) {
+    rentInput.addEventListener('input', () => {
+      const rent = parseFloat(rentInput.value) || 0;
+      const fee = rent * 0.04;
+      const total = fee + 150;
+      feeAmount.textContent = fee.toLocaleString();
+      totalAmount.textContent = total.toLocaleString();
+    });
+  }
+</script>
+
+<style>
+  .fee-calculator {
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+    border: 1px solid #fed7aa;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  .calculator-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #9a3412;
+    padding: 1rem 1.25rem;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid #fed7aa;
+  }
+
+  .calculator-body {
+    padding: 1.25rem;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .input-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #78350f;
+  }
+
+  .input-wrapper {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border: 2px solid #fdba74;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+  }
+
+  .input-wrapper:focus-within {
+    border-color: #f97316;
+  }
+
+  .input-prefix {
+    padding: 0.75rem 0.75rem 0.75rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #78350f;
+    background: #fef3c7;
+  }
+
+  .rent-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    background: transparent;
+    color: #1a1a1a;
+    outline: none;
+  }
+
+  .result-group {
+    padding: 1rem;
+    background: #ffffff;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .result-label {
+    font-size: 0.9rem;
+    color: #78350f;
+  }
+
+  .result-value {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #ea580c;
+  }
+
+  .result-breakdown {
+    padding-top: 0.5rem;
+    border-top: 1px dashed #fdba74;
+  }
+
+  .breakdown-text {
+    font-size: 0.8rem;
+    color: #92400e;
+  }
+
+  .total-section {
+    background: #ffffff;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.35rem 0;
+  }
+
+  .total-row.highlight {
+    padding-top: 0.5rem;
+    margin-top: 0.35rem;
+    border-top: 1px solid #fdba74;
+  }
+
+  .total-label {
+    font-size: 0.85rem;
+    color: #78350f;
+  }
+
+  .total-row.highlight .total-label {
+    font-weight: 700;
+  }
+
+  .total-value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #78350f;
+  }
+
+  .total-row.highlight .total-value {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #c2410c;
+  }
+
+  .calculator-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: #9a3412;
+    margin: 0;
+    padding: 0.75rem 1.25rem;
+    background: rgba(255, 255, 255, 0.3);
+    border-top: 1px solid #fed7aa;
+  }
+
+  .calculator-note svg {
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  /* Dark mode */
+  :global(body.theme-dark) .fee-calculator {
+    background: linear-gradient(135deg, #451a03 0%, #78350f 100%);
+    border-color: #92400e;
+  }
+
+  :global(body.theme-dark) .calculator-title {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: #92400e;
+    color: #fef3c7;
+  }
+
+  :global(body.theme-dark) .input-label {
+    color: #fef3c7;
+  }
+
+  :global(body.theme-dark) .input-wrapper {
+    background: #21262d;
+    border-color: #92400e;
+  }
+
+  :global(body.theme-dark) .input-prefix {
+    background: #78350f;
+    color: #fef3c7;
+  }
+
+  :global(body.theme-dark) .rent-input {
+    color: #e6edf3;
+  }
+
+  :global(body.theme-dark) .result-group,
+  :global(body.theme-dark) .total-section {
+    background: #21262d;
+  }
+
+  :global(body.theme-dark) .result-label,
+  :global(body.theme-dark) .total-label {
+    color: #fef3c7;
+  }
+
+  :global(body.theme-dark) .result-value {
+    color: #fb923c;
+  }
+
+  :global(body.theme-dark) .total-value {
+    color: #fed7aa;
+  }
+
+  :global(body.theme-dark) .total-row.highlight .total-value {
+    color: #fb923c;
+  }
+
+  :global(body.theme-dark) .breakdown-text {
+    color: #fdba74;
+  }
+
+  :global(body.theme-dark) .result-breakdown,
+  :global(body.theme-dark) .total-row.highlight {
+    border-color: #92400e;
+  }
+
+  :global(body.theme-dark) .calculator-note {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: #92400e;
+    color: #fef3c7;
+  }
+</style>

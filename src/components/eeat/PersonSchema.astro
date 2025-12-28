@@ -1,0 +1,75 @@
+---
+/**
+ * PersonSchema.astro
+ * Generates Person structured data for E-E-A-T compliance
+ * Used for translator biography and blog author attribution
+ */
+import { siteConfig } from '../../config/site';
+
+interface Props {
+  name: string;
+  nameArabic?: string;
+  jobTitle: string;
+  description?: string;
+  image?: string;
+  license: {
+    number: string;
+    issuedBy: string;
+    validFrom?: string;
+    validUntil: string;
+  };
+  languages: string[];
+  areaServed?: string[];
+  sameAs?: string[];
+}
+
+const {
+  name,
+  nameArabic,
+  jobTitle,
+  description,
+  image = '/assets/images/team/translator-silhouette.svg',
+  license,
+  languages,
+  areaServed = ['Dubai', 'Abu Dhabi', 'Sharjah', 'UAE'],
+  sameAs = []
+} = Astro.props;
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${siteConfig.url}/about/translator/#translator`,
+  "name": name,
+  ...(nameArabic && { "alternateName": nameArabic }),
+  "jobTitle": jobTitle,
+  ...(description && { "description": description }),
+  "image": image.startsWith('http') ? image : `${siteConfig.url}${image}`,
+  "knowsLanguage": languages.map(lang => ({
+    "@type": "Language",
+    "name": lang
+  })),
+  "hasCredential": {
+    "@type": "EducationalOccupationalCredential",
+    "credentialCategory": "Professional License",
+    "name": "MOJ Legal Translator License",
+    "recognizedBy": {
+      "@type": "GovernmentOrganization",
+      "name": license.issuedBy,
+      "url": "https://www.moj.gov.ae"
+    },
+    ...(license.validFrom && { "validFrom": license.validFrom }),
+    "validUntil": license.validUntil
+  },
+  "worksFor": {
+    "@type": "LocalBusiness",
+    "@id": `${siteConfig.url}/#organization`
+  },
+  "areaServed": areaServed.map(area => ({
+    "@type": area === 'UAE' ? 'Country' : 'City',
+    "name": area === 'UAE' ? 'United Arab Emirates' : area
+  })),
+  ...(sameAs.length > 0 && { "sameAs": sameAs })
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />

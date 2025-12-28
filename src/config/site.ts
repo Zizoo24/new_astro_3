@@ -60,6 +60,19 @@ export const siteConfig = {
     languages: ['Arabic', 'English'],
     validUntil: '2026-10-15',
     verifyHotline: '800 333333',
+    linkedin: 'https://www.linkedin.com/in/arabiclinguistkh',
+  },
+
+  // MOJ Partner Company (executes translations)
+  partner: {
+    name: 'Arkan Legal Translation',
+    website: 'https://arkanlegaltranslation.ae',
+    phone: '+971507091633',
+    email: 'info@arkanlegaltranslation.ae',
+    locations: [
+      'The One Tower, Barsha Heights, Dubai',
+      'Tower Plaza Hotel, Sheikh Zayed Road, Dubai'
+    ],
   },
   
   // Social Media
