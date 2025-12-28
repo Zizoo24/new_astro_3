@@ -1,7 +1,7 @@
 // Cleanup Service Worker - Unregisters itself and clears all caches
 // This replaces the previous caching service worker to fix production cache issues
 
-self.addEventListener('install', function(event) {
+self.addEventListener('install', function(_event) {
   self.skipWaiting();
 });
 

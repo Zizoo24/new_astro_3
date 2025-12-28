@@ -11,11 +11,11 @@
             if (!consent) return false;
             const parsed = JSON.parse(consent);
             return parsed.version === CONSENT_VERSION && (parsed.accepted === true || parsed.accepted === false);
-        } catch (e) {
+        } catch (_e) {
             return false;
         }
     }
-    
+
     function setConsent(accepted) {
         try {
             localStorage.setItem(CONSENT_KEY, JSON.stringify({
@@ -23,7 +23,7 @@
                 accepted: accepted,
                 timestamp: new Date().toISOString()
             }));
-        } catch (e) {
+        } catch (_e) {
             console.warn('Could not save cookie consent preference');
         }
     }

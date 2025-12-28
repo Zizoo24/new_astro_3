@@ -5,7 +5,6 @@
  */
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../../../components/Breadcrumb.astro';
-import RelatedServices from '../../../../components/RelatedServices.astro';
 
 const timeline = [
   { time: "10:15 AM", event: "Initial WhatsApp contact with rejected document images" },
@@ -134,7 +133,7 @@ const issues = [
           <div class="timeline-box">
             <h3>Timeline</h3>
             <div class="timeline">
-              {timeline.map((item, index) => (
+              {timeline.map((item) => (
                 <div class="timeline-item">
                   <span class="timeline-time">{item.time}</span>
                   <span class="timeline-event">{item.event}</span>

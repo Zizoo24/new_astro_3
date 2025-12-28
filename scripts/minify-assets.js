@@ -4,7 +4,7 @@
  * This handles files from public/ that bypass Vite's bundler
  */
 
-import { readdir, readFile, writeFile, stat } from 'fs/promises';
+import { readdir, readFile, writeFile } from 'fs/promises';
 import { join, extname } from 'path';
 import { minify as terserMinify } from 'terser';
 import postcss from 'postcss';
@@ -34,7 +34,7 @@ async function getFiles(dir, extension) {
         files.push(fullPath);
       }
     }
-  } catch (err) {
+  } catch (_err) {
     // Directory doesn't exist, skip
   }
 
@@ -109,8 +109,7 @@ async function main() {
     }
   }
 
-  // Also check root styles directory
-  const rootCssFiles = await getFiles(join(DIST_DIR, 'styles'), EXTENSIONS.css);
+  // Root CSS files already included in the ASSET_DIRS loop above
 
   console.log('\nJavaScript files:');
   for (const dir of ASSET_DIRS) {

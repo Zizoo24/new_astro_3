@@ -142,7 +142,7 @@ function isActive(href: string): boolean {
                           </a>
 
                           <ul class="dropdown-menu" role="menu" aria-label={item.dropdown.label}>
-                            {item.dropdown.categories.map((category, catIndex) => (
+                            {item.dropdown.categories.map((category) => (
                               <>
                                 {category.header && (
                                   <li class="dropdown-header" role="presentation">
@@ -916,7 +916,7 @@ function isActive(href: string): boolean {
             }
             break;
 
-          case 'ArrowDown':
+          case 'ArrowDown': {
             e.preventDefault();
             const nextSibling = parent.nextElementSibling;
             if (nextSibling) {
@@ -924,8 +924,9 @@ function isActive(href: string): boolean {
               nextLink?.focus();
             }
             break;
+          }
 
-          case 'ArrowUp':
+          case 'ArrowUp': {
             e.preventDefault();
             const prevSibling = parent.previousElementSibling;
             if (prevSibling) {
@@ -933,6 +934,7 @@ function isActive(href: string): boolean {
               prevLink?.focus();
             }
             break;
+          }
         }
       });
     }

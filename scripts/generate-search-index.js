@@ -100,8 +100,8 @@ function generateKeywords(title, description = '') {
   return words.filter(w => !stopWords.includes(w)).slice(0, 15).join(' ');
 }
 
-// Category mappings for nicer display
-const categoryLabels = {
+// Category mappings for nicer display (reserved for future use)
+const _categoryLabels = {
   blog: 'Blog',
   services: 'Services',
   industries: 'Industries',

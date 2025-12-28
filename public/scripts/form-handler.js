@@ -5,7 +5,7 @@
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mykgddbe';
 
 // Contact Form Submission Handler via Formspree
-async function submitToFormspree(formData, form) {
+async function submitToFormspree(formData, _form) {
     try {
         const response = await fetch(FORMSPREE_ENDPOINT, {
             method: 'POST',

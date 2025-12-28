@@ -15,7 +15,7 @@
             if (!consent) return false;
             const parsed = JSON.parse(consent);
             return parsed.accepted === true;
-        } catch (e) {
+        } catch (_e) {
             return false;
         }
     })();
