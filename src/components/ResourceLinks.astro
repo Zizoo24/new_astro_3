@@ -1,0 +1,430 @@
+---
+/**
+ * ResourceLinks.astro
+ * Contextual links to relevant guides and resources
+ *
+ * Best Practice: Service pages should link to informational content
+ * to help users understand processes and requirements
+ *
+ * Usage:
+ * <ResourceLinks pageKey="birthCertificate" />
+ * <ResourceLinks pageKey="goldenVisa" variant="sidebar" />
+ */
+import { serviceLinks, pageRelationships } from '../data/serviceLinks';
+
+interface Props {
+  pageKey: string;
+  variant?: 'callout' | 'sidebar' | 'inline';
+  maxItems?: number;
+  title?: string;
+}
+
+const {
+  pageKey,
+  variant = 'callout',
+  maxItems = 3,
+  title = "Helpful Resources"
+} = Astro.props;
+
+// Resource mapping based on page context
+const resourceMapping: Record<string, string[]> = {
+  // Attestation-related pages get attestation guide
+  attestation: ['attestationGuide', 'pricingGuide', 'documentChecklist'],
+  mofaAttestation: ['attestationGuide', 'pricingGuide', 'documentChecklist'],
+  embassyAttestation: ['attestationGuide', 'pricingGuide'],
+  apostille: ['attestationGuide', 'pricingGuide'],
+  indiaAttestation: ['attestationGuide', 'pricingGuide', 'documentChecklist'],
+  ukAttestation: ['attestationGuide', 'pricingGuide'],
+  usAttestation: ['attestationGuide', 'pricingGuide'],
+  philippinesAttestation: ['attestationGuide', 'pricingGuide'],
+  pakistanAttestation: ['attestationGuide', 'pricingGuide'],
+
+  // Golden Visa pages
+  goldenVisa: ['goldenVisaChecklist', 'attestationGuide', 'pricingGuide', 'mojVsCertified'],
+
+  // Personal documents
+  birthCertificate: ['documentChecklist', 'attestationGuide', 'mojVsCertified', 'pricingGuide'],
+  marriageCertificate: ['documentChecklist', 'attestationGuide', 'mojVsCertified', 'pricingGuide'],
+  divorceCertificate: ['documentChecklist', 'mojVsCertified', 'pricingGuide'],
+  deathCertificate: ['documentChecklist', 'mojVsCertified', 'pricingGuide'],
+  pcc: ['documentChecklist', 'attestationGuide', 'mojVsCertified'],
+  bankStatement: ['documentChecklist', 'pricingGuide'],
+  drivingLicense: ['documentChecklist', 'pricingGuide'],
+
+  // Academic
+  degree: ['documentChecklist', 'attestationGuide', 'mojVsCertified', 'pricingGuide'],
+  transcripts: ['documentChecklist', 'attestationGuide', 'pricingGuide'],
+
+  // Legal/Corporate
+  legalTranslation: ['mojVsCertified', 'pricingGuide', 'authenticatedTranslation'],
+  contracts: ['mojVsCertified', 'pricingGuide'],
+  nda: ['mojVsCertified', 'pricingGuide'],
+  lease: ['mojVsCertified', 'pricingGuide'],
+  spa: ['mojVsCertified', 'pricingGuide'],
+  mou: ['mojVsCertified', 'pricingGuide'],
+  poa: ['mojVsCertified', 'attestationGuide', 'pricingGuide'],
+  moa: ['mojVsCertified', 'pricingGuide'],
+  resolution: ['mojVsCertified', 'pricingGuide'],
+  tradeLicense: ['mojVsCertified', 'pricingGuide'],
+  verdict: ['mojVsCertified', 'pricingGuide'],
+  arbitration: ['mojVsCertified', 'pricingGuide'],
+  wills: ['mojVsCertified', 'pricingGuide'],
+
+  // Specialized
+  medical: ['pricingGuide', 'documentChecklist'],
+  dhaDataflow: ['documentChecklist', 'attestationGuide', 'pricingGuide'],
+  technical: ['pricingGuide'],
+  financial: ['pricingGuide'],
+  hospitality: ['pricingGuide'],
+  digital: ['pricingGuide'],
+
+  // Default
+  default: ['pricingGuide', 'documentChecklist', 'faq']
+};
+
+const relevantKeys = resourceMapping[pageKey] || resourceMapping.default;
+const resources = relevantKeys
+  .slice(0, maxItems)
+  .map(key => serviceLinks[key])
+  .filter(Boolean);
+---
+
+{resources.length > 0 && variant === 'callout' && (
+  <aside class="resource-links resource-links--callout" aria-label="Helpful Resources">
+    <div class="resource-header">
+      <i class="fas fa-book-open"></i>
+      <h4>{title}</h4>
+    </div>
+    <ul class="resource-list">
+      {resources.map((resource) => (
+        <li>
+          <a href={resource.url}>
+            <i class={resource.icon || 'fas fa-file-alt'}></i>
+            <span>{resource.text}</span>
+            {resource.badge && <span class="resource-badge">{resource.badge}</span>}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </aside>
+)}
+
+{resources.length > 0 && variant === 'sidebar' && (
+  <aside class="resource-links resource-links--sidebar" aria-label="Helpful Resources">
+    <h4 class="sidebar-title">
+      <i class="fas fa-lightbulb"></i>
+      {title}
+    </h4>
+    <nav class="sidebar-nav">
+      {resources.map((resource) => (
+        <a href={resource.url} class="sidebar-link">
+          <i class={resource.icon || 'fas fa-file-alt'}></i>
+          <div class="sidebar-content">
+            <span class="sidebar-text">{resource.text}</span>
+            {resource.badge && <span class="sidebar-badge">{resource.badge}</span>}
+          </div>
+          <i class="fas fa-chevron-right sidebar-arrow"></i>
+        </a>
+      ))}
+    </nav>
+  </aside>
+)}
+
+{resources.length > 0 && variant === 'inline' && (
+  <p class="resource-links resource-links--inline">
+    <i class="fas fa-info-circle"></i>
+    <span>See also: </span>
+    {resources.map((resource, index) => (
+      <>
+        <a href={resource.url}>{resource.text}</a>
+        {index < resources.length - 1 && <span class="separator"> • </span>}
+      </>
+    ))}
+  </p>
+)}
+
+<style>
+  /* Callout variant */
+  .resource-links--callout {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(212, 165, 76, 0.08) 0%, rgba(255, 225, 120, 0.05) 100%);
+    border-radius: 0.75rem;
+    border: 1px solid rgba(212, 165, 76, 0.2);
+    border-left: 4px solid var(--gold, #d4a54c);
+  }
+
+  .resource-header {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin-bottom: 1rem;
+  }
+
+  .resource-header i {
+    font-size: 1.1rem;
+    color: var(--gold, #d4a54c);
+  }
+
+  .resource-header h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-navy, #0E2B48);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .resource-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  .resource-list li a {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.625rem 0.875rem;
+    background: white;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: var(--text-primary, #1a1a1a) !important;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+  }
+
+  .resource-list li a:hover {
+    border-color: var(--gold, #d4a54c);
+    transform: translateX(4px);
+    background: rgba(212, 165, 76, 0.08);
+  }
+
+  .resource-list li a i {
+    font-size: 0.875rem;
+    color: var(--gold, #d4a54c);
+    min-width: 18px;
+    text-align: center;
+  }
+
+  .resource-list li a span {
+    flex: 1;
+    color: var(--text-primary, #1a1a1a) !important;
+  }
+
+  .resource-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    background: var(--accent-coral, #FF1654);
+    color: white !important;
+    border-radius: 8px;
+    text-transform: uppercase;
+  }
+
+  /* Sidebar variant */
+  .resource-links--sidebar {
+    padding: 1.25rem;
+    background: var(--surface-secondary, #f8f9fa);
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-light, #e5e7eb);
+  }
+
+  .sidebar-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted, #5a6a7a);
+    margin: 0 0 1rem 0;
+  }
+
+  .sidebar-title i {
+    color: var(--gold, #d4a54c);
+  }
+
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: white;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: var(--text-primary, #1a1a1a) !important;
+    border: 1px solid var(--border-light, #e5e7eb);
+    transition: all 0.2s ease;
+  }
+
+  .sidebar-link:hover {
+    border-color: var(--gold, #d4a54c);
+    box-shadow: 0 2px 8px rgba(212, 165, 76, 0.15);
+  }
+
+  .sidebar-link > i:first-child {
+    font-size: 1rem;
+    color: var(--gold, #d4a54c);
+    min-width: 20px;
+    text-align: center;
+  }
+
+  .sidebar-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .sidebar-text {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-primary, #1a1a1a) !important;
+  }
+
+  .sidebar-badge {
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 2px 5px;
+    background: var(--accent-coral, #FF1654);
+    color: white !important;
+    border-radius: 6px;
+    text-transform: uppercase;
+  }
+
+  .sidebar-arrow {
+    font-size: 0.65rem;
+    color: var(--text-muted, #5a6a7a);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: all 0.2s ease;
+  }
+
+  .sidebar-link:hover .sidebar-arrow {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--gold, #d4a54c);
+  }
+
+  /* Inline variant */
+  .resource-links--inline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem;
+    margin: 1rem 0;
+    padding: 0.75rem 1rem;
+    background: rgba(212, 165, 76, 0.08);
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-muted, #5a6a7a);
+  }
+
+  .resource-links--inline i {
+    color: var(--gold, #d4a54c);
+  }
+
+  .resource-links--inline a {
+    color: var(--primary-navy, #0E2B48) !important;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .resource-links--inline a:hover {
+    color: var(--gold, #d4a54c) !important;
+    text-decoration: underline;
+  }
+
+  .resource-links--inline .separator {
+    color: var(--text-muted, #5a6a7a);
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .resource-links--callout {
+      padding: 1.25rem;
+    }
+
+    .resource-list li a {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    .resource-links--sidebar {
+      padding: 1rem;
+    }
+
+    .sidebar-link {
+      padding: 0.625rem;
+    }
+  }
+
+  /* Dark mode */
+  :global(body.theme-dark) .resource-links--callout {
+    background: linear-gradient(135deg, rgba(212, 165, 76, 0.1) 0%, rgba(255, 225, 120, 0.05) 100%);
+    border-color: rgba(212, 165, 76, 0.25);
+  }
+
+  :global(body.theme-dark) .resource-header h4 {
+    color: #e6edf3;
+  }
+
+  :global(body.theme-dark) .resource-list li a {
+    background: rgba(22, 27, 34, 0.8);
+    color: #e6edf3 !important;
+  }
+
+  :global(body.theme-dark) .resource-list li a span {
+    color: #e6edf3 !important;
+  }
+
+  :global(body.theme-dark) .resource-list li a:hover {
+    background: rgba(212, 165, 76, 0.12);
+  }
+
+  :global(body.theme-dark) .resource-links--sidebar {
+    background: rgba(22, 27, 34, 0.6);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :global(body.theme-dark) .sidebar-link {
+    background: rgba(22, 27, 34, 0.8);
+    border-color: rgba(255, 255, 255, 0.08);
+    color: #e6edf3 !important;
+  }
+
+  :global(body.theme-dark) .sidebar-text {
+    color: #e6edf3 !important;
+  }
+
+  :global(body.theme-dark) .sidebar-link:hover {
+    border-color: var(--gold, #ffe178);
+  }
+
+  :global(body.theme-dark) .resource-links--inline {
+    background: rgba(212, 165, 76, 0.1);
+    color: #8b949e;
+  }
+
+  :global(body.theme-dark) .resource-links--inline a {
+    color: #e6edf3 !important;
+  }
+
+  :global(body.theme-dark) .resource-links--inline a:hover {
+    color: var(--gold, #ffe178) !important;
+  }
+</style>

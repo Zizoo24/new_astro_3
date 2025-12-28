@@ -1,0 +1,389 @@
+---
+/**
+ * TrustLinks.astro
+ * E-E-A-T Trust Signal Links - Links to credentials, translator, reviews, case studies
+ *
+ * Best Practice: Every service page should link to trust pages to demonstrate
+ * Experience, Expertise, Authoritativeness, and Trustworthiness (E-E-A-T)
+ *
+ * Usage:
+ * <TrustLinks />
+ * <TrustLinks variant="compact" />
+ * <TrustLinks variant="inline" />
+ */
+import { serviceLinks } from '../data/serviceLinks';
+
+interface Props {
+  variant?: 'full' | 'compact' | 'inline';
+  showCredentials?: boolean;
+  showTranslator?: boolean;
+  showReviews?: boolean;
+  showCaseStudies?: boolean;
+}
+
+const {
+  variant = 'compact',
+  showCredentials = true,
+  showTranslator = true,
+  showReviews = true,
+  showCaseStudies = true
+} = Astro.props;
+
+const trustLinks = [
+  showCredentials && {
+    ...serviceLinks.credentials,
+    label: "MOJ License #701",
+    description: "Verify our official credentials"
+  },
+  showTranslator && {
+    ...serviceLinks.translator,
+    label: "Meet the Translator",
+    description: "Khaled Al-Adl, 15+ years experience"
+  },
+  showReviews && {
+    ...serviceLinks.reviews,
+    label: "Client Reviews",
+    description: "5.0★ rating from verified clients"
+  },
+  showCaseStudies && {
+    ...serviceLinks.caseStudies,
+    label: "Case Studies",
+    description: "Real client success stories"
+  }
+].filter(Boolean);
+---
+
+{variant === 'full' && (
+  <section class="trust-links trust-links--full" aria-label="Trust & Credentials">
+    <div class="trust-header">
+      <i class="fas fa-shield-check"></i>
+      <h3>Why Trust OnlineTranslation.ae?</h3>
+    </div>
+    <div class="trust-grid">
+      {trustLinks.map((link) => (
+        <a href={link.url} class="trust-card">
+          <div class="trust-icon">
+            <i class={link.icon}></i>
+          </div>
+          <div class="trust-content">
+            <span class="trust-label">{link.label}</span>
+            <span class="trust-desc">{link.description}</span>
+          </div>
+          <i class="fas fa-arrow-right trust-arrow"></i>
+        </a>
+      ))}
+    </div>
+  </section>
+)}
+
+{variant === 'compact' && (
+  <div class="trust-links trust-links--compact" aria-label="Trust & Credentials">
+    <div class="trust-compact-header">
+      <i class="fas fa-shield-check"></i>
+      <span>Verified & Trusted</span>
+    </div>
+    <div class="trust-pills">
+      {trustLinks.map((link) => (
+        <a href={link.url} class="trust-pill">
+          <i class={link.icon}></i>
+          <span>{link.label}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+)}
+
+{variant === 'inline' && (
+  <p class="trust-links trust-links--inline">
+    <i class="fas fa-shield-check"></i>
+    <span>Verified by </span>
+    <a href={serviceLinks.credentials.url}>MOJ License #701</a>
+    <span> • </span>
+    <a href={serviceLinks.reviews.url}>5.0★ reviews</a>
+    <span> • </span>
+    <a href={serviceLinks.caseStudies.url}>See case studies</a>
+  </p>
+)}
+
+<style>
+  /* Full variant styles */
+  .trust-links--full {
+    margin: 2.5rem 0;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(14, 43, 72, 0.03) 0%, rgba(0, 119, 182, 0.05) 100%);
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 119, 182, 0.15);
+  }
+
+  .trust-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .trust-header i {
+    font-size: 1.5rem;
+    color: var(--accent-teal, #0077b6);
+  }
+
+  .trust-header h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary-navy, #0E2B48);
+    margin: 0;
+  }
+
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+
+  .trust-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: white;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    color: var(--text-primary, #1a1a1a) !important;
+    border: 1px solid var(--border-light, #e5e7eb);
+    transition: all 0.3s ease;
+  }
+
+  .trust-card:hover {
+    border-color: var(--accent-teal, #0077b6);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 119, 182, 0.12);
+  }
+
+  .trust-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, rgba(0, 119, 182, 0.1) 0%, rgba(14, 43, 72, 0.08) 100%);
+    border-radius: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .trust-icon i {
+    font-size: 1.1rem;
+    color: var(--accent-teal, #0077b6);
+  }
+
+  .trust-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .trust-label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--primary-navy, #0E2B48);
+  }
+
+  .trust-desc {
+    font-size: 0.8rem;
+    color: var(--text-muted, #5a6a7a);
+  }
+
+  .trust-arrow {
+    font-size: 0.75rem;
+    color: var(--text-muted, #5a6a7a);
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: all 0.3s ease;
+  }
+
+  .trust-card:hover .trust-arrow {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--accent-teal, #0077b6);
+  }
+
+  /* Compact variant styles */
+  .trust-links--compact {
+    margin: 2rem 0;
+    padding: 1.25rem;
+    background: rgba(0, 119, 182, 0.04);
+    border-radius: 0.75rem;
+    border: 1px solid rgba(0, 119, 182, 0.1);
+  }
+
+  .trust-compact-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.875rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent-teal, #0077b6);
+  }
+
+  .trust-compact-header i {
+    font-size: 0.9rem;
+  }
+
+  .trust-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .trust-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.875rem;
+    background: white;
+    border: 1px solid rgba(0, 119, 182, 0.2);
+    border-radius: 2rem;
+    text-decoration: none;
+    color: var(--text-primary, #1a1a1a) !important;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  .trust-pill i {
+    font-size: 0.75rem;
+    color: var(--accent-teal, #0077b6);
+  }
+
+  .trust-pill span {
+    color: var(--text-primary, #1a1a1a) !important;
+  }
+
+  .trust-pill:hover {
+    border-color: var(--accent-teal, #0077b6);
+    background: rgba(0, 119, 182, 0.08);
+    transform: translateY(-1px);
+  }
+
+  /* Inline variant styles */
+  .trust-links--inline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 1.5rem 0;
+    padding: 0.875rem 1rem;
+    background: rgba(0, 119, 182, 0.05);
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-muted, #5a6a7a);
+  }
+
+  .trust-links--inline i {
+    color: var(--accent-teal, #0077b6);
+  }
+
+  .trust-links--inline a {
+    color: var(--accent-teal, #0077b6) !important;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .trust-links--inline a:hover {
+    color: var(--primary-navy, #0E2B48) !important;
+    text-decoration: underline;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .trust-links--full {
+      padding: 1.5rem;
+    }
+
+    .trust-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .trust-header h3 {
+      font-size: 1.1rem;
+    }
+
+    .trust-links--compact {
+      padding: 1rem;
+    }
+
+    .trust-pills {
+      gap: 0.4rem;
+    }
+
+    .trust-pill {
+      padding: 0.4rem 0.75rem;
+      font-size: 0.75rem;
+    }
+  }
+
+  /* Dark mode */
+  :global(body.theme-dark) .trust-links--full {
+    background: linear-gradient(135deg, rgba(0, 119, 182, 0.08) 0%, rgba(14, 43, 72, 0.15) 100%);
+    border-color: rgba(0, 119, 182, 0.2);
+  }
+
+  :global(body.theme-dark) .trust-header h3,
+  :global(body.theme-dark) .trust-label {
+    color: #e6edf3;
+  }
+
+  :global(body.theme-dark) .trust-card {
+    background: rgba(22, 27, 34, 0.8);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :global(body.theme-dark) .trust-card:hover {
+    border-color: var(--accent-teal, #7fd1ff);
+  }
+
+  :global(body.theme-dark) .trust-icon {
+    background: rgba(0, 119, 182, 0.15);
+  }
+
+  :global(body.theme-dark) .trust-icon i,
+  :global(body.theme-dark) .trust-compact-header {
+    color: var(--accent-teal, #7fd1ff);
+  }
+
+  :global(body.theme-dark) .trust-desc {
+    color: #8b949e;
+  }
+
+  :global(body.theme-dark) .trust-links--compact {
+    background: rgba(0, 119, 182, 0.08);
+    border-color: rgba(0, 119, 182, 0.15);
+  }
+
+  :global(body.theme-dark) .trust-pill {
+    background: rgba(22, 27, 34, 0.8);
+    border-color: rgba(0, 119, 182, 0.25);
+    color: #e6edf3 !important;
+  }
+
+  :global(body.theme-dark) .trust-pill span {
+    color: #e6edf3 !important;
+  }
+
+  :global(body.theme-dark) .trust-pill:hover {
+    background: rgba(0, 119, 182, 0.15);
+  }
+
+  :global(body.theme-dark) .trust-links--inline {
+    background: rgba(0, 119, 182, 0.1);
+    color: #8b949e;
+  }
+
+  :global(body.theme-dark) .trust-links--inline a {
+    color: var(--accent-teal, #7fd1ff) !important;
+  }
+</style>

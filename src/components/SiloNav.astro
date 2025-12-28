@@ -1,0 +1,574 @@
+---
+/**
+ * SiloNav.astro
+ * Silo Structure Navigation - Shows the content silo hierarchy
+ *
+ * Best Practice: Clear silo navigation helps users and search engines
+ * understand the content structure and relationships
+ *
+ * Usage:
+ * <SiloNav silo="personal" currentPage="birth" />
+ * <SiloNav silo="legal" currentPage="contracts" variant="sidebar" />
+ */
+import { serviceLinks } from '../data/serviceLinks';
+
+interface SiloChild {
+  key: string;
+  label: string;
+  children?: { key: string; label: string }[];
+}
+
+interface SiloConfig {
+  hub: { key: string; label: string; icon: string };
+  sections: SiloChild[];
+}
+
+interface Props {
+  silo: 'personal' | 'legal' | 'attestation' | 'specialized' | 'locations';
+  currentPage?: string;
+  variant?: 'full' | 'sidebar' | 'breadcrumb-nav';
+}
+
+const {
+  silo,
+  currentPage,
+  variant = 'full'
+} = Astro.props;
+
+// Silo structure definitions
+const siloStructure: Record<string, SiloConfig> = {
+  personal: {
+    hub: { key: 'personalDocuments', label: 'Personal Documents', icon: 'fas fa-user' },
+    sections: [
+      {
+        key: 'vitalRecords',
+        label: 'Vital Records',
+        children: [
+          { key: 'birthCertificate', label: 'Birth Certificate' },
+          { key: 'marriageCertificate', label: 'Marriage Certificate' },
+          { key: 'divorceCertificate', label: 'Divorce Certificate' },
+          { key: 'deathCertificate', label: 'Death Certificate' }
+        ]
+      },
+      {
+        key: 'immigration',
+        label: 'Immigration',
+        children: [
+          { key: 'pcc', label: 'Police Clearance' },
+          { key: 'bankStatement', label: 'Bank Statement' },
+          { key: 'drivingLicense', label: 'Driving License' }
+        ]
+      },
+      {
+        key: 'academic',
+        label: 'Academic',
+        children: [
+          { key: 'degree', label: 'Degree Certificate' },
+          { key: 'transcripts', label: 'Transcripts' }
+        ]
+      }
+    ]
+  },
+  legal: {
+    hub: { key: 'legalTranslation', label: 'Legal Translation', icon: 'fas fa-gavel' },
+    sections: [
+      {
+        key: 'contracts',
+        label: 'Contracts',
+        children: [
+          { key: 'nda', label: 'NDA' },
+          { key: 'spa', label: 'Sale & Purchase' },
+          { key: 'mou', label: 'MOU' },
+          { key: 'lease', label: 'Lease Agreement' }
+        ]
+      },
+      {
+        key: 'corporate',
+        label: 'Corporate',
+        children: [
+          { key: 'moa', label: 'MOA' },
+          { key: 'poa', label: 'Power of Attorney' },
+          { key: 'resolution', label: 'Board Resolution' },
+          { key: 'tradeLicense', label: 'Trade License' }
+        ]
+      },
+      {
+        key: 'litigation',
+        label: 'Litigation',
+        children: [
+          { key: 'verdict', label: 'Court Verdict' },
+          { key: 'arbitration', label: 'Arbitration' }
+        ]
+      },
+      { key: 'wills', label: 'Wills & Estates' }
+    ]
+  },
+  attestation: {
+    hub: { key: 'attestation', label: 'Attestation Services', icon: 'fas fa-stamp' },
+    sections: [
+      { key: 'mofaAttestation', label: 'MOFA Attestation' },
+      { key: 'embassyAttestation', label: 'Embassy Legalization' },
+      { key: 'apostille', label: 'Apostille Services' },
+      {
+        key: 'countries',
+        label: 'By Country',
+        children: [
+          { key: 'indiaAttestation', label: 'India' },
+          { key: 'ukAttestation', label: 'UK' },
+          { key: 'usAttestation', label: 'USA' },
+          { key: 'philippinesAttestation', label: 'Philippines' },
+          { key: 'pakistanAttestation', label: 'Pakistan' }
+        ]
+      }
+    ]
+  },
+  specialized: {
+    hub: { key: 'specialized', label: 'Specialized Translation', icon: 'fas fa-cogs' },
+    sections: [
+      {
+        key: 'medical',
+        label: 'Medical',
+        children: [
+          { key: 'dhaDataflow', label: 'DHA DataFlow' }
+        ]
+      },
+      { key: 'technical', label: 'Technical' },
+      { key: 'financial', label: 'Financial' },
+      { key: 'hospitality', label: 'Hospitality' },
+      { key: 'digital', label: 'Website/Digital' }
+    ]
+  },
+  locations: {
+    hub: { key: 'locations', label: 'Our Locations', icon: 'fas fa-map-marker-alt' },
+    sections: [
+      {
+        key: 'dubai',
+        label: 'Dubai',
+        children: [
+          { key: 'palmJumeirah', label: 'Palm Jumeirah' },
+          { key: 'difc', label: 'DIFC' },
+          { key: 'jlt', label: 'JLT' },
+          { key: 'businessBay', label: 'Business Bay' },
+          { key: 'marina', label: 'Dubai Marina' },
+          { key: 'downtown', label: 'Downtown' }
+        ]
+      },
+      { key: 'abuDhabi', label: 'Abu Dhabi' },
+      { key: 'sharjah', label: 'Sharjah' }
+    ]
+  }
+};
+
+const config = siloStructure[silo];
+if (!config) {
+  throw new Error(`Unknown silo: ${silo}`);
+}
+
+const getLink = (key: string) => serviceLinks[key];
+const isCurrentPage = (key: string) => currentPage === key;
+---
+
+{variant === 'full' && (
+  <nav class="silo-nav silo-nav--full" aria-label={`${config.hub.label} Navigation`}>
+    <div class="silo-header">
+      <a href={getLink(config.hub.key)?.url} class="silo-hub-link">
+        <i class={config.hub.icon}></i>
+        <span>{config.hub.label}</span>
+      </a>
+    </div>
+    <div class="silo-sections">
+      {config.sections.map((section) => (
+        <div class="silo-section">
+          <a
+            href={getLink(section.key)?.url}
+            class={`silo-section-title ${isCurrentPage(section.key) ? 'is-current' : ''}`}
+          >
+            {section.label}
+          </a>
+          {section.children && (
+            <ul class="silo-children">
+              {section.children.map((child) => (
+                <li>
+                  <a
+                    href={getLink(child.key)?.url}
+                    class={`silo-child-link ${isCurrentPage(child.key) ? 'is-current' : ''}`}
+                  >
+                    {child.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ))}
+    </div>
+  </nav>
+)}
+
+{variant === 'sidebar' && (
+  <aside class="silo-nav silo-nav--sidebar" aria-label={`${config.hub.label} Navigation`}>
+    <a href={getLink(config.hub.key)?.url} class="sidebar-hub">
+      <i class={config.hub.icon}></i>
+      <span>{config.hub.label}</span>
+    </a>
+    <nav class="sidebar-sections">
+      {config.sections.map((section) => (
+        <div class="sidebar-section">
+          <a
+            href={getLink(section.key)?.url}
+            class={`sidebar-section-link ${isCurrentPage(section.key) ? 'is-current' : ''}`}
+          >
+            <span>{section.label}</span>
+            {!section.children && <i class="fas fa-chevron-right"></i>}
+          </a>
+          {section.children && (
+            <ul class="sidebar-children">
+              {section.children.map((child) => (
+                <li>
+                  <a
+                    href={getLink(child.key)?.url}
+                    class={`sidebar-child-link ${isCurrentPage(child.key) ? 'is-current' : ''}`}
+                  >
+                    {child.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ))}
+    </nav>
+  </aside>
+)}
+
+{variant === 'breadcrumb-nav' && (
+  <nav class="silo-nav silo-nav--breadcrumb" aria-label="Section Navigation">
+    <a href={getLink(config.hub.key)?.url} class="breadcrumb-hub">
+      <i class={config.hub.icon}></i>
+      {config.hub.label}
+    </a>
+    <span class="breadcrumb-divider">›</span>
+    <div class="breadcrumb-sections">
+      {config.sections.slice(0, 4).map((section, index) => (
+        <>
+          {index > 0 && <span class="breadcrumb-sep">•</span>}
+          <a
+            href={getLink(section.key)?.url}
+            class={`breadcrumb-section ${isCurrentPage(section.key) ? 'is-current' : ''}`}
+          >
+            {section.label}
+          </a>
+        </>
+      ))}
+    </div>
+  </nav>
+)}
+
+<style>
+  /* Full variant */
+  .silo-nav--full {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: var(--surface-secondary, #f8f9fa);
+    border-radius: 1rem;
+    border: 1px solid var(--border-light, #e5e7eb);
+  }
+
+  .silo-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--accent-coral, #FF1654);
+  }
+
+  .silo-hub-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary-navy, #0E2B48) !important;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .silo-hub-link i {
+    font-size: 1.5rem;
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .silo-hub-link:hover {
+    color: var(--accent-coral, #FF1654) !important;
+  }
+
+  .silo-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .silo-section-title {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary-navy, #0E2B48) !important;
+    text-decoration: none;
+    margin-bottom: 0.625rem;
+    transition: color 0.2s ease;
+  }
+
+  .silo-section-title:hover {
+    color: var(--accent-coral, #FF1654) !important;
+  }
+
+  .silo-section-title.is-current {
+    color: var(--accent-coral, #FF1654) !important;
+    border-left: 3px solid var(--accent-coral, #FF1654);
+    padding-left: 0.5rem;
+    margin-left: -0.5rem;
+  }
+
+  .silo-children {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .silo-child-link {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted, #5a6a7a) !important;
+    text-decoration: none;
+    padding: 0.25rem 0 0.25rem 0.75rem;
+    border-left: 2px solid transparent;
+    transition: all 0.2s ease;
+  }
+
+  .silo-child-link:hover {
+    color: var(--accent-coral, #FF1654) !important;
+    border-left-color: var(--accent-coral, #FF1654);
+  }
+
+  .silo-child-link.is-current {
+    color: var(--accent-coral, #FF1654) !important;
+    border-left-color: var(--accent-coral, #FF1654);
+    font-weight: 600;
+  }
+
+  /* Sidebar variant */
+  .silo-nav--sidebar {
+    padding: 1.25rem;
+    background: var(--surface-secondary, #f8f9fa);
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-light, #e5e7eb);
+  }
+
+  .sidebar-hub {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-navy, #0E2B48) !important;
+    text-decoration: none;
+    padding-bottom: 0.875rem;
+    margin-bottom: 0.875rem;
+    border-bottom: 2px solid var(--accent-coral, #FF1654);
+    transition: color 0.2s ease;
+  }
+
+  .sidebar-hub i {
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .sidebar-hub:hover {
+    color: var(--accent-coral, #FF1654) !important;
+  }
+
+  .sidebar-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .sidebar-section-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary, #1a1a1a) !important;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    transition: color 0.2s ease;
+  }
+
+  .sidebar-section-link i {
+    font-size: 0.65rem;
+    color: var(--text-muted, #5a6a7a);
+    transition: transform 0.2s ease;
+  }
+
+  .sidebar-section-link:hover {
+    color: var(--accent-coral, #FF1654) !important;
+  }
+
+  .sidebar-section-link:hover i {
+    transform: translateX(3px);
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .sidebar-section-link.is-current {
+    color: var(--accent-coral, #FF1654) !important;
+  }
+
+  .sidebar-children {
+    list-style: none;
+    padding: 0 0 0 0.75rem;
+    margin: 0.25rem 0 0.5rem 0;
+    border-left: 1px solid var(--border-light, #e5e7eb);
+  }
+
+  .sidebar-child-link {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-muted, #5a6a7a) !important;
+    text-decoration: none;
+    padding: 0.35rem 0 0.35rem 0.625rem;
+    transition: all 0.2s ease;
+  }
+
+  .sidebar-child-link:hover {
+    color: var(--accent-coral, #FF1654) !important;
+  }
+
+  .sidebar-child-link.is-current {
+    color: var(--accent-coral, #FF1654) !important;
+    font-weight: 600;
+  }
+
+  /* Breadcrumb-nav variant */
+  .silo-nav--breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: var(--surface-secondary, #f8f9fa);
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+  }
+
+  .breadcrumb-hub {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--primary-navy, #0E2B48) !important;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .breadcrumb-hub i {
+    font-size: 0.8rem;
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .breadcrumb-hub:hover {
+    color: var(--accent-coral, #FF1654) !important;
+  }
+
+  .breadcrumb-divider {
+    color: var(--text-muted, #5a6a7a);
+    font-size: 1rem;
+  }
+
+  .breadcrumb-sections {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .breadcrumb-sep {
+    color: var(--text-muted, #5a6a7a);
+    font-size: 0.75rem;
+  }
+
+  .breadcrumb-section {
+    font-size: 0.8rem;
+    color: var(--text-muted, #5a6a7a) !important;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .breadcrumb-section:hover {
+    color: var(--accent-coral, #FF1654) !important;
+  }
+
+  .breadcrumb-section.is-current {
+    color: var(--accent-coral, #FF1654) !important;
+    font-weight: 600;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .silo-nav--full {
+      padding: 1.25rem;
+    }
+
+    .silo-sections {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .silo-hub-link {
+      font-size: 1.1rem;
+    }
+
+    .silo-nav--breadcrumb {
+      padding: 0.625rem 0.875rem;
+    }
+  }
+
+  /* Dark mode */
+  :global(body.theme-dark) .silo-nav--full,
+  :global(body.theme-dark) .silo-nav--sidebar {
+    background: rgba(22, 27, 34, 0.6);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :global(body.theme-dark) .silo-hub-link,
+  :global(body.theme-dark) .sidebar-hub,
+  :global(body.theme-dark) .silo-section-title {
+    color: #e6edf3 !important;
+  }
+
+  :global(body.theme-dark) .silo-child-link,
+  :global(body.theme-dark) .sidebar-child-link {
+    color: #8b949e !important;
+  }
+
+  :global(body.theme-dark) .sidebar-section-link {
+    color: #e6edf3 !important;
+  }
+
+  :global(body.theme-dark) .sidebar-children {
+    border-left-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :global(body.theme-dark) .silo-nav--breadcrumb {
+    background: rgba(22, 27, 34, 0.6);
+  }
+
+  :global(body.theme-dark) .breadcrumb-hub {
+    color: #e6edf3 !important;
+  }
+
+  :global(body.theme-dark) .breadcrumb-section {
+    color: #8b949e !important;
+  }
+</style>
