@@ -1,6 +1,9 @@
 ---
 import ServiceLayout from '../../../../layouts/ServiceLayout.astro';
 import RelatedServices from '../../../../components/RelatedServices.astro';
+import TrustLinks from '../../../../components/TrustLinks.astro';
+import ResourceLinks from '../../../../components/ResourceLinks.astro';
+import CrossSiloLinks from '../../../../components/CrossSiloLinks.astro';
 
 const breadcrumbs = [
   { name: 'Home', url: '/' },
@@ -255,6 +258,12 @@ const accordionSections = [
         <h4><i class="fas fa-exclamation-triangle"></i> About UAE-Born Children</h4>
         <p>If your child was born in UAE, the birth certificate is already in Arabic. You may need English translation for embassy passport applications or international school enrollment. We provide English translations of UAE birth certificates for these purposes.</p>
       </div>
+
+      <!-- E-E-A-T Trust Links -->
+      <TrustLinks variant="compact" />
+
+      <!-- Resource Links -->
+      <ResourceLinks pageKey="birthCertificate" variant="callout" title="Helpful Resources" />
     </div>
   </section>
 
@@ -269,6 +278,9 @@ const accordionSections = [
         showCrossSilo={true}
         maxItems={8}
       />
+
+      <!-- Cross-Silo Links -->
+      <CrossSiloLinks pageKey="birthCertificate" title="Explore More Services" maxLinks={4} />
     </div>
   </section>
 </ServiceLayout>

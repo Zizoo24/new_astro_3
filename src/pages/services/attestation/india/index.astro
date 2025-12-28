@@ -7,6 +7,8 @@ import ServiceLayout from '../../../../layouts/ServiceLayout.astro';
 import RelatedServices from '../../../../components/RelatedServices.astro';
 import CrossSiloLinks from '../../../../components/CrossSiloLinks.astro';
 import InlineCallout from '../../../../components/InlineCallout.astro';
+import TrustLinks from '../../../../components/TrustLinks.astro';
+import ResourceLinks from '../../../../components/ResourceLinks.astro';
 
 const breadcrumbs = [
   { name: 'Home', url: '/' },
@@ -305,8 +307,8 @@ const accordionSections = [
 
   <section class="section bg-white">
     <div class="container">
-      <InlineCallout 
-        type="tip" 
+      <InlineCallout
+        type="tip"
         title="Need Translation Too?"
         link="/services/legal-translation/"
         linkText="View translation services"
@@ -314,13 +316,19 @@ const accordionSections = [
         Most attested documents also require MOJ-certified translation before submission to UAE authorities.
       </InlineCallout>
 
-      <RelatedServices 
+      <!-- E-E-A-T Trust Links -->
+      <TrustLinks variant="compact" />
+
+      <!-- Resource Links -->
+      <ResourceLinks pageKey="indiaAttestation" variant="callout" title="Helpful Resources" />
+
+      <RelatedServices
         pageKey="indiaAttestation"
         title="Related Services"
         maxItems={6}
       />
-      
-      <CrossSiloLinks 
+
+      <CrossSiloLinks
         pageKey="indiaAttestation"
         title="Other Countries"
       />

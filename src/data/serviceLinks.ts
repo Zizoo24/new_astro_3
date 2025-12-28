@@ -1,6 +1,6 @@
 /**
  * serviceLinks.ts - Comprehensive Internal Linking System
- * 
+ *
  * NEAR-EXTREME LINKING STRATEGY:
  * - Every page has semantic relationships defined
  * - Related: Similar services the user might need
@@ -9,8 +9,10 @@
  * - Family: Same document type variations
  * - CrossSilo: Links to other content silos
  * - Locations: Geo-targeted versions
- * 
- * Updated: 2024-12-12
+ * - Resources: Helpful guides and informational content
+ * - Trust: E-E-A-T trust signal pages
+ *
+ * Updated: 2025-12-28
  */
 
 // ============================================
@@ -33,6 +35,8 @@ export interface PageRelationships {
   crossSilo?: string[];   // Links to other silos
   locations?: string[];   // Geo-targeted pages
   attestation?: string[]; // Related attestation services
+  resources?: string[];   // Helpful guides and informational content
+  trust?: string[];       // E-E-A-T trust signal pages
 }
 
 // ============================================
@@ -559,7 +563,9 @@ export const pageRelationships: Record<string, PageRelationships> = {
     nextSteps: ["attestation", "mofaAttestation", "indiaAttestation"],
     crossSilo: ["goldenVisa", "immigration", "legalTranslation"],
     locations: ["palmJumeirah", "dubai", "abuDhabi"],
-    attestation: ["indiaAttestation", "ukAttestation", "philippinesAttestation"]
+    attestation: ["indiaAttestation", "ukAttestation", "philippinesAttestation"],
+    resources: ["documentChecklist", "attestationGuide", "mojVsCertified", "pricingGuide"],
+    trust: ["credentials", "translator", "reviews", "caseStudies"]
   },
   marriageCertificate: {
     related: ["birthCertificate", "divorceCertificate", "goldenVisa", "pcc"],
@@ -567,7 +573,9 @@ export const pageRelationships: Record<string, PageRelationships> = {
     nextSteps: ["attestation", "mofaAttestation"],
     crossSilo: ["goldenVisa", "immigration", "legalTranslation"],
     locations: ["palmJumeirah", "dubai", "abuDhabi"],
-    attestation: ["indiaAttestation", "ukAttestation", "philippinesAttestation"]
+    attestation: ["indiaAttestation", "ukAttestation", "philippinesAttestation"],
+    resources: ["documentChecklist", "attestationGuide", "mojVsCertified", "pricingGuide"],
+    trust: ["credentials", "translator", "reviews", "caseStudies"]
   },
   divorceCertificate: {
     related: ["marriageCertificate", "poa", "wills"],
@@ -575,14 +583,18 @@ export const pageRelationships: Record<string, PageRelationships> = {
     prerequisites: ["marriageCertificate"],
     nextSteps: ["attestation", "embassyAttestation"],
     crossSilo: ["litigation", "legalTranslation"],
-    locations: ["dubai", "abuDhabi"]
+    locations: ["dubai", "abuDhabi"],
+    resources: ["documentChecklist", "mojVsCertified", "pricingGuide"],
+    trust: ["credentials", "translator", "reviews"]
   },
   deathCertificate: {
     related: ["wills", "poa", "marriageCertificate"],
     family: ["birthCertificate", "marriageCertificate", "divorceCertificate"],
     nextSteps: ["attestation", "embassyAttestation", "wills"],
     crossSilo: ["legalTranslation", "litigation"],
-    locations: ["dubai", "abuDhabi"]
+    locations: ["dubai", "abuDhabi"],
+    resources: ["documentChecklist", "mojVsCertified", "pricingGuide"],
+    trust: ["credentials", "translator", "reviews"]
   },
 
   // ========================================
@@ -593,36 +605,46 @@ export const pageRelationships: Record<string, PageRelationships> = {
     nextSteps: ["mofaAttestation", "embassyAttestation"],
     crossSilo: ["goldenVisa", "immigration"],
     locations: ["dubai", "abuDhabi", "sharjah"],
-    attestation: ["indiaAttestation", "ukAttestation", "usAttestation"]
+    attestation: ["indiaAttestation", "ukAttestation", "usAttestation"],
+    resources: ["documentChecklist", "attestationGuide", "mojVsCertified", "pricingGuide"],
+    trust: ["credentials", "translator", "reviews", "caseStudies"]
   },
   bankStatement: {
     related: ["pcc", "degree", "goldenVisa", "drivingLicense"],
     crossSilo: ["goldenVisa", "immigration", "realEstateIndustry"],
-    locations: ["dubai", "difc", "businessBay"]
+    locations: ["dubai", "difc", "businessBay"],
+    resources: ["documentChecklist", "pricingGuide"],
+    trust: ["credentials", "translator", "reviews"]
   },
   drivingLicense: {
     related: ["pcc", "bankStatement", "birthCertificate"],
     crossSilo: ["immigration"],
-    locations: ["dubai", "abuDhabi", "sharjah"]
+    locations: ["dubai", "abuDhabi", "sharjah"],
+    resources: ["documentChecklist", "pricingGuide"],
+    trust: ["credentials", "translator", "reviews"]
   },
 
   // ========================================
   // ACADEMIC DOCUMENTS
   // ========================================
   degree: {
-    related: ["transcripts", "pcc", "goldenVisa", "birthCertificate"],
+    related: ["transcripts", "pcc", "goldenVisa", "birthCertificate", "dhaDataflow"],
     family: ["transcripts"],
     nextSteps: ["attestation", "mofaAttestation"],
-    crossSilo: ["goldenVisa", "immigration"],
+    crossSilo: ["goldenVisa", "immigration", "medical", "dhaDataflow"],
     locations: ["dubai", "abuDhabi"],
-    attestation: ["indiaAttestation", "ukAttestation", "usAttestation", "philippinesAttestation"]
+    attestation: ["indiaAttestation", "ukAttestation", "usAttestation", "philippinesAttestation"],
+    resources: ["documentChecklist", "attestationGuide", "mojVsCertified", "pricingGuide"],
+    trust: ["credentials", "translator", "reviews", "caseStudies"]
   },
   transcripts: {
     related: ["degree", "pcc", "goldenVisa"],
     family: ["degree"],
     nextSteps: ["attestation"],
-    crossSilo: ["immigration"],
-    locations: ["dubai", "abuDhabi"]
+    crossSilo: ["immigration", "dhaDataflow"],
+    locations: ["dubai", "abuDhabi"],
+    resources: ["documentChecklist", "attestationGuide", "pricingGuide"],
+    trust: ["credentials", "translator", "reviews"]
   },
 
   // ========================================
@@ -706,7 +728,9 @@ export const pageRelationships: Record<string, PageRelationships> = {
     nextSteps: ["mofaAttestation", "attestation"],
     crossSilo: ["immigration", "vitalRecords", "academic"],
     locations: ["palmJumeirah", "dubai", "difc"],
-    attestation: ["mofaAttestation", "indiaAttestation", "ukAttestation"]
+    attestation: ["mofaAttestation", "indiaAttestation", "ukAttestation"],
+    resources: ["goldenVisaChecklist", "attestationGuide", "documentChecklist", "mojVsCertified", "pricingGuide"],
+    trust: ["credentials", "translator", "reviews", "caseStudies"]
   },
 
   // ========================================
@@ -716,32 +740,42 @@ export const pageRelationships: Record<string, PageRelationships> = {
     related: ["mofaAttestation", "embassyAttestation", "apostille"],
     family: ["mofaAttestation", "embassyAttestation", "apostille"],
     crossSilo: ["goldenVisa", "immigration", "birthCertificate", "degree"],
-    locations: ["dubai", "abuDhabi"]
+    locations: ["dubai", "abuDhabi"],
+    resources: ["attestationGuide", "documentChecklist", "pricingGuide", "mojVsCertified"],
+    trust: ["credentials", "translator", "reviews", "caseStudies"]
   },
   mofaAttestation: {
     related: ["embassyAttestation", "apostille", "attestation"],
     family: ["embassyAttestation", "apostille"],
     prerequisites: ["birthCertificate", "marriageCertificate", "degree"],
     crossSilo: ["goldenVisa", "immigration"],
-    locations: ["dubai", "abuDhabi"]
+    locations: ["dubai", "abuDhabi"],
+    resources: ["attestationGuide", "documentChecklist", "pricingGuide"],
+    trust: ["credentials", "translator", "reviews", "caseStudies"]
   },
   indiaAttestation: {
     related: ["mofaAttestation", "embassyAttestation", "birthCertificate", "degree"],
     family: ["ukAttestation", "usAttestation", "philippinesAttestation", "pakistanAttestation"],
     crossSilo: ["goldenVisa", "immigration"],
-    locations: ["dubai", "abuDhabi", "sharjah"]
+    locations: ["dubai", "abuDhabi", "sharjah"],
+    resources: ["attestationGuide", "documentChecklist", "pricingGuide"],
+    trust: ["credentials", "translator", "reviews", "caseStudies"]
   },
   ukAttestation: {
     related: ["mofaAttestation", "apostille", "degree"],
     family: ["indiaAttestation", "usAttestation", "philippinesAttestation"],
     crossSilo: ["goldenVisa", "immigration"],
-    locations: ["dubai", "difc"]
+    locations: ["dubai", "difc"],
+    resources: ["attestationGuide", "documentChecklist", "pricingGuide"],
+    trust: ["credentials", "translator", "reviews"]
   },
   usAttestation: {
     related: ["apostille", "mofaAttestation", "degree"],
     family: ["indiaAttestation", "ukAttestation", "philippinesAttestation"],
     crossSilo: ["goldenVisa", "immigration"],
-    locations: ["dubai", "difc"]
+    locations: ["dubai", "difc"],
+    resources: ["attestationGuide", "documentChecklist", "pricingGuide"],
+    trust: ["credentials", "translator", "reviews"]
   },
 
   // ========================================
@@ -750,35 +784,47 @@ export const pageRelationships: Record<string, PageRelationships> = {
   medical: {
     related: ["dhaDataflow", "healthcareIndustry", "certificateTranslation", "legalTranslation"],
     family: ["dhaDataflow"],
-    crossSilo: ["healthcareIndustry", "immigration"],
-    locations: ["dubai", "abuDhabi"]
+    crossSilo: ["healthcareIndustry", "immigration", "degree"],
+    locations: ["dubai", "abuDhabi"],
+    resources: ["documentChecklist", "pricingGuide"],
+    trust: ["credentials", "translator", "reviews", "caseStudies"]
   },
   dhaDataflow: {
     related: ["medical", "degree", "healthcareIndustry", "certificateTranslation"],
     family: ["medical"],
     prerequisites: ["degree", "transcripts"],
     nextSteps: ["attestation", "mofaAttestation"],
-    crossSilo: ["healthcareIndustry", "immigration", "goldenVisa"],
-    locations: ["dubai", "abuDhabi"]
+    crossSilo: ["healthcareIndustry", "immigration", "goldenVisa", "academic"],
+    locations: ["dubai", "abuDhabi"],
+    resources: ["documentChecklist", "attestationGuide", "pricingGuide"],
+    trust: ["credentials", "translator", "reviews", "caseStudies"]
   },
   technical: {
     related: ["digital", "corporateTranslation", "contracts"],
     crossSilo: ["ecommerceIndustry"],
-    locations: ["difc", "businessBay", "jlt"]
+    locations: ["difc", "businessBay", "jlt"],
+    resources: ["pricingGuide"],
+    trust: ["credentials", "translator", "reviews"]
   },
   hospitality: {
     related: ["digital", "realEstateIndustry"],
-    locations: ["palmJumeirah", "marina", "dubai"]
+    locations: ["palmJumeirah", "marina", "dubai"],
+    resources: ["pricingGuide"],
+    trust: ["credentials", "translator", "reviews"]
   },
   digital: {
     related: ["technical", "ecommerceIndustry", "hospitality"],
     crossSilo: ["ecommerceIndustry"],
-    locations: ["difc", "businessBay"]
+    locations: ["difc", "businessBay"],
+    resources: ["pricingGuide"],
+    trust: ["credentials", "translator", "reviews"]
   },
   financial: {
     related: ["corporateTranslation", "bankStatement", "moa"],
     crossSilo: ["corporate", "realEstateIndustry"],
-    locations: ["difc", "businessBay", "abuDhabi"]
+    locations: ["difc", "businessBay", "abuDhabi"],
+    resources: ["pricingGuide", "mojVsCertified"],
+    trust: ["credentials", "translator", "reviews"]
   },
   tradeLicense: {
     related: ["moa", "poa", "corporateTranslation"],
@@ -1139,8 +1185,32 @@ export const getCrossLinks = (key: string): ServiceLink[] => {
 export const getLocationPages = (key: string): ServiceLink[] => {
   const relationships = pageRelationships[key];
   if (!relationships?.locations) return [];
-  
+
   return relationships.locations
+    .map(k => serviceLinks[k])
+    .filter(Boolean);
+};
+
+/**
+ * Get resource/guide links for a page
+ */
+export const getResourceLinks = (key: string): ServiceLink[] => {
+  const relationships = pageRelationships[key];
+  if (!relationships?.resources) return [];
+
+  return relationships.resources
+    .map(k => serviceLinks[k])
+    .filter(Boolean);
+};
+
+/**
+ * Get E-E-A-T trust signal links
+ */
+export const getTrustLinks = (key: string): ServiceLink[] => {
+  const relationships = pageRelationships[key];
+  if (!relationships?.trust) return [];
+
+  return relationships.trust
     .map(k => serviceLinks[k])
     .filter(Boolean);
 };
@@ -1155,6 +1225,8 @@ export const getAllLinksForPage = (key: string): {
   nextSteps: ServiceLink[];
   crossSilo: ServiceLink[];
   locations: ServiceLink[];
+  resources: ServiceLink[];
+  trust: ServiceLink[];
 } => {
   return {
     related: getRelatedServices(key),
@@ -1162,7 +1234,9 @@ export const getAllLinksForPage = (key: string): {
     prerequisites: getPrerequisites(key),
     nextSteps: getNextSteps(key),
     crossSilo: getCrossLinks(key),
-    locations: getLocationPages(key)
+    locations: getLocationPages(key),
+    resources: getResourceLinks(key),
+    trust: getTrustLinks(key)
   };
 };
 
