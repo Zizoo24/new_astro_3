@@ -1,0 +1,610 @@
+---
+/**
+ * Translator Biography Page
+ * E-E-A-T Critical: Establishes human authority and personal accountability
+ * URL: /about/translator/
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PersonSchema from '../../../components/eeat/PersonSchema.astro';
+import TranslatorHero from '../../../components/eeat/TranslatorHero.astro';
+import CredentialsGrid from '../../../components/eeat/CredentialsGrid.astro';
+import ExpertiseAccordion from '../../../components/eeat/ExpertiseAccordion.astro';
+import VerificationBadge from '../../../components/eeat/VerificationBadge.astro';
+import { siteConfig } from '../../../config/site';
+
+// Page metadata
+const pageTitle = "Meet Our Certified Translator | Khaled Al-Adl | OnlineTranslation.ae";
+const metaDescription = "Meet Khaled Mohamed Abdulwahab Al-Adl, MOJ-licensed legal translator #701. Learn about his credentials, expertise, and commitment to accurate legal translation in Dubai.";
+
+// Translator data from site config
+const translator = siteConfig.translator;
+
+// Credentials grid data
+const credentials = [
+  {
+    icon: 'license' as const,
+    title: 'MOJ License',
+    highlight: '#701',
+    items: [
+      `Valid until ${new Date(translator.validUntil).getFullYear()}`,
+      `Verify: ${translator.verifyHotline}`,
+      'Dubai Courts Accepted',
+      'All UAE Ministries'
+    ]
+  },
+  {
+    icon: 'language' as const,
+    title: 'Languages',
+    items: [
+      'Arabic (Native)',
+      'English (Fluent)',
+      'Legal Terminology',
+      'Technical Vocabulary'
+    ]
+  },
+  {
+    icon: 'specialty' as const,
+    title: 'Specializations',
+    items: [
+      'Court Documents',
+      'Corporate Law',
+      'Civil Records',
+      'Medical & Healthcare'
+    ]
+  }
+];
+
+// Expertise areas for accordion
+const expertiseAreas = [
+  {
+    title: 'Court & Litigation Documents',
+    description: 'Translation of judicial documents for Dubai Courts, DIFC Courts, and arbitration proceedings. Every court document requires precise legal terminology to ensure acceptance.',
+    documents: [
+      'Court verdicts and judgments',
+      'Legal briefs and submissions',
+      'Arbitration awards (DIAC, DIFC-LCIA)',
+      'Witness statements and affidavits',
+      'Power of Attorney for litigation',
+      'Appeal documents'
+    ],
+    defaultOpen: true
+  },
+  {
+    title: 'Corporate & Commercial',
+    description: 'Business documentation for company formation, governance, and commercial transactions across UAE jurisdictions.',
+    documents: [
+      'Memorandum of Association (MOA)',
+      'Articles of Association',
+      'Board resolutions',
+      'Shareholder agreements',
+      'Commercial licenses',
+      'Partnership deeds'
+    ]
+  },
+  {
+    title: 'Personal & Civil Records',
+    description: 'Vital documents for immigration, family sponsorship, and civil matters requiring MOJ certification.',
+    documents: [
+      'Birth certificates',
+      'Marriage certificates',
+      'Divorce decrees',
+      'Death certificates',
+      'Police clearance certificates',
+      'Academic transcripts'
+    ]
+  },
+  {
+    title: 'Medical & Healthcare',
+    description: 'Healthcare professional licensing documents and medical records for DHA, DOH, and MOH requirements.',
+    documents: [
+      'Medical degrees and diplomas',
+      'Good Standing Certificates',
+      'Experience letters',
+      'Medical reports',
+      'Hospital discharge summaries',
+      'Pharmaceutical documentation'
+    ]
+  },
+  {
+    title: 'Financial & Banking',
+    description: 'Financial documents for Golden Visa applications, business financing, and regulatory compliance.',
+    documents: [
+      'Bank statements',
+      'Salary certificates',
+      'Investment certificates',
+      'Audit reports',
+      'Tax documents',
+      'Financial statements'
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={metaDescription}
+>
+  <!-- Person Schema for SEO -->
+  <PersonSchema
+    name={translator.nameEnglish}
+    nameArabic={translator.nameArabic}
+    jobTitle="MOJ-Licensed Legal Translator"
+    description="Ministry of Justice licensed legal translator specializing in court documents, corporate filings, and civil records for UAE government acceptance."
+    license={{
+      number: translator.license.replace('#', ''),
+      issuedBy: "UAE Ministry of Justice",
+      validUntil: translator.validUntil
+    }}
+    languages={translator.languages}
+    sameAs={["https://www.linkedin.com/in/arabiclinguistkh"]}
+  />
+
+  <!-- Hero Section -->
+  <TranslatorHero
+    name={translator.nameEnglish}
+    nameArabic={translator.nameArabic}
+    title="Meet the Certifier"
+    subtitle="MOJ-Licensed Legal Translator"
+    licenseNumber={translator.license.replace('#', '')}
+    validUntil={translator.validUntil}
+    verifyHotline={translator.verifyHotline}
+  />
+
+  <!-- The Oath Section -->
+  <section class="section oath-section">
+    <div class="container">
+      <div class="oath-content">
+        <div class="oath-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 3v18M3 12h18"/>
+            <circle cx="12" cy="12" r="9"/>
+          </svg>
+        </div>
+        <h2 class="oath-title">Sworn Before the Court</h2>
+        <div class="oath-text">
+          <p>
+            Every MOJ-licensed translator in the UAE takes a formal oath before a judge, pledging accuracy
+            and fidelity in translation. This oath carries personal legal liability—errors in certified
+            documents can result in professional sanctions and civil liability.
+          </p>
+          <p>
+            When you receive a document certified by Khaled, you receive a document backed by this personal
+            commitment. Unlike corporate translation services where responsibility is diffuse, MOJ licensing
+            places the full weight of accountability on the individual translator.
+          </p>
+          <p>
+            This is why MOJ-certified translation is required for all court submissions, government
+            applications, and official proceedings in the UAE. The Ministry of Justice maintains strict
+            oversight to ensure every licensed translator upholds the highest standards of accuracy.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Credentials Grid -->
+  <section class="section credentials-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Qualifications</span>
+        <h2 class="section-title">Professional Credentials</h2>
+      </div>
+      <CredentialsGrid credentials={credentials} />
+    </div>
+  </section>
+
+  <!-- Expertise Accordion -->
+  <section class="section expertise-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Areas of Practice</span>
+        <h2 class="section-title">Translation Expertise</h2>
+        <p class="section-description">
+          Khaled specializes in legal, corporate, personal, and medical document translation.
+          Click each area to see the specific document types covered.
+        </p>
+      </div>
+      <ExpertiseAccordion areas={expertiseAreas} />
+    </div>
+  </section>
+
+  <!-- Verification Section -->
+  <section class="section verification-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Transparency</span>
+        <h2 class="section-title">Verify Credentials</h2>
+      </div>
+      <div class="verification-grid">
+        <VerificationBadge
+          licenseNumber={translator.license.replace('#', '')}
+          hotline={translator.verifyHotline}
+          translatorName="Khaled"
+        />
+        <div class="verification-info">
+          <h3>How to Verify</h3>
+          <ol class="verification-steps">
+            <li>Call the MOJ Hotline: <strong>{translator.verifyHotline}</strong></li>
+            <li>Request verification of License #701</li>
+            <li>Provide the translator name: <strong>{translator.nameArabic}</strong></li>
+            <li>The operator will confirm license status and validity</li>
+          </ol>
+          <p class="verification-note">
+            The Ministry of Justice maintains a public registry of all licensed legal translators.
+            You can verify any translator's credentials before engaging their services.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Personal Commitment Quote -->
+  <section class="section quote-section">
+    <div class="container">
+      <blockquote class="commitment-quote">
+        <svg class="quote-mark" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M6.5 10c-.223 0-.437.034-.65.065.069-.232.14-.468.254-.68.114-.308.292-.575.469-.844.148-.291.409-.488.601-.737.201-.242.475-.403.692-.604.213-.21.492-.315.714-.463.232-.133.434-.28.65-.35l.539-.222.474-.197-.485-1.938-.597.144c-.191.048-.424.104-.689.171-.271.05-.56.187-.882.312-.318.142-.686.238-1.028.466-.344.218-.741.4-1.091.692-.339.301-.748.562-1.05.945-.33.358-.656.734-.909 1.162-.293.408-.492.856-.702 1.299-.19.443-.343.896-.468 1.336-.237.882-.343 1.72-.384 2.437-.034.718-.014 1.315.028 1.747.015.204.043.402.063.539l.025.168.026-.006c.233.63.646 1.157 1.2 1.527.39.263.84.421 1.299.469h.012c.062.007.124.009.187.009.883-.001 1.691-.454 2.155-1.205.464-.75.465-1.7.002-2.45-.463-.753-1.27-1.206-2.154-1.206zm7.5 0c-.223 0-.437.034-.65.065.069-.232.14-.468.254-.68.114-.308.292-.575.469-.844.148-.291.409-.488.601-.737.201-.242.475-.403.692-.604.213-.21.492-.315.714-.463.232-.133.434-.28.65-.35l.539-.222.474-.197-.485-1.938-.597.144c-.191.048-.424.104-.689.171-.271.05-.56.187-.882.312-.317.143-.686.238-1.028.467-.344.218-.741.4-1.091.692-.339.301-.748.562-1.05.944-.33.358-.656.734-.909 1.162-.293.408-.492.856-.702 1.299-.19.443-.343.896-.468 1.336-.237.882-.343 1.72-.384 2.437-.034.718-.014 1.315.028 1.747.015.204.043.402.063.539l.025.168.026-.006c.233.63.646 1.157 1.2 1.527.39.263.84.421 1.299.469h.012c.062.007.124.009.187.009.883-.001 1.691-.454 2.155-1.205.464-.75.465-1.7.002-2.45-.463-.753-1.27-1.206-2.154-1.206z"/>
+        </svg>
+        <p>
+          Every document I certify carries my name and my reputation. I treat each translation
+          as if it were my own legal matter—because to the person waiting for their visa,
+          court ruling, or business license, it is the most important document in their life
+          at that moment.
+        </p>
+        <footer class="quote-author">
+          <span class="author-name">Khaled Mohamed Al-Adl</span>
+          <span class="author-title">MOJ-Licensed Legal Translator</span>
+        </footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Work With Khaled</h2>
+        <p>
+          Send your documents for a free assessment. Khaled personally reviews complex cases
+          and ensures every certified document meets court-acceptance standards.
+        </p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/971508620217" class="cta-button primary">
+            <i class="fab fa-whatsapp"></i> Send Documents on WhatsApp
+          </a>
+          <a href="/services/" class="cta-button secondary">
+            View All Services
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section {
+    padding: 3rem 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent-coral, #FF1654);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--primary-navy, #0E2B48);
+    margin: 0 0 0.75rem;
+  }
+
+  .section-description {
+    font-size: 1rem;
+    color: var(--text-muted, #5a6a7a);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Oath Section */
+  .oath-section {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  .oath-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .oath-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-navy, #0E2B48) 0%, #1a3a5c 100%);
+    border-radius: 50%;
+    color: white;
+    margin-bottom: 1.5rem;
+  }
+
+  .oath-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary-navy, #0E2B48);
+    margin: 0 0 1.5rem;
+  }
+
+  .oath-text {
+    text-align: left;
+  }
+
+  .oath-text p {
+    font-size: 1rem;
+    color: var(--text-dark, #1a1a1a);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .oath-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Credentials Section */
+  .credentials-section {
+    background: #ffffff;
+  }
+
+  /* Expertise Section */
+  .expertise-section {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  /* Verification Section */
+  .verification-section {
+    background: #ffffff;
+  }
+
+  .verification-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .verification-info h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-navy, #0E2B48);
+    margin: 0 0 1rem;
+  }
+
+  .verification-steps {
+    padding-left: 1.25rem;
+    margin: 0 0 1rem;
+  }
+
+  .verification-steps li {
+    font-size: 0.95rem;
+    color: var(--text-dark, #1a1a1a);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+
+  .verification-note {
+    font-size: 0.9rem;
+    color: var(--text-muted, #5a6a7a);
+    line-height: 1.6;
+    margin: 0;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 0.5rem;
+  }
+
+  /* Quote Section */
+  .quote-section {
+    background: linear-gradient(135deg, var(--primary-navy, #0E2B48) 0%, #1a3a5c 100%);
+    padding: 4rem 0;
+  }
+
+  .commitment-quote {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+
+  .quote-mark {
+    color: var(--accent-coral, #FF1654);
+    opacity: 0.5;
+    margin-bottom: 1rem;
+  }
+
+  .commitment-quote p {
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    font-style: italic;
+    color: #ffffff;
+    line-height: 1.8;
+    margin: 0 0 1.5rem;
+  }
+
+  .quote-author {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .author-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .author-title {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: var(--bg-light, #f8f9fa);
+    padding: 4rem 0;
+  }
+
+  .cta-card {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .cta-card h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-navy, #0E2B48);
+    margin: 0 0 1rem;
+  }
+
+  .cta-card p {
+    font-size: 1rem;
+    color: var(--text-muted, #5a6a7a);
+    line-height: 1.7;
+    margin: 0 0 1.5rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+  }
+
+  .cta-button.primary {
+    background: var(--accent-coral, #FF1654);
+    color: white;
+  }
+
+  .cta-button.primary:hover {
+    background: #e81447;
+    transform: translateY(-2px);
+  }
+
+  .cta-button.secondary {
+    background: transparent;
+    color: var(--primary-navy, #0E2B48);
+    border: 2px solid var(--primary-navy, #0E2B48);
+  }
+
+  .cta-button.secondary:hover {
+    background: var(--primary-navy, #0E2B48);
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    .verification-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+    }
+  }
+
+  /* Dark mode */
+  :global(body.theme-dark) .section-title {
+    color: #f0f6fc;
+  }
+
+  :global(body.theme-dark) .section-description {
+    color: #8b949e;
+  }
+
+  :global(body.theme-dark) .oath-section {
+    background: #161b22;
+  }
+
+  :global(body.theme-dark) .oath-title {
+    color: #f0f6fc;
+  }
+
+  :global(body.theme-dark) .oath-text p {
+    color: #c9d1d9;
+  }
+
+  :global(body.theme-dark) .credentials-section,
+  :global(body.theme-dark) .verification-section {
+    background: #0d1117;
+  }
+
+  :global(body.theme-dark) .expertise-section,
+  :global(body.theme-dark) .cta-section {
+    background: #161b22;
+  }
+
+  :global(body.theme-dark) .verification-info h3 {
+    color: #f0f6fc;
+  }
+
+  :global(body.theme-dark) .verification-steps li {
+    color: #c9d1d9;
+  }
+
+  :global(body.theme-dark) .verification-note {
+    background: rgba(255, 255, 255, 0.05);
+    color: #8b949e;
+  }
+
+  :global(body.theme-dark) .cta-card {
+    background: #21262d;
+  }
+
+  :global(body.theme-dark) .cta-card h2 {
+    color: #f0f6fc;
+  }
+
+  :global(body.theme-dark) .cta-card p {
+    color: #8b949e;
+  }
+
+  :global(body.theme-dark) .cta-button.secondary {
+    color: #f0f6fc;
+    border-color: #f0f6fc;
+  }
+
+  :global(body.theme-dark) .cta-button.secondary:hover {
+    background: #f0f6fc;
+    color: #0d1117;
+  }
+</style>

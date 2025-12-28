@@ -1,0 +1,895 @@
+---
+/**
+ * Sharjah Tenancy Contract Translation
+ * E-E-A-T: Hyper-local expertise demonstrating deep regulatory knowledge
+ * URL: /locations/sharjah/tenancy-translation/
+ */
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import ProcessSteps from '../../../../components/ProcessSteps.astro';
+import SharjahFeeCalculator from '../../../../components/eeat/SharjahFeeCalculator.astro';
+import RelatedServices from '../../../../components/RelatedServices.astro';
+
+// Page metadata
+const pageTitle = "Sharjah Tenancy Contract Translation | Municipality Requirements | OnlineTranslation.ae";
+const metaDescription = "Official MOJ-certified translation for Sharjah Municipality tenancy contracts. Includes 4% attestation fee guidance, SEWA clearance requirements, and cross-emirate documentation.";
+
+// Process steps
+const processSteps = [
+  {
+    title: 'Send Documents',
+    description: 'WhatsApp your tenancy contract scan along with any SEWA bills or supporting documents.'
+  },
+  {
+    title: 'Review & Quote',
+    description: 'We verify document completeness and provide fixed pricing. No hidden fees.'
+  },
+  {
+    title: 'MOJ Translation',
+    description: 'Khaled translates and certifies your contract with proper MOJ stamps (2-4 hours).'
+  },
+  {
+    title: 'Attestation Coordination',
+    description: 'Optional: We coordinate Sharjah Municipality attestation and delivery.'
+  }
+];
+
+// FAQs
+const faqs = [
+  {
+    question: 'Can I use a Sharjah tenancy contract for a Dubai visa?',
+    answer: 'Yes, but it requires specific cross-emirate attestation. The tenancy must be attested by Sharjah Municipality first, then potentially by MOFA for Dubai GDRFA acceptance. We can guide you through this process.'
+  },
+  {
+    question: 'Do I need to translate my SEWA bill?',
+    answer: 'SEWA bills are bilingual (Arabic/English). However, if submitting to courts or for visa purposes, official translation may be required to ensure all details are captured correctly.'
+  },
+  {
+    question: 'What is the attestation fee for Sharjah Municipality?',
+    answer: 'Sharjah Municipality charges 4% of the annual rent for contract attestation. This is payable directly to the municipality, separate from our translation fees. Use our calculator above to estimate this cost.'
+  },
+  {
+    question: 'How long does the full process take?',
+    answer: 'Translation: 2-4 hours. Municipality attestation: 1-2 business days. Total with courier delivery: typically 2-3 days for the complete package.'
+  },
+  {
+    question: 'What documents do I need for family visa sponsorship in Sharjah?',
+    answer: 'For family visa, you typically need: Attested tenancy contract, translated SEWA clearance or utility bill, salary certificate, and marriage/birth certificates. We can translate all of these.'
+  },
+  {
+    question: 'Is there a difference between Sharjah and Dubai tenancy translation?',
+    answer: 'The translation itself follows the same MOJ standards. The difference is in the attestation process—Sharjah Municipality has its own requirements and 4% fee structure, while Dubai uses Ejari and different attestation channels.'
+  }
+];
+
+// Schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Sharjah Tenancy Contract Translation",
+  "description": metaDescription,
+  "provider": {
+    "@type": "LocalBusiness",
+    "@id": "https://onlinetranslation.ae/#organization"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Sharjah"
+  },
+  "serviceType": "Legal Translation"
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={metaDescription}
+>
+  <!-- Schemas -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+
+  <!-- Hero Section -->
+  <section class="page-hero sharjah-hero">
+    <div class="hero-background">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="separator">&gt;</span>
+        <a href="/locations/">Locations</a>
+        <span class="separator">&gt;</span>
+        <a href="/locations/sharjah/">Sharjah</a>
+        <span class="separator">&gt;</span>
+        <span class="current">Tenancy Translation</span>
+      </nav>
+
+      <span class="hero-badge">Sharjah Municipality Specialist</span>
+      <h1 class="page-title">Tenancy Contract Translation for Sharjah</h1>
+      <p class="page-lead">
+        Complete guide to translating tenancy contracts for Sharjah Municipality,
+        family visa applications, and SEWA requirements.
+      </p>
+
+      <!-- Quick Stats -->
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-value">From AED 150</span>
+          <span class="stat-label">Translation Fee</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">2-4 Hours</span>
+          <span class="stat-label">Turnaround</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">4% of Rent</span>
+          <span class="stat-label">Attestation Fee</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sharjah Differences Section -->
+  <section class="section differences-section">
+    <div class="container">
+      <h2 class="section-title">What Makes Sharjah Different</h2>
+
+      <div class="alert-box">
+        <div class="alert-icon">⚠️</div>
+        <div class="alert-content">
+          <h3>Sharjah Municipality Attestation Fee</h3>
+          <p>
+            Unlike Dubai, Sharjah Municipality charges <strong>4% of annual rent</strong>
+            for tenancy contract attestation. This is in addition to translation fees.
+          </p>
+          <p class="example">
+            Example: AED 50,000/year rent = AED 2,000 attestation fee
+          </p>
+        </div>
+      </div>
+
+      <div class="differences-grid">
+        <div class="difference-card">
+          <h3>Own Registration System</h3>
+          <p>Sharjah uses its own tenancy registration system, different from Dubai's Ejari.</p>
+        </div>
+        <div class="difference-card">
+          <h3>SEWA Requirements</h3>
+          <p>SEWA clearance often required for visa sponsorship and various applications.</p>
+        </div>
+        <div class="difference-card">
+          <h3>Different Attestation</h3>
+          <p>Attestation process goes through Sharjah Municipality, not Dubai DLD.</p>
+        </div>
+        <div class="difference-card">
+          <h3>Cross-Emirate Rules</h3>
+          <p>Using Sharjah tenancy for Dubai visa requires specific cross-emirate steps.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fee Calculator Section -->
+  <section class="section calculator-section">
+    <div class="container">
+      <div class="calculator-wrapper">
+        <SharjahFeeCalculator defaultRent={50000} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases Section -->
+  <section class="section usecases-section">
+    <div class="container">
+      <h2 class="section-title">When You Need Sharjah Tenancy Translation</h2>
+
+      <div class="usecases-grid">
+        <div class="usecase-card">
+          <span class="usecase-icon">👨‍👩‍👧</span>
+          <h3>Family Visa Sponsorship</h3>
+          <p>Tenancy contract proves residence for GDRFA family visa applications.</p>
+        </div>
+        <div class="usecase-card">
+          <span class="usecase-icon">🏢</span>
+          <h3>SEWA Connection</h3>
+          <p>Proof of residence for utility setup and billing registration.</p>
+        </div>
+        <div class="usecase-card">
+          <span class="usecase-icon">🏫</span>
+          <h3>School Enrollment</h3>
+          <p>Private schools require proof of Sharjah residence for admission.</p>
+        </div>
+        <div class="usecase-card">
+          <span class="usecase-icon">🚗</span>
+          <h3>Vehicle Registration</h3>
+          <p>RTA Sharjah may require translated tenancy for vehicle registration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Document Checklist Section -->
+  <section class="section checklist-section">
+    <div class="container">
+      <h2 class="section-title">Required Documents</h2>
+
+      <div class="checklist-accordion">
+        <details class="checklist-item" open>
+          <summary>Standard Tenancy Translation</summary>
+          <ul class="checklist">
+            <li>Original Ejari/tenancy contract (Arabic)</li>
+            <li>Landlord Emirates ID copy</li>
+            <li>Tenant Emirates ID copy</li>
+            <li>Title deed copy (if available)</li>
+          </ul>
+        </details>
+
+        <details class="checklist-item">
+          <summary>With SEWA Clearance</summary>
+          <ul class="checklist">
+            <li>All documents from standard list</li>
+            <li>SEWA final bill or clearance certificate</li>
+            <li>Connection confirmation letter (if applicable)</li>
+          </ul>
+        </details>
+
+        <details class="checklist-item">
+          <summary>For Family Visa (Cross-Emirate)</summary>
+          <ul class="checklist">
+            <li>All documents from standard list</li>
+            <li>Salary certificate (translated if not in Arabic)</li>
+            <li>Bank statements (last 3 months)</li>
+            <li>Marriage certificate (if sponsoring spouse)</li>
+            <li>Children's birth certificates (if applicable)</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Steps Section -->
+  <section class="section process-section">
+    <div class="container">
+      <h2 class="section-title">How It Works</h2>
+      <ProcessSteps steps={processSteps} />
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="section pricing-section">
+    <div class="container">
+      <h2 class="section-title">Sharjah Tenancy Translation Pricing</h2>
+
+      <div class="pricing-table">
+        <div class="pricing-row header">
+          <span>Service</span>
+          <span>Price</span>
+          <span>Timeline</span>
+        </div>
+        <div class="pricing-row">
+          <span>Standard Tenancy Translation</span>
+          <span>AED 150+</span>
+          <span>2-4 hours</span>
+        </div>
+        <div class="pricing-row">
+          <span>Express (Same Day)</span>
+          <span>AED 250+</span>
+          <span>1-2 hours</span>
+        </div>
+        <div class="pricing-row">
+          <span>Translation + Attestation Coordination</span>
+          <span>AED 350+</span>
+          <span>2-3 days</span>
+        </div>
+      </div>
+
+      <p class="pricing-note">
+        Note: Sharjah Municipality 4% attestation fee paid separately directly to the municipality.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section faq-section">
+    <div class="container">
+      <h2 class="section-title">Sharjah ↔ Dubai Documentation Questions</h2>
+
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services -->
+  <section class="section related-section">
+    <div class="container">
+      <h2 class="section-title">Related Sharjah Translation Services</h2>
+      <RelatedServices
+        currentPage="/locations/sharjah/tenancy-translation/"
+        category="personal"
+      />
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Need Sharjah Tenancy Translation?</h2>
+        <p>Send your contract via WhatsApp for a free assessment and fixed quote.</p>
+        <a href="https://wa.me/971508620217?text=Hi%2C%20I%20need%20Sharjah%20tenancy%20contract%20translation" class="cta-button">
+          <i class="fab fa-whatsapp"></i> Send Contract on WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .sharjah-hero {
+    background: linear-gradient(135deg, var(--primary-navy, #0E2B48) 0%, #1a3a5c 100%);
+    padding: 3rem 0 4rem;
+    position: relative;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(14, 43, 72, 0.4) 100%);
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    color: #ffffff;
+  }
+
+  .breadcrumb .separator {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .breadcrumb .current {
+    color: var(--accent-coral, #FF1654);
+    font-weight: 600;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.5rem 1rem;
+    background: var(--accent-coral, #FF1654);
+    color: white;
+    border-radius: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .page-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 1rem;
+  }
+
+  .page-lead {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    line-height: 1.6;
+    margin: 0 0 2rem;
+  }
+
+  .hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .stat-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Sections */
+  .section {
+    padding: 3rem 0;
+  }
+
+  .section-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--primary-navy, #0E2B48);
+    margin: 0 0 1.5rem;
+    text-align: center;
+  }
+
+  /* Differences Section */
+  .differences-section {
+    background: #ffffff;
+  }
+
+  .alert-box {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border: 1px solid #fbbf24;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .alert-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  .alert-content h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #92400e;
+    margin: 0 0 0.5rem;
+  }
+
+  .alert-content p {
+    font-size: 0.95rem;
+    color: #78350f;
+    margin: 0 0 0.5rem;
+    line-height: 1.6;
+  }
+
+  .alert-content .example {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #b45309;
+  }
+
+  .differences-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .difference-card {
+    background: var(--bg-light, #f8f9fa);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .difference-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-navy, #0E2B48);
+    margin: 0 0 0.5rem;
+  }
+
+  .difference-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted, #5a6a7a);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Calculator Section */
+  .calculator-section {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  .calculator-wrapper {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* Use Cases Section */
+  .usecases-section {
+    background: #ffffff;
+  }
+
+  .usecases-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .usecase-card {
+    background: var(--bg-light, #f8f9fa);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.2s ease;
+  }
+
+  .usecase-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .usecase-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .usecase-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-navy, #0E2B48);
+    margin: 0 0 0.5rem;
+  }
+
+  .usecase-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted, #5a6a7a);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Checklist Section */
+  .checklist-section {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  .checklist-accordion {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .checklist-item {
+    background: #ffffff;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .checklist-item summary {
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+    color: var(--primary-navy, #0E2B48);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .checklist-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .checklist-item summary::after {
+    content: '+';
+    font-size: 1.25rem;
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .checklist-item[open] summary::after {
+    content: '−';
+  }
+
+  .checklist-item[open] summary {
+    background: var(--primary-navy, #0E2B48);
+    color: #ffffff;
+  }
+
+  .checklist-item[open] summary::after {
+    color: #ffffff;
+  }
+
+  .checklist {
+    padding: 1rem 1.25rem;
+    margin: 0;
+    list-style: none;
+    background: #fafbfc;
+  }
+
+  .checklist li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    font-size: 0.95rem;
+    color: var(--text-dark, #1a1a1a);
+  }
+
+  .checklist li::before {
+    content: '✓';
+    color: var(--accent-coral, #FF1654);
+    font-weight: 700;
+  }
+
+  /* Process Section */
+  .process-section {
+    background: #ffffff;
+  }
+
+  /* Pricing Section */
+  .pricing-section {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  .pricing-table {
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+    background: #ffffff;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .pricing-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .pricing-row:last-child {
+    border-bottom: none;
+  }
+
+  .pricing-row.header {
+    background: var(--primary-navy, #0E2B48);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .pricing-row span {
+    font-size: 0.95rem;
+    color: var(--text-dark, #1a1a1a);
+  }
+
+  .pricing-row span:nth-child(2),
+  .pricing-row span:nth-child(3) {
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .pricing-note {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-muted, #5a6a7a);
+    font-style: italic;
+  }
+
+  /* FAQ Section */
+  .faq-section {
+    background: #ffffff;
+  }
+
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .faq-item {
+    background: var(--bg-light, #f8f9fa);
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+
+  .faq-item summary {
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+    color: var(--primary-navy, #0E2B48);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item p {
+    padding: 0 1.25rem 1rem;
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-muted, #5a6a7a);
+    line-height: 1.7;
+  }
+
+  /* Related Section */
+  .related-section {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, var(--primary-navy, #0E2B48) 0%, #1a3a5c 100%);
+    padding: 4rem 0;
+  }
+
+  .cta-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .cta-content h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 1rem;
+  }
+
+  .cta-content p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 1.5rem;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: var(--accent-coral, #FF1654);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+  }
+
+  .cta-button:hover {
+    background: #e81447;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 992px) {
+    .differences-grid,
+    .usecases-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-stats {
+      flex-direction: column;
+    }
+
+    .differences-grid,
+    .usecases-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .pricing-row {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+      text-align: left !important;
+    }
+
+    .pricing-row span {
+      text-align: left !important;
+    }
+
+    .pricing-row.header {
+      display: none;
+    }
+
+    .pricing-row span:first-child {
+      font-weight: 600;
+      color: var(--primary-navy, #0E2B48);
+    }
+  }
+
+  /* Dark mode */
+  :global(body.theme-dark) .differences-section,
+  :global(body.theme-dark) .usecases-section,
+  :global(body.theme-dark) .process-section,
+  :global(body.theme-dark) .faq-section {
+    background: #0d1117;
+  }
+
+  :global(body.theme-dark) .calculator-section,
+  :global(body.theme-dark) .checklist-section,
+  :global(body.theme-dark) .pricing-section,
+  :global(body.theme-dark) .related-section {
+    background: #161b22;
+  }
+
+  :global(body.theme-dark) .section-title {
+    color: #f0f6fc;
+  }
+
+  :global(body.theme-dark) .difference-card,
+  :global(body.theme-dark) .usecase-card,
+  :global(body.theme-dark) .faq-item {
+    background: #21262d;
+  }
+
+  :global(body.theme-dark) .difference-card h3,
+  :global(body.theme-dark) .usecase-card h3 {
+    color: #f0f6fc;
+  }
+
+  :global(body.theme-dark) .checklist-item {
+    background: #21262d;
+  }
+
+  :global(body.theme-dark) .checklist {
+    background: #161b22;
+  }
+
+  :global(body.theme-dark) .checklist li {
+    color: #c9d1d9;
+  }
+
+  :global(body.theme-dark) .pricing-table {
+    background: #21262d;
+  }
+
+  :global(body.theme-dark) .pricing-row {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :global(body.theme-dark) .pricing-row span {
+    color: #c9d1d9;
+  }
+</style>

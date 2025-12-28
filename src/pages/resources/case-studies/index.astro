@@ -1,0 +1,595 @@
+---
+/**
+ * Case Studies Hub - Real Client Stories
+ * E-E-A-T: Demonstrates Experience through documented outcomes
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CaseStudyCard from '../../../components/eeat/CaseStudyCard.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+
+const caseStudies = [
+  {
+    title: "Rejected Document Rescue: Court Filing Saved in 2 Hours",
+    category: "Court Documents",
+    excerpt: "A PRO received rejection at Dubai Courts due to formatting issues in a power of attorney translation. Our 'rejection rescue' service identified 4 specific formatting errors and delivered a corrected, court-accepted version same day.",
+    outcome: "Court accepted on second submission",
+    turnaround: "2 hours after initial contact",
+    slug: "rejected-document-rescue",
+    icon: "⚖️"
+  },
+  {
+    title: "Family Visa Under Deadline: 12 Documents in 24 Hours",
+    category: "Immigration",
+    excerpt: "With a spouse visa interview scheduled for the next day, a Dubai resident needed 12 documents translated and notarized. We coordinated with MOFA for same-day attestation and delivered the complete package by 10 PM.",
+    outcome: "Visa approved at first interview",
+    turnaround: "24 hours for full package",
+    slug: "urgent-family-visa",
+    icon: "👨‍👩‍👧"
+  },
+  {
+    title: "DHA DataFlow Deadline: Healthcare License Secured",
+    category: "Healthcare",
+    excerpt: "A physician from Egypt faced a DataFlow deadline for DHA licensing. Multiple degree certificates needed MOJ translation with specific formatting for healthcare verification. We expedited the complete package in 48 hours.",
+    outcome: "DHA license issued successfully",
+    turnaround: "48 hours including attestation",
+    slug: "dha-dataflow-deadline",
+    icon: "🏥"
+  }
+];
+
+const stats = [
+  { value: "500+", label: "Cases Completed 2024" },
+  { value: "98%", label: "First-Submission Acceptance" },
+  { value: "2hr", label: "Average Urgent Turnaround" },
+  { value: "4.9★", label: "Client Satisfaction" }
+];
+---
+
+<BaseLayout
+  title="Case Studies | Real Client Success Stories | OnlineTranslation.ae"
+  description="Explore real case studies showing how we handle urgent translations, court rejections, and complex document packages. Documented outcomes from Dubai-based clients."
+>
+  <section class="hero-section bg-dark" data-theme="dark">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">HOME</a>
+        <span class="separator">&gt;</span>
+        <a href="/resources/">RESOURCES</a>
+        <span class="separator">&gt;</span>
+        <span class="current">CASE STUDIES</span>
+      </nav>
+
+      <span class="kicker">Real Client Stories</span>
+      <h1>Case Studies</h1>
+      <p class="hero-subtitle">Documented Outcomes, Not Marketing Claims</p>
+
+      <div class="hero-intro">
+        <p class="lead-text">Every translation has a story. These case studies show how we handle real challenges—urgent deadlines, court rejections, complex attestation chains, and high-stakes applications.</p>
+
+        <div class="stats-grid">
+          {stats.map(stat => (
+            <div class="stat-item">
+              <span class="stat-value">{stat.value}</span>
+              <span class="stat-label">{stat.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <div class="intro-text">
+        <h2>Why We Document Case Studies</h2>
+        <p>Translation services are often judged on price alone. We believe the true measure is outcomes. Did the court accept the document? Did the visa get approved? Did the deadline get met? These case studies provide transparent answers.</p>
+        <p>Each case study is based on real client situations. Names and identifying details are changed for privacy, but the challenges, solutions, and outcomes are documented accurately.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2 class="section-title">Featured Case Studies</h2>
+
+      <div class="case-studies-grid">
+        {caseStudies.map(study => (
+          <CaseStudyCard
+            title={study.title}
+            category={study.category}
+            excerpt={study.excerpt}
+            outcome={study.outcome}
+            turnaround={study.turnaround}
+            slug={study.slug}
+            icon={study.icon}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <div class="content-block">
+        <h2>What Our Case Studies Demonstrate</h2>
+
+        <div class="demo-grid">
+          <div class="demo-item">
+            <div class="demo-icon"><i class="fas fa-clock"></i></div>
+            <h3>Deadline Management</h3>
+            <p>How we handle urgent requests—from 60-minute standard documents to complex multi-document packages requiring same-day attestation.</p>
+          </div>
+
+          <div class="demo-item">
+            <div class="demo-icon"><i class="fas fa-exclamation-triangle"></i></div>
+            <h3>Rejection Recovery</h3>
+            <p>When documents get rejected at courts or government offices, we identify the exact issues and provide corrected versions quickly.</p>
+          </div>
+
+          <div class="demo-item">
+            <div class="demo-icon"><i class="fas fa-project-diagram"></i></div>
+            <h3>Complex Coordination</h3>
+            <p>Multi-document packages requiring translation, notarization, embassy attestation, and MOFA—all coordinated as a single managed process.</p>
+          </div>
+
+          <div class="demo-item">
+            <div class="demo-icon"><i class="fas fa-check-double"></i></div>
+            <h3>First-Submission Success</h3>
+            <p>Our pre-submission review process catches formatting and terminology issues before documents reach government offices.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <div class="content-block">
+        <h2>Common Scenarios We Handle</h2>
+
+        <div class="scenarios-list">
+          <details class="scenario-item" name="scenarios">
+            <summary>
+              <span class="scenario-title">Court Filing Rejections</span>
+              <span class="scenario-arrow">▼</span>
+            </summary>
+            <div class="scenario-content">
+              <p>Dubai Courts and federal courts have specific formatting requirements that many translation offices overlook. Common issues include:</p>
+              <ul>
+                <li>Incorrect header/footer placement</li>
+                <li>Missing or misplaced MOJ stamps</li>
+                <li>Terminology inconsistencies between documents</li>
+                <li>Date format discrepancies</li>
+              </ul>
+              <p>Our "rejection rescue" service reviews the rejected document, identifies specific issues, and delivers a corrected version—usually within 2-4 hours.</p>
+            </div>
+          </details>
+
+          <details class="scenario-item" name="scenarios">
+            <summary>
+              <span class="scenario-title">Visa Interview Deadlines</span>
+              <span class="scenario-arrow">▼</span>
+            </summary>
+            <div class="scenario-content">
+              <p>GDRFA and ICP interviews often require complete document packages. Missing or incorrectly formatted translations can result in rescheduled interviews and delayed visas.</p>
+              <ul>
+                <li>Family visa packages (marriage, birth certificates, PCC)</li>
+                <li>Golden Visa qualification documents</li>
+                <li>Employment visa academic credentials</li>
+                <li>Investor visa financial documentation</li>
+              </ul>
+              <p>We provide same-day translation with MOFA coordination when interviews are imminent.</p>
+            </div>
+          </details>
+
+          <details class="scenario-item" name="scenarios">
+            <summary>
+              <span class="scenario-title">Professional Licensing Deadlines</span>
+              <span class="scenario-arrow">▼</span>
+            </summary>
+            <div class="scenario-content">
+              <p>DHA, DOH, and HAAD require translated credentials for healthcare licensing. DataFlow verification adds complexity with specific formatting requirements.</p>
+              <ul>
+                <li>Medical degree certificates</li>
+                <li>Specialty training certificates</li>
+                <li>Good standing letters</li>
+                <li>Experience certificates with specific duration formats</li>
+              </ul>
+              <p>We understand healthcare licensing requirements and format translations for DataFlow acceptance.</p>
+            </div>
+          </details>
+
+          <details class="scenario-item" name="scenarios">
+            <summary>
+              <span class="scenario-title">Property Transaction Closings</span>
+              <span class="scenario-arrow">▼</span>
+            </summary>
+            <div class="scenario-content">
+              <p>DLD and RERA transactions have tight timelines. Missing translations can delay closings and jeopardize deals.</p>
+              <ul>
+                <li>Sale and Purchase Agreements (SPA)</li>
+                <li>Power of Attorney for property transactions</li>
+                <li>Corporate documents for company-owned properties</li>
+                <li>Trust and will documentation for inheritance cases</li>
+              </ul>
+              <p>We coordinate with law firms and PROs to meet transaction deadlines.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <RelatedServices
+        pageKey="resources"
+        title="Services Featured in Case Studies"
+        showFamily={true}
+        showCrossSilo={true}
+        maxItems={6}
+      />
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container cta-section">
+      <h2>Have a Challenging Situation?</h2>
+      <p>Urgent deadline? Rejected document? Complex attestation chain? Describe your situation and we will tell you exactly how we can help.</p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/971508620217" class="btn btn-primary">
+          <i class="fab fa-whatsapp"></i> Describe Your Situation
+        </a>
+        <a href="/about/credentials/" class="btn btn-secondary">
+          View Our Credentials
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What happens if my translated document gets rejected?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our rejection rescue service identifies the specific issues and delivers a corrected version, usually within 2-4 hours. We analyze the rejection reason and ensure the revised translation meets the exact requirements of the receiving entity."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How fast can you complete urgent translations?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Standard single-page documents can be completed in 60 minutes. Multi-document packages with attestation typically require 24-48 hours. We coordinate with MOFA for same-day attestation when required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is your first-submission acceptance rate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We maintain a 98% first-submission acceptance rate at UAE government offices. This is achieved through our pre-submission review process that catches formatting and terminology issues before documents reach government counters."
+        }
+      }
+    ]
+  })} />
+</BaseLayout>
+
+<style>
+  .hero-section {
+    padding: 8rem 0 4rem;
+    background: var(--primary-color);
+  }
+
+  .breadcrumb {
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    color: #ffffff;
+  }
+
+  .breadcrumb .separator {
+    margin: 0 0.5rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .breadcrumb .current {
+    color: #ffffff;
+  }
+
+  .kicker {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent-coral, #FF1654);
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--accent-coral, #FF1654);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+  }
+
+  .lead-text {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #ffffff;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .intro-text {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .intro-text h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+  }
+
+  .intro-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+  }
+
+  .case-studies-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .demo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .demo-item {
+    background: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 1rem;
+  }
+
+  .demo-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .demo-item h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .demo-item p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .scenarios-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .scenario-item {
+    background: #ffffff;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .scenario-item summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .scenario-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .scenario-title {
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+
+  .scenario-arrow {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    transition: transform 0.2s;
+  }
+
+  .scenario-item[open] .scenario-arrow {
+    transform: rotate(180deg);
+  }
+
+  .scenario-content {
+    padding: 0 1.5rem 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .scenario-content p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin: 1rem 0;
+  }
+
+  .scenario-content ul {
+    margin: 1rem 0;
+    padding-left: 1.25rem;
+  }
+
+  .scenario-content li {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-section {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .cta-section h2 {
+    margin-bottom: 1rem;
+  }
+
+  .cta-section p {
+    margin-bottom: 2rem;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary {
+    background: var(--accent-coral, #FF1654);
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    background: #e0144c;
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background: var(--primary-color);
+    color: #ffffff;
+  }
+
+  .btn-secondary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+
+  .content-block h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+  }
+
+  @media (max-width: 991px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .case-studies-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .demo-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .stats-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .stat-value {
+      font-size: 1.5rem;
+    }
+  }
+</style>
