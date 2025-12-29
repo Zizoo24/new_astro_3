@@ -36,8 +36,10 @@
   --dropdown-radius: 0 0 4px 4px;
   --dropdown-submenu-radius: 4px;
 
-  /* Typography */
-  --dropdown-font-size: 0.95em;
+  /* Typography - Responsive sizes */
+  --dropdown-font-size: 0.9375rem;      /* 15px base - more readable */
+  --dropdown-font-size-lg: 1rem;         /* 16px for large screens */
+  --dropdown-font-size-md: 0.875rem;     /* 14px for medium screens */
   --dropdown-font-weight: 400;
   --dropdown-title-weight: 600;
 
@@ -170,6 +172,24 @@ body.theme-dark {
    SMALLER DESKTOP - Prevent Nav Overlap
    Reduce padding on screens 992px - 1200px
    =========================================== */
+/* Large screens (1400px+) - bigger dropdown text */
+@media (min-width: 1400px) {
+  .dropdown-menu li a {
+    font-size: var(--dropdown-font-size-lg) !important;
+    padding: 10px 20px;
+  }
+  
+  .dropdown-menu .dropdown-header {
+    font-size: 0.8em;
+    padding: 14px 20px 8px;
+  }
+  
+  .dropdown-menu .dropdown-footer {
+    font-size: 0.85em;
+    padding: 12px 20px;
+  }
+}
+
 /* Medium-large desktops (1200-1400px) */
 @media (min-width: 1200px) and (max-width: 1400px) {
   .header-nav-main nav > ul > li > a {
@@ -191,6 +211,12 @@ body.theme-dark {
 
   .header-nav-main nav > ul > li > a .nav-chevron {
     margin-left: 3px;
+  }
+
+  /* Smaller dropdown text on medium screens */
+  .dropdown-menu li a {
+    font-size: var(--dropdown-font-size-md) !important;
+    padding: 7px 16px;
   }
 }
 
