@@ -66,7 +66,7 @@ export const siteConfig = {
   // MOJ Partner Company (executes translations)
   partner: {
     name: 'Arkan Legal Translation',
-    website: 'https://arkanlegaltranslation.ae',
+    website: 'https://arkanlegaltranslation.ae/learn-abt-arkan/',
     phone: '+971507091633',
     email: 'info@arkanlegaltranslation.ae',
     locations: [
