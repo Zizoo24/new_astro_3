@@ -2,6 +2,7 @@
 /**
  * ReviewCard.astro
  * Enhanced testimonial display with outcome tags and verification indicators
+ * Note: Schema.org markup is handled centrally on the reviews page via JSON-LD
  */
 interface Props {
   quote: string;
@@ -45,18 +46,16 @@ const sourceLabels: Record<string, string> = {
 const formattedDate = date ? new Date(date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : null;
 ---
 
-<article class="review-card" itemscope itemtype="https://schema.org/Review">
+<article class="review-card">
   <div class="review-header">
-    <div class="review-rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+    <div class="review-rating" aria-label={`${rating} out of 5 stars`}>
       {Array.from({ length: 5 }).map((_, i) => (
-        <span class={`star ${i < rating ? 'filled' : ''}`}>★</span>
+        <span class={`star ${i < rating ? 'filled' : ''}`} aria-hidden="true">★</span>
       ))}
-      <meta itemprop="ratingValue" content={String(rating)} />
-      <meta itemprop="bestRating" content="5" />
     </div>
     {verified && (
       <span class="verified-badge">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
         </svg>
         Verified
@@ -64,7 +63,7 @@ const formattedDate = date ? new Date(date).toLocaleDateString('en-US', { month:
     )}
   </div>
 
-  <blockquote class="review-quote" itemprop="reviewBody">
+  <blockquote class="review-quote">
     "{quote}"
   </blockquote>
 
@@ -72,7 +71,7 @@ const formattedDate = date ? new Date(date).toLocaleDateString('en-US', { month:
     <div class="review-tags">
       {service && (
         <span class="tag service-tag">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
             <polyline points="14 2 14 8 20 8"/>
           </svg>
@@ -81,7 +80,7 @@ const formattedDate = date ? new Date(date).toLocaleDateString('en-US', { month:
       )}
       {outcome && (
         <span class="tag outcome-tag">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <polyline points="9 11 12 14 22 4"/>
             <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
           </svg>
@@ -92,12 +91,12 @@ const formattedDate = date ? new Date(date).toLocaleDateString('en-US', { month:
   )}
 
   <footer class="review-footer">
-    <div class="review-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
-      <div class="author-avatar">
+    <div class="review-author">
+      <div class="author-avatar" aria-hidden="true">
         {name.charAt(0).toUpperCase()}
       </div>
       <div class="author-info">
-        <span class="author-name" itemprop="name">{name}</span>
+        <span class="author-name">{name}</span>
         <span class="author-role">
           {role}
           {reviewCount && <span class="review-count"> · {reviewCount} reviews</span>}
@@ -105,11 +104,11 @@ const formattedDate = date ? new Date(date).toLocaleDateString('en-US', { month:
       </div>
     </div>
     <div class="review-meta">
-      <span class="review-source" title={sourceLabels[source]}>
+      <span class="review-source" title={sourceLabels[source]} aria-label={sourceLabels[source]}>
         {sourceIcons[source]}
       </span>
       {formattedDate && (
-        <time class="review-date" itemprop="datePublished" datetime={date}>
+        <time class="review-date" datetime={date}>
           {formattedDate}
         </time>
       )}

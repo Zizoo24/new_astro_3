@@ -151,19 +151,44 @@ const reviews = [
 const totalReviews = reviews.length;
 const averageRating = (reviews.reduce((acc, r) => acc + r.rating, 0) / totalReviews).toFixed(1);
 
-// Schema for aggregate rating
-const aggregateRatingSchema = {
+// Consolidated Schema.org JSON-LD for LocalBusiness with reviews
+// This approach avoids "multiple aggregate ratings" and "missing itemReviewed" errors
+const reviewsSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "@id": `${siteConfig.url}/#organization`,
   "name": siteConfig.name,
+  "description": "MOJ-certified legal translation services in Dubai, UAE. Court-accepted translations for visas, contracts, and official documents.",
+  "url": siteConfig.url,
+  "telephone": "+971508620217",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Dubai",
+    "addressRegion": "Dubai",
+    "addressCountry": "AE"
+  },
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": averageRating,
     "reviewCount": totalReviews,
     "bestRating": "5",
     "worstRating": "1"
-  }
+  },
+  "review": reviews.map((review) => ({
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": review.rating,
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "author": {
+      "@type": "Person",
+      "name": review.name
+    },
+    "reviewBody": review.quote,
+    ...(review.date && { "datePublished": review.date })
+  }))
 };
 ---
 
@@ -171,8 +196,8 @@ const aggregateRatingSchema = {
   title={pageTitle}
   description={metaDescription}
 >
-  <!-- Aggregate Rating Schema -->
-  <script type="application/ld+json" set:html={JSON.stringify(aggregateRatingSchema)} />
+  <!-- Single consolidated Schema.org JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(reviewsSchema)} />
 
   <!-- Hero Section -->
   <section class="page-hero reviews-hero">
