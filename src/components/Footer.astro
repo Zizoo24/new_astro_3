@@ -65,7 +65,10 @@ import { siteContact, socialLinks, footerNav } from '../data/navigation';
         <ul>
           <li>
             <i class="fas fa-map-marker-alt"></i>
-            <span>{siteContact.address}</span>
+            <a href="https://maps.app.goo.gl/jz5HjwSF4aktSUrH7" target="_blank" rel="noopener" class="address-link">
+              {siteContact.address}
+              <span class="map-badge">View Map</span>
+            </a>
           </li>
           <li>
             <i class="fas fa-phone"></i>
@@ -298,6 +301,37 @@ import { siteContact, socialLinks, footerNav } from '../data/navigation';
   
   .footer-contact a:hover {
     color: var(--accent-coral, #FF1654);
+  }
+
+  /* Address with Map Link */
+  .address-link {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .map-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent-coral, #FF1654);
+    opacity: 0.9;
+  }
+
+  .map-badge::before {
+    content: '\f35d';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 0.65rem;
+  }
+
+  .address-link:hover .map-badge {
+    opacity: 1;
+    text-decoration: underline;
   }
   
   /* ============================================
