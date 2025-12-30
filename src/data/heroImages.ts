@@ -24,8 +24,39 @@ interface HeroImage {
 /**
  * HERO IMAGE REGISTRY
  * All hero images with metadata for smart assignment
+ *
+ * SEO-OPTIMIZED NAMING CONVENTION:
+ * - Primary keys use SEO-friendly terms
+ * - "authenticated-translation" - for legal/certified translation pages
+ * - "translation-of-degree-certificates" - for academic credential pages
  */
 export const HERO_IMAGES: Record<string, HeroImage> = {
+  // ===== SEO-OPTIMIZED PRIMARY KEYS =====
+
+  // "authenticated translation" - Primary SEO term for legal translation
+  'authenticated-translation': {
+    path: '/assets/images/onedrive/hero/vis-translation.png',
+    alt: 'Authenticated translation services in Dubai - MOJ certified legal document translation',
+    category: 'legal',
+    keywords: ['authenticated translation', 'certified translation', 'legal translation', 'moj certified', 'court documents'],
+    optimized: false,
+    webp: false,
+    sizeKB: 760
+  },
+
+  // "translation of degree certificates" - Primary SEO term for academic translation
+  'translation-of-degree-certificates': {
+    path: '/assets/images/onedrive/hero/cyber-smith.png',
+    alt: 'Translation of degree certificates in Dubai - Academic credential translation for UAE employment',
+    category: 'specialized',
+    keywords: ['translation of degree certificates', 'academic translation', 'degree translation', 'university certificate', 'mohre'],
+    optimized: false,
+    webp: false,
+    sizeKB: 583
+  },
+
+  // ===== ORIGINAL KEYS (aliases) =====
+
   'city-cyber': {
     path: '/assets/images/onedrive/hero/city-cyber.png',
     pathJpgFallback: '/assets/images/hero-city.jpg',
@@ -126,31 +157,31 @@ export const HERO_IMAGES: Record<string, HeroImage> = {
 export const PAGE_HERO_MAP: Record<string, string> = {
   // Homepage
   '/': 'city-cyber',
-  
+
   // About section
   '/about/': 'office-team',
   '/about/translator/': 'ot-man',
   '/about/credentials/': 'office-team',
   '/about/reviews/': 'office-team',
-  
-  // Legal & Corporate Silo
-  '/legal-translation-dubai/': 'vis-translation',
-  '/legal/contracts/': 'vis-translation',
-  '/legal/contracts/nda/': 'vis-translation',
-  '/legal/contracts/spa/': 'vis-translation',
-  '/legal/contracts/mou/': 'vis-translation',
-  '/legal/contracts/lease/': 'vis-translation',
-  '/legal/corporate/': 'vis-translation',
-  '/legal/corporate/moa/': 'vis-translation',
-  '/legal/corporate/resolution/': 'vis-translation',
-  '/legal/corporate/poa/': 'vis-translation',
-  '/legal/corporate/license/': 'vis-translation',
-  '/legal/litigation/': 'vis-translation',
-  '/legal/litigation/verdict/': 'vis-translation',
-  '/legal/litigation/arbitration/': 'vis-translation',
-  '/legal/wills/': 'vis-translation',
-  '/services/legal-translation/': 'vis-translation',
-  
+
+  // Legal & Corporate Silo - Using SEO-optimized "authenticated-translation" key
+  '/legal-translation-dubai/': 'authenticated-translation',
+  '/legal/contracts/': 'authenticated-translation',
+  '/legal/contracts/nda/': 'authenticated-translation',
+  '/legal/contracts/spa/': 'authenticated-translation',
+  '/legal/contracts/mou/': 'authenticated-translation',
+  '/legal/contracts/lease/': 'authenticated-translation',
+  '/legal/corporate/': 'authenticated-translation',
+  '/legal/corporate/moa/': 'authenticated-translation',
+  '/legal/corporate/resolution/': 'authenticated-translation',
+  '/legal/corporate/poa/': 'authenticated-translation',
+  '/legal/corporate/license/': 'authenticated-translation',
+  '/legal/litigation/': 'authenticated-translation',
+  '/legal/litigation/verdict/': 'authenticated-translation',
+  '/legal/litigation/arbitration/': 'authenticated-translation',
+  '/legal/wills/': 'authenticated-translation',
+  '/services/legal-translation/': 'authenticated-translation',
+
   // Personal & Civil Silo
   '/personal-documents/': 'office-team',
   '/personal/vital-records/': 'office-team',
@@ -162,9 +193,10 @@ export const PAGE_HERO_MAP: Record<string, string> = {
   '/personal/immigration/pcc/': 'office-team',
   '/personal/immigration/bank/': 'office-team',
   '/personal/immigration/license/': 'office-team',
-  '/personal/academic/': 'cyber-smith',
-  '/personal/academic/degree/': 'cyber-smith',
-  '/personal/academic/transcripts/': 'cyber-smith',
+  // Academic pages - Using SEO-optimized "translation-of-degree-certificates" key
+  '/personal/academic/': 'translation-of-degree-certificates',
+  '/personal/academic/degree/': 'translation-of-degree-certificates',
+  '/personal/academic/transcripts/': 'translation-of-degree-certificates',
   
   // Attestation Silo
   '/services/attestation/': 'office-team',
