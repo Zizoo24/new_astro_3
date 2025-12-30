@@ -5,6 +5,7 @@ import TrustStrip from '../components/TrustStrip.astro';
 import ProcessSteps from '../components/ProcessSteps.astro';
 import BenefitCards from '../components/BenefitCards.astro';
 import AccordionSection from '../components/AccordionSection.astro';
+import { getOptimizedHeroPath } from '../data/heroImages';
 
 interface SnapshotItem {
   icon: string;
@@ -101,6 +102,12 @@ const {
 // Use Astro.site from config for consistent URL handling
 const siteUrl = Astro.site?.origin || 'https://onlinetranslation.ae';
 
+// Get optimized hero image paths (WebP with PNG fallback)
+const heroImagePaths = heroImage ? getOptimizedHeroPath(heroImage) : null;
+const heroImageWebp = heroImagePaths?.webp || '';
+const heroImageFallback = heroImagePaths?.fallback || heroImage;
+const heroImageAlt = heroImagePaths?.alt || `${heroTitle} service`;
+
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
@@ -188,7 +195,10 @@ const howToSchema = processSteps && processSteps.length > 0 ? {
   <!-- Hero Section -->
   <section class={`section section--hero bg-dark ${heroImage ? 'has-hero-image' : ''}`}>
     {heroImage && (
-      <img src={heroImage} alt={`${heroTitle} service`} class="hero-bg-image" loading="eager" width="1920" height="1080" />
+      <picture>
+        {heroImageWebp && <source srcset={heroImageWebp} type="image/webp" />}
+        <img src={heroImageFallback} alt={heroImageAlt} class="hero-bg-image" loading="eager" width="1920" height="1080" fetchpriority="high" decoding="async" />
+      </picture>
     )}
     {heroImage && <div class="hero-gradient-overlay"></div>}
     <div class="container">
