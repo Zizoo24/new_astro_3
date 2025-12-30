@@ -12,6 +12,7 @@
 
 interface HeroImage {
   path: string;
+  pathWebp?: string;
   pathJpgFallback?: string;
   alt: string;
   category: 'legal' | 'personal' | 'specialized' | 'location' | 'resource' | 'general';
@@ -36,96 +37,105 @@ export const HERO_IMAGES: Record<string, HeroImage> = {
   // "authenticated translation" - Primary SEO term for legal translation
   'authenticated-translation': {
     path: '/assets/images/onedrive/hero/vis-translation.png',
+    pathWebp: '/assets/images/onedrive/hero/vis-translation.webp',
     alt: 'Authenticated translation services in Dubai - MOJ certified legal document translation',
     category: 'legal',
     keywords: ['authenticated translation', 'certified translation', 'legal translation', 'moj certified', 'court documents'],
-    optimized: false,
-    webp: false,
-    sizeKB: 760
+    optimized: true,
+    webp: true,
+    sizeKB: 265
   },
 
   // "translation of degree certificates" - Primary SEO term for academic translation
   'translation-of-degree-certificates': {
     path: '/assets/images/onedrive/hero/cyber-smith.png',
+    pathWebp: '/assets/images/onedrive/hero/cyber-smith.webp',
     alt: 'Translation of degree certificates in Dubai - Academic credential translation for UAE employment',
     category: 'specialized',
     keywords: ['translation of degree certificates', 'academic translation', 'degree translation', 'university certificate', 'mohre'],
-    optimized: false,
-    webp: false,
-    sizeKB: 583
+    optimized: true,
+    webp: true,
+    sizeKB: 261
   },
 
   // ===== ORIGINAL KEYS (aliases) =====
 
   'city-cyber': {
     path: '/assets/images/onedrive/hero/city-cyber.png',
+    pathWebp: '/assets/images/onedrive/hero/city-cyber.webp',
     pathJpgFallback: '/assets/images/hero-city.jpg',
     alt: 'Modern Dubai cityscape with digital overlay representing professional translation services in the UAE',
     category: 'location',
     keywords: ['dubai', 'corporate', 'business', 'city', 'locations', 'uae'],
-    optimized: false, // TODO: Compress from 724KB to ~240KB
-    webp: false, // TODO: Generate WebP version
-    sizeKB: 724
+    optimized: true,
+    webp: true,
+    sizeKB: 212
   },
   
   'medical-cyber': {
     path: '/assets/images/onedrive/hero/medical-cyber.png',
+    pathWebp: '/assets/images/onedrive/hero/medical-cyber.webp',
     alt: 'Medical professional with digital interface representing healthcare translation services for DHA and MOH',
     category: 'specialized',
     keywords: ['medical', 'healthcare', 'dha', 'health', 'doctor', 'hospital'],
-    optimized: false, // TODO: Compress from 691KB to ~230KB
-    webp: false,
-    sizeKB: 691
+    optimized: true,
+    webp: true,
+    sizeKB: 240
   },
   
   'office-team': {
     path: '/assets/images/onedrive/hero/office-team.png',
+    pathWebp: '/assets/images/onedrive/hero/office-team.webp',
     alt: 'Professional translation team working on certified documents in modern Dubai office',
     category: 'general',
     keywords: ['about', 'team', 'personal', 'resources', 'office', 'professional'],
-    optimized: false, // TODO: Compress from 374KB to ~150KB
-    webp: false,
-    sizeKB: 374
+    optimized: true,
+    webp: true,
+    sizeKB: 101
   },
   
   'vis-translation': {
     path: '/assets/images/onedrive/hero/vis-translation.png',
+    pathWebp: '/assets/images/onedrive/hero/vis-translation.webp',
     alt: 'Legal documents and scales of justice representing MOJ certified legal translation services',
     category: 'legal',
     keywords: ['legal', 'court', 'moj', 'certified', 'contract', 'litigation'],
-    optimized: false, // TODO: Compress from 760KB to ~250KB
-    webp: false,
-    sizeKB: 760
+    optimized: true,
+    webp: true,
+    sizeKB: 265
   },
   
   'technical-translation': {
     path: '/assets/images/onedrive/hero/technical-translation.png',
+    pathWebp: '/assets/images/onedrive/hero/technical-translation.webp',
     alt: 'Engineering blueprints and technical specifications for specialized technical translation',
     category: 'specialized',
     keywords: ['technical', 'engineering', 'specifications', 'manual', 'industrial'],
-    optimized: false, // TODO: Compress from 911KB to ~280KB
-    webp: false,
-    sizeKB: 911
+    optimized: true,
+    webp: true,
+    sizeKB: 226
   },
   
   'cyber-smith': {
     path: '/assets/images/onedrive/hero/cyber-smith.png',
+    pathWebp: '/assets/images/onedrive/hero/cyber-smith.webp',
     alt: 'Digital academic environment representing educational document and degree translation',
     category: 'specialized',
     keywords: ['academic', 'education', 'university', 'degrees', 'transcript'],
-    optimized: false, // TODO: Compress from 583KB to ~200KB
-    webp: false,
-    sizeKB: 583
+    optimized: true,
+    webp: true,
+    sizeKB: 261
   },
   
   'ot-man': {
     path: '/assets/images/onedrive/hero/ot-man.png',
+    pathWebp: '/assets/images/onedrive/hero/ot-man.webp',
     alt: 'Professional certified translator working with multilingual legal documents',
     category: 'general',
     keywords: ['translator', 'professional', 'bio', 'expert', 'multilingual'],
-    optimized: false, // TODO: Compress from 519KB to ~180KB
-    webp: false,
-    sizeKB: 519
+    optimized: true,
+    webp: true,
+    sizeKB: 133
   },
   
   // Legacy/fallback images (already in use)
@@ -275,6 +285,57 @@ export const PAGE_HERO_MAP: Record<string, string> = {
  */
 export function getHeroImage(key: string): HeroImage | null {
   return HERO_IMAGES[key] || null;
+}
+
+/**
+ * Helper: Get optimized image path (WebP if available, PNG fallback)
+ * Accepts either a key from HERO_IMAGES or a full path to an image
+ */
+export function getOptimizedHeroPath(keyOrPath: string): { webp?: string; fallback: string; alt: string } | null {
+  // First, try direct key lookup
+  const image = HERO_IMAGES[keyOrPath];
+  if (image) {
+    return {
+      webp: image.pathWebp,
+      fallback: image.path,
+      alt: image.alt
+    };
+  }
+
+  // If it's a path (starts with /), find the matching image by path
+  if (keyOrPath.startsWith('/')) {
+    const matchingEntry = Object.entries(HERO_IMAGES).find(([_, img]) => img.path === keyOrPath);
+    if (matchingEntry) {
+      const [_, matchedImage] = matchingEntry;
+      return {
+        webp: matchedImage.pathWebp,
+        fallback: matchedImage.path,
+        alt: matchedImage.alt
+      };
+    }
+
+    // If no match in registry, try to generate WebP path from PNG/JPG path
+    if (keyOrPath.endsWith('.png') || keyOrPath.endsWith('.jpg') || keyOrPath.endsWith('.jpeg')) {
+      const webpPath = keyOrPath.replace(/\.(png|jpg|jpeg)$/, '.webp');
+      return {
+        webp: webpPath,
+        fallback: keyOrPath,
+        alt: 'Hero image'
+      };
+    }
+  }
+
+  return null;
+}
+
+/**
+ * Helper: Get optimized image path for a page URL
+ */
+export function getHeroImagePathsForPage(pathname: string): { webp?: string; fallback: string; alt: string } | null {
+  const imageKey = PAGE_HERO_MAP[pathname];
+  if (!imageKey) return null;
+
+  return getOptimizedHeroPath(imageKey);
 }
 
 /**
