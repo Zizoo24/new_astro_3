@@ -33,6 +33,8 @@ interface Props {
   serviceType?: string;
   faqs?: FAQ[];
   // Hero optimization props
+  /** Hero background image key from heroImages.ts */
+  heroImage?: string;
   /** Pre-title badge/eyebrow text (e.g., "LEGAL TRANSLATION HUB") */
   heroBadge?: string;
   /** Show scroll indicator at bottom of hero */
@@ -54,6 +56,7 @@ const {
   breadcrumbs,
   serviceType = 'Translation Service',
   faqs = [],
+  heroImage = '',
   heroBadge = '',
   showScrollIndicator = true,
   showRating = true,
@@ -122,7 +125,11 @@ const faqSchema = faqs.length > 0 ? {
     {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
   </Fragment>
 
-  <section class="category-hero section--hero" data-theme="dark">
+  <section class={`category-hero section--hero ${heroImage ? 'has-hero-image' : ''}`} data-theme="dark">
+    {heroImage && (
+      <img src={heroImage} alt={`${heroTitle} service`} class="hero-bg-image" loading="eager" width="1920" height="1080" />
+    )}
+    {heroImage && <div class="hero-gradient-overlay"></div>}
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         {breadcrumbs.map((crumb, i) => (
@@ -224,6 +231,38 @@ const faqSchema = faqs.length > 0 ? {
   .category-hero {
     padding: 8rem 0 4rem;
     background: var(--primary-color);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .category-hero.has-hero-image {
+    min-height: 70vh;
+  }
+
+  .category-hero .hero-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+  }
+
+  .category-hero .hero-gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(14, 43, 72, 0.92) 0%, rgba(14, 43, 72, 0.75) 50%, rgba(14, 43, 72, 0.85) 100%);
+    z-index: 1;
+  }
+
+  .category-hero .container {
+    position: relative;
+    z-index: 2;
   }
   
   .category-hero .breadcrumb {
