@@ -112,17 +112,22 @@
 
 /* ============================================
    OPEN STATE - Show Answer
+   Supports both JS-toggled (.is-open) and
+   native <details> element ([open] attribute)
    ============================================ */
-.faq-item.is-open .faq-answer {
+.faq-item.is-open .faq-answer,
+details.faq-item[open] .faq-answer {
     max-height: 1000px;
     opacity: 1;
 }
 
-.faq-item.is-open .faq-question {
+.faq-item.is-open .faq-question,
+details.faq-item[open] .faq-question {
     color: var(--accent-coral);
 }
 
-.faq-item.is-open .faq-question i {
+.faq-item.is-open .faq-question i,
+details.faq-item[open] .faq-question i {
     transform: rotate(180deg);
 }
 
@@ -175,7 +180,9 @@ body.theme-dark .faq-question {
 [data-theme="dark"] .faq-question:hover,
 body.theme-dark .faq-question:hover,
 [data-theme="dark"] .faq-item.is-open .faq-question,
-body.theme-dark .faq-item.is-open .faq-question {
+body.theme-dark .faq-item.is-open .faq-question,
+[data-theme="dark"] details.faq-item[open] .faq-question,
+body.theme-dark details.faq-item[open] .faq-question {
     color: var(--accent-coral);
 }
 
@@ -267,7 +274,8 @@ body.theme-dark .faq-question:active {
     border: 2px solid var(--border-light);
 }
 
-.faq-list--bordered .faq-item.is-open {
+.faq-list--bordered .faq-item.is-open,
+.faq-list--bordered details.faq-item[open] {
     border-color: var(--accent-coral);
 }
 
