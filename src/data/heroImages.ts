@@ -1,0 +1,311 @@
+/**
+ * heroImages.ts - Master Hero Image Registry
+ * Single source of truth for all hero image assignments
+ * 
+ * USAGE:
+ * In ServiceLayout pages: heroImage: "city-cyber"
+ * The system will auto-resolve to the full WebP path with JPG fallback
+ * 
+ * CREATED: 2024-12-30
+ * STATUS: Phase 0 - Foundation
+ */
+
+interface HeroImage {
+  path: string;
+  pathJpgFallback?: string;
+  alt: string;
+  category: 'legal' | 'personal' | 'specialized' | 'location' | 'resource' | 'general';
+  keywords: string[];
+  optimized: boolean;
+  webp: boolean;
+  sizeKB: number;
+}
+
+/**
+ * HERO IMAGE REGISTRY
+ * All hero images with metadata for smart assignment
+ */
+export const HERO_IMAGES: Record<string, HeroImage> = {
+  'city-cyber': {
+    path: '/assets/images/onedrive/hero/city-cyber.png',
+    pathJpgFallback: '/assets/images/hero-city.jpg',
+    alt: 'Modern Dubai cityscape with digital overlay representing professional translation services in the UAE',
+    category: 'location',
+    keywords: ['dubai', 'corporate', 'business', 'city', 'locations', 'uae'],
+    optimized: false, // TODO: Compress from 724KB to ~240KB
+    webp: false, // TODO: Generate WebP version
+    sizeKB: 724
+  },
+  
+  'medical-cyber': {
+    path: '/assets/images/onedrive/hero/medical-cyber.png',
+    alt: 'Medical professional with digital interface representing healthcare translation services for DHA and MOH',
+    category: 'specialized',
+    keywords: ['medical', 'healthcare', 'dha', 'health', 'doctor', 'hospital'],
+    optimized: false, // TODO: Compress from 691KB to ~230KB
+    webp: false,
+    sizeKB: 691
+  },
+  
+  'office-team': {
+    path: '/assets/images/onedrive/hero/office-team.png',
+    alt: 'Professional translation team working on certified documents in modern Dubai office',
+    category: 'general',
+    keywords: ['about', 'team', 'personal', 'resources', 'office', 'professional'],
+    optimized: false, // TODO: Compress from 374KB to ~150KB
+    webp: false,
+    sizeKB: 374
+  },
+  
+  'vis-translation': {
+    path: '/assets/images/onedrive/hero/vis-translation.png',
+    alt: 'Legal documents and scales of justice representing MOJ certified legal translation services',
+    category: 'legal',
+    keywords: ['legal', 'court', 'moj', 'certified', 'contract', 'litigation'],
+    optimized: false, // TODO: Compress from 760KB to ~250KB
+    webp: false,
+    sizeKB: 760
+  },
+  
+  'technical-translation': {
+    path: '/assets/images/onedrive/hero/technical-translation.png',
+    alt: 'Engineering blueprints and technical specifications for specialized technical translation',
+    category: 'specialized',
+    keywords: ['technical', 'engineering', 'specifications', 'manual', 'industrial'],
+    optimized: false, // TODO: Compress from 911KB to ~280KB
+    webp: false,
+    sizeKB: 911
+  },
+  
+  'cyber-smith': {
+    path: '/assets/images/onedrive/hero/cyber-smith.png',
+    alt: 'Digital academic environment representing educational document and degree translation',
+    category: 'specialized',
+    keywords: ['academic', 'education', 'university', 'degrees', 'transcript'],
+    optimized: false, // TODO: Compress from 583KB to ~200KB
+    webp: false,
+    sizeKB: 583
+  },
+  
+  'ot-man': {
+    path: '/assets/images/onedrive/hero/ot-man.png',
+    alt: 'Professional certified translator working with multilingual legal documents',
+    category: 'general',
+    keywords: ['translator', 'professional', 'bio', 'expert', 'multilingual'],
+    optimized: false, // TODO: Compress from 519KB to ~180KB
+    webp: false,
+    sizeKB: 519
+  },
+  
+  // Legacy/fallback images (already in use)
+  'hero-city': {
+    path: '/assets/images/hero-city.jpg',
+    alt: 'Dubai skyline representing translation services across the UAE',
+    category: 'location',
+    keywords: ['dubai', 'city', 'skyline', 'uae'],
+    optimized: true,
+    webp: false,
+    sizeKB: 245
+  },
+  
+  'hero-team': {
+    path: '/assets/images/hero-team.jpg',
+    alt: 'Translation team in Dubai office providing certified document services',
+    category: 'general',
+    keywords: ['team', 'office', 'professional'],
+    optimized: true,
+    webp: false,
+    sizeKB: 176
+  },
+};
+
+/**
+ * PAGE-SPECIFIC HERO IMAGE MAPPINGS
+ * Explicit assignments for critical pages
+ */
+export const PAGE_HERO_MAP: Record<string, string> = {
+  // Homepage
+  '/': 'city-cyber',
+  
+  // About section
+  '/about/': 'office-team',
+  '/about/translator/': 'ot-man',
+  '/about/credentials/': 'office-team',
+  '/about/reviews/': 'office-team',
+  
+  // Legal & Corporate Silo
+  '/legal-translation-dubai/': 'vis-translation',
+  '/legal/contracts/': 'vis-translation',
+  '/legal/contracts/nda/': 'vis-translation',
+  '/legal/contracts/spa/': 'vis-translation',
+  '/legal/contracts/mou/': 'vis-translation',
+  '/legal/contracts/lease/': 'vis-translation',
+  '/legal/corporate/': 'vis-translation',
+  '/legal/corporate/moa/': 'vis-translation',
+  '/legal/corporate/resolution/': 'vis-translation',
+  '/legal/corporate/poa/': 'vis-translation',
+  '/legal/corporate/license/': 'vis-translation',
+  '/legal/litigation/': 'vis-translation',
+  '/legal/litigation/verdict/': 'vis-translation',
+  '/legal/litigation/arbitration/': 'vis-translation',
+  '/legal/wills/': 'vis-translation',
+  '/services/legal-translation/': 'vis-translation',
+  
+  // Personal & Civil Silo
+  '/personal-documents/': 'office-team',
+  '/personal/vital-records/': 'office-team',
+  '/personal/vital-records/birth/': 'office-team',
+  '/personal/vital-records/marriage/': 'office-team',
+  '/personal/vital-records/divorce/': 'office-team',
+  '/personal/vital-records/death/': 'office-team',
+  '/personal/immigration/': 'office-team',
+  '/personal/immigration/pcc/': 'office-team',
+  '/personal/immigration/bank/': 'office-team',
+  '/personal/immigration/license/': 'office-team',
+  '/personal/academic/': 'cyber-smith',
+  '/personal/academic/degree/': 'cyber-smith',
+  '/personal/academic/transcripts/': 'cyber-smith',
+  
+  // Attestation Silo
+  '/services/attestation/': 'office-team',
+  '/services/attestation/india/': 'office-team',
+  '/services/attestation/uk/': 'office-team',
+  '/services/attestation/us/': 'office-team',
+  '/services/attestation/philippines/': 'office-team',
+  '/services/attestation/pakistan/': 'office-team',
+  '/services/attestation/canada/': 'office-team',
+  '/services/attestation/mofa/': 'office-team',
+  '/services/attestation/embassy/': 'office-team',
+  '/services/attestation/apostille/': 'office-team',
+  
+  // Specialized Silo
+  '/specialized-translation/': 'technical-translation',
+  '/specialized/medical/': 'medical-cyber',
+  '/specialized/medical/dha-dataflow/': 'medical-cyber',
+  '/specialized/technical/': 'technical-translation',
+  '/specialized/hospitality/': 'city-cyber',
+  '/specialized/digital/': 'cyber-smith',
+  '/specialized/financial/': 'city-cyber',
+  
+  // Special Services
+  '/services/golden-visa-translation/': 'office-team',
+  '/services/certificate-translation/': 'office-team',
+  '/services/corporate-translation/': 'city-cyber',
+  
+  // Locations Silo
+  '/locations/': 'city-cyber',
+  '/locations/dubai/': 'city-cyber',
+  '/locations/dubai/palm-jumeirah/': 'city-cyber',
+  '/locations/dubai/difc/': 'city-cyber',
+  '/locations/dubai/jlt/': 'city-cyber',
+  '/locations/dubai/business-bay/': 'city-cyber',
+  '/locations/dubai/downtown/': 'city-cyber',
+  '/locations/dubai/marina/': 'city-cyber',
+  '/locations/abu-dhabi/': 'city-cyber',
+  '/locations/sharjah/': 'city-cyber',
+  
+  // Resources Silo
+  '/resources/': 'office-team',
+  '/resources/moj-vs-certified/': 'vis-translation',
+  '/resources/authenticated-translation/': 'office-team',
+  '/resources/pricing-guide/': 'office-team',
+  '/resources/document-checklist/': 'office-team',
+  '/resources/attestation-guide/': 'office-team',
+  '/resources/golden-visa-checklist/': 'office-team',
+  '/resources/faq/': 'office-team',
+  '/resources/turnaround-times/': 'office-team',
+  '/resources/case-studies/': 'office-team',
+  
+  // Language Pages
+  '/hindi/': 'office-team',
+  '/urdu/': 'office-team',
+  '/tagalog/': 'office-team',
+  '/malayalam/': 'office-team',
+  '/bengali/': 'office-team',
+  '/chinese/': 'office-team',
+  '/russian/': 'office-team',
+  '/french/': 'office-team',
+  '/farsi/': 'office-team',
+  
+  // Industry Pages
+  '/industries/': 'city-cyber',
+  '/industries/legal/': 'vis-translation',
+  '/industries/healthcare/': 'medical-cyber',
+  '/industries/real-estate/': 'city-cyber',
+  '/industries/e-commerce/': 'cyber-smith',
+  
+  // Contact
+  '/contact/': 'office-team',
+};
+
+/**
+ * Helper: Get hero image data by key
+ */
+export function getHeroImage(key: string): HeroImage | null {
+  return HERO_IMAGES[key] || null;
+}
+
+/**
+ * Helper: Get hero image for current page URL
+ * Falls back to category-based matching if no explicit mapping
+ */
+export function getHeroImageForPage(pathname: string, category?: string): HeroImage | null {
+  // Try explicit page mapping first
+  const imageKey = PAGE_HERO_MAP[pathname];
+  if (imageKey) {
+    return HERO_IMAGES[imageKey];
+  }
+  
+  // Fallback to category-based matching
+  if (category) {
+    const matches = Object.values(HERO_IMAGES).filter(img => img.category === category);
+    return matches.length > 0 ? matches[0] : null;
+  }
+  
+  // Default fallback
+  return HERO_IMAGES['office-team'];
+}
+
+/**
+ * Helper: Check if image needs optimization
+ */
+export function needsOptimization(key: string): boolean {
+  const image = HERO_IMAGES[key];
+  return image ? !image.optimized || !image.webp : false;
+}
+
+/**
+ * Helper: Get all images that need optimization
+ */
+export function getUnoptimizedImages(): Array<{ key: string; image: HeroImage }> {
+  return Object.entries(HERO_IMAGES)
+    .filter(([_, img]) => !img.optimized || !img.webp)
+    .map(([key, image]) => ({ key, image }));
+}
+
+/**
+ * Helper: Get optimization stats
+ */
+export function getOptimizationStats() {
+  const total = Object.keys(HERO_IMAGES).length;
+  const optimized = Object.values(HERO_IMAGES).filter(img => img.optimized && img.webp).length;
+  const totalSize = Object.values(HERO_IMAGES).reduce((sum, img) => sum + img.sizeKB, 0);
+  const targetSize = Object.values(HERO_IMAGES).reduce((sum, img) => {
+    if (img.optimized) return sum + img.sizeKB;
+    // Target: ~35% of original for WebP
+    return sum + (img.sizeKB * 0.35);
+  }, 0);
+  
+  return {
+    total,
+    optimized,
+    pending: total - optimized,
+    currentSizeMB: (totalSize / 1024).toFixed(2),
+    targetSizeMB: (targetSize / 1024).toFixed(2),
+    savingsMB: ((totalSize - targetSize) / 1024).toFixed(2),
+    percentageReduction: (((totalSize - targetSize) / totalSize) * 100).toFixed(1)
+  };
+}
+
+// Export stats for monitoring
+export const optimizationStats = getOptimizationStats();
