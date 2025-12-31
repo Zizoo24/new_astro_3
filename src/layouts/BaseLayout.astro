@@ -153,6 +153,9 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Preload critical font (Montserrat Bold for hero headings) -->
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="https://fonts.gstatic.com/s/montserrat/v29/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y.woff2">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Font Awesome - load async to not block render -->
@@ -185,20 +188,25 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
   <link rel="stylesheet" href="/styles/mobile-ios.css" media="(max-width: 991px)">
   <link rel="stylesheet" href="/styles/mobile-android.css" media="(max-width: 991px)">
 
-  <!-- COMPONENTS & POLISH -->
-  <link rel="stylesheet" href="/styles/footer-redesign.css">
+  <!-- COMPONENTS & POLISH - Critical (above fold) -->
   <link rel="stylesheet" href="/styles/trust-bar.css">
   <link rel="stylesheet" href="/styles/dark-section-scoping.css">
   <link rel="stylesheet" href="/styles/dark-mode-tokenized.css">
   <link rel="stylesheet" href="/styles/hero-intro-optimized.css">
   <link rel="stylesheet" href="/styles/hero-optimization.css">
-  <link rel="stylesheet" href="/styles/faq-accordion.css">
 
   <!-- RESPONSIVE LAYOUTS - Desktop Dashboard / Mobile Task Runner -->
   <link rel="stylesheet" href="/styles/responsive-layouts.css">
 
-  <!-- MICRO-CUES - Scroll indicator, progress bar, reveal animations -->
-  <link rel="stylesheet" href="/styles/micro-cues.css">
+  <!-- DEFERRED CSS - Below-fold components (non-blocking) -->
+  <link rel="stylesheet" href="/styles/footer-redesign.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/styles/faq-accordion.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/styles/micro-cues.css" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="/styles/footer-redesign.css">
+    <link rel="stylesheet" href="/styles/faq-accordion.css">
+    <link rel="stylesheet" href="/styles/micro-cues.css">
+  </noscript>
 
   <!-- ACCESSIBILITY - Contrast fixes (loads last to override) -->
   <link rel="stylesheet" href="/styles/contrast-fixes.css">
@@ -237,26 +245,72 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
   <script defer src="/scripts/navigation-v2.js"></script>
   <script defer src="/scripts/subsection-menu.js"></script>
   <script defer src="/scripts/search-index.js"></script>
-  <script defer src="/scripts/form-handler.js"></script>
-  <script defer src="/scripts/testimonials-carousel.js"></script>
+
+  <!-- Conditionally loaded scripts (Phase 4 optimization) -->
+  <script is:inline>
+    // Lazy load form handler only if form exists
+    document.addEventListener('DOMContentLoaded', function() {
+      if (document.querySelector('form#contactForm, form.contact-form')) {
+        var s = document.createElement('script');
+        s.src = '/scripts/form-handler.js';
+        document.body.appendChild(s);
+      }
+    });
+    // Lazy load carousel only if carousel exists
+    if (document.querySelector('.testimonials-carousel, .testimonial-slider')) {
+      var s = document.createElement('script');
+      s.src = '/scripts/testimonials-carousel.js';
+      document.body.appendChild(s);
+    }
+  </script>
   <script defer src="/scripts/micro-cues.js"></script>
 
-  <!-- Chatbase Chat Widget - Desktop Only -->
+  <!-- Chatbase Chat Widget - Desktop Only (Deferred until interaction) -->
   <script is:inline>
     (function() {
-      // Only load on desktop (992px+ matches the site's desktop breakpoint)
+      // Only load on desktop (992px+) and defer until user interaction
       if (window.innerWidth >= 992) {
-        (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...args)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(args)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...a)=>target(prop,...a)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="XHyFbKkbLOseA1xEcMAm6";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+        var chatbaseLoaded = false;
+        function loadChatbase() {
+          if (chatbaseLoaded) return;
+          chatbaseLoaded = true;
+          if(!window.chatbase||window.chatbase("getState")!=="initialized"){
+            window.chatbase=(...args)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(args)};
+            window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...a)=>target(prop,...a)}})
+          }
+          var script=document.createElement("script");
+          script.src="https://www.chatbase.co/embed.min.js";
+          script.id="XHyFbKkbLOseA1xEcMAm6";
+          script.domain="www.chatbase.co";
+          document.body.appendChild(script);
+        }
+        // Load on user interaction or after 5s idle
+        ['scroll','click','touchstart','mousemove'].forEach(function(evt){
+          window.addEventListener(evt, loadChatbase, {once:true,passive:true});
+        });
+        setTimeout(loadChatbase, 5000);
       }
     })();
   </script>
 
-  <!-- ClickRank AI SEO -->
+  <!-- ClickRank AI SEO (Deferred until interaction) -->
   <script is:inline>
-    var clickRankAi = document.createElement("script");
-    clickRankAi.src = "https://js.clickrank.ai/seo/2b65fd43-0b12-4d06-b92f-6cfa7699d947/script?" + new Date().getTime();
-    clickRankAi.async = true;
-    document.head.appendChild(clickRankAi);
+    (function() {
+      var clickRankLoaded = false;
+      function loadClickRank() {
+        if (clickRankLoaded) return;
+        clickRankLoaded = true;
+        var s = document.createElement("script");
+        s.src = "https://js.clickrank.ai/seo/2b65fd43-0b12-4d06-b92f-6cfa7699d947/script?" + new Date().getTime();
+        s.async = true;
+        document.head.appendChild(s);
+      }
+      // Load on user interaction or after 5s idle
+      ['scroll','click','touchstart','mousemove'].forEach(function(evt){
+        window.addEventListener(evt, loadClickRank, {once:true,passive:true});
+      });
+      setTimeout(loadClickRank, 5000);
+    })();
   </script>
 
   <SpeedInsights />
