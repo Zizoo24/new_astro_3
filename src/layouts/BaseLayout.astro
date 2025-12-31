@@ -245,8 +245,24 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
   <script defer src="/scripts/navigation-v2.js"></script>
   <script defer src="/scripts/subsection-menu.js"></script>
   <script defer src="/scripts/search-index.js"></script>
-  <script defer src="/scripts/form-handler.js"></script>
-  <script defer src="/scripts/testimonials-carousel.js"></script>
+
+  <!-- Conditionally loaded scripts (Phase 4 optimization) -->
+  <script is:inline>
+    // Lazy load form handler only if form exists
+    document.addEventListener('DOMContentLoaded', function() {
+      if (document.querySelector('form#contactForm, form.contact-form')) {
+        var s = document.createElement('script');
+        s.src = '/scripts/form-handler.js';
+        document.body.appendChild(s);
+      }
+    });
+    // Lazy load carousel only if carousel exists
+    if (document.querySelector('.testimonials-carousel, .testimonial-slider')) {
+      var s = document.createElement('script');
+      s.src = '/scripts/testimonials-carousel.js';
+      document.body.appendChild(s);
+    }
+  </script>
   <script defer src="/scripts/micro-cues.js"></script>
 
   <!-- Chatbase Chat Widget - Desktop Only (Deferred until interaction) -->

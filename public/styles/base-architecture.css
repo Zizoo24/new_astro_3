@@ -1704,3 +1704,49 @@ body.theme-dark .ot-metric-note {
         transition: transform 0.15s ease, box-shadow 0.15s ease !important;
     }
 }
+
+/* ============================================
+   PHASE 6: Image Aspect Ratios
+   Prevents layout shift from images loading
+   ============================================ */
+
+/* Service card images - 4:3 aspect ratio */
+.service-card-v2 .card-image,
+.card-image {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+}
+
+.service-card-v2 .card-image img,
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Hero background images - 16:9 on desktop, taller on mobile */
+.hero-bg-image {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .hero-bg-image {
+        aspect-ratio: 4 / 3;
+    }
+}
+
+/* Trust logos - maintain square aspect */
+.trust-logo img,
+.authority-logo img {
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+}
+
+/* Team/about images */
+.about-image img {
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+}

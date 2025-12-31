@@ -201,3 +201,72 @@ body.theme-dark .sidebar-menu span:not(.brand-suffix),
 [data-theme="dark"] .sidebar-menu span:not(.brand-suffix) {
     color: #ffffff !important;
 }
+
+/* ============================================
+   PHASE 5: ACCESSIBILITY IMPROVEMENTS
+   Touch targets, link visibility, heading fixes
+   ============================================ */
+
+/* Links - Not just color differentiation (WCAG 2.1 1.4.1) */
+article a:not(.btn):not(.card-link):not(.service-card-v2):not([class*="cta"]),
+.content a:not(.btn):not([class*="cta"]),
+.faq-answer a,
+.hero-intro a {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+}
+
+article a:not(.btn):hover,
+.content a:not(.btn):hover,
+.faq-answer a:hover {
+    text-decoration-thickness: 2px;
+}
+
+/* Touch targets - minimum 44x44px (WCAG 2.1 2.5.5) */
+.footer-bar .footer-item,
+.mobile-action-bar button,
+.mobile-action-bar a,
+.sidebar-menu a,
+.sidebar-menu button,
+nav a,
+.faq-question {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Ensure card touch targets are adequate */
+.overlap-card,
+.service-card-v2,
+.specialist-card,
+.why-card {
+    min-height: 44px;
+}
+
+/* Skip link visibility */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.skip-link:focus {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: auto;
+    height: auto;
+    padding: 12px 24px;
+    background: #0E2B48;
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
