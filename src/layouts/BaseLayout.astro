@@ -153,6 +153,9 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Preload critical font (Montserrat Bold for hero headings) -->
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="https://fonts.gstatic.com/s/montserrat/v29/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y.woff2">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Font Awesome - load async to not block render -->
@@ -185,20 +188,25 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
   <link rel="stylesheet" href="/styles/mobile-ios.css" media="(max-width: 991px)">
   <link rel="stylesheet" href="/styles/mobile-android.css" media="(max-width: 991px)">
 
-  <!-- COMPONENTS & POLISH -->
-  <link rel="stylesheet" href="/styles/footer-redesign.css">
+  <!-- COMPONENTS & POLISH - Critical (above fold) -->
   <link rel="stylesheet" href="/styles/trust-bar.css">
   <link rel="stylesheet" href="/styles/dark-section-scoping.css">
   <link rel="stylesheet" href="/styles/dark-mode-tokenized.css">
   <link rel="stylesheet" href="/styles/hero-intro-optimized.css">
   <link rel="stylesheet" href="/styles/hero-optimization.css">
-  <link rel="stylesheet" href="/styles/faq-accordion.css">
 
   <!-- RESPONSIVE LAYOUTS - Desktop Dashboard / Mobile Task Runner -->
   <link rel="stylesheet" href="/styles/responsive-layouts.css">
 
-  <!-- MICRO-CUES - Scroll indicator, progress bar, reveal animations -->
-  <link rel="stylesheet" href="/styles/micro-cues.css">
+  <!-- DEFERRED CSS - Below-fold components (non-blocking) -->
+  <link rel="stylesheet" href="/styles/footer-redesign.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/styles/faq-accordion.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/styles/micro-cues.css" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="/styles/footer-redesign.css">
+    <link rel="stylesheet" href="/styles/faq-accordion.css">
+    <link rel="stylesheet" href="/styles/micro-cues.css">
+  </noscript>
 
   <!-- ACCESSIBILITY - Contrast fixes (loads last to override) -->
   <link rel="stylesheet" href="/styles/contrast-fixes.css">
