@@ -10,6 +10,19 @@ export default defineConfig({
     prefetchAll: true,
     defaultStrategy: 'viewport'
   },
+  image: {
+    // Use Sharp for image optimization (Astro default)
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+      config: {
+        limitInputPixels: false,
+      },
+    },
+    // Default quality for processed images
+    quality: 80,
+    // Formats to generate
+    format: ['webp'],
+  },
   integrations: [
     sitemap({
       changefreq: 'weekly',

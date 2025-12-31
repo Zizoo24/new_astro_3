@@ -184,6 +184,9 @@ const howToSchema = processSteps && processSteps.length > 0 ? {
 <BaseLayout title={title} description={description} canonical={canonical}>
   <Fragment slot="head">
     {keywords && <meta name="keywords" content={keywords} />}
+    {/* Preload hero image for faster LCP */}
+    {heroImageWebp && <link rel="preload" as="image" type="image/webp" href={heroImageWebp} fetchpriority="high" />}
+    {!heroImageWebp && heroImageFallback && <link rel="preload" as="image" href={heroImageFallback} fetchpriority="high" />}
     <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
     {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
     {howToSchema && <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />}
