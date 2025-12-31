@@ -241,22 +241,52 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
   <script defer src="/scripts/testimonials-carousel.js"></script>
   <script defer src="/scripts/micro-cues.js"></script>
 
-  <!-- Chatbase Chat Widget - Desktop Only -->
+  <!-- Chatbase Chat Widget - Desktop Only (Deferred until interaction) -->
   <script is:inline>
     (function() {
-      // Only load on desktop (992px+ matches the site's desktop breakpoint)
+      // Only load on desktop (992px+) and defer until user interaction
       if (window.innerWidth >= 992) {
-        (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...args)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(args)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...a)=>target(prop,...a)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="XHyFbKkbLOseA1xEcMAm6";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+        var chatbaseLoaded = false;
+        function loadChatbase() {
+          if (chatbaseLoaded) return;
+          chatbaseLoaded = true;
+          if(!window.chatbase||window.chatbase("getState")!=="initialized"){
+            window.chatbase=(...args)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(args)};
+            window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...a)=>target(prop,...a)}})
+          }
+          var script=document.createElement("script");
+          script.src="https://www.chatbase.co/embed.min.js";
+          script.id="XHyFbKkbLOseA1xEcMAm6";
+          script.domain="www.chatbase.co";
+          document.body.appendChild(script);
+        }
+        // Load on user interaction or after 5s idle
+        ['scroll','click','touchstart','mousemove'].forEach(function(evt){
+          window.addEventListener(evt, loadChatbase, {once:true,passive:true});
+        });
+        setTimeout(loadChatbase, 5000);
       }
     })();
   </script>
 
-  <!-- ClickRank AI SEO -->
+  <!-- ClickRank AI SEO (Deferred until interaction) -->
   <script is:inline>
-    var clickRankAi = document.createElement("script");
-    clickRankAi.src = "https://js.clickrank.ai/seo/2b65fd43-0b12-4d06-b92f-6cfa7699d947/script?" + new Date().getTime();
-    clickRankAi.async = true;
-    document.head.appendChild(clickRankAi);
+    (function() {
+      var clickRankLoaded = false;
+      function loadClickRank() {
+        if (clickRankLoaded) return;
+        clickRankLoaded = true;
+        var s = document.createElement("script");
+        s.src = "https://js.clickrank.ai/seo/2b65fd43-0b12-4d06-b92f-6cfa7699d947/script?" + new Date().getTime();
+        s.async = true;
+        document.head.appendChild(s);
+      }
+      // Load on user interaction or after 5s idle
+      ['scroll','click','touchstart','mousemove'].forEach(function(evt){
+        window.addEventListener(evt, loadClickRank, {once:true,passive:true});
+      });
+      setTimeout(loadClickRank, 5000);
+    })();
   </script>
 
   <SpeedInsights />
