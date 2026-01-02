@@ -15,6 +15,8 @@ interface Props {
   noindex?: boolean;
   /** Set to true to add nofollow meta tag */
   nofollow?: boolean;
+  /** LCP image to preload for this page */
+  lcpImage?: string;
 }
 
 const {
@@ -24,7 +26,8 @@ const {
   ogImage = '/assets/images/og-image.jpg',
   isHomepage = false,
   noindex = false,
-  nofollow = false
+  nofollow = false,
+  lcpImage
 } = Astro.props;
 
 // Generate robots meta content based on props
@@ -38,23 +41,32 @@ const robotsContent = (() => {
 // Use Astro.site from config for consistent URL handling
 const siteUrl = Astro.site?.origin || 'https://onlinetranslation.ae';
 const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${canonical}`;
+
+// Critical CSS - inlined for fastest paint
+const criticalCSS = `*,*::before,*::after{box-sizing:border-box}html{font-size:80%;scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.6;color:#2d3748;background:#fff}:root{--surface-base:#fff;--surface-navy:#0E2B48;--surface-navy-dark:#072035;--text-heading:#0E2B48;--text-body:#2d3748;--text-on-dark:#f4f7fc;--accent-coral:#FF1654;--container-max:1200px;--gutter:clamp(16px,2vw,24px);--section-py:clamp(40px,5vw,80px);--fs-hero:clamp(2.5rem,1.6rem + 2.5vw,4.5rem);--fs-xl:clamp(1.75rem,1.3rem + 1.2vw,2.5rem);--fs-lg:clamp(1.25rem,1rem + 0.6vw,1.5rem);--fs-md:clamp(1rem,0.9rem + 0.35vw,1.125rem)}.skip-link{position:absolute;top:-40px;left:0;background:#0E2B48;color:#fff;padding:8px 16px;z-index:9999;transition:top .2s}.skip-link:focus{top:0}.container{width:100%;max-width:var(--container-max);margin:0 auto;padding:0 var(--gutter)}.porto-header{position:sticky;top:0;z-index:1000;background:var(--surface-navy)}.porto-top-bar{background:#FF1654;padding:6px 0;font-size:.75rem;color:#fff}.porto-main-nav{background:var(--surface-navy);padding:12px 0}.porto-logo img{height:40px;width:auto}.porto-nav-links{display:none}@media(min-width:992px){.porto-nav-links{display:flex;gap:1.5rem}}.hero-section{position:relative;min-height:80vh;display:flex;align-items:center;overflow:hidden}.hero-background{position:absolute;inset:0;z-index:0}.hero-image{width:100%;height:100%;object-fit:cover;object-position:center}.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(14,43,72,0.92) 0%,rgba(7,32,53,0.85) 100%)}.hero-content{position:relative;z-index:1;padding:var(--section-py) 0}.hero-title{font-size:var(--fs-hero);font-weight:800;color:#fff;line-height:1.1;margin:0 0 1rem}.hero-lead{font-size:var(--fs-lg);color:rgba(255,255,255,0.9);margin-bottom:1.5rem}.hero-bullets{list-style:none;padding:0;margin:0 0 2rem}.hero-bullets li{display:flex;align-items:flex-start;gap:.75rem;margin-bottom:.75rem;color:rgba(255,255,255,0.95);font-size:var(--fs-md)}.hero-bullets i{color:#FF1654;margin-top:4px}.hero-cta{display:inline-flex;align-items:center;gap:.5rem;background:#25D366;color:#fff;padding:14px 28px;border-radius:8px;font-weight:600;text-decoration:none;transition:transform .2s,box-shadow .2s}.hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,0.4)}.hero-cta-secondary{color:rgba(255,255,255,0.9);text-decoration:underline;margin-left:1rem}.hero-text-desktop{display:block}.hero-text-mobile{display:none}@media(max-width:767px){.hero-text-desktop{display:none}.hero-text-mobile{display:block}.hero-section{min-height:auto;padding:60px 0}}.overlap-cards-wrapper{position:relative;z-index:2;margin-top:-60px;padding-bottom:var(--section-py)}.overlap-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}.overlap-card{background:#fff;border-radius:12px;padding:1.5rem;box-shadow:0 8px 30px rgba(0,0,0,0.12);display:flex;gap:1rem;text-decoration:none;color:inherit;transition:transform .2s,box-shadow .2s}.overlap-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.15)}.overlap-card-icon{width:48px;height:48px;background:linear-gradient(135deg,#FF1654,#ff4d7a);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.25rem;flex-shrink:0}.overlap-card-title{font-size:1rem;font-weight:700;color:var(--text-heading);margin:0 0 .25rem}.overlap-card-desc{font-size:.875rem;color:var(--text-body);margin:0}.overlap-card-badge{display:inline-block;font-size:.75rem;color:#FF1654;margin-top:.5rem}.trust-bar{background:var(--surface-base);padding:1.5rem 0;border-bottom:1px solid #e2e8f0}.section{padding:var(--section-py) 0}.bg-white{background:var(--surface-base)}.bg-light{background:#f8f9fa}.bg-alt{background:#f0f2f5}.bg-dark{background:var(--surface-navy);color:var(--text-on-dark)}.section-header{text-align:center;margin-bottom:2.5rem}.section-label{display:inline-block;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:#FF1654;margin-bottom:.75rem}.section-title{font-size:var(--fs-xl);font-weight:700;color:var(--text-heading);margin:0;line-height:1.2}.bg-dark .section-title{color:var(--text-on-dark)}img{max-width:100%;height:auto;display:block}img[width][height]{aspect-ratio:attr(width)/attr(height)}.fa,.fas,.fab,.far{display:inline-block;width:1em;height:1em}.os-ios-only{display:none!important}`;
 ---
 
 <!DOCTYPE html>
 <html lang="en-AE">
 <head>
-  <!-- Google Tag Manager -->
-  <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-N7L2H37W');</script>
-  <!-- End Google Tag Manager -->
+  <!-- Preconnect to critical third-party origins (highest priority) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  
+  <!-- DNS Prefetch for lower-priority third-parties -->
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  <link rel="dns-prefetch" href="https://www.chatbase.co">
+  <link rel="dns-prefetch" href="https://js.clickrank.ai">
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover">
   
-  <!-- Theme initialization only - no hiding -->
+  <!-- Critical CSS - Inlined for fastest paint -->
+  <style set:html={criticalCSS}></style>
+  
+  <!-- Theme initialization - non-blocking -->
   <script is:inline>
     (function() {
       var theme = localStorage.getItem('theme') || 'light';
@@ -131,7 +143,7 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
     }
   })} />
 
-  <!-- Theme -->
+  <!-- Theme & PWA -->
   <meta name="theme-color" content="#0E2B48">
   <meta name="format-detection" content="telephone=yes">
   <link rel="manifest" href="/manifest.webmanifest">
@@ -142,39 +154,63 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/icons/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/icons/favicon-16.png">
   <link rel="apple-touch-icon" href="/assets/images/onedrive/emblem.png">
-  
-  <!-- DNS Prefetch for third-party domains -->
-  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-  <link rel="dns-prefetch" href="https://www.google-analytics.com">
-  <link rel="dns-prefetch" href="https://www.chatbase.co">
-  <link rel="dns-prefetch" href="https://js.clickrank.ai">
-  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- LCP Image Preload - Critical for performance -->
+  {isHomepage && (
+    <link 
+      rel="preload" 
+      as="image" 
+      href="/_astro/office-team.webp"
+      type="image/webp"
+      fetchpriority="high"
+    />
+  )}
+  {lcpImage && (
+    <link rel="preload" as="image" href={lcpImage} fetchpriority="high" />
+  )}
+
   <!-- Preload critical font (Montserrat ExtraBold 800 for hero headings) -->
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-        href="https://fonts.gstatic.com/s/montserrat/v29/JTUSjIg1_i6t8kCHKm459W1hyyTh89Y.woff2">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link 
+    rel="preload" 
+    as="font" 
+    type="font/woff2" 
+    crossorigin="anonymous"
+    href="https://fonts.gstatic.com/s/montserrat/v29/JTUSjIg1_i6t8kCHKm459W1hyyTh89Y.woff2"
+  >
   
-  <!-- Font Awesome - load async to not block render -->
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous"></noscript>
+  <!-- Google Fonts - with font-display: swap -->
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" 
+    rel="stylesheet"
+    media="print"
+    onload="this.media='all'"
+  >
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </noscript>
   
-  <!-- CSS - Consolidated for improved text-to-HTML ratio -->
-  <!-- CRITICAL: Only preload above-fold CSS -->
-  <link rel="preload" href="/styles/base-architecture.css" as="style">
+  <!-- Font Awesome - Async load -->
+  <link 
+    rel="preload" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
+    as="style" 
+    onload="this.onload=null;this.rel='stylesheet'" 
+    crossorigin="anonymous"
+  >
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous">
+  </noscript>
+  
+  <!-- Main CSS - Deferred loading with media trick -->
+  <!-- FOUNDATION - Load async -->
+  <link rel="stylesheet" href="/styles/base-architecture.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/styles/porto-desktop.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/styles/services-enhanced.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/styles/document-pages.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/styles/text-breaking.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/styles/hero-enhancements.css" media="print" onload="this.media='all'">
 
-  <!-- FOUNDATION -->
-  <link rel="stylesheet" href="/styles/base-architecture.css">
-  <link rel="stylesheet" href="/styles/porto-desktop.css">
-  <link rel="stylesheet" href="/styles/services-enhanced.css">
-  <link rel="stylesheet" href="/styles/document-pages.css">
-  <link rel="stylesheet" href="/styles/text-breaking.css">
-  <link rel="stylesheet" href="/styles/hero-enhancements.css">
-
-  <!-- NAVIGATION (desktop-only) -->
+  <!-- NAVIGATION (desktop-only) - Load only on desktop -->
   <link rel="stylesheet" href="/styles/subsection-menu.css" media="(min-width: 992px)">
   <link rel="stylesheet" href="/styles/megamenu.css" media="(min-width: 992px)">
   <link rel="stylesheet" href="/styles/porto-dropdown-onlinetranslation.css" media="(min-width: 992px)">
@@ -182,48 +218,89 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
   <link rel="stylesheet" href="/styles/desktop-macos.css" media="(min-width: 992px)">
 
   <!-- MOBILE + SHARED OVERLAYS -->
-  <!-- sticky-mobile.css loads always - contains sidebar/search overlay styles needed on desktop too -->
-  <link rel="stylesheet" href="/styles/sticky-mobile.css">
+  <link rel="stylesheet" href="/styles/sticky-mobile.css" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="/styles/mobile-action-bar.css" media="(max-width: 991px)">
   <link rel="stylesheet" href="/styles/mobile-ios.css" media="(max-width: 991px)">
   <link rel="stylesheet" href="/styles/mobile-android.css" media="(max-width: 991px)">
 
-  <!-- COMPONENTS & POLISH - Critical (above fold) -->
-  <link rel="stylesheet" href="/styles/trust-bar.css">
-  <link rel="stylesheet" href="/styles/dark-section-scoping.css">
-  <link rel="stylesheet" href="/styles/dark-mode-tokenized.css">
-  <link rel="stylesheet" href="/styles/hero-intro-optimized.css">
-  <link rel="stylesheet" href="/styles/hero-optimization.css">
+  <!-- COMPONENTS & POLISH - Async -->
+  <link rel="stylesheet" href="/styles/trust-bar.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/styles/dark-section-scoping.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/styles/dark-mode-tokenized.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/styles/hero-intro-optimized.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/styles/hero-optimization.css" media="print" onload="this.media='all'">
 
-  <!-- RESPONSIVE LAYOUTS - Desktop Dashboard / Mobile Task Runner -->
-  <link rel="stylesheet" href="/styles/responsive-layouts.css">
+  <!-- RESPONSIVE LAYOUTS -->
+  <link rel="stylesheet" href="/styles/responsive-layouts.css" media="print" onload="this.media='all'">
 
-  <!-- DEFERRED CSS - Below-fold components (non-blocking) -->
+  <!-- DEFERRED CSS - Below-fold components -->
   <link rel="stylesheet" href="/styles/footer-redesign.css" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="/styles/faq-accordion.css" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="/styles/micro-cues.css" media="print" onload="this.media='all'">
+
+  <!-- ACCESSIBILITY - Contrast fixes (loads last to override) -->
+  <link rel="stylesheet" href="/styles/contrast-fixes.css" media="print" onload="this.media='all'">
+
+  <!-- PRINT -->
+  <link rel="stylesheet" href="/styles/print.css" media="print">
+
+  <!-- Fallback for users with JS disabled -->
   <noscript>
+    <link rel="stylesheet" href="/styles/base-architecture.css">
+    <link rel="stylesheet" href="/styles/porto-desktop.css">
+    <link rel="stylesheet" href="/styles/services-enhanced.css">
+    <link rel="stylesheet" href="/styles/document-pages.css">
+    <link rel="stylesheet" href="/styles/text-breaking.css">
+    <link rel="stylesheet" href="/styles/hero-enhancements.css">
+    <link rel="stylesheet" href="/styles/sticky-mobile.css">
+    <link rel="stylesheet" href="/styles/trust-bar.css">
+    <link rel="stylesheet" href="/styles/dark-section-scoping.css">
+    <link rel="stylesheet" href="/styles/dark-mode-tokenized.css">
+    <link rel="stylesheet" href="/styles/hero-intro-optimized.css">
+    <link rel="stylesheet" href="/styles/hero-optimization.css">
+    <link rel="stylesheet" href="/styles/responsive-layouts.css">
     <link rel="stylesheet" href="/styles/footer-redesign.css">
     <link rel="stylesheet" href="/styles/faq-accordion.css">
     <link rel="stylesheet" href="/styles/micro-cues.css">
+    <link rel="stylesheet" href="/styles/contrast-fixes.css">
   </noscript>
-
-  <!-- ACCESSIBILITY - Contrast fixes (loads last to override) -->
-  <link rel="stylesheet" href="/styles/contrast-fixes.css">
-
-  <!-- PRINT (non-blocking) -->
-  <link rel="stylesheet" href="/styles/print.css" media="print">
   
   <slot name="head" />
   
-  <!-- Vercel Web Analytics -->
+  <!-- Google Tag Manager - Deferred until interaction -->
+  <script is:inline>
+    (function() {
+      var gtmLoaded = false;
+      function loadGTM() {
+        if (gtmLoaded) return;
+        gtmLoaded = true;
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-N7L2H37W');
+      }
+      // Load GTM on user interaction or after 3s idle
+      if (document.readyState === 'complete') {
+        setTimeout(loadGTM, 3000);
+      } else {
+        window.addEventListener('load', function() {
+          setTimeout(loadGTM, 3000);
+        });
+      }
+      ['scroll','click','touchstart','keydown'].forEach(function(evt){
+        window.addEventListener(evt, loadGTM, {once:true,passive:true});
+      });
+    })();
+  </script>
+  
+  <!-- Vercel Web Analytics - moved before closing head for proper initialization -->
   <Analytics />
 </head>
 <body class={isHomepage ? 'homepage is-homepage' : ''}>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N7L2H37W"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -237,7 +314,7 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
 
   <MobileShell />
 
-  <!-- Scripts -->
+  <!-- Scripts - All deferred -->
   <script is:inline src="/scripts/os-detect.js"></script>
   <script defer src="/scripts/preferences.js"></script>
   <script defer src="/scripts/analytics.js"></script>
@@ -246,13 +323,14 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
   <script defer src="/scripts/subsection-menu.js"></script>
   <script defer src="/scripts/search-index.js"></script>
 
-  <!-- Conditionally loaded scripts (Phase 4 optimization) -->
+  <!-- Conditionally loaded scripts -->
   <script is:inline>
     // Lazy load form handler only if form exists
     document.addEventListener('DOMContentLoaded', function() {
       if (document.querySelector('form#contactForm, form.contact-form')) {
         var s = document.createElement('script');
         s.src = '/scripts/form-handler.js';
+        s.defer = true;
         document.body.appendChild(s);
       }
     });
@@ -260,15 +338,15 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
     if (document.querySelector('.testimonials-carousel, .testimonial-slider')) {
       var s = document.createElement('script');
       s.src = '/scripts/testimonials-carousel.js';
+      s.defer = true;
       document.body.appendChild(s);
     }
   </script>
   <script defer src="/scripts/micro-cues.js"></script>
 
-  <!-- Chatbase Chat Widget - Desktop Only (Deferred until interaction) -->
+  <!-- Chatbase Chat Widget - Desktop Only, Deferred -->
   <script is:inline>
     (function() {
-      // Only load on desktop (992px+) and defer until user interaction
       if (window.innerWidth >= 992) {
         var chatbaseLoaded = false;
         function loadChatbase() {
@@ -282,9 +360,9 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
           script.src="https://www.chatbase.co/embed.min.js";
           script.id="XHyFbKkbLOseA1xEcMAm6";
           script.domain="www.chatbase.co";
+          script.defer = true;
           document.body.appendChild(script);
         }
-        // Load on user interaction or after 5s idle
         ['scroll','click','touchstart','mousemove'].forEach(function(evt){
           window.addEventListener(evt, loadChatbase, {once:true,passive:true});
         });
@@ -293,7 +371,7 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
     })();
   </script>
 
-  <!-- ClickRank AI SEO (Deferred until interaction) -->
+  <!-- ClickRank AI SEO - Deferred -->
   <script is:inline>
     (function() {
       var clickRankLoaded = false;
@@ -305,12 +383,26 @@ const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${ca
         s.async = true;
         document.head.appendChild(s);
       }
-      // Load on user interaction or after 5s idle
       ['scroll','click','touchstart','mousemove'].forEach(function(evt){
         window.addEventListener(evt, loadClickRank, {once:true,passive:true});
       });
       setTimeout(loadClickRank, 5000);
     })();
+  </script>
+
+  <!-- Service Worker Registration -->
+  <script is:inline>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js')
+          .then(function(registration) {
+            console.log('SW registered:', registration.scope);
+          })
+          .catch(function(error) {
+            console.log('SW registration failed:', error);
+          });
+      });
+    }
   </script>
 
   <SpeedInsights />

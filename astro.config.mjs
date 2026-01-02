@@ -18,10 +18,12 @@ export default defineConfig({
         limitInputPixels: false,
       },
     },
-    // Default quality for processed images
+    // Optimized quality for web
     quality: 80,
-    // Formats to generate
-    format: ['webp'],
+    // Generate modern formats
+    format: ['webp', 'avif'],
+    // Default widths for responsive images
+    widths: [400, 800, 1200, 1920],
   },
   integrations: [
     sitemap({
@@ -35,8 +37,11 @@ export default defineConfig({
     host: '0.0.0.0'
   },
   build: {
-    assets: 'assets',
-    inlineStylesheets: 'auto'
+    assets: '_astro',
+    // Inline stylesheets smaller than 4KB
+    inlineStylesheets: 'auto',
+    // Enable CSS code splitting
+    cssCodeSplit: true,
   },
   vite: {
     server: {
@@ -45,8 +50,44 @@ export default defineConfig({
       hmr: false
     },
     build: {
+      // Use esbuild for faster builds
       minify: 'esbuild',
-      cssMinify: true
+      cssMinify: true,
+      // Optimize chunk splitting
+      rollupOptions: {
+        output: {
+          // Manual chunks for better caching
+          manualChunks: (id) => {
+            // Vendor chunks for third-party libs
+            if (id.includes('node_modules')) {
+              return 'vendor';
+            }
+          },
+          // Asset file naming for cache busting
+          assetFileNames: (assetInfo) => {
+            const info = assetInfo.name.split('.');
+            const ext = info[info.length - 1];
+            if (/png|jpe?g|svg|gif|tiff|bmp|ico|webp|avif/i.test(ext)) {
+              return `_astro/[name].[hash][extname]`;
+            }
+            return `_astro/[name].[hash][extname]`;
+          },
+          chunkFileNames: '_astro/[name].[hash].js',
+          entryFileNames: '_astro/[name].[hash].js',
+        }
+      },
+      // Target modern browsers
+      target: 'es2020',
+      // Ensure sourcemaps for debugging (disable in prod if needed)
+      sourcemap: false,
+    },
+    // Optimize dependencies
+    optimizeDeps: {
+      include: ['@vercel/speed-insights', '@vercel/analytics']
+    },
+    // CSS optimization
+    css: {
+      devSourcemap: false,
     }
   }
 });
