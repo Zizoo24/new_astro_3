@@ -189,12 +189,19 @@ const criticalCSS = `*,*::before,*::after{box-sizing:border-box}html{font-size:8
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   </noscript>
   
-  <!-- Font Awesome - Load synchronously (required for header buttons) -->
-  <link 
-    rel="stylesheet" 
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
+  <!-- Font Awesome - Load synchronously with integrity hash -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous"
+    referrerpolicy="no-referrer"
   >
+
+  <!-- Critical icon content - ensures icons render before FA CSS loads -->
+  <style>
+    .fa-bars::before{content:"\f0c9"}.fa-moon::before{content:"\f186"}.fa-sun::before{content:"\f185"}.fa-times::before{content:"\f00d"}.fa-search::before{content:"\f002"}.fa-chevron-down::before{content:"\f078"}.fa-whatsapp::before{content:"\f232"}.fa-phone::before{content:"\f095"}.fa-envelope::before{content:"\f0e0"}.fa-home::before{content:"\f015"}.fa-phone-alt::before{content:"\f879"}.fa-clock::before{content:"\f017"}.fa-arrow-right::before{content:"\f061"}.fa-th-large::before{content:"\f009"}
+  </style>
   
   <!-- Main CSS - Deferred loading with media trick -->
   <!-- FOUNDATION - Load async -->
