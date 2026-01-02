@@ -733,8 +733,6 @@ function isActive(href: string): boolean {
   // Porto Header Desktop Navigation
   // Mobile menu handled by MobileShell via #sidebarToggle (this file now uses #portoMobileToggle)
   document.addEventListener('DOMContentLoaded', () => {
-    console.log('[Porto Header] Initializing...');
-
     // ========================================
     // SCROLL BEHAVIOR
     // ========================================
@@ -770,21 +768,13 @@ function isActive(href: string): boolean {
     const menuSidebar = document.getElementById('menu-sidebar');
     const sidebarOverlay = document.getElementById('sidebarOverlay');
 
-    console.log('[Porto Header] Desktop sidebar toggle:', desktopSidebarToggle ? 'FOUND' : 'NOT FOUND');
-    console.log('[Porto Header] Menu sidebar:', menuSidebar ? 'FOUND' : 'NOT FOUND');
-    console.log('[Porto Header] Sidebar overlay:', sidebarOverlay ? 'FOUND' : 'NOT FOUND');
-
     if (desktopSidebarToggle) {
       desktopSidebarToggle.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        console.log('[Porto Header] Desktop sidebar toggle clicked!');
 
         if (menuSidebar) {
           menuSidebar.classList.add('is-open');
-          console.log('[Porto Header] Sidebar opened');
-        } else {
-          console.error('[Porto Header] ERROR: menu-sidebar element not found!');
         }
 
         if (sidebarOverlay) {
@@ -801,7 +791,6 @@ function isActive(href: string): boolean {
       portoMobileToggle.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        console.log('[Porto Header] Porto mobile toggle clicked!');
 
         if (menuSidebar) {
           menuSidebar.classList.add('is-open');
@@ -820,14 +809,10 @@ function isActive(href: string): boolean {
     const searchOverlay = document.getElementById('search-overlay');
     const searchInput = document.getElementById('searchInput');
 
-    console.log('[Porto Header] Desktop search toggle:', desktopSearchToggle ? 'FOUND' : 'NOT FOUND');
-    console.log('[Porto Header] Search overlay:', searchOverlay ? 'FOUND' : 'NOT FOUND');
-
     if (desktopSearchToggle) {
       desktopSearchToggle.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        console.log('[Porto Header] Desktop search toggle clicked!');
 
         if (searchOverlay) {
           searchOverlay.classList.add('is-open');
@@ -835,9 +820,6 @@ function isActive(href: string): boolean {
           setTimeout(() => {
             searchInput?.focus();
           }, 100);
-          console.log('[Porto Header] Search overlay opened');
-        } else {
-          console.error('[Porto Header] ERROR: search-overlay element not found!');
         }
       });
     }
@@ -847,13 +829,10 @@ function isActive(href: string): boolean {
     // ========================================
     const themeToggle = document.getElementById('portoThemeToggle');
 
-    console.log('[Porto Header] Theme toggle:', themeToggle ? 'FOUND' : 'NOT FOUND');
-
     if (themeToggle) {
       themeToggle.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        console.log('[Porto Header] Theme toggle clicked!');
 
         const html = document.documentElement;
         const body = document.body;
@@ -864,8 +843,6 @@ function isActive(href: string): boolean {
         body.classList.remove('theme-light', 'theme-dark');
         body.classList.add('theme-' + newTheme);
         localStorage.setItem('theme', newTheme);
-
-        console.log('[Porto Header] Theme changed to:', newTheme);
       });
     }
 
@@ -940,7 +917,5 @@ function isActive(href: string): boolean {
         }
       });
     }
-
-    console.log('[Porto Header] Initialization complete.');
   });
 </script>

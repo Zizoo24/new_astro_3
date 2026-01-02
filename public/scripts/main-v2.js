@@ -4,8 +4,6 @@
  */
 
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('[OT] main-v2.js initialized');
-
   const body = document.body;
 
   // ========================================
@@ -54,9 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // ========================================
   
   if ('loading' in HTMLImageElement.prototype) {
-    // Browser supports native lazy loading
-    const images = document.querySelectorAll('img[loading="lazy"]');
-    console.log('[OT] Native lazy loading supported for ' + images.length + ' images');
+    // Browser supports native lazy loading - nothing to do
   } else {
     // Fallback for browsers that don't support lazy loading
     const images = document.querySelectorAll('img[loading="lazy"]');
@@ -82,13 +78,11 @@ document.addEventListener('DOMContentLoaded', function () {
   // ========================================
   
   window.addEventListener('beforeprint', function() {
-    console.log('[OT] Preparing page for printing');
     // Force light theme for printing
     body.classList.add('printing');
   });
 
   window.addEventListener('afterprint', function() {
-    console.log('[OT] Print completed');
     body.classList.remove('printing');
   });
 
@@ -106,6 +100,4 @@ document.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('mousedown', function() {
     body.classList.remove('user-is-tabbing');
   });
-
-  console.log('[OT] main-v2.js fully loaded and ready');
 });
