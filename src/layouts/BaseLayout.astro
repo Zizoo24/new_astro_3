@@ -189,17 +189,12 @@ const criticalCSS = `*,*::before,*::after{box-sizing:border-box}html{font-size:8
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   </noscript>
   
-  <!-- Font Awesome - Async load -->
+  <!-- Font Awesome - Load synchronously (required for header buttons) -->
   <link 
-    rel="preload" 
+    rel="stylesheet" 
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
-    as="style" 
-    onload="this.onload=null;this.rel='stylesheet'" 
     crossorigin="anonymous"
   >
-  <noscript>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous">
-  </noscript>
   
   <!-- Main CSS - Deferred loading with media trick -->
   <!-- FOUNDATION - Load async -->
