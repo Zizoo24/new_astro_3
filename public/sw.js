@@ -1,9 +1,9 @@
 // Service Worker v1.0.0 - OnlineTranslation.ae
 // Stale-while-revalidate strategy for optimal performance
 
-const CACHE_NAME = 'ot-cache-v2';
-const STATIC_CACHE = 'ot-static-v2';
-const RUNTIME_CACHE = 'ot-runtime-v2';
+const CACHE_NAME = 'ot-cache-v4';
+const STATIC_CACHE = 'ot-static-v4';
+const RUNTIME_CACHE = 'ot-runtime-v4';
 
 // Critical assets to precache
 const PRECACHE_ASSETS = [
