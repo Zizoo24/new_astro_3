@@ -552,6 +552,54 @@ body.theme-dark .header-desktop.exodus-header .social-icons a:hover {
 }
 
 /* ========================================
+   PORTO HEADER ACTION BUTTONS FIX
+
+   PROBLEM: Header-porto.astro uses different
+   class names than exodus-header (.header-action-btn
+   instead of .header-icon). Icons appear gray/invisible
+   because no CSS targets these selectors.
+
+   SOLUTION: Add explicit icon color rules for
+   Porto header buttons.
+   ======================================== */
+
+/* Porto Header Action Buttons - Search & Theme Toggle */
+.site-header .header-action-btn,
+.header-column-actions .header-action-btn {
+    color: #ffffff !important;
+}
+
+.site-header .header-action-btn i,
+.header-column-actions .header-action-btn i,
+#portoThemeToggle i,
+#desktopSearchToggle i {
+    color: #ffffff !important;
+    font-size: 1rem;
+}
+
+/* Ensure icons are visible on hover too */
+.site-header .header-action-btn:hover,
+.header-column-actions .header-action-btn:hover {
+    color: #ffffff !important;
+}
+
+.site-header .header-action-btn:hover i,
+.header-column-actions .header-action-btn:hover i {
+    color: #ffffff !important;
+}
+
+/* Desktop sidebar toggle button */
+.site-header .desktop-sidebar-toggle,
+#desktopSidebarToggle {
+    color: #ffffff !important;
+}
+
+.site-header .desktop-sidebar-toggle i,
+#desktopSidebarToggle i {
+    color: #ffffff !important;
+}
+
+/* ========================================
    EXODUS DROPDOWN REFINEMENTS
    Premium styling to match homepage aesthetic
 
