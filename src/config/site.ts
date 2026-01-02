@@ -149,6 +149,15 @@ export function validateDescription(description: string): string | null {
 }
 
 /**
+ * Helper function to generate canonical URL from a path
+ */
+export function getCanonicalUrl(path: string): string {
+  const baseUrl = siteConfig.url.replace(/\/$/, '');
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  return `${baseUrl}${cleanPath}`;
+}
+
+/**
  * Type exports for TypeScript support
  */
 export type SiteConfig = typeof siteConfig;
