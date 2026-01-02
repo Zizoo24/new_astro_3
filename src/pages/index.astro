@@ -3,16 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import TestimonialsCarousel from '../components/TestimonialsCarousel.astro';
 import TrustBar from '../components/TrustBar.astro';
 import { getHomepageServices, servicesGridDefaults } from '../data/servicesGrid';
-import { Image, getImage } from 'astro:assets';
+import { Image } from 'astro:assets';
 import heroImageSrc from '../assets/images/hero/office-team.png';
-
-// Precompute hero image for preload link
-const heroImagePreload = await getImage({
-  src: heroImageSrc,
-  width: 1200,
-  format: 'webp',
-  quality: 75
-});
 
 // SEO - Updated for certified/authenticated translation focus
 const pageTitle = 'OnlineTranslation.ae | Certified Translation Dubai | MOJ Approved';
@@ -239,10 +231,6 @@ const contactSection = {
   description={metaDescription}
   isHomepage={true}
 >
-  <!-- Preload hero image for faster LCP -->
-  <link slot="head" rel="preload" as="image" type="image/webp"
-        href={heroImagePreload.src}
-        fetchpriority="high" />
   <!-- Hero Section - Exodus Style -->
   <section id="home" class="hero-section exodus-hero">
     <div class="hero-background">
@@ -718,6 +706,7 @@ const contactSection = {
                 type="text"
                 id="name"
                 name="name"
+                autocomplete="name"
                 placeholder={contactSection.namePlaceholder}
                 required
               >
@@ -728,6 +717,7 @@ const contactSection = {
                 type="email"
                 id="email"
                 name="email"
+                autocomplete="email"
                 placeholder={contactSection.emailPlaceholder}
                 required
               >
@@ -739,6 +729,7 @@ const contactSection = {
               type="tel"
               id="phone"
               name="phone"
+              autocomplete="tel"
               placeholder={contactSection.phonePlaceholder}
             >
           </div>
