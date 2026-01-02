@@ -77,7 +77,12 @@ function isActive(href: string): boolean {
             type="button"
             aria-label="Open sidebar menu"
           >
-            <i class="fas fa-bars" aria-hidden="true"></i>
+            <!-- SVG hamburger icon - more reliable than Font Awesome -->
+            <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
           </button>
         </div>
 
@@ -253,7 +258,11 @@ function isActive(href: string): boolean {
             type="button"
             aria-label="Search"
           >
-            <i class="fas fa-search" aria-hidden="true"></i>
+            <!-- SVG search icon - more reliable than Font Awesome -->
+            <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
           </button>
           <button
             id="portoThemeToggle"
@@ -261,8 +270,22 @@ function isActive(href: string): boolean {
             type="button"
             aria-label="Toggle dark mode"
           >
-            <i class="fas fa-moon theme-icon-dark" aria-hidden="true"></i>
-            <i class="fas fa-sun theme-icon-light" aria-hidden="true"></i>
+            <!-- SVG moon icon for dark mode toggle -->
+            <svg class="header-icon theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <!-- SVG sun icon for light mode toggle -->
+            <svg class="header-icon theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
           </button>
         </div>
       </div>
@@ -661,11 +684,25 @@ function isActive(href: string): boolean {
     transform: scale(0.95);
   }
 
+  /* SVG icon styling for header buttons */
+  .header-icon {
+    width: 18px;
+    height: 18px;
+    stroke: #ffffff;
+    pointer-events: none;
+    flex-shrink: 0;
+  }
+
+  .header-action-btn .header-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Keep Font Awesome support as fallback */
   .header-action-btn i {
     font-size: 1rem;
-    color: #ffffff !important; /* FIX: Explicit white color for icons */
-    pointer-events: none; /* FIX: Let clicks pass through to button */
-    /* FIX: Ensure Font Awesome icons render correctly */
+    color: #ffffff !important;
+    pointer-events: none;
     font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", FontAwesome, sans-serif;
     font-weight: 900;
     -webkit-font-smoothing: antialiased;
@@ -722,11 +759,16 @@ function isActive(href: string): boolean {
     transform: scale(0.95);
   }
 
+  .desktop-sidebar-toggle .header-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Keep Font Awesome support as fallback */
   .desktop-sidebar-toggle i {
     font-size: 1.25rem;
-    color: #ffffff !important; /* FIX: Explicit white color for icons */
+    color: #ffffff !important;
     pointer-events: none;
-    /* FIX: Ensure Font Awesome icons render correctly */
     font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", FontAwesome, sans-serif;
     font-weight: 900;
     -webkit-font-smoothing: antialiased;
