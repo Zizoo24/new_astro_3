@@ -440,11 +440,72 @@ body:not(.theme-dark) .hero-section a:not(.btn):not(.breadcrumb a):hover {
 }
 
 /* ============================================
-   NOTE: Card link text overrides moved to 
+   NOTE: Card link text overrides moved to
    base-architecture.css (single source of truth)
-   
+
    The !important declarations there are necessary
    because the global link color rule (body.theme-dark a)
    sets all links to white, and cards need dark text
    on their light backgrounds.
    ============================================ */
+
+/* ============================================
+   FONT AWESOME ICON VISIBILITY FIX
+
+   PROBLEM: Icons in header buttons, toggles, and
+   navigation were invisible due to missing
+   font-family declarations in critical CSS.
+
+   SOLUTION: Comprehensive fallback styling to
+   ensure Font Awesome icons always render.
+   ============================================ */
+
+/* Base Font Awesome styling - ensure icons always render */
+.fas, .fa-solid,
+.far, .fa-regular,
+.fab, .fa-brands,
+.fa {
+    font-style: normal !important;
+    font-variant: normal !important;
+    text-rendering: auto !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+.fas, .fa-solid {
+    font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", FontAwesome !important;
+    font-weight: 900 !important;
+}
+
+.fab, .fa-brands {
+    font-family: "Font Awesome 6 Brands", "Font Awesome 5 Brands", FontAwesome !important;
+    font-weight: 400 !important;
+}
+
+.far, .fa-regular {
+    font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", FontAwesome !important;
+    font-weight: 400 !important;
+}
+
+/* Header icons - explicit visibility on all backgrounds */
+.header-icon i,
+.header-action-btn i,
+.desktop-sidebar-toggle i,
+.header-btn-collapse-nav i,
+.sidebar-close i,
+.search-close i,
+.footer-item i {
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", FontAwesome !important;
+    font-weight: 900 !important;
+    font-style: normal !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* WhatsApp icon uses brand family */
+.footer-whatsapp i,
+.sidebar-cta .fa-whatsapp,
+.fab.fa-whatsapp {
+    font-family: "Font Awesome 6 Brands", "Font Awesome 5 Brands", FontAwesome !important;
+    font-weight: 400 !important;
+}

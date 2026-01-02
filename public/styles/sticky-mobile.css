@@ -82,7 +82,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--primary-color);
+    color: #0E2B48 !important; /* Navy - visible on white background */
     font-size: 22px;
     text-decoration: none;
     border-radius: 12px;
@@ -97,6 +97,16 @@ body {
     -webkit-user-select: none;
     position: relative;
     z-index: 10;
+}
+
+/* CRITICAL: Ensure Font Awesome icons render correctly */
+.header-mobile .header-icon i {
+    color: inherit !important;
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", FontAwesome !important;
+    font-weight: 900 !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .header-mobile .header-icon:active {
@@ -178,6 +188,12 @@ button.footer-item i {
     font-size: 20px;
     transition: var(--transition-fast);
     color: inherit;
+    /* CRITICAL: Ensure Font Awesome icons render correctly */
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", FontAwesome !important;
+    font-weight: 900;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .footer-item.active-nav,
@@ -339,10 +355,20 @@ a.footer-item.active-nav i {
     background: rgba(255,255,255,0.15);
     border: none;
     border-radius: 12px;
-    color: var(--text-light);
+    color: #ffffff !important; /* White on dark sidebar background */
     font-size: 20px;
     cursor: pointer;
     transition: var(--transition-fast);
+}
+
+/* CRITICAL: Ensure sidebar close icon renders correctly */
+.sidebar-close i {
+    color: inherit !important;
+    font-family: "Font Awesome 6 Free", FontAwesome !important;
+    font-weight: 900 !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .sidebar-close:active {
@@ -722,6 +748,26 @@ body.theme-dark .footer-bar {
     background: var(--bg-white);
 }
 
+/* Dark theme footer bar icons */
+body.theme-dark .footer-item,
+body.theme-dark a.footer-item,
+body.theme-dark button.footer-item {
+    color: #e0e0e0 !important;
+}
+
+body.theme-dark .footer-item i,
+body.theme-dark a.footer-item i,
+body.theme-dark button.footer-item i {
+    color: inherit !important;
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", FontAwesome !important;
+    font-weight: 900 !important;
+}
+
+body.theme-dark .footer-item.active-nav,
+body.theme-dark .footer-item:active {
+    color: #FF1654 !important;
+}
+
 body.theme-dark .sidebar-menu {
     background: rgba(11, 17, 26, 0.98);
 }
@@ -731,8 +777,14 @@ body.theme-dark .header-mobile .header-title {
 }
 
 body.theme-dark .header-mobile .header-icon {
-    color: var(--text-light);
+    color: #ffffff !important; /* White - visible on dark background */
     background: transparent;
+}
+
+body.theme-dark .header-mobile .header-icon i {
+    color: inherit !important;
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", FontAwesome !important;
+    font-weight: 900 !important;
 }
 
 body.theme-dark .sidebar-nav ul li a {
