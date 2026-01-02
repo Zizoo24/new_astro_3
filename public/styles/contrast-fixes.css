@@ -1,279 +1,450 @@
 /* ============================================
-   CONTRAST FIXES - Global Accessibility Overrides
-   Ensures WCAG AA compliance (4.5:1 minimum contrast)
+   CONTRAST FIXES - CONSOLIDATED
+   OnlineTranslation.ae
 
-   CRITICAL: Never use gray/muted text on navy backgrounds
+   PHASE 2 CLEANUP:
+   - Removed duplicate card link rules (now in base-architecture.css)
+   - Replaced hardcoded colors with CSS tokens
+   - Removed unnecessary !important declarations
+   - All dark mode rules use body.theme-dark
+
+   This file handles DARK MODE component overrides
+   that aren't covered by base-architecture.css
+   ============================================ */
+
+/* ============================================
+   CRITICAL: GRAY TEXT ON NAVY PREVENTION - LIGHT MODE
+
+   NEVER use muted/gray text colors on navy backgrounds.
+   This rule enforces high-contrast text on all dark
+   sections in LIGHT MODE specifically.
+
+   Affected classes: .bg-dark, .hero-section, .surface-navy
+   Uses !important to override global-fixes.css rules
+   ============================================ */
+
+/* Force bright text on navy/dark sections - LIGHT MODE ONLY */
+/* These rules apply when NOT in dark theme mode */
+body:not(.theme-dark) .bg-dark,
+body:not(.theme-dark) .hero-section,
+body:not(.theme-dark) .surface-navy,
+body:not(.theme-dark) section[class*="navy"],
+body:not(.theme-dark) div[class*="navy"],
+body:not(.theme-dark) .cta-section {
+  color: #f4f7fc !important;
+}
+
+/* Hero section headings - LIGHT MODE */
+body:not(.theme-dark) .hero-section h1,
+body:not(.theme-dark) .hero-section h2,
+body:not(.theme-dark) .hero-section h3,
+body:not(.theme-dark) .bg-dark h1,
+body:not(.theme-dark) .bg-dark h2,
+body:not(.theme-dark) .bg-dark h3 {
+  color: #f4f7fc !important;
+}
+
+/* Hero intro text - CRITICAL FIX for gray-on-navy */
+body:not(.theme-dark) .hero-section .hero-intro,
+body:not(.theme-dark) .hero-section p,
+body:not(.theme-dark) .bg-dark .hero-intro,
+body:not(.theme-dark) .bg-dark p:not(.card p) {
+  color: #f4f7fc !important;
+  opacity: 0.95;
+}
+
+/* Hero badge/label text */
+body:not(.theme-dark) .hero-section .hero-badge,
+body:not(.theme-dark) .bg-dark .hero-badge {
+  color: #7fd1ff !important;
+}
+
+/* Service snapshot items in hero */
+body:not(.theme-dark) .hero-section .snapshot-item,
+body:not(.theme-dark) .hero-section .snapshot-item span,
+body:not(.theme-dark) .bg-dark .snapshot-item,
+body:not(.theme-dark) .bg-dark .snapshot-item span {
+  color: #f4f7fc !important;
+}
+
+body:not(.theme-dark) .hero-section .snapshot-item strong,
+body:not(.theme-dark) .bg-dark .snapshot-item strong {
+  color: #ffffff !important;
+}
+
+body:not(.theme-dark) .hero-section .snapshot-item i,
+body:not(.theme-dark) .bg-dark .snapshot-item i {
+  color: #7fd1ff !important;
+}
+
+/* Breadcrumb on hero sections - LIGHT MODE */
+body:not(.theme-dark) .hero-section .breadcrumb,
+body:not(.theme-dark) .hero-section .breadcrumb a,
+body:not(.theme-dark) .bg-dark .breadcrumb,
+body:not(.theme-dark) .bg-dark .breadcrumb a {
+  color: rgba(244, 247, 252, 0.85) !important;
+}
+
+body:not(.theme-dark) .hero-section .breadcrumb a:hover,
+body:not(.theme-dark) .bg-dark .breadcrumb a:hover {
+  color: #ffffff !important;
+}
+
+body:not(.theme-dark) .hero-section .breadcrumb .separator,
+body:not(.theme-dark) .bg-dark .breadcrumb .separator {
+  color: rgba(244, 247, 252, 0.6) !important;
+}
+
+body:not(.theme-dark) .hero-section .breadcrumb .current,
+body:not(.theme-dark) .bg-dark .breadcrumb .current {
+  color: #ffffff !important;
+}
+
+/* CTA section text on navy background - LIGHT MODE */
+body:not(.theme-dark) .cta-section h2 {
+  color: #f4f7fc !important;
+}
+
+body:not(.theme-dark) .cta-section p {
+  color: rgba(244, 247, 252, 0.9) !important;
+}
+
+/* List items on dark backgrounds */
+body:not(.theme-dark) .hero-section li,
+body:not(.theme-dark) .bg-dark li:not(.card li) {
+  color: #f4f7fc !important;
+}
+
+/* Preserve link colors on dark backgrounds */
+body:not(.theme-dark) .bg-dark a:not(.btn):not(.card a),
+body:not(.theme-dark) .hero-section a:not(.btn):not(.breadcrumb a) {
+  color: #7fd1ff !important;
+}
+
+body:not(.theme-dark) .bg-dark a:not(.btn):not(.card a):hover,
+body:not(.theme-dark) .hero-section a:not(.btn):not(.breadcrumb a):hover {
+  color: #ffe178 !important;
+}
+
+@layer states {
+
+  /* ============================================
+     SIDEBAR CONTRAST FIXES
+     ============================================ */
+
+  /* Sidebar tagline - improved visibility */
+  body.theme-dark .sidebar-tagline {
+    color: var(--text-on-dark-muted);
+  }
+
+  /* Accordion chevrons */
+  body.theme-dark .sidebar-accordion-heading .accordion-chevron {
+    color: var(--text-on-dark-muted);
+  }
+
+  /* Sidebar nav links */
+  body.theme-dark .sidebar-nav ul li a {
+    color: var(--text-body);
+  }
+
+  body.theme-dark .sidebar-nav ul li a:hover {
+    color: var(--text-heading);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  body.theme-dark .sidebar-nav ul li a i {
+    color: var(--text-muted);
+  }
+
+  body.theme-dark .sidebar-nav ul li a:hover i {
+    color: var(--link-color);
+  }
+
+  /* Quick links in sidebar */
+  body.theme-dark .quick-links a {
+    color: var(--text-body);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  body.theme-dark .quick-links a:hover {
+    color: var(--text-heading);
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+
+  /* ============================================
+     CAROUSEL & SLIDER CONTRAST
+     ============================================ */
+
+  /* Carousel dots */
+  body.theme-dark .carousel-dot {
+    border-color: var(--text-on-dark-muted);
+  }
+
+  body.theme-dark .carousel-dot.active {
+    background: var(--accent-coral);
+    border-color: var(--accent-coral);
+  }
+
+  /* Carousel navigation arrows */
+  body.theme-dark .carousel-arrow {
+    color: var(--text-on-dark);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--border-on-dark);
+  }
+
+  body.theme-dark .carousel-arrow:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+
+  /* ============================================
+     FORM ELEMENT CONTRAST
+     ============================================ */
+
+  /* Form labels */
+  body.theme-dark label,
+  body.theme-dark .form-label {
+    color: var(--text-heading);
+  }
+
+  /* Form inputs */
+  body.theme-dark input,
+  body.theme-dark textarea,
+  body.theme-dark select,
+  body.theme-dark .form-input,
+  body.theme-dark .form-textarea,
+  body.theme-dark .form-select {
+    background: var(--surface-muted);
+    border-color: var(--border-medium);
+    color: var(--text-body);
+  }
+
+  body.theme-dark input::placeholder,
+  body.theme-dark textarea::placeholder {
+    color: var(--text-muted);
+  }
+
+  body.theme-dark input:focus,
+  body.theme-dark textarea:focus,
+  body.theme-dark select:focus {
+    border-color: var(--link-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(127, 209, 255, 0.2);
+  }
+
+  /* Checkboxes & radios */
+  body.theme-dark input[type="checkbox"],
+  body.theme-dark input[type="radio"] {
+    accent-color: var(--link-color);
+  }
+
+
+  /* ============================================
+     TABLE CONTRAST
+     ============================================ */
+
+  body.theme-dark table {
+    background: var(--surface-muted);
+    border-color: var(--border-medium);
+  }
+
+  body.theme-dark th {
+    background: var(--surface-navy);
+    color: var(--text-heading);
+    border-color: var(--border-medium);
+  }
+
+  body.theme-dark td {
+    color: var(--text-body);
+    border-color: var(--border-light);
+  }
+
+  body.theme-dark tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  body.theme-dark tr:hover {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+
+  /* ============================================
+     BADGE & TAG CONTRAST
+     ============================================ */
+
+  body.theme-dark .badge,
+  body.theme-dark .tag {
+    background: var(--surface-navy);
+    color: var(--text-heading);
+    border: 1px solid var(--border-medium);
+  }
+
+  body.theme-dark .badge--coral {
+    background: var(--accent-coral);
+    color: var(--text-on-dark);
+    border-color: var(--accent-coral);
+  }
+
+  body.theme-dark .badge--success {
+    background: rgba(74, 222, 128, 0.2);
+    color: var(--state-success);
+    border-color: var(--state-success);
+  }
+
+  body.theme-dark .badge--warning {
+    background: rgba(250, 204, 21, 0.2);
+    color: var(--state-warning);
+    border-color: var(--state-warning);
+  }
+
+
+  /* ============================================
+     BLOCKQUOTE & CODE CONTRAST
+     ============================================ */
+
+  body.theme-dark blockquote {
+    background: var(--surface-muted);
+    border-left-color: var(--accent-coral);
+    color: var(--text-body);
+  }
+
+  body.theme-dark blockquote cite {
+    color: var(--text-muted);
+  }
+
+  body.theme-dark code,
+  body.theme-dark pre {
+    background: var(--surface-navy);
+    color: var(--text-heading);
+    border-color: var(--border-medium);
+  }
+
+  body.theme-dark pre code {
+    background: transparent;
+  }
+
+
+  /* ============================================
+     ALERT & NOTICE CONTRAST
+     ============================================ */
+
+  body.theme-dark .alert,
+  body.theme-dark .notice {
+    background: var(--surface-muted);
+    border-color: var(--border-medium);
+    color: var(--text-body);
+  }
+
+  body.theme-dark .alert--info {
+    background: rgba(127, 209, 255, 0.1);
+    border-color: var(--state-info);
+  }
+
+  body.theme-dark .alert--success {
+    background: rgba(74, 222, 128, 0.1);
+    border-color: var(--state-success);
+  }
+
+  body.theme-dark .alert--warning {
+    background: rgba(250, 204, 21, 0.1);
+    border-color: var(--state-warning);
+  }
+
+  body.theme-dark .alert--danger {
+    background: rgba(255, 79, 109, 0.1);
+    border-color: var(--state-danger);
+  }
+
+
+  /* ============================================
+     BREADCRUMB CONTRAST
+     ============================================ */
+
+  body.theme-dark .breadcrumb {
+    color: var(--text-muted);
+  }
+
+  body.theme-dark .breadcrumb a {
+    color: var(--link-color);
+  }
+
+  body.theme-dark .breadcrumb a:hover {
+    color: var(--link-hover);
+  }
+
+  body.theme-dark .breadcrumb-separator {
+    color: var(--text-subtle);
+  }
+
+
+  /* ============================================
+     PAGINATION CONTRAST
+     ============================================ */
+
+  body.theme-dark .pagination a,
+  body.theme-dark .pagination span {
+    background: var(--surface-muted);
+    border-color: var(--border-medium);
+    color: var(--text-body);
+  }
+
+  body.theme-dark .pagination a:hover {
+    background: var(--surface-navy);
+    color: var(--text-heading);
+  }
+
+  body.theme-dark .pagination .active {
+    background: var(--accent-coral);
+    border-color: var(--accent-coral);
+    color: var(--text-on-dark);
+  }
+
+
+  /* ============================================
+     TOOLTIP CONTRAST
+     ============================================ */
+
+  body.theme-dark [data-tooltip]::after {
+    background: var(--surface-navy);
+    color: var(--text-heading);
+    border: 1px solid var(--border-medium);
+    box-shadow: var(--shadow-md);
+  }
+
+
+  /* ============================================
+     MODAL & OVERLAY CONTRAST
+     ============================================ */
+
+  body.theme-dark .modal,
+  body.theme-dark .dialog {
+    background: var(--surface-raised);
+    border: 1px solid var(--border-medium);
+    box-shadow: var(--shadow-lg);
+  }
+
+  body.theme-dark .modal-header {
+    border-bottom-color: var(--border-medium);
+  }
+
+  body.theme-dark .modal-footer {
+    border-top-color: var(--border-medium);
+  }
+
+  body.theme-dark .modal-overlay,
+  body.theme-dark .backdrop {
+    background: rgba(0, 0, 0, 0.75);
+  }
+
+}
+
+/* ============================================
+   NOTE: Card link text overrides moved to 
+   base-architecture.css (single source of truth)
    
-   Using @layer overrides - these rules will ALWAYS
-   beat component styles regardless of specificity
+   The !important declarations there are necessary
+   because the global link color rule (body.theme-dark a)
+   sets all links to white, and cards need dark text
+   on their light backgrounds.
    ============================================ */
-
-@layer overrides {
-
-/* ============================================
-   MOBILE SIDEBAR - Force High Contrast
-   ============================================ */
-
-/* Sidebar always dark navy with white text */
-.sidebar-menu,
-.sidebar-menu *:not(i):not(.brand-suffix) {
-    --text-color: #ffffff;
-}
-
-/* Prevent any gray/muted text in sidebar */
-.sidebar-menu .text-muted,
-.sidebar-menu .text-secondary,
-.sidebar-menu [class*="text-gray"] {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-/* Force white text on all sidebar text elements */
-.sidebar-menu p,
-.sidebar-menu span:not(.brand-suffix),
-.sidebar-menu label,
-.sidebar-menu .heading-text {
-    color: #ffffff;
-}
-
-/* ============================================
-   DARK BACKGROUNDS - Global Override
-   Applies to .bg-dark, .bg-navy, and navy sections
-   ============================================ */
-
-/* Never use gray text on dark backgrounds */
-.bg-dark .text-muted,
-.bg-dark .text-secondary,
-.bg-navy .text-muted,
-.bg-navy .text-secondary,
-[style*="background: #0E2B48"] .text-muted,
-[style*="background:#0E2B48"] .text-muted,
-[style*="background-color: #0E2B48"] .text-muted,
-[style*="background-color:#0E2B48"] .text-muted {
-    color: rgba(255, 255, 255, 0.85);
-}
-
-/* Hero sections - white text only */
-.hero-section .text-muted,
-.page-hero .text-muted,
-.category-hero .text-muted {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-/* ============================================
-   FOOTER BAR - Ensure Proper Contrast
-   ============================================ */
-
-/* Footer bar text on light background */
-.footer-bar .footer-item {
-    color: #4a5568; /* Dark gray on white */
-}
-
-.footer-bar .footer-item.active-nav,
-.footer-bar .footer-item:active {
-    color: #FF1654;
-}
-
-.footer-bar .footer-whatsapp,
-.footer-bar .footer-whatsapp i {
-    color: #25D366;
-}
-
-/* ============================================
-   CTA SECTIONS - Text Contrast
-   ============================================ */
-
-/* CTA banners with gradient/dark backgrounds */
-.cta-banner,
-.cta-section,
-.cta-strip {
-    color: #ffffff;
-}
-
-.cta-banner h2,
-.cta-section h2,
-.cta-banner h3,
-.cta-section h3 {
-    color: #ffffff;
-}
-
-.cta-banner p,
-.cta-section p {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-/* ============================================
-   FORM INPUTS - Ensure Readability
-   ============================================ */
-
-/* Input placeholder contrast */
-input::placeholder,
-textarea::placeholder {
-    color: #6b7280;
-    opacity: 1;
-}
-
-/* Dark theme input placeholders */
-body.theme-dark input::placeholder,
-body.theme-dark textarea::placeholder,
-[data-theme="dark"] input::placeholder,
-[data-theme="dark"] textarea::placeholder {
-    color: #9ca3af;
-}
-
-/* ============================================
-   BUTTON TEXT - Always Readable
-   ============================================ */
-
-/* Primary buttons - white text */
-.btn-coral,
-.btn-primary,
-.btn--primary,
-.hero-cta,
-.sidebar-cta:not(.secondary) {
-    color: #ffffff;
-}
-
-/* Secondary buttons on dark backgrounds */
-.bg-dark .btn-outline,
-.bg-navy .btn-outline,
-.sidebar-cta.secondary {
-    color: #ffffff;
-    border-color: rgba(255, 255, 255, 0.4);
-}
-
-/* ============================================
-   FOCUS STATES - Visible for All Users
-   ============================================ */
-
-/* Default focus ring */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible,
-[tabindex]:focus-visible {
-    outline: 2px solid #FF1654;
-    outline-offset: 2px;
-}
-
-/* Focus within dark sections */
-.bg-dark a:focus-visible,
-.bg-dark button:focus-visible,
-.bg-navy a:focus-visible,
-.bg-navy button:focus-visible,
-.sidebar-menu a:focus-visible,
-.sidebar-menu button:focus-visible {
-    outline: 2px solid #ffffff;
-    outline-offset: 2px;
-}
-
-/* ============================================
-   ICONS - Consistent Sizing and Color
-   ============================================ */
-
-/* Sidebar icons */
-.sidebar-menu i,
-.sidebar-nav i {
-    font-size: 1.1rem;
-    width: 24px;
-    min-width: 24px;
-}
-
-/* Accordion heading icons - coral accent */
-.sidebar-accordion-heading i {
-    color: #FF1654;
-}
-
-/* Panel link icons - slightly muted white */
-.sidebar-accordion-panel a i {
-    color: rgba(255, 255, 255, 0.7);
-}
-
-/* ============================================
-   DARK MODE SPECIFIC
-   ============================================ */
-
-body.theme-dark .sidebar-menu,
-[data-theme="dark"] .sidebar-menu {
-    background: #0b111a;
-}
-
-body.theme-dark .sidebar-menu a,
-body.theme-dark .sidebar-menu button,
-body.theme-dark .sidebar-menu span:not(.brand-suffix),
-[data-theme="dark"] .sidebar-menu a,
-[data-theme="dark"] .sidebar-menu button,
-[data-theme="dark"] .sidebar-menu span:not(.brand-suffix) {
-    color: #ffffff;
-}
-
-/* ============================================
-   ACCESSIBILITY IMPROVEMENTS
-   Touch targets, link visibility, heading fixes
-   ============================================ */
-
-/* Links - Not just color differentiation (WCAG 2.1 1.4.1) */
-article a:not(.btn):not(.card-link):not(.service-card-v2):not([class*="cta"]),
-.content a:not(.btn):not([class*="cta"]),
-.faq-answer a,
-.hero-intro a {
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 2px;
-}
-
-article a:not(.btn):hover,
-.content a:not(.btn):hover,
-.faq-answer a:hover {
-    text-decoration-thickness: 2px;
-}
-
-/* Touch targets - minimum 44x44px (WCAG 2.1 2.5.5) */
-.footer-bar .footer-item,
-.mobile-action-bar button,
-.mobile-action-bar a,
-.sidebar-menu a,
-.sidebar-menu button,
-nav a,
-.faq-question {
-    min-height: 44px;
-    min-width: 44px;
-    display: inline-flex;
-    align-items: center;
-}
-
-/* Ensure card touch targets are adequate */
-.overlap-card,
-.service-card-v2,
-.specialist-card,
-.why-card {
-    min-height: 44px;
-}
-
-/* Skip link visibility */
-.skip-link {
-    position: absolute;
-    left: -9999px;
-    top: auto;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    z-index: 9999;
-}
-
-.skip-link:focus {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    width: auto;
-    height: auto;
-    padding: 12px 24px;
-    background: #0E2B48;
-    color: #ffffff;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 4px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-}
-
-} /* End @layer overrides */
