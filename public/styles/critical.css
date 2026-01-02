@@ -98,8 +98,14 @@ img[width][height]{aspect-ratio:attr(width)/attr(height)}
 @font-face{font-family:'Montserrat';font-display:swap;src:local('Montserrat')}
 @font-face{font-family:'Open Sans';font-display:swap;src:local('Open Sans')}
 
-/* Reduce CLS from icons loading */
-.fa,.fas,.fab,.far{display:inline-block;width:1em;height:1em}
+/* Font Awesome Critical - MUST include font-family for icons to render */
+.fa,.fas,.fab,.far{display:inline-block;width:1em;height:1em;font-style:normal;font-variant:normal;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.fas,.fa-solid{font-family:"Font Awesome 6 Free",FontAwesome;font-weight:900}
+.fab,.fa-brands{font-family:"Font Awesome 6 Brands",FontAwesome;font-weight:400}
+.far,.fa-regular{font-family:"Font Awesome 6 Free",FontAwesome;font-weight:400}
+
+/* Critical icon content - ensures icons render before FA CSS loads */
+.fa-bars::before{content:"\f0c9"}.fa-moon::before{content:"\f186"}.fa-sun::before{content:"\f185"}.fa-times::before{content:"\f00d"}.fa-search::before{content:"\f002"}.fa-whatsapp::before{content:"\f232"}.fa-phone::before{content:"\f095"}.fa-envelope::before{content:"\f0e0"}.fa-home::before{content:"\f015"}.fa-phone-alt::before{content:"\f879"}.fa-th-large::before{content:"\f009"}.fa-chevron-down::before{content:"\f078"}
 
 /* Hide iOS-only section by default */
 .os-ios-only{display:none!important}
