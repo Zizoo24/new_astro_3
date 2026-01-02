@@ -665,17 +665,34 @@ function isActive(href: string): boolean {
     font-size: 1rem;
     color: #ffffff !important; /* FIX: Explicit white color for icons */
     pointer-events: none; /* FIX: Let clicks pass through to button */
+    /* FIX: Ensure Font Awesome icons render correctly */
+    font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", FontAwesome, sans-serif;
+    font-weight: 900;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   .theme-icon-light {
     display: none;
   }
 
-  [data-theme="dark"] .theme-icon-dark {
+  /* FIX: Use :global() to prevent Astro from scoping these selectors */
+  /* data-theme is on <html>, not on component elements */
+  :global([data-theme="dark"]) .theme-icon-dark {
     display: none;
   }
 
-  [data-theme="dark"] .theme-icon-light {
+  :global([data-theme="dark"]) .theme-icon-light {
+    display: block;
+  }
+
+  :global(html.theme-dark) .theme-icon-dark,
+  :global(body.theme-dark) .theme-icon-dark {
+    display: none;
+  }
+
+  :global(html.theme-dark) .theme-icon-light,
+  :global(body.theme-dark) .theme-icon-light {
     display: block;
   }
 
@@ -709,6 +726,11 @@ function isActive(href: string): boolean {
     font-size: 1.25rem;
     color: #ffffff !important; /* FIX: Explicit white color for icons */
     pointer-events: none;
+    /* FIX: Ensure Font Awesome icons render correctly */
+    font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", FontAwesome, sans-serif;
+    font-weight: 900;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   .header-column-sidebar {
