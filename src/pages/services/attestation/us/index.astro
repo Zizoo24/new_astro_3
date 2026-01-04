@@ -5,6 +5,10 @@
  */
 import ServiceLayout from '../../../../layouts/ServiceLayout.astro';
 import RelatedServices from '../../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../../components/CrossSiloLinks.astro';
+import InlineCallout from '../../../../components/InlineCallout.astro';
+import TrustLinks from '../../../../components/TrustLinks.astro';
+import ResourceLinks from '../../../../components/ResourceLinks.astro';
 
 const breadcrumbs = [
   { name: 'Home', url: '/' },
@@ -68,35 +72,51 @@ const benefitCards = [
 const faqs = [
   {
     question: 'What is the attestation process for US documents?',
-    answer: 'US documents follow a 5-step chain. Notarization if needed, then Secretary of State authentication. Next is Department of State apostille, followed by UAE Embassy DC. Finally, MOFA attestation in UAE completes the process.'
+    answer: 'US documents follow a 5-step chain. Notarization if needed, then Secretary of State authentication in the issuing state. Next is Department of State apostille in Washington DC, followed by UAE Embassy DC legalization. Finally, MOFA attestation in UAE completes the process. The entire chain typically takes 2-8 weeks depending on state processing times and service level selected.'
   },
   {
     question: 'Why do US documents need state-level authentication?',
-    answer: 'The US federal system means most documents are issued by state authorities. Educational certificates come from state-licensed institutions, vital records from state registries. The Secretary of State authenticates that state-level officials are legitimate before federal authentication can proceed.'
+    answer: 'The US federal system means most documents are issued by state authorities rather than the federal government. Educational certificates come from state-licensed institutions, vital records from state registries, and corporate documents from state business registries. The Secretary of State authenticates that state-level officials are legitimate before federal authentication can proceed. This dual-level system is unique to the United States.'
   },
   {
     question: 'How long does US document attestation take?',
-    answer: 'Processing varies significantly by state. Some states (Texas, Florida) process in 1-3 days, while others (California) take 2-4 weeks. Department of State adds 4-8 weeks standard or 1-2 weeks expedited. UAE Embassy and MOFA add 5-7 days. Total time ranges from 2-8 weeks depending on state and service level.'
+    answer: 'Processing varies significantly by state. Fast states like Texas process in 1-3 days, Florida in 1-2 days, and New York offers same-day in-person service. Slow states like California take 2-4 weeks with mail-only processing. The Department of State adds 4-8 weeks standard or 1-2 weeks expedited. UAE Embassy and MOFA add 5-7 days. Total time ranges from 2-8 weeks depending on state and service level.'
   },
   {
     question: 'Is FBI background check attestation different?',
-    answer: 'Yes. FBI checks are federal documents, so they skip state authentication and go directly to Department of State for apostille. However, FBI reports have validity periods (typically 6 months), so timing is critical. We coordinate the process to ensure your FBI check remains valid throughout attestation.'
+    answer: 'Yes. FBI Identity History Summary checks are federal documents, so they skip state authentication entirely and go directly to Department of State for apostille. However, FBI reports have validity periods (typically 6 months from issue), so timing is critical. We coordinate the process to ensure your FBI check remains valid throughout attestation and submission to UAE authorities.'
   },
   {
     question: 'Which states have the fastest processing?',
-    answer: 'Texas (1-3 days), Florida (1-2 days), and New York (same-day in-person) are among the fastest. California is one of the slowest at 2-4 weeks with mail-only processing. We factor state processing times into your timeline estimate.'
+    answer: 'Texas (1-3 days), Florida (1-2 days), and New York (same-day in-person at Albany or NYC) are among the fastest for Secretary of State processing. Illinois and Pennsylvania also offer relatively quick turnaround. California is one of the slowest at 2-4 weeks with mail-only processing and no walk-in options. We factor state processing times into your timeline estimate.'
   },
   {
     question: 'Do I need to be in the US for attestation?',
-    answer: 'No. You can send your documents to us or our US partners. We coordinate Secretary of State, Department of State, UAE Embassy DC, and arrange secure courier to Dubai for MOFA completion. The entire process can be managed remotely.'
+    answer: 'No. You can send your documents to us or our US partners from anywhere in the world. We coordinate Secretary of State authentication, Department of State apostille, UAE Embassy DC legalization, and arrange secure courier to Dubai for MOFA completion. The entire process can be managed remotely without requiring your presence in the United States.'
   },
   {
     question: 'What about documents from US territories?',
-    answer: 'Documents from Puerto Rico, US Virgin Islands, Guam, and other territories follow similar processes but may have different authentication offices. We handle documents from all US territories.'
+    answer: 'Documents from Puerto Rico, US Virgin Islands, Guam, American Samoa, and Northern Mariana Islands follow similar processes but may have different authentication offices. Puerto Rico has its own Secretary of State, while other territories have territorial equivalents. We handle documents from all US territories with knowledge of their specific procedures.'
   },
   {
     question: 'Is translation required after attestation?',
-    answer: 'Yes, for most UAE government submissions. US documents are in English, but UAE authorities typically require Arabic translation by an MOJ-certified translator. We provide combined attestation and translation services.'
+    answer: 'Yes, for most UAE government submissions. US documents are in English, but UAE authorities typically require Arabic translation by an MOJ-certified translator. We provide combined attestation and translation services, completing the translation after attestation so all stamps and seals are referenced in the Arabic version.'
+  },
+  {
+    question: 'What is the difference between Secretary of State and Department of State?',
+    answer: 'Each US state has a Secretary of State who handles state-level document authentication. This is different from the US Department of State (federal), which handles apostilles and international authentication. State documents must first be authenticated by the state Secretary of State, then sent to the federal Department of State for apostille before UAE Embassy processing.'
+  },
+  {
+    question: 'Can I attest a photocopy of my US document?',
+    answer: 'Generally, no. UAE authorities require attestation of original documents. However, for certain documents like transcripts or degrees where you need to retain the original, a certified copy can sometimes be attested. The copy must be notarized as a true copy by a US notary, then proceed through the standard authentication chain. We advise on the best approach for your specific situation.'
+  },
+  {
+    question: 'What if my document is from a state I no longer live in?',
+    answer: 'The document must be authenticated in the state that issued it, regardless of where you currently reside. A California degree must go through California Secretary of State even if you now live in Texas. We coordinate with offices in all 50 states, so your current location does not affect our ability to process your document.'
+  },
+  {
+    question: 'How do I know if my US university is recognized for UAE purposes?',
+    answer: 'Your university should be accredited by a regional accreditation body recognized by the US Department of Education. For healthcare professionals, additional verification through DataFlow or similar services may be required. We can advise on whether your specific institution credentials will be accepted for your intended UAE purpose.'
   }
 ];
 
@@ -107,93 +127,176 @@ const accordionSections = [
     items: [
       {
         heading: 'Step 1: Notarization (If Required)',
-        body: 'Documents not issued by government offices typically need notarization first. The notary must be commissioned in the state where authentication will occur. Some documents (birth certificates, official transcripts) skip this step as they already bear official signatures.'
+        body: 'Documents not issued by government offices typically need notarization first. The notary must be commissioned in the state where authentication will occur. Private documents like affidavits, powers of attorney, and certain copies require this step. Government-issued documents like birth certificates and official transcripts usually skip notarization as they already bear official signatures and seals.'
       },
       {
         heading: 'Step 2: Secretary of State Authentication',
-        body: 'The Secretary of State in the issuing state authenticates signatures on the document. For notarized documents, they verify the notary commission is valid. Processing times vary significantly: California takes 2-4 weeks, Texas 1-3 days, New York offers same-day in-person service.'
+        body: 'The Secretary of State in the issuing state authenticates signatures on the document. For notarized documents, they verify the notary commission is valid and current. For government documents, they confirm the issuing official signature. Each state has different procedures, fees, and processing times. Some states require county clerk certification before Secretary of State authentication.'
       },
       {
         heading: 'Step 3: Department of State Apostille',
-        body: 'After state authentication, documents go to the US Department of State Office of Authentications in Washington DC. Standard processing takes 4-8 weeks; expedited service reduces this to 1-2 weeks for additional fees. This is often the longest part of US document attestation.'
+        body: 'After state authentication, documents go to the US Department of State Office of Authentications in Washington DC. This federal office applies the apostille—an internationally recognized certificate confirming US government authentication. Standard processing currently takes 4-8 weeks due to high volumes. Expedited service is available for 1-2 weeks at additional cost. This is often the longest part of US document attestation.'
       },
       {
         heading: 'Step 4: UAE Embassy Legalization',
-        body: 'The UAE Embassy in Washington DC applies legalization stamps confirming UAE recognition of the US government authentication. Processing typically takes 3-5 working days.'
+        body: 'The UAE Embassy in Washington DC applies legalization stamps confirming UAE recognition of the US government authentication. Processing typically takes 3-5 working days. Documents must be submitted with appropriate fees and application forms. The embassy verifies the Department of State apostille before applying their stamp.'
       },
       {
-        heading: 'Step 5: MOFA UAE',
-        body: 'The final step is MOFA attestation in UAE. This confirms UAE government acceptance for official use. Processing takes 1-3 working days.'
+        heading: 'Step 5: MOFA UAE Attestation',
+        body: 'The final step is MOFA attestation in UAE. This confirms UAE government acceptance for official use within the country. MOFA processing typically takes 1-3 working days. After MOFA attestation, your document is legally valid for submission to UAE government authorities, employers, courts, and other official entities.'
       }
     ]
   },
   {
-    title: 'State-Specific Information',
+    title: 'State-by-State Processing Guide',
     id: 'states',
     items: [
       {
         heading: 'California',
-        body: 'Mail-only processing, 2-4 weeks. No walk-in service available. Documents must be notarized by California notary or issued by California state agency. Plan accordingly for the longer processing time.'
+        body: 'Mail-only processing with 2-4 week turnaround. No walk-in service available at Sacramento office. Documents must be notarized by a California-commissioned notary or issued by a California state agency. All educational documents from California institutions (UC system, CSU, private colleges) are processed here. Plan for the longer processing time and consider expedited Department of State service to offset delays.'
       },
       {
         heading: 'New York',
-        body: 'Mail-in and in-person options at Albany or NYC. Same-day in-person available. County Clerk certification may be required first for some documents. Relatively efficient processing.'
+        body: 'Offers both mail-in and in-person service at Albany and New York City offices. Same-day in-person processing available for urgent needs. Some documents require County Clerk certification before Secretary of State authentication—this is common for documents from NYC boroughs. NYU, Columbia, CUNY, and SUNY documents all process through New York Secretary of State. Relatively efficient overall.'
       },
       {
         heading: 'Texas',
-        body: 'Efficient 1-3 day processing. Walk-in available in Austin. One of the faster states for authentication. Documents from Texas universities process quickly.'
+        body: 'Efficient 1-3 day mail-in processing with walk-in service available at the Austin office. One of the fastest states for authentication. Documents from Texas universities (UT system, Texas A&M, Rice, SMU, etc.) process quickly here. Corporate documents for Texas-registered companies also follow this path. Texas is often a good example of how fast the US process can be when state processing is efficient.'
       },
       {
         heading: 'Florida',
-        body: 'Quick 1-2 day processing. Mail-in and in-person options in Tallahassee. Another efficient state for document authentication.'
+        body: 'Quick 1-2 day processing with both mail-in and in-person options at Tallahassee office. Another efficient state that helps keep total attestation timeline reasonable. Documents from Florida universities (UF, FSU, Miami, etc.) and Florida vital records (birth, marriage, divorce) process here. Popular for retirees and business professionals relocating to UAE.'
+      },
+      {
+        heading: 'Illinois',
+        body: 'Processing typically takes 3-5 business days. Springfield office handles authentication. Documents from Illinois institutions (University of Chicago, Northwestern, UIUC, etc.) are processed here. Chicago-area notarized documents require Secretary of State authentication before proceeding to federal level.'
+      },
+      {
+        heading: 'Pennsylvania',
+        body: 'Harrisburg office processes authentication in 2-4 business days. Documents from Pennsylvania institutions (Penn State, University of Pennsylvania, Carnegie Mellon, etc.) follow this path. Both mail-in and walk-in options available.'
+      },
+      {
+        heading: 'New Jersey',
+        body: 'Trenton office typically processes in 3-5 business days. Documents from New Jersey institutions (Rutgers, Princeton, NJIT, etc.) are authenticated here. County clerk certification may be required for some document types before Secretary of State processing.'
+      },
+      {
+        heading: 'Massachusetts',
+        body: 'Boston office processes authentication in 5-7 business days. Documents from Massachusetts institutions (MIT, Harvard, Boston University, etc.) are handled here. The Commonwealth uses slightly different terminology but follows the same authentication chain.'
+      },
+      {
+        heading: 'Washington State',
+        body: 'Olympia office processes documents in 3-5 business days. Documents from Washington institutions (University of Washington, WSU, etc.) are authenticated here. Mail-in and walk-in options available. Not to be confused with Washington DC, which is the federal District of Columbia.'
       },
       {
         heading: 'Other States',
-        body: 'We handle documents from all 50 states. Processing times and procedures vary. Send your document details and we provide an accurate timeline for your specific state.'
+        body: 'We handle documents from all 50 states including less common origins like Wyoming, North Dakota, Montana, and Alaska. Processing times and procedures vary by state. Some states have multiple offices or require specific routing. Send your document details and we provide accurate timeline based on current state processing times and our experience with that specific office.'
       }
     ]
   },
   {
-    title: 'Document Types',
+    title: 'Document Types and Requirements',
     id: 'documents',
     items: [
       {
         heading: 'Educational Certificates',
-        body: 'University degrees, college diplomas, transcripts, and professional certifications. Documents must be from accredited US institutions. Transcripts typically need notarization before state authentication.'
+        body: 'University degrees (bachelor, master, doctoral), college diplomas, community college credentials, and professional certifications. Documents must be from accredited US institutions recognized by the US Department of Education. Original diplomas are preferred, but certified copies can sometimes be authenticated if the original cannot be released. Transcripts typically need notarization before state authentication.'
       },
       {
-        heading: 'FBI Background Check',
-        body: 'FBI Identity History Summary for UAE visa applications and Golden Visa. Federal document goes directly to Department of State (skips state authentication). Plan timing carefully due to validity period.'
+        heading: 'FBI Background Check (Identity History Summary)',
+        body: 'The FBI Identity History Summary (criminal background check) is the most common federal document for UAE visa applications, Golden Visa, and employment. As a federal document, it skips state authentication and goes directly to Department of State for apostille. FBI reports have a validity period (typically 6 months), so timing coordination is critical. We help you plan the process to ensure your FBI check remains valid throughout attestation and submission.'
       },
       {
-        heading: 'Birth & Marriage Certificates',
-        body: 'State-issued vital records from any US state. Must be official copies from the state vital records office. Photocopies are not accepted.'
+        heading: 'Birth Certificates',
+        body: 'State-issued vital records from any US state are required for family visa sponsorship, dependent visas, and UAE legal matters. Must be official certified copies from the state vital records office—hospital-issued commemorative certificates are not acceptable. Some states issue different formats; the certified copy with registrar seal is what is needed.'
+      },
+      {
+        heading: 'Marriage Certificates',
+        body: 'State-issued marriage certificates for spouse visa sponsorship and family status documentation in UAE. Must be official copies from the county or state vital records office. Wedding ceremony certificates from churches or venues are not acceptable—only the state-registered marriage certificate can be authenticated.'
+      },
+      {
+        heading: 'Divorce Decrees',
+        body: 'Court-issued divorce decrees from US state courts for remarriage, family status, or inheritance matters in UAE. Must be certified copies from the court that issued the decree. Some states require additional authentication steps for court documents.'
       },
       {
         heading: 'Corporate Documents',
-        body: 'Articles of Incorporation, Certificates of Good Standing, board resolutions. Secretary of State in the state of incorporation handles authentication.'
+        body: 'Articles of Incorporation, Certificates of Good Standing, Certificate of Formation (for LLCs), board resolutions, and corporate powers of attorney. Secretary of State in the state of incorporation handles authentication. Delaware and Nevada documents are common due to the popularity of these states for incorporation. Foreign-qualified companies may need authentication from multiple states.'
+      },
+      {
+        heading: 'Professional Licenses',
+        body: 'State-issued professional licenses (medical, engineering, legal, accounting, etc.) can be authenticated for use in UAE professional licensing applications. The license must be current and in good standing. Verification letters from licensing boards may also be required by UAE authorities.'
+      },
+      {
+        heading: 'Powers of Attorney',
+        body: 'US powers of attorney executed for use in UAE must be notarized and then authenticated through the full chain. The notary must be commissioned in the state where authentication will occur. Special formatting requirements may apply for UAE legal acceptance.'
       }
     ]
   },
   {
-    title: 'After Attestation',
+    title: 'UAE Embassy Locations and Procedures',
+    id: 'embassy',
+    items: [
+      {
+        heading: 'UAE Embassy Washington DC',
+        body: 'The main embassy in Washington DC handles the majority of document attestation for US documents. Located at 3522 International Court NW, the embassy accepts submissions in person or via authorized agents. Processing typically takes 3-5 business days. Documents must have Department of State apostille before embassy submission.'
+      },
+      {
+        heading: 'UAE Consulate Los Angeles',
+        body: 'The Los Angeles consulate serves the western United States and can process attestation for documents that have completed US authentication. Located in Beverly Hills, the consulate may have different processing times than the DC embassy. Useful for California and other western state documents.'
+      },
+      {
+        heading: 'UAE Consulate New York',
+        body: 'The New York consulate serves the northeastern United States. Located in Manhattan, it can process attestation for documents from the region. Processing times may vary from the main embassy.'
+      },
+      {
+        heading: 'Submission Requirements',
+        body: 'All UAE diplomatic missions require: the original document with Department of State apostille, completed application form, applicable fees (cash or money order typically), and copy of the document owner passport. Processing is done in batches, so submission early in the week often results in faster return.'
+      }
+    ]
+  },
+  {
+    title: 'After Attestation: Next Steps',
     id: 'after-care',
     items: [
       {
         heading: 'Arabic Translation',
-        body: 'Most UAE authorities require Arabic translation after attestation. We provide MOJ-certified translation referencing all attestation stamps on the original document.'
+        body: 'Most UAE authorities require Arabic translation after attestation. We provide MOJ-certified translation referencing all attestation stamps on the original document. The translation includes descriptions of all seals and stamps applied during the attestation chain. For educational documents, we specialize in degree certificate translation that meets MOHRE and DHA requirements.'
       },
       {
-        heading: 'Document Validity',
-        body: 'FBI checks should be used within 6 months of issue. Plan attestation timing to ensure documents remain valid when submitted to UAE authorities. Other documents may have similar validity considerations.'
+        heading: 'Document Validity Periods',
+        body: 'FBI checks should be used within 6 months of issue—plan attestation timing accordingly. Police clearances for some UAE purposes have similar validity windows. Educational certificates do not expire but should be attested before the institution closes or changes significantly. Some UAE authorities may request recent attestation dates.'
       },
       {
-        heading: 'Submission to UAE Authorities',
-        body: 'Fully attested documents can be submitted to MOHRE for employment visas, GDRFA/ICP for residence visas, professional licensing bodies, Dubai Courts for legal matters, or corporate registries for business transactions.'
+        heading: 'Employment Visa Submission',
+        body: 'Attested educational certificates are submitted to MOHRE (Ministry of Human Resources and Emiratisation) through your employer PRO for employment visa applications. The attested and translated documents become part of your UAE employment file.'
+      },
+      {
+        heading: 'Family Visa Applications',
+        body: 'Attested marriage and birth certificates are submitted to GDRFA (General Directorate of Residency and Foreigners Affairs) or ICP for family visa sponsorship. Arabic translation is required for these submissions.'
+      },
+      {
+        heading: 'Professional Licensing',
+        body: 'Healthcare professionals submit attested credentials to DHA, DOH, or MOH depending on emirate. Engineers submit to Society of Engineers. Architects, lawyers, and other regulated professions have their own licensing bodies that verify attestation.'
+      },
+      {
+        heading: 'Golden Visa Applications',
+        body: 'Golden Visa applicants submit attested FBI background checks and educational credentials as part of their application package. The 10-year residency program has specific document requirements that we can help you understand and fulfill.'
       }
     ]
   }
 ];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
 ---
 
 <ServiceLayout
@@ -204,29 +307,37 @@ const accordionSections = [
   heroImage="/assets/images/onedrive/stamped-hardcopy.png"
   heroTitle="US Document Attestation in Dubai"
   heroSubtitle="State & Federal Authentication"
-  heroIntro={`<p>Complete attestation for American documents. State Secretary of State authentication, federal Department of State apostille, UAE Embassy Washington DC, and MOFA. Documents from all 50 states handled with expert navigation of the US federal system.</p>
+  heroIntro={`<p>Complete attestation service for American documents required in UAE. We navigate the unique US federal system where documents must pass through both state and federal authentication before UAE Embassy and MOFA attestation. Documents from all 50 states handled with expert knowledge of each state's Secretary of State procedures.</p>
 
 <h3>The US Attestation Chain</h3>
 <ul>
-<li><strong>Notarization</strong> (if needed) — For private documents and copies</li>
-<li><strong>Secretary of State</strong> — State-level authentication (varies by state)</li>
-<li><strong>US Dept of State</strong> — Federal apostille in Washington DC</li>
-<li><strong>UAE Embassy DC</strong> — Embassy legalization confirms UAE recognition</li>
-<li><strong>MOFA UAE</strong> — Final attestation for UAE government acceptance</li>
+<li><strong>Notarization</strong> (if needed) — For private documents, affidavits, and copies</li>
+<li><strong>Secretary of State</strong> — State-level authentication (processing varies by state)</li>
+<li><strong>US Dept of State</strong> — Federal apostille in Washington DC (4-8 weeks standard, 1-2 weeks expedited)</li>
+<li><strong>UAE Embassy DC</strong> — Embassy legalization confirms UAE recognition (3-5 days)</li>
+<li><strong>MOFA UAE</strong> — Final attestation for UAE government acceptance (1-3 days)</li>
 </ul>
+
+<h3>State vs Federal Documents</h3>
+<p><strong>State documents</strong> (<a href="/personal/vital-records/birth/">birth certificates</a>, <a href="/personal/vital-records/marriage/">marriage certificates</a>, <a href="/personal/academic/degree/">degrees</a>, corporate filings) require Secretary of State authentication first. <strong>Federal documents</strong> (FBI background checks, federal court orders) skip state authentication and go directly to Department of State.</p>
 
 <h3>State Processing Times</h3>
 <ul>
-<li><strong>Fast states</strong> — Texas (1-3 days), Florida (1-2 days), New York (same-day in-person)</li>
-<li><strong>Slow states</strong> — California (2-4 weeks mail-only), no walk-in options</li>
-<li><strong>Federal step</strong> — Department of State 4-8 weeks standard, 1-2 weeks expedited</li>
+<li><strong>Fast states</strong> — Texas (1-3 days), Florida (1-2 days), New York (same-day in-person available)</li>
+<li><strong>Medium states</strong> — Illinois (3-5 days), Pennsylvania (2-4 days), New Jersey (3-5 days)</li>
+<li><strong>Slow states</strong> — California (2-4 weeks mail-only), some other western states</li>
 </ul>
 
 <h3>Documents We Attest</h3>
-<p><a href="/personal/academic/degree/">University degrees</a> and diplomas, FBI Identity History Summary (background checks), <a href="/personal/vital-records/">vital records</a> from any state, and <a href="/legal/corporate/">corporate documents</a>.</p>
+<ul>
+<li><strong>Educational</strong> — <a href="/personal/academic/degree/">University degrees</a>, <a href="/personal/academic/transcripts/">transcripts</a>, professional certifications from all 50 states</li>
+<li><strong>Personal</strong> — <a href="/personal/vital-records/birth/">Birth</a>, <a href="/personal/vital-records/marriage/">marriage</a>, <a href="/personal/vital-records/divorce/">divorce</a> certificates from any state</li>
+<li><strong>Federal</strong> — FBI Identity History Summary (<a href="/personal/immigration/pcc/">police clearance</a>)</li>
+<li><strong>Commercial</strong> — <a href="/legal/corporate/moa/">Articles of Incorporation</a>, <a href="/legal/corporate/poa/">POA</a>, board resolutions</li>
+</ul>
 
 <h3>Total Timeline</h3>
-<p><strong>2-8 weeks</strong> depending on issuing state and service level. We provide accurate estimates based on your specific state and document type.</p>`}
+<p><strong>2-8 weeks</strong> depending on issuing state and service level. We provide accurate estimates based on your specific state, document type, and current processing times at each authentication level.</p>`}
   snapshot={snapshot}
   breadcrumbs={breadcrumbs}
   processSteps={processSteps}
@@ -236,63 +347,242 @@ const accordionSections = [
   faqs={faqs}
   serviceType="US Document Attestation"
 >
-  <!-- Understanding US System -->
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
   <section class="section bg-white">
     <div class="container">
       <h2>Understanding US Document Attestation</h2>
       
       <p>The United States presents unique challenges for document attestation due to its federal system. Unlike countries with centralized government document issuance, most US documents originate from state authorities rather than the federal government. This means your California degree, Texas birth certificate, or Florida marriage certificate each requires authentication from different state offices before federal authentication can proceed.</p>
 
+      <InlineCallout
+        type="info"
+        title="US Federal System"
+        text="The US has 50 states, each with its own Secretary of State office that handles document authentication. Documents must be authenticated in the state where they were issued, regardless of where you currently live."
+      />
+
       <h3>The State-Federal Authentication Chain</h3>
       
       <p>Most US documents follow this path: First, the document may need notarization if not already issued by a government office. Second, the Secretary of State (or equivalent) in the issuing state authenticates the notary or official signature. Third, the US Department of State in Washington DC applies the federal apostille. Only then can UAE Embassy and MOFA attestation proceed.</p>
       
-      <p>Each of the 50 states has different procedures, offices, and processing times. Some states offer same-day in-person service while others require weeks of mail-in processing. This variation significantly impacts total attestation timeline and requires familiarity with each state's system.</p>
+      <p>Each of the 50 states has different procedures, offices, and processing times. Some states offer same-day in-person service while others require weeks of mail-in processing. This variation significantly impacts total attestation timeline and requires familiarity with each state's system. Our experience with all 50 states allows us to provide accurate timelines and avoid common pitfalls.</p>
 
       <h3>Department of State Processing</h3>
       
-      <p>After state authentication, documents go to the US Department of State Office of Authentications. Standard processing currently takes 4-8 weeks due to high volumes. Expedited service reduces this to 1-2 weeks for additional fees. This federal step is often the longest part of US document attestation, so planning ahead is essential.</p>
+      <p>After state authentication, documents go to the US Department of State Office of Authentications in Washington DC. This is the federal government office responsible for issuing apostilles—internationally recognized certificates confirming US government authentication. Standard processing currently takes 4-8 weeks due to high volumes and staffing constraints. Expedited service is available for 1-2 weeks at additional cost, which we recommend for time-sensitive applications.</p>
 
-      <h3>Federal Documents</h3>
+      <p>The Department of State is often the bottleneck in US document attestation. While some states process in 1-2 days, the federal step adds weeks to the timeline. Planning ahead is essential, especially for employment visa deadlines or family visa sponsorship timelines.</p>
+
+      <h3>Federal Documents: FBI Background Check</h3>
       
-      <p>Some documents originate from federal agencies rather than state authorities. FBI background checks are the most common example for UAE visa applications. These federal documents skip state authentication and go directly to Department of State for apostille. However, FBI reports have validity periods, so timing coordination is critical.</p>
+      <p>Some documents originate from federal agencies rather than state authorities. The FBI Identity History Summary (criminal background check) is the most common example for UAE visa applications, <a href="/services/golden-visa-translation/">Golden Visa</a>, and employment verification. These federal documents skip state authentication entirely and go directly to Department of State for apostille.</p>
+      
+      <p>However, FBI reports have validity periods of typically 6 months from issue date. This creates timing challenges—you need the attestation completed and document submitted to UAE authorities before expiration. We coordinate the process to ensure your FBI check remains valid throughout attestation and final submission.</p>
+
+      <h3>UAE is Not a Hague Convention Member</h3>
+      
+      <p>The United States is a member of the <a href="/services/attestation/apostille/">Hague Apostille Convention</a>, which simplifies document authentication between member countries. However, because the UAE is NOT a Hague member, US documents require additional steps after the apostille. The UAE Embassy legalization and MOFA attestation are still required—the apostille alone is not sufficient for UAE use.</p>
     </div>
   </section>
 
-  <!-- Service Options -->
   <section class="section bg-light">
+    <div class="container">
+      <h2>What You Need to Provide</h2>
+      <p style="max-width: 700px; margin-bottom: 2rem;">
+        To begin the attestation process for your US document, send us:
+      </p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+        
+        <div style="padding: 1.5rem; background: white; border-radius: 8px; border: 1px solid #e5e7eb;">
+          <h3 style="font-size: 1.1rem; margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-file-alt" style="color: var(--accent-color, #d4af37);"></i>
+            Original Document
+          </h3>
+          <p style="margin: 0; font-size: 0.95rem;">Original certificate, diploma, or vital record with all original signatures and seals. Photocopies generally cannot be attested unless certified as true copies by a notary.</p>
+        </div>
+        
+        <div style="padding: 1.5rem; background: white; border-radius: 8px; border: 1px solid #e5e7eb;">
+          <h3 style="font-size: 1.1rem; margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-id-card" style="color: var(--accent-color, #d4af37);"></i>
+            Passport Copy
+          </h3>
+          <p style="margin: 0; font-size: 0.95rem;">Clear copy of your passport for identity verification and UAE Embassy submission requirements.</p>
+        </div>
+        
+        <div style="padding: 1.5rem; background: white; border-radius: 8px; border: 1px solid #e5e7eb;">
+          <h3 style="font-size: 1.1rem; margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-map-marker-alt" style="color: var(--accent-color, #d4af37);"></i>
+            Issuing State
+          </h3>
+          <p style="margin: 0; font-size: 0.95rem;">The state where your document was issued (for degrees, the state where the university is located). This determines which Secretary of State office processes your authentication.</p>
+        </div>
+        
+        <div style="padding: 1.5rem; background: white; border-radius: 8px; border: 1px solid #e5e7eb;">
+          <h3 style="font-size: 1.1rem; margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-bullseye" style="color: var(--accent-color, #d4af37);"></i>
+            Purpose in UAE
+          </h3>
+          <p style="margin: 0; font-size: 0.95rem;">Your intended use (employment visa, family visa, professional licensing, etc.) helps us ensure the attestation meets specific authority requirements.</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
     <div class="container">
       <h2>Service Options</h2>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
         
-        <div style="padding: 2rem; background: white; border-radius: 8px; border: 1px solid #e5e7eb;">
-          <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Standard</h3>
-          <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem;">6-10 Weeks</p>
-          <p style="margin: 0;">Standard Department of State processing with regular state authentication.</p>
+        <div style="padding: 2rem; background: var(--surface-raised, #f8f9fa); border-radius: 8px; border: 1px solid #e5e7eb;">
+          <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Standard Service</h3>
+          <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem;">6-10 Weeks Total</p>
+          <p style="margin: 0;">Standard Department of State processing (4-8 weeks) with regular state authentication timing. Best for documents not needed urgently, allowing for cost-effective processing through the full chain.</p>
         </div>
         
         <div style="padding: 2rem; background: white; border-radius: 8px; border: 2px solid var(--primary-color);">
-          <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Expedited</h3>
-          <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem;">2-4 Weeks</p>
-          <p style="margin: 0;">Rush processing at all stages including expedited Department of State.</p>
+          <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Expedited Service</h3>
+          <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem;">2-4 Weeks Total</p>
+          <p style="margin: 0;">Rush processing at Department of State (1-2 weeks expedited) plus priority handling at state level where available. Recommended for employment visa deadlines and time-sensitive applications.</p>
         </div>
         
-        <div style="padding: 2rem; background: white; border-radius: 8px; border: 1px solid #e5e7eb;">
-          <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">With Translation</h3>
-          <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem;">Complete Package</p>
-          <p style="margin: 0;">Attestation plus MOJ-certified Arabic translation.</p>
+        <div style="padding: 2rem; background: var(--surface-raised, #f8f9fa); border-radius: 8px; border: 1px solid #e5e7eb;">
+          <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Complete Package</h3>
+          <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem;">Attestation + Translation</p>
+          <p style="margin: 0;">Full attestation chain plus <a href="/legal-translation-dubai/">MOJ-certified Arabic translation</a>. The complete service for documents being submitted to UAE government authorities.</p>
         </div>
         
       </div>
       
-      <p style="margin-top: 2rem; text-align: center; color: #6b7280;">Processing time varies by state. Send your documents for accurate timeline estimate based on current state processing times.</p>
+      <p style="margin-top: 2rem; text-align: center; color: #6b7280;">Processing time varies by state. Send your documents via WhatsApp for accurate timeline estimate based on current state processing times.</p>
     </div>
   </section>
 
-  <!-- Related Services -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Common Questions by Document Type</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 2rem;">
+        
+        <div>
+          <h3 style="color: var(--primary-color); font-size: 1.2rem;">For Employment Visa</h3>
+          <p>Attested <a href="/personal/academic/degree/">university degree</a> is typically required by MOHRE for employment visa approval. Your employer's PRO will submit the attested and translated document. FBI check may also be required for certain positions or Golden Visa applications.</p>
+        </div>
+        
+        <div>
+          <h3 style="color: var(--primary-color); font-size: 1.2rem;">For Family Visa</h3>
+          <p>Attested <a href="/personal/vital-records/marriage/">marriage certificate</a> for spouse sponsorship, attested <a href="/personal/vital-records/birth/">birth certificates</a> for child dependents. Both documents require Arabic translation after attestation for GDRFA or ICP submission.</p>
+        </div>
+        
+        <div>
+          <h3 style="color: var(--primary-color); font-size: 1.2rem;">For Healthcare Licensing</h3>
+          <p>Medical professionals need attested degrees plus additional verification through DataFlow or similar services. <a href="/specialized/medical/dha-dataflow/">DHA licensing</a> has specific attestation requirements we can guide you through.</p>
+        </div>
+        
+        <div>
+          <h3 style="color: var(--primary-color); font-size: 1.2rem;">For Business Setup</h3>
+          <p>Attested <a href="/legal/corporate/moa/">corporate documents</a> (Articles of Incorporation, Good Standing certificates) for company formation or branch office registration in UAE. <a href="/legal/corporate/poa/">Powers of Attorney</a> for authorized signatories also require attestation.</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
   <section class="section bg-white">
     <div class="container">
-      <RelatedServices pageKey="usAttestation" showFamily={true} showNextSteps={true} />
+      <InlineCallout
+        type="tip"
+        title="Need Translation Too?"
+        link="/legal-translation-dubai/"
+        linkText="View translation services"
+      >
+        Most attested US documents require MOJ-certified Arabic translation before submission to UAE authorities. We complete translation after attestation so all stamps and seals are properly referenced.
+      </InlineCallout>
+
+      <TrustLinks variant="compact" />
+
+      <ResourceLinks pageKey="usAttestation" variant="callout" title="Helpful Resources" />
+
+      <RelatedServices
+        pageKey="usAttestation"
+        title="Related Services"
+        showFamily={true}
+        showNextSteps={true}
+        maxItems={6}
+      />
+
+      <CrossSiloLinks
+        currentSilo="attestation"
+        title="Other Country Attestation"
+      />
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>US Territories and Special Cases</h2>
+      
+      <p>Beyond the 50 states, we also handle documents from US territories and other special jurisdictions:</p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+        
+        <div style="padding: 1.5rem; background: white; border-radius: 8px;">
+          <h3 style="font-size: 1.1rem; margin: 0 0 0.75rem;">Puerto Rico</h3>
+          <p style="margin: 0; font-size: 0.95rem;">Has its own Department of State that handles authentication. Documents in Spanish may require translation before UAE use.</p>
+        </div>
+        
+        <div style="padding: 1.5rem; background: white; border-radius: 8px;">
+          <h3 style="font-size: 1.1rem; margin: 0 0 0.75rem;">US Virgin Islands</h3>
+          <p style="margin: 0; font-size: 0.95rem;">Lieutenant Governor's office handles authentication. Processing may take longer due to smaller administrative capacity.</p>
+        </div>
+        
+        <div style="padding: 1.5rem; background: white; border-radius: 8px;">
+          <h3 style="font-size: 1.1rem; margin: 0 0 0.75rem;">Guam & Pacific Territories</h3>
+          <p style="margin: 0; font-size: 0.95rem;">Guam, American Samoa, and Northern Mariana Islands have territorial equivalents. We coordinate with appropriate offices.</p>
+        </div>
+        
+        <div style="padding: 1.5rem; background: white; border-radius: 8px;">
+          <h3 style="font-size: 1.1rem; margin: 0 0 0.75rem;">Washington DC (District of Columbia)</h3>
+          <p style="margin: 0; font-size: 0.95rem;">DC is not a state but has its own authentication office. Documents from Georgetown, George Washington, and other DC institutions process here.</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section bg-white">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Need US Document Attestation?</h2>
+        <p>Send your US document via WhatsApp. We assess your document, identify the issuing state, provide accurate timeline, and coordinate the entire attestation chain from state authentication through MOFA.</p>
+        <a href="https://wa.me/971508620217" class="btn btn-primary">
+          <i class="fab fa-whatsapp"></i> Send Your Document
+        </a>
+        <div class="related-links">
+          <span>Related:</span>
+          <a href="/resources/attestation-guide/">Attestation Guide</a>
+          <a href="/services/attestation/canada/">Canada Attestation</a>
+          <a href="/services/attestation/uk/">UK Attestation</a>
+          <a href="/services/attestation/india/">India Attestation</a>
+        </div>
+      </div>
     </div>
   </section>
 </ServiceLayout>
+
+<style>
+  .cta-section { padding: 4rem 0; }
+  .cta-content { text-align: center; max-width: 600px; margin: 0 auto; }
+  .cta-content h2 { margin-bottom: 1rem; color: var(--primary-color); }
+  .cta-content > p { margin-bottom: 2rem; color: var(--text-muted); }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
+  .btn-primary { background: var(--accent-color); color: #ffffff; }
+  .btn-primary:hover { background: #e0144c; transform: translateY(-2px); }
+  .related-links { margin-top: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; font-size: 0.9rem; }
+  .related-links span { color: var(--text-muted); }
+  .related-links a { color: var(--primary-color); text-decoration: none; }
+  .related-links a:hover { color: var(--accent-color); text-decoration: underline; }
+</style>

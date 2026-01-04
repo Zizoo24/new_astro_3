@@ -1,12 +1,70 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import RelatedServices from '../../../../components/RelatedServices.astro';
+
+const faqs = [
+  {
+    q: "What is the difference between certified and notarized translation for arbitration awards?",
+    a: "MOJ-certified translation carries the official stamp of a Ministry of Justice licensed translator, which Dubai Courts require for enforcement. Notarized translation adds notary public attestation to verify the translator's signature—typically needed for documents going abroad but not required for UAE enforcement. For domestic enforcement under UAE Arbitration Law or New York Convention recognition, MOJ certification is the standard requirement."
+  },
+  {
+    q: "How long does arbitration award translation take?",
+    a: "Standard arbitration awards (10-20 pages) typically complete within 24-48 hours. Complex awards with extensive reasoning, multiple claims, or technical subject matter may require 3-5 business days. Express service is available for urgent enforcement deadlines—same-day delivery is possible when arranged in advance."
+  },
+  {
+    q: "What is the difference between DIAC, ICC, LCIA, and DIFC-LCIA?",
+    a: "DIAC (Dubai International Arbitration Centre) is the main UAE arbitration institution following local procedural rules. ICC (International Chamber of Commerce) is a Paris-based global institution with its own extensive rules. LCIA (London Court of International Arbitration) applies English common law procedures. DIFC-LCIA operates within Dubai's financial free zone under English common law. Each has distinct terminology and procedural requirements that affect translation."
+  },
+  {
+    q: "Can foreign arbitration awards be enforced in the UAE?",
+    a: "Yes, the UAE ratified the New York Convention in 2006, enabling enforcement of foreign arbitral awards from other member states. Enforcement requires the original authenticated award, the underlying arbitration agreement, and MOJ-certified Arabic translations. Dubai Courts examine limited grounds for refusal under the Convention."
+  },
+  {
+    q: "What's the difference between enforcing through Dubai Courts vs DIFC Courts?",
+    a: "Dubai Courts require Arabic documentation and follow civil law procedures under UAE Arbitration Law. DIFC Courts accept English documentation and follow common law procedures. DIFC may be faster for awards from common law jurisdictions. However, if defendant assets are on mainland Dubai, DIFC enforcement may require subsequent conduit enforcement through Dubai Courts."
+  },
+  {
+    q: "Do you translate all arbitration documents or just final awards?",
+    a: "We translate all arbitration-related documents: final awards, partial awards, interim measures, procedural orders, consent awards, costs awards, arbitration agreements, witness statements, expert reports, and hearing transcripts. For ongoing proceedings, we offer retainer arrangements to ensure consistent terminology throughout."
+  },
+  {
+    q: "How do you handle interest calculations in award translations?",
+    a: "Interest calculations must be translated exactly—the rate, period, compounding method, and any grace periods must be precise. We verify numerical accuracy, currency denominations, and calculation methodologies to ensure the enforced amount matches the tribunal's intention. A mistranslated interest provision can significantly affect the recovery amount."
+  },
+  {
+    q: "What if Dubai Courts reject my translated award?",
+    a: "If any UAE court rejects our translation due to our error, we correct and redeliver at no charge—including courier costs to meet your filing deadline. Our 100% acceptance rate reflects years of experience with court requirements and institutional familiarity."
+  },
+  {
+    q: "How do you maintain confidentiality for arbitration documents?",
+    a: "Arbitration is inherently confidential. Awards are processed only by assigned senior translators, transmitted through encrypted channels, and deleted upon request after delivery. For particularly sensitive matters involving trade secrets or settlement terms, we offer enhanced confidentiality protocols including formal NDAs and restricted access controls."
+  },
+  {
+    q: "Do you work with law firms on arbitration award translations?",
+    a: "Yes, we work extensively with law firms handling enforcement matters. We offer volume arrangements, priority handling for urgent deadlines, and consistent terminology across multi-document cases. Many firms engage us on retainer for immediate availability when enforcement windows open."
+  }
+];
 ---
 
 <BaseLayout
   title="Arbitration Translation Dubai | DIAC & ICC Awards"
   description="MOJ-certified arbitration award translation in Dubai. DIAC, ICC, and international arbitration decisions for enforcement and recognition in UAE courts."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a
+        }
+      }))
+    })} />
+  </Fragment>
+
   <section class="hero-section bg-dark" data-theme="dark">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -163,55 +221,100 @@ import RelatedServices from '../../../../components/RelatedServices.astro';
         <p>UAE courts enforce arbitration awards under the UAE Arbitration Law (Federal Law No. 6 of 2018) and the New York Convention on the Recognition and Enforcement of Foreign Arbitral Awards. Both frameworks impose specific requirements for translated documents. An improperly translated award can face enforcement challenges, delays, or outright rejection.</p>
 
         <h3>The UAE Arbitration Landscape</h3>
-        <p>Dubai and Abu Dhabi have positioned themselves as regional arbitration hubs. DIAC (Dubai International Arbitration Centre) handles commercial disputes under its own procedural rules. The <a href="/locations/dubai/difc/">DIFC-LCIA</a> Arbitration Centre operates within the Dubai International Financial Centre, applying common law principles. Abu Dhabi houses both ADGM Arbitration Centre and the traditional ADCCAC.</p>
+        <p>Dubai and Abu Dhabi have positioned themselves as regional arbitration hubs, attracting international disputes and establishing sophisticated arbitration infrastructure. Understanding this landscape helps you navigate enforcement effectively.</p>
 
-        <p>Each institution has documentation requirements that affect translation needs. DIAC proceedings in Arabic may require English translations for international parties. DIFC-LCIA proceedings in English may require Arabic translations for enforcement in Dubai Courts. We understand these institutional nuances.</p>
+        <p><strong>DIAC (Dubai International Arbitration Centre)</strong> is the primary arbitration institution in Dubai. It handles commercial disputes under its own procedural rules, which reflect UAE civil law principles while incorporating international best practices. DIAC proceedings may be conducted in Arabic or English, with awards issued in the language of the proceedings. For Arabic-language DIAC awards being used abroad, English translation may be needed. For English-language DIAC awards being enforced in mainland Dubai Courts, Arabic translation is mandatory.</p>
+
+        <p><strong><a href="/locations/dubai/difc/">DIFC-LCIA Arbitration Centre</a></strong> operates within the Dubai International Financial Centre, applying common law principles based on LCIA rules adapted for the Dubai context. DIFC-LCIA proceedings are primarily in English. Awards can be enforced directly through DIFC Courts (in English) or through mainland Dubai Courts (requiring Arabic translation). The "conduit" route—obtaining DIFC Court recognition first, then enforcing the DIFC judgment through Dubai Courts—is a common strategy for enforcing against mainland assets.</p>
+
+        <p><strong>ICC (International Chamber of Commerce)</strong> arbitrations seated in Dubai follow ICC Rules administered from Paris. ICC awards undergo a "scrutiny" process before issuance, ensuring formal compliance. ICC terminology—Terms of Reference, Secretariat review, emergency arbitrator provisions—requires accurate Arabic equivalents. ICC awards are widely enforced internationally under the New York Convention.</p>
+
+        <p><strong>LCIA (London Court of International Arbitration)</strong> awards use English common law terminology. When LCIA awards are enforced in UAE, the translation must accurately convey common law concepts to a civil law audience.</p>
+
+        <p><strong>Abu Dhabi institutions</strong> include ADCCAC (Abu Dhabi Commercial Conciliation and Arbitration Centre) and the newer ADGM Arbitration Centre within the Abu Dhabi Global Market free zone. ADGM operates under English common law similar to DIFC.</p>
 
         <h3>Types of Arbitration Documents We Translate</h3>
         <p>Arbitration proceedings generate extensive documentation beyond the final award:</p>
 
         <ul class="content-list">
-          <li><strong>Final Awards:</strong> The binding decision resolving all substantive issues, including liability determinations and damage calculations.</li>
-          <li><strong>Partial Awards:</strong> Decisions on specific issues while other matters remain pending, such as jurisdiction rulings or preliminary liability findings.</li>
-          <li><strong>Interim Measures:</strong> Orders preserving evidence, maintaining the status quo, or providing preliminary relief pending final determination.</li>
-          <li><strong>Procedural Orders:</strong> Tribunal directions on discovery, document production, hearing schedules, and case management.</li>
-          <li><strong>Consent Awards:</strong> Decisions recording negotiated settlements between parties, often with specific compliance mechanisms.</li>
-          <li><strong>Costs Awards:</strong> Separate decisions allocating arbitration costs, legal fees, and tribunal expenses between parties.</li>
+          <li><strong>Final Awards:</strong> The binding decision resolving all substantive issues, including liability determinations and damage calculations. The operative part—what parties are ordered to pay or do—must be absolutely precise.</li>
+          <li><strong>Partial Awards:</strong> Decisions on specific issues while other matters remain pending, such as jurisdiction rulings or preliminary liability findings. These often set the stage for final resolution and must be translated for ongoing proceedings.</li>
+          <li><strong>Interim Measures:</strong> Orders preserving evidence, maintaining the status quo, or providing preliminary relief pending final determination. These may require urgent translation for enforcement before the main award.</li>
+          <li><strong>Procedural Orders:</strong> Tribunal directions on discovery, document production, hearing schedules, and case management. These document the arbitral process and may be needed to demonstrate procedural fairness.</li>
+          <li><strong>Consent Awards:</strong> Decisions recording negotiated settlements between parties, often with specific compliance mechanisms and payment schedules that must be translated exactly.</li>
+          <li><strong>Costs Awards:</strong> Separate decisions allocating arbitration costs, legal fees, and tribunal expenses between parties. These often involve complex calculations that must be rendered precisely.</li>
+          <li><strong>Arbitration Agreements:</strong> The clauses or separate agreements committing parties to arbitration. For enforcement, courts must see the agreement that gave the tribunal jurisdiction.</li>
         </ul>
 
         <h3>New York Convention Enforcement</h3>
-        <p>The UAE ratified the New York Convention in 2006, enabling enforcement of foreign arbitral awards from other member states. The convention requires parties seeking enforcement to provide certified translations of the award and the underlying arbitration agreement.</p>
+        <p>The UAE ratified the New York Convention in 2006, enabling enforcement of foreign arbitral awards from other member states—which includes virtually all major commercial nations. The Convention provides a streamlined enforcement framework with limited grounds for refusal.</p>
 
-        <p>Convention enforcement applications go through UAE courts, which examine limited grounds for refusal. The translation must accurately convey not just the award's conclusions but its reasoning, as courts may scrutinize whether proper procedures were followed and whether the award respects public policy.</p>
+        <p>Convention enforcement applications require: the original or certified copy of the award, the original arbitration agreement or certified copy, and certified translations of both into Arabic if they're in a foreign language. The translation must accurately convey not just the award's conclusions but its reasoning, as courts may scrutinize whether proper procedures were followed and whether the award respects public policy.</p>
+
+        <p>Grounds for refusing enforcement under the Convention are narrow: lack of valid arbitration agreement, lack of proper notice to a party, award beyond the scope of submission to arbitration, improper tribunal composition, award not yet binding, or public policy violation. The translation must clearly demonstrate that none of these grounds apply—ambiguity in translation could invite challenges that should be groundless.</p>
 
         <p>For <a href="/legal/contracts/">contract disputes</a> with arbitration clauses, we often translate both the underlying agreement and the resulting award, ensuring terminology consistency throughout.</p>
 
-        <h3>DIFC and Mainland Enforcement</h3>
-        <p>Awards from DIFC-seated arbitrations can be enforced directly through DIFC Courts or "conduit" enforcement through Dubai Courts. The choice affects translation requirements. DIFC Courts accept English documentation, while Dubai Courts require Arabic translations with MOJ certification.</p>
+        <h3>Certified vs. Notarized Translation: Which Do You Need?</h3>
+        <p>Understanding authentication levels prevents delays and ensures court acceptance:</p>
 
-        <p>We advise clients on the most efficient enforcement route based on their specific circumstances. Sometimes DIFC enforcement is faster. Other times, direct enforcement through mainland courts makes more sense. The translation requirements differ accordingly.</p>
+        <p><strong>MOJ-Certified Translation:</strong> A Ministry of Justice licensed translator (such as License #701) stamps and signs the translation, certifying its accuracy. This is the standard requirement for Dubai Courts enforcement under both UAE Arbitration Law and New York Convention applications. The MOJ certification confirms the translator is officially authorized and takes professional responsibility for accuracy.</p>
 
-        <h3>Institutional Terminology Challenges</h3>
-        <p>Each arbitration institution uses specific terminology that must be handled correctly:</p>
+        <p><strong>Notarized Translation:</strong> A notary public attests that the signature on the translation certificate is genuine. This is typically required for documents traveling abroad—particularly to countries requiring notarial certification—but is not usually necessary for UAE enforcement beyond MOJ certification.</p>
+
+        <p><strong>Award Authentication:</strong> The original award may require authentication before translation, depending on where it was issued. This could include certification from the arbitration institution, apostille (for Hague Convention countries), or embassy legalization. We can advise on what authentication your specific award needs and connect you with <a href="/services/attestation/">attestation services</a> if required.</p>
+
+        <h3>DIFC and Mainland Enforcement Strategies</h3>
+        <p>Awards from DIFC-seated arbitrations can be enforced directly through DIFC Courts or through "conduit" enforcement via Dubai Courts. The choice affects translation requirements and overall strategy.</p>
+
+        <p><strong>Direct DIFC Enforcement:</strong> If the losing party has assets within DIFC, enforcement can proceed through DIFC Courts in English without Arabic translation. DIFC Courts apply common law enforcement procedures that may be familiar to parties from common law jurisdictions.</p>
+
+        <p><strong>Conduit Enforcement:</strong> If assets are on mainland Dubai, you need Dubai Courts enforcement. One approach is to first obtain a DIFC Court enforcement judgment, then enforce that judgment through Dubai Courts. This requires Arabic translation at the Dubai Courts stage.</p>
+
+        <p><strong>Direct Dubai Courts Enforcement:</strong> DIFC-seated awards can also be enforced directly through Dubai Courts without going through DIFC first. This requires MOJ-certified Arabic translation from the outset.</p>
+
+        <p>We advise clients and their lawyers on the most efficient enforcement route based on specific circumstances—asset locations, urgency, and procedural preferences. The translation requirements differ accordingly, and we prepare documents for whichever route makes sense.</p>
+
+        <h3>Interest Calculations and Monetary Amounts</h3>
+        <p>Arbitration awards often involve complex monetary calculations that must be translated with absolute precision:</p>
 
         <ul class="content-list">
-          <li><strong>ICC:</strong> Terms of Reference, Emergency Arbitrator provisions, scrutiny process terminology</li>
-          <li><strong>DIAC:</strong> Arabic procedural terms, local law references, seat-specific requirements</li>
-          <li><strong>LCIA:</strong> English common law terminology, emergency arbitrator provisions, expedited procedures</li>
-          <li><strong>SIAC/HKIAC:</strong> Asian arbitration institution terminology for cases with regional connections</li>
+          <li><strong>Principal amounts:</strong> The base award amount must be stated exactly, with correct currency denominations and numerical accuracy.</li>
+          <li><strong>Interest rates:</strong> Whether simple or compound, the rate must be precisely stated. A mistranslated "3.5%" vs "35%" could create enormous discrepancies.</li>
+          <li><strong>Interest periods:</strong> The starting date, end date, and calculation basis (per annum, per diem) must be clear.</li>
+          <li><strong>Currency conversions:</strong> If the award references multiple currencies or conversion rates, these must be accurately rendered.</li>
+          <li><strong>Cost allocations:</strong> How tribunal fees, administrative costs, and legal fees are divided between parties.</li>
         </ul>
 
-        <p>Our translators recognize these institutional distinctions and apply appropriate terminology based on the administering institution.</p>
+        <p>We verify numerical accuracy in every translation. Currency amounts, percentages, dates, and calculation formulas are double-checked to ensure the enforced amount matches the tribunal's intention.</p>
+
+        <h3>Working with Law Firms on Award Enforcement</h3>
+        <p>Law firms handling arbitration enforcement have specific requirements that distinguish them from individual clients. They need predictable turnaround, consistent terminology across case documents, and reliable quality that won't embarrass the firm before the court.</p>
+
+        <p>We work extensively with both UAE-based law firms and international firms with Dubai offices handling arbitration matters. For firms with regular translation needs, we offer volume arrangements that reduce per-document costs while guaranteeing priority handling.</p>
+
+        <p>Terminology consistency is critical across arbitration files. If "claimant" is translated as "المدعي" in the arbitration agreement, it should remain "المدعي" in the award translation—not become "الطالب" or "المطالب". We maintain client-specific glossaries and case files to ensure consistency.</p>
+
+        <p>For complex enforcement cases involving multiple related awards, ongoing proceedings, or extensive supporting documentation, some firms engage us on retainer. This ensures immediate availability when enforcement windows open and typically results in lower overall costs than ad-hoc engagement.</p>
+
+        <h3>Timeline Expectations for Enforcement</h3>
+        <p>Enforcement deadlines can be tight, particularly when limitation periods apply or when parties want to prevent asset dissipation. Understanding realistic timelines helps plan effective enforcement:</p>
+
+        <ul class="content-list">
+          <li><strong>Short awards (1-10 pages):</strong> Same-day to 24 hours. Consent awards and simple final awards.</li>
+          <li><strong>Standard awards (11-30 pages):</strong> 24-48 hours. Most commercial arbitration awards.</li>
+          <li><strong>Complex awards (31-60 pages):</strong> 2-4 business days. Awards with extensive reasoning or multiple claims.</li>
+          <li><strong>Major arbitration files (60+ pages):</strong> 4-7+ business days. Multi-party disputes with complex damages calculations.</li>
+        </ul>
+
+        <p>Express service is available for urgent matters. We've delivered substantial award translations overnight when enforcement deadlines demanded it. However, rush work requires advance notice when possible. Contact us early if you anticipate needing urgent translation—we can plan capacity and begin work as materials become available.</p>
 
         <h3>Confidentiality in Arbitration Translation</h3>
-        <p>Arbitration proceedings are typically confidential. Awards may contain commercially sensitive information, trade secrets, or business strategies that parties wish to protect. Our handling protocols respect this confidentiality. Documents are processed only by assigned translators, transmitted through encrypted channels, and deleted upon request after delivery.</p>
+        <p>Arbitration proceedings are typically confidential. Awards may contain commercially sensitive information, trade secrets, or business strategies that parties wish to protect. Settlement terms may be specifically subject to confidentiality undertakings.</p>
 
-        <p>For particularly sensitive matters, we offer enhanced confidentiality protocols including dedicated secure workstations and restricted access controls.</p>
+        <p>Our handling protocols respect this confidentiality. Documents are processed only by assigned senior translators—never distributed to pools of freelancers or junior staff. Files are transmitted through encrypted channels and stored on secure systems with access controls. Upon client request, files are deleted after delivery with confirmation provided.</p>
 
-        <h3>Timeline and Urgent Requests</h3>
-        <p>Standard arbitration award translations complete in 24-48 hours. Complex awards with extensive reasoning, multiple claims, or technical subject matter may require 3-5 business days for thorough translation and review.</p>
-
-        <p>When enforcement deadlines loom or courts set hearing dates, we accommodate urgent timelines. Communicate your deadline clearly, and we will confirm whether express delivery is feasible.</p>
+        <p>For particularly sensitive matters—those involving trade secrets, competitive information, or settlement terms—we execute formal NDAs before document receipt, implement restricted access protocols with audit trails, and can provide documentation of handling procedures if required for compliance purposes.</p>
 
         <div class="highlight-box">
           <h4><i class="fas fa-info-circle"></i> Complete Arbitration Support</h4>
@@ -229,19 +332,47 @@ import RelatedServices from '../../../../components/RelatedServices.astro';
         <div class="inst-item">
           <h3>DIAC</h3>
           <p>Dubai International Arbitration Centre</p>
+          <span class="inst-note">UAE procedural terms, Arabic/English proceedings</span>
         </div>
         <div class="inst-item">
           <h3>ICC</h3>
           <p>International Chamber of Commerce</p>
+          <span class="inst-note">Global institution, Paris administration, scrutiny process</span>
         </div>
         <div class="inst-item">
           <h3>LCIA</h3>
           <p>London Court of International Arbitration</p>
+          <span class="inst-note">Common law procedures, English terminology</span>
+        </div>
+        <div class="inst-item">
+          <h3>DIFC-LCIA</h3>
+          <p>DIFC-LCIA Arbitration Centre</p>
+          <span class="inst-note">Dubai free zone, common law, English proceedings</span>
         </div>
         <div class="inst-item">
           <h3>ADCCAC</h3>
           <p>Abu Dhabi Commercial Conciliation</p>
+          <span class="inst-note">Abu Dhabi institution, UAE civil law basis</span>
         </div>
+        <div class="inst-item">
+          <h3>SIAC</h3>
+          <p>Singapore International Arbitration Centre</p>
+          <span class="inst-note">Asian hub, neutral venue for regional disputes</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-grid">
+        {faqs.map(faq => (
+          <div class="faq-item">
+            <h3>{faq.q}</h3>
+            <p>{faq.a}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -283,7 +414,6 @@ import RelatedServices from '../../../../components/RelatedServices.astro';
   .breadcrumb .current { color: #fff; }
   h1 { font-size: 3rem; margin-bottom: 1rem; color: #fff; }
   .hero-subtitle { font-size: 1.25rem; color: var(--accent-color); margin-bottom: 1.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; }
-  /* .hero-intro styles in /styles/hero-intro-optimized.css */
   .section { padding: 5rem 0; }
   .section h2 { font-size: 2rem; margin-bottom: 2rem; color: var(--primary-color); }
   .arb-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
@@ -291,10 +421,11 @@ import RelatedServices from '../../../../components/RelatedServices.astro';
   .arb-card i { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem; }
   .arb-card h3 { font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--primary-color); }
   .arb-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
-  .inst-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+  .inst-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
   .inst-item { background: #fff; padding: 2rem; border-radius: 12px; text-align: center; box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); }
   .inst-item h3 { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--accent-color); font-weight: 700; }
-  .inst-item p { font-size: 0.85rem; color: var(--text-muted); }
+  .inst-item p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .inst-note { font-size: 0.75rem; color: var(--text-muted); opacity: 0.8; font-style: italic; }
   .bg-primary { background: var(--primary-color); }
   .bg-primary h2, .bg-primary p { color: #fff; }
   .cta-section { text-align: center; max-width: 700px; margin: 0 auto; }
@@ -303,7 +434,7 @@ import RelatedServices from '../../../../components/RelatedServices.astro';
   .btn { display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; text-decoration: none; }
   .btn-accent { background: var(--accent-color); color: #fff; }
   .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255, 255, 255, 0.5); }
-  @media (max-width: 992px) { .arb-grid, .inst-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 992px) { .arb-grid { grid-template-columns: repeat(2, 1fr); } .inst-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 768px) { h1 { font-size: 2rem; } .arb-grid, .inst-grid { grid-template-columns: 1fr; } .hero-section { padding: 6rem 0 3rem; } }
   .content-prose { max-width: 800px; }
   .content-prose h3 { font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--primary-color); }
@@ -315,4 +446,8 @@ import RelatedServices from '../../../../components/RelatedServices.astro';
   .highlight-box h4 { margin: 0 0 0.75rem; font-size: 1rem; color: var(--primary-color); }
   .highlight-box h4 i { margin-right: 0.5rem; color: var(--accent-color); }
   .highlight-box p { margin: 0; line-height: 1.6; }
+  .faq-grid { display: grid; gap: 1.5rem; }
+  .faq-item { background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+  .faq-item h3 { font-size: 1.1rem; margin-bottom: 1rem; color: var(--primary-color); }
+  .faq-item p { line-height: 1.7; color: var(--text-muted); margin: 0; }
 </style>
