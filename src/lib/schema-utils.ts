@@ -190,7 +190,7 @@ export function generateServiceSchema(options: {
     provider: {
       '@id': `${siteUrl}/#organization`,
     },
-    areaServed: siteConfig.serviceAreas,
+    areaServed: siteConfig.serviceAreas.map(area => ({ '@type': area.type, name: area.name })),
     serviceType: [serviceType, 'Legal Translation'],
     offers: {
       '@type': 'Offer',
