@@ -1236,31 +1236,48 @@ body.theme-dark .sidebar-nav ul li a:active {
 
 /* ============================================
    MOBILE HERO CONTENT SWITCHER
-   Shows optimized copy on mobile, original on desktop
+   Single H1 always accessible, visual content toggles per breakpoint
    ============================================ */
 
-/* Default (Desktop): Hide mobile hero, show desktop hero */
-.hero-section.exodus-hero .hero-text-mobile {
+/* Default (Desktop): Show desktop content, hide mobile-only content */
+.hero-section.exodus-hero .hero-eyebrow-mobile,
+.hero-section.exodus-hero .hero-lead-mobile,
+.hero-section.exodus-hero .hero-bullets-mobile,
+.hero-section.exodus-hero .hero-cta-secondary-mobile {
     display: none !important;
 }
 
-.hero-section.exodus-hero .hero-text-desktop {
+.hero-section.exodus-hero .hero-lead-desktop,
+.hero-section.exodus-hero .hero-bullets-desktop,
+.hero-section.exodus-hero .hero-cta-secondary-desktop {
     display: block;
 }
 
-/* Mobile: Show mobile hero, hide desktop hero */
+/* Mobile: Show mobile content, hide desktop-only content */
 @media (max-width: 992px) {
-    .hero-section.exodus-hero .hero-text-mobile {
-        display: block !important;
-    }
-
-    .hero-section.exodus-hero .hero-text-desktop {
+    .hero-section.exodus-hero .hero-lead-desktop,
+    .hero-section.exodus-hero .hero-bullets-desktop,
+    .hero-section.exodus-hero .hero-cta-secondary-desktop {
         display: none !important;
     }
 
+    .hero-section.exodus-hero .hero-eyebrow-mobile,
+    .hero-section.exodus-hero .hero-lead-mobile,
+    .hero-section.exodus-hero .hero-bullets-mobile,
+    .hero-section.exodus-hero .hero-cta-secondary-mobile {
+        display: block !important;
+    }
+
+    /* Mobile H1 styling - uppercase transform */
+    .hero-section.exodus-hero .hero-title.exodus-title .title-line {
+        text-transform: uppercase;
+        font-size: 24px;
+        line-height: 1.25;
+        letter-spacing: 0.5px;
+    }
+
     /* Mobile Eyebrow Text Styling */
-    .hero-section.exodus-hero .hero-eyebrow {
-        display: block;
+    .hero-section.exodus-hero .hero-eyebrow-mobile {
         font-family: var(--font-secondary, 'Open Sans', sans-serif);
         font-size: 12px;
         font-weight: 600;
@@ -1272,18 +1289,12 @@ body.theme-dark .sidebar-nav ul li a:active {
     }
 
     /* Mobile Hero Title - Match exodus-title specificity */
-    .hero-section.exodus-hero .hero-text-mobile .hero-title.exodus-title {
+    .hero-section.exodus-hero .hero-title.exodus-title {
         margin-bottom: 16px;
     }
 
-    .hero-section.exodus-hero .hero-text-mobile .hero-title.exodus-title .title-line {
-        font-size: 24px;
-        line-height: 1.25;
-        letter-spacing: 0.5px;
-    }
-
     /* Mobile Lead - Concise, scannable */
-    .hero-section.exodus-hero .hero-text-mobile .hero-lead {
+    .hero-section.exodus-hero .hero-lead-mobile {
         font-size: 14px;
         line-height: 1.5;
         margin-bottom: 14px;
@@ -1291,18 +1302,18 @@ body.theme-dark .sidebar-nav ul li a:active {
     }
 
     /* Mobile Bullets - Tighter spacing */
-    .hero-section.exodus-hero .hero-text-mobile .hero-bullets {
+    .hero-section.exodus-hero .hero-bullets-mobile {
         margin-bottom: 18px;
         padding: 0 5px;
     }
 
-    .hero-section.exodus-hero .hero-text-mobile .hero-bullets li {
+    .hero-section.exodus-hero .hero-bullets-mobile li {
         font-size: 13px;
         margin-bottom: 8px;
         line-height: 1.4;
     }
 
-    .hero-section.exodus-hero .hero-text-mobile .hero-bullets li i {
+    .hero-section.exodus-hero .hero-bullets-mobile li i {
         min-width: 22px;
         font-size: 14px;
     }
@@ -1310,16 +1321,16 @@ body.theme-dark .sidebar-nav ul li a:active {
 
 /* Extra small screens - tighter spacing */
 @media (max-width: 576px) {
-    .hero-section.exodus-hero .hero-text-mobile .hero-title.exodus-title .title-line {
+    .hero-section.exodus-hero .hero-title.exodus-title .title-line {
         font-size: 20px;
         letter-spacing: 0.3px;
     }
 
-    .hero-section.exodus-hero .hero-text-mobile .hero-lead {
+    .hero-section.exodus-hero .hero-lead-mobile {
         font-size: 13px;
     }
 
-    .hero-section.exodus-hero .hero-text-mobile .hero-bullets li {
+    .hero-section.exodus-hero .hero-bullets-mobile li {
         font-size: 12px;
         margin-bottom: 6px;
     }
