@@ -196,7 +196,7 @@ export function generateServiceSchema(options: {
       '@type': 'Offer',
       price,
       priceCurrency: 'AED',
-      priceValidUntil: '2025-12-31',
+      priceValidUntil: '2026-12-31',
       availability: 'https://schema.org/InStock',
       url: pageUrl,
     },
