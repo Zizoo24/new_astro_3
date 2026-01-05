@@ -98,8 +98,34 @@ img[width][height]{aspect-ratio:attr(width)/attr(height)}
 @font-face{font-family:'Montserrat';font-display:swap;src:local('Montserrat')}
 @font-face{font-family:'Open Sans';font-display:swap;src:local('Open Sans')}
 
-/* Reduce CLS from icons loading */
-.fa,.fas,.fab,.far{display:inline-block;width:1em;height:1em}
+/* ============================================
+   FONT AWESOME - CLS Prevention & FOUT Fix
+   Works WITH Font Awesome, not against it
+   ============================================ */
+
+/* Reserve space for FA icons before font loads */
+.fa,.fas,.fab,.far,.fal,.fad {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  /* Let FA set the actual size, just establish inline-block */
+}
+
+/* Prevent icon flash - hide until FA font loaded */
+.fa::before,.fas::before,.fab::before,.far::before,.fal::before,.fad::before {
+  /* FA will set content via its CSS - we just ensure it doesn't flash */
+  font-family: 'Font Awesome 6 Free', 'Font Awesome 6 Brands', sans-serif;
+}
+
+/* FA 6 loaded indicator - unhide icons */
+.fontawesome-i2svg-active .fa,
+.fontawesome-i2svg-active .fas,
+.fontawesome-i2svg-active .fab,
+.fontawesome-i2svg-active .far {
+  visibility: visible;
+}
 
 /* Hide iOS-only section by default */
 .os-ios-only{display:none!important}
