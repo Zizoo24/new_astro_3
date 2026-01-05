@@ -70,7 +70,7 @@ const posts = [
 
 <BaseLayout
   title="Blog | Translation Insights & Guides Dubai"
-  description="Expert insights on legal translation, document attestation, Golden Visa requirements, and UAE immigration. Practical guides from Dubai's certified translation specialists."
+  description="Expert insights on legal translation, attestation, and Golden Visa requirements in UAE. Guides from Dubai's certified specialists."
 >
   <!-- Hero Section -->
   <section class="blog-hero">
@@ -84,7 +84,7 @@ const posts = [
   <section class="category-filter">
     <div class="container">
       <div class="filter-scroll">
-        <a href="/blog/" class="filter-btn active">All</a>
+        <a href="/blog/" class="filter-btn active" title="View all blog posts">All</a>
         {categories.map(cat => (
           <span class="filter-btn" style={`--cat-color: ${cat.color}`}>
             {cat.label}
@@ -100,7 +100,7 @@ const posts = [
       {posts.length > 0 ? (
         <div class="posts-grid">
           {posts.map(post => (
-            <a href={`/blog/${post.slug}/`} class={`post-card ${post.featured ? 'featured' : ''}`}>
+            <a href={`/blog/${post.slug}/`} class={`post-card ${post.featured ? 'featured' : ''}`} title={post.title}>
               <div class="post-card-content">
                 <div class="post-meta">
                   <span class="category-tag" data-category={post.category}>{post.categoryLabel}</span>
@@ -124,7 +124,7 @@ const posts = [
           <i class="fas fa-newspaper"></i>
           <h2>Coming Soon</h2>
           <p>We're preparing expert insights and guides on legal translation, attestation processes, and document requirements in the UAE. Check back soon!</p>
-          <a href="/" class="btn btn--primary">Return Home</a>
+          <a href="/" class="btn btn--primary" title="Return to homepage">Return Home</a>
         </div>
       )}
     </div>
@@ -138,7 +138,7 @@ const posts = [
           <h2>Stay Updated</h2>
           <p>Get notified about new guides, regulatory changes, and translation tips.</p>
         </div>
-        <a href="https://wa.me/971508620217?text=Subscribe%20to%20updates" class="btn btn--primary btn--lg">
+        <a href="https://wa.me/971508620217?text=Subscribe%20to%20updates" class="btn btn--primary btn--lg" title="Get updates via WhatsApp">
           <i class="fab fa-whatsapp"></i>
           Get Updates via WhatsApp
         </a>
