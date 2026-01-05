@@ -2,14 +2,19 @@
 /**
  * /services/ - Translation Services Hub
  *
- * CONVERTED: BaseLayout → CategoryLayout
- * Added: BreadcrumbList, Service, FAQPage schemas (auto-generated)
- * Added: 10 FAQs for rich snippets
+ * MASSIVELY EXPANDED: December 2025
+ * - Comprehensive internal linking across all silos
+ * - Extended content sections matching homepage depth
+ * - Industry-specific translation paths
+ * - Language pair quick access
+ * - Location-based service finder
+ * - Comparison tables and decision guides
+ * - Enhanced Schema.org markup
  *
- * Type: Main Services Hub Page
+ * Type: Main Services Hub Page (Topical Authority Cornerstone)
  */
 import CategoryLayout from '../../layouts/CategoryLayout.astro';
-import { getServicesHubCards } from '../../data/servicesGrid';
+import { getServicesHubCards, mainServices } from '../../data/servicesGrid';
 
 const breadcrumbs = [
   { label: 'Home', href: '/' },
@@ -56,6 +61,14 @@ const faqs = [
   {
     question: "What if my translation is rejected by a government entity?",
     answer: "If any UAE entity rejects our translation due to our error, we fix it free of charge. We also cover courier costs for redelivery. This guarantee reflects our confidence in our process. We handle thousands of documents monthly with consistent acceptance."
+  },
+  {
+    question: "What's the difference between MOJ Legal Translation and Certified Translation?",
+    answer: "MOJ Legal Translation (AED 1,400) is required for documents going to UAE courts, government ministries, and official proceedings. It includes the official MOJ stamp. Certified Translation (AED 700) is sufficient for private sector use—banks, HR departments, and corporate purposes. We help you choose the right option to avoid overpaying."
+  },
+  {
+    question: "Do you offer on-site or doorstep services?",
+    answer: "Yes. We offer document collection and delivery across Dubai, Abu Dhabi, Sharjah, and the Northern Emirates. Same-day collection available in most Dubai areas. Corporate clients can arrange scheduled pickups for ongoing translation needs."
   }
 ];
 
@@ -89,33 +102,185 @@ const documentTypes = [
   {
     category: "Legal Documents",
     icon: "gavel",
-    items: ["Court judgments", "Contracts and agreements", "Powers of Attorney", "Wills and probate", "Arbitration awards", "Legal notices"]
+    href: "/legal/",
+    items: ["Court judgments", "Contracts and agreements", "Powers of Attorney", "Wills and probate", "Arbitration awards", "Legal notices"],
+    subPages: [
+      { name: "Contracts", href: "/legal/contracts/" },
+      { name: "Litigation", href: "/legal/litigation/" },
+      { name: "Corporate", href: "/legal/corporate/" },
+      { name: "Wills", href: "/legal/wills/" }
+    ]
   },
   {
     category: "Personal Documents",
     icon: "user",
-    items: ["Birth certificates", "Marriage certificates", "Divorce decrees", "Death certificates", "Police clearance", "Driving licenses"]
+    href: "/personal/",
+    items: ["Birth certificates", "Marriage certificates", "Divorce decrees", "Death certificates", "Police clearance", "Driving licenses"],
+    subPages: [
+      { name: "Vital Records", href: "/personal/vital-records/" },
+      { name: "Academic", href: "/personal/academic/" },
+      { name: "Immigration", href: "/personal/immigration/" }
+    ]
   },
   {
     category: "Academic Documents",
     icon: "graduation-cap",
-    items: ["University degrees", "Academic transcripts", "Professional certifications", "Training certificates", "School records", "Equivalency documents"]
+    href: "/personal/academic/",
+    items: ["University degrees", "Academic transcripts", "Professional certifications", "Training certificates", "School records", "Equivalency documents"],
+    subPages: [
+      { name: "Degree Certificates", href: "/personal/academic/degree/" },
+      { name: "Transcripts", href: "/personal/academic/transcripts/" }
+    ]
   },
   {
     category: "Corporate Documents",
     icon: "briefcase",
-    items: ["Trade licenses", "MOA and AOA", "Board resolutions", "Shareholder agreements", "Financial statements", "Regulatory filings"]
+    href: "/legal/corporate/",
+    items: ["Trade licenses", "MOA and AOA", "Board resolutions", "Shareholder agreements", "Financial statements", "Regulatory filings"],
+    subPages: [
+      { name: "Trade License", href: "/legal/corporate/license/" },
+      { name: "MOA Translation", href: "/legal/corporate/moa/" },
+      { name: "Power of Attorney", href: "/legal/corporate/poa/" },
+      { name: "Board Resolution", href: "/legal/corporate/resolution/" }
+    ]
   }
+];
+
+// Industry-specific paths
+const industryPaths = [
+  {
+    industry: "Legal Professionals",
+    icon: "balance-scale",
+    description: "Courts, law firms, and legal departments requiring MOJ-certified translations for litigation, contracts, and corporate governance.",
+    services: ["Court document translation", "Contract translation", "Evidence bundle preparation", "Arbitration documents"],
+    href: "/industries/legal/",
+    relatedPages: ["/legal/litigation/", "/legal/contracts/", "/legal/corporate/"]
+  },
+  {
+    industry: "Real Estate",
+    icon: "building",
+    description: "Property buyers, sellers, agents, and developers needing DLD-compliant translations for transactions and registrations.",
+    services: ["Title deed translation", "SPA translation", "POA for property", "Tenancy contracts"],
+    href: "/industries/real-estate/",
+    relatedPages: ["/services/title-deed-translation-dubai/", "/legal/contracts/spa/", "/legal/corporate/poa/"]
+  },
+  {
+    industry: "Healthcare",
+    icon: "hospital",
+    description: "Medical professionals, hospitals, and patients requiring certified translations for DHA licensing and medical documentation.",
+    services: ["Medical license translation", "DHA DataFlow documents", "Patient records", "Medical reports"],
+    href: "/industries/healthcare/",
+    relatedPages: ["/specialized/medical/", "/specialized/medical/dha-dataflow/"]
+  },
+  {
+    industry: "E-Commerce & Retail",
+    icon: "shopping-cart",
+    description: "Online businesses and retailers needing product documentation, terms of service, and regulatory compliance translations.",
+    services: ["Terms and conditions", "Product documentation", "Privacy policies", "Customs declarations"],
+    href: "/industries/e-commerce/",
+    relatedPages: ["/specialized/technical/", "/specialized/digital/"]
+  }
+];
+
+// Language pairs
+const languagePairs = [
+  { from: "Arabic", to: "English", href: "/عربي/", popular: true, flag: "🇦🇪" },
+  { from: "English", to: "Arabic", href: "/services/legal-translation/", popular: true, flag: "🇬🇧" },
+  { from: "Hindi", to: "Arabic/English", href: "/hindi/", popular: true, flag: "🇮🇳" },
+  { from: "Urdu", to: "Arabic/English", href: "/urdu/", popular: true, flag: "🇵🇰" },
+  { from: "Tagalog", to: "Arabic/English", href: "/tagalog/", popular: true, flag: "🇵🇭" },
+  { from: "Russian", to: "Arabic/English", href: "/russian/", popular: false, flag: "🇷🇺" },
+  { from: "French", to: "Arabic/English", href: "/french/", popular: false, flag: "🇫🇷" },
+  { from: "Chinese", to: "Arabic/English", href: "/chinese/", popular: false, flag: "🇨🇳" },
+  { from: "Bengali", to: "Arabic/English", href: "/bengali/", popular: false, flag: "🇧🇩" },
+  { from: "Malayalam", to: "Arabic/English", href: "/malayalam/", popular: false, flag: "🇮🇳" },
+  { from: "Farsi", to: "Arabic/English", href: "/farsi/", popular: false, flag: "🇮🇷" }
+];
+
+// Location services
+const locationServices = [
+  { name: "Dubai", href: "/locations/dubai/", areas: ["Business Bay", "DIFC", "Downtown", "JLT", "Marina", "Palm Jumeirah"] },
+  { name: "Abu Dhabi", href: "/locations/abu-dhabi/", areas: ["City Center", "Al Reem Island", "Yas Island"] },
+  { name: "Sharjah", href: "/locations/sharjah/", areas: ["City Center", "Al Majaz"] }
+];
+
+// Attestation countries
+const attestationCountries = [
+  { country: "India", href: "/services/attestation/india/", flag: "🇮🇳", popular: true },
+  { country: "Pakistan", href: "/services/attestation/pakistan/", flag: "🇵🇰", popular: true },
+  { country: "Philippines", href: "/services/attestation/philippines/", flag: "🇵🇭", popular: true },
+  { country: "United Kingdom", href: "/services/attestation/uk/", flag: "🇬🇧", popular: true },
+  { country: "United States", href: "/services/attestation/us/", flag: "🇺🇸", popular: true },
+  { country: "Canada", href: "/services/attestation/canada/", flag: "🇨🇦", popular: false },
+  { country: "MOFA UAE", href: "/services/attestation/mofa/", flag: "🇦🇪", popular: true },
+  { country: "Embassy Services", href: "/services/attestation/embassy/", flag: "🌍", popular: false }
+];
+
+// Service comparison data
+const serviceComparison = [
+  {
+    feature: "Use Case",
+    mojLegal: "Courts, government ministries, official proceedings",
+    certified: "Banks, HR, private companies, personal use"
+  },
+  {
+    feature: "Price",
+    mojLegal: "AED 1,400 per document",
+    certified: "AED 700 per document"
+  },
+  {
+    feature: "MOJ Stamp",
+    mojLegal: "Yes - Official Ministry of Justice stamp",
+    certified: "No - Translator certification only"
+  },
+  {
+    feature: "QR Verification",
+    mojLegal: "Yes - Scannable verification code",
+    certified: "No"
+  },
+  {
+    feature: "Court Accepted",
+    mojLegal: "Yes - All UAE courts",
+    certified: "No - Private sector only"
+  },
+  {
+    feature: "Turnaround",
+    mojLegal: "4-6 hours standard",
+    certified: "2-4 hours standard"
+  }
+];
+
+// Quick access use cases
+const useCases = [
+  { case: "Golden Visa Application", icon: "star", href: "/services/golden-visa-translation/", popular: true },
+  { case: "Family Visa Sponsorship", icon: "users", href: "/personal/immigration/", popular: true },
+  { case: "Property Purchase (DLD)", icon: "home", href: "/services/title-deed-translation-dubai/", popular: true },
+  { case: "Court Case Filing", icon: "gavel", href: "/legal/litigation/", popular: true },
+  { case: "Company Formation", icon: "briefcase", href: "/legal/corporate/", popular: true },
+  { case: "Employment/HR", icon: "id-card", href: "/personal/immigration/", popular: false },
+  { case: "University Admission", icon: "graduation-cap", href: "/personal/academic/", popular: false },
+  { case: "Medical License (DHA)", icon: "stethoscope", href: "/specialized/medical/dha-dataflow/", popular: true }
+];
+
+// Resources quick links
+const resourceLinks = [
+  { title: "Pricing Guide", icon: "tag", href: "/resources/pricing-guide/", desc: "Transparent pricing for all services" },
+  { title: "MOJ vs Certified", icon: "balance-scale", href: "/resources/moj-vs-certified/", desc: "Which certification do you need?" },
+  { title: "Attestation Guide", icon: "stamp", href: "/resources/attestation-guide/", desc: "Complete legalization process explained" },
+  { title: "Document Checklist", icon: "clipboard-list", href: "/resources/document-checklist/", desc: "What to prepare before ordering" },
+  { title: "Turnaround Times", icon: "clock", href: "/resources/turnaround-times/", desc: "Delivery estimates by document type" },
+  { title: "FAQ", icon: "question-circle", href: "/resources/faq/", desc: "Common questions answered" }
 ];
 ---
 
 <CategoryLayout
-  title="Translation Services Dubai | MOJ Certified"
-  description="MOJ-certified translation services in Dubai. Legal documents, personal certificates, corporate filings, Golden Visa. 43+ languages available."
-  keywords="translation services dubai, moj certified translation, legal translation dubai, document translation uae, certified translation services, arabic translation dubai, golden visa translation"
+  title="Translation Services Dubai | MOJ Certified | OnlineTranslation.ae"
+  description="Comprehensive MOJ-certified translation services in Dubai. Legal documents, personal certificates, corporate filings, attestation, Golden Visa packages. 43+ languages, same-day available. WhatsApp-first workflow."
+  keywords="translation services dubai, moj certified translation, legal translation dubai, document translation uae, certified translation services, arabic translation dubai, golden visa translation, attestation services uae, court translation dubai"
   heroImage="/assets/images/onedrive/hero/city-cyber.png"
   heroTitle="Translation Services in Dubai"
   heroSubtitle="MOJ-Licensed • 43+ Languages • Same-Day Available"
+  heroBadge="YOUR DOCUMENT CONCIERGE"
   heroIntro={`<p>From property purchase documents to Golden Visa applications, we provide the <span class="hero-highlight">MOJ-certified</span> translation that UAE authorities accept. Every document is reviewed before translation to ensure it meets specific requirements for your intended use.</p>
 
 <h3>Service Categories</h3>
@@ -164,10 +329,45 @@ const documentTypes = [
   breadcrumbs={breadcrumbs}
   serviceType="Document Translation Services"
   faqs={faqs}
+  ctaNote="Free quote within 15 minutes • No hidden fees"
 >
 
+  <!-- Quick Access: What Do You Need? -->
+  <section class="section bg-white">
+    <div class="container">
+      <h2>What Do You Need Translated?</h2>
+      <p class="section-intro">Select your use case for tailored guidance. Each path includes specific requirements, pricing, and timeline information.</p>
+
+      <div class="use-case-grid">
+        {useCases.filter(u => u.popular).map(useCase => (
+          <a href={useCase.href} class="use-case-card use-case-card--popular">
+            <div class="use-case-icon">
+              <i class={`fas fa-${useCase.icon}`}></i>
+            </div>
+            <span class="use-case-name">{useCase.case}</span>
+            <span class="use-case-arrow"><i class="fas fa-arrow-right"></i></span>
+          </a>
+        ))}
+      </div>
+
+      <details class="more-use-cases">
+        <summary>More Use Cases <i class="fas fa-chevron-down"></i></summary>
+        <div class="use-case-grid use-case-grid--secondary">
+          {useCases.filter(u => !u.popular).map(useCase => (
+            <a href={useCase.href} class="use-case-card">
+              <div class="use-case-icon use-case-icon--small">
+                <i class={`fas fa-${useCase.icon}`}></i>
+              </div>
+              <span class="use-case-name">{useCase.case}</span>
+            </a>
+          ))}
+        </div>
+      </details>
+    </div>
+  </section>
+
   <!-- Services Grid -->
-  <section class="section">
+  <section class="section bg-light">
     <div class="container">
       <h2>Our Translation Services</h2>
       <p class="section-intro">Select the service category that matches your document type. Each service includes MOJ certification and is formatted for UAE government acceptance.</p>
@@ -192,8 +392,70 @@ const documentTypes = [
     </div>
   </section>
 
+  <!-- MOJ vs Certified Comparison -->
+  <section class="section bg-white">
+    <div class="container">
+      <h2>MOJ Legal vs Certified Translation</h2>
+      <p class="section-intro">Understanding the difference can save you AED 700. Choose the right certification for your needs.</p>
+
+      <div class="comparison-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th class="highlight-col">MOJ Legal Translation</th>
+              <th>Certified Translation</th>
+            </tr>
+          </thead>
+          <tbody>
+            {serviceComparison.map(row => (
+              <tr>
+                <td class="feature-name">{row.feature}</td>
+                <td class="highlight-col">{row.mojLegal}</td>
+                <td>{row.certified}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="comparison-cta">
+        <p>Not sure which you need? <a href="/resources/moj-vs-certified/">Read our detailed guide</a> or send your document for a free assessment.</p>
+        <a href="https://wa.me/971508620217?text=I need help choosing between MOJ and Certified translation" class="btn btn--primary">
+          <i class="fab fa-whatsapp"></i> Ask on WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industry-Specific Paths -->
+  <section class="section bg-dark">
+    <div class="container">
+      <h2 class="text-white">Translation by Industry</h2>
+      <p class="section-intro text-white-muted">Specialized translation services tailored to your sector's requirements and compliance standards.</p>
+
+      <div class="industry-grid">
+        {industryPaths.map(industry => (
+          <a href={industry.href} class="industry-card">
+            <div class="industry-icon">
+              <i class={`fas fa-${industry.icon}`}></i>
+            </div>
+            <h3>{industry.industry}</h3>
+            <p>{industry.description}</p>
+            <ul class="industry-services">
+              {industry.services.slice(0, 3).map(service => (
+                <li><i class="fas fa-check-circle"></i> {service}</li>
+              ))}
+            </ul>
+            <span class="industry-link">View Industry Services <i class="fas fa-arrow-right"></i></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- Process Section -->
-  <section class="section bg-light">
+  <section class="section bg-white">
     <div class="container">
       <h2>How Our Translation Process Works</h2>
       <p class="section-intro">We have streamlined the translation process so you can focus on your business or personal matters while we handle the compliance details.</p>
@@ -210,29 +472,139 @@ const documentTypes = [
           </div>
         ))}
       </div>
+
+      <div class="process-cta">
+        <a href="https://wa.me/971508620217" class="btn btn--primary btn--lg">
+          <i class="fab fa-whatsapp"></i> Start Your Translation
+        </a>
+        <span class="process-cta-note">Free quote in 15 minutes</span>
+      </div>
     </div>
   </section>
 
-  <!-- Document Types Section -->
-  <section class="section">
+  <!-- Document Types Section with Deep Links -->
+  <section class="section bg-light">
     <div class="container">
       <h2>Documents We Translate</h2>
-      <p class="section-intro">We handle all document types required for UAE government, court, immigration, and business purposes. Below are the most common categories.</p>
+      <p class="section-intro">We handle all document types required for UAE government, court, immigration, and business purposes. Click any category for detailed information.</p>
 
       <div class="document-types-grid">
         {documentTypes.map(docType => (
           <div class="document-type-card">
-            <div class="document-type-header">
+            <a href={docType.href} class="document-type-header">
               <i class={`fas fa-${docType.icon}`}></i>
               <h3>{docType.category}</h3>
-            </div>
+              <i class="fas fa-external-link-alt header-link-icon"></i>
+            </a>
             <ul class="document-list">
               {docType.items.map(item => (
                 <li>{item}</li>
               ))}
             </ul>
+            {docType.subPages && (
+              <div class="document-subpages">
+                <span class="subpages-label">Quick Links:</span>
+                {docType.subPages.map(sub => (
+                  <a href={sub.href} class="subpage-link">{sub.name}</a>
+                ))}
+              </div>
+            )}
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Language Pairs -->
+  <section class="section bg-white">
+    <div class="container">
+      <h2>Translation Languages</h2>
+      <p class="section-intro">We translate 43+ languages with MOJ certification. Arabic-English is our most common pair, but we handle all major world languages.</p>
+
+      <div class="language-grid">
+        <div class="language-section">
+          <h3>Popular Language Pairs</h3>
+          <div class="language-cards">
+            {languagePairs.filter(l => l.popular).map(lang => (
+              <a href={lang.href} class="language-card language-card--popular">
+                <span class="language-flag">{lang.flag}</span>
+                <span class="language-name">{lang.from}</span>
+                <span class="language-arrow">↔</span>
+                <span class="language-target">{lang.to}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+        <div class="language-section">
+          <h3>Additional Languages</h3>
+          <div class="language-cards language-cards--secondary">
+            {languagePairs.filter(l => !l.popular).map(lang => (
+              <a href={lang.href} class="language-card">
+                <span class="language-flag">{lang.flag}</span>
+                <span class="language-name">{lang.from}</span>
+              </a>
+            ))}
+          </div>
+          <p class="language-note">Don't see your language? We work with certified translators in 43+ languages. <a href="/contact/">Contact us</a> for availability.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Attestation by Country -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Attestation Services by Country</h2>
+      <p class="section-intro">Complete document legalization for use in UAE or abroad. We coordinate the entire attestation chain from your home country through MOFA.</p>
+
+      <div class="attestation-grid">
+        {attestationCountries.map(country => (
+          <a href={country.href} class={`attestation-card ${country.popular ? 'attestation-card--popular' : ''}`}>
+            <span class="attestation-flag">{country.flag}</span>
+            <span class="attestation-name">{country.country}</span>
+            {country.popular && <span class="attestation-badge">Popular</span>}
+          </a>
+        ))}
+      </div>
+
+      <div class="attestation-info">
+        <div class="attestation-info-card">
+          <i class="fas fa-info-circle"></i>
+          <div>
+            <h4>What is Attestation?</h4>
+            <p>Document attestation is the official verification chain that makes your documents legally valid across borders. It typically involves notarization, foreign ministry authentication, embassy attestation, and UAE MOFA stamping.</p>
+            <a href="/resources/attestation-guide/">Read our complete attestation guide</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Services -->
+  <section class="section bg-white">
+    <div class="container">
+      <h2>Service Locations Across UAE</h2>
+      <p class="section-intro">Doorstep document collection and delivery across Dubai, Abu Dhabi, and the Northern Emirates. Same-day service available in most areas.</p>
+
+      <div class="location-grid">
+        {locationServices.map(location => (
+          <a href={location.href} class="location-card">
+            <div class="location-header">
+              <i class="fas fa-map-marker-alt"></i>
+              <h3>{location.name}</h3>
+            </div>
+            <div class="location-areas">
+              {location.areas.map(area => (
+                <span class="area-tag">{area}</span>
+              ))}
+            </div>
+            <span class="location-link">View {location.name} Services <i class="fas fa-arrow-right"></i></span>
+          </a>
+        ))}
+      </div>
+
+      <div class="location-note">
+        <p><i class="fas fa-truck"></i> <strong>UAE-Wide Coverage:</strong> We deliver to all Emirates including Ajman, Ras Al Khaimah, Fujairah, and Umm Al Quwain.</p>
       </div>
     </div>
   </section>
@@ -264,12 +636,22 @@ const documentTypes = [
           <h3>43+ Languages</h3>
           <p>Arabic, English, French, German, Russian, Chinese, Hindi, Urdu, and many more language pairs available.</p>
         </div>
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-mobile-alt"></i></div>
+          <h3>WhatsApp Workflow</h3>
+          <p>Send documents, receive quotes, and get certified translations—all through WhatsApp for maximum convenience.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-tag"></i></div>
+          <h3>Transparent Pricing</h3>
+          <p>Fixed quotes with no hidden fees. We help you choose between MOJ and Certified to avoid overpaying.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Trust Indicators -->
-  <section class="section">
+  <section class="section bg-white">
     <div class="container">
       <div class="trust-grid">
         <div class="trust-stat">
@@ -289,11 +671,47 @@ const documentTypes = [
           <div class="trust-label">Acceptance Rate</div>
         </div>
       </div>
+
+      <div class="trust-credentials">
+        <div class="credential-item">
+          <i class="fas fa-check-circle"></i>
+          <span>Ministry of Justice Licensed Translator (#701)</span>
+        </div>
+        <div class="credential-item">
+          <i class="fas fa-check-circle"></i>
+          <span>Dubai Economy & Tourism Registered</span>
+        </div>
+        <div class="credential-item">
+          <i class="fas fa-check-circle"></i>
+          <span>Accepted by Dubai Courts, DIFC, ADGM</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources Quick Access -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Helpful Resources</h2>
+      <p class="section-intro">Guides, pricing information, and answers to help you navigate the translation and attestation process.</p>
+
+      <div class="resources-grid">
+        {resourceLinks.map(resource => (
+          <a href={resource.href} class="resource-card">
+            <div class="resource-icon">
+              <i class={`fas fa-${resource.icon}`}></i>
+            </div>
+            <h3>{resource.title}</h3>
+            <p>{resource.desc}</p>
+            <span class="resource-link">Read Guide <i class="fas fa-arrow-right"></i></span>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 
   <!-- Related Links Section -->
-  <section class="section bg-light">
+  <section class="section bg-white">
     <div class="container">
       <h2>Browse by Category</h2>
       <div class="category-links-grid">
@@ -309,6 +727,10 @@ const documentTypes = [
           <i class="fas fa-stamp"></i>
           <span>Attestation</span>
         </a>
+        <a href="/specialized-translation/" class="category-link">
+          <i class="fas fa-cogs"></i>
+          <span>Specialized</span>
+        </a>
         <a href="/locations/dubai/" class="category-link">
           <i class="fas fa-map-marker-alt"></i>
           <span>Dubai Services</span>
@@ -321,6 +743,43 @@ const documentTypes = [
           <i class="fas fa-question-circle"></i>
           <span>FAQ</span>
         </a>
+        <a href="/about/" class="category-link">
+          <i class="fas fa-info-circle"></i>
+          <span>About Us</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Teaser -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Client Success Stories</h2>
+      <p class="section-intro">Real examples of how we've helped clients navigate complex translation and attestation requirements.</p>
+
+      <div class="case-studies-grid">
+        <a href="/resources/case-studies/urgent-family-visa/" class="case-study-card">
+          <span class="case-study-tag">Family Visa</span>
+          <h3>Urgent Family Visa Documents</h3>
+          <p>How we delivered complete certified translation package in 4 hours for an expat family facing visa deadline.</p>
+          <span class="case-study-link">Read Case Study <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="/resources/case-studies/dha-dataflow-deadline/" class="case-study-card">
+          <span class="case-study-tag">Medical</span>
+          <h3>DHA DataFlow Deadline</h3>
+          <p>Medical professional's credential documents translated and attested in time for licensing deadline.</p>
+          <span class="case-study-link">Read Case Study <i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="/resources/case-studies/rejected-document-rescue/" class="case-study-card">
+          <span class="case-study-tag">Court Case</span>
+          <h3>Rejected Document Rescue</h3>
+          <p>Correcting a competitor's translation that was rejected by Dubai Courts—delivered same day.</p>
+          <span class="case-study-link">Read Case Study <i class="fas fa-arrow-right"></i></span>
+        </a>
+      </div>
+
+      <div class="case-studies-cta">
+        <a href="/resources/case-studies/" class="btn btn--secondary">View All Case Studies</a>
       </div>
     </div>
   </section>
@@ -365,6 +824,103 @@ const documentTypes = [
 
   .text-white-muted {
     color: rgba(255, 255, 255, 0.85);
+  }
+
+  /* Use Case Grid */
+  .use-case-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .use-case-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: #fff;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+  }
+
+  .use-case-card:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .use-case-card--popular {
+    border-color: var(--accent-color);
+    background: linear-gradient(135deg, rgba(232, 73, 29, 0.05), rgba(232, 73, 29, 0.02));
+  }
+
+  .use-case-icon {
+    width: 45px;
+    height: 45px;
+    background: var(--accent-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .use-case-icon i {
+    color: #fff;
+    font-size: 1.1rem;
+  }
+
+  .use-case-icon--small {
+    width: 36px;
+    height: 36px;
+    background: var(--primary-color);
+  }
+
+  .use-case-icon--small i {
+    font-size: 0.9rem;
+  }
+
+  .use-case-name {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+    flex-grow: 1;
+  }
+
+  .use-case-arrow {
+    color: var(--accent-color);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .use-case-card:hover .use-case-arrow {
+    opacity: 1;
+  }
+
+  .more-use-cases {
+    margin-top: 1rem;
+  }
+
+  .more-use-cases summary {
+    cursor: pointer;
+    color: var(--accent-color);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .more-use-cases[open] summary i {
+    transform: rotate(180deg);
+  }
+
+  .use-case-grid--secondary {
+    margin-top: 1rem;
+    grid-template-columns: repeat(3, 1fr);
   }
 
   /* Services Grid */
@@ -450,11 +1006,145 @@ const documentTypes = [
     margin-left: 0.25rem;
   }
 
+  /* Comparison Table */
+  .comparison-wrapper {
+    overflow-x: auto;
+    margin-bottom: 2rem;
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 1rem 1.25rem;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .comparison-table th {
+    background: var(--primary-color);
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .comparison-table th.highlight-col {
+    background: var(--accent-color);
+  }
+
+  .comparison-table td.highlight-col {
+    background: rgba(232, 73, 29, 0.05);
+    font-weight: 500;
+  }
+
+  .comparison-table .feature-name {
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+
+  .comparison-cta {
+    text-align: center;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+  }
+
+  .comparison-cta p {
+    margin-bottom: 1rem;
+  }
+
+  .comparison-cta a:not(.btn) {
+    color: var(--accent-color);
+    font-weight: 600;
+  }
+
+  /* Industry Grid */
+  .industry-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .industry-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 2rem;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s ease;
+  }
+
+  .industry-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+  }
+
+  .industry-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--accent-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .industry-icon i {
+    font-size: 1.25rem;
+    color: #fff;
+  }
+
+  .industry-card h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1.2rem;
+  }
+
+  .industry-card p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .industry-services {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+  }
+
+  .industry-services li {
+    padding: 0.3rem 0;
+    font-size: 0.9rem;
+    opacity: 0.85;
+  }
+
+  .industry-services i {
+    color: var(--accent-color);
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .industry-link {
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
   /* Process Grid */
   .process-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
+    margin-bottom: 2.5rem;
   }
 
   .process-card {
@@ -509,6 +1199,17 @@ const documentTypes = [
     margin: 0;
   }
 
+  .process-cta {
+    text-align: center;
+  }
+
+  .process-cta-note {
+    display: block;
+    margin-top: 0.75rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
   /* Document Types Grid */
   .document-types-grid {
     display: grid;
@@ -530,9 +1231,16 @@ const documentTypes = [
     margin-bottom: 1rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
   }
 
-  .document-type-header i {
+  .document-type-header:hover {
+    color: var(--accent-color);
+  }
+
+  .document-type-header i:first-child {
     font-size: 1.25rem;
     color: var(--accent-color);
   }
@@ -541,12 +1249,18 @@ const documentTypes = [
     font-size: 1rem;
     margin: 0;
     color: var(--primary-color);
+    flex-grow: 1;
+  }
+
+  .header-link-icon {
+    font-size: 0.75rem;
+    opacity: 0.5;
   }
 
   .document-list {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 0 1rem;
   }
 
   .document-list li {
@@ -560,10 +1274,285 @@ const documentTypes = [
     border-bottom: none;
   }
 
+  .document-subpages {
+    padding-top: 1rem;
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+  }
+
+  .subpages-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .subpage-link {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    margin-right: 0.75rem;
+    margin-bottom: 0.25rem;
+    text-decoration: none;
+  }
+
+  .subpage-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Language Grid */
+  .language-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .language-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .language-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .language-cards--secondary {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .language-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s;
+  }
+
+  .language-card:hover {
+    background: var(--accent-color);
+    color: #fff;
+  }
+
+  .language-card--popular {
+    background: #fff;
+    border: 2px solid var(--accent-color);
+  }
+
+  .language-flag {
+    font-size: 1.25rem;
+  }
+
+  .language-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .language-arrow {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+
+  .language-target {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .language-card:hover .language-arrow,
+  .language-card:hover .language-target {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .language-note {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .language-note a {
+    color: var(--accent-color);
+  }
+
+  /* Attestation Grid */
+  .attestation-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .attestation-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    background: #fff;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .attestation-card:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .attestation-card--popular {
+    border-color: var(--accent-color);
+  }
+
+  .attestation-flag {
+    font-size: 1.5rem;
+  }
+
+  .attestation-name {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+  }
+
+  .attestation-badge {
+    position: absolute;
+    top: -8px;
+    right: 10px;
+    background: var(--accent-color);
+    color: #fff;
+    font-size: 0.65rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .attestation-info {
+    margin-top: 1.5rem;
+  }
+
+  .attestation-info-card {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 12px;
+    border-left: 4px solid var(--accent-color);
+  }
+
+  .attestation-info-card > i {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .attestation-info-card h4 {
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .attestation-info-card p {
+    margin: 0 0 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .attestation-info-card a {
+    color: var(--accent-color);
+    font-weight: 600;
+  }
+
+  /* Location Grid */
+  .location-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .location-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s;
+  }
+
+  .location-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .location-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .location-header i {
+    color: var(--accent-color);
+    font-size: 1.25rem;
+  }
+
+  .location-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+  }
+
+  .location-areas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .area-tag {
+    background: #f0f0f0;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .location-link {
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .location-note {
+    text-align: center;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 8px;
+  }
+
+  .location-note p {
+    margin: 0;
+    color: var(--text-muted);
+  }
+
+  .location-note i {
+    color: var(--accent-color);
+    margin-right: 0.5rem;
+  }
+
   /* Benefits Grid */
   .benefits-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
   }
 
@@ -607,6 +1596,7 @@ const documentTypes = [
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     text-align: center;
+    margin-bottom: 2rem;
   }
 
   .trust-stat {
@@ -625,27 +1615,106 @@ const documentTypes = [
     color: var(--text-muted);
   }
 
+  .trust-credentials {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+  }
+
+  .credential-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--primary-color);
+  }
+
+  .credential-item i {
+    color: var(--accent-color);
+  }
+
+  /* Resources Grid */
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .resource-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s;
+  }
+
+  .resource-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .resource-icon {
+    width: 45px;
+    height: 45px;
+    background: var(--primary-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .resource-icon i {
+    color: #fff;
+    font-size: 1.1rem;
+  }
+
+  .resource-card h3 {
+    font-size: 1.05rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .resource-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0 0 1rem;
+    line-height: 1.5;
+  }
+
+  .resource-link {
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
   /* Category Links Grid */
   .category-links-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
   }
 
   .category-link {
-    background: #fff;
+    background: #f8f9fa;
     padding: 1.5rem 1rem;
     border-radius: 10px;
     text-decoration: none;
     color: var(--primary-color);
     text-align: center;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   }
 
   .category-link:hover {
     transform: translateY(-3px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background: #fff;
   }
 
   .category-link i {
@@ -660,25 +1729,134 @@ const documentTypes = [
     font-weight: 500;
   }
 
+  /* Case Studies Grid */
+  .case-studies-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .case-study-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s;
+  }
+
+  .case-study-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .case-study-tag {
+    display: inline-block;
+    background: var(--accent-color);
+    color: #fff;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+  }
+
+  .case-study-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .case-study-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0 0 1rem;
+    line-height: 1.6;
+  }
+
+  .case-study-link {
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .case-studies-cta {
+    text-align: center;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+
+  .btn--primary {
+    background: var(--accent-color);
+    color: #fff;
+  }
+
+  .btn--primary:hover {
+    background: #c73d15;
+    transform: translateY(-2px);
+  }
+
+  .btn--secondary {
+    background: var(--primary-color);
+    color: #fff;
+  }
+
+  .btn--lg {
+    padding: 1rem 2rem;
+    font-size: 1.05rem;
+  }
+
   /* Responsive */
   @media (max-width: 1200px) {
-    .services-grid {
+    .services-grid,
+    .resources-grid,
+    .case-studies-grid {
       grid-template-columns: repeat(2, 1fr);
     }
 
     .document-types-grid,
     .benefits-grid,
-    .trust-grid {
+    .trust-grid,
+    .attestation-grid {
       grid-template-columns: repeat(2, 1fr);
     }
 
     .category-links-grid {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .use-case-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .language-grid {
+      grid-template-columns: 1fr;
     }
   }
 
   @media (max-width: 991px) {
     .process-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .industry-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .location-grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
@@ -692,12 +1870,38 @@ const documentTypes = [
     .process-grid,
     .document-types-grid,
     .benefits-grid,
-    .trust-grid {
+    .trust-grid,
+    .resources-grid,
+    .case-studies-grid,
+    .location-grid,
+    .attestation-grid {
       grid-template-columns: 1fr;
     }
 
     .category-links-grid {
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    .use-case-grid,
+    .use-case-grid--secondary {
+      grid-template-columns: 1fr;
+    }
+
+    .language-cards,
+    .language-cards--secondary {
+      grid-template-columns: 1fr;
+    }
+
+    .trust-credentials {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 0.75rem;
+      font-size: 0.85rem;
     }
   }
 </style>
