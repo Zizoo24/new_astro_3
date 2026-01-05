@@ -37,6 +37,49 @@ const documents = [
     courts: 'All Jurisdictions'
   }
 ];
+
+const faqs = [
+  {
+    q: "What is the difference between certified and notarized translation for court documents?",
+    a: "MOJ-certified translation bears the official stamp of a Ministry of Justice licensed translator (such as License #701), which UAE courts require for all foreign-language documents. Notarized translation adds a notary public attestation to verify the translator's signature—useful for documents going abroad but not typically required for UAE court submissions. For Dubai Courts, DIFC, and Abu Dhabi Judicial Department, MOJ certification is the standard requirement. Some international enforcement scenarios may require both certification and notarization, particularly when documents must satisfy requirements in multiple jurisdictions."
+  },
+  {
+    q: "How long does court document translation take?",
+    a: "Standard court documents (5-15 pages) typically complete within 24-48 hours. Complex litigation files with extensive pleadings, evidence bundles, or technical content may require 3-5 business days. Express service is available for urgent court deadlines—same-day delivery is possible for shorter documents when arranged in advance. We recommend contacting us as soon as you know about a filing deadline so we can plan accordingly."
+  },
+  {
+    q: "Which courts in the UAE require Arabic translation?",
+    a: "Dubai Courts (Court of First Instance, Court of Appeal, Court of Cassation), Abu Dhabi Judicial Department, Sharjah Courts, and all Federal Courts require Arabic as the official language. All foreign-language documents must be submitted with MOJ-certified Arabic translations. DIFC Courts and ADGM Courts operate primarily in English and may accept English documents directly, though Arabic translations may be needed for enforcement against mainland assets or for cross-jurisdictional matters."
+  },
+  {
+    q: "Can you translate court documents from any language?",
+    a: "Yes. We translate court documents from English, French, German, Spanish, Russian, Chinese, Hindi, Urdu, Farsi, and most other languages into Arabic. We also translate Arabic court documents into English and other languages for international use. Each language pair has specialized legal translators familiar with both the source legal system and UAE court requirements."
+  },
+  {
+    q: "What documents do I need for foreign judgment enforcement in the UAE?",
+    a: "For enforcement of foreign judgments, you typically need: the original court judgment (authenticated by the issuing court), proof that the judgment is final and enforceable, evidence of proper service on the defendant, and MOJ-certified Arabic translation of all documents. Some jurisdictions require additional apostille or legalization through the relevant embassy. We can advise on specific requirements based on the country of origin."
+  },
+  {
+    q: "Do you work directly with law firms?",
+    a: "Yes, we work extensively with UAE law firms and international firms with Dubai offices. We offer volume arrangements for firms with regular translation needs, priority handling for urgent matters, and consistent terminology across multi-document cases. Many firms engage us on a retainer basis to ensure immediate availability when court deadlines approach."
+  },
+  {
+    q: "How do you ensure accuracy in legal terminology?",
+    a: "Our litigation translators specialize in court documents—they understand the difference between 'summary judgment' and 'default judgment,' between 'interim relief' and 'final orders.' Each translation undergoes legal review to verify terminology accuracy. We maintain glossaries for recurring clients to ensure consistency across cases. For technical matters (construction disputes, medical malpractice, IP litigation), we pair legal translators with subject-matter specialists."
+  },
+  {
+    q: "What if Dubai Courts reject my translated document?",
+    a: "If any UAE court rejects our translation due to our error, we correct and redeliver at no charge—including courier costs if needed to meet your filing deadline. We have never had a document rejected for translation quality. Our acceptance rate reflects years of experience with UAE court requirements and ongoing relationships with court officials who know our work."
+  },
+  {
+    q: "Can you translate arbitration awards for enforcement?",
+    a: "Yes, we specialize in arbitration award translation for DIAC, ICC, LCIA, DIFC-LCIA, and ad-hoc arbitrations. Awards require precise translation of tribunal findings, interest calculations, cost allocations, and compliance conditions. We understand New York Convention requirements for international award recognition and UAE Arbitration Law requirements for domestic enforcement."
+  },
+  {
+    q: "Do you offer confidentiality agreements for sensitive cases?",
+    a: "Yes. For high-profile litigation, commercially sensitive disputes, or matters requiring enhanced privacy, we execute formal NDAs before document receipt. All court documents are handled by assigned senior translators only, processed on encrypted systems, and deleted upon request after delivery. We can provide audit trails and access logs for matters requiring documentation of handling procedures."
+  }
+];
 ---
 
 <BaseLayout 
@@ -55,6 +98,18 @@ const documents = [
       },
       "areaServed": ["Dubai", "Abu Dhabi", "Sharjah", "UAE"],
       "serviceType": ["Court Document Translation", "Judgment Translation", "Arbitration Award Translation"]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a
+        }
+      }))
     })} />
   </Fragment>
 
@@ -138,24 +193,70 @@ const documents = [
     </div>
   </section>
 
-  <section class="enforcement-section section">
+  <section class="detailed-content section">
     <div class="container">
       <div class="content-grid">
         <div class="content-main">
-          <h2>Foreign Judgment & Award Enforcement</h2>
-          <p>Enforcing foreign court judgments and arbitration awards in the UAE requires presenting these documents to UAE courts in Arabic. The translation becomes the document that judges read and rely upon when deciding enforcement.</p>
-          
-          <p>For judgments, courts assess whether the foreign court had jurisdiction, whether due process was followed, and whether enforcement would violate UAE public policy. The translation must clearly present procedural history and the operative ruling.</p>
-          
-          <p>For arbitration awards, the New York Convention provides the framework. The translation must include the arbitration agreement, the award itself, and any supporting procedural orders that demonstrate proper arbitral process.</p>
+          <h3>Understanding UAE Court Systems</h3>
+          <p>The United Arab Emirates operates a complex legal landscape with multiple parallel court systems. Understanding which court will handle your matter—and what translation requirements apply—is essential for effective litigation support. Dubai Courts handle most civil and commercial matters in Dubai, following UAE civil law principles derived from Egyptian and French legal traditions. Arabic is the mandatory language, meaning every foreign-language document must be submitted with an MOJ-certified Arabic translation.</p>
 
-          <h3>Key Enforcement Requirements</h3>
+          <p>The <a href="/locations/dubai/difc/">Dubai International Financial Centre (DIFC)</a> operates its own court system based on English common law. DIFC Courts handle disputes involving DIFC-registered entities, matters opted-in by parties, and enforcement of foreign judgments and arbitration awards. English is the primary language, though Arabic translations may be required when enforcing DIFC judgments through Dubai Courts against mainland assets—a process known as "conduit" enforcement.</p>
+
+          <p>Abu Dhabi Global Market (ADGM) Courts similarly operate under English common law within Abu Dhabi's free zone. Both DIFC and ADGM provide alternative forums for international commercial disputes, attracting parties who prefer common law procedures and English-language proceedings.</p>
+
+          <h3>Types of Court Documents Requiring Translation</h3>
+          <p>Court proceedings generate extensive documentation, each category carrying specific translation requirements and legal significance:</p>
+
+          <p><strong>Pleadings and Submissions:</strong> Claim statements, statements of defense, counterclaims, replies, and rejoinders form the backbone of litigation. These documents establish each party's legal position and must be translated with precision. A mistranslated allegation or defense point could affect how the court understands the dispute. We ensure that legal arguments, procedural references, and factual assertions are conveyed accurately in Arabic.</p>
+
+          <p><strong><a href="/legal/litigation/verdict/">Judgments and Court Orders</a>:</strong> Final judgments, interim orders, injunctions, and procedural rulings require exact translation for enforcement or appeal. The operative part of a judgment—what the court actually orders—must be crystal clear. Ambiguity in translation could affect enforcement entirely or provide grounds for challenge.</p>
+
+          <p><strong><a href="/legal/litigation/arbitration/">Arbitration Awards</a>:</strong> Awards from DIAC, ICC, LCIA, DIFC-LCIA, and other arbitration institutions require MOJ-certified Arabic translation for enforcement in Dubai Courts under the UAE Arbitration Law (Federal Law No. 6 of 2018) or the New York Convention for foreign awards.</p>
+
+          <p><strong>Evidence and Exhibits:</strong> Documentary evidence, witness statements, expert reports, and exhibit bundles support parties' cases. Courts examine this material when reaching decisions. Accurate translation ensures the evidence is understood as intended. For technical evidence (financial records, medical reports, engineering assessments), we pair legal translators with subject-matter specialists.</p>
+
+          <p><strong>Procedural Documents:</strong> Summons, service records, appearance notices, and scheduling orders document the litigation process. These may need translation for parties who don't read Arabic or for use in related proceedings abroad.</p>
+
+          <h3>Certified vs. Notarized Translation: Understanding the Difference</h3>
+          <p>Legal translation in the UAE involves two distinct authentication levels that are often confused. Understanding when each applies prevents delays and ensures court acceptance.</p>
+
+          <p><strong>MOJ-Certified Translation:</strong> This is the standard requirement for UAE court submissions. A Ministry of Justice licensed translator (such as License #701) stamps and signs the translation, certifying its accuracy. Dubai Courts, Abu Dhabi Judicial Department, Sharjah Courts, and all federal courts require this certification for foreign-language documents. The MOJ stamp confirms that the translator is officially authorized and takes professional responsibility for the translation's accuracy. This is what we provide for all litigation document translation.</p>
+
+          <p><strong>Notarized Translation:</strong> Notarization adds a layer of verification—a notary public attests that the signature on the translation certificate is genuine. This is typically required for documents going abroad, particularly to countries that require notarial certification. For UAE court proceedings, notarization is generally not required beyond MOJ certification. However, some international enforcement scenarios may require both, particularly when the translated document must satisfy requirements in multiple jurisdictions simultaneously.</p>
+
+          <p><strong>Attestation and Apostille:</strong> For foreign judgments and awards being enforced in the UAE, the original document may require authentication from the issuing country. This could involve court certification, apostille (for Hague Convention countries), or embassy legalization (for non-Hague countries). We can advise on what authentication your specific document needs before translation and connect you with <a href="/services/attestation/">attestation services</a> if required.</p>
+
+          <h3>Working with Law Firms</h3>
+          <p>We work extensively with law firms—both UAE-based practices and international firms with Dubai offices. Law firms have specific needs that differ from individual clients: predictable turnaround, consistent terminology across multi-document cases, and reliable quality that won't embarrass the firm before the court.</p>
+
+          <p>For firms with regular translation needs, we offer volume arrangements that reduce per-document costs while guaranteeing priority handling. When a partner calls on Friday afternoon with a Monday morning deadline, we accommodate—because we understand that court schedules don't respect weekends.</p>
+
+          <p>Consistency matters in litigation. If a contract is called "الاتفاقية" in the initial translation, it should remain "الاتفاقية" throughout the case—not suddenly become "العقد" in later documents. We maintain client-specific glossaries and case files to ensure terminology consistency across all documents in a matter.</p>
+
+          <p>For complex litigation involving multiple parties, extensive discovery, or ongoing proceedings, some firms engage us on retainer arrangements. This ensures immediate availability when urgent needs arise and often results in lower overall costs than ad-hoc engagement.</p>
+
+          <h3>Timeline Expectations for Court Submissions</h3>
+          <p>Court deadlines are non-negotiable. Understanding realistic translation timelines helps you plan filing schedules effectively:</p>
+
           <ul>
-            <li>Authenticated original judgment or award</li>
-            <li>MOJ-certified Arabic translation</li>
-            <li>Proof of proper service on defendant</li>
-            <li>Evidence that judgment is final and enforceable</li>
+            <li><strong>Short documents (1-5 pages):</strong> Same-day to 24 hours. Judgments, orders, and standard pleadings typically fall here.</li>
+            <li><strong>Medium documents (6-20 pages):</strong> 24-48 hours. Detailed pleadings, witness statements, and standard arbitration awards.</li>
+            <li><strong>Large documents (21-50 pages):</strong> 2-3 business days. Complex judgments with extensive reasoning, large contract bundles.</li>
+            <li><strong>Extensive files (50+ pages):</strong> 3-5 business days or more. Major arbitration proceedings, multi-party litigation files.</li>
           </ul>
+
+          <p>Express service is available for urgent matters—we've delivered 20-page translations in under 12 hours when necessary. However, rush work requires advance notice when possible. If you know a deadline is approaching, contact us early even if the documents aren't final. We can plan capacity and begin work as sections become available.</p>
+
+          <p>For ongoing litigation, staged delivery often works well. We translate and deliver documents in batches as they're produced, rather than waiting for a complete file. This distributes the workload and allows review of earlier sections while later sections are being translated.</p>
+
+          <h3>Legal Terminology Precision</h3>
+          <p>Court documents contain specialized vocabulary that general translators rarely handle correctly. Legal terms have precise meanings that vary by jurisdiction, and incorrect translation can change a document's legal effect entirely.</p>
+
+          <p>Consider the term "summary judgment." In US courts, this refers to a judgment granted when there's no genuine dispute of material fact. In UK courts, "summary judgment" exists but follows different procedural rules. Translating this term into Arabic for a UAE court requires understanding both the source system and how UAE courts will interpret the translation.</p>
+
+          <p>Our litigation translators specialize in court documents. They understand procedural terminology (service, pleadings, discovery, motions), substantive legal concepts (liability, damages, breach, force majeure), and judgment-specific language (operative part, obiter dictum, ratio decidendi). They know when direct translation works, when functional equivalents serve better, and when explanatory notes are necessary.</p>
+
+          <p>For technical litigation—construction disputes, medical malpractice, intellectual property, maritime matters—we pair legal translators with subject-matter specialists who understand the technical vocabulary. A construction arbitration award discussing "variations" and "extensions of time" requires both legal translation skills and construction industry knowledge.</p>
         </div>
 
         <div class="content-sidebar">
@@ -170,12 +271,70 @@ const documents = [
             </ul>
           </div>
 
+          <div class="info-card">
+            <h4>Translation Timeline</h4>
+            <ul>
+              <li>1-5 pages: Same-day to 24h</li>
+              <li>6-20 pages: 24-48 hours</li>
+              <li>21-50 pages: 2-3 days</li>
+              <li>50+ pages: 3-5+ days</li>
+            </ul>
+          </div>
+
           <div class="info-card highlight">
             <h4>Urgent Litigation?</h4>
-            <p>Court deadlines don't wait. We offer expedited translation for urgent litigation matters.</p>
+            <p>Court deadlines don't wait. We offer expedited translation for urgent litigation matters with same-day delivery available.</p>
             <a href="https://wa.me/971508620217?text=URGENT%20court%20document" class="btn btn--primary btn--sm">Priority Request</a>
           </div>
+
+          <div class="info-card">
+            <h4>Related Services</h4>
+            <ul>
+              <li><a href="/legal/corporate/poa/">Power of Attorney</a></li>
+              <li><a href="/legal/contracts/">Contract Translation</a></li>
+              <li><a href="/services/attestation/">Document Attestation</a></li>
+              <li><a href="/legal/corporate/">Corporate Documents</a></li>
+            </ul>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="enforcement-section section bg-light">
+    <div class="container">
+      <h2>Foreign Judgment & Award Enforcement</h2>
+      <div class="enforcement-content">
+        <p>Enforcing foreign court judgments and arbitration awards in the UAE requires presenting these documents to UAE courts in Arabic. The translation becomes the document that judges read and rely upon when deciding enforcement.</p>
+        
+        <p>For judgments, courts assess whether the foreign court had jurisdiction, whether due process was followed, and whether enforcement would violate UAE public policy. The translation must clearly present procedural history and the operative ruling. UAE courts apply reciprocity principles—enforcement is more straightforward for judgments from countries that reciprocally enforce UAE judgments.</p>
+        
+        <p>For arbitration awards, the New York Convention provides the framework for international awards, while the UAE Arbitration Law (Federal Law No. 6 of 2018) governs domestic awards. The translation must include the arbitration agreement, the award itself, and any supporting procedural orders that demonstrate proper arbitral process. Interest calculations, cost allocations, and compliance conditions must be rendered exactly—a mistranslated interest rate or incorrectly stated currency could significantly affect the enforced amount.</p>
+
+        <p>DIFC provides an alternative enforcement route for many international judgments. Courts from common law jurisdictions may find DIFC enforcement more familiar, and the process can sometimes be faster than mainland enforcement. However, if the defendant's assets are primarily on the mainland, the DIFC judgment may need subsequent enforcement through Dubai Courts anyway. We help clients and their lawyers understand which route makes sense and prepare documents accordingly.</p>
+
+        <h3>Key Enforcement Requirements</h3>
+        <ul>
+          <li>Authenticated original judgment or award with court certification or apostille</li>
+          <li>MOJ-certified Arabic translation of judgment and supporting documents</li>
+          <li>Proof of proper service on defendant in the original proceedings</li>
+          <li>Evidence that judgment is final and enforceable in the issuing jurisdiction</li>
+          <li>For arbitration awards: the arbitration agreement and evidence of proper procedure</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section section">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-grid">
+        {faqs.map(faq => (
+          <div class="faq-item">
+            <h3>{faq.q}</h3>
+            <p>{faq.a}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -198,6 +357,11 @@ const documents = [
           <i class="fas fa-building"></i>
           <h3>Corporate Documents</h3>
           <p>MOA, resolutions, shareholder documents</p>
+        </a>
+        <a href="/services/attestation/" class="related-card">
+          <i class="fas fa-stamp"></i>
+          <h3>Document Attestation</h3>
+          <p>MOFA and embassy legalization</p>
         </a>
       </div>
     </div>
@@ -248,12 +412,13 @@ const documents = [
   .jurisdiction-card p { color: var(--text-muted); line-height: 1.6; font-size: 0.95rem; }
 
   .content-grid { display: grid; grid-template-columns: 1fr 350px; gap: 3rem; }
-  .content-main h2 { font-size: 1.75rem; margin-bottom: 1.5rem; }
-  .content-main h3 { font-size: 1.25rem; margin: 2rem 0 1rem; }
+  .content-main h3 { font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--primary-color); }
+  .content-main h3:first-child { margin-top: 0; }
   .content-main p { line-height: 1.8; margin-bottom: 1.25rem; }
-  .content-main ul { list-style: none; padding: 0; }
-  .content-main li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
+  .content-main ul { list-style: none; padding: 0; margin: 1.5rem 0; }
+  .content-main li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; line-height: 1.7; }
   .content-main li::before { content: '→'; position: absolute; left: 0; color: var(--accent-color); }
+  .content-main a { color: var(--accent-color); text-decoration: underline; }
 
   .info-card { background: white; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
   .info-card.highlight { background: var(--primary-color); color: white; }
@@ -262,8 +427,21 @@ const documents = [
   .info-card li { padding: 0.4rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
   .info-card.highlight li { border-bottom-color: rgba(255,255,255,0.2); }
   .info-card p { margin-bottom: 1rem; }
+  .info-card a:not(.btn) { color: var(--accent-color); text-decoration: underline; }
 
-  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .enforcement-content { max-width: 900px; }
+  .enforcement-content p { line-height: 1.8; margin-bottom: 1.25rem; }
+  .enforcement-content h3 { font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--primary-color); }
+  .enforcement-content ul { list-style: none; padding: 0; }
+  .enforcement-content li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
+  .enforcement-content li::before { content: '→'; position: absolute; left: 0; color: var(--accent-color); }
+
+  .faq-grid { display: grid; gap: 1.5rem; }
+  .faq-item { background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+  .faq-item h3 { font-size: 1.1rem; margin-bottom: 1rem; color: var(--primary-color); }
+  .faq-item p { line-height: 1.7; color: var(--text-muted); margin: 0; }
+
+  .related-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
   .related-card { background: white; padding: 2rem; border-radius: 1rem; text-decoration: none; color: inherit; text-align: center; transition: all 0.3s; }
   .related-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
   .related-card i { font-size: 2rem; color: var(--accent-color); margin-bottom: 1rem; }
@@ -283,6 +461,6 @@ const documents = [
   .btn--sm { padding: 0.75rem 1.5rem; font-size: 0.9rem; }
   .btn--lg { padding: 1.125rem 2.25rem; }
 
-  @media (max-width: 991px) { .content-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 991px) { .content-grid { grid-template-columns: 1fr; } .related-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 768px) { .related-grid { grid-template-columns: 1fr; } }
 </style>

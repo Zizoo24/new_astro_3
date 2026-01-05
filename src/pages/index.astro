@@ -7,7 +7,7 @@ import { Image } from 'astro:assets';
 import heroImageSrc from '../assets/images/hero/office-team.png';
 
 // SEO - Updated for certified/authenticated translation focus
-const pageTitle = 'OnlineTranslation.ae | Certified Translation Dubai | MOJ Approved';
+const pageTitle = 'Certified Translation Dubai | OnlineTranslation.ae';
 
 const metaDescription = 'Certified translation services in Dubai for official documents, legal contracts, and government submissions. Ministry of Justice approved translators with stamp and signature authentication. Fast, secure, court-accepted.';
 
@@ -250,13 +250,21 @@ const contactSection = {
     </div>
     <div class="container">
       <div class="hero-content">
-        <!-- Desktop Hero Content -->
-        <div class="hero-text hero-text-desktop">
+        <div class="hero-text">
+          <!-- Single H1 - Always accessible, CSS handles visual styling per breakpoint -->
           <h1 class="hero-title exodus-title">
             <span class="title-line">{heroTitle}</span>
           </h1>
-          <p class="hero-lead">{heroLead}</p>
-          <ul class="hero-bullets">
+          
+          <!-- Desktop lead (visually hidden on mobile, kept in accessibility tree) -->
+          <p class="hero-lead hero-lead-desktop">{heroLead}</p>
+          
+          <!-- Mobile eyebrow and lead (visually hidden on desktop) -->
+          <span class="hero-eyebrow hero-eyebrow-mobile">{mobileHero.eyebrow}</span>
+          <p class="hero-lead hero-lead-mobile">{mobileHero.lead}</p>
+          
+          <!-- Desktop bullets (visually hidden on mobile) -->
+          <ul class="hero-bullets hero-bullets-desktop">
             {heroBullets.map((item) => (
               <li>
                 {item.icon && <i class={item.icon}></i>}
@@ -264,27 +272,9 @@ const contactSection = {
               </li>
             ))}
           </ul>
-
-          <div class="hero-cta-group">
-            <a href={primaryCta.url} class="hero-cta exodus-cta">
-              <i class="fab fa-whatsapp"></i> {primaryCta.label}
-            </a>
-            {secondaryCta?.url && (
-              <a href={secondaryCta.url} class="hero-cta-secondary">
-                {secondaryCta.label}
-              </a>
-            )}
-          </div>
-        </div>
-
-        <!-- Mobile Hero Content (Concise Copy) -->
-        <div class="hero-text hero-text-mobile">
-          <span class="hero-eyebrow">{mobileHero.eyebrow}</span>
-          <h1 class="hero-title exodus-title">
-            <span class="title-line">{mobileHero.title}</span>
-          </h1>
-          <p class="hero-lead">{mobileHero.lead}</p>
-          <ul class="hero-bullets">
+          
+          <!-- Mobile bullets (visually hidden on desktop) -->
+          <ul class="hero-bullets hero-bullets-mobile">
             {mobileHero.bullets.map((item) => (
               <li>
                 {item.icon && <i class={item.icon}></i>}
@@ -293,11 +283,15 @@ const contactSection = {
             ))}
           </ul>
 
+          <!-- Primary CTA - Single shared CTA works for all breakpoints -->
           <div class="hero-cta-group">
-            <a href={mobileHero.primaryCta.url} class="hero-cta exodus-cta">
-              <i class="fab fa-whatsapp"></i> {mobileHero.primaryCta.label}
+            <a href={primaryCta.url} class="hero-cta exodus-cta">
+              <i class="fab fa-whatsapp"></i> {primaryCta.label}
             </a>
-            <a href={mobileHero.secondaryCta.url} class="hero-cta-secondary">
+            <a href={secondaryCta.url} class="hero-cta-secondary hero-cta-secondary-desktop">
+              {secondaryCta.label}
+            </a>
+            <a href={mobileHero.secondaryCta.url} class="hero-cta-secondary hero-cta-secondary-mobile">
               {mobileHero.secondaryCta.label}
             </a>
           </div>
@@ -456,7 +450,19 @@ const contactSection = {
         <span class="section-label exodus-label">Our Work Process</span>
         <h2 class="section-title exodus-section-title">Efficient Certified Translation. Simplified.</h2>
       </div>
-      <div class="grid grid-3 grid--auto-fit process-steps exodus-process-steps">
+      <div class="process-visual-showcase">
+        <div class="showcase-image">
+          <img 
+            src="/assets/images/onedrive/stamped-hardcopy.png" 
+            alt="MOJ certified translated document with official stamp and signature"
+            loading="lazy"
+            width="400"
+            height="300"
+          >
+          <span class="showcase-caption">Your certified translation with MOJ stamp</span>
+        </div>
+      </div>
+      <div class="process-steps exodus-process-steps">
         <article class="process-step exodus-step">
           <div class="step-header">
             <span class="step-index">01</span>

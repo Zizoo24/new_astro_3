@@ -1,0 +1,437 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const faqs = [
+  {
+    question: "What is the most common reason for UAE visa rejection due to documents?",
+    answer: "Name transliteration inconsistencies between documents are the leading cause of rejection. If your translated birth certificate shows 'Muhammad Ali' but your passport reads 'Mohammed Ali,' immigration will flag the discrepancy."
+  },
+  {
+    question: "Do I need MOJ legal translation or certified translation for my visa application?",
+    answer: "It depends on where the document is going. MOJ legal translation is required for Dubai Courts and government ministries. Certified translation is sufficient for private companies, HR departments, and banks. Using the wrong type can result in rejection or unnecessary expense."
+  },
+  {
+    question: "What is the correct attestation order for foreign documents in UAE?",
+    answer: "The attestation chain must be: 1) Notarization in issuing country, 2) Attestation by issuing country's Ministry of Foreign Affairs, 3) UAE Embassy attestation in issuing country, 4) MOFA attestation in UAE. Skip a step or get them out of order, and your application will be rejected."
+  },
+  {
+    question: "Can I reapply after a visa rejection?",
+    answer: "Yes. Determine the specific rejection reason through GDRFA portal, get document issues corrected with a reliable translation provider, wait any required period (typically 10-15 days), then resubmit with corrected documents after cancelling previous applications."
+  },
+  {
+    question: "What date format does UAE use for documents?",
+    answer: "UAE uses DD/MM/YYYY format. A birthdate of 05/03/1990 means March 5th in UAE but May 3rd in the US. This confusion can create discrepancies that flag your application."
+  },
+  {
+    question: "How do I ensure name consistency across all documents?",
+    answer: "Before submitting any translated document, verify that every name exactly matches your passport spelling—letter for letter, including middle names and spacing. A professional translation service will cross-reference all names against your passport."
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<BaseLayout
+  title="UAE Visa Rejection Guide | Document Translation Mistakes to Avoid"
+  description="Learn why UAE visa applications get rejected due to translation errors. Avoid name transliteration issues, date format confusion, and attestation mistakes."
+>
+  <Fragment slot="head">
+    <meta name="keywords" content="visa rejection UAE, document translation Dubai, certified translation Dubai, MOJ legal translation, GDRFA visa application, name transliteration" />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="hero-section bg-dark" data-theme="dark">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">HOME</a>
+        <span class="separator">&gt;</span>
+        <a href="/resources/">RESOURCES</a>
+        <span class="separator">&gt;</span>
+        <span class="current">VISA REJECTION GUIDE</span>
+      </nav>
+
+      <h1>Why Your UAE Visa Application Keeps Getting Rejected</h1>
+      <p class="hero-subtitle">The Document Translation Mistakes Costing Expats Time and Money</p>
+      <p class="hero-intro">UAE immigration authorities have significantly tightened verification processes, and document translation errors have emerged as one of the leading causes of visa rejection. The good news? These mistakes are entirely preventable.</p>
+
+      <div class="service-snapshot">
+        <div class="snapshot-item">
+          <i class="fas fa-exclamation-triangle"></i>
+          <span><strong>40%</strong> of returned documents have accuracy issues</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-passport"></i>
+          <span><strong>Name Matching:</strong> Character-level verification</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-check-circle"></i>
+          <span><strong>Preventable:</strong> Proper translation avoids rejection</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>The Real Cost of Translation Errors</h2>
+      <p>A single mistranslated clause or incorrect name transliteration doesn't just delay your visa—it triggers a cascade of problems. Your visa fee becomes non-refundable. Your accommodation booking may be lost. Your business meeting or family event? Missed.</p>
+      
+      <div class="example-box">
+        <h3><i class="fas fa-user-tie"></i> Real Example</h3>
+        <p>A Dubai entrepreneur's residence visa renewal stretched from days to weeks because his employment letter stated "Managing Director" but the translation rendered it as something closer to "Operations Supervisor" in Arabic. Immigration flagged the discrepancy and requested additional documentation.</p>
+      </div>
+
+      <p>At OnlineTranslation.ae, we regularly see documents with accuracy issues—from minor formatting problems to critical terminology errors that change legal meanings entirely.</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Common Translation Mistakes That Trigger Rejection</h2>
+      
+      <div class="mistake-cards">
+        <div class="mistake-card">
+          <div class="mistake-header">
+            <span class="mistake-number">1</span>
+            <h3>Name Transliteration Inconsistencies</h3>
+          </div>
+          <p>Arabic and English handle names differently. "Mohammed" might become "Muhammad," "Mohamed," or "Mohamad" depending on the transliteration system used.</p>
+          <p>The GDRFA cross-references every document against your passport. Any mismatch—even one letter—can trigger rejection.</p>
+          <div class="solution-box">
+            <strong>Solution:</strong> Verify every name exactly matches your passport spelling, letter for letter.
+          </div>
+        </div>
+
+        <div class="mistake-card">
+          <div class="mistake-header">
+            <span class="mistake-number">2</span>
+            <h3>Date Format Confusion</h3>
+          </div>
+          <p>The UAE uses DD/MM/YYYY format, while many countries use MM/DD/YYYY. A birthdate of 05/03/1990 means March 5th in UAE but May 3rd in the United States.</p>
+          <div class="solution-box">
+            <strong>Solution:</strong> Ensure all dates use UAE's DD/MM/YYYY format and match across documents.
+          </div>
+        </div>
+
+        <div class="mistake-card">
+          <div class="mistake-header">
+            <span class="mistake-number">3</span>
+            <h3>Incorrect Legal Terminology</h3>
+          </div>
+          <p>Legal translation isn't just about language—it's about legal systems. English common law and Arabic civil law use different concepts.</p>
+          <ul>
+            <li>"Joint venture" vs "partnership"</li>
+            <li>"Power of Attorney" (various types with different Arabic equivalents)</li>
+            <li>"Probation period" vs "trial period"</li>
+            <li>"Notarized" vs "attested" vs "certified"</li>
+          </ul>
+          <div class="solution-box">
+            <strong>Solution:</strong> Use translators experienced with UAE legal terminology.
+          </div>
+        </div>
+
+        <div class="mistake-card">
+          <div class="mistake-header">
+            <span class="mistake-number">4</span>
+            <h3>Missing or Incorrect Attestation</h3>
+          </div>
+          <p>Without proper attestation, a perfectly translated document is legally meaningless in UAE. The attestation chain must be complete and in correct order.</p>
+          <ol>
+            <li>Notarization in the issuing country</li>
+            <li>Attestation by issuing country's Ministry of Foreign Affairs</li>
+            <li>UAE Embassy attestation in the issuing country</li>
+            <li>MOFA attestation in the UAE</li>
+          </ol>
+          <div class="solution-box">
+            <strong>Solution:</strong> Complete the full attestation chain before submission. See our <a href="/services/attestation/">attestation services</a>.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>MOJ Legal vs Certified Translation</h2>
+      <p>Not all official translations are equal. Understanding the difference can save you from rejection and unnecessary expense.</p>
+      
+      <div class="comparison-grid">
+        <div class="comparison-card certified">
+          <h3><i class="fas fa-stamp"></i> Certified Translation</h3>
+          <ul>
+            <li>Suitable for private companies, HR departments, banks</li>
+            <li>Comes with translator's stamp and signature</li>
+            <li>Accepted for non-governmental purposes</li>
+          </ul>
+        </div>
+        <div class="comparison-card moj">
+          <h3><i class="fas fa-gavel"></i> MOJ Legal Translation</h3>
+          <ul>
+            <li>Required for Dubai Courts, government ministries</li>
+            <li>Must be performed by MOJ-registered translator</li>
+            <li>Carries MOJ-approved stamp and QR verification</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>Using certified translation for a court submission will result in rejection. Using MOJ legal translation for a simple HR requirement means paying more for no benefit. Learn more in our <a href="/resources/moj-vs-certified/">complete guide to MOJ vs Certified Translation</a>.</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Pre-Submission Checklist</h2>
+      <p>Before submitting any translated document for a visa or residency application, verify:</p>
+      
+      <div class="checklist">
+        <div class="checklist-item">
+          <i class="fas fa-check-square"></i>
+          <span><strong>All names match passport exactly</strong> (check middle names, spelling, spacing)</span>
+        </div>
+        <div class="checklist-item">
+          <i class="fas fa-check-square"></i>
+          <span><strong>Dates use DD/MM/YYYY format</strong> and match across all documents</span>
+        </div>
+        <div class="checklist-item">
+          <i class="fas fa-check-square"></i>
+          <span><strong>Attestation chain is complete</strong> (home country + UAE Embassy + MOFA if required)</span>
+        </div>
+        <div class="checklist-item">
+          <i class="fas fa-check-square"></i>
+          <span><strong>Translation type matches purpose</strong> (MOJ for government, Certified for private)</span>
+        </div>
+        <div class="checklist-item">
+          <i class="fas fa-check-square"></i>
+          <span><strong>Document scans are high quality</strong> (300 dpi, color PDF)</span>
+        </div>
+        <div class="checklist-item">
+          <i class="fas fa-check-square"></i>
+          <span><strong>QR verification code is present</strong> on any MOJ translation</span>
+        </div>
+        <div class="checklist-item">
+          <i class="fas fa-check-square"></i>
+          <span><strong>No previous visa applications are pending</strong></span>
+        </div>
+        <div class="checklist-item">
+          <i class="fas fa-check-square"></i>
+          <span><strong>Passport validity exceeds six months</strong> from travel date</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>What to Do If Your Application Was Rejected</h2>
+      
+      <div class="steps-process">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Determine the Specific Reason</h3>
+            <p>Contact your visa service provider or visit the GDRFA portal. Generic rejection notices don't tell the full story.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Get Document Issues Corrected</h3>
+            <p>If translation was the problem, don't use the same source. Find a <a href="/services/legal-translation/">legal translation provider</a> who can identify exactly what went wrong.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Wait the Appropriate Period</h3>
+            <p>Some rejections require a 10-15 day waiting period before reapplication. Check your specific case.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>Resubmit with Corrected Documents</h3>
+            <p>Ensure all previous applications are cancelled before submitting new ones.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Finding Reliable Translation Services</h2>
+      <p>When searching for legal translation services, look beyond convenience. The amount saved on a cheaper translation can cost thousands in rejected visa fees, missed flights, and delayed proceedings.</p>
+      
+      <div class="questions-box">
+        <h3><i class="fas fa-question-circle"></i> Questions to Ask Any Translation Provider</h3>
+        <ul>
+          <li>"Are your translators registered with the UAE Ministry of Justice?" (Non-negotiable for government submissions)</li>
+          <li>"What is your accuracy guarantee, and what happens if my document is rejected due to translation error?"</li>
+          <li>"How do you handle name transliteration consistency across multiple documents?"</li>
+          <li>"Can you explain the difference between certified and legal translation for my specific needs?"</li>
+        </ul>
+        <p>A quality translation provider should answer these questions confidently and specifically. At OnlineTranslation.ae, we verify requirements before processing to ensure you get the right service.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-dark cta-section" data-theme="dark">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Need Help With Your Visa Documents?</h2>
+        <p>OnlineTranslation.ae specializes in helping Dubai residents and businesses navigate document requirements without confusion. Send us your documents for a quick assessment of your specific situation.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/971508620217" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i> WhatsApp: +971 50 862 0217
+          </a>
+          <a href="mailto:info@onlinetranslation.ae" class="btn btn-secondary">
+            <i class="fas fa-envelope"></i> info@onlinetranslation.ae
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Related Resources</h2>
+      <div class="related-links">
+        <a href="/resources/moj-vs-certified/" class="related-link">
+          <i class="fas fa-balance-scale"></i>
+          <span>MOJ vs Certified Translation: Complete Guide</span>
+        </a>
+        <a href="/services/legal-translation/" class="related-link">
+          <i class="fas fa-file-contract"></i>
+          <span>Legal Translation Services Dubai</span>
+        </a>
+        <a href="/services/attestation/" class="related-link">
+          <i class="fas fa-stamp"></i>
+          <span>Document Attestation Services</span>
+        </a>
+        <a href="/contact/" class="related-link">
+          <i class="fas fa-comments"></i>
+          <span>Contact Us</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-section { padding: 8rem 0 4rem; background: var(--primary-color); }
+  .breadcrumb { font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 2rem; }
+  .breadcrumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: #ffffff; }
+  .breadcrumb .separator { margin: 0 0.5rem; color: rgba(255, 255, 255, 0.5); }
+  .breadcrumb .current { color: #ffffff; }
+  h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: #ffffff; }
+  .hero-subtitle { font-size: 1.25rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+  .hero-intro { font-size: 1.1rem; color: rgba(255,255,255,0.9); max-width: 800px; line-height: 1.7; }
+  .content-container { max-width: 900px; }
+
+  .service-snapshot { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; }
+  .snapshot-item { display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.9); }
+  .snapshot-item i { color: var(--accent-color); font-size: 1.25rem; }
+
+  .example-box { background: var(--surface-raised, #f8f9fa); padding: 1.5rem; border-left: 4px solid var(--accent-color); border-radius: 0 8px 8px 0; margin: 1.5rem 0; }
+  .example-box h3 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.75rem; color: var(--text-heading); }
+  .example-box h3 i { color: var(--accent-color); }
+  .example-box p { margin: 0; color: var(--text-body); line-height: 1.7; }
+
+  .mistake-cards { display: flex; flex-direction: column; gap: 1.5rem; }
+  .mistake-card { background: var(--surface-base, white); padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .mistake-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+  .mistake-number { width: 40px; height: 40px; background: var(--accent-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.25rem; flex-shrink: 0; }
+  .mistake-card h3 { margin: 0; color: var(--text-heading); }
+  .mistake-card p { color: var(--text-body); line-height: 1.7; margin: 0.5rem 0; }
+  .mistake-card ul, .mistake-card ol { padding-left: 1.5rem; margin: 1rem 0; color: var(--text-body); }
+  .mistake-card li { margin: 0.5rem 0; }
+  .solution-box { background: #e8f5e9; padding: 1rem; border-radius: 8px; margin-top: 1rem; color: #2e7d32; }
+
+  .comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+  .comparison-card { padding: 1.5rem; border-radius: 12px; }
+  .comparison-card.certified { background: #e3f2fd; border: 2px solid #1976d2; }
+  .comparison-card.moj { background: #fce4ec; border: 2px solid #c2185b; }
+  .comparison-card h3 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 1rem; font-size: 1.1rem; }
+  .comparison-card.certified h3 { color: #1976d2; }
+  .comparison-card.moj h3 { color: #c2185b; }
+  .comparison-card ul { list-style: none; padding: 0; margin: 0; }
+  .comparison-card li { padding: 0.5rem 0; color: var(--text-body); }
+
+  .checklist { display: flex; flex-direction: column; gap: 0.75rem; }
+  .checklist-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.75rem; background: var(--surface-base, white); border-radius: 8px; }
+  .checklist-item i { color: #4caf50; font-size: 1.25rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .checklist-item span { color: var(--text-body); line-height: 1.5; }
+
+  .steps-process { display: flex; flex-direction: column; gap: 1.5rem; }
+  .step { display: flex; gap: 1.5rem; align-items: flex-start; }
+  .step-number { width: 50px; height: 50px; background: var(--primary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.5rem; flex-shrink: 0; }
+  .step-content h3 { margin: 0 0 0.5rem; color: var(--text-heading); }
+  .step-content p { margin: 0; color: var(--text-body); line-height: 1.7; }
+  .step-content a { color: var(--accent-color); }
+
+  .questions-box { background: var(--surface-base, white); padding: 2rem; border-radius: 12px; border: 2px solid var(--primary-color); }
+  .questions-box h3 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 1rem; color: var(--text-heading); }
+  .questions-box h3 i { color: var(--primary-color); }
+  .questions-box ul { padding-left: 1.5rem; margin: 1rem 0; }
+  .questions-box li { margin: 0.75rem 0; color: var(--text-body); line-height: 1.6; }
+  .questions-box p { margin: 1rem 0 0; color: var(--text-body); }
+
+  .faq-list { display: flex; flex-direction: column; gap: 1rem; }
+  .faq-item { background: var(--surface-raised, #f8f9fa); border-radius: 8px; overflow: hidden; }
+  .faq-question { padding: 1.25rem; cursor: pointer; font-weight: 600; color: var(--text-heading); list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; font-size: 1.5rem; color: var(--accent-color); }
+  .faq-item[open] .faq-question::after { content: '−'; }
+  .faq-answer { padding: 0 1.25rem 1.25rem; color: var(--text-body); line-height: 1.7; }
+  .faq-answer p { margin: 0; }
+
+  .cta-section { padding: 4rem 0; }
+  .cta-content { text-align: center; max-width: 700px; margin: 0 auto; }
+  .cta-content h2 { color: #ffffff; margin-bottom: 1rem; }
+  .cta-content p { color: rgba(255,255,255,0.9); margin-bottom: 2rem; line-height: 1.7; }
+  .cta-buttons { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 1.5rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
+  .btn-primary { background: #25D366; color: #ffffff !important; }
+  .btn-primary:hover { background: #20bd5a; transform: translateY(-2px); }
+  .btn-secondary { background: transparent; border: 2px solid #ffffff; color: #ffffff !important; }
+  .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+  .related-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+  .related-link { display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: var(--surface-base, white); border-radius: 8px; text-decoration: none; color: var(--text-heading); transition: all 0.3s ease; border: 1px solid var(--border-light, #eee); }
+  .related-link:hover { border-color: var(--accent-color); transform: translateY(-2px); }
+  .related-link i { font-size: 1.5rem; color: var(--accent-color); }
+
+  @media (max-width: 600px) {
+    .service-snapshot { flex-direction: column; }
+    .step { flex-direction: column; gap: 1rem; }
+    .cta-buttons { flex-direction: column; }
+  }
+</style>

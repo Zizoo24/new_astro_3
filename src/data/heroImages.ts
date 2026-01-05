@@ -138,6 +138,26 @@ export const HERO_IMAGES: Record<string, HeroImage> = {
     sizeKB: 133
   },
   
+  'stamped-hardcopy': {
+    path: '/assets/images/onedrive/stamped-hardcopy.png',
+    alt: 'MOJ certified translated document with official stamp and signature verification',
+    category: 'legal',
+    keywords: ['attestation', 'certified', 'stamp', 'mofa', 'moj', 'embassy'],
+    optimized: true,
+    webp: false,
+    sizeKB: 180
+  },
+  
+  'stamped-hardcopy-2': {
+    path: '/assets/images/onedrive/stamped-hardcopy-2.png',
+    alt: 'Attested document with embassy stamps and MOFA authentication seal',
+    category: 'legal',
+    keywords: ['attestation', 'authenticated', 'embassy', 'mofa', 'legalization'],
+    optimized: true,
+    webp: false,
+    sizeKB: 175
+  },
+  
   // Legacy/fallback images (already in use)
   'hero-city': {
     path: '/assets/images/hero-city.jpg',

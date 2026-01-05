@@ -8,6 +8,8 @@ import ServiceLayout from '../../../../layouts/ServiceLayout.astro';
 import RelatedServices from '../../../../components/RelatedServices.astro';
 import CrossSiloLinks from '../../../../components/CrossSiloLinks.astro';
 import InlineCallout from '../../../../components/InlineCallout.astro';
+import TrustLinks from '../../../../components/TrustLinks.astro';
+import ResourceLinks from '../../../../components/ResourceLinks.astro';
 
 const breadcrumbs = [
   { name: 'Home', url: '/' },
@@ -71,35 +73,51 @@ const benefitCards = [
 const faqs = [
   {
     question: 'Does Canada accept apostille now?',
-    answer: 'Yes. Canada joined the Hague Apostille Convention on January 11, 2024. This is a significant change from the old process. Canadian documents can now receive an apostille from provincial or federal authorities, simplifying the first steps of international authentication. However, for UAE use, embassy attestation is still required.'
+    answer: 'Yes. Canada joined the Hague Apostille Convention on January 11, 2024, becoming the 125th member country. This is a significant change from the old multi-step authentication process. Canadian documents can now receive a single apostille from provincial or federal authorities, replacing the previous provincial authentication plus Global Affairs Canada legalization. However, for UAE use, embassy attestation is still required because UAE is not a Hague member.'
   },
   {
     question: 'Where do I get a Canadian apostille?',
-    answer: 'It depends on your document type. Provincial documents (birth/marriage certificates, educational credentials) are apostilled by the provincial government. Federal documents (RCMP police clearance, federal court orders) are apostilled by Global Affairs Canada (GAC). We advise on the correct authority for your specific document.'
+    answer: 'It depends on your document type and issuing province. Provincial documents (birth/marriage/death certificates, educational credentials from provincial institutions) are apostilled by the provincial government. Federal documents (RCMP police clearance, federal court orders, documents from federal agencies) are apostilled by Global Affairs Canada (GAC) in Ottawa. We advise on the correct authority for your specific document.'
   },
   {
-    question: 'Do I still need UAE Embassy attestation?',
-    answer: 'Yes. Because the UAE is NOT a member of the Hague Convention, UAE Embassy attestation is still required after the Canadian apostille. The apostille simplifies the Canadian authentication step, but does not eliminate UAE requirements. Your document needs: Canadian apostille → UAE Embassy → MOFA UAE.'
+    question: 'Do I still need UAE Embassy attestation after the apostille?',
+    answer: 'Yes. Because the UAE is NOT a member of the Hague Convention, UAE Embassy attestation is still required after the Canadian apostille. The apostille simplifies the Canadian authentication step, but does not eliminate UAE requirements. Your document needs: Canadian apostille → UAE Embassy Ottawa → MOFA UAE. Do not skip embassy attestation thinking the apostille alone is sufficient.'
   },
   {
-    question: 'What about documents issued before 2024?',
-    answer: 'Documents issued before January 2024 can still receive an apostille. The apostille confirms the document is genuine as of the date it was issued. There is no requirement that the document was issued after Canada joined the Hague Convention.'
+    question: 'What about documents issued before January 2024?',
+    answer: 'Documents issued before January 2024 can still receive an apostille. The apostille confirms the document is genuine as of the date it was issued. There is no requirement that the document was issued after Canada joined the Hague Convention. Old degrees, birth certificates, and other documents qualify for apostille regardless of their original issue date.'
   },
   {
-    question: 'How long does the full process take?',
-    answer: 'Canadian apostille takes 5-10 business days depending on the issuing authority. UAE Embassy attestation in Ottawa takes 3-5 business days. MOFA UAE takes 1-3 business days. Total time is typically 10-14 business days. Rush services are available at some steps.'
+    question: 'How long does the full Canadian attestation process take?',
+    answer: 'Canadian apostille takes 5-10 business days depending on the issuing authority (provincial or GAC). UAE Embassy attestation in Ottawa takes 3-5 business days. MOFA UAE takes 1-3 business days. Total time is typically 10-14 business days for the complete chain. Rush services are available at some steps for urgent requirements.'
   },
   {
     question: 'Can you coordinate the UAE steps for me?',
-    answer: 'Yes. Once your document has a Canadian apostille, we coordinate UAE Embassy attestation, MOFA attestation, and translation. You can send the apostilled document to us in Dubai, or our partners can handle the Ottawa embassy step before forwarding to UAE.'
+    answer: 'Yes. Once your document has a Canadian apostille, we coordinate UAE Embassy attestation, MOFA attestation, and Arabic translation. You can send the apostilled document to us in Dubai, or our partners can handle the Ottawa embassy step before forwarding to UAE. We manage the complete chain so you receive fully attested documents ready for submission.'
   },
   {
-    question: 'Do I need translation for MOFA?',
-    answer: 'MOFA does not require translation for attestation—they attest the original document. However, the UAE authority you are ultimately submitting to (immigration, court, employer) typically requires Arabic translation. We provide MOJ-certified translation after attestation is complete.'
+    question: 'Do I need translation for MOFA attestation?',
+    answer: 'MOFA does not require translation for attestation—they attest the original document regardless of language. However, the UAE authority you are ultimately submitting to (immigration, court, employer, licensing body) typically requires Arabic translation by an MOJ-certified translator. We provide translation after attestation is complete so all stamps are properly referenced.'
   },
   {
-    question: 'What is different from the old process?',
-    answer: 'Before January 2024, Canadian documents required a longer authentication chain: provincial authentication → Global Affairs Canada → UAE Embassy → MOFA. The apostille now replaces the first two steps with a single apostille certificate. This saves time and simplifies the process.'
+    question: 'What is different from the old Canadian authentication process?',
+    answer: 'Before January 2024, Canadian documents required a longer authentication chain: provincial authentication → Global Affairs Canada legalization → UAE Embassy → MOFA. The apostille now replaces the first two steps with a single apostille certificate. This saves time, reduces costs, and simplifies the process while maintaining document validity.'
+  },
+  {
+    question: 'What if my document is in French?',
+    answer: 'Quebec documents and some federal documents are issued in French. This does not affect the apostille process, but you will need Arabic translation for UAE submission. We translate French documents to Arabic directly, or can provide English and Arabic translations if needed for your purposes.'
+  },
+  {
+    question: 'How do I get an RCMP police clearance for UAE?',
+    answer: 'You request your RCMP Criminal Record Check through the RCMP Canadian Police Information Centre (CPIC). Once received, it is apostilled by Global Affairs Canada (as a federal document), then UAE Embassy and MOFA attestation. RCMP checks are valid for limited periods, so timing matters. We coordinate the attestation to ensure your check remains valid through submission.'
+  },
+  {
+    question: 'Can I attest a certified copy of my Canadian document?',
+    answer: 'For some documents, certified copies can be apostilled. The copy must be certified by an authorized official (notary, commissioner of oaths, or issuing authority). Birth certificate copies from provincial vital statistics offices are typically acceptable. For degrees, contact your university about issuing additional official copies. We advise on what is acceptable for your specific document and purpose.'
+  },
+  {
+    question: 'What if I live outside Canada?',
+    answer: 'You can manage the attestation remotely. Our partners in Canada coordinate provincial or GAC apostille, UAE Embassy Ottawa attestation, and courier to Dubai for MOFA completion. You do not need to be present in Canada. The document can be mailed to Canada for processing, then couriered to Dubai for final steps.'
   }
 ];
 
@@ -110,67 +128,169 @@ const accordionSections = [
     items: [
       {
         heading: 'What Changed in January 2024',
-        body: 'Canada became the 125th country to join the Hague Apostille Convention on January 11, 2024. This replaced the old double-authentication process with a single apostille certificate. Provincial vital statistics offices, educational institutions, and federal bodies like RCMP now have their documents apostilled rather than going through multiple authentication layers.'
+        body: 'Canada became the 125th country to join the Hague Apostille Convention on January 11, 2024. This replaced the old double-authentication process (provincial authentication plus Global Affairs Canada legalization) with a single apostille certificate. Provincial vital statistics offices, educational institutions, and federal bodies like RCMP now have their documents apostilled rather than going through multiple authentication layers. This simplifies the Canadian portion of attestation for international use.'
       },
       {
         heading: 'Provincial vs Federal Apostilles',
-        body: 'Provincial governments apostille documents they issue: birth certificates, marriage certificates, death certificates, and educational credentials from provincial institutions. Global Affairs Canada (GAC) apostilles federal documents: RCMP police clearances, federal court orders, and documents from federal agencies. Knowing which authority to approach is the first step.'
+        body: 'Provincial governments apostille documents they issue: birth certificates, marriage certificates, death certificates, and educational credentials from provincial institutions. Each province has designated a competent authority to issue apostilles. Global Affairs Canada (GAC) apostilles federal documents: RCMP police clearances, federal court orders, and documents from federal agencies like Immigration, Refugees and Citizenship Canada (IRCC). Knowing which authority to approach is the first step in correct processing.'
       },
       {
         heading: 'The Complete Chain for UAE',
-        body: 'Since UAE is NOT a Hague member, the chain is: Canadian Apostille → UAE Embassy Attestation → MOFA UAE Attestation → Translation. The apostille simplifies step one, but UAE Embassy and MOFA are still required. Do not skip these steps thinking the apostille is sufficient for UAE.'
+        body: 'Since UAE is NOT a Hague Convention member, the attestation chain remains: Canadian Apostille → UAE Embassy Attestation → MOFA UAE Attestation → Arabic Translation. The apostille simplifies the first step by replacing provincial authentication plus GAC legalization with a single certificate. However, UAE Embassy and MOFA attestation are still mandatory. Do not assume the apostille alone makes your document valid for UAE purposes.'
+      },
+      {
+        heading: 'Processing Timeline',
+        body: 'Provincial apostilles typically process in 5-10 business days depending on the province and current volumes. GAC apostilles for federal documents take similar timeframes. UAE Embassy Ottawa typically processes attestation in 3-5 business days. MOFA UAE completes in 1-3 business days. Total time from start to finish is typically 10-14 business days, shorter than the old pre-apostille process.'
       }
     ]
   },
   {
-    title: 'Documents by Province',
+    title: 'Province-by-Province Apostille Guide',
     id: 'provinces',
     items: [
       {
         heading: 'Ontario',
-        body: 'Birth, marriage, and death certificates from ServiceOntario. Educational documents from Ontario universities and colleges. Apostilled by the Ontario Ministry of Public and Business Service Delivery.'
+        body: 'Birth, marriage, and death certificates from ServiceOntario are apostilled by the Ontario Ministry of Public and Business Service Delivery. Educational documents from Ontario universities (University of Toronto, Western, McMaster, Ottawa, Queen\'s, etc.) and colleges are also processed through Ontario. Toronto is Canada\'s largest city with many documents originating from Ontario. Processing typically takes 5-7 business days.'
       },
       {
         heading: 'British Columbia',
-        body: 'Vital statistics certificates from BC Vital Statistics Agency. Educational credentials from BC institutions. Apostilled by the BC Ministry of Citizens Services.'
+        body: 'Vital statistics certificates from BC Vital Statistics Agency and educational credentials from BC institutions (UBC, SFU, University of Victoria, BCIT, etc.) are apostilled by the BC Ministry of Citizens\' Services. Vancouver\'s large population means many Canadian expats in UAE hold BC documents. Processing times are typically 5-10 business days.'
       },
       {
         heading: 'Quebec',
-        body: "Civil status documents from Directeur de l'état civil. Educational documents from Quebec universities and CEGEPs. Note: Quebec documents may be in French and require translation to Arabic."
+        body: 'Civil status documents from Directeur de l\'état civil and educational documents from Quebec universities (McGill, Université de Montréal, Concordia, UQAM, etc.) and CEGEPs are apostilled by Quebec authorities. Important note: Quebec documents may be in French and require translation to Arabic for UAE submission. Bilingual certificates are common and can simplify the translation requirement.'
       },
       {
         heading: 'Alberta',
-        body: 'Vital statistics from Alberta Vital Statistics. Educational credentials from Alberta post-secondary institutions. Apostilled by Service Alberta.'
+        body: 'Vital statistics from Alberta Vital Statistics and educational credentials from Alberta post-secondary institutions (University of Alberta, University of Calgary, Mount Royal, SAIT, NAIT, etc.) are apostilled by Service Alberta. Calgary and Edmonton are major economic centers with significant populations relocating to UAE. Processing typically takes 5-7 business days.'
       },
       {
-        heading: 'Other Provinces',
-        body: 'Each province has its own apostille authority for documents it issues. Contact your provincial government or ask us for guidance on the specific authority for your document.'
+        heading: 'Manitoba',
+        body: 'Vital statistics and educational documents from Manitoba institutions (University of Manitoba, University of Winnipeg, Red River College, etc.) are apostilled by Manitoba Vital Statistics Agency or designated provincial authority. Winnipeg is the primary source of Manitoba documents.'
+      },
+      {
+        heading: 'Saskatchewan',
+        body: 'Vital statistics from eHealth Saskatchewan and educational documents from Saskatchewan institutions (University of Saskatchewan, University of Regina, etc.) are apostilled by provincial authorities. Processing times may be longer due to smaller administrative capacity.'
+      },
+      {
+        heading: 'Nova Scotia',
+        body: 'Vital statistics and educational documents from Nova Scotia institutions (Dalhousie University, Saint Mary\'s University, NSCAD, etc.) are apostilled by Service Nova Scotia. Halifax is the primary source of Nova Scotia documents.'
+      },
+      {
+        heading: 'Other Provinces and Territories',
+        body: 'New Brunswick, Newfoundland and Labrador, Prince Edward Island, and the three territories (Yukon, Northwest Territories, Nunavut) each have designated apostille authorities. Processing times and procedures vary. We coordinate with the appropriate office based on your document origin.'
       }
     ]
   },
   {
-    title: 'Common Canadian Documents',
+    title: 'Document Types and Requirements',
     id: 'documents',
     items: [
       {
         heading: 'Birth Certificates',
-        body: 'Provincial vital statistics birth certificates for family visa sponsorship, citizenship applications, and official UAE records. Must be official copies (not commemorative versions).'
+        body: 'Provincial vital statistics birth certificates are required for family visa sponsorship, dependent visas, and official UAE records. Must be official certified copies from the provincial vital statistics office—hospital-issued commemorative certificates are not acceptable. Each province issues certificates in slightly different formats, but all can be apostilled for UAE use.'
       },
       {
         heading: 'Marriage Certificates',
-        body: 'Provincial marriage certificates for spouse visa, family status, and legal recognition in UAE. Both civil and religious marriage certificates can be apostilled if registered with provincial authorities.'
+        body: 'Provincial marriage certificates are required for spouse visa sponsorship and family status documentation in UAE. Both civil and religious marriages registered with provincial authorities can be apostilled. The certificate must be an official copy from the provincial vital statistics office or marriage registration authority—wedding ceremony certificates from religious venues alone are not acceptable.'
+      },
+      {
+        heading: 'Divorce Certificates and Decrees',
+        body: 'Court-issued divorce decrees from Canadian provincial courts are required for remarriage or family status matters in UAE. Certified copies from the issuing court can be apostilled. If the divorce was finalized federally (under the Divorce Act), different procedures may apply. We advise on the correct approach based on your specific divorce documentation.'
       },
       {
         heading: 'University Degrees',
-        body: 'Degrees from Canadian universities for employment visa, professional licensing, and equivalency applications. Official transcripts may also be required. Apostilled by the province where the institution is located.'
+        body: 'Degrees from Canadian universities are required for employment visa applications, professional licensing, and equivalency applications in UAE. Official degree certificates are apostilled by the province where the institution is located. Transcripts may also be required—these follow the same provincial apostille process. Universities like U of T, McGill, UBC, and others are well-recognized internationally.'
       },
       {
-        heading: 'RCMP Police Clearance',
-        body: 'Criminal record check from RCMP (Canadian Police Information Centre) for employment visa and UAE residency. This is a federal document apostilled by Global Affairs Canada, not provincial authorities.'
+        heading: 'College Diplomas and Certificates',
+        body: 'Diplomas from Canadian colleges (community colleges, polytechnics, institutes of technology) can be apostilled for UAE use. These are apostilled by the province where the institution is located. Programs from institutions like Seneca, George Brown, BCIT, SAIT, and others are commonly attested for UAE employment.'
+      },
+      {
+        heading: 'Professional Certifications',
+        body: 'Professional designations like CPA (Chartered Professional Accountant), P.Eng (Professional Engineer), and other regulated professional certifications can be apostilled. The apostille authority depends on whether the certification is provincial or national in scope. These are often required for UAE professional licensing.'
+      },
+      {
+        heading: 'RCMP Police Clearance (CPIC)',
+        body: 'The Canadian Police Information Centre (CPIC) criminal record check from RCMP is required for UAE employment visas, residency applications, and professional licensing. As a federal document, it is apostilled by Global Affairs Canada (not provincial authorities). RCMP checks have validity periods, so timing coordination is important to ensure the check remains valid through attestation and submission.'
       },
       {
         heading: 'Corporate Documents',
-        body: 'Certificates of incorporation, articles of association, and corporate resolutions. Federal corporations use GAC apostille; provincial corporations use provincial apostille.'
+        body: 'Certificates of incorporation, articles of association, and corporate resolutions can be apostilled for UAE business purposes. Federally incorporated companies (Canada Business Corporations Act) use GAC apostille; provincially incorporated companies use provincial apostille. Powers of attorney executed in Canada for UAE use also require apostille and attestation.'
+      },
+      {
+        heading: 'Powers of Attorney',
+        body: 'Canadian powers of attorney for use in UAE must be notarized by a Canadian notary or commissioner of oaths, then apostilled and attested. The POA should be formatted appropriately for UAE legal acceptance. Both general and specific powers of attorney can be processed through the attestation chain.'
+      }
+    ]
+  },
+  {
+    title: 'Global Affairs Canada (GAC) Procedures',
+    id: 'gac',
+    items: [
+      {
+        heading: 'What GAC Handles',
+        body: 'Global Affairs Canada (formerly DFAIT) is the federal department responsible for foreign affairs. GAC apostilles federal documents: RCMP police clearances, Immigration and Citizenship documents, federal court orders, documents from federal agencies, and documents from federally regulated entities. Provincial documents do NOT go through GAC—they are apostilled by the respective province.'
+      },
+      {
+        heading: 'GAC Apostille Process',
+        body: 'Submit original documents or certified copies to GAC Authentication Services in Ottawa. Processing typically takes 5-10 business days. Documents must be genuine Canadian federal documents with original signatures or certified copies. GAC verifies the document and applies the apostille certificate confirming authenticity for Hague Convention member countries.'
+      },
+      {
+        heading: 'Before vs After January 2024',
+        body: 'Before January 2024, GAC provided "authentication and legalization" for international use—a multi-step process. After joining the Hague Convention, GAC now issues apostilles for federal documents, which is a simpler single-step process. The apostille replaces the old authentication-legalization chain for countries that are Hague members. For UAE (not a Hague member), embassy attestation is still required after the apostille.'
+      },
+      {
+        heading: 'GAC Contact Information',
+        body: 'GAC Authentication Services is located in Ottawa. Documents can be submitted by mail or through authorized service providers. Processing fees apply. We coordinate GAC submissions as part of our full-service attestation for federal Canadian documents.'
+      }
+    ]
+  },
+  {
+    title: 'UAE Embassy and Consulate Procedures',
+    id: 'embassy',
+    items: [
+      {
+        heading: 'UAE Embassy Ottawa',
+        body: 'The UAE Embassy in Ottawa handles attestation for Canadian documents. Located at 125 Boteler Street, the embassy accepts submissions in person or through authorized agents. Processing typically takes 3-5 business days. Documents must have valid Canadian apostille before embassy submission. The embassy verifies the apostille and applies attestation stamps confirming UAE recognition.'
+      },
+      {
+        heading: 'UAE Consulate Toronto',
+        body: 'The UAE Consulate General in Toronto serves Ontario and eastern Canada. Located in downtown Toronto, the consulate can process attestation for documents that have completed Canadian apostille. Processing times may vary from the Ottawa embassy. Useful for Ontario residents and those with documents from eastern provinces.'
+      },
+      {
+        heading: 'UAE Consulate Vancouver',
+        body: 'The UAE Consulate General in Vancouver serves British Columbia and western Canada. Located in downtown Vancouver, the consulate processes attestation for western Canadian documents. Processing times may vary. Useful for BC, Alberta, and other western province documents.'
+      },
+      {
+        heading: 'Submission Requirements',
+        body: 'All UAE diplomatic missions require: original document with Canadian apostille, completed application form, applicable fees (typically cash or money order), and copy of the document owner\'s passport. Some consulates may have specific requirements or operating hours. We coordinate submissions to ensure all requirements are met.'
+      }
+    ]
+  },
+  {
+    title: 'After Attestation: Next Steps',
+    id: 'after-care',
+    items: [
+      {
+        heading: 'Arabic Translation',
+        body: 'Most UAE authorities require Arabic translation after attestation. We provide MOJ-certified translation that references all attestation stamps on the original document. For French-language Quebec documents, we translate directly from French to Arabic. English-language documents are translated to Arabic with proper legal terminology for UAE acceptance.'
+      },
+      {
+        heading: 'Employment Visa Submission',
+        body: 'Attested educational certificates are submitted to MOHRE (Ministry of Human Resources and Emiratisation) through your employer\'s PRO for employment visa approval. The attested and translated documents become part of your UAE employment file. Canadian degrees are well-recognized in UAE for professional positions.'
+      },
+      {
+        heading: 'Family Visa Applications',
+        body: 'Attested marriage and birth certificates are submitted to GDRFA (General Directorate of Residency and Foreigners Affairs) or ICP for family visa sponsorship. Arabic translation is required for these submissions. Processing times for family visas vary by emirate and applicant circumstances.'
+      },
+      {
+        heading: 'Professional Licensing',
+        body: 'Healthcare professionals submit attested Canadian credentials to DHA, DOH, or MOH depending on emirate. Engineers register with Society of Engineers UAE. Accountants, architects, and other regulated professionals have their own licensing bodies that verify attestation. Canadian professional designations are generally well-recognized.'
+      },
+      {
+        heading: 'Document Validity',
+        body: 'RCMP police clearances should be used within their validity period (typically 6 months from issue). Plan attestation timing to ensure documents remain valid when submitted to UAE authorities. Educational certificates do not expire, but some UAE authorities prefer recent attestation dates.'
       }
     ]
   }
@@ -192,26 +312,34 @@ const faqSchema = {
 
 <ServiceLayout
   title="Canadian Document Attestation for UAE | Apostille 2024"
-  description="Canadian document attestation for UAE. Canada joined Hague Convention January 2024. Provincial apostilles, UAE Embassy, MOFA attestation. Complete service."
-  heroImage="/assets/images/onedrive/hero/office-team.png"
+  description="Canadian document attestation for UAE. Hague Convention 2024. Provincial apostilles, UAE Embassy, MOFA. Complete service."
+  heroImage="/assets/images/onedrive/stamped-hardcopy-2.png"
   heroTitle="Canada Document Attestation in Dubai"
   heroSubtitle="Hague Apostille Process (2024)"
-  heroIntro={`<p>Canada joined the Hague Apostille Convention on January 11, 2024, changing how Canadian documents are authenticated for international use. For UAE purposes, this simplifies the Canadian steps but does not eliminate UAE Embassy and MOFA attestation requirements.</p>
+  heroIntro={`<p>Canada joined the <strong>Hague Apostille Convention on January 11, 2024</strong>, fundamentally changing how Canadian documents are authenticated for international use. This simplifies the Canadian steps but does not eliminate UAE Embassy and MOFA attestation requirements because UAE is not a Hague member country.</p>
 
 <h3>The Canadian Attestation Chain (2024)</h3>
 <ul>
-<li><strong>Provincial/Federal Apostille</strong> — Single-step Canadian authentication</li>
-<li><strong>UAE Embassy Ottawa</strong> — Embassy legalization (still required for UAE)</li>
+<li><strong>Provincial or Federal Apostille</strong> — Single-step Canadian authentication (replaces old multi-step process)</li>
+<li><strong>UAE Embassy Ottawa</strong> — Embassy legalization (still required because UAE is not in Hague Convention)</li>
 <li><strong>MOFA UAE</strong> — Final attestation for UAE government acceptance</li>
 </ul>
 
 <h3>Critical: UAE Is Not a Hague Member</h3>
-<p>A Canadian apostille alone is NOT sufficient for UAE use. You still need UAE Embassy and MOFA attestation after the apostille.</p>
+<p>A Canadian apostille alone is NOT sufficient for UAE use. You still need UAE Embassy attestation and MOFA after the apostille. Do not skip these steps.</p>
 
 <h3>Provincial vs Federal Documents</h3>
 <ul>
-<li><strong>Provincial apostille</strong> — <a href="/personal/vital-records/birth/">Birth</a>, <a href="/personal/vital-records/marriage/">marriage</a>, <a href="/personal/vital-records/death/">death</a> certificates, <a href="/personal/academic/degree/">degrees</a> (Ontario, BC, Alberta)</li>
-<li><strong>Federal apostille (GAC)</strong> — RCMP <a href="/personal/immigration/pcc/">police clearance</a>, federal court orders, federal agency documents</li>
+<li><strong>Provincial apostille</strong> — <a href="/personal/vital-records/birth/">Birth</a>, <a href="/personal/vital-records/marriage/">marriage</a>, <a href="/personal/vital-records/death/">death</a> certificates, <a href="/personal/academic/degree/">university degrees</a> (Ontario, BC, Quebec, Alberta, etc.)</li>
+<li><strong>Federal apostille (GAC)</strong> — RCMP <a href="/personal/immigration/pcc/">police clearance</a>, federal court orders, Immigration documents</li>
+</ul>
+
+<h3>Documents We Attest</h3>
+<ul>
+<li><strong>Educational</strong> — <a href="/personal/academic/degree/">Degrees</a> from U of T, McGill, UBC, <a href="/personal/academic/transcripts/">transcripts</a>, professional certifications (CPA, P.Eng)</li>
+<li><strong>Personal</strong> — <a href="/personal/vital-records/birth/">Birth</a>, <a href="/personal/vital-records/marriage/">marriage</a>, <a href="/personal/vital-records/divorce/">divorce</a> certificates from all provinces</li>
+<li><strong>Federal</strong> — RCMP Criminal Record Check (CPIC)</li>
+<li><strong>Commercial</strong> — <a href="/legal/corporate/moa/">Corporate documents</a>, <a href="/legal/corporate/poa/">powers of attorney</a></li>
 </ul>
 
 <h3>Processing Timeline</h3>
@@ -223,40 +351,202 @@ const faqSchema = {
   processSteps={processSteps}
   benefitCards={benefitCards}
   accordionSections={accordionSections}
+  faqs={faqs}
+  serviceType="Canada Document Attestation"
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   </Fragment>
 
-  <Fragment slot="intro">
-    <p>
-      Canada joined the <strong>Hague Apostille Convention on January 11, 2024</strong>, changing how Canadian documents are authenticated for international use. For UAE purposes, this simplifies the Canadian steps but does not eliminate UAE Embassy and MOFA attestation requirements.
-    </p>
-    <InlineCallout
-      type="info"
-      title="New Apostille Process"
-      text="Since January 2024, Canadian documents receive a single apostille instead of the old multi-step authentication. However, UAE is NOT a Hague member, so UAE Embassy + MOFA attestation are still required after the apostille."
-    />
-  </Fragment>
-
-  <section class="faq-section bg-light">
+  <section class="section bg-white">
     <div class="container">
-      <h2>Frequently Asked Questions</h2>
-      <div class="faq-list">
-        {faqs.map((faq, index) => (
-          <details class="faq-item" open={index === 0}>
-            <summary class="faq-question">{faq.question}</summary>
-            <div class="faq-answer">
-              <p>{faq.answer}</p>
-            </div>
-          </details>
-        ))}
+      <h2>Understanding Canada's New Apostille System</h2>
+      
+      <p>Canada's joining of the Hague Apostille Convention in January 2024 marked a significant change in how Canadian documents are authenticated for international use. Previously, Canadian documents required a lengthy chain of provincial authentication followed by Global Affairs Canada legalization. Now, a single apostille certificate replaces these steps, making the process faster and more straightforward.</p>
+
+      <InlineCallout
+        type="info"
+        title="New 2024 Apostille System"
+        text="Since January 11, 2024, Canadian documents receive a single apostille from provincial or federal authorities. This replaces the old multi-step authentication process. However, for UAE use, embassy attestation is still required after the apostille because UAE is not a Hague Convention member."
+      />
+
+      <h3>Why UAE Still Requires Embassy Attestation</h3>
+      
+      <p>The Hague Apostille Convention is an agreement between member countries to accept each other's apostilled documents without further legalization. However, the UAE is not a member of this convention. This means that while the Canadian apostille is valid proof of document authenticity, it is not automatically recognized by UAE authorities.</p>
+      
+      <p>For documents intended for use in UAE, you need the complete chain: Canadian apostille, then UAE Embassy attestation in Ottawa (or Vancouver/Toronto consulates), then MOFA attestation in UAE. Skipping the embassy step will result in your documents being rejected by UAE authorities.</p>
+
+      <h3>Provincial vs Federal Documents</h3>
+      
+      <p>Canada's federal system means documents originate from different levels of government. Understanding which authority apostilles your document is the first step:</p>
+      
+      <ul style="margin: 1.5rem 0; padding-left: 1.5rem;">
+        <li><strong>Provincial documents</strong> (most common): Birth certificates, marriage certificates, death certificates, and educational credentials from provincial institutions are apostilled by the respective provincial government. An Ontario degree goes to Ontario, a BC birth certificate goes to BC.</li>
+        <li><strong>Federal documents</strong>: RCMP police clearances, federal court orders, and documents from federal agencies (like IRCC) are apostilled by Global Affairs Canada in Ottawa.</li>
+      </ul>
+
+      <h3>Benefits of the New System</h3>
+      
+      <p>The apostille system offers several advantages over the previous process:</p>
+      
+      <ul style="margin: 1.5rem 0; padding-left: 1.5rem;">
+        <li>Faster processing: One step instead of provincial authentication plus GAC legalization</li>
+        <li>Lower costs: Fewer government fees and handling steps</li>
+        <li>Simpler documentation: Single apostille certificate instead of multiple stamps</li>
+        <li>Clearer validity: Standardized international format recognized worldwide</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>What You Need to Provide</h2>
+      <p style="max-width: 700px; margin-bottom: 2rem;">
+        To begin the attestation process for your Canadian document, send us:
+      </p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+        
+        <div style="padding: 1.5rem; background: white; border-radius: 8px; border: 1px solid #e5e7eb;">
+          <h3 style="font-size: 1.1rem; margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-file-alt" style="color: var(--accent-color, #d4af37);"></i>
+            Original Document
+          </h3>
+          <p style="margin: 0; font-size: 0.95rem;">Original certificate or official certified copy with all original signatures and seals from the issuing authority.</p>
+        </div>
+        
+        <div style="padding: 1.5rem; background: white; border-radius: 8px; border: 1px solid #e5e7eb;">
+          <h3 style="font-size: 1.1rem; margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-id-card" style="color: var(--accent-color, #d4af37);"></i>
+            Passport Copy
+          </h3>
+          <p style="margin: 0; font-size: 0.95rem;">Clear copy of your passport for identity verification and UAE Embassy submission requirements.</p>
+        </div>
+        
+        <div style="padding: 1.5rem; background: white; border-radius: 8px; border: 1px solid #e5e7eb;">
+          <h3 style="font-size: 1.1rem; margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-map-marker-alt" style="color: var(--accent-color, #d4af37);"></i>
+            Issuing Province
+          </h3>
+          <p style="margin: 0; font-size: 0.95rem;">The province where your document was issued (for degrees, the province where the university is located). This determines which authority handles apostille.</p>
+        </div>
+        
+        <div style="padding: 1.5rem; background: white; border-radius: 8px; border: 1px solid #e5e7eb;">
+          <h3 style="font-size: 1.1rem; margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-bullseye" style="color: var(--accent-color, #d4af37);"></i>
+            Purpose in UAE
+          </h3>
+          <p style="margin: 0; font-size: 0.95rem;">Your intended use (employment visa, family visa, professional licensing, etc.) helps us ensure the attestation meets specific authority requirements.</p>
+        </div>
+        
       </div>
     </div>
   </section>
 
   <section class="section bg-white">
     <div class="container">
+      <h2>Service Options</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+        
+        <div style="padding: 2rem; background: var(--surface-raised, #f8f9fa); border-radius: 8px; border: 1px solid #e5e7eb;">
+          <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Standard Service</h3>
+          <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem;">10-14 Business Days</p>
+          <p style="margin: 0;">Complete attestation chain with standard processing at each step. Best for documents not needed urgently. Includes coordination from apostille through MOFA.</p>
+        </div>
+        
+        <div style="padding: 2rem; background: white; border-radius: 8px; border: 2px solid var(--primary-color);">
+          <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Express Service</h3>
+          <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem;">7-10 Business Days</p>
+          <p style="margin: 0;">Priority processing where available. Recommended for employment visa deadlines and time-sensitive applications. Additional fees apply for rush handling.</p>
+        </div>
+        
+        <div style="padding: 2rem; background: var(--surface-raised, #f8f9fa); border-radius: 8px; border: 1px solid #e5e7eb;">
+          <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Complete Package</h3>
+          <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem;">Attestation + Translation</p>
+          <p style="margin: 0;">Full attestation chain plus <a href="/legal-translation-dubai/">MOJ-certified Arabic translation</a>. The complete service for documents being submitted to UAE government authorities.</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Common Questions by Document Type</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 2rem;">
+        
+        <div>
+          <h3 style="color: var(--primary-color); font-size: 1.2rem;">For Employment Visa</h3>
+          <p>Attested <a href="/personal/academic/degree/">university degree</a> or professional certification is typically required by MOHRE for employment visa approval. Canadian degrees from recognized institutions (U of T, McGill, UBC, etc.) are well-accepted. Your employer's PRO will submit the attested and translated documents.</p>
+        </div>
+        
+        <div>
+          <h3 style="color: var(--primary-color); font-size: 1.2rem;">For Family Visa</h3>
+          <p>Attested <a href="/personal/vital-records/marriage/">marriage certificate</a> for spouse sponsorship, attested <a href="/personal/vital-records/birth/">birth certificates</a> for child dependents. Provincial vital records from any province can be apostilled and attested. Arabic translation required for GDRFA/ICP submission.</p>
+        </div>
+        
+        <div>
+          <h3 style="color: var(--primary-color); font-size: 1.2rem;">For Healthcare Licensing</h3>
+          <p>Medical professionals need attested credentials plus DataFlow verification. <a href="/specialized/medical/dha-dataflow/">DHA licensing</a> has specific requirements. Canadian nursing, medical, and allied health credentials are recognized but require proper attestation.</p>
+        </div>
+        
+        <div>
+          <h3 style="color: var(--primary-color); font-size: 1.2rem;">For Police Clearance</h3>
+          <p>RCMP Criminal Record Check (CPIC) is apostilled by Global Affairs Canada (federal document). Required for employment visas, <a href="/services/golden-visa-translation/">Golden Visa</a>, and certain professional licenses. Validity periods apply, so timing matters.</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <h2>French-Language Documents (Quebec)</h2>
+      
+      <p>Quebec documents are often issued in French, which does not affect the apostille process but requires consideration for UAE submission:</p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+        
+        <div style="padding: 1.5rem; background: var(--surface-raised, #f8f9fa); border-radius: 8px;">
+          <h3 style="font-size: 1.1rem; margin: 0 0 0.75rem;">French Vital Records</h3>
+          <p style="margin: 0; font-size: 0.95rem;">Birth, marriage, and civil union certificates from Directeur de l'état civil are typically in French. We translate directly from French to Arabic for UAE submission.</p>
+        </div>
+        
+        <div style="padding: 1.5rem; background: var(--surface-raised, #f8f9fa); border-radius: 8px;">
+          <h3 style="font-size: 1.1rem; margin: 0 0 0.75rem;">Bilingual Certificates</h3>
+          <p style="margin: 0; font-size: 0.95rem;">Some Quebec institutions (especially universities with English programs) issue bilingual documents. These may simplify the translation requirement but still need Arabic translation for UAE authorities.</p>
+        </div>
+        
+        <div style="padding: 1.5rem; background: var(--surface-raised, #f8f9fa); border-radius: 8px;">
+          <h3 style="font-size: 1.1rem; margin: 0 0 0.75rem;">McGill & Concordia</h3>
+          <p style="margin: 0; font-size: 0.95rem;">English-language universities in Quebec issue documents in English. These follow the standard Quebec apostille process with Arabic translation afterward.</p>
+        </div>
+        
+        <div style="padding: 1.5rem; background: var(--surface-raised, #f8f9fa); border-radius: 8px;">
+          <h3 style="font-size: 1.1rem; margin: 0 0 0.75rem;">CEGEP Diplomas</h3>
+          <p style="margin: 0; font-size: 0.95rem;">Quebec's unique college system (CEGEP) issues diplomas typically in French. These are recognized as post-secondary credentials and can be attested for UAE use.</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <InlineCallout
+        type="tip"
+        title="Need Translation Too?"
+        link="/legal-translation-dubai/"
+        linkText="View translation services"
+      >
+        Most attested Canadian documents require MOJ-certified Arabic translation before submission to UAE authorities. We translate from English or French to Arabic after attestation.
+      </InlineCallout>
+
+      <TrustLinks variant="compact" />
+
+      <ResourceLinks pageKey="canadaAttestation" variant="callout" title="Helpful Resources" />
+
       <RelatedServices
         pageKey="canadaAttestation"
         title="Related Services"
@@ -264,14 +554,10 @@ const faqSchema = {
         showCrossSilo={true}
         maxItems={6}
       />
-    </div>
-  </section>
 
-  <section class="section bg-light">
-    <div class="container">
       <CrossSiloLinks
         currentSilo="attestation"
-        title="Document Translation Services"
+        title="Other Country Attestation"
       />
     </div>
   </section>
@@ -280,7 +566,7 @@ const faqSchema = {
     <div class="container">
       <div class="cta-content">
         <h2>Need Canadian Document Attestation?</h2>
-        <p>Send your Canadian document via WhatsApp. We advise on the apostille authority, coordinate UAE attestation, and provide certified translation for your submission.</p>
+        <p>Send your Canadian document via WhatsApp. We advise on the correct apostille authority (provincial or GAC), coordinate UAE Embassy and MOFA attestation, and provide certified Arabic translation for your submission.</p>
         <a href="https://wa.me/971508620217" class="btn btn-primary">
           <i class="fab fa-whatsapp"></i> Send Your Document
         </a>
@@ -289,6 +575,7 @@ const faqSchema = {
           <a href="/resources/attestation-guide/">Attestation Guide</a>
           <a href="/services/attestation/us/">US Attestation</a>
           <a href="/services/attestation/uk/">UK Attestation</a>
+          <a href="/services/attestation/india/">India Attestation</a>
         </div>
       </div>
     </div>
@@ -296,17 +583,6 @@ const faqSchema = {
 </ServiceLayout>
 
 <style>
-  .faq-section { padding: 4rem 0; }
-  .faq-section h2 { font-size: 1.75rem; margin-bottom: 2rem; color: var(--primary-color); }
-  .faq-list { max-width: 800px; display: flex; flex-direction: column; gap: 0.75rem; }
-  .faq-item { background: #fff; border-radius: 0.75rem; border: 1px solid rgba(0,0,0,0.08); overflow: hidden; }
-  .faq-question { padding: 1.25rem 1.5rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; }
-  .faq-question::-webkit-details-marker { display: none; }
-  .faq-question::after { content: '+'; font-size: 1.5rem; color: var(--accent-color); }
-  details[open] .faq-question::after { content: '−'; }
-  .faq-answer { padding: 0 1.5rem 1.25rem; }
-  .faq-answer p { margin: 0; line-height: 1.7; color: var(--text-body); }
-
   .cta-section { padding: 4rem 0; }
   .cta-content { text-align: center; max-width: 600px; margin: 0 auto; }
   .cta-content h2 { margin-bottom: 1rem; color: var(--primary-color); }

@@ -1,0 +1,618 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const faqs = [
+  {
+    question: "What does a Notary Public do in Dubai?",
+    answer: "A notary public verifies identities, witnesses signatures, and certifies that documents are genuine. They are authorized by Dubai Courts to confirm you are who you say you are and that you signed what you say you signed. A notary does not translate documents."
+  },
+  {
+    question: "What is MOJ Legal Translation?",
+    answer: "MOJ Legal Translation converts documents from one language to another through translators registered with the UAE Ministry of Justice. The translation carries an MOJ-approved stamp and QR verification code, making it legally recognized by UAE courts and government entities."
+  },
+  {
+    question: "Do I need both notary and translation services?",
+    answer: "Often yes, but at different stages. Many document processes require both services. For example, court submissions may need MOJ translation of the document AND notarization if you're also certifying copies or signing Power of Attorney."
+  },
+  {
+    question: "Should I translate before or after attestation?",
+    answer: "Generally, complete attestation FIRST (on the original document in its original language), THEN translate the fully-attested document. The translation will include all attestation stamps. Translating before attestation means you'll need to translate again after."
+  },
+  {
+    question: "Do banks require MOJ Legal Translation?",
+    answer: "No. Banks are private entities and typically accept certified translation for documents like passports, visas, and employment letters. Using MOJ translation for bank requirements means paying more for no additional benefit."
+  },
+  {
+    question: "What's the difference between certified true copy and certified translation?",
+    answer: "A certified true copy means a notary confirms a photocopy matches the original—it stays in the same language. A certified translation means the document has been rendered into another language. These are different services; some processes require both."
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<BaseLayout
+  title="Notary Public Dubai vs MOJ Legal Translation | Which Do You Need?"
+  description="Understand the difference between notary public services and MOJ legal translation in Dubai. Learn when you need one, the other, or both—and avoid costly mistakes."
+>
+  <Fragment slot="head">
+    <meta name="keywords" content="notary public dubai, MOJ translation Dubai, legal translation, document attestation Dubai, certified translation Dubai, notarization Dubai" />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="hero-section bg-dark" data-theme="dark">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">HOME</a>
+        <span class="separator">&gt;</span>
+        <a href="/resources/">RESOURCES</a>
+        <span class="separator">&gt;</span>
+        <span class="current">NOTARY VS MOJ TRANSLATION</span>
+      </nav>
+
+      <h1>Notary Public Dubai vs MOJ Legal Translation</h1>
+      <p class="hero-subtitle">Which One Do You Actually Need?</p>
+      <p class="hero-intro">The terms "notary public," "legal translation," "attestation," and "certification" get used interchangeably—even by professionals. But using the wrong service can mean rejected applications, wasted money, and lost time. Let's untangle this once and for all.</p>
+
+      <div class="service-snapshot">
+        <div class="snapshot-item">
+          <i class="fas fa-user-check"></i>
+          <span><strong>Notary:</strong> Verifies identity and signatures</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-language"></i>
+          <span><strong>Translation:</strong> Converts language</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-exclamation-circle"></i>
+          <span><strong>Common:</strong> Need both at different stages</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Understanding the Core Difference</h2>
+      
+      <div class="comparison-cards">
+        <div class="service-card notary">
+          <div class="service-icon">
+            <i class="fas fa-signature"></i>
+          </div>
+          <h3>Notary Public in Dubai</h3>
+          <p>Deals with <strong>verifying identities</strong>, witnessing signatures, and certifying that documents are genuine. A notary confirms that you are who you say you are and that you signed what you say you signed.</p>
+          <div class="key-point">
+            <strong>A notary does NOT translate anything.</strong>
+          </div>
+        </div>
+
+        <div class="service-card translation">
+          <div class="service-icon">
+            <i class="fas fa-language"></i>
+          </div>
+          <h3>MOJ Legal Translation</h3>
+          <p>Deals with <strong>converting documents from one language to another</strong> through translators registered with the UAE Ministry of Justice. The translator produces an Arabic or English version that's legally recognized.</p>
+          <div class="key-point">
+            <strong>A translator does NOT verify your identity.</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="confusion-note">
+        <i class="fas fa-info-circle"></i>
+        <div>
+          <strong>Why the confusion?</strong> Many document processes require BOTH services at different stages, and some providers offer BOTH under one roof. When you hear "notarized translation," people often mean a translation that has been notarized after completion—two separate services combined.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>What a Notary Public Does</h2>
+      <p>A notary public in Dubai is authorized by Dubai Courts to perform specific legal functions:</p>
+
+      <div class="function-grid">
+        <div class="function-card">
+          <h3><i class="fas fa-signature"></i> Witnessing Signatures</h3>
+          <ul>
+            <li>Confirming a person signed in the notary's presence</li>
+            <li>Verifying signer's identity via passport or Emirates ID</li>
+            <li>Attesting the signature was made voluntarily</li>
+          </ul>
+        </div>
+
+        <div class="function-card">
+          <h3><i class="fas fa-copy"></i> Certifying True Copies</h3>
+          <ul>
+            <li>Confirming a photocopy matches the original</li>
+            <li>Stamping copies as "true copy" for official use</li>
+          </ul>
+        </div>
+
+        <div class="function-card">
+          <h3><i class="fas fa-file-contract"></i> Notarizing Contracts</h3>
+          <ul>
+            <li>Power of Attorney documents</li>
+            <li>Property agreements and sale contracts</li>
+            <li>Business resolutions and corporate documents</li>
+            <li>Affidavits and declarations</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cannot-do-box">
+        <h3><i class="fas fa-times-circle"></i> What a Notary CANNOT Do:</h3>
+        <ul>
+          <li>Translate documents between languages</li>
+          <li>Provide legal advice</li>
+          <li>Authenticate personal status documents for Muslims (marriages, divorces, inheritance)—these go through Dubai Courts directly</li>
+          <li>Verify content accuracy of documents they didn't create</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>What MOJ Legal Translation Involves</h2>
+      <p>MOJ Legal Translation is performed by translators who have passed official Ministry of Justice examinations and are registered on the MOJ translator registry.</p>
+
+      <div class="moj-details">
+        <div class="moj-card">
+          <h3>Who Can Perform It</h3>
+          <ul>
+            <li>Only individual translators or companies with MOJ-registered translators</li>
+            <li>Each translator has a verifiable license number</li>
+            <li>Translations carry official stamp and signature</li>
+          </ul>
+        </div>
+
+        <div class="moj-card">
+          <h3>What Makes It "Legal"</h3>
+          <ul>
+            <li>Acceptance by Dubai Courts and all UAE government entities</li>
+            <li>QR verification code for document authenticity</li>
+            <li>Official MOJ stamp verified through government channels</li>
+          </ul>
+        </div>
+
+        <div class="moj-card">
+          <h3>Documents Requiring MOJ Translation</h3>
+          <ul>
+            <li>Any document submitted to UAE courts</li>
+            <li>Documents for government ministries (GDRFA, MOHRE, Ministry of Education)</li>
+            <li>Memorandums of Association for company registration</li>
+            <li>Marriage, birth, death certificates for official use</li>
+            <li>Academic credentials for government employment</li>
+            <li>Power of Attorney for official government transactions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Common Scenarios: Which Do You Need?</h2>
+
+      <div class="scenario-list">
+        <div class="scenario">
+          <div class="scenario-header">
+            <i class="fas fa-university"></i>
+            <h3>Opening a Bank Account</h3>
+          </div>
+          <div class="scenario-content">
+            <div class="need">
+              <strong>What you need:</strong> Certified translation of passport, visa, and foreign documents
+            </div>
+            <div class="dont-need">
+              <strong>NOT required:</strong> MOJ legal translation (banks are private entities)
+            </div>
+            <div class="notary-needed">
+              <strong>Notary needed?</strong> Usually no, unless signing Power of Attorney for account management
+            </div>
+          </div>
+        </div>
+
+        <div class="scenario">
+          <div class="scenario-header">
+            <i class="fas fa-gavel"></i>
+            <h3>Submitting Documents to Dubai Courts</h3>
+          </div>
+          <div class="scenario-content">
+            <div class="need">
+              <strong>What you need:</strong> MOJ legal translation for ANY document not in Arabic
+            </div>
+            <div class="notary-needed">
+              <strong>Notary needed?</strong> Yes, if submitting Power of Attorney or certifying copies of evidence
+            </div>
+            <p>Example: A contract dispute with English original requires MOJ translation of the contract, notarization for certified copies, and possibly attestation if the document originated outside UAE.</p>
+          </div>
+        </div>
+
+        <div class="scenario">
+          <div class="scenario-header">
+            <i class="fas fa-building"></i>
+            <h3>Setting Up a Company in Dubai</h3>
+          </div>
+          <div class="scenario-content">
+            <div class="need">
+              <strong>What you need:</strong>
+              <ul>
+                <li>MOJ translation of Memorandum of Association if not in Arabic</li>
+                <li>Notary attestation of your signature on company documents</li>
+                <li>Possibly attestation of foreign qualifications</li>
+              </ul>
+            </div>
+            <p><strong>Process order:</strong> Get translation first, then notarization of translated documents.</p>
+          </div>
+        </div>
+
+        <div class="scenario">
+          <div class="scenario-header">
+            <i class="fas fa-plane"></i>
+            <h3>Visa Application for Another Country</h3>
+          </div>
+          <div class="scenario-content">
+            <div class="need">
+              <strong>What you need:</strong> Certified translation of supporting documents
+            </div>
+            <div class="dont-need">
+              <strong>Usually NOT required:</strong> MOJ legal translation (most embassies accept certified)
+            </div>
+            <p>Paying for MOJ when certified suffices is a common and expensive mistake. Do proper research for your specific embassy requirements.</p>
+          </div>
+        </div>
+
+        <div class="scenario">
+          <div class="scenario-header">
+            <i class="fas fa-star"></i>
+            <h3>Golden Visa Application</h3>
+          </div>
+          <div class="scenario-content">
+            <div class="need">
+              <strong>What you need:</strong>
+              <ul>
+                <li>Certified translations of academic credentials</li>
+                <li><a href="/services/attestation/">Attestation of foreign documents</a> through proper MOFA chain</li>
+                <li>Notary services may be needed for certain supporting documents</li>
+              </ul>
+            </div>
+            <p><strong>Important:</strong> Golden Visa is processed through government channels, so requirements can be stricter than typical employment visa processing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>The Attestation Layer</h2>
+      <p>Attestation is separate from both notary services and translation—it's the verification that a document is genuine. Think of it as a chain of trust.</p>
+
+      <div class="attestation-flow">
+        <div class="flow-section">
+          <h3>For UAE Documents Going Abroad:</h3>
+          <div class="flow-steps">
+            <div class="flow-step">
+              <span class="step-num">1</span>
+              <span>UAE Notary Public certifies</span>
+            </div>
+            <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+            <div class="flow-step">
+              <span class="step-num">2</span>
+              <span>UAE MOFA attests</span>
+            </div>
+            <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+            <div class="flow-step">
+              <span class="step-num">3</span>
+              <span>Destination embassy attests</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flow-section">
+          <h3>For Foreign Documents Coming into UAE:</h3>
+          <div class="flow-steps">
+            <div class="flow-step">
+              <span class="step-num">1</span>
+              <span>Home country notary certifies</span>
+            </div>
+            <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+            <div class="flow-step">
+              <span class="step-num">2</span>
+              <span>Home country MoFA attests</span>
+            </div>
+            <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+            <div class="flow-step">
+              <span class="step-num">3</span>
+              <span>UAE Embassy attests</span>
+            </div>
+            <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+            <div class="flow-step">
+              <span class="step-num">4</span>
+              <span>UAE MOFA attests</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="translation-order">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div>
+          <strong>Where Translation Fits:</strong> Typically, you get attestation FIRST (on the original document), then translate the attested document. The translation will include the attestation stamps. Getting this order wrong means you'll need to translate again after attestation.
+        </div>
+      </div>
+
+      <p>Learn more in our <a href="/services/attestation/">complete attestation services guide</a>.</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Common Costly Mistakes</h2>
+
+      <div class="mistakes-list">
+        <div class="mistake-item">
+          <div class="mistake-header">
+            <span class="mistake-num">1</span>
+            <h3>Paying for MOJ Legal Translation When Certified Suffices</h3>
+          </div>
+          <p>Most private companies, some embassies, and many internal HR processes accept certified translation. Before commissioning any translation, ask the receiving entity: "Do you require MOJ legal translation, or is certified translation acceptable?"</p>
+          <p>See our <a href="/resources/moj-vs-certified/">complete MOJ vs Certified guide</a> for details.</p>
+        </div>
+
+        <div class="mistake-item">
+          <div class="mistake-header">
+            <span class="mistake-num">2</span>
+            <h3>Getting Translation Before Attestation</h3>
+          </div>
+          <p>Complete the full attestation chain FIRST, then translate the attested document. Doing it backwards means paying for translation twice.</p>
+        </div>
+
+        <div class="mistake-item">
+          <div class="mistake-header">
+            <span class="mistake-num">3</span>
+            <h3>Using Non-MOJ Translator for Court Documents</h3>
+          </div>
+          <p>For ANY court-related document, verify the translator's MOJ license number. MOJ translations should have a QR code for verification. Non-MOJ translations will be rejected.</p>
+        </div>
+
+        <div class="mistake-item">
+          <div class="mistake-header">
+            <span class="mistake-num">4</span>
+            <h3>Confusing Notary with Translation</h3>
+          </div>
+          <p>Showing up at a notary expecting translation—or vice versa—wastes trips and time. Be clear on what service you need before you book.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Questions to Ask Before You Pay</h2>
+
+      <div class="questions-checklist">
+        <div class="question-item">
+          <span class="question-num">1</span>
+          <span>"Will my receiving entity accept this?" Don't assume—ask the court, ministry, embassy, or company directly.</span>
+        </div>
+        <div class="question-item">
+          <span class="question-num">2</span>
+          <span>"Is the translator MOJ-registered?" Ask for the license number if MOJ translation is required.</span>
+        </div>
+        <div class="question-item">
+          <span class="question-num">3</span>
+          <span>"Should I attest before or after translation?" Get this order right the first time.</span>
+        </div>
+        <div class="question-item">
+          <span class="question-num">4</span>
+          <span>"Is this notarization or certification?" Understand exactly what you're paying for.</span>
+        </div>
+        <div class="question-item">
+          <span class="question-num">5</span>
+          <span>"Can I get a receipt detailing the services provided?" Useful for verification later.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-dark cta-section" data-theme="dark">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Not Sure Which Service You Need?</h2>
+        <p>OnlineTranslation.ae helps Dubai residents understand exactly what's required for their situation—so you pay for what you need and nothing more. Send us your requirements for a quick consultation.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/971508620217" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i> WhatsApp: +971 50 862 0217
+          </a>
+          <a href="mailto:info@onlinetranslation.ae" class="btn btn-secondary">
+            <i class="fas fa-envelope"></i> info@onlinetranslation.ae
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Related Resources</h2>
+      <div class="related-links">
+        <a href="/resources/moj-vs-certified/" class="related-link">
+          <i class="fas fa-balance-scale"></i>
+          <span>MOJ vs Certified Translation Guide</span>
+        </a>
+        <a href="/services/legal-translation/" class="related-link">
+          <i class="fas fa-file-contract"></i>
+          <span>Legal Translation Services</span>
+        </a>
+        <a href="/services/attestation/" class="related-link">
+          <i class="fas fa-stamp"></i>
+          <span>Document Attestation Services</span>
+        </a>
+        <a href="/contact/" class="related-link">
+          <i class="fas fa-comments"></i>
+          <span>Contact Us</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-section { padding: 8rem 0 4rem; background: var(--primary-color); }
+  .breadcrumb { font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 2rem; }
+  .breadcrumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: #ffffff; }
+  .breadcrumb .separator { margin: 0 0.5rem; color: rgba(255, 255, 255, 0.5); }
+  .breadcrumb .current { color: #ffffff; }
+  h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: #ffffff; }
+  .hero-subtitle { font-size: 1.25rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+  .hero-intro { font-size: 1.1rem; color: rgba(255,255,255,0.9); max-width: 800px; line-height: 1.7; }
+  .content-container { max-width: 900px; }
+
+  .service-snapshot { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; }
+  .snapshot-item { display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.9); }
+  .snapshot-item i { color: var(--accent-color); font-size: 1.25rem; }
+
+  .comparison-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0; }
+  .service-card { padding: 2rem; border-radius: 12px; text-align: center; }
+  .service-card.notary { background: #e8f5e9; border: 2px solid #4caf50; }
+  .service-card.translation { background: #e3f2fd; border: 2px solid #1976d2; }
+  .service-icon { width: 80px; height: 80px; margin: 0 auto 1rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .service-card.notary .service-icon { background: #4caf50; }
+  .service-card.translation .service-icon { background: #1976d2; }
+  .service-icon i { font-size: 2rem; color: white; }
+  .service-card h3 { margin: 0 0 1rem; color: var(--text-heading); }
+  .service-card p { color: var(--text-body); line-height: 1.7; margin: 0; }
+  .key-point { margin-top: 1rem; padding: 0.75rem; border-radius: 8px; font-weight: 600; }
+  .service-card.notary .key-point { background: rgba(76, 175, 80, 0.2); color: #2e7d32; }
+  .service-card.translation .key-point { background: rgba(25, 118, 210, 0.2); color: #1565c0; }
+
+  .confusion-note { display: flex; gap: 1rem; background: #fff3e0; padding: 1.25rem; border-radius: 8px; margin-top: 2rem; }
+  .confusion-note i { color: #ff9800; font-size: 1.5rem; flex-shrink: 0; }
+  .confusion-note div { color: var(--text-body); line-height: 1.6; }
+
+  .function-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+  .function-card { background: var(--surface-base, white); padding: 1.5rem; border-radius: 12px; }
+  .function-card h3 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 1rem; font-size: 1rem; color: var(--text-heading); }
+  .function-card h3 i { color: var(--accent-color); }
+  .function-card ul { list-style: none; padding: 0; margin: 0; }
+  .function-card li { padding: 0.5rem 0; color: var(--text-body); border-bottom: 1px solid var(--border-light, #eee); }
+  .function-card li:last-child { border-bottom: none; }
+
+  .cannot-do-box { background: #ffebee; padding: 1.5rem; border-radius: 12px; margin-top: 2rem; }
+  .cannot-do-box h3 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 1rem; color: #c62828; }
+  .cannot-do-box ul { list-style: none; padding: 0; margin: 0; }
+  .cannot-do-box li { padding: 0.5rem 0; color: var(--text-body); }
+
+  .moj-details { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+  .moj-card { background: var(--surface-raised, #f8f9fa); padding: 1.5rem; border-radius: 12px; }
+  .moj-card h3 { margin: 0 0 1rem; color: var(--text-heading); font-size: 1.1rem; }
+  .moj-card ul { list-style: none; padding: 0; margin: 0; }
+  .moj-card li { padding: 0.5rem 0; color: var(--text-body); border-bottom: 1px solid var(--border-light, #eee); }
+  .moj-card li:last-child { border-bottom: none; }
+
+  .scenario-list { display: flex; flex-direction: column; gap: 2rem; }
+  .scenario { background: var(--surface-base, white); padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .scenario-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+  .scenario-header i { font-size: 1.5rem; color: var(--accent-color); }
+  .scenario-header h3 { margin: 0; color: var(--text-heading); }
+  .scenario-content { padding-left: 2.5rem; }
+  .scenario-content .need, .scenario-content .dont-need, .scenario-content .notary-needed { padding: 0.5rem 0; color: var(--text-body); }
+  .scenario-content .dont-need { color: #c62828; }
+  .scenario-content p { color: var(--text-body); line-height: 1.7; margin: 1rem 0 0; }
+  .scenario-content ul { padding-left: 1.5rem; margin: 0.5rem 0; color: var(--text-body); }
+  .scenario-content a { color: var(--accent-color); }
+
+  .attestation-flow { margin: 2rem 0; }
+  .flow-section { background: var(--surface-raised, #f8f9fa); padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem; }
+  .flow-section h3 { margin: 0 0 1rem; color: var(--text-heading); font-size: 1rem; }
+  .flow-steps { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+  .flow-step { display: flex; align-items: center; gap: 0.5rem; background: var(--surface-base, white); padding: 0.75rem 1rem; border-radius: 8px; }
+  .step-num { width: 24px; height: 24px; background: var(--primary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 600; }
+  .flow-arrow { color: var(--accent-color); }
+
+  .translation-order { display: flex; gap: 1rem; background: #fff3e0; padding: 1.25rem; border-radius: 8px; margin: 1.5rem 0; }
+  .translation-order i { color: #ff9800; font-size: 1.5rem; flex-shrink: 0; }
+  .translation-order div { color: var(--text-body); line-height: 1.6; }
+
+  .mistakes-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .mistake-item { background: var(--surface-base, white); padding: 1.5rem; border-radius: 12px; }
+  .mistake-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem; }
+  .mistake-num { width: 32px; height: 32px; background: #f44336; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; flex-shrink: 0; }
+  .mistake-header h3 { margin: 0; color: var(--text-heading); font-size: 1.1rem; }
+  .mistake-item p { color: var(--text-body); line-height: 1.7; margin: 0.5rem 0 0; }
+  .mistake-item a { color: var(--accent-color); }
+
+  .questions-checklist { display: flex; flex-direction: column; gap: 1rem; }
+  .question-item { display: flex; gap: 1rem; padding: 1rem; background: var(--surface-raised, #f8f9fa); border-radius: 8px; align-items: flex-start; }
+  .question-num { width: 28px; height: 28px; background: var(--primary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 600; flex-shrink: 0; }
+  .question-item span:last-child { color: var(--text-body); line-height: 1.6; }
+
+  .faq-list { display: flex; flex-direction: column; gap: 1rem; }
+  .faq-item { background: var(--surface-base, white); border-radius: 8px; overflow: hidden; }
+  .faq-question { padding: 1.25rem; cursor: pointer; font-weight: 600; color: var(--text-heading); list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; font-size: 1.5rem; color: var(--accent-color); }
+  .faq-item[open] .faq-question::after { content: '−'; }
+  .faq-answer { padding: 0 1.25rem 1.25rem; color: var(--text-body); line-height: 1.7; }
+  .faq-answer p { margin: 0; }
+
+  .cta-section { padding: 4rem 0; }
+  .cta-content { text-align: center; max-width: 700px; margin: 0 auto; }
+  .cta-content h2 { color: #ffffff; margin-bottom: 1rem; }
+  .cta-content p { color: rgba(255,255,255,0.9); margin-bottom: 2rem; line-height: 1.7; }
+  .cta-buttons { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 1.5rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
+  .btn-primary { background: #25D366; color: #ffffff !important; }
+  .btn-primary:hover { background: #20bd5a; transform: translateY(-2px); }
+  .btn-secondary { background: transparent; border: 2px solid #ffffff; color: #ffffff !important; }
+  .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+  .related-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+  .related-link { display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: var(--surface-raised, #f8f9fa); border-radius: 8px; text-decoration: none; color: var(--text-heading); transition: all 0.3s ease; border: 1px solid var(--border-light, #eee); }
+  .related-link:hover { border-color: var(--accent-color); transform: translateY(-2px); }
+  .related-link i { font-size: 1.5rem; color: var(--accent-color); }
+
+  @media (max-width: 768px) {
+    .flow-steps { flex-direction: column; align-items: stretch; }
+    .flow-arrow { transform: rotate(90deg); text-align: center; }
+  }
+
+  @media (max-width: 600px) {
+    .service-snapshot { flex-direction: column; }
+    .scenario-content { padding-left: 0; }
+    .cta-buttons { flex-direction: column; }
+  }
+</style>

@@ -1,0 +1,631 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const faqs = [
+  {
+    question: "What is the attestation chain for Golden Visa documents?",
+    answer: "For foreign documents: 1) Home country notarization, 2) Home country Ministry of Foreign Affairs attestation, 3) UAE Embassy attestation in your home country, 4) UAE MOFA attestation. All steps must be completed in order before submission."
+  },
+  {
+    question: "Should I translate documents before or after attestation?",
+    answer: "Complete attestation FIRST on the original document, THEN translate the fully-attested document. The translation will include all attestation stamps. If you translate before attestation, you'll need to translate again after—paying twice."
+  },
+  {
+    question: "Do all my documents need MOJ legal translation?",
+    answer: "Not necessarily. Documents going through ICP/GDRFA government channels may require MOJ legal translation. However, some supporting documents may only need certified translation. Verify requirements for each document type."
+  },
+  {
+    question: "What happens if names don't match exactly across documents?",
+    answer: "Name inconsistencies—even minor spelling differences like 'Muhammad' vs 'Mohammed'—can flag your application for additional verification or cause rejection. Ensure all translated names exactly match your passport spelling."
+  },
+  {
+    question: "How long does Golden Visa document preparation take?",
+    answer: "If starting with foreign documents needing full attestation and translation, allow 6-10 weeks. Home country attestation takes 1-3 weeks, UAE Embassy attestation 1-2 weeks, MOFA attestation 1-3 days, plus translation time."
+  },
+  {
+    question: "My degree is from an online university. Will it be accepted?",
+    answer: "Online university degrees face extra scrutiny. If your institution lacks clear accreditation from your home country's education authority, expect questions. You may need additional documentation to verify the credential's validity."
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<BaseLayout
+  title="Golden Visa Document Attestation Guide | Avoid Translation Errors"
+  description="Complete guide to Golden Visa document attestation and translation requirements. Learn how to avoid errors that delay your 10-year UAE residency application."
+>
+  <Fragment slot="head">
+    <meta name="keywords" content="Golden Visa UAE, Golden Visa documents, document attestation Dubai, certified translation Dubai, MOJ legal translation, ICP Golden Visa, GDRFA residency" />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="hero-section bg-dark" data-theme="dark">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">HOME</a>
+        <span class="separator">&gt;</span>
+        <a href="/resources/">RESOURCES</a>
+        <span class="separator">&gt;</span>
+        <span class="current">GOLDEN VISA ATTESTATION GUIDE</span>
+      </nav>
+
+      <h1>Golden Visa Document Attestation</h1>
+      <p class="hero-subtitle">How Translation Errors Delay Your 10-Year UAE Residency</p>
+      <p class="hero-intro">You've met the investment threshold. Your property purchase is complete. By every measure, you qualify for the UAE Golden Visa. And then your application stalls—not because you don't qualify, but because of a translation or attestation problem that seemed straightforward when you started.</p>
+
+      <div class="service-snapshot">
+        <div class="snapshot-item">
+          <i class="fas fa-passport"></i>
+          <span><strong>10-Year</strong> renewable residency</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-file-signature"></i>
+          <span><strong>Full Chain</strong> attestation required</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-exclamation-triangle"></i>
+          <span><strong>Name Matching</strong> must be exact</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Why Golden Visa Requirements Are Stricter</h2>
+      <p>Standard employment visas have relatively lenient document requirements—your employer handles most of the process. Golden Visa is different.</p>
+      
+      <p>You're telling the UAE: "I qualify for long-term residency based on my achievements, investments, or talents." The government responds by requiring comprehensive proof with every document properly authenticated.</p>
+
+      <div class="requirements-grid">
+        <div class="requirement-item">
+          <i class="fas fa-globe"></i>
+          <span>Foreign documents must go through the complete attestation chain</span>
+        </div>
+        <div class="requirement-item">
+          <i class="fas fa-language"></i>
+          <span>Documents not in Arabic need proper translation</span>
+        </div>
+        <div class="requirement-item">
+          <i class="fas fa-graduation-cap"></i>
+          <span>Degree certificates often need equivalency verification</span>
+        </div>
+        <div class="requirement-item">
+          <i class="fas fa-chart-line"></i>
+          <span>Financial documents need clear, verifiable patterns</span>
+        </div>
+        <div class="requirement-item">
+          <i class="fas fa-user-check"></i>
+          <span>Name matching across all documents must be exact</span>
+        </div>
+      </div>
+
+      <div class="warning-note">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div>
+          A single inconsistency—even one caused by how a translator rendered your name—can trigger additional verification requests or outright rejection.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>The Document Attestation Chain</h2>
+
+      <div class="attestation-chain">
+        <h3>For Documents Issued Outside the UAE</h3>
+        <div class="chain-steps">
+          <div class="chain-step">
+            <span class="step-num">1</span>
+            <div class="step-content">
+              <strong>Home Country Notarization</strong>
+              <p>Your document is verified by a recognized authority in the issuing country</p>
+            </div>
+          </div>
+          <div class="chain-arrow"><i class="fas fa-arrow-down"></i></div>
+          <div class="chain-step">
+            <span class="step-num">2</span>
+            <div class="step-content">
+              <strong>Home Country Ministry of Foreign Affairs</strong>
+              <p>MEA (India), FCO (UK), or equivalent authority attests the document</p>
+            </div>
+          </div>
+          <div class="chain-arrow"><i class="fas fa-arrow-down"></i></div>
+          <div class="chain-step">
+            <span class="step-num">3</span>
+            <div class="step-content">
+              <strong>UAE Embassy Attestation</strong>
+              <p>UAE Embassy or Consulate in your home country attests the document</p>
+            </div>
+          </div>
+          <div class="chain-arrow"><i class="fas fa-arrow-down"></i></div>
+          <div class="chain-step">
+            <span class="step-num">4</span>
+            <div class="step-content">
+              <strong>UAE MOFA Attestation</strong>
+              <p>Ministry of Foreign Affairs stamp in the UAE</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="translation-order-box">
+        <i class="fas fa-info-circle"></i>
+        <div>
+          <strong>Where Translation Fits:</strong> Complete the attestation chain FIRST (on the original document in its original language), THEN translate the fully-attested document. The translation will include all attestation stamps and signatures.
+          <p><strong>Common costly mistake:</strong> Translating before completing attestation means you'll need to translate again after—paying twice.</p>
+        </div>
+      </div>
+
+      <p>Learn more about the attestation process in our <a href="/services/attestation/">attestation services guide</a>.</p>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Document Categories and Their Issues</h2>
+
+      <div class="document-categories">
+        <div class="category-card">
+          <div class="category-header">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Academic Credentials</h3>
+          </div>
+          <p class="who-needs"><strong>Who needs these:</strong> Skilled professionals, students applying based on academic excellence</p>
+          
+          <div class="category-section">
+            <h4>Attestation Requirements:</h4>
+            <ul>
+              <li>Complete home-country attestation chain</li>
+              <li>UAE Embassy attestation in home country</li>
+              <li>MOFA attestation in UAE</li>
+              <li>Equivalency certificate from UAE Ministry of Education (often required)</li>
+            </ul>
+          </div>
+
+          <div class="category-section">
+            <h4>Common Problems:</h4>
+            <ul>
+              <li><strong>Name inconsistency:</strong> Degree says "Muhammad Ali Khan" but passport says "Mohammed Ali Khan"—expect verification delays</li>
+              <li><strong>University not recognized:</strong> Online degrees face extra scrutiny</li>
+              <li><strong>Partial attestation:</strong> Skipping UAE Embassy attestation before arriving breaks the chain</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="category-card">
+          <div class="category-header">
+            <i class="fas fa-briefcase"></i>
+            <h3>Employment Documents</h3>
+          </div>
+          <p class="who-needs"><strong>Who needs these:</strong> Professionals qualifying based on monthly salary requirements</p>
+          
+          <div class="category-section">
+            <h4>Common Problems:</h4>
+            <ul>
+              <li><strong>Salary threshold confusion:</strong> The requirement applies to base salary, not total package. Clarify the breakdown in translations</li>
+              <li><strong>Generic titles:</strong> "Manager" is too generic. Use specific titles like "Senior Data Analytics Manager" that reflect specialization</li>
+              <li><strong>Recent job changes:</strong> Multiple employer documents each need proper attestation and translation</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="category-card">
+          <div class="category-header">
+            <i class="fas fa-home"></i>
+            <h3>Property Documents</h3>
+          </div>
+          <p class="who-needs"><strong>Who needs these:</strong> Investors qualifying based on property investment</p>
+          
+          <div class="category-section">
+            <h4>Common Problems:</h4>
+            <ul>
+              <li><strong>Off-plan properties:</strong> Not all off-plan properties qualify. Must be from approved UAE developer</li>
+              <li><strong>Joint ownership:</strong> Threshold calculation changes; documentation must show ownership percentages</li>
+              <li><strong>Mortgage properties:</strong> More complex documentation requirements</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="category-card">
+          <div class="category-header">
+            <i class="fas fa-university"></i>
+            <h3>Financial Documents</h3>
+          </div>
+          <p class="who-needs"><strong>Who needs these:</strong> Investors qualifying through fund deposits</p>
+          
+          <div class="category-section">
+            <h4>Common Problems:</h4>
+            <ul>
+              <li><strong>Account holder name mismatch:</strong> Bank account in slightly different name than passport creates verification issues</li>
+              <li><strong>Insufficient history:</strong> Sudden large deposits without clear source raise questions</li>
+              <li><strong>Currency conversion:</strong> Translations must clearly show equivalent AED values</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="category-card">
+          <div class="category-header">
+            <i class="fas fa-users"></i>
+            <h3>Family Documents</h3>
+          </div>
+          <p class="who-needs"><strong>Who needs these:</strong> All applicants sponsoring spouse, children, or parents</p>
+          
+          <div class="category-section">
+            <h4>Attestation Requirements:</h4>
+            <ul>
+              <li>Complete home-country attestation chain</li>
+              <li>UAE Embassy attestation</li>
+              <li>MOFA attestation in UAE</li>
+              <li>MOJ legal translation typically required</li>
+            </ul>
+          </div>
+
+          <div class="category-section">
+            <h4>Common Problems:</h4>
+            <ul>
+              <li><strong>Non-standard jurisdictions:</strong> Marriages from some countries face extra scrutiny</li>
+              <li><strong>Birth certificate parent name mismatch:</strong> Parent names must match passports exactly</li>
+              <li><strong>Previous marriages:</strong> Divorce documents may be required with own attestation chain</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Translation Errors That Cause the Most Delays</h2>
+
+      <div class="errors-list">
+        <div class="error-card">
+          <div class="error-header">
+            <span class="error-num">1</span>
+            <h3>Name Transliteration Inconsistency</h3>
+          </div>
+          <p>Arabic and English handle names differently. A translator might render "عبدالرحمن" as "Abdulrahman," "Abdul Rahman," "Abd Al-Rahman," or "Abderrahmane."</p>
+          <div class="solution">
+            <strong>Solution:</strong> Before submitting any translation, compare every name against your passport. Insist the translator uses your exact passport spelling, even if not their preferred transliteration.
+          </div>
+        </div>
+
+        <div class="error-card">
+          <div class="error-header">
+            <span class="error-num">2</span>
+            <h3>Date Format Confusion</h3>
+          </div>
+          <p>"03/05/1985"—is that March 5th or May 3rd? Different countries use different formats, and translators don't always catch the convention.</p>
+          <div class="solution">
+            <strong>Solution:</strong> Verify all dates use UAE's DD/MM/YYYY format and match your passport exactly.
+          </div>
+        </div>
+
+        <div class="error-card">
+          <div class="error-header">
+            <span class="error-num">3</span>
+            <h3>Title/Position Translation</h3>
+          </div>
+          <p>"Ingenieur" in German might become "Engineer," "Graduate Engineer," or "Engineering Professional"—each with different weight in Golden Visa applications.</p>
+          <div class="solution">
+            <strong>Solution:</strong> Discuss qualification or job title meanings with your translator before they begin. Provide context about what titles actually represent.
+          </div>
+        </div>
+
+        <div class="error-card">
+          <div class="error-header">
+            <span class="error-num">4</span>
+            <h3>Financial Term Translation</h3>
+          </div>
+          <p>"Salary" vs "wages" vs "compensation" vs "remuneration"—these aren't interchangeable in legal contexts. Neither are "fixed deposit" and "term deposit."</p>
+          <div class="solution">
+            <strong>Solution:</strong> Use translators with experience in banking and financial terminology.
+          </div>
+        </div>
+
+        <div class="error-card">
+          <div class="error-header">
+            <span class="error-num">5</span>
+            <h3>Legal Terminology Differences</h3>
+          </div>
+          <p>Common law and civil law use different legal concepts. A UK "power of attorney" has different scope than a UAE "وكالة."</p>
+          <div class="solution">
+            <strong>Solution:</strong> For legal documents, use translators with legal specialization and UAE experience. See our <a href="/resources/moj-vs-certified/">MOJ vs Certified Translation guide</a>.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Timeline Considerations</h2>
+      <p>Golden Visa processing takes 2-6 weeks once your application is complete. But getting documents in order takes much longer:</p>
+
+      <div class="timeline-breakdown">
+        <div class="timeline-section">
+          <h3><i class="fas fa-stamp"></i> Attestation Timeline</h3>
+          <div class="timeline-items">
+            <div class="timeline-item">
+              <span class="item-label">Home country attestation</span>
+              <span class="item-duration">1-3 weeks</span>
+            </div>
+            <div class="timeline-item">
+              <span class="item-label">UAE Embassy attestation</span>
+              <span class="item-duration">1-2 weeks</span>
+            </div>
+            <div class="timeline-item">
+              <span class="item-label">MOFA attestation in UAE</span>
+              <span class="item-duration">1-3 business days</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-section">
+          <h3><i class="fas fa-language"></i> Translation Timeline</h3>
+          <div class="timeline-items">
+            <div class="timeline-item">
+              <span class="item-label">Standard certified translation</span>
+              <span class="item-duration">2-5 business days</span>
+            </div>
+            <div class="timeline-item">
+              <span class="item-label">MOJ legal translation</span>
+              <span class="item-duration">3-7 business days</span>
+            </div>
+            <div class="timeline-item">
+              <span class="item-label">Complex documents</span>
+              <span class="item-duration">May take longer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-section warning">
+          <h3><i class="fas fa-exclamation-circle"></i> If Documents Are Rejected</h3>
+          <div class="timeline-items">
+            <div class="timeline-item">
+              <span class="item-label">Correction and resubmission</span>
+              <span class="item-duration">Add 2-4 weeks</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="total-timeline">
+        <strong>Realistic Total Timeline:</strong> If starting from scratch with foreign documents needing full attestation and translation, allow <strong>6-10 weeks</strong> before your documents are submission-ready.
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Finding Reliable Translation for Golden Visa</h2>
+      <p>When preparing Golden Visa documents, prioritize:</p>
+
+      <div class="finding-priorities">
+        <div class="priority-item">
+          <i class="fas fa-award"></i>
+          <div>
+            <h3>Experience with Golden Visa Applications</h3>
+            <p>Translators who regularly handle Golden Visa documents understand specific terminology and format requirements.</p>
+          </div>
+        </div>
+        <div class="priority-item">
+          <i class="fas fa-certificate"></i>
+          <div>
+            <h3>MOJ Registration</h3>
+            <p>For documents going through ICP/GDRFA, MOJ-registered translators provide the legal acceptance you need.</p>
+          </div>
+        </div>
+        <div class="priority-item">
+          <i class="fas fa-tasks"></i>
+          <div>
+            <h3>Complete Service Offering</h3>
+            <p>Providers who handle both translation AND <a href="/services/attestation/">attestation coordination</a> save time and reduce errors.</p>
+          </div>
+        </div>
+        <div class="priority-item">
+          <i class="fas fa-user-check"></i>
+          <div>
+            <h3>Name Consistency Guarantee</h3>
+            <p>Before starting, the provider should confirm they'll use your exact passport spelling across all documents.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="questions-to-ask">
+        <h3>Questions to Ask:</h3>
+        <ul>
+          <li>"Have you handled Golden Visa document translations before?"</li>
+          <li>"Can you coordinate the attestation process, or do I handle that separately?"</li>
+          <li>"How do you handle name transliteration consistency?"</li>
+          <li>"What is your turnaround time for my specific documents?"</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-dark cta-section" data-theme="dark">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Preparing Your Golden Visa Documents?</h2>
+        <p>OnlineTranslation.ae specializes in legal translation and attestation coordination for UAE residency applications, ensuring every document meets requirements the first time. Contact us to discuss your specific situation.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/971508620217" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i> WhatsApp: +971 50 862 0217
+          </a>
+          <a href="mailto:info@onlinetranslation.ae" class="btn btn-secondary">
+            <i class="fas fa-envelope"></i> info@onlinetranslation.ae
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Related Resources</h2>
+      <div class="related-links">
+        <a href="/resources/moj-vs-certified/" class="related-link">
+          <i class="fas fa-balance-scale"></i>
+          <span>MOJ vs Certified Translation Guide</span>
+        </a>
+        <a href="/services/attestation/" class="related-link">
+          <i class="fas fa-stamp"></i>
+          <span>Document Attestation Services</span>
+        </a>
+        <a href="/services/legal-translation/" class="related-link">
+          <i class="fas fa-file-contract"></i>
+          <span>Legal Translation Services</span>
+        </a>
+        <a href="/contact/" class="related-link">
+          <i class="fas fa-comments"></i>
+          <span>Contact Us</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-section { padding: 8rem 0 4rem; background: var(--primary-color); }
+  .breadcrumb { font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 2rem; }
+  .breadcrumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: #ffffff; }
+  .breadcrumb .separator { margin: 0 0.5rem; color: rgba(255, 255, 255, 0.5); }
+  .breadcrumb .current { color: #ffffff; }
+  h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: #ffffff; }
+  .hero-subtitle { font-size: 1.25rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+  .hero-intro { font-size: 1.1rem; color: rgba(255,255,255,0.9); max-width: 800px; line-height: 1.7; }
+  .content-container { max-width: 900px; }
+
+  .service-snapshot { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; }
+  .snapshot-item { display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.9); }
+  .snapshot-item i { color: var(--accent-color); font-size: 1.25rem; }
+
+  .requirements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+  .requirement-item { display: flex; align-items: center; gap: 0.75rem; padding: 1rem; background: var(--surface-raised, #f8f9fa); border-radius: 8px; }
+  .requirement-item i { color: var(--accent-color); font-size: 1.25rem; flex-shrink: 0; }
+  .requirement-item span { color: var(--text-body); }
+
+  .warning-note { display: flex; gap: 1rem; background: #fff3e0; padding: 1.25rem; border-radius: 8px; margin-top: 1.5rem; }
+  .warning-note i { color: #ff9800; font-size: 1.5rem; flex-shrink: 0; }
+  .warning-note div { color: #e65100; line-height: 1.6; }
+
+  .attestation-chain { background: var(--surface-base, white); padding: 2rem; border-radius: 12px; margin-bottom: 1.5rem; }
+  .attestation-chain h3 { margin: 0 0 1.5rem; color: var(--text-heading); }
+  .chain-steps { display: flex; flex-direction: column; gap: 0.5rem; }
+  .chain-step { display: flex; gap: 1rem; padding: 1rem; background: var(--surface-raised, #f8f9fa); border-radius: 8px; }
+  .step-num { width: 32px; height: 32px; background: var(--primary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; flex-shrink: 0; }
+  .step-content strong { color: var(--text-heading); display: block; margin-bottom: 0.25rem; }
+  .step-content p { margin: 0; color: var(--text-body); font-size: 0.9rem; }
+  .chain-arrow { text-align: center; color: var(--accent-color); }
+
+  .translation-order-box { display: flex; gap: 1rem; background: #e3f2fd; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; }
+  .translation-order-box i { color: #1976d2; font-size: 1.5rem; flex-shrink: 0; }
+  .translation-order-box div { color: var(--text-body); line-height: 1.6; }
+  .translation-order-box p { margin: 0.5rem 0 0; color: #c62828; }
+
+  .document-categories { display: flex; flex-direction: column; gap: 2rem; }
+  .category-card { background: var(--surface-raised, #f8f9fa); padding: 2rem; border-radius: 12px; }
+  .category-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+  .category-header i { font-size: 2rem; color: var(--accent-color); }
+  .category-header h3 { margin: 0; color: var(--text-heading); }
+  .who-needs { color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem; }
+  .category-section { margin-top: 1rem; }
+  .category-section h4 { margin: 0 0 0.5rem; color: var(--text-heading); font-size: 1rem; }
+  .category-section ul { padding-left: 1.5rem; margin: 0; color: var(--text-body); }
+  .category-section li { margin: 0.5rem 0; line-height: 1.6; }
+
+  .errors-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .error-card { background: var(--surface-base, white); padding: 1.5rem; border-radius: 12px; }
+  .error-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem; }
+  .error-num { width: 32px; height: 32px; background: #f44336; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; flex-shrink: 0; }
+  .error-header h3 { margin: 0; color: var(--text-heading); font-size: 1.1rem; }
+  .error-card p { color: var(--text-body); line-height: 1.7; margin: 0 0 1rem; }
+  .error-card .solution { background: #e8f5e9; padding: 1rem; border-radius: 8px; color: #2e7d32; }
+  .error-card a { color: #1976d2; }
+
+  .timeline-breakdown { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+  .timeline-section { background: var(--surface-raised, #f8f9fa); padding: 1.5rem; border-radius: 12px; }
+  .timeline-section.warning { background: #ffebee; }
+  .timeline-section h3 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 1rem; font-size: 1rem; color: var(--text-heading); }
+  .timeline-section h3 i { color: var(--accent-color); }
+  .timeline-section.warning h3 i { color: #c62828; }
+  .timeline-items { display: flex; flex-direction: column; gap: 0.5rem; }
+  .timeline-item { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid var(--border-light, #eee); }
+  .timeline-item:last-child { border-bottom: none; }
+  .item-label { color: var(--text-body); }
+  .item-duration { font-weight: 600; color: var(--text-heading); }
+  .total-timeline { background: #e8f5e9; padding: 1rem 1.5rem; border-radius: 8px; color: #2e7d32; text-align: center; margin-top: 1rem; }
+
+  .finding-priorities { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+  .priority-item { display: flex; gap: 1rem; background: var(--surface-base, white); padding: 1.5rem; border-radius: 12px; }
+  .priority-item i { font-size: 1.5rem; color: var(--accent-color); flex-shrink: 0; }
+  .priority-item h3 { margin: 0 0 0.5rem; color: var(--text-heading); font-size: 1rem; }
+  .priority-item p { margin: 0; color: var(--text-body); font-size: 0.95rem; line-height: 1.6; }
+  .priority-item a { color: var(--accent-color); }
+
+  .questions-to-ask { background: var(--surface-base, white); padding: 1.5rem; border-radius: 12px; border: 2px solid var(--primary-color); margin-top: 1.5rem; }
+  .questions-to-ask h3 { margin: 0 0 1rem; color: var(--text-heading); }
+  .questions-to-ask ul { padding-left: 1.5rem; margin: 0; color: var(--text-body); }
+  .questions-to-ask li { margin: 0.5rem 0; }
+
+  .faq-list { display: flex; flex-direction: column; gap: 1rem; }
+  .faq-item { background: var(--surface-raised, #f8f9fa); border-radius: 8px; overflow: hidden; }
+  .faq-question { padding: 1.25rem; cursor: pointer; font-weight: 600; color: var(--text-heading); list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; font-size: 1.5rem; color: var(--accent-color); }
+  .faq-item[open] .faq-question::after { content: '−'; }
+  .faq-answer { padding: 0 1.25rem 1.25rem; color: var(--text-body); line-height: 1.7; }
+  .faq-answer p { margin: 0; }
+
+  .cta-section { padding: 4rem 0; }
+  .cta-content { text-align: center; max-width: 700px; margin: 0 auto; }
+  .cta-content h2 { color: #ffffff; margin-bottom: 1rem; }
+  .cta-content p { color: rgba(255,255,255,0.9); margin-bottom: 2rem; line-height: 1.7; }
+  .cta-buttons { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 1.5rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
+  .btn-primary { background: #25D366; color: #ffffff !important; }
+  .btn-primary:hover { background: #20bd5a; transform: translateY(-2px); }
+  .btn-secondary { background: transparent; border: 2px solid #ffffff; color: #ffffff !important; }
+  .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+  .related-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+  .related-link { display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: var(--surface-base, white); border-radius: 8px; text-decoration: none; color: var(--text-heading); transition: all 0.3s ease; border: 1px solid var(--border-light, #eee); }
+  .related-link:hover { border-color: var(--accent-color); transform: translateY(-2px); }
+  .related-link i { font-size: 1.5rem; color: var(--accent-color); }
+
+  @media (max-width: 600px) {
+    .service-snapshot { flex-direction: column; }
+    .cta-buttons { flex-direction: column; }
+  }
+</style>

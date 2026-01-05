@@ -190,13 +190,13 @@ export function generateServiceSchema(options: {
     provider: {
       '@id': `${siteUrl}/#organization`,
     },
-    areaServed: siteConfig.serviceAreas,
+    areaServed: siteConfig.serviceAreas.map(area => ({ '@type': area.type, name: area.name })),
     serviceType: [serviceType, 'Legal Translation'],
     offers: {
       '@type': 'Offer',
       price,
       priceCurrency: 'AED',
-      priceValidUntil: '2025-12-31',
+      priceValidUntil: '2026-12-31',
       availability: 'https://schema.org/InStock',
       url: pageUrl,
     },
