@@ -762,27 +762,40 @@ function isActive(href: string): boolean {
     handleScrollBehavior();
 
     // ========================================
-    // DESKTOP SIDEBAR TOGGLE
+    // DESKTOP SIDEBAR TOGGLE - Defensive Initialization
+    // Find elements at CLICK TIME to avoid null references
     // ========================================
     const desktopSidebarToggle = document.getElementById('desktopSidebarToggle');
-    const menuSidebar = document.getElementById('menu-sidebar');
-    const sidebarOverlay = document.getElementById('sidebarOverlay');
 
     if (desktopSidebarToggle) {
       desktopSidebarToggle.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
+        
+        console.log('[Header] Desktop sidebar toggle clicked');
+
+        // Find elements at CLICK TIME, not initialization time
+        // This ensures MobileShell has rendered before we look for its elements
+        const menuSidebar = document.getElementById('menu-sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
 
         if (menuSidebar) {
           menuSidebar.classList.add('is-open');
+          console.log('[Header] Sidebar opened');
+        } else {
+          console.error('[Header] #menu-sidebar not found - is MobileShell loaded?');
         }
 
         if (sidebarOverlay) {
           sidebarOverlay.classList.add('is-visible');
+        } else {
+          console.warn('[Header] #sidebarOverlay not found');
         }
 
         document.body.style.overflow = 'hidden';
       });
+    } else {
+      console.error('[Header] #desktopSidebarToggle button not found');
     }
 
     // Also connect the renamed mobile toggle (for tablet breakpoint)
@@ -791,37 +804,59 @@ function isActive(href: string): boolean {
       portoMobileToggle.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
+        
+        console.log('[Header] Porto mobile toggle clicked');
+
+        // Find elements at click time (same defensive pattern)
+        const menuSidebar = document.getElementById('menu-sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
 
         if (menuSidebar) {
           menuSidebar.classList.add('is-open');
+          console.log('[Header] Sidebar opened via mobile toggle');
+        } else {
+          console.error('[Header] #menu-sidebar not found');
         }
+        
         if (sidebarOverlay) {
           sidebarOverlay.classList.add('is-visible');
         }
+        
         document.body.style.overflow = 'hidden';
       });
     }
 
     // ========================================
-    // DESKTOP SEARCH TOGGLE
+    // DESKTOP SEARCH TOGGLE - Defensive Initialization
     // ========================================
     const desktopSearchToggle = document.getElementById('desktopSearchToggle');
-    const searchOverlay = document.getElementById('search-overlay');
-    const searchInput = document.getElementById('searchInput');
 
     if (desktopSearchToggle) {
       desktopSearchToggle.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
+        
+        console.log('[Header] Desktop search toggle clicked');
+
+        // Find elements at click time
+        const searchOverlay = document.getElementById('search-overlay');
+        const searchInput = document.getElementById('searchInput');
 
         if (searchOverlay) {
           searchOverlay.classList.add('is-open');
           document.body.style.overflow = 'hidden';
           setTimeout(() => {
-            searchInput?.focus();
+            if (searchInput) {
+              searchInput.focus();
+            }
           }, 100);
+          console.log('[Header] Search overlay opened');
+        } else {
+          console.error('[Header] #search-overlay not found - is MobileShell loaded?');
         }
       });
+    } else {
+      console.error('[Header] #desktopSearchToggle button not found');
     }
 
     // ========================================
