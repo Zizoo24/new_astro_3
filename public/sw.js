@@ -1,10 +1,11 @@
-// Service Worker v1.0.0 - OnlineTranslation.ae
+// Service Worker v1.1.0 - OnlineTranslation.ae
 // Stale-while-revalidate strategy for optimal performance
 
-// UPDATED: Jan 2026 - Fixed FA CSS consistency issues
-const CACHE_NAME = 'ot-cache-v2';
-const STATIC_CACHE = 'ot-static-v2';
-const RUNTIME_CACHE = 'ot-runtime-v2';
+// UPDATED: Jan 2026 - Fixed FontAwesome reload caching issue
+// v1.1.0: Fixed cache matching for cross-origin resources (FA icons)
+const CACHE_NAME = 'ot-cache-v3';
+const STATIC_CACHE = 'ot-static-v3';
+const RUNTIME_CACHE = 'ot-runtime-v3';
 
 // Critical assets to precache
 const PRECACHE_ASSETS = [
@@ -102,15 +103,21 @@ self.addEventListener('fetch', (event) => {
 });
 
 // Cache-first strategy
+// Fixed: Use ignoreVary to match cache even when browser sends different headers on reload
 async function cacheFirst(request) {
-  const cached = await caches.match(request);
+  // Use ignoreVary to match cached responses regardless of Vary headers
+  // This fixes FontAwesome icons disappearing on reload
+  const cached = await caches.match(request, { ignoreVary: true });
   if (cached) {
     return cached;
   }
 
   try {
     const response = await fetch(request);
-    if (response.ok) {
+    // Cache successful responses AND opaque responses from trusted CDNs
+    // Opaque responses have status 0, so response.ok is false
+    const shouldCache = response.ok || response.type === 'opaque';
+    if (shouldCache) {
       const cache = await caches.open(STATIC_CACHE);
       cache.put(request, response.clone());
     }
@@ -125,13 +132,15 @@ async function cacheFirst(request) {
 async function networkFirst(request) {
   try {
     const response = await fetch(request);
-    if (response.ok) {
+    // Cache successful and opaque responses
+    if (response.ok || response.type === 'opaque') {
       const cache = await caches.open(RUNTIME_CACHE);
       cache.put(request, response.clone());
     }
     return response;
   } catch (error) {
-    const cached = await caches.match(request);
+    // Use ignoreVary for consistent cache matching
+    const cached = await caches.match(request, { ignoreVary: true });
     if (cached) {
       return cached;
     }
@@ -142,11 +151,13 @@ async function networkFirst(request) {
 // Stale-while-revalidate strategy
 async function staleWhileRevalidate(request) {
   const cache = await caches.open(RUNTIME_CACHE);
-  const cached = await cache.match(request);
+  // Use ignoreVary to match cache on reload
+  const cached = await cache.match(request, { ignoreVary: true });
 
   const fetchPromise = fetch(request)
     .then((response) => {
-      if (response.ok) {
+      // Cache successful and opaque responses
+      if (response.ok || response.type === 'opaque') {
         cache.put(request, response.clone());
       }
       return response;
