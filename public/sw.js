@@ -1,11 +1,11 @@
 // Service Worker v1.1.0 - OnlineTranslation.ae
 // Stale-while-revalidate strategy for optimal performance
 
-// UPDATED: Jan 2026 - Fixed FontAwesome reload caching issue
-// v1.1.0: Fixed cache matching for cross-origin resources (FA icons)
-const CACHE_NAME = 'ot-cache-v3';
-const STATIC_CACHE = 'ot-static-v3';
-const RUNTIME_CACHE = 'ot-runtime-v3';
+// UPDATED: Jan 2026 - Fixed FontAwesome reload issue
+// v1.2.0: Bypass SW entirely for FontAwesome - let browser handle natively
+const CACHE_NAME = 'ot-cache-v4';
+const STATIC_CACHE = 'ot-static-v4';
+const RUNTIME_CACHE = 'ot-runtime-v4';
 
 // Critical assets to precache
 const PRECACHE_ASSETS = [
@@ -17,13 +17,13 @@ const PRECACHE_ASSETS = [
 ];
 
 // Cache-first patterns (static assets)
+// Note: FontAwesome (cdnjs) is excluded - browser handles it directly
 const CACHE_FIRST_PATTERNS = [
   /\.(?:css|js|woff2?|ttf|otf|eot)$/,
   /\/assets\//,
   /\/images\//,
   /fonts\.googleapis\.com/,
-  /fonts\.gstatic\.com/,
-  /cdnjs\.cloudflare\.com/
+  /fonts\.gstatic\.com/
 ];
 
 // Network-first patterns (dynamic content)
@@ -72,11 +72,16 @@ self.addEventListener('fetch', (event) => {
   // Skip non-GET requests
   if (request.method !== 'GET') return;
 
-  // Skip cross-origin requests except CDNs
-  if (url.origin !== location.origin && 
+  // IMPORTANT: Let browser handle FontAwesome directly - do NOT intercept
+  // This prevents reload issues where SW cache matching fails
+  if (url.href.includes('cdnjs.cloudflare.com/ajax/libs/font-awesome')) {
+    return; // Let browser fetch normally
+  }
+
+  // Skip cross-origin requests except Google Fonts
+  if (url.origin !== location.origin &&
       !url.hostname.includes('fonts.googleapis.com') &&
-      !url.hostname.includes('fonts.gstatic.com') &&
-      !url.hostname.includes('cdnjs.cloudflare.com')) {
+      !url.hostname.includes('fonts.gstatic.com')) {
     return;
   }
 
