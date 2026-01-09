@@ -17,6 +17,8 @@ Analysis of Google Search Console data revealed **three problem layers**:
 | **Cannibalization** | 5+ pages competing for "legal translation dubai" | Diluted authority | ✅ Fixed (canonical) |
 | **Position Crisis** | Legal keywords at position 70-90 | #1 priority invisible | ⏳ Monitoring |
 
+**Next Steps**: See [`CONTENT-PLAN.md`](./CONTENT-PLAN.md) for keyword targets, content calendar, and publishing schedule.
+
 ---
 
 ## Part I: Priority Keywords
@@ -90,6 +92,8 @@ This consolidates ranking signals while keeping both pages accessible.
 ---
 
 ## Part III: Content Gaps to Address
+
+**Full content roadmap**: See [`CONTENT-PLAN.md`](./CONTENT-PLAN.md) for 4-week calendar and specifications.
 
 ### Missing Content (Future)
 
@@ -187,17 +191,20 @@ This consolidates ranking signals while keeping both pages accessible.
 
 ## Part VII: Action Items (Pending)
 
+**For content creation tasks**: Follow the schedule in [`CONTENT-PLAN.md`](./CONTENT-PLAN.md)
+
 ### Short-term (Next 2 weeks)
 
 - [ ] Monitor CTR changes in GSC
 - [ ] Check if Urdu page gets clicks
 - [ ] Verify FAQ rich snippets appear
+- [ ] Begin Week 1 content from CONTENT-PLAN.md
 
 ### Medium-term (4-8 weeks)
 
 - [ ] Review legal keyword positions
 - [ ] Expand content if positions stagnate
-- [ ] Consider `/services/proofreading/` page
+- [ ] Create `/services/proofreading/` page (Week 3 in content plan)
 
 ### Long-term (8+ weeks)
 
@@ -233,6 +240,16 @@ This consolidates ranking signals while keeping both pages accessible.
 | `/resources/attestation-guide/` | 115 | 7.28 | 0 |
 | `/services/legal-translation/` | 125 | 29.9 | 1 |
 | `/personal/academic/transcripts/` | 104 | 11.02 | 0 |
+
+---
+
+## Related Documents
+
+| Document | Purpose |
+|----------|---------|
+| [`CONTENT-PLAN.md`](./CONTENT-PLAN.md) | Content calendar, keyword targets, publishing schedule |
+| [`CLAUDE.md`](./CLAUDE.md) | Master blueprint for content creation guidelines |
+| [`AI-AGENT-ONBOARDING.md`](./AI-AGENT-ONBOARDING.md) | Quick start for AI agents |
 
 ---
 

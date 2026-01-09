@@ -6,6 +6,30 @@
 
 ---
 
+## IMPORTANT: Content Creation Guidelines
+
+```
+╔══════════════════════════════════════════════════════════════════════╗
+║                                                                      ║
+║   🛑  BEFORE WRITING ANY CONTENT, READ CLAUDE.md  🛑                 ║
+║                                                                      ║
+║   CLAUDE.md contains MANDATORY instructions for:                    ║
+║   • Brand voice and tone (Part VI)                                  ║
+║   • Readability rules - max 25 word sentences (Part V)              ║
+║   • Banned vocabulary - no "best", "leading", "#1" (Part VI)        ║
+║   • Hague Convention facts - UAE is NOT a member (Part I)           ║
+║   • Page structure and module requirements (Part V)                 ║
+║   • Schema implementation (Part IV)                                 ║
+║                                                                      ║
+║   Content that violates CLAUDE.md will need to be rewritten.        ║
+║                                                                      ║
+╚══════════════════════════════════════════════════════════════════════╝
+```
+
+**Reference**: [`CLAUDE.md`](./CLAUDE.md) - Master Strategic Blueprint
+
+---
+
 ## Priority Keywords to Target
 
 ### Tier 1: Legal Translation (Business Priority #1)
@@ -174,6 +198,30 @@ Before publishing any content, verify:
 **If you have 2 hours**: Add 3-5 FAQs to an existing service page
 **If you have 4 hours**: Write a targeted blog post
 **If you have 8 hours**: Create a new service page with full schema
+
+---
+
+## REMINDER: Always Refer to CLAUDE.md
+
+```
+╔══════════════════════════════════════════════════════════════════════╗
+║                                                                      ║
+║   🛑  CLAUDE.md IS THE MASTER REFERENCE FOR ALL CONTENT  🛑          ║
+║                                                                      ║
+║   Before publishing ANY content from this plan:                     ║
+║                                                                      ║
+║   1. Read CLAUDE.md Part I   → Verify Hague Convention facts        ║
+║   2. Read CLAUDE.md Part V   → Follow page structure & readability  ║
+║   3. Read CLAUDE.md Part VI  → Match brand voice, avoid banned words║
+║   4. Read CLAUDE.md Part IV  → Implement correct schema markup      ║
+║                                                                      ║
+║   This content plan tells you WHAT to write.                        ║
+║   CLAUDE.md tells you HOW to write it.                              ║
+║                                                                      ║
+╚══════════════════════════════════════════════════════════════════════╝
+```
+
+**Full Reference**: [`CLAUDE.md`](./CLAUDE.md) - Read Parts I, V, and VI before any content work.
 
 ---
 
