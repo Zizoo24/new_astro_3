@@ -59,6 +59,23 @@ export default [
       'no-case-declarations': 'warn',
     },
   },
+  {
+    files: ['**/*.cjs'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'commonjs',
+      globals: {
+        ...globals.node,
+      },
+    },
+    rules: {
+      'no-unused-vars': ['error', {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+        caughtErrorsIgnorePattern: '^_'
+      }],
+    },
+  },
   // Accessibility rules for Astro components
   {
     files: ['**/*.astro'],
@@ -82,6 +99,8 @@ export default [
       'node_modules/**',
       '.astro/**',
       '*.min.js',
+      // Temporarily ignore due to eslint-plugin-astro parsing issue with inline styles
+      'src/pages/our-services.astro',
     ],
   },
 ];

@@ -143,7 +143,7 @@ async function networkFirst(request) {
       cache.put(request, response.clone());
     }
     return response;
-  } catch (error) {
+  } catch (_error) {
     // Use ignoreVary for consistent cache matching
     const cached = await caches.match(request, { ignoreVary: true });
     if (cached) {

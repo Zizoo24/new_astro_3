@@ -294,8 +294,8 @@ const { isHomepage = false } = Astro.props;
     });
     
     // Close dropdowns when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.nav-item.has-dropdown')) {
+    document.addEventListener('click', (e: MouseEvent) => {
+      if (!(e.target as HTMLElement)?.closest('.nav-item.has-dropdown')) {
         dropdownItems.forEach(item => item.classList.remove('is-open'));
       }
     });
@@ -304,14 +304,14 @@ const { isHomepage = false } = Astro.props;
     dropdownItems.forEach(item => {
       const link = item.querySelector('.nav-link');
       
-      link?.addEventListener('keydown', (e) => {
+      link?.addEventListener('keydown', (e: KeyboardEvent) => {
         if (e.key === 'Enter' || e.key === ' ') {
           if (item.querySelector('.dropdown-menu')) {
             e.preventDefault();
             item.classList.toggle('is-open');
           }
         }
-        
+
         if (e.key === 'Escape') {
           item.classList.remove('is-open');
         }
