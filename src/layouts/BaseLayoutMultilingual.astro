@@ -14,6 +14,7 @@ interface Props {
   ogImage?: string;
   isHomepage?: boolean;
   canonicalOverride?: string;
+  keywords?: string;
 }
 
 const {
@@ -24,7 +25,8 @@ const {
   canonical = Astro.url.pathname,
   ogImage = '/assets/images/og-image.jpg',
   isHomepage = false,
-  canonicalOverride
+  canonicalOverride,
+  keywords
 } = Astro.props;
 
 // Use Astro.site from config for consistent URL handling
@@ -57,6 +59,7 @@ const fullCanonical = canonicalOverride || (canonical.startsWith('http') ? canon
 
   <title>{title}</title>
   <meta name="description" content={description}>
+  {keywords && <meta name="keywords" content={keywords}>}
   <meta name="author" content="OnlineTranslation.ae">
   <meta name="robots" content="index, follow">
   <meta name="googlebot" content="index, follow">
