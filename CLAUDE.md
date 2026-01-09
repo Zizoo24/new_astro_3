@@ -8,24 +8,128 @@
 ║   This is the MASTER STRATEGIC BLUEPRINT for OnlineTranslation.ae   ║
 ║   All code, content, and design decisions must align with this doc. ║
 ║                                                                      ║
-║   Failure to consult this document may result in:                   ║
-║   • Factual errors (e.g., Hague Convention status)                  ║
-║   • Brand voice violations                                          ║
-║   • Architectural inconsistencies                                   ║
-║   • SEO regressions                                                 ║
-║                                                                      ║
 ╚══════════════════════════════════════════════════════════════════════╝
 ```
 
 ---
 
-# **MASTER STRATEGIC BLUEPRINT: The Digital Concierge Initiative**
+# QUICK REFERENCE SUMMARY (First 100 Lines)
 
-**Entity:** OnlineTranslation.ae  
-**Model:** Boutique Digital Concierge (Managed Legal Services)  
-**Strategic Partner:** Arkan Legal Translation (Fulfillment)  
-**Version:** 8.1 (DHA DataFlow & Hub Visual Navigation)
-**Last Updated:** December 27, 2025
+This summary covers everything you need for most tasks. Detailed sections follow.
+
+## 1. CRITICAL FACTS — Memorize These
+
+| Fact | Value |
+|------|-------|
+| **UAE Hague Status** | ❌ **NOT A MEMBER** — Never claim UAE accepts apostilles |
+| **MOJ License** | #701 (Arkan Legal Translation) |
+| **Translator** | Khaled Mohamed Abdulwahab Al-Adl |
+| **WhatsApp** | +971 50 862 0217 |
+| **Verify License** | MOJ Hotline 800 333333 |
+
+**Hague Convention Quick Reference:**
+- UAE, Pakistan: ❌ NO (need Embassy + MOFA attestation)
+- India, USA, UK, Canada, Philippines, Bangladesh: ✅ YES (apostille valid)
+
+## 2. BRAND IDENTITY — "The Anti-Agency"
+
+**Position:** Premium boutique concierge, NOT a cheap translation shop.
+
+**Value Props:**
+- 60-minute delivery for standard documents
+- WhatsApp-first (no email chains)
+- Pre-validate documents before payment
+- Right-selling (tell clients what they actually need)
+
+**Services:**
+- MOJ Legal Translation: AED 150+ (courts, government)
+- Certified Translation: AED 150+ (HR, banks, private)
+
+## 3. CONTENT RULES — Follow Every Time
+
+### Readability (MANDATORY)
+| Rule | Limit |
+|------|-------|
+| Sentence length | **Max 25 words** (target 15-20) |
+| Paragraph length | Max 3-4 sentences |
+| Lists | Use bullets for 3+ items |
+| Subheadings | Every 2-3 paragraphs |
+
+### Banned Words (NEVER USE)
+- "Market Leader" / "Best in Dubai" / "#1"
+- "State-of-the-Art" / "Revolutionary" / "Unrivaled"
+- "Best Prices" / "One-Stop Shop"
+- Exclamation points (!)
+
+### Use Instead
+- "Dedicated Support" / "Managed Process"
+- "Attention to Detail" / "Personalized" / "Transparent"
+
+### Writing Voice
+- **Polite** but not servile
+- **Honest** even when inconvenient
+- **Calm** especially when client panics
+- No hype, no ALL-CAPS, quiet authority
+
+## 4. PAGE STRUCTURE — Service Pages
+
+1. Hero Section — Badge, H1, intro, bullets, CTA
+2. Module A — Compliance Checklist (accordion)
+3. Module B — Step-by-Step Process (4 steps)
+4. Module C — After-Care Guide
+5. Module D — Pricing Tiers (no exact prices)
+6. Module E — FAQ (6-15 questions with schema)
+
+**Required:** 8+ internal links, UAE entities (GDRFA, MOFA, DLD, DHA)
+
+## 5. SEO ESSENTIALS
+
+| Element | Requirement |
+|---------|-------------|
+| Title length | Max 60 characters |
+| Description | Max 155 characters |
+| FAQ schema | Required on service pages |
+| Internal links | 8+ per page |
+
+**Key Files:**
+- `src/config/site.ts` — Site configuration
+- `src/components/Schema.astro` — Structured data
+- `src/layouts/ServiceLayout.astro` — Auto-generates schemas
+
+## 6. UI/UX RULES
+
+**Colors (use CSS tokens):**
+- Coral `var(--accent-coral)` — CTAs
+- Navy `var(--surface-navy)` — Headers
+- Teal — Links
+- Gold — Premium indicators
+
+**CRITICAL:** Never use gray text on navy backgrounds. Use `var(--text-on-dark)`.
+
+**Mobile:** No floating CTAs. Use sticky bottom bar with WhatsApp/Call/Send.
+
+## 7. KEY FILES
+
+| Purpose | File |
+|---------|------|
+| Site config | `src/config/site.ts` |
+| Navigation | `src/data/navigation.ts` |
+| Service links | `src/data/serviceLinks.ts` |
+| Base layout | `src/layouts/BaseLayout.astro` |
+| Service layout | `src/layouts/ServiceLayout.astro` |
+| Redirects | `vercel.json` |
+
+## 8. RELATED DOCUMENTS
+
+| Document | Purpose |
+|----------|---------|
+| [`SEO-STRATEGY.md`](./SEO-STRATEGY.md) | Current SEO status, keyword data |
+| [`CONTENT-PLAN.md`](./CONTENT-PLAN.md) | Content calendar, what to write next |
+| [`AI-AGENT-ONBOARDING.md`](./AI-AGENT-ONBOARDING.md) | Quick start guide |
+
+---
+
+# DETAILED REFERENCE (Full Documentation Below)
 
 ---
 
@@ -148,7 +252,7 @@ The Dubai translation market is polarized:
 **Specialized:**
 - `/specialized-translation/` — Hub page
 - `/specialized/medical/` — Medical hub
-- `/specialized/medical/dha-dataflow/` — DHA DataFlow healthcare licensing (NEW)
+- `/specialized/medical/dha-dataflow/` — DHA DataFlow healthcare licensing
 - `/specialized/technical/`, `/specialized/hospitality/`, `/specialized/digital/`, `/specialized/financial/`
 
 **Locations:**
@@ -276,8 +380,8 @@ sitemap({
 
 ### 4.7 OG Image System
 
-**Configuration:** `src/lib/og-template.ts`  
-**Generator:** `scripts/generate-og-images.js`  
+**Configuration:** `src/lib/og-template.ts`
+**Generator:** `scripts/generate-og-images.js`
 **Output:** `public/assets/images/og/`
 
 ```bash
@@ -374,7 +478,7 @@ You are a Personal Assistant to a busy executive:
 
 ### 6.5 Handling Criticism
 
-**Don't say:** "We offer 100% Error-Free Guarantees!"  
+**Don't say:** "We offer 100% Error-Free Guarantees!"
 **Say:** "We use a double-check system. If an error slips through, we correct it instantly and redeliver at our cost."
 
 ---
@@ -509,8 +613,6 @@ You are a Personal Assistant to a busy executive:
 
 ### 8.6 Deferred Issues (Require Human Decision)
 
-These issues are documented in `SEO-ISSUES-DEFERRED.md` and require manual intervention:
-
 | Issue | Count | Action Needed |
 |-------|-------|---------------|
 | Long page titles (>60 chars) | 53 | Shorten while preserving keywords |
@@ -574,75 +676,42 @@ These issues are documented in `SEO-ISSUES-DEFERRED.md` and require manual inter
 | File | Purpose | Status |
 |------|---------|--------|
 | `CLAUDE.md` | Master blueprint (this file) | ✅ Primary |
-| `docs/SEO-IMPLEMENTATION-PLAN.md` | SEO infrastructure details | ✅ Active |
+| `SEO-STRATEGY.md` | SEO analysis and keyword data | ✅ Active |
+| `CONTENT-PLAN.md` | Content calendar and targets | ✅ Active |
 | `AI-AGENT-ONBOARDING.md` | Quick start for AI agents | ✅ Active |
-| `TASKS.md` | Component/UI task tracking | ✅ Active |
-| `CONTENT-EXPANSION-PLAN.md` | Content strategy | ✅ Active |
-| `SEO-ISSUES-DEFERRED.md` | Issues requiring human decisions | ✅ Active |
-| `FEATURE_CATALOG.md` | Migration tracking from HTML | ✅ Reference |
-| `COLOR_PALETTE_BLUEPRINT.md` | Design tokens | ✅ Reference |
-| `IMAGE_CATALOG.md` | Image asset inventory | ✅ Reference |
-
-### 9.7 Deprecated/Superseded Files
-
-| File | Status | Notes |
-|------|--------|-------|
-| `SEO-REPAIR-ROADMAP.md` | Superseded | Content in Part VIII |
-| `SEO_FIXES_COMPLETE.md` | Superseded | Outdated |
-| `SEO-FIXES-PLAN.md` | Superseded | Completed |
-| `SEO-TITLE-AUDIT.md` | Superseded | Merged into SEO-ISSUES-DEFERRED.md |
-| `READABILITY-OPTIMIZATION-PLAN.md` | Superseded | Rules now in Part V |
-| `TINACMS_MIGRATION_PLAN.md` | Deprecated | CMS removed |
 
 ---
 
 ## **CHANGELOG**
 
+### January 9, 2026 — SEO Strategy & Content Plan (v8.2)
+
+**New Documents:**
+- `SEO-STRATEGY.md` — GSC data analysis, keyword priorities, optimization status
+- `CONTENT-PLAN.md` — 4-week content calendar, keyword targets, publishing schedule
+
+**CLAUDE.md Updates:**
+- Added Quick Reference Summary (first 100 lines)
+- Updated documentation references
+
 ### December 27, 2025 — DHA DataFlow & Hub Visual Navigation (v8.1)
 
 **New Page Created:**
-- `/specialized/medical/dha-dataflow/` — Complete DHA DataFlow healthcare licensing page with FAQs, process steps, pricing packages, and DataFlow verification guidance
+- `/specialized/medical/dha-dataflow/` — Complete DHA DataFlow healthcare licensing page
 
 **Hub Pages Enhanced:**
-- Added "Hero Subpage Mosaic" visual navigation component to all hub pages
-- Legal hub (`/legal-translation-dubai/`) — 4-tile mosaic: Contracts, Corporate, Litigation, Wills
-- Personal hub (`/personal-documents/`) — 4-tile mosaic: Vital Records, Immigration, Academic, Golden Visa
-- Specialized hub (`/specialized-translation/`) — 6-tile mosaic with NEW badge for DHA DataFlow
-- Medical hub (`/specialized/medical/`) — 3-tile mosaic: DHA DataFlow, Medical Degrees, Attestation
-- Services hub (`/services/`) — 5-tile mosaic with featured Golden Visa package
+- Added "Hero Subpage Mosaic" visual navigation to all hub pages
 
 **Navigation Updates:**
-- Added DHA DataFlow to desktop dropdown under Specialized (with NEW badge)
-- Added DHA DataFlow to mobile accordion navigation
-- Added DHA DataFlow to hub navigation cards
-- Updated `serviceLinks.ts` with dhaDataflow relationships
-
-**Internal Linking:**
-- Medical hub: DHA DataFlow callout and visual tiles
-- Specialized hub: DHA DataFlow service card with NEW indicator
-- Degree page: Healthcare requirements cross-reference
+- Added DHA DataFlow to desktop dropdown, mobile accordion, and hub cards
 
 ### December 24, 2025 — SEO Infrastructure (v8.0)
 
 **New Files Created:**
 - `src/config/site.ts` — Centralized site configuration
-- `src/config/index.ts` — Clean exports
 - `src/components/SEO.astro` — Advanced SEO meta component
 - `src/components/Schema.astro` — Type-safe structured data
 - `src/lib/schema-utils.ts` — Schema.org generators
-- `src/lib/og-template.ts` — OG image configuration
-- `src/lib/index.ts` — Clean exports
-- `scripts/generate-og-images.js` — Puppeteer OG generator
-- `public/assets/images/og/` — OG image output directory
-- `docs/SEO-IMPLEMENTATION-PLAN.md` — Implementation documentation
-
-**Files Modified:**
-- `BaseLayout.astro` — Added noindex/nofollow props
-- `404.astro` — Added noindex
-- `thank-you.astro` — Added noindex
-- `offline.astro` — Added noindex
-- `eslint.config.mjs` — Added accessibility rules
-- `package.json` — Added og:generate script
 
 ### December 2025 — Previous Updates
 
@@ -660,7 +729,7 @@ These issues are documented in `SEO-ISSUES-DEFERRED.md` and require manual inter
 
 **Before making ANY changes:**
 
-1. ✅ Read this entire document
+1. ✅ Read the Quick Reference Summary above
 2. ✅ Check Part I for factual accuracy (Hague Convention)
 3. ✅ Follow Part V readability rules (25 word max sentences)
 4. ✅ Use Part VI brand voice (no hype, no "best in Dubai")
@@ -669,14 +738,15 @@ These issues are documented in `SEO-ISSUES-DEFERRED.md` and require manual inter
 **For SEO changes:**
 - Use components in `src/components/` (SEO.astro, Schema.astro)
 - Reference `src/config/site.ts` for configuration
-- Check `docs/SEO-IMPLEMENTATION-PLAN.md` for details
+- Check `SEO-STRATEGY.md` for current keyword data
 
 **For content changes:**
 - Follow Part V structure (Hero → Checklist → Process → After-Care → Pricing → FAQ)
+- Check `CONTENT-PLAN.md` for what to write next
 - Include UAE-specific entities (GDRFA, MOFA, DLD, etc.)
 - Add 8+ internal links per page
 - Include 6-15 FAQ questions
 
 ---
 
-*Last Updated: December 27, 2025 — Version 8.1*
+*Last Updated: January 9, 2026 — Version 8.2*
