@@ -9,18 +9,19 @@
 import { getCrossLinks } from '../data/serviceLinks';
 
 interface Props {
-  pageKey: string;
+  pageKey?: string;
   title?: string;
   maxLinks?: number;
 }
 
-const { 
-  pageKey, 
+const {
+  pageKey = '',
   title = "Explore More Services",
-  maxLinks = 4 
+  maxLinks = 4
 } = Astro.props;
 
-const crossLinks = getCrossLinks(pageKey).slice(0, maxLinks);
+// If no pageKey provided, return empty array gracefully
+const crossLinks = pageKey ? getCrossLinks(pageKey).slice(0, maxLinks) : [];
 ---
 
 {crossLinks.length > 0 && (

@@ -324,9 +324,9 @@ export function getOptimizedHeroPath(keyOrPath: string): { webp?: string; fallba
 
   // If it's a path (starts with /), find the matching image by path
   if (keyOrPath.startsWith('/')) {
-    const matchingEntry = Object.entries(HERO_IMAGES).find(([_, img]) => img.path === keyOrPath);
+    const matchingEntry = Object.entries(HERO_IMAGES).find(([, img]) => img.path === keyOrPath);
     if (matchingEntry) {
-      const [_, matchedImage] = matchingEntry;
+      const [, matchedImage] = matchingEntry;
       return {
         webp: matchedImage.pathWebp,
         fallback: matchedImage.path,
@@ -392,7 +392,7 @@ export function needsOptimization(key: string): boolean {
  */
 export function getUnoptimizedImages(): Array<{ key: string; image: HeroImage }> {
   return Object.entries(HERO_IMAGES)
-    .filter(([_, img]) => !img.optimized || !img.webp)
+    .filter(([, img]) => !img.optimized || !img.webp)
     .map(([key, image]) => ({ key, image }));
 }
 
