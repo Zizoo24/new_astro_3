@@ -2,11 +2,38 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import RelatedServices from '../../../components/RelatedServices.astro';
 import CrossSiloLinks from '../../../components/CrossSiloLinks.astro';
+
+const faqs = [
+  {
+    question: "What real estate documents need translation for DLD?",
+    answer: "Dubai Land Department requires Arabic translation for all foreign-language documents. This includes Sale and Purchase Agreements (SPAs), title deeds, Powers of Attorney, mortgage documents, company MOAs for corporate-owned properties, marriage certificates for joint ownership, and inheritance documents. All translations must be MOJ-certified."
+  },
+  {
+    question: "How long does property document translation take?",
+    answer: "Standard SPAs and title deeds complete in 24 hours. Urgent same-day service is available for registration deadlines. Complex packages with multiple documents (mortgage applications, corporate purchases) typically take 24-48 hours. We work with deal timelines and registration appointments."
+  },
+  {
+    question: "Can you translate documents for off-plan purchases?",
+    answer: "Yes. We translate off-plan SPAs, payment plans, Oqood registration documents, and developer correspondence. For international buyers, we also handle POA translation and attestation so purchases can be completed remotely."
+  },
+  {
+    question: "Do banks accept your translations for mortgage applications?",
+    answer: "Yes. Our MOJ-certified translations are accepted by all UAE banks for mortgage processing. We translate income documentation, employment letters, company documents for self-employed buyers, and source of funds documentation. We know the specific requirements of major UAE banks."
+  },
+  {
+    question: "What about property inheritance documents?",
+    answer: "We handle sensitive inheritance matters including death certificates, probate documents, succession letters, and court orders. For foreign inheritances, we coordinate translation with required attestation for UAE recognition."
+  },
+  {
+    question: "Do you work with real estate agents and developers?",
+    answer: "Yes. We provide volume arrangements for agents and developers with regular translation needs. This includes preferential pricing, dedicated account contacts, and priority turnaround for deal deadlines. Several major Dubai developers use our services for international sales."
+  }
+];
 ---
 
-<BaseLayout 
-  title="Real Estate Translation in Dubai | OnlineTranslation.ae"
-  description="Real estate document translation in Dubai. Title deeds, SPAs, contracts, and developer documents for property transactions. MOJ certified."
+<BaseLayout
+  title="Real Estate Translation Dubai | DLD & Property Documents | MOJ Certified"
+  description="Real estate document translation in Dubai for DLD, banks, and property transactions. SPAs, title deeds, mortgage documents. MOJ-certified, same-day available."
 >
   <section class="hero-section bg-dark" data-theme="dark">
     <div class="container">
@@ -239,6 +266,35 @@ import CrossSiloLinks from '../../../components/CrossSiloLinks.astro';
     </div>
   </section>
 
+  <!-- FAQ Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map(faq => (
+          <details class="faq-item">
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">{faq.answer}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  })} />
+
   <section class="section bg-white">
     <div class="container cta-section">
       <h2>Property Transaction Support</h2>
@@ -452,5 +508,49 @@ import CrossSiloLinks from '../../../components/CrossSiloLinks.astro';
     .scenarios-grid {
       grid-template-columns: 1fr;
     }
+  }
+
+  /* FAQ Styles */
+  .faq-list {
+    max-width: 800px;
+  }
+
+  .faq-item {
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .faq-question {
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--primary-color);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .faq-question::after {
+    content: '+';
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    transition: transform 0.3s ease;
+  }
+
+  .faq-item[open] .faq-question::after {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.25rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
   }
 </style>
