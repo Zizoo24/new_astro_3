@@ -1,9 +1,16 @@
 # ClickRank Data Rollout Plan
 
 **Created**: January 9, 2026
-**Status**: Draft - Pending Review
+**Status**: Active
 **Data Period**: December 9, 2025 - January 8, 2026
 **Author**: Claude Code
+**Version**: 2.0
+
+---
+
+## Business Context
+
+> **Legal translation is the #1 business priority.** All optimization efforts should prioritize the legal translation silo, even when volume metrics suggest otherwise.
 
 ---
 
@@ -20,7 +27,73 @@ This document presents a skeptical, evidence-based analysis of the ClickRank dat
 | Average CTR | 1.2% | Industry avg for legal services: 2-4% |
 | Average Position | 23.6 | Still page 3 on average |
 
-**Core Problem Identified**: The site is gaining visibility (impressions up 38%) but failing to convert that visibility into clicks. This is a **CTR problem**, not primarily a ranking problem.
+### Data Availability
+
+| Source | Status |
+|--------|--------|
+| ClickRank daily notes | ✅ Available |
+| CSV exports | ✅ **Available** (Queries.csv, Pages.csv, etc.) |
+| Google Search Console | ✅ Data exported to CSV |
+| Keyword Tracker | ❌ Subscription limitation |
+
+---
+
+## 🚨 CRITICAL FINDING: Legal Translation Keyword Crisis
+
+### The Problem
+
+**Legal translation is #1 business priority, but the site ranks TERRIBLY for core legal keywords:**
+
+| Keyword | Impressions | Position | Status |
+|---------|-------------|----------|--------|
+| "legal translation" | 37 | **69.08** | 🔴 Page 7 |
+| "legal translation dubai" | 9 | **70.33** | 🔴 Page 7 |
+| "legal translation services" | 19 | **85.47** | 🔴 Page 9 |
+| "legal translation services dubai" | 12 | **87.00** | 🔴 Page 9 |
+| "legal document translation" | 14 | **86.57** | 🔴 Page 9 |
+| "legal translation in dubai" | 13 | **73.31** | 🔴 Page 8 |
+
+**The site is virtually INVISIBLE for its #1 business priority keywords!**
+
+### Root Cause: Keyword Cannibalization
+
+Multiple pages compete for the same "legal translation" keywords:
+
+| Page | Impressions | Position | Problem |
+|------|-------------|----------|---------|
+| `/legal/` | 29 | 15.59 | Hub page, not optimized for primary keyword |
+| `/legal-translation-dubai/` | 63 | 21.25 | Different URL structure |
+| `/services/legal-translation/` | 125 | 29.9 | Highest impressions but poor position |
+| `/translation_agency_dubai/.../legal-translation/` | 90 | 73.61 | Legacy URL, confusing Google |
+
+**Google doesn't know which page to rank!** The site is competing against itself.
+
+### Comparison: Pages That Work
+
+| Page | Keyword | Position | Why It Works |
+|------|---------|----------|--------------|
+| `/services/attestation/apostille/` | apostille | 9.61 | **Single clear page** |
+| `/personal/academic/degree/` | degree translation | 7.7 | **Single clear page** |
+| `/contact-a-translator-in-dubai/` | translator dubai | 9.07 | **Single clear page** |
+
+### Required Action: Consolidation Strategy
+
+**Pick ONE primary page for "legal translation dubai":**
+
+Recommend: **`/legal/`** as the primary legal translation page because:
+1. Clean URL structure
+2. Hub page with strong internal linking
+3. Comprehensive content already exists
+
+**Consolidation plan:**
+1. `/legal/` → Primary page (optimize for "legal translation dubai")
+2. `/services/legal-translation/` → Redirect to `/legal/` OR differentiate
+3. `/legal-translation-dubai/` → Redirect to `/legal/`
+4. `/translation_agency_dubai/.../legal-translation/` → Redirect to `/legal/`
+
+---
+
+**Core Problem UPDATED**: The site has a **KEYWORD CANNIBALIZATION** problem for legal translation. Multiple pages compete, resulting in terrible rankings (position 70-90) for the #1 business priority.
 
 ---
 
@@ -56,17 +129,27 @@ Both pages use identical architecture (BaseLayoutMultilingual), similar bilingua
 - French expats may be more conditioned to click English-language results
 - Need A/B testing to isolate the variable
 
-#### 3. The /legal/ Page Reality Check
+#### 3. The /legal/ Page — #1 BUSINESS PRIORITY
 
-The report suggests /legal/ needs "urgent" optimization. Let's examine the keywords:
+The report suggests /legal/ needs "urgent" optimization. Current keyword data:
 
-| Keyword | Impressions | Reality Check |
-|---------|-------------|---------------|
-| "onlinetranslation.ae" | 15 | Branded search - already rank #1, minimal SEO value |
-| "dubai court judgements translation" | 3 | Very low volume - not actionable |
-| "court document translation sharjah" | 2 | Very low volume - Sharjah (not Dubai) focused |
+| Keyword | Impressions | Assessment |
+|---------|-------------|------------|
+| "onlinetranslation.ae" | 15 | Branded search - already rank #1 |
+| "dubai court judgements translation" | 3 | Low volume but highly relevant |
+| "court document translation sharjah" | 2 | Geographic expansion opportunity |
 
-**Assessment**: /legal/ is at position 20.8 for keywords with ~5-8 relevant monthly impressions. This is a **low-priority optimization target** despite the "0 clicks" metric. The opportunity cost is minimal.
+**Business Priority Override**: Despite low current volume, legal translation is the #1 business priority. This means:
+- Invest in ranking improvements even with uncertain ROI
+- Target high-value legal keywords proactively
+- Build topical authority in legal translation space
+
+**Current State**:
+- Position: 20.8 (page 2-3)
+- Impressions: 43, Clicks: 0
+- Title: "Legal Documents Translation Dubai | Courts & Contracts" (55 chars)
+
+**Strategic Assessment**: The page needs to rank for MORE keywords, not just optimize existing ones. Current keyword coverage is too narrow for a #1 business priority.
 
 #### 4. The Academic Transcript Opportunity
 
@@ -123,15 +206,123 @@ The report suggests /legal/ needs "urgent" optimization. Let's examine the keywo
 
 ---
 
-### Phase 1: Quick Wins - CTR Optimization (Week 1-2)
+### Phase 1: Legal Translation EMERGENCY FIX (Week 1-2)
 
 **Duration**: 1-2 weeks
-**Risk Level**: 🟡 Low-Medium
+**Risk Level**: 🔴 High Priority (Business Critical)
 **Dependencies**: Phase 0 complete
 
-**Philosophy**: Optimize pages that are ALREADY ranking well but not converting. This is the highest-ROI activity.
+**Philosophy**: Fix the keyword cannibalization problem FIRST. The site cannot rank for "legal translation" with 4+ pages competing.
 
-#### 1.1 /urdu/ Page - Position 6, 0 Clicks
+#### 1.0 URGENT: Keyword Cannibalization Fix
+
+**The Problem (from GSC data):**
+- Site ranks position **70-90** for core legal translation keywords
+- 4 pages compete for the same keywords
+- Google is confused about which page to rank
+
+**Competing Pages (all targeting "legal translation"):**
+
+| Page | Action | Rationale |
+|------|--------|-----------|
+| `/legal/` | ✅ **PRIMARY** | Clean URL, hub structure, keep |
+| `/services/legal-translation/` | 🔄 REDIRECT to /legal/ | Duplicate intent |
+| `/legal-translation-dubai/` | 🔄 REDIRECT to /legal/ | Duplicate intent |
+| `/translation_agency_dubai/.../legal-translation/` | 🔄 REDIRECT to /legal/ | Legacy URL |
+
+**Implementation Steps:**
+
+1. **Add 301 redirects in `vercel.json`:**
+```json
+{
+  "source": "/services/legal-translation/",
+  "destination": "/legal/",
+  "permanent": true
+},
+{
+  "source": "/legal-translation-dubai/",
+  "destination": "/legal/",
+  "permanent": true
+}
+```
+
+2. **Update internal links** pointing to redirected pages → point to `/legal/`
+
+3. **Update navigation** to remove duplicate links
+
+**Risk**: Some short-term ranking fluctuation. Long-term: consolidated authority.
+
+---
+
+#### 1.1 /legal/ Page — Optimize as PRIMARY
+
+**Current State**:
+```
+URL: /legal/
+Title: "Legal Documents Translation Dubai | Courts & Contracts" (55 chars)
+Position: 15.59 (from GSC), Impressions: 29
+```
+
+**Target Keywords (from GSC - currently ranking poorly):**
+
+| Keyword | Current Position | Target |
+|---------|-----------------|--------|
+| "legal translation dubai" | 70.33 | <20 |
+| "legal translation" | 69.08 | <30 |
+| "legal translation services" | 85.47 | <30 |
+| "court document translation" | 28.83 | <15 |
+
+**Optimization Strategy**:
+
+| Element | Current | Proposed |
+|---------|---------|----------|
+| Title | "Legal Documents Translation Dubai \| Courts & Contracts" | "Legal Translation Dubai \| MOJ Certified \| Courts & Contracts" (60 chars) |
+| Meta Description | Generic | "MOJ-certified legal translation for Dubai Courts, DIFC & ADGM. Contracts, court judgments, POA. Same-day available. WhatsApp +971 50 862 0217" (148 chars) |
+| H1 | "Legal Translation Services in Dubai" | Add "MOJ-Certified" prefix |
+
+**Content Enhancement:**
+1. Add explicit mentions of target keywords in first 100 words
+2. Add FAQ: "What is legal translation?" (targets "legal translation" keyword)
+3. Add section: "Legal Translation Services Dubai" (exact match heading)
+4. Increase internal links TO /legal/ from homepage and high-traffic pages
+
+**Success Metrics (8 weeks):**
+- "legal translation dubai": 70 → <25
+- "legal translation": 69 → <40
+- Total impressions: 29 → 200+
+- Clicks: 0 → 10-20/month
+
+---
+
+#### 1.2 Legal Silo Internal Linking Audit
+
+After consolidation, strengthen the entire legal silo:
+
+| Page | Status | Action |
+|------|--------|--------|
+| `/legal/` | **Primary Hub** | Add links from homepage, all service pages |
+| `/legal/contracts/` | Sub-page | Link from /legal/, homepage |
+| `/legal/corporate/` | Sub-page | Link from /legal/, business pages |
+| `/legal/litigation/` | Sub-page | Link from /legal/, court content |
+| `/legal/wills/` | Sub-page | Cross-link with personal docs |
+
+**Internal Links TO ADD (high-traffic pages → /legal/):**
+- Homepage hero section
+- /services/ page
+- /contact/ page
+- Language pages (/urdu/, /french/, etc.)
+
+---
+
+### Phase 2: Secondary Quick Wins (Week 2-3)
+
+**Duration**: 1 week
+**Risk Level**: 🟡 Low-Medium
+**Dependencies**: Phase 1 in progress
+
+**Philosophy**: While working on legal priority, capture easy wins on pages already ranking well.
+
+#### 2.1 /urdu/ Page - Position 6, 0 Clicks
 
 **Current State**:
 ```
@@ -181,43 +372,15 @@ These pages at positions 7.7 and 19.7 with 6 and 16 impressions are not worth op
 
 ---
 
-### Phase 2: Strategic Optimization (Week 3-4)
+### Phase 3: Position Monitoring (Week 3-4)
 
 **Duration**: 2 weeks
 **Risk Level**: 🟡 Medium
-**Dependencies**: Phase 1 learnings applied
+**Dependencies**: Phase 1 & 2 implemented
 
-**Philosophy**: Improve pages with potential but currently underperforming on position.
+**Philosophy**: Monitor results from Phase 1 & 2, investigate concerning trends.
 
-#### 2.1 /legal/ Page Analysis
-
-**Reality Check**: This page is NOT urgent despite the report's recommendation.
-
-| Factor | Value | Assessment |
-|--------|-------|------------|
-| Position | 20.8 | Page 2-3, low CTR expected |
-| Total relevant impressions | ~8 | Extremely low volume |
-| Current title | "Legal Documents Translation Dubai \| Courts & Contracts" (55 chars) | Actually reasonable |
-| Current meta | "MOJ-certified legal translation in Dubai..." | Good |
-
-**Actual Problem**: The page isn't ranking well for valuable keywords. Optimization should focus on:
-1. Content depth (currently comprehensive)
-2. Internal linking (already using CrossSiloLinks)
-3. Schema markup (already has FAQPage schema)
-
-**Recommended Changes**:
-
-| Element | Current | Proposed |
-|---------|---------|----------|
-| Title | "Legal Documents Translation Dubai \| Courts & Contracts" | "Legal Translation Dubai \| Courts & MOJ Certified" (50 chars) |
-| H1 | "Legal Translation Services in Dubai" | Consider adding "Court Documents" for keyword alignment |
-| Internal links | Good coverage | Add links FROM high-traffic pages TO /legal/ |
-
-**Expected Impact**: Minimal. Position 20.8 to position 15 might generate 1-2 clicks/month.
-
-**Recommendation**: Low priority. Focus resources elsewhere unless business strategy requires legal translation emphasis.
-
-#### 2.2 Position 11-20 Keyword Decline
+#### 3.1 Position 11-20 Keyword Decline
 
 The report shows 47 keywords declined from positions 11-20 (page 1-2 boundary). This is actually the most concerning finding.
 
@@ -242,15 +405,15 @@ The report shows 47 keywords declined from positions 11-20 (page 1-2 boundary). 
 
 ---
 
-### Phase 3: Content Expansion (Week 5-8)
+### Phase 4: Content Expansion (Week 5-8)
 
 **Duration**: 3-4 weeks
 **Risk Level**: 🟡 Medium
-**Dependencies**: Phase 2 analysis complete
+**Dependencies**: Phase 3 analysis complete
 
-**Philosophy**: Only create new content when there's validated demand.
+**Philosophy**: Expand content based on validated demand and Phase 1-3 learnings.
 
-#### 3.1 Academic Transcript Page Optimization
+#### 4.1 Academic Transcript Page Optimization
 
 **Opportunity**: "academic transcript translation service" at position 11.7
 
@@ -275,7 +438,7 @@ The report shows 47 keywords declined from positions 11-20 (page 1-2 boundary). 
 3. Monitor position movement
 4. If position improves, optimize meta description for CTR
 
-#### 3.2 New Page Decision: /academic-transcript-translation/
+#### 4.2 New Page Decision: /academic-transcript-translation/
 
 The ClickRank report suggests creating a new dedicated page. **I recommend against this initially.**
 
@@ -289,7 +452,7 @@ The ClickRank report suggests creating a new dedicated page. **I recommend again
 
 **Decision Point**: Re-evaluate after Phase 3.1 results (4 weeks post-implementation)
 
-#### 3.3 Court Judgements Consideration
+#### 4.3 Court Judgements Consideration
 
 Keyword: "dubai court judgements translation" - 3 impressions
 
