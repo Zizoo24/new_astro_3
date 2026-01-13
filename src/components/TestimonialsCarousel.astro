@@ -298,3 +298,102 @@ const {
   }
 </style>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const carousels = document.querySelectorAll('.carousel-wrapper');
+
+    carousels.forEach(carousel => {
+      const track = carousel.querySelector('.carousel-track') as HTMLElement;
+      const cards = carousel.querySelectorAll('.testimonial-card');
+      const dots = carousel.querySelectorAll('.carousel-dot');
+      const prevBtn = carousel.querySelector('.carousel-prev') as HTMLButtonElement;
+      const nextBtn = carousel.querySelector('.carousel-next') as HTMLButtonElement;
+
+      let currentIndex = 0;
+      const totalCards = cards.length;
+      let autoRotateTimer: NodeJS.Timeout | null = null;
+
+      const autoRotate = carousel.getAttribute('data-auto-rotate') === 'true';
+      const interval = parseInt(carousel.getAttribute('data-interval') || '5000');
+
+      function updateCarousel() {
+        if (!track) return;
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === currentIndex);
+        });
+      }
+
+      function goToSlide(index: number) {
+        currentIndex = (index + totalCards) % totalCards;
+        updateCarousel();
+        resetAutoRotate();
+      }
+
+      function nextSlide() {
+        goToSlide(currentIndex + 1);
+      }
+
+      function prevSlide() {
+        goToSlide(currentIndex - 1);
+      }
+
+      function resetAutoRotate() {
+        if (autoRotateTimer) {
+          clearInterval(autoRotateTimer);
+        }
+        if (autoRotate) {
+          autoRotateTimer = setInterval(nextSlide, interval);
+        }
+      }
+
+      // Event listeners
+      if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+      if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goToSlide(index));
+      });
+
+      // Touch/swipe support
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      carousel.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+      });
+
+      carousel.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].clientX;
+        const diff = touchStartX - touchEndX;
+
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) {
+            nextSlide();
+          } else {
+            prevSlide();
+          }
+        }
+      });
+
+      // Start auto-rotate
+      if (autoRotate) {
+        autoRotateTimer = setInterval(nextSlide, interval);
+      }
+
+      // Pause on hover
+      carousel.addEventListener('mouseenter', () => {
+        if (autoRotateTimer) {
+          clearInterval(autoRotateTimer);
+        }
+      });
+
+      carousel.addEventListener('mouseleave', () => {
+        if (autoRotate) {
+          autoRotateTimer = setInterval(nextSlide, interval);
+        }
+      });
+    });
+  });
+</script>
