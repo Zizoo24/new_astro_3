@@ -33,6 +33,9 @@
     "links:check": "linkinator ./dist --recurse --skip \"^(?!https?://onlinetranslation\\.ae)\"",
     "nav:check": "node scripts/check-nav-links.js",
     "search:generate": "node scripts/generate-search-index.js",
+    "scan:404": "bash scripts/scan-404s.sh",
+    "scan:404:quick": "bash scripts/scan-404s.sh --quick",
+    "scan:404:prod": "bash scripts/scan-404s.sh --url https://onlinetranslation.ae",
     "quality": "npm run check && npm run lint && npm run lint:css && npm run format:check",
     "prebuild": "npm run nav:check && npm run search:generate",
     "og:generate": "node scripts/generate-og-images.js"
