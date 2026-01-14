@@ -1,0 +1,811 @@
+# ClickRank Complete Data Extraction Agent Prompt v2.0
+
+## Overview
+
+You are a browser automation agent tasked with extracting ALL data, screenshots, and exports from ClickRank (app.clickrank.ai) for **onlinetranslation.ae** and syncing everything to the GitHub repository **github.com/Zizoo24/new_astro_3/clickrank-data**.
+
+ClickRank is an AI-powered SEO automation platform that integrates with Google Search Console. It uses a JavaScript snippet to apply real-time optimizations to websites. Key value proposition: "1-click SEO automation" that fixes issues automatically rather than just reporting them.
+
+---
+
+## Pre-Flight Checklist
+
+Before starting extraction:
+1. Ensure you have login credentials or Google OAuth access
+2. Confirm the target website (onlinetranslation.ae) is connected to GSC in ClickRank
+3. Prepare local folders: `./screenshots/`, `./exports/`, `./data/`
+4. Check GitHub repo access for `Zizoo24/new_astro_3`
+
+---
+
+## Authentication & Initial Setup
+
+### Step 1: Login
+1. Navigate to `https://app.clickrank.ai`
+2. Login via saved credentials OR Google OAuth
+3. Wait for dashboard to fully load (look for metrics cards)
+4. **CRITICAL**: Verify "ONLINETRANSLATION.AE" appears in the top website selector dropdown
+5. If wrong website selected, click dropdown and switch to correct property
+
+### Step 2: Configure Date Range
+1. Locate date picker (top-right corner, format: "DD Mon YYYY - DD Mon YYYY")
+2. Click to open date selector
+3. Set to **maximum available range** (ClickRank stores up to 16 months of GSC data)
+4. Click Apply/Confirm
+5. Wait for all data widgets to refresh
+6. **Record the exact date range** for your extraction log
+
+---
+
+## Complete Navigation Map
+
+Based on ClickRank's documented structure, navigate ALL these sections:
+
+```
+app.clickrank.ai/
+│
+├── 📊 DASHBOARD (Main landing page)
+│   ├── Total Clicks (with % change)
+│   ├── Total Impressions (with % change)
+│   ├── Average CTR (with % change)
+│   ├── Average Position (with % change)
+│   ├── Performance Trends Chart
+│   └── Website Health Score (0-100)
+│
+├── 💡 KEYWORD IDEAS
+│   └── AI-suggested keywords based on your GSC data
+│
+├── 🔍 KEYWORD RESEARCH
+│   └── Keyword discovery and analysis tools
+│
+├── 📈 KEYWORD TRACKER
+│   └── Track specific keywords across devices/locations
+│
+├── 📄 PAGES (Performance by URL)
+│   ├── All pages with clicks/impressions/CTR/position
+│   ├── Filter: Top pages, Worst pages
+│   └── "Low CTR Pages" report
+│
+├── 🔎 QUERIES (Performance by search term)
+│   ├── All queries with metrics
+│   ├── Filter: Winners, Losers
+│   └── "Semantic Gap Analysis"
+│
+├── 🌍 COUNTRIES (Geographic breakdown)
+│
+├── 📱 DEVICES (Desktop/Mobile/Tablet)
+│
+├── ✨ SEARCH APPEARANCE (Rich results types)
+│
+├── 🏥 WEBSITE HEALTH / TECHNICAL SEO AUDIT
+│   ├── Health Score (0-100)
+│   ├── Critical Issues
+│   ├── Non-critical Issues
+│   ├── Warnings & Notices
+│   └── "Resolve All" button
+│
+├── 🤖 AI TOOLKIT (New in 2025/2026)
+│   ├── AI Model Index Checker
+│   │   └── Checks if GPT, Claude, Gemini, Perplexity can crawl your site
+│   ├── AI Model Compatibility Checker
+│   │   └── Scores for each AI model's understanding of your content
+│   ├── AI Overview Tracker
+│   │   └── Tracks when your site appears in Google AI Overviews
+│   └── AI Search Volume Analyzer
+│       └── AI-influenced keyword demand metrics
+│
+├── 🔗 INTERNAL LINKING
+│   ├── Suggested internal links
+│   ├── Orphan pages
+│   └── Link equity distribution
+│
+├── 📋 SCHEMA MARKUP
+│   ├── Generated schemas (FAQ, HowTo, LocalBusiness, etc.)
+│   └── One-click apply
+│
+├── 🖼️ IMAGE SEO
+│   ├── Missing alt text
+│   ├── Vision AI suggestions
+│   └── One-click apply
+│
+├── 🤖 AI SEO AGENT (Top-right button)
+│   ├── Natural language commands
+│   ├── Auto-audit results
+│   └── Optimization recommendations
+│
+└── ⚙️ SETTINGS
+    ├── Websites
+    ├── Teams
+    └── Account/Billing
+```
+
+---
+
+## Extraction Tasks (In Order)
+
+### TASK 1: Dashboard Metrics Capture
+
+**Location:** Main Dashboard (default after login)
+
+**Actions:**
+1. Take full-page screenshot → `screenshots/01-dashboard-{YYYY-MM-DD}.png`
+2. Extract these exact values into `Metadata.csv`:
+
+| Field | Where to Find |
+|-------|---------------|
+| total_clicks | Large number with "Total Clicks" label |
+| total_clicks_change | Green/red % next to clicks |
+| total_clicks_previous | "Previous Period" row |
+| total_impressions | Large number with "Total Impressions" label |
+| total_impressions_change | % change indicator |
+| total_impressions_previous | "Previous Period" row |
+| average_ctr | Percentage with "Average CTR" label |
+| average_ctr_change | % change indicator |
+| average_ctr_previous | "Previous Period" row |
+| average_position | Number with "Average Position" label |
+| average_position_change | % change indicator |
+| average_position_previous | "Previous Period" row |
+| website_health_score | Green badge (usually 0-100) |
+| date_range_start | From date picker |
+| date_range_end | From date picker |
+| extracted_at | Current timestamp ISO format |
+
+**CSV Format:**
+```csv
+metric,current_value,previous_value,change_percent,extracted_date
+total_clicks,39,13,200.0,2026-01-14T10:30:00Z
+total_impressions,7400,3700,101.8,2026-01-14T10:30:00Z
+average_ctr,0.6,0.4,50.0,2026-01-14T10:30:00Z
+average_position,21.4,34,-37.1,2026-01-14T10:30:00Z
+website_health_score,100,,,2026-01-14T10:30:00Z
+```
+
+---
+
+### TASK 2: Performance Chart Data
+
+**Location:** Dashboard → Performance Trends section
+
+**Actions:**
+1. Locate the Performance Trends chart (shows Clicks/Impressions over time)
+2. Look for data export option (hover over chart, check for download icon)
+3. If export available → Download as `Chart.csv`
+4. If NO export:
+   - Hover over each data point to get exact values
+   - Record: `date, clicks, impressions`
+   - Create `Chart.csv` manually
+5. Screenshot chart → `screenshots/02-chart-{date}.png`
+
+**Alternate Method:**
+- Use browser DevTools Network tab
+- Look for API calls returning chart data (often JSON)
+- Parse and save as CSV
+
+**CSV Format:**
+```csv
+date,clicks,impressions,ctr,position
+2025-12-14,2,180,1.1,22.5
+2025-12-15,1,195,0.5,21.8
+```
+
+---
+
+### TASK 3: Queries/Search Terms Data
+
+**Location:** Navigate to Performance → Queries tab (or click "View Performance")
+
+**Actions:**
+1. Click on Queries tab
+2. Set rows per page to MAXIMUM (100 if available)
+3. Sort by "Impressions" descending (to get most important first)
+4. **LOOK FOR EXPORT BUTTON** (usually top-right of table, download icon)
+5. If Export exists:
+   - Click Export → Choose CSV format
+   - File downloads to browser → Save as `Queries.csv`
+6. If NO Export:
+   - You must paginate through ALL pages
+   - For each row extract: query, clicks, impressions, ctr, position
+   - Compile into single `Queries.csv`
+7. Screenshot first page → `screenshots/03-queries-page1-{date}.png`
+8. Screenshot last page → `screenshots/03-queries-lastpage-{date}.png`
+
+**Special Reports to Check:**
+- "Winners" filter: Queries that gained rankings
+- "Losers" filter: Queries that lost rankings
+- "Low CTR" filter: High impressions but low clicks
+
+**CSV Format:**
+```csv
+query,clicks,impressions,ctr,position,status,extracted_date
+"legal translation dubai",15,450,3.33,8.2,winner,2026-01-14
+"moj certified translation",8,320,2.5,12.4,stable,2026-01-14
+"birth certificate translation",2,180,1.11,18.7,loser,2026-01-14
+```
+
+---
+
+### TASK 4: Pages Performance Data
+
+**Location:** Performance → Pages tab
+
+**Actions:**
+1. Navigate to Pages tab
+2. Set maximum rows, sort by Impressions descending
+3. Export or manually extract ALL pages
+4. Save as `Pages.csv`
+5. Screenshot → `screenshots/04-pages-{date}.png`
+
+**Special Reports:**
+- "Low CTR Pages" - High impressions, low clicks (optimization priority)
+- Check for optimization status indicators
+
+**CSV Format:**
+```csv
+page_url,clicks,impressions,ctr,position,optimization_status,extracted_date
+"/legal-translation-dubai/",12,890,1.35,9.2,optimized,2026-01-14
+"/personal-documents/",8,620,1.29,14.5,needs_work,2026-01-14
+```
+
+---
+
+### TASK 5: Countries Data
+
+**Location:** Performance → Countries tab
+
+**Actions:**
+1. Navigate to Countries tab
+2. Export or extract all countries data
+3. Save as `Countries.csv`
+4. Screenshot → `screenshots/05-countries-{date}.png`
+
+**CSV Format:**
+```csv
+country,country_code,clicks,impressions,ctr,position,extracted_date
+"United Arab Emirates",AE,28,5200,0.54,18.3,2026-01-14
+"India",IN,5,890,0.56,24.1,2026-01-14
+"United Kingdom",GB,3,420,0.71,22.8,2026-01-14
+```
+
+---
+
+### TASK 6: Devices Data
+
+**Location:** Performance → Devices tab
+
+**Actions:**
+1. Navigate to Devices tab
+2. Export or extract device breakdown
+3. Save as `Devices.csv`
+4. Screenshot → `screenshots/06-devices-{date}.png`
+
+**CSV Format:**
+```csv
+device_type,clicks,impressions,ctr,position,extracted_date
+MOBILE,25,4800,0.52,20.1,2026-01-14
+DESKTOP,12,2400,0.50,23.2,2026-01-14
+TABLET,2,200,1.00,19.5,2026-01-14
+```
+
+---
+
+### TASK 7: Search Appearance Data
+
+**Location:** Performance → Search Appearance tab
+
+**Actions:**
+1. Navigate to Search Appearance tab
+2. Document which rich result types appear
+3. Save as `Search appearance.csv`
+4. Screenshot → `screenshots/07-search-appearance-{date}.png`
+
+**CSV Format:**
+```csv
+appearance_type,clicks,impressions,ctr,position,extracted_date
+"Web results",35,6800,0.51,21.2,2026-01-14
+"FAQ rich results",4,600,0.67,12.3,2026-01-14
+```
+
+---
+
+### TASK 8: Website Health / Technical Audit
+
+**Location:** Click "Website Health" badge OR navigate via sidebar
+
+**Actions:**
+1. Click on Website Health section
+2. Screenshot full audit report → `screenshots/08-website-health-{date}.png`
+3. Extract Critical Issues → `Critical issues.csv`
+4. Extract Non-critical Issues → `Non-critical issues.csv`
+5. Document any Warnings → `Warnings.csv`
+
+**Critical Issues CSV Format:**
+```csv
+issue_type,page_url,description,severity,status,extracted_date
+"Missing meta description","/services/attestation/uk/","Page has no meta description",critical,open,2026-01-14
+"Duplicate H1","/blog/post-1/","Multiple H1 tags found",critical,open,2026-01-14
+```
+
+**If Health Score = 100%:**
+```csv
+issue_type,page_url,description,severity,status,extracted_date
+"No issues","N/A","Website health check passed with no issues",info,resolved,2026-01-14
+```
+
+---
+
+### TASK 9: Keyword Ideas
+
+**Location:** Left sidebar → "Keyword Ideas"
+
+**Actions:**
+1. Click Keyword Ideas
+2. Wait for AI-generated suggestions to load
+3. Export or extract all suggested keywords
+4. Save as `Keyword-ideas.csv`
+5. Screenshot → `screenshots/09-keyword-ideas-{date}.png`
+
+**CSV Format:**
+```csv
+keyword,search_volume,difficulty,cpc,trend,relevance_score,extracted_date
+"certified translation near me",480,35,2.50,rising,0.92,2026-01-14
+"urgent legal translation dubai",220,28,3.10,stable,0.89,2026-01-14
+```
+
+---
+
+### TASK 10: Keyword Research
+
+**Location:** Left sidebar → "Keyword Research"
+
+**Actions:**
+1. Click Keyword Research
+2. Check for any saved research or suggestions
+3. If data exists, export
+4. Save as `Keyword-research.csv`
+5. Screenshot → `screenshots/10-keyword-research-{date}.png`
+
+---
+
+### TASK 11: Keyword Tracker
+
+**Location:** Left sidebar → "Keyword Tracker"
+
+**Actions:**
+1. Click Keyword Tracker
+2. Extract all tracked keywords with:
+   - Current position
+   - Position change (7-day, 30-day)
+   - Search volume
+   - Ranking URL
+   - Device type
+   - Location
+3. Save as `Keyword-tracker.csv`
+4. Screenshot → `screenshots/11-keyword-tracker-{date}.png`
+
+**CSV Format:**
+```csv
+keyword,current_position,position_7d_change,position_30d_change,search_volume,ranking_url,device,location,extracted_date
+"legal translation dubai",8.2,+2,+5,1200,"/legal-translation-dubai/",MOBILE,AE,2026-01-14
+```
+
+---
+
+### TASK 12: AI Toolkit - AI Model Index Checker
+
+**Location:** AI Toolkit section (may be in sidebar or top nav)
+
+**Actions:**
+1. Navigate to AI Model Index Checker
+2. Run check if not already run
+3. Document which AI crawlers can access your site:
+   - GPTBot (OpenAI/ChatGPT)
+   - ClaudeBot (Anthropic)
+   - Google-Extended (Gemini)
+   - PerplexityBot
+4. Check robots.txt compliance status
+5. Save as `AI-index-checker.csv`
+6. Screenshot → `screenshots/12-ai-index-checker-{date}.png`
+
+**CSV Format:**
+```csv
+ai_model,crawler_name,can_access,robots_txt_status,indexing_readiness_score,extracted_date
+"ChatGPT",GPTBot,true,allowed,92,2026-01-14
+"Claude",ClaudeBot,true,allowed,92,2026-01-14
+"Gemini",Google-Extended,true,allowed,92,2026-01-14
+"Perplexity",PerplexityBot,true,allowed,92,2026-01-14
+```
+
+---
+
+### TASK 13: AI Model Compatibility Checker
+
+**Location:** AI Toolkit section
+
+**Actions:**
+1. Navigate to AI Model Compatibility Checker
+2. This scores how well each AI model understands your content
+3. Extract scores per model
+4. Note any recommendations for improvement
+5. Save as `AI-compatibility.csv`
+6. Screenshot → `screenshots/13-ai-compatibility-{date}.png`
+
+**CSV Format:**
+```csv
+ai_model,compatibility_score,content_clarity_score,structure_score,recommendations,extracted_date
+"ChatGPT",85,88,82,"Add more FAQ schema",2026-01-14
+"Claude",87,90,84,"Improve heading hierarchy",2026-01-14
+```
+
+---
+
+### TASK 14: AI Overview Tracker
+
+**Location:** AI Toolkit section
+
+**Actions:**
+1. Navigate to AI Overview Tracker
+2. Check if your site appears in Google AI Overviews
+3. Document:
+   - Keywords triggering AI Overviews
+   - Whether your site is cited
+   - Competitor citations
+4. Save as `AI-overview-tracker.csv`
+5. Screenshot → `screenshots/14-ai-overview-{date}.png`
+
+**CSV Format:**
+```csv
+keyword,ai_overview_present,your_site_cited,competitors_cited,citation_text,extracted_date
+"legal translation dubai",true,false,"dubailegaltranslation.com","...",2026-01-14
+```
+
+---
+
+### TASK 15: Internal Linking Suggestions
+
+**Location:** Internal Linking section (sidebar or within optimization tools)
+
+**Actions:**
+1. Navigate to Internal Linking
+2. Extract:
+   - Suggested internal links
+   - Orphan pages (pages with no internal links pointing to them)
+   - Link equity distribution recommendations
+3. Save as `Internal-links.csv`
+4. Screenshot → `screenshots/15-internal-links-{date}.png`
+
+**CSV Format:**
+```csv
+source_page,target_page,suggested_anchor_text,link_type,status,extracted_date
+"/legal-translation-dubai/","/legal/contracts/nda/","NDA translation services",contextual,pending,2026-01-14
+```
+
+---
+
+### TASK 16: Schema Markup Status
+
+**Location:** Schema Markup section
+
+**Actions:**
+1. Navigate to Schema Markup
+2. Document:
+   - Pages with schema applied
+   - Schema types (LocalBusiness, FAQ, HowTo, Service, etc.)
+   - Pages missing schema
+3. Save as `Schema-markup.csv`
+4. Screenshot → `screenshots/16-schema-{date}.png`
+
+**CSV Format:**
+```csv
+page_url,schema_type,status,generated_by_clickrank,extracted_date
+"/",LocalBusiness,applied,true,2026-01-14
+"/legal-translation-dubai/",Service,applied,true,2026-01-14
+"/resources/faq/",FAQPage,pending,true,2026-01-14
+```
+
+---
+
+### TASK 17: Image SEO / Alt Text
+
+**Location:** Image SEO section
+
+**Actions:**
+1. Navigate to Image SEO
+2. Check Vision AI analysis results
+3. Document:
+   - Images with missing alt text
+   - AI-suggested alt text
+   - Optimized vs pending images
+4. Save as `Image-seo.csv`
+5. Screenshot → `screenshots/17-image-seo-{date}.png`
+
+**CSV Format:**
+```csv
+image_url,page_url,current_alt_text,suggested_alt_text,status,extracted_date
+"/assets/images/court.jpg","/legal-translation-dubai/","","Dubai Courts certified translation office",pending,2026-01-14
+```
+
+---
+
+### TASK 18: AI SEO Agent Recommendations
+
+**Location:** Click "AI SEO Agent" button (top-right, prominent button)
+
+**Actions:**
+1. Click AI SEO Agent button
+2. Wait for agent to load (may be a modal/popup)
+3. If you can run queries, try:
+   - "What are my biggest SEO issues?"
+   - "Which pages need optimization?"
+   - "Suggest title improvements"
+4. Document ALL recommendations
+5. Save as `AI-recommendations.md`
+6. Screenshot → `screenshots/18-ai-agent-{date}.png`
+
+**Markdown Format:**
+```markdown
+# AI SEO Agent Recommendations
+**Generated:** 2026-01-14
+
+## Priority Actions
+1. **Title Tag Optimization**
+   - Page: /legal-translation-dubai/
+   - Current: "Legal Translation Dubai"
+   - Suggested: "MOJ Certified Legal Translation Dubai | 60-Min Express"
+   - Reason: Missing USP and keywords
+
+2. **Meta Description Updates**
+   - 12 pages have generic or missing meta descriptions
+   - [List pages...]
+
+## Technical Issues
+- None (Website Health: 100%)
+
+## Content Gaps
+- Missing page for "urgent translation dubai" query
+- Consider creating /services/express-translation/
+```
+
+---
+
+### TASK 19: Filters Applied Log
+
+**Location:** Check any active filters across all sections
+
+**Actions:**
+1. Document any filters currently applied
+2. Note date ranges, segments, exclusions
+3. Save as `Filters.csv`
+
+**CSV Format:**
+```csv
+filter_type,filter_value,applied_to_section,extracted_date
+date_range,"2025-12-14 to 2026-01-13",all,2026-01-14
+search_type,web,queries,2026-01-14
+```
+
+---
+
+## Post-Extraction: File Organization
+
+### Files for Browser Download (to local PC):
+```
+downloads/
+├── Queries-export-{date}.csv (native ClickRank export)
+├── Pages-export-{date}.csv
+├── All other native exports...
+└── screenshots/
+    └── *.png (all screenshots)
+```
+
+### Files for GitHub Repository:
+```
+clickrank-data/
+├── Chart.csv
+├── Countries.csv
+├── Critical issues.csv
+├── Devices.csv
+├── Filters.csv
+├── Metadata.csv
+├── Non-critical issues.csv
+├── Pages.csv
+├── Queries.csv
+├── Search appearance.csv
+├── Keyword-ideas.csv
+├── Keyword-research.csv
+├── Keyword-tracker.csv
+├── AI-index-checker.csv
+├── AI-compatibility.csv
+├── AI-overview-tracker.csv
+├── Internal-links.csv
+├── Schema-markup.csv
+├── Image-seo.csv
+├── Warnings.csv
+├── AI-recommendations.md
+├── extraction-log.md
+└── screenshots/
+    ├── 01-dashboard-{date}.png
+    ├── 02-chart-{date}.png
+    ├── ... (all numbered screenshots)
+    └── 18-ai-agent-{date}.png
+```
+
+---
+
+## GitHub Commit Workflow
+
+### Step 1: Clone/Update Repository
+```bash
+# If new clone:
+git clone https://github.com/Zizoo24/new_astro_3.git
+cd new_astro_3
+
+# If existing:
+cd new_astro_3
+git pull origin main
+```
+
+### Step 2: Update Files
+```bash
+# Copy all CSVs to clickrank-data folder
+cp ~/downloads/*.csv ./clickrank-data/
+
+# Copy screenshots
+cp ~/downloads/screenshots/*.png ./clickrank-data/screenshots/
+
+# Create extraction log
+cat > ./clickrank-data/extraction-log.md << EOF
+# ClickRank Extraction Log
+
+**Date:** $(date -u +"%Y-%m-%dT%H:%M:%SZ")
+**Website:** onlinetranslation.ae
+**Date Range:** [START_DATE] to [END_DATE]
+**Extraction Agent:** Automated Browser Agent v2.0
+
+## Summary Metrics
+- Total Clicks: [VALUE] ([CHANGE]% change)
+- Total Impressions: [VALUE] ([CHANGE]% change)
+- Average CTR: [VALUE]% ([CHANGE]% change)
+- Average Position: [VALUE] ([CHANGE]% change)
+- Website Health: [VALUE]%
+
+## Files Updated
+| File | Rows | Status |
+|------|------|--------|
+| Queries.csv | [N] | ✅ Updated |
+| Pages.csv | [N] | ✅ Updated |
+| Countries.csv | [N] | ✅ Updated |
+| Devices.csv | [N] | ✅ Updated |
+| ... | ... | ... |
+
+## AI Toolkit Status
+- AI Index Checker: [All crawlers allowed / Issues found]
+- AI Compatibility: [Average score]
+- AI Overview Tracker: [Sites cited: X / Total keywords: Y]
+
+## Screenshots
+$(ls -1 ./clickrank-data/screenshots/*.png | wc -l) screenshots captured
+
+## Issues Encountered
+- [List any extraction errors or missing data]
+
+## Next Actions
+- [Based on AI recommendations]
+EOF
+```
+
+### Step 3: Commit and Push
+```bash
+git add clickrank-data/
+git commit -m "🔄 ClickRank data update - $(date +%Y-%m-%d)
+
+📊 Performance Summary:
+- Clicks: [X] (+[Y]%)
+- Impressions: [X] (+[Y]%)
+- CTR: [X]%
+- Position: [X]
+- Health: [X]%
+
+📁 Files updated: [N] CSVs, [N] screenshots
+🤖 AI recommendations extracted: Yes
+📈 Keyword tracking: [N] keywords"
+
+git push origin main
+```
+
+---
+
+## Error Handling & Edge Cases
+
+### Scenario: Export Button Not Found
+1. Check for hamburger menu (⋮) or three-dot menu
+2. Right-click on table to check for context menu export
+3. Open browser DevTools → Network tab → Look for API endpoints returning JSON
+4. Use pagination to manually scrape all data
+5. **Document in log:** "Manual extraction required - no native export"
+
+### Scenario: Data Table Has >1000 Rows
+1. ClickRank may paginate large datasets
+2. Set "Show" dropdown to maximum (100 rows typical)
+3. Click through ALL pages, extracting each
+4. Combine into single CSV
+5. Note total row count in log
+
+### Scenario: Section Not Loading
+1. Wait 15 seconds
+2. Refresh browser
+3. Clear cookies and re-authenticate
+4. Try incognito mode
+5. Screenshot error state
+6. **Document:** "Section [X] failed to load - error screenshot captured"
+
+### Scenario: GSC Data Not Syncing
+1. Check if website is properly verified in GSC
+2. ClickRank syncs data periodically (not real-time)
+3. Most recent 2-3 days may be incomplete
+4. Note any data gaps in extraction log
+
+### Scenario: AI Toolkit Features Not Available
+1. Some features may require specific plan tier
+2. Document which features are accessible vs locked
+3. Screenshot any "upgrade" prompts
+4. Note in log: "AI [Feature] not available on current plan"
+
+---
+
+## Scheduling & Automation Notes
+
+### Recommended Schedule:
+- **Weekly:** Full extraction every Monday at 06:00 GST
+- **Daily (optional):** Quick dashboard metrics only
+
+### Trend Monitoring:
+After each extraction, compare with previous:
+- Flag >20% changes in any metric
+- Document ranking gains/losses
+- Note new queries appearing
+- Track AI Overview citations
+
+### Data Retention:
+- Keep historical extractions in dated subfolders if needed:
+  ```
+  clickrank-data/
+  ├── current/           (latest data)
+  └── archive/
+      ├── 2026-01-07/
+      ├── 2026-01-14/
+      └── ...
+  ```
+
+---
+
+## Quality Assurance Checklist
+
+Before completing extraction, verify:
+
+- [ ] All 19 tasks attempted
+- [ ] Metadata.csv has current + previous period values
+- [ ] Queries.csv sorted by impressions, all rows captured
+- [ ] Pages.csv includes optimization status where available
+- [ ] Countries.csv has country codes
+- [ ] Website Health documented (even if 100%)
+- [ ] AI Toolkit sections checked (note if unavailable)
+- [ ] Screenshots are clear and readable
+- [ ] All CSVs are valid UTF-8
+- [ ] Extraction log is complete
+- [ ] Git commit message is descriptive
+- [ ] Push to GitHub successful
+
+---
+
+## Critical Reminders
+
+1. **NEVER hardcode credentials** in scripts or commits
+2. **WAIT for full page loads** - ClickRank uses dynamic loading
+3. **VERIFY data accuracy** by spot-checking totals
+4. **MAINTAIN CSV column order** for consistency with existing files
+5. **COMPRESS screenshots** if >2MB before commit
+6. **USE descriptive commit messages** with key metrics
+7. **CHECK for new ClickRank features** - platform updates frequently
+8. **RESPECT rate limits** - don't rapid-fire requests
+9. **SAVE intermediate progress** - don't lose data on errors
+10. **DOCUMENT everything** - future agents need context
