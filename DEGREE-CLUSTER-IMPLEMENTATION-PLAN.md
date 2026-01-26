@@ -18,6 +18,18 @@
 
 ---
 
+## Standard Phase Steps
+
+Each phase follows this implementation pattern:
+
+1. **Content Creation** — Write and publish new pages following SEO guidelines
+2. **Navigation Updates** — Add to navigation.ts and serviceLinks.ts
+3. **Internal Linking (Outbound)** — Add links FROM new pages TO existing relevant pages
+4. **Internal Linking (Inbound)** — Add links FROM existing pages TO new pages (CRITICAL for SEO authority transfer)
+5. **Commit & Push** — Version control checkpoint
+
+---
+
 ## Phase 1: Resource Guides (Immediate)
 
 **Goal:** Capture high-intent informational queries that lead to service pages.
@@ -142,8 +154,16 @@
 
 ---
 
-## Internal Linking Map
+## Internal Linking Strategy
 
+### Principle: "Extreme Internal Linking"
+Every new page should link to 8+ relevant pages. Every relevant existing page should link back to new pages. This creates a dense link web that:
+- Passes PageRank/authority to new content
+- Helps Google discover and index new pages faster
+- Reduces bounce rate by offering next steps
+- Builds topical clusters that signal expertise
+
+### Outbound Links (FROM new pages)
 ```
 Phase 1 Pages (Resources)
          │
@@ -152,6 +172,8 @@ Phase 1 Pages (Resources)
          │   ├─→ /personal/academic/transcripts/
          │   ├─→ /services/attestation/
          │   ├─→ /services/golden-visa-translation/
+         │   ├─→ /resources/golden-visa-checklist/
+         │   ├─→ /resources/attestation-guide/
          │   └─→ MOHESR Equivalency Guide (sibling)
          │
          └── MOHESR Equivalency Guide
@@ -159,14 +181,47 @@ Phase 1 Pages (Resources)
              ├─→ /personal/academic/transcripts/
              ├─→ /services/attestation/
              ├─→ /services/golden-visa-translation/
+             ├─→ /resources/golden-visa-attestation-guide/
              └─→ Distance Education Guide (sibling)
+```
 
-Phase 2 & 3 Blog Posts
+### Inbound Links (TO new pages — CRITICAL)
+```
+Existing Pages That Link to New Content
          │
-         └── All posts link to:
-             ├─→ /personal/academic/degree/ (primary)
-             ├─→ Phase 1 resource pages
-             └─→ Related service pages
+         ├── /personal/academic/degree/
+         │   ├─→ Distance Education Guide
+         │   └─→ MOHESR Equivalency Guide
+         │
+         ├── /personal/academic/transcripts/
+         │   ├─→ Distance Education Guide
+         │   └─→ MOHESR Equivalency Guide
+         │
+         ├── /resources/attestation-guide/
+         │   ├─→ Distance Education Guide
+         │   └─→ MOHESR Equivalency Guide
+         │
+         ├── /resources/golden-visa-attestation-guide/
+         │   ├─→ Distance Education Guide
+         │   └─→ MOHESR Equivalency Guide
+         │
+         ├── /resources/golden-visa-checklist/
+         │   ├─→ Distance Education Guide
+         │   └─→ MOHESR Equivalency Guide
+         │
+         └── /services/golden-visa-translation/
+             ├─→ Distance Education Guide
+             └─→ MOHESR Equivalency Guide
+```
+
+### Phase 2 & 3 Blog Posts
+```
+All posts link to:
+    ├─→ /personal/academic/degree/ (primary)
+    ├─→ Phase 1 resource pages
+    └─→ Related service pages
+
+After creation, update existing pages to link to new blog posts.
 ```
 
 ---
@@ -185,15 +240,35 @@ Phase 2 & 3 Blog Posts
 
 ## Implementation Status
 
+### Phase 1 — Complete
 - [x] Phase 1 planning complete
 - [x] Distance Education Guide created (`/resources/distance-education-uae/`)
 - [x] MOHESR Equivalency Guide created (`/resources/mohesr-equivalency/`)
 - [x] Navigation updated (navigation.ts, serviceLinks.ts)
 - [x] Phase 1 committed & pushed
+- [x] **Internal Linking Enhancement:**
+  - [x] Distance Education Guide → degree, transcripts, attestation, Golden Visa, MOHESR guide
+  - [x] MOHESR Equivalency Guide → degree, transcripts, attestation, Golden Visa, distance education guide
+  - [x] Degree page → distance education guide, MOHESR guide
+  - [x] Transcripts page → distance education guide, MOHESR guide
+  - [x] Attestation Guide → distance education guide, MOHESR guide, degree page
+  - [x] Golden Visa Attestation Guide → distance education guide, MOHESR guide, degree page
+  - [x] Golden Visa Checklist → distance education guide, MOHESR guide, degree page
+  - [x] Golden Visa Translation → distance education guide, MOHESR guide
+
+### Phase 2 — Pending
 - [ ] Phase 2 planning
-- [ ] Phase 2 implementation
+- [ ] Blog post: PhD/DBA Translation
+- [ ] Blog post: Types of Degrees for Work Permits
+- [ ] Internal linking (outbound & inbound)
+- [ ] Phase 2 committed & pushed
+
+### Phase 3 — Pending
 - [ ] Phase 3 planning
-- [ ] Phase 3 implementation
+- [ ] Blog post: Study Gap Guide
+- [ ] Blog post: Professional Certificates vs Degrees
+- [ ] Internal linking (outbound & inbound)
+- [ ] Phase 3 committed & pushed
 
 ---
 
