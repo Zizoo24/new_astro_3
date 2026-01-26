@@ -465,6 +465,20 @@ export const serviceLinks: Record<string, ServiceLink> = {
     full: "Complete guide to authenticated translation in UAE",
     icon: "fas fa-stamp"
   },
+  distanceEducation: {
+    url: "/resources/distance-education-uae/",
+    text: "Distance Education Guide",
+    full: "Are distance education degrees valid in UAE?",
+    icon: "fas fa-laptop",
+    badge: "NEW"
+  },
+  mohesrEquivalency: {
+    url: "/resources/mohesr-equivalency/",
+    text: "MOHESR Equivalency Guide",
+    full: "MOHESR equivalency vs translation explained",
+    icon: "fas fa-certificate",
+    badge: "NEW"
+  },
 
   // ========================================
   // INDUSTRIES
@@ -634,7 +648,7 @@ export const pageRelationships: Record<string, PageRelationships> = {
     crossSilo: ["goldenVisa", "immigration", "medical", "dhaDataflow"],
     locations: ["dubai", "abuDhabi"],
     attestation: ["indiaAttestation", "ukAttestation", "usAttestation", "philippinesAttestation"],
-    resources: ["documentChecklist", "attestationGuide", "mojVsCertified", "pricingGuide"],
+    resources: ["documentChecklist", "attestationGuide", "mojVsCertified", "pricingGuide", "distanceEducation", "mohesrEquivalency"],
     trust: ["credentials", "translator", "reviews", "caseStudies"]
   },
   transcripts: {
@@ -973,6 +987,18 @@ export const pageRelationships: Record<string, PageRelationships> = {
     related: ["mojVsCertified", "legalTranslation", "attestation", "mofaAttestation", "certificateTranslation"],
     family: ["mojVsCertified", "attestationGuide", "pricingGuide"],
     crossSilo: ["goldenVisa", "birthCertificate", "marriageCertificate", "degree", "pcc", "poa", "contracts"]
+  },
+  distanceEducation: {
+    related: ["degree", "transcripts", "mohesrEquivalency", "attestationGuide"],
+    family: ["mohesrEquivalency", "attestationGuide"],
+    crossSilo: ["goldenVisa", "degree", "immigration", "dhaDataflow"],
+    resources: ["attestationGuide", "documentChecklist", "pricingGuide"]
+  },
+  mohesrEquivalency: {
+    related: ["degree", "transcripts", "distanceEducation", "goldenVisa", "attestationGuide"],
+    family: ["distanceEducation", "attestationGuide"],
+    crossSilo: ["goldenVisa", "degree", "immigration", "dhaDataflow"],
+    resources: ["attestationGuide", "documentChecklist", "pricingGuide"]
   },
 
   // ========================================
