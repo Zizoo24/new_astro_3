@@ -256,12 +256,18 @@ After creation, update existing pages to link to new blog posts.
   - [x] Golden Visa Checklist → distance education guide, MOHESR guide, degree page
   - [x] Golden Visa Translation → distance education guide, MOHESR guide
 
-### Phase 2 — Pending
-- [ ] Phase 2 planning
-- [ ] Blog post: PhD/DBA Translation
-- [ ] Blog post: Types of Degrees for Work Permits
-- [ ] Internal linking (outbound & inbound)
-- [ ] Phase 2 committed & pushed
+### Phase 2 — Complete
+- [x] Phase 2 planning
+- [x] Blog post: PhD/DBA Translation (`/blog/phd-dba-doctorate-translation-uae/`)
+- [x] Blog post: Types of Degrees for Work Permits (`/blog/degrees-accepted-uae-work-permit/`)
+- [x] serviceLinks.ts updated with new blog entries
+- [x] **Internal Linking Enhancement:**
+  - [x] PhD/DBA post → degree, transcripts, MOHESR, distance education, Golden Visa, DHA DataFlow
+  - [x] Degrees Work Permit post → degree, transcripts, MOHESR, distance education, Golden Visa, DHA DataFlow, PhD post
+  - [x] Degree page → PhD/DBA post, Degrees Work Permit post
+  - [x] MOHESR Equivalency Guide → PhD/DBA post, Degrees Work Permit post
+  - [x] Distance Education Guide → PhD/DBA post, Degrees Work Permit post
+- [x] Phase 2 committed & pushed
 
 ### Phase 3 — Pending
 - [ ] Phase 3 planning
