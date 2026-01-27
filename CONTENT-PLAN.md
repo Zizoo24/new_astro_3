@@ -225,5 +225,94 @@ Before publishing any content, verify:
 
 ---
 
-*Plan Version: 1.0*
+## Content Publishing Checklist (Post-Creation)
+
+After creating any new content (blog posts, resource guides, service pages), complete ALL of these steps:
+
+### 1. Internal Linking (CRITICAL)
+
+**Outbound Links (from new page):**
+- [ ] Add 8+ links to relevant service pages
+- [ ] Include links to related resources/guides
+- [ ] Link to attestation pages when document authentication is mentioned
+- [ ] Link to Golden Visa when applicable
+
+**Inbound Links (to new page):**
+- [ ] Update `src/data/serviceLinks.ts`:
+  - Add entry in `services` object with url, text, full description, icon, badge
+  - Add page to `pageRelationships` with resources array
+- [ ] Add links from 3-5 existing related pages
+- [ ] Update hub page if content fits a category
+
+### 2. Blog Index Update
+
+For blog posts:
+- [ ] Add entry to `posts` array in `src/pages/blog/index.astro`
+- [ ] Include: slug, title, excerpt, date, category, categoryLabel, readTime
+
+### 3. Search Index Update
+
+- [ ] Add entry to `public/scripts/search-index.js` (searchIndex array)
+- [ ] Add entry to `scripts/generate-search-index.js` (staticPages array)
+- [ ] Include: title, url, category, keywords (space-separated relevant terms)
+
+### 4. Hub Page Preview
+
+If content belongs to a hub:
+- [ ] Add card/link to relevant hub page (e.g., `/personal/academic/` for degree-related content)
+- [ ] Create resource grid section if multiple related items exist
+
+### 5. Navigation Check
+
+For major new sections:
+- [ ] Update `src/data/navigation.ts` if navigation should include the page
+- [ ] Add to mainNav, mobileNav, and mobileNavHubs as appropriate
+
+### 6. Sitemap Regeneration
+
+Sitemaps auto-generate on build via `@astrojs/sitemap`, but for manual generation:
+```bash
+node scripts/generate-sitemap.mjs
+```
+
+### 7. Verification
+
+Before committing:
+- [ ] Run `npm run build` to verify no errors
+- [ ] Check all internal links work
+- [ ] Verify schema markup renders correctly
+
+---
+
+## Example: Adding a Blog Post
+
+```bash
+# 1. Create the blog post
+mkdir -p src/pages/blog/my-new-post/
+# Create index.astro with content
+
+# 2. Update serviceLinks.ts
+# Add to services object and pageRelationships
+
+# 3. Update blog index
+# Add to posts array in src/pages/blog/index.astro
+
+# 4. Update search index
+# Add to public/scripts/search-index.js
+# Add to scripts/generate-search-index.js
+
+# 5. Add inbound links from related pages
+# Edit existing pages to link to new content
+
+# 6. Update hub page if applicable
+# Add resource card linking to new content
+
+# 7. Commit
+git add -A && git commit -m "Add [topic] blog post with full internal linking"
+```
+
+---
+
+*Plan Version: 1.1*
+*Last Updated: January 27, 2026*
 *Next Review: February 2026*
