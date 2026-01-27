@@ -116,18 +116,14 @@ import { mobileNavHubs, searchQuickLinks, siteContact } from '../data/navigation
   </div>
 </nav>
 
-<!-- Search Overlay -->
+<!-- Search Overlay - Pagefind -->
 <div id="search-overlay" class="search-overlay">
   <div class="search-container">
     <button class="search-close" id="searchClose" aria-label="Close search">
       <i class="fas fa-times"></i>
     </button>
     <h3>Search Services</h3>
-    <div class="search-box">
-      <input type="text" placeholder="What are you looking for?" id="searchInput" aria-label="Search">
-      <button class="search-btn" aria-label="Search"><i class="fas fa-search"></i></button>
-    </div>
-    <div id="searchResults" class="search-results"></div>
+    <div id="pagefind-container"></div>
     <div class="quick-links">
       <span>Popular:</span>
       {searchQuickLinks.map((link) => (
@@ -136,6 +132,113 @@ import { mobileNavHubs, searchQuickLinks, siteContact } from '../data/navigation
     </div>
   </div>
 </div>
+
+<!-- Pagefind CSS -->
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+
+<!-- Pagefind UI Script -->
+<script is:inline>
+  window.addEventListener('DOMContentLoaded', function() {
+    // Load Pagefind UI dynamically
+    var script = document.createElement('script');
+    script.src = '/pagefind/pagefind-ui.js';
+    script.onload = function() {
+      if (typeof PagefindUI !== 'undefined') {
+        new PagefindUI({
+          element: "#pagefind-container",
+          showSubResults: true,
+          showImages: false,
+          excerptLength: 15,
+          resetStyles: false
+        });
+      }
+    };
+    document.head.appendChild(script);
+  });
+</script>
+
+<style is:global>
+  /* Pagefind UI Customization */
+  #pagefind-container {
+    --pagefind-ui-scale: 1;
+    --pagefind-ui-primary: #FF1654;
+    --pagefind-ui-text: #ffffff;
+    --pagefind-ui-background: #0E2B48;
+    --pagefind-ui-border: rgba(255, 255, 255, 0.2);
+    --pagefind-ui-tag: #FF1654;
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 8px;
+    --pagefind-ui-font: inherit;
+  }
+
+  .pagefind-ui__search-input {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    padding: 14px 16px !important;
+    font-size: 1rem !important;
+  }
+
+  .pagefind-ui__search-input::placeholder {
+    color: rgba(255, 255, 255, 0.6) !important;
+  }
+
+  .pagefind-ui__search-input:focus {
+    border-color: #FF1654 !important;
+    outline: none !important;
+  }
+
+  .pagefind-ui__result {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding: 12px !important;
+    margin-bottom: 8px !important;
+    border-radius: 8px !important;
+  }
+
+  .pagefind-ui__result:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: #FF1654 !important;
+  }
+
+  .pagefind-ui__result-link {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+  }
+
+  .pagefind-ui__result-link:hover {
+    color: #FF1654 !important;
+  }
+
+  .pagefind-ui__result-excerpt {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 0.9rem !important;
+  }
+
+  .pagefind-ui__result-title {
+    color: #ffffff !important;
+  }
+
+  .pagefind-ui__message {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  .pagefind-ui__button {
+    background: #FF1654 !important;
+    color: #ffffff !important;
+    border: none !important;
+  }
+
+  .pagefind-ui__button:hover {
+    background: #e01349 !important;
+  }
+
+  /* Hide Pagefind branding */
+  .pagefind-ui__suppressed {
+    display: none !important;
+  }
+</style>
 
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
