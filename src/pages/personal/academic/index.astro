@@ -227,6 +227,57 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
     </div>
   </section>
 
+  <section class="section bg-white">
+    <div class="container">
+      <h2>Academic Translation Resources</h2>
+      <p class="section-intro">Guides and articles to help you navigate UAE credential requirements.</p>
+
+      <div class="resources-grid">
+        <a href="/resources/distance-education-uae/" class="resource-card">
+          <div class="resource-icon"><i class="fas fa-laptop"></i></div>
+          <span class="resource-badge">Guide</span>
+          <h3>Distance Education Recognition</h3>
+          <p>Will your online degree be accepted in UAE? Accreditation requirements and MOHESR recognition for remote learning credentials.</p>
+        </a>
+
+        <a href="/resources/mohesr-equivalency/" class="resource-card">
+          <div class="resource-icon"><i class="fas fa-balance-scale"></i></div>
+          <span class="resource-badge">Guide</span>
+          <h3>MOHESR Equivalency Process</h3>
+          <p>Step-by-step guide to getting your foreign degree recognized by the UAE Ministry of Higher Education.</p>
+        </a>
+
+        <a href="/blog/phd-dba-doctorate-translation-uae/" class="resource-card">
+          <div class="resource-icon"><i class="fas fa-user-graduate"></i></div>
+          <span class="resource-badge">Blog</span>
+          <h3>PhD &amp; DBA Translation</h3>
+          <p>How doctoral degree translations differ for healthcare, academic, and executive positions in UAE.</p>
+        </a>
+
+        <a href="/blog/degrees-accepted-uae-work-permit/" class="resource-card">
+          <div class="resource-icon"><i class="fas fa-passport"></i></div>
+          <span class="resource-badge">Blog</span>
+          <h3>Degrees for Work Permits</h3>
+          <p>Which degrees qualify for UAE work permits? MOHRE requirements and what to do if yours isn't recognized.</p>
+        </a>
+
+        <a href="/blog/study-gap-uae-employment/" class="resource-card">
+          <div class="resource-icon"><i class="fas fa-history"></i></div>
+          <span class="resource-badge">Blog</span>
+          <h3>Study Gaps Explained</h3>
+          <p>What UAE employers and MOHRE actually verify about gaps in your academic history.</p>
+        </a>
+
+        <a href="/blog/professional-certificates-vs-degrees-translation/" class="resource-card">
+          <div class="resource-icon"><i class="fas fa-certificate"></i></div>
+          <span class="resource-badge">Blog</span>
+          <h3>Certificates vs Degrees</h3>
+          <p>When do professional certificates like CPA, PMP, or ACCA need legal translation in UAE?</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section class="section bg-primary">
     <div class="container cta-section">
       <h2>Need Academic Documents Translated?</h2>
@@ -600,6 +651,77 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
     }
   }
 
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .resource-card {
+    background: var(--bg-light);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+  }
+
+  .resource-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-color: var(--accent-color);
+  }
+
+  .resource-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--primary-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .resource-icon i {
+    font-size: 1.25rem;
+    color: #fff;
+  }
+
+  .resource-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--accent-color);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .resource-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .resource-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @media (max-width: 992px) {
+    .resources-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
   @media (max-width: 768px) {
     h1 {
       font-size: 2rem;
@@ -607,7 +729,8 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 
     .service-grid,
     .authority-grid,
-    .licensing-grid {
+    .licensing-grid,
+    .resources-grid {
       grid-template-columns: 1fr;
     }
 
