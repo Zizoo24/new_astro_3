@@ -1,0 +1,703 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+
+const faqs = [
+  {
+    question: "What is the difference between degree translation and MOHESR equivalency?",
+    answer: "<a href='/personal/academic/degree/'>Translation</a> converts your degree certificate into Arabic/English. Equivalency evaluates whether your foreign qualification is recognized as equivalent to a UAE degree standard. Translation is a document service (we do this). Equivalency is a government evaluation process (MOHESR does this). Most employment needs only <a href='/personal/academic/degree/'>MOJ-certified translation</a>; specific purposes require equivalency."
+  },
+  {
+    question: "When do I need MOHESR equivalency?",
+    answer: "You need equivalency for: (1) <a href='/services/golden-visa-translation/'>Golden Visa</a> skilled employee category, (2) government sector jobs, (3) teaching positions at MOE schools, (4) some professional licensing like engineering (MOIAT/SCE) and <a href='/specialized/medical/dha-dataflow/'>DHA healthcare licensing</a>, and (5) enrollment in UAE higher education. Private sector employment typically requires only <a href='/personal/academic/degree/'>MOJ-certified translation</a>, not equivalency."
+  },
+  {
+    question: "How long does MOHESR equivalency take?",
+    answer: "Standard processing takes 2-4 weeks after complete document submission. Complex cases (unusual degree types, closed universities, unaccredited programs) may take longer. You can track your application status through the MOHESR portal. Meanwhile, get your <a href='/personal/academic/degree/'>degree translated</a> and <a href='/personal/academic/transcripts/'>transcripts translated</a> to have documents ready."
+  },
+  {
+    question: "How much does MOHESR equivalency cost?",
+    answer: "The MOHESR equivalency application fee is approximately AED 330. Additional costs include <a href='/resources/attestation-guide/'>attestation</a> (varies by country), <a href='/personal/academic/degree/'>MOJ-certified translation</a> (AED 150+), and any courier fees. See our <a href='/resources/pricing-guide/'>pricing guide</a> for translation costs."
+  },
+  {
+    question: "Can I apply for equivalency before coming to UAE?",
+    answer: "Yes, MOHESR equivalency can be applied for online. However, you need: (1) <a href='/resources/attestation-guide/'>attested original documents</a> (including UAE Embassy attestation), (2) <a href='/personal/academic/degree/'>MOJ-certified translation</a> (requires the document to be in UAE), and (3) Emirates ID for account creation. Complete <a href='/services/attestation/'>attestation</a> abroad, then finish translation after arriving."
+  },
+  {
+    question: "What if my degree is not equivalent to a UAE standard?",
+    answer: "MOHESR may issue: (1) full equivalency (your degree equals a UAE degree), (2) partial equivalency (lower than claimed, e.g., your master's equals a bachelor's), or (3) non-equivalency (not recognized). Partial equivalency can still satisfy some requirements for <a href='/services/golden-visa-translation/'>Golden Visa</a>. Non-equivalency means the degree cannot be used for purposes requiring equivalency."
+  },
+  {
+    question: "Do I need equivalency for private sector jobs?",
+    answer: "Usually no. Private sector employers and MOHRE work permits typically require only <a href='/personal/academic/degree/'>MOJ-certified translation</a> of your <a href='/resources/attestation-guide/'>attested degree</a>. Equivalency is generally not requested for private employment in <a href='/locations/dubai/difc/'>DIFC</a>, <a href='/locations/dubai/jlt/'>JLT</a>, or other free zones."
+  },
+  {
+    question: "Is translation required before applying for equivalency?",
+    answer: "Yes. MOHESR requires <a href='/personal/academic/degree/'>MOJ-certified Arabic translation</a> of your degree certificate and <a href='/personal/academic/transcripts/'>transcripts</a> as part of the application. The translation must be from the <a href='/resources/attestation-guide/'>attested original documents</a>. We provide same-day translation for equivalency applications."
+  },
+  {
+    question: "What documents does MOHESR require?",
+    answer: "Standard requirements: (1) <a href='/resources/attestation-guide/'>Attested degree certificate</a> (full chain ending with <a href='/services/attestation/mofa/'>MOFA UAE</a>), (2) Attested <a href='/personal/academic/transcripts/'>academic transcripts</a>, (3) <a href='/personal/academic/degree/'>MOJ-certified Arabic translation</a> of both, (4) Valid Emirates ID, (5) Passport copy, (6) Passport-size photo. See our <a href='/resources/document-checklist/'>document checklist</a>."
+  },
+  {
+    question: "Can online/distance degrees get MOHESR equivalency?",
+    answer: "Yes, if the institution is accredited. MOHESR evaluates <a href='/resources/distance-education-uae/'>distance education degrees</a> case-by-case, considering accreditation status, program structure, and examination methods. Well-known distance universities (<a href='/services/attestation/uk/'>UK Open University</a>, <a href='/services/attestation/india/'>IGNOU</a>) typically receive equivalency."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer.replace(/<[^>]*>/g, '')
+    }
+  }))
+};
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "MOHESR Equivalency vs Translation: What You Actually Need",
+  "description": "Understand when you need MOHESR equivalency vs just translation. Requirements for Golden Visa, government jobs, and licensing explained.",
+  "author": {
+    "@type": "Organization",
+    "name": "OnlineTranslation.ae"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "OnlineTranslation.ae",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://onlinetranslation.ae/assets/images/logo/brand/emblem-256.png"
+    }
+  },
+  "datePublished": "2026-01-26",
+  "dateModified": "2026-01-26"
+};
+
+const comparisonData = {
+  translation: {
+    title: "MOJ Translation Only",
+    description: "Document conversion to Arabic",
+    timeline: "Same day - 24 hours",
+    cost: "AED 150+",
+    useCases: [
+      "Private sector employment",
+      "MOHRE work permit",
+      "Free zone company employment",
+      "Bank account opening",
+      "HR records",
+      "Initial job applications"
+    ]
+  },
+  equivalency: {
+    title: "MOHESR Equivalency",
+    description: "Official degree recognition",
+    timeline: "2-4 weeks",
+    cost: "AED 330 + translation",
+    useCases: [
+      "Golden Visa (skilled category)",
+      "Government sector jobs",
+      "Teaching positions (MOE)",
+      "Engineering registration (SCE)",
+      "UAE university enrollment",
+      "Some professional licensing"
+    ]
+  }
+};
+
+const processSteps = [
+  {
+    step: 1,
+    title: "Complete Attestation",
+    description: "Your degree and transcripts must complete the full attestation chain: home country authentication → UAE Embassy → MOFA UAE. Equivalency cannot be applied without MOFA stamp.",
+    link: "/resources/attestation-guide/"
+  },
+  {
+    step: 2,
+    title: "Get MOJ Translation",
+    description: "MOHESR requires MOJ-certified Arabic translation of all academic documents. Bring your attested originals to us for same-day translation.",
+    link: "/personal/academic/degree/"
+  },
+  {
+    step: 3,
+    title: "Create MOHESR Account",
+    description: "Register on the MOHESR portal (mohesr.gov.ae) using your Emirates ID. Upload required documents including translations.",
+    link: null
+  },
+  {
+    step: 4,
+    title: "Submit Application",
+    description: "Pay the application fee (AED 330) and submit. Track status through the portal. Processing takes 2-4 weeks.",
+    link: null
+  },
+  {
+    step: 5,
+    title: "Receive Equivalency Certificate",
+    description: "Once approved, download your equivalency certificate from the portal. This is your official recognition document.",
+    link: null
+  }
+];
+
+const requiredDocuments = [
+  { document: "Degree Certificate", requirement: "Attested original + MOJ translation", notes: "Full attestation chain required" },
+  { document: "Academic Transcripts", requirement: "Attested original + MOJ translation", notes: "All semesters/years" },
+  { document: "Emirates ID", requirement: "Valid ID", notes: "Required for portal registration" },
+  { document: "Passport", requirement: "Copy of bio page", notes: "Must match degree name" },
+  { document: "Passport Photo", requirement: "Recent photo", notes: "White background" },
+  { document: "Application Fee", requirement: "AED 330", notes: "Paid online" }
+];
+---
+
+<BaseLayout
+  title="MOHESR Equivalency vs Translation | When You Need Each | UAE Guide"
+  description="Understand when you need MOHESR equivalency vs just MOJ translation. Requirements for Golden Visa, government jobs, and professional licensing in UAE explained."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  </Fragment>
+
+  <section class="hero-section bg-dark" data-theme="dark">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">HOME</a>
+        <span class="separator">&gt;</span>
+        <a href="/resources/">RESOURCES</a>
+        <span class="separator">&gt;</span>
+        <span class="current">MOHESR EQUIVALENCY</span>
+      </nav>
+
+      <h1>MOHESR Equivalency vs Translation</h1>
+      <p class="hero-subtitle">What You Actually Need</p>
+      <p class="hero-intro">Translation converts your degree into Arabic. Equivalency evaluates whether it meets UAE standards. Most people only need translation. This guide explains when you need each—and when you need both.</p>
+
+      <div class="quick-answer">
+        <div class="quick-answer-header">
+          <i class="fas fa-bolt"></i>
+          <span>Quick Answer: Which Do You Need?</span>
+        </div>
+        <p><strong>Private sector job?</strong> Translation only.<br>
+        <strong>Golden Visa, government job, or teaching?</strong> Both translation AND equivalency.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Translation vs Equivalency: Key Differences</h2>
+
+      <div class="comparison-grid">
+        <div class="comparison-card translation">
+          <div class="card-header">
+            <i class="fas fa-language"></i>
+            <h3>{comparisonData.translation.title}</h3>
+          </div>
+          <p class="card-description">{comparisonData.translation.description}</p>
+          <div class="card-meta">
+            <span><i class="fas fa-clock"></i> {comparisonData.translation.timeline}</span>
+            <span><i class="fas fa-tag"></i> {comparisonData.translation.cost}</span>
+          </div>
+          <h4>Use Cases:</h4>
+          <ul>
+            {comparisonData.translation.useCases.map(item => (
+              <li><i class="fas fa-check"></i> {item}</li>
+            ))}
+          </ul>
+          <a href="/personal/academic/degree/" class="card-cta">Get Translation →</a>
+        </div>
+
+        <div class="comparison-card equivalency">
+          <div class="card-header">
+            <i class="fas fa-certificate"></i>
+            <h3>{comparisonData.equivalency.title}</h3>
+          </div>
+          <p class="card-description">{comparisonData.equivalency.description}</p>
+          <div class="card-meta">
+            <span><i class="fas fa-clock"></i> {comparisonData.equivalency.timeline}</span>
+            <span><i class="fas fa-tag"></i> {comparisonData.equivalency.cost}</span>
+          </div>
+          <h4>Use Cases:</h4>
+          <ul>
+            {comparisonData.equivalency.useCases.map(item => (
+              <li><i class="fas fa-check"></i> {item}</li>
+            ))}
+          </ul>
+          <span class="card-note">Requires translation first</span>
+        </div>
+      </div>
+
+      <div class="key-insight">
+        <i class="fas fa-lightbulb"></i>
+        <div>
+          <strong>Translation is always required.</strong> Equivalency is additional and only needed for specific purposes. If you need equivalency, you still need translation first—MOHESR requires MOJ-certified Arabic translation as part of the equivalency application.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>When You Need Equivalency</h2>
+
+      <div class="use-case-grid">
+        <div class="use-case-card">
+          <div class="use-case-icon golden-visa"><i class="fas fa-passport"></i></div>
+          <h3>Golden Visa</h3>
+          <p>The skilled employee category requires MOHESR equivalency confirming your degree is bachelor's or higher. Your degree field must also match your employment.</p>
+          <a href="/services/golden-visa-translation/">Golden Visa Guide →</a>
+        </div>
+
+        <div class="use-case-card">
+          <div class="use-case-icon government"><i class="fas fa-landmark"></i></div>
+          <h3>Government Jobs</h3>
+          <p>Federal and local government positions require equivalency as part of the hiring process. This applies to ministries, municipalities, and government-owned entities.</p>
+        </div>
+
+        <div class="use-case-card">
+          <div class="use-case-icon teaching"><i class="fas fa-chalkboard-teacher"></i></div>
+          <h3>Teaching Positions</h3>
+          <p>Ministry of Education (MOE) schools require equivalency. Private schools under KHDA may have different requirements depending on curriculum.</p>
+        </div>
+
+        <div class="use-case-card">
+          <div class="use-case-icon engineering"><i class="fas fa-drafting-compass"></i></div>
+          <h3>Engineering Registration</h3>
+          <p>Society of Engineers (SCE) registration requires degree equivalency for practicing engineers. This applies to civil, mechanical, electrical, and other engineering disciplines.</p>
+        </div>
+
+        <div class="use-case-card">
+          <div class="use-case-icon education"><i class="fas fa-graduation-cap"></i></div>
+          <h3>UAE University Enrollment</h3>
+          <p>Continuing education in UAE universities requires equivalency of your previous qualifications before admission.</p>
+        </div>
+
+        <div class="use-case-card">
+          <div class="use-case-icon healthcare"><i class="fas fa-heartbeat"></i></div>
+          <h3>Some Healthcare Roles</h3>
+          <p>While DHA has its own evaluation process, some healthcare administrative roles may require MOHESR equivalency in addition to professional licensing.</p>
+          <a href="/specialized/medical/dha-dataflow/">DHA Requirements →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>When Translation Alone Is Sufficient</h2>
+
+      <p>For most employment situations, MOJ-certified translation is all you need. MOHRE (Ministry of Human Resources) accepts translated degrees for work permit processing without requiring equivalency.</p>
+
+      <div class="sufficient-grid">
+        <div class="sufficient-item">
+          <i class="fas fa-building"></i>
+          <div>
+            <h4>Private Sector Employment</h4>
+            <p>Companies in mainland Dubai, Abu Dhabi, and other Emirates</p>
+          </div>
+        </div>
+        <div class="sufficient-item">
+          <i class="fas fa-city"></i>
+          <div>
+            <h4>Free Zone Companies</h4>
+            <p>DIFC, DMCC, JAFZA, and other free zone employers</p>
+          </div>
+        </div>
+        <div class="sufficient-item">
+          <i class="fas fa-id-card"></i>
+          <div>
+            <h4>MOHRE Work Permits</h4>
+            <p>Standard employment visa processing</p>
+          </div>
+        </div>
+        <div class="sufficient-item">
+          <i class="fas fa-university"></i>
+          <div>
+            <h4>Bank Requirements</h4>
+            <p>Account opening, loans, and banking verification</p>
+          </div>
+        </div>
+        <div class="sufficient-item">
+          <i class="fas fa-folder-open"></i>
+          <div>
+            <h4>HR Records</h4>
+            <p>Internal company documentation and compliance</p>
+          </div>
+        </div>
+        <div class="sufficient-item">
+          <i class="fas fa-file-alt"></i>
+          <div>
+            <h4>Job Applications</h4>
+            <p>Submitting qualifications to potential employers</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="translation-cta">
+        <h3>Need Degree Translation Only?</h3>
+        <p>Most clients need just MOJ-certified translation. Same-day delivery available.</p>
+        <a href="/personal/academic/degree/" class="btn btn-secondary">Degree Translation Service →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>MOHESR Equivalency Process</h2>
+      <p class="section-intro">If you do need equivalency, here's the complete process.</p>
+
+      <div class="process-timeline">
+        {processSteps.map(item => (
+          <div class="timeline-item">
+            <div class="timeline-marker">{item.step}</div>
+            <div class="timeline-content">
+              <h4>{item.title}</h4>
+              <p>{item.description}</p>
+              {item.link && (
+                <a href={item.link}>Learn more →</a>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Required Documents for Equivalency</h2>
+
+      <div class="table-wrapper">
+        <table class="documents-table">
+          <thead>
+            <tr>
+              <th>Document</th>
+              <th>Requirement</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {requiredDocuments.map(item => (
+              <tr>
+                <td><strong>{item.document}</strong></td>
+                <td>{item.requirement}</td>
+                <td class="notes">{item.notes}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="additional-docs">
+        <h3>Additional Documents (Some Cases)</h3>
+        <ul>
+          <li><strong>Thesis abstract:</strong> For master's and <a href="/blog/phd-dba-doctorate-translation-uae/">PhD degrees</a></li>
+          <li><strong>Course descriptions:</strong> If MOHESR requests detailed curriculum information</li>
+          <li><strong>University accreditation letter:</strong> For degrees from less-known institutions</li>
+          <li><strong>Previous degree:</strong> For postgraduate applications (bachelor's for master's applicants)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Equivalency Outcomes</h2>
+
+      <p>MOHESR evaluates your degree and issues one of three outcomes:</p>
+
+      <div class="outcome-grid">
+        <div class="outcome-card full">
+          <div class="outcome-header">
+            <i class="fas fa-check-circle"></i>
+            <h3>Full Equivalency</h3>
+          </div>
+          <p>Your degree is recognized as equivalent to the UAE standard for that qualification level. For example, your bachelor's equals a UAE bachelor's.</p>
+          <span class="outcome-result">Can proceed with Golden Visa, government jobs, etc.</span>
+        </div>
+
+        <div class="outcome-card partial">
+          <div class="outcome-header">
+            <i class="fas fa-adjust"></i>
+            <h3>Partial Equivalency</h3>
+          </div>
+          <p>Your degree is recognized at a lower level than claimed. For example, a 3-year bachelor's may be equated to a diploma, or a coursework master's to a postgraduate diploma.</p>
+          <span class="outcome-result">May or may not satisfy your specific requirement</span>
+        </div>
+
+        <div class="outcome-card non">
+          <div class="outcome-header">
+            <i class="fas fa-times-circle"></i>
+            <h3>Non-Equivalency</h3>
+          </div>
+          <p>Your degree is not recognized. This typically happens with unaccredited institutions, diploma mills, or degrees that don't meet minimum standards.</p>
+          <span class="outcome-result">Cannot be used for purposes requiring equivalency</span>
+        </div>
+      </div>
+
+      <div class="appeal-note">
+        <i class="fas fa-info-circle"></i>
+        <p>If you receive partial or non-equivalency, you can appeal with additional documentation. Consider consulting with MOHESR directly or an education consultant before appealing.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>How We Help</h2>
+
+      <p>We provide the translation component required for MOHESR equivalency applications.</p>
+
+      <div class="services-grid">
+        <div class="service-item">
+          <i class="fas fa-file-signature"></i>
+          <h4>MOJ-Certified Translation</h4>
+          <p>Arabic translation of degree certificate and transcripts, as required by MOHESR.</p>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-search"></i>
+          <h4>Attestation Verification</h4>
+          <p>We verify your documents have complete attestation before starting translation.</p>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-clock"></i>
+          <h4>Same-Day Service</h4>
+          <p>Standard translation in 24 hours. Express available for urgent applications.</p>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-file-alt"></i>
+          <h4>Complete Package</h4>
+          <p>Degree + transcripts translated together at package rates.</p>
+        </div>
+      </div>
+
+      <div class="help-cta">
+        <h3>Ready to Apply for Equivalency?</h3>
+        <p>Send us your attested degree and transcripts. We provide MOJ-certified translation for your MOHESR application.</p>
+        <a href="https://wa.me/971508620217?text=Hi,%20I%20need%20translation%20for%20MOHESR%20equivalency%20application" class="btn btn-primary">
+          <i class="fab fa-whatsapp"></i> WhatsApp Your Documents
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <RelatedServices
+        pageKey="mohesrEquivalency"
+        title="Related Services"
+        showFamily={true}
+        showCrossSilo={true}
+        maxItems={6}
+      />
+    </div>
+  </section>
+
+  <section class="section bg-light faq-section">
+    <div class="container content-container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p set:html={faq.answer} />
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container cta-section">
+      <h2>Not Sure What You Need?</h2>
+      <p>Tell us your situation and we will advise whether you need just translation or equivalency as well.</p>
+      <a href="https://wa.me/971508620217" class="btn btn-primary">
+        <i class="fab fa-whatsapp"></i> Get Free Advice
+      </a>
+      <div class="related-links">
+        <span>Related guides:</span>
+        <a href="/personal/academic/degree/">Degree Translation</a>
+        <a href="/resources/distance-education-uae/">Distance Education</a>
+        <a href="/resources/attestation-guide/">Attestation Guide</a>
+        <a href="/services/golden-visa-translation/">Golden Visa</a>
+        <a href="/blog/phd-dba-doctorate-translation-uae/">PhD & DBA Guide</a>
+        <a href="/blog/degrees-accepted-uae-work-permit/">Work Permit Degrees</a>
+        <a href="/blog/professional-certificates-vs-degrees-translation/">Certificates vs Degrees</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-section { padding: 8rem 0 4rem; background: var(--primary-color); }
+  .breadcrumb { font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 2rem; }
+  .breadcrumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: #ffffff; }
+  .breadcrumb .separator { margin: 0 0.5rem; color: rgba(255, 255, 255, 0.5); }
+  .breadcrumb .current { color: #ffffff; }
+  h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; margin-bottom: 0.5rem; color: #ffffff; }
+  .hero-subtitle { font-size: 1.25rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+  .hero-intro { color: rgba(255, 255, 255, 0.9); font-size: 1.1rem; line-height: 1.7; max-width: 700px; margin-bottom: 2rem; }
+
+  .quick-answer { background: rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.25rem 1.5rem; max-width: 500px; border-left: 4px solid var(--accent-color); }
+  .quick-answer-header { display: flex; align-items: center; gap: 0.5rem; color: var(--accent-color); font-weight: 600; margin-bottom: 0.5rem; }
+  .quick-answer p { margin: 0; color: rgba(255,255,255,0.95); font-size: 0.95rem; line-height: 1.7; }
+
+  .section { padding: 4rem 0; }
+  .section h2 { font-size: 1.75rem; margin-bottom: 1rem; color: var(--primary-color); }
+  .section h3 { font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-heading); }
+  .section-intro { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; max-width: 700px; }
+  .content-container { max-width: 900px; }
+  .content-container p { line-height: 1.7; margin-bottom: 1rem; }
+
+  /* Comparison Grid */
+  .comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .comparison-card { background: #fff; border-radius: 1rem; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  .comparison-card.translation { border-top: 4px solid var(--accent-color); }
+  .comparison-card.equivalency { border-top: 4px solid #d97706; }
+  .card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+  .card-header i { font-size: 1.5rem; }
+  .comparison-card.translation .card-header i { color: var(--accent-color); }
+  .comparison-card.equivalency .card-header i { color: #d97706; }
+  .card-header h3 { margin: 0; font-size: 1.25rem; }
+  .card-description { color: var(--text-muted); margin-bottom: 1rem; }
+  .card-meta { display: flex; gap: 1.5rem; margin-bottom: 1rem; font-size: 0.9rem; color: var(--text-body); }
+  .card-meta i { margin-right: 0.25rem; color: var(--text-muted); }
+  .comparison-card h4 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin: 1rem 0 0.75rem; }
+  .comparison-card ul { list-style: none; padding: 0; margin: 0; }
+  .comparison-card li { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0; font-size: 0.95rem; }
+  .comparison-card li i { color: var(--state-success-vivid); font-size: 0.8rem; }
+  .card-cta { display: inline-block; margin-top: 1rem; color: var(--accent-color); font-weight: 600; text-decoration: none; }
+  .card-cta:hover { text-decoration: underline; }
+  .card-note { display: block; margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted); font-style: italic; }
+
+  /* Key Insight */
+  .key-insight { display: flex; gap: 1rem; background: #fef3c7; border-left: 4px solid #d97706; padding: 1.25rem 1.5rem; border-radius: 0 0.75rem 0.75rem 0; margin: 2rem 0; }
+  .key-insight > i { color: #d97706; font-size: 1.25rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .key-insight div { line-height: 1.6; }
+
+  /* Use Case Grid */
+  .use-case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .use-case-card { background: #fff; border-radius: 1rem; padding: 1.5rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+  .use-case-icon { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; margin-bottom: 1rem; color: #fff; }
+  .use-case-icon.golden-visa { background: linear-gradient(135deg, #d97706, #f59e0b); }
+  .use-case-icon.government { background: linear-gradient(135deg, #1e40af, #3b82f6); }
+  .use-case-icon.teaching { background: linear-gradient(135deg, #059669, #10b981); }
+  .use-case-icon.engineering { background: linear-gradient(135deg, #7c3aed, #a78bfa); }
+  .use-case-icon.education { background: linear-gradient(135deg, #dc2626, #f87171); }
+  .use-case-icon.healthcare { background: linear-gradient(135deg, #0891b2, #22d3ee); }
+  .use-case-card h3 { margin: 0 0 0.5rem; font-size: 1.1rem; }
+  .use-case-card p { margin: 0; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+  .use-case-card a { display: inline-block; margin-top: 0.75rem; color: var(--accent-color); font-size: 0.9rem; text-decoration: none; }
+  .use-case-card a:hover { text-decoration: underline; }
+
+  /* Sufficient Grid */
+  .sufficient-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 2rem 0; }
+  .sufficient-item { display: flex; gap: 1rem; align-items: flex-start; background: #f0fdf4; padding: 1.25rem; border-radius: 0.75rem; }
+  .sufficient-item > i { font-size: 1.5rem; color: var(--state-success-vivid); flex-shrink: 0; }
+  .sufficient-item h4 { margin: 0 0 0.25rem; font-size: 1rem; }
+  .sufficient-item p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
+
+  /* Translation CTA */
+  .translation-cta { background: #f8f9fa; padding: 2rem; border-radius: 1rem; text-align: center; margin-top: 2rem; }
+  .translation-cta h3 { margin: 0 0 0.5rem; }
+  .translation-cta p { margin: 0 0 1rem; color: var(--text-muted); }
+  .btn-secondary { background: var(--primary-color); color: #fff; padding: 0.75rem 1.5rem; border-radius: 0.5rem; text-decoration: none; display: inline-block; font-weight: 600; }
+  .btn-secondary:hover { background: #0a1e3a; }
+
+  /* Process Timeline */
+  .process-timeline { position: relative; padding-left: 2rem; }
+  .process-timeline::before { content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 2px; background: #e5e7eb; }
+  .timeline-item { position: relative; padding-bottom: 2rem; }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-marker { position: absolute; left: -2rem; width: 32px; height: 32px; background: var(--primary-color); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; }
+  .timeline-content { background: #fff; padding: 1.25rem; border-radius: 0.75rem; margin-left: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+  .timeline-content h4 { margin: 0 0 0.5rem; font-size: 1.1rem; }
+  .timeline-content p { margin: 0; color: var(--text-muted); line-height: 1.6; }
+  .timeline-content a { display: inline-block; margin-top: 0.5rem; color: var(--accent-color); font-size: 0.9rem; text-decoration: none; }
+  .timeline-content a:hover { text-decoration: underline; }
+
+  /* Documents Table */
+  .table-wrapper { overflow-x: auto; margin: 1.5rem 0; }
+  .documents-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 0.75rem; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+  .documents-table th { background: var(--primary-color); color: #fff; padding: 1rem; text-align: left; font-weight: 600; }
+  .documents-table td { padding: 1rem; border-bottom: 1px solid #f0f0f0; }
+  .documents-table .notes { font-size: 0.9rem; color: var(--text-muted); }
+
+  /* Additional Docs */
+  .additional-docs { background: #f8f9fa; padding: 1.5rem; border-radius: 0.75rem; margin-top: 1.5rem; }
+  .additional-docs h3 { margin: 0 0 1rem; font-size: 1.1rem; }
+  .additional-docs ul { margin: 0; padding-left: 1.25rem; }
+  .additional-docs li { margin-bottom: 0.5rem; line-height: 1.5; }
+
+  /* Outcome Grid */
+  .outcome-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .outcome-card { background: #fff; border-radius: 1rem; padding: 1.5rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+  .outcome-card.full { border-top: 4px solid var(--state-success-vivid); }
+  .outcome-card.partial { border-top: 4px solid #d97706; }
+  .outcome-card.non { border-top: 4px solid var(--state-danger); }
+  .outcome-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+  .outcome-header i { font-size: 1.25rem; }
+  .outcome-card.full .outcome-header i { color: var(--state-success-vivid); }
+  .outcome-card.partial .outcome-header i { color: #d97706; }
+  .outcome-card.non .outcome-header i { color: var(--state-danger); }
+  .outcome-header h3 { margin: 0; font-size: 1.1rem; }
+  .outcome-card p { margin: 0 0 1rem; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+  .outcome-result { display: block; font-size: 0.85rem; font-weight: 600; padding: 0.5rem 0.75rem; border-radius: 0.5rem; }
+  .outcome-card.full .outcome-result { background: #f0fdf4; color: var(--state-success-vivid); }
+  .outcome-card.partial .outcome-result { background: #fff7ed; color: #c2410c; }
+  .outcome-card.non .outcome-result { background: #fef2f2; color: var(--state-danger); }
+
+  /* Appeal Note */
+  .appeal-note { display: flex; gap: 1rem; background: #e6f7ff; padding: 1.25rem 1.5rem; border-radius: 0.75rem; margin-top: 1.5rem; }
+  .appeal-note > i { color: #0077b6; font-size: 1.25rem; flex-shrink: 0; }
+  .appeal-note p { margin: 0; line-height: 1.6; }
+
+  /* Services Grid */
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .service-item { text-align: center; }
+  .service-item > i { font-size: 2rem; color: var(--accent-color); margin-bottom: 0.75rem; }
+  .service-item h4 { margin: 0 0 0.5rem; font-size: 1rem; }
+  .service-item p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
+
+  /* Help CTA */
+  .help-cta { background: var(--primary-color); color: #fff; padding: 2rem; border-radius: 1rem; text-align: center; margin-top: 2rem; }
+  .help-cta h3 { margin: 0 0 0.5rem; color: #fff; }
+  .help-cta p { margin: 0 0 1.5rem; opacity: 0.9; }
+
+  /* FAQ Section */
+  .faq-section h2 { margin-bottom: 2rem; }
+  .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { background: #fff; border-radius: 0.75rem; border: 1px solid rgba(0,0,0,0.08); overflow: hidden; }
+  .faq-question { padding: 1.25rem 1.5rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; font-size: 1.5rem; color: var(--accent-color); transition: transform 0.2s; }
+  details[open] .faq-question::after { content: '−'; }
+  .faq-answer { padding: 0 1.5rem 1.25rem; }
+  .faq-answer p { margin: 0; line-height: 1.7; color: var(--text-body); }
+  .faq-answer a { color: var(--accent-color); }
+
+  /* CTA Section */
+  .cta-section { text-align: center; max-width: 600px; margin: 0 auto; }
+  .cta-section h2 { margin-bottom: 1rem; }
+  .cta-section > p { margin-bottom: 2rem; color: var(--text-muted); }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
+  .btn-primary { background: var(--accent-color); color: #ffffff; }
+  .btn-primary:hover { background: #e0144c; transform: translateY(-2px); }
+  .related-links { margin-top: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; font-size: 0.9rem; }
+  .related-links span { color: var(--text-muted); }
+  .related-links a { color: var(--primary-color); text-decoration: none; }
+  .related-links a:hover { color: var(--accent-color); text-decoration: underline; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .comparison-grid { grid-template-columns: 1fr; }
+    .sufficient-grid { grid-template-columns: 1fr; }
+  }
+</style>

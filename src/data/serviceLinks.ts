@@ -465,6 +465,52 @@ export const serviceLinks: Record<string, ServiceLink> = {
     full: "Complete guide to authenticated translation in UAE",
     icon: "fas fa-stamp"
   },
+  distanceEducation: {
+    url: "/resources/distance-education-uae/",
+    text: "Distance Education Guide",
+    full: "Are distance education degrees valid in UAE?",
+    icon: "fas fa-laptop",
+    badge: "NEW"
+  },
+  mohesrEquivalency: {
+    url: "/resources/mohesr-equivalency/",
+    text: "MOHESR Equivalency Guide",
+    full: "MOHESR equivalency vs translation explained",
+    icon: "fas fa-certificate",
+    badge: "NEW"
+  },
+
+  // ========================================
+  // BLOG POSTS (Academic Cluster)
+  // ========================================
+  phdDbaTranslation: {
+    url: "/blog/phd-dba-doctorate-translation-uae/",
+    text: "PhD & DBA Translation",
+    full: "PhD, DBA & Doctorate translation requirements by authority",
+    icon: "fas fa-user-graduate",
+    badge: "NEW"
+  },
+  degreesWorkPermit: {
+    url: "/blog/degrees-accepted-uae-work-permit/",
+    text: "Degrees for Work Permits",
+    full: "Types of degrees accepted for UAE work permits",
+    icon: "fas fa-briefcase",
+    badge: "NEW"
+  },
+  studyGapGuide: {
+    url: "/blog/study-gap-uae-employment/",
+    text: "Study Gap Guide",
+    full: "Study gaps and UAE employment explained",
+    icon: "fas fa-history",
+    badge: "NEW"
+  },
+  professionalCertsVsDegrees: {
+    url: "/blog/professional-certificates-vs-degrees-translation/",
+    text: "Certificates vs Degrees",
+    full: "Professional certificates vs academic degrees translation",
+    icon: "fas fa-certificate",
+    badge: "NEW"
+  },
 
   // ========================================
   // INDUSTRIES
@@ -634,7 +680,7 @@ export const pageRelationships: Record<string, PageRelationships> = {
     crossSilo: ["goldenVisa", "immigration", "medical", "dhaDataflow"],
     locations: ["dubai", "abuDhabi"],
     attestation: ["indiaAttestation", "ukAttestation", "usAttestation", "philippinesAttestation"],
-    resources: ["documentChecklist", "attestationGuide", "mojVsCertified", "pricingGuide"],
+    resources: ["documentChecklist", "attestationGuide", "mojVsCertified", "pricingGuide", "distanceEducation", "mohesrEquivalency", "phdDbaTranslation", "degreesWorkPermit", "studyGapGuide", "professionalCertsVsDegrees"],
     trust: ["credentials", "translator", "reviews", "caseStudies"]
   },
   transcripts: {
@@ -973,6 +1019,46 @@ export const pageRelationships: Record<string, PageRelationships> = {
     related: ["mojVsCertified", "legalTranslation", "attestation", "mofaAttestation", "certificateTranslation"],
     family: ["mojVsCertified", "attestationGuide", "pricingGuide"],
     crossSilo: ["goldenVisa", "birthCertificate", "marriageCertificate", "degree", "pcc", "poa", "contracts"]
+  },
+  distanceEducation: {
+    related: ["degree", "transcripts", "mohesrEquivalency", "attestationGuide", "phdDbaTranslation", "degreesWorkPermit"],
+    family: ["mohesrEquivalency", "attestationGuide", "phdDbaTranslation", "degreesWorkPermit"],
+    crossSilo: ["goldenVisa", "degree", "immigration", "dhaDataflow"],
+    resources: ["attestationGuide", "documentChecklist", "pricingGuide", "phdDbaTranslation", "degreesWorkPermit"]
+  },
+  mohesrEquivalency: {
+    related: ["degree", "transcripts", "distanceEducation", "goldenVisa", "attestationGuide", "phdDbaTranslation", "degreesWorkPermit"],
+    family: ["distanceEducation", "attestationGuide", "phdDbaTranslation", "degreesWorkPermit"],
+    crossSilo: ["goldenVisa", "degree", "immigration", "dhaDataflow"],
+    resources: ["attestationGuide", "documentChecklist", "pricingGuide", "phdDbaTranslation", "degreesWorkPermit"]
+  },
+
+  // ========================================
+  // BLOG POSTS (Academic Cluster)
+  // ========================================
+  phdDbaTranslation: {
+    related: ["degree", "transcripts", "mohesrEquivalency", "distanceEducation", "goldenVisa", "dhaDataflow"],
+    family: ["degreesWorkPermit", "distanceEducation", "mohesrEquivalency"],
+    crossSilo: ["goldenVisa", "attestation", "immigration", "medical"],
+    resources: ["mohesrEquivalency", "distanceEducation", "attestationGuide", "documentChecklist"]
+  },
+  degreesWorkPermit: {
+    related: ["degree", "transcripts", "mohesrEquivalency", "distanceEducation", "phdDbaTranslation", "dhaDataflow", "studyGapGuide", "professionalCertsVsDegrees"],
+    family: ["phdDbaTranslation", "distanceEducation", "mohesrEquivalency", "studyGapGuide", "professionalCertsVsDegrees"],
+    crossSilo: ["goldenVisa", "attestation", "immigration"],
+    resources: ["mohesrEquivalency", "distanceEducation", "attestationGuide", "documentChecklist"]
+  },
+  studyGapGuide: {
+    related: ["degree", "transcripts", "degreesWorkPermit", "goldenVisa", "mohesrEquivalency"],
+    family: ["degreesWorkPermit", "phdDbaTranslation", "professionalCertsVsDegrees"],
+    crossSilo: ["goldenVisa", "attestation", "immigration", "dhaDataflow"],
+    resources: ["mohesrEquivalency", "distanceEducation", "attestationGuide"]
+  },
+  professionalCertsVsDegrees: {
+    related: ["degree", "transcripts", "degreesWorkPermit", "attestation", "mojVsCertified"],
+    family: ["degreesWorkPermit", "phdDbaTranslation", "studyGapGuide"],
+    crossSilo: ["goldenVisa", "attestation", "dhaDataflow"],
+    resources: ["mojVsCertified", "attestationGuide", "documentChecklist"]
   },
 
   // ========================================

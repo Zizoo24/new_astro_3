@@ -1,0 +1,524 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+
+const faqs = [
+  {
+    question: "Are distance education degrees valid for UAE work permits?",
+    answer: "Yes, but with conditions. MOHRE accepts distance education degrees from accredited universities recognized by the issuing country's education ministry. The degree must be <a href='/resources/attestation-guide/'>attested through the standard chain</a> (apostille/authentication → UAE Embassy → MOFA), then <a href='/personal/academic/degree/'>translated by an MOJ-certified translator</a>. Online degrees from unaccredited institutions or diploma mills are rejected."
+  },
+  {
+    question: "Does MOHRE accept online degrees?",
+    answer: "MOHRE accepts online degrees if: (1) the university is accredited in its home country, (2) the degree is recognized by the home country's education ministry, and (3) proper <a href='/services/attestation/'>attestation is completed</a>. The degree certificate itself does not need to state whether it was earned online or in-person—what matters is the institution's accreditation status."
+  },
+  {
+    question: "Are Open University degrees accepted in UAE?",
+    answer: "UK Open University degrees are accepted by MOHRE because the Open University is a fully accredited UK institution. For <a href='/services/attestation/uk/'>UK degree attestation</a>, you need an FCDO apostille, UAE Embassy attestation, and MOFA. Similarly, IGNOU (India) with <a href='/services/attestation/india/'>MEA apostille</a> and other government-recognized open universities are accepted."
+  },
+  {
+    question: "Will my distance learning degree need MOHESR equivalency?",
+    answer: "For most private sector employment, no—only <a href='/personal/academic/degree/'>MOJ-certified translation</a> is required. <a href='/resources/mohesr-equivalency/'>MOHESR equivalency</a> is needed for: government jobs, <a href='/services/golden-visa-translation/'>Golden Visa</a> (skilled category), teaching positions, and some professional licensing like <a href='/specialized/medical/dha-dataflow/'>DHA healthcare licensing</a>."
+  },
+  {
+    question: "Can I get a Golden Visa with a distance education degree?",
+    answer: "Potentially yes. <a href='/services/golden-visa-translation/'>Golden Visa skilled employee category</a> requires a bachelor's degree or higher from an accredited institution, plus <a href='/resources/mohesr-equivalency/'>MOHESR equivalency</a>. Distance education degrees that receive MOHESR equivalency are accepted. See our <a href='/resources/golden-visa-checklist/'>Golden Visa document checklist</a> for complete requirements."
+  },
+  {
+    question: "How do I prove my online degree is accredited?",
+    answer: "The <a href='/resources/attestation-guide/'>attestation chain</a> itself serves as proof of accreditation. When your home country's education ministry (or MEA/MOFA) authenticates the degree, they verify the issuing institution. For <a href='/services/attestation/india/'>Indian degrees</a>, MEA apostille confirms UGC recognition. For <a href='/services/attestation/us/'>US degrees</a>, state authentication confirms regional accreditation."
+  },
+  {
+    question: "Are correspondence degrees the same as distance education?",
+    answer: "Yes, for UAE purposes 'correspondence,' 'distance learning,' and 'online' degrees are treated the same way. What matters is whether the issuing institution is accredited. Older correspondence degrees from established universities (like those from Indian universities' distance education programs) are accepted if properly <a href='/services/attestation/india/'>attested through MEA</a>."
+  },
+  {
+    question: "What if my degree says 'Distance Education' on it?",
+    answer: "This does not affect acceptance for most purposes. MOHRE does not distinguish between distance and regular degrees on the certificate itself. Our <a href='/personal/academic/degree/'>degree translation service</a> translates exactly what appears on your certificate. Some employers may have their own policies, but legally, an attested degree from an accredited institution is valid."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Are Distance Education Degrees Valid in UAE?",
+  "description": "Complete guide to using distance education, online, and correspondence degrees for UAE employment. MOHRE requirements, attestation process, and common rejection reasons explained.",
+  "author": {
+    "@type": "Organization",
+    "name": "OnlineTranslation.ae"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "OnlineTranslation.ae",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://onlinetranslation.ae/assets/images/logo/brand/emblem-256.png"
+    }
+  },
+  "datePublished": "2026-01-26",
+  "dateModified": "2026-01-26"
+};
+
+const acceptedInstitutions = [
+  { type: "UK Open Universities", examples: "Open University (OU), University of London International Programmes", status: "Accepted" },
+  { type: "Indian Distance Education", examples: "IGNOU, state university distance programs (accredited by DEB)", status: "Accepted" },
+  { type: "US Online Degrees", examples: "Regionally accredited universities (WGU, SNHU, ASU Online)", status: "Accepted" },
+  { type: "Philippine ODL Programs", examples: "UP Open University, PNU, accredited HEI distance programs", status: "Accepted" },
+  { type: "Unaccredited Online Schools", examples: "Diploma mills, non-recognized institutions", status: "Rejected" },
+  { type: "Professional Certifications", examples: "Non-degree certifications, bootcamps, short courses", status: "Case-by-case" }
+];
+
+const rejectionReasons = [
+  { reason: "Institution not accredited", solution: "Verify accreditation before enrollment. Check with home country education ministry." },
+  { reason: "Attestation incomplete", solution: "Complete full chain: apostille → UAE Embassy → MOFA. All steps required." },
+  { reason: "Name mismatch on documents", solution: "Ensure name on degree matches passport exactly. Get corrections before attestation." },
+  { reason: "University closed/delisted", solution: "Obtain verification letter from successor institution or education ministry." },
+  { reason: "Degree not recognized by home country", solution: "Some online degrees lack home country recognition. Verify before using in UAE." }
+];
+---
+
+<BaseLayout
+  title="Are Distance Education Degrees Valid in UAE? | MOHRE Guide 2026"
+  description="Find out if online and distance learning degrees are accepted by MOHRE for UAE work permits. Attestation and translation requirements for distance education explained."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  </Fragment>
+
+  <section class="hero-section bg-dark" data-theme="dark">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">HOME</a>
+        <span class="separator">&gt;</span>
+        <a href="/resources/">RESOURCES</a>
+        <span class="separator">&gt;</span>
+        <span class="current">DISTANCE EDUCATION UAE</span>
+      </nav>
+
+      <h1>Are Distance Education Degrees Valid in UAE?</h1>
+      <p class="hero-subtitle">MOHRE, Golden Visa & Employment Requirements</p>
+      <p class="hero-intro">Yes, distance education degrees are valid for UAE employment—if they meet specific accreditation and attestation requirements. This guide explains what MOHRE actually requires and how to avoid common rejection reasons.</p>
+
+      <div class="quick-answer">
+        <div class="quick-answer-header">
+          <i class="fas fa-bolt"></i>
+          <span>Quick Answer</span>
+        </div>
+        <p><strong>Distance education degrees are accepted by MOHRE</strong> if the issuing institution is accredited by the home country's education ministry. The degree must complete the standard attestation chain before translation. Mode of study (online, distance, correspondence) does not affect validity.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>What MOHRE Actually Requires</h2>
+
+      <p>The Ministry of Human Resources and Emiratisation (MOHRE) does not distinguish between degrees earned through classroom attendance or distance learning. Their requirements are:</p>
+
+      <div class="requirements-grid">
+        <div class="requirement-card">
+          <div class="requirement-icon"><i class="fas fa-university"></i></div>
+          <h3>Accredited Institution</h3>
+          <p>The university must be officially recognized by the education ministry in the country where it operates. This is verified through the attestation process.</p>
+        </div>
+        <div class="requirement-card">
+          <div class="requirement-icon"><i class="fas fa-stamp"></i></div>
+          <h3>Complete Attestation</h3>
+          <p>The degree must complete the full authentication chain: home country apostille/attestation → UAE Embassy → MOFA UAE. No shortcuts.</p>
+        </div>
+        <div class="requirement-card">
+          <div class="requirement-icon"><i class="fas fa-language"></i></div>
+          <h3>MOJ-Certified Translation</h3>
+          <p>After attestation, the degree needs <a href="/personal/academic/degree/">MOJ-certified translation</a> for MOHRE submission.</p>
+        </div>
+      </div>
+
+      <div class="info-callout">
+        <i class="fas fa-info-circle"></i>
+        <div>
+          <strong>The attestation process itself verifies accreditation.</strong> When your home country's education ministry grants authentication, they confirm the institution is recognized. If your degree gets attested, it has passed the accreditation check.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Which Distance Education Degrees Are Accepted?</h2>
+      <p class="section-intro">The key factor is institutional accreditation, not study mode.</p>
+
+      <div class="table-wrapper">
+        <table class="status-table">
+          <thead>
+            <tr>
+              <th>Institution Type</th>
+              <th>Examples</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {acceptedInstitutions.map(item => (
+              <tr>
+                <td><strong>{item.type}</strong></td>
+                <td>{item.examples}</td>
+                <td>
+                  <span class={`status-badge ${item.status.toLowerCase()}`}>
+                    {item.status}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Specifically Accepted Examples</h3>
+      <div class="example-grid">
+        <div class="example-card accepted">
+          <h4><i class="fas fa-check-circle"></i> UK Open University</h4>
+          <p>Fully accredited UK institution. OU degrees are recognized worldwide and accepted by MOHRE. See <a href="/services/attestation/uk/">UK attestation requirements</a>.</p>
+        </div>
+        <div class="example-card accepted">
+          <h4><i class="fas fa-check-circle"></i> IGNOU (India)</h4>
+          <p>Government university under UGC. IGNOU degrees with proper <a href="/services/attestation/india/">MEA apostille</a> are accepted for UAE employment.</p>
+        </div>
+        <div class="example-card accepted">
+          <h4><i class="fas fa-check-circle"></i> US Regionally Accredited Online</h4>
+          <p>Universities like WGU, SNHU, or ASU Online with regional accreditation are valid. See <a href="/services/attestation/us/">US attestation process</a>.</p>
+        </div>
+        <div class="example-card rejected">
+          <h4><i class="fas fa-times-circle"></i> Unaccredited Online Schools</h4>
+          <p>Diploma mills, unrecognized institutions, and "life experience" degrees are rejected. <a href="/resources/attestation-guide/">Attestation</a> will be denied.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Attestation Process for Distance Education Degrees</h2>
+      <p class="section-intro">The process is identical to regular degrees. No special handling required.</p>
+
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>Home Country Authentication</h4>
+            <p>Get your degree attested by the education ministry or MEA (for Hague countries). For <a href="/services/attestation/india/">India: MEA apostille</a>. For <a href="/services/attestation/pakistan/">Pakistan: HEC then MOFA</a>. For <a href="/services/attestation/uk/">UK: FCDO apostille</a>. For <a href="/services/attestation/us/">USA: State Secretary + federal apostille</a>.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>UAE Embassy Attestation</h4>
+            <p>Submit the authenticated degree to the UAE Embassy in your home country. This step is required even for Hague member countries since <a href="/resources/attestation-guide/">UAE is not a Hague member</a>.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>MOFA UAE Attestation</h4>
+            <p>Final <a href="/services/attestation/mofa/">MOFA attestation</a> in UAE. Can be done after arrival. Takes 1-3 business days at MOFA service centers.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h4>MOJ-Certified Translation</h4>
+            <p>After attestation, get <a href="/personal/academic/degree/">MOJ-certified translation</a> for MOHRE submission. We deliver in 24 hours or less. Need <a href="/personal/academic/transcripts/">transcripts translated</a> too? We offer package rates.</p>
+          </div>
+        </div>
+      </div>
+
+      <p>For detailed country-specific steps, see our <a href="/resources/attestation-guide/">complete attestation guide</a>. Also review our <a href="/resources/document-checklist/">document checklist</a> before starting the process.</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Common Rejection Reasons and Solutions</h2>
+
+      <div class="rejection-grid">
+        {rejectionReasons.map(item => (
+          <div class="rejection-card">
+            <div class="rejection-reason">
+              <i class="fas fa-times-circle"></i>
+              <span>{item.reason}</span>
+            </div>
+            <div class="rejection-solution">
+              <i class="fas fa-check-circle"></i>
+              <span>{item.solution}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Distance Education and Golden Visa</h2>
+
+      <p>The <a href="/services/golden-visa-translation/">Golden Visa skilled employee category</a> requires a bachelor's degree or higher plus <a href="/resources/mohesr-equivalency/">MOHESR equivalency</a>. Distance education degrees can qualify, but face additional scrutiny. Review our <a href="/resources/golden-visa-checklist/">Golden Visa document checklist</a> for complete requirements.</p>
+
+      <div class="golden-visa-box">
+        <h3>MOHESR Equivalency for Distance Degrees</h3>
+        <p><a href="/resources/mohesr-equivalency/">MOHESR</a> evaluates distance education degrees on these factors:</p>
+        <ul>
+          <li><strong>Institution reputation:</strong> Well-known universities (OU, IGNOU) have smoother processing</li>
+          <li><strong>Program structure:</strong> Programs with supervised examinations are preferred</li>
+          <li><strong>Accreditation body:</strong> Regional accreditation (US) or government recognition required</li>
+          <li><strong>Study duration:</strong> Programs with standard duration (3-4 years bachelor's) are less scrutinized</li>
+        </ul>
+        <p class="note">MOHESR may request additional documentation including <a href="/personal/academic/transcripts/">transcripts</a>, course syllabi, or examination records.</p>
+      </div>
+
+      <div class="comparison-table">
+        <div class="comparison-col">
+          <h4>Likely to Receive Equivalency</h4>
+          <ul>
+            <li><a href="/services/attestation/uk/">UK Open University degrees</a></li>
+            <li><a href="/services/attestation/india/">IGNOU degrees with MEA apostille</a></li>
+            <li><a href="/services/attestation/us/">US regionally accredited online degrees</a></li>
+            <li>Distance programs from established universities</li>
+          </ul>
+        </div>
+        <div class="comparison-col warning">
+          <h4>May Face Challenges</h4>
+          <ul>
+            <li>Degrees with no supervised examinations</li>
+            <li>Accelerated programs (e.g., 1-year bachelor's)</li>
+            <li>Nationally accredited US institutions</li>
+            <li>Recently established online-only schools</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>For <a href="/services/golden-visa-translation/">Golden Visa applications</a>, we recommend consulting with MOHESR or an immigration consultant before beginning the process with a distance education degree. Also see our <a href="/resources/golden-visa-attestation-guide/">Golden Visa attestation guide</a>.</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Translation Requirements for Distance Education Degrees</h2>
+
+      <p>After attestation, your distance education degree needs <a href="/personal/academic/degree/">MOJ-certified translation</a> for MOHRE submission. The translation process is identical to regular degrees.</p>
+
+      <div class="translation-info">
+        <h3>What We Translate</h3>
+        <ul>
+          <li>Degree title and field of study (exactly as stated)</li>
+          <li>Institution name (verified transliteration)</li>
+          <li>Graduate name (matched to passport)</li>
+          <li>Date of conferral</li>
+          <li>Any honors or classifications shown</li>
+          <li>Attestation stamps (described in translation)</li>
+        </ul>
+
+        <h3>We Do Not Modify</h3>
+        <ul>
+          <li>If certificate says "Distance Education" → translated as stated</li>
+          <li>If certificate says "Online Program" → translated as stated</li>
+          <li>Mode of study notation does not affect MOHRE acceptance</li>
+        </ul>
+      </div>
+
+      <div class="service-cta">
+        <h3>Need Your Distance Education Degree Translated?</h3>
+        <p>Same-day MOJ-certified translation. We verify attestation status before starting.</p>
+        <a href="https://wa.me/971508620217?text=Hi,%20I%20need%20my%20distance%20education%20degree%20translated" class="btn btn-primary">
+          <i class="fab fa-whatsapp"></i> WhatsApp Your Degree
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <RelatedServices
+        pageKey="distanceEducation"
+        title="Related Services"
+        showFamily={true}
+        showCrossSilo={true}
+        maxItems={6}
+      />
+    </div>
+  </section>
+
+  <section class="section bg-light faq-section">
+    <div class="container content-container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container cta-section">
+      <h2>Questions About Your Distance Degree?</h2>
+      <p>Send us your degree certificate. We will verify attestation status and advise on the translation process for your specific situation.</p>
+      <a href="https://wa.me/971508620217" class="btn btn-primary">
+        <i class="fab fa-whatsapp"></i> Get Free Advice
+      </a>
+      <div class="related-links">
+        <span>Related guides:</span>
+        <a href="/personal/academic/degree/">Degree Translation</a>
+        <a href="/resources/attestation-guide/">Attestation Guide</a>
+        <a href="/resources/mohesr-equivalency/">MOHESR Equivalency</a>
+        <a href="/services/golden-visa-translation/">Golden Visa Documents</a>
+        <a href="/blog/phd-dba-doctorate-translation-uae/">PhD & DBA Guide</a>
+        <a href="/blog/degrees-accepted-uae-work-permit/">Work Permit Degrees</a>
+        <a href="/blog/study-gap-uae-employment/">Study Gaps Guide</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-section { padding: 8rem 0 4rem; background: var(--primary-color); }
+  .breadcrumb { font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 2rem; }
+  .breadcrumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: #ffffff; }
+  .breadcrumb .separator { margin: 0 0.5rem; color: rgba(255, 255, 255, 0.5); }
+  .breadcrumb .current { color: #ffffff; }
+  h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; margin-bottom: 0.5rem; color: #ffffff; }
+  .hero-subtitle { font-size: 1.25rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+  .hero-intro { color: rgba(255, 255, 255, 0.9); font-size: 1.1rem; line-height: 1.7; max-width: 700px; margin-bottom: 2rem; }
+
+  .quick-answer { background: rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.25rem 1.5rem; max-width: 650px; border-left: 4px solid var(--accent-color); }
+  .quick-answer-header { display: flex; align-items: center; gap: 0.5rem; color: var(--accent-color); font-weight: 600; margin-bottom: 0.5rem; }
+  .quick-answer p { margin: 0; color: rgba(255,255,255,0.95); font-size: 0.95rem; line-height: 1.6; }
+
+  .section { padding: 4rem 0; }
+  .section h2 { font-size: 1.75rem; margin-bottom: 1rem; color: var(--primary-color); }
+  .section h3 { font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--text-heading); }
+  .section-intro { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; max-width: 700px; }
+  .content-container { max-width: 900px; }
+  .content-container p { line-height: 1.7; margin-bottom: 1rem; }
+
+  /* Requirements Grid */
+  .requirements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .requirement-card { background: #f8f9fa; border-radius: 1rem; padding: 1.5rem; text-align: center; }
+  .requirement-icon { width: 60px; height: 60px; background: var(--primary-color); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 1rem; }
+  .requirement-card h3 { font-size: 1.1rem; margin: 0 0 0.5rem; }
+  .requirement-card p { margin: 0; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+  .requirement-card a { color: var(--accent-color); }
+
+  /* Info Callout */
+  .info-callout { display: flex; gap: 1rem; background: #e6f7ff; border-left: 4px solid #0077b6; padding: 1.25rem 1.5rem; border-radius: 0 0.75rem 0.75rem 0; margin: 2rem 0; }
+  .info-callout > i { color: #0077b6; font-size: 1.25rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .info-callout div { line-height: 1.6; }
+
+  /* Status Table */
+  .table-wrapper { overflow-x: auto; margin-bottom: 2rem; }
+  .status-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 0.75rem; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+  .status-table th { background: var(--primary-color); color: #fff; padding: 1rem; text-align: left; font-weight: 600; }
+  .status-table td { padding: 1rem; border-bottom: 1px solid #f0f0f0; }
+  .status-badge { padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+  .status-badge.accepted { background: var(--surface-success); color: var(--state-success-vivid); }
+  .status-badge.rejected { background: var(--surface-danger); color: var(--state-danger); }
+  .status-badge.case-by-case { background: #fff3cd; color: #856404; }
+
+  /* Example Grid */
+  .example-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .example-card { padding: 1.25rem; border-radius: 0.75rem; }
+  .example-card.accepted { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .example-card.rejected { background: #fef2f2; border: 1px solid #fecaca; }
+  .example-card h4 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.5rem; font-size: 1rem; }
+  .example-card.accepted h4 { color: var(--state-success-vivid); }
+  .example-card.rejected h4 { color: var(--state-danger); }
+  .example-card p { margin: 0; font-size: 0.9rem; line-height: 1.5; }
+
+  /* Process Steps */
+  .process-steps { display: flex; flex-direction: column; gap: 1rem; margin: 2rem 0; }
+  .process-step { display: flex; gap: 1.25rem; align-items: flex-start; background: #fff; padding: 1.5rem; border-radius: 0.75rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+  .step-number { width: 40px; height: 40px; background: var(--primary-color); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+  .step-content h4 { margin: 0 0 0.5rem; font-size: 1.1rem; }
+  .step-content p { margin: 0; color: var(--text-muted); line-height: 1.6; }
+  .step-content a { color: var(--accent-color); }
+
+  /* Rejection Grid */
+  .rejection-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+  .rejection-card { background: #fff; border-radius: 0.75rem; padding: 1.25rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+  .rejection-reason { display: flex; align-items: center; gap: 0.75rem; color: var(--state-danger); font-weight: 600; margin-bottom: 0.75rem; }
+  .rejection-solution { display: flex; align-items: flex-start; gap: 0.75rem; color: var(--state-success-vivid); font-size: 0.9rem; }
+  .rejection-solution i { margin-top: 0.2rem; }
+
+  /* Golden Visa Box */
+  .golden-visa-box { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 1rem; padding: 2rem; margin: 2rem 0; border-left: 4px solid #d97706; }
+  .golden-visa-box h3 { margin: 0 0 1rem; color: #92400e; }
+  .golden-visa-box ul { margin: 1rem 0; padding-left: 1.25rem; }
+  .golden-visa-box li { margin-bottom: 0.5rem; line-height: 1.6; }
+  .golden-visa-box .note { font-size: 0.9rem; color: #92400e; margin: 1rem 0 0; font-style: italic; }
+
+  /* Comparison Table */
+  .comparison-table { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; }
+  .comparison-col { background: #f0fdf4; padding: 1.5rem; border-radius: 0.75rem; }
+  .comparison-col.warning { background: #fff7ed; }
+  .comparison-col h4 { margin: 0 0 1rem; font-size: 1rem; color: var(--state-success-vivid); }
+  .comparison-col.warning h4 { color: #c2410c; }
+  .comparison-col ul { margin: 0; padding-left: 1.25rem; }
+  .comparison-col li { margin-bottom: 0.4rem; }
+
+  /* Translation Info */
+  .translation-info { background: #fff; padding: 2rem; border-radius: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin: 2rem 0; }
+  .translation-info h3 { margin: 0 0 1rem; font-size: 1.1rem; color: var(--primary-color); }
+  .translation-info h3:not(:first-child) { margin-top: 1.5rem; }
+  .translation-info ul { margin: 0; padding-left: 1.25rem; }
+  .translation-info li { margin-bottom: 0.4rem; line-height: 1.5; }
+
+  /* Service CTA */
+  .service-cta { background: var(--primary-color); color: #fff; padding: 2rem; border-radius: 1rem; text-align: center; margin-top: 2rem; }
+  .service-cta h3 { margin: 0 0 0.5rem; color: #fff; }
+  .service-cta p { margin: 0 0 1.5rem; opacity: 0.9; }
+
+  /* FAQ Section */
+  .faq-section h2 { margin-bottom: 2rem; }
+  .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { background: #fff; border-radius: 0.75rem; border: 1px solid rgba(0,0,0,0.08); overflow: hidden; }
+  .faq-question { padding: 1.25rem 1.5rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; font-size: 1.5rem; color: var(--accent-color); transition: transform 0.2s; }
+  details[open] .faq-question::after { content: '−'; }
+  .faq-answer { padding: 0 1.5rem 1.25rem; }
+  .faq-answer p { margin: 0; line-height: 1.7; color: var(--text-body); }
+
+  /* CTA Section */
+  .cta-section { text-align: center; max-width: 600px; margin: 0 auto; }
+  .cta-section h2 { margin-bottom: 1rem; }
+  .cta-section > p { margin-bottom: 2rem; color: var(--text-muted); }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
+  .btn-primary { background: var(--accent-color); color: #ffffff; }
+  .btn-primary:hover { background: #e0144c; transform: translateY(-2px); }
+  .related-links { margin-top: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; font-size: 0.9rem; }
+  .related-links span { color: var(--text-muted); }
+  .related-links a { color: var(--primary-color); text-decoration: none; }
+  .related-links a:hover { color: var(--accent-color); text-decoration: underline; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .comparison-table { grid-template-columns: 1fr; }
+    .requirements-grid { grid-template-columns: 1fr; }
+  }
+</style>
