@@ -220,6 +220,12 @@ function buildSearchIndex() {
     { title: 'Abu Dhabi', url: '/locations/abu-dhabi/', category: 'Locations', keywords: 'abu dhabi capital uae translation adgm government' },
     { title: 'Sharjah', url: '/locations/sharjah/', category: 'Locations', keywords: 'sharjah emirate translation services saif zone' },
     { title: 'Sharjah Tenancy Contract Translation', url: '/locations/sharjah/tenancy-translation/', category: 'Locations', keywords: 'sharjah tenancy rental contract translation municipality 4 percent fee landlord tenant ejari' },
+    { title: 'Distance Education UAE Recognition Guide', url: '/resources/distance-education-uae/', category: 'Resources', keywords: 'distance education online degree recognition mohesr attestation uae employment remote learning accreditation' },
+    { title: 'MOHESR Degree Equivalency Guide', url: '/resources/mohesr-equivalency/', category: 'Resources', keywords: 'mohesr equivalency degree certificate foreign qualification recognition uae ministry higher education attestation' },
+    { title: 'PhD and DBA Translation for UAE', url: '/blog/phd-dba-doctorate-translation-uae/', category: 'Blog', keywords: 'phd dba doctorate translation uae healthcare academic executive doctoral degree licensing dha' },
+    { title: 'Degrees Accepted for UAE Work Permits', url: '/blog/degrees-accepted-uae-work-permit/', category: 'Blog', keywords: 'degrees accepted uae work permit mohre recognized universities equivalency employment visa' },
+    { title: 'Study Gap and UAE Employment', url: '/blog/study-gap-uae-employment/', category: 'Blog', keywords: 'study gap uae employment hr verification academic history work permit mohre career break' },
+    { title: 'Professional Certificates vs Degrees Translation', url: '/blog/professional-certificates-vs-degrees-translation/', category: 'Blog', keywords: 'professional certificates degrees translation cpa acca pmp cisco moj certification uae' },
   ];
 
   // Add static pages, avoiding duplicates
