@@ -20,7 +20,7 @@
   ],
   "scripts": {
     "dev": "astro dev --port 5000 --host 0.0.0.0",
-    "build": "astro build && node scripts/minify-assets.js",
+    "build": "astro build && node scripts/minify-assets.js && npx pagefind --site dist",
     "preview": "astro preview --port 5000 --host 0.0.0.0",
     "start": "astro dev --port 5000 --host 0.0.0.0",
     "check": "astro check",
@@ -37,7 +37,7 @@
     "scan:404:quick": "bash scripts/scan-404s.sh --quick",
     "scan:404:prod": "bash scripts/scan-404s.sh --url https://onlinetranslation.ae",
     "quality": "npm run check && npm run lint && npm run lint:css && npm run format:check",
-    "prebuild": "npm run nav:check && npm run search:generate",
+    "prebuild": "npm run nav:check",
     "og:generate": "node scripts/generate-og-images.js"
   },
   "dependencies": {
@@ -56,6 +56,7 @@
     "eslint-plugin-astro": "^1.5.0",
     "globals": "^16.5.0",
     "linkinator": "^7.5.1",
+    "pagefind": "^1.4.0",
     "postcss": "^8.4.35",
     "prettier": "^3.7.4",
     "prettier-plugin-astro": "^0.14.1",
