@@ -389,6 +389,50 @@ npm install --save-dev puppeteer  # One-time
 npm run og:generate                # Generate images
 ```
 
+### 4.8 ClickRank AI SEO
+
+**What it does:** ClickRank AI dynamically injects optimized SEO elements (titles, descriptions, schema) via JavaScript at runtime. Google's render queue processes these changes.
+
+**Site ID:** `2b65fd43-0b12-4d06-b92f-6cfa7699d947`
+
+**Implementation:**
+| Layout | Method | Location |
+|--------|--------|----------|
+| `BaseLayout.astro` | Deferred loading (performance) | Lines 372-389 |
+| `BaseLayoutArabic.astro` | Standard format | Lines 198-204 |
+
+**BaseLayout.astro** uses performance-optimized deferred loading:
+```javascript
+(function() {
+  var clickRankLoaded = false;
+  function loadClickRank() {
+    if (clickRankLoaded) return;
+    clickRankLoaded = true;
+    var s = document.createElement("script");
+    s.src = "https://js.clickrank.ai/seo/2b65fd43-0b12-4d06-b92f-6cfa7699d947/script?" + new Date().getTime();
+    s.async = true;
+    document.head.appendChild(s);
+  }
+  ['scroll','click','touchstart','mousemove'].forEach(function(evt){
+    window.addEventListener(evt, loadClickRank, {once:true,passive:true});
+  });
+  setTimeout(loadClickRank, 5000);
+})();
+```
+
+**How it works:**
+1. Your static HTML loads (repo content)
+2. ClickRank JS executes on user interaction or after 5 seconds
+3. ClickRank fetches optimizations and injects/overwrites SEO elements
+4. Google's render queue sees the modified DOM
+
+**Important notes:**
+- Changes are runtime only — not permanent in source files
+- Repo changes won't remove ClickRank optimizations (it overrides at runtime)
+- Do NOT edit the snippet unless changing ClickRank accounts
+- CSP headers in `vercel.json` allow `js.clickrank.ai` and `*.clickrank.ai`
+- DNS prefetch configured for reduced latency
+
 ---
 
 ## **PART V: CONTENT STANDARDS**
@@ -574,6 +618,7 @@ You are a Personal Assistant to a busy executive:
 | OG Generator | `scripts/generate-og-images.js` | ✅ Complete |
 | Noindex Support | `BaseLayout.astro` | ✅ Complete |
 | Breadcrumb Schema | `Breadcrumb.astro` | ✅ Complete |
+| ClickRank AI SEO | `BaseLayout.astro`, `BaseLayoutArabic.astro` | ✅ Complete |
 
 ### 8.2 Schema Implementation — ✅ COMPLETE
 
@@ -684,6 +729,19 @@ You are a Personal Assistant to a busy executive:
 
 ## **CHANGELOG**
 
+### January 27, 2026 — ClickRank AI SEO Documentation (v8.3)
+
+**Documentation Updates:**
+- Added section 4.8: ClickRank AI SEO with full implementation details
+- Documented deferred loading pattern for performance optimization
+- Added ClickRank to implementation status (section 8.1)
+
+**Technical Details:**
+- Site ID: `2b65fd43-0b12-4d06-b92f-6cfa7699d947`
+- Implemented in `BaseLayout.astro` (deferred) and `BaseLayoutArabic.astro` (standard)
+- CSP headers configured in `vercel.json`
+- DNS prefetch for `js.clickrank.ai`
+
 ### January 9, 2026 — SEO Strategy & Content Plan (v8.2)
 
 **New Documents:**
@@ -749,4 +807,4 @@ You are a Personal Assistant to a busy executive:
 
 ---
 
-*Last Updated: January 9, 2026 — Version 8.2*
+*Last Updated: January 27, 2026 — Version 8.3*
