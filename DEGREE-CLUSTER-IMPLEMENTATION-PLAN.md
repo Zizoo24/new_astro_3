@@ -269,12 +269,35 @@ After creation, update existing pages to link to new blog posts.
   - [x] Distance Education Guide → PhD/DBA post, Degrees Work Permit post
 - [x] Phase 2 committed & pushed
 
-### Phase 3 — Pending
-- [ ] Phase 3 planning
-- [ ] Blog post: Study Gap Guide
-- [ ] Blog post: Professional Certificates vs Degrees
-- [ ] Internal linking (outbound & inbound)
-- [ ] Phase 3 committed & pushed
+### Phase 3 — Complete
+- [x] Phase 3 planning
+- [x] Blog post: Study Gap Guide (`/blog/study-gap-uae-employment/`)
+- [x] Blog post: Professional Certificates vs Degrees (`/blog/professional-certificates-vs-degrees-translation/`)
+- [x] serviceLinks.ts updated with new blog entries
+- [x] **Internal Linking Enhancement:**
+  - [x] Study Gap post → degree, transcripts, attestation, Golden Visa, MOHESR, DHA DataFlow
+  - [x] Certificates vs Degrees post → degree, transcripts, attestation, Golden Visa, MOJ vs Certified, work permit degrees
+  - [x] Distance Education Guide → Study Gap Guide
+  - [x] MOHESR Equivalency Guide → Certificates vs Degrees
+  - [x] Degree page resources updated with all 6 cluster blog posts
+- [x] Phase 3 committed & pushed
+
+---
+
+## Cluster Complete
+
+All 6 pages in the degree certificate keyword cluster have been created:
+
+| Phase | Page | URL | Status |
+|-------|------|-----|--------|
+| 1 | Distance Education Guide | `/resources/distance-education-uae/` | ✅ |
+| 1 | MOHESR Equivalency Guide | `/resources/mohesr-equivalency/` | ✅ |
+| 2 | PhD/DBA Translation | `/blog/phd-dba-doctorate-translation-uae/` | ✅ |
+| 2 | Degrees for Work Permits | `/blog/degrees-accepted-uae-work-permit/` | ✅ |
+| 3 | Study Gap Guide | `/blog/study-gap-uae-employment/` | ✅ |
+| 3 | Professional Certs vs Degrees | `/blog/professional-certificates-vs-degrees-translation/` | ✅ |
+
+**Total internal links created:** 50+ bidirectional links across the cluster
 
 ---
 
