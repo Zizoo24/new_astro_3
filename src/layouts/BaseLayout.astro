@@ -369,7 +369,10 @@ const criticalCSS = `*,*::before,*::after{box-sizing:border-box}html{font-size:8
     })();
   </script>
 
-  <!-- ClickRank AI SEO - Deferred -->
+  <!-- ClickRank AI SEO - Deferred until user interaction or 5s idle -->
+  <!-- Loads async to avoid blocking critical rendering path.              -->
+  <!-- Google WRS executes JS in a second indexing wave, so deferred       -->
+  <!-- loading still allows ClickRank to inject optimised meta/schema.     -->
   <script is:inline>
     (function() {
       var clickRankLoaded = false;
@@ -377,7 +380,7 @@ const criticalCSS = `*,*::before,*::after{box-sizing:border-box}html{font-size:8
         if (clickRankLoaded) return;
         clickRankLoaded = true;
         var s = document.createElement("script");
-        s.src = "https://js.clickrank.ai/seo/2b65fd43-0b12-4d06-b92f-6cfa7699d947/script?" + new Date().getTime();
+        s.src = "https://js.clickrank.ai/seo/4ec5887b-e7a8-43e1-a971-567e38ec258c/script?" + new Date().getTime();
         s.async = true;
         document.head.appendChild(s);
       }
