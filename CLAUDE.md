@@ -393,15 +393,15 @@ npm run og:generate                # Generate images
 
 **What it does:** ClickRank AI dynamically injects optimized SEO elements (titles, descriptions, schema) via JavaScript at runtime. Google's render queue processes these changes.
 
-**Site ID:** `2b65fd43-0b12-4d06-b92f-6cfa7699d947`
+**Site ID:** `4ec5887b-e7a8-43e1-a971-567e38ec258c`
 
 **Implementation:**
 | Layout | Method | Location |
 |--------|--------|----------|
-| `BaseLayout.astro` | Deferred loading (performance) | Lines 372-389 |
-| `BaseLayoutArabic.astro` | Standard format | Lines 198-204 |
+| `BaseLayout.astro` | Deferred loading (performance) | Lines 372-396 |
+| `BaseLayoutArabic.astro` | Deferred loading (performance) | Lines 198-215 |
 
-**BaseLayout.astro** uses performance-optimized deferred loading:
+**Both layouts** use the same performance-optimized deferred loading pattern:
 ```javascript
 (function() {
   var clickRankLoaded = false;
@@ -409,7 +409,7 @@ npm run og:generate                # Generate images
     if (clickRankLoaded) return;
     clickRankLoaded = true;
     var s = document.createElement("script");
-    s.src = "https://js.clickrank.ai/seo/2b65fd43-0b12-4d06-b92f-6cfa7699d947/script?" + new Date().getTime();
+    s.src = "https://js.clickrank.ai/seo/4ec5887b-e7a8-43e1-a971-567e38ec258c/script?" + new Date().getTime();
     s.async = true;
     document.head.appendChild(s);
   }
@@ -729,6 +729,18 @@ You are a Personal Assistant to a busy executive:
 
 ## **CHANGELOG**
 
+### January 28, 2026 — ClickRank AI Site ID Update & Arabic Deferred Loading (v8.4)
+
+**Changes:**
+- Updated ClickRank AI Site ID to `4ec5887b-e7a8-43e1-a971-567e38ec258c`
+- Upgraded `BaseLayoutArabic.astro` from eager loading to deferred loading pattern (matches `BaseLayout.astro`)
+- Both layouts now use identical interaction-triggered + 5s timeout deferred loading
+
+**Why deferred loading:**
+- ClickRank injects SEO meta/schema at runtime; Google WRS processes JS in a second indexing wave
+- Deferring avoids blocking the critical rendering path, improving Core Web Vitals (LCP, INP)
+- Script loads on first user interaction (scroll/click/touch/mousemove) or after 5s idle
+
 ### January 27, 2026 — ClickRank AI SEO Documentation (v8.3)
 
 **Documentation Updates:**
@@ -737,8 +749,7 @@ You are a Personal Assistant to a busy executive:
 - Added ClickRank to implementation status (section 8.1)
 
 **Technical Details:**
-- Site ID: `2b65fd43-0b12-4d06-b92f-6cfa7699d947`
-- Implemented in `BaseLayout.astro` (deferred) and `BaseLayoutArabic.astro` (standard)
+- Implemented in `BaseLayout.astro` (deferred) and `BaseLayoutArabic.astro` (deferred)
 - CSP headers configured in `vercel.json`
 - DNS prefetch for `js.clickrank.ai`
 
@@ -807,4 +818,4 @@ You are a Personal Assistant to a busy executive:
 
 ---
 
-*Last Updated: January 27, 2026 — Version 8.3*
+*Last Updated: January 28, 2026 — Version 8.4*
