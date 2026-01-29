@@ -108,11 +108,15 @@ const heroImageWebp = heroImagePaths?.webp || '';
 const heroImageFallback = heroImagePaths?.fallback || heroImage;
 const heroImageAlt = heroImagePaths?.alt || `${heroTitle} service`;
 
+// Construct proper image URL for schema
+const ogImageUrl = `${siteUrl}/assets/images/og-image.jpg`;
+
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   "name": heroTitle,
   "description": description,
+  "image": ogImageUrl,
   "provider": {
     "@type": "LocalBusiness",
     "@id": `${siteUrl}/#organization`,
