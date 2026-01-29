@@ -151,52 +151,35 @@ const reviews = [
 const totalReviews = reviews.length;
 const averageRating = (reviews.reduce((acc, r) => acc + r.rating, 0) / totalReviews).toFixed(1);
 
-// Consolidated Schema.org JSON-LD for LocalBusiness with reviews
-// This approach avoids "multiple aggregate ratings" and "missing itemReviewed" errors
-const reviewsSchema = {
+// Individual Review schemas that reference the LocalBusiness from BaseLayout
+// This avoids "multiple aggregate ratings" error - BaseLayout handles the aggregateRating
+const reviewsSchema = reviews.map((review) => ({
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": `${siteConfig.url}/#organization`,
-  "name": siteConfig.name,
-  "description": "MOJ-certified legal translation services in Dubai, UAE. Court-accepted translations for visas, contracts, and official documents.",
-  "url": siteConfig.url,
-  "telephone": "+971508620217",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Dubai",
-    "addressRegion": "Dubai",
-    "addressCountry": "AE"
+  "@type": "Review",
+  "itemReviewed": {
+    "@type": "LocalBusiness",
+    "@id": `${siteConfig.url}/#organization`
   },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": averageRating,
-    "reviewCount": totalReviews,
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": review.rating,
     "bestRating": "5",
     "worstRating": "1"
   },
-  "review": reviews.map((review) => ({
-    "@type": "Review",
-    "reviewRating": {
-      "@type": "Rating",
-      "ratingValue": review.rating,
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "author": {
-      "@type": "Person",
-      "name": review.name
-    },
-    "reviewBody": review.quote,
-    ...(review.date && { "datePublished": review.date })
-  }))
-};
+  "author": {
+    "@type": "Person",
+    "name": review.name
+  },
+  "reviewBody": review.quote,
+  ...(review.date && { "datePublished": review.date })
+}));
 ---
 
 <BaseLayout
   title={pageTitle}
   description={metaDescription}
 >
-  <!-- Single consolidated Schema.org JSON-LD -->
+  <!-- Individual Review schemas - aggregateRating handled by BaseLayout's LocalBusiness -->
   <script type="application/ld+json" set:html={JSON.stringify(reviewsSchema)} />
 
   <!-- Hero Section -->
