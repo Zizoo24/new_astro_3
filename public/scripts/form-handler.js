@@ -59,11 +59,15 @@ function fallbackToWhatsApp(formData) {
     };
 }
 
-// Initialize form handlers on page load
-document.addEventListener('DOMContentLoaded', function() {
+// Initialize form handlers
+function initFormHandlers() {
     const contactForms = document.querySelectorAll('.contact-form');
 
     contactForms.forEach(function(form) {
+        // Prevent double-binding if already initialized
+        if (form.dataset.formHandlerBound) return;
+        form.dataset.formHandlerBound = 'true';
+
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
 
@@ -115,4 +119,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-});
+}
+
+// Run initialization - handle both immediate load and deferred loading scenarios
+if (document.readyState === 'loading') {
+    // Document still loading, wait for DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', initFormHandlers);
+} else {
+    // Document already loaded (script was dynamically injected after page load)
+    initFormHandlers();
+}
