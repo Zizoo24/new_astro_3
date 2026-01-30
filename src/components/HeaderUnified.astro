@@ -1,0 +1,1227 @@
+---
+/**
+ * HeaderUnified.astro - Unified Bilingual Header
+ *
+ * Single component that handles both LTR (English) and RTL (Arabic)
+ * CSS handles direction via html[lang="ar"] selectors
+ * Same HTML structure for both - no HTML reordering for RTL
+ *
+ * Replaces: Header-porto.astro and Header-porto-ar.astro
+ *
+ * @props {string} lang - 'en' | 'ar' (default: 'en')
+ * @props {string} currentPath - Current page path for active state
+ * @props {boolean} isHomepage - Whether this is the homepage
+ */
+
+// Navigation data imports
+import { mainNavigation } from '../data/navigation-porto';
+import { mainNavigationAr, siteContactAr, uiLabelsAr } from '../data/navigation-ar';
+import { siteContact } from '../data/navigation';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+interface Props {
+  lang?: 'en' | 'ar';
+  currentPath?: string;
+  isHomepage?: boolean;
+}
+
+const {
+  lang = 'en',
+  currentPath = Astro.url.pathname,
+  isHomepage = false
+} = Astro.props;
+
+// Select data based on language
+const isArabic = lang === 'ar';
+const navigation = isArabic ? mainNavigationAr : mainNavigation;
+const contact = isArabic ? siteContactAr : siteContact;
+
+// UI labels
+const labels = isArabic ? {
+  topBarHours: uiLabelsAr.topBarHours,
+  openSidebar: 'فتح القائمة',
+  search: 'بحث',
+  toggleDark: 'تبديل الوضع المظلم',
+  mainNav: 'التنقل الرئيسي',
+  viewAll: 'عرض الكل'
+} : {
+  topBarHours: 'Daily: 8:00 AM - 10:00 PM',
+  openSidebar: 'Open sidebar menu',
+  search: 'Search',
+  toggleDark: 'Toggle dark mode',
+  mainNav: 'Main navigation',
+  viewAll: 'View All'
+};
+
+// Badge translations
+const badgeLabels: Record<string, string> = isArabic ? {
+  new: 'جديد',
+  express: 'سريع',
+  popular: 'شائع',
+  hot: 'مميز'
+} : {
+  new: 'NEW',
+  express: 'EXPRESS',
+  popular: 'POPULAR',
+  hot: 'HOT'
+};
+
+// Helper function for active state
+function isActive(href: string): boolean {
+  if (href === '/' || href === '/ar/') return currentPath === href;
+  return currentPath.startsWith(href);
+}
+---
+
+<!-- Fixed Header Wrapper -->
+<div class="header-wrapper" id="headerWrapper">
+  <!-- Coral Top Bar - Disappears on scroll -->
+  <div class="coral-top-bar" id="coralTopBar">
+    <div class="container">
+      <div class="coral-top-content">
+        <div class="coral-top-left">
+          <a href={`tel:${contact.phone.replace(/\s/g, '')}`} class="coral-top-link">
+            <i class="fas fa-phone-alt"></i>
+            <span dir="ltr">{contact.phoneDisplay}</span>
+          </a>
+          <a href={`mailto:${contact.email}`} class="coral-top-link coral-top-email">
+            <i class="fas fa-envelope"></i>
+            <span dir="ltr">{contact.email}</span>
+          </a>
+        </div>
+        <div class="coral-top-right">
+          <span class="coral-top-hours">
+            <i class="fas fa-clock"></i>
+            {labels.topBarHours}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Navy Header -->
+  <header id="header" class:list={["site-header", { "header-homepage": isHomepage }]}>
+    <div class="header-body">
+      <!-- Main Header -->
+      <div class="header-container container">
+        <div class="header-row">
+          <!-- Desktop Sidebar Toggle -->
+          <div class="header-column header-column-sidebar">
+            <button
+              id="desktopSidebarToggle"
+              class="desktop-sidebar-toggle"
+              type="button"
+              aria-label={labels.openSidebar}
+            >
+              <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <!-- Logo -->
+          <div class="header-column header-column-logo">
+            <a href={isArabic ? '/ar/' : '/'} class="header-logo">
+              <img
+                src="/assets/images/logo/brand/emblem-clean.png"
+                alt="OnlineTranslation.ae"
+                width="45"
+                height="45"
+                class="logo-emblem"
+                loading="eager"
+              />
+              <div class="logo-text-block">
+                <span class="logo-text" dir="ltr">Online<span class="logo-suffix">Translation</span><span class="logo-domain">.ae</span></span>
+                <span class="logo-tagline">{isArabic ? 'ترجمة قانونية معتمدة' : 'Boutique Legal Translation'}</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- Navigation -->
+          <div class="header-column header-column-nav">
+            <div class="header-nav">
+              <div class="header-nav-main header-nav-main-effect-1">
+                <nav id="mainNav" aria-label={labels.mainNav}>
+                  <ul class="nav nav-pills" role="menubar">
+                    {navigation.map((item) => (
+                      <li
+                        class:list={[
+                          item.dropdown ? 'dropdown' : '',
+                          isActive(item.href) ? 'active' : '',
+                          item.isButton ? 'nav-item-button' : ''
+                        ]}
+                        role="none"
+                      >
+                        {item.isButton ? (
+                          <a
+                            href={item.href}
+                            class={`btn ${item.buttonClass || 'btn-primary'}`}
+                            target={item.href.startsWith('http') ? '_blank' : undefined}
+                            rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                          >
+                            {item.icon && <i class={item.icon}></i>}
+                            <span>{item.label}</span>
+                          </a>
+                        ) : item.dropdown ? (
+                          <>
+                            <a
+                              href={item.href}
+                              class:list={[
+                                'nav-link',
+                                'dropdown-toggle',
+                                isActive(item.href) ? 'active' : ''
+                              ]}
+                              role="menuitem"
+                              aria-haspopup="true"
+                              aria-expanded="false"
+                            >
+                              {item.label}
+                              <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu" aria-label={item.dropdown.label}>
+                              {item.dropdown.categories.map((category) => (
+                                <>
+                                  {category.header && (
+                                    <li class="dropdown-header" role="presentation">
+                                      {category.header}
+                                    </li>
+                                  )}
+
+                                  {category.items.map((subItem) => (
+                                    <li
+                                      class:list={[
+                                        subItem.children ? 'dropdown-submenu' : '',
+                                        isActive(subItem.href) ? 'active' : ''
+                                      ]}
+                                      role="none"
+                                    >
+                                      <a
+                                        href={subItem.href}
+                                        class="dropdown-item"
+                                        role="menuitem"
+                                        aria-haspopup={subItem.children ? 'true' : undefined}
+                                      >
+                                        {subItem.icon && (
+                                          <i class={subItem.icon} aria-hidden="true"></i>
+                                        )}
+                                        <span>{subItem.label}</span>
+                                        {subItem.badge && (
+                                          <span class={`badge badge-${subItem.badge}`}>
+                                            {badgeLabels[subItem.badge]}
+                                          </span>
+                                        )}
+                                      </a>
+
+                                      {subItem.children && (
+                                        <ul class="dropdown-menu" role="menu">
+                                          {subItem.children.map((child) => (
+                                            <li
+                                              class:list={[isActive(child.href) ? 'active' : '']}
+                                              role="none"
+                                            >
+                                              <a
+                                                href={child.href}
+                                                class="dropdown-item"
+                                                role="menuitem"
+                                              >
+                                                <span>{child.label}</span>
+                                                {child.badge && (
+                                                  <span class={`badge badge-${child.badge}`}>
+                                                    {badgeLabels[child.badge]}
+                                                  </span>
+                                                )}
+                                              </a>
+                                            </li>
+                                          ))}
+                                        </ul>
+                                      )}
+                                    </li>
+                                  ))}
+                                </>
+                              ))}
+
+                              {item.dropdown.footerLink && (
+                                <li role="none">
+                                  <a
+                                    href={item.dropdown.footerLink.href}
+                                    class="dropdown-footer"
+                                    role="menuitem"
+                                  >
+                                    {item.dropdown.footerLink.label}
+                                    <i class={isArabic ? "fas fa-arrow-left" : "fas fa-arrow-right"} aria-hidden="true"></i>
+                                  </a>
+                                </li>
+                              )}
+                            </ul>
+                          </>
+                        ) : (
+                          <a
+                            href={item.href}
+                            class:list={['nav-link', isActive(item.href) ? 'active' : '']}
+                            role="menuitem"
+                          >
+                            {item.icon && <i class={item.icon}></i>}
+                            {item.label}
+                          </a>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              </div>
+
+              <!-- Mobile Menu Button -->
+              <button
+                id="portoMobileToggle"
+                class="header-btn-collapse-nav"
+                type="button"
+                aria-label={labels.openSidebar}
+              >
+                <i class="fas fa-bars" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Language Switcher, Search Toggle & Theme Toggle -->
+          <div class="header-column header-column-actions">
+            <LanguageSwitcher variant="pill" size="sm" />
+            <button
+              id="desktopSearchToggle"
+              class="header-action-btn search-toggle"
+              type="button"
+              aria-label={labels.search}
+            >
+              <i class="fas fa-search" aria-hidden="true"></i>
+            </button>
+            <button
+              id="portoThemeToggle"
+              class="header-action-btn theme-toggle"
+              type="button"
+              aria-label={labels.toggleDark}
+            >
+              <i class="fas fa-moon theme-icon-dark" aria-hidden="true"></i>
+              <i class="fas fa-sun theme-icon-light" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+</div><!-- /.header-wrapper -->
+
+<!-- Spacer for fixed header -->
+<div class="header-spacer"></div>
+
+<style>
+  /* ====================================
+     UNIFIED HEADER STYLES - LTR + RTL
+     ==================================== */
+
+  /* CSS Variables */
+  :root {
+    --coral-bar-height: 40px;
+    --header-height: 70px;
+    --header-compact: 50px;
+  }
+
+  /* ====================================
+     FIXED HEADER WRAPPER
+     ==================================== */
+  .header-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    width: 100%;
+    background: transparent;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+
+  .header-wrapper.is-scrolled {
+    transform: translateY(calc(-1 * var(--coral-bar-height)));
+  }
+
+  .header-spacer {
+    height: calc(var(--coral-bar-height) + var(--header-compact));
+    background: var(--surface-base, #ffffff);
+  }
+
+  :global([data-theme="dark"]) .header-spacer,
+  :global(body.theme-dark) .header-spacer {
+    background: var(--surface-navy, #0a1628);
+  }
+
+  @media (max-width: 991px) {
+    .header-wrapper {
+      display: none !important;
+    }
+    .header-spacer {
+      display: none;
+    }
+  }
+
+  :global(body.homepage) .header-spacer,
+  :global(body.is-homepage) .header-spacer {
+    display: none !important;
+  }
+
+  /* ====================================
+     CORAL TOP BAR
+     ==================================== */
+  .coral-top-bar {
+    background: var(--ot-coral, #FF1654);
+    padding: 10px 0;
+    font-family: var(--font-secondary, 'Open Sans', sans-serif);
+    font-size: 0.8rem;
+    font-weight: 500;
+    height: var(--coral-bar-height);
+    box-sizing: border-box;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .coral-top-bar.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .coral-top-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .coral-top-left {
+    display: flex;
+    gap: 20px;
+  }
+
+  .coral-top-link,
+  .coral-top-hours {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.95);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-weight: 500;
+  }
+
+  .coral-top-bar .coral-top-link,
+  .coral-top-bar .coral-top-hours,
+  .coral-top-bar .coral-top-link:visited {
+    color: #ffffff !important;
+  }
+
+  .coral-top-link:hover {
+    color: #ffffff;
+  }
+
+  .coral-top-hours {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  @media (max-width: 991px) {
+    .coral-top-bar {
+      display: none !important;
+    }
+  }
+
+  @media (max-width: 1200px) and (min-width: 992px) {
+    .coral-top-email {
+      display: none;
+    }
+  }
+
+  /* ====================================
+     NAVY HEADER
+     ==================================== */
+  .site-header {
+    width: 100%;
+    transition: all 0.3s ease;
+  }
+
+  .header-body {
+    background: linear-gradient(135deg, var(--ot-header-dark, #0a1628) 0%, var(--ot-header-gradient, #1a365d) 100%);
+    transition: all 0.3s ease;
+    margin: 0;
+    padding: 0;
+  }
+
+  .header-container {
+    padding: 15px 0;
+    transition: padding 0.3s ease;
+  }
+
+  /* Scrolled state */
+  .site-header.scrolled .header-container {
+    padding: 4px 0;
+  }
+
+  .site-header.scrolled .logo-emblem {
+    height: 32px;
+  }
+
+  .site-header.scrolled .logo-text {
+    font-size: 16px;
+  }
+
+  .site-header.scrolled .logo-tagline {
+    font-size: 8px;
+    letter-spacing: 2px;
+  }
+
+  .site-header.scrolled .desktop-sidebar-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .site-header.scrolled .header-action-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .site-header.scrolled .header-action-btn i {
+    font-size: 0.9rem;
+  }
+
+  /* ====================================
+     HEADER GRID LAYOUT
+     ==================================== */
+  .header-row {
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  /* ====================================
+     LOGO
+     ==================================== */
+  .header-column-logo {
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .logo-emblem {
+    height: 44px;
+    width: auto;
+    transition: height 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .logo-text-block {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+    min-width: 0;
+  }
+
+  .logo-text {
+    font-family: var(--font-primary, 'Montserrat', sans-serif);
+    font-size: 20px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.3px;
+    transition: font-size 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .logo-suffix {
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .logo-domain {
+    color: var(--ot-coral, #FF1654);
+    font-weight: 800;
+  }
+
+  .logo-tagline {
+    font-family: var(--font-secondary, 'Open Sans', sans-serif);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: 2px;
+    transition: font-size 0.3s ease;
+    white-space: nowrap;
+  }
+
+  /* ====================================
+     NAVIGATION
+     ==================================== */
+  .header-column-nav {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    z-index: 10;
+    min-width: 0;
+  }
+
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .header-nav-main {
+    min-width: 0;
+    max-width: 100%;
+    overflow: visible;
+  }
+
+  .header-nav-main > nav > ul.nav {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2px;
+    min-width: 0;
+    justify-content: flex-end;
+  }
+
+  .header-nav-main > nav > ul.nav > li {
+    flex-shrink: 0;
+  }
+
+  /* Nav links */
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    color: #ffffff !important;
+    font-family: var(--font-primary, 'Montserrat', sans-serif);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus,
+  .nav-link.active {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+
+  .nav-chevron {
+    font-size: 10px;
+    transition: transform 0.2s ease;
+    margin-inline-start: 4px;
+  }
+
+  .dropdown:hover .nav-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Mobile menu button - hidden on desktop */
+  .header-btn-collapse-nav {
+    display: none;
+  }
+
+  /* ====================================
+     DROPDOWNS
+     ==================================== */
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: auto;
+    min-width: 280px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    padding: 12px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.2s ease;
+    z-index: 1000;
+  }
+
+  .dropdown:hover > .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dropdown-header {
+    padding: 8px 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--ot-coral, #FF1654);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    margin-bottom: 4px;
+  }
+
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    color: var(--text-dark, #1a1a1a);
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.15s ease;
+  }
+
+  .dropdown-item:hover {
+    background: rgba(0, 119, 182, 0.08);
+    color: var(--ot-teal, #0077b6);
+  }
+
+  .dropdown-item i {
+    width: 20px;
+    text-align: center;
+    color: var(--ot-teal, #0077b6);
+    font-size: 14px;
+  }
+
+  .dropdown-item .badge {
+    margin-inline-start: auto;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 4px;
+  }
+
+  .badge-new {
+    background: var(--ot-coral, #FF1654);
+    color: #ffffff;
+  }
+
+  .badge-express {
+    background: #10b981;
+    color: #ffffff;
+  }
+
+  .badge-popular {
+    background: #f59e0b;
+    color: #ffffff;
+  }
+
+  .badge-hot {
+    background: #ef4444;
+    color: #ffffff;
+  }
+
+  .dropdown-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    margin-top: 8px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    color: var(--ot-teal, #0077b6);
+    font-weight: 600;
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.15s ease;
+  }
+
+  .dropdown-footer:hover {
+    color: var(--ot-coral, #FF1654);
+  }
+
+  /* Flyout submenus */
+  .dropdown-submenu {
+    position: relative;
+  }
+
+  .dropdown-submenu > .dropdown-menu {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    right: auto;
+    margin-top: -12px;
+    margin-inline-start: 2px;
+  }
+
+  .dropdown-submenu:hover > .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dropdown-submenu > a::after {
+    content: '\f054';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 10px;
+    margin-inline-start: auto;
+    opacity: 0.5;
+  }
+
+  /* Flyout reverse (when hitting viewport edge) */
+  .dropdown-submenu.dropdown-reverse > .dropdown-menu {
+    left: auto;
+    right: 100%;
+    margin-inline-start: 0;
+    margin-inline-end: 2px;
+  }
+
+  /* ====================================
+     ACTION BUTTONS
+     ==================================== */
+  .header-column-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    min-width: 160px;
+    padding-inline-start: 15px;
+    margin-inline-start: auto;
+    position: relative;
+    z-index: 50;
+    flex-shrink: 0;
+  }
+
+  .header-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 0;
+    border-radius: 50%;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 100;
+  }
+
+  .header-action-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .header-action-btn:active {
+    transform: scale(0.95);
+  }
+
+  .header-action-btn i {
+    font-size: 1rem;
+    color: #ffffff !important;
+    pointer-events: none;
+  }
+
+  .theme-icon-light {
+    display: none;
+  }
+
+  :global([data-theme="dark"]) .theme-icon-dark {
+    display: none;
+  }
+
+  :global([data-theme="dark"]) .theme-icon-light {
+    display: block;
+  }
+
+  /* Desktop Sidebar Toggle */
+  .desktop-sidebar-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 0;
+    border-radius: 8px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 100;
+  }
+
+  .desktop-sidebar-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .desktop-sidebar-toggle:active {
+    transform: scale(0.95);
+  }
+
+  .desktop-sidebar-toggle i {
+    font-size: 1.25rem;
+    color: #ffffff !important;
+    pointer-events: none;
+  }
+
+  .header-column-sidebar {
+    flex-shrink: 0;
+  }
+
+  /* ====================================
+     RESPONSIVE BREAKPOINTS
+     ==================================== */
+  @media (min-width: 1600px) {
+    .header-row {
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 1599px) and (min-width: 1200px) {
+    .logo-text {
+      font-size: 18px;
+    }
+    .logo-tagline {
+      font-size: 9px;
+      letter-spacing: 2px;
+    }
+  }
+
+  @media (max-width: 1199px) and (min-width: 992px) {
+    .logo-text {
+      font-size: 16px;
+    }
+    .logo-tagline {
+      font-size: 8px;
+      letter-spacing: 1.5px;
+    }
+    .logo-emblem {
+      height: 36px;
+    }
+    .header-row {
+      gap: 8px;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .site-header {
+      display: none !important;
+    }
+  }
+
+  /* ====================================
+     RTL OVERRIDES - Arabic
+     Triggered by html[lang="ar"]
+     ==================================== */
+
+  /* Grid auto-reverses with direction: rtl */
+  :global(html[lang="ar"]) .header-row {
+    direction: rtl;
+  }
+
+  /* Coral top bar */
+  :global(html[lang="ar"]) .coral-top-content {
+    direction: rtl;
+  }
+
+  /* Logo - brand name stays LTR */
+  :global(html[lang="ar"]) .logo-text {
+    direction: ltr;
+  }
+
+  :global(html[lang="ar"]) .logo-tagline {
+    text-align: right;
+    font-family: 'Noto Sans Arabic', 'Amiri', sans-serif;
+  }
+
+  /* Nav alignment */
+  :global(html[lang="ar"]) .header-column-nav {
+    justify-content: flex-start;
+  }
+
+  :global(html[lang="ar"]) .header-nav-main > nav > ul.nav {
+    justify-content: flex-start;
+  }
+
+  /* Dropdown positioning */
+  :global(html[lang="ar"]) .dropdown-menu {
+    left: auto;
+    right: 0;
+  }
+
+  :global(html[lang="ar"]) .dropdown-header,
+  :global(html[lang="ar"]) .dropdown-item {
+    text-align: right;
+  }
+
+  :global(html[lang="ar"]) .dropdown-item {
+    flex-direction: row-reverse;
+  }
+
+  :global(html[lang="ar"]) .dropdown-item i {
+    margin-inline-start: 10px;
+    margin-inline-end: 0;
+  }
+
+  :global(html[lang="ar"]) .dropdown-item .badge {
+    margin-inline-start: 0;
+    margin-inline-end: auto;
+  }
+
+  :global(html[lang="ar"]) .dropdown-footer {
+    flex-direction: row-reverse;
+  }
+
+  /* Flyout submenus flip */
+  :global(html[lang="ar"]) .dropdown-submenu > .dropdown-menu {
+    left: auto;
+    right: 100%;
+    margin-inline-start: 0;
+    margin-inline-end: 2px;
+  }
+
+  :global(html[lang="ar"]) .dropdown-submenu > a::after {
+    content: '\f053'; /* Left arrow for RTL */
+  }
+
+  :global(html[lang="ar"]) .dropdown-submenu.dropdown-reverse > .dropdown-menu {
+    left: 100%;
+    right: auto;
+    margin-inline-start: 2px;
+    margin-inline-end: 0;
+  }
+
+  /* Actions column */
+  :global(html[lang="ar"]) .header-column-actions {
+    margin-inline-start: 0;
+    margin-inline-end: auto;
+    padding-inline-start: 0;
+    padding-inline-end: 15px;
+  }
+</style>
+
+<script is:inline>
+  // Unified Header JavaScript
+  document.addEventListener('DOMContentLoaded', () => {
+    // Detect RTL for flyout logic
+    const isRTL = document.documentElement.lang === 'ar' || document.documentElement.dir === 'rtl';
+
+    // ========================================
+    // SCROLL BEHAVIOR
+    // ========================================
+    const coralTopBar = document.getElementById('coralTopBar');
+    const header = document.getElementById('header');
+    const headerWrapper = document.getElementById('headerWrapper');
+    const scrollThreshold = 50;
+
+    function handleScrollBehavior() {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > scrollThreshold) {
+        coralTopBar?.classList.add('hidden');
+        header?.classList.add('scrolled');
+        headerWrapper?.classList.add('is-scrolled');
+      } else {
+        coralTopBar?.classList.remove('hidden');
+        header?.classList.remove('scrolled');
+        headerWrapper?.classList.remove('is-scrolled');
+      }
+    }
+
+    window.addEventListener('scroll', handleScrollBehavior, { passive: true });
+    handleScrollBehavior();
+
+    // ========================================
+    // SIDEBAR TOGGLE
+    // ========================================
+    const desktopSidebarToggle = document.getElementById('desktopSidebarToggle');
+
+    if (desktopSidebarToggle) {
+      desktopSidebarToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        console.log('[Header] Desktop sidebar toggle clicked');
+
+        const menuSidebar = document.getElementById('menu-sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        if (menuSidebar) {
+          menuSidebar.classList.add('is-open');
+          console.log('[Header] Sidebar opened');
+        } else {
+          console.error('[Header] #menu-sidebar not found');
+        }
+
+        if (sidebarOverlay) {
+          sidebarOverlay.classList.add('is-visible');
+        }
+
+        document.body.style.overflow = 'hidden';
+      });
+    }
+
+    // Mobile toggle
+    const portoMobileToggle = document.getElementById('portoMobileToggle');
+    if (portoMobileToggle) {
+      portoMobileToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const menuSidebar = document.getElementById('menu-sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        if (menuSidebar) {
+          menuSidebar.classList.add('is-open');
+        }
+
+        if (sidebarOverlay) {
+          sidebarOverlay.classList.add('is-visible');
+        }
+
+        document.body.style.overflow = 'hidden';
+      });
+    }
+
+    // ========================================
+    // SEARCH TOGGLE
+    // ========================================
+    const desktopSearchToggle = document.getElementById('desktopSearchToggle');
+
+    if (desktopSearchToggle) {
+      desktopSearchToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        console.log('[Header] Search toggle clicked');
+
+        const searchOverlay = document.getElementById('search-overlay');
+        const searchInput = document.getElementById('searchInput');
+
+        if (searchOverlay) {
+          searchOverlay.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+          setTimeout(() => {
+            searchInput?.focus();
+          }, 100);
+        } else {
+          console.error('[Header] #search-overlay not found');
+        }
+      });
+    }
+
+    // ========================================
+    // THEME TOGGLE
+    // ========================================
+    const themeToggle = document.getElementById('portoThemeToggle');
+
+    if (themeToggle) {
+      themeToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const html = document.documentElement;
+        const body = document.body;
+        const currentTheme = html.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+        html.setAttribute('data-theme', newTheme);
+        body.classList.remove('theme-light', 'theme-dark');
+        body.classList.add('theme-' + newTheme);
+        localStorage.setItem('theme', newTheme);
+      });
+    }
+
+    // ========================================
+    // FLYOUT EDGE DETECTION (RTL-aware)
+    // ========================================
+    const flyoutParents = document.querySelectorAll('.dropdown-submenu');
+
+    flyoutParents.forEach(parent => {
+      parent.addEventListener('mouseenter', () => {
+        const flyout = parent.querySelector('.dropdown-menu');
+        if (!flyout || window.innerWidth < 992) return;
+
+        const rect = flyout.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+
+        if (isRTL) {
+          // RTL: check if flyout goes past left edge
+          if (rect.left < 20) {
+            parent.classList.add('dropdown-reverse');
+          } else {
+            parent.classList.remove('dropdown-reverse');
+          }
+        } else {
+          // LTR: check if flyout goes past right edge
+          if (rect.right > viewportWidth - 20) {
+            parent.classList.add('dropdown-reverse');
+          } else {
+            parent.classList.remove('dropdown-reverse');
+          }
+        }
+      });
+    });
+
+    // ========================================
+    // KEYBOARD NAVIGATION
+    // ========================================
+    const nav = document.getElementById('mainNav');
+
+    if (nav) {
+      nav.addEventListener('keydown', (e) => {
+        const key = e.key;
+        const target = e.target;
+        const parent = target.closest('li');
+
+        if (!parent) return;
+
+        switch (key) {
+          case 'Escape':
+            document.querySelectorAll('.dropdown.open').forEach(el => {
+              el.classList.remove('open');
+            });
+            break;
+
+          case 'Enter':
+          case ' ':
+            if (parent.classList.contains('dropdown')) {
+              e.preventDefault();
+              parent.classList.toggle('open');
+            }
+            break;
+
+          case 'ArrowDown': {
+            e.preventDefault();
+            const nextSibling = parent.nextElementSibling;
+            if (nextSibling) {
+              const nextLink = nextSibling.querySelector('a');
+              nextLink?.focus();
+            }
+            break;
+          }
+
+          case 'ArrowUp': {
+            e.preventDefault();
+            const prevSibling = parent.previousElementSibling;
+            if (prevSibling) {
+              const prevLink = prevSibling.querySelector('a');
+              prevLink?.focus();
+            }
+            break;
+          }
+        }
+      });
+    }
+  });
+</script>
