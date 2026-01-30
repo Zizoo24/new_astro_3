@@ -66,8 +66,9 @@ const fullCanonical = canonicalOverride || (canonical.startsWith('http') ? canon
   <link rel="canonical" href={fullCanonical}>
 
   <!-- Hreflang tags - All point to English as canonical -->
+  <!-- Note: Arabic hreflang points to /ar/ (where content lives), not /عربي/ (which 301 redirects) -->
   <link rel="alternate" hreflang="en-AE" href={`${siteUrl}/`} />
-  <link rel="alternate" hreflang="ar" href={`${siteUrl}/عربي/`} />
+  <link rel="alternate" hreflang="ar" href={`${siteUrl}/ar/`} />
   <link rel="alternate" hreflang="hi" href={`${siteUrl}/hindi/`} />
   <link rel="alternate" hreflang="ur" href={`${siteUrl}/urdu/`} />
   <link rel="alternate" hreflang="tl" href={`${siteUrl}/tagalog/`} />

@@ -604,6 +604,84 @@ You are a Personal Assistant to a busy executive:
 - ARIA labels on all buttons/links
 - Skip-to-content link
 
+### 7.7 RTL (Arabic) Guidelines
+
+**Architecture:** CSS-only approach via `html[lang="ar"]` selectors. Same HTML structure for both languages.
+
+**Key Files:**
+- `public/styles/rtl.css` — All RTL overrides
+- `src/layouts/BaseLayoutArabic.astro` — Arabic page layout
+- `src/components/HeaderUnified.astro` — Single header component for EN/AR
+
+#### 7.7.1 Typography Rules
+
+| Rule | Value | Reason |
+|------|-------|--------|
+| `letter-spacing` | `0 !important` | Breaks Arabic text rendering |
+| `line-height` (body) | `1.8` | Arabic needs more vertical space |
+| `line-height` (headings) | `1.6` | Headings need less but still more than English |
+| Font family | `var(--font-arabic)` | Noto Sans Arabic with system fallbacks |
+
+**CSS Variables:**
+```css
+--font-arabic: 'Noto Sans Arabic', 'Geeza Pro', 'Simplified Arabic', 'Tahoma', sans-serif;
+--font-arabic-heading: 'Noto Sans Arabic', 'Geeza Pro', 'Traditional Arabic', serif;
+```
+
+#### 7.7.2 LTR Islands (Keep Left-to-Right)
+
+These elements must stay LTR even in Arabic context:
+
+| Element | CSS Class | Example |
+|---------|-----------|---------|
+| Email addresses | `.ltr-content` | info@onlinetranslation.ae |
+| Phone numbers | `.phone-number` | +971 50 862 0217 |
+| Brand names | `.brand-name` | OnlineTranslation.ae |
+| Code/URLs | `[dir="ltr"]` | https://... |
+| Form inputs | Auto-applied | Email, phone, URL fields |
+
+#### 7.7.3 Icon Flipping
+
+| Should Flip | Should NOT Flip |
+|-------------|-----------------|
+| `fa-arrow-right` → RTL reverses | `fa-phone` (universal) |
+| `fa-chevron-right` | `fa-envelope` (universal) |
+| `fa-long-arrow-right` | `fa-whatsapp` (brand) |
+| Directional indicators | `fa-check` (universal) |
+
+**CSS Implementation:**
+```css
+/* Icons that flip */
+html[lang="ar"] .fa-arrow-right:not(.no-flip) { transform: scaleX(-1); }
+
+/* Prevent flip */
+<i class="fa-arrow-right no-flip"></i>
+```
+
+#### 7.7.4 Form Inputs
+
+**Rule:** Email, phone, and URL inputs stay LTR regardless of page direction.
+
+Already implemented in `rtl.css`:
+```css
+html[lang="ar"] input[type="email"],
+html[lang="ar"] input[type="tel"],
+html[lang="ar"] input[type="url"] {
+  direction: ltr !important;
+  text-align: left !important;
+}
+```
+
+#### 7.7.5 hreflang Implementation
+
+| Layout | Arabic hreflang |
+|--------|-----------------|
+| `BaseLayout.astro` | Points to `/ar/` |
+| `BaseLayoutArabic.astro` | Uses canonical path |
+| `BaseLayoutMultilingual.astro` | Points to `/ar/` |
+
+**Note:** `/عربي/` is a legacy URL that 301 redirects to `/ar/`. All hreflang tags point to `/ar/` (the final indexed URL).
+
 ---
 
 ## **PART VIII: IMPLEMENTATION STATUS**
@@ -730,6 +808,34 @@ You are a Personal Assistant to a busy executive:
 ---
 
 ## **CHANGELOG**
+
+### January 30, 2026 — RTL Typography & Header Unification (v8.5)
+
+**Header Unification:**
+- Created `HeaderUnified.astro` — single component for EN/AR (CSS-only RTL handling)
+- Updated all layouts to use unified header: `BaseLayout`, `BaseLayoutArabic`, `BaseLayoutMultilingual`
+- Added `docs/HEADER_UNIFICATION_PLAN.md` with implementation details
+
+**RTL Typography Fixes (in `rtl.css`):**
+- Disabled `letter-spacing` globally for Arabic (breaks text rendering)
+- Increased `line-height` to 1.8 for body, 1.6 for headings
+- Added system Arabic font fallbacks (`Geeza Pro`, `Simplified Arabic`, `Tahoma`)
+- Added CSS variables: `--font-arabic`, `--font-arabic-heading`
+- Ensured form inputs (email, phone, URL) stay LTR
+- Added icon flipping rules with `.no-flip` escape class
+
+**hreflang Fixes:**
+- Standardized all layouts to use `/ar/` (not `/عربي/`) for Arabic hreflang
+- `/عربي/` is legacy URL that 301 redirects to `/ar/`
+
+**Font Loading Optimization:**
+- Added preload for Arabic font CSS in `BaseLayoutArabic.astro`
+- Reduced font weights from 5 (400-800) to 3 (400, 600, 700)
+- Added Arabic character subset for smaller download
+
+**Documentation:**
+- Added section 7.7: RTL (Arabic) Guidelines to CLAUDE.md
+- Updated `pipeline/MASTER_WORKFLOW.md` v3.1 with link verification step
 
 ### January 28, 2026 — ClickRank AI Site ID Update & Arabic Deferred Loading (v8.4)
 
