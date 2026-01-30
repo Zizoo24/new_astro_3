@@ -1,0 +1,409 @@
+# خطة توطين الموقع العربي | Arabic Localization Master Plan
+
+**Version:** 1.0  
+**Date:** January 30, 2026  
+**Project:** Legal Translation Services Website - Arabic Localization  
+**Primary Focus:** Abu Dhabi & UAE Market
+
+---
+
+## 📋 Executive Summary
+
+This document outlines a comprehensive 6-week phased approach to fully localize the website into Arabic, with specific emphasis on:
+
+1. **Abu Dhabi market prioritization** (primary SEO target)
+2. **High-quality Modern Standard Arabic (MSA)** - classy, natural, commercial tone
+3. **SEO optimization** with strategic keyword integration
+4. **Brand voice consistency** - boutique concierge positioning
+
+---
+
+## 🎯 Brand Voice Guidelines (Arabic)
+
+### Core Positioning
+- **Boutique concierge service** - not a factory, not a chain
+- **Quiet authority** - demonstrate expertise without boasting
+- **Direct and helpful** - get to the point, solve problems
+- **Human touch** - WhatsApp-first, personal service
+
+### Language Rules
+
+#### ❌ NEVER Use:
+| Forbidden Phrase | Reason |
+|-----------------|--------|
+| "أفضل" (best) | Superlative claims prohibited |
+| "الأول" (#1) | Ranking claims prohibited |
+| "رائد السوق" (market leader) | Superlative claims prohibited |
+| "الألسن" or any competitor name | No competitor mentions |
+| "!" (exclamation marks) | Maintains calm, professional tone |
+| "شريكك الموثوق" (your trusted partner) | Cliché, overused |
+
+#### ✅ DO Use:
+| Preferred Phrases | Usage Context |
+|------------------|---------------|
+| "نقدم خدمات ترجمة قانونية معتمدة" | Service description |
+| "نلتزم بتقديم..." | Commitment language |
+| "خدماتنا معتمدة من وزارة العدل" | Credibility |
+| "نخدم أبوظبي ودبي والإمارات" | Geographic reach |
+| "ترجمة دقيقة واحترافية" | Quality descriptors |
+| "في غضون 60 دقيقة" | Speed promise |
+
+### Tone Guidelines
+- **Professional but warm** - not cold corporate
+- **Confident without arrogance** - state facts, not boasts
+- **Action-oriented** - clear CTAs, easy next steps
+- **Respectful** - formal "أنتم" not informal "أنت"
+
+---
+
+## 📊 High-Quality Arabic Writing Sources
+
+### Reference Websites for MSA Commercial Writing
+
+| Source | URL | Why Use It |
+|--------|-----|------------|
+| UAE Government Portal | u.ae/ar | Official, elegant MSA |
+| TAMM Abu Dhabi | tamm.abudhabi/ar | Government services Arabic |
+| ADCB Bank | adcb.com/ar | Premium financial Arabic |
+| Emirates Airline | emirates.com/ar | Luxury brand Arabic |
+| Dubai Courts | dc.gov.ae/ar | Legal terminology |
+| Ministry of Justice | moj.gov.ae/ar | Official legal Arabic |
+
+### Writing Style Characteristics to Emulate
+
+```
+من مصادر حكومية وتجارية راقية:
+
+✓ جمل واضحة ومباشرة
+✓ تراكيب نحوية سليمة
+✓ مصطلحات قانونية دقيقة
+✓ نبرة محترمة ومهنية
+✓ استخدام صيغة الجمع للمخاطب (نقدم، نلتزم، نوفر)
+✓ تجنب الحشو والإطالة
+```
+
+---
+
+## 🗂️ Phase 1: Infrastructure & Navigation (Week 1)
+
+### 1.1 Create Arabic Navigation Data
+
+**File:** `src/data/navigation-ar.ts`
+
+```typescript
+// Priority navigation labels with SEO keywords
+export const navigationAr = {
+  main: [
+    {
+      label: "الرئيسية",
+      href: "/عربي/",
+    },
+    {
+      label: "خدمات الترجمة القانونية",
+      href: "/عربي/خدمات-الترجمة/",
+      children: [
+        {
+          label: "ترجمة قانونية معتمدة",
+          href: "/عربي/ترجمة-قانونية-معتمدة/",
+        },
+        // ... more items
+      ]
+    },
+    {
+      label: "الترجمة في أبوظبي",
+      href: "/عربي/ابوظبي/",
+    },
+    {
+      label: "تواصل معنا",
+      href: "/عربي/اتصل-بنا/",
+    }
+  ]
+};
+```
+
+### 1.2 Update Header Component
+
+**File:** `src/components/Header-porto.astro`
+
+Tasks:
+- [ ] Add EN/AR language toggle
+- [ ] Detect current language from URL
+- [ ] Load appropriate navigation data
+- [ ] Implement RTL direction switching
+
+### 1.3 Update Mobile Navigation
+
+**File:** `src/components/MobileShell.astro`
+
+Tasks:
+- [ ] Arabic accordion labels
+- [ ] RTL slide direction (left-to-right)
+- [ ] Touch-friendly Arabic menu
+
+### 1.4 Update Footer
+
+**File:** `src/components/Footer.astro`
+
+Tasks:
+- [ ] Arabic footer navigation
+- [ ] Arabic contact information
+- [ ] Social media labels in Arabic
+
+---
+
+## 🗂️ Phase 2: Core Pages (Week 2)
+
+### Priority Pages - Abu Dhabi Focus
+
+| English URL | Arabic URL | SEO Priority |
+|------------|------------|--------------|
+| `/` | `/عربي/` | ✅ High |
+| `/about/` | `/عربي/من-نحن/` | Medium |
+| `/contact/` | `/عربي/اتصل-بنا/` | ✅ High |
+| `/legal-translation-dubai/` | `/عربي/ترجمة-قانونية-معتمدة/` | ✅ Critical |
+| `/services/` | `/عربي/خدماتنا/` | ✅ High |
+
+### Abu Dhabi Landing Page (NEW - Priority)
+
+**Create:** `/عربي/ابوظبي/` 
+
+This is a NEW strategic page for Abu Dhabi SEO targeting.
+
+**H1:** `مكتب ترجمة قانونية في أبوظبي`
+
+**Content Structure:**
+```markdown
+# مكتب ترجمة قانونية في أبوظبي
+
+## خدمات الترجمة القانونية في أبوظبي
+
+نقدم خدمات ترجمة قانونية معتمدة في أبوظبي، معتمدة من وزارة العدل 
+الإماراتية. نخدم الأفراد والشركات في جميع أنحاء إمارة أبوظبي.
+
+## ترجمة قانونية معتمدة في أبوظبي
+
+[Content with strategic SEO keywords]
+
+## خدمات الترجمة القانونية في أبوظبي
+
+[Service listing with Abu Dhabi focus]
+
+## لماذا تختارنا للترجمة القانونية في أبوظبي
+
+[Value propositions - no "best" claims]
+```
+
+---
+
+## 🗂️ Phase 3: Legal Translation Pages (Week 3)
+
+### Pillar Page
+
+**URL:** `/عربي/ترجمة-قانونية-معتمدة/`
+
+**H1:** `الترجمة القانونية المعتمدة في الإمارات`
+
+### Cluster Pages
+
+| Service | Arabic URL | H1 |
+|---------|-----------|-----|
+| Contracts | `/عربي/ترجمة-عقود/` | ترجمة العقود القانونية |
+| MOA | `/عربي/ترجمة-عقد-تأسيس/` | ترجمة عقود التأسيس |
+| POA | `/عربي/ترجمة-توكيل/` | ترجمة التوكيلات الرسمية |
+| Court Documents | `/عربي/ترجمة-وثائق-المحاكم/` | ترجمة وثائق المحاكم |
+
+---
+
+## 🗂️ Phase 4: Personal Documents (Week 4)
+
+### Pillar Page
+
+**URL:** `/عربي/ترجمة-الوثائق-الشخصية/`
+
+### Cluster Pages
+
+| Document | Arabic URL | H1 |
+|----------|-----------|-----|
+| Birth Certificate | `/عربي/ترجمة-شهادة-ميلاد/` | ترجمة شهادات الميلاد |
+| Marriage Certificate | `/عربي/ترجمة-عقد-زواج/` | ترجمة عقود الزواج |
+| Degree Certificate | `/عربي/ترجمة-شهادات-جامعية/` | ترجمة الشهادات الجامعية |
+| Driving License | `/عربي/ترجمة-رخصة-قيادة/` | ترجمة رخص القيادة |
+
+---
+
+## 🗂️ Phase 5: Attestation & Specialized (Week 5)
+
+### Attestation Services
+
+| Service | Arabic URL | H1 |
+|---------|-----------|-----|
+| MOFA Attestation | `/عربي/تصديق-وزارة-الخارجية/` | تصديق وزارة الخارجية |
+| Embassy Attestation | `/عربي/تصديق-السفارات/` | تصديق السفارات |
+| Apostille | `/عربي/خدمة-الأبوستيل/` | خدمة الأبوستيل |
+
+### Specialized Translation
+
+| Specialization | Arabic URL | H1 |
+|---------------|-----------|-----|
+| Medical | `/عربي/ترجمة-طبية/` | الترجمة الطبية المتخصصة |
+| Technical | `/عربي/ترجمة-تقنية/` | الترجمة التقنية |
+| Financial | `/عربي/ترجمة-مالية/` | الترجمة المالية |
+
+---
+
+## 🗂️ Phase 6: Location Pages & Resources (Week 6)
+
+### Location Pages
+
+| Location | Arabic URL | H1 |
+|----------|-----------|-----|
+| Abu Dhabi | `/عربي/ابوظبي/` | مكتب ترجمة قانونية في أبوظبي |
+| Dubai | `/عربي/دبي/` | خدمات الترجمة القانونية في دبي |
+| Sharjah | `/عربي/الشارقة/` | الترجمة القانونية في الشارقة |
+
+### Resource Pages
+
+| Resource | Arabic URL | H1 |
+|----------|-----------|-----|
+| FAQ | `/عربي/الأسئلة-الشائعة/` | الأسئلة الشائعة عن الترجمة القانونية |
+| Pricing Guide | `/عربي/دليل-الأسعار/` | دليل أسعار الترجمة القانونية |
+| Process Guide | `/عربي/كيفية-الترجمة/` | خطوات الحصول على ترجمة معتمدة |
+
+---
+
+## 📝 Content Writing Guidelines
+
+### Page Template Structure
+
+```astro
+---
+// Arabic Page Template
+import BaseLayoutArabic from "@layouts/BaseLayoutArabic.astro";
+import HeroArabic from "@components/HeroArabic.astro";
+---
+
+<BaseLayoutArabic
+  title="[SEO Title with Keywords]"
+  description="[Meta description with keywords]"
+  hreflangEn="/english-equivalent/"
+>
+  <HeroArabic
+    headline="[H1 with primary keyword]"
+    subheadline="[Supporting text]"
+    ctaText="تواصل معنا الآن"
+    ctaLink="/عربي/اتصل-بنا/"
+  />
+  
+  <!-- Content sections -->
+</BaseLayoutArabic>
+```
+
+### Writing Checklist for Each Page
+
+- [ ] H1 includes primary keyword (from SEO doc)
+- [ ] Abu Dhabi mentioned prominently
+- [ ] No "best/top" superlatives
+- [ ] No competitor names
+- [ ] Clear CTA (WhatsApp preferred)
+- [ ] Natural MSA (not machine translation)
+- [ ] Ministry of Justice credibility mentioned
+- [ ] Service details are specific and helpful
+
+---
+
+## 🔧 Technical Implementation
+
+### Hreflang Implementation
+
+```html
+<!-- On English pages -->
+<link rel="alternate" hreflang="en-AE" href="https://domain.com/services/" />
+<link rel="alternate" hreflang="ar" href="https://domain.com/عربي/خدماتنا/" />
+<link rel="alternate" hreflang="x-default" href="https://domain.com/services/" />
+
+<!-- On Arabic pages -->
+<link rel="alternate" hreflang="ar" href="https://domain.com/عربي/خدماتنا/" />
+<link rel="alternate" hreflang="en-AE" href="https://domain.com/services/" />
+<link rel="alternate" hreflang="x-default" href="https://domain.com/services/" />
+```
+
+### Language Switcher Logic
+
+```javascript
+// Get current page's alternate language URL
+function getAlternateUrl(currentPath, targetLang) {
+  const urlMap = {
+    '/': { ar: '/عربي/', en: '/' },
+    '/services/': { ar: '/عربي/خدماتنا/', en: '/services/' },
+    '/contact/': { ar: '/عربي/اتصل-بنا/', en: '/contact/' },
+    // ... complete mapping
+  };
+  
+  return urlMap[currentPath]?.[targetLang] || (targetLang === 'ar' ? '/عربي/' : '/');
+}
+```
+
+---
+
+## 📊 Progress Tracking
+
+### Week 1 Deliverables
+- [ ] navigation-ar.ts created
+- [ ] Header language switcher working
+- [ ] Mobile menu Arabic version
+- [ ] Footer Arabic version
+
+### Week 2 Deliverables
+- [ ] Homepage Arabic
+- [ ] About page Arabic
+- [ ] Contact page Arabic
+- [ ] Abu Dhabi landing page (NEW)
+
+### Week 3 Deliverables
+- [ ] Legal translation pillar page
+- [ ] 8 legal cluster pages
+
+### Week 4 Deliverables
+- [ ] Personal documents pillar page
+- [ ] 8 personal document pages
+
+### Week 5 Deliverables
+- [ ] 6 attestation pages
+- [ ] 4 specialized translation pages
+
+### Week 6 Deliverables
+- [ ] 3 location pages
+- [ ] 5 resource pages
+- [ ] Final QA and launch
+
+---
+
+## 🎯 Success Metrics
+
+### SEO Targets (3-month post-launch)
+- [ ] Rank top 10 for "مكتب ترجمة قانونية في أبوظبي"
+- [ ] Rank top 10 for "ترجمة قانونية معتمدة الإمارات"
+- [ ] Organic Arabic traffic +200%
+
+### User Experience
+- [ ] Language switcher click rate tracked
+- [ ] Arabic page bounce rate < 60%
+- [ ] Arabic contact form submissions tracked
+
+---
+
+## 📚 Appendix: Key Files Reference
+
+| File | Purpose | Status |
+|------|---------|--------|
+| `BaseLayoutArabic.astro` | Arabic layout with RTL | ✅ Exists |
+| `rtl.css` | RTL styles | ✅ Exists |
+| `navigation-ar.ts` | Arabic nav data | ❌ Create |
+| `Header-porto.astro` | Header component | 🔄 Update |
+| `MobileShell.astro` | Mobile nav | 🔄 Update |
+| `Footer.astro` | Footer | 🔄 Update |
+
+---
+
+*Document maintained by: Translation Team*  
+*Last updated: January 30, 2026*
