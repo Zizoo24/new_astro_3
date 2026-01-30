@@ -2,7 +2,7 @@
 
 ## OnlineTranslation.ae — Single Unified Process for All Content
 
-**Version:** 3.1
+**Version:** 3.2
 **Last Updated:** January 30, 2026
 
 ---
@@ -452,6 +452,45 @@ Create detailed outline following this structure:
 | Lists | Use bullets for 3+ items |
 | Subheadings | Every 2-3 paragraphs |
 
+### Visual Relief Utilities (text-breaking.css)
+
+Use these CSS classes to break up wall-of-text content:
+
+| Class | Purpose | When to Use |
+|-------|---------|-------------|
+| `.lead-text` | Larger intro paragraph | First paragraph after H1 |
+| `.text-highlight` / `<mark>` | Highlight key terms | Emphasize important facts |
+| `.accent-border-left` | Coral vertical border | Pull quotes, key points |
+| `.kicker` | Small uppercase label | Above section headings |
+| `.text-breathe` | 65ch max-width | Long-form content sections |
+| `.callout-block` | Highlighted info box | Important warnings, tips |
+| `.service-tag` | Inline pill badges | Document types, service lists |
+| `.content-divider` | Visual separator | Between major sections |
+| `.quick-fact-box` | Stats/credentials box | Hero section sidebar |
+| `.metric-inline` | Inline stat badges | Key numbers in hero |
+
+**Example Usage:**
+```html
+<p class="lead-text">We translate all government and court documents...</p>
+
+<div class="callout-block">
+  <i class="fas fa-info-circle callout-block__icon"></i>
+  <div class="callout-block__content">
+    <p>MOJ certification is required for court submissions.</p>
+  </div>
+</div>
+
+<span class="service-tag">Birth Certificate</span>
+<span class="service-tag">Marriage Certificate</span>
+```
+
+**Visual Relief Checklist:**
+- [ ] Hero has `.lead-text` intro paragraph
+- [ ] Key facts highlighted with `.text-highlight` or `.callout-block`
+- [ ] Long sections use `.text-breathe` for optimal reading width
+- [ ] Document/service lists use `.service-tag` pills
+- [ ] Major sections separated with `.content-divider` if needed
+
 ### BANNED VOCABULARY — Scan Every Sentence
 
 ```
@@ -495,6 +534,43 @@ Following the outline, write each section:
 - Secondary keywords in: Body text, FAQ answers
 - Location keywords: Abu Dhabi prominently, Dubai secondary
 - Internal links: Descriptive anchor text, not "click here"
+
+## 4.4 Internal Link Placement Strategy
+
+**Minimum 8 links distributed as follows:**
+
+| Location | Links | Priority | Purpose |
+|----------|-------|----------|---------|
+| **First paragraph** | 1-2 | HIGH | Pass PageRank early, establish context |
+| **Within body sections** | 3-4 | HIGH | Contextual relevance, user journey |
+| **FAQ answers** | 2-3 | MEDIUM | Answer expansion, cross-sell |
+| **After-care/Next steps** | 1-2 | MEDIUM | Upsell related services |
+
+**Link Types (aim for mix):**
+
+| Type | Count | Example |
+|------|-------|---------|
+| **Same-silo** | 3-4 | Legal page → NDA, SPA, MOA pages |
+| **Cross-silo** | 2-3 | Birth certificate → Attestation services |
+| **Hub link** | 1 | Service page → Category hub |
+| **Resource link** | 1-2 | Service → Blog post, guide |
+
+**Anchor Text Rules:**
+```
+❌ "Click here to learn more"
+❌ "Read more"
+❌ "Learn about our services"
+
+✅ "birth certificate translation"
+✅ "MOFA attestation process"
+✅ "Golden Visa document requirements"
+```
+
+**Link Placement Best Practices:**
+- Put highest-value link in first 100 words
+- Space links naturally (not clustered)
+- Match anchor text to target page's primary keyword
+- Use contextual sentences, not forced insertions
 
 ---
 
@@ -742,6 +818,55 @@ After delivery, offer:
 1. "Would you like me to create the Astro page file?"
 2. "Should I create the Arabic version?"
 3. "Any sections you'd like me to expand or revise?"
+
+---
+
+# POST-PUBLICATION WORKFLOW
+
+## After Content Goes Live
+
+### Immediate (Within 24 Hours)
+1. **Request Indexing** — Use Google Search Console "Inspect URL" → "Request Indexing"
+2. **Verify Page Loads** — Check live URL for errors, broken images, layout issues
+3. **Check Mobile** — Test on actual mobile device, not just browser resize
+4. **Confirm Internal Links** — Click each internal link to verify destinations
+
+### Week 1
+1. **Monitor Indexing** — Check GSC for indexing status
+2. **Check Rankings** — Note initial ranking position for target keywords
+3. **Review Analytics** — Check page views, bounce rate, time on page
+
+### Month 1
+1. **Ranking Review** — Compare current vs. initial rankings
+2. **User Behavior** — Analyze scroll depth, click patterns
+3. **Conversion Check** — Count WhatsApp clicks from page
+4. **Content Gaps** — Note any questions users ask that page doesn't answer
+
+### Quarterly Review
+1. **Refresh Outdated Info** — Government processes change, update accordingly
+2. **Add New FAQs** — Based on actual customer questions
+3. **Update Internal Links** — Add links to new related content
+4. **Improve Thin Sections** — Expand any sections with weak engagement
+
+## Content Refresh Triggers
+
+Update content immediately when:
+- [ ] Government process or fee changes
+- [ ] Entity names/acronyms change
+- [ ] Hague Convention membership changes
+- [ ] New service offerings launched
+- [ ] User feedback indicates confusion
+
+## Success Metrics
+
+| Metric | Target | Source |
+|--------|--------|--------|
+| Indexed within | 7 days | GSC |
+| Page views (month 1) | 100+ | GA4 |
+| Avg. time on page | 2+ minutes | GA4 |
+| Bounce rate | <60% | GA4 |
+| WhatsApp clicks | Track conversions | GA4 Events |
+| Ranking (primary keyword) | Top 20 → Top 10 → Top 5 | GSC |
 
 ---
 

@@ -24,6 +24,14 @@ body.rtl-page {
 /* ============================================
    TYPOGRAPHY - Arabic Fonts
    ============================================ */
+
+/* System Arabic font stack for instant fallback while Google Fonts load */
+/* Order: Google Font → System Arabic → Generic Arabic → Fallback */
+:root {
+  --font-arabic: 'Noto Sans Arabic', 'Geeza Pro', 'Simplified Arabic', 'Tahoma', 'Arial', sans-serif;
+  --font-arabic-heading: 'Noto Sans Arabic', 'Geeza Pro', 'Traditional Arabic', serif;
+}
+
 html[lang="ar"] body,
 html[lang="ar"] p,
 html[lang="ar"] li,
@@ -36,7 +44,7 @@ html[lang="ar"] select,
 html[lang="ar"] label,
 html[lang="ar"] td,
 html[lang="ar"] th {
-  font-family: 'Noto Sans Arabic', 'Amiri', 'Arial', sans-serif !important;
+  font-family: var(--font-arabic) !important;
   line-height: 1.8 !important;
 }
 
@@ -46,7 +54,7 @@ html[lang="ar"] h3,
 html[lang="ar"] h4,
 html[lang="ar"] h5,
 html[lang="ar"] h6 {
-  font-family: 'Noto Sans Arabic', 'Amiri', serif !important;
+  font-family: var(--font-arabic-heading) !important;
   line-height: 1.6 !important;
 }
 
@@ -1053,4 +1061,234 @@ html[lang="ar"] .dropdown-submenu > .dropdown-menu {
   right: 100% !important;
   margin-left: 0 !important;
   margin-right: 2px !important;
+}
+
+/* ============================================
+   ARABIC TYPOGRAPHY - CRITICAL FIXES
+   Letter-spacing breaks Arabic text rendering
+   Arabic needs slightly larger sizes for readability
+   ============================================ */
+
+/* Disable letter-spacing globally for Arabic */
+html[lang="ar"],
+html[lang="ar"] * {
+  letter-spacing: 0 !important;
+}
+
+/* Arabic headings - increased line height */
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4,
+html[lang="ar"] h5,
+html[lang="ar"] h6 {
+  letter-spacing: 0 !important;
+  line-height: 1.6 !important;
+}
+
+/* Arabic body text - better readability */
+html[lang="ar"] p,
+html[lang="ar"] li,
+html[lang="ar"] span,
+html[lang="ar"] a {
+  line-height: 1.9 !important;
+}
+
+/* Navigation links - slightly larger for Arabic */
+html[lang="ar"] .nav-link {
+  letter-spacing: 0 !important;
+  font-size: 13px !important;
+}
+
+/* Hero text adjustments */
+html[lang="ar"] .hero-title,
+html[lang="ar"] .exodus-title,
+html[lang="ar"] .page-title {
+  line-height: 1.4 !important;
+  letter-spacing: 0 !important;
+}
+
+html[lang="ar"] .hero-lead,
+html[lang="ar"] .page-lead {
+  line-height: 1.9 !important;
+}
+
+/* Buttons - ensure Arabic text fits */
+html[lang="ar"] .btn,
+html[lang="ar"] button {
+  letter-spacing: 0 !important;
+  line-height: 1.5 !important;
+}
+
+/* Cards and content blocks */
+html[lang="ar"] .card,
+html[lang="ar"] .service-card,
+html[lang="ar"] .value-card {
+  text-align: right !important;
+}
+
+html[lang="ar"] .card p,
+html[lang="ar"] .service-card p {
+  line-height: 1.8 !important;
+}
+
+/* FAQ sections */
+html[lang="ar"] .faq-question,
+html[lang="ar"] .faq-answer {
+  line-height: 1.8 !important;
+}
+
+/* Section labels - uppercase doesn't work well for Arabic */
+html[lang="ar"] .section-label {
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+}
+
+/* Logo tagline adjustment */
+html[lang="ar"] .logo-tagline {
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  font-size: 11px !important;
+}
+
+/* ============================================
+   FORM INPUTS - LTR for data entry
+   Email, phone, URLs must stay LTR
+   ============================================ */
+
+/* Already defined above, but ensuring specificity */
+html[lang="ar"] input[type="email"],
+html[lang="ar"] input[type="tel"],
+html[lang="ar"] input[type="url"],
+html[lang="ar"] input[type="number"],
+html[lang="ar"] input[type="date"] {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+/* Code blocks stay LTR */
+html[lang="ar"] code,
+html[lang="ar"] pre,
+html[lang="ar"] .code-block {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+/* ============================================
+   ICONS THAT SHOULD MIRROR
+   Directional icons flip, symmetrical don't
+   ============================================ */
+
+/* Arrows should flip */
+html[lang="ar"] .fa-arrow-right:not(.no-flip),
+html[lang="ar"] .fa-chevron-right:not(.no-flip),
+html[lang="ar"] .fa-angle-right:not(.no-flip),
+html[lang="ar"] .fa-caret-right:not(.no-flip) {
+  transform: scaleX(-1) !important;
+}
+
+/* Quote icons flip */
+html[lang="ar"] .fa-quote-left {
+  transform: scaleX(-1) !important;
+}
+
+/* Icons that should NOT flip (add .no-flip class) */
+html[lang="ar"] .fa-whatsapp,
+html[lang="ar"] .fa-phone,
+html[lang="ar"] .fa-envelope,
+html[lang="ar"] .fa-search,
+html[lang="ar"] .fa-bars,
+html[lang="ar"] .fa-times,
+html[lang="ar"] .fa-check,
+html[lang="ar"] .fa-star {
+  transform: none !important;
+}
+
+/* ============================================
+   MIXED CONTENT (BiDi) HANDLING
+   English text/numbers within Arabic context
+   ============================================ */
+
+/* Brand names stay LTR */
+html[lang="ar"] .brand-name,
+html[lang="ar"] .logo-text,
+html[lang="ar"] [dir="ltr"] {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+}
+
+/* Numbers in specific contexts */
+html[lang="ar"] .price,
+html[lang="ar"] .phone-number,
+html[lang="ar"] .license-number {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+}
+
+/* WhatsApp number always LTR */
+html[lang="ar"] a[href^="tel:"],
+html[lang="ar"] a[href^="https://wa.me"] {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+}
+
+/* ============================================
+   TEXT-BREAKING.CSS RTL OVERRIDES
+   Visual relief utilities need RTL-aware borders/margins
+   ============================================ */
+
+/* Accent borders: flip left to right for RTL */
+html[lang="ar"] .accent-border-left {
+  padding-left: 0 !important;
+  padding-right: 1rem !important;
+  border-left: none !important;
+  border-right: 4px solid var(--accent-coral, #FF1654) !important;
+}
+
+html[lang="ar"] .accent-border-left--navy {
+  border-right-color: var(--surface-navy, #0E2B48) !important;
+}
+
+html[lang="ar"] .accent-border-left--gold {
+  border-right-color: var(--accent-gold, #d4a54c) !important;
+}
+
+/* Hero split sections: flip borders */
+html[lang="ar"] .hero-split > * {
+  padding-left: 0 !important;
+  padding-right: 1rem !important;
+  border-left: none !important;
+  border-right: 3px solid var(--accent-coral, #FF1654) !important;
+}
+
+/* Metric badges: flip margin */
+html[lang="ar"] .metric-inline {
+  margin-right: 0 !important;
+  margin-left: 1.5rem !important;
+}
+
+/* Callout block: flip border */
+html[lang="ar"] .callout-block {
+  border-left: none !important;
+  border-right: 4px solid var(--accent-coral, #FF1654) !important;
+  border-radius: 8px 0 0 8px !important;
+}
+
+/* Service tags: flip margin */
+html[lang="ar"] .service-tag {
+  margin: 0.25rem 0 0.25rem 0.25rem !important;
+}
+
+/* Text breathe center: works same in RTL */
+/* No changes needed */
+
+/* Kicker labels: letter-spacing already disabled globally */
+/* No changes needed */
+
+/* Content divider accent: flip gradient direction */
+html[lang="ar"] .content-divider--accent {
+  background: linear-gradient(270deg,
+    var(--accent-coral, #FF1654) 0%,
+    transparent 100%
+  ) !important;
 }

@@ -45,6 +45,14 @@ Complete ALL items before publishing any content. Mark each item with [x] when v
 - [ ] Bullet points for 3+ items
 - [ ] Subheadings every 2-3 paragraphs
 
+### Visual Relief (text-breaking.css utilities)
+
+- [ ] Hero uses `.lead-text` for intro paragraph
+- [ ] Key warnings/info use `.callout-block`
+- [ ] Document types use `.service-tag` pills where appropriate
+- [ ] Long-form sections use `.text-breathe` for optimal width
+- [ ] Important terms highlighted with `<mark>` or `.text-highlight`
+
 ### Structure (Service Pages)
 
 - [ ] Hero section with H1, intro, bullets, CTA
