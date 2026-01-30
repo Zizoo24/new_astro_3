@@ -522,6 +522,13 @@ export const serviceLinks: Record<string, ServiceLink> = {
     icon: "fas fa-gavel",
     badge: "NEW"
   },
+  courtDocumentGuide: {
+    url: "/blog/court-document-translation-dubai/",
+    text: "Court Document Translation Guide",
+    full: "What Dubai Courts accept and reject for document translation",
+    icon: "fas fa-balance-scale",
+    badge: "NEW"
+  },
 
   // ========================================
   // INDUSTRIES
@@ -1077,8 +1084,14 @@ export const pageRelationships: Record<string, PageRelationships> = {
   // ========================================
   legalTranslationMojGuide: {
     related: ["legalTranslation", "mojVsCertified", "contracts", "corporate", "litigation", "poa", "attestation"],
-    family: ["mojVsCertified", "attestationGuide", "pricingGuide"],
+    family: ["mojVsCertified", "attestationGuide", "pricingGuide", "courtDocumentGuide"],
     crossSilo: ["goldenVisa", "birthCertificate", "marriageCertificate", "degree", "pcc"],
+    resources: ["mojVsCertified", "attestationGuide", "documentChecklist", "pricingGuide"]
+  },
+  courtDocumentGuide: {
+    related: ["legalTranslation", "litigation", "verdict", "arbitration", "contracts", "attestation", "poa"],
+    family: ["legalTranslationMojGuide", "mojVsCertified", "attestationGuide"],
+    crossSilo: ["goldenVisa", "difc", "corporate"],
     resources: ["mojVsCertified", "attestationGuide", "documentChecklist", "pricingGuide"]
   },
 

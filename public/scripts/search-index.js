@@ -338,6 +338,12 @@ const searchIndex = [
         "url": "/blog/legal-translation-dubai-moj-guide/",
         "category": "Blog",
         "keywords": "legal translation dubai moj ministry justice certified court contracts difc adgm requirements guide"
+    },
+    {
+        "title": "Court Document Translation Dubai Guide",
+        "url": "/blog/court-document-translation-dubai/",
+        "category": "Blog",
+        "keywords": "court document translation dubai courts difc adgm judgment verdict arbitration litigation accepted rejected"
     }
 ];
 
