@@ -1231,3 +1231,64 @@ html[lang="ar"] a[href^="https://wa.me"] {
   direction: ltr !important;
   unicode-bidi: isolate !important;
 }
+
+/* ============================================
+   TEXT-BREAKING.CSS RTL OVERRIDES
+   Visual relief utilities need RTL-aware borders/margins
+   ============================================ */
+
+/* Accent borders: flip left to right for RTL */
+html[lang="ar"] .accent-border-left {
+  padding-left: 0 !important;
+  padding-right: 1rem !important;
+  border-left: none !important;
+  border-right: 4px solid var(--accent-coral, #FF1654) !important;
+}
+
+html[lang="ar"] .accent-border-left--navy {
+  border-right-color: var(--surface-navy, #0E2B48) !important;
+}
+
+html[lang="ar"] .accent-border-left--gold {
+  border-right-color: var(--accent-gold, #d4a54c) !important;
+}
+
+/* Hero split sections: flip borders */
+html[lang="ar"] .hero-split > * {
+  padding-left: 0 !important;
+  padding-right: 1rem !important;
+  border-left: none !important;
+  border-right: 3px solid var(--accent-coral, #FF1654) !important;
+}
+
+/* Metric badges: flip margin */
+html[lang="ar"] .metric-inline {
+  margin-right: 0 !important;
+  margin-left: 1.5rem !important;
+}
+
+/* Callout block: flip border */
+html[lang="ar"] .callout-block {
+  border-left: none !important;
+  border-right: 4px solid var(--accent-coral, #FF1654) !important;
+  border-radius: 8px 0 0 8px !important;
+}
+
+/* Service tags: flip margin */
+html[lang="ar"] .service-tag {
+  margin: 0.25rem 0 0.25rem 0.25rem !important;
+}
+
+/* Text breathe center: works same in RTL */
+/* No changes needed */
+
+/* Kicker labels: letter-spacing already disabled globally */
+/* No changes needed */
+
+/* Content divider accent: flip gradient direction */
+html[lang="ar"] .content-divider--accent {
+  background: linear-gradient(270deg,
+    var(--accent-coral, #FF1654) 0%,
+    transparent 100%
+  ) !important;
+}
