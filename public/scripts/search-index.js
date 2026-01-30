@@ -344,6 +344,12 @@ const searchIndex = [
         "url": "/blog/court-document-translation-dubai/",
         "category": "Blog",
         "keywords": "court document translation dubai courts difc adgm judgment verdict arbitration litigation accepted rejected"
+    },
+    {
+        "title": "Marriage Certificate Translation for UAE Visa",
+        "url": "/blog/marriage-certificate-translation-dubai/",
+        "category": "Blog",
+        "keywords": "marriage certificate translation dubai spouse visa gdrfa attestation nikah nama religious civil wedding"
     }
 ];
 

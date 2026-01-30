@@ -529,6 +529,13 @@ export const serviceLinks: Record<string, ServiceLink> = {
     icon: "fas fa-balance-scale",
     badge: "NEW"
   },
+  marriageCertificateGuide: {
+    url: "/blog/marriage-certificate-translation-dubai/",
+    text: "Marriage Certificate Translation Guide",
+    full: "Complete GDRFA guide for spouse visa marriage certificate translation",
+    icon: "fas fa-ring",
+    badge: "NEW"
+  },
 
   // ========================================
   // INDUSTRIES
@@ -1093,6 +1100,12 @@ export const pageRelationships: Record<string, PageRelationships> = {
     family: ["legalTranslationMojGuide", "mojVsCertified", "attestationGuide"],
     crossSilo: ["goldenVisa", "difc", "corporate"],
     resources: ["mojVsCertified", "attestationGuide", "documentChecklist", "pricingGuide"]
+  },
+  marriageCertificateGuide: {
+    related: ["marriageCertificate", "attestation", "vitalRecords", "sponsorship", "goldenVisa"],
+    family: ["attestationGuide", "birthCertificate", "divorceCertificate"],
+    crossSilo: ["legalTranslation", "pcc", "bankStatements"],
+    resources: ["attestationGuide", "documentChecklist", "pricingGuide"]
   },
 
   // ========================================
