@@ -809,6 +809,36 @@ html[lang="ar"] input[type="url"] {
 
 ## **CHANGELOG**
 
+### January 30, 2026 — CSS Unification & Pipeline Improvements (v8.6)
+
+**CSS Unification (Arabic layout now matches English):**
+- Fixed broken CSS links in `BaseLayoutArabic.astro` (visibility-fixes.css, visual-relief.css)
+- Added 7 missing CSS files to Arabic layout (text-breaking, faq-accordion, responsive-layouts, etc.)
+- Ported deferred CSS loading pattern from English layout
+- Added noscript fallback for JS-disabled users
+- Deferred GTM loading for better performance
+
+**Visual Relief RTL Support (in `rtl.css`):**
+- Added RTL overrides for text-breaking.css utilities
+- Flipped accent borders, callout blocks, service tags for Arabic
+- Fixed margin/padding directions for visual relief components
+
+**Pipeline Improvements (MASTER_WORKFLOW.md v3.2):**
+- Documented 14 visual relief CSS utilities with usage examples
+- Added section 4.4: Internal Link Placement Strategy
+- Added POST-PUBLICATION WORKFLOW section with timelines
+- Added content refresh triggers and success metrics
+- Updated PRE_PUBLISH.md with visual relief checklist
+
+**Deprecated File Cleanup:**
+- Deleted `Header-porto.astro` and `Header-porto-ar.astro` (replaced by HeaderUnified)
+- Removed `public/styles/deprecated/` folder (6 unused CSS files, 5,249 lines)
+
+**Content Updates:**
+- Fixed attestation page title/meta for CTR improvement (position 7 → 0% CTR)
+- Created legal translation Dubai MOJ guide blog post
+- Expanded /legal-translation-dubai/ with DIFC/ADGM section (+600 words)
+
 ### January 30, 2026 — RTL Typography & Header Unification (v8.5)
 
 **Header Unification:**
@@ -936,4 +966,4 @@ html[lang="ar"] input[type="url"] {
 
 ---
 
-*Last Updated: January 30, 2026 — Version 8.5*
+*Last Updated: January 30, 2026 — Version 8.6*
