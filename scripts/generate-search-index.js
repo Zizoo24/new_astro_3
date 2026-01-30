@@ -226,6 +226,8 @@ function buildSearchIndex() {
     { title: 'Degrees Accepted for UAE Work Permits', url: '/blog/degrees-accepted-uae-work-permit/', category: 'Blog', keywords: 'degrees accepted uae work permit mohre recognized universities equivalency employment visa' },
     { title: 'Study Gap and UAE Employment', url: '/blog/study-gap-uae-employment/', category: 'Blog', keywords: 'study gap uae employment hr verification academic history work permit mohre career break' },
     { title: 'Professional Certificates vs Degrees Translation', url: '/blog/professional-certificates-vs-degrees-translation/', category: 'Blog', keywords: 'professional certificates degrees translation cpa acca pmp cisco moj certification uae' },
+    { title: 'Legal Translation Dubai: Complete MOJ Guide', url: '/blog/legal-translation-dubai-moj-guide/', category: 'Blog', keywords: 'legal translation dubai moj ministry justice certified court contracts difc adgm requirements guide' },
+    { title: 'Court Document Translation Dubai Guide', url: '/blog/court-document-translation-dubai/', category: 'Blog', keywords: 'court document translation dubai courts difc adgm judgment verdict arbitration litigation accepted rejected' },
   ];
 
   // Add static pages, avoiding duplicates

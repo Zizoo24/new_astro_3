@@ -513,6 +513,24 @@ export const serviceLinks: Record<string, ServiceLink> = {
   },
 
   // ========================================
+  // BLOG POSTS (Legal Translation Cluster)
+  // ========================================
+  legalTranslationMojGuide: {
+    url: "/blog/legal-translation-dubai-moj-guide/",
+    text: "Legal Translation MOJ Guide",
+    full: "Complete guide to MOJ legal translation requirements in Dubai",
+    icon: "fas fa-gavel",
+    badge: "NEW"
+  },
+  courtDocumentGuide: {
+    url: "/blog/court-document-translation-dubai/",
+    text: "Court Document Translation Guide",
+    full: "What Dubai Courts accept and reject for document translation",
+    icon: "fas fa-balance-scale",
+    badge: "NEW"
+  },
+
+  // ========================================
   // INDUSTRIES
   // ========================================
   industries: {
@@ -1059,6 +1077,22 @@ export const pageRelationships: Record<string, PageRelationships> = {
     family: ["degreesWorkPermit", "phdDbaTranslation", "studyGapGuide"],
     crossSilo: ["goldenVisa", "attestation", "dhaDataflow"],
     resources: ["mojVsCertified", "attestationGuide", "documentChecklist"]
+  },
+
+  // ========================================
+  // BLOG POSTS (Legal Translation Cluster)
+  // ========================================
+  legalTranslationMojGuide: {
+    related: ["legalTranslation", "mojVsCertified", "contracts", "corporate", "litigation", "poa", "attestation"],
+    family: ["mojVsCertified", "attestationGuide", "pricingGuide", "courtDocumentGuide"],
+    crossSilo: ["goldenVisa", "birthCertificate", "marriageCertificate", "degree", "pcc"],
+    resources: ["mojVsCertified", "attestationGuide", "documentChecklist", "pricingGuide"]
+  },
+  courtDocumentGuide: {
+    related: ["legalTranslation", "litigation", "verdict", "arbitration", "contracts", "attestation", "poa"],
+    family: ["legalTranslationMojGuide", "mojVsCertified", "attestationGuide"],
+    crossSilo: ["goldenVisa", "difc", "corporate"],
+    resources: ["mojVsCertified", "attestationGuide", "documentChecklist", "pricingGuide"]
   },
 
   // ========================================
