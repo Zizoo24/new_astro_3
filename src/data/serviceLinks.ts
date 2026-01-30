@@ -536,6 +536,13 @@ export const serviceLinks: Record<string, ServiceLink> = {
     icon: "fas fa-ring",
     badge: "NEW"
   },
+  attestationProcessGuide: {
+    url: "/blog/uae-attestation-process-guide/",
+    text: "UAE Attestation Process Guide",
+    full: "Embassy vs MOFA vs apostille explained for 2026",
+    icon: "fas fa-stamp",
+    badge: "NEW"
+  },
 
   // ========================================
   // INDUSTRIES
@@ -1105,6 +1112,12 @@ export const pageRelationships: Record<string, PageRelationships> = {
     related: ["marriageCertificate", "attestation", "vitalRecords", "sponsorship", "goldenVisa"],
     family: ["attestationGuide", "birthCertificate", "divorceCertificate"],
     crossSilo: ["legalTranslation", "pcc", "bankStatements"],
+    resources: ["attestationGuide", "documentChecklist", "pricingGuide"]
+  },
+  attestationProcessGuide: {
+    related: ["attestation", "mofa", "degree", "marriageCertificate", "pcc", "birthCertificate"],
+    family: ["attestationGuide", "marriageCertificateGuide", "courtDocumentGuide"],
+    crossSilo: ["legalTranslation", "goldenVisa", "corporate"],
     resources: ["attestationGuide", "documentChecklist", "pricingGuide"]
   },
 
