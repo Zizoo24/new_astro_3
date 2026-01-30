@@ -1,0 +1,643 @@
+---
+import BaseLayoutArabic from '../../layouts/BaseLayoutArabic.astro';
+
+// SEO metadata - Arabic
+const pageTitle = 'تواصل معنا في دبي وأبوظبي | OnlineTranslation.ae';
+const metaDescription = 'تواصلوا مع OnlineTranslation.ae للحصول على خدمات الترجمة القانونية المعتمدة من وزارة العدل في دبي وأبوظبي. واتساب أو اتصال أو رسالة للحصول على عرض سعر مجاني.';
+---
+
+<BaseLayoutArabic
+  title={pageTitle}
+  description={metaDescription}
+>
+  <section class="page-hero contact-hero">
+    <div class="hero-background">
+      <img src="/assets/images/onedrive/contact-dxb.png" alt="أفق دبي - تواصل مع OnlineTranslation.ae" width="1024" height="1024" loading="eager" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="container">
+      <nav class="breadcrumb" aria-label="مسار التنقل">
+        <a href="/ar/">الرئيسية</a>
+        <span class="separator">›</span>
+        <span class="current">تواصل معنا</span>
+      </nav>
+
+      <h1 class="page-title">تواصل معنا</h1>
+      <p class="page-subtitle">نحن هنا لمساعدتكم</p>
+      <p class="page-lead">أسرع طريقة للتواصل معنا هي عبر واتساب. أرسلوا وثائقكم مباشرة واحصلوا على عرض سعر خلال دقائق. لمن يفضلون قنوات أخرى، نحن متاحون أيضاً عبر الهاتف والبريد الإلكتروني أو من خلال النموذج أدناه.</p>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-methods">
+          <h2>طرق التواصل</h2>
+
+          <div class="contact-card primary-contact">
+            <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+            <div class="contact-info">
+              <h3>واتساب (موصى به)</h3>
+              <p>أسرع طريقة للحصول على عرض سعر. أرسلوا وثائقكم مباشرة.</p>
+              <a href="https://wa.me/971508620217" class="contact-link" dir="ltr">+971 50 862 0217</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+            <div class="contact-info">
+              <h3>الهاتف</h3>
+              <p>متاحون من الأحد إلى الخميس، ٩ صباحاً - ٦ مساءً بتوقيت الخليج.</p>
+              <a href="tel:+971508620217" class="contact-link" dir="ltr">+971 50 862 0217</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div class="contact-info">
+              <h3>البريد الإلكتروني</h3>
+              <p>للمراسلات الرسمية والملفات الكبيرة.</p>
+              <a href="mailto:info@onlinetranslation.ae" class="contact-link">info@onlinetranslation.ae</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon"><i class="fas fa-clock"></i></div>
+            <div class="contact-info">
+              <h3>ساعات العمل</h3>
+              <p>الأحد إلى الخميس: ٩ صباحاً - ٦ مساءً<br>الجمعة والسبت: بموعد مسبق</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrapper">
+          <h2>أرسلوا رسالة</h2>
+          <p class="form-intro">للحصول على عروض أسعار مكتوبة أو استفسارات عامة. نرد عادة خلال ساعتين خلال ساعات العمل.</p>
+
+          <form id="contactForm" class="contact-form" method="POST" action="https://formspree.io/f/mykgddbe">
+            <input type="hidden" name="_next" value="https://onlinetranslation.ae/thank-you/">
+            <input type="hidden" name="_language" value="ar">
+            <div class="form-group">
+              <label for="name">الاسم</label>
+              <input type="text" id="name" name="name" autocomplete="name" required placeholder="الاسم الكامل">
+            </div>
+
+            <div class="form-group">
+              <label for="email">البريد الإلكتروني</label>
+              <input type="email" id="email" name="email" autocomplete="email" required placeholder="your@email.com" dir="ltr">
+            </div>
+
+            <div class="form-group">
+              <label for="phone">الهاتف / واتساب</label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+971 50 XXX XXXX" dir="ltr">
+            </div>
+
+            <div class="form-group">
+              <label for="service">الخدمة المطلوبة</label>
+              <select id="service" name="service">
+                <option value="">اختاروا الخدمة...</option>
+                <option value="legal">الترجمة القانونية</option>
+                <option value="certificate">ترجمة الشهادات</option>
+                <option value="corporate">ترجمة الشركات</option>
+                <option value="attestation">التصديق / وزارة الخارجية</option>
+                <option value="golden-visa">وثائق الفيزا الذهبية</option>
+                <option value="other">أخرى</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">رسالتكم</label>
+              <textarea id="message" name="message" rows="4" placeholder="صفوا وثيقتكم أو متطلباتكم..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full">
+              إرسال الرسالة <i class="fas fa-paper-plane"></i>
+            </button>
+
+            <div id="formResult"></div>
+
+            <p class="form-note">نرد عادة خلال ساعتين خلال ساعات العمل. للطلبات العاجلة، استخدموا واتساب أعلاه.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Map Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <div class="map-section">
+        <div class="map-info">
+          <h2>موقعنا في دبي</h2>
+          <p>نقدم خدمة رقمية أولاً مع استلام وتوصيل بالبريد السريع في جميع إمارات الدولة. زوروا موقعنا أو أرسلوا الوثائق عبر واتساب للمعالجة الفورية.</p>
+          <div class="map-address">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <strong>OnlineTranslation.ae</strong><br>
+              دبي، الإمارات العربية المتحدة
+            </div>
+          </div>
+          <a href="https://maps.app.goo.gl/jz5HjwSF4aktSUrH7" target="_blank" rel="noopener" class="btn btn-outline">
+            فتح في خرائط جوجل <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+        <div class="map-embed">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3612.638512611491!2d55.13861550000001!3d25.1140952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6b7dd95d9f65%3A0x9024820b35a6038b!2sOnlineTranslation.ae!5e0!3m2!1sar!2sae!4v1766997056459!5m2!1sar!2sae"
+            width="100%"
+            height="400"
+            style="border:0; border-radius: 1rem;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="موقع OnlineTranslation.ae على خرائط جوجل">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Areas Section -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">مناطق الخدمة</span>
+        <h2 class="section-title">نخدم جميع أنحاء الإمارات</h2>
+      </div>
+      <div class="service-areas-grid">
+        <div class="area-card">
+          <div class="area-icon"><i class="fas fa-building"></i></div>
+          <h3>دبي</h3>
+          <p>مركز دبي المالي العالمي، مارينا، داون تاون، ديرة، بر دبي، جميرا</p>
+        </div>
+        <div class="area-card">
+          <div class="area-icon"><i class="fas fa-landmark"></i></div>
+          <h3>أبوظبي</h3>
+          <p>سوق أبوظبي العالمي، جزيرة الريم، الخالدية، المصفح، مدينة زايد</p>
+        </div>
+        <div class="area-card">
+          <div class="area-icon"><i class="fas fa-map"></i></div>
+          <h3>الإمارات الشمالية</h3>
+          <p>الشارقة، عجمان، رأس الخيمة، أم القيوين، الفجيرة</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayoutArabic>
+
+<style>
+  .contact-hero {
+    background: linear-gradient(135deg, var(--primary-navy, #0E2B48) 0%, #1a3a5c 100%);
+    padding: 3rem 0 2rem;
+    position: relative;
+  }
+
+  .contact-hero .page-title {
+    color: #ffffff;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-hero .page-subtitle {
+    color: var(--accent-coral, #FF1654);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    color: #ffffff;
+  }
+
+  .breadcrumb .separator {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .breadcrumb .current {
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .page-lead {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 700px;
+    margin-top: 1rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .contact-methods h2,
+  .contact-form-wrapper h2 {
+    margin-bottom: 2rem;
+    color: var(--primary-navy, #0E2B48);
+  }
+
+  .contact-card {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background: #f8f9fa;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    flex-direction: row-reverse;
+  }
+
+  .contact-card:hover {
+    background: #ffffff;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .contact-card.primary-contact {
+    background: var(--primary-navy, #0E2B48);
+    color: #ffffff;
+  }
+
+  .contact-card.primary-contact .contact-icon {
+    background: rgba(255, 255, 255, 0.2);
+    color: #25D366;
+  }
+
+  .contact-card.primary-contact p {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .contact-card.primary-contact .contact-link {
+    color: #ffffff;
+  }
+
+  .contact-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: var(--primary-navy, #0E2B48);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .contact-info {
+    text-align: right;
+  }
+
+  .contact-info h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+    color: var(--primary-navy, #0E2B48);
+  }
+
+  .contact-card.primary-contact .contact-info h3 {
+    color: #ffffff;
+  }
+
+  .contact-info p {
+    margin: 0;
+    color: var(--text-muted, #5a6a7a);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .contact-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-weight: 600;
+    color: var(--primary-navy, #0E2B48);
+    text-decoration: none;
+  }
+
+  .contact-link:hover {
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .form-intro {
+    color: var(--text-muted, #5a6a7a);
+    margin-bottom: 2rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--primary-navy, #0E2B48);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    background: #ffffff;
+    color: var(--text-dark, #1a1a1a);
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-navy, #0E2B48);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-direction: row-reverse;
+  }
+
+  .btn-primary {
+    background: var(--accent-coral, #FF1654);
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    background: #e0144c;
+    transform: translateY(-2px);
+  }
+
+  .btn-full {
+    width: 100%;
+  }
+
+  .form-note {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: var(--text-muted, #5a6a7a);
+    text-align: center;
+  }
+
+  /* Map Section Styles */
+  .map-section {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .map-info h2 {
+    margin-bottom: 1rem;
+    color: var(--primary-navy, #0E2B48);
+  }
+
+  .map-info p {
+    color: var(--text-muted, #5a6a7a);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+  }
+
+  .map-address {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.25rem;
+    background: #ffffff;
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    flex-direction: row-reverse;
+    text-align: right;
+  }
+
+  .map-address i {
+    color: var(--accent-coral, #FF1654);
+    font-size: 1.25rem;
+    margin-top: 2px;
+  }
+
+  .map-address strong {
+    color: var(--primary-navy, #0E2B48);
+  }
+
+  .btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary-navy, #0E2B48);
+    color: var(--primary-navy, #0E2B48);
+  }
+
+  .btn-outline:hover {
+    background: var(--primary-navy, #0E2B48);
+    color: #ffffff;
+  }
+
+  .map-embed {
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .map-embed iframe {
+    display: block;
+  }
+
+  /* Service Areas Section */
+  .service-areas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .area-card {
+    background: #f8f9fa;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .area-card:hover {
+    background: #ffffff;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transform: translateY(-4px);
+  }
+
+  .area-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: var(--primary-navy, #0E2B48);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 auto 1rem;
+  }
+
+  .area-card h3 {
+    font-size: 1.1rem;
+    color: var(--primary-navy, #0E2B48);
+    margin-bottom: 0.5rem;
+  }
+
+  .area-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted, #5a6a7a);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .map-section {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .map-info {
+      text-align: center;
+    }
+
+    .map-address {
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    .map-info .btn-outline {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .map-embed iframe {
+      height: 300px;
+    }
+
+    .service-areas-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Dark mode */
+  :global(body.theme-dark) .contact-methods h2,
+  :global(body.theme-dark) .contact-form-wrapper h2 {
+    color: #f0f6fc;
+  }
+
+  :global(body.theme-dark) .contact-card {
+    background: #21262d;
+  }
+
+  :global(body.theme-dark) .contact-card:hover {
+    background: #2d333b;
+  }
+
+  :global(body.theme-dark) .contact-card.primary-contact {
+    background: #0d1117;
+  }
+
+  :global(body.theme-dark) .contact-info h3 {
+    color: #f0f6fc;
+  }
+
+  :global(body.theme-dark) .contact-info p {
+    color: #a8b3c2;
+  }
+
+  :global(body.theme-dark) .contact-link {
+    color: var(--accent-coral, #FF1654);
+  }
+
+  :global(body.theme-dark) .form-group label {
+    color: #f0f6fc;
+  }
+
+  :global(body.theme-dark) .form-group input,
+  :global(body.theme-dark) .form-group select,
+  :global(body.theme-dark) .form-group textarea {
+    background: #21262d;
+    border-color: #30363d;
+    color: #f0f6fc;
+  }
+
+  :global(body.theme-dark) .form-intro,
+  :global(body.theme-dark) .form-note {
+    color: #a8b3c2;
+  }
+
+  :global(body.theme-dark) .map-info h2 {
+    color: #f0f6fc;
+  }
+
+  :global(body.theme-dark) .map-info p {
+    color: #a8b3c2;
+  }
+
+  :global(body.theme-dark) .map-address {
+    background: #21262d;
+  }
+
+  :global(body.theme-dark) .map-address strong {
+    color: #f0f6fc;
+  }
+
+  :global(body.theme-dark) .btn-outline {
+    border-color: #a8b3c2;
+    color: #a8b3c2;
+  }
+
+  :global(body.theme-dark) .btn-outline:hover {
+    background: #21262d;
+    color: #f0f6fc;
+  }
+
+  :global(body.theme-dark) .area-card {
+    background: #21262d;
+  }
+
+  :global(body.theme-dark) .area-card:hover {
+    background: #2d333b;
+  }
+
+  :global(body.theme-dark) .area-card h3 {
+    color: #f0f6fc;
+  }
+
+  :global(body.theme-dark) .area-card p {
+    color: #a8b3c2;
+  }
+</style>

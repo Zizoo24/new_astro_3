@@ -2,7 +2,7 @@
 
 ## OnlineTranslation.ae — Single Unified Process for All Content
 
-**Version:** 3.0
+**Version:** 3.1
 **Last Updated:** January 30, 2026
 
 ---
@@ -615,6 +615,38 @@ EMIRATE-SPECIFIC (if applicable):
 □ Digital concierge positioning maintained
 ```
 
+## 5.4 Internal Link Verification (MANDATORY)
+
+```
+╔═══════════════════════════════════════════════════════════════════════╗
+║  CRITICAL: Verify ALL internal links exist before publishing           ║
+║  Broken links damage user experience and SEO                           ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+FOR EACH INTERNAL LINK IN CONTENT:
+□ Check if the page exists in the codebase
+□ If page DOES NOT EXIST:
+   Option A: Remove the link (if non-essential)
+   Option B: Create the missing page (if essential)
+   Option C: Replace with existing equivalent page
+
+COMMON LINK PATTERNS TO VERIFY:
+□ /ar/[page]/ — Arabic version must exist if linked
+□ /about/[subpage]/ — Check if subpage exists
+□ /resources/[guide]/ — Verify resource pages
+□ /legal/[category]/[type]/ — Check full path
+
+HOW TO CHECK IF PAGE EXISTS:
+1. Search for file: src/pages/[path].astro
+2. For Arabic: src/pages/ar/[path].astro
+3. If file doesn't exist, the link is broken
+
+EXAMPLE CHECK:
+Link: /ar/about/translator/
+Search: src/pages/ar/about/translator.astro
+Result: NOT FOUND → Remove link or create page
+```
+
 ---
 
 ## ✓ VERIFICATION GATE 5
@@ -651,6 +683,11 @@ EMIRATE-SPECIFIC (if applicable):
 │  □ Processes described are accurate for UAE                         │
 │  □ Emirate-specific authorities correct                             │
 │  □ Timelines realistic for UAE bureaucracy                          │
+│                                                                      │
+│  INTERNAL LINK VERIFICATION:                                        │
+│  □ ALL internal links verified to exist                             │
+│  □ Broken links removed or replaced with existing pages             │
+│  □ Arabic links point to existing /ar/[page]/ routes                │
 │                                                                      │
 │  IF ANY ITEM UNCHECKED → FIX BEFORE PROCEEDING                      │
 └─────────────────────────────────────────────────────────────────────┘
