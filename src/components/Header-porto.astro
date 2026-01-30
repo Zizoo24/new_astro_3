@@ -22,6 +22,7 @@
 
 import { mainNavigation } from '../data/navigation-porto';
 import { siteContact } from '../data/navigation';
+import LanguageSwitcher from './LanguageSwitcher.astro';
 
 interface Props {
   currentPath?: string;
@@ -245,8 +246,9 @@ function isActive(href: string): boolean {
           </div>
         </div>
 
-        <!-- Search Toggle & Theme Toggle -->
+        <!-- Language Switcher, Search Toggle & Theme Toggle -->
         <div class="header-column header-column-actions">
+          <LanguageSwitcher variant="pill" size="sm" />
           <button
             id="desktopSearchToggle"
             class="header-action-btn search-toggle"
@@ -628,7 +630,7 @@ function isActive(href: string): boolean {
     align-items: center;
     justify-content: flex-end;
     gap: 8px;
-    min-width: 100px; /* Guarantee space for 2 buttons */
+    min-width: 160px; /* Guarantee space for lang switcher + 2 buttons */
     padding-left: 15px; /* FIX: Separation from nav items */
     margin-left: auto; /* FIX: Push to far right */
     position: relative;

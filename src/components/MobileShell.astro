@@ -9,6 +9,7 @@
  * - Works with existing sticky-mobile.css dark theme
  */
 import { mobileNavHubs, searchQuickLinks, siteContact } from '../data/navigation';
+import LanguageSwitcher from './LanguageSwitcher.astro';
 ---
 
 <!-- Mobile Top Header - Only visible on mobile -->
@@ -104,6 +105,12 @@ import { mobileNavHubs, searchQuickLinks, siteContact } from '../data/navigation
     <a href="/contact/" class="sidebar-single-link">
       <i class="fas fa-envelope"></i> Contact Us
     </a>
+    
+    <!-- Language Switcher -->
+    <div class="sidebar-lang-switch">
+      <span class="lang-label"><i class="fas fa-globe"></i> Language:</span>
+      <LanguageSwitcher variant="pill" size="md" />
+    </div>
   </div>
   
   <div class="sidebar-contact">

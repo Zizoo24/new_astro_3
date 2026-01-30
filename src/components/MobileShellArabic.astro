@@ -1,0 +1,388 @@
+---
+/**
+ * MobileShellArabic.astro - Arabic Mobile Navigation
+ * RTL version of MobileShell.astro for Arabic pages
+ *
+ * Uses navigation-ar.ts for Arabic labels and URLs
+ */
+import { mainNavigationAr, siteContactAr, uiLabelsAr, footerNavAr } from '../data/navigation-ar';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+// Convert mainNavigationAr to mobile hub format
+const mobileNavHubsAr = mainNavigationAr
+  .filter(item => item.dropdown)
+  .map(item => ({
+    id: item.dropdown?.label || item.label,
+    label: item.label,
+    href: item.href,
+    hubLabel: item.dropdown?.footerLink?.label || `عرض الكل`,
+    children: item.dropdown?.categories.flatMap(cat => 
+      cat.items.slice(0, 4).map(subItem => ({
+        label: subItem.label,
+        href: subItem.href,
+        icon: subItem.icon
+      }))
+    ) || []
+  }));
+
+// Arabic search quick links
+const searchQuickLinksAr = [
+  { label: 'الفيزا الذهبية', href: '/ar/services/golden-visa-translation/' },
+  { label: 'شهادة الميلاد', href: '/ar/personal/vital-records/birth/' },
+  { label: 'الترجمة القانونية', href: '/ar/legal-translation-dubai/' },
+  { label: 'تصديق الشهادات الهندية', href: '/ar/services/attestation/india/' },
+  { label: 'الأسعار', href: '/ar/resources/pricing-guide/' },
+];
+---
+
+<!-- Mobile Top Header - Arabic RTL -->
+<div class="header-mobile header-mobile-rtl" dir="rtl">
+  <button type="button" id="mobileThemeToggle" class="header-icon" aria-label={uiLabelsAr.toggleTheme}>
+    <i class="fas fa-moon"></i>
+  </button>
+  <a href="/ar/" class="header-title"><span>.ae</span>OnlineTranslation</a>
+  <button type="button" class="header-icon" id="sidebarToggle" aria-label={uiLabelsAr.openMenu}>
+    <i class="fas fa-bars"></i>
+  </button>
+</div>
+
+<!-- Mobile Bottom Navigation - Arabic -->
+<div id="footer-bar" class="footer-bar footer-bar-rtl" dir="rtl">
+  <a href="/ar/contact/" class="footer-item">
+    <i class="fas fa-envelope"></i>
+    <span>تواصل</span>
+  </a>
+  <a href={`tel:${siteContactAr.phone}`} class="footer-item">
+    <i class="fas fa-phone"></i>
+    <span>اتصل</span>
+  </a>
+  <a href={siteContactAr.whatsapp} class="footer-item footer-whatsapp">
+    <i class="fab fa-whatsapp"></i>
+    <span>واتساب</span>
+  </a>
+  <button type="button" class="footer-item" id="searchToggle">
+    <i class="fas fa-search"></i>
+    <span>بحث</span>
+  </button>
+  <button type="button" class="footer-item active-nav" id="footerMenuToggle">
+    <i class="fas fa-bars"></i>
+    <span>القائمة</span>
+  </button>
+</div>
+
+<!-- Mobile Sidebar - Arabic RTL -->
+<nav id="menu-sidebar" class="sidebar-menu sidebar-menu-rtl" aria-label="التنقل الرئيسي" dir="rtl">
+  <div class="sidebar-header">
+    <button class="sidebar-close" id="sidebarClose" aria-label={uiLabelsAr.closeMenu}>
+      <i class="fas fa-times"></i>
+    </button>
+    <a href="/ar/" class="sidebar-logo">
+      <div class="sidebar-brand">
+        <span class="sidebar-brand-name"><span class="brand-suffix">Translation.ae</span>Online</span>
+        <span class="sidebar-tagline">ترجمة قانونية معتمدة</span>
+      </div>
+      <img src="/assets/images/logo/brand/emblem-256.png" alt="OnlineTranslation.ae" class="sidebar-emblem" loading="lazy" width="48" height="48">
+    </a>
+  </div>
+  
+  <div class="sidebar-nav">
+    <!-- Home Link -->
+    <a href="/ar/" class="sidebar-home-link">
+      {uiLabelsAr.home} <i class="fas fa-home"></i>
+    </a>
+    
+    <!-- Hub-Based Accordion Groups -->
+    {mobileNavHubsAr.map((accordion, index) => (
+      <div class="sidebar-accordion-group" data-accordion={`ar-${index}`}>
+        <button 
+          class="sidebar-accordion-heading" 
+          aria-expanded="false" 
+          aria-controls={`accordion-ar-${index}`}
+        >
+          <i class="fas fa-chevron-down accordion-chevron"></i>
+          <span class="heading-text">
+            {accordion.label}
+          </span>
+        </button>
+        <div class="sidebar-accordion-panel" id={`accordion-ar-${index}`}>
+          {/* Hub link first */}
+          <a href={accordion.href} class="sidebar-hub-link">
+            {accordion.hubLabel} <i class="fas fa-th-large"></i>
+          </a>
+          {/* Key sub-links */}
+          {accordion.children.map((child) => (
+            <a href={child.href}>
+              {child.label}
+              {child.icon && <i class={child.icon} style="width: 16px; margin-right: 6px; opacity: 0.7;"></i>}
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+    
+    <!-- Single Links -->
+    <a href="/ar/about/" class="sidebar-single-link">
+      من نحن <i class="fas fa-building"></i>
+    </a>
+    <a href="/ar/contact/" class="sidebar-single-link">
+      {uiLabelsAr.contactUs} <i class="fas fa-envelope"></i>
+    </a>
+    
+    <!-- Language Switcher -->
+    <div class="sidebar-lang-switch">
+      <LanguageSwitcher variant="pill" size="md" />
+      <span class="lang-label"><i class="fas fa-globe"></i> اللغة:</span>
+    </div>
+  </div>
+  
+  <div class="sidebar-contact">
+    <a href={siteContactAr.whatsapp} class="sidebar-cta">
+      راسلونا عبر واتساب <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href={`tel:${siteContactAr.phone}`} class="sidebar-cta secondary">
+      <span dir="ltr">{siteContactAr.phoneDisplay}</span> <i class="fas fa-phone"></i>
+    </a>
+  </div>
+</nav>
+
+<!-- Sidebar Overlay -->
+<div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+<!-- Search Overlay - Arabic -->
+<div id="search-overlay" class="search-overlay" dir="rtl">
+  <div class="search-container">
+    <button class="search-close" id="searchClose" aria-label={uiLabelsAr.closeMenu}>
+      <i class="fas fa-times"></i>
+    </button>
+    <h3>ابحثوا في الخدمات</h3>
+    <div id="pagefind-container"></div>
+    <div class="quick-links">
+      <span>شائع:</span>
+      {searchQuickLinksAr.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+    </div>
+  </div>
+</div>
+
+<!-- Pagefind CSS -->
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+
+<style>
+  /* RTL Mobile Header */
+  .header-mobile-rtl {
+    flex-direction: row-reverse;
+  }
+
+  .header-mobile-rtl .header-title {
+    direction: ltr;
+  }
+
+  /* RTL Footer Bar */
+  .footer-bar-rtl {
+    flex-direction: row-reverse;
+  }
+
+  /* RTL Sidebar */
+  .sidebar-menu-rtl {
+    left: auto;
+    right: -320px;
+  }
+
+  .sidebar-menu-rtl.is-open {
+    transform: translateX(-320px);
+  }
+
+  /* RTL Sidebar Header */
+  .sidebar-menu-rtl .sidebar-header {
+    flex-direction: row-reverse;
+  }
+
+  .sidebar-menu-rtl .sidebar-logo {
+    flex-direction: row-reverse;
+  }
+
+  .sidebar-menu-rtl .sidebar-brand {
+    margin-left: 12px;
+    margin-right: 0;
+    text-align: right;
+  }
+
+  /* RTL Nav links */
+  .sidebar-menu-rtl .sidebar-home-link,
+  .sidebar-menu-rtl .sidebar-single-link {
+    flex-direction: row-reverse;
+    border-left: none;
+    border-right: 3px solid transparent;
+  }
+
+  .sidebar-menu-rtl .sidebar-home-link:hover,
+  .sidebar-menu-rtl .sidebar-home-link:active,
+  .sidebar-menu-rtl .sidebar-single-link:hover,
+  .sidebar-menu-rtl .sidebar-single-link:active {
+    border-left-color: transparent;
+    border-right-color: var(--accent-color);
+  }
+
+  .sidebar-menu-rtl .sidebar-home-link i,
+  .sidebar-menu-rtl .sidebar-single-link i {
+    margin-left: 12px;
+    margin-right: 0;
+  }
+
+  /* RTL Accordion */
+  .sidebar-menu-rtl .sidebar-accordion-heading {
+    flex-direction: row-reverse;
+  }
+
+  .sidebar-menu-rtl .sidebar-accordion-heading .heading-text {
+    text-align: right;
+  }
+
+  .sidebar-menu-rtl .sidebar-accordion-panel a {
+    flex-direction: row-reverse;
+    padding: 14px 48px 14px 20px;
+    border-left: none;
+    border-right: 3px solid transparent;
+    text-align: right;
+  }
+
+  .sidebar-menu-rtl .sidebar-accordion-panel a:hover,
+  .sidebar-menu-rtl .sidebar-accordion-panel a:active {
+    border-left-color: transparent;
+    border-right-color: #FF1654;
+  }
+
+  .sidebar-menu-rtl .sidebar-hub-link {
+    flex-direction: row-reverse;
+  }
+
+  /* RTL Language Switcher */
+  .sidebar-menu-rtl .sidebar-lang-switch {
+    flex-direction: row-reverse;
+  }
+
+  /* RTL CTA buttons */
+  .sidebar-menu-rtl .sidebar-cta {
+    flex-direction: row-reverse;
+  }
+
+  .sidebar-menu-rtl .sidebar-cta i {
+    margin-left: 12px;
+    margin-right: 0;
+  }
+</style>
+
+<!-- Pagefind UI Script -->
+<script is:inline>
+  window.addEventListener('DOMContentLoaded', function() {
+    var script = document.createElement('script');
+    script.src = '/pagefind/pagefind-ui.js';
+    script.onload = function() {
+      if (typeof PagefindUI !== 'undefined') {
+        new PagefindUI({
+          element: "#pagefind-container",
+          showSubResults: true,
+          showImages: false,
+          translations: {
+            placeholder: "ابحثوا عن خدمة...",
+            zero_results: "لم يتم العثور على نتائج",
+            many_results: "{count} نتيجة",
+            one_result: "نتيجة واحدة",
+            search_label: "بحث",
+            filters_label: "تصفية",
+            clear_search: "مسح البحث"
+          }
+        });
+      }
+    };
+    document.body.appendChild(script);
+  });
+</script>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Sidebar Toggle
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const footerMenuToggle = document.getElementById('footerMenuToggle');
+    const sidebarClose = document.getElementById('sidebarClose');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    const menuSidebar = document.getElementById('menu-sidebar');
+
+    function openSidebar() {
+      menuSidebar?.classList.add('is-open');
+      sidebarOverlay?.classList.add('is-visible');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSidebar() {
+      menuSidebar?.classList.remove('is-open');
+      sidebarOverlay?.classList.remove('is-visible');
+      document.body.style.overflow = '';
+    }
+
+    sidebarToggle?.addEventListener('click', openSidebar);
+    footerMenuToggle?.addEventListener('click', openSidebar);
+    sidebarClose?.addEventListener('click', closeSidebar);
+    sidebarOverlay?.addEventListener('click', closeSidebar);
+
+    // Search Overlay
+    const searchToggle = document.getElementById('searchToggle');
+    const searchClose = document.getElementById('searchClose');
+    const searchOverlay = document.getElementById('search-overlay');
+
+    searchToggle?.addEventListener('click', () => {
+      searchOverlay?.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    });
+
+    searchClose?.addEventListener('click', () => {
+      searchOverlay?.classList.remove('is-open');
+      document.body.style.overflow = '';
+    });
+
+    // Accordion
+    const accordionHeadings = document.querySelectorAll('.sidebar-accordion-heading');
+    accordionHeadings.forEach(heading => {
+      heading.addEventListener('click', () => {
+        const isOpen = heading.classList.contains('is-open');
+        
+        // Close all
+        accordionHeadings.forEach(h => {
+          h.classList.remove('is-open');
+          h.setAttribute('aria-expanded', 'false');
+          const panel = h.nextElementSibling;
+          if (panel) panel.classList.remove('is-open');
+        });
+
+        // Open clicked if it was closed
+        if (!isOpen) {
+          heading.classList.add('is-open');
+          heading.setAttribute('aria-expanded', 'true');
+          const panel = heading.nextElementSibling;
+          if (panel) panel.classList.add('is-open');
+        }
+      });
+    });
+
+    // Theme Toggle
+    const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+    mobileThemeToggle?.addEventListener('click', () => {
+      const html = document.documentElement;
+      const body = document.body;
+      const currentTheme = html.getAttribute('data-theme') || 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+      html.setAttribute('data-theme', newTheme);
+      body.classList.remove('theme-light', 'theme-dark');
+      body.classList.add('theme-' + newTheme);
+      localStorage.setItem('theme', newTheme);
+
+      // Update icon
+      const icon = mobileThemeToggle.querySelector('i');
+      if (icon) {
+        icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+      }
+    });
+  });
+</script>
