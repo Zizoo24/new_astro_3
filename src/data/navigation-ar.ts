@@ -467,8 +467,8 @@ export const footerNavAr = {
     { label: 'الترجمة القانونية', href: '/ar/legal-translation-dubai/' },
     { label: 'الوثائق الشخصية', href: '/ar/personal-documents/' },
     { label: 'التصديق', href: '/ar/services/attestation/' },
-    { label: 'دراسات الحالة', href: '/ar/resources/case-studies/' },
-    { label: 'اعتماداتنا', href: '/ar/about/credentials/' },
+    { label: 'من نحن', href: '/ar/about/' },
+    { label: 'المواقع', href: '/ar/locations/' },
     { label: 'تواصلوا معنا', href: '/ar/contact/' },
   ],
   
