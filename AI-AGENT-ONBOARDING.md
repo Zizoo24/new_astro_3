@@ -239,6 +239,12 @@ Verify: MOJ Hotline 800 333333
 ## 0. Read the Master Blueprint
 **MANDATORY:** Read `CLAUDE.md` before making any changes.
 
+## 0.5. For Content Creation
+**For creating English or Arabic content:** Read `pipeline/MASTER_WORKFLOW.md`
+- This is the unified content creation process
+- Prompts, style guides, and checklists are in the `pipeline/` folder
+- If keywords not provided, ASK the user for them
+
 ## 1. Understand the Structure
 Fetch and read these files first:
 ```
@@ -309,12 +315,17 @@ Components auto-import from this source
 
 **Primary Reference (MUST READ):**
 - `CLAUDE.md` — Master strategic blueprint (brand voice, content rules, SEO)
+- `pipeline/MASTER_WORKFLOW.md` — **Unified content creation process (EN + AR)**
+
+**Content Creation:**
+- `pipeline/prompts/CONTENT_GENERATION.md` — AI prompt for writing content
+- `pipeline/prompts/TRANSLATION.md` — AI prompt for EN→AR translation
+- `pipeline/checklists/PRE_PUBLISH.md` — Pre-deployment checklist
 
 **Active Documentation:**
-- `docs/SEO-IMPLEMENTATION-PLAN.md` — SEO infrastructure details
-- `TASKS.md` — UI/Component task tracking
-- `CONTENT-EXPANSION-PLAN.md` — Content strategy
-- `COLOR_PALETTE_BLUEPRINT.md` — Design tokens
+- `SEO-STRATEGY.md` — Current keyword data
+- `CONTENT-PLAN.md` — Content calendar
+- `SEO_ARABIC_KEYWORDS.md` — Arabic SEO keywords
 
 **Superseded (Do Not Use):**
 - `SEO-REPAIR-ROADMAP.md` — Merged into CLAUDE.md Part VIII
@@ -323,7 +334,7 @@ Components auto-import from this source
 
 ---
 
-*Last Updated: December 24, 2025*
+*Last Updated: January 30, 2026*
 
 ---
 
@@ -332,8 +343,8 @@ Components auto-import from this source
 | Document | Purpose | Priority |
 |----------|---------|----------|
 | `CLAUDE.md` | Master strategic blueprint | 🔴 READ FIRST |
+| `pipeline/MASTER_WORKFLOW.md` | **Content creation process** | 🔴 FOR CONTENT |
 | `AI-AGENT-ONBOARDING.md` | Quick start (this file) | 🟡 Reference |
-| `docs/SEO-IMPLEMENTATION-PLAN.md` | SEO infrastructure details | 🟢 Technical |
-| `TASKS.md` | UI/Component tasks | 🟢 Active |
-| `CONTENT-EXPANSION-PLAN.md` | Content strategy | 🟢 Active |
-| `COLOR_PALETTE_BLUEPRINT.md` | Design tokens | 🟢 Reference |
+| `SEO-STRATEGY.md` | Current keyword data | 🟢 SEO |
+| `CONTENT-PLAN.md` | Content calendar | 🟢 Planning |
+| `SEO_ARABIC_KEYWORDS.md` | Arabic keywords | 🟢 Arabic SEO |
