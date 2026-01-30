@@ -2,7 +2,7 @@
 
 ## OnlineTranslation.ae — Single Unified Process for All Content
 
-**Version:** 2.0
+**Version:** 3.0
 **Last Updated:** January 30, 2026
 
 ---
@@ -22,6 +22,152 @@
 ║  7. PRIMARY SEO TARGET: Abu Dhabi (then Dubai, then UAE)            ║
 ╚══════════════════════════════════════════════════════════════════════╝
 ```
+
+---
+
+# UAE/DUBAI/ABU DHABI FACT CHECKER
+
+```
+╔══════════════════════════════════════════════════════════════════════════╗
+║  MANDATORY: Run this fact checker on ALL content before publication     ║
+║  Any factual error damages trust and can cause legal issues             ║
+╚══════════════════════════════════════════════════════════════════════════╝
+```
+
+## HAGUE APOSTILLE CONVENTION — CRITICAL
+
+| Country | Hague Member? | Since | What This Means |
+|---------|---------------|-------|-----------------|
+| **UAE** | ❌ **NO** | N/A | Documents FROM UAE need Embassy+MOFA attestation abroad |
+| **India** | ✅ YES | July 2005 | Indian docs get MEA apostille, valid in UAE |
+| **Pakistan** | ❌ NO | N/A | Full embassy attestation chain required |
+| **Bangladesh** | ✅ YES | March 2025 | Recently joined, apostille valid |
+| **Philippines** | ✅ YES | 2019 | PSA/DFA apostille valid |
+| **USA** | ✅ YES | 1981 | State/Federal apostille valid |
+| **UK** | ✅ YES | 1965 | FCDO apostille valid |
+| **Canada** | ✅ YES | January 2024 | Recently joined |
+
+```
+⚠️ NEVER CLAIM:
+   ❌ "UAE accepts apostilles" — FALSE, UAE is NOT a member
+   ❌ "UAE is a Hague Convention member" — FALSE
+   ❌ "Apostille your documents for UAE" — MISLEADING
+
+✅ CORRECT STATEMENTS:
+   ✓ "Documents going TO UAE need Embassy + MOFA attestation"
+   ✓ "India is a Hague member, so Indian documents can be apostilled"
+   ✓ "UAE requires the traditional attestation chain"
+```
+
+## UAE GOVERNMENT ENTITIES — VERIFY NAMES
+
+| Acronym | Full English Name | Arabic Name | Common Errors |
+|---------|-------------------|-------------|---------------|
+| **MOJ** | Ministry of Justice | وزارة العدل | Not "MOG" |
+| **MOFA** | Ministry of Foreign Affairs | وزارة الخارجية | Not "MFA" |
+| **GDRFA** | General Directorate of Residency and Foreigners Affairs | الإدارة العامة للإقامة وشؤون الأجانب | Not "GDRA" or "GRFA" |
+| **DLD** | Dubai Land Department | دائرة الأراضي والأملاك | Not "Dubai Lands Dept" |
+| **DHA** | Dubai Health Authority | هيئة الصحة بدبي | Not "Dubai Healthcare" |
+| **MOHRE** | Ministry of Human Resources and Emiratisation | وزارة الموارد البشرية والتوطين | Not "Ministry of Labour" |
+| **ICP** | Federal Authority for Identity, Citizenship, Customs & Port Security | الهيئة الاتحادية للهوية والجنسية | Formerly just "Identity and Citizenship" |
+| **KHDA** | Knowledge and Human Development Authority | هيئة المعرفة والتنمية البشرية | Dubai education regulator |
+| **ADEK** | Abu Dhabi Department of Education and Knowledge | دائرة التعليم والمعرفة | Abu Dhabi education |
+| **RERA** | Real Estate Regulatory Agency | مؤسسة التنظيم العقاري | Under DLD |
+| **DIFC** | Dubai International Financial Centre | مركز دبي المالي العالمي | Common law jurisdiction |
+| **ADGM** | Abu Dhabi Global Market | سوق أبوظبي العالمي | Common law jurisdiction |
+
+## LOCATION-SPECIFIC FACTS
+
+### Abu Dhabi vs Dubai — Key Differences
+
+| Aspect | Abu Dhabi | Dubai |
+|--------|-----------|-------|
+| **Courts** | Abu Dhabi Judicial Department (ADJD) | Dubai Courts |
+| **Common Law Court** | ADGM Courts | DIFC Courts |
+| **Land Authority** | Department of Municipalities and Transport (DMT) | Dubai Land Department (DLD) |
+| **Education Regulator** | ADEK | KHDA |
+| **Health Authority** | Department of Health (DoH) | Dubai Health Authority (DHA) |
+| **Business Registration** | Department of Economic Development (ADDED) | Department of Economy and Tourism (DET) |
+| **Free Zones** | Masdar City, KIZAD, twofour54, ADGM | JAFZA, DMCC, DIFC, Dubai Internet City |
+| **Golden Visa Processing** | ICP Abu Dhabi | GDRFA Dubai |
+
+### Northern Emirates
+
+| Emirate | Key Authority | Notes |
+|---------|---------------|-------|
+| Sharjah | Sharjah Economic Development Department | Second largest translation market |
+| Ajman | Ajman DED | Smaller, uses federal courts |
+| RAK | Ras Al Khaimah Courts | RAK Free Trade Zone popular |
+| UAQ | Umm Al Quwain Municipality | Smallest emirate |
+| Fujairah | Fujairah Municipality | East coast, port city |
+
+## BUSINESS FACTS — VERIFY ALWAYS
+
+| Fact | Correct Value | Common Errors |
+|------|---------------|---------------|
+| MOJ License Number | **#701** | Not 701, not License 701 |
+| Partner Name | **Arkan Legal Translation** | Not "Arkan Translation" |
+| Translator Name | **Khaled Mohamed Abdulwahab Al-Adl** | Spelling must be exact |
+| Translator Arabic | **خالد محمد عبدالوهاب العدل** | Spelling must be exact |
+| WhatsApp Number | **+971 50 862 0217** | Include country code |
+| Verification Hotline | **800 333333** | MOJ Hotline |
+| License Validity | **October 15, 2026** | Update when renewed |
+
+## PROCESS FACTS — UAE SPECIFIC
+
+### Document Attestation Chain (for non-Hague countries)
+```
+1. Notarization in origin country
+2. Foreign Affairs Ministry (origin country)
+3. UAE Embassy (in origin country)
+4. MOFA UAE attestation (in UAE)
+```
+
+### Translation Acceptance
+```
+✓ MOJ-certified translation: Courts, government, all official use
+✓ Certified translation: Private companies, HR, banks
+✗ Regular translation: NOT accepted for official purposes
+```
+
+### Visa Categories (for context accuracy)
+| Visa Type | Duration | Key Requirements |
+|-----------|----------|------------------|
+| Golden Visa | 10 years | Investment, talent, or special skills |
+| Green Visa | 5 years | Freelancers, skilled employees |
+| Employment Visa | 2-3 years | Employer sponsorship |
+| Family Visa | Tied to sponsor | Minimum salary requirements |
+
+## LOCATION RELEVANCE CHECK
+
+```
+╔═══════════════════════════════════════════════════════════════════════╗
+║  ALL CONTENT MUST BE RELEVANT TO UAE CONTEXT                          ║
+║                                                                       ║
+║  Ask for each piece of content:                                       ║
+║  □ Does this situation actually occur in UAE?                         ║
+║  □ Are the processes described accurate for UAE?                      ║
+║  □ Are the government entities correct for the emirate mentioned?     ║
+║  □ Are the timelines realistic for UAE bureaucracy?                   ║
+║  □ Are the document requirements accurate for UAE?                    ║
+╚═══════════════════════════════════════════════════════════════════════╝
+```
+
+### Content Must Reflect UAE Reality
+
+**Include:**
+- UAE-specific document requirements
+- Actual UAE government portals (ICP, GDRFA app, Amer)
+- Real UAE timelines (not generic estimates)
+- Correct fees where mentioned (AED currency)
+- Typing center references (UAE-specific concept)
+- Emirate-specific authorities when relevant
+
+**Avoid:**
+- Generic international advice that doesn't apply to UAE
+- Processes from other GCC countries (Saudi, Qatar rules differ)
+- Outdated requirements (UAE updates frequently)
+- Assumptions based on Western bureaucracy
 
 ---
 
@@ -120,13 +266,22 @@ Using Claude's training knowledge, research and document:
 - What are the common pain points?
 - What government entities are involved? (GDRFA, MOFA, MOJ, DHA, etc.)
 
-### B. UAE-Specific Context
+### B. UAE-Specific Context (CRITICAL)
 - What are the legal/regulatory requirements in UAE?
 - How does Abu Dhabi differ from Dubai for this topic?
 - What documents are typically required?
 - What is the typical process/timeline?
+- Which government entity handles this? (GDRFA, MOFA, MOJ, etc.)
+- Are there emirate-specific variations?
 
-### C. User Intent Analysis
+### C. Location Relevance Research
+- Is this topic relevant to UAE residents specifically?
+- What makes UAE different from other countries for this service?
+- What local terminology is used? (typing centers, attestation, etc.)
+- What are the actual UAE fees/timelines?
+- Which UAE portals or apps are involved? (ICP, GDRFA app, Amer)
+
+### D. User Intent Analysis
 - What questions do users ask about this topic?
 - What problems are they trying to solve?
 - What information do they need to make a decision?
@@ -162,6 +317,12 @@ Identify 8+ pages to link to:
 │  □ User intent analyzed (questions, pain points)                    │
 │  □ 8+ internal linking opportunities identified                     │
 │  □ Relevant UAE entities noted (GDRFA, MOFA, MOJ, etc.)            │
+│                                                                      │
+│  LOCATION RELEVANCE:                                                │
+│  □ Content is relevant to UAE residents/businesses                  │
+│  □ UAE-specific processes/requirements identified                   │
+│  □ Correct emirate authorities noted (Abu Dhabi vs Dubai)          │
+│  □ UAE terminology used (typing center, attestation, etc.)         │
 │                                                                      │
 │  IF ANY ITEM UNCHECKED → COMPLETE RESEARCH BEFORE PROCEEDING        │
 └─────────────────────────────────────────────────────────────────────┘
@@ -392,13 +553,43 @@ Search draft for these words — if found, REPLACE:
 □ Subheadings every 2-3 paragraphs
 ```
 
-### Factual Accuracy Check
+### Factual Accuracy Check — UAE FACT CHECKER (MANDATORY)
+
 ```
+╔═══════════════════════════════════════════════════════════════════════╗
+║  RUN THE UAE FACT CHECKER (see section above) ON ALL CONTENT          ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+HAGUE CONVENTION:
 □ UAE is NOT stated as Hague Apostille member
+□ No claims that "UAE accepts apostilles"
+□ Correct attestation chain described for non-Hague countries
+
+BUSINESS FACTS:
 □ MOJ License #701 is correct
 □ WhatsApp number: +971 50 862 0217
-□ Translator name spelled correctly
-□ UAE entity names accurate (GDRFA, not GDRA)
+□ Translator name spelled correctly (Khaled Mohamed Abdulwahab Al-Adl)
+□ Partner name: Arkan Legal Translation
+
+UAE ENTITY NAMES:
+□ GDRFA (not GDRA or GRFA)
+□ MOFA (not MFA)
+□ MOHRE (not Ministry of Labour)
+□ DLD (not Dubai Lands Department)
+□ All acronyms match official names
+
+LOCATION RELEVANCE:
+□ Content is relevant to UAE context
+□ Correct emirate-specific authorities mentioned
+□ Abu Dhabi vs Dubai differences respected
+□ Timelines are realistic for UAE
+□ Document requirements are accurate for UAE
+□ Government portals are correct (ICP, GDRFA app, Amer)
+
+EMIRATE-SPECIFIC (if applicable):
+□ Abu Dhabi: ADJD, ADGM, ADEK, DoH, DMT
+□ Dubai: Dubai Courts, DIFC, KHDA, DHA, DLD
+□ Other emirates: Correct local authorities
 ```
 
 ## 5.2 SEO Verification
@@ -447,10 +638,19 @@ Search draft for these words — if found, REPLACE:
 │  □ H1 includes keyword                                               │
 │  □ 8+ internal links                                                 │
 │                                                                      │
-│  FACTS:                                                              │
+│  UAE FACT CHECKER (CRITICAL):                                       │
 │  □ UAE NOT stated as Hague member                                   │
+│  □ No claims "UAE accepts apostilles"                               │
 │  □ MOJ License #701 correct                                          │
-│  □ WhatsApp number correct                                          │
+│  □ WhatsApp +971 50 862 0217 correct                                │
+│  □ All UAE entity names/acronyms verified                           │
+│  □ Abu Dhabi vs Dubai authorities correct (if mentioned)            │
+│                                                                      │
+│  LOCATION RELEVANCE:                                                │
+│  □ Content is UAE-relevant (not generic international)              │
+│  □ Processes described are accurate for UAE                         │
+│  □ Emirate-specific authorities correct                             │
+│  □ Timelines realistic for UAE bureaucracy                          │
 │                                                                      │
 │  IF ANY ITEM UNCHECKED → FIX BEFORE PROCEEDING                      │
 └─────────────────────────────────────────────────────────────────────┘
