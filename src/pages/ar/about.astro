@@ -1,0 +1,928 @@
+---
+import BaseLayoutArabic from '../../layouts/BaseLayoutArabic.astro';
+import DulBadge from '../../components/DulBadge.astro';
+import AuthorityLogos from '../../components/AuthorityLogos.astro';
+
+// Page metadata - Arabic SEO optimized
+const pageTitle = 'من نحن | OnlineTranslation.ae دبي';
+const metaDescription = 'تعرفوا على OnlineTranslation.ae، مستشاركم الرقمي للوثائق وخدمات الترجمة القانونية المعتمدة من وزارة العدل في دبي وأبوظبي والإمارات.';
+const heroHeading = 'من نحن';
+const heroSubheading = 'مستشاركم الرقمي للوثائق في الإمارات';
+const heroLead = 'OnlineTranslation.ae يعمل كمستشار رقمي للوثائق، ينسق خدمات الترجمة القانونية المعتمدة من وزارة العدل عبر سير عمل يعتمد على واتساب.';
+
+// Intro section
+const intro = {
+  heading: 'إدارة الوثائق بلمسة شخصية',
+  p1: 'OnlineTranslation.ae يعمل كمستشار رقمي للوثائق القانونية والرسمية. بدلاً من التعامل مع الترجمة كمجرد تبديل للكلمات، نصمم كل خدمة لضمان القبول من المحاكم الإماراتية والدوائر الحكومية والسفارات والمناطق الحرة.',
+  p2: 'يتولى فريقنا تنسيق الترجمة والتصديق والختم والتوصيل، بحيث تتعاملون مع نقطة اتصال واحدة بينما نتولى نحن التواصل مع الشركاء والجهات المعنية.',
+  features: [
+    {
+      label: 'وعد الـ ٦٠ دقيقة',
+      text: 'يتم تسليم المسودات الرقمية القياسية عادة خلال ساعة من استلام مسح واضح لوثائقكم، خلال ساعات العمل.'
+    },
+    {
+      label: 'الحماية الشاملة',
+      text: 'نتحقق من الوثائق مسبقاً ونشير إلى أي مشاكل قبل التقديم، لتقليل حالات الرفض والزيارات غير الضرورية للجهات الحكومية.'
+    }
+  ],
+  image: '/assets/images/onedrive/contact-office.png',
+  imageAlt: 'مكتب OnlineTranslation.ae'
+};
+
+// Licensing section
+const licensing = {
+  sectionLabel: 'الاعتمادات الرسمية',
+  sectionTitle: 'مرخصون ومعتمدون',
+  mojLabel: 'شريك معتمد',
+  mojTitle: 'ترجمة قانونية معتمدة من وزارة العدل',
+  mojSubtitle: 'بالشراكة مع أركان، مترجم قانوني مرخص من وزارة العدل',
+  note: 'جميع الترجمات المعتمدة من وزارة العدل يتم تنفيذها بواسطة أركان، شريكنا المترجم القانوني المرخص من وزارة العدل. الترخيص من وزارة العدل هو مسؤولية شخصية - يتم ترخيص المترجمين الأفراد من قبل وزارة العدل وليس الشركات. هذا يضمن أن كل وثيقة معتمدة تحمل المسؤولية الشخصية لمترجم مسجل رسمياً.'
+};
+
+// Values section
+const values = {
+  sectionLabel: 'نهجنا',
+  sectionTitle: 'كيف نعمل',
+  items: [
+    {
+      title: 'الشفافية الكاملة',
+      text: 'نقدم أسعاراً واضحة وجداول زمنية واقعية منذ البداية. إذا احتاجت الوثيقة خطوات إضافية أو كنا نعتقد أن الموعد النهائي غير قابل للتحقيق، نخبركم قبل الالتزام.'
+    },
+    {
+      title: 'السرعة دون تنازلات',
+      text: 'يتيح سير عملنا المعتمد على واتساب استجابات سريعة مع الحفاظ على الدقة القانونية والمراجعة الصحيحة لكل وثيقة.'
+    },
+    {
+      title: 'عقلية الشراكة',
+      text: 'نعمل كنقطة اتصال واحدة للترجمة والتصديق والتوصيل، بحيث يمكنكم التركيز على قضيتكم أو عملكم بينما نتولى نحن الأوراق.'
+    }
+  ]
+};
+
+// Mission section
+const mission = {
+  sectionLabel: 'هدفنا',
+  sectionTitle: 'رسالتنا',
+  statement: 'القضاء على التوتر المتعلق بالوثائق للمقيمين والشركات والمحترفين القانونيين في الإمارات من خلال تقديم ترجمات سريعة ودقيقة ومقبولة رسمياً مع شفافية كاملة في الأسعار والجداول الزمنية.',
+  vision: 'أن نصبح الاسم الأكثر موثوقية في خدمات الوثائق القانونية في جميع أنحاء دول مجلس التعاون الخليجي، معروفين بالسرعة والدقة والاهتمام الحقيقي بنجاح عملائنا.'
+};
+
+// Languages section
+const languages = {
+  sectionLabel: 'قدراتنا',
+  sectionTitle: 'اللغات المدعومة',
+  intro: 'نقدم خدمات ترجمة معتمدة من وزارة العدل لمجموعة واسعة من أزواج اللغات. العربية تخصصنا، لكننا ندعم وثائق من أكثر من ٥٠ لغة.',
+  items: [
+    {
+      name: 'اللغات الأساسية',
+      pairs: ['العربية ↔ الإنجليزية', 'العربية ↔ الفرنسية', 'العربية ↔ الألمانية', 'العربية ↔ الإسبانية']
+    },
+    {
+      name: 'جنوب آسيا',
+      pairs: ['العربية ↔ الهندية', 'العربية ↔ الأردية', 'العربية ↔ المالايالامية', 'العربية ↔ التاغالوغ']
+    },
+    {
+      name: 'الأوروبية',
+      pairs: ['العربية ↔ الروسية', 'العربية ↔ الإيطالية', 'العربية ↔ البرتغالية', 'العربية ↔ الهولندية']
+    },
+    {
+      name: 'الآسيوية',
+      pairs: ['العربية ↔ الصينية', 'العربية ↔ اليابانية', 'العربية ↔ الكورية', 'العربية ↔ التايلاندية']
+    }
+  ]
+};
+
+// License info section
+const licenseInfo = {
+  sectionLabel: 'التسجيل الرسمي',
+  sectionTitle: 'معلومات الترخيص',
+  items: [
+    { title: 'رقم الرخصة', text: '١٣٣٣٦٢٨ — رخصة التاجر الإلكتروني (مهنية)' },
+    { title: 'الاسم التجاري', text: 'OT.AE لخدمات الترجمة والتحرير والتدقيق اللغوي' },
+    { title: 'النوع القانوني', text: 'مؤسسة فردية' },
+    { title: 'الأنشطة', text: 'خدمات الترجمة والتحرير والتدقيق اللغوي' },
+    { title: 'حالة الرخصة', text: 'التاجر الإلكتروني هو رخصة رسمية من اقتصادية دبي للخدمات المهنية - صالحة بالكامل لجميع أنشطة الأعمال في دبي' }
+  ]
+};
+
+// CTA section
+const cta = {
+  heading: 'مستعدون للبدء؟',
+  body: 'أرسلوا وثائقكم عبر واتساب للحصول على تقييم مجاني. سنراجع ملفاتكم ونؤكد ما إذا كانت الترجمة القانونية مطلوبة ونقدم عرض سعر واضح قبل البدء.',
+  buttonLabel: 'أرسلوا الوثائق عبر واتساب',
+  buttonUrl: 'https://wa.me/971508620217'
+};
+---
+<BaseLayoutArabic
+  title={pageTitle}
+  description={metaDescription}
+>
+  <section class="page-hero about-hero">
+    <div class="hero-background">
+      <img src="/assets/images/onedrive/hero/office-team.png" alt="فريق OnlineTranslation.ae المحترف" width="1248" height="832" loading="eager" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="container">
+      <nav class="breadcrumb" aria-label="مسار التنقل">
+        <a href="/ar/">الرئيسية</a>
+        <span class="separator">›</span>
+        <span class="current">من نحن</span>
+      </nav>
+      <h1 class="page-title">{heroHeading}</h1>
+      <p class="page-subtitle">{heroSubheading}</p>
+      <p class="page-lead">{heroLead}</p>
+    </div>
+  </section>
+
+  <!-- Intro Section -->
+  <section class="section about-intro">
+    <div class="container">
+      <div class="about-content-grid">
+        <div class="about-text">
+          <h2>{intro.heading}</h2>
+          <p>{intro.p1}</p>
+          <p>{intro.p2}</p>
+          <p>نموذج خدمتنا مبني على وعدين أساسيين:</p>
+          <ul class="about-features">
+            {intro.features.map((f) => (
+              <li>
+                <strong>{f.label}:</strong> {f.text}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="about-image">
+          <img src={intro.image} alt={intro.imageAlt} width="1248" height="832" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Licensing Section -->
+  <section class="section licensing-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">{licensing.sectionLabel}</span>
+        <h2 class="section-title">{licensing.sectionTitle}</h2>
+      </div>
+      <div class="licensing-grid">
+        <div class="licensing-card">
+          <DulBadge variant="detailed" />
+        </div>
+        <div class="licensing-card moj-card">
+          <div class="moj-badge-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
+            </svg>
+          </div>
+          <div class="moj-badge-content">
+            <span class="moj-badge-label">{licensing.mojLabel}</span>
+            <span class="moj-badge-title">{licensing.mojTitle}</span>
+            <span class="moj-badge-subtitle">{licensing.mojSubtitle}</span>
+          </div>
+        </div>
+      </div>
+      <div class="compliance-note">
+        <p>{licensing.note}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Authority Logos Section -->
+  <section class="section authority-section">
+    <div class="container">
+      <AuthorityLogos title="ترجماتنا مُنسقة للقبول من:" />
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="section values-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">{values.sectionLabel}</span>
+        <h2 class="section-title">{values.sectionTitle}</h2>
+      </div>
+      <div class="values-grid">
+        {values.items.map((item) => (
+          <article class="value-card">
+            <div class="value-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="section mission-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">{mission.sectionLabel}</span>
+        <h2 class="section-title">{mission.sectionTitle}</h2>
+      </div>
+      <div class="mission-content">
+        <blockquote class="mission-statement">
+          <p>{mission.statement}</p>
+        </blockquote>
+        <div class="vision-statement">
+          <h3>رؤيتنا</h3>
+          <p>{mission.vision}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Languages Section -->
+  <section class="section languages-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">{languages.sectionLabel}</span>
+        <h2 class="section-title">{languages.sectionTitle}</h2>
+      </div>
+      <p class="languages-intro">{languages.intro}</p>
+      <div class="languages-grid">
+        {languages.items.map((lang) => (
+          <div class="language-card">
+            <h3>{lang.name}</h3>
+            <ul>
+              {lang.pairs.map((pair) => (
+                <li>{pair}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- License Info Section -->
+  <section class="section values-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">{licenseInfo.sectionLabel}</span>
+        <h2 class="section-title">{licenseInfo.sectionTitle}</h2>
+      </div>
+      <div class="values-grid">
+        {licenseInfo.items.map((item) => (
+          <article class="value-card">
+            <div class="value-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust & Credentials Section -->
+  <section class="section trust-links-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">الثقة والاعتمادات</span>
+        <h2 class="section-title">تحققوا من اعتماداتنا</h2>
+      </div>
+      <div class="trust-links-grid">
+        <a href="/ar/about/translator/" class="trust-link-card">
+          <div class="trust-icon"><i class="fas fa-user-tie"></i></div>
+          <h3>تعرفوا على المترجم</h3>
+          <p>تعرفوا على خالد العدل، مترجمنا المرخص من وزارة العدل باعتمادات يمكنكم التحقق منها.</p>
+        </a>
+        <a href="/ar/about/credentials/" class="trust-link-card">
+          <div class="trust-icon"><i class="fas fa-certificate"></i></div>
+          <h3>اعتماداتنا</h3>
+          <p>رخصة وزارة العدل رقم ٧٠١، تسجيل رخصة دبي الموحدة، وبروتوكولات الأمان التي نتبعها.</p>
+        </a>
+        <a href="/ar/about/reviews/" class="trust-link-card">
+          <div class="trust-icon"><i class="fas fa-star"></i></div>
+          <h3>آراء العملاء</h3>
+          <p>شهادات موثقة مع نتائج حقيقية من موافقات التأشيرات والقضايا القانونية.</p>
+        </a>
+        <a href="/ar/resources/case-studies/" class="trust-link-card">
+          <div class="trust-icon"><i class="fas fa-briefcase"></i></div>
+          <h3>دراسات الحالة</h3>
+          <p>نتائج موثقة من المواعيد النهائية العاجلة ومواقف الوثائق المعقدة.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-card">
+        <h2>{cta.heading}</h2>
+        <p>{cta.body}</p>
+        <a href={cta.buttonUrl} class="cta-button">
+          {cta.buttonLabel} <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayoutArabic>
+
+<style>
+  .about-hero {
+    background: linear-gradient(135deg, var(--primary-navy, #0E2B48) 0%, #1a3a5c 100%);
+    padding: 3rem 0 2rem;
+    position: relative;
+  }
+
+  .about-hero .page-title {
+    color: #ffffff;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .about-hero .page-subtitle {
+    color: var(--accent-coral, #FF1654);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    color: #ffffff;
+  }
+
+  .breadcrumb .separator {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .breadcrumb .current {
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .page-lead {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 700px;
+    margin-top: 1rem;
+  }
+
+  .about-intro {
+    padding: 3rem 0;
+  }
+
+  .about-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .about-text h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-navy, #0E2B48);
+    margin-bottom: 1rem;
+  }
+
+  .about-text p {
+    color: var(--text-muted, #5a6a7a);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .about-features {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+  }
+
+  .about-features li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    color: var(--text-dark, #1a1a1a);
+  }
+
+  .about-features li strong {
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .about-image img {
+    width: 100%;
+    border-radius: 1rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  }
+
+  .licensing-section {
+    background: var(--bg-light, #f8f9fa);
+    padding: 3rem 0;
+  }
+
+  .licensing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .licensing-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .moj-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: row-reverse;
+  }
+
+  .moj-badge-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    background: linear-gradient(135deg, var(--primary-navy, #0E2B48) 0%, #1a3a5c 100%);
+    border-radius: 0.75rem;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .moj-badge-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    text-align: right;
+  }
+
+  .moj-badge-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .moj-badge-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dark, #1a1a1a);
+  }
+
+  .moj-badge-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-muted, #5a6a7a);
+  }
+
+  .compliance-note {
+    background: rgba(14, 43, 72, 0.05);
+    border-right: 4px solid var(--primary-navy, #0E2B48);
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem 0 0 0.5rem;
+  }
+
+  .compliance-note p {
+    margin: 0;
+    color: var(--text-dark, #1a1a1a);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .values-section {
+    padding: 3rem 0;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .value-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+  }
+
+  .value-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  }
+
+  .value-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    background: linear-gradient(135deg, var(--accent-coral, #FF1654) 0%, #e81447 100%);
+    border-radius: 0.75rem;
+    color: white;
+    margin-bottom: 1rem;
+    margin-right: auto;
+  }
+
+  .value-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-navy, #0E2B48);
+    margin-bottom: 0.5rem;
+  }
+
+  .value-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted, #5a6a7a);
+    line-height: 1.7;
+  }
+
+  /* Trust Links Section */
+  .trust-links-section {
+    padding: 3rem 0;
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  .trust-links-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .trust-link-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+  }
+
+  .trust-link-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    border-color: var(--accent-coral, #FF1654);
+  }
+
+  .trust-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--primary-navy, #0E2B48);
+    color: #fff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    margin-right: auto;
+  }
+
+  .trust-link-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-navy, #0E2B48);
+    margin-bottom: 0.5rem;
+  }
+
+  .trust-link-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted, #5a6a7a);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 991px) {
+    .trust-links-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .trust-links-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .cta-section {
+    padding: 3rem 0;
+    background: linear-gradient(135deg, var(--primary-navy, #0E2B48) 0%, #1a3a5c 100%);
+  }
+
+  .cta-card {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .cta-card h2 {
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .cta-card p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: var(--accent-coral, #FF1654);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    flex-direction: row-reverse;
+  }
+
+  .cta-button:hover {
+    background: #e81447;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .about-content-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .about-image {
+      order: -1;
+    }
+
+    .licensing-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .moj-card {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .moj-badge-content {
+      text-align: center;
+    }
+  }
+
+  /* Mission Section */
+  .mission-section {
+    background: var(--bg-light, #f8f9fa);
+    padding: 3rem 0;
+  }
+
+  .mission-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .mission-statement {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-navy, #0E2B48);
+    line-height: 1.6;
+    margin: 0;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    border-right: 4px solid var(--accent-coral, #FF1654);
+  }
+
+  .mission-statement p {
+    margin: 0;
+  }
+
+  .vision-statement {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(14, 43, 72, 0.05);
+    border-radius: 0.75rem;
+  }
+
+  .vision-statement h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent-coral, #FF1654);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .vision-statement p {
+    margin: 0;
+    color: var(--text-dark, #1a1a1a);
+    font-size: 1.1rem;
+  }
+
+  /* Languages Section */
+  .languages-section {
+    padding: 3rem 0;
+  }
+
+  .languages-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    color: var(--text-muted, #5a6a7a);
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .languages-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .language-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    text-align: center;
+  }
+
+  .language-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-navy, #0E2B48);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--accent-coral, #FF1654);
+  }
+
+  .language-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .language-card li {
+    font-size: 0.9rem;
+    color: var(--text-muted, #5a6a7a);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .language-card li:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 992px) {
+    .languages-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .languages-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .mission-statement {
+      font-size: 1.2rem;
+      padding: 1.5rem;
+    }
+  }
+
+  /* Dark mode */
+  :global(body.theme-dark) .about-text h2 {
+    color: #f0f6fc;
+  }
+
+  :global(body.theme-dark) .about-text p {
+    color: #a8b3c2;
+  }
+
+  :global(body.theme-dark) .about-features li {
+    color: #e6edf3;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :global(body.theme-dark) .licensing-section {
+    background: #161b22;
+  }
+
+  :global(body.theme-dark) .licensing-card {
+    background: #21262d;
+  }
+
+  :global(body.theme-dark) .moj-badge-title {
+    color: #f0f6fc;
+  }
+
+  :global(body.theme-dark) .moj-badge-subtitle {
+    color: #a8b3c2;
+  }
+
+  :global(body.theme-dark) .compliance-note {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  :global(body.theme-dark) .compliance-note p {
+    color: #e6edf3;
+  }
+
+  :global(body.theme-dark) .value-card {
+    background: #21262d;
+  }
+
+  :global(body.theme-dark) .value-card h3 {
+    color: #f0f6fc;
+  }
+
+  :global(body.theme-dark) .value-card p {
+    color: #a8b3c2;
+  }
+
+  :global(body.theme-dark) .mission-section {
+    background: #161b22;
+  }
+
+  :global(body.theme-dark) .mission-statement {
+    background: #21262d;
+    color: #f0f6fc;
+  }
+
+  :global(body.theme-dark) .vision-statement {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  :global(body.theme-dark) .vision-statement p {
+    color: #e6edf3;
+  }
+
+  :global(body.theme-dark) .languages-intro {
+    color: #a8b3c2;
+  }
+
+  :global(body.theme-dark) .language-card {
+    background: #21262d;
+  }
+
+  :global(body.theme-dark) .language-card h3 {
+    color: #f0f6fc;
+  }
+
+  :global(body.theme-dark) .language-card li {
+    color: #a8b3c2;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :global(body.theme-dark) .trust-links-section {
+    background: #161b22;
+  }
+
+  :global(body.theme-dark) .trust-link-card {
+    background: #21262d;
+  }
+
+  :global(body.theme-dark) .trust-link-card h3 {
+    color: #f0f6fc;
+  }
+
+  :global(body.theme-dark) .trust-link-card p {
+    color: #a8b3c2;
+  }
+</style>
