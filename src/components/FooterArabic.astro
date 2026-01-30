@@ -1,38 +1,44 @@
 ---
 /**
- * Footer Component - FIXED 4-Column Grid Layout
- * 
- * Structure: Brand | Quick Links | Services | Contact
- * All 4 sections as direct children of .footer-grid
+ * FooterArabic.astro - Arabic RTL Footer
+ * Fully translated footer for Arabic pages
  */
-import { siteContact, socialLinks, footerNav } from '../data/navigation';
+import { siteContactAr, footerNavAr } from '../data/navigation-ar';
 import LanguageSwitcher from './LanguageSwitcher.astro';
+
+// Social links (same URLs, Arabic labels)
+const socialLinksAr = [
+  { icon: 'fab fa-whatsapp', url: siteContactAr.whatsapp, label: 'واتساب' },
+  { icon: 'fab fa-facebook-f', url: 'https://facebook.com/onlinetranslationae', label: 'فيسبوك' },
+  { icon: 'fab fa-instagram', url: 'https://instagram.com/onlinetranslationae', label: 'انستغرام' },
+  { icon: 'fab fa-linkedin-in', url: 'https://linkedin.com/company/onlinetranslationae', label: 'لينكدإن' },
+];
 ---
 
-<footer class="footer bg-dark" data-theme="dark">
+<footer class="footer footer-rtl bg-dark" data-theme="dark" dir="rtl">
   <div class="container">
     
-    <!-- Main Footer Grid - 4 DIRECT CHILDREN -->
-    <div class="footer-grid">
+    <!-- Main Footer Grid - RTL 4 columns -->
+    <div class="footer-grid footer-grid-rtl">
       
       <!-- COLUMN 1: Brand -->
       <div class="footer-brand">
-        <a href="/" class="footer-logo">
-          <img src="/assets/images/logo/brand/emblem-clean.png" alt="OnlineTranslation.ae Logo" class="footer-logo-img" loading="lazy" width="48" height="48" />
+        <a href="/ar/" class="footer-logo">
           <div class="footer-logo-text">
             <span class="logo-name">Online<span class="logo-suffix">Translation</span><span class="logo-domain">.ae</span></span>
-            <span class="logo-tagline">Boutique Legal Translation</span>
+            <span class="logo-tagline">ترجمة قانونية معتمدة</span>
           </div>
+          <img src="/assets/images/logo/brand/emblem-clean.png" alt="OnlineTranslation.ae" class="footer-logo-img" loading="lazy" width="48" height="48" />
         </a>
-        <p>Services Executed by MOJ Certified Partners. Formatted for Dubai Courts, DIFC, ADGM, Federal Entities, and Immigration Services.</p>
+        <p>خدمات ترجمة معتمدة من شركاء حاصلين على اعتماد وزارة العدل. وثائق منسقة لمحاكم دبي ومركز دبي المالي العالمي وسوق أبوظبي العالمي والجهات الاتحادية وخدمات الهجرة.</p>
         
         <p class="footer-partnership">
           <i class="fas fa-certificate"></i>
-          MOJ-certified translations by <strong><a href="https://arkanlegaltranslation.ae/learn-abt-arkan/" target="_blank" rel="noopener" class="partner-link">Arkan Legal Translation</a></strong>, our partner & licensed legal translator
+          ترجمة معتمدة من وزارة العدل بواسطة <strong><a href="https://arkanlegaltranslation.ae/learn-abt-arkan/" target="_blank" rel="noopener" class="partner-link">أركان للترجمة القانونية</a></strong>، شريكنا ومترجمنا القانوني المرخص
         </p>
         
         <div class="footer-social">
-          {socialLinks.map(social => (
+          {socialLinksAr.map(social => (
             <a href={social.url} target="_blank" rel="noopener" aria-label={social.label}>
               <i class={social.icon}></i>
             </a>
@@ -42,9 +48,9 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
       
       <!-- COLUMN 2: Quick Links -->
       <div class="footer-links">
-        <h4>Quick Links</h4>
+        <h4>روابط سريعة</h4>
         <ul>
-          {footerNav.quickLinks.map(link => (
+          {footerNavAr.quickLinks.map(link => (
             <li><a href={link.href}>{link.label}</a></li>
           ))}
         </ul>
@@ -52,51 +58,51 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
       
       <!-- COLUMN 3: Our Services -->
       <div class="footer-links footer-services">
-        <h4>Our Services</h4>
+        <h4>خدماتنا</h4>
         <ul>
-          {footerNav.popularServices.map(link => (
+          {footerNavAr.popularServices.map(link => (
             <li><a href={link.href}>{link.label}</a></li>
           ))}
         </ul>
       </div>
       
-      <!-- COLUMN 4: Contact Us - MUST be direct child of .footer-grid -->
+      <!-- COLUMN 4: Contact Us -->
       <div class="footer-contact">
-        <h4>Contact Us</h4>
+        <h4>تواصلوا معنا</h4>
         <ul>
           <li>
             <i class="fas fa-map-marker-alt"></i>
             <a href="https://maps.app.goo.gl/jz5HjwSF4aktSUrH7" target="_blank" rel="noopener" class="address-link">
-              {siteContact.address}
-              <span class="map-badge">View Map</span>
+              {siteContactAr.address}
+              <span class="map-badge">عرض الخريطة</span>
             </a>
           </li>
           <li>
             <i class="fas fa-phone"></i>
-            <a href={`tel:${siteContact.phone.replace(/\s/g, '')}`}>{siteContact.phone}</a>
+            <a href={`tel:${siteContactAr.phone.replace(/\s/g, '')}`} dir="ltr">{siteContactAr.phone}</a>
           </li>
           <li>
             <i class="fas fa-envelope"></i>
-            <a href={`mailto:${siteContact.email}`}>{siteContact.email}</a>
+            <a href={`mailto:${siteContactAr.email}`} dir="ltr">{siteContactAr.email}</a>
           </li>
           <li>
             <i class="fas fa-clock"></i>
-            <span>Daily: 8:00 AM - 10:00 PM</span>
+            <span>يومياً: ٨:٠٠ صباحاً - ١٠:٠٠ مساءً</span>
           </li>
         </ul>
       </div>
       
-    </div><!-- /.footer-grid - exactly 4 direct children -->
+    </div><!-- /.footer-grid -->
     
     <!-- Language Switcher Row -->
     <div class="footer-lang-row">
-      <span class="footer-lang-label"><i class="fas fa-globe"></i> Language:</span>
+      <span class="footer-lang-label"><i class="fas fa-globe"></i> اللغة:</span>
       <LanguageSwitcher variant="pill" size="md" />
     </div>
     
     <!-- Footer Bottom -->
     <div class="footer-bottom">
-      <p>&copy; {new Date().getFullYear()} OnlineTranslation.ae. All rights reserved. | <a href="/privacy/">Privacy</a> | <a href="/terms/">Terms</a> | <a href="/sitemap-0.xml">Sitemap</a></p>
+      <p>© {new Date().getFullYear()} OnlineTranslation.ae. جميع الحقوق محفوظة. | <a href="/ar/privacy/">الخصوصية</a> | <a href="/ar/terms/">الشروط</a> | <a href="/sitemap-0.xml">خريطة الموقع</a></p>
     </div>
     
   </div>
@@ -104,43 +110,39 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
 
 <style>
   /* ============================================
-     FOOTER BASE
+     ARABIC FOOTER - RTL STYLES
      ============================================ */
-  .footer {
+  .footer-rtl {
+    direction: rtl;
+    text-align: right;
     padding: 60px 0 30px;
     background: var(--surface-navy-dark, #072035);
     color: var(--text-on-dark, #f4f7fc);
   }
   
-  /* ============================================
-     4-COLUMN GRID - CRITICAL FIX
-     Using !important to override any conflicting styles
-     ============================================ */
-  .footer-grid {
+  .footer-grid-rtl {
     display: grid !important;
     grid-template-columns: 1.5fr 1fr 1fr 1fr !important;
     gap: 40px !important;
     align-items: start !important;
   }
   
-  /* Ensure grid children don't overflow */
-  .footer-grid > * {
+  .footer-grid-rtl > * {
     min-width: 0;
   }
   
-  /* ============================================
-     COLUMN 1: BRAND
-     ============================================ */
-  .footer-brand {
+  /* RTL Brand Section */
+  .footer-rtl .footer-brand {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-end;
   }
   
-  .footer-logo {
+  .footer-rtl .footer-logo {
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
+    flex-direction: row-reverse;
     gap: 12px;
     text-decoration: none;
   }
@@ -153,6 +155,7 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
   .footer-logo-text {
     display: flex;
     flex-direction: column;
+    text-align: right;
   }
   
   .footer-logo-text .logo-name {
@@ -160,6 +163,8 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
     font-weight: 700;
     color: #ffffff;
     letter-spacing: -0.01em;
+    direction: ltr;
+    text-align: right;
   }
   
   .footer-logo-text .logo-suffix {
@@ -172,54 +177,57 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
   }
   
   .footer-logo-text .logo-tagline {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
+    font-family: 'Noto Sans Arabic', var(--font-secondary), sans-serif;
+    font-size: 0.75rem;
     color: var(--text-on-dark-muted, #c5d4e8);
     margin-top: 2px;
   }
   
-  .footer-brand > p {
+  .footer-rtl .footer-brand > p {
     color: var(--text-on-dark-muted, #c5d4e8);
     font-size: 0.95rem;
-    line-height: 1.7;
+    line-height: 1.8;
     margin-bottom: 1.25rem;
+    font-family: 'Noto Sans Arabic', var(--font-secondary), sans-serif;
   }
   
-  /* Arkan Partnership Pill */
-  .footer-partnership {
+  /* Arkan Partnership Pill - RTL */
+  .footer-rtl .footer-partnership {
     display: inline-flex;
     align-items: center;
+    flex-direction: row-reverse;
     gap: 8px;
     padding: 12px 20px;
     background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.08) 100%);
     border: 1px solid rgba(212, 175, 55, 0.25);
     border-radius: 50px;
-    font-size: 0.875rem;
+    font-size: 0.85rem;
     margin-bottom: 1.5rem;
+    font-family: 'Noto Sans Arabic', var(--font-secondary), sans-serif;
   }
   
-  .footer-partnership i {
+  .footer-rtl .footer-partnership i {
     color: #f4d03f;
   }
   
-  .footer-partnership .partner-link {
+  .footer-rtl .footer-partnership .partner-link {
     color: #f4d03f;
     font-weight: 600;
   }
   
-  .footer-partnership .partner-link:hover {
+  .footer-rtl .footer-partnership .partner-link:hover {
     color: #ffd700;
     text-decoration: underline;
   }
   
-  /* Social Icons */
-  .footer-social {
+  /* Social Icons - RTL */
+  .footer-rtl .footer-social {
     display: flex;
+    flex-direction: row-reverse;
     gap: 12px;
   }
   
-  .footer-social a {
+  .footer-rtl .footer-social a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -231,119 +239,115 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
     transition: all 0.2s ease;
   }
   
-  .footer-social a:hover {
+  .footer-rtl .footer-social a:hover {
     background: var(--accent-coral, #FF1654);
     color: #fff;
     transform: translateY(-2px);
   }
   
-  /* ============================================
-     COLUMNS 2-4: LINKS & CONTACT
-     ============================================ */
-  .footer-links h4,
-  .footer-contact h4 {
-    font-size: 0.9rem;
+  /* Column Headers - RTL */
+  .footer-rtl .footer-links h4,
+  .footer-rtl .footer-contact h4 {
+    font-family: 'Noto Sans Arabic', var(--font-primary), sans-serif;
+    font-size: 0.95rem;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
     margin-bottom: 1.25rem;
     color: #ffffff;
     position: relative;
     padding-bottom: 0.75rem;
   }
   
-  .footer-links h4::after,
-  .footer-contact h4::after {
+  .footer-rtl .footer-links h4::after,
+  .footer-rtl .footer-contact h4::after {
     content: '';
     position: absolute;
     bottom: 0;
-    left: 0;
+    right: 0;
+    left: auto;
     width: 30px;
     height: 2px;
     background: var(--accent-coral, #FF1654);
   }
   
-  .footer-links ul,
-  .footer-contact ul {
+  .footer-rtl .footer-links ul,
+  .footer-rtl .footer-contact ul {
     list-style: none;
     padding: 0;
     margin: 0;
   }
   
-  .footer-links li {
+  .footer-rtl .footer-links li {
     margin-bottom: 0.6rem;
   }
   
-  .footer-links a {
+  .footer-rtl .footer-links a {
     color: var(--text-on-dark-muted, #c5d4e8);
     font-size: 0.95rem;
+    font-family: 'Noto Sans Arabic', var(--font-secondary), sans-serif;
     transition: color 0.2s ease;
   }
   
-  .footer-links a:hover {
+  .footer-rtl .footer-links a:hover {
     color: var(--accent-coral, #FF1654);
   }
   
-  /* Contact Items */
-  .footer-contact li {
+  /* Contact Items - RTL */
+  .footer-rtl .footer-contact li {
     display: flex;
+    flex-direction: row-reverse;
     align-items: flex-start;
     gap: 10px;
     margin-bottom: 0.75rem;
     color: var(--text-on-dark-muted, #c5d4e8);
     font-size: 0.95rem;
+    font-family: 'Noto Sans Arabic', var(--font-secondary), sans-serif;
   }
   
-  .footer-contact li i {
+  .footer-rtl .footer-contact li i {
     color: var(--accent-coral, #FF1654);
     width: 16px;
     margin-top: 3px;
     flex-shrink: 0;
   }
   
-  .footer-contact a {
+  .footer-rtl .footer-contact a {
     color: var(--text-on-dark-muted, #c5d4e8);
     transition: color 0.2s ease;
   }
   
-  .footer-contact a:hover {
+  .footer-rtl .footer-contact a:hover {
     color: var(--accent-coral, #FF1654);
   }
 
-  /* Address with Map Link */
-  .address-link {
+  /* Address with Map Link - RTL */
+  .footer-rtl .address-link {
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
     gap: 6px;
   }
 
-  .map-badge {
+  .footer-rtl .map-badge {
     display: inline-flex;
     align-items: center;
     gap: 4px;
     font-size: 0.75rem;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
     color: var(--accent-coral, #FF1654);
     opacity: 0.9;
   }
 
-  .map-badge::before {
+  .footer-rtl .map-badge::after {
     content: '\f35d';
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     font-size: 0.65rem;
   }
 
-  .address-link:hover .map-badge {
+  .footer-rtl .address-link:hover .map-badge {
     opacity: 1;
     text-decoration: underline;
   }
-  
-  /* ============================================
-     FOOTER BOTTOM
-     ============================================ */
   
   /* Language Switcher Row */
   .footer-lang-row {
@@ -362,220 +366,172 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
     gap: 8px;
     color: var(--text-on-dark-muted, #c5d4e8);
     font-size: 0.9rem;
+    font-family: 'Noto Sans Arabic', var(--font-secondary), sans-serif;
   }
   
   .footer-lang-label i {
     color: var(--accent-coral, #FF1654);
   }
   
-  .footer-bottom {
-    margin-top: 40px;
+  /* Footer Bottom - RTL */
+  .footer-rtl .footer-bottom {
+    margin-top: 24px;
     padding-top: 24px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
   }
   
-  .footer-bottom p {
+  .footer-rtl .footer-bottom p {
     font-size: 0.875rem;
     color: var(--text-on-dark-subtle, #9fb2c9);
     margin: 0;
+    font-family: 'Noto Sans Arabic', var(--font-secondary), sans-serif;
   }
   
-  .footer-bottom a {
+  .footer-rtl .footer-bottom a {
     color: var(--text-on-dark-muted, #c5d4e8);
   }
   
-  .footer-bottom a:hover {
+  .footer-rtl .footer-bottom a:hover {
     color: var(--accent-coral, #FF1654);
   }
   
   /* ============================================
-     MOBILE - SINGLE COLUMN CENTERED STACK
-     Breakpoint matches site mobile nav (991px)
+     MOBILE - RTL STACK
      ============================================ */
   @media (max-width: 991px) {
-    .footer {
-      padding: 40px 0 100px; /* Extra bottom padding for mobile nav bar */
+    .footer-rtl {
+      padding: 40px 0 100px;
     }
 
-    /* Container padding */
-    .footer .container {
+    .footer-rtl .container {
       padding-left: 20px;
       padding-right: 20px;
     }
 
-    /* CRITICAL: Force single column layout */
-    .footer-grid {
+    .footer-grid-rtl {
       display: block !important;
       text-align: center;
     }
 
-    /* ALL grid children - full width, centered, stacked */
-    .footer-grid > * {
+    .footer-grid-rtl > * {
       display: block !important;
       width: 100% !important;
       margin-bottom: 32px;
       text-align: center;
     }
 
-    .footer-grid > *:last-child {
+    .footer-grid-rtl > *:last-child {
       margin-bottom: 0;
     }
 
-    /* Brand Section */
-    .footer-brand {
+    .footer-rtl .footer-brand {
       display: flex !important;
       flex-direction: column !important;
       align-items: center !important;
     }
 
-    .footer-brand > p {
+    .footer-rtl .footer-brand > p {
       text-align: center;
       max-width: 320px;
       margin-left: auto;
       margin-right: auto;
     }
 
-    .footer-logo {
+    .footer-rtl .footer-logo {
       flex-direction: column;
       gap: 8px;
       justify-content: center;
       align-items: center;
     }
 
-    .footer-logo-text {
+    .footer-rtl .footer-logo-text {
       text-align: center;
     }
 
-    .footer-partnership {
+    .footer-rtl .footer-partnership {
       margin-left: auto;
       margin-right: auto;
       text-align: center;
       flex-wrap: wrap;
       justify-content: center;
+      flex-direction: row;
     }
 
-    /* Links Sections */
-    .footer-links,
-    .footer-services,
-    .footer-contact {
+    .footer-rtl .footer-links,
+    .footer-rtl .footer-services,
+    .footer-rtl .footer-contact {
       display: flex !important;
       flex-direction: column !important;
       align-items: center !important;
     }
 
-    /* Headings - Centered */
-    .footer-links h4,
-    .footer-services h4,
-    .footer-contact h4 {
+    .footer-rtl .footer-links h4,
+    .footer-rtl .footer-services h4,
+    .footer-rtl .footer-contact h4 {
       text-align: center;
       width: auto;
       display: inline-block;
-      position: relative;
-      padding-bottom: 0.75rem;
-      margin-bottom: 1rem;
     }
 
-    /* Underline - CENTERED under heading */
-    .footer-links h4::after,
-    .footer-services h4::after,
-    .footer-contact h4::after {
+    .footer-rtl .footer-links h4::after,
+    .footer-rtl .footer-services h4::after,
+    .footer-rtl .footer-contact h4::after {
       left: 50% !important;
-      transform: translateX(-50%) !important;
       right: auto !important;
+      transform: translateX(-50%) !important;
     }
 
-    /* Links list - centered */
-    .footer-links ul,
-    .footer-services ul {
+    .footer-rtl .footer-links ul,
+    .footer-rtl .footer-services ul {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 10px;
-      padding: 0;
-      margin: 0;
-      list-style: none;
     }
 
-    .footer-links li,
-    .footer-services li {
-      margin-bottom: 0;
-    }
-
-    /* Contact list - centered container */
-    .footer-contact ul {
+    .footer-rtl .footer-contact ul {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 12px;
-      padding: 0;
-      margin: 0;
-      list-style: none;
     }
 
-    /* Contact items - inline with icon, centered in parent */
-    .footer-contact li {
-      display: inline-flex !important;
-      align-items: center !important;
-      justify-content: flex-start !important;
-      gap: 10px;
-      text-align: left;
-      margin-bottom: 0;
-      width: auto;
-    }
-
-    .footer-contact li i {
-      flex-shrink: 0;
-      width: 18px;
-      text-align: center;
-      margin-top: 0;
-    }
-
-    /* Social Icons */
-    .footer-social {
+    .footer-rtl .footer-contact li {
+      flex-direction: row;
       justify-content: center;
+    }
+
+    .footer-rtl .footer-social {
+      justify-content: center;
+      flex-direction: row;
       width: 100%;
     }
+    
+    .footer-lang-row {
+      flex-direction: column;
+      gap: 12px;
+    }
 
-    /* Footer Bottom */
-    .footer-bottom {
+    .footer-rtl .footer-bottom {
       margin-top: 32px;
       padding: 20px 16px;
     }
-
-    .footer-bottom p {
-      font-size: 0.8rem;
-      line-height: 1.6;
-    }
   }
 
-  /* ============================================
-     SMALL MOBILE - Extra adjustments
-     ============================================ */
   @media (max-width: 480px) {
-    .footer .container {
+    .footer-rtl .container {
       padding-left: 16px;
       padding-right: 16px;
     }
 
-    .footer-grid > * {
+    .footer-grid-rtl > * {
       margin-bottom: 28px;
     }
 
-    .footer-partnership {
+    .footer-rtl .footer-partnership {
       padding: 10px 16px;
       font-size: 0.8rem;
-    }
-
-    .footer-links h4,
-    .footer-services h4,
-    .footer-contact h4 {
-      font-size: 0.85rem;
-    }
-
-    .footer-links a,
-    .footer-contact li {
-      font-size: 0.9rem;
     }
   }
 </style>

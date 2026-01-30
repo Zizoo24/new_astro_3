@@ -1,0 +1,46 @@
+---
+/**
+ * TrustBarArabic.astro - Government/Partner Logos Carousel (Arabic)
+ *
+ * Arabic RTL version with translated title and alt text
+ */
+
+interface Props {
+  title?: string;
+}
+
+const { title = "موثوق ومعتمد من" } = Astro.props;
+
+// Logo data with Arabic alt text
+const logos = [
+  { src: "/assets/images/logos/moj.png", alt: "وزارة العدل الإمارات" },
+  { src: "/assets/images/logos/dubai-courts.png", alt: "محاكم دبي" },
+  { src: "/assets/images/logos/dubai-police.png", alt: "شرطة دبي" },
+  { src: "/assets/images/logos/dld.png", alt: "دائرة الأراضي والأملاك دبي" },
+  { src: "/assets/images/logos/mofaic.png", alt: "وزارة الخارجية والتعاون الدولي" },
+];
+---
+
+<section class="trust-bar-section" dir="rtl">
+  <div class="container">
+    <div class="trust-bar-header">
+      <h3 class="trust-bar-title">{title}</h3>
+    </div>
+    <div class="trust-bar-logos">
+      <div class="trust-bar-carousel">
+        <!-- First set of logos -->
+        {logos.map((logo) => (
+          <div class="trust-capsule">
+            <img src={logo.src} alt={logo.alt} loading="lazy" />
+          </div>
+        ))}
+        <!-- Duplicate for seamless loop -->
+        {logos.map((logo) => (
+          <div class="trust-capsule">
+            <img src={logo.src} alt={logo.alt} loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

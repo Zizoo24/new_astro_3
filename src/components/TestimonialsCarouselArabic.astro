@@ -1,0 +1,407 @@
+---
+/**
+ * TestimonialsCarouselArabic.astro - Arabic RTL Testimonials
+ * With Arabic content and RTL styling
+ */
+
+interface Testimonial {
+  quote: string;
+  name: string;
+  role: string;
+  location?: string;
+}
+
+interface Props {
+  testimonials?: Testimonial[];
+  title?: string;
+  autoRotate?: boolean;
+  rotateInterval?: number;
+}
+
+const defaultTestimonialsAr: Testimonial[] = [
+  {
+    quote: "مكتب ترجمة موثوق وموصى به بشدة. خدمة احترافية وسريعة.",
+    name: "عميل موثق",
+    role: "شركة قانونية",
+    location: "دبي"
+  },
+  {
+    quote: "عملية سلسة وسريعة مع جودة ممتازة بسعر معقول. شكراً لكم.",
+    name: "علي بورتاهري",
+    role: "عميل موثق",
+    location: "دبي"
+  },
+  {
+    quote: "خدمة ممتازة وسرعة في التسليم. أنصح بهم بشدة لجميع خدمات الترجمة المعتمدة.",
+    name: "أحمد خلف",
+    role: "مرشد محلي",
+    location: "دبي"
+  }
+];
+
+const { 
+  testimonials = defaultTestimonialsAr,
+  title = "آراء عملائنا",
+  autoRotate = true,
+  rotateInterval = 5000
+} = Astro.props;
+---
+
+<section class="testimonials-section testimonials-rtl" dir="rtl">
+  <div class="container">
+    <h2 class="testimonials-title">{title}</h2>
+    
+    <div class="carousel-wrapper" data-auto-rotate={autoRotate} data-interval={rotateInterval}>
+      <div class="carousel-track">
+        {testimonials.map((testimonial, index) => (
+          <div class="testimonial-card" data-index={index}>
+            <div class="quote-icon">
+              <i class="fas fa-quote-right"></i>
+            </div>
+            <blockquote class="testimonial-quote">
+              {testimonial.quote}
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="author-info">
+                <span class="author-name">{testimonial.name}</span>
+                <span class="author-role">{testimonial.role}</span>
+                {testimonial.location && (
+                  <span class="author-location">
+                    <i class="fas fa-map-marker-alt"></i> {testimonial.location}
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div class="carousel-dots">
+        {testimonials.map((_, index) => (
+          <button 
+            class={`carousel-dot ${index === 0 ? 'active' : ''}`}
+            data-index={index}
+            aria-label={`الانتقال إلى الشهادة ${index + 1}`}
+          ></button>
+        ))}
+      </div>
+      
+      <button class="carousel-arrow carousel-prev" aria-label="الشهادة السابقة">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+      <button class="carousel-arrow carousel-next" aria-label="الشهادة التالية">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials-rtl {
+    padding: 5rem 0;
+    background: var(--bg-light, #f8f9fa);
+    direction: rtl;
+  }
+  
+  .testimonials-rtl .testimonials-title {
+    text-align: center;
+    font-family: 'Noto Sans Arabic', var(--font-primary), sans-serif;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+  }
+  
+  .testimonials-rtl .carousel-wrapper {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  
+  .testimonials-rtl .carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .testimonials-rtl .testimonial-card {
+    flex: 0 0 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin: 0 1rem;
+    text-align: right;
+  }
+  
+  .testimonials-rtl .quote-icon {
+    color: var(--accent-color);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    opacity: 0.6;
+  }
+  
+  .testimonials-rtl .testimonial-quote {
+    font-family: 'Noto Sans Arabic', var(--font-secondary), sans-serif;
+    font-size: 1.15rem;
+    line-height: 2;
+    color: var(--text-dark, #1a1a1a);
+    margin: 0 0 1.5rem;
+    font-style: normal;
+  }
+  
+  .testimonials-rtl .testimonial-author {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  
+  .testimonials-rtl .author-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+  }
+  
+  .testimonials-rtl .author-name {
+    font-family: 'Noto Sans Arabic', var(--font-primary), sans-serif;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1rem;
+  }
+  
+  .testimonials-rtl .author-role {
+    font-family: 'Noto Sans Arabic', var(--font-secondary), sans-serif;
+    color: var(--text-muted, #666);
+    font-size: 0.9rem;
+  }
+  
+  .testimonials-rtl .author-location {
+    color: var(--accent-color);
+    font-size: 0.85rem;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  
+  .testimonials-rtl .author-location i {
+    font-size: 0.75rem;
+  }
+  
+  .testimonials-rtl .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+  
+  .testimonials-rtl .carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+  
+  .testimonials-rtl .carousel-dot:hover {
+    background: rgba(14, 43, 72, 0.3);
+  }
+  
+  .testimonials-rtl .carousel-dot.active {
+    background: var(--primary-color);
+  }
+  
+  .testimonials-rtl .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+  
+  .testimonials-rtl .carousel-arrow:hover {
+    background: var(--primary-color);
+    color: #fff;
+  }
+  
+  /* RTL: swap arrow positions */
+  .testimonials-rtl .carousel-prev {
+    right: -24px;
+    left: auto;
+  }
+  
+  .testimonials-rtl .carousel-next {
+    left: -24px;
+    right: auto;
+  }
+  
+  @media (max-width: 1024px) {
+    .testimonials-rtl .carousel-prev {
+      right: 0;
+    }
+    
+    .testimonials-rtl .carousel-next {
+      left: 0;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .testimonials-rtl {
+      padding: 3rem 0;
+    }
+    
+    .testimonials-rtl .testimonials-title {
+      margin-bottom: 2rem;
+    }
+    
+    .testimonials-rtl .testimonial-card {
+      padding: 1.5rem;
+      margin: 0 0.5rem;
+    }
+    
+    .testimonials-rtl .testimonial-quote {
+      font-size: 1rem;
+    }
+    
+    .testimonials-rtl .carousel-arrow {
+      width: 40px;
+      height: 40px;
+      font-size: 0.85rem;
+    }
+    
+    .testimonials-rtl .carousel-prev {
+      right: 5px;
+    }
+    
+    .testimonials-rtl .carousel-next {
+      left: 5px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const carousels = document.querySelectorAll('.testimonials-rtl .carousel-wrapper');
+
+    carousels.forEach(carousel => {
+      const track = carousel.querySelector('.carousel-track') as HTMLElement;
+      const cards = carousel.querySelectorAll('.testimonial-card');
+      const dots = carousel.querySelectorAll('.carousel-dot');
+      const prevBtn = carousel.querySelector('.carousel-prev') as HTMLButtonElement;
+      const nextBtn = carousel.querySelector('.carousel-next') as HTMLButtonElement;
+
+      let currentIndex = 0;
+      const totalCards = cards.length;
+      let autoRotateTimer: ReturnType<typeof setInterval> | null = null;
+
+      const autoRotate = carousel.getAttribute('data-auto-rotate') === 'true';
+      const interval = parseInt(carousel.getAttribute('data-interval') || '5000');
+
+      function updateCarousel() {
+        if (!track) return;
+        // RTL: use positive transform
+        track.style.transform = `translateX(${currentIndex * 100}%)`;
+
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === currentIndex);
+        });
+      }
+
+      function goToSlide(index: number) {
+        currentIndex = (index + totalCards) % totalCards;
+        updateCarousel();
+        resetAutoRotate();
+      }
+
+      function nextSlide() {
+        goToSlide(currentIndex + 1);
+      }
+
+      function prevSlide() {
+        goToSlide(currentIndex - 1);
+      }
+
+      function resetAutoRotate() {
+        if (autoRotateTimer) {
+          clearInterval(autoRotateTimer);
+        }
+        if (autoRotate) {
+          autoRotateTimer = setInterval(nextSlide, interval);
+        }
+      }
+
+      // Event listeners
+      if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+      if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goToSlide(index));
+      });
+
+      // Touch/swipe support - RTL reversed
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      carousel.addEventListener('touchstart', (e: Event) => {
+        const te = e as TouchEvent;
+        touchStartX = te.touches[0].clientX;
+      });
+
+      carousel.addEventListener('touchend', (e: Event) => {
+        const te = e as TouchEvent;
+        touchEndX = te.changedTouches[0].clientX;
+        const diff = touchStartX - touchEndX;
+
+        if (Math.abs(diff) > 50) {
+          // RTL: reversed swipe direction
+          if (diff < 0) {
+            nextSlide();
+          } else {
+            prevSlide();
+          }
+        }
+      });
+
+      // Start auto-rotate
+      if (autoRotate) {
+        autoRotateTimer = setInterval(nextSlide, interval);
+      }
+
+      // Pause on hover
+      carousel.addEventListener('mouseenter', () => {
+        if (autoRotateTimer) {
+          clearInterval(autoRotateTimer);
+        }
+      });
+
+      carousel.addEventListener('mouseleave', () => {
+        if (autoRotate) {
+          autoRotateTimer = setInterval(nextSlide, interval);
+        }
+      });
+    });
+  });
+</script>

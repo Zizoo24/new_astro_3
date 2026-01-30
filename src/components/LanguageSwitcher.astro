@@ -4,9 +4,9 @@
  * Bilingual toggle for EN/AR navigation
  * 
  * Features:
+ * - Compact "En - ع" format
  * - Detects current language from URL
  * - Maps to equivalent page in other language
- * - Compact design for header integration
  * - RTL-aware styling
  */
 
@@ -19,12 +19,15 @@ interface Props {
   variant?: 'pill' | 'text' | 'icon';
   /** Size variant */
   size?: 'sm' | 'md' | 'lg';
+  /** For light backgrounds */
+  onLight?: boolean;
 }
 
 const { 
   currentPath = Astro.url.pathname,
   variant = 'pill',
-  size = 'md'
+  size = 'md',
+  onLight = false
 } = Astro.props;
 
 // Detect current language
@@ -34,65 +37,82 @@ const isArabic = currentPath.startsWith('/ar/') ||
                  currentPath === '/عربي';
 
 // Get URL for the other language
-const alternateUrl = isArabic 
-  ? getEnglishUrl(currentPath)
-  : getArabicUrl(currentPath);
+const englishUrl = getEnglishUrl(currentPath);
+const arabicUrl = getArabicUrl(currentPath);
 
-// Labels
-const currentLabel = isArabic ? 'العربية' : 'EN';
-const alternateLabel = isArabic ? 'EN' : 'العربية';
-const ariaLabel = isArabic 
-  ? 'Switch to English' 
-  : 'التبديل إلى العربية';
+// Aria labels
+const enAriaLabel = isArabic ? 'Switch to English' : 'Current language: English';
+const arAriaLabel = isArabic ? 'اللغة الحالية: العربية' : 'التبديل إلى العربية';
 ---
 
-<div class:list={['lang-switcher', `lang-switcher--${variant}`, `lang-switcher--${size}`]}>
+<div class:list={['lang-switcher', `lang-switcher--${variant}`, `lang-switcher--${size}`, { 'on-light': onLight }]}>
   {variant === 'pill' && (
     <div class="lang-pill">
       <a 
-        href="/" 
-        class:list={['lang-option', { 'is-active': !isArabic }]}
+        href={englishUrl}
+        class:list={['lang-option', 'lang-en', { 'is-active': !isArabic }]}
         aria-current={!isArabic ? 'page' : undefined}
+        aria-label={enAriaLabel}
         hreflang="en"
       >
-        EN
+        En
       </a>
-      <span class="lang-divider">|</span>
+      <span class="lang-divider">-</span>
       <a 
-        href="/ar/"
-        class:list={['lang-option', { 'is-active': isArabic }]}
+        href={arabicUrl}
+        class:list={['lang-option', 'lang-ar', { 'is-active': isArabic }]}
         aria-current={isArabic ? 'page' : undefined}
+        aria-label={arAriaLabel}
         hreflang="ar"
-        dir="rtl"
       >
-        AR
+        ع
       </a>
     </div>
   )}
 
   {variant === 'text' && (
-    <a 
-      href={alternateUrl} 
-      class="lang-text-link"
-      aria-label={ariaLabel}
-      hreflang={isArabic ? 'en' : 'ar'}
-      dir={isArabic ? 'ltr' : 'rtl'}
-    >
-      {alternateLabel}
-    </a>
+    <div class="lang-text-group">
+      <a 
+        href={englishUrl}
+        class:list={['lang-text-link', { 'is-active': !isArabic }]}
+        aria-current={!isArabic ? 'page' : undefined}
+        hreflang="en"
+      >
+        English
+      </a>
+      <span class="lang-divider">|</span>
+      <a 
+        href={arabicUrl}
+        class:list={['lang-text-link', 'lang-ar', { 'is-active': isArabic }]}
+        aria-current={isArabic ? 'page' : undefined}
+        hreflang="ar"
+      >
+        العربية
+      </a>
+    </div>
   )}
 
   {variant === 'icon' && (
-    <a 
-      href={alternateUrl}
-      class="lang-icon-link"
-      aria-label={ariaLabel}
-      hreflang={isArabic ? 'en' : 'ar'}
-      title={ariaLabel}
-    >
-      <i class="fas fa-globe"></i>
-      <span class="lang-code">{alternateLabel}</span>
-    </a>
+    <div class="lang-icon-group">
+      <i class="fas fa-globe lang-globe"></i>
+      <a 
+        href={englishUrl}
+        class:list={['lang-icon-link', { 'is-active': !isArabic }]}
+        aria-current={!isArabic ? 'page' : undefined}
+        hreflang="en"
+      >
+        En
+      </a>
+      <span class="lang-divider">/</span>
+      <a 
+        href={arabicUrl}
+        class:list={['lang-icon-link', 'lang-ar', { 'is-active': isArabic }]}
+        aria-current={isArabic ? 'page' : undefined}
+        hreflang="ar"
+      >
+        ع
+      </a>
+    </div>
   )}
 </div>
 
@@ -106,26 +126,36 @@ const ariaLabel = isArabic
   }
 
   /* ====================================
-     PILL VARIANT (EN | AR)
+     PILL VARIANT (En - ع)
      ==================================== */
   .lang-pill {
     display: flex;
     align-items: center;
-    gap: 6px;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 6px 12px;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 6px 14px;
     border-radius: 20px;
-    font-family: var(--font-secondary, 'Open Sans', sans-serif);
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 600;
   }
 
   .lang-option {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.65);
     text-decoration: none;
-    padding: 2px 4px;
+    padding: 2px 6px;
     border-radius: 4px;
     transition: all 0.2s ease;
+    line-height: 1;
+  }
+
+  .lang-option.lang-en {
+    font-family: var(--font-secondary, 'Open Sans', sans-serif);
+  }
+
+  .lang-option.lang-ar {
+    font-family: 'Noto Sans Arabic', 'Amiri', var(--font-secondary), sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
   }
 
   .lang-option:hover {
@@ -140,117 +170,115 @@ const ariaLabel = isArabic
 
   .lang-divider {
     color: rgba(255, 255, 255, 0.4);
+    font-weight: 300;
+    user-select: none;
   }
 
   /* ====================================
-     TEXT VARIANT (العربية / English)
+     TEXT VARIANT (English | العربية)
      ==================================== */
-  .lang-text-link {
-    display: inline-flex;
+  .lang-text-group {
+    display: flex;
     align-items: center;
-    color: rgba(255, 255, 255, 0.85);
+    gap: 8px;
+  }
+
+  .lang-text-link {
+    color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
-    font-family: var(--font-secondary, 'Open Sans', sans-serif);
     font-size: 0.85rem;
-    font-weight: 600;
-    padding: 6px 12px;
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.08);
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 4px;
     transition: all 0.2s ease;
   }
 
   .lang-text-link:hover {
     color: #ffffff;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.1);
   }
 
-  /* Arabic text styling */
-  .lang-text-link[dir="rtl"] {
+  .lang-text-link.is-active {
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  .lang-text-link.lang-ar {
     font-family: 'Noto Sans Arabic', var(--font-secondary), sans-serif;
   }
 
   /* ====================================
-     ICON VARIANT (Globe + Code)
+     ICON VARIANT (Globe En/ع)
      ==================================== */
-  .lang-icon-link {
-    display: inline-flex;
+  .lang-icon-group {
+    display: flex;
     align-items: center;
     gap: 6px;
-    color: rgba(255, 255, 255, 0.85);
-    text-decoration: none;
-    padding: 8px 12px;
-    border-radius: 8px;
     background: rgba(255, 255, 255, 0.08);
+    padding: 6px 12px;
+    border-radius: 8px;
+  }
+
+  .lang-globe {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+  }
+
+  .lang-icon-link {
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 2px 4px;
     transition: all 0.2s ease;
   }
 
   .lang-icon-link:hover {
     color: #ffffff;
-    background: rgba(255, 255, 255, 0.15);
   }
 
-  .lang-icon-link i {
-    font-size: 1rem;
+  .lang-icon-link.is-active {
+    color: #ffffff;
+    font-weight: 700;
   }
 
-  .lang-code {
-    font-family: var(--font-secondary, 'Open Sans', sans-serif);
-    font-size: 0.8rem;
-    font-weight: 600;
+  .lang-icon-link.lang-ar {
+    font-family: 'Noto Sans Arabic', var(--font-secondary), sans-serif;
+    font-size: 0.9rem;
   }
 
   /* ====================================
      SIZE VARIANTS
      ==================================== */
   .lang-switcher--sm .lang-pill {
-    padding: 4px 8px;
-    font-size: 0.7rem;
-    gap: 4px;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    gap: 3px;
   }
 
-  .lang-switcher--sm .lang-text-link,
-  .lang-switcher--sm .lang-icon-link {
-    padding: 4px 8px;
-    font-size: 0.75rem;
+  .lang-switcher--sm .lang-option.lang-ar {
+    font-size: 0.85rem;
   }
 
   .lang-switcher--lg .lang-pill {
-    padding: 8px 16px;
-    font-size: 0.9rem;
-    gap: 8px;
-  }
-
-  .lang-switcher--lg .lang-text-link,
-  .lang-switcher--lg .lang-icon-link {
-    padding: 10px 16px;
+    padding: 8px 18px;
     font-size: 0.95rem;
+    gap: 6px;
   }
 
-  /* ====================================
-     DARK MODE
-     ==================================== */
-  [data-theme="dark"] .lang-pill,
-  body.theme-dark .lang-pill {
-    background: rgba(255, 255, 255, 0.08);
-  }
-
-  [data-theme="dark"] .lang-text-link,
-  body.theme-dark .lang-text-link,
-  [data-theme="dark"] .lang-icon-link,
-  body.theme-dark .lang-icon-link {
-    background: rgba(255, 255, 255, 0.06);
+  .lang-switcher--lg .lang-option.lang-ar {
+    font-size: 1.1rem;
   }
 
   /* ====================================
      LIGHT BACKGROUND VERSION
-     For use on white/light surfaces
      ==================================== */
   .lang-switcher.on-light .lang-pill {
     background: rgba(14, 43, 72, 0.08);
   }
 
   .lang-switcher.on-light .lang-option {
-    color: rgba(14, 43, 72, 0.7);
+    color: rgba(14, 43, 72, 0.6);
   }
 
   .lang-switcher.on-light .lang-option:hover {
@@ -268,13 +296,43 @@ const ariaLabel = isArabic
 
   .lang-switcher.on-light .lang-text-link,
   .lang-switcher.on-light .lang-icon-link {
-    color: var(--ot-navy, #0E2B48);
-    background: rgba(14, 43, 72, 0.06);
+    color: rgba(14, 43, 72, 0.6);
   }
 
   .lang-switcher.on-light .lang-text-link:hover,
-  .lang-switcher.on-light .lang-icon-link:hover {
-    background: rgba(14, 43, 72, 0.1);
+  .lang-switcher.on-light .lang-icon-link:hover,
+  .lang-switcher.on-light .lang-text-link.is-active,
+  .lang-switcher.on-light .lang-icon-link.is-active {
+    color: var(--ot-navy, #0E2B48);
+  }
+
+  .lang-switcher.on-light .lang-icon-group {
+    background: rgba(14, 43, 72, 0.06);
+  }
+
+  .lang-switcher.on-light .lang-globe {
+    color: rgba(14, 43, 72, 0.5);
+  }
+
+  /* ====================================
+     DARK MODE
+     ==================================== */
+  [data-theme="dark"] .lang-pill,
+  body.theme-dark .lang-pill {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* ====================================
+     FOOTER SPECIFIC STYLES
+     ==================================== */
+  .footer-lang-row .lang-pill {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .footer-lang-row .lang-option.is-active {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
   }
 
   /* ====================================
@@ -282,8 +340,8 @@ const ariaLabel = isArabic
      ==================================== */
   @media (max-width: 991px) {
     .lang-switcher--md .lang-pill {
-      padding: 5px 10px;
-      font-size: 0.75rem;
+      padding: 5px 12px;
+      font-size: 0.8rem;
     }
   }
 </style>
