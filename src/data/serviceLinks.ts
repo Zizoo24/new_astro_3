@@ -513,6 +513,17 @@ export const serviceLinks: Record<string, ServiceLink> = {
   },
 
   // ========================================
+  // BLOG POSTS (Legal Translation Cluster)
+  // ========================================
+  legalTranslationMojGuide: {
+    url: "/blog/legal-translation-dubai-moj-guide/",
+    text: "Legal Translation MOJ Guide",
+    full: "Complete guide to MOJ legal translation requirements in Dubai",
+    icon: "fas fa-gavel",
+    badge: "NEW"
+  },
+
+  // ========================================
   // INDUSTRIES
   // ========================================
   industries: {
@@ -1059,6 +1070,16 @@ export const pageRelationships: Record<string, PageRelationships> = {
     family: ["degreesWorkPermit", "phdDbaTranslation", "studyGapGuide"],
     crossSilo: ["goldenVisa", "attestation", "dhaDataflow"],
     resources: ["mojVsCertified", "attestationGuide", "documentChecklist"]
+  },
+
+  // ========================================
+  // BLOG POSTS (Legal Translation Cluster)
+  // ========================================
+  legalTranslationMojGuide: {
+    related: ["legalTranslation", "mojVsCertified", "contracts", "corporate", "litigation", "poa", "attestation"],
+    family: ["mojVsCertified", "attestationGuide", "pricingGuide"],
+    crossSilo: ["goldenVisa", "birthCertificate", "marriageCertificate", "degree", "pcc"],
+    resources: ["mojVsCertified", "attestationGuide", "documentChecklist", "pricingGuide"]
   },
 
   // ========================================

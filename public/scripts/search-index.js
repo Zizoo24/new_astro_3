@@ -332,6 +332,12 @@ const searchIndex = [
         "url": "/blog/professional-certificates-vs-degrees-translation/",
         "category": "Blog",
         "keywords": "professional certificates degrees translation cpa acca pmp cisco moj certification uae"
+    },
+    {
+        "title": "Legal Translation Dubai: Complete MOJ Guide",
+        "url": "/blog/legal-translation-dubai-moj-guide/",
+        "category": "Blog",
+        "keywords": "legal translation dubai moj ministry justice certified court contracts difc adgm requirements guide"
     }
 ];
 
