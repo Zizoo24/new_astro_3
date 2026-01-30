@@ -123,9 +123,11 @@ This summary covers everything you need for most tasks. Detailed sections follow
 
 | Document | Purpose |
 |----------|---------|
+| [`pipeline/MASTER_WORKFLOW.md`](./pipeline/MASTER_WORKFLOW.md) | **Content creation process (EN + AR)** |
 | [`SEO-STRATEGY.md`](./SEO-STRATEGY.md) | Current SEO status, keyword data |
 | [`CONTENT-PLAN.md`](./CONTENT-PLAN.md) | Content calendar, what to write next |
 | [`AI-AGENT-ONBOARDING.md`](./AI-AGENT-ONBOARDING.md) | Quick start guide |
+| [`SEO_ARABIC_KEYWORDS.md`](./SEO_ARABIC_KEYWORDS.md) | Arabic SEO keywords |
 
 ---
 
@@ -804,10 +806,18 @@ You are a Personal Assistant to a busy executive:
 4. ✅ Use Part VI brand voice (no hype, no "best in Dubai")
 5. ✅ Reference Part IX for correct file locations
 
+**For content creation (English or Arabic):**
+- **Read `pipeline/MASTER_WORKFLOW.md`** — the unified content process
+- Use prompts from `pipeline/prompts/` for AI-assisted writing
+- Apply style guide from `pipeline/style-guides/`
+- Complete `pipeline/checklists/PRE_PUBLISH.md` before deployment
+- If SEO keywords not provided, ASK the user for them
+
 **For SEO changes:**
 - Use components in `src/components/` (SEO.astro, Schema.astro)
 - Reference `src/config/site.ts` for configuration
 - Check `SEO-STRATEGY.md` for current keyword data
+- Check `SEO_ARABIC_KEYWORDS.md` for Arabic keywords
 
 **For content changes:**
 - Follow Part V structure (Hero → Checklist → Process → After-Care → Pricing → FAQ)
@@ -815,7 +825,9 @@ You are a Personal Assistant to a busy executive:
 - Include UAE-specific entities (GDRFA, MOFA, DLD, etc.)
 - Add 8+ internal links per page
 - Include 6-15 FAQ questions
+- **NEVER use:** best, top, #1, elite, leading, premier, market leader
+- **NEVER mention:** competitor names
 
 ---
 
-*Last Updated: January 28, 2026 — Version 8.4*
+*Last Updated: January 30, 2026 — Version 8.5*
