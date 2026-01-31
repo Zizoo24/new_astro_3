@@ -105,6 +105,20 @@ const features = [
   }
 ];
 
+// Desktop hero stats (full content)
+const heroStats = [
+  { value: '4-6 ساعات', label: 'الشهادات' },
+  { value: '24-48 ساعة', label: 'متعدد الصفحات' },
+  { value: 'نفس اليوم', label: 'خدمة مستعجلة' }
+];
+
+// Mobile hero stats (concise for small screens)
+const mobileHeroStats = [
+  { value: '٤-٦ ساعات', label: 'شهادات' },
+  { value: '٢٤-٤٨ ساعة', label: 'متعدد' },
+  { value: 'نفس اليوم', label: 'مستعجل' }
+];
+
 const processSteps = [
   {
     number: 1,
@@ -150,19 +164,24 @@ const processSteps = [
           وثائقك الشخصية هي أساس هويتك ووضعك القانوني في الإمارات. سواء كنت تتقدم للإقامة الذهبية، أو تكفل أفراد العائلة، أو تسجل الأبناء في المدارس، الترجمة المعتمدة من وزارة العدل تضمن القبول في الهجرة والمحاكم والجهات الحكومية.
         </p>
 
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <span class="stat-value">4-6 ساعات</span>
-            <span class="stat-label">الشهادات</span>
-          </div>
-          <div class="hero-stat">
-            <span class="stat-value">24-48 ساعة</span>
-            <span class="stat-label">متعدد الصفحات</span>
-          </div>
-          <div class="hero-stat">
-            <span class="stat-value">نفس اليوم</span>
-            <span class="stat-label">خدمة مستعجلة</span>
-          </div>
+        <!-- Desktop hero stats (hidden on mobile) -->
+        <div class="hero-stats hero-stats-desktop">
+          {heroStats.map(stat => (
+            <div class="hero-stat">
+              <span class="stat-value">{stat.value}</span>
+              <span class="stat-label">{stat.label}</span>
+            </div>
+          ))}
+        </div>
+
+        <!-- Mobile hero stats (hidden on desktop) -->
+        <div class="hero-stats hero-stats-mobile">
+          {mobileHeroStats.map(stat => (
+            <div class="hero-stat">
+              <span class="stat-value">{stat.value}</span>
+              <span class="stat-label">{stat.label}</span>
+            </div>
+          ))}
         </div>
 
         <div class="hero-cta">
@@ -474,6 +493,15 @@ const processSteps = [
 
   .hero-stat {
     text-align: center;
+  }
+
+  /* Desktop/Mobile visibility */
+  .hero-stats-desktop {
+    display: flex;
+  }
+
+  .hero-stats-mobile {
+    display: none;
   }
 
   .stat-value {
@@ -1076,9 +1104,15 @@ const processSteps = [
       font-size: 1.75rem;
     }
 
-    .hero-stats {
-      flex-direction: column;
-      gap: 1rem;
+    /* Show mobile stats, hide desktop */
+    .hero-stats-desktop {
+      display: none;
+    }
+
+    .hero-stats-mobile {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
     }
 
     .section {

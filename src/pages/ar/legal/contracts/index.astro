@@ -98,6 +98,20 @@ const industries = [
   { name: "الضيافة", icon: "hotel", desc: "إدارة الفنادق" },
   { name: "الرعاية الصحية", icon: "hospital", desc: "DHA، DOH" }
 ];
+
+// Desktop hero bullets (full content)
+const heroBullets = [
+  { icon: 'fas fa-check-circle', text: 'ختم وزارة العدل' },
+  { icon: 'fas fa-check-circle', text: 'تنسيق ثنائي اللغة' },
+  { icon: 'fas fa-check-circle', text: 'مصطلحات قانونية دقيقة' }
+];
+
+// Mobile hero bullets (concise for small screens)
+const mobileHeroBullets = [
+  { icon: 'fas fa-check-circle', text: 'ختم وزارة العدل' },
+  { icon: 'fas fa-check-circle', text: 'ثنائي اللغة' },
+  { icon: 'fas fa-check-circle', text: 'مصطلحات دقيقة' }
+];
 ---
 
 <BaseLayoutArabic
@@ -121,20 +135,25 @@ const industries = [
           العقود هي أساس كل علاقة تجارية في الإمارات. سواء كنت تحتاج اتفاقية سرية لمشروع مشترك، أو عقد بيع وشراء لدائرة الأراضي، أو عقود عمل لوزارة الموارد البشرية، كل شرط يجب ترجمته بدقة.
         </p>
 
-        <div class="hero-features">
-          <div class="feature-item">
-            <i class="fas fa-check-circle"></i>
-            <span>ختم وزارة العدل</span>
-          </div>
-          <div class="feature-item">
-            <i class="fas fa-check-circle"></i>
-            <span>تنسيق ثنائي اللغة</span>
-          </div>
-          <div class="feature-item">
-            <i class="fas fa-check-circle"></i>
-            <span>مصطلحات قانونية دقيقة</span>
-          </div>
-        </div>
+        <!-- Desktop hero bullets (hidden on mobile) -->
+        <ul class="hero-bullets hero-bullets-desktop">
+          {heroBullets.map(bullet => (
+            <li class="hero-bullet">
+              <i class={bullet.icon}></i>
+              <span>{bullet.text}</span>
+            </li>
+          ))}
+        </ul>
+
+        <!-- Mobile hero bullets (hidden on desktop) -->
+        <ul class="hero-bullets hero-bullets-mobile">
+          {mobileHeroBullets.map(bullet => (
+            <li class="hero-bullet">
+              <i class={bullet.icon}></i>
+              <span>{bullet.text}</span>
+            </li>
+          ))}
+        </ul>
 
         <div class="hero-cta">
           <a href="https://wa.me/971508620217" class="btn btn-primary">
@@ -460,22 +479,36 @@ const industries = [
     margin-bottom: 2rem;
   }
 
-  .hero-features {
+  /* Hero Bullets */
+  .hero-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
     display: flex;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 0.75rem;
   }
 
-  .feature-item {
+  .hero-bullet {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    flex-direction: row-reverse;
+    gap: 0.75rem;
+    font-size: 1rem;
   }
 
-  .feature-item i {
+  .hero-bullet i {
     color: var(--accent-coral);
+    width: 1.25rem;
+    text-align: center;
+  }
+
+  /* Desktop/Mobile visibility */
+  .hero-bullets-desktop {
+    display: flex;
+  }
+
+  .hero-bullets-mobile {
+    display: none;
   }
 
   .hero-cta {
@@ -1047,6 +1080,15 @@ const industries = [
   @media (max-width: 768px) {
     .hero-section h1 {
       font-size: 1.75rem;
+    }
+
+    /* Show mobile bullets, hide desktop */
+    .hero-bullets-desktop {
+      display: none;
+    }
+
+    .hero-bullets-mobile {
+      display: flex;
     }
 
     .contracts-grid,
