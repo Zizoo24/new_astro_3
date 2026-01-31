@@ -117,6 +117,22 @@ const documentTypes = [
   }
 ];
 
+// Desktop chain steps (full labels)
+const chainSteps = [
+  { number: '1', label: 'التوثيق', desc: 'في بلد المصدر' },
+  { number: '2', label: 'وزارة الخارجية', desc: 'بلد المصدر' },
+  { number: '3', label: 'سفارة الإمارات', desc: 'في بلدك' },
+  { number: '4', label: 'MOFA', desc: 'الإمارات' }
+];
+
+// Mobile chain steps (abbreviated)
+const mobileChainSteps = [
+  { number: '1', label: 'توثيق', desc: 'المصدر' },
+  { number: '2', label: 'خارجية', desc: 'المصدر' },
+  { number: '3', label: 'سفارة', desc: 'الإمارات' },
+  { number: '4', label: 'MOFA', desc: '' }
+];
+
 const processSteps = [
   {
     number: 1,
@@ -169,30 +185,37 @@ const processSteps = [
 
         <div class="hero-chain">
           <h3>سلسلة التصديق القياسية</h3>
-          <div class="chain-visual">
-            <div class="chain-item">
-              <span class="chain-number">1</span>
-              <span class="chain-label">التوثيق</span>
-              <span class="chain-desc">في بلد المصدر</span>
-            </div>
-            <div class="chain-arrow"><i class="fas fa-arrow-left"></i></div>
-            <div class="chain-item">
-              <span class="chain-number">2</span>
-              <span class="chain-label">وزارة الخارجية</span>
-              <span class="chain-desc">بلد المصدر</span>
-            </div>
-            <div class="chain-arrow"><i class="fas fa-arrow-left"></i></div>
-            <div class="chain-item">
-              <span class="chain-number">3</span>
-              <span class="chain-label">سفارة الإمارات</span>
-              <span class="chain-desc">في بلدك</span>
-            </div>
-            <div class="chain-arrow"><i class="fas fa-arrow-left"></i></div>
-            <div class="chain-item">
-              <span class="chain-number">4</span>
-              <span class="chain-label">MOFA</span>
-              <span class="chain-desc">الإمارات</span>
-            </div>
+
+          <!-- Desktop chain (hidden on mobile) -->
+          <div class="chain-visual chain-visual-desktop">
+            {chainSteps.map((step, index) => (
+              <>
+                <div class="chain-item">
+                  <span class="chain-number">{step.number}</span>
+                  <span class="chain-label">{step.label}</span>
+                  <span class="chain-desc">{step.desc}</span>
+                </div>
+                {index < chainSteps.length - 1 && (
+                  <div class="chain-arrow"><i class="fas fa-arrow-left"></i></div>
+                )}
+              </>
+            ))}
+          </div>
+
+          <!-- Mobile chain (hidden on desktop) -->
+          <div class="chain-visual chain-visual-mobile">
+            {mobileChainSteps.map((step, index) => (
+              <>
+                <div class="chain-item">
+                  <span class="chain-number">{step.number}</span>
+                  <span class="chain-label">{step.label}</span>
+                  {step.desc && <span class="chain-desc">{step.desc}</span>}
+                </div>
+                {index < mobileChainSteps.length - 1 && (
+                  <div class="chain-arrow"><i class="fas fa-arrow-left"></i></div>
+                )}
+              </>
+            ))}
           </div>
         </div>
 
@@ -530,6 +553,15 @@ const processSteps = [
     gap: 0.75rem;
     flex-wrap: wrap;
     justify-content: flex-start;
+  }
+
+  /* Desktop/Mobile visibility */
+  .chain-visual-desktop {
+    display: flex;
+  }
+
+  .chain-visual-mobile {
+    display: none;
   }
 
   .chain-item {
@@ -1190,12 +1222,35 @@ const processSteps = [
       font-size: 1.75rem;
     }
 
-    .chain-visual {
-      flex-direction: column;
+    /* Show mobile chain, hide desktop */
+    .chain-visual-desktop {
+      display: none;
+    }
+
+    .chain-visual-mobile {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .chain-visual-mobile .chain-item {
+      min-width: 65px;
+      padding: 0.75rem;
+    }
+
+    .chain-visual-mobile .chain-label {
+      font-size: 0.75rem;
+    }
+
+    .chain-visual-mobile .chain-desc {
+      font-size: 0.65rem;
     }
 
     .chain-arrow {
-      transform: rotate(90deg);
+      font-size: 0.9rem;
     }
 
     .section {

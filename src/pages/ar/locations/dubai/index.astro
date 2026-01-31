@@ -73,6 +73,20 @@ const authorities = [
   { name: "دائرة الاقتصاد والسياحة", icon: "store", desc: "تراخيص الأعمال والتسجيل التجاري" }
 ];
 
+// Desktop hero highlights (full text)
+const heroHighlights = [
+  { icon: 'fas fa-clock', strong: 'الشهادات القياسية', span: '4-6 ساعات' },
+  { icon: 'fas fa-bolt', strong: 'خدمة مستعجلة', span: '2-3 ساعات' },
+  { icon: 'fas fa-truck', strong: 'توصيل نفس اليوم', span: 'جميع مناطق دبي' }
+];
+
+// Mobile hero highlights (abbreviated)
+const mobileHeroHighlights = [
+  { icon: 'fas fa-clock', strong: '٤-٦ ساعات', span: 'عادي' },
+  { icon: 'fas fa-bolt', strong: '٢-٣ ساعات', span: 'مستعجل' },
+  { icon: 'fas fa-truck', strong: 'نفس اليوم', span: '' }
+];
+
 const services = [
   {
     title: "الترجمة القانونية",
@@ -134,28 +148,30 @@ const services = [
           بيئة الأعمال في دبي تتطلب توثيقاً دقيقاً. سواء كنت تسجل ملكية في دائرة الأراضي، أو تقدم ملفاً في محاكم دبي، أو تعالج إقامة ذهبية عبر GDRFA، أو تؤسس شركة في DIFC، نقدم ترجمات معتمدة من وزارة العدل تقبلها جهات دبي.
         </p>
 
-        <div class="hero-highlights">
-          <div class="highlight-item">
-            <i class="fas fa-clock"></i>
-            <div>
-              <strong>الشهادات القياسية</strong>
-              <span>4-6 ساعات</span>
+        <!-- Desktop hero highlights (hidden on mobile) -->
+        <div class="hero-highlights hero-highlights-desktop">
+          {heroHighlights.map(item => (
+            <div class="highlight-item">
+              <i class={item.icon}></i>
+              <div>
+                <strong>{item.strong}</strong>
+                <span>{item.span}</span>
+              </div>
             </div>
-          </div>
-          <div class="highlight-item">
-            <i class="fas fa-bolt"></i>
-            <div>
-              <strong>خدمة مستعجلة</strong>
-              <span>2-3 ساعات</span>
+          ))}
+        </div>
+
+        <!-- Mobile hero highlights (hidden on desktop) -->
+        <div class="hero-highlights hero-highlights-mobile">
+          {mobileHeroHighlights.map(item => (
+            <div class="highlight-item">
+              <i class={item.icon}></i>
+              <div>
+                <strong>{item.strong}</strong>
+                {item.span && <span>{item.span}</span>}
+              </div>
             </div>
-          </div>
-          <div class="highlight-item">
-            <i class="fas fa-truck"></i>
-            <div>
-              <strong>توصيل نفس اليوم</strong>
-              <span>جميع مناطق دبي</span>
-            </div>
-          </div>
+          ))}
         </div>
 
         <div class="hero-cta">
@@ -439,6 +455,15 @@ const services = [
   .highlight-item span {
     font-size: 0.85rem;
     opacity: 0.8;
+  }
+
+  /* Desktop/Mobile visibility */
+  .hero-highlights-desktop {
+    display: flex;
+  }
+
+  .hero-highlights-mobile {
+    display: none;
   }
 
   .hero-cta {
@@ -899,8 +924,15 @@ const services = [
       font-size: 1.75rem;
     }
 
-    .hero-highlights {
-      flex-direction: column;
+    /* Show mobile highlights, hide desktop */
+    .hero-highlights-desktop {
+      display: none;
+    }
+
+    .hero-highlights-mobile {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
       gap: 1rem;
     }
 

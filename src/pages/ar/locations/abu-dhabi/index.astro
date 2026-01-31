@@ -70,6 +70,20 @@ const services = [
   }
 ];
 
+// Desktop hero features (full text)
+const heroFeatures = [
+  { icon: 'fas fa-check-circle', text: 'معتمد من وزارة العدل' },
+  { icon: 'fas fa-building', text: 'مقبول في دائرة القضاء' },
+  { icon: 'fas fa-truck', text: 'تسليم في نفس اليوم' }
+];
+
+// Mobile hero features (abbreviated)
+const mobileHeroFeatures = [
+  { icon: 'fas fa-check-circle', text: 'وزارة العدل' },
+  { icon: 'fas fa-building', text: 'دائرة القضاء' },
+  { icon: 'fas fa-truck', text: 'نفس اليوم' }
+];
+
 const faqs = [
   {
     question: 'كم تكلفة الترجمة القانونية في أبوظبي؟',
@@ -134,20 +148,25 @@ const faqs = [
           وجميع الجهات الحكومية. تسليم في نفس اليوم لجميع مناطق أبوظبي والعين.
         </p>
 
-        <div class="hero-features">
-          <div class="feature">
-            <i class="fas fa-check-circle"></i>
-            <span>معتمد من وزارة العدل</span>
-          </div>
-          <div class="feature">
-            <i class="fas fa-building"></i>
-            <span>مقبول في دائرة القضاء</span>
-          </div>
-          <div class="feature">
-            <i class="fas fa-truck"></i>
-            <span>تسليم في نفس اليوم</span>
-          </div>
-        </div>
+        <!-- Desktop hero features (hidden on mobile) -->
+        <ul class="hero-features hero-features-desktop">
+          {heroFeatures.map(feature => (
+            <li class="feature">
+              <i class={feature.icon}></i>
+              <span>{feature.text}</span>
+            </li>
+          ))}
+        </ul>
+
+        <!-- Mobile hero features (hidden on desktop) -->
+        <ul class="hero-features hero-features-mobile">
+          {mobileHeroFeatures.map(feature => (
+            <li class="feature">
+              <i class={feature.icon}></i>
+              <span>{feature.text}</span>
+            </li>
+          ))}
+        </ul>
 
         <div class="hero-ctas">
           <a href="https://wa.me/971508620217" class="cta-primary">
@@ -381,6 +400,9 @@ const faqs = [
     flex-wrap: wrap;
     gap: 1.5rem;
     margin-bottom: 2rem;
+    list-style: none;
+    padding: 0;
+    margin-top: 0;
   }
 
   .feature {
@@ -392,6 +414,15 @@ const faqs = [
 
   .feature i {
     color: var(--accent-coral, #FF1654);
+  }
+
+  /* Desktop/Mobile visibility */
+  .hero-features-desktop {
+    display: flex;
+  }
+
+  .hero-features-mobile {
+    display: none;
   }
 
   .hero-ctas {
@@ -732,8 +763,15 @@ const faqs = [
       font-size: 1.75rem;
     }
 
-    .hero-features {
-      flex-direction: column;
+    /* Show mobile features, hide desktop */
+    .hero-features-desktop {
+      display: none;
+    }
+
+    .hero-features-mobile {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
       gap: 1rem;
     }
 

@@ -43,6 +43,22 @@ const faqs = [
   }
 ];
 
+// Desktop hero chips (full text)
+const heroChips = [
+  { icon: 'fas fa-baby', text: 'شهادة الميلاد' },
+  { icon: 'fas fa-ring', text: 'عقد الزواج' },
+  { icon: 'fas fa-file-signature', text: 'شهادة الطلاق' },
+  { icon: 'fas fa-scroll', text: 'شهادة الوفاة' }
+];
+
+// Mobile hero chips (abbreviated)
+const mobileHeroChips = [
+  { icon: 'fas fa-baby', text: 'ميلاد' },
+  { icon: 'fas fa-ring', text: 'زواج' },
+  { icon: 'fas fa-file-signature', text: 'طلاق' },
+  { icon: 'fas fa-scroll', text: 'وفاة' }
+];
+
 const vitalRecords = [
   {
     title: "ترجمة شهادة الميلاد",
@@ -96,23 +112,24 @@ const vitalRecords = [
           السجلات الحيوية تُوثق اللحظات المحددة في حياتك—وفي الإمارات، مطلوبة لكل عملية إدارية رئيسية تقريباً. من كفالة أفراد العائلة إلى تسوية شؤون الإرث، هذه الترجمات يجب أن تكون دقيقة، مصدقة بشكل صحيح، ومعتمدة من وزارة العدل.
         </p>
 
-        <div class="hero-records">
-          <div class="record-chip">
-            <i class="fas fa-baby"></i>
-            <span>شهادة الميلاد</span>
-          </div>
-          <div class="record-chip">
-            <i class="fas fa-ring"></i>
-            <span>عقد الزواج</span>
-          </div>
-          <div class="record-chip">
-            <i class="fas fa-file-signature"></i>
-            <span>شهادة الطلاق</span>
-          </div>
-          <div class="record-chip">
-            <i class="fas fa-scroll"></i>
-            <span>شهادة الوفاة</span>
-          </div>
+        <!-- Desktop hero chips (hidden on mobile) -->
+        <div class="hero-records hero-records-desktop">
+          {heroChips.map(chip => (
+            <div class="record-chip">
+              <i class={chip.icon}></i>
+              <span>{chip.text}</span>
+            </div>
+          ))}
+        </div>
+
+        <!-- Mobile hero chips (hidden on desktop) -->
+        <div class="hero-records hero-records-mobile">
+          {mobileHeroChips.map(chip => (
+            <div class="record-chip">
+              <i class={chip.icon}></i>
+              <span>{chip.text}</span>
+            </div>
+          ))}
         </div>
 
         <div class="hero-cta">
@@ -462,6 +479,15 @@ const vitalRecords = [
 
   .record-chip i {
     color: var(--accent-coral);
+  }
+
+  /* Desktop/Mobile visibility */
+  .hero-records-desktop {
+    display: flex;
+  }
+
+  .hero-records-mobile {
+    display: none;
   }
 
   .hero-cta {
@@ -1063,8 +1089,16 @@ const vitalRecords = [
       font-size: 1.75rem;
     }
 
-    .hero-records {
-      flex-direction: column;
+    /* Show mobile chips, hide desktop */
+    .hero-records-desktop {
+      display: none;
+    }
+
+    .hero-records-mobile {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .section {

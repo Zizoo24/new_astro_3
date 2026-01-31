@@ -78,7 +78,7 @@ const searchQuickLinksAr = [
     </button>
     <a href="/ar/" class="sidebar-logo">
       <div class="sidebar-brand">
-        <span class="sidebar-brand-name"><span class="brand-suffix">Translation.ae</span>Online</span>
+        <span class="sidebar-brand-name" dir="ltr">OnlineTranslation<span class="brand-suffix">.ae</span></span>
         <span class="sidebar-tagline">ترجمة قانونية معتمدة</span>
       </div>
       <img src="/assets/images/logo/brand/emblem-256.png" alt="OnlineTranslation.ae" class="sidebar-emblem" loading="lazy" width="48" height="48">
@@ -88,32 +88,32 @@ const searchQuickLinksAr = [
   <div class="sidebar-nav">
     <!-- Home Link -->
     <a href="/ar/" class="sidebar-home-link">
-      {uiLabelsAr.home} <i class="fas fa-home"></i>
+      <i class="fas fa-home"></i> {uiLabelsAr.home}
     </a>
     
     <!-- Hub-Based Accordion Groups -->
     {mobileNavHubsAr.map((accordion, index) => (
       <div class="sidebar-accordion-group" data-accordion={`ar-${index}`}>
-        <button 
-          class="sidebar-accordion-heading" 
-          aria-expanded="false" 
+        <button
+          class="sidebar-accordion-heading"
+          aria-expanded="false"
           aria-controls={`accordion-ar-${index}`}
         >
-          <i class="fas fa-chevron-down accordion-chevron"></i>
           <span class="heading-text">
             {accordion.label}
           </span>
+          <i class="fas fa-chevron-down accordion-chevron"></i>
         </button>
         <div class="sidebar-accordion-panel" id={`accordion-ar-${index}`}>
           {/* Hub link first */}
           <a href={accordion.href} class="sidebar-hub-link">
-            {accordion.hubLabel} <i class="fas fa-th-large"></i>
+            <i class="fas fa-th-large"></i> {accordion.hubLabel}
           </a>
           {/* Key sub-links */}
           {accordion.children.map((child) => (
             <a href={child.href}>
+              {child.icon && <i class={child.icon} style="width: 16px; margin-left: 6px; opacity: 0.7;"></i>}
               {child.label}
-              {child.icon && <i class={child.icon} style="width: 16px; margin-right: 6px; opacity: 0.7;"></i>}
             </a>
           ))}
         </div>
@@ -122,25 +122,25 @@ const searchQuickLinksAr = [
     
     <!-- Single Links -->
     <a href="/ar/about/" class="sidebar-single-link">
-      من نحن <i class="fas fa-building"></i>
+      <i class="fas fa-building"></i> من نحن
     </a>
     <a href="/ar/contact/" class="sidebar-single-link">
-      {uiLabelsAr.contactUs} <i class="fas fa-envelope"></i>
+      <i class="fas fa-envelope"></i> {uiLabelsAr.contactUs}
     </a>
     
     <!-- Language Switcher -->
     <div class="sidebar-lang-switch">
+      <span class="lang-label">اللغة: <i class="fas fa-globe"></i></span>
       <LanguageSwitcher variant="pill" size="md" />
-      <span class="lang-label"><i class="fas fa-globe"></i> اللغة:</span>
     </div>
   </div>
   
   <div class="sidebar-contact">
     <a href={siteContactAr.whatsapp} class="sidebar-cta">
-      راسلونا عبر واتساب <i class="fab fa-whatsapp"></i>
+      <i class="fab fa-whatsapp"></i> راسلونا عبر واتساب
     </a>
     <a href={`tel:${siteContactAr.phone}`} class="sidebar-cta secondary">
-      <span dir="ltr">{siteContactAr.phoneDisplay}</span> <i class="fas fa-phone"></i>
+      <i class="fas fa-phone"></i> <span dir="ltr">{siteContactAr.phoneDisplay}</span>
     </a>
   </div>
 </nav>
@@ -211,7 +211,6 @@ const searchQuickLinksAr = [
   /* RTL Nav links */
   .sidebar-menu-rtl .sidebar-home-link,
   .sidebar-menu-rtl .sidebar-single-link {
-    flex-direction: row-reverse;
     border-left: none;
     border-right: 3px solid transparent;
   }
@@ -232,15 +231,19 @@ const searchQuickLinksAr = [
 
   /* RTL Accordion */
   .sidebar-menu-rtl .sidebar-accordion-heading {
-    flex-direction: row-reverse;
+    justify-content: space-between;
   }
 
   .sidebar-menu-rtl .sidebar-accordion-heading .heading-text {
     text-align: right;
   }
 
+  .sidebar-menu-rtl .sidebar-accordion-heading .accordion-chevron {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
   .sidebar-menu-rtl .sidebar-accordion-panel a {
-    flex-direction: row-reverse;
     padding: 14px 48px 14px 20px;
     border-left: none;
     border-right: 3px solid transparent;
@@ -253,8 +256,9 @@ const searchQuickLinksAr = [
     border-right-color: #FF1654;
   }
 
-  .sidebar-menu-rtl .sidebar-hub-link {
-    flex-direction: row-reverse;
+  .sidebar-menu-rtl .sidebar-hub-link i {
+    margin-left: 8px;
+    margin-right: 0;
   }
 
   /* RTL Language Switcher */
@@ -263,10 +267,6 @@ const searchQuickLinksAr = [
   }
 
   /* RTL CTA buttons */
-  .sidebar-menu-rtl .sidebar-cta {
-    flex-direction: row-reverse;
-  }
-
   .sidebar-menu-rtl .sidebar-cta i {
     margin-left: 12px;
     margin-right: 0;

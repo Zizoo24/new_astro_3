@@ -2,8 +2,8 @@
 
 ## OnlineTranslation.ae — Single Unified Process for All Content
 
-**Version:** 3.2
-**Last Updated:** January 30, 2026
+**Version:** 3.3
+**Last Updated:** January 31, 2026
 
 ---
 
@@ -907,11 +907,89 @@ For Arabic content, add these requirements:
 - Arabic-Indic numerals in body: ٦٠، ١٥٠
 - Arabic punctuation: ، (comma), ؟ (question), ؛ (semicolon)
 
+## CSS Reuse & RTL Adaptation (MANDATORY)
+
+```
+╔═══════════════════════════════════════════════════════════════════════╗
+║  When creating Arabic pages, ALWAYS reuse the English page's CSS      ║
+║  and adapt it for RTL. Do NOT create new CSS from scratch.            ║
+╚═══════════════════════════════════════════════════════════════════════╝
+```
+
+### Step 1: Copy the English Page CSS
+1. Identify the English equivalent page (e.g., `/pages/personal/vital-records/birth/`)
+2. Copy any `<style>` block from the English page to the Arabic page
+3. Copy any CSS class names used in the HTML structure
+
+### Step 2: RTL Adaptation Checklist
+```
+□ Add `dir="rtl"` to the page layout (BaseLayoutArabic handles this)
+□ Flip directional properties:
+   - margin-left → margin-right (and vice versa)
+   - padding-left → padding-right (and vice versa)
+   - border-left → border-right (and vice versa)
+   - text-align: left → text-align: right
+□ Flip flexbox directions where needed:
+   - flex-direction: row → row-reverse (only if items should flip)
+□ Icon positioning:
+   - Move icons from right side to left side (visually)
+   - In HTML: place icon BEFORE text to appear on RIGHT in RTL
+□ Keep LTR for:
+   - Phone numbers: <span dir="ltr">+971 50 862 0217</span>
+   - Email addresses: <span dir="ltr">info@onlinetranslation.ae</span>
+   - Brand names: <span dir="ltr">OnlineTranslation.ae</span>
+   - URLs and code
+```
+
+### Step 3: Verify RTL Override CSS Exists
+The following files handle RTL automatically:
+- `public/styles/rtl.css` — Global RTL overrides
+- `BaseLayoutArabic.astro` — Arabic page layout with `dir="rtl"`
+
+### Step 4: Component-Specific Adjustments
+
+| Component | English Behavior | RTL Adjustment |
+|-----------|-----------------|----------------|
+| Accordions | Chevron on right | Chevron still on right (natural RTL) |
+| Cards | Image left, text right | Image right, text left |
+| Process steps | 1→2→3→4 left-to-right | 4←3←2←1 right-to-left |
+| Sidebar | Slides from left | Slides from right |
+| Icons + Text | Icon before text | Icon AFTER text in HTML (appears left in RTL) |
+
+### Example: Adapting a Hero Section
+
+**English (hero-section.astro):**
+```html
+<div class="hero-content">
+  <h1>Birth Certificate Translation</h1>
+  <p class="lead-text">Fast, certified translation...</p>
+  <a href="/contact/" class="btn">
+    Get Started <i class="fas fa-arrow-right"></i>
+  </a>
+</div>
+```
+
+**Arabic (adapted):**
+```html
+<div class="hero-content">
+  <h1>ترجمة شهادة الميلاد</h1>
+  <p class="lead-text">ترجمة سريعة ومعتمدة...</p>
+  <a href="/ar/contact/" class="btn">
+    <i class="fas fa-arrow-left"></i> ابدأوا الآن
+  </a>
+</div>
+```
+
+Note: Arrow icon changed to `fa-arrow-left` and placed before text.
+
 ## Additional Phase 5 Verification
 - Verify formal addressing throughout
 - Verify MSA (not colloquial)
 - Verify Abu Dhabi (أبوظبي) mentioned prominently
 - Verify no أفضل، الأول، رائد (banned superlatives)
+- Verify CSS copied from English equivalent page
+- Verify RTL adaptations applied correctly
+- Verify phone numbers and emails wrapped in `<span dir="ltr">`
 
 ---
 

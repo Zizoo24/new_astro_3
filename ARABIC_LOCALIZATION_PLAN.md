@@ -313,6 +313,56 @@ import HeroArabic from "@components/HeroArabic.astro";
 
 ## 🔧 Technical Implementation
 
+### CSS Reuse & RTL Adaptation (MANDATORY)
+
+```
+╔═══════════════════════════════════════════════════════════════════════╗
+║  When creating Arabic pages, ALWAYS reuse the English page's CSS      ║
+║  and adapt it for RTL. Do NOT create new CSS from scratch.            ║
+╚═══════════════════════════════════════════════════════════════════════╝
+```
+
+**Step 1: Copy English Page CSS**
+1. Find the English equivalent page (e.g., `src/pages/personal/vital-records/birth/index.astro`)
+2. Copy the `<style>` block from the English page
+3. Copy all CSS class names used in the HTML structure
+
+**Step 2: RTL Adaptation**
+
+| English Property | Arabic RTL Equivalent |
+|------------------|----------------------|
+| `margin-left` | `margin-right` |
+| `padding-left` | `padding-right` |
+| `border-left` | `border-right` |
+| `text-align: left` | `text-align: right` |
+| `float: left` | `float: right` |
+| Icon after text | Icon before text in HTML |
+
+**Step 3: LTR Islands (Keep Left-to-Right)**
+```html
+<!-- Phone numbers -->
+<span dir="ltr">+971 50 862 0217</span>
+
+<!-- Email addresses -->
+<span dir="ltr">info@onlinetranslation.ae</span>
+
+<!-- Brand names -->
+<span dir="ltr">OnlineTranslation.ae</span>
+```
+
+**Step 4: Icon Positioning in RTL**
+```html
+<!-- English: icon after text -->
+<a href="/contact/">Contact Us <i class="fas fa-arrow-right"></i></a>
+
+<!-- Arabic: icon BEFORE text (appears on right in RTL) -->
+<a href="/ar/contact/"><i class="fas fa-arrow-left"></i> تواصلوا معنا</a>
+```
+
+**RTL CSS Files (automatic overrides):**
+- `public/styles/rtl.css` — Global RTL styles
+- `BaseLayoutArabic.astro` — Includes `dir="rtl"` on html
+
 ### Hreflang Implementation
 
 ```html
@@ -347,34 +397,106 @@ function getAlternateUrl(currentPath, targetLang) {
 
 ## 📊 Progress Tracking
 
-### Week 1 Deliverables
-- [ ] navigation-ar.ts created
-- [ ] Header language switcher working
-- [ ] Mobile menu Arabic version
-- [ ] Footer Arabic version
+### Current Status (Updated January 31, 2026)
 
-### Week 2 Deliverables
-- [ ] Homepage Arabic
-- [ ] About page Arabic
-- [ ] Contact page Arabic
-- [ ] Abu Dhabi landing page (NEW)
+**Existing Arabic Pages (13 pages):**
 
-### Week 3 Deliverables
-- [ ] Legal translation pillar page
-- [ ] 8 legal cluster pages
+| Page | URL | Status |
+|------|-----|--------|
+| Homepage | `/ar/` | ✅ Complete |
+| About | `/ar/about/` | ✅ Complete |
+| Contact | `/ar/contact/` | ✅ Complete |
+| Services Hub | `/ar/services/` | ✅ Complete |
+| Legal Translation Hub | `/ar/legal-translation-dubai/` | ✅ Complete |
+| Contracts Hub | `/ar/legal/contracts/` | ✅ Complete |
+| Personal Hub | `/ar/personal/` | ✅ Complete |
+| Vital Records Hub | `/ar/personal/vital-records/` | ✅ Complete |
+| Academic Hub | `/ar/personal/academic/` | ✅ Complete |
+| NYUAD | `/ar/personal/academic/nyuad/` | ✅ Complete |
+| Attestation Hub | `/ar/services/attestation/` | ✅ Complete |
+| Abu Dhabi | `/ar/locations/abu-dhabi/` | ✅ Complete |
+| Dubai | `/ar/locations/dubai/` | ✅ Complete |
 
-### Week 4 Deliverables
-- [ ] Personal documents pillar page
-- [ ] 8 personal document pages
+### Week 1 Deliverables ✅ COMPLETE
+- [x] navigation-ar.ts created
+- [x] Header language switcher working (HeaderUnified.astro)
+- [x] Mobile menu Arabic version (MobileShellArabic.astro)
+- [x] Footer Arabic version (FooterArabic.astro)
 
-### Week 5 Deliverables
-- [ ] 6 attestation pages
-- [ ] 4 specialized translation pages
+### Week 2 Deliverables ✅ COMPLETE
+- [x] Homepage Arabic
+- [x] About page Arabic
+- [x] Contact page Arabic
+- [x] Abu Dhabi landing page
 
-### Week 6 Deliverables
-- [ ] 3 location pages
-- [ ] 5 resource pages
-- [ ] Final QA and launch
+### Week 3 Deliverables - IN PROGRESS
+- [x] Legal translation pillar page (`/ar/legal-translation-dubai/`)
+- [x] Contracts hub (`/ar/legal/contracts/`)
+- [ ] NDA translation (`/ar/legal/contracts/nda/`)
+- [ ] SPA translation (`/ar/legal/contracts/spa/`)
+- [ ] MOU translation (`/ar/legal/contracts/mou/`)
+- [ ] Lease translation (`/ar/legal/contracts/lease/`)
+- [ ] Corporate hub (`/ar/legal/corporate/`)
+- [ ] MOA translation (`/ar/legal/corporate/moa/`)
+- [ ] POA translation (`/ar/legal/corporate/poa/`)
+- [ ] Resolution translation (`/ar/legal/corporate/resolution/`)
+- [ ] Litigation hub (`/ar/legal/litigation/`)
+- [ ] Verdict translation (`/ar/legal/litigation/verdict/`)
+- [ ] Arbitration translation (`/ar/legal/litigation/arbitration/`)
+- [ ] Wills translation (`/ar/legal/wills/`)
+
+### Week 4 Deliverables - IN PROGRESS
+- [x] Personal documents pillar (`/ar/personal/`)
+- [x] Vital records hub (`/ar/personal/vital-records/`)
+- [x] Academic hub (`/ar/personal/academic/`)
+- [ ] Birth certificate (`/ar/personal/vital-records/birth/`)
+- [ ] Marriage certificate (`/ar/personal/vital-records/marriage/`)
+- [ ] Divorce certificate (`/ar/personal/vital-records/divorce/`)
+- [ ] Death certificate (`/ar/personal/vital-records/death/`)
+- [ ] Immigration hub (`/ar/personal/immigration/`)
+- [ ] PCC translation (`/ar/personal/immigration/pcc/`)
+- [ ] Bank statements (`/ar/personal/immigration/bank/`)
+- [ ] Driving license (`/ar/personal/immigration/license/`)
+- [ ] Degree certificate (`/ar/personal/academic/degree/`)
+- [ ] Transcripts (`/ar/personal/academic/transcripts/`)
+
+### Week 5 Deliverables - NOT STARTED
+- [x] Attestation hub (`/ar/services/attestation/`)
+- [ ] India attestation (`/ar/services/attestation/india/`)
+- [ ] UK attestation (`/ar/services/attestation/uk/`)
+- [ ] US attestation (`/ar/services/attestation/us/`)
+- [ ] Golden Visa (`/ar/services/golden-visa-translation/`)
+- [ ] Specialized hub (`/ar/specialized-translation/`)
+- [ ] Medical translation (`/ar/specialized/medical/`)
+- [ ] Technical translation (`/ar/specialized/technical/`)
+- [ ] Hospitality translation (`/ar/specialized/hospitality/`)
+- [ ] Digital translation (`/ar/specialized/digital/`)
+
+### Week 6 Deliverables - PARTIAL
+- [x] Abu Dhabi location (`/ar/locations/abu-dhabi/`)
+- [x] Dubai location (`/ar/locations/dubai/`)
+- [ ] Locations hub (`/ar/locations/`)
+- [ ] Sharjah location (`/ar/locations/sharjah/`)
+- [ ] Dubai sub-locations (DIFC, JLT, Marina, etc.)
+- [ ] Resources hub (`/ar/resources/`)
+- [ ] FAQ (`/ar/resources/faq/`)
+- [ ] Pricing guide (`/ar/resources/pricing-guide/`)
+- [ ] Document checklist (`/ar/resources/document-checklist/`)
+- [ ] Blog hub (`/ar/blog/`)
+
+---
+
+## 🚀 Next Priority Pages
+
+Based on SEO value and user demand:
+
+| Priority | Page | Arabic URL | SEO Keywords |
+|----------|------|------------|--------------|
+| 1 | Birth Certificate | `/ar/personal/vital-records/birth/` | ترجمة شهادة الميلاد |
+| 2 | India Attestation | `/ar/services/attestation/india/` | تصديق الشهادات الهندية |
+| 3 | Golden Visa | `/ar/services/golden-visa-translation/` | ترجمة الفيزا الذهبية |
+| 4 | POA Translation | `/ar/legal/corporate/poa/` | ترجمة التوكيل الرسمي |
+| 5 | Marriage Certificate | `/ar/personal/vital-records/marriage/` | ترجمة عقد الزواج |
 
 ---
 
@@ -396,12 +518,12 @@ function getAlternateUrl(currentPath, targetLang) {
 
 | File | Purpose | Status |
 |------|---------|--------|
-| `BaseLayoutArabic.astro` | Arabic layout with RTL | ✅ Exists |
-| `rtl.css` | RTL styles | ✅ Exists |
-| `navigation-ar.ts` | Arabic nav data | ❌ Create |
-| `Header-porto.astro` | Header component | 🔄 Update |
-| `MobileShell.astro` | Mobile nav | 🔄 Update |
-| `Footer.astro` | Footer | 🔄 Update |
+| `BaseLayoutArabic.astro` | Arabic layout with RTL | ✅ Complete |
+| `rtl.css` | RTL styles | ✅ Complete |
+| `navigation-ar.ts` | Arabic nav data | ✅ Complete |
+| `HeaderUnified.astro` | Unified EN/AR header | ✅ Complete |
+| `MobileShellArabic.astro` | Arabic mobile nav | ✅ Complete |
+| `FooterArabic.astro` | Arabic footer | ✅ Complete |
 
 ---
 

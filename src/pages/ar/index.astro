@@ -8,7 +8,7 @@ import TrustBarArabic from '../../components/TrustBarArabic.astro';
 const pageTitle = 'ترجمة قانونية معتمدة دبي | 43+ لغة | OnlineTranslation.ae';
 const metaDescription = 'ترجمة قانونية معتمدة في دبي بأكثر من 43 لغة. ترجمة الجوازات والشهادات والوثائق الرسمية. مترجم معتمد من وزارة العدل. تسليم خلال ساعات. واتساب: 971508620217+';
 
-// HERO - Arabic - Matches English positioning (certified legal translation, 43+ languages)
+// HERO - Arabic Desktop (matches English structure)
 const heroTitle = 'ترجمة قانونية معتمدة في دبي';
 const heroLead = 'ترجمة معتمدة بأكثر من 43 لغة | مقبولة من جميع الجهات الحكومية الإماراتية';
 const heroImage = '/assets/images/onedrive/hero/office-team.png';
@@ -27,6 +27,30 @@ const heroBullets = [
     text: 'أدلة واتساب للشرطة والمحاكم (مُنسقة للتقديم الرسمي)',
   },
 ];
+
+// HERO - Arabic Mobile (concise copy for small screens)
+const mobileHero = {
+  eyebrow: 'مستشار الوثائق الرقمية',
+  lead: 'ترجمة معتمدة بالعربية والإنجليزية وأكثر من 30 لغة. مقبولة من جميع الجهات الحكومية الإماراتية.',
+  bullets: [
+    {
+      icon: 'fas fa-bolt',
+      text: 'ترجمة معتمدة خلال 60 دقيقة (شهادات، عقود، وثائق رسمية)',
+    },
+    {
+      icon: 'fas fa-stamp',
+      text: 'ختم رسمي مقبول من محاكم دبي ومركز دبي المالي والوزارات',
+    },
+    {
+      icon: 'fab fa-whatsapp',
+      text: 'أرسل عبر واتساب — استلم PDF معتمد بالتوقيع',
+    },
+  ],
+  secondaryCta: {
+    label: 'اطلع على الأسعار',
+    url: '/ar/resources/pricing-guide/',
+  },
+};
 
 const primaryCta = {
   label: 'أرسلوا الوثائق عبر واتساب',
@@ -239,11 +263,20 @@ const contactSection = {
     <div class="container">
       <div class="hero-content">
         <div class="hero-text">
+          <!-- Single H1 - Always accessible, CSS handles visual styling per breakpoint -->
           <h1 class="hero-title exodus-title">
             <span class="title-line">{heroTitle}</span>
           </h1>
-          <p class="hero-lead">{heroLead}</p>
-          <ul class="hero-bullets">
+
+          <!-- Desktop lead (visually hidden on mobile, kept in accessibility tree) -->
+          <p class="hero-lead hero-lead-desktop">{heroLead}</p>
+
+          <!-- Mobile eyebrow and lead (visually hidden on desktop) -->
+          <span class="hero-eyebrow hero-eyebrow-mobile">{mobileHero.eyebrow}</span>
+          <p class="hero-lead hero-lead-mobile">{mobileHero.lead}</p>
+
+          <!-- Desktop bullets (visually hidden on mobile) -->
+          <ul class="hero-bullets hero-bullets-desktop">
             {heroBullets.map((item) => (
               <li>
                 {item.icon && <i class={item.icon}></i>}
@@ -252,15 +285,27 @@ const contactSection = {
             ))}
           </ul>
 
+          <!-- Mobile bullets (visually hidden on desktop) -->
+          <ul class="hero-bullets hero-bullets-mobile">
+            {mobileHero.bullets.map((item) => (
+              <li>
+                {item.icon && <i class={item.icon}></i>}
+                {item.text}
+              </li>
+            ))}
+          </ul>
+
+          <!-- Primary CTA - Single shared CTA works for all breakpoints -->
           <div class="hero-cta-group">
             <a href={primaryCta.url} class="hero-cta exodus-cta">
               <i class="fab fa-whatsapp"></i> {primaryCta.label}
             </a>
-            {secondaryCta?.url && (
-              <a href={secondaryCta.url} class="hero-cta-secondary">
-                {secondaryCta.label}
-              </a>
-            )}
+            <a href={secondaryCta.url} class="hero-cta-secondary hero-cta-secondary-desktop">
+              {secondaryCta.label}
+            </a>
+            <a href={mobileHero.secondaryCta.url} class="hero-cta-secondary hero-cta-secondary-mobile">
+              {mobileHero.secondaryCta.label}
+            </a>
           </div>
         </div>
       </div>
