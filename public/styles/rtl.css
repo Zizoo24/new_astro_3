@@ -72,12 +72,12 @@ html[lang="ar"] .email-address {
   text-align: left !important;
 }
 
-/* Brand name stays LTR */
+/* Brand name stays LTR - use isolate to prevent interference */
 html[lang="ar"] .logo-text,
 html[lang="ar"] .logo-name,
 html[lang="ar"] .footer-logo-text .logo-name {
   direction: ltr !important;
-  unicode-bidi: bidi-override !important;
+  unicode-bidi: isolate !important;
 }
 
 /* ============================================
@@ -165,6 +165,21 @@ html[lang="ar"] .exodus-cta i {
 html[lang="ar"] .hero-cta-secondary {
   text-align: right !important;
   display: block !important;
+}
+
+/* WhatsApp CTA - Must be green, not coral */
+html[lang="ar"] .hero-cta[href*="wa.me"],
+html[lang="ar"] .hero-cta.exodus-cta[href*="wa.me"],
+html[lang="ar"] .hero-cta-group a[href*="wa.me"] {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%) !important;
+  color: #fff !important;
+}
+
+html[lang="ar"] .hero-cta[href*="wa.me"]:hover,
+html[lang="ar"] .hero-cta.exodus-cta[href*="wa.me"]:hover,
+html[lang="ar"] .hero-cta-group a[href*="wa.me"]:hover {
+  background: linear-gradient(135deg, #128C7E 0%, #075E54 100%) !important;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4) !important;
 }
 
 /* ============================================
@@ -986,15 +1001,29 @@ html[lang="ar"] .header-column-sidebar {
   order: 4 !important;
 }
 
+/* Logo should NOT reverse - brand identity stays consistent */
 html[lang="ar"] .header-logo {
   display: flex !important;
-  flex-direction: row-reverse !important;
+  flex-direction: row !important; /* Keep logo on left, text on right */
   align-items: center !important;
   gap: 12px !important;
 }
 
 html[lang="ar"] .logo-text-block {
-  text-align: right !important;
+  text-align: left !important; /* Brand text stays LTR aligned */
+}
+
+/* Ensure logo text renders correctly as LTR */
+html[lang="ar"] .logo-text {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+  display: inline-block !important;
+}
+
+html[lang="ar"] .logo-text .logo-suffix,
+html[lang="ar"] .logo-text .logo-domain {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
 }
 
 html[lang="ar"] .nav.nav-pills {
