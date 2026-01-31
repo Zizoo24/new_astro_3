@@ -119,21 +119,21 @@ html[lang="ar"] .hero-bullets {
   list-style-position: inside !important;
   display: flex !important;
   flex-direction: column !important;
-  align-items: flex-end !important;
+  align-items: flex-start !important; /* flex-start is RIGHT in RTL */
 }
 
 html[lang="ar"] .hero-bullets li {
   display: flex !important;
   flex-direction: row !important;
-  justify-content: flex-end !important;
+  justify-content: flex-start !important; /* flex-start is RIGHT in RTL */
   align-items: center !important;
   text-align: right !important;
   gap: 12px !important;
-  width: 100% !important;
+  width: auto !important;
 }
 
 html[lang="ar"] .hero-bullets li i {
-  order: 2 !important;
+  order: 2 !important; /* Icon goes after text (on left in RTL) */
   margin-left: 0 !important;
   margin-right: 0 !important;
   flex-shrink: 0 !important;
@@ -142,7 +142,7 @@ html[lang="ar"] .hero-bullets li i {
 html[lang="ar"] .hero-cta-group {
   display: flex !important;
   flex-direction: column !important;
-  align-items: flex-end !important;
+  align-items: flex-start !important; /* flex-start is RIGHT in RTL */
   gap: 16px !important;
   width: 100% !important;
 }
@@ -489,18 +489,41 @@ html[lang="ar"] .exodus-about-content {
 html[lang="ar"] .exodus-features-list {
   display: flex !important;
   flex-direction: column !important;
-  align-items: flex-end !important;
+  align-items: flex-start !important; /* flex-start is RIGHT in RTL context */
 }
 
 html[lang="ar"] .exodus-feature-item {
   display: flex !important;
-  flex-direction: row-reverse !important;
+  flex-direction: row !important; /* In RTL, row flows right-to-left */
   gap: 10px !important;
+  justify-content: flex-start !important; /* flex-start is RIGHT in RTL */
+  text-align: right !important;
+  width: auto !important;
 }
 
 html[lang="ar"] .exodus-feature-item i {
+  order: 2 !important; /* Icon goes after text (appears on left in RTL) */
   margin-left: 0 !important;
   margin-right: 0 !important;
+}
+
+/* Mobile RTL for about/exodus section */
+@media (max-width: 991px) {
+  html[lang="ar"] .exodus-about-content,
+  html[lang="ar"] .about-content {
+    text-align: right !important;
+  }
+
+  html[lang="ar"] .exodus-features-list {
+    width: 100% !important;
+    align-items: flex-start !important; /* flex-start is RIGHT in RTL */
+  }
+
+  html[lang="ar"] .exodus-feature-item {
+    flex-direction: row !important;
+    width: auto !important;
+    justify-content: flex-start !important;
+  }
 }
 
 html[lang="ar"] .experience-badge,

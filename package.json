@@ -32,12 +32,14 @@
     "format:check": "prettier --check .",
     "links:check": "linkinator ./dist --recurse --skip \"^(?!https?://onlinetranslation\\.ae)\"",
     "nav:check": "node scripts/check-nav-links.js",
+    "lang:check": "node scripts/verify-language-mappings.js",
     "search:generate": "node scripts/generate-search-index.js",
     "scan:404": "bash scripts/scan-404s.sh",
     "scan:404:quick": "bash scripts/scan-404s.sh --quick",
     "scan:404:prod": "bash scripts/scan-404s.sh --url https://onlinetranslation.ae",
     "quality": "npm run check && npm run lint && npm run lint:css && npm run format:check",
-    "prebuild": "npm run nav:check",
+    "prebuild": "npm run nav:check && npm run lang:check",
+    "postbuild": "echo 'Sitemap generated at dist/sitemap-0.xml, Pagefind search index generated at dist/pagefind/'",
     "og:generate": "node scripts/generate-og-images.js"
   },
   "dependencies": {
