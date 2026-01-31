@@ -1,0 +1,1755 @@
+---
+/**
+ * /ar/personal/vital-records/death/ - ترجمة شهادة الوفاة (Death Certificate Arabic)
+ *
+ * Target Keywords: ترجمة شهادة الوفاة دبي, ترجمة شهادة وفاة, ترجمة قانونية وفاة
+ * Layout: BaseLayoutArabic
+ * Silo: Personal > Vital Records (Arabic)
+ */
+import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: 'ما الوثائق المطلوبة لإجراءات الميراث في الإمارات؟',
+    answer: 'كحد أدنى، تحتاج ترجمة معتمدة لشهادة الوفاة. حسب الحالة، قد تحتاج أيضاً ترجمة الوصية، عقد الزواج، شهادات ميلاد الورثة، ووثائق الملكية. نقدم استشارة مجانية لتحديد المتطلبات بناءً على حالتك.'
+  },
+  {
+    question: 'كم تستغرق ترجمة شهادة الوفاة؟',
+    answer: 'الخدمة العادية: خلال 24 ساعة. الخدمة السريعة: 6 ساعات. خدمة كبار العملاء: مسودة خلال ساعة واحدة عند الحاجة الملحة. نفهم أن التأخير له عواقب حقيقية في هذه الحالات.'
+  },
+  {
+    question: 'هل الترجمة مقبولة في البنوك الإماراتية؟',
+    answer: 'نعم. ترجمتنا المعتمدة من وزارة العدل مقبولة في جميع البنوك الإماراتية الكبرى لإغلاق الحسابات، إفراج الأموال، وتحويل الأصول للمستفيدين. الترجمة تتضمن جميع العناصر المطلوبة بموجب اللوائح المصرفية.'
+  },
+  {
+    question: 'هل شهادة الوفاة الأجنبية تحتاج تصديق؟',
+    answer: 'لمعظم الاستخدامات الرسمية في الإمارات، نعم. شهادات الوفاة الأجنبية تحتاج عادةً تصديق من سلطات بلدك، وزارة الخارجية، سفارة الإمارات، ثم وزارة الخارجية الإماراتية. نتحقق من ذلك خلال مراجعتنا المجانية.'
+  },
+  {
+    question: 'هل يمكنكم ترجمة وثائق إضافية متعلقة بالتركة؟',
+    answer: 'نعم. نترجم حزم وثائق التركة الكاملة: الوصايا، أوامر المحكمة، سندات الملكية، عقود الزواج والميلاد لإثبات صلة القرابة. نقدم أسعار خاصة للحزم المتعددة.'
+  },
+  {
+    question: 'ماذا لو حدثت الوفاة في الإمارات؟',
+    answer: 'إذا حدثت الوفاة في الإمارات، تُصدر الشهادة بالعربية. قد تحتاج ترجمة إنجليزية للسفارات، شركات التأمين الدولية، أو إجراءات الميراث في بلد آخر. نترجم شهادات الوفاة الإماراتية العربية إلى الإنجليزية.'
+  },
+  {
+    question: 'كيف تتعاملون مع الوثائق الحساسة؟',
+    answer: 'نفهم أن العائلات تمر بظروف صعبة. كل ترجمة تُكلف لمترجم واحد يوقع تعهد سرية. الوثائق تُعالج على أنظمة مشفرة. لا نستخدم خدمات سحابية أو منصات خارجية.'
+  }
+];
+
+// Death certificate uses
+const deathUses = [
+  {
+    title: "إجراءات الميراث",
+    icon: "balance-scale",
+    desc: "تسوية التركة في محاكم دبي وأبوظبي",
+    authority: "محاكم دبي - قسم التركات"
+  },
+  {
+    title: "الحسابات البنكية",
+    icon: "university",
+    desc: "إفراج الأموال وإغلاق الحسابات",
+    authority: "البنوك الإماراتية"
+  },
+  {
+    title: "مطالبات التأمين",
+    icon: "file-invoice-dollar",
+    desc: "تقديم مطالبات التأمين على الحياة",
+    authority: "شركات التأمين"
+  },
+  {
+    title: "نقل الملكية",
+    icon: "home",
+    desc: "تحويل العقارات للورثة",
+    authority: "دائرة الأراضي والأملاك"
+  },
+  {
+    title: "تحويل المركبات",
+    icon: "car",
+    desc: "نقل ملكية السيارات المسجلة",
+    authority: "هيئة الطرق والمواصلات"
+  },
+  {
+    title: "إعادة الجثمان",
+    icon: "plane",
+    desc: "وثائق ترحيل الجثمان للوطن",
+    authority: "السفارات وشركات الطيران"
+  }
+];
+
+// Estate document types
+const estateDocuments = [
+  {
+    title: "شهادة الوفاة",
+    icon: "scroll",
+    desc: "الوثيقة الأساسية لجميع إجراءات التركة",
+    required: true
+  },
+  {
+    title: "الوصية",
+    icon: "file-alt",
+    desc: "وصية DIFC أو وصية من بلد آخر",
+    required: false
+  },
+  {
+    title: "عقد الزواج",
+    icon: "ring",
+    desc: "إثبات صفة الزوج/الزوجة الباقي",
+    required: false
+  },
+  {
+    title: "شهادات الميلاد",
+    icon: "baby",
+    desc: "إثبات صلة القرابة للورثة",
+    required: false
+  },
+  {
+    title: "سندات الملكية",
+    icon: "building",
+    desc: "لنقل العقارات في دائرة الأراضي",
+    required: false
+  },
+  {
+    title: "أوامر المحكمة",
+    icon: "gavel",
+    desc: "تعيين منفذ أو مدير التركة",
+    required: false
+  }
+];
+
+// Attestation requirements
+const attestationPaths = [
+  {
+    type: "دول اتفاقية لاهاي",
+    countries: "الهند، بريطانيا، أمريكا، كندا، الفلبين",
+    steps: ["أبوستيل من الجهة المصدرة", "ترجمة معتمدة من وزارة العدل"],
+    note: "بعض الجهات الإماراتية قد تطلب تصديق سفارة الإمارات أيضاً"
+  },
+  {
+    type: "الدول غير الأعضاء",
+    countries: "باكستان، مصر، الأردن، سوريا، بنغلاديش (قبل مارس 2025)",
+    steps: ["وزارة الخارجية (بلد المصدر)", "سفارة الإمارات", "MOFA الإمارات", "ترجمة معتمدة"],
+    note: "السلسلة التقليدية الكاملة مطلوبة"
+  }
+];
+
+const pageTitle = 'ترجمة شهادة الوفاة دبي | ترجمة معتمدة من وزارة العدل';
+const pageDescription = 'ترجمة شهادة الوفاة في دبي وأبوظبي مقبولة في محاكم الإمارات والبنوك وجهات الميراث. ترجمة معتمدة من وزارة العدل لشؤون التركة ومطالبات التأمين.';
+---
+
+<BaseLayoutArabic
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL="https://onlinetranslation.ae/ar/personal/vital-records/death/"
+>
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  })} />
+
+  <!-- Service Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Death Certificate Translation",
+    "alternateName": "ترجمة شهادة الوفاة",
+    "description": pageDescription,
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "OnlineTranslation.ae",
+      "@id": "https://onlinetranslation.ae/#organization"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "United Arab Emirates"
+    },
+    "serviceType": "Legal Translation"
+  })} />
+
+  <main class="service-page rtl-page" dir="rtl">
+
+    <!-- Hero Section -->
+    <section class="hero-section bg-navy">
+      <div class="container">
+        <nav class="breadcrumb-nav" aria-label="مسار التنقل">
+          <ol class="breadcrumb">
+            <li><a href="/ar/">الرئيسية</a></li>
+            <li><a href="/ar/personal/">الوثائق الشخصية</a></li>
+            <li><a href="/ar/personal/vital-records/">السجلات الحيوية</a></li>
+            <li aria-current="page">شهادة الوفاة</li>
+          </ol>
+        </nav>
+
+        <div class="hero-content">
+          <div class="service-badge">
+            <i class="fas fa-stamp"></i>
+            <span>وزارة العدل - ترخيص #701</span>
+          </div>
+
+          <h1>ترجمة شهادة الوفاة في دبي</h1>
+
+          <p class="hero-intro">
+            ترجمة قانونية معتمدة من وزارة العدل مقبولة في محاكم دبي والبنوك الإماراتية
+            ودائرة الأراضي والأملاك. عدم تقديم ترجمة صحيحة لشهادة الوفاة يؤخر تسوية التركة،
+            الوصول للحسابات البنكية، ومعالجة مطالبات التأمين.
+          </p>
+
+          <ul class="hero-features">
+            <li><i class="fas fa-clock"></i> مسودة رقمية خلال 60 دقيقة عادةً</li>
+            <li><i class="fas fa-university"></i> مقبولة في المحاكم والبنوك</li>
+            <li><i class="fas fa-heart"></i> معالجة حساسة خلال وقت صعب</li>
+            <li><i class="fas fa-qrcode"></i> ختم وزارة العدل مع رمز QR للتحقق</li>
+          </ul>
+
+          <div class="hero-cta">
+            <a href="https://wa.me/971508620217" class="btn btn-coral btn-lg">
+              <i class="fab fa-whatsapp"></i>
+              أرسل وثيقتك عبر واتساب
+            </a>
+            <a href="tel:+971508620217" class="btn btn-outline-light btn-lg">
+              <i class="fas fa-phone"></i>
+              <span dir="ltr">+971 50 862 0217</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Compassionate Note -->
+    <section class="compassion-section">
+      <div class="container">
+        <div class="compassion-card">
+          <div class="compassion-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <div class="compassion-content">
+            <h2>نفهم أن هذا وقت صعب</h2>
+            <p>
+              التعامل مع الأوراق الرسمية أثناء الحزن أمر مرهق. نعمل بسرعة وحساسية
+              لمساعدتكم على إتمام المتطلبات الإدارية بأقل عبء ممكن.
+              منسق واحد سيتعامل معكم طوال العملية.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="uses-section bg-light">
+      <div class="container">
+        <h2 class="section-title">أين ستستخدم ترجمة شهادة الوفاة</h2>
+
+        <div class="uses-grid">
+          {deathUses.map(use => (
+            <div class="use-card">
+              <div class="use-icon">
+                <i class={`fas fa-${use.icon}`}></i>
+              </div>
+              <h3>{use.title}</h3>
+              <p>{use.desc}</p>
+              <span class="use-authority">
+                <i class="fas fa-building"></i> {use.authority}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Estate Documents -->
+    <section class="documents-section">
+      <div class="container">
+        <h2 class="section-title">وثائق التركة التي قد تحتاجها</h2>
+        <p class="section-subtitle">
+          شهادة الوفاة نادراً ما تكون وحدها في شؤون التركة.
+          حسب حالتك، قد تحتاج ترجمة وثائق إضافية.
+        </p>
+
+        <div class="documents-grid">
+          {estateDocuments.map(doc => (
+            <div class={`document-card ${doc.required ? 'required' : ''}`}>
+              {doc.required && <span class="required-badge">أساسي</span>}
+              <div class="doc-icon">
+                <i class={`fas fa-${doc.icon}`}></i>
+              </div>
+              <h3>{doc.title}</h3>
+              <p>{doc.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="package-note">
+          <i class="fas fa-box"></i>
+          <div>
+            <strong>أسعار خاصة لحزم التركة:</strong>
+            <p>
+              العائلات غالباً تحتاج ترجمة وثائق متعددة لتسوية التركة.
+              نقدم أسعار مجمعة لشهادة الوفاة مع الوثائق المتعلقة (الوصية، عقد الزواج، سندات الملكية).
+              تواصل معنا بقائمة الوثائق الكاملة للحصول على عرض سعر شامل.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Inheritance Framework -->
+    <section class="inheritance-section bg-navy">
+      <div class="container">
+        <h2 class="section-title text-white">إطار الميراث في الإمارات</h2>
+        <p class="section-subtitle text-white-muted">
+          الإمارات تطبق أطر ميراث مختلفة حسب ديانة المتوفى ووجود وصية مسجلة
+        </p>
+
+        <div class="inheritance-grid">
+          <div class="inheritance-card">
+            <div class="card-header">
+              <i class="fas fa-mosque"></i>
+              <h3>المسلمون</h3>
+            </div>
+            <div class="card-body">
+              <p>
+                قانون الميراث الشرعي يُطبق تلقائياً عبر محكمة الأحوال الشخصية.
+                حصص ثابتة للورثة حسب المبادئ الإسلامية.
+              </p>
+              <ul>
+                <li>جميع الوثائق تتطلب ترجمة عربية</li>
+                <li>محكمة الأحوال الشخصية تتولى الإجراءات</li>
+                <li>إثبات صلة القرابة ضروري</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="inheritance-card">
+            <div class="card-header">
+              <i class="fas fa-file-contract"></i>
+              <h3>غير المسلمين مع وصية DIFC</h3>
+            </div>
+            <div class="card-body">
+              <p>
+                مبادئ القانون العام تُطبق. مركز وصايا DIFC يتولى التصديق
+                بإجراءات أوضح.
+              </p>
+              <ul>
+                <li>شهادة الوفاة والوصية والوثائق الداعمة تحتاج ترجمة</li>
+                <li>إجراءات أكثر وضوحاً وسرعة</li>
+                <li>يُوصى به لغير المسلمين</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="inheritance-card">
+            <div class="card-header">
+              <i class="fas fa-question-circle"></i>
+              <h3>غير المسلمين بدون وصية DIFC</h3>
+            </div>
+            <div class="card-body">
+              <p>
+                التركة قد تمر عبر محاكم دبي. المحكمة قد تطبق قانون بلد المتوفى
+                أو تعود للمبادئ الشرعية.
+              </p>
+              <ul>
+                <li>وثائق صلة القرابة المترجمة ضرورية جداً</li>
+                <li>قد يستغرق وقتاً أطول</li>
+                <li>الاستشارة القانونية مُوصى بها</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Attestation Requirements -->
+    <section class="attestation-section">
+      <div class="container">
+        <h2 class="section-title">متطلبات التصديق</h2>
+        <p class="section-subtitle">
+          شهادات الوفاة الأجنبية تحتاج عادةً تصديق قبل قبولها في الإمارات
+        </p>
+
+        <div class="attestation-grid">
+          {attestationPaths.map(path => (
+            <div class="attestation-card">
+              <div class="attestation-header">
+                <h3>{path.type}</h3>
+                <span class="countries">{path.countries}</span>
+              </div>
+              <div class="attestation-steps">
+                {path.steps.map((step, i) => (
+                  <div class="step-item">
+                    <span class="step-num">{i + 1}</span>
+                    <span class="step-text">{step}</span>
+                  </div>
+                ))}
+              </div>
+              <div class="attestation-note">
+                <i class="fas fa-info-circle"></i>
+                <span>{path.note}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="attestation-warning">
+          <i class="fas fa-exclamation-circle"></i>
+          <div>
+            <strong>مهم:</strong> البنوك والمحاكم ترفض ترجمات الوثائق غير المصدقة لإجراءات التركة.
+            نتحقق من حالة التصديق قبل قبول الوثائق لحماية استثمارك ومنع التأخير.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Repatriation Section -->
+    <section class="repatriation-section bg-light">
+      <div class="container">
+        <h2 class="section-title">وثائق إعادة الجثمان للوطن</h2>
+        <p class="section-subtitle">
+          عندما تحدث الوفاة في الإمارات وتريد العائلة ترحيل الجثمان، وثائق محددة مطلوبة
+        </p>
+
+        <div class="repatriation-grid">
+          <div class="repatriation-card">
+            <div class="card-icon">
+              <i class="fas fa-scroll"></i>
+            </div>
+            <h3>شهادة الوفاة</h3>
+            <p>ترجمة إنجليزية لشهادة الوفاة الإماراتية العربية لسلطات البلد المستقبل</p>
+          </div>
+
+          <div class="repatriation-card">
+            <div class="card-icon">
+              <i class="fas fa-syringe"></i>
+            </div>
+            <h3>شهادة التحنيط</h3>
+            <p>وثائق طبية تؤكد أن تجهيز الجثمان يلبي معايير النقل الدولي</p>
+          </div>
+
+          <div class="repatriation-card">
+            <div class="card-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>شهادة عدم ممانعة</h3>
+            <p>تصريح من الشرطة يؤكد عدم وجود تحقيقات جارية</p>
+          </div>
+
+          <div class="repatriation-card">
+            <div class="card-icon">
+              <i class="fas fa-passport"></i>
+            </div>
+            <h3>رسالة السفارة</h3>
+            <p>وثائق من سفارة المتوفى للترحيل</p>
+          </div>
+
+          <div class="repatriation-card">
+            <div class="card-icon">
+              <i class="fas fa-box"></i>
+            </div>
+            <h3>شهادة ختم النعش</h3>
+            <p>وثائق تؤكد الإغلاق الصحيح لشركات الطيران والجمارك</p>
+          </div>
+
+          <div class="repatriation-card">
+            <div class="card-icon">
+              <i class="fas fa-plane"></i>
+            </div>
+            <h3>متطلبات شركات الطيران</h3>
+            <p>Emirates وEtihad والناقلات الكبرى لديها متطلبات محددة</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bank Requirements -->
+    <section class="bank-section">
+      <div class="container">
+        <div class="bank-grid">
+          <div class="bank-content">
+            <h2>متطلبات البنوك الإماراتية</h2>
+            <p>
+              البنوك الإماراتية تجمّد الحسابات عند الإخطار بالوفاة.
+              الإفراج عن الأموال يتطلب وثائق مترجمة كاملة.
+            </p>
+
+            <ul class="bank-list">
+              <li>
+                <i class="fas fa-check"></i>
+                <span>شهادة وفاة مترجمة معتمدة من وزارة العدل</span>
+              </li>
+              <li>
+                <i class="fas fa-check"></i>
+                <span>ترجمة شهادة حصر الإرث أو خطاب إدارة التركة</span>
+              </li>
+              <li>
+                <i class="fas fa-check"></i>
+                <span>ترجمة الوصية (إن وجدت)</span>
+              </li>
+              <li>
+                <i class="fas fa-check"></i>
+                <span>وثائق إثبات هوية المستفيدين</span>
+              </li>
+              <li>
+                <i class="fas fa-check"></i>
+                <span>إثبات صلة القرابة بالمتوفى</span>
+              </li>
+            </ul>
+
+            <p class="bank-note">
+              البنوك تتحقق من شهادة وزارة العدل عبر رمز QR قبل المعالجة.
+              الترجمات بدون شهادة صحيحة تُرفض.
+            </p>
+          </div>
+
+          <div class="bank-highlight">
+            <div class="highlight-icon">
+              <i class="fas fa-university"></i>
+            </div>
+            <h3>جميع البنوك الكبرى</h3>
+            <p>
+              ترجمتنا مقبولة في Emirates NBD، ADCB، FAB، Mashreq،
+              DIB، ENBD، وجميع البنوك الإماراتية الأخرى.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Insurance Claims -->
+    <section class="insurance-section bg-light">
+      <div class="container">
+        <h2 class="section-title">مطالبات التأمين</h2>
+        <p class="section-subtitle">
+          مطالبات التأمين على الحياة لها متطلبات وثائق صارمة ومواعيد تقديم نهائية
+        </p>
+
+        <div class="insurance-grid">
+          <div class="insurance-card">
+            <h3>التأمين على الحياة</h3>
+            <ul>
+              <li><i class="fas fa-check"></i> ترجمة شهادة الوفاة معتمدة من وزارة العدل</li>
+              <li><i class="fas fa-check"></i> وثائق سبب الوفاة (قد تتطلب ترجمة تقرير طبي)</li>
+              <li><i class="fas fa-check"></i> إثبات صلة القرابة بالمستفيد</li>
+              <li><i class="fas fa-check"></i> وثائق البوليصة الأصلية</li>
+            </ul>
+            <div class="deadline-warning">
+              <i class="fas fa-clock"></i>
+              مواعيد التقديم تبدأ من تاريخ الوفاة—الترجمة السريعة تمنع تفويت المواعيد
+            </div>
+          </div>
+
+          <div class="insurance-card">
+            <h3>تغطية صاحب العمل</h3>
+            <ul>
+              <li><i class="fas fa-check"></i> التأمين على الحياة من صاحب العمل</li>
+              <li><i class="fas fa-check"></i> مزايا الوفاة أثناء الخدمة</li>
+              <li><i class="fas fa-check"></i> مكافأة نهاية الخدمة للورثة</li>
+              <li><i class="fas fa-check"></i> متطلبات الموارد البشرية للوثائق المترجمة</li>
+            </ul>
+          </div>
+
+          <div class="insurance-card">
+            <h3>التأمين الدولي</h3>
+            <ul>
+              <li><i class="fas fa-check"></i> ترجمة إنجليزية لشهادة الوفاة الإماراتية</li>
+              <li><i class="fas fa-check"></i> تنسيق خاص لمتطلبات شركات التأمين الدولية</li>
+              <li><i class="fas fa-check"></i> ترجمات معتمدة لجهات محددة</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+      <div class="container">
+        <h2 class="section-title">مستويات الخدمة والأسعار</h2>
+        <p class="section-subtitle">اختر مستوى الخدمة المناسب لجدولك الزمني</p>
+
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>عادي</h3>
+            </div>
+            <div class="pricing-body">
+              <div class="price">150 درهم</div>
+              <div class="timeline">تسليم خلال 24 ساعة</div>
+              <ul class="features">
+                <li><i class="fas fa-check"></i> ترجمة معتمدة من وزارة العدل</li>
+                <li><i class="fas fa-check"></i> نسخة PDF رقمية + نسخة ورقية</li>
+                <li><i class="fas fa-check"></i> توصيل مجاني في دبي</li>
+                <li><i class="fas fa-check"></i> تحديثات عبر واتساب</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pricing-card featured">
+            <div class="pricing-badge">للمواعيد العاجلة</div>
+            <div class="pricing-header">
+              <h3>سريع</h3>
+            </div>
+            <div class="pricing-body">
+              <div class="price">250 درهم</div>
+              <div class="timeline">تسليم خلال 6 ساعات</div>
+              <ul class="features">
+                <li><i class="fas fa-check"></i> كل ما في الخدمة العادية</li>
+                <li><i class="fas fa-check"></i> أولوية في الطابور</li>
+                <li><i class="fas fa-check"></i> منسق مخصص</li>
+                <li><i class="fas fa-check"></i> توصيل في نفس اليوم</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>كبار العملاء</h3>
+            </div>
+            <div class="pricing-body">
+              <div class="price">450 درهم</div>
+              <div class="timeline">مسودة خلال ساعة</div>
+              <ul class="features">
+                <li><i class="fas fa-check"></i> كل ما في الخدمة السريعة</li>
+                <li><i class="fas fa-check"></i> تكليف فوري للمترجم</li>
+                <li><i class="fas fa-check"></i> خط هاتف مباشر</li>
+                <li><i class="fas fa-check"></i> خدمة استلام الوثائق</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What You Receive -->
+    <section class="deliverables-section bg-light">
+      <div class="container">
+        <h2 class="section-title">ما تحصل عليه</h2>
+
+        <div class="deliverables-grid">
+          <div class="deliverable-card">
+            <div class="deliverable-icon">
+              <i class="fas fa-file-pdf"></i>
+            </div>
+            <h3>نسخة PDF رقمية</h3>
+            <p>تُرسل عبر واتساب والبريد الإلكتروني. مناسبة للتقديم الأولي للبنوك وشركات التأمين.</p>
+          </div>
+
+          <div class="deliverable-card">
+            <div class="deliverable-icon">
+              <i class="fas fa-stamp"></i>
+            </div>
+            <h3>النسخة الأصلية المختومة</h3>
+            <p>نسخة ورقية بختم وزارة العدل الرسمي، رمز QR للتحقق، وتفاصيل ترخيص المترجم.</p>
+          </div>
+
+          <div class="deliverable-card">
+            <div class="deliverable-icon">
+              <i class="fas fa-copy"></i>
+            </div>
+            <h3>نسخ معتمدة إضافية</h3>
+            <p>شؤون التركة غالباً تتطلب نسخ متعددة لجهات مختلفة. نسخ إضافية متاحة.</p>
+          </div>
+
+          <div class="deliverable-card">
+            <div class="deliverable-icon">
+              <i class="fas fa-truck"></i>
+            </div>
+            <h3>توصيل بالبريد السريع</h3>
+            <p>توصيل مجاني في دبي. توصيل في اليوم التالي إلى أبوظبي والشارقة والإمارات الأخرى.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="container">
+        <h2 class="section-title">الأسئلة الشائعة</h2>
+
+        <div class="faq-grid">
+          {faqs.map(faq => (
+            <details class="faq-item" name="faq-group">
+              <summary>
+                <span class="faq-question">{faq.question}</span>
+                <i class="fas fa-chevron-down"></i>
+              </summary>
+              <div class="faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Services -->
+    <section class="related-section bg-light">
+      <div class="container">
+        <h2 class="section-title">خدمات ذات صلة</h2>
+
+        <div class="related-grid">
+          <a href="/ar/personal/vital-records/marriage/" class="related-card">
+            <i class="fas fa-ring"></i>
+            <h3>ترجمة عقد الزواج</h3>
+            <p>إثبات صفة الزوج/الزوجة الباقي</p>
+          </a>
+
+          <a href="/ar/personal/vital-records/birth/" class="related-card">
+            <i class="fas fa-baby"></i>
+            <h3>ترجمة شهادة الميلاد</h3>
+            <p>إثبات صلة القرابة للورثة</p>
+          </a>
+
+          <a href="/ar/legal/corporate/poa/" class="related-card">
+            <i class="fas fa-file-signature"></i>
+            <h3>ترجمة التوكيل</h3>
+            <p>لإدارة شؤون التركة</p>
+          </a>
+
+          <a href="/ar/services/attestation/" class="related-card">
+            <i class="fas fa-certificate"></i>
+            <h3>تصديق الوثائق</h3>
+            <p>سلسلة التصديق الكاملة</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-section bg-navy">
+      <div class="container">
+        <div class="cta-content">
+          <h2>نحن هنا للمساعدة</h2>
+          <p>
+            أرسل صورة الوثيقة عبر واتساب. سنتحقق من حالة التصديق،
+            نُخبرك بالوثائق الإضافية التي قد تحتاجها، ونقدم عرض سعر شامل.
+          </p>
+
+          <div class="cta-buttons">
+            <a href="https://wa.me/971508620217?text=أريد%20ترجمة%20شهادة%20وفاة" class="btn btn-coral btn-lg">
+              <i class="fab fa-whatsapp"></i>
+              أرسل وثيقتك الآن
+            </a>
+            <a href="tel:+971508620217" class="btn btn-outline-light btn-lg">
+              <i class="fas fa-phone"></i>
+              اتصل بنا
+            </a>
+          </div>
+
+          <div class="cta-trust">
+            <div class="trust-item">
+              <i class="fas fa-university"></i>
+              <span>مقبولة في جميع البنوك</span>
+            </div>
+            <div class="trust-item">
+              <i class="fas fa-gavel"></i>
+              <span>جاهزة للمحاكم</span>
+            </div>
+            <div class="trust-item">
+              <i class="fas fa-heart"></i>
+              <span>معالجة حساسة</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <style>
+    /* Page-specific styles */
+    .rtl-page {
+      direction: rtl;
+      text-align: right;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 3rem 0 4rem;
+      color: var(--text-on-dark);
+    }
+
+    .breadcrumb-nav {
+      margin-bottom: 2rem;
+    }
+
+    .breadcrumb {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    .breadcrumb li:not(:last-child)::after {
+      content: '←';
+      margin-right: 0.5rem;
+      opacity: 0.6;
+    }
+
+    .breadcrumb a {
+      color: var(--text-on-dark-muted);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--text-on-dark);
+    }
+
+    .service-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-section h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+
+    .hero-intro {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      max-width: 700px;
+      opacity: 0.95;
+    }
+
+    .hero-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .hero-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-features i {
+      color: var(--accent-coral);
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* Section Styles */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title.text-white {
+      color: var(--text-on-dark);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      line-height: 1.6;
+    }
+
+    .section-subtitle.text-white-muted {
+      color: var(--text-on-dark-muted);
+    }
+
+    /* Compassion Section */
+    .compassion-section {
+      padding: 3rem 0;
+    }
+
+    .compassion-card {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      padding: 2rem;
+      border-radius: 1rem;
+      border-right: 4px solid var(--accent-coral);
+    }
+
+    .compassion-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--accent-coral);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .compassion-content h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .compassion-content p {
+      margin: 0;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+
+    /* Uses Section */
+    .uses-section {
+      padding: 4rem 0;
+    }
+
+    .uses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .use-card {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      border: 1px solid var(--border-light);
+      transition: all 0.3s ease;
+    }
+
+    .use-card:hover {
+      border-color: var(--accent-coral);
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .use-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--surface-navy);
+      color: white;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .use-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .use-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .use-authority {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--accent-coral);
+    }
+
+    /* Documents Section */
+    .documents-section {
+      padding: 4rem 0;
+    }
+
+    .documents-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .document-card {
+      background: var(--surface-light);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      text-align: center;
+      border: 1px solid var(--border-light);
+      position: relative;
+    }
+
+    .document-card.required {
+      border-color: var(--accent-coral);
+    }
+
+    .required-badge {
+      position: absolute;
+      top: -0.5rem;
+      right: 1rem;
+      background: var(--accent-coral);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.75rem;
+    }
+
+    .doc-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--surface-navy);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin: 0 auto 1rem;
+    }
+
+    .document-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .document-card p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .package-note {
+      display: flex;
+      gap: 1rem;
+      background: #e6f7ff;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      border-right: 4px solid var(--link-color);
+    }
+
+    .package-note i {
+      font-size: 2rem;
+      color: var(--link-color);
+      flex-shrink: 0;
+    }
+
+    .package-note strong {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .package-note p {
+      margin: 0;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    /* Inheritance Section */
+    .inheritance-section {
+      padding: 4rem 0;
+      color: var(--text-on-dark);
+    }
+
+    .inheritance-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .inheritance-card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 0.75rem;
+      overflow: hidden;
+    }
+
+    .card-header {
+      background: rgba(255,255,255,0.1);
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .card-header i {
+      font-size: 1.5rem;
+    }
+
+    .card-header h3 {
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    .card-body {
+      padding: 1.25rem;
+    }
+
+    .card-body p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+      opacity: 0.95;
+    }
+
+    .card-body ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .card-body ul li {
+      padding: 0.5rem 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+    }
+
+    /* Attestation Section */
+    .attestation-section {
+      padding: 4rem 0;
+    }
+
+    .attestation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .attestation-card {
+      background: var(--surface-light);
+      border-radius: 0.75rem;
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+    }
+
+    .attestation-header {
+      background: var(--surface-navy);
+      color: white;
+      padding: 1.25rem;
+    }
+
+    .attestation-header h3 {
+      font-size: 1.1rem;
+      margin: 0 0 0.25rem;
+    }
+
+    .attestation-header .countries {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    .attestation-steps {
+      padding: 1.25rem;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+    }
+
+    .step-num {
+      width: 28px;
+      height: 28px;
+      background: var(--accent-coral);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .step-text {
+      font-size: 0.95rem;
+    }
+
+    .attestation-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      padding: 1rem 1.25rem;
+      background: rgba(0,0,0,0.03);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .attestation-warning {
+      display: flex;
+      gap: 1rem;
+      background: #fff5f5;
+      padding: 1.25rem;
+      border-radius: 0.5rem;
+      border-right: 4px solid #ff6b6b;
+    }
+
+    .attestation-warning i {
+      font-size: 1.5rem;
+      color: #ff6b6b;
+      flex-shrink: 0;
+    }
+
+    .attestation-warning strong {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    /* Repatriation Section */
+    .repatriation-section {
+      padding: 4rem 0;
+    }
+
+    .repatriation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .repatriation-card {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      text-align: center;
+      border: 1px solid var(--border-light);
+    }
+
+    .repatriation-card .card-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--surface-navy);
+      color: white;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin: 0 auto 1rem;
+    }
+
+    .repatriation-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .repatriation-card p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Bank Section */
+    .bank-section {
+      padding: 4rem 0;
+    }
+
+    .bank-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .bank-content h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .bank-content > p {
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .bank-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem;
+    }
+
+    .bank-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .bank-list i {
+      color: var(--accent-coral);
+    }
+
+    .bank-note {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .bank-highlight {
+      text-align: center;
+      background: var(--surface-light);
+      padding: 2rem;
+      border-radius: 1rem;
+    }
+
+    .highlight-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--surface-navy);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 1rem;
+    }
+
+    .bank-highlight h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .bank-highlight p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Insurance Section */
+    .insurance-section {
+      padding: 4rem 0;
+    }
+
+    .insurance-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .insurance-card {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      border: 1px solid var(--border-light);
+    }
+
+    .insurance-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--accent-coral);
+    }
+
+    .insurance-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .insurance-card ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      padding: 0.5rem 0;
+      font-size: 0.9rem;
+    }
+
+    .insurance-card ul li i {
+      color: var(--accent-coral);
+      margin-top: 0.25rem;
+    }
+
+    .deadline-warning {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      background: #fff5f5;
+      border-radius: 0.5rem;
+      font-size: 0.85rem;
+      color: #c92a2a;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Pricing Section */
+    .pricing-section {
+      padding: 4rem 0;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .pricing-card {
+      background: var(--surface-light);
+      border-radius: 0.75rem;
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+      position: relative;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--accent-coral);
+      box-shadow: 0 8px 30px rgba(255,22,84,0.15);
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--accent-coral);
+      color: white;
+      text-align: center;
+      padding: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .pricing-card.featured .pricing-header {
+      margin-top: 2rem;
+    }
+
+    .pricing-header {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .pricing-header h3 {
+      font-size: 1.25rem;
+      margin: 0;
+    }
+
+    .pricing-body {
+      padding: 0 1.5rem 1.5rem;
+      text-align: center;
+    }
+
+    .price {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent-coral);
+    }
+
+    .timeline {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: right;
+    }
+
+    .features li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .features li:last-child {
+      border-bottom: none;
+    }
+
+    .features i {
+      color: var(--accent-coral);
+    }
+
+    /* Deliverables Section */
+    .deliverables-section {
+      padding: 4rem 0;
+    }
+
+    .deliverables-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .deliverable-card {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      border: 1px solid var(--border-light);
+    }
+
+    .deliverable-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--surface-navy);
+      color: white;
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .deliverable-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .deliverable-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      padding: 4rem 0;
+    }
+
+    .faq-grid {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--surface-light);
+      border-radius: 0.5rem;
+      margin-bottom: 0.75rem;
+      border: 1px solid var(--border-light);
+    }
+
+    .faq-item summary {
+      padding: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-question {
+      font-weight: 600;
+      padding-left: 1rem;
+    }
+
+    .faq-item summary i {
+      transition: transform 0.3s ease;
+      color: var(--text-muted);
+    }
+
+    .faq-item[open] summary i {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      padding: 0 1.25rem 1.25rem;
+    }
+
+    .faq-answer p {
+      margin: 0;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+
+    /* Related Section */
+    .related-section {
+      padding: 4rem 0;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .related-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid var(--border-light);
+      transition: all 0.3s ease;
+    }
+
+    .related-card:hover {
+      border-color: var(--accent-coral);
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .related-card i {
+      font-size: 2rem;
+      color: var(--accent-coral);
+      margin-bottom: 1rem;
+    }
+
+    .related-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .related-card p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 4rem 0;
+      color: var(--text-on-dark);
+      text-align: center;
+    }
+
+    .cta-content h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .cta-content > p {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      line-height: 1.8;
+      opacity: 0.95;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .cta-trust {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-lg {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+    }
+
+    .btn-coral {
+      background: var(--accent-coral);
+      color: white;
+    }
+
+    .btn-coral:hover {
+      background: #e0144c;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-light {
+      border: 2px solid rgba(255,255,255,0.5);
+      color: white;
+    }
+
+    .btn-outline-light:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: white;
+    }
+
+    /* Backgrounds */
+    .bg-navy {
+      background: var(--surface-navy);
+    }
+
+    .bg-light {
+      background: var(--surface-light);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-section h1 {
+        font-size: 1.75rem;
+      }
+
+      .hero-intro {
+        font-size: 1rem;
+      }
+
+      .compassion-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .bank-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .cta-content h2 {
+        font-size: 1.5rem;
+      }
+
+      .attestation-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+</BaseLayoutArabic>

@@ -1,0 +1,1512 @@
+---
+/**
+ * /ar/services/attestation/india/ - تصديق الوثائق الهندية (India Attestation Arabic)
+ *
+ * Target Keywords: تصديق الوثائق الهندية, تصديق MEA, تصديق HRD, تصديق وثائق من الهند
+ * Layout: BaseLayoutArabic
+ * Silo: Services > Attestation (Arabic)
+ */
+import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: 'ما هو تصديق HRD ومتى يُطلب؟',
+    answer: 'HRD (دائرة الموارد البشرية) هي الجهة على مستوى الولاية التي تتحقق من الشهادات التعليمية في الهند. الشهادات الجامعية تتطلب تصديق HRD قبل تصديق MEA. كل ولاية لها HRD خاص بها—ماهاراشترا، دلهي، كارناتاكا، تاميل نادو، وغيرها—ولكل منها إجراءات مختلفة.'
+  },
+  {
+    question: 'هل يمكن تصديق الوثائق الهندية بدون سفر إلى الهند؟',
+    answer: 'نعم. نحن ننسق السلسلة الكاملة من الإمارات. نستلم وثائقك الأصلية بشحن آمن، ونتعامل مع كاتب العدل، HRD، MEA، سفارة الإمارات، ووزارة الخارجية الإماراتية نيابةً عنك. لا حاجة للسفر.'
+  },
+  {
+    question: 'كم يستغرق تصديق الوثائق الهندية للإمارات؟',
+    answer: 'السلسلة الكاملة تستغرق عادةً 2-3 أسابيع. المعالجة السريعة متاحة وتقلل المدة إلى 10-12 يوم عمل. الوثائق المصدقة جزئياً (مثلاً التي لديها تصديق MEA فقط) تكون أسرع—1-2 أسبوع فقط.'
+  },
+  {
+    question: 'ما الفرق بين تصديق MEA والأبوستيل؟',
+    answer: 'MEA (وزارة الشؤون الخارجية الهندية) تُصدر الأبوستيل للدول الأعضاء في اتفاقية لاهاي. لكن الإمارات ليست عضواً في الاتفاقية، لذا الأبوستيل الهندي وحده لا يكفي. الوثائق الهندية للإمارات تحتاج تصديق MEA ثم سفارة الإمارات في الهند ثم وزارة الخارجية الإماراتية.'
+  },
+  {
+    question: 'هل تتعاملون مع وثائق من جميع الولايات الهندية؟',
+    answer: 'نعم. لدينا شبكات في جميع الولايات الرئيسية: ماهاراشترا (مومباي)، دلهي، كارناتاكا (بنغالور)، تاميل نادو (تشيناي)، كيرالا، تيلانجانا (حيدر أباد)، غوجارات، وغيرها. كل ولاية لها متطلبات HRD مختلفة ونحن نفهمها جميعاً.'
+  },
+  {
+    question: 'ما هي الوثائق الهندية التي تحتاج تصديق للإمارات؟',
+    answer: 'الشهادات التعليمية (البكالوريوس، الماجستير، الدبلوم، الثانوية) للتوظيف. الوثائق الشخصية (شهادات الميلاد، الزواج، الطلاق، الوفاة) للتأشيرات. شهادة حسن السيرة للتوظيف. الوثائق التجارية (عقود التأسيس، التوكيلات) لتأسيس الشركات.'
+  },
+  {
+    question: 'ماذا لو كانت شهادتي من جامعة غير معتمدة؟',
+    answer: 'بعض الجامعات الهندية غير معتمدة من UGC. وزارة التعليم العالي الإماراتية قد ترفض هذه الشهادات. نتحقق من حالة الاعتماد قبل بدء التصديق ونُخبرك إذا كانت هناك مشكلة محتملة.'
+  }
+];
+
+// State-specific requirements
+const stateRequirements = [
+  {
+    state: "ماهاراشترا",
+    city: "مومباي، بونه",
+    hrdOffice: "Mantralaya, Mumbai",
+    timeline: "5-7 أيام عمل",
+    notes: "أكبر حجم معالجة. خدمة سريعة متاحة."
+  },
+  {
+    state: "دلهي",
+    city: "نيودلهي، جورجاون",
+    hrdOffice: "Delhi Secretariat",
+    timeline: "4-6 أيام عمل",
+    notes: "معالجة مباشرة. قريب من مكتب MEA."
+  },
+  {
+    state: "كارناتاكا",
+    city: "بنغالور، مانجالور",
+    hrdOffice: "Vidhana Soudha, Bangalore",
+    timeline: "5-7 أيام عمل",
+    notes: "كثافة عالية لقطاع تقنية المعلومات."
+  },
+  {
+    state: "تاميل نادو",
+    city: "تشيناي، كويمباتور",
+    hrdOffice: "Chennai Secretariat",
+    timeline: "5-7 أيام عمل",
+    notes: "يتطلب تصديق جامعي أولاً."
+  },
+  {
+    state: "كيرالا",
+    city: "كوتشي، تريفاندروم",
+    hrdOffice: "Thiruvananthapuram",
+    timeline: "4-6 أيام عمل",
+    notes: "كثافة عالية لقطاع التمريض والرعاية الصحية."
+  },
+  {
+    state: "تيلانجانا",
+    city: "حيدر أباد",
+    hrdOffice: "Hyderabad Secretariat",
+    timeline: "4-5 أيام عمل",
+    notes: "معالجة سريعة نسبياً."
+  }
+];
+
+// Document types and their attestation paths
+const documentCategories = [
+  {
+    category: "الشهادات التعليمية",
+    icon: "graduation-cap",
+    items: ["شهادة البكالوريوس", "شهادة الماجستير", "الدبلوم", "شهادة الثانوية", "كشف الدرجات", "شهادة الخبرة"],
+    path: "كاتب عدل ← HRD الولاية ← MEA ← سفارة الإمارات ← MOFA",
+    useCase: "التوظيف في الإمارات، الترخيص المهني، معادلة الشهادات"
+  },
+  {
+    category: "الوثائق الشخصية",
+    icon: "user",
+    items: ["شهادة الميلاد", "عقد الزواج", "حكم الطلاق", "شهادة الوفاة"],
+    path: "كاتب عدل ← SDM/وزارة الداخلية ← MEA ← سفارة الإمارات ← MOFA",
+    useCase: "تأشيرة الإقامة، كفالة العائلة، الإجراءات القانونية"
+  },
+  {
+    category: "شهادة حسن السيرة (PCC)",
+    icon: "shield-check",
+    items: ["PCC من مركز الشرطة", "PCC من PSK", "PCC للمغتربين"],
+    path: "توثيق ← MEA ← سفارة الإمارات ← MOFA",
+    useCase: "طلبات التوظيف، تأشيرات العمل، تجديد الإقامة"
+  },
+  {
+    category: "الوثائق التجارية",
+    icon: "briefcase",
+    items: ["عقد التأسيس", "التوكيل", "الفواتير التجارية", "شهادة المنشأ"],
+    path: "كاتب عدل ← غرفة التجارة ← MEA ← سفارة الإمارات ← MOFA",
+    useCase: "تأسيس شركة في الإمارات، المعاملات التجارية"
+  }
+];
+
+// Attestation chain steps
+const attestationChain = [
+  {
+    step: 1,
+    title: "التوثيق من كاتب العدل",
+    titleEn: "Notary",
+    desc: "التحقق الأولي من صحة الوثيقة والتوقيعات",
+    timeline: "1-2 يوم"
+  },
+  {
+    step: 2,
+    title: "تصديق HRD/وزارة الداخلية",
+    titleEn: "State HRD/Home",
+    desc: "التحقق على مستوى الولاية (HRD للتعليمية، الداخلية للشخصية)",
+    timeline: "4-7 أيام"
+  },
+  {
+    step: 3,
+    title: "تصديق MEA",
+    titleEn: "MEA",
+    desc: "التصديق من وزارة الشؤون الخارجية الهندية في نيودلهي",
+    timeline: "2-3 أيام"
+  },
+  {
+    step: 4,
+    title: "سفارة الإمارات",
+    titleEn: "UAE Embassy",
+    desc: "تصديق من سفارة الإمارات في نيودلهي",
+    timeline: "3-5 أيام"
+  },
+  {
+    step: 5,
+    title: "MOFA الإمارات",
+    titleEn: "UAE MOFA",
+    desc: "التصديق النهائي من وزارة الخارجية الإماراتية",
+    timeline: "1-3 أيام"
+  }
+];
+
+const pageTitle = 'تصديق الوثائق الهندية للإمارات | HRD + MEA + سفارة الإمارات';
+const pageDescription = 'خدمة تصديق الوثائق الهندية في دبي وأبوظبي. سلسلة التصديق الكاملة: كاتب العدل، HRD، MEA، سفارة الإمارات، وزارة الخارجية. 2-3 أسابيع.';
+---
+
+<BaseLayoutArabic
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL="https://onlinetranslation.ae/ar/services/attestation/india/"
+>
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  })} />
+
+  <!-- Service Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "India Document Attestation Service",
+    "alternateName": "تصديق الوثائق الهندية",
+    "description": pageDescription,
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "OnlineTranslation.ae",
+      "@id": "https://onlinetranslation.ae/#organization"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "United Arab Emirates"
+    },
+    "serviceType": "Document Attestation"
+  })} />
+
+  <main class="service-page rtl-page" dir="rtl">
+
+    <!-- Hero Section -->
+    <section class="hero-section bg-navy">
+      <div class="container">
+        <nav class="breadcrumb-nav" aria-label="مسار التنقل">
+          <ol class="breadcrumb">
+            <li><a href="/ar/">الرئيسية</a></li>
+            <li><a href="/ar/services/attestation/">تصديق الوثائق</a></li>
+            <li aria-current="page">الوثائق الهندية</li>
+          </ol>
+        </nav>
+
+        <div class="hero-content">
+          <div class="service-badge">
+            <i class="fas fa-certificate"></i>
+            <span>خدمة معتمدة</span>
+          </div>
+
+          <h1>تصديق الوثائق الهندية للإمارات</h1>
+
+          <p class="hero-intro">
+            سلسلة التصديق الكاملة من الهند إلى الإمارات. نتعامل مع HRD على مستوى الولاية،
+            MEA في نيودلهي، سفارة الإمارات، ووزارة الخارجية الإماراتية—كل ذلك من مكتبنا في دبي.
+          </p>
+
+          <ul class="hero-features">
+            <li><i class="fas fa-clock"></i> 2-3 أسابيع للسلسلة الكاملة</li>
+            <li><i class="fas fa-map-marker-alt"></i> جميع الولايات الهندية مشمولة</li>
+            <li><i class="fas fa-shield-alt"></i> بدون سفر—ننسق من الإمارات</li>
+            <li><i class="fas fa-receipt"></i> تسعير شامل بدون رسوم مخفية</li>
+          </ul>
+
+          <div class="hero-cta">
+            <a href="https://wa.me/971508620217" class="btn btn-coral btn-lg">
+              <i class="fab fa-whatsapp"></i>
+              استشارة مجانية عبر واتساب
+            </a>
+            <a href="tel:+971508620217" class="btn btn-outline-light btn-lg">
+              <i class="fas fa-phone"></i>
+              <span dir="ltr">+971 50 862 0217</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Attestation Chain Visual -->
+    <section class="chain-section">
+      <div class="container">
+        <h2 class="section-title">سلسلة تصديق الوثائق الهندية</h2>
+        <p class="section-subtitle">
+          الإمارات ليست عضواً في اتفاقية لاهاي، لذا الوثائق الهندية تحتاج سلسلة تصديق كاملة من 5 خطوات
+        </p>
+
+        <div class="attestation-chain">
+          {attestationChain.map((step, index) => (
+            <div class="chain-step">
+              <div class="step-number">{step.step}</div>
+              <div class="step-content">
+                <h3>{step.title}</h3>
+                <span class="step-en">{step.titleEn}</span>
+                <p>{step.desc}</p>
+                <span class="step-timeline">
+                  <i class="fas fa-clock"></i> {step.timeline}
+                </span>
+              </div>
+              {index < attestationChain.length - 1 && (
+                <div class="chain-arrow">
+                  <i class="fas fa-arrow-left"></i>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        <div class="chain-total">
+          <i class="fas fa-calendar-alt"></i>
+          <strong>إجمالي المدة:</strong> 2-3 أسابيع (المعالجة السريعة: 10-12 يوم عمل)
+        </div>
+      </div>
+    </section>
+
+    <!-- Document Categories -->
+    <section class="documents-section bg-light">
+      <div class="container">
+        <h2 class="section-title">أنواع الوثائق الهندية التي نصدقها</h2>
+
+        <div class="document-grid">
+          {documentCategories.map(cat => (
+            <div class="document-card">
+              <div class="card-icon">
+                <i class={`fas fa-${cat.icon}`}></i>
+              </div>
+              <h3>{cat.category}</h3>
+              <ul class="document-list">
+                {cat.items.map(item => (
+                  <li><i class="fas fa-check"></i> {item}</li>
+                ))}
+              </ul>
+              <div class="document-path">
+                <strong>مسار التصديق:</strong>
+                <p>{cat.path}</p>
+              </div>
+              <div class="document-use">
+                <strong>الاستخدام:</strong> {cat.useCase}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- State Requirements -->
+    <section class="states-section">
+      <div class="container">
+        <h2 class="section-title">متطلبات HRD حسب الولاية</h2>
+        <p class="section-subtitle">
+          كل ولاية هندية لها إجراءات HRD مختلفة. لدينا شبكات في جميع الولايات الرئيسية.
+        </p>
+
+        <div class="states-grid">
+          {stateRequirements.map(state => (
+            <div class="state-card">
+              <div class="state-header">
+                <h3>{state.state}</h3>
+                <span class="state-city">{state.city}</span>
+              </div>
+              <div class="state-details">
+                <div class="detail-row">
+                  <span class="label">مكتب HRD:</span>
+                  <span class="value" dir="ltr">{state.hrdOffice}</span>
+                </div>
+                <div class="detail-row">
+                  <span class="label">المدة:</span>
+                  <span class="value">{state.timeline}</span>
+                </div>
+                <div class="detail-row">
+                  <span class="label">ملاحظات:</span>
+                  <span class="value">{state.notes}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="states-note">
+          <i class="fas fa-info-circle"></i>
+          <p>
+            <strong>ولايات أخرى:</strong> نتعامل أيضاً مع غوجارات، راجستان، البنغال الغربية،
+            البنجاب، أوتار براديش، وجميع الولايات الأخرى. تواصل معنا للمتطلبات المحددة.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why UAE Requires Full Chain -->
+    <section class="info-section bg-navy">
+      <div class="container">
+        <div class="info-grid">
+          <div class="info-content">
+            <h2>لماذا تحتاج الوثائق الهندية سلسلة تصديق كاملة؟</h2>
+
+            <p>
+              الهند عضو في اتفاقية لاهاي منذ يوليو 2005، وتُصدر MEA أبوستيل معترف به دولياً.
+              لكن الإمارات ليست عضواً في الاتفاقية.
+            </p>
+
+            <p>
+              هذا يعني أن الأبوستيل الهندي وحده لا يكفي للإمارات. بدلاً من ذلك،
+              تحتاج الوثائق تصديق سفارة الإمارات في نيودلهي ثم وزارة الخارجية الإماراتية.
+            </p>
+
+            <div class="info-comparison">
+              <div class="comparison-item wrong">
+                <i class="fas fa-times-circle"></i>
+                <div>
+                  <strong>لا يكفي:</strong>
+                  <span>أبوستيل MEA فقط</span>
+                </div>
+              </div>
+              <div class="comparison-item correct">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <strong>مطلوب:</strong>
+                  <span>MEA + سفارة الإمارات + MOFA</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-highlight">
+            <h3>هل لديك وثيقة بتصديق MEA فقط؟</h3>
+            <p>
+              إذا كان لديك وثيقة هندية مع أبوستيل أو تصديق MEA فقط،
+              يمكننا إكمال السلسلة (سفارة الإمارات + MOFA) في 1-2 أسبوع.
+            </p>
+            <a href="https://wa.me/971508620217?text=لدي%20وثيقة%20هندية%20بتصديق%20MEA%20فقط" class="btn btn-coral">
+              <i class="fab fa-whatsapp"></i>
+              استفسر الآن
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+      <div class="container">
+        <h2 class="section-title">كيف نعمل</h2>
+        <p class="section-subtitle">عملية واضحة من البداية إلى النهاية</p>
+
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="step-icon">
+              <span>1</span>
+            </div>
+            <h3>أرسل وثائقك</h3>
+            <p>
+              صور واضحة عبر واتساب. نتحقق من نوع الوثيقة، الولاية المصدرة،
+              والتصديقات الموجودة (إن وجدت).
+            </p>
+          </div>
+
+          <div class="process-step">
+            <div class="step-icon">
+              <span>2</span>
+            </div>
+            <h3>عرض سعر تفصيلي</h3>
+            <p>
+              تحصل على عرض شامل يتضمن: رسوم الخدمة، رسوم HRD، رسوم MEA،
+              رسوم السفارة، MOFA، والشحن. بدون مفاجآت.
+            </p>
+          </div>
+
+          <div class="process-step">
+            <div class="step-icon">
+              <span>3</span>
+            </div>
+            <h3>استلام آمن</h3>
+            <p>
+              نستلم الأصول من موقعك في دبي، أبوظبي، الشارقة، أو أي مكان
+              في الإمارات. شحن مؤمن مع التتبع.
+            </p>
+          </div>
+
+          <div class="process-step">
+            <div class="step-icon">
+              <span>4</span>
+            </div>
+            <h3>ننسق السلسلة الكاملة</h3>
+            <p>
+              نرسل الوثائق لشركائنا في الهند. نتابع HRD، MEA، السفارة،
+              ثم MOFA في الإمارات. تحديثات منتظمة.
+            </p>
+          </div>
+
+          <div class="process-step">
+            <div class="step-icon">
+              <span>5</span>
+            </div>
+            <h3>التسليم</h3>
+            <p>
+              نسلمك الوثائق المصدقة بالكامل إلى موقعك.
+              جاهزة للتقديم لأي جهة في الإمارات.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section bg-light">
+      <div class="container">
+        <h2 class="section-title">تكاليف تصديق الوثائق الهندية</h2>
+        <p class="section-subtitle">
+          الأسعار تشمل جميع الرسوم: الخدمة، HRD، MEA، السفارة، MOFA، والشحن
+        </p>
+
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>الشهادات التعليمية</h3>
+              <span class="pricing-badge">الأكثر طلباً</span>
+            </div>
+            <div class="pricing-details">
+              <div class="price-range">
+                <span class="price">من 800 درهم</span>
+                <span class="per">للوثيقة الواحدة</span>
+              </div>
+              <ul class="pricing-includes">
+                <li><i class="fas fa-check"></i> كاتب العدل + HRD</li>
+                <li><i class="fas fa-check"></i> MEA نيودلهي</li>
+                <li><i class="fas fa-check"></i> سفارة الإمارات</li>
+                <li><i class="fas fa-check"></i> MOFA الإمارات</li>
+                <li><i class="fas fa-check"></i> الشحن من/إلى الهند</li>
+              </ul>
+              <span class="pricing-timeline">
+                <i class="fas fa-clock"></i> 2-3 أسابيع
+              </span>
+            </div>
+          </div>
+
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>الوثائق الشخصية</h3>
+            </div>
+            <div class="pricing-details">
+              <div class="price-range">
+                <span class="price">من 700 درهم</span>
+                <span class="per">للوثيقة الواحدة</span>
+              </div>
+              <ul class="pricing-includes">
+                <li><i class="fas fa-check"></i> كاتب العدل + SDM</li>
+                <li><i class="fas fa-check"></i> MEA نيودلهي</li>
+                <li><i class="fas fa-check"></i> سفارة الإمارات</li>
+                <li><i class="fas fa-check"></i> MOFA الإمارات</li>
+                <li><i class="fas fa-check"></i> الشحن من/إلى الهند</li>
+              </ul>
+              <span class="pricing-timeline">
+                <i class="fas fa-clock"></i> 2-3 أسابيع
+              </span>
+            </div>
+          </div>
+
+          <div class="pricing-card highlight">
+            <div class="pricing-header">
+              <h3>إكمال السلسلة</h3>
+              <span class="pricing-badge gold">لديك MEA بالفعل؟</span>
+            </div>
+            <div class="pricing-details">
+              <div class="price-range">
+                <span class="price">من 400 درهم</span>
+                <span class="per">للوثيقة الواحدة</span>
+              </div>
+              <ul class="pricing-includes">
+                <li><i class="fas fa-check"></i> سفارة الإمارات في نيودلهي</li>
+                <li><i class="fas fa-check"></i> MOFA الإمارات</li>
+                <li><i class="fas fa-check"></i> الشحن من/إلى الهند</li>
+                <li class="muted"><i class="fas fa-minus"></i> HRD/MEA غير مطلوب</li>
+              </ul>
+              <span class="pricing-timeline">
+                <i class="fas fa-clock"></i> 1-2 أسبوع
+              </span>
+            </div>
+          </div>
+
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>المعالجة السريعة</h3>
+            </div>
+            <div class="pricing-details">
+              <div class="price-range">
+                <span class="price">+50%</span>
+                <span class="per">على السعر العادي</span>
+              </div>
+              <ul class="pricing-includes">
+                <li><i class="fas fa-check"></i> أولوية في جميع المراحل</li>
+                <li><i class="fas fa-check"></i> معالجة سريعة HRD</li>
+                <li><i class="fas fa-check"></i> MEA مستعجل</li>
+                <li><i class="fas fa-check"></i> سفارة بأولوية</li>
+                <li><i class="fas fa-check"></i> شحن سريع</li>
+              </ul>
+              <span class="pricing-timeline">
+                <i class="fas fa-clock"></i> 10-12 يوم عمل
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pricing-note">
+          <i class="fas fa-info-circle"></i>
+          <p>
+            الأسعار تقريبية وتختلف حسب الولاية ونوع الوثيقة.
+            أرسل وثيقتك عبر واتساب للحصول على عرض سعر دقيق.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="container">
+        <h2 class="section-title">الأسئلة الشائعة</h2>
+
+        <div class="faq-grid">
+          {faqs.map((faq, index) => (
+            <details class="faq-item" name="faq-group">
+              <summary>
+                <span class="faq-question">{faq.question}</span>
+                <i class="fas fa-chevron-down"></i>
+              </summary>
+              <div class="faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Services -->
+    <section class="related-section bg-light">
+      <div class="container">
+        <h2 class="section-title">خدمات ذات صلة</h2>
+
+        <div class="related-grid">
+          <a href="/ar/services/attestation/" class="related-card">
+            <i class="fas fa-certificate"></i>
+            <h3>تصديق الوثائق</h3>
+            <p>جميع خدمات التصديق للإمارات</p>
+          </a>
+
+          <a href="/ar/personal/vital-records/birth/" class="related-card">
+            <i class="fas fa-baby"></i>
+            <h3>ترجمة شهادة الميلاد</h3>
+            <p>ترجمة معتمدة من وزارة العدل</p>
+          </a>
+
+          <a href="/ar/personal/vital-records/marriage/" class="related-card">
+            <i class="fas fa-ring"></i>
+            <h3>ترجمة عقد الزواج</h3>
+            <p>للتأشيرات وكفالة العائلة</p>
+          </a>
+
+          <a href="/ar/legal/corporate/poa/" class="related-card">
+            <i class="fas fa-file-signature"></i>
+            <h3>ترجمة التوكيل</h3>
+            <p>توكيلات قانونية معتمدة</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-section bg-navy">
+      <div class="container">
+        <div class="cta-content">
+          <h2>هل لديك وثيقة هندية تحتاج تصديق؟</h2>
+          <p>
+            أرسل صورة الوثيقة عبر واتساب. نُخبرك بالضبط ما تحتاجه،
+            كم ستكون التكلفة، ومتى ستكون جاهزة.
+          </p>
+
+          <div class="cta-buttons">
+            <a href="https://wa.me/971508620217?text=أريد%20تصديق%20وثيقة%20هندية" class="btn btn-coral btn-lg">
+              <i class="fab fa-whatsapp"></i>
+              أرسل وثيقتك الآن
+            </a>
+            <a href="tel:+971508620217" class="btn btn-outline-light btn-lg">
+              <i class="fas fa-phone"></i>
+              اتصل بنا
+            </a>
+          </div>
+
+          <div class="cta-trust">
+            <div class="trust-item">
+              <i class="fas fa-building"></i>
+              <span>مكتب في دبي</span>
+            </div>
+            <div class="trust-item">
+              <i class="fas fa-globe-asia"></i>
+              <span>شبكات في جميع الولايات الهندية</span>
+            </div>
+            <div class="trust-item">
+              <i class="fas fa-clock"></i>
+              <span>2-3 أسابيع للسلسلة الكاملة</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <style>
+    /* Page-specific styles */
+    .rtl-page {
+      direction: rtl;
+      text-align: right;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 3rem 0 4rem;
+      color: var(--text-on-dark);
+    }
+
+    .breadcrumb-nav {
+      margin-bottom: 2rem;
+    }
+
+    .breadcrumb {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    .breadcrumb li:not(:last-child)::after {
+      content: '←';
+      margin-right: 0.5rem;
+      opacity: 0.6;
+    }
+
+    .breadcrumb a {
+      color: var(--text-on-dark-muted);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--text-on-dark);
+    }
+
+    .service-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-section h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+
+    .hero-intro {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      max-width: 700px;
+      opacity: 0.95;
+    }
+
+    .hero-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .hero-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-features i {
+      color: var(--accent-coral);
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* Attestation Chain */
+    .chain-section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      line-height: 1.6;
+    }
+
+    .attestation-chain {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .chain-step {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      background: var(--accent-coral);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .step-content {
+      background: var(--surface-light);
+      padding: 1rem 1.25rem;
+      border-radius: 0.5rem;
+      min-width: 140px;
+      border: 1px solid var(--border-light);
+    }
+
+    .step-content h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin: 0 0 0.25rem;
+    }
+
+    .step-en {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: block;
+      direction: ltr;
+      text-align: right;
+    }
+
+    .step-content p {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin: 0.5rem 0;
+    }
+
+    .step-timeline {
+      font-size: 0.75rem;
+      color: var(--accent-coral);
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .chain-arrow {
+      color: var(--text-muted);
+      font-size: 1.25rem;
+    }
+
+    .chain-total {
+      text-align: center;
+      background: var(--accent-coral);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0 auto;
+    }
+
+    /* Document Categories */
+    .documents-section {
+      padding: 4rem 0;
+    }
+
+    .document-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .document-card {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      border: 1px solid var(--border-light);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--surface-navy);
+      color: white;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .document-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .document-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1rem;
+    }
+
+    .document-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0;
+      font-size: 0.9rem;
+    }
+
+    .document-list i {
+      color: var(--accent-coral);
+      font-size: 0.75rem;
+    }
+
+    .document-path {
+      background: var(--surface-light);
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    .document-path strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+    }
+
+    .document-use {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .document-use strong {
+      color: var(--text-primary);
+    }
+
+    /* States Section */
+    .states-section {
+      padding: 4rem 0;
+    }
+
+    .states-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .state-card {
+      background: var(--surface-light);
+      border-radius: 0.75rem;
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+    }
+
+    .state-header {
+      background: var(--surface-navy);
+      color: white;
+      padding: 1rem 1.25rem;
+    }
+
+    .state-header h3 {
+      font-size: 1.1rem;
+      margin: 0 0 0.25rem;
+    }
+
+    .state-city {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    .state-details {
+      padding: 1rem 1.25rem;
+    }
+
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .detail-row:last-child {
+      border-bottom: none;
+    }
+
+    .detail-row .label {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+
+    .detail-row .value {
+      font-size: 0.9rem;
+    }
+
+    .states-note {
+      display: flex;
+      gap: 1rem;
+      background: var(--surface-light);
+      padding: 1.25rem;
+      border-radius: 0.5rem;
+      border-right: 4px solid var(--accent-coral);
+    }
+
+    .states-note i {
+      color: var(--accent-coral);
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .states-note p {
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* Info Section */
+    .info-section {
+      padding: 4rem 0;
+      color: var(--text-on-dark);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .info-content h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .info-content p {
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+      opacity: 0.95;
+    }
+
+    .info-comparison {
+      margin-top: 2rem;
+    }
+
+    .comparison-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .comparison-item.wrong {
+      background: rgba(255,0,0,0.15);
+    }
+
+    .comparison-item.correct {
+      background: rgba(0,255,0,0.15);
+    }
+
+    .comparison-item i {
+      font-size: 1.5rem;
+    }
+
+    .comparison-item.wrong i {
+      color: #ff6b6b;
+    }
+
+    .comparison-item.correct i {
+      color: #51cf66;
+    }
+
+    .comparison-item strong {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .comparison-item span {
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+
+    .info-highlight {
+      background: rgba(255,255,255,0.1);
+      padding: 2rem;
+      border-radius: 0.75rem;
+      text-align: center;
+    }
+
+    .info-highlight h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .info-highlight p {
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    /* Process Section */
+    .process-section {
+      padding: 4rem 0;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .step-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--surface-navy);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 auto 1rem;
+    }
+
+    .process-step h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .process-step p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Pricing Section */
+    .pricing-section {
+      padding: 4rem 0;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .pricing-card {
+      background: white;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+    }
+
+    .pricing-card.highlight {
+      border-color: var(--accent-coral);
+      box-shadow: 0 4px 20px rgba(255,22,84,0.15);
+    }
+
+    .pricing-header {
+      background: var(--surface-navy);
+      color: white;
+      padding: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .pricing-header h3 {
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    .pricing-badge {
+      background: var(--accent-coral);
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.75rem;
+    }
+
+    .pricing-badge.gold {
+      background: var(--accent-gold);
+      color: var(--surface-navy);
+    }
+
+    .pricing-details {
+      padding: 1.5rem;
+    }
+
+    .price-range {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .price {
+      display: block;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--accent-coral);
+    }
+
+    .per {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .pricing-includes {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem;
+    }
+
+    .pricing-includes li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0;
+      font-size: 0.9rem;
+    }
+
+    .pricing-includes li.muted {
+      color: var(--text-muted);
+    }
+
+    .pricing-includes i {
+      color: var(--accent-coral);
+    }
+
+    .pricing-timeline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: var(--surface-light);
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .pricing-note {
+      display: flex;
+      gap: 1rem;
+      background: white;
+      padding: 1.25rem;
+      border-radius: 0.5rem;
+      border: 1px solid var(--border-light);
+    }
+
+    .pricing-note i {
+      color: var(--accent-coral);
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .pricing-note p {
+      margin: 0;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      padding: 4rem 0;
+    }
+
+    .faq-grid {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--surface-light);
+      border-radius: 0.5rem;
+      margin-bottom: 0.75rem;
+      border: 1px solid var(--border-light);
+    }
+
+    .faq-item summary {
+      padding: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-question {
+      font-weight: 600;
+      padding-left: 1rem;
+    }
+
+    .faq-item summary i {
+      transition: transform 0.3s ease;
+      color: var(--text-muted);
+    }
+
+    .faq-item[open] summary i {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      padding: 0 1.25rem 1.25rem;
+    }
+
+    .faq-answer p {
+      margin: 0;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+
+    /* Related Section */
+    .related-section {
+      padding: 4rem 0;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .related-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid var(--border-light);
+      transition: all 0.3s ease;
+    }
+
+    .related-card:hover {
+      border-color: var(--accent-coral);
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .related-card i {
+      font-size: 2rem;
+      color: var(--accent-coral);
+      margin-bottom: 1rem;
+    }
+
+    .related-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .related-card p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 4rem 0;
+      color: var(--text-on-dark);
+      text-align: center;
+    }
+
+    .cta-content h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .cta-content > p {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      line-height: 1.8;
+      opacity: 0.95;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .cta-trust {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-lg {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+    }
+
+    .btn-coral {
+      background: var(--accent-coral);
+      color: white;
+    }
+
+    .btn-coral:hover {
+      background: #e0144c;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-light {
+      border: 2px solid rgba(255,255,255,0.5);
+      color: white;
+    }
+
+    .btn-outline-light:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: white;
+    }
+
+    /* Backgrounds */
+    .bg-navy {
+      background: var(--surface-navy);
+    }
+
+    .bg-light {
+      background: var(--surface-light);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-section h1 {
+        font-size: 1.75rem;
+      }
+
+      .hero-intro {
+        font-size: 1rem;
+      }
+
+      .attestation-chain {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .chain-step {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .chain-arrow {
+        transform: rotate(90deg);
+        margin: 0.5rem 0;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .cta-content h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+
+</BaseLayoutArabic>
