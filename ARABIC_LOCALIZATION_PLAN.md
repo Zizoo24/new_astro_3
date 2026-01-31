@@ -399,7 +399,7 @@ function getAlternateUrl(currentPath, targetLang) {
 
 ### Current Status (Updated January 31, 2026)
 
-**Existing Arabic Pages (23 pages):**
+**Existing Arabic Pages (26 pages):**
 
 | Page | URL | Status |
 |------|-----|--------|
@@ -420,10 +420,13 @@ function getAlternateUrl(currentPath, targetLang) {
 | Academic Hub | `/ar/personal/academic/` | ✅ Complete |
 | NYUAD | `/ar/personal/academic/nyuad/` | ✅ Complete |
 | Degree Certificate | `/ar/personal/academic/degree/` | ✅ Complete (Jan 31) |
+| Immigration Hub | `/ar/personal/immigration/` | ✅ Complete (Jan 31) |
 | Immigration - PCC | `/ar/personal/immigration/pcc/` | ✅ Complete (Jan 31) |
+| Immigration - Bank | `/ar/personal/immigration/bank/` | ✅ Complete (Jan 31) |
 | Attestation Hub | `/ar/services/attestation/` | ✅ Complete |
 | India Attestation | `/ar/services/attestation/india/` | ✅ Complete (Jan 31) |
 | UK Attestation | `/ar/services/attestation/uk/` | ✅ Complete (Jan 31) |
+| US Attestation | `/ar/services/attestation/us/` | ✅ Complete (Jan 31) |
 | Abu Dhabi | `/ar/locations/abu-dhabi/` | ✅ Complete |
 | Dubai | `/ar/locations/dubai/` | ✅ Complete |
 
@@ -463,9 +466,9 @@ function getAlternateUrl(currentPath, targetLang) {
 - [x] Marriage certificate (`/ar/personal/vital-records/marriage/`) ✅ Jan 31
 - [x] Divorce certificate (`/ar/personal/vital-records/divorce/`) ✅ Jan 31
 - [x] Death certificate (`/ar/personal/vital-records/death/`) ✅ Jan 31
-- [ ] Immigration hub (`/ar/personal/immigration/`)
+- [x] Immigration hub (`/ar/personal/immigration/`) ✅ Jan 31
 - [x] PCC translation (`/ar/personal/immigration/pcc/`) ✅ Jan 31
-- [ ] Bank statements (`/ar/personal/immigration/bank/`)
+- [x] Bank statements (`/ar/personal/immigration/bank/`) ✅ Jan 31
 - [ ] Driving license (`/ar/personal/immigration/license/`)
 - [x] Degree certificate (`/ar/personal/academic/degree/`) ✅ Jan 31
 - [ ] Transcripts (`/ar/personal/academic/transcripts/`)
@@ -474,7 +477,7 @@ function getAlternateUrl(currentPath, targetLang) {
 - [x] Attestation hub (`/ar/services/attestation/`)
 - [x] India attestation (`/ar/services/attestation/india/`) ✅ Jan 31
 - [x] UK attestation (`/ar/services/attestation/uk/`) ✅ Jan 31
-- [ ] US attestation (`/ar/services/attestation/us/`)
+- [x] US attestation (`/ar/services/attestation/us/`) ✅ Jan 31
 - [ ] Golden Visa (`/ar/services/golden-visa-translation/`)
 - [ ] Specialized hub (`/ar/specialized-translation/`)
 - [ ] Medical translation (`/ar/specialized/medical/`)
