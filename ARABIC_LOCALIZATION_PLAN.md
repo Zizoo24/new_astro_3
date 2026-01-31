@@ -399,7 +399,7 @@ function getAlternateUrl(currentPath, targetLang) {
 
 ### Current Status (Updated January 31, 2026)
 
-**Existing Arabic Pages (13 pages):**
+**Existing Arabic Pages (20 pages):**
 
 | Page | URL | Status |
 |------|-----|--------|
@@ -409,11 +409,18 @@ function getAlternateUrl(currentPath, targetLang) {
 | Services Hub | `/ar/services/` | ✅ Complete |
 | Legal Translation Hub | `/ar/legal-translation-dubai/` | ✅ Complete |
 | Contracts Hub | `/ar/legal/contracts/` | ✅ Complete |
+| Corporate Hub | `/ar/legal/corporate/` | ✅ Complete (Jan 31) |
+| POA Translation | `/ar/legal/corporate/poa/` | ✅ Complete (Jan 31) |
 | Personal Hub | `/ar/personal/` | ✅ Complete |
 | Vital Records Hub | `/ar/personal/vital-records/` | ✅ Complete |
+| Birth Certificate | `/ar/personal/vital-records/birth/` | ✅ Complete (Jan 31) |
+| Marriage Certificate | `/ar/personal/vital-records/marriage/` | ✅ Complete (Jan 31) |
+| Divorce Certificate | `/ar/personal/vital-records/divorce/` | ✅ Complete (Jan 31) |
+| Death Certificate | `/ar/personal/vital-records/death/` | ✅ Complete (Jan 31) |
 | Academic Hub | `/ar/personal/academic/` | ✅ Complete |
 | NYUAD | `/ar/personal/academic/nyuad/` | ✅ Complete |
 | Attestation Hub | `/ar/services/attestation/` | ✅ Complete |
+| India Attestation | `/ar/services/attestation/india/` | ✅ Complete (Jan 31) |
 | Abu Dhabi | `/ar/locations/abu-dhabi/` | ✅ Complete |
 | Dubai | `/ar/locations/dubai/` | ✅ Complete |
 
@@ -436,9 +443,9 @@ function getAlternateUrl(currentPath, targetLang) {
 - [ ] SPA translation (`/ar/legal/contracts/spa/`)
 - [ ] MOU translation (`/ar/legal/contracts/mou/`)
 - [ ] Lease translation (`/ar/legal/contracts/lease/`)
-- [ ] Corporate hub (`/ar/legal/corporate/`)
+- [x] Corporate hub (`/ar/legal/corporate/`) ✅ Jan 31
 - [ ] MOA translation (`/ar/legal/corporate/moa/`)
-- [ ] POA translation (`/ar/legal/corporate/poa/`)
+- [x] POA translation (`/ar/legal/corporate/poa/`) ✅ Jan 31
 - [ ] Resolution translation (`/ar/legal/corporate/resolution/`)
 - [ ] Litigation hub (`/ar/legal/litigation/`)
 - [ ] Verdict translation (`/ar/legal/litigation/verdict/`)
@@ -449,10 +456,10 @@ function getAlternateUrl(currentPath, targetLang) {
 - [x] Personal documents pillar (`/ar/personal/`)
 - [x] Vital records hub (`/ar/personal/vital-records/`)
 - [x] Academic hub (`/ar/personal/academic/`)
-- [ ] Birth certificate (`/ar/personal/vital-records/birth/`)
-- [ ] Marriage certificate (`/ar/personal/vital-records/marriage/`)
-- [ ] Divorce certificate (`/ar/personal/vital-records/divorce/`)
-- [ ] Death certificate (`/ar/personal/vital-records/death/`)
+- [x] Birth certificate (`/ar/personal/vital-records/birth/`) ✅ Jan 31
+- [x] Marriage certificate (`/ar/personal/vital-records/marriage/`) ✅ Jan 31
+- [x] Divorce certificate (`/ar/personal/vital-records/divorce/`) ✅ Jan 31
+- [x] Death certificate (`/ar/personal/vital-records/death/`) ✅ Jan 31
 - [ ] Immigration hub (`/ar/personal/immigration/`)
 - [ ] PCC translation (`/ar/personal/immigration/pcc/`)
 - [ ] Bank statements (`/ar/personal/immigration/bank/`)
@@ -460,9 +467,9 @@ function getAlternateUrl(currentPath, targetLang) {
 - [ ] Degree certificate (`/ar/personal/academic/degree/`)
 - [ ] Transcripts (`/ar/personal/academic/transcripts/`)
 
-### Week 5 Deliverables - NOT STARTED
+### Week 5 Deliverables - IN PROGRESS
 - [x] Attestation hub (`/ar/services/attestation/`)
-- [ ] India attestation (`/ar/services/attestation/india/`)
+- [x] India attestation (`/ar/services/attestation/india/`) ✅ Jan 31
 - [ ] UK attestation (`/ar/services/attestation/uk/`)
 - [ ] US attestation (`/ar/services/attestation/us/`)
 - [ ] Golden Visa (`/ar/services/golden-visa-translation/`)
