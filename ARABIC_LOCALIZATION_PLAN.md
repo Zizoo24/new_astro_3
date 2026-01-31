@@ -313,6 +313,56 @@ import HeroArabic from "@components/HeroArabic.astro";
 
 ## 🔧 Technical Implementation
 
+### CSS Reuse & RTL Adaptation (MANDATORY)
+
+```
+╔═══════════════════════════════════════════════════════════════════════╗
+║  When creating Arabic pages, ALWAYS reuse the English page's CSS      ║
+║  and adapt it for RTL. Do NOT create new CSS from scratch.            ║
+╚═══════════════════════════════════════════════════════════════════════╝
+```
+
+**Step 1: Copy English Page CSS**
+1. Find the English equivalent page (e.g., `src/pages/personal/vital-records/birth/index.astro`)
+2. Copy the `<style>` block from the English page
+3. Copy all CSS class names used in the HTML structure
+
+**Step 2: RTL Adaptation**
+
+| English Property | Arabic RTL Equivalent |
+|------------------|----------------------|
+| `margin-left` | `margin-right` |
+| `padding-left` | `padding-right` |
+| `border-left` | `border-right` |
+| `text-align: left` | `text-align: right` |
+| `float: left` | `float: right` |
+| Icon after text | Icon before text in HTML |
+
+**Step 3: LTR Islands (Keep Left-to-Right)**
+```html
+<!-- Phone numbers -->
+<span dir="ltr">+971 50 862 0217</span>
+
+<!-- Email addresses -->
+<span dir="ltr">info@onlinetranslation.ae</span>
+
+<!-- Brand names -->
+<span dir="ltr">OnlineTranslation.ae</span>
+```
+
+**Step 4: Icon Positioning in RTL**
+```html
+<!-- English: icon after text -->
+<a href="/contact/">Contact Us <i class="fas fa-arrow-right"></i></a>
+
+<!-- Arabic: icon BEFORE text (appears on right in RTL) -->
+<a href="/ar/contact/"><i class="fas fa-arrow-left"></i> تواصلوا معنا</a>
+```
+
+**RTL CSS Files (automatic overrides):**
+- `public/styles/rtl.css` — Global RTL styles
+- `BaseLayoutArabic.astro` — Includes `dir="rtl"` on html
+
 ### Hreflang Implementation
 
 ```html
