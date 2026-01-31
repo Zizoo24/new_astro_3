@@ -228,6 +228,8 @@ function buildSearchIndex() {
     { title: 'Professional Certificates vs Degrees Translation', url: '/blog/professional-certificates-vs-degrees-translation/', category: 'Blog', keywords: 'professional certificates degrees translation cpa acca pmp cisco moj certification uae' },
     { title: 'Legal Translation Dubai: Complete MOJ Guide', url: '/blog/legal-translation-dubai-moj-guide/', category: 'Blog', keywords: 'legal translation dubai moj ministry justice certified court contracts difc adgm requirements guide' },
     { title: 'Court Document Translation Dubai Guide', url: '/blog/court-document-translation-dubai/', category: 'Blog', keywords: 'court document translation dubai courts difc adgm judgment verdict arbitration litigation accepted rejected' },
+    { title: 'Marriage Certificate Translation for UAE Visa', url: '/blog/marriage-certificate-translation-dubai/', category: 'Blog', keywords: 'marriage certificate translation dubai spouse visa gdrfa attestation nikah nama religious civil wedding' },
+    { title: 'UAE Attestation Process Guide 2026', url: '/blog/uae-attestation-process-guide/', category: 'Blog', keywords: 'uae attestation mofa embassy apostille hague convention document legalization india pakistan uk usa philippines' },
   ];
 
   // Add static pages, avoiding duplicates

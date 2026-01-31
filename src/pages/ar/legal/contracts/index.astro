@@ -1,0 +1,1066 @@
+---
+/**
+ * /ar/legal/contracts/ - صفحة ترجمة العقود (Arabic Contract Translation)
+ *
+ * Target Keywords: ترجمة عقود, ترجمة عقود قانونية, ترجمة عقود دبي
+ * Layout: BaseLayoutArabic
+ * Silo: Legal (Arabic)
+ */
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: 'ما أنواع العقود التي تترجمونها؟',
+    answer: 'نترجم جميع العقود التجارية والمدنية للاستخدام في الإمارات: اتفاقيات السرية NDA، عقود البيع والشراء SPA، مذكرات التفاهم MOU، عقود الإيجار التجاري لـ Ejari، عقود العمل لـ MOHRE، اتفاقيات الخدمات، المشاريع المشتركة، اتفاقيات الامتياز، وعقود التوزيع. كل ترجمة تشمل ختم وزارة العدل ورمز QR.'
+  },
+  {
+    question: 'هل العقود المترجمة لها صلاحية قانونية في محاكم الإمارات؟',
+    answer: 'نعم. الترجمات المعتمدة من وزارة العدل تحمل قوة قانونية كاملة في محاكم دبي وأبوظبي ومحاكم DIFC و ADGM وجميع الجهات الحكومية. كل ترجمة تشمل ختم المترجم وتوقيعه ورقمه التسلسلي ورمز QR. الجهات تتحقق من الأصالة بمسح الرمز.'
+  },
+  {
+    question: 'هل أترجم العقد قبل أو بعد التوقيع؟',
+    answer: 'كلاهما شائع. ترجم قبل التوقيع عندما تحتاج الأطراف فهم الشروط بلغتها الأم—مفيد للمشاريع المشتركة. ترجم بعد التوقيع عندما يكون العقد للمحكمة أو التسجيلات. نُرشدك للتوقيت المناسب خلال مراجعة الوثيقة.'
+  },
+  {
+    question: 'كيف تتعاملون مع المصطلحات التعاقدية المتخصصة؟',
+    answer: 'مترجمونا لديهم خلفية في القانون التجاري الإماراتي. نحتفظ بقواميس لأنواع العقود المختلفة: مصطلحات العقارات لعقود البيع، مصطلحات الملكية الفكرية لاتفاقيات السرية، ولغة الحوكمة لاتفاقيات المساهمين. هذا يضمن مصطلحات متسقة ودقيقة.'
+  },
+  {
+    question: 'هل تترجمون عقود بلغات غير العربية والإنجليزية؟',
+    answer: 'نعم. نترجم من وإلى الفرنسية والألمانية والروسية والصينية والهندية والأردية والإسبانية والبرتغالية وأكثر من 35 لغة أخرى. جميعها تحصل على ختم وزارة العدل. للعقود ثلاثية اللغات، نضمن اتساق المصطلحات في جميع النسخ.'
+  },
+  {
+    question: 'ما هو التنسيق ثنائي اللغة ومتى يُطلب؟',
+    answer: 'التنسيق ثنائي اللغة يُظهر العربية والإنجليزية جنباً إلى جنب في أعمدة متوازية. محاكم دبي تطلب هذا التنسيق لمعظم التقديمات. كلا النسختين تحملان نفس السلطة القانونية. نُنتج وثائق بمحاذاة صحيحة وترقيم صفحات متسق وأرقام بنود متطابقة.'
+  },
+  {
+    question: 'كم تستغرق ترجمة العقود؟',
+    answer: 'العقود القياسية (5-15 صفحة) تُنجز في 24-48 ساعة. الاتفاقيات المعقدة قد تحتاج 3-5 أيام عمل. للأمور العاجلة—مواعيد المحكمة أو الإغلاقات—نوفر معالجة سريعة. تواصل معنا بموعدك النهائي وسنؤكد التوفر قبل الالتزام.'
+  },
+  {
+    question: 'ماذا لو كان هناك أخطاء أو غموض في العقد الأصلي؟',
+    answer: 'نترجم ما يظهر في وثيقتك بالضبط، بما في ذلك الأخطاء. لكننا نُشير للمشاكل: أسماء غير متسقة، توقيعات ناقصة، مصطلحات غير محددة، أخطاء حسابية، أو بنود متناقضة. هذا يساعدك على اكتشاف المشاكل قبل التقديم للمحكمة.'
+  },
+  {
+    question: 'هل تترجمون تعديلات العقود والملاحق؟',
+    answer: 'نعم. التعديلات والملاحق والرسائل الجانبية تتطلب نفس الدقة كالعقود الأصلية. نُرجع للترجمة الأصلية لضمان اتساق المصطلحات المحددة. أرسل العقد الأصلي وجميع التعديلات معاً للحفاظ على توافق المصطلحات.'
+  },
+  {
+    question: 'ماذا عن عقود FIDIC وأشكال عقود البناء الأخرى؟',
+    answer: 'نترجم جميع أشكال عقود FIDIC (الكتاب الأحمر، الأصفر، الفضي)، وكذلك JCT و NEC وعقود البناء المخصصة. مترجمونا يفهمون مصطلحات البناء: التغييرات، شهادات الدفع المرحلية، شهادات الاستلام، ومخصصات مسؤولية العيوب.'
+  }
+];
+
+const contractTypes = [
+  {
+    title: "اتفاقيات السرية NDA",
+    href: "/legal/contracts/nda/",
+    icon: "lock",
+    desc: "اتفاقيات السرية وعدم الإفصاح لحماية الملكية الفكرية والمعلومات الحساسة."
+  },
+  {
+    title: "عقود البيع والشراء SPA",
+    href: "/legal/contracts/spa/",
+    icon: "handshake",
+    desc: "عقود استحواذ العقارات والأعمال لتسجيل DLD ونقل الملكية."
+  },
+  {
+    title: "مذكرات التفاهم MOU",
+    href: "/legal/contracts/mou/",
+    icon: "file-contract",
+    desc: "اتفاقيات الشراكة والاتفاقيات التمهيدية للمشاريع المشتركة."
+  },
+  {
+    title: "عقود الإيجار",
+    href: "/legal/contracts/lease/",
+    icon: "building",
+    desc: "عقود الإيجار التجاري والسكني لتسجيل Ejari و RERA."
+  },
+  {
+    title: "عقود العمل",
+    href: "/legal/corporate/",
+    icon: "briefcase",
+    desc: "عقود التوظيف وفقاً لقانون العمل الإماراتي ومتطلبات MOHRE."
+  },
+  {
+    title: "اتفاقيات الخدمات",
+    href: "/legal/",
+    icon: "cogs",
+    desc: "اتفاقيات تقديم الخدمات والاستشارات والصيانة."
+  }
+];
+
+const industries = [
+  { name: "العقارات", icon: "home", desc: "DLD، RERA، Ejari" },
+  { name: "البناء", icon: "hard-hat", desc: "FIDIC، JCT، NEC" },
+  { name: "التجارة", icon: "shopping-cart", desc: "التوزيع، الامتياز" },
+  { name: "التكنولوجيا", icon: "laptop-code", desc: "SaaS، الترخيص" },
+  { name: "الضيافة", icon: "hotel", desc: "إدارة الفنادق" },
+  { name: "الرعاية الصحية", icon: "hospital", desc: "DHA، DOH" }
+];
+---
+
+<BaseLayoutArabic
+  title="ترجمة العقود دبي | معتمدة من وزارة العدل | محاكم الإمارات"
+  description="ترجمة عقود معتمدة من وزارة العدل في دبي وأبوظبي. عقود NDA، SPA، MOU، الإيجار، العمل. تنسيق جاهز للمحاكم الإماراتية."
+>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-certificate"></i>
+          <span>ترخيص وزارة العدل #701</span>
+        </div>
+
+        <h1>ترجمة العقود في الإمارات</h1>
+        <p class="hero-subtitle">معتمدة للمحاكم والاستخدام التجاري</p>
+
+        <p class="hero-intro">
+          العقود هي أساس كل علاقة تجارية في الإمارات. سواء كنت تحتاج اتفاقية سرية لمشروع مشترك، أو عقد بيع وشراء لدائرة الأراضي، أو عقود عمل لوزارة الموارد البشرية، كل شرط يجب ترجمته بدقة.
+        </p>
+
+        <div class="hero-features">
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>ختم وزارة العدل</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>تنسيق ثنائي اللغة</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>مصطلحات قانونية دقيقة</span>
+          </div>
+        </div>
+
+        <div class="hero-cta">
+          <a href="https://wa.me/971508620217" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i>
+            <span>واتساب الآن</span>
+          </a>
+          <a href="tel:+971508620217" class="btn btn-outline">
+            <i class="fas fa-phone"></i>
+            <span>اتصل بنا</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contract Types Section -->
+  <section class="section">
+    <div class="container">
+      <h2>أنواع العقود التي نترجمها</h2>
+      <p class="section-intro">من اتفاقيات السرية إلى العقود التجارية المعقدة—كل عقد يُترجم بمصطلحات قانونية مناسبة للاختصاص القضائي.</p>
+
+      <div class="contracts-grid">
+        {contractTypes.map(contract => (
+          <a href={contract.href} class="contract-card">
+            <div class="contract-icon">
+              <i class={`fas fa-${contract.icon}`}></i>
+            </div>
+            <h3>{contract.title}</h3>
+            <p>{contract.desc}</p>
+            <span class="contract-link">
+              <span>المزيد</span>
+              <i class="fas fa-arrow-left"></i>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Precision Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>لماذا الدقة مهمة في ترجمة العقود</h2>
+
+      <div class="precision-grid">
+        <div class="precision-card">
+          <div class="precision-example">
+            <span class="example-wrong">"يجب" ≠ "يجوز"</span>
+          </div>
+          <h3>الالتزام vs الإذن</h3>
+          <p>"Shall" تُلزم، "May" تُجيز. كلمة واحدة تُغير المعنى القانوني بالكامل.</p>
+        </div>
+
+        <div class="precision-card">
+          <div class="precision-example">
+            <span class="example-term">"المشتري" = "Buyer"</span>
+          </div>
+          <h3>المصطلحات المحددة</h3>
+          <p>المصطلحات المحددة يجب أن تبقى متسقة في جميع أنحاء العقد والتعديلات.</p>
+        </div>
+
+        <div class="precision-card">
+          <div class="precision-example">
+            <span class="example-ref">البند 3.2(أ)</span>
+          </div>
+          <h3>المراجع المتقاطعة</h3>
+          <p>الإحالات للبنود والملاحق يجب أن تتوافق بشكل صحيح بين اللغتين.</p>
+        </div>
+
+        <div class="precision-card">
+          <div class="precision-example">
+            <span class="example-number">1,000,000 AED</span>
+          </div>
+          <h3>الأرقام والتواريخ</h3>
+          <p>المبالغ والتواريخ تُكتب بالأرقام والكلمات لتجنب الغموض.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bilingual Format Section -->
+  <section class="section">
+    <div class="container">
+      <h2>التنسيق ثنائي اللغة</h2>
+
+      <div class="bilingual-info">
+        <div class="bilingual-content">
+          <p>محاكم دبي تتطلب غالباً العربية والإنجليزية في أعمدة متوازية مع سلطة قانونية متساوية.</p>
+
+          <div class="bilingual-features">
+            <div class="bi-feature">
+              <i class="fas fa-columns"></i>
+              <span>أعمدة متوازية</span>
+            </div>
+            <div class="bi-feature">
+              <i class="fas fa-align-justify"></i>
+              <span>محاذاة صحيحة</span>
+            </div>
+            <div class="bi-feature">
+              <i class="fas fa-list-ol"></i>
+              <span>ترقيم متطابق</span>
+            </div>
+            <div class="bi-feature">
+              <i class="fas fa-balance-scale"></i>
+              <span>سلطة قانونية متساوية</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bilingual-visual">
+          <div class="doc-preview">
+            <div class="doc-column arabic">
+              <span class="col-label">العربية</span>
+              <div class="doc-lines">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+            <div class="doc-column english">
+              <span class="col-label">English</span>
+              <div class="doc-lines">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries Section -->
+  <section class="section bg-dark">
+    <div class="container">
+      <h2>القطاعات التي نخدمها</h2>
+      <p class="section-intro">عقود متخصصة لكل قطاع مع المصطلحات الصحيحة.</p>
+
+      <div class="industries-grid">
+        {industries.map(industry => (
+          <div class="industry-card">
+            <i class={`fas fa-${industry.icon}`}></i>
+            <h3>{industry.name}</h3>
+            <span>{industry.desc}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section">
+    <div class="container">
+      <h2>خطوات ترجمة العقود</h2>
+
+      <div class="process-grid">
+        <div class="process-card">
+          <div class="process-number">1</div>
+          <h3>إرسال العقد</h3>
+          <p>أرسل العقد عبر واتساب مع توضيح الغرض (محكمة، تسجيل، أو مراجعة داخلية)</p>
+        </div>
+        <div class="process-card">
+          <div class="process-number">2</div>
+          <h3>التقييم وعرض السعر</h3>
+          <p>نُراجع المحتوى ونحدد المصطلحات المتخصصة ونُرسل عرض سعر ثابت</p>
+        </div>
+        <div class="process-card">
+          <div class="process-number">3</div>
+          <h3>الترجمة القانونية</h3>
+          <p>مترجم قانوني معتمد ينتج الترجمة مع مراجعة الجودة</p>
+        </div>
+        <div class="process-card">
+          <div class="process-number">4</div>
+          <h3>التصديق والتسليم</h3>
+          <p>ختم وزارة العدل ورمز QR مع تسليم رقمي وورقي</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>أسعار ترجمة العقود</h2>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>عقود قياسية</h3>
+          <div class="pricing-amount">150 درهم</div>
+          <div class="pricing-unit">للصفحة</div>
+          <ul>
+            <li><i class="fas fa-check"></i> NDA، MOU، عقود الإيجار</li>
+            <li><i class="fas fa-check"></i> ختم وزارة العدل</li>
+            <li><i class="fas fa-check"></i> 24-48 ساعة</li>
+            <li><i class="fas fa-check"></i> تنسيق أحادي أو ثنائي اللغة</li>
+          </ul>
+          <a href="https://wa.me/971508620217" class="btn btn-outline">احصل على عرض سعر</a>
+        </div>
+
+        <div class="pricing-card featured">
+          <div class="pricing-badge">للشركات</div>
+          <h3>عقود معقدة</h3>
+          <div class="pricing-amount">200 درهم</div>
+          <div class="pricing-unit">للصفحة</div>
+          <ul>
+            <li><i class="fas fa-check"></i> SPA، FIDIC، المشاريع المشتركة</li>
+            <li><i class="fas fa-check"></i> قاموس مصطلحات مخصص</li>
+            <li><i class="fas fa-check"></i> 3-5 أيام عمل</li>
+            <li><i class="fas fa-check"></i> مراجعة قانونية</li>
+          </ul>
+          <a href="https://wa.me/971508620217" class="btn btn-primary">احصل على عرض سعر</a>
+        </div>
+
+        <div class="pricing-card">
+          <h3>خدمة مستعجلة</h3>
+          <div class="pricing-amount">+50%</div>
+          <div class="pricing-unit">للاستعجال</div>
+          <ul>
+            <li><i class="fas fa-check"></i> تسليم نفس اليوم</li>
+            <li><i class="fas fa-check"></i> لمواعيد المحكمة العاجلة</li>
+            <li><i class="fas fa-check"></i> مترجم مخصص</li>
+            <li><i class="fas fa-check"></i> أولوية المراجعة</li>
+          </ul>
+          <a href="https://wa.me/971508620217?text=مستعجل" class="btn btn-outline">طلب مستعجل</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container">
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-grid">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" name="faq">
+            <summary class="faq-question">
+              <span>{faq.question}</span>
+              <i class="fas fa-chevron-down"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>هل تحتاج ترجمة عقد؟</h2>
+        <p>أرسل عقدك عبر واتساب للتقييم المجاني وعرض السعر خلال 10 دقائق. ترجمة معتمدة من وزارة العدل.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/971508620217" class="btn btn-primary btn-lg">
+            <i class="fab fa-whatsapp"></i>
+            <span>واتساب: 0508620217</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  })} />
+
+</BaseLayoutArabic>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, var(--surface-navy) 0%, #1a3a5c 100%);
+    color: #fff;
+    padding: 4rem 0;
+  }
+
+  .hero-content {
+    max-width: 800px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-section h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 0.75rem;
+    line-height: 1.3;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-intro {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+  }
+
+  .hero-features {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-direction: row-reverse;
+  }
+
+  .feature-item i {
+    color: var(--accent-coral);
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--accent-coral);
+    color: #fff;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  /* Sections */
+  .section {
+    padding: 4rem 0;
+  }
+
+  .section h2 {
+    font-size: 1.75rem;
+    margin: 0 0 1rem;
+    color: var(--primary-color);
+  }
+
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 800px;
+  }
+
+  .bg-light {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  .bg-dark {
+    background: var(--surface-navy);
+    color: #fff;
+  }
+
+  .bg-dark h2,
+  .bg-dark .section-intro {
+    color: #fff;
+  }
+
+  .bg-dark .section-intro {
+    opacity: 0.9;
+  }
+
+  /* Contracts Grid */
+  .contracts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .contract-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+  }
+
+  .contract-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .contract-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--accent-coral);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .contract-icon i {
+    font-size: 1.25rem;
+    color: #fff;
+  }
+
+  .contract-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .contract-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0 0 1rem;
+    line-height: 1.6;
+  }
+
+  .contract-link {
+    color: var(--accent-coral);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* Precision Grid */
+  .precision-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .precision-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .precision-example {
+    margin-bottom: 1rem;
+  }
+
+  .example-wrong,
+  .example-term,
+  .example-ref,
+  .example-number {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .example-wrong {
+    background: #fef2f2;
+    color: #dc2626;
+  }
+
+  .example-term {
+    background: #f0fdf4;
+    color: #16a34a;
+  }
+
+  .example-ref {
+    background: #eff6ff;
+    color: #2563eb;
+  }
+
+  .example-number {
+    background: #fefce8;
+    color: #ca8a04;
+  }
+
+  .precision-card h3 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .precision-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Bilingual Section */
+  .bilingual-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .bilingual-content p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+
+  .bilingual-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .bi-feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    flex-direction: row-reverse;
+  }
+
+  .bi-feature i {
+    color: var(--accent-coral);
+  }
+
+  .bilingual-visual {
+    display: flex;
+    justify-content: center;
+  }
+
+  .doc-preview {
+    display: flex;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 300px;
+  }
+
+  .doc-column {
+    flex: 1;
+    padding: 1.5rem;
+  }
+
+  .doc-column.arabic {
+    background: var(--surface-navy);
+    color: #fff;
+    text-align: right;
+  }
+
+  .doc-column.english {
+    background: #f8f9fa;
+    text-align: left;
+  }
+
+  .col-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .doc-lines span {
+    display: block;
+    height: 8px;
+    background: currentColor;
+    opacity: 0.3;
+    margin-bottom: 0.75rem;
+    border-radius: 4px;
+  }
+
+  .doc-lines span:nth-child(2) {
+    width: 80%;
+  }
+
+  .doc-lines span:nth-child(3) {
+    width: 60%;
+  }
+
+  /* Industries Grid */
+  .industries-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+  }
+
+  .industry-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .industry-card i {
+    font-size: 2rem;
+    color: var(--accent-coral);
+    margin-bottom: 0.75rem;
+  }
+
+  .industry-card h3 {
+    font-size: 1rem;
+    margin: 0 0 0.25rem;
+    color: #fff;
+  }
+
+  .industry-card span {
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+
+  /* Process Grid */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .process-card {
+    text-align: center;
+  }
+
+  .process-number {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-coral);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .process-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .process-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* Pricing Grid */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+  }
+
+  .pricing-card {
+    background: #fff;
+    border: 2px solid #eee;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .pricing-card.featured {
+    background: var(--surface-navy);
+    color: #fff;
+    transform: scale(1.05);
+    border-color: var(--surface-navy);
+  }
+
+  .pricing-badge {
+    background: var(--accent-coral);
+    color: #fff;
+    padding: 0.35rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    position: absolute;
+    top: -12px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .pricing-card h3 {
+    font-size: 1.15rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .pricing-card.featured h3 {
+    color: #fff;
+  }
+
+  .pricing-amount {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-coral);
+  }
+
+  .pricing-unit {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-card.featured .pricing-unit {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .pricing-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    text-align: right;
+  }
+
+  .pricing-card li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-direction: row-reverse;
+  }
+
+  .pricing-card.featured li {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .pricing-card li i {
+    color: var(--accent-coral);
+  }
+
+  .pricing-card .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .pricing-card .btn-outline {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+
+  .pricing-card.featured .btn-outline {
+    color: #fff;
+    border-color: #fff;
+  }
+
+  /* FAQ */
+  .faq-grid {
+    display: grid;
+    gap: 1rem;
+    max-width: 900px;
+  }
+
+  .faq-item {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .faq-question {
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: var(--primary-color);
+    list-style: none;
+    gap: 1rem;
+    flex-direction: row-reverse;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question i {
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .faq-item[open] .faq-question i {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.25rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    text-align: right;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: linear-gradient(135deg, var(--accent-coral) 0%, #e63946 100%);
+    color: #fff;
+    text-align: center;
+  }
+
+  .cta-content h2 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-content p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+  }
+
+  .cta-section .btn-primary {
+    background: #fff;
+    color: var(--accent-coral);
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .precision-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .industries-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 991px) {
+    .contracts-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bilingual-info {
+      grid-template-columns: 1fr;
+    }
+
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+    }
+
+    .pricing-card.featured {
+      transform: none;
+    }
+
+    .process-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-section h1 {
+      font-size: 1.75rem;
+    }
+
+    .contracts-grid,
+    .precision-grid,
+    .process-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .industries-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bilingual-features {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

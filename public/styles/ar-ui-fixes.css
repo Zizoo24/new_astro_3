@@ -477,3 +477,209 @@ html[lang="ar"] {
     font-size: 0.95rem !important;
   }
 }
+
+/* ============================================
+   RTL CRITICAL FIXES
+   Issue: Logo garbled, icons on wrong side
+   ============================================ */
+
+/* Logo must stay LTR - prevent domain reversal */
+html[lang="ar"] .logo,
+html[lang="ar"] .site-logo,
+html[lang="ar"] .brand-logo,
+html[lang="ar"] .header-logo,
+html[lang="ar"] .navbar-brand,
+html[lang="ar"] [class*="logo"] a,
+html[lang="ar"] .logo-text {
+  direction: ltr !important;
+  unicode-bidi: embed !important;
+  text-align: left !important;
+}
+
+/* Brand name should stay LTR */
+html[lang="ar"] .brand-name,
+html[lang="ar"] .site-name {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+}
+
+/* Icon + text pairs: icons on RIGHT in RTL */
+html[lang="ar"] .hero-bullet,
+html[lang="ar"] .hero-feature,
+html[lang="ar"] .feature,
+html[lang="ar"] .feature-item,
+html[lang="ar"] .bullet-item,
+html[lang="ar"] .list-item-with-icon,
+html[lang="ar"] .icon-text,
+html[lang="ar"] [class*="bullet"] {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: flex-start !important;
+  text-align: right !important;
+  gap: 0.75rem !important;
+}
+
+/* Hero bullets specifically */
+html[lang="ar"] .hero-bullets,
+html[lang="ar"] .hero-features {
+  text-align: right !important;
+}
+
+html[lang="ar"] .hero-bullets li,
+html[lang="ar"] .hero-bullets .bullet,
+html[lang="ar"] .heroBullets > div {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: flex-start !important;
+  justify-content: flex-end !important;
+  text-align: right !important;
+}
+
+/* Icon styling in RTL - ensure proper spacing */
+html[lang="ar"] .hero-bullet i,
+html[lang="ar"] .hero-feature i,
+html[lang="ar"] .feature i:first-child,
+html[lang="ar"] .bullet-item i,
+html[lang="ar"] [class*="bullet"] i {
+  margin-left: 0.5rem !important;
+  margin-right: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+/* Text in icon+text pairs */
+html[lang="ar"] .hero-bullet span,
+html[lang="ar"] .hero-feature span,
+html[lang="ar"] .feature span,
+html[lang="ar"] .bullet-item span {
+  text-align: right !important;
+}
+
+/* Trust items in trust bar */
+html[lang="ar"] .trust-item,
+html[lang="ar"] .trust-badge {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+/* CTA buttons with icons */
+html[lang="ar"] .cta-primary,
+html[lang="ar"] .cta-button,
+html[lang="ar"] .btn-primary,
+html[lang="ar"] a[class*="cta"] {
+  display: inline-flex !important;
+  flex-direction: row-reverse !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+/* Service cards with icons */
+html[lang="ar"] .service-card,
+html[lang="ar"] .specialist-card,
+html[lang="ar"] .overlap-card {
+  text-align: right !important;
+}
+
+/* Card headers with icons */
+html[lang="ar"] .card-header,
+html[lang="ar"] .card-title {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+/* List items with checkmarks/bullets */
+html[lang="ar"] ul li,
+html[lang="ar"] .checklist li,
+html[lang="ar"] .feature-list li {
+  text-align: right !important;
+}
+
+/* Ensure main content flows RTL */
+html[lang="ar"] main,
+html[lang="ar"] section,
+html[lang="ar"] .container,
+html[lang="ar"] article {
+  text-align: right !important;
+}
+
+/* Headers and paragraphs RTL */
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4,
+html[lang="ar"] h5,
+html[lang="ar"] h6,
+html[lang="ar"] p {
+  text-align: right !important;
+}
+
+/* Navigation in header */
+html[lang="ar"] .header-nav,
+html[lang="ar"] .main-nav,
+html[lang="ar"] nav ul {
+  flex-direction: row-reverse !important;
+}
+
+/* Mobile menu items */
+html[lang="ar"] .mobile-nav-item,
+html[lang="ar"] .nav-item {
+  text-align: right !important;
+}
+
+/* Footer alignment */
+html[lang="ar"] .footer-column,
+html[lang="ar"] .footer-links {
+  text-align: right !important;
+}
+
+/* Overlap cards - fix icon positioning */
+html[lang="ar"] .overlap-card-content {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: flex-start !important;
+  gap: 1rem !important;
+}
+
+html[lang="ar"] .overlap-card-icon {
+  order: 1 !important;
+}
+
+html[lang="ar"] .overlap-card-text {
+  order: 2 !important;
+  text-align: right !important;
+}
+
+/* Badge positioning */
+html[lang="ar"] .badge,
+html[lang="ar"] .hero-badge,
+html[lang="ar"] .card-badge {
+  display: inline-flex !important;
+  flex-direction: row-reverse !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+/* Forms - labels on right */
+html[lang="ar"] label {
+  text-align: right !important;
+  display: block !important;
+}
+
+/* Phone numbers and emails stay LTR */
+html[lang="ar"] .phone,
+html[lang="ar"] .phone-number,
+html[lang="ar"] .email,
+html[lang="ar"] [href^="tel:"],
+html[lang="ar"] [href^="mailto:"],
+html[lang="ar"] .ltr-content {
+  direction: ltr !important;
+  unicode-bidi: embed !important;
+}
+
+/* WhatsApp number in buttons */
+html[lang="ar"] a[href*="wa.me"] span.phone {
+  direction: ltr !important;
+}

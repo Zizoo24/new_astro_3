@@ -1,0 +1,1102 @@
+---
+/**
+ * /ar/personal/ - صفحة ترجمة الوثائق الشخصية (Arabic Personal Documents Hub)
+ *
+ * Target Keywords: ترجمة وثائق شخصية, ترجمة شهادة ميلاد, ترجمة عقد زواج
+ * Layout: BaseLayoutArabic
+ * Silo: Personal & Civil (Arabic)
+ */
+import BaseLayoutArabic from '../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: 'ما هي الوثائق الشخصية التي تحتاج ترجمة معتمدة من وزارة العدل؟',
+    answer: 'شهادات الميلاد والزواج والطلاق والوفاة. الشهادات الأكاديمية والدبلومات. شهادات حسن السيرة والسلوك. كشوف الحسابات البنكية. رخص القيادة والتقارير الطبية. أي وثيقة تُقدم للجهات الحكومية الإماراتية أو المحاكم تحتاج ختم وزارة العدل.'
+  },
+  {
+    question: 'كم تستغرق ترجمة الوثائق الشخصية؟',
+    answer: 'شهادات الميلاد والزواج: 4-6 ساعات. الشهادات الأكاديمية (5-10 صفحات): 24 ساعة. كشوف الحسابات البنكية: 24-48 ساعة. شهادة حسن السيرة: 6-12 ساعة. متوفر خدمة مستعجلة لنفس اليوم.'
+  },
+  {
+    question: 'هل تحتاج وثائقي تصديق قبل الترجمة؟',
+    answer: 'نعم، للوثائق الأجنبية. السلسلة المطلوبة: تصديق من بلد المصدر، ثم سفارة الإمارات، ثم وزارة الخارجية الإماراتية. الدول الأعضاء في اتفاقية لاهاي يمكنها استخدام الأبوستيل. نراجع وثائقك ونرشدك للتسلسل الصحيح.'
+  },
+  {
+    question: 'هل تترجمون وثائق الإقامة الذهبية؟',
+    answer: 'نعم. نقدم حزم ترجمة كاملة للإقامة الذهبية: الشهادات الأكاديمية مع تنسيق وزارة التعليم العالي، الرخص المهنية، كشوف الحسابات البنكية، صكوك الملكية، عقود العمل، وشهادات الراتب. كل شيء مُنسق حسب متطلبات الهوية.'
+  },
+  {
+    question: 'ماذا لو كان اسمي مكتوب بطرق مختلفة على الوثائق؟',
+    answer: '40% من حالات الرفض بسبب عدم تطابق الأسماء. نتحقق من تطابق الأسماء مع جواز السفر والهوية الإماراتية. إذا وُجدت اختلافات في التهجئة، نُوثقها ونقدم خطاب توحيد الأسماء.'
+  },
+  {
+    question: 'هل تترجمون من لغات غير الإنجليزية؟',
+    answer: 'نعم. نترجم من أكثر من 40 لغة إلى العربية: الهندية، الأردية، التاغالوغ، الروسية، الفرنسية، الألمانية، الصينية، الإسبانية، والبرتغالية. جميع الترجمات تحمل ختم وزارة العدل.'
+  },
+  {
+    question: 'ما تكلفة ترجمة الوثائق الشخصية؟',
+    answer: 'الشهادات (صفحة واحدة): تبدأ من 150 درهم. الوثائق متعددة الصفحات (5+ صفحات): 120 درهم للصفحة. الخدمة المستعجلة: +50%. السعر شامل ختم وزارة العدل بدون رسوم مخفية.'
+  },
+  {
+    question: 'كيف أرسل وثائقي للترجمة؟',
+    answer: 'أرسل صور أو مسح واضح عبر واتساب على +971 50 862 0217. نقبل الصور وملفات PDF. خلال 5-10 دقائق تحصل على تأكيد وعرض سعر. بعد الدفع، تبدأ الترجمة فوراً. نُرسل النسخة الرقمية أولاً مع خيار التوصيل.'
+  }
+];
+
+const documentCategories = [
+  {
+    title: 'ترجمة شهادة الميلاد',
+    href: '/personal/vital-records/birth/',
+    icon: 'baby',
+    desc: 'ضرورية لتأشيرات الإقامة، كفالة العائلة، التسجيل المدرسي، وتسجيل الجنسية.'
+  },
+  {
+    title: 'ترجمة عقد الزواج',
+    href: '/personal/vital-records/marriage/',
+    icon: 'ring',
+    desc: 'مطلوبة لتأشيرة الزوج/الزوجة، تسجيل دفتر العائلة، والملكية المشتركة للعقارات.'
+  },
+  {
+    title: 'ترجمة شهادة حسن السيرة',
+    href: '/personal/immigration/pcc/',
+    icon: 'shield-alt',
+    desc: 'إلزامية لتأشيرات العمل، الإقامة الذهبية، ومعاملات الهجرة.'
+  },
+  {
+    title: 'ترجمة كشف الحساب البنكي',
+    href: '/personal/immigration/bank/',
+    icon: 'university',
+    desc: 'للإقامة الذهبية، شراء العقارات، تأسيس الشركات، وإثبات الملاءة المالية.'
+  },
+  {
+    title: 'ترجمة رخصة القيادة',
+    href: '/personal/immigration/license/',
+    icon: 'id-card',
+    desc: 'لتحويل رخصة القيادة في الإمارات. ترجمات مقبولة من هيئة الطرق والمواصلات.'
+  },
+  {
+    title: 'ترجمة الشهادة الجامعية',
+    href: '/personal/academic/degree/',
+    icon: 'graduation-cap',
+    desc: 'للتوظيف، الترخيص المهني، واعتماد الشهادات من وزارة التعليم العالي.'
+  }
+];
+
+const features = [
+  {
+    icon: 'stamp',
+    title: 'معتمدة من وزارة العدل',
+    desc: 'جميع الترجمات تحمل ختم وزارة العدل الرسمي، مقبولة في المحاكم والجهات الحكومية والسفارات.'
+  },
+  {
+    icon: 'bolt',
+    title: 'مسودة خلال 60 دقيقة',
+    desc: 'الوثائق القياسية تحصل على مسودة الترجمة خلال ساعة واحدة، مع خيار التسليم المعتمد في نفس اليوم.'
+  },
+  {
+    icon: 'check-double',
+    title: 'ضمان القبول',
+    desc: 'ترجماتنا تلبي المواصفات الحكومية بدقة. مراجعة مجانية في حال الرفض بسبب خطأ منا.'
+  },
+  {
+    icon: 'file-signature',
+    title: 'دعم التصديق',
+    desc: 'تنسيق كامل للتصديق عبر وزارة الخارجية، السفارات الإماراتية، وخدمات التوثيق.'
+  }
+];
+
+const processSteps = [
+  {
+    number: 1,
+    title: 'إرسال الوثائق',
+    desc: 'أرسل صور أو مسح واضح عبر واتساب. نقبل جميع الصيغ ونؤكد الاستلام فوراً.'
+  },
+  {
+    number: 2,
+    title: 'استلام عرض السعر',
+    desc: 'خلال 5-10 دقائق، تحصل على عرض سعر تفصيلي يشمل الترجمة والتصديق والخدمات المطلوبة.'
+  },
+  {
+    number: 3,
+    title: 'الترجمة والمراجعة',
+    desc: 'مترجمون معتمدون من وزارة العدل ينجزون العمل مع مراجعة الجودة. تستلم مسودة للموافقة قبل التصديق النهائي.'
+  },
+  {
+    number: 4,
+    title: 'التسليم المعتمد',
+    desc: 'استلم ترجمتك المختومة والمعتمدة عبر واتساب والإيميل. توصيل اختياري لأي مكان في الإمارات.'
+  }
+];
+---
+
+<BaseLayoutArabic
+  title="ترجمة الوثائق الشخصية دبي | معتمدة من وزارة العدل"
+  description="ترجمة معتمدة للوثائق الشخصية في دبي وأبوظبي. شهادات الميلاد والزواج، الشهادات الجامعية، كشوف البنك. مقبولة للتأشيرات والهجرة."
+>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-certificate"></i>
+          <span>ترخيص وزارة العدل #701</span>
+        </div>
+
+        <h1>ترجمة الوثائق الشخصية في الإمارات</h1>
+        <p class="hero-subtitle">معتمدة للقبول في الجهات الحكومية الإماراتية</p>
+
+        <p class="hero-intro">
+          وثائقك الشخصية هي أساس هويتك ووضعك القانوني في الإمارات. سواء كنت تتقدم للإقامة الذهبية، أو تكفل أفراد العائلة، أو تسجل الأبناء في المدارس، الترجمة المعتمدة من وزارة العدل تضمن القبول في الهجرة والمحاكم والجهات الحكومية.
+        </p>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="stat-value">4-6 ساعات</span>
+            <span class="stat-label">الشهادات</span>
+          </div>
+          <div class="hero-stat">
+            <span class="stat-value">24-48 ساعة</span>
+            <span class="stat-label">متعدد الصفحات</span>
+          </div>
+          <div class="hero-stat">
+            <span class="stat-value">نفس اليوم</span>
+            <span class="stat-label">خدمة مستعجلة</span>
+          </div>
+        </div>
+
+        <div class="hero-cta">
+          <a href="https://wa.me/971508620217" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i>
+            <span>واتساب الآن</span>
+          </a>
+          <a href="tel:+971508620217" class="btn btn-outline">
+            <i class="fas fa-phone"></i>
+            <span>اتصل بنا</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Document Categories Section -->
+  <section class="section">
+    <div class="container">
+      <h2>أنواع الوثائق الشخصية</h2>
+      <p class="section-intro">اختر نوع وثيقتك للتعرف على المتطلبات والأسعار ومدة التسليم.</p>
+
+      <div class="documents-grid">
+        {documentCategories.map(doc => (
+          <a href={doc.href} class="document-card">
+            <div class="document-icon">
+              <i class={`fas fa-${doc.icon}`}></i>
+            </div>
+            <h3>{doc.title}</h3>
+            <p>{doc.desc}</p>
+            <span class="document-link">
+              <span>المزيد</span>
+              <i class="fas fa-arrow-left"></i>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="section bg-dark">
+    <div class="container">
+      <h2>لماذا تختارنا لترجمة وثائقك الشخصية</h2>
+      <p class="section-intro">موثوقون من الأفراد والعائلات في جميع أنحاء الإمارات للترجمات الدقيقة والمعتمدة.</p>
+
+      <div class="features-grid">
+        {features.map(feature => (
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class={`fas fa-${feature.icon}`}></i>
+            </div>
+            <h3>{feature.title}</h3>
+            <p>{feature.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Name Consistency Section -->
+  <section class="section">
+    <div class="container">
+      <h2>تطابق الأسماء: السبب الأول للرفض</h2>
+
+      <div class="warning-box">
+        <h4>
+          <i class="fas fa-exclamation-triangle"></i>
+          <span>مشكلة شائعة</span>
+        </h4>
+        <p>شهادة الميلاد مكتوب فيها "محمد". الشهادة الجامعية "Mohammed". جواز السفر "Mohamed". أيهم أنت؟</p>
+      </div>
+
+      <p>الجهات الإماراتية ترفض الوثائق عندما لا تتطابق الأسماء بالضبط. هذا يحدث كثيراً مع الأسماء العربية والهندية والأردية التي لها تهجئات إنجليزية متعددة.</p>
+
+      <p><strong>حلّنا:</strong> نتحقق من كل اسم مع جواز سفرك وهويتك الإماراتية. إذا وُجدت اختلافات، نُوثقها ونقدم خطاب توحيد الأسماء.</p>
+
+      <h3>اعرف متطلبات الجهة المقصودة</h3>
+
+      <p>كل جهة إماراتية لها متطلبات تنسيق مختلفة:</p>
+
+      <div class="authority-grid">
+        <div class="authority-item">
+          <strong>GDRFA</strong>
+          <span>طلبات التأشيرات</span>
+        </div>
+        <div class="authority-item">
+          <strong>MOHRE</strong>
+          <span>وثائق التوظيف</span>
+        </div>
+        <div class="authority-item">
+          <strong>DLD</strong>
+          <span>معاملات العقارات</span>
+        </div>
+        <div class="authority-item">
+          <strong>KHDA/ADEK</strong>
+          <span>التسجيل المدرسي</span>
+        </div>
+      </div>
+
+      <p>نُنسق كل ترجمة حسب وجهتها. وثائقك تصل جاهزة للتقديم. بدون إعادة تنسيق. بدون تأخير.</p>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>خطوات الترجمة البسيطة</h2>
+      <p class="section-intro">من إرسال الوثيقة إلى التسليم المعتمد - عملية مبسطة تضمن ترجمات سريعة ودقيقة بأقل جهد منك.</p>
+
+      <div class="process-grid">
+        {processSteps.map(step => (
+          <div class="process-card">
+            <div class="process-number">{step.number}</div>
+            <h3>{step.title}</h3>
+            <p>{step.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="section">
+    <div class="container">
+      <h2>أسعار ترجمة الوثائق الشخصية</h2>
+      <p class="section-intro">أسعار شفافة بدون رسوم مخفية. جميع الأسعار تشمل ختم وزارة العدل ومراجعة الجودة والتسليم الرقمي.</p>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>الشهادات القياسية</h3>
+          <div class="pricing-amount">150 درهم</div>
+          <div class="pricing-unit">للصفحة</div>
+          <ul>
+            <li><i class="fas fa-check"></i> شهادات الميلاد</li>
+            <li><i class="fas fa-check"></i> عقود الزواج</li>
+            <li><i class="fas fa-check"></i> الشهادات الجامعية</li>
+            <li><i class="fas fa-check"></i> تسليم 24-48 ساعة</li>
+          </ul>
+          <a href="https://wa.me/971508620217" class="btn btn-outline">احصل على عرض سعر</a>
+        </div>
+
+        <div class="pricing-card featured">
+          <div class="pricing-badge">الأكثر طلباً</div>
+          <h3>وثائق متعددة الصفحات</h3>
+          <div class="pricing-amount">120 درهم</div>
+          <div class="pricing-unit">للصفحة (5+ صفحات)</div>
+          <ul>
+            <li><i class="fas fa-check"></i> كشوف الحسابات البنكية</li>
+            <li><i class="fas fa-check"></i> السجلات الأكاديمية</li>
+            <li><i class="fas fa-check"></i> التقارير الطبية</li>
+            <li><i class="fas fa-check"></i> خصم الكمية مُطبق</li>
+          </ul>
+          <a href="https://wa.me/971508620217" class="btn btn-primary">احصل على عرض سعر</a>
+        </div>
+
+        <div class="pricing-card">
+          <h3>خدمة مستعجلة</h3>
+          <div class="pricing-amount">+50%</div>
+          <div class="pricing-unit">رسوم الاستعجال</div>
+          <ul>
+            <li><i class="fas fa-check"></i> تسليم نفس اليوم</li>
+            <li><i class="fas fa-check"></i> معالجة بأولوية</li>
+            <li><i class="fas fa-check"></i> مترجم مخصص</li>
+            <li><i class="fas fa-check"></i> خيار 4 ساعات</li>
+          </ul>
+          <a href="https://wa.me/971508620217?text=مستعجل" class="btn btn-outline">طلب مستعجل</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Attestation Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <div class="attestation-grid">
+        <div class="attestation-content">
+          <h2>خدمات التصديق الكاملة</h2>
+          <p>كثير من الوثائق الشخصية تحتاج تصديقاً كاملاً قبل تقديمها للجهات الإماراتية. هذا يشمل عملية تصديق متعددة الخطوات عبر بلد المصدر، سفارة الإمارات، ووزارة الخارجية.</p>
+          <p>نُنسق سلسلة التصديق الكاملة، موفرين عليك الوقت وضامنين الإتمام الصحيح في كل مرحلة.</p>
+          <ul class="attestation-list">
+            <li><i class="fas fa-check-circle"></i> توثيق بلد المصدر</li>
+            <li><i class="fas fa-check-circle"></i> تصديق سفارة الإمارات</li>
+            <li><i class="fas fa-check-circle"></i> تصديق وزارة الخارجية النهائي</li>
+            <li><i class="fas fa-check-circle"></i> استلام وتسليم الوثائق</li>
+          </ul>
+          <a href="/ar/services/" class="btn btn-primary">
+            <span>تعرف على خدمات التصديق</span>
+            <i class="fas fa-arrow-left"></i>
+          </a>
+        </div>
+
+        <div class="attestation-box">
+          <h3>وثائق تحتاج تصديق</h3>
+          <div class="attestation-docs">
+            <div class="attestation-doc"><i class="fas fa-baby"></i> شهادات الميلاد</div>
+            <div class="attestation-doc"><i class="fas fa-ring"></i> عقود الزواج</div>
+            <div class="attestation-doc"><i class="fas fa-graduation-cap"></i> الشهادات الجامعية</div>
+            <div class="attestation-doc"><i class="fas fa-shield-alt"></i> شهادة حسن السيرة</div>
+            <div class="attestation-doc"><i class="fas fa-file-medical"></i> التقارير الطبية</div>
+            <div class="attestation-doc"><i class="fas fa-file-contract"></i> التوكيلات</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container">
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-grid">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" name="faq">
+            <summary class="faq-question">
+              <span>{faq.question}</span>
+              <i class="fas fa-chevron-down"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>هل تحتاج ترجمة وثائق شخصية؟</h2>
+        <p>أرسل وثائقك عبر واتساب واحصل على عرض سعر خلال 5 دقائق. ترجمة معتمدة من وزارة العدل لجميع الجهات الإماراتية.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/971508620217" class="btn btn-primary btn-lg">
+            <i class="fab fa-whatsapp"></i>
+            <span>واتساب: 0508620217</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  })} />
+
+</BaseLayoutArabic>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, var(--surface-navy) 0%, #1a3a5c 100%);
+    color: #fff;
+    padding: 4rem 0;
+  }
+
+  .hero-content {
+    max-width: 800px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-section h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 0.75rem;
+    line-height: 1.3;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-intro {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    text-align: center;
+  }
+
+  .stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-coral);
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--accent-coral);
+    color: #fff;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  /* Sections */
+  .section {
+    padding: 4rem 0;
+  }
+
+  .section h2 {
+    font-size: 1.75rem;
+    margin: 0 0 1rem;
+    color: var(--primary-color);
+  }
+
+  .section h3 {
+    font-size: 1.25rem;
+    margin: 2rem 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 800px;
+  }
+
+  .bg-dark {
+    background: var(--surface-navy);
+    color: #fff;
+  }
+
+  .bg-dark h2,
+  .bg-dark h3,
+  .bg-dark .section-intro {
+    color: #fff;
+  }
+
+  .bg-dark .section-intro {
+    opacity: 0.9;
+  }
+
+  .bg-light {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  /* Documents Grid */
+  .documents-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .document-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    display: block;
+  }
+
+  .document-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .document-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-coral);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .document-icon i {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+
+  .document-card h3 {
+    font-size: 1.15rem;
+    margin: 0 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .document-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .document-link {
+    color: var(--accent-coral);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* Features Grid */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .feature-card {
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .feature-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+  }
+
+  .feature-icon i {
+    font-size: 1.75rem;
+    color: var(--accent-coral);
+  }
+
+  .feature-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: #fff;
+  }
+
+  .feature-card p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Warning Box */
+  .warning-box {
+    background: linear-gradient(135deg, #fff8e6 0%, #fff3d6 100%);
+    border-right: 4px solid #f59e0b;
+    padding: 1.5rem;
+    border-radius: 0.75rem 0 0 0.75rem;
+    margin: 1.5rem 0;
+  }
+
+  .warning-box h4 {
+    margin: 0 0 0.5rem;
+    color: #b45309;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .warning-box h4 i {
+    color: #f59e0b;
+  }
+
+  .warning-box p {
+    margin: 0;
+    line-height: 1.6;
+    font-style: italic;
+    color: #78350f;
+  }
+
+  /* Authority Grid */
+  .authority-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .authority-item {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .authority-item strong {
+    display: block;
+    color: var(--primary-color);
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .authority-item span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  /* Process Grid */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .process-card {
+    text-align: center;
+    position: relative;
+  }
+
+  .process-number {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-coral);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .process-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
+  }
+
+  .process-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* Pricing Grid */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .pricing-card {
+    background: #fff;
+    border: 2px solid #eee;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .pricing-card.featured {
+    background: var(--surface-navy);
+    color: #fff;
+    transform: scale(1.05);
+    border-color: var(--surface-navy);
+  }
+
+  .pricing-badge {
+    background: var(--accent-coral);
+    color: #fff;
+    padding: 0.35rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    position: absolute;
+    top: -12px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .pricing-card h3 {
+    font-size: 1.15rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .pricing-card.featured h3 {
+    color: #fff;
+  }
+
+  .pricing-amount {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-coral);
+    margin-bottom: 0.25rem;
+  }
+
+  .pricing-unit {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-card.featured .pricing-unit {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .pricing-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    text-align: right;
+  }
+
+  .pricing-card li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-direction: row-reverse;
+  }
+
+  .pricing-card.featured li {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .pricing-card li i {
+    color: var(--accent-coral);
+  }
+
+  .pricing-card .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .pricing-card .btn-outline {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+
+  .pricing-card.featured .btn-outline {
+    color: #fff;
+    border-color: #fff;
+  }
+
+  /* Attestation Section */
+  .attestation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .attestation-content h2 {
+    margin-top: 0;
+  }
+
+  .attestation-content p {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    line-height: 1.8;
+  }
+
+  .attestation-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+  }
+
+  .attestation-list li {
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-direction: row-reverse;
+  }
+
+  .attestation-list i {
+    color: var(--accent-coral);
+  }
+
+  .attestation-content .btn {
+    background: var(--accent-coral);
+    color: #fff;
+  }
+
+  .attestation-box {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .attestation-box h3 {
+    font-size: 1.25rem;
+    margin: 0 0 1.5rem;
+  }
+
+  .attestation-docs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .attestation-doc {
+    background: var(--bg-light, #f8f9fa);
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-direction: row-reverse;
+  }
+
+  .attestation-doc i {
+    color: var(--accent-coral);
+  }
+
+  /* FAQ Section */
+  .faq-grid {
+    display: grid;
+    gap: 1rem;
+    max-width: 900px;
+  }
+
+  .faq-item {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .faq-question {
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: var(--primary-color);
+    list-style: none;
+    gap: 1rem;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question i {
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .faq-item[open] .faq-question i {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.25rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  .faq-answer p {
+    margin: 0;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, var(--accent-coral) 0%, #e63946 100%);
+    color: #fff;
+    text-align: center;
+  }
+
+  .cta-content h2 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-content p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .cta-section .btn-primary {
+    background: #fff;
+    color: var(--accent-coral);
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .features-grid,
+    .process-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 991px) {
+    .documents-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+    }
+
+    .pricing-card.featured {
+      transform: none;
+    }
+
+    .attestation-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .authority-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 3rem 0;
+    }
+
+    .hero-section h1 {
+      font-size: 1.75rem;
+    }
+
+    .hero-stats {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .section {
+      padding: 3rem 0;
+    }
+
+    .documents-grid,
+    .features-grid,
+    .process-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .authority-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .attestation-docs {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,1214 @@
+---
+/**
+ * /ar/services/attestation/ - خدمات تصديق الوثائق (Arabic Attestation Hub)
+ *
+ * Target Keywords: تصديق وثائق دبي, تصديق وزارة الخارجية, تصديق السفارة
+ * Layout: BaseLayoutArabic
+ * Silo: Services (Arabic)
+ */
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: 'ما هو تصديق الوثائق ولماذا أحتاجه؟',
+    answer: 'تصديق الوثائق هو عملية التحقق من صحة الوثائق لاستخدامها في بلد آخر. لكي تُقبل الوثائق الأجنبية في الإمارات، يجب التحقق منها عبر سلسلة من الجهات: التوثيق في بلد المصدر، تصديق وزارة الخارجية هناك، تصديق سفارة الإمارات، ثم التصديق النهائي من وزارة الخارجية الإماراتية. بدون التصديق الصحيح، لا تحمل الوثائق الأجنبية أي قيمة قانونية في الإمارات.'
+  },
+  {
+    question: 'ما هي الوثائق التي تحتاج تصديق للاستخدام في الإمارات؟',
+    answer: 'الشهادات التعليمية للتوظيف والترخيص المهني. الوثائق الشخصية مثل شهادات الميلاد والزواج لطلبات التأشيرة. الوثائق التجارية (عقود التأسيس، التراخيص، التوكيلات) لتأسيس الشركات. الوثائق القانونية كأحكام المحاكم للإجراءات القضائية.'
+  },
+  {
+    question: 'ما هي خطوات تصديق الوثائق الهندية؟',
+    answer: 'الوثائق الهندية تمر بـ 5 خطوات: التوثيق من كاتب عدل هندي، ثم تصديق HRD أو وزارة الداخلية بالولاية، ثم تصديق MEA، ثم سفارة الإمارات، وأخيراً وزارة الخارجية الإماراتية. ننسق السلسلة الكاملة في 2-3 أسابيع.'
+  },
+  {
+    question: 'كم تستغرق عملية التصديق؟',
+    answer: 'المدة تختلف حسب البلد. الهند: 2-3 أسابيع للسلسلة الكاملة. بريطانيا: 2-4 أسابيع. أمريكا: 3-4 أسابيع. الوثائق المصدقة جزئياً أسرع. وزارة الخارجية الإماراتية وحدها: 1-3 أيام عمل.'
+  },
+  {
+    question: 'هل تتعاملون مع وثائق من جميع الدول؟',
+    answer: 'نعم. ننسق التصديق من الهند، باكستان، الفلبين، بريطانيا، أمريكا، كندا، أستراليا، والمزيد. كل دولة لها متطلبات مختلفة. شبكاتنا المُنشأة تفهم إجراءات كل دولة بالتحديد.'
+  },
+  {
+    question: 'ما هو تصديق وزارة الخارجية ومتى يُطلب؟',
+    answer: 'تصديق MOFA هو الخطوة الأخيرة في سلسلة التصديق الإماراتية. يتحقق من أن ختم سفارة الإمارات حقيقي. مطلوب لطلبات التأشيرة، التوظيف، تأسيس الشركات، والتقديم للمحاكم.'
+  },
+  {
+    question: 'هل يمكن تسريع عملية التصديق؟',
+    answer: 'نعم، التصديق المستعجل متاح. وزارة الخارجية الإماراتية تقدم خدمة سريعة في 24-48 ساعة بدلاً من 3-5 أيام. سرعة التصديق الأجنبي تعتمد على البلد. بعض السفارات تقدم معالجة بأولوية برسوم إضافية.'
+  },
+  {
+    question: 'هل يجب إرسال الوثائق الأصلية للتصديق؟',
+    answer: 'نعم، التصديق يتطلب الوثائق الأصلية. الأختام تُوضع مباشرة على الأصل في كل مرحلة. نستخدم شحن آمن مع التتبع والتأمين. يمكنك متابعة التقدم طوال العملية.'
+  },
+  {
+    question: 'ما تكلفة خدمات التصديق؟',
+    answer: 'التكاليف تعتمد على البلد ونوع الوثيقة. وزارة الخارجية الإماراتية وحدها تبدأ من 200 درهم للوثيقة. السلسلة الكاملة من الهند تبدأ من 800-1,200 درهم. نقدم عروض أسعار تفصيلية تشمل جميع الرسوم مقدماً—بدون رسوم مخفية.'
+  },
+  {
+    question: 'ماذا يحدث إذا رُفضت وثيقتي أثناء التصديق؟',
+    answer: 'الرفض يحدث بسبب التوثيق الناقص، التسلسل الخاطئ، أو مشاكل الجودة. إذا رُفضت، نحدد المشكلة ونُعيد التقديم بدون رسوم خدمة إضافية. قد تُطبق رسوم حكومية. نراجع الوثائق قبل التقديم لمنع الرفض.'
+  }
+];
+
+const countries = [
+  {
+    name: "الهند",
+    flag: "🇮🇳",
+    timeline: "2-3 أسابيع",
+    steps: ["كاتب عدل", "HRD الولاية", "MEA", "سفارة الإمارات", "MOFA"]
+  },
+  {
+    name: "باكستان",
+    flag: "🇵🇰",
+    timeline: "2-3 أسابيع",
+    steps: ["كاتب عدل", "IBCC/HEC", "خارجية باكستان", "سفارة الإمارات", "MOFA"]
+  },
+  {
+    name: "الفلبين",
+    flag: "🇵🇭",
+    timeline: "2-3 أسابيع",
+    steps: ["تصديق DFA", "سفارة الإمارات", "MOFA"]
+  },
+  {
+    name: "بريطانيا",
+    flag: "🇬🇧",
+    timeline: "2-4 أسابيع",
+    steps: ["كاتب عدل", "أبوستيل FCO", "سفارة الإمارات", "MOFA"]
+  },
+  {
+    name: "أمريكا",
+    flag: "🇺🇸",
+    timeline: "3-4 أسابيع",
+    steps: ["كاتب عدل", "سكرتير الولاية", "وزارة الخارجية", "سفارة الإمارات", "MOFA"]
+  },
+  {
+    name: "كندا",
+    flag: "🇨🇦",
+    timeline: "3-4 أسابيع",
+    steps: ["كاتب عدل", "تصديق المقاطعة", "GAC", "سفارة الإمارات", "MOFA"]
+  }
+];
+
+const documentTypes = [
+  {
+    category: "الوثائق التعليمية",
+    icon: "graduation-cap",
+    items: ["الشهادات الجامعية", "الدبلومات", "كشوف الدرجات", "الشهادات المهنية", "شهادات التدريب"],
+    use: "التوظيف، الترخيص المهني، معادلة وزارة التعليم العالي"
+  },
+  {
+    category: "الوثائق الشخصية",
+    icon: "user",
+    items: ["شهادات الميلاد", "عقود الزواج", "أحكام الطلاق", "شهادات الوفاة", "شهادة حسن السيرة"],
+    use: "طلبات التأشيرة، كفالة العائلة، الشؤون القانونية"
+  },
+  {
+    category: "الوثائق التجارية",
+    icon: "briefcase",
+    items: ["عقود التأسيس", "التراخيص التجارية", "قرارات مجلس الإدارة", "التوكيلات", "الفواتير التجارية"],
+    use: "تأسيس الشركات، المعاملات البنكية، الصفقات التجارية"
+  },
+  {
+    category: "الوثائق القانونية",
+    icon: "gavel",
+    items: ["أحكام المحاكم", "الإقرارات", "التصريحات القانونية", "الوصايا", "العقود"],
+    use: "الإجراءات القضائية، التنفيذ القانوني، شؤون الملكية"
+  }
+];
+
+const processSteps = [
+  {
+    number: 1,
+    title: "مراجعة الوثائق",
+    desc: "أرسل وثائقك عبر واتساب. نتحقق من نوع الوثيقة، بلد المصدر، الغرض من الاستخدام، ونحدد سلسلة التصديق المطلوبة."
+  },
+  {
+    number: 2,
+    title: "عرض السعر والجدول الزمني",
+    desc: "تحصل على عرض سعر تفصيلي يشمل جميع الرسوم (الخدمة، الحكومية، السفارة، الشحن) مع جدول زمني واقعي بناءً على أوقات المعالجة الحالية."
+  },
+  {
+    number: 3,
+    title: "استلام الوثائق",
+    desc: "نستلم وثائقك الأصلية عبر شحن آمن من موقعك في دبي، أبوظبي، الشارقة، أو أي مكان في الإمارات."
+  },
+  {
+    number: 4,
+    title: "معالجة التصديق",
+    desc: "الوثائق تمر عبر سلسلة التصديق مع التتبع في كل مرحلة. نتولى جميع التقديمات والمدفوعات والمتابعات."
+  },
+  {
+    number: 5,
+    title: "التسليم",
+    desc: "الوثائق المصدقة بالكامل تُعاد إليك عبر شحن آمن. نسخ رقمية تُقدم فوراً عند الإتمام."
+  }
+];
+---
+
+<BaseLayoutArabic
+  title="خدمات تصديق الوثائق في دبي | وزارة الخارجية والسفارات"
+  description="خدمات تصديق الوثائق الكاملة في دبي. وزارة الخارجية، السفارات، السلسلة الكاملة من الهند، بريطانيا، أمريكا، باكستان. تتبع وثائقك. واتساب: 0508620217"
+>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-certificate"></i>
+          <span>خدمة تصديق شاملة</span>
+        </div>
+
+        <h1>خدمات تصديق الوثائق في دبي</h1>
+        <p class="hero-subtitle">وزارة الخارجية، السفارات، والسلسلة الكاملة</p>
+
+        <p class="hero-intro">
+          الوثائق الأجنبية تحتاج توثيقاً قبل أن تقبلها الجهات الإماراتية. ننسق سلسلة التصديق الكاملة—من التوثيق في بلدك الأصلي، عبر تصديق السفارة، إلى التصديق النهائي من وزارة الخارجية.
+        </p>
+
+        <div class="hero-chain">
+          <h3>سلسلة التصديق القياسية</h3>
+          <div class="chain-visual">
+            <div class="chain-item">
+              <span class="chain-number">1</span>
+              <span class="chain-label">التوثيق</span>
+              <span class="chain-desc">في بلد المصدر</span>
+            </div>
+            <div class="chain-arrow"><i class="fas fa-arrow-left"></i></div>
+            <div class="chain-item">
+              <span class="chain-number">2</span>
+              <span class="chain-label">وزارة الخارجية</span>
+              <span class="chain-desc">بلد المصدر</span>
+            </div>
+            <div class="chain-arrow"><i class="fas fa-arrow-left"></i></div>
+            <div class="chain-item">
+              <span class="chain-number">3</span>
+              <span class="chain-label">سفارة الإمارات</span>
+              <span class="chain-desc">في بلدك</span>
+            </div>
+            <div class="chain-arrow"><i class="fas fa-arrow-left"></i></div>
+            <div class="chain-item">
+              <span class="chain-number">4</span>
+              <span class="chain-label">MOFA</span>
+              <span class="chain-desc">الإمارات</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-cta">
+          <a href="https://wa.me/971508620217?text=استفسار%20عن%20تصديق" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i>
+            <span>واتساب الآن</span>
+          </a>
+          <a href="tel:+971508620217" class="btn btn-outline">
+            <i class="fas fa-phone"></i>
+            <span>اتصل بنا</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Document Types Section -->
+  <section class="section">
+    <div class="container">
+      <h2>الوثائق التي نصدقها</h2>
+      <p class="section-intro">نتعامل مع تصديق جميع أنواع الوثائق المطلوبة للجهات الحكومية والتوظيف والاستخدام القانوني في الإمارات.</p>
+
+      <div class="document-types-grid">
+        {documentTypes.map(docType => (
+          <div class="document-type-card">
+            <div class="document-type-icon">
+              <i class={`fas fa-${docType.icon}`}></i>
+            </div>
+            <h3>{docType.category}</h3>
+            <ul class="document-items">
+              {docType.items.map(item => (
+                <li>{item}</li>
+              ))}
+            </ul>
+            <div class="document-use">
+              <strong>تُستخدم لـ:</strong> {docType.use}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Countries Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>التصديق حسب البلد</h2>
+      <p class="section-intro">كل بلد له متطلبات وقنوات تصديق مختلفة. نتعامل مع وثائق من جميع الدول الرئيسية.</p>
+
+      <div class="countries-grid">
+        {countries.map(country => (
+          <div class="country-card">
+            <div class="country-header">
+              <span class="country-flag">{country.flag}</span>
+              <h3>{country.name}</h3>
+              <span class="country-timeline">{country.timeline}</span>
+            </div>
+            <div class="country-steps">
+              {country.steps.map((step, index) => (
+                <span class="step-badge">
+                  {index + 1}. {step}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="countries-note">
+        <p>
+          <i class="fas fa-info-circle"></i>
+          <strong>دول أخرى:</strong> نتعامل أيضاً مع تصديق وثائق من أستراليا، ألمانيا، فرنسا، مصر، الأردن، لبنان، بنغلاديش، سريلانكا، نيبال، و50+ دولة أخرى. تواصل معنا للمتطلبات المحددة.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section">
+    <div class="container">
+      <h2>خطوات التصديق</h2>
+      <p class="section-intro">نتولى التعقيد حتى لا تضطر للتنقل بين مكاتب حكومية متعددة وسفارات.</p>
+
+      <div class="process-timeline">
+        {processSteps.map(step => (
+          <div class="process-step">
+            <div class="step-number">{step.number}</div>
+            <div class="step-content">
+              <h3>{step.title}</h3>
+              <p>{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>أسعار خدمات التصديق</h2>
+      <p class="section-intro">أسعار شفافة تشمل جميع الرسوم. بدون مفاجآت.</p>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>وزارة الخارجية فقط</h3>
+          <div class="pricing-amount">200 درهم</div>
+          <div class="pricing-unit">للوثيقة</div>
+          <ul>
+            <li><i class="fas fa-check"></i> تصديق MOFA</li>
+            <li><i class="fas fa-check"></i> 1-3 أيام عمل</li>
+            <li><i class="fas fa-check"></i> للوثائق المصدقة مسبقاً</li>
+            <li><i class="fas fa-check"></i> استلام وتسليم في دبي</li>
+          </ul>
+          <a href="https://wa.me/971508620217" class="btn btn-outline">احصل على عرض سعر</a>
+        </div>
+
+        <div class="pricing-card featured">
+          <div class="pricing-badge">الأكثر طلباً</div>
+          <h3>السلسلة الكاملة - الهند</h3>
+          <div class="pricing-amount">800+ درهم</div>
+          <div class="pricing-unit">للوثيقة</div>
+          <ul>
+            <li><i class="fas fa-check"></i> MEA + سفارة + MOFA</li>
+            <li><i class="fas fa-check"></i> 2-3 أسابيع</li>
+            <li><i class="fas fa-check"></i> تتبع في كل مرحلة</li>
+            <li><i class="fas fa-check"></i> شحن آمن مشمول</li>
+          </ul>
+          <a href="https://wa.me/971508620217" class="btn btn-primary">احصل على عرض سعر</a>
+        </div>
+
+        <div class="pricing-card">
+          <h3>السلسلة الكاملة - UK/US</h3>
+          <div class="pricing-amount">1,200+ درهم</div>
+          <div class="pricing-unit">للوثيقة</div>
+          <ul>
+            <li><i class="fas fa-check"></i> توثيق + أبوستيل + سفارة</li>
+            <li><i class="fas fa-check"></i> 2-4 أسابيع</li>
+            <li><i class="fas fa-check"></i> وكلاء محليين في UK/US</li>
+            <li><i class="fas fa-check"></i> شحن دولي آمن</li>
+          </ul>
+          <a href="https://wa.me/971508620217" class="btn btn-outline">احصل على عرض سعر</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Understanding Section -->
+  <section class="section">
+    <div class="container">
+      <h2>فهم تصديق الوثائق في الإمارات</h2>
+
+      <p>الإمارات تتطلب توثيق الوثائق الأجنبية قبل أن تحمل قيمة قانونية. عملية التصديق تؤكد:</p>
+      <ul class="confirm-list">
+        <li>الوثيقة أصلية</li>
+        <li>صادرة من جهة شرعية</li>
+        <li>موثقة من جهات حكومية في كلا البلدين</li>
+      </ul>
+
+      <div class="consequence-box">
+        <h4>
+          <i class="fas fa-exclamation-circle"></i>
+          <span>بدون التصديق الصحيح:</span>
+        </h4>
+        <ul>
+          <li>الشهادة الجامعية لا يمكن استخدامها للتوظيف</li>
+          <li>عقد الزواج لن يُقبل لتأشيرة الزوج/الزوجة</li>
+          <li>التوكيل ليس له أثر لمعاملات العقارات</li>
+        </ul>
+      </div>
+
+      <h3>ملاحظة عن اتفاقية لاهاي</h3>
+
+      <p>لدول اتفاقية لاهاي، الأبوستيل يحل محل سلسلة السفارة للاستخدام في الدول الأعضاء الأخرى. لكن الإمارات ليست عضواً في اتفاقية لاهاي—الوثائق المُوثقة بالأبوستيل تحتاج أيضاً تصديق سفارة الإمارات و MOFA.</p>
+
+      <div class="hague-box">
+        <h4>دول أعضاء في اتفاقية لاهاي:</h4>
+        <div class="hague-countries">
+          <span>🇮🇳 الهند</span>
+          <span>🇬🇧 بريطانيا</span>
+          <span>🇺🇸 أمريكا</span>
+          <span>🇨🇦 كندا</span>
+          <span>🇵🇭 الفلبين</span>
+          <span>🇧🇩 بنغلاديش</span>
+        </div>
+        <p class="hague-note">❌ باكستان ليست عضواً - تحتاج السلسلة الكاملة</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Translation + Attestation -->
+  <section class="section bg-dark">
+    <div class="container">
+      <div class="combo-section">
+        <div class="combo-content">
+          <h2>حزم الترجمة + التصديق</h2>
+          <p>كثير من الوثائق تحتاج ترجمة معتمدة من وزارة العدل وتصديقاً معاً للاستخدام في الإمارات. نقدم حزم مجمعة تتولى كلا الخدمتين بنقطة اتصال واحدة.</p>
+          <p>الحزم المجمعة توفر الوقت وتضمن التسلسل الصحيح. ننصحك إذا كان يجب أن تحدث الترجمة قبل أو بعد التصديق بناءً على وثائقك المحددة والغرض من الاستخدام.</p>
+          <a href="https://wa.me/971508620217?text=حزمة%20ترجمة%20وتصديق" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i>
+            <span>احصل على عرض الحزمة</span>
+          </a>
+        </div>
+        <div class="combo-features">
+          <div class="combo-feature">
+            <i class="fas fa-check-circle"></i>
+            <span>نقطة اتصال واحدة</span>
+          </div>
+          <div class="combo-feature">
+            <i class="fas fa-check-circle"></i>
+            <span>ضمان التسلسل الصحيح</span>
+          </div>
+          <div class="combo-feature">
+            <i class="fas fa-check-circle"></i>
+            <span>توفير 10-15% بأسعار الحزمة</span>
+          </div>
+          <div class="combo-feature">
+            <i class="fas fa-check-circle"></i>
+            <span>تتبع شامل من البداية للنهاية</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container">
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-grid">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" name="faq">
+            <summary class="faq-question">
+              <span>{faq.question}</span>
+              <i class="fas fa-chevron-down"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>هل تحتاج تصديق وثائق؟</h2>
+        <p>أرسل وثائقك عبر واتساب للتقييم المجاني وعرض السعر التفصيلي. نتعامل مع وثائق من جميع الدول.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/971508620217?text=استفسار%20تصديق" class="btn btn-primary btn-lg">
+            <i class="fab fa-whatsapp"></i>
+            <span>واتساب: 0508620217</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  })} />
+
+</BaseLayoutArabic>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, var(--surface-navy) 0%, #1a3a5c 100%);
+    color: #fff;
+    padding: 4rem 0;
+  }
+
+  .hero-content {
+    max-width: 900px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-section h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 0.75rem;
+    line-height: 1.3;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-intro {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+  }
+
+  .hero-chain {
+    margin-bottom: 2rem;
+  }
+
+  .hero-chain h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+  }
+
+  .chain-visual {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .chain-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 12px;
+    text-align: center;
+    min-width: 100px;
+  }
+
+  .chain-number {
+    display: block;
+    width: 28px;
+    height: 28px;
+    background: var(--accent-coral);
+    border-radius: 50%;
+    margin: 0 auto 0.5rem;
+    line-height: 28px;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  .chain-label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .chain-desc {
+    display: block;
+    font-size: 0.75rem;
+    opacity: 0.7;
+  }
+
+  .chain-arrow {
+    color: var(--accent-coral);
+    font-size: 1.25rem;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--accent-coral);
+    color: #fff;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  /* Sections */
+  .section {
+    padding: 4rem 0;
+  }
+
+  .section h2 {
+    font-size: 1.75rem;
+    margin: 0 0 1rem;
+    color: var(--primary-color);
+  }
+
+  .section h3 {
+    font-size: 1.25rem;
+    margin: 2rem 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 800px;
+  }
+
+  .bg-light {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  .bg-dark {
+    background: var(--surface-navy);
+    color: #fff;
+  }
+
+  .bg-dark h2 {
+    color: #fff;
+  }
+
+  /* Document Types Grid */
+  .document-types-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .document-type-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .document-type-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--accent-coral);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .document-type-icon i {
+    font-size: 1.25rem;
+    color: #fff;
+  }
+
+  .document-type-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 1rem;
+    color: var(--primary-color);
+  }
+
+  .document-items {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+  }
+
+  .document-items li {
+    padding: 0.35rem 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .document-items li:last-child {
+    border-bottom: none;
+  }
+
+  .document-use {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  /* Countries Grid */
+  .countries-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .country-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .country-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .country-flag {
+    font-size: 1.5rem;
+  }
+
+  .country-header h3 {
+    font-size: 1.1rem;
+    margin: 0;
+    color: var(--primary-color);
+    flex-grow: 1;
+  }
+
+  .country-timeline {
+    background: var(--accent-coral);
+    color: #fff;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .country-steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .step-badge {
+    background: var(--bg-light, #f8f9fa);
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .countries-note {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 12px;
+    border-right: 4px solid var(--accent-coral);
+  }
+
+  .countries-note p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    flex-direction: row-reverse;
+  }
+
+  .countries-note i {
+    color: var(--accent-coral);
+    margin-top: 0.25rem;
+  }
+
+  /* Process Timeline */
+  .process-timeline {
+    max-width: 800px;
+  }
+
+  .process-step {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    flex-direction: row-reverse;
+  }
+
+  .process-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 24px;
+    top: 50px;
+    bottom: -2rem;
+    width: 2px;
+    background: var(--accent-coral);
+    opacity: 0.3;
+  }
+
+  .step-number {
+    width: 50px;
+    height: 50px;
+    background: var(--accent-coral);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .step-content {
+    text-align: right;
+  }
+
+  .step-content h3 {
+    font-size: 1.15rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .step-content p {
+    margin: 0;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* Pricing Grid */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+  }
+
+  .pricing-card {
+    background: #fff;
+    border: 2px solid #eee;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .pricing-card.featured {
+    background: var(--surface-navy);
+    color: #fff;
+    transform: scale(1.05);
+    border-color: var(--surface-navy);
+  }
+
+  .pricing-badge {
+    background: var(--accent-coral);
+    color: #fff;
+    padding: 0.35rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    position: absolute;
+    top: -12px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .pricing-card h3 {
+    font-size: 1.15rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .pricing-card.featured h3 {
+    color: #fff;
+  }
+
+  .pricing-amount {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-coral);
+    margin-bottom: 0.25rem;
+  }
+
+  .pricing-unit {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-card.featured .pricing-unit {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .pricing-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    text-align: right;
+  }
+
+  .pricing-card li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-direction: row-reverse;
+  }
+
+  .pricing-card.featured li {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .pricing-card li i {
+    color: var(--accent-coral);
+  }
+
+  .pricing-card .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .pricing-card .btn-outline {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+
+  .pricing-card.featured .btn-outline {
+    color: #fff;
+    border-color: #fff;
+  }
+
+  /* Confirm List */
+  .confirm-list {
+    margin: 0.75rem 0 1.5rem;
+    padding-right: 1.25rem;
+    list-style-position: inside;
+  }
+
+  .confirm-list li {
+    margin-bottom: 0.35rem;
+    line-height: 1.5;
+  }
+
+  /* Consequence Box */
+  .consequence-box {
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+    border-right: 4px solid #ef4444;
+    padding: 1.25rem 1.5rem;
+    border-radius: 0.75rem 0 0 0.75rem;
+    margin: 1.5rem 0;
+  }
+
+  .consequence-box h4 {
+    margin: 0 0 0.75rem;
+    color: #dc2626;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-direction: row-reverse;
+  }
+
+  .consequence-box h4 i {
+    color: #ef4444;
+  }
+
+  .consequence-box ul {
+    margin: 0;
+    padding-right: 1.25rem;
+    list-style-position: inside;
+  }
+
+  .consequence-box li {
+    margin-bottom: 0.35rem;
+    line-height: 1.5;
+  }
+
+  /* Hague Box */
+  .hague-box {
+    background: #f0f9ff;
+    border-right: 4px solid #0ea5e9;
+    padding: 1.5rem;
+    border-radius: 0.75rem 0 0 0.75rem;
+    margin: 1.5rem 0;
+  }
+
+  .hague-box h4 {
+    margin: 0 0 1rem;
+    color: var(--primary-color);
+    font-size: 1rem;
+  }
+
+  .hague-countries {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .hague-countries span {
+    background: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+
+  .hague-note {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #b91c1c;
+    font-weight: 600;
+  }
+
+  /* Combo Section */
+  .combo-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .combo-content h2 {
+    color: #fff;
+    margin-top: 0;
+  }
+
+  .combo-content p {
+    opacity: 0.9;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .combo-features {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .combo-feature {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    flex-direction: row-reverse;
+  }
+
+  .combo-feature i {
+    color: var(--accent-coral);
+    font-size: 1.25rem;
+  }
+
+  /* FAQ Section */
+  .faq-grid {
+    display: grid;
+    gap: 1rem;
+    max-width: 900px;
+  }
+
+  .faq-item {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .faq-question {
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: var(--primary-color);
+    list-style: none;
+    gap: 1rem;
+    flex-direction: row-reverse;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question i {
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .faq-item[open] .faq-question i {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.25rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    text-align: right;
+  }
+
+  .faq-answer p {
+    margin: 0;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, var(--accent-coral) 0%, #e63946 100%);
+    color: #fff;
+    text-align: center;
+  }
+
+  .cta-content h2 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-content p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .cta-section .btn-primary {
+    background: #fff;
+    color: var(--accent-coral);
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .document-types-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .countries-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 991px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+    }
+
+    .pricing-card.featured {
+      transform: none;
+    }
+
+    .combo-section {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 3rem 0;
+    }
+
+    .hero-section h1 {
+      font-size: 1.75rem;
+    }
+
+    .chain-visual {
+      flex-direction: column;
+    }
+
+    .chain-arrow {
+      transform: rotate(90deg);
+    }
+
+    .section {
+      padding: 3rem 0;
+    }
+
+    .document-types-grid,
+    .countries-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hague-countries {
+      flex-direction: column;
+    }
+  }
+</style>

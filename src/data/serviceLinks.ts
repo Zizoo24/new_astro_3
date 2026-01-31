@@ -529,6 +529,20 @@ export const serviceLinks: Record<string, ServiceLink> = {
     icon: "fas fa-balance-scale",
     badge: "NEW"
   },
+  marriageCertificateGuide: {
+    url: "/blog/marriage-certificate-translation-dubai/",
+    text: "Marriage Certificate Translation Guide",
+    full: "Complete GDRFA guide for spouse visa marriage certificate translation",
+    icon: "fas fa-ring",
+    badge: "NEW"
+  },
+  attestationProcessGuide: {
+    url: "/blog/uae-attestation-process-guide/",
+    text: "UAE Attestation Process Guide",
+    full: "Embassy vs MOFA vs apostille explained for 2026",
+    icon: "fas fa-stamp",
+    badge: "NEW"
+  },
 
   // ========================================
   // INDUSTRIES
@@ -1093,6 +1107,18 @@ export const pageRelationships: Record<string, PageRelationships> = {
     family: ["legalTranslationMojGuide", "mojVsCertified", "attestationGuide"],
     crossSilo: ["goldenVisa", "difc", "corporate"],
     resources: ["mojVsCertified", "attestationGuide", "documentChecklist", "pricingGuide"]
+  },
+  marriageCertificateGuide: {
+    related: ["marriageCertificate", "attestation", "vitalRecords", "sponsorship", "goldenVisa"],
+    family: ["attestationGuide", "birthCertificate", "divorceCertificate"],
+    crossSilo: ["legalTranslation", "pcc", "bankStatements"],
+    resources: ["attestationGuide", "documentChecklist", "pricingGuide"]
+  },
+  attestationProcessGuide: {
+    related: ["attestation", "mofa", "degree", "marriageCertificate", "pcc", "birthCertificate"],
+    family: ["attestationGuide", "marriageCertificateGuide", "courtDocumentGuide"],
+    crossSilo: ["legalTranslation", "goldenVisa", "corporate"],
+    resources: ["attestationGuide", "documentChecklist", "pricingGuide"]
   },
 
   // ========================================
