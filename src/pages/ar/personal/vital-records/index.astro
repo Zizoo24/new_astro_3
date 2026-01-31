@@ -1,0 +1,1087 @@
+---
+/**
+ * /ar/personal/vital-records/ - صفحة ترجمة السجلات الحيوية (Arabic Vital Records)
+ *
+ * Target Keywords: ترجمة شهادة ميلاد, ترجمة عقد زواج, ترجمة شهادة وفاة
+ * Layout: BaseLayoutArabic
+ * Silo: Personal (Arabic)
+ */
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: 'ما هي الوثائق التي تُعتبر سجلات حيوية في الإمارات؟',
+    answer: 'السجلات الحيوية تشمل شهادات الميلاد والزواج والطلاق والوفاة. الإمارات تطلبها لكفالة التأشيرات، تحديث الحالة العائلية، التسجيل المدرسي، والإجراءات القضائية. السجلات الحيوية الأجنبية يجب ترجمتها من مترجمين معتمدين من وزارة العدل.'
+  },
+  {
+    question: 'هل تحتاج سجلاتي الحيوية تصديقاً قبل الترجمة؟',
+    answer: 'نعم، لمعظم التقديمات الحكومية الإماراتية. السلسلة تشمل: التوثيق، تصديق وزارة الخارجية، سفارة الإمارات، ووزارة الخارجية الإماراتية MOFA. نتحقق من حالة التصديق أثناء مراجعة الوثيقة ونخبرك إذا كانت هناك أختام ناقصة.'
+  },
+  {
+    question: 'كيف أحصل على ترجمة شهادة ميلادي لطلب تأشيرة الإمارات؟',
+    answer: 'أرسل لنا مسح واضح لشهادة ميلادك المصدقة عبر واتساب. نتحقق من اكتمال الوثيقة (جميع الأختام المطلوبة موجودة)، وضوحها (التواريخ والأسماء مقروءة)، وجاهزيتها للترجمة. بعد الموافقة على عرض السعر، مترجمنا المعتمد من وزارة العدل ينتج الترجمة العربية بالختم الرسمي ورمز QR للتحقق.'
+  },
+  {
+    question: 'لماذا تطلب الجهات الإماراتية ترجمة السجلات الحيوية؟',
+    answer: 'العربية هي اللغة الرسمية للحكومة والإجراءات القضائية في الإمارات. الجهات لا تستطيع معالجة وثائق لا تستطيع قراءتها. مطلوبة لطلبات التأشيرات، كفالة العائلة، التسجيل المدرسي، والإجراءات القضائية. ختم وزارة العدل يؤكد دقة الترجمة.'
+  },
+  {
+    question: 'ماذا لو كانت الأسماء مكتوبة بشكل مختلف في وثائقي؟',
+    answer: 'تطابق الأسماء أمر حاسم—اختلافات التهجئة تسبب 40% من حالات الرفض. نتحقق من تطابق الأسماء مع جواز سفرك وهويتك الإماراتية. إذا اختلفت شهادة الميلاد (شائع مع الأسماء المعربة)، نُشير لذلك. قد تحتاج إقرار تصحيح الاسم.'
+  },
+  {
+    question: 'هل تترجمون السجلات الحيوية من أي دولة؟',
+    answer: 'نعم. نترجم السجلات الحيوية من جميع الدول بأكثر من 43 لغة. المصادر الشائعة تشمل: الهند، باكستان، الفلبين، بريطانيا، أمريكا، والدول العربية. كل دولة لها تنسيقات مختلفة. مترجمونا خبراء في اتفاقيات السجلات الحيوية الدولية.'
+  },
+  {
+    question: 'كم مدة صلاحية السجلات الحيوية المترجمة في الإمارات؟',
+    answer: 'الترجمة نفسها لا تنتهي صلاحيتها—بمجرد اعتمادها تبقى صالحة إلى أجل غير مسمى. لكن بعض الإجراءات الحكومية تتطلب أن تكون الوثيقة الأصلية حديثة الإصدار. مثلاً، شهادات حسن السيرة لطلبات التأشيرة يجب أن تكون صادرة خلال 3-6 أشهر. شهادات الميلاد والزواج تُقبل عادةً بغض النظر عن تاريخ الإصدار.'
+  },
+  {
+    question: 'هل تترجمون السجلات الحيوية لإجراءات DIFC و ADGM؟',
+    answer: 'نعم. DIFC و ADGM تعملان بالإنجليزية لكن بعض الإجراءات تحتاج العربية للمحاكم الرئيسية. هذا شائع في قانون الأسرة حيث محكمة الأحوال الشخصية لها الاختصاص. نُنسق الترجمات لمحاكم القانون العام والقانون المدني.'
+  }
+];
+
+const vitalRecords = [
+  {
+    title: "ترجمة شهادة الميلاد",
+    href: "/personal/vital-records/birth/",
+    icon: "baby",
+    desc: "ضرورية لتأشيرات المعالين، التسجيل المدرسي، الهوية الإماراتية، والتأمين الصحي. GDRFA يطلب إثبات العلاقة بين الوالد والطفل.",
+    uses: ["تأشيرة المعالين", "KHDA المدارس", "الهوية الإماراتية", "التأمين الصحي"]
+  },
+  {
+    title: "ترجمة عقد الزواج",
+    href: "/personal/vital-records/marriage/",
+    icon: "ring",
+    desc: "تُحدد الحالة الزوجية القانونية. تؤثر على أهلية تأشيرة الزوج/الزوجة، الملكية المشتركة في DLD، الحسابات البنكية، والتأمين.",
+    uses: ["تأشيرة الزوج/الزوجة", "DLD العقارات", "فتح الحسابات", "التأمين"]
+  },
+  {
+    title: "ترجمة شهادة الطلاق",
+    href: "/personal/vital-records/divorce/",
+    icon: "file-signature",
+    desc: "تُحدّث حالتك المدنية عند انتهاء الزواج. مطلوبة لتحديث التأشيرة، إذن الزواج مجدداً، شؤون الحضانة، وتحديث الوصية.",
+    uses: ["تحديث التأشيرة", "إذن الزواج الجديد", "شؤون الحضانة", "تحديث الوصية"]
+  },
+  {
+    title: "ترجمة شهادة الوفاة",
+    href: "/personal/vital-records/death/",
+    icon: "scroll",
+    desc: "تُمكّن من تسوية شؤون المتوفى. البنوك تُجمد الحسابات حتى تقديم الوثائق المترجمة. DLD تطلبها لنقل الملكية للورثة.",
+    uses: ["تجميد الحسابات", "DLD نقل الملكية", "مطالبات التأمين", "إجراءات الإرث"]
+  }
+];
+---
+
+<BaseLayoutArabic
+  title="ترجمة السجلات الحيوية دبي | شهادات الميلاد والزواج | وزارة العدل"
+  description="ترجمة معتمدة للسجلات الحيوية في دبي وأبوظبي. شهادات الميلاد والزواج والطلاق والوفاة. مقبولة للتأشيرات والإجراءات القانونية."
+>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-certificate"></i>
+          <span>معتمدة من وزارة العدل</span>
+        </div>
+
+        <h1>ترجمة السجلات الحيوية في الإمارات</h1>
+        <p class="hero-subtitle">شهادات الميلاد والزواج والطلاق والوفاة</p>
+
+        <p class="hero-intro">
+          السجلات الحيوية تُوثق اللحظات المحددة في حياتك—وفي الإمارات، مطلوبة لكل عملية إدارية رئيسية تقريباً. من كفالة أفراد العائلة إلى تسوية شؤون الإرث، هذه الترجمات يجب أن تكون دقيقة، مصدقة بشكل صحيح، ومعتمدة من وزارة العدل.
+        </p>
+
+        <div class="hero-records">
+          <div class="record-chip">
+            <i class="fas fa-baby"></i>
+            <span>شهادة الميلاد</span>
+          </div>
+          <div class="record-chip">
+            <i class="fas fa-ring"></i>
+            <span>عقد الزواج</span>
+          </div>
+          <div class="record-chip">
+            <i class="fas fa-file-signature"></i>
+            <span>شهادة الطلاق</span>
+          </div>
+          <div class="record-chip">
+            <i class="fas fa-scroll"></i>
+            <span>شهادة الوفاة</span>
+          </div>
+        </div>
+
+        <div class="hero-cta">
+          <a href="https://wa.me/971508620217" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i>
+            <span>واتساب الآن</span>
+          </a>
+          <a href="tel:+971508620217" class="btn btn-outline">
+            <i class="fas fa-phone"></i>
+            <span>اتصل بنا</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vital Records Grid -->
+  <section class="section">
+    <div class="container">
+      <h2>أنواع السجلات الحيوية</h2>
+      <p class="section-intro">كل سجل حيوي يخدم أغراضاً محددة في الأنظمة الإدارية والقانونية الإماراتية. اختر نوع وثيقتك للمتطلبات التفصيلية.</p>
+
+      <div class="records-grid">
+        {vitalRecords.map(record => (
+          <a href={record.href} class="record-card">
+            <div class="record-icon">
+              <i class={`fas fa-${record.icon}`}></i>
+            </div>
+            <h3>{record.title}</h3>
+            <p>{record.desc}</p>
+            <div class="record-uses">
+              {record.uses.map(use => (
+                <span class="use-tag">{use}</span>
+              ))}
+            </div>
+            <span class="record-link">
+              <span>المزيد</span>
+              <i class="fas fa-arrow-left"></i>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Required Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>لماذا تطلب الإمارات ترجمة السجلات الحيوية؟</h2>
+
+      <div class="reasons-grid">
+        <div class="reason-card">
+          <div class="reason-icon">
+            <i class="fas fa-language"></i>
+          </div>
+          <h3>اللغة الرسمية</h3>
+          <p>العربية هي اللغة الرسمية للحكومة والمحاكم في الإمارات. الجهات لا تستطيع معالجة وثائق لا تستطيع قراءتها.</p>
+        </div>
+        <div class="reason-card">
+          <div class="reason-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>التحقق القانوني</h3>
+          <p>ختم وزارة العدل يؤكد أن الترجمة دقيقة وأن المترجم مؤهل ومرخص رسمياً.</p>
+        </div>
+        <div class="reason-card">
+          <div class="reason-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>إثبات الحالة العائلية</h3>
+          <p>السجلات الحيوية تُثبت علاقات الأسرة التي تحدد أهلية التأشيرة وحقوق الكفالة والإرث.</p>
+        </div>
+        <div class="reason-card">
+          <div class="reason-icon">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <h3>القبول الحكومي</h3>
+          <p>بدون ترجمة معتمدة من وزارة العدل، الوثائق الأجنبية لا قيمة قانونية لها في الإمارات.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Attestation Section -->
+  <section class="section">
+    <div class="container">
+      <h2>متطلبات التصديق</h2>
+
+      <div class="attestation-info">
+        <div class="attestation-content">
+          <p>التصديق مطلوب عادةً قبل أن يكون للسجلات الحيوية أثر قانوني. نتحقق من حالة التصديق أثناء مراجعة الوثيقة.</p>
+
+          <div class="attestation-chain">
+            <div class="chain-step">
+              <span class="step-num">1</span>
+              <span class="step-text">توثيق بلد المصدر</span>
+            </div>
+            <div class="chain-arrow"><i class="fas fa-arrow-left"></i></div>
+            <div class="chain-step">
+              <span class="step-num">2</span>
+              <span class="step-text">تصديق السفارة الإماراتية</span>
+            </div>
+            <div class="chain-arrow"><i class="fas fa-arrow-left"></i></div>
+            <div class="chain-step">
+              <span class="step-num">3</span>
+              <span class="step-text">تصديق MOFA</span>
+            </div>
+          </div>
+
+          <a href="/ar/services/attestation/" class="btn btn-primary">
+            <span>تعرف على خدمات التصديق</span>
+            <i class="fas fa-arrow-left"></i>
+          </a>
+        </div>
+
+        <div class="attestation-warning">
+          <h4>
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>تنبيه مهم</span>
+          </h4>
+          <p>ترجمة وثائق غير مصدقة قد تكون مضيعة للمال—غالباً تُرفض عند التقديم للجهات الحكومية. دعنا نتحقق من وثائقك أولاً.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Name Consistency Section -->
+  <section class="section bg-dark">
+    <div class="container">
+      <h2>تطابق الأسماء: السبب الأول للرفض</h2>
+
+      <div class="name-content">
+        <div class="name-problem">
+          <h3>المشكلة</h3>
+          <p>أنظمة الإمارات تُطابق الأسماء حرفاً بحرف. اختلافات بين السجلات الحيوية وجوازات السفر تُسبب الرفض.</p>
+          <div class="name-example">
+            <p>شهادة الميلاد: <strong>"محمد"</strong></p>
+            <p>جواز السفر: <strong>"Mohammed"</strong></p>
+            <p>الهوية الإماراتية: <strong>"Mohamed"</strong></p>
+          </div>
+        </div>
+
+        <div class="name-solution">
+          <h3>حلّنا</h3>
+          <ul>
+            <li><i class="fas fa-check"></i> نتحقق من تهجئة الأسماء قبل الترجمة</li>
+            <li><i class="fas fa-check"></i> نُشير للاختلافات التي قد تُسبب مشاكل</li>
+            <li><i class="fas fa-check"></i> نُرشدك لإقرار تصحيح الاسم إذا لزم</li>
+            <li><i class="fas fa-check"></i> نُوثق الاختلافات في الترجمة عند الحاجة</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section">
+    <div class="container">
+      <h2>خطوات ترجمة السجلات الحيوية</h2>
+
+      <div class="process-grid">
+        <div class="process-card">
+          <div class="process-number">1</div>
+          <h3>إرسال الوثيقة</h3>
+          <p>أرسل مسح واضح للسجل الحيوي المصدق عبر واتساب</p>
+        </div>
+        <div class="process-card">
+          <div class="process-number">2</div>
+          <h3>التحقق والتقييم</h3>
+          <p>نتحقق من الأختام والأسماء ونُرسل عرض سعر ثابت</p>
+        </div>
+        <div class="process-card">
+          <div class="process-number">3</div>
+          <h3>الترجمة المعتمدة</h3>
+          <p>مترجم وزارة العدل ينتج الترجمة بالختم الرسمي ورمز QR</p>
+        </div>
+        <div class="process-card">
+          <div class="process-number">4</div>
+          <h3>التسليم</h3>
+          <p>استلم رقمياً في ساعات، مع خيار التوصيل بالمندوب</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>أسعار ترجمة السجلات الحيوية</h2>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>شهادة واحدة</h3>
+          <div class="pricing-amount">150 درهم</div>
+          <div class="pricing-unit">للشهادة</div>
+          <ul>
+            <li><i class="fas fa-check"></i> ميلاد، زواج، طلاق، وفاة</li>
+            <li><i class="fas fa-check"></i> ختم وزارة العدل</li>
+            <li><i class="fas fa-check"></i> تسليم 4-6 ساعات</li>
+            <li><i class="fas fa-check"></i> التحقق من الأسماء</li>
+          </ul>
+          <a href="https://wa.me/971508620217" class="btn btn-outline">احصل على عرض سعر</a>
+        </div>
+
+        <div class="pricing-card featured">
+          <div class="pricing-badge">الأكثر طلباً</div>
+          <h3>حزمة العائلة</h3>
+          <div class="pricing-amount">خصم 20%</div>
+          <div class="pricing-unit">3+ شهادات</div>
+          <ul>
+            <li><i class="fas fa-check"></i> جميع السجلات الحيوية للعائلة</li>
+            <li><i class="fas fa-check"></i> تحقق موحد من الأسماء</li>
+            <li><i class="fas fa-check"></i> تنسيق متسق</li>
+            <li><i class="fas fa-check"></i> أولوية المعالجة</li>
+          </ul>
+          <a href="https://wa.me/971508620217" class="btn btn-primary">احصل على عرض سعر</a>
+        </div>
+
+        <div class="pricing-card">
+          <h3>خدمة مستعجلة</h3>
+          <div class="pricing-amount">+50%</div>
+          <div class="pricing-unit">للاستعجال</div>
+          <ul>
+            <li><i class="fas fa-check"></i> تسليم نفس اليوم</li>
+            <li><i class="fas fa-check"></i> معالجة بأولوية</li>
+            <li><i class="fas fa-check"></i> مترجم مخصص</li>
+            <li><i class="fas fa-check"></i> خيار 2-3 ساعات</li>
+          </ul>
+          <a href="https://wa.me/971508620217?text=مستعجل" class="btn btn-outline">طلب مستعجل</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container">
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-grid">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" name="faq">
+            <summary class="faq-question">
+              <span>{faq.question}</span>
+              <i class="fas fa-chevron-down"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>هل تحتاج ترجمة سجلات حيوية؟</h2>
+        <p>أرسل شهادتك عبر واتساب للتقييم المجاني. نتحقق من التصديق والأسماء قبل أن تدفع.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/971508620217" class="btn btn-primary btn-lg">
+            <i class="fab fa-whatsapp"></i>
+            <span>واتساب: 0508620217</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  })} />
+
+</BaseLayoutArabic>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, var(--surface-navy) 0%, #1a3a5c 100%);
+    color: #fff;
+    padding: 4rem 0;
+  }
+
+  .hero-content {
+    max-width: 800px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-section h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 0.75rem;
+    line-height: 1.3;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-intro {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+  }
+
+  .hero-records {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .record-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.75rem 1.25rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    flex-direction: row-reverse;
+  }
+
+  .record-chip i {
+    color: var(--accent-coral);
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--accent-coral);
+    color: #fff;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  /* Sections */
+  .section {
+    padding: 4rem 0;
+  }
+
+  .section h2 {
+    font-size: 1.75rem;
+    margin: 0 0 1rem;
+    color: var(--primary-color);
+  }
+
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 800px;
+  }
+
+  .bg-light {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  .bg-dark {
+    background: var(--surface-navy);
+    color: #fff;
+  }
+
+  .bg-dark h2,
+  .bg-dark h3 {
+    color: #fff;
+  }
+
+  /* Records Grid */
+  .records-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .record-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    display: block;
+  }
+
+  .record-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .record-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-coral);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .record-icon i {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+
+  .record-card h3 {
+    font-size: 1.15rem;
+    margin: 0 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .record-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin: 0 0 1rem;
+    line-height: 1.6;
+  }
+
+  .record-uses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .use-tag {
+    background: var(--bg-light, #f8f9fa);
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .record-link {
+    color: var(--accent-coral);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* Reasons Grid */
+  .reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .reason-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .reason-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-coral);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+
+  .reason-icon i {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+
+  .reason-card h3 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .reason-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* Attestation Section */
+  .attestation-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .attestation-content p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+
+  .attestation-chain {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .chain-step {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #fff;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    flex-direction: row-reverse;
+  }
+
+  .step-num {
+    width: 28px;
+    height: 28px;
+    background: var(--accent-coral);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+
+  .step-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .chain-arrow {
+    color: var(--accent-coral);
+  }
+
+  .attestation-warning {
+    background: #fff8e6;
+    border-right: 4px solid #f59e0b;
+    padding: 1.5rem;
+    border-radius: 0.75rem 0 0 0.75rem;
+  }
+
+  .attestation-warning h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 0.75rem;
+    color: #b45309;
+    flex-direction: row-reverse;
+  }
+
+  .attestation-warning h4 i {
+    color: #f59e0b;
+  }
+
+  .attestation-warning p {
+    margin: 0;
+    color: #78350f;
+    line-height: 1.6;
+  }
+
+  /* Name Section */
+  .name-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .name-problem,
+  .name-solution {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 12px;
+  }
+
+  .name-problem h3,
+  .name-solution h3 {
+    font-size: 1.1rem;
+    margin: 0 0 1rem;
+  }
+
+  .name-problem p {
+    opacity: 0.9;
+    margin-bottom: 1rem;
+  }
+
+  .name-example {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .name-example p {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+
+  .name-solution ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .name-solution li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    flex-direction: row-reverse;
+  }
+
+  .name-solution li i {
+    color: var(--accent-coral);
+  }
+
+  /* Process Grid */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .process-card {
+    text-align: center;
+  }
+
+  .process-number {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-coral);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .process-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .process-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* Pricing Grid */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+  }
+
+  .pricing-card {
+    background: #fff;
+    border: 2px solid #eee;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .pricing-card.featured {
+    background: var(--surface-navy);
+    color: #fff;
+    transform: scale(1.05);
+    border-color: var(--surface-navy);
+  }
+
+  .pricing-badge {
+    background: var(--accent-coral);
+    color: #fff;
+    padding: 0.35rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    position: absolute;
+    top: -12px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .pricing-card h3 {
+    font-size: 1.15rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .pricing-card.featured h3 {
+    color: #fff;
+  }
+
+  .pricing-amount {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-coral);
+    margin-bottom: 0.25rem;
+  }
+
+  .pricing-unit {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-card.featured .pricing-unit {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .pricing-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    text-align: right;
+  }
+
+  .pricing-card li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-direction: row-reverse;
+  }
+
+  .pricing-card.featured li {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .pricing-card li i {
+    color: var(--accent-coral);
+  }
+
+  .pricing-card .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .pricing-card .btn-outline {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+
+  .pricing-card.featured .btn-outline {
+    color: #fff;
+    border-color: #fff;
+  }
+
+  /* FAQ Section */
+  .faq-grid {
+    display: grid;
+    gap: 1rem;
+    max-width: 900px;
+  }
+
+  .faq-item {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .faq-question {
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: var(--primary-color);
+    list-style: none;
+    gap: 1rem;
+    flex-direction: row-reverse;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question i {
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .faq-item[open] .faq-question i {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.25rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    text-align: right;
+  }
+
+  .faq-answer p {
+    margin: 0;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, var(--accent-coral) 0%, #e63946 100%);
+    color: #fff;
+    text-align: center;
+  }
+
+  .cta-content h2 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-content p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  .cta-section .btn-primary {
+    background: #fff;
+    color: var(--accent-coral);
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .reasons-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 991px) {
+    .records-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .attestation-info {
+      grid-template-columns: 1fr;
+    }
+
+    .name-content {
+      grid-template-columns: 1fr;
+    }
+
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+    }
+
+    .pricing-card.featured {
+      transform: none;
+    }
+
+    .process-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 3rem 0;
+    }
+
+    .hero-section h1 {
+      font-size: 1.75rem;
+    }
+
+    .hero-records {
+      flex-direction: column;
+    }
+
+    .section {
+      padding: 3rem 0;
+    }
+
+    .reasons-grid,
+    .process-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .attestation-chain {
+      flex-direction: column;
+    }
+
+    .chain-arrow {
+      transform: rotate(90deg);
+    }
+  }
+</style>

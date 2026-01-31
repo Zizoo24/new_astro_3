@@ -1,0 +1,926 @@
+---
+/**
+ * /ar/locations/dubai/ - صفحة خدمات الترجمة في دبي (Arabic Dubai Location)
+ *
+ * Target Keywords: ترجمة قانونية دبي, مكتب ترجمة دبي, ترجمة معتمدة دبي
+ * Layout: BaseLayoutArabic
+ * Silo: Locations (Arabic)
+ */
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: 'أين يقع مكتب الترجمة في دبي؟',
+    answer: 'نحن خدمة رقمية أولاً مع استلام وتسليم في جميع أنحاء دبي. أرسل وثائقك عبر واتساب للمعالجة الفورية. نوفر استلام بالمندوب من أي موقع في دبي. خدمة نفس اليوم متاحة في جميع المناطق.'
+  },
+  {
+    question: 'هل توفرون ترجمة نفس اليوم في دبي؟',
+    answer: 'نعم. الشهادات القياسية مثل شهادات الميلاد والزواج ورخص القيادة تُنجز خلال 4-6 ساعات. للحالات المستعجلة، نوفر معالجة سريعة مع ترجمات معتمدة جاهزة في 2-3 ساعات. تواصل معنا عبر واتساب بموعدك النهائي وسنؤكد التوفر فوراً.'
+  },
+  {
+    question: 'ما هي الجهات الحكومية في دبي التي تقبل ترجماتكم؟',
+    answer: 'جميع الجهات الحكومية في دبي تقبل ترجماتنا المعتمدة من وزارة العدل: محاكم دبي، الإدارة العامة للإقامة وشؤون الأجانب GDRFA، دائرة الأراضي والأملاك DLD، دائرة الاقتصاد والسياحة DET، هيئة المعرفة KHDA، هيئة الطرق والمواصلات RTA، هيئة الصحة بدبي DHA، وبلدية دبي. كما تقبلها محاكم مركز دبي المالي العالمي DIFC.'
+  },
+  {
+    question: 'هل تترجمون وثائق لقضايا محاكم دبي؟',
+    answer: 'نعم. نتخصص في الترجمة القانونية لمحاكم دبي بما في ذلك القضايا المدنية والتجارية والأسرية والجنائية. مترجمونا يفهمون متطلبات تنسيق محاكم دبي والمصطلحات القانونية. نترجم الأحكام والمذكرات وحزم الأدلة وشهادات الشهود والعقود وجميع وثائق التقاضي بختم وزارة العدل.'
+  },
+  {
+    question: 'هل تتعاملون مع ترجمات شركات DIFC والمناطق الحرة؟',
+    answer: 'نعم. نخدم الشركات في جميع المناطق الحرة في دبي بما في ذلك DIFC، DMCC، JAFZA، DAFZA، واحة دبي للسيليكون، مدينة دبي للإنترنت، مدينة دبي للإعلام، ومدينة دبي الطبية. نترجم عقود التأسيس والتراخيص التجارية وقرارات مجلس الإدارة واتفاقيات المساهمين والملفات التنظيمية بتنسيق خاص لكل جهة.'
+  },
+  {
+    question: 'ما هي المناطق التي تخدمونها في دبي؟',
+    answer: 'نخدم جميع مناطق دبي: الخليج التجاري، وسط المدينة، DIFC، المارينا، JBR، JLT، نخلة جميرا، ديرة، بر دبي، البرشاء، دبي هيلز، ودبي الجنوب. استلام وتسليم بالمندوب لأي عنوان.'
+  },
+  {
+    question: 'هل يمكنكم المساعدة في ترجمة وثائق الإقامة الذهبية دبي؟',
+    answer: 'نعم. نقدم حزم ترجمة وثائق كاملة لطلبات الإقامة الذهبية عبر GDRFA دبي. تشمل الشهادات الجامعية والرخص المهنية وكشوف الحسابات البنكية وصكوك الملكية وشهادات الراتب وجميع الوثائق الداعمة. نفهم متطلبات GDRFA وننسق الترجمات لمعالجة سلسة.'
+  },
+  {
+    question: 'هل تترجمون وثائق لتسجيل الملكية في دائرة الأراضي؟',
+    answer: 'نعم. نترجم جميع الوثائق المطلوبة لمعاملات دائرة الأراضي والأملاك بما في ذلك عقود البيع والشراء وصكوك الملكية والتوكيلات ونسخ جوازات السفر وخطابات عدم الممانعة. ترجماتنا منسقة خصيصاً لمتطلبات تقديم DLD.'
+  },
+  {
+    question: 'ما هي اللغات التي تترجمون منها وإليها في دبي؟',
+    answer: 'نترجم أكثر من 43 لغة في دبي. العربية-الإنجليزية هي الأكثر شيوعاً. اللغات المطلوبة الأخرى تشمل: الهندية، الأردية، التاغالوغ، الروسية، الفرنسية، الألمانية، الصينية، الإسبانية، البرتغالية، الفارسية، والتركية. جميع الترجمات تحصل على نفس ختم وزارة العدل المقبول من جهات دبي.'
+  },
+  {
+    question: 'كيف أحصل على ترجمة وثائق في دبي؟',
+    answer: 'أرسل صور أو مسح واضح لوثائقك عبر واتساب على +971 50 862 0217. خلال 5-10 دقائق، تحصل على تأكيد وتقييم وعرض سعر ثابت. بعد الموافقة، تبدأ الترجمة فوراً. تستلم الترجمات المعتمدة رقمياً عبر واتساب والإيميل. النسخ الورقية بأختام وزارة العدل الأصلية يمكن توصيلها لأي عنوان في دبي في نفس اليوم.'
+  }
+];
+
+const areas = [
+  { name: "الخليج التجاري", desc: "المقرات الرئيسية للشركات ووثائق تأسيس الأعمال" },
+  { name: "وسط مدينة دبي", desc: "معاملات العقارات وخدمات الوثائق الشخصية" },
+  { name: "DIFC", desc: "ترجمات قانونية وشركات للمركز المالي" },
+  { name: "دبي مارينا", desc: "وثائق السكن والعقارات" },
+  { name: "JLT", desc: "وثائق المناطق الحرة والأعمال والوثائق الشخصية" },
+  { name: "نخلة جميرا", desc: "تسجيل الملكية ووثائق التأشيرات" },
+  { name: "ديرة", desc: "التراخيص التجارية والترجمات التجارية" },
+  { name: "بر دبي", desc: "وثائق المحاكم وخدمات القنصليات" }
+];
+
+const authorities = [
+  { name: "محاكم دبي", icon: "gavel", desc: "وثائق القضايا المدنية والتجارية والأسرية والجنائية" },
+  { name: "GDRFA دبي", icon: "passport", desc: "طلبات التأشيرات، الإقامة الذهبية، شؤون الإقامة" },
+  { name: "دائرة الأراضي والأملاك", icon: "building", desc: "تسجيل الملكية، التحويلات، معاملات العقارات" },
+  { name: "محاكم DIFC", icon: "balance-scale", desc: "نزاعات القانون العام والتحكيم" },
+  { name: "هيئة الطرق والمواصلات", icon: "car", desc: "تحويل رخصة القيادة ووثائق المركبات" },
+  { name: "هيئة المعرفة KHDA", icon: "graduation-cap", desc: "التسجيل المدرسي والتحقق من الشهادات الأكاديمية" },
+  { name: "هيئة الصحة بدبي", icon: "hospital", desc: "ترخيص المهنيين الصحيين والوثائق الطبية" },
+  { name: "دائرة الاقتصاد والسياحة", icon: "store", desc: "تراخيص الأعمال والتسجيل التجاري" }
+];
+
+const services = [
+  {
+    title: "الترجمة القانونية",
+    href: "/ar/legal-translation-dubai/",
+    icon: "balance-scale",
+    desc: "وثائق المحاكم، العقود، الأحكام، ومواد التقاضي لمحاكم دبي و DIFC."
+  },
+  {
+    title: "الوثائق الشخصية",
+    href: "/ar/personal/",
+    icon: "user",
+    desc: "شهادات الميلاد والزواج، الشهادات الجامعية، ووثائق الهجرة."
+  },
+  {
+    title: "وثائق الشركات",
+    href: "/legal/corporate/",
+    icon: "building",
+    desc: "عقود التأسيس، التراخيص التجارية، قرارات مجلس الإدارة، ووثائق المناطق الحرة."
+  },
+  {
+    title: "حزمة الإقامة الذهبية",
+    href: "/services/golden-visa-translation/",
+    icon: "star",
+    desc: "حزم وثائق كاملة لطلبات تأشيرات المستثمرين والمهنيين."
+  },
+  {
+    title: "وثائق العقارات",
+    href: "/legal/contracts/spa/",
+    icon: "home",
+    desc: "عقود البيع والشراء، صكوك الملكية، التوكيلات، ومتطلبات تسجيل DLD."
+  },
+  {
+    title: "خدمات التصديق",
+    href: "/ar/services/attestation/",
+    icon: "stamp",
+    desc: "تصديق وزارة الخارجية وتنسيق التصديق من السفارات."
+  }
+];
+---
+
+<BaseLayoutArabic
+  title="ترجمة قانونية دبي | نفس اليوم | مكتب ترجمة معتمد"
+  description="خدمات ترجمة معتمدة من وزارة العدل في دبي. وثائق قانونية، شهادات شخصية، ملفات الشركات. مقبولة في محاكم دبي، GDRFA، DIFC."
+>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>جميع مناطق دبي</span>
+        </div>
+
+        <h1>خدمات الترجمة في دبي</h1>
+        <p class="hero-subtitle">معتمدة من وزارة العدل • تسليم نفس اليوم • جميع المناطق</p>
+
+        <p class="hero-intro">
+          بيئة الأعمال في دبي تتطلب توثيقاً دقيقاً. سواء كنت تسجل ملكية في دائرة الأراضي، أو تقدم ملفاً في محاكم دبي، أو تعالج إقامة ذهبية عبر GDRFA، أو تؤسس شركة في DIFC، نقدم ترجمات معتمدة من وزارة العدل تقبلها جهات دبي.
+        </p>
+
+        <div class="hero-highlights">
+          <div class="highlight-item">
+            <i class="fas fa-clock"></i>
+            <div>
+              <strong>الشهادات القياسية</strong>
+              <span>4-6 ساعات</span>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-bolt"></i>
+            <div>
+              <strong>خدمة مستعجلة</strong>
+              <span>2-3 ساعات</span>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-truck"></i>
+            <div>
+              <strong>توصيل نفس اليوم</strong>
+              <span>جميع مناطق دبي</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-cta">
+          <a href="https://wa.me/971508620217" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i>
+            <span>واتساب الآن</span>
+          </a>
+          <a href="tel:+971508620217" class="btn btn-outline">
+            <i class="fas fa-phone"></i>
+            <span>اتصل بنا</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dubai Authorities Section -->
+  <section class="section">
+    <div class="container">
+      <h2>الجهات الحكومية في دبي التي نخدمها</h2>
+      <p class="section-intro">ترجماتنا المعتمدة من وزارة العدل مقبولة في جميع الجهات الحكومية والقضائية في دبي.</p>
+
+      <div class="authorities-grid">
+        {authorities.map(auth => (
+          <div class="authority-card">
+            <div class="authority-icon">
+              <i class={`fas fa-${auth.icon}`}></i>
+            </div>
+            <h3>{auth.name}</h3>
+            <p>{auth.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>خدمات الترجمة في دبي</h2>
+      <p class="section-intro">خدمات ترجمة شاملة لجميع احتياجاتك القانونية والشخصية والتجارية.</p>
+
+      <div class="services-grid">
+        {services.map(service => (
+          <a href={service.href} class="service-card">
+            <div class="service-icon">
+              <i class={`fas fa-${service.icon}`}></i>
+            </div>
+            <h3>{service.title}</h3>
+            <p>{service.desc}</p>
+            <span class="service-link">
+              <span>المزيد</span>
+              <i class="fas fa-arrow-left"></i>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Areas Section -->
+  <section class="section">
+    <div class="container">
+      <h2>المناطق التي نخدمها في دبي</h2>
+      <p class="section-intro">استلام وتسليم بالمندوب لجميع مناطق دبي. خدمة نفس اليوم متاحة.</p>
+
+      <div class="areas-grid">
+        {areas.map(area => (
+          <div class="area-card">
+            <h3>{area.name}</h3>
+            <p>{area.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="areas-note">
+        <p>
+          <i class="fas fa-info-circle"></i>
+          <strong>مناطق أخرى:</strong> نخدم أيضاً البرشاء، دبي هيلز، دبي الجنوب، القصيص، المحيصنة، واحة دبي للسيليكون، المرابع العربية، وجميع المناطق الأخرى. تواصل معنا لأي موقع في دبي.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Free Zones Section -->
+  <section class="section bg-dark">
+    <div class="container">
+      <h2>خدمات المناطق الحرة في دبي</h2>
+      <p class="section-intro">ترجمات متخصصة لشركات المناطق الحرة بتنسيق خاص لكل منطقة.</p>
+
+      <div class="freezone-grid">
+        <div class="freezone-item">
+          <span class="freezone-name">DIFC</span>
+          <span class="freezone-desc">مركز دبي المالي العالمي</span>
+        </div>
+        <div class="freezone-item">
+          <span class="freezone-name">DMCC</span>
+          <span class="freezone-desc">مركز دبي للسلع المتعددة</span>
+        </div>
+        <div class="freezone-item">
+          <span class="freezone-name">JAFZA</span>
+          <span class="freezone-desc">المنطقة الحرة لجبل علي</span>
+        </div>
+        <div class="freezone-item">
+          <span class="freezone-name">DAFZA</span>
+          <span class="freezone-desc">المنطقة الحرة بمطار دبي</span>
+        </div>
+        <div class="freezone-item">
+          <span class="freezone-name">DIC</span>
+          <span class="freezone-desc">مدينة دبي للإنترنت</span>
+        </div>
+        <div class="freezone-item">
+          <span class="freezone-name">DMC</span>
+          <span class="freezone-desc">مدينة دبي للإعلام</span>
+        </div>
+      </div>
+
+      <div class="freezone-docs">
+        <h3>الوثائق التي نترجمها للمناطق الحرة</h3>
+        <ul>
+          <li><i class="fas fa-check"></i> عقود التأسيس (MOA/AOA)</li>
+          <li><i class="fas fa-check"></i> التراخيص التجارية</li>
+          <li><i class="fas fa-check"></i> قرارات مجلس الإدارة</li>
+          <li><i class="fas fa-check"></i> اتفاقيات المساهمين</li>
+          <li><i class="fas fa-check"></i> الملفات التنظيمية</li>
+          <li><i class="fas fa-check"></i> التوكيلات</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section">
+    <div class="container">
+      <h2>كيف تحصل على ترجمة في دبي</h2>
+
+      <div class="process-grid">
+        <div class="process-card">
+          <div class="process-number">1</div>
+          <h3>أرسل الوثائق</h3>
+          <p>أرسل صور أو مسح واضح عبر واتساب على +971 50 862 0217</p>
+        </div>
+        <div class="process-card">
+          <div class="process-number">2</div>
+          <h3>استلم عرض السعر</h3>
+          <p>خلال 5-10 دقائق تحصل على تقييم وعرض سعر ثابت</p>
+        </div>
+        <div class="process-card">
+          <div class="process-number">3</div>
+          <h3>الترجمة والتصديق</h3>
+          <p>بعد الموافقة، تبدأ الترجمة فوراً مع ختم وزارة العدل</p>
+        </div>
+        <div class="process-card">
+          <div class="process-number">4</div>
+          <h3>التسليم</h3>
+          <p>استلم رقمياً عبر واتساب أو بالمندوب لأي عنوان في دبي</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>الأسئلة الشائعة - الترجمة في دبي</h2>
+      <div class="faq-grid">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" name="faq">
+            <summary class="faq-question">
+              <span>{faq.question}</span>
+              <i class="fas fa-chevron-down"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>هل تحتاج ترجمة في دبي؟</h2>
+        <p>أرسل وثائقك عبر واتساب واحصل على عرض سعر خلال 5 دقائق. ترجمة معتمدة من وزارة العدل، تسليم نفس اليوم.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/971508620217" class="btn btn-primary btn-lg">
+            <i class="fab fa-whatsapp"></i>
+            <span>واتساب: 0508620217</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  })} />
+
+</BaseLayoutArabic>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, var(--surface-navy) 0%, #1a3a5c 100%);
+    color: #fff;
+    padding: 4rem 0;
+  }
+
+  .hero-content {
+    max-width: 800px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-section h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 0.75rem;
+    line-height: 1.3;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-intro {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+  }
+
+  .hero-highlights {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-direction: row-reverse;
+  }
+
+  .highlight-item i {
+    font-size: 1.5rem;
+    color: var(--accent-coral);
+  }
+
+  .highlight-item strong {
+    display: block;
+    font-size: 0.9rem;
+  }
+
+  .highlight-item span {
+    font-size: 0.85rem;
+    opacity: 0.8;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--accent-coral);
+    color: #fff;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  /* Sections */
+  .section {
+    padding: 4rem 0;
+  }
+
+  .section h2 {
+    font-size: 1.75rem;
+    margin: 0 0 1rem;
+    color: var(--primary-color);
+  }
+
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 800px;
+  }
+
+  .bg-light {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  .bg-dark {
+    background: var(--surface-navy);
+    color: #fff;
+  }
+
+  .bg-dark h2,
+  .bg-dark h3,
+  .bg-dark .section-intro {
+    color: #fff;
+  }
+
+  .bg-dark .section-intro {
+    opacity: 0.9;
+  }
+
+  /* Authorities Grid */
+  .authorities-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .authority-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .authority-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-coral);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+
+  .authority-icon i {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+
+  .authority-card h3 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .authority-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Services Grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    display: block;
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .service-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--accent-coral);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .service-icon i {
+    font-size: 1.25rem;
+    color: #fff;
+  }
+
+  .service-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .service-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0 0 1rem;
+    line-height: 1.6;
+  }
+
+  .service-link {
+    color: var(--accent-coral);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* Areas Grid */
+  .areas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .area-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .area-card h3 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .area-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .areas-note {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border-right: 4px solid var(--accent-coral);
+  }
+
+  .areas-note p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    flex-direction: row-reverse;
+  }
+
+  .areas-note i {
+    color: var(--accent-coral);
+    margin-top: 0.25rem;
+  }
+
+  /* Free Zones */
+  .freezone-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .freezone-item {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-align: center;
+  }
+
+  .freezone-name {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .freezone-desc {
+    font-size: 0.75rem;
+    opacity: 0.8;
+  }
+
+  .freezone-docs {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .freezone-docs h3 {
+    font-size: 1.1rem;
+    margin: 0 0 1rem;
+  }
+
+  .freezone-docs ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+
+  .freezone-docs li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-direction: row-reverse;
+    font-size: 0.95rem;
+  }
+
+  .freezone-docs li i {
+    color: var(--accent-coral);
+  }
+
+  /* Process Grid */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .process-card {
+    text-align: center;
+  }
+
+  .process-number {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-coral);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .process-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .process-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* FAQ Section */
+  .faq-grid {
+    display: grid;
+    gap: 1rem;
+    max-width: 900px;
+  }
+
+  .faq-item {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .faq-question {
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: var(--primary-color);
+    list-style: none;
+    gap: 1rem;
+    flex-direction: row-reverse;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question i {
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .faq-item[open] .faq-question i {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.25rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    text-align: right;
+  }
+
+  .faq-answer p {
+    margin: 0;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, var(--accent-coral) 0%, #e63946 100%);
+    color: #fff;
+    text-align: center;
+  }
+
+  .cta-content h2 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-content p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .cta-section .btn-primary {
+    background: #fff;
+    color: var(--accent-coral);
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .authorities-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .freezone-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .freezone-docs ul {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 991px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .areas-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .process-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 3rem 0;
+    }
+
+    .hero-section h1 {
+      font-size: 1.75rem;
+    }
+
+    .hero-highlights {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .section {
+      padding: 3rem 0;
+    }
+
+    .authorities-grid,
+    .services-grid,
+    .areas-grid,
+    .process-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .freezone-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .freezone-docs ul {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
