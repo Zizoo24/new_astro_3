@@ -1,0 +1,365 @@
+---
+import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: "هل يمكنكم ترجمة كشوف درجات جامعة نيويورك أبوظبي إلى العربية؟",
+    answer: "نعم. يحصل خريجو جامعة نيويورك أبوظبي الذين يحتاجون نسخاً عربية من كشوف درجاتهم الإنجليزية للتوظيف أو الدراسة في الدول العربية على ترجمات معتمدة من وزارة العدل. نترجم المصطلحات الأكاديمية الأمريكية إلى العربية الفصحى الرسمية بدقة."
+  },
+  {
+    question: "كم يستغرق ترجمة وثائق جامعة نيويورك أبوظبي؟",
+    answer: "تُنجز ترجمة كشوف الدرجات والشهادات العادية خلال ٢٤ ساعة. تتوفر خدمة في نفس اليوم في أبوظبي للحالات العاجلة. تجهز المسودات الرقمية عادةً خلال ٦٠ دقيقة للمراجعة."
+  },
+  {
+    question: "هل تحتاج شهادات جامعة نيويورك أبوظبي تصديقاً للتوظيف في الإمارات؟",
+    answer: "جامعة نيويورك أبوظبي مؤسسة مقرها الإمارات، لذا تختلف متطلبات التصديق عن الجامعات الأجنبية. ومع ذلك، تتطلب وزارة الموارد البشرية ترجمة معتمدة من وزارة العدل للشهادة لإجراءات تصريح العمل. تواصلوا معنا للإرشاد حول وضعكم."
+  },
+  {
+    question: "ما الوثائق التي يحتاجها المتقدمون لجامعة نيويورك أبوظبي للترجمة؟",
+    answer: "يحتاج الطلاب المحتملون عادةً ترجمة كشوف درجات الثانوية وشهادات إتمام الدراسة وخطابات التوصية (إذا كانت بالعربية) ووثائق الهوية الشخصية إلى الإنجليزية. نقدم ترجمات معتمدة تستوفي معايير التقديم الجامعية."
+  },
+  {
+    question: "هل يمكنكم ترجمة وثائق من جامعة نيويورك نيويورك أو شنغهاي؟",
+    answer: "نعم. نترجم الوثائق من جميع فروع شبكة جامعة نيويورك العالمية. المصطلحات الأكاديمية الأمريكية متسقة عبر الشبكة، ومترجمونا على دراية بمعايير التعليم العالي الأمريكي."
+  },
+  {
+    question: "هل تقدمون خدمة استلام قرب حرم جامعة نيويورك أبوظبي؟",
+    answer: "نقدم خدمة استلام وتوصيل في نفس اليوم داخل أبوظبي، بما في ذلك منطقة جزيرة السعديات القريبة من الجامعة. يمكن للطلاب والموظفين ترتيب مواعيد استلام مناسبة عبر الواتساب."
+  },
+  {
+    question: "كيف تتعاملون مع ترجمة المعدل التراكمي ومراتب الشرف؟",
+    answer: "نترجم المعدل التراكمي على مقياس ٤.٠ بمكافئات عربية دقيقة. مراتب الشرف اللاتينية (cum laude، magna cum laude، summa cum laude) تُترجم إلى مصطلحات أكاديمية عربية معتمدة ومعترف بها من الجامعات وأصحاب العمل الإقليميين."
+  },
+  {
+    question: "ماذا لو كانت وثائقي الأصلية ليست بالإنجليزية أو العربية؟",
+    answer: "نترجم الوثائق من لغات عديدة إلى الإنجليزية أو العربية. طلاب جامعة نيويورك أبوظبي الدوليون يعني أننا نتعامل بانتظام مع كشوف الدرجات والشهادات من أنظمة تعليمية حول العالم."
+  }
+];
+---
+
+<BaseLayoutArabic
+  title="ترجمة وثائق جامعة نيويورك أبوظبي | ترجمة معتمدة أبوظبي"
+  description="ترجمة معتمدة من وزارة العدل لطلاب وخريجي جامعة نيويورك أبوظبي. كشوف الدرجات والشهادات ووثائق القبول. خدمة في نفس اليوم في أبوظبي. واتساب: ٠٥٠٨٦٢٠٢١٧"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "ترجمة وثائق جامعة نيويورك أبوظبي",
+      "description": "خدمات ترجمة معتمدة لطلاب وخريجي والمتقدمين لجامعة نيويورك أبوظبي في الإمارات",
+      "provider": {
+        "@type": "Organization",
+        "name": "OnlineTranslation.ae",
+        "address": { "@type": "PostalAddress", "addressLocality": "أبوظبي", "addressCountry": "AE" }
+      },
+      "areaServed": ["أبوظبي", "دبي", "الشارقة", "الإمارات"],
+      "serviceType": ["ترجمة كشوف الدرجات", "ترجمة الشهادات الجامعية", "ترجمة وثائق القبول"]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "https://onlinetranslation.ae/ar/" },
+        { "@type": "ListItem", "position": 2, "name": "الوثائق الشخصية", "item": "https://onlinetranslation.ae/ar/personal/" },
+        { "@type": "ListItem", "position": 3, "name": "الوثائق الأكاديمية", "item": "https://onlinetranslation.ae/ar/personal/academic/" },
+        { "@type": "ListItem", "position": 4, "name": "جامعة نيويورك أبوظبي", "item": "https://onlinetranslation.ae/ar/personal/academic/nyuad/" }
+      ]
+    })} />
+  </Fragment>
+
+  <section class="hero-section bg-dark" data-theme="dark">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="مسار التنقل">
+        <a href="/ar/">الرئيسية</a>
+        <span class="separator">&lt;</span>
+        <a href="/ar/personal/">الوثائق الشخصية</a>
+        <span class="separator">&lt;</span>
+        <a href="/ar/personal/academic/">الوثائق الأكاديمية</a>
+        <span class="separator">&lt;</span>
+        <span class="current">جامعة نيويورك أبوظبي</span>
+      </nav>
+
+      <h1>ترجمة وثائق جامعة نيويورك أبوظبي</h1>
+      <p class="hero-subtitle">للطلاب والخريجين والمتقدمين</p>
+      <div class="hero-intro">
+        <p>يحتاج طلاب وخريجو جامعة نيويورك أبوظبي (NYUAD) غالباً إلى ترجمات معتمدة للتوظيف ومتابعة الدراسة واستخدام الوثائق دولياً. كما يحتاج المتقدمون من الدول العربية إلى ترجمة شهاداتهم للقبول.</p>
+
+        <p>نقدم خدمات ترجمة في أبوظبي تغطي جميع احتياجات وثائق جامعة نيويورك أبوظبي. نفهم المصطلحات الأكاديمية المستخدمة في المؤسسات الأمريكية المعتمدة ونضمن توافق الترجمات مع معايير الحكومة الإماراتية والمعايير الدولية.</p>
+
+        <p><strong>أنواع وثائق جامعة نيويورك أبوظبي:</strong></p>
+        <ul>
+          <li><strong>كشوف الدرجات:</strong> لطلبات الدراسات العليا وتحقق أصحاب العمل وتقييم المؤهلات</li>
+          <li><strong>الشهادات الجامعية:</strong> للتوظيف في الإمارات والترخيص المهني والاستخدام الدولي</li>
+          <li><strong>وثائق القبول (للمتقدمين):</strong> كشوف درجات الثانوية وخطابات التوصية وشهادات الميلاد</li>
+          <li><strong>الأبحاث والرسائل العلمية:</strong> للنشر والتعاون الأكاديمي وتحقق الدرجة</li>
+        </ul>
+
+        <p><strong>للطلاب الحاليين في جامعة نيويورك أبوظبي:</strong></p>
+        <p>يجلب الطلاب الدوليون وثائق من بلدانهم تتطلب ترجمة للإقامة الإماراتية والخدمات المصرفية. <a href="/ar/personal/vital-records/">شهادات الميلاد</a> والشهادات الدراسية والوثائق العائلية جميعها تحتاج ترجمة معتمدة من وزارة العدل للاستخدام الرسمي في الإمارات.</p>
+
+        <p>المشاركون في برامج الدراسة في الخارج من شبكة نيويورك العالمية قد يحتاجون ترجمة وثائق عند قضاء فصول دراسية في أبوظبي. نتعامل مع السجلات الأكاديمية من المؤسسات الشريكة بما في ذلك جامعة نيويورك - نيويورك وجامعة نيويورك شنغهاي.</p>
+
+        <p><strong>لخريجي جامعة نيويورك أبوظبي:</strong></p>
+        <p>يحتاج خريجو الجامعة الداخلون لسوق العمل الإماراتي ترجمة <a href="/ar/personal/academic/">شهاداتهم</a> وكشوف درجاتهم لطلبات تصريح العمل من وزارة الموارد البشرية. الخريجون المتابعون للدراسات العليا في الخارج قد يحتاجون ترجمات عربية لشهاداتهم للجامعات في دول منطقة الشرق الأوسط وشمال أفريقيا.</p>
+
+        <p>بما أن جامعة نيويورك أبوظبي تمنح شهادات معتمدة أمريكياً، يستفيد الخريجون العاملون دولياً من خبرتنا في المصطلحات الأكاديمية الأمريكية. المعدلات التراكمية والساعات المعتمدة وعناوين المقررات تُترجم بدقة وفق المعايير الدولية.</p>
+
+        <p><strong>للمتقدمين لجامعة نيويورك أبوظبي:</strong></p>
+        <p>يحتاج الطلاب المحتملون من الدول العربية ترجمة كشوف درجات الثانوية ونتائج الاختبارات المعيارية والوثائق الشخصية إلى الإنجليزية للقبول. نقدم ترجمات معتمدة تستوفي متطلبات التقديم الجامعية.</p>
+
+        <p>الوثائق المطلوبة عادةً للتقديم لجامعة نيويورك أبوظبي تشمل:</p>
+        <ul>
+          <li>كشوف درجات المرحلة الثانوية (السجلات الأكاديمية الرسمية)</li>
+          <li>شهادات إتمام الدراسة أو ما يعادلها</li>
+          <li>تقارير نتائج الاختبارات المعيارية (إذا لم تكن بالإنجليزية)</li>
+          <li>خطابات التوصية (إذا كانت بالعربية أصلاً)</li>
+          <li>وثائق الهوية الشخصية</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <h2>خدمة أولوية أبوظبي</h2>
+      <p class="section-intro">تقع جامعة نيويورك أبوظبي في جزيرة السعديات بأبوظبي. نقدم خدمة استلام وتوصيل في نفس اليوم داخل أبوظبي لاحتياجات الترجمة العاجلة.</p>
+
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="service-card-inner">
+            <div class="service-icon"><i class="fas fa-clock"></i></div>
+            <div class="service-content">
+              <h3>مسودة رقمية في ٦٠ دقيقة</h3>
+              <p>أرسلوا الوثائق عبر الواتساب واستلموا مسودة رقمية للمراجعة عادةً خلال ساعة واحدة.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card-inner">
+            <div class="service-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="service-content">
+              <h3>توصيل في نفس اليوم في أبوظبي</h3>
+              <p>خدمة أولوية للطلاب والموظفين في أبوظبي. الاستلام والتوصيل متاحان في جميع أنحاء الإمارة.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card-inner">
+            <div class="service-icon"><i class="fas fa-stamp"></i></div>
+            <div class="service-content">
+              <h3>شهادة معتمدة من وزارة العدل</h3>
+              <p>ختم قانوني مقبول من جميع الجهات الحكومية الإماراتية وأصحاب العمل والجامعات.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card-inner">
+            <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="service-content">
+              <h3>خبرة بالمصطلحات الأمريكية</h3>
+              <p>ترجمة دقيقة لأنظمة المعدلات والساعات المعتمدة وتصنيفات الشهادات الأمريكية.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>معايير المصطلحات الأكاديمية</h2>
+      <p>تتبع جامعة نيويورك أبوظبي نظام التعليم العالي الأمريكي مع بعض العناصر الخاصة بالإمارات. مترجمونا يفهمون كلا النظامين. نترجم بدقة:</p>
+
+      <ul>
+        <li><strong>مسميات الدرجات:</strong> بكالوريوس الآداب، بكالوريوس العلوم، ومراتب الشرف</li>
+        <li><strong>أنظمة المعدل التراكمي:</strong> تحويل مقياس ٤.٠ ومراتب الشرف اللاتينية (cum laude، magna cum laude)</li>
+        <li><strong>تصنيفات المقررات:</strong> المناهج الأساسية ومتطلبات التخصص والمواد الاختيارية ومشاريع التخرج</li>
+        <li><strong>برامج جامعة نيويورك أبوظبي الخاصة:</strong> مرشح في الفنون الحرة والفصل الدراسي في يناير والمواقع العالمية</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <h2>الأسعار</h2>
+      <p class="section-intro">تختلف الأسعار حسب تعقيد الوثيقة ووقت التسليم.</p>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>أكاديمي عادي</h3>
+          <p class="price">١٥٠ درهم+</p>
+          <ul>
+            <li>كشف درجات أو شهادة واحدة</li>
+            <li>تسليم خلال ٢٤ ساعة</li>
+            <li>ختم قانوني معتمد من وزارة العدل</li>
+            <li>نسخة رقمية PDF مشمولة</li>
+          </ul>
+        </div>
+
+        <div class="pricing-card featured">
+          <h3>نفس اليوم - أبوظبي</h3>
+          <p class="price">٢٥٠ درهم+</p>
+          <ul>
+            <li>معالجة أولوية</li>
+            <li>إنجاز في نفس اليوم</li>
+            <li>استلام/توصيل في أبوظبي</li>
+            <li>تحديثات عبر الواتساب</li>
+          </ul>
+        </div>
+
+        <div class="pricing-card">
+          <h3>باقة الطالب</h3>
+          <p class="price">٤٠٠ درهم+</p>
+          <ul>
+            <li>وثائق متعددة (٣-٥)</li>
+            <li>كشوف درجات + شهادة + شهادات</li>
+            <li>تسليم منسق</li>
+            <li>خصم الباقة مطبق</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" name="faq-group">
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container narrow-content">
+      <h2>المؤسسات الأكاديمية في أبوظبي</h2>
+      <p>إلى جانب جامعة نيويورك أبوظبي، تضم أبوظبي عدة جامعات كبرى بطلاب دوليين يحتاجون خدمات ترجمة. نخدم الطلاب والخريجين من:</p>
+
+      <ul>
+        <li><strong>جامعة السوربون أبوظبي:</strong> شهادات أكاديمية فرنسية وإنجليزية</li>
+        <li><strong>جامعة خليفة:</strong> ترجمة شهادات الهندسة والعلوم</li>
+        <li><strong>جامعة زايد:</strong> خدمات وثائق الجامعة الاتحادية الإماراتية</li>
+        <li><strong>جامعة أبوظبي:</strong> دعم الطلاب متعددي اللغات</li>
+        <li><strong>جامعة باريس السوربون أبوظبي:</strong> خبرة بالمصطلحات الأكاديمية الفرنسية</li>
+      </ul>
+
+      <p>لكل مؤسسة تنسيقات وثائق ومصطلحات أكاديمية محددة. خبرتنا بالمشهد الأكاديمي في أبوظبي تضمن ترجمات دقيقة بغض النظر عن المؤسسة المصدرة.</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container narrow-content">
+      <h2>تواصلوا معنا لترجمة وثائق جامعة نيويورك أبوظبي</h2>
+      <p>أرسلوا وثائقكم عبر الواتساب للحصول على تقييم وعرض سعر مجاني. نرد خلال دقائق خلال ساعات العمل.</p>
+
+      <div class="cta-box">
+        <p><strong>الواتساب:</strong> <a href="https://wa.me/971508620217" dir="ltr">+971 50 862 0217</a></p>
+        <p><strong>ساعات العمل:</strong> يومياً من ٨:٠٠ صباحاً حتى ١٠:٠٠ مساءً</p>
+        <p><strong>خدمة أبوظبي:</strong> متاحة في نفس اليوم</p>
+      </div>
+
+      <p>للمشاريع الأكاديمية المعقدة أو ترجمة وثائق بالجملة لمجموعات طلابية، تواصلوا معنا لمناقشة متطلباتكم.</p>
+    </div>
+  </section>
+</BaseLayoutArabic>
+
+<style>
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .pricing-card {
+    background: var(--surface-secondary, #f8f9fa);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .pricing-card.featured {
+    background: var(--surface-navy, #0E2B48);
+    color: var(--text-on-dark, #fff);
+  }
+
+  .pricing-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+
+  .pricing-card .price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent-coral, #FF1654);
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-card.featured .price {
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .pricing-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+  }
+
+  .pricing-card li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .pricing-card.featured li {
+    border-bottom-color: rgba(255,255,255,0.2);
+  }
+
+  .pricing-card li:last-child {
+    border-bottom: none;
+  }
+
+  .cta-box {
+    background: var(--surface-secondary, #f8f9fa);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    margin: 2rem 0;
+  }
+
+  .cta-box p {
+    margin: 0.5rem 0;
+  }
+
+  .cta-box a {
+    color: var(--accent-coral, #FF1654);
+    font-weight: 600;
+  }
+
+  .narrow-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+</style>

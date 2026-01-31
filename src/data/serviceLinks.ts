@@ -213,6 +213,13 @@ export const serviceLinks: Record<string, ServiceLink> = {
     full: "academic transcript translation",
     icon: "fas fa-list-alt"
   },
+  nyuad: {
+    url: "/personal/academic/nyuad/",
+    text: "NYUAD document translation",
+    full: "NYU Abu Dhabi transcript and degree translation",
+    icon: "fas fa-university",
+    badge: "NEW"
+  },
 
   // ========================================
   // SILO 3: SERVICES & ATTESTATION
@@ -706,8 +713,8 @@ export const pageRelationships: Record<string, PageRelationships> = {
   // ACADEMIC DOCUMENTS
   // ========================================
   degree: {
-    related: ["transcripts", "pcc", "goldenVisa", "birthCertificate", "dhaDataflow"],
-    family: ["transcripts"],
+    related: ["transcripts", "pcc", "goldenVisa", "birthCertificate", "dhaDataflow", "nyuad"],
+    family: ["transcripts", "nyuad"],
     nextSteps: ["attestation", "mofaAttestation"],
     crossSilo: ["goldenVisa", "immigration", "medical", "dhaDataflow"],
     locations: ["dubai", "abuDhabi"],
@@ -716,12 +723,21 @@ export const pageRelationships: Record<string, PageRelationships> = {
     trust: ["credentials", "translator", "reviews", "caseStudies"]
   },
   transcripts: {
-    related: ["degree", "pcc", "goldenVisa"],
-    family: ["degree"],
+    related: ["degree", "pcc", "goldenVisa", "nyuad"],
+    family: ["degree", "nyuad"],
     nextSteps: ["attestation"],
     crossSilo: ["immigration", "dhaDataflow"],
     locations: ["dubai", "abuDhabi"],
     resources: ["documentChecklist", "attestationGuide", "pricingGuide"],
+    trust: ["credentials", "translator", "reviews"]
+  },
+  nyuad: {
+    related: ["degree", "transcripts", "birthCertificate", "attestation"],
+    family: ["degree", "transcripts"],
+    nextSteps: ["attestation", "mofaAttestation"],
+    crossSilo: ["immigration", "goldenVisa"],
+    locations: ["abuDhabi", "dubai"],
+    resources: ["documentChecklist", "attestationGuide", "mohesrEquivalency", "distanceEducation"],
     trust: ["credentials", "translator", "reviews"]
   },
 
@@ -1155,7 +1171,7 @@ export const pageRelationships: Record<string, PageRelationships> = {
     locations: ["dubai", "abuDhabi", "sharjah"]
   },
   academic: {
-    related: ["degree", "transcripts"],
+    related: ["degree", "transcripts", "nyuad"],
     crossSilo: ["goldenVisa", "immigration", "attestation"],
     locations: ["dubai", "abuDhabi"]
   },
