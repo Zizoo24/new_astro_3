@@ -1,0 +1,843 @@
+---
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: "ما هي الوثائق الأكاديمية التي تحتاج ترجمة معتمدة في الإمارات؟",
+    answer: "تشمل الشهادات الجامعية (بكالوريوس، ماجستير، دكتوراه)، كشوف الدرجات، شهادات الدبلوم، الشهادات المهنية، شهادات الثانوية العامة، وخطابات التوصية. جميع هذه الوثائق تحتاج ترجمة معتمدة من وزارة العدل للاستخدام الرسمي في دولة الإمارات."
+  },
+  {
+    question: "كم تستغرق ترجمة الشهادة الجامعية؟",
+    answer: "نقدم ترجمة الشهادات الجامعية في نفس اليوم للوثائق العادية. كشوف الدرجات الطويلة تستغرق 24-48 ساعة حسب عدد الصفحات. نوفر خدمة عاجلة خلال ساعات للحالات الطارئة."
+  },
+  {
+    question: "هل أحتاج ترجمة معتمدة للتوظيف في الإمارات؟",
+    answer: "نعم. تتطلب وزارة الموارد البشرية ترجمة معتمدة ومصدقة للشهادات الأكاديمية لإصدار تصريح العمل. يتحقق أصحاب العمل من المؤهلات قبل الكفالة. بعض المناصب تتطلب معادلة من وزارة التعليم العالي."
+  },
+  {
+    question: "ما هي متطلبات معادلة الشهادة من وزارة التعليم العالي؟",
+    answer: "تتطلب وزارة التعليم العالي والبحث العلمي ترجمة معتمدة للشهادة وكشف الدرجات، تصديق من بلد الإصدار، تصديق سفارة الإمارات، ثم تصديق وزارة الخارجية الإماراتية. نقدم خدمة تنسيق شاملة لجميع الخطوات."
+  },
+  {
+    question: "هل تقبل الشهادات عن بعد في الإمارات؟",
+    answer: "تقبل وزارة التعليم العالي بعض الشهادات عن بعد من جامعات معتمدة. يجب التحقق من اعتماد الجامعة وبرنامج الدراسة. نساعدك في التحقق من متطلبات قبول شهادتك قبل بدء عملية المعادلة."
+  },
+  {
+    question: "ما هي متطلبات ترجمة الشهادات للترخيص المهني؟",
+    answer: "لكل جهة متطلبات محددة: هيئة الصحة بدبي وأبوظبي للكوادر الطبية، جمعية المهندسين للمهندسين، وزارة التربية للمعلمين. نوفر ترجمات تتوافق مع متطلبات كل جهة ترخيص."
+  },
+  {
+    question: "هل يمكن ترجمة الشهادات باللغتين العربية والإنجليزية؟",
+    answer: "نعم. نقدم ترجمة ثنائية اللغة بتنسيق عمودين متوازيين. هذا التنسيق مفضل للوظائف الحكومية وشبه الحكومية حيث يتطلب التحقق بكلتا اللغتين."
+  },
+  {
+    question: "كيف أتأكد من تطابق الاسم في الترجمة مع جواز السفر؟",
+    answer: "نتحقق من تطابق الأسماء قبل التسليم. اختلاف تهجئة الاسم هو السبب الأكثر شيوعاً لرفض الوثائق. نطابق الاسم في الترجمة مع جواز السفر والهوية الإماراتية بدقة."
+  },
+  {
+    question: "ما هي تكلفة ترجمة الشهادة الجامعية؟",
+    answer: "تبدأ ترجمة الشهادة الجامعية من 150 درهم للصفحة الواحدة. كشوف الدرجات تسعر حسب عدد الصفحات. نقدم عرض سعر شامل يتضمن الترجمة والتصديق عند الطلب."
+  },
+  {
+    question: "هل تقدمون خدمة تصديق الشهادات الأكاديمية؟",
+    answer: "نعم. نقدم خدمة تنسيق كاملة تشمل الترجمة المعتمدة، تصديق وزارة الخارجية، وتقديم ملف معادلة وزارة التعليم العالي. تواصل معنا عبر الواتساب للحصول على تفاصيل الخدمة الشاملة."
+  }
+];
+---
+
+<BaseLayoutArabic
+  title="ترجمة الشهادات الجامعية | ترجمة معتمدة أبوظبي ودبي"
+  description="ترجمة معتمدة للشهادات الجامعية وكشوف الدرجات في أبوظبي ودبي. خدمات ترجمة أكاديمية معتمدة من وزارة العدل لمعادلة وزارة التعليم العالي والترخيص المهني."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "ترجمة الوثائق الأكاديمية",
+      "description": "خدمات ترجمة معتمدة للشهادات الجامعية وكشوف الدرجات والشهادات المهنية في الإمارات",
+      "provider": {
+        "@type": "Organization",
+        "name": "OnlineTranslation.ae",
+        "address": { "@type": "PostalAddress", "addressLocality": "أبوظبي", "addressCountry": "AE" }
+      },
+      "areaServed": ["أبوظبي", "دبي", "الشارقة", "الإمارات"],
+      "serviceType": ["ترجمة الشهادات الجامعية", "ترجمة كشوف الدرجات", "ترجمة الشهادات المهنية"]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "https://onlinetranslation.ae/ar/" },
+        { "@type": "ListItem", "position": 2, "name": "الوثائق الشخصية", "item": "https://onlinetranslation.ae/ar/personal/" },
+        { "@type": "ListItem", "position": 3, "name": "الوثائق الأكاديمية", "item": "https://onlinetranslation.ae/ar/personal/academic/" }
+      ]
+    })} />
+  </Fragment>
+
+  <section class="hero-section bg-dark" data-theme="dark">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="مسار التنقل">
+        <a href="/ar/">الرئيسية</a>
+        <span class="separator">&lt;</span>
+        <a href="/ar/personal/">الوثائق الشخصية</a>
+        <span class="separator">&lt;</span>
+        <span class="current">الوثائق الأكاديمية</span>
+      </nav>
+
+      <h1>ترجمة الوثائق الأكاديمية في الإمارات</h1>
+      <p class="hero-subtitle">الشهادات الجامعية وكشوف الدرجات والشهادات المهنية</p>
+      <div class="hero-intro">
+        <p>مؤهلاتك التعليمية هي مفتاح التوظيف والترخيص المهني ومتابعة الدراسة في الإمارات. ترجماتنا المعتمدة من وزارة العدل تضمن قبول شهاداتك لدى أصحاب العمل وجهات الترخيص والجامعات في جميع أنحاء الدولة.</p>
+
+        <p><strong>متى تحتاج ترجمة الوثائق الأكاديمية في الإمارات:</strong></p>
+        <ul>
+          <li><strong>تصريح العمل:</strong> تتطلب وزارة الموارد البشرية ترجمة معتمدة ومصدقة للشهادات الجامعية لإصدار تصريح العمل. يتحقق أصحاب العمل من المؤهلات قبل الكفالة</li>
+          <li><strong>الترخيص المهني:</strong> لكل جهة متطلبات محددة - هيئة الصحة بدبي للكوادر الطبية، جمعية المهندسين للمهندسين، وزارة التربية للمعلمين</li>
+          <li><strong>معادلة الشهادات:</strong> تتطلب وزارة التعليم العالي شهادة معادلة للشهادات الأجنبية لبعض الوظائف الحكومية. ننسق العملية كاملة</li>
+          <li><strong>القبول الجامعي:</strong> تتطلب الجامعات الإماراتية ترجمة معتمدة لكشوف الدرجات والشهادات للقبول في برامج الدراسات العليا</li>
+        </ul>
+
+        <p><strong>جهات الاعتراف بالمؤهلات في الإمارات:</strong></p>
+        <ul>
+          <li><strong>وزارة التعليم العالي:</strong> تصدر شهادات المعادلة للشهادات الأجنبية. مطلوبة للوظائف الحكومية وشبه الحكومية</li>
+          <li><strong>هيئة الصحة بدبي وأبوظبي:</strong> ترخيص الكوادر الطبية. الشهادات الطبية وشهادات التخصص تتطلب ترجمة معتمدة</li>
+          <li><strong>جمعية المهندسين:</strong> تسجيل المهندسين لترخيص الاستشارات والمشاريع. ترجمة الشهادة الهندسية يجب أن تعكس التخصص والاعتماد بدقة</li>
+          <li><strong>وزارة التربية وهيئة المعرفة:</strong> ترخيص المعلمين. شهادات التدريس والتخصصات تحتاج ترجمة</li>
+        </ul>
+
+        <p>تطابق الاسم في جميع الوثائق أمر بالغ الأهمية. نتحقق من تطابق الأسماء في الترجمات مع جواز السفر والهوية الإماراتية بدقة. اختلاف تهجئة الاسم هو السبب الأكثر شيوعاً لرفض الوثائق.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <h2>أنواع الوثائق الأكاديمية</h2>
+      <p class="section-intro">اختر نوع الوثيقة للاطلاع على المتطلبات والأسعار.</p>
+
+      <div class="service-grid">
+        <a href="/personal/academic/degree/" class="service-card">
+          <div class="service-card-inner">
+            <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="service-content">
+              <h3>الشهادات الجامعية</h3>
+              <p>بكالوريوس، ماجستير، ودكتوراه للتوظيف ومعادلة وزارة التعليم العالي والترخيص المهني في الإمارات.</p>
+              <span class="card-link"><i class="fas fa-arrow-left"></i> المزيد</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="/personal/academic/transcripts/" class="service-card">
+          <div class="service-card-inner">
+            <div class="service-icon"><i class="fas fa-file-alt"></i></div>
+            <div class="service-content">
+              <h3>كشوف الدرجات</h3>
+              <p>كشوف الدرجات والسجلات الأكاديمية للقبول الجامعي وتقييم المؤهلات وتحقق أصحاب العمل.</p>
+              <span class="card-link"><i class="fas fa-arrow-left"></i> المزيد</span>
+            </div>
+          </div>
+        </a>
+
+        <div class="service-card">
+          <div class="service-card-inner">
+            <div class="service-icon"><i class="fas fa-certificate"></i></div>
+            <div class="service-content">
+              <h3>الشهادات المهنية</h3>
+              <p>الشهادات الصناعية والمؤهلات المهنية وشهادات التعليم المستمر للتطور الوظيفي.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card-inner">
+            <div class="service-icon"><i class="fas fa-school"></i></div>
+            <div class="service-content">
+              <h3>شهادات الثانوية</h3>
+              <p>شهادات الثانوية العامة ورسائل المعادلة ووثائق الإتمام الأكاديمي للقبول الجامعي.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>جهات الاعتراف بالمؤهلات</h2>
+      <p class="section-intro">ترجماتنا تستوفي متطلبات هذه الجهات الإماراتية.</p>
+
+      <div class="authority-grid">
+        <div class="authority-item">
+          <i class="fas fa-university"></i>
+          <span>وزارة التعليم العالي</span>
+          <p>معادلة الشهادات الأجنبية</p>
+        </div>
+        <div class="authority-item">
+          <i class="fas fa-hospital"></i>
+          <span>هيئة الصحة</span>
+          <p>ترخيص الكوادر الطبية</p>
+        </div>
+        <div class="authority-item">
+          <i class="fas fa-hard-hat"></i>
+          <span>جمعية المهندسين</span>
+          <p>تسجيل المهندسين</p>
+        </div>
+        <div class="authority-item">
+          <i class="fas fa-chalkboard-teacher"></i>
+          <span>وزارة التربية</span>
+          <p>ترخيص المعلمين</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <h2>متطلبات الترخيص المهني</h2>
+
+      <div class="licensing-grid">
+        <div class="licensing-item">
+          <div class="licensing-header">
+            <div class="licensing-icon"><i class="fas fa-stethoscope"></i></div>
+            <h3>الكوادر الطبية</h3>
+          </div>
+          <p>تتطلب هيئة الصحة بدبي وأبوظبي ترجمة معتمدة ومصدقة للشهادات الطبية وشهادات التخصص والتراخيص المهنية.</p>
+          <ul>
+            <li>الشهادات الطبية (MBBS, MD)</li>
+            <li>شهادات التخصص</li>
+            <li>الترخيص المهني من بلد الإصدار</li>
+            <li>شهادات حسن السيرة والسلوك</li>
+          </ul>
+        </div>
+
+        <div class="licensing-item">
+          <div class="licensing-header">
+            <div class="licensing-icon"><i class="fas fa-drafting-compass"></i></div>
+            <h3>المهندسون</h3>
+          </div>
+          <p>يتطلب تسجيل جمعية المهندسين ترجمة الشهادة الهندسية مع التصديق لترخيص الاستشارات والمشاريع.</p>
+          <ul>
+            <li>شهادة الهندسة</li>
+            <li>كشوف الدرجات مع تفاصيل المقررات</li>
+            <li>ترخيص المهندس المحترف</li>
+            <li>شهادات الخبرة</li>
+          </ul>
+        </div>
+
+        <div class="licensing-item">
+          <div class="licensing-header">
+            <div class="licensing-icon"><i class="fas fa-user-tie"></i></div>
+            <h3>المعلمون</h3>
+          </div>
+          <p>تتطلب وزارة التربية والمدارس الخاصة ترجمة مؤهلات التدريس لترخيص هيئة المعرفة.</p>
+          <ul>
+            <li>شهادة أو دبلوم التدريس</li>
+            <li>شهادات التخصص</li>
+            <li>ترخيص التدريس من بلد الإصدار</li>
+            <li>شهادة حسن السيرة</li>
+          </ul>
+        </div>
+
+        <div class="licensing-item">
+          <div class="licensing-header">
+            <div class="licensing-icon"><i class="fas fa-balance-scale"></i></div>
+            <h3>المحامون</h3>
+          </div>
+          <p>تتطلب وزارة العدل ترجمة شهادة القانون لتسجيل المستشارين القانونيين والمثول أمام المحاكم.</p>
+          <ul>
+            <li>شهادة القانون (LLB, JD)</li>
+            <li>شهادة القبول في النقابة</li>
+            <li>شهادة حسن السيرة من النقابة</li>
+            <li>خطابات تفويض الممارسة</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>عملية معادلة وزارة التعليم العالي</h2>
+      <p class="section-intro">ننسق عملية معادلة الشهادات الأجنبية كاملة.</p>
+
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-number">١</div>
+          <h3>الترجمة</h3>
+          <p>ترجمة معتمدة من وزارة العدل للشهادة وكشف الدرجات</p>
+        </div>
+        <div class="step">
+          <div class="step-number">٢</div>
+          <h3>بلد الإصدار</h3>
+          <p>التوثيق والتصديق من وزارة التعليم في بلدك</p>
+        </div>
+        <div class="step">
+          <div class="step-number">٣</div>
+          <h3>سفارة الإمارات</h3>
+          <p>تصديق من سفارة الإمارات في بلد الإصدار</p>
+        </div>
+        <div class="step">
+          <div class="step-number">٤</div>
+          <h3>وزارة الخارجية</h3>
+          <p>التصديق النهائي من وزارة الخارجية الإماراتية</p>
+        </div>
+        <div class="step">
+          <div class="step-number">٥</div>
+          <h3>وزارة التعليم العالي</h3>
+          <p>إصدار شهادة المعادلة المعترف بها</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <h2>الأسئلة الشائعة</h2>
+
+      <div class="faq-accordion">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" name="academic-faq">
+            <summary class="faq-question">
+              <span>{faq.question}</span>
+              <i class="fas fa-chevron-down"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-primary">
+    <div class="container cta-section">
+      <h2>هل تحتاج ترجمة وثائق أكاديمية؟</h2>
+      <p>أرسل شهادتك أو كشف درجاتك عبر الواتساب. سنتحقق من نوع الوثيقة ونؤكد متطلبات التصديق ونقدم عرض سعر شامل يتضمن الترجمة وخدمات التنسيق.</p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/971508620217?text=أحتاج%20ترجمة%20وثائق%20أكاديمية" class="btn btn-accent">
+          <span>أرسل وثائقك</span>
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="/ar/personal/" class="btn btn-outline">
+          <span>الوثائق الشخصية</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayoutArabic>
+
+<style>
+  .hero-section {
+    padding: 8rem 0 4rem;
+    background: var(--primary-color);
+  }
+
+  .breadcrumb {
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 0;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    color: #fff;
+  }
+
+  .breadcrumb .separator {
+    margin: 0 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .breadcrumb .current {
+    color: #fff;
+  }
+
+  h1 {
+    font-size: 2.75rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    line-height: 1.3;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  .hero-intro {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.05rem;
+    line-height: 1.9;
+  }
+
+  .hero-intro p {
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-intro strong {
+    color: #fff;
+  }
+
+  .hero-intro ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .hero-intro li {
+    padding: 0.6rem 0;
+    padding-right: 1.75rem;
+    position: relative;
+  }
+
+  .hero-intro li::before {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 0;
+    color: var(--accent-color);
+    font-size: 0.85rem;
+  }
+
+  .hero-intro a {
+    color: var(--accent-color);
+    text-decoration: none;
+  }
+
+  .hero-intro a:hover {
+    text-decoration: underline;
+  }
+
+  .section {
+    padding: 5rem 0;
+  }
+
+  .section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 700px;
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .service-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  a.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  .service-card-inner {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .service-icon {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark, #0a1a30));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .service-icon i {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+
+  .service-content {
+    flex: 1;
+  }
+
+  .service-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .service-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .card-link {
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-direction: row-reverse;
+  }
+
+  .card-link i {
+    transition: transform 0.2s ease;
+  }
+
+  a.service-card:hover .card-link i {
+    transform: translateX(-4px);
+  }
+
+  .authority-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .authority-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+  }
+
+  .authority-item i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+  }
+
+  .authority-item span {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+  }
+
+  .authority-item p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .licensing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .licensing-item {
+    background: var(--bg-light);
+    border-radius: 12px;
+    padding: 2rem;
+    border-right: 4px solid var(--accent-color);
+  }
+
+  .licensing-header {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .licensing-icon {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    background: var(--accent-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .licensing-icon i {
+    font-size: 1.25rem;
+    color: #fff;
+  }
+
+  .licensing-item h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: var(--primary-color);
+  }
+
+  .licensing-item > p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+
+  .licensing-item ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .licensing-item li {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    padding: 0.4rem 0;
+    padding-right: 1.5rem;
+    position: relative;
+  }
+
+  .licensing-item li::before {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 0;
+    color: var(--accent-color);
+    font-size: 0.75rem;
+  }
+
+  .process-steps {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .step {
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .step-number {
+    width: 50px;
+    height: 50px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .step h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .step p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .faq-accordion {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: var(--bg-light);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+  }
+
+  .faq-question {
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    list-style: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question span {
+    flex: 1;
+    text-align: right;
+  }
+
+  .faq-question i {
+    color: var(--accent-color);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .faq-item[open] .faq-question i {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.25rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  .faq-answer p {
+    margin: 0;
+  }
+
+  .bg-primary {
+    background: var(--primary-color);
+  }
+
+  .bg-primary h2,
+  .bg-primary p {
+    color: #fff;
+  }
+
+  .cta-section {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .cta-section p {
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-accent {
+    background: var(--accent-color);
+    color: #fff;
+  }
+
+  .btn-accent:hover {
+    background: var(--accent-dark, #d41448);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+  }
+
+  @media (max-width: 992px) {
+    .service-grid,
+    .authority-grid,
+    .licensing-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    .service-grid,
+    .authority-grid,
+    .licensing-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .process-steps {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-section {
+      padding: 6rem 0 3rem;
+    }
+
+    .service-card-inner {
+      flex-direction: column;
+    }
+
+    .licensing-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
