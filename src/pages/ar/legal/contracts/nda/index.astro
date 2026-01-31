@@ -1,0 +1,1066 @@
+---
+/**
+ * /ar/legal/contracts/nda/ - Arabic NDA Translation Page
+ *
+ * Arabic localization of NDA translation service page
+ * Uses: BaseLayoutArabic with RTL styling
+ * Schemas: BreadcrumbList, Service, FAQPage
+ */
+import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: "لماذا تتطلب ترجمة اتفاقيات السرية اهتماماً خاصاً؟",
+    answer: "اتفاقيات السرية تحدد المعلومات المحمية وما يحدث إذا تم انتهاك الحماية. الترجمة الغامضة لتعريف المعلومات السرية قد تستثني بيانات حرجة من الحماية. الترجمة الضعيفة لأحكام التعويض قد تحد من خياراتكم القانونية. كل بند يحتاج دقة للحفاظ على قابلية التنفيذ."
+  },
+  {
+    question: "ما هي أقسام اتفاقية السرية الأكثر أهمية؟",
+    answer: "تعريف المعلومات السرية هو الأهم — فهو يحدد ما هو محمي. الاستثناءات (المعلومات المعروفة للعموم، المواد المطورة بشكل مستقل) يجب أن تكون بنفس الدقة. أحكام المدة، الإفصاحات المسموح بها، والتزامات الإعادة/الإتلاف تتطلب أيضاً ترجمة دقيقة للحفاظ على أثرها القانوني."
+  },
+  {
+    question: "هل تترجمون اتفاقيات السرية الثنائية وأحادية الجانب؟",
+    answer: "نعم. اتفاقيات السرية أحادية الجانب (سرية باتجاه واحد) والاتفاقيات الثنائية/المتبادلة (كلا الطرفين يشاركان معلومات سرية) لها هياكل مختلفة. نضمن وضوح الالتزامات الاتجاهية — من يفصح، من يستلم، وما هي الواجبات المطبقة على كل طرف."
+  },
+  {
+    question: "كم تستغرق ترجمة اتفاقية السرية؟",
+    answer: "اتفاقيات السرية القياسية (3-5 صفحات) تكتمل عادة خلال 6-12 ساعة. الاتفاقيات المعقدة مع جداول موسعة أو أحكام خاصة بالصناعة قد تتطلب 24 ساعة. خدمة السرعة متاحة للصفقات التجارية العاجلة."
+  },
+  {
+    question: "هل اتفاقيات السرية المترجمة قابلة للتنفيذ في محاكم الإمارات؟",
+    answer: "نعم. محاكم الإمارات تعترف وتنفذ اتفاقيات السرية المحكومة بقانون الإمارات. للاتفاقيات المحكومة بقانون أجنبي، قد تنفذها محاكم الإمارات وفق مبادئ تنازع القوانين. الترجمة العربية هي ما ستفسره المحاكم، مما يجعل دقة الترجمة ضرورية للتنفيذ."
+  },
+  {
+    question: "ماذا عن اتفاقيات السرية بلغات غير الإنجليزية؟",
+    answer: "نترجم اتفاقيات السرية من الصينية والفرنسية والألمانية والهندية ولغات أخرى إلى العربية. الشراكات التجارية الدولية غالباً ما تتضمن اتفاقيات سرية متعددة اللغات — نضمن حماية متسقة عبر جميع النسخ."
+  }
+];
+
+const ndaTypes = [
+  {
+    title: "اتفاقيات أحادية الجانب",
+    content: "سرية باتجاه واحد حيث طرف واحد فقط يفصح عن المعلومات. شائعة في سياقات التوظيف، علاقات الموردين، والمناقشات التجارية المبكرة."
+  },
+  {
+    title: "اتفاقيات ثنائية/متبادلة",
+    content: "كلا الطرفين يشاركان معلومات سرية ويتحملان واجبات متبادلة. قياسية للمشاريع المشتركة، الشراكات، ومناقشات الاندماج والاستحواذ."
+  },
+  {
+    title: "اتفاقيات سرية التوظيف",
+    content: "اتفاقيات سرية الموظفين لحماية الأسرار التجارية ومعلومات العملاء والعمليات الملكية. غالباً ما تكون مدمجة مع أحكام عدم المنافسة."
+  },
+  {
+    title: "اتفاقيات سرية الاستثمار",
+    content: "السرية قبل الاستثمار لعمليات العناية الواجبة. تحمي المعلومات المالية وخطط العمل والبيانات الاستراتيجية خلال مناقشات التمويل."
+  },
+  {
+    title: "اتفاقيات السرية التقنية",
+    content: "حماية الكود البرمجي والخوارزميات والمواصفات التقنية والملكية الفكرية في الشراكات التقنية."
+  }
+];
+
+const criticalElements = [
+  {
+    title: "تعريف المعلومات السرية",
+    content: "نطاق ما هو محمي. يجب ترجمته ليشمل جميع الفئات المقصودة (تقنية، مالية، تجارية) بدون ثغرات غير مقصودة."
+  },
+  {
+    title: "الاستثناءات",
+    content: "المعلومات غير المشمولة — المتاحة للعموم، المطورة بشكل مستقل، المعروفة سابقاً. هذه الاستثناءات تحد الالتزامات ويجب ترجمتها بدقة."
+  },
+  {
+    title: "الإفصاحات المسموح بها",
+    content: "الظروف التي تسمح بالإفصاح — للموظفين، المستشارين، أو بموجب إلزام قانوني. يجب تحديد من يمكنه الوصول للمعلومات وتحت أي شروط بوضوح."
+  },
+  {
+    title: "المدة والاستمرارية",
+    content: "كم تستمر الالتزامات. بعض الواجبات تنتهي مع الاتفاقية؛ أخرى تستمر بعد الإنهاء. الفترات الزمنية يجب أن تكون واضحة في الترجمة."
+  },
+  {
+    title: "التعويضات والتنفيذ",
+    content: "ما يحدث عند الانتهاك — الإغاثة الفورية، التعويضات، التنفيذ المحدد. لغة التعويض القوية يجب أن تبقى قوية في الترجمة العربية."
+  }
+];
+
+const processSteps = [
+  {
+    number: 1,
+    title: "مراجعة الاتفاقية",
+    desc: "نحدد نوع اتفاقية السرية، الأطراف المعنية، وأحكام السرية المحددة التي تتطلب ترجمة دقيقة."
+  },
+  {
+    number: 2,
+    title: "الترجمة القانونية",
+    desc: "مترجم معتمد من وزارة العدل يتولى المستند مع الاهتمام بتعريفات النطاق والاستثناءات وأحكام التنفيذ."
+  },
+  {
+    number: 3,
+    title: "مراجعة المصطلحات",
+    desc: "مراجع ثانٍ يضمن ترجمة متسقة للمصطلحات المعرفة ومعادلات عربية فعالة قانونياً."
+  },
+  {
+    number: 4,
+    title: "التسليم المعتمد",
+    desc: "ترجمة مختومة من وزارة العدل جاهزة للاستخدام التجاري أو التقديم للمحكمة أو التوثيق حسب الحاجة."
+  }
+];
+
+// FAQ Schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+// Service Schema
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "ترجمة اتفاقيات السرية",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "OnlineTranslation.ae",
+    "telephone": "+971508620217"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "الإمارات العربية المتحدة"
+  },
+  "description": "ترجمة اتفاقيات السرية المعتمدة من وزارة العدل في دبي. اتفاقيات السرية للأعمال والتوظيف والاستثمار. مصطلحات قانونية دقيقة لقابلية التنفيذ في محاكم الإمارات.",
+  "serviceType": "ترجمة اتفاقيات السرية"
+};
+---
+
+<BaseLayoutArabic
+  title="ترجمة اتفاقيات السرية دبي | اتفاقية عدم الإفصاح"
+  description="ترجمة اتفاقيات السرية المعتمدة من وزارة العدل في دبي. اتفاقيات السرية للأعمال والتوظيف والاستثمار. مصطلحات قانونية دقيقة لقابلية التنفيذ في محاكم الإمارات."
+>
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} slot="head" />
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <ol class="breadcrumb">
+          <li><a href="/ar/">الرئيسية</a></li>
+          <li><a href="/ar/legal-translation-dubai/">الترجمة القانونية</a></li>
+          <li><a href="/ar/legal/contracts/">العقود</a></li>
+          <li><span aria-current="page">اتفاقيات السرية</span></li>
+        </ol>
+      </nav>
+
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-user-secret"></i>
+          <span>حماية الأسرار التجارية</span>
+        </div>
+
+        <h1>ترجمة اتفاقيات السرية في دبي</h1>
+        <p class="hero-subtitle">اتفاقيات عدم الإفصاح</p>
+
+        <div class="hero-intro">
+          <p>اتفاقيات السرية تحمي معلوماتكم التجارية الأكثر قيمة — الأسرار التجارية، بيانات العملاء، الخطط الاستراتيجية، والمعلومات التنافسية. الترجمة العربية يجب أن توفر نفس الحماية التي يوفرها الأصل. الترجمة الغامضة يمكن أن تخلق ثغرات تترك <strong>معلوماتكم السرية</strong> مكشوفة. في محاكم الإمارات، القضاة يفسرون النسخة العربية، مما يجعل دقة الترجمة ضرورية للتنفيذ.</p>
+        </div>
+
+        <div class="hero-scenarios">
+          <h3>سيناريوهات اتفاقيات السرية الشائعة</h3>
+          <div class="scenarios-grid">
+            <div class="scenario-item">
+              <strong>مناقشات الاستثمار</strong>
+              <span>حماية خطط العمل والتوقعات المالية والبيانات الاستراتيجية خلال جولات التمويل والعناية الواجبة</span>
+            </div>
+            <div class="scenario-item">
+              <strong>علاقات الموردين</strong>
+              <span>تحديد حدود الإفصاح قبل منح الوصول للأنظمة وبيانات API والمعلومات الملكية</span>
+            </div>
+            <div class="scenario-item">
+              <strong>اتفاقيات التوظيف</strong>
+              <span>إلزام الموظفين بحماية الأسرار التجارية وقوائم العملاء والعمليات الداخلية</span>
+            </div>
+            <div class="scenario-item">
+              <strong>مفاوضات الاندماج والاستحواذ</strong>
+              <span>حماية البيانات المؤسسية الحساسة والمالية والخطط الاستراتيجية</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-table-wrapper">
+          <h3>مقارنة أنواع اتفاقيات السرية</h3>
+          <table class="hero-table">
+            <thead>
+              <tr>
+                <th>النوع</th>
+                <th>الهيكل</th>
+                <th>الاستخدام الشائع</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>أحادية الجانب</td>
+                <td>سرية باتجاه واحد</td>
+                <td>التوظيف، إعداد الموردين، العروض التجارية</td>
+              </tr>
+              <tr>
+                <td>ثنائية (متبادلة)</td>
+                <td>كلا الطرفين يشاركان ويحميان</td>
+                <td>المشاريع المشتركة، الشراكات، مناقشات الاندماج</td>
+              </tr>
+              <tr>
+                <td>متعددة الأطراف</td>
+                <td>أطراف متعددة معنية</td>
+                <td>صفقات الكونسورتيوم، المشاريع متعددة الأطراف</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="hero-features">
+          <div class="hero-feature">
+            <i class="fas fa-user-secret"></i>
+            <div>
+              <strong>التركيز على السرية</strong>
+              <span>لغة حماية دقيقة</span>
+            </div>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-shield-alt"></i>
+            <div>
+              <strong>قابلية التنفيذ القانوني</strong>
+              <span>مصطلحات جاهزة لمحاكم الإمارات</span>
+            </div>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-clock"></i>
+            <div>
+              <strong>6-12 ساعة</strong>
+              <span>إنجاز الاتفاقيات القياسية</span>
+            </div>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-handshake"></i>
+            <div>
+              <strong>ثنائية وأحادية</strong>
+              <span>جميع أنواع الاتفاقيات مشمولة</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-cta">
+          <a href="https://wa.me/971508620217?text=أرغب%20في%20ترجمة%20اتفاقية%20سرية" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i>
+            أرسلوا الاتفاقية للتسعير
+          </a>
+          <a href="tel:+971508620217" class="btn btn-secondary">
+            <i class="fas fa-phone"></i>
+            اتصلوا الآن
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section">
+    <div class="container">
+      <h2>آلية ترجمة اتفاقيات السرية</h2>
+      <div class="process-grid">
+        {processSteps.map(step => (
+          <div class="process-card">
+            <div class="process-number">{step.number}</div>
+            <h3>{step.title}</h3>
+            <p>{step.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- NDA Types Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>أنواع اتفاقيات السرية التي نترجمها</h2>
+      <div class="types-grid">
+        {ndaTypes.map(type => (
+          <div class="type-card">
+            <h3>{type.title}</h3>
+            <p>{type.content}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Critical Elements Section -->
+  <section class="section">
+    <div class="container">
+      <h2>عناصر اتفاقية السرية الحرجة</h2>
+      <div class="elements-grid">
+        {criticalElements.map(element => (
+          <div class="element-card">
+            <h3>{element.title}</h3>
+            <p>{element.content}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <div class="content-wrapper">
+        <h2>ما تحتاجون معرفته عن ترجمة اتفاقيات السرية</h2>
+
+        <h3>السؤال الحقيقي: هل ستحميني في محاكم الإمارات؟</h3>
+        <p>اتفاقية السرية قوتها بقوة أضعف بنودها. إذا احتجتم لتنفيذ السرية في الإمارات، الترجمة العربية هي ما سيقرأه القضاة. ترجمة سيئة لاتفاقية السرية يمكن أن تترك أسراركم التجارية مكشوفة، حتى لو كانت النسخة الإنجليزية صاغها محامون من الدرجة الأولى.</p>
+
+        <p>الواقع هو: محاكم الإمارات تنفذ اتفاقيات السرية، لكنها تفسر النسخة العربية. إذا استخدمت الترجمة العربية مصطلحات غامضة حيث استخدمت الإنجليزية مصطلحات دقيقة، تفقدون الحماية. إذا تم تخفيف بنود التعويض في الترجمة، خيارات التنفيذ تتقلص.</p>
+
+        <h3>ما الذي يجعل ترجمة اتفاقيات السرية مختلفة</h3>
+        <p>على عكس العقود الأخرى، تعتمد اتفاقيات السرية على مصطلحات معرفة بعناية يجب أن تحمل نفس المعنى في كل المستند. كل مرة تظهر "المعلومات السرية"، يجب أن تشير لنفس النطاق بالضبط. التحديات الرئيسية تشمل:</p>
+
+        <ul class="content-list">
+          <li><strong>اتساق المصطلحات المعرفة:</strong> "المعلومات السرية" يجب أن تُترجم بشكل متطابق كل مرة</li>
+          <li><strong>لغة النطاق:</strong> "بما في ذلك على سبيل المثال لا الحصر" لها أثر قانوني محدد بالعربية</li>
+          <li><strong>دقة الاستثناءات:</strong> ما ليس سرياً بنفس أهمية ما هو سري</li>
+          <li><strong>وضوح المدة:</strong> "سنتان من الإنهاء" يجب أن تكون واضحة</li>
+          <li><strong>الحفاظ على التعويضات:</strong> "الإغاثة الفورية" يجب أن تحتفظ بقوتها</li>
+        </ul>
+
+        <h3>واقع تنفيذ محاكم الإمارات</h3>
+        <p>أصبحت محاكم الإمارات أكثر تطوراً في التعامل مع نزاعات اتفاقيات السرية. القضايا الأخيرة تُظهر أن المحاكم:</p>
+
+        <ul class="content-list">
+          <li>تفحص النص العربي بعناية للنطاق والمدة</li>
+          <li>تمنح تعويضات عندما يُثبت الانتهاك ويُحدد كمياً</li>
+          <li>تصدر أوامر قضائية لمنع الإفصاح المستمر</li>
+          <li>تأخذ بعين الاعتبار طبيعة المعلومات السرية</li>
+          <li>تقيّم ما إذا اتُخذت تدابير حماية معقولة</li>
+        </ul>
+
+        <div class="highlight-box">
+          <h4>أخطاء الترجمة الشائعة التي يجب تجنبها</h4>
+          <div class="mistake-list">
+            <div class="mistake-item">
+              <span class="mistake-icon">✗</span>
+              <div><strong>مصطلحات سرية عامة:</strong> استخدام كلمات عربية غامضة بدلاً من مصطلحات قانونية دقيقة</div>
+            </div>
+            <div class="mistake-item">
+              <span class="mistake-icon">✗</span>
+              <div><strong>عدم اتساق المصطلحات المعرفة:</strong> ترجمة "المعلومات السرية" بشكل مختلف كل مرة</div>
+            </div>
+            <div class="mistake-item">
+              <span class="mistake-icon">✗</span>
+              <div><strong>تخفيف لغة التعويض:</strong> تقليل "يحق له الحصول على إغاثة فورية" لصياغة أضعف</div>
+            </div>
+            <div class="mistake-item">
+              <span class="mistake-icon">✗</span>
+              <div><strong>فترات زمنية غامضة:</strong> "وقت معقول" بدلاً من فترات محددة</div>
+            </div>
+          </div>
+        </div>
+
+        <h3>الجدول الزمني الواقعي</h3>
+        <p>اتفاقيات السرية القياسية (3-5 صفحات) تكتمل في 6-12 ساعة. الاتفاقيات المعقدة مع جداول موسعة أو ملحقات أو تعريفات تقنية متخصصة قد تحتاج 24 ساعة. إذا كان لديكم إغلاق صفقة أو موعد اجتماع، أخبرونا مقدماً. نحدد الأولويات بناءً على احتياجاتكم التجارية.</p>
+
+        <div class="info-callout">
+          <h4><i class="fas fa-info-circle"></i> قبل التوقيع: مراجعة الترجمة</h4>
+          <p>إذا كان الطرف المقابل يقدم اتفاقية سرية عربية للتوقيع، اطلبوا مراجعتها قبل التوقيع. فهم ما توافقون عليه باللغة الحاكمة ضروري للموافقة المستنيرة والتنفيذ المستقبلي.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services -->
+  <section class="section">
+    <div class="container">
+      <h2>خدمات العقود ذات الصلة</h2>
+      <div class="related-grid">
+        <a href="/ar/legal/contracts/spa/" class="related-card">
+          <i class="fas fa-file-signature"></i>
+          <h3>ترجمة عقود البيع والشراء</h3>
+          <p>عقود الشراء للعقارات والأعمال</p>
+        </a>
+        <a href="/ar/legal/contracts/mou/" class="related-card">
+          <i class="fas fa-handshake"></i>
+          <h3>ترجمة مذكرات التفاهم</h3>
+          <p>اتفاقيات الشراكة التمهيدية</p>
+        </a>
+        <a href="/ar/legal/corporate/poa/" class="related-card">
+          <i class="fas fa-stamp"></i>
+          <h3>ترجمة التوكيلات</h3>
+          <p>تفويضات التمثيل القانوني</p>
+        </a>
+        <a href="/ar/legal/contracts/" class="related-card">
+          <i class="fas fa-folder-open"></i>
+          <h3>جميع العقود</h3>
+          <p>تصفح جميع خدمات ترجمة العقود</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-container">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" name="faq">
+            <summary class="faq-question">
+              <span>{faq.question}</span>
+              <i class="fas fa-chevron-down"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>هل تحتاجون ترجمة اتفاقية سرية؟</h2>
+        <p>أرسلوا اتفاقية السرية عبر واتساب. نراجع تعقيد المستند ونقدم عرض سعر دقيق.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/971508620217?text=أرغب%20في%20ترجمة%20اتفاقية%20سرية" class="btn btn-primary btn-lg">
+            <i class="fab fa-whatsapp"></i>
+            أرسلوا الاتفاقية
+          </a>
+          <a href="/ar/legal/contracts/" class="btn btn-outline btn-lg">
+            <i class="fas fa-arrow-right"></i>
+            جميع أنواع العقود
+          </a>
+        </div>
+        <p class="cta-note">
+          <i class="fas fa-shield-alt"></i>
+          ترجمة معتمدة من وزارة العدل — رخصة رقم 701
+        </p>
+      </div>
+    </div>
+  </section>
+
+</BaseLayoutArabic>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, var(--surface-navy, #0a1628) 0%, #1a365d 100%);
+    color: var(--text-on-dark, #ffffff);
+    padding: 3rem 0 4rem;
+  }
+
+  .breadcrumb-nav {
+    margin-bottom: 2rem;
+  }
+
+  .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  .breadcrumb li:not(:last-child)::after {
+    content: "/";
+    margin-right: 0.5rem;
+    opacity: 0.5;
+  }
+
+  .breadcrumb a {
+    color: var(--text-on-dark, #ffffff);
+    opacity: 0.8;
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    opacity: 1;
+  }
+
+  .hero-content {
+    max-width: 900px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(212, 175, 55, 0.2);
+    color: var(--accent-gold, #D4AF37);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-section h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 1rem;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+    color: var(--accent-coral, #FF6B6B);
+    font-weight: 600;
+  }
+
+  .hero-intro {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+  }
+
+  .hero-scenarios {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-scenarios h3 {
+    font-size: 1.1rem;
+    margin: 0 0 1rem;
+  }
+
+  .scenarios-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .scenario-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .scenario-item strong {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: var(--accent-coral, #FF6B6B);
+  }
+
+  .scenario-item span {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  .hero-table-wrapper {
+    margin-bottom: 2rem;
+  }
+
+  .hero-table-wrapper h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .hero-table th,
+  .hero-table td {
+    padding: 0.75rem 1rem;
+    text-align: right;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .hero-table th {
+    background: rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+  }
+
+  .hero-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .hero-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .hero-feature i {
+    font-size: 1.25rem;
+    color: var(--accent-coral, #FF6B6B);
+    margin-top: 0.25rem;
+  }
+
+  .hero-feature strong {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .hero-feature span {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--accent-coral, #FF6B6B);
+    color: #fff;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  /* Sections */
+  .section {
+    padding: 4rem 0;
+  }
+
+  .section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color, #0a1628);
+  }
+
+  .bg-light {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Process Grid */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .process-card {
+    text-align: center;
+    position: relative;
+  }
+
+  .process-number {
+    width: 50px;
+    height: 50px;
+    background: var(--accent-coral, #FF6B6B);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .process-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .process-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* Types Grid */
+  .types-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .type-card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .type-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .type-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* Elements Grid */
+  .elements-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .element-card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    border-right: 4px solid var(--accent-coral, #FF6B6B);
+  }
+
+  .element-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .element-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* Content Section */
+  .content-wrapper {
+    max-width: 900px;
+  }
+
+  .content-wrapper h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .content-wrapper h3 {
+    font-size: 1.25rem;
+    margin: 2rem 0 1rem;
+    color: var(--primary-color);
+  }
+
+  .content-wrapper p {
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  .content-list {
+    margin: 1rem 0 1.5rem;
+    padding-right: 1.25rem;
+  }
+
+  .content-list li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  .highlight-box {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .highlight-box h4 {
+    margin: 0 0 1rem;
+    color: var(--primary-color);
+  }
+
+  .mistake-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .mistake-item {
+    display: flex;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: #fff5f5;
+    border-radius: 8px;
+  }
+
+  .mistake-icon {
+    color: #dc3545;
+    font-weight: bold;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .info-callout {
+    background: linear-gradient(135deg, #e8f4f8 0%, #d4ecf4 100%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-right: 4px solid #0077b6;
+  }
+
+  .info-callout h4 {
+    margin: 0 0 0.75rem;
+    color: #0077b6;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .info-callout p {
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* Related Grid */
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .related-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .related-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .related-card i {
+    font-size: 2rem;
+    color: var(--accent-coral, #FF6B6B);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .related-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .related-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* FAQ Section */
+  .faq-container {
+    max-width: 800px;
+  }
+
+  .faq-item {
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--primary-color);
+    list-style: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question i {
+    transition: transform 0.3s ease;
+    color: var(--accent-coral);
+  }
+
+  .faq-item[open] .faq-question i {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.25rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, var(--surface-navy, #0a1628) 0%, #1a365d 100%);
+    color: #fff;
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .cta-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .cta-content > p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-note {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .process-grid,
+    .related-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .types-grid,
+    .elements-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 2rem 0 3rem;
+    }
+
+    .hero-section h1 {
+      font-size: 1.75rem;
+    }
+
+    .scenarios-grid,
+    .hero-features {
+      grid-template-columns: 1fr;
+    }
+
+    .section {
+      padding: 3rem 0;
+    }
+
+    .process-grid,
+    .types-grid,
+    .elements-grid,
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+    }
+
+    .cta-buttons .btn {
+      width: 100%;
+    }
+  }
+</style>

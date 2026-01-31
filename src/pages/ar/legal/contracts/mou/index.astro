@@ -1,0 +1,534 @@
+---
+/**
+ * /ar/legal/contracts/mou/ - Arabic MOU Translation Page
+ *
+ * Arabic localization of Memorandum of Understanding translation
+ * Uses: BaseLayoutArabic with RTL styling
+ * Schemas: BreadcrumbList, Service, FAQPage
+ */
+import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: "هل مذكرة التفاهم ملزمة قانونياً؟",
+    answer: "يعتمد على صياغتها. بعض مذكرات التفاهم هي إعلانات نوايا خالصة بدون قوة قانونية. أخرى تحتوي أحكاماً ملزمة ممزوجة بتطلعات غير ملزمة. الترجمة يجب أن تحافظ على هذا التمييز بوضوح. محاكم الإمارات نفذت مذكرات تفاهم عندما أظهرت اللغة نية حقيقية للالتزام."
+  },
+  {
+    question: "ما الفرق بين مذكرة التفاهم وعقد التأسيس؟",
+    answer: "مذكرة التفاهم (MOU) هي مستند ما قبل التعاقد، غالباً غير ملزمة، تؤسس إطاراً للتفاوض المستقبلي. عقد التأسيس (MOA) هو مستند تأسيس شركة ملزم يُودع لدى الدوائر الاقتصادية أو سلطات المناطق الحرة. استخدام المصطلحات العربية الخاطئة يمكن أن يخلق ارتباكاً قانونياً كبيراً."
+  },
+  {
+    question: "متى تحتاج مذكرات التفاهم للترجمة؟",
+    answer: "الترجمة العربية تصبح ضرورية عند: الشراكات الحكومية (الجهات الإماراتية تتطلب نسخاً عربية)، دليل المحكمة (إذا نشأ نزاع حول الشروط)، التقديمات التنظيمية (بعض التراخيص تتطلب توثيق الشراكة)، عقود المتابعة (الاتفاقية النهائية تشير لمذكرة التفاهم)."
+  },
+  {
+    question: "كم تستغرق ترجمة مذكرة التفاهم؟",
+    answer: "مذكرات التفاهم القياسية (5-10 صفحات) تستغرق 6-12 ساعة. مذكرات التفاهم المعقدة مع ملحقات متعددة قد تحتاج 24 ساعة. مذكرات التفاهم الحكومية مع متطلبات تنسيق محددة قد تستغرق وقتاً أطول. إذا كان لديكم حفل توقيع مجدول، أخبرونا بالتاريخ."
+  },
+  {
+    question: "هل تتعاملون مع مذكرات التفاهم الأكاديمية؟",
+    answer: "نعم. التعاون الجامعي والشراكات البحثية لها عناصر فريدة: أحكام الملكية الفكرية، تبادل الطلاب، مصادر التمويل، حقوق النشر. نتعامل مع مذكرات التفاهم بين جامعات الإمارات والمؤسسات الدولية بانتظام."
+  },
+  {
+    question: "ما نقاط الترجمة الحرجة في مذكرات التفاهم؟",
+    answer: "لغة النية ('يجب' مقابل 'سوف' مقابل 'ينوي' مقابل 'قد') تحمل مستويات التزام مختلفة. أحكام الحصرية يجب أن تكون واضحة. نطاق السرية ومدتها. حقوق الإنهاء وكيف ومتى يمكن للأطراف الانسحاب."
+  }
+];
+
+const mouTypes = [
+  {
+    icon: "handshake",
+    title: "الشراكات التجارية",
+    content: "اتفاقيات إطارية بين الشركات التي تستكشف فرص التعاون"
+  },
+  {
+    icon: "project-diagram",
+    title: "المشاريع المشتركة",
+    content: "اتفاقيات تمهيدية لتشكيل المشاريع المشتركة والمشاريع المشتركة"
+  },
+  {
+    icon: "university",
+    title: "مذكرات التفاهم الحكومية",
+    content: "أُطر الشراكة بين القطاعين العام والخاص واتفاقيات التعاون الحكومي"
+  },
+  {
+    icon: "graduation-cap",
+    title: "الشراكات الأكاديمية",
+    content: "التعاون الجامعي واتفاقيات البحث والتبادلات التعليمية"
+  }
+];
+
+const keyElements = [
+  {
+    icon: "bullseye",
+    title: "الغرض والأهداف",
+    content: "ترجمة واضحة لنية وأهداف الشراكة"
+  },
+  {
+    icon: "users",
+    title: "الأدوار والمسؤوليات",
+    content: "التزامات كل طرف ومساهماته المتوقعة"
+  },
+  {
+    icon: "clock",
+    title: "الجدول الزمني والمدة",
+    content: "فترة الاتفاقية والمراحل وأحكام التجديد"
+  },
+  {
+    icon: "lock",
+    title: "السرية",
+    content: "بروتوكولات مشاركة المعلومات وأحكام عدم الإفصاح"
+  }
+];
+
+// FAQ Schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+// Service Schema
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "ترجمة مذكرات التفاهم",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "OnlineTranslation.ae",
+    "telephone": "+971508620217"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "الإمارات العربية المتحدة"
+  },
+  "description": "ترجمة مذكرات التفاهم المعتمدة من وزارة العدل في دبي. مذكرات التفاهم للشراكات التجارية والمشاريع المشتركة والاتفاقيات التمهيدية.",
+  "serviceType": "ترجمة مذكرات التفاهم"
+};
+---
+
+<BaseLayoutArabic
+  title="ترجمة مذكرات التفاهم دبي | معتمدة من وزارة العدل"
+  description="ترجمة مذكرات التفاهم المعتمدة من وزارة العدل في دبي. مذكرات التفاهم للشراكات التجارية والمشاريع المشتركة والاتفاقيات التمهيدية."
+>
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} slot="head" />
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <ol class="breadcrumb">
+          <li><a href="/ar/">الرئيسية</a></li>
+          <li><a href="/ar/legal-translation-dubai/">الترجمة القانونية</a></li>
+          <li><a href="/ar/legal/contracts/">العقود</a></li>
+          <li><span aria-current="page">مذكرات التفاهم</span></li>
+        </ol>
+      </nav>
+
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-handshake"></i>
+          <span>الشراكات التجارية</span>
+        </div>
+
+        <h1>ترجمة مذكرات التفاهم في دبي</h1>
+        <p class="hero-subtitle">معتمدة من وزارة العدل للشراكات التجارية</p>
+
+        <div class="hero-intro">
+          <p>ترجمات مذكرات التفاهم مقبولة مباشرة من <strong>محاكم دبي</strong> و<strong>محاكم مركز دبي المالي العالمي</strong> و<strong>السجلات التجارية الإماراتية</strong> عند اعتمادها من وزارة العدل. الفشل في الحفاظ على اللغة الملزمة مقابل غير الملزمة من بين أهم أسباب نزاعات مذكرات التفاهم في الإجراءات التجارية الإماراتية.</p>
+        </div>
+
+        <div class="hero-distinction">
+          <h3>مذكرة التفاهم مقابل عقد التأسيس: تمييز حرج</h3>
+          <div class="distinction-grid">
+            <div class="distinction-col">
+              <h4>مذكرة التفاهم (MOU)</h4>
+              <ul>
+                <li>مستند ما قبل التعاقد</li>
+                <li>غالباً غير ملزمة (لكن ليس دائماً)</li>
+                <li>تؤسس إطاراً للاتفاق المستقبلي</li>
+                <li>تُستخدم قبل إنهاء شروط الصفقة</li>
+                <li>تركز على الشراكة والتعاون</li>
+              </ul>
+            </div>
+            <div class="distinction-col">
+              <h4>عقد التأسيس (MOA)</h4>
+              <ul>
+                <li>مستند تأسيس الشركة</li>
+                <li>دائماً ملزم قانونياً</li>
+                <li>يحدد هيكل الشركة</li>
+                <li>يُودع لدى السلطات الحكومية</li>
+                <li>يركز على حوكمة الشركات</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-features">
+          <div class="hero-feature">
+            <i class="fas fa-check-circle"></i>
+            <div>
+              <strong>اعتماد جاهز للمحكمة</strong>
+              <span>مقبول من محاكم دبي ومركز دبي المالي وسوق أبوظبي العالمي</span>
+            </div>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-file-alt"></i>
+            <div>
+              <strong>تحليل لغة الالتزام</strong>
+              <span>الأحكام الملزمة مقابل غير الملزمة محفوظة بدقة</span>
+            </div>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-clock"></i>
+            <div>
+              <strong>24 ساعة</strong>
+              <span>مذكرات التفاهم القياسية</span>
+            </div>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-bolt"></i>
+            <div>
+              <strong>6 ساعات</strong>
+              <span>خدمة سريعة متاحة</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-cta">
+          <a href="https://wa.me/971508620217?text=أرغب%20في%20ترجمة%20مذكرة%20تفاهم" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i>
+            أرسلوا المذكرة للتسعير
+          </a>
+          <a href="tel:+971508620217" class="btn btn-secondary">
+            <i class="fas fa-phone"></i>
+            اتصلوا الآن
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOU Types Section -->
+  <section class="section">
+    <div class="container">
+      <h2>أنواع مذكرات التفاهم التي نترجمها</h2>
+      <div class="types-grid">
+        {mouTypes.map(type => (
+          <div class="type-card">
+            <i class={`fas fa-${type.icon}`}></i>
+            <h3>{type.title}</h3>
+            <p>{type.content}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Elements Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>عناصر مذكرة التفاهم الرئيسية</h2>
+      <div class="elements-list">
+        {keyElements.map(element => (
+          <div class="element-item">
+            <i class={`fas fa-${element.icon}`}></i>
+            <div>
+              <h3>{element.title}</h3>
+              <p>{element.content}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Section -->
+  <section class="section">
+    <div class="container">
+      <div class="content-wrapper">
+        <h2>ما تحتاجون معرفته عن ترجمة مذكرات التفاهم</h2>
+
+        <h3>السؤال الحقيقي: هل مذكرة التفاهم ملزمة؟</h3>
+        <p>هذا هو السؤال الذي يسأله الجميع. الجواب يعتمد على كيفية صياغة مذكرة التفاهم. بعض مذكرات التفاهم هي إعلانات نوايا خالصة بدون قوة قانونية. أخرى تحتوي أحكاماً ملزمة ممزوجة بتطلعات غير ملزمة. الترجمة يجب أن تحافظ على هذا التمييز بوضوح.</p>
+
+        <p>محاكم الإمارات نفذت مذكرات تفاهم عندما أظهرت اللغة نية حقيقية للالتزام. إذا استخدمت مذكرة التفاهم عبارات مثل "يلتزم الطرفان" بدلاً من "ينوي الطرفان"، قد تعاملها المحاكم كملزمة. الترجمة يجب ألا تقوي أو تضعف لغة الالتزام بالصدفة.</p>
+
+        <h3>نقاط الترجمة الحرجة</h3>
+
+        <div class="critical-points">
+          <div class="point-item">
+            <h4>لغة النية</h4>
+            <p>"يجب" مقابل "سوف" مقابل "ينوي" مقابل "قد" تحمل مستويات التزام مختلفة. المعادلات العربية يجب أن تتطابق مع قوة الأصل بدقة.</p>
+          </div>
+          <div class="point-item">
+            <h4>أحكام الحصرية</h4>
+            <p>إذا منحت مذكرة التفاهم حقوق تفاوض حصرية، يجب أن تكون واضحة. الترجمة الغامضة قد تسمح للطرف الآخر بالتفاوض مع المنافسين.</p>
+          </div>
+          <div class="point-item">
+            <h4>نطاق السرية</h4>
+            <p>ما هي المعلومات السرية؟ لكم من الوقت؟ هذه الأحكام قد تكون الأجزاء الملزمة الوحيدة في مذكرة تفاهم غير ملزمة بخلاف ذلك.</p>
+          </div>
+          <div class="point-item">
+            <h4>حقوق الإنهاء</h4>
+            <p>كيف ومتى يمكن للأطراف الانسحاب؟ إذا كان بإمكان أي طرف الإنهاء حسب الرغبة، قد تكون مذكرة التفاهم طموحية بحتة.</p>
+          </div>
+        </div>
+
+        <h3>مذكرات التفاهم الحكومية والقطاع العام</h3>
+        <p>مذكرات التفاهم مع الجهات الحكومية الإماراتية لها خصائص محددة:</p>
+
+        <ul class="content-list">
+          <li>العربية عادة هي اللغة الحاكمة</li>
+          <li>قد تنطبق تنسيقات وزارية محددة</li>
+          <li>قد توجد متطلبات إعلان عام</li>
+          <li>دورات موافقة أطول شائعة</li>
+          <li>قد تكون هناك سلطات توقيع متعددة</li>
+        </ul>
+
+        <div class="highlight-box">
+          <h4>أخطاء ترجمة مذكرات التفاهم الشائعة</h4>
+          <div class="mistake-list">
+            <div class="mistake-item">
+              <span class="mistake-icon">✗</span>
+              <div><strong>تقوية اللغة غير الملزمة:</strong> تحويل "قد" إلى "يجب"</div>
+            </div>
+            <div class="mistake-item">
+              <span class="mistake-icon">✗</span>
+              <div><strong>تشويش التزامات الأطراف:</strong> من يفعل ماذا يصبح غير واضح</div>
+            </div>
+            <div class="mistake-item">
+              <span class="mistake-icon">✗</span>
+              <div><strong>فقدان المصطلحات المعرفة:</strong> المفاهيم الرئيسية تفقد معناها المحدد</div>
+            </div>
+            <div class="mistake-item">
+              <span class="mistake-icon">✗</span>
+              <div><strong>تجاهل الشروط:</strong> عبارات "بشرط" تُفقد</div>
+            </div>
+          </div>
+        </div>
+
+        <h3>من مذكرة التفاهم إلى الاتفاقية النهائية</h3>
+        <p>مذكرات التفاهم عادة تؤدي إلى عقود ملزمة. عندما يحدث ذلك، قد تُرفق مذكرة التفاهم المترجمة أو يُشار إليها. الاتساق مهم. نوصي بأن يتولى نفس فريق الترجمة كلاً من مذكرة التفاهم والعقد النهائي لضمان توافق المصطلحات.</p>
+
+        <h3>الجدول الزمني الواقعي</h3>
+        <p>مذكرات التفاهم القياسية (5-10 صفحات) تستغرق 6-12 ساعة. مذكرات التفاهم المعقدة مع ملحقات متعددة قد تحتاج 24 ساعة. مذكرات التفاهم الحكومية مع متطلبات تنسيق محددة قد تستغرق وقتاً أطول. إذا كان لديكم حفل توقيع مجدول، أخبرونا بالتاريخ.</p>
+
+        <div class="info-callout">
+          <h4><i class="fas fa-info-circle"></i> قبل التوقيع: المراجعة المتوازية</h4>
+          <p>إذا كنتم ستوقعون نسختين إنجليزية وعربية، اجعلوا الترجمة العربية جاهزة للمراجعة قبل تاريخ التوقيع. يجب مراجعة كلا النسختين بالتوازي لضمان تطابقهما. الترجمة في اللحظة الأخيرة تخلق مخاطر.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>قد تحتاجون أيضاً</h2>
+      <div class="related-grid">
+        <a href="/ar/legal/contracts/nda/" class="related-card">
+          <i class="fas fa-user-secret"></i>
+          <h3>اتفاقيات السرية</h3>
+          <p>حماية المعلومات المشتركة</p>
+        </a>
+        <a href="/ar/legal/contracts/spa/" class="related-card">
+          <i class="fas fa-file-signature"></i>
+          <h3>عقود البيع والشراء</h3>
+          <p>عقود الاستحواذ النهائية</p>
+        </a>
+        <a href="/ar/legal/corporate/moa/" class="related-card">
+          <i class="fas fa-building"></i>
+          <h3>عقود التأسيس</h3>
+          <p>مستندات تأسيس الشركات</p>
+        </a>
+        <a href="/ar/legal/contracts/" class="related-card">
+          <i class="fas fa-folder-open"></i>
+          <h3>جميع العقود</h3>
+          <p>تصفح جميع خدمات ترجمة العقود</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container">
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-container">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" name="faq">
+            <summary class="faq-question">
+              <span>{faq.question}</span>
+              <i class="fas fa-chevron-down"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>هل تحتاجون ترجمة مذكرة تفاهم؟</h2>
+        <p>أرسلوا مذكرة التفاهم عبر واتساب للتقييم السريع وعرض السعر.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/971508620217?text=أرغب%20في%20ترجمة%20مذكرة%20تفاهم" class="btn btn-primary btn-lg">
+            <i class="fab fa-whatsapp"></i>
+            أرسلوا المذكرة
+          </a>
+          <a href="/ar/legal/contracts/" class="btn btn-outline btn-lg">
+            <i class="fas fa-arrow-right"></i>
+            جميع أنواع العقود
+          </a>
+        </div>
+        <p class="cta-note">
+          <i class="fas fa-shield-alt"></i>
+          ترجمة معتمدة من وزارة العدل — رخصة رقم 701
+        </p>
+      </div>
+    </div>
+  </section>
+
+</BaseLayoutArabic>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, var(--surface-navy, #0a1628) 0%, #1a365d 100%);
+    color: var(--text-on-dark, #ffffff);
+    padding: 3rem 0 4rem;
+  }
+
+  .breadcrumb-nav { margin-bottom: 2rem; }
+  .breadcrumb { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; padding: 0; margin: 0; font-size: 0.9rem; }
+  .breadcrumb li:not(:last-child)::after { content: "/"; margin-right: 0.5rem; opacity: 0.5; }
+  .breadcrumb a { color: var(--text-on-dark, #ffffff); opacity: 0.8; text-decoration: none; }
+  .breadcrumb a:hover { opacity: 1; }
+
+  .hero-content { max-width: 900px; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(212, 175, 55, 0.2); color: var(--accent-gold, #D4AF37); padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.9rem; font-weight: 600; margin-bottom: 1.5rem; }
+  .hero-section h1 { font-size: 2.5rem; font-weight: 800; margin: 0 0 1rem; line-height: 1.2; }
+  .hero-subtitle { font-size: 1.25rem; opacity: 0.9; margin-bottom: 1.5rem; color: var(--accent-coral, #FF6B6B); font-weight: 600; }
+  .hero-intro { font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem; opacity: 0.95; }
+
+  .hero-distinction { background: rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; }
+  .hero-distinction h3 { font-size: 1.1rem; margin: 0 0 1rem; }
+  .distinction-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .distinction-col { background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 8px; }
+  .distinction-col h4 { font-size: 1rem; margin: 0 0 0.75rem; color: var(--accent-coral, #FF6B6B); }
+  .distinction-col ul { margin: 0; padding-right: 1.25rem; }
+  .distinction-col li { margin-bottom: 0.4rem; font-size: 0.9rem; opacity: 0.9; }
+
+  .hero-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 2rem; }
+  .hero-feature { display: flex; align-items: flex-start; gap: 0.75rem; background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px; }
+  .hero-feature i { font-size: 1.25rem; color: var(--accent-coral, #FF6B6B); margin-top: 0.25rem; }
+  .hero-feature strong { display: block; margin-bottom: 0.25rem; }
+  .hero-feature span { font-size: 0.9rem; opacity: 0.8; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+  /* Buttons */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.875rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.2s ease; border: none; cursor: pointer; }
+  .btn-primary { background: var(--accent-coral, #FF6B6B); color: #fff; }
+  .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
+  .btn-secondary { background: rgba(255, 255, 255, 0.15); color: #fff; border: 1px solid rgba(255, 255, 255, 0.3); }
+  .btn-secondary:hover { background: rgba(255, 255, 255, 0.25); }
+  .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255, 255, 255, 0.5); }
+  .btn-outline:hover { background: rgba(255, 255, 255, 0.1); }
+  .btn-lg { padding: 1rem 2rem; font-size: 1.1rem; }
+
+  /* Sections */
+  .section { padding: 4rem 0; }
+  .section h2 { font-size: 1.75rem; margin-bottom: 2rem; color: var(--primary-color, #0a1628); }
+  .bg-light { background: var(--bg-light, #f8f9fa); }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* Types Grid */
+  .types-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .type-card { background: var(--bg-light, #f8f9fa); padding: 2rem; border-radius: 12px; text-align: center; }
+  .type-card i { font-size: 2.5rem; color: var(--accent-coral, #FF6B6B); margin-bottom: 1rem; }
+  .type-card h3 { font-size: 1.1rem; margin: 0 0 0.75rem; color: var(--primary-color); }
+  .type-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin: 0; }
+
+  /* Elements List */
+  .elements-list { max-width: 800px; }
+  .element-item { display: flex; gap: 1.5rem; padding: 1.5rem; background: #fff; border-radius: 12px; margin-bottom: 1rem; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); }
+  .element-item i { font-size: 1.5rem; color: var(--accent-coral); margin-top: 0.25rem; }
+  .element-item h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--primary-color); }
+  .element-item p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; margin: 0; }
+
+  /* Content Section */
+  .content-wrapper { max-width: 900px; }
+  .content-wrapper h2 { font-size: 1.75rem; margin-bottom: 1.5rem; }
+  .content-wrapper h3 { font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--primary-color); }
+  .content-wrapper p { line-height: 1.8; margin-bottom: 1.25rem; }
+  .content-list { margin: 1rem 0 1.5rem; padding-right: 1.25rem; }
+  .content-list li { margin-bottom: 0.5rem; line-height: 1.6; }
+
+  .critical-points { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin: 2rem 0; }
+  .point-item { background: #fff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06); border-right: 4px solid var(--accent-coral); }
+  .point-item h4 { margin: 0 0 0.75rem; color: var(--primary-color); }
+  .point-item p { margin: 0; line-height: 1.6; color: var(--text-muted); font-size: 0.95rem; }
+
+  .highlight-box { background: #fff; border-radius: 12px; padding: 1.5rem; margin: 2rem 0; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06); }
+  .highlight-box h4 { margin: 0 0 1rem; color: var(--primary-color); }
+  .mistake-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .mistake-item { display: flex; gap: 1rem; padding: 0.75rem; background: #fff5f5; border-radius: 8px; }
+  .mistake-icon { color: #dc3545; font-weight: bold; font-size: 1.25rem; flex-shrink: 0; }
+
+  .info-callout { background: linear-gradient(135deg, #e8f4f8 0%, #d4ecf4 100%); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; border-right: 4px solid #0077b6; }
+  .info-callout h4 { margin: 0 0 0.75rem; color: #0077b6; display: flex; align-items: center; gap: 0.5rem; }
+  .info-callout p { margin: 0; line-height: 1.6; }
+
+  /* Related Grid */
+  .related-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .related-card { background: #fff; padding: 2rem; border-radius: 12px; text-decoration: none; color: inherit; text-align: center; transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06); }
+  .related-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); }
+  .related-card i { font-size: 2rem; color: var(--accent-coral, #FF6B6B); margin-bottom: 1rem; display: block; }
+  .related-card h3 { font-size: 1.1rem; margin: 0 0 0.5rem; color: var(--primary-color); }
+  .related-card p { color: var(--text-muted); font-size: 0.9rem; margin: 0; line-height: 1.5; }
+
+  /* FAQ Section */
+  .faq-container { max-width: 800px; }
+  .faq-item { background: #fff; border-radius: 8px; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); overflow: hidden; }
+  .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 1.5rem; cursor: pointer; font-weight: 600; color: var(--primary-color); list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question i { transition: transform 0.3s ease; color: var(--accent-coral); }
+  .faq-item[open] .faq-question i { transform: rotate(180deg); }
+  .faq-answer { padding: 0 1.5rem 1.25rem; line-height: 1.8; color: var(--text-muted); }
+
+  /* CTA Section */
+  .cta-section { background: linear-gradient(135deg, var(--surface-navy, #0a1628) 0%, #1a365d 100%); color: #fff; padding: 4rem 0; text-align: center; }
+  .cta-content { max-width: 700px; margin: 0 auto; }
+  .cta-content h2 { font-size: 2rem; margin-bottom: 1rem; color: #fff; }
+  .cta-content > p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 2rem; }
+  .cta-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .cta-note { font-size: 0.9rem; opacity: 0.8; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+
+  /* Responsive */
+  @media (max-width: 1200px) { .types-grid, .related-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 768px) {
+    .hero-section { padding: 2rem 0 3rem; }
+    .hero-section h1 { font-size: 1.75rem; }
+    .distinction-grid, .hero-features, .critical-points { grid-template-columns: 1fr; }
+    .section { padding: 3rem 0; }
+    .types-grid, .related-grid { grid-template-columns: 1fr; }
+    .cta-buttons { flex-direction: column; }
+    .cta-buttons .btn { width: 100%; }
+  }
+</style>

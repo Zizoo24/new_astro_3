@@ -1,0 +1,570 @@
+---
+/**
+ * /ar/legal/contracts/lease/ - Arabic Lease Agreement Translation Page
+ *
+ * Arabic localization of Lease Agreement translation
+ * Uses: BaseLayoutArabic with RTL styling
+ * Schemas: BreadcrumbList, Service, FAQPage
+ */
+import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: "هل أحتاج ترجمة عربية لعقد الإيجار الخاص بي؟",
+    answer: "لمعظم الحياة اليومية، لا. لكن هذه الحالات تتطلب ترجمة عربية معتمدة: نزاعات الإيجار (مركز تسوية النزاعات الإيجارية يتطلب مستندات عربية)، إجراءات المحاكم (دعاوى الإخلاء، مطالبات الأضرار)، طلبات التأشيرات (بعض مسؤولي العلاقات العامة يطلبون عقد إيجار عربي)، الحسابات البنكية (بعض البنوك تريد إثبات عنوان عربي)."
+  },
+  {
+    question: "ما الفرق بين العقود السكنية والتجارية؟",
+    answer: "العقود السكنية محكومة بالقانون رقم 26 لسنة 2007 (المعدل 2023)، حاسبة إيجار ريرا تحد الزيادات، إشعار إخلاء 90 يوماً مطلوب. العقود التجارية أكثر مرونة، بدون حد لزيادة الإيجار من ريرا، فترات إشعار متفاوض عليها، أحكام تجهيز وإعادة التسليم."
+  },
+  {
+    question: "كم تستغرق ترجمة عقد الإيجار؟",
+    answer: "عقود الإيجار السكنية القياسية (4-8 صفحات) تُترجم في 4-6 ساعات. العقود التجارية مع ملحقات متعددة تستغرق 24 ساعة. إذا كان لديكم موعد جلسة في مركز تسوية النزاعات الإيجارية، أخبرونا عند الرفع. نحدد الأولويات بناءً على مواعيد المحاكم."
+  },
+  {
+    question: "ما الذي ينظر إليه مركز تسوية النزاعات الإيجارية؟",
+    answer: "عندما يصل نزاع لمركز تسوية النزاعات الإيجارية، القضاة يفحصون: شروط العقد (النسخة العربية هي ما يُفسر)، الامتثال للإشعارات (هل أُعطيت إشعارات صحيحة لزيادات الإيجار أو التجديد أو الإنهاء؟)، تاريخ الدفع، حالة العقار."
+  },
+  {
+    question: "هل تتعاملون مع عقود المناطق الحرة ومركز دبي المالي؟",
+    answer: "نعم. إقامات المناطق الحرة ومكاتب مركز دبي المالي لها تنسيقات عقود خاصة. مركز دبي المالي ولاية قانون عام، العقود الإنجليزية قياسية. للنزاعات التي تتضمن عقارات المناطق الحرة، قد تحتاجون ترجمة عربية إذا ذهبت القضية للمحاكم المحلية بدلاً من محاكم المناطق الحرة."
+  },
+  {
+    question: "ماذا عن عقود الإيجار للتأشيرة الذهبية؟",
+    answer: "عقد الإيجار هو أحد إثباتات العنوان لأغراض تأشيرة الإقامة. بينما بطاقة الهوية الإماراتية وفواتير المرافق غالباً ما تُفضل، بعض مسؤولي العلاقات العامة يطلبون عقد إيجار عربي. العقد أيضاً يثبت أن لديكم سكناً ملائماً لتأشيرات المعالين."
+  }
+];
+
+const leaseTypes = [
+  {
+    icon: "home",
+    title: "الإيجارات السكنية",
+    content: "عقود إيجار الشقق والفلل والتاون هاوس لتسجيل إيجاري"
+  },
+  {
+    icon: "store",
+    title: "الإيجارات التجارية",
+    content: "عقود إيجار المكاتب والتجزئة والمستودعات"
+  },
+  {
+    icon: "industry",
+    title: "الإيجارات الصناعية",
+    content: "اتفاقيات المصانع وورش العمل والمرافق الصناعية"
+  },
+  {
+    icon: "hotel",
+    title: "الإيجارات قصيرة المدى",
+    content: "اتفاقيات بيوت العطلات والشقق المفروشة"
+  }
+];
+
+const requirements = [
+  {
+    icon: "gavel",
+    title: "نزاعات الإيجار",
+    content: "الترجمة لقضايا مركز تسوية النزاعات الإيجارية"
+  },
+  {
+    icon: "file-alt",
+    title: "تسجيل إيجاري",
+    content: "الترجمة العربية لنظام إيجاري بدائرة الأراضي والأملاك"
+  },
+  {
+    icon: "balance-scale",
+    title: "تقديمات المحكمة",
+    content: "ترجمة معتمدة من وزارة العدل لإجراءات محاكم دبي"
+  },
+  {
+    icon: "sync",
+    title: "تجديدات العقود",
+    content: "ترجمة شروط التجديد وإشعارات تعديل الإيجار"
+  }
+];
+
+// FAQ Schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+// Service Schema
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "ترجمة عقود الإيجار",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "OnlineTranslation.ae",
+    "telephone": "+971508620217"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "الإمارات العربية المتحدة"
+  },
+  "description": "ترجمة عقود الإيجار المعتمدة من وزارة العدل في دبي. عقود الإيجار التجارية والسكنية لريرا ومحاكم دبي ونزاعات المالك والمستأجر.",
+  "serviceType": "ترجمة عقود الإيجار"
+};
+---
+
+<BaseLayoutArabic
+  title="ترجمة عقود الإيجار دبي | معتمدة من وزارة العدل"
+  description="ترجمة عقود الإيجار المعتمدة من وزارة العدل في دبي. عقود الإيجار التجارية والسكنية لريرا ومحاكم دبي ونزاعات المالك والمستأجر."
+>
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} slot="head" />
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <ol class="breadcrumb">
+          <li><a href="/ar/">الرئيسية</a></li>
+          <li><a href="/ar/legal-translation-dubai/">الترجمة القانونية</a></li>
+          <li><a href="/ar/legal/contracts/">العقود</a></li>
+          <li><span aria-current="page">عقود الإيجار</span></li>
+        </ol>
+      </nav>
+
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-home"></i>
+          <span>العقارات السكنية والتجارية</span>
+        </div>
+
+        <h1>ترجمة عقود الإيجار في دبي</h1>
+        <p class="hero-subtitle">معتمدة من وزارة العدل لريرا وتقديمات المحاكم</p>
+
+        <div class="hero-intro">
+          <p>ترجمات عقود الإيجار مقبولة مباشرة من <strong>ريرا</strong> و<strong>إيجاري</strong> و<strong>مركز تسوية النزاعات الإيجارية</strong> عند اعتمادها من وزارة العدل. الفشل في ترجمة بنود زيادة الإيجار أو شروط الإنهاء بدقة من بين أهم أسباب تعقيدات قضايا الإخلاء في المركز.</p>
+        </div>
+
+        <div class="hero-table-wrapper">
+          <h3>مقارنة معايير الترجمة</h3>
+          <table class="hero-table">
+            <thead>
+              <tr>
+                <th>الترجمة العادية</th>
+                <th>معاييرنا القانونية</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ترجمة إيجار عامة</td>
+                <td>مصطلحات قانون الإيجارات دبي (القانون رقم 26/2007)</td>
+              </tr>
+              <tr>
+                <td>شروط إيجار تقريبية</td>
+                <td>جدول دفع دقيق وتخصيص الشيكات</td>
+              </tr>
+              <tr>
+                <td>بدون تحليل بنود الزيادة</td>
+                <td>امتثال مصطلحات مؤشر إيجار ريرا</td>
+              </tr>
+              <tr>
+                <td>تنسيق متغير</td>
+                <td>تنسيق تقديم المركز وإيجاري</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="hero-features">
+          <div class="hero-feature">
+            <i class="fas fa-home"></i>
+            <div>
+              <strong>إيجارات سكنية</strong>
+              <span>شقق، فلل، تاون هاوس</span>
+            </div>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-store"></i>
+            <div>
+              <strong>إيجارات تجارية</strong>
+              <span>مكاتب، تجزئة، مستودعات</span>
+            </div>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-clock"></i>
+            <div>
+              <strong>24 ساعة</strong>
+              <span>العقود القياسية</span>
+            </div>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-check-circle"></i>
+            <div>
+              <strong>قبول 100%</strong>
+              <span>إيجاري والمركز</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-cta">
+          <a href="https://wa.me/971508620217?text=أرغب%20في%20ترجمة%20عقد%20إيجار" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i>
+            أرسلوا العقد للتسعير
+          </a>
+          <a href="tel:+971508620217" class="btn btn-secondary">
+            <i class="fas fa-phone"></i>
+            اتصلوا الآن
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lease Types Section -->
+  <section class="section">
+    <div class="container">
+      <h2>أنواع عقود الإيجار التي نترجمها</h2>
+      <div class="types-grid">
+        {leaseTypes.map(type => (
+          <div class="type-card">
+            <i class={`fas fa-${type.icon}`}></i>
+            <h3>{type.title}</h3>
+            <p>{type.content}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Requirements Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>متطلبات الترجمة الشائعة</h2>
+      <div class="requirements-grid">
+        {requirements.map(req => (
+          <div class="req-item">
+            <i class={`fas fa-${req.icon}`}></i>
+            <h3>{req.title}</h3>
+            <p>{req.content}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Section -->
+  <section class="section">
+    <div class="container">
+      <div class="content-wrapper">
+        <h2>ما تحتاجون معرفته عن ترجمة عقود الإيجار</h2>
+
+        <h3>السؤال الحقيقي: هل أحتاج هذا لإيجاري؟</h3>
+        <p>لعقود الإيجار السكنية في دبي، تسجيل إيجاري إلزامي. إيجاري يقبل العقود بالعربية أو الإنجليزية. لكن عندما يكون لديكم نزاع — أو عندما تحتاجون العقد لأغراض التأشيرة — هنا تصبح الترجمة العربية ضرورية.</p>
+
+        <p>مركز تسوية النزاعات الإيجارية، الذي يتعامل مع جميع نزاعات المالك والمستأجر في دبي، يعمل بالعربية. إذا كان عقدكم بالإنجليزية فقط، ستحتاجون ترجمة معتمدة قبل قبول قضيتكم. هذا ينطبق على إشعارات الإخلاء، نزاعات زيادة الإيجار، مطالبات التأمين، وخلافات الصيانة.</p>
+
+        <div class="comparison-box">
+          <div class="comparison-col">
+            <h4>الإيجارات السكنية</h4>
+            <ul>
+              <li>محكومة بالقانون رقم 26 لسنة 2007 (المعدل 2023)</li>
+              <li>حاسبة إيجار ريرا تحد الزيادات</li>
+              <li>إشعار إخلاء 90 يوماً مطلوب</li>
+              <li>إشعار 12 شهراً للإخلاء للاستخدام الشخصي</li>
+              <li>التأمين الحد الأقصى 5% من الإيجار السنوي</li>
+              <li>تسجيل إيجاري مطلوب</li>
+            </ul>
+          </div>
+          <div class="comparison-col">
+            <h4>الإيجارات التجارية</h4>
+            <ul>
+              <li>شروط أكثر مرونة مسموحة</li>
+              <li>بدون حد زيادة إيجار ريرا</li>
+              <li>فترات إشعار متفاوض عليها</li>
+              <li>ودائع تأمين أعلى مسموحة</li>
+              <li>بنود التجهيز وإعادة التسليم</li>
+              <li>قيود النشاط التجاري</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>متى تحتاجون الترجمة العربية</h3>
+        <p>معظم المستأجرين السكنيين لا يحتاجون ترجمة عقدهم للحياة اليومية. لكن هذه الحالات تتطلب ترجمة عربية معتمدة:</p>
+
+        <ul class="content-list">
+          <li><strong>نزاعات الإيجار:</strong> مركز تسوية النزاعات الإيجارية يتطلب مستندات عربية</li>
+          <li><strong>إجراءات المحاكم:</strong> قضايا الإخلاء، مطالبات الأضرار</li>
+          <li><strong>طلبات التأشيرات:</strong> بعض مسؤولي العلاقات العامة يطلبون عقد إيجار عربي</li>
+          <li><strong>الحسابات البنكية:</strong> بعض البنوك تريد إثبات عنوان عربي</li>
+          <li><strong>تسجيل المرافق:</strong> أحياناً تطلبه ديوا</li>
+          <li><strong>التسجيل المدرسي:</strong> بعض المدارس تطلب عقد إيجار عربي</li>
+        </ul>
+
+        <h3>ما ينظر إليه مركز تسوية النزاعات الإيجارية</h3>
+        <p>عندما يصل نزاع لمركز تسوية النزاعات الإيجارية، القضاة يفحصون:</p>
+
+        <div class="rdsc-points">
+          <div class="point-item">
+            <h4>شروط العقد</h4>
+            <p>ما الذي اتفق عليه الطرفان؟ النسخة العربية هي ما يُفسر.</p>
+          </div>
+          <div class="point-item">
+            <h4>الامتثال للإشعارات</h4>
+            <p>هل أُعطيت إشعارات صحيحة لزيادات الإيجار أو التجديد أو الإنهاء؟</p>
+          </div>
+          <div class="point-item">
+            <h4>تاريخ الدفع</h4>
+            <p>من يدين بماذا؟ هذا غالباً يتضمن كشوفات حساب مترجمة إلى جانب عقد الإيجار.</p>
+          </div>
+          <div class="point-item">
+            <h4>حالة العقار</h4>
+            <p>قوائم جرد الانتقال والمغادرة قد تحتاج ترجمة إذا كانت بالإنجليزية.</p>
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <h4>مشاكل ترجمة عقود الإيجار الشائعة</h4>
+          <div class="mistake-list">
+            <div class="mistake-item">
+              <span class="mistake-icon">✗</span>
+              <div><strong>أخطاء مبلغ الإيجار:</strong> خلط شهري مقابل سنوي في الترجمة</div>
+            </div>
+            <div class="mistake-item">
+              <span class="mistake-icon">✗</span>
+              <div><strong>عدم تطابق فترة الإشعار:</strong> الأيام مقابل الأشهر غير مترجمة بوضوح</div>
+            </div>
+            <div class="mistake-item">
+              <span class="mistake-icon">✗</span>
+              <div><strong>ملحقات مفقودة:</strong> المرفقات أو الرسائل الجانبية غير مشمولة</div>
+            </div>
+            <div class="mistake-item">
+              <span class="mistake-icon">✗</span>
+              <div><strong>مسؤوليات صيانة غير واضحة:</strong> من يدفع ماذا</div>
+            </div>
+          </div>
+        </div>
+
+        <h3>التأشيرة والإقامة</h3>
+        <p>عقد الإيجار هو أحد إثباتات العنوان لأغراض تأشيرة الإقامة. بينما بطاقة الهوية الإماراتية وفواتير المرافق غالباً ما تُفضل، بعض مسؤولي العلاقات العامة يطلبون عقد إيجار عربي. إذا كنتم تكفلون أفراد عائلة، وجود عقد إيجار مترجم جاهز يمكن أن يسرع العملية.</p>
+
+        <p>العقد أيضاً يثبت أن لديكم سكناً ملائماً لتأشيرات المعالين. متطلبات المساحة الدنيا تختلف حسب الإمارة ونوع التأشيرة. الترجمة يجب أن تُظهر بوضوح مساحة العقار وعدد غرف النوم.</p>
+
+        <h3>الجدول الزمني الواقعي</h3>
+        <p>عقود الإيجار السكنية القياسية (4-8 صفحات) تُترجم في 4-6 ساعات. العقود التجارية مع ملحقات متعددة تستغرق 24 ساعة. إذا كان لديكم موعد جلسة في مركز تسوية النزاعات الإيجارية، أخبرونا عند الرفع. نحدد الأولويات بناءً على مواعيد المحاكم.</p>
+
+        <div class="info-callout">
+          <h4><i class="fas fa-info-circle"></i> احتفظوا بنسخة جاهزة</h4>
+          <p>إذا توقعتم أي نزاع محتمل مع المالك، احصلوا على ترجمة عقدكم الآن بينما الأمور هادئة. عندما يتصاعد النزاع، لا تريدون أن يؤخر وقت الترجمة تقديمكم لمركز تسوية النزاعات الإيجارية.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>قد تحتاجون أيضاً</h2>
+      <div class="related-grid">
+        <a href="/ar/legal/contracts/spa/" class="related-card">
+          <i class="fas fa-file-signature"></i>
+          <h3>عقود البيع والشراء</h3>
+          <p>لشراء العقارات</p>
+        </a>
+        <a href="/ar/personal/immigration/bank/" class="related-card">
+          <i class="fas fa-university"></i>
+          <h3>كشوفات الحساب</h3>
+          <p>لإثبات الدخل وتاريخ الدفع</p>
+        </a>
+        <a href="/ar/services/golden-visa-translation/" class="related-card">
+          <i class="fas fa-medal"></i>
+          <h3>التأشيرة الذهبية</h3>
+          <p>مستندات الاستثمار العقاري</p>
+        </a>
+        <a href="/ar/legal/contracts/" class="related-card">
+          <i class="fas fa-folder-open"></i>
+          <h3>جميع العقود</h3>
+          <p>تصفح جميع خدمات ترجمة العقود</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container">
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-container">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" name="faq">
+            <summary class="faq-question">
+              <span>{faq.question}</span>
+              <i class="fas fa-chevron-down"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>هل تحتاجون ترجمة عقد إيجار؟</h2>
+        <p>أرسلوا عقد الإيجار عبر واتساب. نقدم عرض سعر سريع ونسلم ترجمتكم المعتمدة.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/971508620217?text=أرغب%20في%20ترجمة%20عقد%20إيجار" class="btn btn-primary btn-lg">
+            <i class="fab fa-whatsapp"></i>
+            أرسلوا العقد
+          </a>
+          <a href="/ar/legal/contracts/" class="btn btn-outline btn-lg">
+            <i class="fas fa-arrow-right"></i>
+            جميع أنواع العقود
+          </a>
+        </div>
+        <p class="cta-note">
+          <i class="fas fa-shield-alt"></i>
+          ترجمة معتمدة من وزارة العدل — رخصة رقم 701
+        </p>
+      </div>
+    </div>
+  </section>
+
+</BaseLayoutArabic>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, var(--surface-navy, #0a1628) 0%, #1a365d 100%);
+    color: var(--text-on-dark, #ffffff);
+    padding: 3rem 0 4rem;
+  }
+
+  .breadcrumb-nav { margin-bottom: 2rem; }
+  .breadcrumb { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; padding: 0; margin: 0; font-size: 0.9rem; }
+  .breadcrumb li:not(:last-child)::after { content: "/"; margin-right: 0.5rem; opacity: 0.5; }
+  .breadcrumb a { color: var(--text-on-dark, #ffffff); opacity: 0.8; text-decoration: none; }
+  .breadcrumb a:hover { opacity: 1; }
+
+  .hero-content { max-width: 900px; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(212, 175, 55, 0.2); color: var(--accent-gold, #D4AF37); padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.9rem; font-weight: 600; margin-bottom: 1.5rem; }
+  .hero-section h1 { font-size: 2.5rem; font-weight: 800; margin: 0 0 1rem; line-height: 1.2; }
+  .hero-subtitle { font-size: 1.25rem; opacity: 0.9; margin-bottom: 1.5rem; color: var(--accent-coral, #FF6B6B); font-weight: 600; }
+  .hero-intro { font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem; opacity: 0.95; }
+
+  .hero-table-wrapper { margin-bottom: 2rem; }
+  .hero-table-wrapper h3 { font-size: 1.1rem; margin-bottom: 1rem; }
+  .hero-table { width: 100%; border-collapse: collapse; background: rgba(255, 255, 255, 0.1); border-radius: 8px; overflow: hidden; }
+  .hero-table th, .hero-table td { padding: 0.75rem 1rem; text-align: right; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+  .hero-table th { background: rgba(0, 0, 0, 0.2); font-weight: 600; }
+  .hero-table tr:last-child td { border-bottom: none; }
+
+  .hero-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 2rem; }
+  .hero-feature { display: flex; align-items: flex-start; gap: 0.75rem; background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px; }
+  .hero-feature i { font-size: 1.25rem; color: var(--accent-coral, #FF6B6B); margin-top: 0.25rem; }
+  .hero-feature strong { display: block; margin-bottom: 0.25rem; }
+  .hero-feature span { font-size: 0.9rem; opacity: 0.8; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+  /* Buttons */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.875rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.2s ease; border: none; cursor: pointer; }
+  .btn-primary { background: var(--accent-coral, #FF6B6B); color: #fff; }
+  .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
+  .btn-secondary { background: rgba(255, 255, 255, 0.15); color: #fff; border: 1px solid rgba(255, 255, 255, 0.3); }
+  .btn-secondary:hover { background: rgba(255, 255, 255, 0.25); }
+  .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255, 255, 255, 0.5); }
+  .btn-outline:hover { background: rgba(255, 255, 255, 0.1); }
+  .btn-lg { padding: 1rem 2rem; font-size: 1.1rem; }
+
+  /* Sections */
+  .section { padding: 4rem 0; }
+  .section h2 { font-size: 1.75rem; margin-bottom: 2rem; color: var(--primary-color, #0a1628); }
+  .bg-light { background: var(--bg-light, #f8f9fa); }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* Types Grid */
+  .types-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .type-card { background: var(--bg-light, #f8f9fa); padding: 2rem; border-radius: 12px; text-align: center; }
+  .type-card i { font-size: 2.5rem; color: var(--accent-coral, #FF6B6B); margin-bottom: 1rem; }
+  .type-card h3 { font-size: 1.1rem; margin: 0 0 0.75rem; color: var(--primary-color); }
+  .type-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin: 0; }
+
+  /* Requirements Grid */
+  .requirements-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .req-item { background: #fff; padding: 2rem; border-radius: 12px; text-align: center; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); }
+  .req-item i { font-size: 2rem; color: var(--accent-coral); margin-bottom: 1rem; }
+  .req-item h3 { font-size: 1rem; margin: 0 0 0.5rem; color: var(--primary-color); }
+  .req-item p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin: 0; }
+
+  /* Content Section */
+  .content-wrapper { max-width: 900px; }
+  .content-wrapper h2 { font-size: 1.75rem; margin-bottom: 1.5rem; }
+  .content-wrapper h3 { font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--primary-color); }
+  .content-wrapper p { line-height: 1.8; margin-bottom: 1.25rem; }
+  .content-list { margin: 1rem 0 1.5rem; padding-right: 1.25rem; }
+  .content-list li { margin-bottom: 0.5rem; line-height: 1.6; }
+
+  .comparison-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .comparison-col { background: #ffffff; border-radius: 1rem; padding: 1.5rem; border: 1px solid rgba(0, 0, 0, 0.08); }
+  .comparison-col h4 { margin: 0 0 1rem; font-size: 1.1rem; color: var(--primary-color); border-bottom: 2px solid var(--accent-coral); padding-bottom: 0.5rem; }
+  .comparison-col ul { margin: 0; padding-right: 1.25rem; }
+  .comparison-col li { margin-bottom: 0.5rem; line-height: 1.5; }
+
+  .rdsc-points { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin: 2rem 0; }
+  .point-item { background: #fff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06); border-right: 4px solid var(--accent-coral); }
+  .point-item h4 { margin: 0 0 0.75rem; color: var(--primary-color); }
+  .point-item p { margin: 0; line-height: 1.6; color: var(--text-muted); font-size: 0.95rem; }
+
+  .highlight-box { background: #fff; border-radius: 12px; padding: 1.5rem; margin: 2rem 0; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06); }
+  .highlight-box h4 { margin: 0 0 1rem; color: var(--primary-color); }
+  .mistake-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .mistake-item { display: flex; gap: 1rem; padding: 0.75rem; background: #fff5f5; border-radius: 8px; }
+  .mistake-icon { color: #dc3545; font-weight: bold; font-size: 1.25rem; flex-shrink: 0; }
+
+  .info-callout { background: linear-gradient(135deg, #e8f4f8 0%, #d4ecf4 100%); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; border-right: 4px solid #0077b6; }
+  .info-callout h4 { margin: 0 0 0.75rem; color: #0077b6; display: flex; align-items: center; gap: 0.5rem; }
+  .info-callout p { margin: 0; line-height: 1.6; }
+
+  /* Related Grid */
+  .related-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .related-card { background: #fff; padding: 2rem; border-radius: 12px; text-decoration: none; color: inherit; text-align: center; transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06); }
+  .related-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); }
+  .related-card i { font-size: 2rem; color: var(--accent-coral, #FF6B6B); margin-bottom: 1rem; display: block; }
+  .related-card h3 { font-size: 1.1rem; margin: 0 0 0.5rem; color: var(--primary-color); }
+  .related-card p { color: var(--text-muted); font-size: 0.9rem; margin: 0; line-height: 1.5; }
+
+  /* FAQ Section */
+  .faq-container { max-width: 800px; }
+  .faq-item { background: #fff; border-radius: 8px; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); overflow: hidden; }
+  .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 1.5rem; cursor: pointer; font-weight: 600; color: var(--primary-color); list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question i { transition: transform 0.3s ease; color: var(--accent-coral); }
+  .faq-item[open] .faq-question i { transform: rotate(180deg); }
+  .faq-answer { padding: 0 1.5rem 1.25rem; line-height: 1.8; color: var(--text-muted); }
+
+  /* CTA Section */
+  .cta-section { background: linear-gradient(135deg, var(--surface-navy, #0a1628) 0%, #1a365d 100%); color: #fff; padding: 4rem 0; text-align: center; }
+  .cta-content { max-width: 700px; margin: 0 auto; }
+  .cta-content h2 { font-size: 2rem; margin-bottom: 1rem; color: #fff; }
+  .cta-content > p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 2rem; }
+  .cta-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .cta-note { font-size: 0.9rem; opacity: 0.8; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+
+  /* Responsive */
+  @media (max-width: 1200px) { .types-grid, .requirements-grid, .related-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 768px) {
+    .hero-section { padding: 2rem 0 3rem; }
+    .hero-section h1 { font-size: 1.75rem; }
+    .hero-features, .rdsc-points { grid-template-columns: 1fr; }
+    .section { padding: 3rem 0; }
+    .types-grid, .requirements-grid, .related-grid { grid-template-columns: 1fr; }
+    .cta-buttons { flex-direction: column; }
+    .cta-buttons .btn { width: 100%; }
+  }
+</style>

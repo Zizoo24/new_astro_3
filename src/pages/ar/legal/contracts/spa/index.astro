@@ -1,0 +1,543 @@
+---
+/**
+ * /ar/legal/contracts/spa/ - Arabic SPA Translation Page
+ *
+ * Arabic localization of Sale Purchase Agreement translation
+ * Uses: BaseLayoutArabic with RTL styling
+ * Schemas: BreadcrumbList, Service, FAQPage
+ */
+import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: "ما هي عقود البيع والشراء التي تترجمونها؟",
+    answer: "نترجم جميع أنواع عقود البيع والشراء: عقود العقارات (على الخارطة والجاهزة والسوق الثانوية)، عقود الاستحواذ على الأعمال (شراء الأسهم والأصول)، عقود الأصول عالية القيمة (المركبات والسفن والطائرات). كل ترجمة مُنسقة لهيئة الأراضي أو المحاكم أو السلطات المختصة."
+  },
+  {
+    question: "هل الترجمة مقبولة في دائرة الأراضي والأملاك؟",
+    answer: "نعم. ترجماتنا المعتمدة من وزارة العدل مقبولة مباشرة من دائرة الأراضي والأملاك ونظام عقود (للعقارات على الخارطة) ومكاتب الأمناء. نُنسق بما يتوافق مع متطلبات التقديم لكل جهة."
+  },
+  {
+    question: "كم تستغرق ترجمة عقد البيع والشراء؟",
+    answer: "عقود العقارات القياسية (10-15 صفحة) تكتمل خلال 24 ساعة. عقود الاستحواذ على الأعمال المعقدة مع جداول متعددة قد تتطلب 2-3 أيام. خدمة السرعة متاحة لمواعيد الإغلاق العاجلة."
+  },
+  {
+    question: "ما العناصر الحرجة في ترجمة عقد البيع والشراء؟",
+    answer: "شروط الدفع والجداول الزمنية يجب أن تتطابق بالضبط. الإقرارات والضمانات تحدد ما يضمنه كل طرف. شروط الإغلاق يجب أن تكون واضحة. بنود الفسخ والتعويض يجب أن تحتفظ بقوتها القانونية في الترجمة العربية."
+  },
+  {
+    question: "هل تتعاملون مع عقود التأشيرة الذهبية؟",
+    answer: "نعم. إذا كنتم تشترون عقاراً بقيمة 2 مليون درهم أو أكثر للتأهل للتأشيرة الذهبية، ترجمة عقد البيع والشراء تصبح جزءاً من ملف الهجرة. نضمن أن سعر الشراء وتأكيد الدفع وتفاصيل العقار مترجمة بوضوح لمعالجة التأشيرة."
+  },
+  {
+    question: "ماذا عن السرية للصفقات عالية القيمة؟",
+    answer: "عقود البيع والشراء تحتوي معلومات تجارية حساسة. بموجب المادة 378 من قانون العقوبات الإماراتي، الإفصاح غير المصرح به يحمل عقوبات كبيرة. كل ترجمة تُسند لمترجم واحد معتمد من وزارة العدل يوقع تعهد سرية. المستندات تُعالج على أنظمة مشفرة بوصول مقيد."
+  }
+];
+
+const spaTypes = [
+  {
+    icon: "building",
+    title: "عقود العقارات",
+    content: "عقود الشراء على الخارطة (عقود)، العقارات الجاهزة، والسوق الثانوية لتسجيل دائرة الأراضي"
+  },
+  {
+    icon: "briefcase",
+    title: "الاستحواذ على الأعمال",
+    content: "عقود شراء الأسهم، الاستحواذ على الأصول، وعقود بيع الشركات"
+  },
+  {
+    icon: "car",
+    title: "المركبات والمعدات",
+    content: "عمليات نقل الأصول عالية القيمة التي تتطلب توثيقاً قانونياً"
+  },
+  {
+    icon: "ship",
+    title: "البحرية والطيران",
+    content: "عقود شراء اليخوت والقوارب والطائرات"
+  }
+];
+
+const criticalElements = [
+  {
+    title: "شروط الدفع",
+    content: "ترجمة دقيقة لجداول الدفع والمراحل والشروط المالية"
+  },
+  {
+    title: "الإقرارات والضمانات",
+    content: "ترجمة دقيقة لضمانات البائع وحماية المشتري"
+  },
+  {
+    title: "الشروط المسبقة",
+    content: "ترجمة واضحة للشروط الواجب استيفاؤها قبل الإتمام"
+  },
+  {
+    title: "بنود التعويض",
+    content: "المصطلحات القانونية لأحكام الحماية والمسؤولية"
+  },
+  {
+    title: "تسوية النزاعات",
+    content: "بنود التحكيم والاختصاص والقانون الحاكم"
+  },
+  {
+    title: "آليات الإتمام",
+    content: "إجراءات الإغلاق ونقل الملكية وأحكام التسليم"
+  }
+];
+
+// FAQ Schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+// Service Schema
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "ترجمة عقود البيع والشراء",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "OnlineTranslation.ae",
+    "telephone": "+971508620217"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "الإمارات العربية المتحدة"
+  },
+  "description": "ترجمة عقود البيع والشراء المعتمدة من وزارة العدل في دبي. عقود الشراء للمعاملات العقارية والاستحواذ على الأعمال.",
+  "serviceType": "ترجمة عقود البيع والشراء"
+};
+---
+
+<BaseLayoutArabic
+  title="ترجمة عقود البيع والشراء دبي | معتمدة من وزارة العدل"
+  description="ترجمة عقود البيع والشراء المعتمدة من وزارة العدل في دبي. عقود الشراء للمعاملات العقارية والاستحواذ على الأعمال. جاهزة لدائرة الأراضي والمحاكم."
+>
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} slot="head" />
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <ol class="breadcrumb">
+          <li><a href="/ar/">الرئيسية</a></li>
+          <li><a href="/ar/legal-translation-dubai/">الترجمة القانونية</a></li>
+          <li><a href="/ar/legal/contracts/">العقود</a></li>
+          <li><span aria-current="page">عقود البيع والشراء</span></li>
+        </ol>
+      </nav>
+
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-file-signature"></i>
+          <span>معاملات العقارات والأعمال</span>
+        </div>
+
+        <h1>ترجمة عقود البيع والشراء في دبي</h1>
+        <p class="hero-subtitle">معتمدة من وزارة العدل للمعاملات العقارية والتجارية</p>
+
+        <div class="hero-intro">
+          <p>ترجمات عقود البيع والشراء مقبولة مباشرة من <strong>دائرة الأراضي والأملاك</strong> و<strong>عقود</strong> و<strong>محاكم مركز دبي المالي العالمي</strong> عند اعتمادها من وزارة العدل. الفشل في ترجمة بنود تعديل السعر أو شروط الإتمام بدقة من بين أهم أسباب نزاعات المعاملات العقارية في مكاتب الأمناء.</p>
+        </div>
+
+        <div class="hero-table-wrapper">
+          <h3>مقارنة معايير الترجمة</h3>
+          <table class="hero-table">
+            <thead>
+              <tr>
+                <th>الترجمة العادية</th>
+                <th>معاييرنا القانونية</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ترجمة عقود عامة</td>
+                <td>امتثال لقانون الملكية والقانون التجاري الإماراتي</td>
+              </tr>
+              <tr>
+                <td>شروط سعر تقريبية</td>
+                <td>جدول دفع دقيق ومصطلحات المراحل</td>
+              </tr>
+              <tr>
+                <td>بدون تحليل بنود الضمان</td>
+                <td>الإقرارات والتعويضات محفوظة بدقة</td>
+              </tr>
+              <tr>
+                <td>تنسيق متغير</td>
+                <td>تنسيق تقديم دائرة الأراضي ومكاتب الأمناء</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="hero-features">
+          <div class="hero-feature">
+            <i class="fas fa-building"></i>
+            <div>
+              <strong>عقود العقارات</strong>
+              <span>على الخارطة، جاهزة، سوق ثانوية</span>
+            </div>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-briefcase"></i>
+            <div>
+              <strong>الاستحواذ على الأعمال</strong>
+              <span>شراء الأسهم والأصول</span>
+            </div>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-clock"></i>
+            <div>
+              <strong>24-48 ساعة</strong>
+              <span>عقود العقارات</span>
+            </div>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-check-circle"></i>
+            <div>
+              <strong>مقبولة 100%</strong>
+              <span>دائرة الأراضي والأملاك</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-cta">
+          <a href="https://wa.me/971508620217?text=أرغب%20في%20ترجمة%20عقد%20بيع%20وشراء" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i>
+            أرسلوا العقد للتسعير
+          </a>
+          <a href="tel:+971508620217" class="btn btn-secondary">
+            <i class="fas fa-phone"></i>
+            اتصلوا الآن
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPA Types Section -->
+  <section class="section">
+    <div class="container">
+      <h2>أنواع عقود البيع والشراء التي نترجمها</h2>
+      <div class="types-grid">
+        {spaTypes.map(type => (
+          <div class="type-card">
+            <i class={`fas fa-${type.icon}`}></i>
+            <h3>{type.title}</h3>
+            <p>{type.content}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Critical Elements Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>العناصر الحرجة التي نتعامل معها</h2>
+      <div class="elements-grid">
+        {criticalElements.map(element => (
+          <div class="element-card">
+            <h3>{element.title}</h3>
+            <p>{element.content}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Section -->
+  <section class="section">
+    <div class="container">
+      <div class="content-wrapper">
+        <h2>ما تحتاجون معرفته عن ترجمة عقود البيع والشراء</h2>
+
+        <h3>السؤال الحقيقي: ماذا يحدث في دائرة الأراضي؟</h3>
+        <p>للمعاملات العقارية، دائرة الأراضي والأملاك هي المحطة الأخيرة. عندما تذهبون لمكتب الأمين لنقل الملكية، النسخة العربية من عقد البيع والشراء هي ما يتم مراجعته. إذا لم تتطابق الترجمة العربية مع الشروط الإنجليزية التي تفاوضتم عليها، تنشأ مشاكل في أسوأ لحظة ممكنة.</p>
+
+        <p>هذا ليس نظرياً. رأينا معاملات تتأخر لأن جدول الدفع في الترجمة العربية لم يتطابق مع الأصل الإنجليزي. رأينا نزاعات حول التجهيزات المشمولة لأن قائمة الجرد العربية كانت ناقصة. هذه المشاكل يمكن تجنبها بترجمة صحيحة من البداية.</p>
+
+        <div class="comparison-box">
+          <div class="comparison-col">
+            <h4>عقود العقارات</h4>
+            <ul>
+              <li>محكومة بلوائح دائرة الأراضي</li>
+              <li>تتطلب عقود (على الخارطة) أو أمين (جاهزة)</li>
+              <li>الدفع مرتبط بمراحل البناء</li>
+              <li>حماية ريرا للمشترين</li>
+              <li>فترات مسؤولية عيوب محددة</li>
+              <li>أحكام رسوم الخدمات</li>
+            </ul>
+          </div>
+          <div class="comparison-col">
+            <h4>عقود الاستحواذ على الأعمال</h4>
+            <ul>
+              <li>محكومة بقانون الشركات التجارية</li>
+              <li>متطلبات العناية الواجبة</li>
+              <li>أحكام نقل الموظفين (وزارة الموارد البشرية)</li>
+              <li>جداول الضمانات والتعويضات</li>
+              <li>ترتيبات الضمان</li>
+              <li>شروط عدم المنافسة</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>العقارات على الخارطة: تسجيل عقود</h3>
+        <p>عقود البيع والشراء للعقارات على الخارطة لها متطلبات محددة لتسجيل نظام عقود:</p>
+
+        <ul class="content-list">
+          <li><strong>تفاصيل المطور:</strong> الاسم القانوني الكامل وأرقام الترخيص</li>
+          <li><strong>تسجيل المشروع:</strong> رقم تسجيل المشروع في دائرة الأراضي</li>
+          <li><strong>مواصفات الوحدة:</strong> رقم القطعة، المبنى، الطابق، رقم الوحدة</li>
+          <li><strong>خطة الدفع:</strong> تفصيل دقيق للأقساط والتواريخ</li>
+          <li><strong>شروط التسليم:</strong> تاريخ الإتمام المتوقع وفترة السماح</li>
+          <li><strong>أحكام الإلغاء:</strong> شروط الاسترداد إذا تخلف المطور</li>
+        </ul>
+
+        <h3>التأشيرة الذهبية وشراء العقارات</h3>
+        <p>إذا كنتم تشترون عقاراً بقيمة 2 مليون درهم أو أكثر للتأهل للتأشيرة الذهبية، ترجمة عقد البيع والشراء تصبح جزءاً من ملف الهجرة. الهيئة الاتحادية للهوية تحتاج رؤية أن العقار يستوفي الحد الأدنى. نضمن أن سعر الشراء وتأكيد الدفع وتفاصيل العقار مترجمة بوضوح لمعالجة التأشيرة.</p>
+
+        <div class="highlight-box">
+          <h4>مشاكل الترجمة الشائعة</h4>
+          <div class="mistake-list">
+            <div class="mistake-item">
+              <span class="mistake-icon">✗</span>
+              <div><strong>عدم تطابق جدول الدفع:</strong> التواريخ أو المبالغ تختلف بين الإنجليزية والعربية</div>
+            </div>
+            <div class="mistake-item">
+              <span class="mistake-icon">✗</span>
+              <div><strong>جداول ناقصة:</strong> الملحقات أو المرفقات لم تُترجم</div>
+            </div>
+            <div class="mistake-item">
+              <span class="mistake-icon">✗</span>
+              <div><strong>عدم اتساق اسم الطرف:</strong> أسماء الشركات مكتوبة بشكل مختلف عبر الصفحات</div>
+            </div>
+            <div class="mistake-item">
+              <span class="mistake-icon">✗</span>
+              <div><strong>خلط العملات:</strong> الدولار مقابل الدرهم لم يُترجم بشكل متسق</div>
+            </div>
+          </div>
+        </div>
+
+        <h3>الجدول الزمني الواقعي</h3>
+        <p>عقود العقارات القياسية (10-15 صفحة) تستغرق 24 ساعة. عقود الاستحواذ على الأعمال المعقدة مع جداول متعددة قد تحتاج 2-3 أيام. إذا كان لديكم موعد إغلاق، أخبرونا مقدماً. يمكننا تحديد الأولويات لضمان حصولكم على الترجمة قبل موعدكم مع دائرة الأراضي أو الأمين.</p>
+
+        <div class="info-callout">
+          <h4><i class="fas fa-info-circle"></i> قبل الإغلاق: راجعوا ترجمتكم</h4>
+          <p>اطلبوا الترجمة العربية قبل موعد الإغلاق. راجعوها مع محاميكم أو وكيلكم للتأكد من تطابق جميع الأرقام والشروط مع النسخة الإنجليزية التي تفاوضتم عليها. اكتشاف التناقضات في مكتب الأمين يُضيع وقت الجميع.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>قد تحتاجون أيضاً</h2>
+      <div class="related-grid">
+        <a href="/ar/legal/contracts/nda/" class="related-card">
+          <i class="fas fa-user-secret"></i>
+          <h3>اتفاقيات السرية</h3>
+          <p>حماية المعلومات في مفاوضات الصفقات</p>
+        </a>
+        <a href="/ar/legal/contracts/mou/" class="related-card">
+          <i class="fas fa-handshake"></i>
+          <h3>مذكرات التفاهم</h3>
+          <p>الاتفاقيات التمهيدية للشراكات</p>
+        </a>
+        <a href="/ar/legal/corporate/poa/" class="related-card">
+          <i class="fas fa-stamp"></i>
+          <h3>التوكيلات</h3>
+          <p>للتمثيل في معاملات العقارات</p>
+        </a>
+        <a href="/ar/services/golden-visa-translation/" class="related-card">
+          <i class="fas fa-medal"></i>
+          <h3>التأشيرة الذهبية</h3>
+          <p>حزمة مستندات الاستثمار العقاري</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container">
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-container">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" name="faq">
+            <summary class="faq-question">
+              <span>{faq.question}</span>
+              <i class="fas fa-chevron-down"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>هل تحتاجون ترجمة عقد بيع وشراء؟</h2>
+        <p>أرسلوا عقد البيع والشراء عبر واتساب. نراجع تعقيد المستند ونقدم عرض سعر دقيق.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/971508620217?text=أرغب%20في%20ترجمة%20عقد%20بيع%20وشراء" class="btn btn-primary btn-lg">
+            <i class="fab fa-whatsapp"></i>
+            أرسلوا العقد
+          </a>
+          <a href="/ar/legal/contracts/" class="btn btn-outline btn-lg">
+            <i class="fas fa-arrow-right"></i>
+            جميع أنواع العقود
+          </a>
+        </div>
+        <p class="cta-note">
+          <i class="fas fa-shield-alt"></i>
+          ترجمة معتمدة من وزارة العدل — رخصة رقم 701
+        </p>
+      </div>
+    </div>
+  </section>
+
+</BaseLayoutArabic>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, var(--surface-navy, #0a1628) 0%, #1a365d 100%);
+    color: var(--text-on-dark, #ffffff);
+    padding: 3rem 0 4rem;
+  }
+
+  .breadcrumb-nav { margin-bottom: 2rem; }
+  .breadcrumb { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; padding: 0; margin: 0; font-size: 0.9rem; }
+  .breadcrumb li:not(:last-child)::after { content: "/"; margin-right: 0.5rem; opacity: 0.5; }
+  .breadcrumb a { color: var(--text-on-dark, #ffffff); opacity: 0.8; text-decoration: none; }
+  .breadcrumb a:hover { opacity: 1; }
+
+  .hero-content { max-width: 900px; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(212, 175, 55, 0.2); color: var(--accent-gold, #D4AF37); padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.9rem; font-weight: 600; margin-bottom: 1.5rem; }
+  .hero-section h1 { font-size: 2.5rem; font-weight: 800; margin: 0 0 1rem; line-height: 1.2; }
+  .hero-subtitle { font-size: 1.25rem; opacity: 0.9; margin-bottom: 1.5rem; color: var(--accent-coral, #FF6B6B); font-weight: 600; }
+  .hero-intro { font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem; opacity: 0.95; }
+
+  .hero-table-wrapper { margin-bottom: 2rem; }
+  .hero-table-wrapper h3 { font-size: 1.1rem; margin-bottom: 1rem; }
+  .hero-table { width: 100%; border-collapse: collapse; background: rgba(255, 255, 255, 0.1); border-radius: 8px; overflow: hidden; }
+  .hero-table th, .hero-table td { padding: 0.75rem 1rem; text-align: right; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+  .hero-table th { background: rgba(0, 0, 0, 0.2); font-weight: 600; }
+  .hero-table tr:last-child td { border-bottom: none; }
+
+  .hero-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 2rem; }
+  .hero-feature { display: flex; align-items: flex-start; gap: 0.75rem; background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px; }
+  .hero-feature i { font-size: 1.25rem; color: var(--accent-coral, #FF6B6B); margin-top: 0.25rem; }
+  .hero-feature strong { display: block; margin-bottom: 0.25rem; }
+  .hero-feature span { font-size: 0.9rem; opacity: 0.8; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+  /* Buttons */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.875rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.2s ease; border: none; cursor: pointer; }
+  .btn-primary { background: var(--accent-coral, #FF6B6B); color: #fff; }
+  .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
+  .btn-secondary { background: rgba(255, 255, 255, 0.15); color: #fff; border: 1px solid rgba(255, 255, 255, 0.3); }
+  .btn-secondary:hover { background: rgba(255, 255, 255, 0.25); }
+  .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255, 255, 255, 0.5); }
+  .btn-outline:hover { background: rgba(255, 255, 255, 0.1); }
+  .btn-lg { padding: 1rem 2rem; font-size: 1.1rem; }
+
+  /* Sections */
+  .section { padding: 4rem 0; }
+  .section h2 { font-size: 1.75rem; margin-bottom: 2rem; color: var(--primary-color, #0a1628); }
+  .bg-light { background: var(--bg-light, #f8f9fa); }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* Types Grid */
+  .types-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .type-card { background: var(--bg-light, #f8f9fa); padding: 2rem; border-radius: 12px; text-align: center; }
+  .type-card i { font-size: 2.5rem; color: var(--accent-coral, #FF6B6B); margin-bottom: 1rem; }
+  .type-card h3 { font-size: 1.1rem; margin: 0 0 0.75rem; color: var(--primary-color); }
+  .type-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin: 0; }
+
+  /* Elements Grid */
+  .elements-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .element-card { background: #fff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06); border-right: 4px solid var(--accent-coral, #FF6B6B); }
+  .element-card h3 { font-size: 1.1rem; margin: 0 0 0.5rem; color: var(--primary-color); }
+  .element-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; margin: 0; }
+
+  /* Content Section */
+  .content-wrapper { max-width: 900px; }
+  .content-wrapper h2 { font-size: 1.75rem; margin-bottom: 1.5rem; }
+  .content-wrapper h3 { font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--primary-color); }
+  .content-wrapper p { line-height: 1.8; margin-bottom: 1.25rem; }
+  .content-list { margin: 1rem 0 1.5rem; padding-right: 1.25rem; }
+  .content-list li { margin-bottom: 0.5rem; line-height: 1.6; }
+
+  .comparison-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .comparison-col { background: #ffffff; border-radius: 1rem; padding: 1.5rem; border: 1px solid rgba(0, 0, 0, 0.08); }
+  .comparison-col h4 { margin: 0 0 1rem; font-size: 1.1rem; color: var(--primary-color); border-bottom: 2px solid var(--accent-coral); padding-bottom: 0.5rem; }
+  .comparison-col ul { margin: 0; padding-right: 1.25rem; }
+  .comparison-col li { margin-bottom: 0.5rem; line-height: 1.5; }
+
+  .highlight-box { background: #fff; border-radius: 12px; padding: 1.5rem; margin: 2rem 0; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06); }
+  .highlight-box h4 { margin: 0 0 1rem; color: var(--primary-color); }
+  .mistake-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .mistake-item { display: flex; gap: 1rem; padding: 0.75rem; background: #fff5f5; border-radius: 8px; }
+  .mistake-icon { color: #dc3545; font-weight: bold; font-size: 1.25rem; flex-shrink: 0; }
+
+  .info-callout { background: linear-gradient(135deg, #e8f4f8 0%, #d4ecf4 100%); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; border-right: 4px solid #0077b6; }
+  .info-callout h4 { margin: 0 0 0.75rem; color: #0077b6; display: flex; align-items: center; gap: 0.5rem; }
+  .info-callout p { margin: 0; line-height: 1.6; }
+
+  /* Related Grid */
+  .related-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .related-card { background: #fff; padding: 2rem; border-radius: 12px; text-decoration: none; color: inherit; text-align: center; transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06); }
+  .related-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); }
+  .related-card i { font-size: 2rem; color: var(--accent-coral, #FF6B6B); margin-bottom: 1rem; display: block; }
+  .related-card h3 { font-size: 1.1rem; margin: 0 0 0.5rem; color: var(--primary-color); }
+  .related-card p { color: var(--text-muted); font-size: 0.9rem; margin: 0; line-height: 1.5; }
+
+  /* FAQ Section */
+  .faq-container { max-width: 800px; }
+  .faq-item { background: #fff; border-radius: 8px; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); overflow: hidden; }
+  .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 1.5rem; cursor: pointer; font-weight: 600; color: var(--primary-color); list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question i { transition: transform 0.3s ease; color: var(--accent-coral); }
+  .faq-item[open] .faq-question i { transform: rotate(180deg); }
+  .faq-answer { padding: 0 1.5rem 1.25rem; line-height: 1.8; color: var(--text-muted); }
+
+  /* CTA Section */
+  .cta-section { background: linear-gradient(135deg, var(--surface-navy, #0a1628) 0%, #1a365d 100%); color: #fff; padding: 4rem 0; text-align: center; }
+  .cta-content { max-width: 700px; margin: 0 auto; }
+  .cta-content h2 { font-size: 2rem; margin-bottom: 1rem; color: #fff; }
+  .cta-content > p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 2rem; }
+  .cta-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .cta-note { font-size: 0.9rem; opacity: 0.8; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+
+  /* Responsive */
+  @media (max-width: 1200px) { .types-grid, .related-grid { grid-template-columns: repeat(2, 1fr); } .elements-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 768px) {
+    .hero-section { padding: 2rem 0 3rem; }
+    .hero-section h1 { font-size: 1.75rem; }
+    .hero-features { grid-template-columns: 1fr; }
+    .section { padding: 3rem 0; }
+    .types-grid, .elements-grid, .related-grid { grid-template-columns: 1fr; }
+    .cta-buttons { flex-direction: column; }
+    .cta-buttons .btn { width: 100%; }
+  }
+</style>

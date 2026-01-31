@@ -399,7 +399,7 @@ function getAlternateUrl(currentPath, targetLang) {
 
 ### Current Status (Updated January 31, 2026)
 
-**Existing Arabic Pages (29 pages):**
+**Existing Arabic Pages (33 pages):**
 
 | Page | URL | Status |
 |------|-----|--------|
@@ -432,6 +432,10 @@ function getAlternateUrl(currentPath, targetLang) {
 | Golden Visa | `/ar/services/golden-visa-translation/` | ✅ Complete (Jan 31) |
 | Abu Dhabi | `/ar/locations/abu-dhabi/` | ✅ Complete |
 | Dubai | `/ar/locations/dubai/` | ✅ Complete |
+| NDA Translation | `/ar/legal/contracts/nda/` | ✅ Complete (Jan 31) |
+| SPA Translation | `/ar/legal/contracts/spa/` | ✅ Complete (Jan 31) |
+| MOU Translation | `/ar/legal/contracts/mou/` | ✅ Complete (Jan 31) |
+| Lease Translation | `/ar/legal/contracts/lease/` | ✅ Complete (Jan 31) |
 
 ### Week 1 Deliverables ✅ COMPLETE
 - [x] navigation-ar.ts created
@@ -448,10 +452,10 @@ function getAlternateUrl(currentPath, targetLang) {
 ### Week 3 Deliverables - IN PROGRESS
 - [x] Legal translation pillar page (`/ar/legal-translation-dubai/`)
 - [x] Contracts hub (`/ar/legal/contracts/`)
-- [ ] NDA translation (`/ar/legal/contracts/nda/`)
-- [ ] SPA translation (`/ar/legal/contracts/spa/`)
-- [ ] MOU translation (`/ar/legal/contracts/mou/`)
-- [ ] Lease translation (`/ar/legal/contracts/lease/`)
+- [x] NDA translation (`/ar/legal/contracts/nda/`) ✅ Jan 31
+- [x] SPA translation (`/ar/legal/contracts/spa/`) ✅ Jan 31
+- [x] MOU translation (`/ar/legal/contracts/mou/`) ✅ Jan 31
+- [x] Lease translation (`/ar/legal/contracts/lease/`) ✅ Jan 31
 - [x] Corporate hub (`/ar/legal/corporate/`) ✅ Jan 31
 - [ ] MOA translation (`/ar/legal/corporate/moa/`)
 - [x] POA translation (`/ar/legal/corporate/poa/`) ✅ Jan 31
