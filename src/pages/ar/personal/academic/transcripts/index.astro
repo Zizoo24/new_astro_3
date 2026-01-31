@@ -1,0 +1,1200 @@
+---
+/**
+ * /ar/personal/academic/transcripts/ - Arabic Academic Transcripts Translation
+ *
+ * Arabic localization of Transcripts translation page
+ * Uses: BaseLayoutArabic with RTL styling
+ * Schemas: BreadcrumbList, Service, FAQPage
+ */
+import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: "كيف يتم تسعير كشوف الدرجات متعددة الصفحات؟",
+    answer: "يتم تسعير كشوف الدرجات لكل صفحة، مع خصومات للمستندات الأطول. كشف درجات من 5 صفحات يكلف أقل للصفحة الواحدة من خمس شهادات منفصلة. نقدم عروض أسعار دقيقة بعد مراجعة كشف درجاتكم — أرسلوا صورة عبر واتساب للحصول على السعر فوراً."
+  },
+  {
+    question: "هل تترجمون الدرجات فقط أم أسماء المقررات أيضاً؟",
+    answer: "نترجم كل شيء: أسماء المقررات، الدرجات، الساعات المعتمدة، تسميات الفصول الدراسية، المعدل التراكمي، ترتيب الدفعة إذا كان موضحاً، وأي ملاحظات أو تعليقات. الترجمة هي نسخة كاملة من كشف درجاتكم الأصلي باللغة العربية."
+  },
+  {
+    question: "كيف تتعاملون مع أنظمة التقييم المختلفة؟",
+    answer: "نحافظ على درجاتكم الأصلية كما هي تماماً ونوضح نظام التقييم المستخدم. معدل 3.8 يبقى 3.8 — نضيف ملاحظة توضح أنه على مقياس 4.0. الدرجات المئوية والحروف وغيرها من الأنظمة كلها محفوظة مع السياق المناسب للقراء العرب."
+  },
+  {
+    question: "هل تُقبل كشوف الدرجات المترجمة للقبول في جامعات الإمارات؟",
+    answer: "نعم. جامعات الإمارات تقبل ترجمات كشوف الدرجات المعتمدة من وزارة العدل لتقييم القبول. بعض الجامعات لديها تفضيلات تنسيق محددة — يمكننا تعديل التخطيط إذا قدمتم متطلباتها. لتقييم الشهادات من وزارة التربية والتعليم العالي، مطلوب كشوف درجات مصدقة ومترجمة."
+  },
+  {
+    question: "هل تحتاج كشوف الدرجات للتصديق قبل الترجمة؟",
+    answer: "لمعادلة وزارة التربية والتعليم العالي، نعم — يجب أن تكمل كشوف الدرجات سلسلة التصديق قبل الترجمة. للتوظيف العام أو المراجعة الأولية للجامعة، قد تكفي الترجمة وحدها. ننصحكم بناءً على حالتكم المحددة لتجنب تكاليف التصديق غير الضرورية."
+  },
+  {
+    question: "هل يمكنكم ترجمة كشوف درجات بلغات غير الإنجليزية؟",
+    answer: "نعم. نترجم كشوف درجات من الصينية والهندية والفرنسية والألمانية والإسبانية والروسية والعديد من اللغات الأخرى. كشوف درجات الجامعات من الدول غير الناطقة بالإنجليزية غالباً ما تستخدم مصطلحات أكاديمية متخصصة يفهمها مترجمونا."
+  },
+  {
+    question: "ما الذي يسبب رفض وزارة التربية والتعليم العالي لترجمات كشوف الدرجات؟",
+    answer: "ترفض الوزارة الترجمات بسبب أخطاء مصطلحات أسماء المقررات، أخطاء حساب المعدل، الساعات المعتمدة الناقصة، والخلط في مقياس التقييم. الترجمات الحرفية لأسماء المقررات غالباً تفشل — المواد الأكاديمية لها مصطلحات عربية محددة تختلف عن اللغة اليومية. نستخدم مصطلحات أكاديمية موحدة يتعرف عليها مقيّمو الوزارة."
+  },
+  {
+    question: "كم تستغرق ترجمة كشف الدرجات؟",
+    answer: "كشوف الدرجات القياسية (1-3 صفحات) تكتمل خلال 24-48 ساعة. الكشوف الأطول مع قوائم مقررات مكثفة قد تتطلب 48-72 ساعة للترجمة الشاملة والتحقق. خدمة السرعة متاحة لمواعيد الجامعات العاجلة — يمكننا تسريع معظم كشوف الدرجات للإنجاز في نفس اليوم مع إشعار مسبق."
+  },
+  {
+    question: "هل يمكنكم ترجمة كشوف درجات جزئية أو فصول فردية؟",
+    answer: "نعم. بعض الجامعات أو أصحاب العمل يحتاجون فقط فصولاً محددة أو ملخصات نهاية العام. نترجم ما تقدمونه بالضبط. لكن لمعادلة وزارة التربية والتعليم العالي، عادة ما تكون كشوف الدرجات الكاملة التي تظهر جميع المقررات نحو شهادتكم مطلوبة."
+  },
+  {
+    question: "هل تتعاملون مع المستندات الأكاديمية التكميلية؟",
+    answer: "نعم. نترجم توصيفات المقررات، الكتالوجات الأكاديمية، رسائل التحقق من التخرج، وشهادات التسجيل إلى جانب كشوف الدرجات. لتقييم الشهادات، هذه المستندات التكميلية غالباً توفر سياقاً يحتاجه المقيّمون."
+  },
+  {
+    question: "ماذا لو كانت جامعتي تستخدم نظام تقييم فريد؟",
+    answer: "تستخدم الجامعات حول العالم أنظمة تقييم متنوعة — نجاح/رسوب، درجات حرفية بمقاييس مختلفة، علامات مئوية، ترتيب الدفعة، أو تقييمات قائمة على الكفاءة. نحافظ على درجاتكم بالضبط ونتضمن ملاحظة توضح نظام التقييم للقراء العرب. هذا السياق يساعد المقيّمين على فهم مستوى إنجازكم."
+  },
+  {
+    question: "هل يمكنكم ترجمة كشوف الدرجات الإلكترونية أو PDF؟",
+    answer: "نعم. معظم الجامعات الآن تصدر كشوف درجات إلكترونية. نقبل كشوف درجات PDF، لقطات شاشة من بوابات الطلاب، والمستندات الإلكترونية الرسمية. الترجمة تحصل على نفس اعتماد وزارة العدل بغض النظر عن صيغة المصدر. لتقييم الشهادات، تأكدوا أن كشف الدرجات الإلكتروني يتضمن علامات التحقق المؤسسي."
+  }
+];
+
+const processSteps = [
+  {
+    number: 1,
+    title: "مراجعة كشف الدرجات",
+    desc: "نقيّم تنسيق كشف الدرجات ونظام التقييم وإجمالي عدد الصفحات. كشوف الدرجات متعددة الصفحات تُسعّر لكل صفحة مع خصومات للكميات."
+  },
+  {
+    number: 2,
+    title: "ترجمة المقررات",
+    desc: "كل اسم مقرر ودرجة وساعة معتمدة تُترجم بدقة. نستخدم مصطلحات أكاديمية عربية معيارية معترف بها من جامعات الإمارات."
+  },
+  {
+    number: 3,
+    title: "توضيح الدرجات",
+    desc: "الدرجات الأصلية محفوظة مع المعادلات العربية. نوضح مقياس التقييم المستخدم (معدل تراكمي، مئوية، درجات حرفية) للمقيّمين."
+  },
+  {
+    number: 4,
+    title: "التسليم المعتمد",
+    desc: "ترجمة مختومة من وزارة العدل تحافظ على تنسيق كشف الدرجات الأصلي. جاهزة لوزارة التربية والتعليم العالي أو القبول الجامعي أو الاستخدام الوظيفي."
+  }
+];
+
+const transcriptTypes = [
+  {
+    title: "كشوف درجات الجامعات",
+    content: "كشوف درجات برامج البكالوريوس والماجستير والدكتوراه من جامعات حول العالم. قوائم مقررات كاملة مع الدرجات والساعات المعتمدة والحسابات التراكمية. نتعامل مع كشوف درجات من جميع الأنظمة الجامعية بما في ذلك نظام الساعات المعتمدة الأمريكي، نظام الوحدات البريطاني، نظام ECTS الأوروبي، وغيرها من التنسيقات الدولية."
+  },
+  {
+    title: "كشوف درجات الكليات",
+    content: "سجلات كليات المجتمع والكليات التقنية وبرامج الدبلوم. شهادات الزمالة والمؤهلات المهنية متضمنة. البرامج التقنية تستخدم مصطلحات صناعية متخصصة تتطلب مترجمين بخلفية معرفية ذات صلة."
+  },
+  {
+    title: "كشوف درجات الثانوية",
+    content: "سجلات المدارس الثانوية للقبول الجامعي أو تقييم الشهادات. جميع المواد والدرجات ومعلومات التخرج مترجمة. أنظمة الثانوية تختلف كثيراً حسب الدولة — A-levels البريطانية، دبلوم الثانوية الأمريكي، امتحانات المجالس الهندية، والباكالوريا الدولية كلها تستخدم تنسيقات مختلفة."
+  },
+  {
+    title: "كشوف درجات البرامج المهنية",
+    content: "كشوف درجات كليات الطب والقانون والدرجات المهنية. مصطلحات متخصصة للتعليم الصحي والقانوني والتقني. كشوف درجات الطب تتضمن التدريب السريري وسجلات الإقامة ونتائج امتحانات المجالس. كشوف درجات القانون تغطي مقررات إعداد المحاماة ومواد الفقه القانوني."
+  },
+  {
+    title: "سجلات التعليم المستمر",
+    content: "دورات التطوير المهني والشهادات وسجلات البرامج غير الأكاديمية. سجلات التدريب المؤسسي والشهادات المهنية. هذه السجلات غالباً تفتقر للتنسيق الموحد، مما يتطلب تفسيراً دقيقاً."
+  }
+];
+
+const transcriptElements = [
+  {
+    title: "معلومات المقررات",
+    content: "رموز المقررات والعناوين والأوصاف مترجمة بمصطلحات أكاديمية عربية مناسبة. تسميات الأقسام والكليات متضمنة. أسماء المقررات تتطلب مصطلحات خاصة بالتخصص — 'الكيمياء العضوية' تُترجم بشكل مختلف عما قد تقترحه الترجمة الحرفية."
+  },
+  {
+    title: "الدرجات والساعات المعتمدة",
+    content: "جميع الدرجات محفوظة بالتنسيق الأصلي مع التدوين العربي. الساعات المعتمدة وساعات الفصل وأنظمة الوحدات موضحة بوضوح. لا نحول الدرجات بين الأنظمة — الدرجة الحرفية تبقى درجة حرفية، النسبة المئوية تبقى نسبة مئوية."
+  },
+  {
+    title: "المعدل والحسابات",
+    content: "المعدلات التراكمية والفصلية، ترتيب الدفعة، تسميات الامتياز، ومؤشرات الوضع الأكاديمي. مقياس التقييم موضح للمقيّمين. حسابات المعدل تختلف حسب المؤسسة — بعضها يستخدم مقياس 4.0، وأخرى تستخدم 5.0 أو 10.0."
+  },
+  {
+    title: "التفاصيل الإدارية",
+    content: "تواريخ التسجيل، تاريخ التخرج، الدرجة الممنوحة، تسميات التخصص الرئيسي/الفرعي، والأختام/التوقيعات المؤسسية. عناوين الدرجات تتطلب ترجمة دقيقة — 'بكالوريوس العلوم' له معادل عربي محدد يختلف عن 'بكالوريوس الآداب'."
+  },
+  {
+    title: "الملاحظات والتعليقات",
+    content: "إشعارات الإنذار الأكاديمي، الساعات المحولة، ملاحظات الانسحاب، وأي تعليقات خاصة على كشف الدرجات الأصلي. هذه الملاحظات غالباً تحتوي رموزاً مختصرة تتطلب تفسيراً. نترجم المعنى الكامل لرموز الوضع الأكاديمي وتعليقات الساعات المحولة."
+  }
+];
+
+const rejectionReasons = [
+  {
+    title: "أخطاء مصطلحات أسماء المقررات",
+    content: "الترجمات الحرفية لأسماء المقررات تفشل عندما لا تتطابق مع المصطلحات الأكاديمية العربية المعيارية. 'مقدمة في علم النفس' لها معادل عربي معترف به تستخدمه أقسام علم النفس. الترجمة كلمة بكلمة قد تنتج عبارة غير معترف بها."
+  },
+  {
+    title: "الخلط في مقياس التقييم",
+    content: "بدون سياق، درجة '2' يمكن أن تمثل مستويات إنجاز مختلفة حسب نظام التقييم. الدرجات الألمانية تتراوح من 1-5 حيث 1 هي الأفضل؛ أنظمة أخرى تستخدم 1-5 حيث 5 هي الأفضل. نتضمن توضيح مقياس التقييم الذي يمنع سوء تفسير إنجازكم الأكاديمي."
+  },
+  {
+    title: "تناقضات الساعات المعتمدة",
+    content: "الأنظمة المختلفة تقيس الرصيد الأكاديمي بشكل مختلف. الساعات المعتمدة الأمريكية تختلف عن رصيد ECTS الأوروبي، والذي يختلف عن رصيد الوحدات البريطاني. نوضح نظام الساعات المعتمدة المستخدم ونترجم أي شروحات متضمنة في كشف الدرجات الأصلي."
+  },
+  {
+    title: "تسمية الدرجة الناقصة",
+    content: "أحياناً تُظهر كشوف الدرجات المقررات بدون توضيح الدرجة الممنوحة. وزارة التربية والتعليم العالي تتطلب تحديداً واضحاً لمؤهلكم. نترجم عناوين الدرجات بشكل بارز ونتضمن تاريخ التخرج ومعلومات المنح كما هي موضحة في المستند الأصلي."
+  }
+];
+
+// FAQ Schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+// Service Schema
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "ترجمة كشوف الدرجات الأكاديمية",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "OnlineTranslation.ae",
+    "telephone": "+971508620217",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "دبي",
+      "addressCountry": "AE"
+    }
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "الإمارات العربية المتحدة"
+  },
+  "description": "خدمة ترجمة كشوف الدرجات الأكاديمية في دبي. معتمدة من وزارة العدل لمعادلة وزارة التربية والتعليم العالي والقبول الجامعي وطلبات التأشيرات.",
+  "serviceType": "ترجمة كشوف الدرجات الأكاديمية"
+};
+---
+
+<BaseLayoutArabic
+  title="ترجمة كشوف الدرجات الأكاديمية دبي | معتمدة من وزارة العدل"
+  description="خدمة ترجمة كشوف الدرجات الأكاديمية في دبي. معتمدة من وزارة العدل لمعادلة وزارة التربية والتعليم العالي والقبول الجامعي. إنجاز خلال 24-48 ساعة."
+>
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} slot="head" />
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <ol class="breadcrumb">
+          <li><a href="/ar/">الرئيسية</a></li>
+          <li><a href="/ar/personal/">المستندات الشخصية</a></li>
+          <li><a href="/ar/personal/academic/">المستندات الأكاديمية</a></li>
+          <li><span aria-current="page">كشوف الدرجات</span></li>
+        </ol>
+      </nav>
+
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-graduation-cap"></i>
+          <span>خدمة أكاديمية متخصصة</span>
+        </div>
+
+        <h1>ترجمة كشوف الدرجات الأكاديمية</h1>
+        <p class="hero-subtitle">جاهزة لوزارة التربية والتعليم العالي والجامعات</p>
+
+        <div class="hero-intro">
+          <p>ترجمة كشوف الدرجات الأكاديمية لمؤسسات الإمارات تتطلب تعاملاً دقيقاً مع الدرجات والساعات المعتمدة ومصطلحات المقررات. كل طلب <a href="/ar/personal/academic/degree/">شهادة علمية</a>، طلب معادلة وزارة التربية والتعليم العالي، وقبول جامعي يتطلب كشوف درجات يمكن للمقيّمين العرب فهمها. نترجم كشوف درجات من جامعات حول العالم مع الاهتمام بأنظمة التقييم.</p>
+        </div>
+
+        <div class="hero-table-wrapper">
+          <table class="hero-table">
+            <thead>
+              <tr>
+                <th>نظام التقييم</th>
+                <th>طريقة التعامل</th>
+                <th>ملاحظة للمقيّم</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>المعدل الأمريكي (4.0)</td>
+                <td>محفوظ تماماً</td>
+                <td>المقياس موضح للسياق</td>
+              </tr>
+              <tr>
+                <td>البريطاني (First/2:1)</td>
+                <td>التصنيف محفوظ</td>
+                <td>نظام الامتياز البريطاني موضح</td>
+              </tr>
+              <tr>
+                <td>النسبة المئوية الهندية</td>
+                <td>النسبة الدقيقة</td>
+                <td>نظام الأقسام موضح</td>
+              </tr>
+              <tr>
+                <td>الألماني (1-5)</td>
+                <td>الدرجات الأصلية</td>
+                <td>المقياس المعكوس موضح</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="hero-features">
+          <div class="hero-feature">
+            <i class="fas fa-file-alt"></i>
+            <div>
+              <strong>كشوف درجات كاملة</strong>
+              <span>جميع المقررات والدرجات والساعات مترجمة</span>
+            </div>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-calculator"></i>
+            <div>
+              <strong>تحويل الدرجات</strong>
+              <span>معادلات المعدل والنسبة موضحة</span>
+            </div>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-clock"></i>
+            <div>
+              <strong>24-48 ساعة</strong>
+              <span>إنجاز كشوف الدرجات القياسية</span>
+            </div>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-university"></i>
+            <div>
+              <strong>جاهز للجامعات</strong>
+              <span>منسق لقبول جامعات الإمارات</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-cta">
+          <a href="https://wa.me/971508620217?text=أرغب%20في%20ترجمة%20كشف%20درجات%20أكاديمي" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i>
+            أرسلوا كشف الدرجات للتسعير
+          </a>
+          <a href="tel:+971508620217" class="btn btn-secondary">
+            <i class="fas fa-phone"></i>
+            اتصلوا الآن
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section">
+    <div class="container">
+      <h2>آلية ترجمة كشوف الدرجات</h2>
+      <p class="section-intro">من مراجعة كشف الدرجات إلى الترجمة المعتمدة — كل خطوة تضمن الدقة الأكاديمية.</p>
+
+      <div class="process-grid">
+        {processSteps.map(step => (
+          <div class="process-card">
+            <div class="process-number">{step.number}</div>
+            <h3>{step.title}</h3>
+            <p>{step.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Transcript Types Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>أنواع كشوف الدرجات التي نترجمها</h2>
+      <div class="accordion-container">
+        {transcriptTypes.map((item, index) => (
+          <details class="accordion-item" name="types">
+            <summary class="accordion-header">
+              <span>{item.title}</span>
+              <i class="fas fa-chevron-down"></i>
+            </summary>
+            <div class="accordion-content">
+              <p>{item.content}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Transcript Elements Section -->
+  <section class="section">
+    <div class="container">
+      <h2>عناصر كشف الدرجات المترجمة</h2>
+      <div class="elements-grid">
+        {transcriptElements.map(element => (
+          <div class="element-card">
+            <h3>{element.title}</h3>
+            <p>{element.content}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <div class="content-grid">
+        <div class="content-main">
+          <h2>لماذا تتطلب ترجمة كشوف الدرجات الدقة</h2>
+
+          <p>كشوف الدرجات مستندات كثيفة مليئة بالمعلومات التي يفحصها مسؤولو القبول ومقيّمو الشهادات بعناية. خطأ واحد في ترجمة اسم مقرر قد يُسيء تمثيل مؤهلاتكم. درجة مترجمة بشكل خاطئ قد تؤثر على قرارات القبول أو عروض العمل.</p>
+
+          <p>مترجمونا الأكاديميون يفهمون مصطلحات الجامعات عبر الأنظمة التعليمية المختلفة. يعرفون أن "Honours" في الجامعات البريطانية تختلف عن "Honors" في الجامعات الأمريكية. يدركون أن درجة "First Class" ومعدل 4.0 ومتوسط 90% تمثل مستويات إنجاز متشابهة في أنظمة مختلفة.</p>
+
+          <p>نحافظ على درجاتكم كما تظهر بالضبط — لا نحولها أو نفسرها. لكننا نوفر سياقاً يساعد القراء العرب على فهم ما تعنيه درجاتكم ضمن نظامكم التعليمي. هذا النهج يلبي متطلبات الدقة وسهولة الاستخدام العملي.</p>
+
+          <h3>متطلبات معادلة وزارة التربية والتعليم العالي</h3>
+
+          <p>تقيّم وزارة التربية والتعليم العالي والبحث العلمي الشهادات الأجنبية لمعادلتها في الإمارات. الوزارة تتطلب كشوف درجات مترجمة إلى جانب <a href="/ar/personal/academic/degree/">شهادات علمية</a> مترجمة لتقييم خلفيتكم التعليمية.</p>
+
+          <p>لتقديمات الوزارة، يجب أن تكمل كشوف الدرجات <a href="/ar/services/attestation/">سلسلة التصديق</a> الكاملة قبل الترجمة. هذا عادة يشمل التصديق من جامعتكم، الأبوستيل من <a href="/ar/services/attestation/india/">الهند</a>، <a href="/ar/services/attestation/uk/">المملكة المتحدة</a>، <a href="/ar/services/attestation/us/">الولايات المتحدة</a>، أو دول الهاي الأخرى، وتصديق وزارة الخارجية الإماراتية.</p>
+
+          <p>مقيّمو الوزارة يقارنون مقرراتكم بمتطلبات الشهادات الإماراتية. ترجمات كشوف الدرجات يجب أن تستخدم مصطلحات أكاديمية موحدة يتعرف عليها المقيّمون. لطلبات <a href="/ar/services/golden-visa-translation/">التأشيرة الذهبية</a>، كشوف الدرجات تكمل <a href="/ar/personal/academic/degree/">ترجمة شهادتكم العلمية</a>.</p>
+
+          <h3>طلبات القبول الجامعي</h3>
+
+          <p>تتطلب جامعات الإمارات ترجمات كشوف الدرجات لتقييم المتقدمين الدوليين. برامج الدراسات العليا في جامعة الإمارات وجامعة الشارقة الأمريكية وجامعة نيويورك أبوظبي وغيرها تقيّم كشوف درجات البكالوريوس لتقييم الإعداد الأكاديمي. ترجماتنا تقدم مقرراتكم بالتنسيقات التي تتوقعها مكاتب القبول.</p>
+
+          <p>طلاب التحويل يحتاجون ترجمات كشوف درجات مفصلة لتقييم الساعات المعتمدة. الجامعات تقيّم أي مقررات تُحتسب نحو متطلبات شهاداتها. ترجمات أسماء المقررات الواضحة والتدوين الدقيق للساعات المعتمدة يساعدان المسجلين على تحديد المعادلات بكفاءة.</p>
+
+          <p>بعض الجامعات لديها متطلبات تنسيق محددة للمستندات المترجمة. إذا قدمت مؤسستكم المستهدفة إرشادات تنسيق، شاركوها معنا ونعدّل العرض وفقاً لذلك مع الحفاظ على متطلبات اعتماد وزارة العدل.</p>
+        </div>
+
+        <div class="content-sidebar">
+          <div class="info-card highlight">
+            <h4><i class="fab fa-whatsapp"></i> تسعير فوري</h4>
+            <p>أرسلوا صورة كشف الدرجات عبر واتساب. نقدم عرض سعر خلال دقائق.</p>
+            <a href="https://wa.me/971508620217?text=أرغب%20في%20تسعير%20ترجمة%20كشف%20درجات" class="btn btn-primary btn-sm">
+              <i class="fab fa-whatsapp"></i> أرسلوا للتسعير
+            </a>
+          </div>
+
+          <div class="info-card">
+            <h4><i class="fas fa-clock"></i> أوقات الإنجاز</h4>
+            <ul>
+              <li><strong>قياسي (1-3 صفحات):</strong> 24-48 ساعة</li>
+              <li><strong>طويل (4+ صفحات):</strong> 48-72 ساعة</li>
+              <li><strong>خدمة سريعة:</strong> نفس اليوم</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h4><i class="fas fa-tag"></i> التسعير</h4>
+            <ul>
+              <li><strong>صفحة واحدة:</strong> من 150 درهم</li>
+              <li><strong>صفحات متعددة:</strong> خصومات متاحة</li>
+              <li><strong>حزمة أكاديمية:</strong> شهادة + كشف درجات</li>
+            </ul>
+            <p class="info-note">السعر الدقيق بعد مراجعة المستند</p>
+          </div>
+
+          <div class="info-card">
+            <h4><i class="fas fa-check-circle"></i> ما نترجمه</h4>
+            <ul>
+              <li>جميع أسماء المقررات بمصطلحات أكاديمية</li>
+              <li>الدرجات والساعات المعتمدة</li>
+              <li>المعدل والحسابات التراكمية</li>
+              <li>الدرجة الممنوحة والتخصص</li>
+              <li>تواريخ التسجيل والتخرج</li>
+              <li>الساعات المحولة والملاحظات</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rejection Reasons Section -->
+  <section class="section">
+    <div class="container">
+      <h2>أسباب رفض الترجمات الشائعة</h2>
+      <p class="section-intro">تجنبوا هذه الأخطاء الشائعة التي تؤدي لرفض ترجمات كشوف الدرجات.</p>
+      <div class="rejection-grid">
+        {rejectionReasons.map(reason => (
+          <div class="rejection-card">
+            <div class="rejection-icon">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3>{reason.title}</h3>
+            <p>{reason.content}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>قد تحتاجون أيضاً</h2>
+      <div class="related-grid">
+        <a href="/ar/personal/academic/degree/" class="related-card">
+          <i class="fas fa-graduation-cap"></i>
+          <h3>ترجمة الشهادات العلمية</h3>
+          <p>ترجمة شهادات البكالوريوس والماجستير والدكتوراه</p>
+        </a>
+        <a href="/ar/services/attestation/" class="related-card">
+          <i class="fas fa-stamp"></i>
+          <h3>خدمات التصديق</h3>
+          <p>تصديق وزارة الخارجية والسفارات</p>
+        </a>
+        <a href="/ar/services/golden-visa-translation/" class="related-card">
+          <i class="fas fa-medal"></i>
+          <h3>التأشيرة الذهبية</h3>
+          <p>حزمة مستندات كاملة للتأشيرة</p>
+        </a>
+        <a href="/ar/personal/vital-records/birth/" class="related-card">
+          <i class="fas fa-baby"></i>
+          <h3>شهادات الميلاد</h3>
+          <p>للقبول الجامعي والتأشيرات</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container">
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-container">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" name="faq">
+            <summary class="faq-question">
+              <span>{faq.question}</span>
+              <i class="fas fa-chevron-down"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>جاهزون لترجمة كشف درجاتكم؟</h2>
+        <p>أرسلوا صورة كشف الدرجات عبر واتساب. نقدم عرض سعر فوري ونبدأ الترجمة اليوم.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/971508620217?text=أرغب%20في%20ترجمة%20كشف%20درجات%20أكاديمي" class="btn btn-primary btn-lg">
+            <i class="fab fa-whatsapp"></i>
+            أرسلوا كشف الدرجات الآن
+          </a>
+          <a href="tel:+971508620217" class="btn btn-outline btn-lg">
+            <i class="fas fa-phone"></i>
+            +971 50 862 0217
+          </a>
+        </div>
+        <p class="cta-note">
+          <i class="fas fa-shield-alt"></i>
+          ترجمة معتمدة من وزارة العدل — رخصة رقم 701
+        </p>
+      </div>
+    </div>
+  </section>
+
+</BaseLayoutArabic>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, var(--surface-navy, #0a1628) 0%, #1a365d 100%);
+    color: var(--text-on-dark, #ffffff);
+    padding: 3rem 0 4rem;
+  }
+
+  .breadcrumb-nav {
+    margin-bottom: 2rem;
+  }
+
+  .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  .breadcrumb li:not(:last-child)::after {
+    content: "/";
+    margin-right: 0.5rem;
+    opacity: 0.5;
+  }
+
+  .breadcrumb a {
+    color: var(--text-on-dark, #ffffff);
+    opacity: 0.8;
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    opacity: 1;
+  }
+
+  .hero-content {
+    max-width: 900px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(212, 175, 55, 0.2);
+    color: var(--accent-gold, #D4AF37);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-section h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 1rem;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-intro {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+  }
+
+  .hero-intro a {
+    color: var(--accent-coral, #FF6B6B);
+  }
+
+  .hero-table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 2rem;
+  }
+
+  .hero-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .hero-table th,
+  .hero-table td {
+    padding: 0.75rem 1rem;
+    text-align: right;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .hero-table th {
+    background: rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+  }
+
+  .hero-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .hero-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .hero-feature i {
+    font-size: 1.25rem;
+    color: var(--accent-coral, #FF6B6B);
+    margin-top: 0.25rem;
+  }
+
+  .hero-feature strong {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .hero-feature span {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--accent-coral, #FF6B6B);
+    color: #fff;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-sm {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  .btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  /* Sections */
+  .section {
+    padding: 4rem 0;
+  }
+
+  .section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color, #0a1628);
+  }
+
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted, #64748b);
+    margin-bottom: 2.5rem;
+    max-width: 800px;
+  }
+
+  .bg-light {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Process Grid */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .process-card {
+    text-align: center;
+    position: relative;
+  }
+
+  .process-number {
+    width: 50px;
+    height: 50px;
+    background: var(--accent-coral, #FF6B6B);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .process-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .process-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* Accordion */
+  .accordion-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .accordion-item {
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+  }
+
+  .accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--primary-color);
+    list-style: none;
+  }
+
+  .accordion-header::-webkit-details-marker {
+    display: none;
+  }
+
+  .accordion-header i {
+    transition: transform 0.3s ease;
+    color: var(--accent-coral);
+  }
+
+  .accordion-item[open] .accordion-header i {
+    transform: rotate(180deg);
+  }
+
+  .accordion-content {
+    padding: 0 1.5rem 1.25rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+  }
+
+  /* Elements Grid */
+  .elements-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .element-card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .element-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .element-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* Content Grid */
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 3rem;
+  }
+
+  .content-main h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .content-main h3 {
+    font-size: 1.25rem;
+    margin: 2rem 0 1rem;
+    color: var(--primary-color);
+  }
+
+  .content-main p {
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  .content-main a {
+    color: var(--accent-coral, #FF6B6B);
+    text-decoration: none;
+  }
+
+  .content-main a:hover {
+    text-decoration: underline;
+  }
+
+  /* Sidebar */
+  .content-sidebar {
+    position: sticky;
+    top: 2rem;
+    align-self: start;
+  }
+
+  .info-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .info-card.highlight {
+    background: var(--primary-color, #0a1628);
+    color: #fff;
+  }
+
+  .info-card h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .info-card h4 i {
+    color: var(--accent-coral, #FF6B6B);
+  }
+
+  .info-card.highlight h4 i {
+    color: #fff;
+  }
+
+  .info-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .info-card li {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    font-size: 0.9rem;
+  }
+
+  .info-card.highlight li {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .info-card li:last-child {
+    border-bottom: none;
+  }
+
+  .info-card p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .info-note {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .info-card .btn {
+    width: 100%;
+  }
+
+  /* Rejection Grid */
+  .rejection-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .rejection-card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    border-right: 4px solid var(--state-warning-vivid, #f59e0b);
+  }
+
+  .rejection-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--surface-warning, #fef3c7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .rejection-icon i {
+    color: var(--state-warning-vivid, #f59e0b);
+  }
+
+  .rejection-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .rejection-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* Related Grid */
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .related-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .related-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .related-card i {
+    font-size: 2rem;
+    color: var(--accent-coral, #FF6B6B);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .related-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .related-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* FAQ Section */
+  .faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--primary-color);
+    list-style: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question i {
+    transition: transform 0.3s ease;
+    color: var(--accent-coral);
+  }
+
+  .faq-item[open] .faq-question i {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.25rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, var(--surface-navy, #0a1628) 0%, #1a365d 100%);
+    color: #fff;
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .cta-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .cta-content > p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-note {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .process-grid,
+    .related-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .elements-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 991px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .content-sidebar {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      position: static;
+    }
+
+    .hero-features {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 2rem 0 3rem;
+    }
+
+    .hero-section h1 {
+      font-size: 1.75rem;
+    }
+
+    .section {
+      padding: 3rem 0;
+    }
+
+    .process-grid,
+    .elements-grid,
+    .rejection-grid,
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .content-sidebar {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+    }
+
+    .cta-buttons .btn {
+      width: 100%;
+    }
+  }
+</style>

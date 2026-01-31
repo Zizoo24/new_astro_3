@@ -1,0 +1,1299 @@
+---
+/**
+ * /ar/services/golden-visa-translation/ - Arabic Golden Visa Translation Package
+ *
+ * Arabic localization of Golden Visa page
+ * Uses: BaseLayoutArabic with RTL styling
+ * Schemas: BreadcrumbList, Service, FAQPage
+ */
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: "ما هي المستندات المطلوبة لتأشيرة الإقامة الذهبية؟",
+    answer: "تعتمد المستندات المطلوبة على فئتكم. يحتاج المهنيون إلى ترجمة شهادات الدرجات العلمية وعقود العمل وشهادات الراتب وكشوفات الحساب البنكية. يحتاج المستثمرون إلى سندات ملكية العقارات أو وثائق الشركات. جميع المستندات تتطلب ترجمة قانونية معتمدة من وزارة العدل والتصديق المناسب."
+  },
+  {
+    question: "هل أحتاج إلى التصديق بالإضافة إلى الترجمة للتأشيرة الذهبية؟",
+    answer: "نعم، معظم المستندات تتطلب التصديق والترجمة معاً. الشهادات التعليمية تحتاج تصديق وزارة التربية والتعليم العالي. التراخيص المهنية قد تحتاج تصديق الجهات المختصة. نقوم بتنسيق كلتا الخدمتين بالتسلسل الصحيح لقبول الهيئة الاتحادية للهوية."
+  },
+  {
+    question: "ما هي فئات التأشيرة الذهبية ومتطلبات كل منها؟",
+    answer: "المستثمرون يحتاجون عقارات بقيمة 2 مليون درهم أو أكثر أو إثبات ملكية أعمال. المهنيون يحتاجون شهادات علمية وشهادات راتب لا تقل عن 30,000 درهم شهرياً. المواهب المتخصصة تحتاج توثيق الإنجازات. رواد الأعمال يحتاجون خطط عمل ورسائل حاضنات الأعمال."
+  },
+  {
+    question: "كم تستغرق ترجمة مستندات التأشيرة الذهبية؟",
+    answer: "تستغرق الترجمة 2-3 أيام عمل للحزمة الكاملة. المستندات الفردية أسرع: الشهادات العلمية 24 ساعة، كشوفات الحساب 24-48 ساعة. يُضاف 2-4 أسابيع إذا كان التصديق مطلوباً. ابدأوا قبل 4-6 أسابيع من موعد تقديم طلبكم."
+  },
+  {
+    question: "ما هو تصديق وزارة التربية والتعليم العالي وهل أحتاجه؟",
+    answer: "تصديق وزارة التربية والتعليم العالي يؤكد اعتراف الإمارات بشهادتكم الأجنبية. وهو إلزامي لفئة المهنيين. تشمل السلسلة: تصديق الدولة المصدرة، سفارة الإمارات، وزارة الخارجية، ثم معادلة وزارة التربية والتعليم العالي. نقوم بتنسيق هذه العملية بالكامل."
+  },
+  {
+    question: "هل يمكنكم المساعدة إذا كانت جامعتي غير معترف بها؟",
+    answer: "بعض الجامعات ليست في قائمة وزارة التربية والتعليم العالي، بما في ذلك العديد من مؤسسات التعليم عن بُعد. توجد مسارات بديلة: فئة المستثمرين أو فئة المواهب المتخصصة. هذه الفئات تركز على الإنجازات بدلاً من المؤهلات الأكاديمية. نقيّم وضعكم ونوصي بالخيارات المناسبة."
+  },
+  {
+    question: "ما هي متطلبات كشوفات الحساب البنكية للتأشيرة الذهبية؟",
+    answer: "يحتاج المهنيون كشوفات تُظهر إيداعات شهرية لا تقل عن 30,000 درهم. المستثمرون يحتاجون إثبات الأموال أو العقارات. يجب أن تغطي الكشوفات 6 أشهر على الأقل. اسم صاحب الحساب يجب أن يتطابق مع جواز السفر. نُنسق الترجمات وفق متطلبات الهيئة الاتحادية للهوية."
+  },
+  {
+    question: "هل تقدمون مراجعة المستندات قبل التقديم؟",
+    answer: "نعم. نراجع حزمة مستنداتكم الكاملة لتحديد الثغرات أو المشاكل المحتملة. هذا يكشف عدم تطابق الأسماء والتصديقات الناقصة وعدم كفاية الإثباتات. الأفضل معالجة المشاكل قبل دفع رسوم الترجمة والتقديم."
+  },
+  {
+    question: "ما تكلفة حزمة ترجمة التأشيرة الذهبية؟",
+    answer: "حزمة المهنيين تتراوح بين 800-1,200 درهم. حزمة المستثمرين تتراوح بين 1,000-1,500 درهم. التسعير يعتمد على الفئة وعدد المستندات. أسعار الحزم توفر 15-20% مقارنة بالأسعار الفردية. نقدم عرض السعر بعد مراجعة مستنداتكم."
+  },
+  {
+    question: "هل يمكنكم المساعدة في تجديد التأشيرة الذهبية؟",
+    answer: "نعم. التجديد يتطلب مستندات محدثة تثبت استمرار استيفائكم للمتطلبات. يشمل ذلك كشوفات حساب حديثة والتحقق من التوظيف. نترجم مستندات التجديد ونقدم المشورة بشأن الطلبات المعتادة للهيئة الاتحادية للهوية."
+  },
+  {
+    question: "ما المستندات المطلوبة لأفراد العائلة تحت التأشيرة الذهبية؟",
+    answer: "يمكن لحاملي التأشيرة الذهبية كفالة أفراد الأسرة. الأزواج يحتاجون ترجمة عقد الزواج مع التصديق المناسب. الأبناء يحتاجون ترجمة شهادات الميلاد. الوالدان قد يحتاجون إثبات علاقة إضافي. نوفر حزماً عائلية تغطي جميع الترجمات المطلوبة."
+  }
+];
+
+const visaCategories = [
+  {
+    title: "المستثمرون",
+    icon: "chart-line",
+    requirement: "استثمار 2 مليون درهم+",
+    documents: ["سندات ملكية العقارات", "شهادات الاستثمار", "كشوفات الحساب", "صور جواز السفر"],
+    color: "gold"
+  },
+  {
+    title: "المهنيون",
+    icon: "user-tie",
+    requirement: "راتب 30 ألف درهم+",
+    documents: ["شهادة علمية (مصدقة من الوزارة)", "عقد العمل", "شهادة الراتب", "كشوفات الحساب"],
+    color: "blue"
+  },
+  {
+    title: "رواد الأعمال",
+    icon: "lightbulb",
+    requirement: "مشروع معتمد",
+    documents: ["خطة العمل", "موافقة حاضنة الأعمال", "وثائق الشركة", "التوقعات المالية"],
+    color: "green"
+  },
+  {
+    title: "المواهب المتخصصة",
+    icon: "award",
+    requirement: "تميز مثبت",
+    documents: ["شهادات الإنجاز", "الجوائز والتكريمات", "المنشورات", "رسائل التوصية"],
+    color: "purple"
+  }
+];
+
+const processSteps = [
+  {
+    number: 1,
+    title: "تقييم المستندات",
+    desc: "أرسلوا مستنداتكم عبر واتساب. نراجع الاكتمال ونتحقق من أهلية الفئة ونحدد احتياجات التصديق ونكشف أي مشاكل محتملة."
+  },
+  {
+    number: 2,
+    title: "تنسيق التصديق",
+    desc: "إذا لزم الأمر، ننسق تصديق وزارة التربية والتعليم العالي للشهادات وغيرها من التصديقات المطلوبة. تستغرق هذه الخطوة 2-4 أسابيع حسب الدولة المصدرة."
+  },
+  {
+    number: 3,
+    title: "الترجمة القانونية المعتمدة",
+    desc: "جميع المستندات تُترجم بواسطة مترجمين قانونيين مرخصين مع اعتماد وزارة العدل الرسمي. مراجعة الجودة تضمن الدقة والتنسيق الصحيح."
+  },
+  {
+    number: 4,
+    title: "تسليم الحزمة",
+    desc: "تسليم الحزمة المترجمة الكاملة رقمياً وورقياً. المستندات منظمة وجاهزة لتقديم طلب التأشيرة الذهبية للهيئة الاتحادية للهوية."
+  }
+];
+
+const includedServices = [
+  { icon: "check-circle", text: "مراجعة المستندات قبل التقديم" },
+  { icon: "check-circle", text: "تقييم أهلية الفئة" },
+  { icon: "check-circle", text: "تنسيق تصديق وزارة التربية والتعليم العالي" },
+  { icon: "check-circle", text: "ترجمة معتمدة من وزارة العدل" },
+  { icon: "check-circle", text: "التحقق من تطابق الأسماء" },
+  { icon: "check-circle", text: "تنسيق جاهز للهيئة الاتحادية للهوية" },
+  { icon: "check-circle", text: "نسخ رقمية وورقية" },
+  { icon: "check-circle", text: "دعم ما بعد التقديم" }
+];
+
+const documentChecklist = [
+  { doc: "جواز السفر (جميع الصفحات)", required: true, notes: "نسخ واضحة، صالح لأكثر من 6 أشهر" },
+  { doc: "الهوية الإماراتية", required: true, notes: "الوجهان" },
+  { doc: "الشهادة العلمية", required: true, notes: "مصدقة من وزارة التعليم للمهنيين" },
+  { doc: "عقد العمل", required: true, notes: "ساري، يوضح الراتب" },
+  { doc: "شهادة الراتب", required: true, notes: "حديثة، على ترويسة الشركة" },
+  { doc: "كشوفات الحساب البنكية", required: true, notes: "6 أشهر، تُظهر إيداعات الراتب" },
+  { doc: "سند ملكية العقار", required: false, notes: "لفئة المستثمرين" },
+  { doc: "الرخصة التجارية", required: false, notes: "لأصحاب الأعمال" },
+  { doc: "الرخصة المهنية", required: false, notes: "إن كانت مطلوبة للمهنة" }
+];
+
+// FAQ Schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+// Service Schema
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "ترجمة مستندات التأشيرة الذهبية",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "OnlineTranslation.ae",
+    "telephone": "+971508620217",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "دبي",
+      "addressCountry": "AE"
+    }
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "الإمارات العربية المتحدة"
+  },
+  "description": "خدمات ترجمة شاملة لمستندات التأشيرة الذهبية الإماراتية. ترجمة معتمدة من وزارة العدل وتنسيق تصديق وزارة التربية والتعليم العالي. جاهز للتقديم للهيئة الاتحادية للهوية.",
+  "serviceType": "ترجمة مستندات التأشيرة الذهبية"
+};
+---
+
+<BaseLayoutArabic
+  title="ترجمة مستندات التأشيرة الذهبية دبي | تأشيرة 10 سنوات"
+  description="حزم ترجمة التأشيرة الذهبية للتأشيرة الإماراتية لمدة 10 سنوات. ترجمة معتمدة من وزارة العدل وتصديق وزارة التربية والتعليم العالي. جاهز للهيئة الاتحادية للهوية للمستثمرين والمهنيين."
+>
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} slot="head" />
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <ol class="breadcrumb">
+          <li><a href="/ar/">الرئيسية</a></li>
+          <li><a href="/ar/services/">الخدمات</a></li>
+          <li><span aria-current="page">ترجمة التأشيرة الذهبية</span></li>
+        </ol>
+      </nav>
+
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-medal"></i>
+          <span>خدمة متميزة</span>
+        </div>
+
+        <h1>ترجمة مستندات التأشيرة الذهبية في دبي</h1>
+        <p class="hero-subtitle">حلول مستندات شاملة لتأشيرة الإمارات لمدة 10 سنوات</p>
+
+        <div class="hero-intro">
+          <p>توفر التأشيرة الذهبية الإماراتية إقامة لمدة 10 سنوات للمستثمرين والمهنيين ورواد الأعمال والمواهب المتخصصة. يعتمد النجاح على تقديم مستندات مترجمة ومصدقة بشكل صحيح تستوفي متطلبات الهيئة الاتحادية للهوية. نوفر حزم مستندات كاملة — من تنسيق تصديق وزارة التربية والتعليم العالي إلى الترجمة المعتمدة من وزارة العدل.</p>
+        </div>
+
+        <div class="hero-categories">
+          <h3>فئات التأشيرة الذهبية</h3>
+          <ul>
+            <li><strong>المستثمرون</strong> — عقارات بقيمة 2 مليون درهم أو أكثر أو استثمار معادل. سندات الملكية، <a href="/ar/personal/immigration/bank/">كشوفات الحساب</a></li>
+            <li><strong>المهنيون</strong> — راتب 30 ألف درهم أو أكثر، شهادة بكالوريوس. <a href="/ar/personal/academic/degree/">ترجمة الشهادات العلمية</a> مع تصديق وزارة التربية والتعليم العالي، شهادات الراتب</li>
+            <li><strong>رواد الأعمال</strong> — مشروع ناشئ معتمد. خطط العمل، رسائل حاضنات الأعمال</li>
+            <li><strong>المواهب المتخصصة</strong> — تميز مثبت. الجوائز، المنشورات، التوصيات</li>
+          </ul>
+        </div>
+
+        <div class="hero-cta">
+          <a href="https://wa.me/971508620217?text=أرغب%20في%20الاستفسار%20عن%20ترجمة%20مستندات%20التأشيرة%20الذهبية" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i>
+            تقييم مجاني للمستندات
+          </a>
+          <a href="tel:+971508620217" class="btn btn-secondary">
+            <i class="fas fa-phone"></i>
+            اتصلوا الآن
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visa Categories Section -->
+  <section class="section">
+    <div class="container">
+      <h2>فئات التأشيرة الذهبية</h2>
+      <p class="section-intro">تختلف متطلبات المستندات حسب الفئة. اختاروا فئتكم لفهم المستندات المطلوبة للترجمة.</p>
+
+      <div class="categories-grid">
+        {visaCategories.map(cat => (
+          <div class={`category-card category-${cat.color}`}>
+            <div class="category-icon">
+              <i class={`fas fa-${cat.icon}`}></i>
+            </div>
+            <h3>{cat.title}</h3>
+            <div class="category-requirement">{cat.requirement}</div>
+            <ul class="category-documents">
+              {cat.documents.map(doc => (
+                <li><i class="fas fa-file-alt"></i> {doc}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Document Checklist Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>قائمة المستندات</h2>
+      <p class="section-intro">استخدموا هذه القائمة لتحضير مستنداتكم. تختلف المتطلبات حسب الفئة — نؤكد بالضبط ما تحتاجونه خلال التقييم الأولي.</p>
+
+      <div class="checklist-table">
+        <div class="checklist-header">
+          <span>المستند</span>
+          <span>مطلوب</span>
+          <span>ملاحظات</span>
+        </div>
+        {documentChecklist.map(item => (
+          <div class="checklist-row">
+            <span class="checklist-doc">{item.doc}</span>
+            <span class="checklist-required">
+              {item.required ? (
+                <i class="fas fa-check-circle text-success"></i>
+              ) : (
+                <i class="fas fa-minus-circle text-muted"></i>
+              )}
+            </span>
+            <span class="checklist-notes">{item.notes}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section">
+    <div class="container">
+      <h2>آلية العمل للتأشيرة الذهبية</h2>
+      <p class="section-intro">من مراجعة المستندات إلى تسليم الحزمة الجاهزة للهيئة الاتحادية للهوية — نتولى التعقيدات لتركزوا على طلبكم.</p>
+
+      <div class="process-grid">
+        {processSteps.map(step => (
+          <div class="process-card">
+            <div class="process-number">{step.number}</div>
+            <h3>{step.title}</h3>
+            <p>{step.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <div class="content-grid">
+        <div class="content-main">
+          <h2>لماذا تُرفض طلبات التأشيرة الذهبية؟</h2>
+
+          <p>تفشل الطلبات لأسباب يمكن تجنبها:</p>
+
+          <ul class="rejection-reasons">
+            <li>التصديقات الناقصة</li>
+            <li>اختلاف تهجئة الأسماء بين المستندات</li>
+            <li>ترجمات بدون اعتماد وزارة العدل</li>
+            <li>المستندات المالية لا تُظهر متطلبات الفئة</li>
+            <li>شهادات من جامعات ليست في قائمة وزارة التربية والتعليم العالي</li>
+          </ul>
+
+          <p>كل رفض يعني تأخيرات ورسوم إعادة تقديم.</p>
+
+          <div class="experience-box">
+            <p><strong>خبرتنا تساعدكم على تجنب هذه المشاكل.</strong> عالجنا مئات حزم التأشيرة الذهبية. تقييمنا المسبق يكشف المشاكل مبكراً. ترجماتنا تستوفي توقعات الهيئة الاتحادية للهوية.</p>
+          </div>
+
+          <h3>تصديق وزارة التربية والتعليم العالي للمهنيين</h3>
+
+          <p>فئة المهنيين تتطلب تصديق وزارة التربية والتعليم العالي. هذا يؤكد اعتراف الإمارات بشهادتكم.</p>
+
+          <p>سلسلة التصديق:</p>
+          <ol class="attestation-steps">
+            <li>تصديق الدولة المصدرة</li>
+            <li>تصديق سفارة الإمارات</li>
+            <li>تصديق وزارة الخارجية</li>
+            <li>التحقق من معادلة وزارة التربية والتعليم العالي</li>
+          </ol>
+
+          <p>ننسق السلسلة الكاملة. للشهادات الموجودة بالفعل لدى وزارة الخارجية، نتولى تقديمها لوزارة التربية والتعليم العالي. للتصديقات الجديدة، ندير كل شيء.</p>
+
+          <h3>تطابق الأسماء أمر بالغ الأهمية</h3>
+
+          <p>أنظمة الهيئة الاتحادية للهوية تُقارن الأسماء عبر جميع المستندات.</p>
+
+          <div class="name-example">
+            <p><strong>سيناريو المشكلة:</strong></p>
+            <ul>
+              <li>الشهادة تُظهر: "Mohammed Ahmed"</li>
+              <li>جواز السفر يُظهر: "Mohamed Ahmad"</li>
+              <li>كشف الحساب يُظهر: "Mohd Ahmed"</li>
+            </ul>
+            <p><strong>النتيجة:</strong> النظام يُحدد التناقضات. تأخير المعالجة.</p>
+          </div>
+
+          <p>نتحقق من تطابق الأسماء قبل الترجمة. جميع الترجمات تتطابق مع جواز سفركم وهويتكم الإماراتية بالضبط.</p>
+
+          <h3>متطلبات المستندات المالية</h3>
+
+          <p>المستندات المالية يجب أن تُظهر بوضوح استيفاءكم لحدود الفئة:</p>
+
+          <ul class="financial-reqs">
+            <li><strong>المهنيون:</strong> كشوفات حساب تُظهر راتباً شهرياً لا يقل عن 30,000 درهم لأكثر من 6 أشهر</li>
+            <li><strong>المستثمرون:</strong> سندات ملكية عقارات أو استثمارات بقيمة 2 مليون درهم أو أكثر</li>
+          </ul>
+
+          <p>يجب أن تكون الكشوفات حديثة. تُظهر اسمكم كصاحب الحساب. تتضمن تفاصيل معاملات واضحة.</p>
+
+          <p>نترجم مع الانتباه لما يتحقق منه المراجعون: أسماء أصحاب الحسابات، أوصاف المعاملات، الأرصدة الجارية، ونطاقات التواريخ.</p>
+        </div>
+
+        <div class="content-sidebar">
+          <div class="info-card highlight">
+            <h4><i class="fab fa-whatsapp"></i> ابدأوا طلبكم</h4>
+            <p>أرسلوا مستنداتكم للتقييم المجاني. نؤكد أهلية الفئة ونقدم عرض سعر كامل.</p>
+            <a href="https://wa.me/971508620217?text=أرغب%20في%20تقييم%20مستندات%20التأشيرة%20الذهبية" class="btn btn-primary btn-sm">
+              <i class="fab fa-whatsapp"></i> تقييم مجاني
+            </a>
+          </div>
+
+          <div class="info-card">
+            <h4><i class="fas fa-box-open"></i> تشمل الحزمة</h4>
+            <ul>
+              {includedServices.map(service => (
+                <li><i class={`fas fa-${service.icon}`}></i> {service.text}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h4><i class="fas fa-tag"></i> أسعار الحزم</h4>
+            <ul>
+              <li><strong>المهنيون:</strong> 800-1,200 درهم</li>
+              <li><strong>المستثمرون:</strong> 1,000-1,500 درهم</li>
+              <li><strong>رواد الأعمال:</strong> 1,200-1,800 درهم</li>
+              <li><strong>إضافة وزارة التعليم:</strong> من 1,500 درهم</li>
+            </ul>
+            <p class="info-note">عرض السعر الدقيق بعد مراجعة المستندات</p>
+          </div>
+
+          <div class="info-card">
+            <h4><i class="fas fa-clock"></i> الجدول الزمني</h4>
+            <ul>
+              <li><strong>ترجمة فقط:</strong> 2-3 أيام</li>
+              <li><strong>مع وزارة التعليم:</strong> 3-4 أسابيع</li>
+              <li><strong>تصديق كامل:</strong> 4-6 أسابيع</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Success Tips Section -->
+  <section class="section">
+    <div class="container">
+      <h2>نصائح نجاح التأشيرة الذهبية</h2>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-icon"><i class="fas fa-calendar-check"></i></div>
+          <h3>ابدأوا مبكراً</h3>
+          <p>ابدأوا تحضير المستندات قبل 4-6 أسابيع من موعد التقديم المقصود. تصديق وزارة التربية والتعليم العالي وحده يستغرق 2-3 أسابيع.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon"><i class="fas fa-id-card"></i></div>
+          <h3>طابقوا الأسماء بدقة</h3>
+          <p>تأكدوا من تطابق جميع أسماء المستندات مع تهجئة جواز السفر. التناقضات تُسبب تأخيرات التحقق.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+          <h3>مستندات مالية حديثة</h3>
+          <p>يجب ألا يتجاوز عمر كشوفات الحساب 3 أشهر. شهادات الراتب يجب أن تكون مؤرخة خلال 30 يوماً من التقديم.</p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon"><i class="fas fa-university"></i></div>
+          <h3>تحققوا من اعتراف الجامعة</h3>
+          <p>تأكدوا من وجود جامعتكم في قائمة وزارة التربية والتعليم العالي المعترف بها قبل التقديم في فئة المهنيين.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>خدمات ذات صلة</h2>
+      <div class="related-grid">
+        <a href="/ar/personal/academic/degree/" class="related-card">
+          <i class="fas fa-graduation-cap"></i>
+          <h3>ترجمة الشهادات العلمية</h3>
+          <p>ترجمة الشهادات الجامعية للتصديق</p>
+        </a>
+        <a href="/ar/personal/immigration/bank/" class="related-card">
+          <i class="fas fa-university"></i>
+          <h3>ترجمة كشوفات الحساب</h3>
+          <p>ترجمة الوثائق المالية للتأشيرة</p>
+        </a>
+        <a href="/ar/services/attestation/" class="related-card">
+          <i class="fas fa-stamp"></i>
+          <h3>خدمات التصديق</h3>
+          <p>تصديق وزارة الخارجية والسفارات</p>
+        </a>
+        <a href="/ar/personal/vital-records/marriage/" class="related-card">
+          <i class="fas fa-heart"></i>
+          <h3>ترجمة عقد الزواج</h3>
+          <p>لكفالة أفراد الأسرة</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container">
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-container">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" name="faq">
+            <summary class="faq-question">
+              <span>{faq.question}</span>
+              <i class="fas fa-chevron-down"></i>
+            </summary>
+            <div class="faq-answer">
+              <p set:html={faq.answer}></p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>جاهزون لبدء طلب التأشيرة الذهبية؟</h2>
+        <p>أرسلوا مستنداتكم للتقييم المجاني. نحدد فئتكم ونوفر عرض سعر كامل خلال ساعة.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/971508620217?text=أرغب%20في%20ترجمة%20مستندات%20التأشيرة%20الذهبية" class="btn btn-primary btn-lg">
+            <i class="fab fa-whatsapp"></i>
+            أرسلوا المستندات عبر واتساب
+          </a>
+          <a href="tel:+971508620217" class="btn btn-outline btn-lg">
+            <i class="fas fa-phone"></i>
+            +971 50 862 0217
+          </a>
+        </div>
+        <p class="cta-note">
+          <i class="fas fa-shield-alt"></i>
+          ترجمة معتمدة من وزارة العدل — رخصة رقم 701
+        </p>
+      </div>
+    </div>
+  </section>
+
+</BaseLayoutArabic>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, var(--surface-navy, #0a1628) 0%, #1a365d 100%);
+    color: var(--text-on-dark, #ffffff);
+    padding: 3rem 0 4rem;
+  }
+
+  .breadcrumb-nav {
+    margin-bottom: 2rem;
+  }
+
+  .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  .breadcrumb li:not(:last-child)::after {
+    content: "/";
+    margin-right: 0.5rem;
+    opacity: 0.5;
+  }
+
+  .breadcrumb a {
+    color: var(--text-on-dark, #ffffff);
+    opacity: 0.8;
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    opacity: 1;
+  }
+
+  .hero-content {
+    max-width: 900px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(212, 175, 55, 0.2);
+    color: var(--accent-gold, #D4AF37);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-section h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 1rem;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-intro {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+  }
+
+  .hero-categories {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-categories h3 {
+    font-size: 1.1rem;
+    margin: 0 0 1rem;
+  }
+
+  .hero-categories ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .hero-categories li {
+    padding: 0.5rem 0;
+    line-height: 1.6;
+  }
+
+  .hero-categories a {
+    color: var(--accent-coral, #FF6B6B);
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--accent-coral, #FF6B6B);
+    color: #fff;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-sm {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  .btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  /* Sections */
+  .section {
+    padding: 4rem 0;
+  }
+
+  .section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color, #0a1628);
+  }
+
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted, #64748b);
+    margin-bottom: 2.5rem;
+    max-width: 800px;
+  }
+
+  .bg-light {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Categories Grid */
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .category-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-top: 4px solid var(--accent-color);
+  }
+
+  .category-card.category-gold { border-top-color: var(--accent-gold, #D4AF37); }
+  .category-card.category-blue { border-top-color: var(--state-info, #2563EB); }
+  .category-card.category-green { border-top-color: var(--state-success-vivid, #059669); }
+  .category-card.category-purple { border-top-color: #7C3AED; }
+
+  .category-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-color, #0a1628);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+
+  .category-icon i {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+
+  .category-card h3 {
+    font-size: 1.2rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .category-requirement {
+    background: var(--bg-light, #f8f9fa);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+
+  .category-documents {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+  }
+
+  .category-documents li {
+    padding: 0.4rem 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .category-documents i {
+    color: var(--accent-color);
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  /* Checklist Table */
+  .checklist-table {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .checklist-header {
+    display: grid;
+    grid-template-columns: 1fr 100px 1fr;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: var(--primary-color, #0a1628);
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .checklist-row {
+    display: grid;
+    grid-template-columns: 1fr 100px 1fr;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    align-items: center;
+  }
+
+  .checklist-row:last-child {
+    border-bottom: none;
+  }
+
+  .checklist-doc {
+    font-weight: 500;
+    color: var(--primary-color);
+  }
+
+  .checklist-required {
+    text-align: center;
+  }
+
+  .checklist-notes {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .text-success { color: var(--state-success-vivid, #059669); }
+  .text-muted { color: var(--text-muted, #64748b); }
+
+  /* Process Grid */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .process-card {
+    text-align: center;
+    position: relative;
+  }
+
+  .process-number {
+    width: 50px;
+    height: 50px;
+    background: var(--accent-coral, #FF6B6B);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .process-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .process-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* Content Grid */
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 3rem;
+  }
+
+  .content-main h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .content-main h3 {
+    font-size: 1.25rem;
+    margin: 2rem 0 1rem;
+    color: var(--primary-color);
+  }
+
+  .content-main p {
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  .rejection-reasons {
+    margin: 1rem 0 1.5rem;
+    padding-right: 1.25rem;
+    list-style-position: inside;
+  }
+
+  .rejection-reasons li {
+    margin-bottom: 0.4rem;
+    line-height: 1.5;
+  }
+
+  .experience-box {
+    background: linear-gradient(135deg, var(--surface-success, #d1fae5) 0%, #d6ffea 100%);
+    border-right: 4px solid var(--state-success-vivid, #059669);
+    padding: 1.25rem 1.5rem;
+    border-radius: 0.75rem 0 0 0.75rem;
+    margin: 1.5rem 0;
+  }
+
+  .experience-box p {
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .attestation-steps {
+    margin: 0.75rem 0 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .attestation-steps li {
+    margin-bottom: 0.35rem;
+    line-height: 1.5;
+  }
+
+  .name-example {
+    background: linear-gradient(135deg, var(--surface-warning, #fef3c7) 0%, #fde68a 100%);
+    border-right: 4px solid var(--state-warning-vivid, #f59e0b);
+    padding: 1.25rem 1.5rem;
+    border-radius: 0.75rem 0 0 0.75rem;
+    margin: 1.5rem 0;
+  }
+
+  .name-example p {
+    margin: 0 0 0.5rem;
+    line-height: 1.5;
+  }
+
+  .name-example p:last-child {
+    margin-bottom: 0;
+  }
+
+  .name-example ul {
+    margin: 0.5rem 0;
+    padding-right: 1.25rem;
+  }
+
+  .name-example li {
+    margin-bottom: 0.25rem;
+    font-size: 0.95rem;
+    direction: ltr;
+    text-align: left;
+  }
+
+  .financial-reqs {
+    margin: 0.75rem 0 1.5rem;
+    padding-right: 1.25rem;
+  }
+
+  .financial-reqs li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  /* Sidebar */
+  .content-sidebar {
+    position: sticky;
+    top: 2rem;
+    align-self: start;
+  }
+
+  .info-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .info-card.highlight {
+    background: var(--primary-color, #0a1628);
+    color: #fff;
+  }
+
+  .info-card h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .info-card h4 i {
+    color: var(--accent-coral, #FF6B6B);
+  }
+
+  .info-card.highlight h4 i {
+    color: #fff;
+  }
+
+  .info-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .info-card li {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    font-size: 0.9rem;
+  }
+
+  .info-card.highlight li {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .info-card li:last-child {
+    border-bottom: none;
+  }
+
+  .info-card li i {
+    color: var(--accent-coral, #FF6B6B);
+    margin-left: 0.5rem;
+  }
+
+  .info-card p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .info-note {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .info-card .btn {
+    width: 100%;
+  }
+
+  /* Tips Grid */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .tip-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .tip-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-coral, #FF6B6B);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+
+  .tip-icon i {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+
+  .tip-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .tip-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* Related Grid */
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .related-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .related-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .related-card i {
+    font-size: 2rem;
+    color: var(--accent-coral, #FF6B6B);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .related-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .related-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* FAQ Section */
+  .faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--primary-color);
+    list-style: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question i {
+    transition: transform 0.3s ease;
+    color: var(--accent-coral);
+  }
+
+  .faq-item[open] .faq-question i {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.25rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+  }
+
+  .faq-answer :global(a) {
+    color: var(--accent-coral);
+    text-decoration: none;
+  }
+
+  .faq-answer :global(a:hover) {
+    text-decoration: underline;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, var(--surface-navy, #0a1628) 0%, #1a365d 100%);
+    color: #fff;
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .cta-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .cta-content > p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-note {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .categories-grid,
+    .process-grid,
+    .tips-grid,
+    .related-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 991px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .content-sidebar {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      position: static;
+    }
+
+    .checklist-header,
+    .checklist-row {
+      grid-template-columns: 1fr 80px 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 2rem 0 3rem;
+    }
+
+    .hero-section h1 {
+      font-size: 1.75rem;
+    }
+
+    .section {
+      padding: 3rem 0;
+    }
+
+    .categories-grid,
+    .process-grid,
+    .tips-grid,
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .content-sidebar {
+      grid-template-columns: 1fr;
+    }
+
+    .checklist-header,
+    .checklist-row {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .checklist-header span:nth-child(2),
+    .checklist-header span:nth-child(3) {
+      display: none;
+    }
+
+    .checklist-notes {
+      display: block;
+      margin-top: 0.25rem;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+    }
+
+    .cta-buttons .btn {
+      width: 100%;
+    }
+  }
+</style>

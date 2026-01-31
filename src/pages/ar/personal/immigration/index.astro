@@ -1,0 +1,792 @@
+---
+/**
+ * Immigration Documents Hub - Arabic
+ * URL: /ar/personal/immigration/
+ */
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "ترجمة وثائق الهجرة والإقامة دبي",
+  "description": "ترجمة معتمدة من وزارة العدل لوثائق الهجرة والإقامة - شهادات الخلو من السوابق، كشوف الحسابات البنكية، رخص القيادة",
+  "provider": {
+    "@type": "Organization",
+    "name": "OnlineTranslation.ae",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "دبي",
+      "addressCountry": "AE"
+    }
+  },
+  "areaServed": ["دبي", "أبوظبي", "الشارقة", "الإمارات"],
+  "serviceType": ["ترجمة شهادة الخلو من السوابق", "ترجمة كشف الحساب البنكي", "ترجمة رخصة القيادة"]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "https://onlinetranslation.ae/ar/" },
+    { "@type": "ListItem", "position": 2, "name": "الوثائق الشخصية", "item": "https://onlinetranslation.ae/ar/personal/" },
+    { "@type": "ListItem", "position": 3, "name": "وثائق الهجرة", "item": "https://onlinetranslation.ae/ar/personal/immigration/" }
+  ]
+};
+
+const faqs = [
+  {
+    question: "كم تستغرق ترجمة وثائق الهجرة؟",
+    answer: "معظم وثائق الهجرة تكتمل خلال 24 ساعة. شهادات الخلو من السوابق ورخص القيادة تكتمل في 4-6 ساعات. كشوف الحسابات البنكية تعتمد على الطول - عادة 6-12 ساعة. خدمة مستعجلة متاحة لمواعيد التأشيرات العاجلة."
+  },
+  {
+    question: "هل أحتاج تصديق قبل الترجمة؟",
+    answer: "لتأشيرات العمل من وزارة الموارد البشرية وبعض طلبات الإقامة العامة، نعم. شهادات الخلو من السوابق عادة تحتاج أبوستيل أو تصديق السفارة قبل الترجمة. الوثائق التعليمية تحتاج سلسلة التصديق الكاملة. ننصحكم بالمتطلبات بناءً على حالتكم المحددة."
+  },
+  {
+    question: "من أي دول تترجمون الوثائق؟",
+    answer: "نترجم وثائق الهجرة من جميع الدول. الدول الشائعة تشمل الهند وباكستان والفلبين ومصر وبريطانيا وأمريكا والدول الأوروبية. الوثائق بالعربية والإنجليزية والهندية والأوردو والتاغالوغ والصينية والفرنسية ولغات أخرى ضمن قدراتنا."
+  },
+  {
+    question: "هل تترجمون وثائق الإقامة الذهبية؟",
+    answer: "نعم. طلبات الإقامة الذهبية تتطلب حزم وثائق شاملة تشمل كشوف الحسابات البنكية وشهادات الخلو من السوابق والشهادات التعليمية ووثائق الأسرة للمعالين. نقدم حزم ترجمة كاملة للإقامة الذهبية بتنسيق موحد عبر جميع الوثائق."
+  },
+  {
+    question: "ما الصيغة التي تأتي بها الوثائق المترجمة؟",
+    answer: "نقدم نسخ PDF رقمية ونسخ مادية معتمدة. النسخ الرقمية ترسل فوراً عند الاكتمال للتقديمات عبر البوابات. النسخ المادية بأختام وزارة العدل الأصلية تُرسل بالبريد السريع في نفس اليوم داخل دبي أو اليوم التالي للإمارات الأخرى."
+  },
+  {
+    question: "كيف تضمنون تناسق الأسماء عبر الوثائق؟",
+    answer: "قبل الترجمة، نؤكد طريقة كتابة الأسماء المفضلة. إذا حصلتم على وثائق مترجمة سابقاً أو لديكم هوية إماراتية، نطابق الكتابات الموجودة. للكتابات الجديدة، نتبع المعايير القياسية مع ضمان استخدام جميع وثائق الحزمة لتنسيق اسم متطابق."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<BaseLayoutArabic
+  title="ترجمة وثائق الهجرة والإقامة دبي | وزارة العدل"
+  description="ترجمة معتمدة لوثائق الهجرة في دبي. شهادات الخلو من السوابق وكشوف الحسابات البنكية لتأشيرات الإمارات والإقامة الذهبية."
+  canonicalURL="https://onlinetranslation.ae/ar/personal/immigration/"
+  hreflangAr="https://onlinetranslation.ae/ar/personal/immigration/"
+  hreflangEn="https://onlinetranslation.ae/personal/immigration/"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <main class="hub-page" dir="rtl">
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="مسار التنقل">
+          <a href="/ar/">الرئيسية</a>
+          <span class="separator">←</span>
+          <a href="/ar/personal/">الوثائق الشخصية</a>
+          <span class="separator">←</span>
+          <span class="current">وثائق الهجرة</span>
+        </nav>
+
+        <h1>ترجمة وثائق الهجرة والإقامة في دبي</h1>
+        <p class="hero-subtitle">شهادات الخلو من السوابق، كشوف الحسابات، ورخص القيادة لتأشيرات الإمارات</p>
+
+        <div class="hero-intro">
+          <p>سلطات الهجرة الإماراتية تتطلب ترجمات معتمدة للوثائق الداعمة لطلبات التأشيرات وتصاريح العمل ومعاملات الإقامة. ترجماتنا المعتمدة من وزارة العدل تلبي المواصفات الدقيقة المطلوبة من الإقامة العامة وهيئة الهوية ووزارة الموارد البشرية للمعالجة الفعالة.</p>
+
+          <p>سواء كنتم تقدمون على تأشيرة عمل، أو تعالجون وثائق الإقامة الذهبية، أو تكفلون أفراد الأسرة، أو تحولون رخصة القيادة - نفهم ما تتوقعه كل جهة.</p>
+        </div>
+
+        <div class="hero-cta">
+          <a href="https://wa.me/971508620217?text=أحتاج%20ترجمة%20وثائق%20هجرة" class="btn-primary">
+            <i class="fab fa-whatsapp"></i>
+            أرسل وثائقكم الآن
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Categories -->
+    <section class="section bg-white">
+      <div class="container">
+        <h2>أنواع وثائق الهجرة</h2>
+        <p class="section-intro">اختاروا نوع وثيقتكم للمتطلبات والأسعار المحددة</p>
+
+        <div class="service-grid">
+          <a href="/ar/personal/immigration/pcc/" class="service-card">
+            <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3>شهادة الخلو من السوابق</h3>
+            <p>ضرورية لتأشيرات العمل وطلبات الإقامة الذهبية وتجديد الإقامة. تتحقق من حالة السجل الجنائي من بلدكم.</p>
+            <span class="card-link">اعرف المزيد <i class="fas fa-arrow-left"></i></span>
+          </a>
+
+          <a href="/ar/personal/immigration/bank/" class="service-card">
+            <div class="service-icon"><i class="fas fa-university"></i></div>
+            <h3>ترجمة كشف الحساب البنكي</h3>
+            <p>مطلوب لإثبات الملاءة المالية للإقامة الذهبية وتأشيرات المستثمرين وشراء العقارات وطلبات تأسيس الأعمال.</p>
+            <span class="card-link">اعرف المزيد <i class="fas fa-arrow-left"></i></span>
+          </a>
+
+          <a href="/ar/personal/immigration/license/" class="service-card">
+            <div class="service-icon"><i class="fas fa-id-card"></i></div>
+            <h3>ترجمة رخصة القيادة</h3>
+            <p>ضرورية لتحويل رخصة القيادة الإماراتية من الدول المؤهلة. ترجمات مقبولة من هيئة الطرق لتبديل الرخصة.</p>
+            <span class="card-link">اعرف المزيد <i class="fas fa-arrow-left"></i></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- UAE Authorities -->
+    <section class="section bg-light">
+      <div class="container">
+        <h2>جهات الهجرة الإماراتية التي نتعامل معها</h2>
+
+        <div class="authority-grid">
+          <div class="authority-item">
+            <i class="fas fa-passport"></i>
+            <strong>الإقامة العامة</strong>
+            <p>الإدارة العامة للإقامة وشؤون الأجانب</p>
+          </div>
+          <div class="authority-item">
+            <i class="fas fa-building"></i>
+            <strong>هيئة الهوية</strong>
+            <p>الهيئة الاتحادية للهوية والجنسية</p>
+          </div>
+          <div class="authority-item">
+            <i class="fas fa-briefcase"></i>
+            <strong>وزارة الموارد البشرية</strong>
+            <p>وزارة الموارد البشرية والتوطين</p>
+          </div>
+          <div class="authority-item">
+            <i class="fas fa-car"></i>
+            <strong>هيئة الطرق</strong>
+            <p>هيئة الطرق والمواصلات</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Common Scenarios -->
+    <section class="section bg-white">
+      <div class="container">
+        <h2>سيناريوهات الهجرة الشائعة</h2>
+
+        <div class="scenario-grid">
+          <div class="scenario-item">
+            <div class="scenario-icon"><i class="fas fa-star"></i></div>
+            <h3>طلبات الإقامة الذهبية</h3>
+            <p>الوثائق المطلوبة عادة تشمل:</p>
+            <ul>
+              <li>كشوف حسابات بنكية (6 أشهر) تثبت الأهلية المالية</li>
+              <li>شهادات الخلو من السوابق من دول الإقامة</li>
+              <li>شهادات الميلاد للأطفال المعالين</li>
+              <li>عقد الزواج لإضافة الزوج/الزوجة</li>
+            </ul>
+          </div>
+
+          <div class="scenario-item">
+            <div class="scenario-icon"><i class="fas fa-briefcase"></i></div>
+            <h3>تأشيرة العمل</h3>
+            <p>المتطلبات القياسية تشمل:</p>
+            <ul>
+              <li>شهادة الخلو من السوابق (حسن السيرة)</li>
+              <li>الشهادات التعليمية وكشوف الدرجات</li>
+              <li>التراخيص المهنية حيث ينطبق</li>
+              <li>وثائق التوظيف السابقة</li>
+            </ul>
+          </div>
+
+          <div class="scenario-item">
+            <div class="scenario-icon"><i class="fas fa-users"></i></div>
+            <h3>كفالة الأسرة</h3>
+            <p>وثائق المعالين عادة تشمل:</p>
+            <ul>
+              <li>شهادات الميلاد للأطفال</li>
+              <li>عقد الزواج للزوج/الزوجة</li>
+              <li>كشوف حسابات بنكية تثبت الدخل</li>
+              <li>عقد الإيجار (إيجاري)</li>
+            </ul>
+          </div>
+
+          <div class="scenario-item">
+            <div class="scenario-icon"><i class="fas fa-car"></i></div>
+            <h3>تحويل الرخصة</h3>
+            <p>لتبديل رخصة القيادة:</p>
+            <ul>
+              <li>ترجمة الرخصة الأصلية</li>
+              <li>نتائج فحص النظر</li>
+              <li>الهوية الإماراتية</li>
+              <li>نسخة جواز السفر مع تأشيرة سارية</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Translations Get Rejected -->
+    <section class="section bg-light">
+      <div class="container">
+        <h2>لماذا تُرفض ترجمات الهجرة</h2>
+        <div class="content-prose">
+          <p>طلبات الهجرة تفشل عندما تحتوي الترجمات على أخطاء يمكن تجنبها. عدم تناسق كتابة الأسماء بين الوثائق يجعل الإقامة العامة تطلب توضيحاً - إذا كانت شهادة الميلاد تكتب اسمكم بشكل مختلف عن شهادة الخلو من السوابق، تتوقف المعالجة حتى تحلوا التناقض.</p>
+
+          <h3>عدم تناسق كتابة الأسماء</h3>
+          <p>كتابة الأسماء العربية تختلف - "محمد" يمكن أن تُكتب "Mohammed" أو "Mohamed" حسب نطق اللغة الأصلية. سلطات الهجرة تقارن جميع الوثائق المقدمة. نحافظ على تناسق الكتابة عبر جميع الوثائق التي نترجمها ويمكننا مطابقة السجلات الحكومية الموجودة إذا قدمتم نسخة الهوية الإماراتية أو التأشيرات السابقة.</p>
+
+          <h3>ارتباك صيغة التاريخ</h3>
+          <p>الوثائق الدولية تستخدم صيغ تواريخ مختلفة. الوثائق الأمريكية تُظهر شهر-يوم-سنة؛ الوثائق الأوروبية تُظهر يوم-شهر-سنة. تاريخ مثل "02/03/2024" يمكن أن يعني 3 فبراير أو 2 مارس. نحول جميع التواريخ للصيغة العربية القياسية مع كتابة أسماء الأشهر، مما يزيل الغموض الذي يسبب تأخير المعالجة.</p>
+
+          <h3>سلسلة التصديق المفقودة</h3>
+          <p>وزارة الموارد البشرية والإقامة العامة تتطلبان إكمال التصديق لوثائق معينة قبل الترجمة. شهادات الخلو من السوابق من معظم الدول تحتاج أبوستيل أو تصديق السفارة قبل تصديق وزارة الخارجية الإماراتية. ترجمة وثيقة غير مصدقة تضيع الوقت إذا رفضتها الجهة لعدم وجود الأختام. ننصح بمتطلبات التصديق قبل قبول طلبات الترجمة لمنع هذا الخطأ الشائع.</p>
+
+          <h3>وضوح الوثائق المالية</h3>
+          <p>كشوف الحسابات البنكية تتطلب اهتماماً خاصاً لطلبات الإقامة الذهبية وكفالة الأسرة. الجهات ترفض الترجمات حيث أسماء أصحاب الحسابات غير واضحة، أو العملة غير محددة، أو نطاقات التواريخ لا تغطي الفترات المطلوبة. نضمن أن ترجمات كشوف الحسابات البنكية تحدد بوضوح ملكية الحساب، وتحدد العملة لجميع المبالغ، وتشمل عناوين تواريخ واضحة في كل صفحة.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Translation Specifications -->
+    <section class="section bg-white">
+      <div class="container">
+        <h2>مواصفات الترجمة</h2>
+
+        <div class="spec-grid">
+          <div class="spec-item">
+            <i class="fas fa-stamp"></i>
+            <h3>اعتماد وزارة العدل</h3>
+            <p>جميع الترجمات تشمل ختم وزارة العدل الرسمي وتوقيع المترجم ورقم التسجيل.</p>
+          </div>
+
+          <div class="spec-item">
+            <i class="fas fa-columns"></i>
+            <h3>تنسيق ثنائي اللغة</h3>
+            <p>عرض عربي-إنجليزي جنباً إلى جنب للتحقق السهل من مسؤولي الهجرة.</p>
+          </div>
+
+          <div class="spec-item">
+            <i class="fas fa-clock"></i>
+            <h3>تسليم في نفس اليوم</h3>
+            <p>وثائق الهجرة القياسية تكتمل خلال 24 ساعة. خيارات مستعجلة متاحة.</p>
+          </div>
+
+          <div class="spec-item">
+            <i class="fas fa-check-circle"></i>
+            <h3>قبول مضمون</h3>
+            <p>ترجماتنا منسقة وفق المواصفات الحكومية الدقيقة للقبول من أول مرة.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section bg-light">
+      <div class="container">
+        <h2>الأسئلة الشائعة</h2>
+
+        <div class="faq-grid">
+          {faqs.map((faq) => (
+            <div class="faq-item">
+              <h3>{faq.question}</h3>
+              <p>{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2>تحتاجون ترجمة وثائق هجرة؟</h2>
+          <p>أرسلوا وثائقكم عبر واتساب. سنؤكد المتطلبات، نقدم عرض سعر فوري، ونسلم ترجمتكم المعتمدة خلال 24 ساعة.</p>
+
+          <div class="cta-buttons">
+            <a href="https://wa.me/971508620217?text=أحتاج%20ترجمة%20وثائق%20هجرة" class="btn-cta">
+              <i class="fab fa-whatsapp"></i>
+              أرسلوا الوثائق الآن
+            </a>
+            <a href="/ar/personal/" class="btn-outline">
+              <i class="fas fa-arrow-right"></i>
+              العودة للوثائق الشخصية
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayoutArabic>
+
+<style>
+  /* Base Styles */
+  .hub-page {
+    font-family: var(--font-arabic, 'Noto Sans Arabic', sans-serif);
+    line-height: 1.8;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section {
+    padding: 4rem 0;
+  }
+
+  .bg-light {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  .bg-white {
+    background: #ffffff;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, var(--surface-navy, #0E2B48) 0%, #1a3a5c 100%);
+    color: var(--text-on-dark, #ffffff);
+    padding: 6rem 0 4rem;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .breadcrumb a:hover {
+    color: #ffffff;
+  }
+
+  .breadcrumb .separator {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .breadcrumb .current {
+    color: #ffffff;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 0.75rem;
+    line-height: 1.3;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--accent-coral, #FF1654);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  .hero-intro {
+    max-width: 800px;
+    font-size: 1.1rem;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+  }
+
+  .hero-intro p {
+    margin-bottom: 1rem;
+  }
+
+  .hero-cta {
+    margin-top: 2rem;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--accent-coral, #FF1654);
+    color: #ffffff;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 1.1rem;
+  }
+
+  .btn-primary:hover {
+    background: #e01249;
+    transform: translateY(-2px);
+  }
+
+  /* Section Titles */
+  h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--surface-navy, #0E2B48);
+    margin: 0 0 1rem;
+  }
+
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted, #6b7280);
+    margin-bottom: 2rem;
+    max-width: 700px;
+  }
+
+  /* Service Grid */
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .service-card {
+    background: var(--bg-light, #f8f9fa);
+    border-radius: 1rem;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s;
+    display: block;
+    border: 1px solid transparent;
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-color: var(--accent-coral, #FF1654);
+  }
+
+  .service-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--surface-navy, #0E2B48), #1a3a5c);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-icon i {
+    font-size: 1.5rem;
+    color: #ffffff;
+  }
+
+  .service-card h3 {
+    font-size: 1.25rem;
+    margin: 0 0 0.75rem;
+    color: var(--surface-navy, #0E2B48);
+  }
+
+  .service-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted, #6b7280);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .card-link {
+    color: var(--accent-coral, #FF1654);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .service-card:hover .card-link i {
+    transform: translateX(-4px);
+    transition: transform 0.2s;
+  }
+
+  /* Authority Grid */
+  .authority-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .authority-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+  }
+
+  .authority-item i {
+    font-size: 2.5rem;
+    color: var(--surface-navy, #0E2B48);
+  }
+
+  .authority-item strong {
+    font-size: 1.1rem;
+    color: var(--surface-navy, #0E2B48);
+  }
+
+  .authority-item p {
+    font-size: 0.85rem;
+    color: var(--text-muted, #6b7280);
+    margin: 0;
+  }
+
+  /* Scenario Grid */
+  .scenario-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .scenario-item {
+    background: var(--bg-light, #f8f9fa);
+    border-radius: 1rem;
+    padding: 2rem;
+    border-right: 4px solid var(--accent-coral, #FF1654);
+  }
+
+  .scenario-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--accent-coral, #FF1654);
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .scenario-icon i {
+    font-size: 1.25rem;
+    color: #ffffff;
+  }
+
+  .scenario-item h3 {
+    font-size: 1.2rem;
+    margin: 0 0 0.75rem;
+    color: var(--surface-navy, #0E2B48);
+  }
+
+  .scenario-item p {
+    font-size: 0.95rem;
+    color: var(--text-muted, #6b7280);
+    margin-bottom: 0.75rem;
+  }
+
+  .scenario-item ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .scenario-item li {
+    font-size: 0.9rem;
+    color: var(--text-muted, #6b7280);
+    padding: 0.4rem 0;
+    padding-right: 1.5rem;
+    position: relative;
+  }
+
+  .scenario-item li::before {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 0;
+    color: var(--accent-coral, #FF1654);
+    font-size: 0.75rem;
+  }
+
+  /* Content Prose */
+  .content-prose h3 {
+    font-size: 1.25rem;
+    color: var(--surface-navy, #0E2B48);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .content-prose p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+    color: var(--text-muted, #6b7280);
+  }
+
+  /* Spec Grid */
+  .spec-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .spec-item {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: var(--bg-light, #f8f9fa);
+    border-radius: 1rem;
+  }
+
+  .spec-item i {
+    font-size: 2.5rem;
+    color: var(--accent-coral, #FF1654);
+    margin-bottom: 1rem;
+  }
+
+  .spec-item h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
+    color: var(--surface-navy, #0E2B48);
+  }
+
+  .spec-item p {
+    font-size: 0.9rem;
+    color: var(--text-muted, #6b7280);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* FAQ Grid */
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .faq-item {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .faq-item h3 {
+    font-size: 1.1rem;
+    color: var(--surface-navy, #0E2B48);
+    margin: 0 0 0.75rem;
+  }
+
+  .faq-item p {
+    font-size: 0.95rem;
+    color: var(--text-muted, #6b7280);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, var(--surface-navy, #0E2B48) 0%, #1a3a5c 100%);
+    color: var(--text-on-dark, #ffffff);
+    padding: 4rem 0;
+  }
+
+  .cta-content {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .cta-content h2 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+  }
+
+  .cta-content p {
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--accent-coral, #FF1654);
+    color: #ffffff;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .btn-cta:hover {
+    background: #e01249;
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: transparent;
+    color: #ffffff;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    transition: all 0.3s;
+  }
+
+  .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #ffffff;
+  }
+
+  /* Responsive */
+  @media (max-width: 992px) {
+    .service-grid,
+    .authority-grid,
+    .spec-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 1.75rem;
+    }
+
+    .hero-section {
+      padding: 4rem 0 3rem;
+    }
+
+    .service-grid,
+    .authority-grid,
+    .scenario-grid,
+    .spec-grid,
+    .faq-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

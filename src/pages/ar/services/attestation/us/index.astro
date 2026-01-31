@@ -1,0 +1,1203 @@
+---
+/**
+ * US Attestation Arabic Page
+ * URL: /ar/services/attestation/us/
+ */
+import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: "ما هي خطوات تصديق الوثائق الأمريكية للاستخدام في الإمارات؟",
+    answer: "تمر الوثائق الأمريكية بسلسلة من 5 خطوات: التوثيق إذا لزم الأمر، ثم تصديق سكرتير الولاية في الولاية المصدرة، يليه أبوستيل وزارة الخارجية الأمريكية في واشنطن، ثم تصديق سفارة الإمارات في واشنطن، وأخيراً تصديق وزارة الخارجية الإماراتية. تستغرق العملية عادة 2-8 أسابيع حسب أوقات المعالجة في الولاية."
+  },
+  {
+    question: "لماذا تحتاج الوثائق الأمريكية إلى تصديق على مستوى الولاية؟",
+    answer: "النظام الفيدرالي الأمريكي يعني أن معظم الوثائق تصدر من سلطات الولايات وليس الحكومة الفيدرالية. الشهادات التعليمية تأتي من مؤسسات مرخصة من الولاية، والسجلات الحيوية من سجلات الولاية، والوثائق التجارية من سجلات الأعمال في الولاية. يصادق سكرتير الولاية على شرعية المسؤولين قبل المصادقة الفيدرالية."
+  },
+  {
+    question: "كم يستغرق تصديق الوثائق الأمريكية؟",
+    answer: "تختلف المدة بشكل كبير حسب الولاية. الولايات السريعة مثل تكساس 1-3 أيام، فلوريدا 1-2 يوم، ونيويورك توفر خدمة في نفس اليوم للحضور الشخصي. الولايات البطيئة مثل كاليفورنيا تستغرق 2-4 أسابيع بالبريد فقط. وزارة الخارجية الأمريكية تضيف 4-8 أسابيع للخدمة العادية أو 1-2 أسبوع للمستعجلة."
+  },
+  {
+    question: "هل تصديق فحص FBI يختلف عن غيره؟",
+    answer: "نعم. تقارير FBI هي وثائق فيدرالية، لذا تتخطى تصديق الولاية وتذهب مباشرة إلى وزارة الخارجية للأبوستيل. لكن تقارير FBI لها فترة صلاحية (عادة 6 أشهر من الإصدار)، لذا التوقيت حاسم. ننسق العملية لضمان بقاء تقرير FBI صالحاً طوال فترة التصديق والتقديم."
+  },
+  {
+    question: "أي الولايات لديها أسرع معالجة؟",
+    answer: "تكساس (1-3 أيام)، فلوريدا (1-2 يوم)، ونيويورك (نفس اليوم للحضور الشخصي في ألباني أو مدينة نيويورك) من بين الأسرع. إلينوي وبنسلفانيا أيضاً سريعة نسبياً. كاليفورنيا من الأبطأ بـ 2-4 أسابيع بالبريد فقط بدون خيار الحضور."
+  },
+  {
+    question: "هل أحتاج للتواجد في أمريكا للتصديق؟",
+    answer: "لا. يمكنك إرسال وثائقك إلينا أو لشركائنا في أمريكا من أي مكان في العالم. ننسق تصديق سكرتير الولاية، أبوستيل وزارة الخارجية، تصديق سفارة الإمارات في واشنطن، ونرتب الشحن الآمن إلى دبي لإكمال تصديق وزارة الخارجية. يمكن إدارة العملية بالكامل عن بُعد."
+  },
+  {
+    question: "ماذا عن الوثائق من الأقاليم الأمريكية؟",
+    answer: "الوثائق من بورتوريكو وجزر العذراء الأمريكية وغوام وساموا الأمريكية وجزر ماريانا الشمالية تتبع عمليات مماثلة لكن قد يكون لها مكاتب تصديق مختلفة. بورتوريكو لديها سكرتير ولاية خاص بها. نتعامل مع وثائق جميع الأقاليم الأمريكية."
+  },
+  {
+    question: "هل الترجمة مطلوبة بعد التصديق؟",
+    answer: "نعم، لمعظم التقديمات الحكومية الإماراتية. الوثائق الأمريكية بالإنجليزية، لكن السلطات الإماراتية تطلب عادة ترجمة عربية من مترجم معتمد من وزارة العدل. نقدم خدمات تصديق وترجمة مجتمعة، ونكمل الترجمة بعد التصديق لتوثيق جميع الأختام والأختام في النسخة العربية."
+  },
+  {
+    question: "ما الفرق بين سكرتير الولاية ووزارة الخارجية؟",
+    answer: "كل ولاية أمريكية لديها سكرتير ولاية يتعامل مع تصديق الوثائق على مستوى الولاية. هذا يختلف عن وزارة الخارجية الأمريكية (الفيدرالية) التي تتعامل مع الأبوستيل والتصديق الدولي. وثائق الولاية يجب أن تصادق أولاً من سكرتير الولاية، ثم ترسل إلى وزارة الخارجية الفيدرالية للأبوستيل."
+  },
+  {
+    question: "هل يمكن تصديق نسخة من الوثيقة الأمريكية؟",
+    answer: "عموماً لا. السلطات الإماراتية تطلب تصديق الوثائق الأصلية. لكن لبعض الوثائق مثل كشوف الدرجات أو الشهادات حيث تحتاج للاحتفاظ بالأصل، يمكن أحياناً تصديق نسخة مصدقة. يجب توثيق النسخة كنسخة طبق الأصل من كاتب عدل أمريكي، ثم تمر بسلسلة التصديق العادية."
+  },
+  {
+    question: "ماذا لو كانت وثيقتي من ولاية لم أعد أسكن فيها؟",
+    answer: "يجب تصديق الوثيقة في الولاية التي أصدرتها، بغض النظر عن مكان إقامتك الحالي. شهادة من كاليفورنيا يجب أن تمر عبر سكرتير ولاية كاليفورنيا حتى لو كنت تسكن الآن في تكساس. ننسق مع مكاتب جميع الـ 50 ولاية، لذا موقعك الحالي لا يؤثر على قدرتنا على معالجة وثيقتك."
+  },
+  {
+    question: "كيف أعرف إذا كانت جامعتي الأمريكية معترف بها في الإمارات؟",
+    answer: "يجب أن تكون جامعتك معتمدة من هيئة اعتماد إقليمية معترف بها من وزارة التعليم الأمريكية. للمهنيين الصحيين، قد يُطلب تحقق إضافي عبر DataFlow أو خدمات مماثلة. يمكننا تقديم النصح حول قبول مؤهلات مؤسستك للغرض المقصود في الإمارات."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "تصديق الوثائق الأمريكية في الإمارات",
+  "description": "خدمة تصديق الوثائق الأمريكية للاستخدام في الإمارات - أبوستيل وزارة الخارجية وتصديق السفارة",
+  "provider": {
+    "@type": "Organization",
+    "name": "OnlineTranslation.ae",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "دبي",
+      "addressCountry": "AE"
+    }
+  },
+  "areaServed": ["دبي", "أبوظبي", "الشارقة", "الإمارات"],
+  "serviceType": "تصديق الوثائق الأمريكية"
+};
+---
+
+<BaseLayoutArabic
+  title="تصديق الوثائق الأمريكية في الإمارات | أبوستيل وسفارة"
+  description="تصديق الوثائق الأمريكية للإمارات. سكرتير الولاية، أبوستيل وزارة الخارجية، سفارة الإمارات واشنطن، وزارة الخارجية. الشهادات وفحص FBI من جميع الولايات."
+  canonicalURL="https://onlinetranslation.ae/ar/services/attestation/us/"
+  hreflangAr="https://onlinetranslation.ae/ar/services/attestation/us/"
+  hreflangEn="https://onlinetranslation.ae/services/attestation/us/"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  </Fragment>
+
+  <main class="service-page" dir="rtl">
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="مسار التنقل">
+          <a href="/ar/">الرئيسية</a>
+          <span class="separator">←</span>
+          <a href="/ar/services/">الخدمات</a>
+          <span class="separator">←</span>
+          <a href="/ar/services/attestation/">التصديق</a>
+          <span class="separator">←</span>
+          <span class="current">الولايات المتحدة</span>
+        </nav>
+
+        <div class="hero-badge">
+          <i class="fas fa-flag-usa"></i>
+          <span>تصديق الوثائق الأمريكية</span>
+        </div>
+
+        <h1>تصديق الوثائق الأمريكية في الإمارات</h1>
+        <p class="hero-subtitle">تصديق فيدرالي وعلى مستوى الولايات</p>
+
+        <div class="hero-intro">
+          <p>خدمة تصديق شاملة للوثائق الأمريكية المطلوبة في الإمارات. نتعامل مع النظام الفيدرالي الأمريكي الفريد حيث يجب أن تمر الوثائق عبر تصديق الولاية والتصديق الفيدرالي قبل تصديق سفارة الإمارات ووزارة الخارجية. نتعامل مع وثائق جميع الولايات الـ 50 بمعرفة متخصصة بإجراءات كل ولاية.</p>
+        </div>
+
+        <!-- Snapshot Stats -->
+        <div class="snapshot-grid">
+          <div class="snapshot-item">
+            <i class="fas fa-flag-usa"></i>
+            <div class="snapshot-content">
+              <strong>ولاية + فيدرالي</strong>
+              <span>سكرتير الولاية ووزارة الخارجية</span>
+            </div>
+          </div>
+          <div class="snapshot-item">
+            <i class="fas fa-building"></i>
+            <div class="snapshot-content">
+              <strong>سفارة الإمارات DC</strong>
+              <span>تصديق السفارة في واشنطن</span>
+            </div>
+          </div>
+          <div class="snapshot-item">
+            <i class="fas fa-clock"></i>
+            <div class="snapshot-content">
+              <strong>2-8 أسابيع</strong>
+              <span>حسب أوقات معالجة الولاية</span>
+            </div>
+          </div>
+          <div class="snapshot-item">
+            <i class="fas fa-globe-americas"></i>
+            <div class="snapshot-content">
+              <strong>جميع الـ 50 ولاية</strong>
+              <span>وثائق من أي ولاية أمريكية</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-cta">
+          <a href="https://wa.me/971508620217?text=أحتاج%20تصديق%20وثيقة%20أمريكية" class="btn-primary">
+            <i class="fab fa-whatsapp"></i>
+            أرسل وثيقتك الآن
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Attestation Chain Section -->
+    <section class="section bg-light">
+      <div class="container">
+        <h2>سلسلة التصديق الأمريكية</h2>
+        <p class="section-intro">الوثائق الأمريكية تتبع مساراً من 5 خطوات للوصول للقبول في الإمارات</p>
+
+        <div class="attestation-chain">
+          <div class="chain-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>التوثيق (إذا لزم)</h3>
+              <p>الوثائق الخاصة والإفادات والنسخ تحتاج توثيقاً أولاً. الوثائق الحكومية الرسمية تتخطى هذه الخطوة.</p>
+            </div>
+          </div>
+          <div class="chain-arrow"><i class="fas fa-arrow-left"></i></div>
+
+          <div class="chain-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>سكرتير الولاية</h3>
+              <p>تصديق على مستوى الولاية في الولاية المصدرة. أوقات المعالجة تختلف: تكساس 1-3 أيام، كاليفورنيا 2-4 أسابيع.</p>
+            </div>
+          </div>
+          <div class="chain-arrow"><i class="fas fa-arrow-left"></i></div>
+
+          <div class="chain-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>وزارة الخارجية الأمريكية</h3>
+              <p>أبوستيل فيدرالي من واشنطن. المعالجة العادية 4-8 أسابيع، المستعجلة 1-2 أسبوع.</p>
+            </div>
+          </div>
+          <div class="chain-arrow"><i class="fas fa-arrow-left"></i></div>
+
+          <div class="chain-step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h3>سفارة الإمارات</h3>
+              <p>تصديق سفارة الإمارات في واشنطن. المعالجة عادة 3-5 أيام عمل.</p>
+            </div>
+          </div>
+          <div class="chain-arrow"><i class="fas fa-arrow-left"></i></div>
+
+          <div class="chain-step">
+            <div class="step-number">5</div>
+            <div class="step-content">
+              <h3>وزارة الخارجية الإماراتية</h3>
+              <p>التصديق النهائي في الإمارات. المعالجة 1-3 أيام عمل. وثيقتك جاهزة للاستخدام الرسمي.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Important Notice -->
+    <section class="section bg-white">
+      <div class="container">
+        <div class="notice-box notice-warning">
+          <div class="notice-icon"><i class="fas fa-exclamation-triangle"></i></div>
+          <div class="notice-content">
+            <h3>الإمارات ليست عضواً في اتفاقية لاهاي</h3>
+            <p>الولايات المتحدة عضو في اتفاقية أبوستيل لاهاي، لكن لأن الإمارات ليست عضواً، الوثائق الأمريكية تحتاج خطوات إضافية بعد الأبوستيل. تصديق سفارة الإمارات ووزارة الخارجية ما زالا مطلوبين - الأبوستيل وحده غير كافٍ للاستخدام في الإمارات.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- State Processing Times -->
+    <section class="section bg-light">
+      <div class="container">
+        <h2>أوقات المعالجة حسب الولاية</h2>
+        <p class="section-intro">كل ولاية لها إجراءاتها وأوقات معالجتها الخاصة</p>
+
+        <div class="states-grid">
+          <div class="state-category fast">
+            <h3><i class="fas fa-bolt"></i> ولايات سريعة</h3>
+            <div class="state-list">
+              <div class="state-item">
+                <strong>تكساس</strong>
+                <span>1-3 أيام</span>
+                <p>معالجة فعالة بالبريد مع خيار الحضور في أوستن</p>
+              </div>
+              <div class="state-item">
+                <strong>فلوريدا</strong>
+                <span>1-2 يوم</span>
+                <p>خيارات بريد وحضور شخصي في تالاهاسي</p>
+              </div>
+              <div class="state-item">
+                <strong>نيويورك</strong>
+                <span>نفس اليوم متاح</span>
+                <p>خدمة حضور شخصي في ألباني ومدينة نيويورك</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="state-category medium">
+            <h3><i class="fas fa-clock"></i> ولايات متوسطة</h3>
+            <div class="state-list">
+              <div class="state-item">
+                <strong>إلينوي</strong>
+                <span>3-5 أيام</span>
+                <p>معالجة في سبرينغفيلد</p>
+              </div>
+              <div class="state-item">
+                <strong>بنسلفانيا</strong>
+                <span>2-4 أيام</span>
+                <p>خيارات بريد وحضور في هاريسبرغ</p>
+              </div>
+              <div class="state-item">
+                <strong>نيو جيرسي</strong>
+                <span>3-5 أيام</span>
+                <p>معالجة في ترينتون</p>
+              </div>
+              <div class="state-item">
+                <strong>ماساتشوستس</strong>
+                <span>5-7 أيام</span>
+                <p>معالجة في بوسطن</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="state-category slow">
+            <h3><i class="fas fa-hourglass-half"></i> ولايات بطيئة</h3>
+            <div class="state-list">
+              <div class="state-item">
+                <strong>كاليفورنيا</strong>
+                <span>2-4 أسابيع</span>
+                <p>بريد فقط، لا يوجد خيار حضور. خطط وقتاً إضافياً.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="states-note">نتعامل مع وثائق جميع الولايات الـ 50 بما فيها الأقل شيوعاً مثل وايومنغ وداكوتا الشمالية ومونتانا وألاسكا.</p>
+      </div>
+    </section>
+
+    <!-- Document Types -->
+    <section class="section bg-white">
+      <div class="container">
+        <h2>أنواع الوثائق التي نصدقها</h2>
+
+        <div class="document-grid">
+          <div class="document-card">
+            <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+            <h3>الشهادات التعليمية</h3>
+            <p>شهادات الجامعة (بكالوريوس، ماجستير، دكتوراه)، دبلومات الكليات، وشهادات المهنية من مؤسسات جميع الولايات مصدقة لتوظيف وترخيص الإمارات.</p>
+            <a href="/ar/personal/academic/degree/" class="card-link">ترجمة الشهادات <i class="fas fa-arrow-left"></i></a>
+          </div>
+
+          <div class="document-card">
+            <div class="card-icon"><i class="fas fa-fingerprint"></i></div>
+            <h3>فحص FBI</h3>
+            <p>ملخص سجل الهوية FBI (فحص السوابق الجنائية) مصدق لطلبات تأشيرة الإمارات. الوثائق الفيدرالية تتخطى تصديق الولاية وتذهب مباشرة لوزارة الخارجية.</p>
+            <a href="/ar/personal/immigration/pcc/" class="card-link">ترجمة شهادة الخلو <i class="fas fa-arrow-left"></i></a>
+          </div>
+
+          <div class="document-card">
+            <div class="card-icon"><i class="fas fa-file-alt"></i></div>
+            <h3>السجلات الحيوية</h3>
+            <p>شهادات الميلاد والزواج والطلاق من أي ولاية أمريكية مصدقة للاعتراف القانوني في الإمارات وكفالة الأسرة.</p>
+            <a href="/ar/personal/vital-records/birth/" class="card-link">ترجمة شهادة الميلاد <i class="fas fa-arrow-left"></i></a>
+          </div>
+
+          <div class="document-card">
+            <div class="card-icon"><i class="fas fa-building"></i></div>
+            <h3>وثائق الشركات</h3>
+            <p>عقود التأسيس وشهادات حسن السير والتوكيلات الرسمية من الشركات المسجلة في أي ولاية أمريكية.</p>
+            <a href="/ar/legal/corporate/moa/" class="card-link">ترجمة عقد التأسيس <i class="fas fa-arrow-left"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Options -->
+    <section class="section bg-light">
+      <div class="container">
+        <h2>خيارات الخدمة</h2>
+
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <h3>الخدمة العادية</h3>
+            <div class="pricing-time">6-10 أسابيع إجمالي</div>
+            <p>معالجة عادية في وزارة الخارجية (4-8 أسابيع) مع توقيت تصديق الولاية العادي. الأنسب للوثائق غير المستعجلة.</p>
+          </div>
+
+          <div class="pricing-card featured">
+            <div class="featured-badge">الأكثر طلباً</div>
+            <h3>الخدمة المستعجلة</h3>
+            <div class="pricing-time">2-4 أسابيع إجمالي</div>
+            <p>معالجة سريعة في وزارة الخارجية (1-2 أسبوع مستعجل) مع أولوية في مستوى الولاية حيث متاح. موصى به لمواعيد تأشيرة العمل.</p>
+          </div>
+
+          <div class="pricing-card">
+            <h3>الباقة الكاملة</h3>
+            <div class="pricing-time">تصديق + ترجمة</div>
+            <p>سلسلة التصديق الكاملة مع ترجمة عربية معتمدة من وزارة العدل. الخدمة الشاملة للوثائق المقدمة للجهات الحكومية الإماراتية.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What You Need -->
+    <section class="section bg-white">
+      <div class="container">
+        <h2>ما تحتاج لتقديمه</h2>
+        <p class="section-intro">لبدء عملية التصديق لوثيقتك الأمريكية</p>
+
+        <div class="requirements-grid">
+          <div class="requirement-item">
+            <div class="requirement-icon"><i class="fas fa-file-alt"></i></div>
+            <h3>الوثيقة الأصلية</h3>
+            <p>الشهادة أو الدبلوم أو السجل الحيوي الأصلي مع جميع التوقيعات والأختام الأصلية. النسخ عموماً لا يمكن تصديقها إلا إذا وثقت كنسخ طبق الأصل.</p>
+          </div>
+
+          <div class="requirement-item">
+            <div class="requirement-icon"><i class="fas fa-id-card"></i></div>
+            <h3>نسخة جواز السفر</h3>
+            <p>نسخة واضحة من جواز سفرك للتحقق من الهوية ومتطلبات تقديم سفارة الإمارات.</p>
+          </div>
+
+          <div class="requirement-item">
+            <div class="requirement-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <h3>الولاية المصدرة</h3>
+            <p>الولاية التي صدرت منها وثيقتك (للشهادات، الولاية التي تقع فيها الجامعة). هذا يحدد أي مكتب سكرتير ولاية يعالج التصديق.</p>
+          </div>
+
+          <div class="requirement-item">
+            <div class="requirement-icon"><i class="fas fa-bullseye"></i></div>
+            <h3>الغرض في الإمارات</h3>
+            <p>الاستخدام المقصود (تأشيرة عمل، تأشيرة عائلية، ترخيص مهني، إلخ) يساعدنا في التأكد من أن التصديق يلبي متطلبات الجهة المحددة.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Common Use Cases -->
+    <section class="section bg-light">
+      <div class="container">
+        <h2>حالات الاستخدام الشائعة</h2>
+
+        <div class="use-cases-grid">
+          <div class="use-case">
+            <h3><i class="fas fa-briefcase"></i> تأشيرة العمل</h3>
+            <p>الشهادة الجامعية المصدقة مطلوبة عادة من وزارة الموارد البشرية لموافقة تأشيرة العمل. مسؤول العلاقات العامة لدى صاحب العمل يقدم الوثيقة المصدقة والمترجمة. قد يُطلب فحص FBI لبعض الوظائف أو طلبات الإقامة الذهبية.</p>
+          </div>
+
+          <div class="use-case">
+            <h3><i class="fas fa-users"></i> تأشيرة العائلة</h3>
+            <p>عقد الزواج المصدق لكفالة الزوج/الزوجة، شهادات الميلاد المصدقة للأطفال المعالين. كلا الوثيقتين تحتاجان ترجمة عربية بعد التصديق لتقديمها للإقامة العامة أو هيئة الهوية.</p>
+          </div>
+
+          <div class="use-case">
+            <h3><i class="fas fa-heartbeat"></i> ترخيص الرعاية الصحية</h3>
+            <p>المهنيون الطبيون يحتاجون شهادات مصدقة مع تحقق إضافي عبر DataFlow أو خدمات مماثلة. ترخيص هيئة الصحة له متطلبات تصديق محددة يمكننا إرشادك خلالها.</p>
+          </div>
+
+          <div class="use-case">
+            <h3><i class="fas fa-building"></i> تأسيس الأعمال</h3>
+            <p>وثائق الشركات المصدقة (عقود التأسيس، شهادات حسن السير) لتأسيس الشركات أو تسجيل المكاتب الفرعية في الإمارات. التوكيلات للمفوضين بالتوقيع أيضاً تحتاج تصديقاً.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- US Territories -->
+    <section class="section bg-white">
+      <div class="container">
+        <h2>الأقاليم الأمريكية والحالات الخاصة</h2>
+        <p class="section-intro">نتعامل أيضاً مع وثائق الأقاليم والولايات القضائية الخاصة</p>
+
+        <div class="territories-grid">
+          <div class="territory-item">
+            <h3>بورتوريكو</h3>
+            <p>لديها وزارة خارجية خاصة بها للتصديق. الوثائق بالإسبانية قد تحتاج ترجمة قبل الاستخدام في الإمارات.</p>
+          </div>
+
+          <div class="territory-item">
+            <h3>جزر العذراء الأمريكية</h3>
+            <p>مكتب نائب الحاكم يتعامل مع التصديق. المعالجة قد تستغرق أكثر بسبب القدرة الإدارية المحدودة.</p>
+          </div>
+
+          <div class="territory-item">
+            <h3>غوام والأقاليم الباسيفيكية</h3>
+            <p>غوام وساموا الأمريكية وجزر ماريانا الشمالية لها مكاتب مكافئة. ننسق مع المكاتب المناسبة.</p>
+          </div>
+
+          <div class="territory-item">
+            <h3>واشنطن العاصمة</h3>
+            <p>ليست ولاية لكن لها مكتب تصديق خاص بها. الوثائق من جورج تاون وجورج واشنطن وغيرها من مؤسسات DC تعالج هنا.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section bg-light">
+      <div class="container">
+        <h2>الأسئلة الشائعة</h2>
+
+        <div class="faq-accordion">
+          {faqs.map((faq, index) => (
+            <details class="faq-item" name="faq-group">
+              <summary class="faq-question">
+                <span>{faq.question}</span>
+                <i class="fas fa-chevron-down"></i>
+              </summary>
+              <div class="faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2>تحتاج تصديق وثيقة أمريكية؟</h2>
+          <p>أرسل وثيقتك عبر واتساب. نقيم وثيقتك، نحدد الولاية المصدرة، نقدم جدولاً زمنياً دقيقاً، وننسق سلسلة التصديق الكاملة من تصديق الولاية حتى وزارة الخارجية.</p>
+
+          <a href="https://wa.me/971508620217?text=أحتاج%20تصديق%20وثيقة%20أمريكية" class="btn-cta">
+            <i class="fab fa-whatsapp"></i>
+            أرسل وثيقتك الآن
+          </a>
+
+          <div class="related-links">
+            <span>ذات صلة:</span>
+            <a href="/ar/services/attestation/uk/">تصديق بريطانيا</a>
+            <a href="/ar/services/attestation/india/">تصديق الهند</a>
+            <a href="/ar/personal/academic/degree/">ترجمة الشهادات</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayoutArabic>
+
+<style>
+  /* Base Styles */
+  .service-page {
+    font-family: var(--font-arabic, 'Noto Sans Arabic', sans-serif);
+    line-height: 1.8;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section {
+    padding: 4rem 0;
+  }
+
+  .bg-light {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  .bg-white {
+    background: #ffffff;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, var(--surface-navy, #0E2B48) 0%, #1a3a5c 100%);
+    color: var(--text-on-dark, #ffffff);
+    padding: 6rem 0 4rem;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .breadcrumb a:hover {
+    color: #ffffff;
+  }
+
+  .breadcrumb .separator {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .breadcrumb .current {
+    color: #ffffff;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-badge i {
+    color: var(--accent-coral, #FF1654);
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 0.75rem;
+    line-height: 1.3;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--accent-coral, #FF1654);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  .hero-intro {
+    max-width: 800px;
+    font-size: 1.1rem;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+  }
+
+  .snapshot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .snapshot-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 0.75rem;
+  }
+
+  .snapshot-item i {
+    font-size: 1.5rem;
+    color: var(--accent-coral, #FF1654);
+    margin-top: 0.25rem;
+  }
+
+  .snapshot-content strong {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .snapshot-content span {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  .hero-cta {
+    margin-top: 2rem;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--accent-coral, #FF1654);
+    color: #ffffff;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 1.1rem;
+  }
+
+  .btn-primary:hover {
+    background: #e01249;
+    transform: translateY(-2px);
+  }
+
+  /* Section Titles */
+  h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--surface-navy, #0E2B48);
+    margin: 0 0 1rem;
+  }
+
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted, #6b7280);
+    margin-bottom: 2rem;
+    max-width: 700px;
+  }
+
+  /* Attestation Chain */
+  .attestation-chain {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .chain-step {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    flex: 1;
+    min-width: 180px;
+    max-width: 200px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .step-number {
+    width: 40px;
+    height: 40px;
+    background: var(--accent-coral, #FF1654);
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin: 0 auto 1rem;
+  }
+
+  .step-content h3 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+    color: var(--surface-navy, #0E2B48);
+  }
+
+  .step-content p {
+    font-size: 0.85rem;
+    color: var(--text-muted, #6b7280);
+    margin: 0;
+  }
+
+  .chain-arrow {
+    color: var(--accent-coral, #FF1654);
+    font-size: 1.25rem;
+  }
+
+  /* Notice Box */
+  .notice-box {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    align-items: flex-start;
+  }
+
+  .notice-warning {
+    background: #fef3c7;
+    border: 1px solid #f59e0b;
+  }
+
+  .notice-icon {
+    font-size: 2rem;
+    color: #f59e0b;
+  }
+
+  .notice-content h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: var(--surface-navy, #0E2B48);
+  }
+
+  .notice-content p {
+    margin: 0;
+    color: var(--text-muted, #6b7280);
+    line-height: 1.7;
+  }
+
+  /* States Grid */
+  .states-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .state-category {
+    background: #ffffff;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .state-category h3 {
+    padding: 1rem 1.5rem;
+    margin: 0;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .state-category.fast h3 {
+    background: #d1fae5;
+    color: #065f46;
+  }
+
+  .state-category.medium h3 {
+    background: #fef3c7;
+    color: #92400e;
+  }
+
+  .state-category.slow h3 {
+    background: #fee2e2;
+    color: #991b1b;
+  }
+
+  .state-list {
+    padding: 1rem 1.5rem;
+  }
+
+  .state-item {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .state-item:last-child {
+    border-bottom: none;
+  }
+
+  .state-item strong {
+    display: block;
+    color: var(--surface-navy, #0E2B48);
+    margin-bottom: 0.25rem;
+  }
+
+  .state-item span {
+    font-size: 0.9rem;
+    color: var(--accent-coral, #FF1654);
+    font-weight: 600;
+  }
+
+  .state-item p {
+    font-size: 0.85rem;
+    color: var(--text-muted, #6b7280);
+    margin: 0.25rem 0 0;
+  }
+
+  .states-note {
+    text-align: center;
+    color: var(--text-muted, #6b7280);
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  /* Document Grid */
+  .document-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .document-card {
+    background: var(--bg-light, #f8f9fa);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s;
+  }
+
+  .document-card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+  }
+
+  .card-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--surface-navy, #0E2B48);
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .card-icon i {
+    font-size: 1.25rem;
+    color: #ffffff;
+  }
+
+  .document-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
+    color: var(--surface-navy, #0E2B48);
+  }
+
+  .document-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted, #6b7280);
+    margin: 0 0 1rem;
+    line-height: 1.7;
+  }
+
+  .card-link {
+    color: var(--accent-coral, #FF1654);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .card-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Pricing Grid */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .pricing-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+  }
+
+  .pricing-card.featured {
+    border: 2px solid var(--accent-coral, #FF1654);
+    box-shadow: 0 8px 30px rgba(255, 22, 84, 0.15);
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: -12px;
+    right: 50%;
+    transform: translateX(50%);
+    background: var(--accent-coral, #FF1654);
+    color: #ffffff;
+    padding: 0.25rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .pricing-card h3 {
+    font-size: 1.25rem;
+    margin: 0 0 0.5rem;
+    color: var(--surface-navy, #0E2B48);
+  }
+
+  .pricing-time {
+    color: var(--accent-coral, #FF1654);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .pricing-card p {
+    color: var(--text-muted, #6b7280);
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* Requirements Grid */
+  .requirements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .requirement-item {
+    background: var(--bg-light, #f8f9fa);
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
+
+  .requirement-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--surface-navy, #0E2B48);
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .requirement-icon i {
+    font-size: 1.25rem;
+    color: #ffffff;
+  }
+
+  .requirement-item h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: var(--surface-navy, #0E2B48);
+  }
+
+  .requirement-item p {
+    font-size: 0.95rem;
+    color: var(--text-muted, #6b7280);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* Use Cases Grid */
+  .use-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .use-case {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border-right: 4px solid var(--accent-coral, #FF1654);
+  }
+
+  .use-case h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
+    color: var(--surface-navy, #0E2B48);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .use-case h3 i {
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .use-case p {
+    font-size: 0.95rem;
+    color: var(--text-muted, #6b7280);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* Territories Grid */
+  .territories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .territory-item {
+    background: var(--bg-light, #f8f9fa);
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
+
+  .territory-item h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: var(--surface-navy, #0E2B48);
+  }
+
+  .territory-item p {
+    font-size: 0.95rem;
+    color: var(--text-muted, #6b7280);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* FAQ Section */
+  .faq-accordion {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: #ffffff;
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .faq-question {
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 600;
+    color: var(--surface-navy, #0E2B48);
+    list-style: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question i {
+    transition: transform 0.3s;
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .faq-item[open] .faq-question i {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.25rem;
+    color: var(--text-muted, #6b7280);
+    line-height: 1.8;
+  }
+
+  .faq-answer p {
+    margin: 0;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, var(--surface-navy, #0E2B48) 0%, #1a3a5c 100%);
+    color: var(--text-on-dark, #ffffff);
+    padding: 4rem 0;
+  }
+
+  .cta-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .cta-content h2 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+  }
+
+  .cta-content p {
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+  }
+
+  .btn-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--accent-coral, #FF1654);
+    color: #ffffff;
+    padding: 1rem 2.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+  }
+
+  .btn-cta:hover {
+    background: #e01249;
+    transform: translateY(-2px);
+  }
+
+  .related-links {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+  }
+
+  .related-links span {
+    opacity: 0.7;
+  }
+
+  .related-links a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.25rem 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.25rem;
+    transition: all 0.2s;
+  }
+
+  .related-links a:hover {
+    background: var(--accent-coral, #FF1654);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 1.75rem;
+    }
+
+    .hero-section {
+      padding: 4rem 0 3rem;
+    }
+
+    .attestation-chain {
+      flex-direction: column;
+    }
+
+    .chain-step {
+      max-width: 100%;
+    }
+
+    .chain-arrow {
+      transform: rotate(-90deg);
+    }
+
+    .states-grid,
+    .document-grid,
+    .pricing-grid,
+    .requirements-grid,
+    .use-cases-grid,
+    .territories-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,1251 @@
+---
+/**
+ * Driving License Translation - Arabic
+ * URL: /ar/personal/immigration/license/
+ */
+import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: "هل بلدي ضمن قائمة هيئة الطرق المعتمدة للتحويل المباشر؟",
+    answer: "القائمة المعتمدة تشمل معظم دول أوروبا الغربية، أمريكا، كندا، أستراليا، نيوزيلندا، اليابان، كوريا الجنوبية، سنغافورة، جنوب أفريقيا، ودول مجلس التعاون. أرسلوا صورة من رخصتكم وسنؤكد حالة بلدكم وما هي العملية المطبقة عليكم."
+  },
+  {
+    question: "كم تستغرق ترجمة رخصة القيادة؟",
+    answer: "الخدمة العادية تُسلم خلال 24 ساعة. الخدمة المستعجلة تكتمل في 6 ساعات للمواعيد العاجلة مع هيئة الطرق. كثير من العملاء يطلبون الخدمة المستعجلة صباحاً ويستلمون قبل موعدهم المسائي مع هيئة الطرق."
+  },
+  {
+    question: "ماذا لو كانت رخصتي بالعربية أصلاً؟",
+    answer: "إذا كانت رخصتكم من دولة خليجية وبالعربية بالفعل، قد لا تحتاجون ترجمة - هيئة الطرق تستطيع قراءتها مباشرة. لكن بعض الرخص الخليجية تستفيد من ترجمة معتمدة إذا كانت أي تفاصيل غير واضحة أو كانت هناك حاجة لوثائق إضافية."
+  },
+  {
+    question: "هل تترجمون رخص الدراجات النارية؟",
+    answer: "نعم. نترجم جميع فئات الرخص بما فيها الدراجة النارية (الفئة 1/A)، المركبة الخفيفة (الفئة 2/B)، والفئات التجارية. جميع الفئات الموجودة على رخصتكم الأصلية تُشمل في الترجمة."
+  },
+  {
+    question: "هل يمكن استخدام هذه الترجمة في أي مركز لهيئة الطرق؟",
+    answer: "نعم. ترجمات رخصة القيادة المعتمدة من وزارة العدل مقبولة في جميع مراكز خدمة هيئة الطرق في دبي والإمارات. الترجمة تشمل الختم الرسمي ورمز QR للتحقق الذي يستطيع موظفو هيئة الطرق التحقق منه."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "ترجمة رخصة القيادة دبي",
+  "description": "ترجمة رخصة القيادة معتمدة من وزارة العدل لفتح ملف هيئة الطرق وتحويل الرخصة",
+  "provider": {
+    "@type": "Organization",
+    "name": "OnlineTranslation.ae"
+  },
+  "areaServed": ["دبي", "أبوظبي", "الشارقة", "الإمارات"],
+  "serviceType": "ترجمة رخصة القيادة"
+};
+---
+
+<BaseLayoutArabic
+  title="ترجمة رخصة القيادة دبي | معتمدة هيئة الطرق ووزارة العدل"
+  description="ترجمة رخصة القيادة في دبي لفتح ملف هيئة الطرق وتحويل الرخصة. معتمدة من وزارة العدل، إرشادات قائمة الدول المعتمدة."
+  canonicalURL="https://onlinetranslation.ae/ar/personal/immigration/license/"
+  hreflangAr="https://onlinetranslation.ae/ar/personal/immigration/license/"
+  hreflangEn="https://onlinetranslation.ae/personal/immigration/license/"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  </Fragment>
+
+  <main class="service-page" dir="rtl">
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="مسار التنقل">
+          <a href="/ar/">الرئيسية</a>
+          <span class="separator">←</span>
+          <a href="/ar/personal/">الوثائق الشخصية</a>
+          <span class="separator">←</span>
+          <a href="/ar/personal/immigration/">وثائق الهجرة</a>
+          <span class="separator">←</span>
+          <span class="current">رخصة القيادة</span>
+        </nav>
+
+        <div class="hero-badge">
+          <i class="fas fa-id-card"></i>
+          <span>ترجمة رخصة القيادة</span>
+        </div>
+
+        <h1>ترجمة رخصة القيادة في دبي</h1>
+        <p class="hero-subtitle">معتمدة من وزارة العدل لفتح ملف هيئة الطرق</p>
+
+        <div class="hero-intro">
+          <p>تحويل رخصة القيادة الأجنبية إلى رخصة إماراتية يتطلب ترجمة معتمدة من وزارة العدل كخطوة أولى. مراكز هيئة الطرق في دبي تقبل ترجماتنا لفتح الملف. سواء كان بلدكم مؤهلاً للتحويل المباشر أو يتطلب اختباراً، نقدم الترجمة المعتمدة التي تحتاجونها لبدء العملية.</p>
+        </div>
+
+        <!-- Snapshot Stats -->
+        <div class="snapshot-grid">
+          <div class="snapshot-item">
+            <i class="fas fa-clock"></i>
+            <div class="snapshot-content">
+              <strong>مسودات رقمية</strong>
+              <span>عادة خلال 60 دقيقة</span>
+            </div>
+          </div>
+          <div class="snapshot-item">
+            <i class="fas fa-mobile-alt"></i>
+            <div class="snapshot-content">
+              <strong>سير عمل عبر واتساب</strong>
+              <span>لتواصل سهل</span>
+            </div>
+          </div>
+          <div class="snapshot-item">
+            <i class="fas fa-check-circle"></i>
+            <div class="snapshot-content">
+              <strong>مقبولة من هيئة الطرق</strong>
+              <span>لفتح الملف</span>
+            </div>
+          </div>
+          <div class="snapshot-item">
+            <i class="fas fa-stamp"></i>
+            <div class="snapshot-content">
+              <strong>ختم قانوني وزارة العدل</strong>
+              <span>مع رمز QR للتحقق</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-cta">
+          <a href="https://wa.me/971508620217?text=أحتاج%20ترجمة%20رخصة%20قيادة" class="btn-primary">
+            <i class="fab fa-whatsapp"></i>
+            أرسل رخصتكم الآن
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Country Categories Table -->
+    <section class="section bg-white">
+      <div class="container">
+        <h2>فئات الدول للتحويل</h2>
+
+        <div class="category-table">
+          <div class="table-row header">
+            <span>فئة الدولة</span>
+            <span>ما هو مطلوب</span>
+            <span>الجدول الزمني</span>
+          </div>
+          <div class="table-row">
+            <span class="category approved">الدول المعتمدة (أمريكا، بريطانيا، أوروبا)</span>
+            <span>ترجمة + فحص نظر فقط</span>
+            <span>رخصة في نفس اليوم</span>
+          </div>
+          <div class="table-row">
+            <span class="category partial">إعفاء جزئي</span>
+            <span>ترجمة + اختبار طريق</span>
+            <span>1-2 أسبوع</span>
+          </div>
+          <div class="table-row">
+            <span class="category full">اختبار كامل</span>
+            <span>ترجمة + تدريب هيئة الطرق</span>
+            <span>2-4 أسابيع</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Approved Countries -->
+    <section class="section bg-light">
+      <div class="container">
+        <h2>الدول المعتمدة للتحويل المباشر</h2>
+        <p class="section-intro">حاملو الرخص من هذه الدول يمكنهم التحويل بدون اختبار قيادة</p>
+
+        <div class="countries-grid">
+          <div class="country-group">
+            <h3><i class="fas fa-globe-americas"></i> دول الخليج</h3>
+            <ul>
+              <li>السعودية</li>
+              <li>الكويت</li>
+              <li>البحرين</li>
+              <li>عمان</li>
+              <li>قطر</li>
+            </ul>
+          </div>
+
+          <div class="country-group">
+            <h3><i class="fas fa-globe-europe"></i> أوروبا</h3>
+            <ul>
+              <li>بريطانيا</li>
+              <li>ألمانيا</li>
+              <li>فرنسا</li>
+              <li>إيطاليا</li>
+              <li>إسبانيا</li>
+              <li>هولندا</li>
+              <li>بلجيكا</li>
+              <li>النمسا</li>
+              <li>سويسرا</li>
+              <li>السويد</li>
+              <li>النرويج</li>
+              <li>الدنمارك</li>
+              <li>فنلندا</li>
+              <li>أيرلندا</li>
+              <li>البرتغال</li>
+              <li>اليونان</li>
+              <li>بولندا</li>
+              <li>تركيا</li>
+            </ul>
+          </div>
+
+          <div class="country-group">
+            <h3><i class="fas fa-globe-americas"></i> الأمريكتين</h3>
+            <ul>
+              <li>الولايات المتحدة</li>
+              <li>كندا</li>
+            </ul>
+          </div>
+
+          <div class="country-group">
+            <h3><i class="fas fa-globe-asia"></i> آسيا والمحيط الهادئ</h3>
+            <ul>
+              <li>اليابان</li>
+              <li>كوريا الجنوبية</li>
+              <li>سنغافورة</li>
+              <li>هونغ كونغ</li>
+              <li>أستراليا</li>
+              <li>نيوزيلندا</li>
+            </ul>
+          </div>
+
+          <div class="country-group">
+            <h3><i class="fas fa-globe-africa"></i> أخرى</h3>
+            <ul>
+              <li>جنوب أفريقيا</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="countries-note">هذه القائمة تتغير أحياناً. إذا كنتم غير متأكدين من بلدكم، أرسلوا رخصتكم وسنؤكد.</p>
+      </div>
+    </section>
+
+    <!-- Countries Requiring Test -->
+    <section class="section bg-white">
+      <div class="container">
+        <h2>الدول التي تتطلب اختبار قيادة</h2>
+        <p class="section-intro">إذا لم يكن بلدكم ضمن القائمة المعتمدة، ستحتاجون إكمال دروس القيادة واجتياز الاختبار</p>
+
+        <div class="test-countries">
+          <div class="test-region">
+            <h3>جنوب آسيا</h3>
+            <p>الهند، باكستان، بنغلاديش، سريلانكا</p>
+          </div>
+          <div class="test-region">
+            <h3>جنوب شرق آسيا</h3>
+            <p>الفلبين، إندونيسيا، تايلاند، فيتنام</p>
+          </div>
+          <div class="test-region">
+            <h3>الشرق الأوسط</h3>
+            <p>مصر، الأردن، لبنان، سوريا</p>
+          </div>
+          <div class="test-region">
+            <h3>أفريقيا</h3>
+            <p>نيجيريا، كينيا، إثيوبيا</p>
+          </div>
+          <div class="test-region">
+            <h3>آسيا</h3>
+            <p>الصين (البر الرئيسي)</p>
+          </div>
+          <div class="test-region">
+            <h3>أمريكا الجنوبية</h3>
+            <p>معظم دول أمريكا الجنوبية</p>
+          </div>
+        </div>
+
+        <p class="test-note">عدد الدروس المطلوبة يختلف. بعض مدارس القيادة تقدم حزم مخفضة للسائقين ذوي الخبرة. الرخصة المترجمة تساعد في إثبات تاريخكم في القيادة.</p>
+      </div>
+    </section>
+
+    <!-- RTA Process -->
+    <section class="section bg-light">
+      <div class="container">
+        <h2>العملية خطوة بخطوة</h2>
+
+        <div class="process-timeline">
+          <div class="process-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>ترجمة الرخصة</h3>
+              <p>قبل أي شيء في هيئة الطرق، تحتاجون ترجمة عربية معتمدة من وزارة العدل لرخصة قيادتكم. هذا ما تحصلون عليه منا. بدونها، لا تستطيع هيئة الطرق فتح ملفكم.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>تجهيز الوثائق</h3>
+              <p>اجمعوا: رخصة القيادة الأصلية، جواز السفر مع تأشيرة سارية، الهوية الإماراتية، الرخصة المترجمة، وصورتين شخصيتين. بعض الجنسيات تحتاج شهادة عدم ممانعة من الكفيل.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>فحص النظر</h3>
+              <p>زوروا أي طبيب بصريات معتمد أو مركز فحص النظر في هيئة الطرق. يستغرق حوالي 15 دقيقة ويكلف حوالي 150-200 درهم. ستحصلون على شهادة مطبوعة صالحة للطلب.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h3>مركز الطباعة</h3>
+              <p>زوروا مركز طباعة قريباً من هيئة الطرق. سيدخلون بياناتكم في النظام باستخدام رخصتكم المترجمة. الرسوم حوالي 250 درهم للطلب والإصدار.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">5</div>
+            <div class="step-content">
+              <h3>تقديم هيئة الطرق</h3>
+              <p>قدموا ملفكم في هيئة الطرق. إذا كنتم من دولة معتمدة، تستلمون رخصتكم الإماراتية في نفس اليوم أو اليوم التالي. إذا كان الاختبار مطلوباً، سيتم توجيهكم للتسجيل في مدرسة قيادة.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- License Categories -->
+    <section class="section bg-white">
+      <div class="container">
+        <h2>فئات الرخص التي يمكن تحويلها</h2>
+        <p class="section-intro">ترجمتكم ستشمل جميع الفئات الموجودة على رخصتكم الأصلية</p>
+
+        <div class="categories-grid">
+          <div class="license-category">
+            <i class="fas fa-motorcycle"></i>
+            <h3>الفئة 1/A (دراجة نارية)</h3>
+            <p>يمكن تحويلها من الدول المعتمدة</p>
+          </div>
+          <div class="license-category">
+            <i class="fas fa-car"></i>
+            <h3>الفئة 2/B (مركبة خفيفة)</h3>
+            <p>التحويل الأكثر شيوعاً، رخصة السيارة العادية</p>
+          </div>
+          <div class="license-category">
+            <i class="fas fa-truck"></i>
+            <h3>الفئة 3 (مركبة ثقيلة)</h3>
+            <p>متطلبات إضافية للرخص التجارية</p>
+          </div>
+          <div class="license-category">
+            <i class="fas fa-bus"></i>
+            <h3>الفئة 4 (حافلة)</h3>
+            <p>رخصة نقل الركاب، وثائق إضافية مطلوبة</p>
+          </div>
+        </div>
+
+        <div class="info-callout">
+          <i class="fas fa-info-circle"></i>
+          <p><strong>أوتوماتيك مقابل عادي:</strong> الرخص الإماراتية يمكن أن يكون لها قيد أوتوماتيك فقط. إذا كانت رخصتكم الأصلية للأوتوماتيك فقط، ستعكس الرخصة الإماراتية هذا القيد.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expired Licenses -->
+    <section class="section bg-light">
+      <div class="container">
+        <h2>ماذا عن الرخص المنتهية؟</h2>
+        <div class="content-prose">
+          <p>يمكنكم ترجمة رخصة منتهية، لكن لهيئة الطرق قواعد حول مدة الانتهاء:</p>
+          <ul>
+            <li><strong>منتهية أقل من 6 أشهر:</strong> مقبولة عادة</li>
+            <li><strong>منتهية 6 أشهر إلى سنتين:</strong> قد تُقبل مع إثبات أن التجديد قيد الإجراء</li>
+            <li><strong>منتهية أكثر من سنتين:</strong> قد تتطلب رخصة جديدة من بلدكم</li>
+          </ul>
+          <p>إذا انتهت رخصتكم مؤخراً، فكروا في تجديدها قبل السفر للإمارات إذا أمكن.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Levels -->
+    <section class="section bg-white">
+      <div class="container">
+        <h2>مستويات الخدمة والأسعار</h2>
+        <p class="section-intro">اختاروا بناءً على توقيت موعدكم مع هيئة الطرق</p>
+
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <h3>عادي</h3>
+            <div class="pricing-price">100 درهم</div>
+            <p class="pricing-time">تسليم 24 ساعة</p>
+            <ul class="pricing-features">
+              <li>ترجمة معتمدة من وزارة العدل</li>
+              <li>PDF رقمي + نسخة مادية</li>
+              <li>توصيل مجاني في دبي</li>
+              <li>تحديثات عبر واتساب</li>
+            </ul>
+          </div>
+
+          <div class="pricing-card featured">
+            <div class="featured-badge">الأكثر طلباً</div>
+            <h3>مستعجل</h3>
+            <div class="pricing-price">180 درهم</div>
+            <p class="pricing-time">تسليم 6 ساعات</p>
+            <ul class="pricing-features">
+              <li>كل ما في العادي</li>
+              <li>أولوية في الطابور</li>
+              <li>توصيل مادي في نفس اليوم</li>
+              <li>تنسيق موعد هيئة الطرق</li>
+            </ul>
+          </div>
+
+          <div class="pricing-card">
+            <h3>خدمة VIP</h3>
+            <div class="pricing-price">300 درهم</div>
+            <p class="pricing-time">مسودة خلال ساعة</p>
+            <ul class="pricing-features">
+              <li>كل ما في المستعجل</li>
+              <li>تعيين فوري للوكيل</li>
+              <li>خط هاتف مباشر</li>
+              <li>إرشاد عملية هيئة الطرق</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What You Receive -->
+    <section class="section bg-light">
+      <div class="container">
+        <h2>ما تحصلون عليه</h2>
+
+        <div class="deliverables-grid">
+          <div class="deliverable-card">
+            <div class="deliverable-icon"><i class="fas fa-file-pdf"></i></div>
+            <h3>نسخة PDF رقمية</h3>
+            <p>تُرسل عبر واتساب والبريد الإلكتروني. بعض مراكز الطباعة تقبل النسخ الرقمية لتحضير الملف.</p>
+          </div>
+
+          <div class="deliverable-card">
+            <div class="deliverable-icon"><i class="fas fa-stamp"></i></div>
+            <h3>أصل مختوم من وزارة العدل</h3>
+            <p>نسخة مادية مطلوبة من هيئة الطرق. تشمل ختم رسمي ورمز QR ورقم رخصة المترجم.</p>
+          </div>
+
+          <div class="deliverable-card">
+            <div class="deliverable-icon"><i class="fas fa-id-card"></i></div>
+            <h3>جميع الفئات مشمولة</h3>
+            <p>كل فئة وقيد وتأييد على رخصتكم الأصلية يُترجم.</p>
+          </div>
+
+          <div class="deliverable-card">
+            <div class="deliverable-icon"><i class="fas fa-truck"></i></div>
+            <h3>استلام أو توصيل</h3>
+            <p>استلموا من دبي أو نوصلها لكم. كثير من العملاء يستلمون في طريقهم لهيئة الطرق.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Common Mistakes -->
+    <section class="section bg-white">
+      <div class="container">
+        <h2>أخطاء شائعة يجب تجنبها</h2>
+
+        <div class="mistakes-list">
+          <div class="mistake-item">
+            <i class="fas fa-times-circle"></i>
+            <div>
+              <strong>مقدم ترجمة خاطئ</strong>
+              <p>فقط الترجمات المعتمدة من وزارة العدل مقبولة</p>
+            </div>
+          </div>
+          <div class="mistake-item">
+            <i class="fas fa-times-circle"></i>
+            <div>
+              <strong>فحص نظر منتهي</strong>
+              <p>نتائج فحص النظر تنتهي بعد فترة معينة</p>
+            </div>
+          </div>
+          <div class="mistake-item">
+            <i class="fas fa-times-circle"></i>
+            <div>
+              <strong>حالة تأشيرة خاطئة</strong>
+              <p>السياح لا يستطيعون تحويل الرخص؛ الإقامة مطلوبة</p>
+            </div>
+          </div>
+          <div class="mistake-item">
+            <i class="fas fa-times-circle"></i>
+            <div>
+              <strong>الرخصة الأصلية مفقودة</strong>
+              <p>هيئة الطرق تحتاج رؤية الأصل، ليس فقط الترجمة</p>
+            </div>
+          </div>
+          <div class="mistake-item">
+            <i class="fas fa-times-circle"></i>
+            <div>
+              <strong>عدم تطابق الأسماء</strong>
+              <p>اسم الرخصة يجب أن يطابق كتابة جواز السفر</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section bg-light">
+      <div class="container">
+        <h2>الأسئلة الشائعة</h2>
+
+        <div class="faq-accordion">
+          {faqs.map((faq, index) => (
+            <details class="faq-item" name="faq-group">
+              <summary class="faq-question">
+                <span>{faq.question}</span>
+                <i class="fas fa-chevron-down"></i>
+              </summary>
+              <div class="faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2>تحتاجون ترجمة رخصة قيادة؟</h2>
+          <p>أرسلوا صوراً واضحة للوجه الأمامي والخلفي لرخصتكم عبر واتساب. سنؤكد حالة بلدكم ونقدم عرض سعر فوري.</p>
+
+          <a href="https://wa.me/971508620217?text=أحتاج%20ترجمة%20رخصة%20قيادة" class="btn-cta">
+            <i class="fab fa-whatsapp"></i>
+            أرسلوا رخصتكم الآن
+          </a>
+
+          <div class="related-links">
+            <span>ذات صلة:</span>
+            <a href="/ar/personal/immigration/">وثائق الهجرة</a>
+            <a href="/ar/personal/immigration/pcc/">شهادة الخلو من السوابق</a>
+            <a href="/ar/services/golden-visa-translation/">الإقامة الذهبية</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayoutArabic>
+
+<style>
+  /* Base Styles */
+  .service-page {
+    font-family: var(--font-arabic, 'Noto Sans Arabic', sans-serif);
+    line-height: 1.8;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section {
+    padding: 4rem 0;
+  }
+
+  .bg-light {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  .bg-white {
+    background: #ffffff;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, var(--surface-navy, #0E2B48) 0%, #1a3a5c 100%);
+    color: var(--text-on-dark, #ffffff);
+    padding: 6rem 0 4rem;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    color: #ffffff;
+  }
+
+  .breadcrumb .separator {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .breadcrumb .current {
+    color: #ffffff;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-badge i {
+    color: var(--accent-coral, #FF1654);
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 0.75rem;
+    line-height: 1.3;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--accent-coral, #FF1654);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  .hero-intro {
+    max-width: 800px;
+    font-size: 1.1rem;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+  }
+
+  .snapshot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .snapshot-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 0.75rem;
+  }
+
+  .snapshot-item i {
+    font-size: 1.5rem;
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .snapshot-content strong {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .snapshot-content span {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  .hero-cta {
+    margin-top: 2rem;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--accent-coral, #FF1654);
+    color: #ffffff;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 1.1rem;
+  }
+
+  .btn-primary:hover {
+    background: #e01249;
+    transform: translateY(-2px);
+  }
+
+  /* Section Titles */
+  h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--surface-navy, #0E2B48);
+    margin: 0 0 1rem;
+  }
+
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted, #6b7280);
+    margin-bottom: 2rem;
+    max-width: 700px;
+  }
+
+  /* Category Table */
+  .category-table {
+    background: #ffffff;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .table-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    align-items: center;
+  }
+
+  .table-row.header {
+    background: var(--surface-navy, #0E2B48);
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .table-row:last-child {
+    border-bottom: none;
+  }
+
+  .category.approved {
+    color: #059669;
+    font-weight: 600;
+  }
+
+  .category.partial {
+    color: #d97706;
+    font-weight: 600;
+  }
+
+  .category.full {
+    color: #dc2626;
+    font-weight: 600;
+  }
+
+  /* Countries Grid */
+  .countries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .country-group {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .country-group h3 {
+    font-size: 1.1rem;
+    margin: 0 0 1rem;
+    color: var(--surface-navy, #0E2B48);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--accent-coral, #FF1654);
+  }
+
+  .country-group h3 i {
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .country-group ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .country-group li {
+    padding: 0.35rem 0;
+    font-size: 0.95rem;
+    color: var(--text-muted, #6b7280);
+  }
+
+  .countries-note {
+    text-align: center;
+    color: var(--text-muted, #6b7280);
+    margin-top: 1.5rem;
+  }
+
+  /* Test Countries */
+  .test-countries {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+
+  .test-region {
+    background: #fff5f5;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    border-right: 3px solid #ef4444;
+  }
+
+  .test-region h3 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+    color: var(--surface-navy, #0E2B48);
+  }
+
+  .test-region p {
+    font-size: 0.9rem;
+    color: var(--text-muted, #6b7280);
+    margin: 0;
+  }
+
+  .test-note {
+    text-align: center;
+    color: var(--text-muted, #6b7280);
+    margin-top: 1.5rem;
+  }
+
+  /* Process Timeline */
+  .process-timeline {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .process-step {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .process-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 45px;
+    height: calc(100% - 20px);
+    width: 2px;
+    background: var(--accent-coral, #FF1654);
+    opacity: 0.3;
+  }
+
+  .step-number {
+    width: 40px;
+    height: 40px;
+    background: var(--accent-coral, #FF1654);
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .step-content {
+    flex: 1;
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .step-content h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: var(--surface-navy, #0E2B48);
+  }
+
+  .step-content p {
+    font-size: 0.95rem;
+    color: var(--text-muted, #6b7280);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* License Categories */
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .license-category {
+    background: var(--bg-light, #f8f9fa);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .license-category i {
+    font-size: 2.5rem;
+    color: var(--surface-navy, #0E2B48);
+    margin-bottom: 1rem;
+  }
+
+  .license-category h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: var(--surface-navy, #0E2B48);
+  }
+
+  .license-category p {
+    font-size: 0.9rem;
+    color: var(--text-muted, #6b7280);
+    margin: 0;
+  }
+
+  /* Info Callout */
+  .info-callout {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: #e0f2fe;
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+  }
+
+  .info-callout i {
+    font-size: 1.5rem;
+    color: #0284c7;
+  }
+
+  .info-callout p {
+    margin: 0;
+    color: var(--text-muted, #6b7280);
+  }
+
+  /* Content Prose */
+  .content-prose ul {
+    padding-right: 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .content-prose li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Pricing Grid */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .pricing-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+  }
+
+  .pricing-card.featured {
+    border: 2px solid var(--accent-coral, #FF1654);
+    box-shadow: 0 8px 30px rgba(255, 22, 84, 0.15);
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: -12px;
+    right: 50%;
+    transform: translateX(50%);
+    background: var(--accent-coral, #FF1654);
+    color: #ffffff;
+    padding: 0.25rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .pricing-card h3 {
+    font-size: 1.25rem;
+    margin: 0 0 0.5rem;
+    color: var(--surface-navy, #0E2B48);
+  }
+
+  .pricing-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--surface-navy, #0E2B48);
+    margin-bottom: 0.25rem;
+  }
+
+  .pricing-time {
+    color: var(--text-muted, #6b7280);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+  }
+
+  .pricing-features li {
+    padding: 0.5rem 0;
+    padding-right: 1.5rem;
+    position: relative;
+    font-size: 0.95rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-muted, #6b7280);
+  }
+
+  .pricing-features li::before {
+    content: '✓';
+    position: absolute;
+    right: 0;
+    color: var(--accent-coral, #FF1654);
+    font-weight: 700;
+  }
+
+  /* Deliverables Grid */
+  .deliverables-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .deliverable-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
+
+  .deliverable-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 0.75rem;
+    background: var(--surface-navy, #0E2B48);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .deliverable-card h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+    color: var(--surface-navy, #0E2B48);
+  }
+
+  .deliverable-card p {
+    margin: 0;
+    color: var(--text-muted, #6b7280);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  /* Mistakes List */
+  .mistakes-list {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .mistake-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: #fff5f5;
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+    border-right: 3px solid #ef4444;
+  }
+
+  .mistake-item i {
+    color: #ef4444;
+    font-size: 1.25rem;
+  }
+
+  .mistake-item strong {
+    display: block;
+    color: var(--surface-navy, #0E2B48);
+    margin-bottom: 0.25rem;
+  }
+
+  .mistake-item p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-muted, #6b7280);
+  }
+
+  /* FAQ Section */
+  .faq-accordion {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: #ffffff;
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+
+  .faq-question {
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 600;
+    color: var(--surface-navy, #0E2B48);
+    list-style: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question i {
+    transition: transform 0.3s;
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .faq-item[open] .faq-question i {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.25rem;
+    color: var(--text-muted, #6b7280);
+    line-height: 1.8;
+  }
+
+  .faq-answer p {
+    margin: 0;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, var(--surface-navy, #0E2B48) 0%, #1a3a5c 100%);
+    color: var(--text-on-dark, #ffffff);
+    padding: 4rem 0;
+  }
+
+  .cta-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .cta-content h2 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+  }
+
+  .cta-content p {
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+  }
+
+  .btn-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--accent-coral, #FF1654);
+    color: #ffffff;
+    padding: 1rem 2.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+  }
+
+  .btn-cta:hover {
+    background: #e01249;
+    transform: translateY(-2px);
+  }
+
+  .related-links {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+  }
+
+  .related-links span {
+    opacity: 0.7;
+  }
+
+  .related-links a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.25rem 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.25rem;
+    transition: all 0.2s;
+  }
+
+  .related-links a:hover {
+    background: var(--accent-coral, #FF1654);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 1.75rem;
+    }
+
+    .hero-section {
+      padding: 4rem 0 3rem;
+    }
+
+    .table-row {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .countries-grid,
+    .test-countries,
+    .categories-grid,
+    .pricing-grid,
+    .deliverables-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .process-step::after {
+      display: none;
+    }
+  }
+</style>

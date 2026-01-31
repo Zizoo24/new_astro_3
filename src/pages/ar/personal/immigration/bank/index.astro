@@ -1,0 +1,1163 @@
+---
+/**
+ * Bank Statement Translation - Arabic
+ * URL: /ar/personal/immigration/bank/
+ */
+import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: "هل يمكنني تقديم كشوف حسابات من بنوك متعددة للإقامة الذهبية؟",
+    answer: "نعم، يمكنكم تقديم كشوف حسابات من بنوك متعددة لإثبات وضعكم المالي. المطلب الأساسي أن تغطي جميع الكشوف نفس فترة 6 أشهر وأن تلبي الأرصدة المجمعة الحد المطلوب. نترجم جميع الكشوف كحزمة منسقة بتنسيق موحد."
+  },
+  {
+    question: "هل أحتاج الحصول على كشوف أصلية من فرع البنك؟",
+    answer: "نسخ PDF المصدرة من الخدمات المصرفية عبر الإنترنت مقبولة عموماً. يجب أن يُظهر الكشف تنسيق البنك الرسمي وتفاصيل حسابكم ونطاق التاريخ المطلوب. إذا كان بنككم يقدم كشوفاً معتمدة بأختام رسمية، فهي مناسبة أيضاً."
+  },
+  {
+    question: "كيف تتعاملون مع الكشوف متعددة العملات؟",
+    answer: "نترجم الكشف كما هو معروض، مع ترميز واضح للعملة لكل معاملة ورصيد. إذا كان مفيداً، يمكننا تدوين أسعار الصرف الحالية بالدرهم، رغم أن الجهات عادة تفهم أرقام العملات الأجنبية مباشرة."
+  },
+  {
+    question: "كم تستغرق ترجمة كشف الحساب البنكي؟",
+    answer: "الخدمة العادية تُسلم خلال 24-48 ساعة حسب طول الكشف. الخدمة المستعجلة توفر تسليم في نفس اليوم. خدمة VIP تقدم معالجة فورية. الكشوف متعددة الصفحات التي تغطي 6 أشهر قد تتطلب الحد الأقصى من هذه الأطر الزمنية."
+  },
+  {
+    question: "ماذا لو كان كشفي يحتوي صفحات كثيرة من المعاملات؟",
+    answer: "نترجم الكشف الكامل بما فيه جميع صفحات المعاملات. التسعير يعتمد على إجمالي عدد الصفحات. أرسلوا كشوفكم عبر واتساب للحصول على عرض سعر دقيق. يمكننا النصح إذا كانت الجهات عادة تحتاج جميع تفاصيل المعاملات أو صفحات الملخص فقط."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "ترجمة كشف الحساب البنكي دبي",
+  "description": "ترجمة كشوف الحسابات البنكية معتمدة من وزارة العدل للإقامة الذهبية وتأشيرات المستثمرين وطلبات الإقامة",
+  "provider": {
+    "@type": "Organization",
+    "name": "OnlineTranslation.ae",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "دبي",
+      "addressCountry": "AE"
+    }
+  },
+  "areaServed": ["دبي", "أبوظبي", "الشارقة", "الإمارات"],
+  "serviceType": "ترجمة كشف الحساب البنكي"
+};
+---
+
+<BaseLayoutArabic
+  title="ترجمة كشف الحساب البنكي دبي | معتمد وزارة العدل"
+  description="ترجمة كشوف الحسابات البنكية في دبي للإقامة الذهبية وتأشيرات المستثمرين وطلبات الإقامة. معتمدة من وزارة العدل، معالجة متعدد العملات."
+  canonicalURL="https://onlinetranslation.ae/ar/personal/immigration/bank/"
+  hreflangAr="https://onlinetranslation.ae/ar/personal/immigration/bank/"
+  hreflangEn="https://onlinetranslation.ae/personal/immigration/bank/"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  </Fragment>
+
+  <main class="service-page" dir="rtl">
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="مسار التنقل">
+          <a href="/ar/">الرئيسية</a>
+          <span class="separator">←</span>
+          <a href="/ar/personal/">الوثائق الشخصية</a>
+          <span class="separator">←</span>
+          <a href="/ar/personal/immigration/">وثائق الهجرة</a>
+          <span class="separator">←</span>
+          <span class="current">كشف الحساب البنكي</span>
+        </nav>
+
+        <div class="hero-badge">
+          <i class="fas fa-university"></i>
+          <span>ترجمة كشف الحساب البنكي</span>
+        </div>
+
+        <h1>ترجمة كشف الحساب البنكي في دبي</h1>
+        <p class="hero-subtitle">معتمدة من وزارة العدل للإقامة الذهبية والهجرة</p>
+
+        <div class="hero-intro">
+          <p>ترجمات كشوف الحسابات البنكية مقبولة مباشرة من الإقامة العامة وهيئة الهوية ومراكز معالجة الإقامة الذهبية عندما تكون معتمدة من وزارة العدل. الترجمة غير الصحيحة للأرقام المالية أو أسماء أصحاب الحسابات من أكثر أسباب رفض تأشيرات المستثمرين.</p>
+        </div>
+
+        <!-- Snapshot Stats -->
+        <div class="snapshot-grid">
+          <div class="snapshot-item">
+            <i class="fas fa-clock"></i>
+            <div class="snapshot-content">
+              <strong>مسودات رقمية</strong>
+              <span>عادة خلال 60 دقيقة</span>
+            </div>
+          </div>
+          <div class="snapshot-item">
+            <i class="fas fa-mobile-alt"></i>
+            <div class="snapshot-content">
+              <strong>سير عمل عبر واتساب</strong>
+              <span>لتواصل سهل</span>
+            </div>
+          </div>
+          <div class="snapshot-item">
+            <i class="fas fa-check-circle"></i>
+            <div class="snapshot-content">
+              <strong>مقبولة من الإقامة العامة وهيئة الهوية</strong>
+              <span>لطلبات التأشيرات</span>
+            </div>
+          </div>
+          <div class="snapshot-item">
+            <i class="fas fa-stamp"></i>
+            <div class="snapshot-content">
+              <strong>ختم قانوني وزارة العدل</strong>
+              <span>مع رمز QR للتحقق</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-cta">
+          <a href="https://wa.me/971508620217?text=أحتاج%20ترجمة%20كشف%20حساب%20بنكي" class="btn-primary">
+            <i class="fab fa-whatsapp"></i>
+            أرسل كشوفكم الآن
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Rejected Section -->
+    <section class="section bg-white">
+      <div class="container">
+        <h2>لماذا تُرفض ترجمات كشوف الحسابات البنكية</h2>
+
+        <div class="rejection-grid">
+          <div class="rejection-item">
+            <div class="rejection-icon"><i class="fas fa-user-times"></i></div>
+            <h3>عدم تطابق اسم صاحب الحساب</h3>
+            <p>أسماء أصحاب الحسابات لا تتطابق تماماً مع كتابة جواز السفر تسبب تأخير المعالجة. نتحقق من التطابق قبل إكمال الترجمة.</p>
+          </div>
+          <div class="rejection-item">
+            <div class="rejection-icon"><i class="fas fa-money-bill-wave"></i></div>
+            <h3>العملة غير محددة</h3>
+            <p>مبالغ مثل "50,000" بدون تحديد العملة تفشل في إثبات الأهلية المالية. نضمن ترميز واضح للعملة لجميع المبالغ.</p>
+          </div>
+          <div class="rejection-item">
+            <div class="rejection-icon"><i class="fas fa-calendar-times"></i></div>
+            <h3>نطاق التاريخ غير كافٍ</h3>
+            <p>الكشوف التي لا تغطي الفترة المطلوبة (عادة 6 أشهر) تُرفض. نتحقق من تغطية الفترة قبل بدء الترجمة.</p>
+          </div>
+          <div class="rejection-item">
+            <div class="rejection-icon"><i class="fas fa-balance-scale"></i></div>
+            <h3>الرصيد أقل من الحد</h3>
+            <p>الجهات تتحقق من الوضع المالي بعناية. الكشوف التي تُظهر رصيداً أقل من الحد تسبب رفضاً فورياً.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Golden Visa Requirements -->
+    <section class="section bg-light">
+      <div class="container">
+        <h2>متطلبات الإقامة الذهبية المالية</h2>
+        <p class="section-intro">فئات مختلفة لها متطلبات مالية مختلفة</p>
+
+        <div class="requirement-grid">
+          <div class="requirement-card">
+            <div class="requirement-icon"><i class="fas fa-dollar-sign"></i></div>
+            <h3>فئة المستثمر</h3>
+            <p>6 أشهر تُظهر 2 مليون درهم أو أكثر في حسابات التوفير أو الودائع أو الاستثمار</p>
+          </div>
+
+          <div class="requirement-card">
+            <div class="requirement-icon"><i class="fas fa-home"></i></div>
+            <h3>فئة العقار</h3>
+            <p>إثبات أموال شراء عقار بقيمة 2 مليون درهم أو أكثر أو سجلات الرهن العقاري</p>
+          </div>
+
+          <div class="requirement-card">
+            <div class="requirement-icon"><i class="fas fa-user-plus"></i></div>
+            <h3>تأشيرة شريك/مستثمر</h3>
+            <p>إثبات قيمة الاستثمار التجاري وحصة الملكية</p>
+          </div>
+        </div>
+
+        <div class="info-callout">
+          <i class="fas fa-info-circle"></i>
+          <p>نحن لا ننصح بما إذا كانت أرصدتكم تلبي الحد المطلوب. هذا لمستشار الهجرة أو الإقامة العامة للتقييم. نضمن ترجمة كشوفكم بدقة حتى تتمكن الجهات من مراجعتها.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- What We Translate -->
+    <section class="section bg-white">
+      <div class="container">
+        <h2>ما نترجمه</h2>
+        <p class="section-intro">كل عنصر في كشف حسابكم البنكي يُترجم</p>
+
+        <div class="translate-grid">
+          <div class="translate-item">
+            <i class="fas fa-check"></i>
+            <span>اسم وعنوان صاحب الحساب</span>
+          </div>
+          <div class="translate-item">
+            <i class="fas fa-check"></i>
+            <span>نوع ورقم الحساب</span>
+          </div>
+          <div class="translate-item">
+            <i class="fas fa-check"></i>
+            <span>تواريخ فترة الكشف</span>
+          </div>
+          <div class="translate-item">
+            <i class="fas fa-check"></i>
+            <span>الأرصدة الافتتاحية والختامية</span>
+          </div>
+          <div class="translate-item">
+            <i class="fas fa-check"></i>
+            <span>تاريخ كل معاملة</span>
+          </div>
+          <div class="translate-item">
+            <i class="fas fa-check"></i>
+            <span>وصف المعاملات</span>
+          </div>
+          <div class="translate-item">
+            <i class="fas fa-check"></i>
+            <span>مبالغ المدين والدائن</span>
+          </div>
+          <div class="translate-item">
+            <i class="fas fa-check"></i>
+            <span>الرصيد الجاري بعد كل معاملة</span>
+          </div>
+          <div class="translate-item">
+            <i class="fas fa-check"></i>
+            <span>معلومات وإخلاءات البنك</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Multi-Currency & International -->
+    <section class="section bg-light">
+      <div class="container">
+        <h2>الكشوف متعددة العملات والدولية</h2>
+
+        <div class="content-prose">
+          <p>العمل المصرفي الدولي يخلق تعقيداً في الترجمة. الكشوف الهندية تخلط الهندية والإنجليزية مع اختصارات خاصة بالبنك. الكشوف البريطانية تستخدم صيغ تواريخ مختلفة. الكشوف الأمريكية تشمل أنواع حسابات متعددة في عروض موحدة. البنوك الدولية تصدر كشوفاً متعددة العملات مع ملاحظات أسعار الصرف.</p>
+        </div>
+
+        <div class="country-grid">
+          <div class="country-card">
+            <h3><i class="fas fa-flag"></i> الهند (SBI, HDFC, ICICI, إلخ)</h3>
+            <p>الكشوف عادة ثنائية اللغة هندية-إنجليزية أو إنجليزية فقط. نترجم الكشف الإنجليزي للعربية. إذا كان الكشف بالهندية فقط، نتعامل مع ذلك أيضاً. أرصدة الروبية الهندية تُترجم مع ترميز عملة واضح.</p>
+          </div>
+
+          <div class="country-card">
+            <h3><i class="fas fa-flag"></i> باكستان (HBL, UBL, MCB, إلخ)</h3>
+            <p>الكشوف بالأوردو أو الإنجليزية تُترجم للعربية. مبالغ الروبية الباكستانية تُدون مع العملة. بعض البنوك الباكستانية تصدر كشوفاً بتنسيق أوردو-إنجليزي مختلط.</p>
+          </div>
+
+          <div class="country-card">
+            <h3><i class="fas fa-flag"></i> بريطانيا/أمريكا/أوروبا</h3>
+            <p>الكشوف بالإنجليزية تُترجم للعربية. الحسابات متعددة العملات بالدولار واليورو والجنيه تُعالج مع ترميز عملة واضح في كل مكان.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page Count & Pricing -->
+    <section class="section bg-white">
+      <div class="container">
+        <h2>عدد الصفحات والأسعار</h2>
+
+        <div class="content-prose">
+          <p>ترجمة كشف الحساب البنكي تُسعر بعدد الصفحات لأن الكشوف تختلف بشكل كبير في الطول. كشف ملخص فقط قد يكون صفحتين. ستة أشهر من المعاملات التفصيلية قد تكون 50+ صفحة.</p>
+        </div>
+
+        <div class="page-count-grid">
+          <div class="page-count-item">
+            <strong>كشوف الملخص</strong>
+            <span>2-5 صفحات</span>
+            <p>معلومات الحساب الأساسية، المجاميع الشهرية</p>
+          </div>
+          <div class="page-count-item">
+            <strong>كشوف تفصيلية (3 أشهر)</strong>
+            <span>10-20 صفحة</span>
+            <p>جميع المعاملات مع التفاصيل</p>
+          </div>
+          <div class="page-count-item">
+            <strong>كشوف تفصيلية (6 أشهر)</strong>
+            <span>20-50 صفحة</span>
+            <p>الفترة الكاملة للإقامة الذهبية</p>
+          </div>
+          <div class="page-count-item">
+            <strong>حسابات التداول النشطة</strong>
+            <span>50+ صفحة</span>
+            <p>معاملات مكثفة</p>
+          </div>
+        </div>
+
+        <p class="pricing-note">أرسلوا كشوفكم عبر واتساب لعرض سعر دقيق. يمكننا النصح إذا كنتم تحتاجون جميع صفحات المعاملات أو صفحات الملخص فقط لمتطلباتكم المحددة.</p>
+      </div>
+    </section>
+
+    <!-- Service Levels -->
+    <section class="section bg-light">
+      <div class="container">
+        <h2>مستويات الخدمة والأسعار</h2>
+        <p class="section-intro">التسعير يعتمد على طول الكشف وتعقيده</p>
+
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <h3>عادي</h3>
+            <div class="pricing-price">من 200 درهم</div>
+            <p class="pricing-time">تسليم 24-48 ساعة</p>
+            <ul class="pricing-features">
+              <li>ترجمة معتمدة من وزارة العدل</li>
+              <li>PDF رقمي + نسخة مادية</li>
+              <li>توصيل مجاني في دبي</li>
+              <li>تحديثات عبر واتساب</li>
+            </ul>
+          </div>
+
+          <div class="pricing-card featured">
+            <div class="featured-badge">موصى به</div>
+            <h3>مستعجل</h3>
+            <div class="pricing-price">من 350 درهم</div>
+            <p class="pricing-time">تسليم في نفس اليوم</p>
+            <ul class="pricing-features">
+              <li>كل ما في العادي</li>
+              <li>أولوية في الطابور</li>
+              <li>منسق مخصص</li>
+              <li>توصيل مادي في نفس اليوم</li>
+            </ul>
+          </div>
+
+          <div class="pricing-card">
+            <h3>خدمة VIP</h3>
+            <div class="pricing-price">من 550 درهم</div>
+            <p class="pricing-time">معالجة سريعة</p>
+            <ul class="pricing-features">
+              <li>كل ما في المستعجل</li>
+              <li>تعيين فوري للوكيل</li>
+              <li>خط هاتف مباشر</li>
+              <li>تنسيق متعدد البنوك</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="package-callout">
+          <strong>باقة 6 أشهر للإقامة الذهبية</strong>
+          <p>تترجمون 6 أشهر من الكشوف للإقامة الذهبية؟ تواصلوا معنا لأسعار الباقة. نتعامل مع حزم متعددة البنوك ومتعددة العملات بانتظام.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- What You Receive -->
+    <section class="section bg-white">
+      <div class="container">
+        <h2>ما تحصلون عليه</h2>
+        <p class="section-intro">كل ترجمة كشف حساب بنكي تشمل</p>
+
+        <div class="deliverables-grid">
+          <div class="deliverable-card">
+            <div class="deliverable-icon"><i class="fas fa-file-pdf"></i></div>
+            <h3>نسخة PDF رقمية</h3>
+            <p>تُرسل عبر واتساب والبريد الإلكتروني. مناسبة للتقديمات الأولية والطلبات الرقمية.</p>
+          </div>
+
+          <div class="deliverable-card">
+            <div class="deliverable-icon"><i class="fas fa-stamp"></i></div>
+            <h3>أصل مختوم من وزارة العدل</h3>
+            <p>نسخة مادية بختم رسمي وتحقق QR وتفاصيل رخصة المترجم.</p>
+          </div>
+
+          <div class="deliverable-card">
+            <div class="deliverable-icon"><i class="fas fa-calculator"></i></div>
+            <h3>تفاصيل مالية دقيقة</h3>
+            <p>جميع المبالغ والتواريخ ووصف المعاملات مترجمة بدقة.</p>
+          </div>
+
+          <div class="deliverable-card">
+            <div class="deliverable-icon"><i class="fas fa-truck"></i></div>
+            <h3>توصيل بالبريد السريع</h3>
+            <p>توصيل مجاني في دبي. توصيل اليوم التالي لأبوظبي والشارقة والإمارات الأخرى.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Privacy Note -->
+    <section class="section bg-light">
+      <div class="container">
+        <div class="privacy-box">
+          <div class="privacy-icon"><i class="fas fa-lock"></i></div>
+          <div class="privacy-content">
+            <h3>السرية وأمن البيانات المالية</h3>
+            <p>كشوف الحسابات البنكية تحتوي معلومات مالية حساسة - أرقام الحسابات، تاريخ المعاملات، تفاصيل الأرصدة. بموجب المادة 378 من قانون العقوبات الإماراتي، الإفشاء غير المصرح به يحمل عقوبات كبيرة. بروتوكولاتنا تتجاوز هذه المتطلبات.</p>
+            <p>كل ترجمة كشف حساب بنكي تُسند لمترجم واحد مرخص من وزارة العدل يوقع تعهد سرية. الوثائق تُعالج على أنظمة مشفرة مع وصول مقتصر على المترجم المعين فقط. لا نستخدم خدمات سحابية أو منصات تعهيد جماعي أو مراكز خارجية قد تكشف تفاصيلكم المالية.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section bg-white">
+      <div class="container">
+        <h2>الأسئلة الشائعة</h2>
+
+        <div class="faq-accordion">
+          {faqs.map((faq, index) => (
+            <details class="faq-item" name="faq-group">
+              <summary class="faq-question">
+                <span>{faq.question}</span>
+                <i class="fas fa-chevron-down"></i>
+              </summary>
+              <div class="faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2>تحتاجون ترجمة كشف حساب بنكي؟</h2>
+          <p>أرسلوا كشوفكم عبر واتساب. سنؤكد تغطية الفترة، نقدم عرض سعر دقيق بناءً على عدد الصفحات، ونسلم ترجمتكم المعتمدة للإقامة الذهبية أو طلب الهجرة.</p>
+
+          <a href="https://wa.me/971508620217?text=أحتاج%20ترجمة%20كشف%20حساب%20بنكي" class="btn-cta">
+            <i class="fab fa-whatsapp"></i>
+            أرسلوا كشوفكم الآن
+          </a>
+
+          <div class="related-links">
+            <span>ذات صلة:</span>
+            <a href="/ar/personal/immigration/pcc/">شهادة الخلو من السوابق</a>
+            <a href="/ar/personal/academic/degree/">ترجمة الشهادات</a>
+            <a href="/ar/personal/immigration/">وثائق الهجرة</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayoutArabic>
+
+<style>
+  /* Base Styles */
+  .service-page {
+    font-family: var(--font-arabic, 'Noto Sans Arabic', sans-serif);
+    line-height: 1.8;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section {
+    padding: 4rem 0;
+  }
+
+  .bg-light {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  .bg-white {
+    background: #ffffff;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, var(--surface-navy, #0E2B48) 0%, #1a3a5c 100%);
+    color: var(--text-on-dark, #ffffff);
+    padding: 6rem 0 4rem;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .breadcrumb a:hover {
+    color: #ffffff;
+  }
+
+  .breadcrumb .separator {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .breadcrumb .current {
+    color: #ffffff;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-badge i {
+    color: var(--accent-coral, #FF1654);
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 0.75rem;
+    line-height: 1.3;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--accent-coral, #FF1654);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  .hero-intro {
+    max-width: 800px;
+    font-size: 1.1rem;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+  }
+
+  .snapshot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .snapshot-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 0.75rem;
+  }
+
+  .snapshot-item i {
+    font-size: 1.5rem;
+    color: var(--accent-coral, #FF1654);
+    margin-top: 0.25rem;
+  }
+
+  .snapshot-content strong {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .snapshot-content span {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  .hero-cta {
+    margin-top: 2rem;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--accent-coral, #FF1654);
+    color: #ffffff;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 1.1rem;
+  }
+
+  .btn-primary:hover {
+    background: #e01249;
+    transform: translateY(-2px);
+  }
+
+  /* Section Titles */
+  h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--surface-navy, #0E2B48);
+    margin: 0 0 1rem;
+  }
+
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted, #6b7280);
+    margin-bottom: 2rem;
+    max-width: 700px;
+  }
+
+  /* Rejection Grid */
+  .rejection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .rejection-item {
+    background: #fff5f5;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border-right: 4px solid #ef4444;
+  }
+
+  .rejection-icon {
+    width: 50px;
+    height: 50px;
+    background: #fee2e2;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .rejection-icon i {
+    font-size: 1.25rem;
+    color: #ef4444;
+  }
+
+  .rejection-item h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: var(--surface-navy, #0E2B48);
+  }
+
+  .rejection-item p {
+    font-size: 0.95rem;
+    color: var(--text-muted, #6b7280);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* Requirement Grid */
+  .requirement-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .requirement-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .requirement-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--surface-navy, #0E2B48), #1a3a5c);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+
+  .requirement-icon i {
+    font-size: 1.5rem;
+    color: #ffffff;
+  }
+
+  .requirement-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
+    color: var(--surface-navy, #0E2B48);
+  }
+
+  .requirement-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted, #6b7280);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* Info Callout */
+  .info-callout {
+    background: #e0f2fe;
+    border-radius: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .info-callout i {
+    font-size: 1.5rem;
+    color: #0284c7;
+    margin-top: 0.25rem;
+  }
+
+  .info-callout p {
+    margin: 0;
+    color: var(--text-muted, #6b7280);
+    line-height: 1.7;
+  }
+
+  /* Translate Grid */
+  .translate-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+
+  .translate-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: var(--bg-light, #f8f9fa);
+    border-radius: 0.5rem;
+  }
+
+  .translate-item i {
+    color: var(--accent-coral, #FF1654);
+  }
+
+  /* Content Prose */
+  .content-prose {
+    max-width: 800px;
+    margin-bottom: 2rem;
+  }
+
+  .content-prose p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+    color: var(--text-muted, #6b7280);
+  }
+
+  /* Country Grid */
+  .country-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .country-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .country-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
+    color: var(--surface-navy, #0E2B48);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .country-card h3 i {
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .country-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted, #6b7280);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* Page Count Grid */
+  .page-count-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .page-count-item {
+    background: var(--bg-light, #f8f9fa);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    text-align: center;
+  }
+
+  .page-count-item strong {
+    display: block;
+    color: var(--surface-navy, #0E2B48);
+    margin-bottom: 0.25rem;
+  }
+
+  .page-count-item span {
+    color: var(--accent-coral, #FF1654);
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  .page-count-item p {
+    font-size: 0.85rem;
+    color: var(--text-muted, #6b7280);
+    margin: 0.5rem 0 0;
+  }
+
+  .pricing-note {
+    text-align: center;
+    color: var(--text-muted, #6b7280);
+    font-size: 0.95rem;
+  }
+
+  /* Pricing Grid */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .pricing-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+  }
+
+  .pricing-card.featured {
+    border: 2px solid var(--accent-coral, #FF1654);
+    box-shadow: 0 8px 30px rgba(255, 22, 84, 0.15);
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: -12px;
+    right: 50%;
+    transform: translateX(50%);
+    background: var(--accent-coral, #FF1654);
+    color: #ffffff;
+    padding: 0.25rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .pricing-card h3 {
+    font-size: 1.25rem;
+    margin: 0 0 0.5rem;
+    color: var(--surface-navy, #0E2B48);
+  }
+
+  .pricing-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--surface-navy, #0E2B48);
+    margin-bottom: 0.25rem;
+  }
+
+  .pricing-time {
+    color: var(--text-muted, #6b7280);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+  }
+
+  .pricing-features li {
+    padding: 0.5rem 0;
+    padding-right: 1.5rem;
+    position: relative;
+    font-size: 0.95rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-muted, #6b7280);
+  }
+
+  .pricing-features li::before {
+    content: '✓';
+    position: absolute;
+    right: 0;
+    color: var(--accent-coral, #FF1654);
+    font-weight: 700;
+  }
+
+  .package-callout {
+    background: #e0f2fe;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .package-callout strong {
+    color: var(--surface-navy, #0E2B48);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .package-callout p {
+    margin: 0;
+    color: var(--text-muted, #6b7280);
+  }
+
+  /* Deliverables Grid */
+  .deliverables-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .deliverable-card {
+    background: var(--bg-light, #f8f9fa);
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
+
+  .deliverable-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 0.75rem;
+    background: var(--surface-navy, #0E2B48);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .deliverable-card h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+    color: var(--surface-navy, #0E2B48);
+  }
+
+  .deliverable-card p {
+    margin: 0;
+    color: var(--text-muted, #6b7280);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  /* Privacy Box */
+  .privacy-box {
+    display: flex;
+    gap: 1.5rem;
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 2rem;
+    border-right: 4px solid var(--surface-navy, #0E2B48);
+    align-items: flex-start;
+  }
+
+  .privacy-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--surface-navy, #0E2B48);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .privacy-icon i {
+    font-size: 1.5rem;
+    color: #ffffff;
+  }
+
+  .privacy-content h3 {
+    font-size: 1.25rem;
+    margin: 0 0 1rem;
+    color: var(--surface-navy, #0E2B48);
+  }
+
+  .privacy-content p {
+    margin: 0 0 1rem;
+    color: var(--text-muted, #6b7280);
+    line-height: 1.8;
+  }
+
+  .privacy-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* FAQ Section */
+  .faq-accordion {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: var(--bg-light, #f8f9fa);
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+
+  .faq-question {
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 600;
+    color: var(--surface-navy, #0E2B48);
+    list-style: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question i {
+    transition: transform 0.3s;
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .faq-item[open] .faq-question i {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.25rem;
+    color: var(--text-muted, #6b7280);
+    line-height: 1.8;
+  }
+
+  .faq-answer p {
+    margin: 0;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, var(--surface-navy, #0E2B48) 0%, #1a3a5c 100%);
+    color: var(--text-on-dark, #ffffff);
+    padding: 4rem 0;
+  }
+
+  .cta-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .cta-content h2 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+  }
+
+  .cta-content p {
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+  }
+
+  .btn-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--accent-coral, #FF1654);
+    color: #ffffff;
+    padding: 1rem 2.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+  }
+
+  .btn-cta:hover {
+    background: #e01249;
+    transform: translateY(-2px);
+  }
+
+  .related-links {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+  }
+
+  .related-links span {
+    opacity: 0.7;
+  }
+
+  .related-links a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.25rem 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.25rem;
+    transition: all 0.2s;
+  }
+
+  .related-links a:hover {
+    background: var(--accent-coral, #FF1654);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 1.75rem;
+    }
+
+    .hero-section {
+      padding: 4rem 0 3rem;
+    }
+
+    .rejection-grid,
+    .requirement-grid,
+    .country-grid,
+    .page-count-grid,
+    .pricing-grid,
+    .deliverables-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .privacy-box {
+      flex-direction: column;
+    }
+  }
+</style>
