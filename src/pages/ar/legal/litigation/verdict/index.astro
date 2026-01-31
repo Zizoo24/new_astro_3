@@ -1,0 +1,273 @@
+---
+/**
+ * Court Verdict Translation - Arabic Version
+ * URL: /ar/legal/litigation/verdict/
+ */
+import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    q: "ما الفرق بين الترجمة المعتمدة والموثقة لأحكام المحاكم؟",
+    a: "الترجمة المعتمدة من وزارة العدل تحمل ختم مترجم مرخص من الوزارة، وهي المطلوبة لدى المحاكم الإماراتية. الترجمة الموثقة تُضيف توثيق كاتب العدل للتحقق من توقيع المترجم - مطلوبة عادة للوثائق المرسلة للخارج وليست ضرورية للتقديم للمحاكم الإماراتية. لمحاكم دبي، تصديق وزارة العدل هو المعيار."
+  },
+  {
+    q: "ما المدة اللازمة لترجمة الأحكام للتنفيذ؟",
+    a: "أحكام المحاكم العادية (5-10 صفحات) تُنجز خلال 24-48 ساعة. الأحكام المعقدة ذات التسبيب القانوني المطول قد تتطلب 2-3 أيام. الخدمة السريعة متاحة للمواعيد العاجلة - التسليم نفس اليوم ممكن للأحكام القصيرة عند الترتيب مسبقاً."
+  },
+  {
+    q: "هل يمكن تنفيذ الأحكام الأجنبية في دبي؟",
+    a: "نعم، يمكن تنفيذ الأحكام الأجنبية في دبي عبر محكمة التنفيذ. تتطلب العملية الحكم الأصلي المُصدق، ترجمة عربية معتمدة من وزارة العدل، إثبات أن الحكم نهائي وواجب النفاذ، ودليل الإعلان الصحيح."
+  },
+  {
+    q: "ما الفرق بين محاكم دبي ومحاكم مركز دبي المالي للتنفيذ؟",
+    a: "محاكم دبي تعمل وفق القانون المدني الإماراتي والعربية لغة إلزامية. محاكم مركز دبي المالي تعمل وفق القانون العام الإنجليزي بالإنجليزية كلغة رئيسية. محاكم المركز قد تكون مألوفة أكثر لأطراف من دول القانون العام وقد تُعالج التنفيذ بسرعة أكبر. لكن إذا كانت أصول المدعى عليه بالبرّ الرئيسي، قد تحتاج أحكام المركز لتنفيذ لاحق عبر محاكم دبي."
+  },
+  {
+    q: "هل تترجمون أوامر المحاكم والأحكام المؤقتة؟",
+    a: "نعم، نترجم جميع أنواع قرارات المحاكم: الأحكام النهائية والأوامر المؤقتة وأوامر الحجز والأوامر الإجرائية وأوامر الموافقة والأحكام الغيابية. لكل نوع مصطلحات محددة يجب التعامل معها بشكل صحيح للحفاظ على الأثر القانوني للأمر."
+  },
+  {
+    q: "ماذا لو رفضت محاكم دبي حكمي المترجم؟",
+    a: "إذا رفضت أي محكمة إماراتية ترجمتنا بسبب خطأ منا، نُصحح ونُعيد التسليم مجاناً - بما في ذلك تكاليف البريد السريع لموعد التقديم."
+  }
+];
+---
+
+<BaseLayoutArabic
+  title="ترجمة أحكام المحاكم دبي | معتمدة من وزارة العدل"
+  description="ترجمة أحكام المحاكم معتمدة من وزارة العدل في دبي. ترجمة الأحكام والقرارات للتنفيذ والاستئناف والاعتراف الدولي."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "ترجمة أحكام المحاكم",
+      "description": "ترجمة أحكام المحاكم معتمدة من وزارة العدل للتنفيذ والاستئناف",
+      "provider": {
+        "@type": "Organization",
+        "name": "OnlineTranslation.ae"
+      },
+      "areaServed": ["دبي", "أبوظبي", "الشارقة", "الإمارات"],
+      "serviceType": "ترجمة الأحكام القضائية"
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a
+        }
+      }))
+    })} />
+  </Fragment>
+
+  <nav class="breadcrumb-nav" aria-label="التنقل">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li><a href="/ar/">الرئيسية</a></li>
+        <li><a href="/ar/legal-translation-dubai/">الترجمة القانونية</a></li>
+        <li><a href="/ar/legal/litigation/">وثائق التقاضي</a></li>
+        <li><span aria-current="page">الأحكام</span></li>
+      </ol>
+    </div>
+  </nav>
+
+  <section class="page-hero" dir="rtl">
+    <div class="container">
+      <span class="hero-badge">تنفيذ الأحكام</span>
+      <h1>ترجمة أحكام المحاكم في دبي</h1>
+      <p class="hero-lead">أحكام وقرارات المحاكم تحمل قوة قانونية يجب نقلها بدقة في الترجمة. سواء للتنفيذ في الإمارات أو الاعتراف الدولي أو إجراءات الاستئناف، ترجماتنا المعتمدة من وزارة العدل تحافظ على المعنى القانوني الدقيق وسلطة قرارات المحاكم.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/971508620217?text=أحتاج%20ترجمة%20حكم%20محكمة" class="btn btn--primary">
+          <i class="fab fa-whatsapp"></i> أرسل الحكم
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <h2>وثائق المحاكم التي نترجمها</h2>
+
+      <div class="doc-grid">
+        <div class="doc-card">
+          <i class="fas fa-gavel"></i>
+          <h3>الأحكام النهائية</h3>
+          <p>أحكام وقرارات المحاكم النهائية للتنفيذ أو الاستئناف</p>
+        </div>
+        <div class="doc-card">
+          <i class="fas fa-file-signature"></i>
+          <h3>أوامر المحاكم</h3>
+          <p>أوامر الحجز والإجراءات التحفظية وقرارات الإجراءات المؤقتة</p>
+        </div>
+        <div class="doc-card">
+          <i class="fas fa-balance-scale"></i>
+          <h3>قرارات الاستئناف</h3>
+          <p>أحكام محاكم الاستئناف والتمييز</p>
+        </div>
+        <div class="doc-card">
+          <i class="fas fa-globe"></i>
+          <h3>الأحكام الأجنبية</h3>
+          <p>الأحكام الدولية للاعتراف والتنفيذ في الإمارات</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <h2>ما تحتاجون معرفته عن ترجمة الأحكام</h2>
+
+      <div class="content-prose">
+        <h3>لماذا تهم ترجمة الأحكام في الإمارات</h3>
+        <p>حكم المحكمة ليس مجرد وثيقة تُعلن من فاز ومن خسر. يتضمن التسبيب القانوني وتحليل الأدلة والأوامر الملزمة التي تحمل سلطة واجبة النفاذ. عندما تعبر هذه الوثيقة الحدود، يجب الحفاظ على كل عنصر من تلك القوة القانونية في الترجمة.</p>
+
+        <p>الأحكام الأجنبية في الإمارات تمر عادة بعملية اعتراف وتنفيذ. تفحص المحكمة ما إذا كان الحكم الأجنبي يستوفي معايير محددة بموجب القانون الإماراتي. الترجمة الضعيفة يمكن أن تُعرقل هذه العملية بالكامل.</p>
+
+        <h3>محاكم دبي مقابل محاكم مركز دبي المالي: فروق جوهرية</h3>
+        <p>فهم التمييز بين محاكم دبي ومحاكم مركز دبي المالي أساسي لاختيار استراتيجية التنفيذ الصحيحة.</p>
+
+        <p>محاكم دبي تعمل وفق القانون المدني الإماراتي المستمد من القانون المدني المصري والتقاليد القانونية الفرنسية. العربية لغة إلزامية لجميع التقديمات. كل وثيقة بلغة أجنبية يجب أن تُرفق بترجمة عربية معتمدة من وزارة العدل. تشمل محاكم دبي محكمة البداية ومحكمة الاستئناف ومحكمة التمييز.</p>
+
+        <p>محاكم مركز دبي المالي العالمي تعمل وفق القانون العام الإنجليزي. الإنجليزية اللغة الرئيسية للإجراءات، ويمكن تقديم الوثائق بالإنجليزية دون ترجمة. تتولى محاكم المركز النزاعات المتعلقة بالكيانات المسجلة بالمركز والقضايا التي اختار فيها الأطراف اختصاص المركز وتنفيذ الأحكام وقرارات التحكيم الأجنبية.</p>
+
+        <h3>أنواع الأحكام التي نترجمها</h3>
+        <ul class="content-list">
+          <li><strong>الأحكام النهائية:</strong> الحل النهائي للقضية يُحدد المسؤولية والتعويضات والأوامر. الأكثر ترجمة للتنفيذ.</li>
+          <li><strong>الأوامر المؤقتة:</strong> قرارات أثناء الإجراءات الجارية مثل أوامر الحجز أو الحضانة المؤقتة. غالباً تتضمن شروطاً ومواعيد نهائية محددة.</li>
+          <li><strong>قرارات الاستئناف:</strong> أحكام محاكم الاستئناف التي تؤيد أو تنقض أو تُعدّل أحكام المحاكم الأدنى.</li>
+          <li><strong>أوامر الموافقة:</strong> تسويات مُصدق عليها من المحكمة يتفق فيها الأطراف على شروط محددة.</li>
+          <li><strong>الأحكام الغيابية:</strong> قرارات تصدر عند عدم استجابة أحد الأطراف.</li>
+        </ul>
+
+        <h3>عملية التنفيذ في الإمارات</h3>
+        <p>تنفيذ حكم أجنبي في الإمارات يتبع إجراءات قانونية محددة. تبدأ العملية بترجمة الحكم للعربية عبر مترجم معتمد من وزارة العدل. ثم يُقدم الحكم المترجم مع الوثائق الداعمة لمحكمة التنفيذ.</p>
+
+        <p>تفحص المحاكم الإماراتية ما إذا كان الحكم الأجنبي يستوفي متطلبات المعاملة بالمثل - ما إذا كانت الدولة المُصدرة ستنفذ بالمقابل الأحكام الإماراتية. كما تُقيّم المحاكم ما إذا كان الاختصاص الصحيح موجوداً في الإجراءات الأصلية وما إذا اتُبعت الإجراءات الواجبة وما إذا كان الحكم يتعارض مع النظام العام الإماراتي.</p>
+
+        <h3>التحديات الشائعة التي نمنعها</h3>
+        <ul class="content-list">
+          <li><strong>عدم اتساق أسماء الأطراف:</strong> الأسماء المُقدمة بشكل مختلف خلال الوثيقة تُربك مسؤولي المحكمة.</li>
+          <li><strong>أخطاء المبالغ المالية:</strong> تحويلات العملة أو الأخطاء الرقمية يمكن أن تُغير المبلغ المنفذ.</li>
+          <li><strong>غموض الأوامر:</strong> التوجيهات المحددة لما يجب على الأطراف فعله أو الامتناع عنه يجب أن تكون واضحة تماماً.</li>
+          <li><strong>الأقسام المفقودة:</strong> بعض المترجمين يتجاوزون التاريخ الإجرائي، لكن المحاكم الإماراتية تريد وثائق كاملة.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <h2>معايير الترجمة</h2>
+
+      <div class="standards-grid">
+        <div class="standard-item">
+          <i class="fas fa-check-double"></i>
+          <h3>الدقة القانونية</h3>
+          <p>مصطلحات دقيقة تحافظ على الأثر القانوني للحكم الأصلي</p>
+        </div>
+        <div class="standard-item">
+          <i class="fas fa-stamp"></i>
+          <h3>صيغة جاهزة للمحاكم</h3>
+          <p>مُنسقة للتقديم لمحاكم الإمارات والجهات القانونية</p>
+        </div>
+        <div class="standard-item">
+          <i class="fas fa-user-shield"></i>
+          <h3>السرية</h3>
+          <p>بروتوكولات تعامل صارمة لوثائق المحاكم الحساسة</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-grid">
+        {faqs.map(faq => (
+          <div class="faq-item">
+            <h3>{faq.q}</h3>
+            <p>{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-primary" dir="rtl">
+    <div class="container cta-section">
+      <h2>تحتاجون ترجمة حكم؟</h2>
+      <p>أرسلوا حكم المحكمة عبر واتساب للتقييم السري والترجمة المعتمدة.</p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/971508620217?text=أحتاج%20ترجمة%20حكم%20محكمة" class="btn btn-accent">
+          <i class="fab fa-whatsapp"></i> أرسل الحكم
+        </a>
+        <a href="/ar/legal/litigation/" class="btn btn-outline">
+          <i class="fas fa-arrow-right"></i> جميع وثائق المحاكم
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayoutArabic>
+
+<style>
+  .breadcrumb-nav { background: var(--primary-color); padding: 1rem 0; }
+  .breadcrumb-list { display: flex; list-style: none; margin: 0; padding: 0; gap: 0.5rem; font-size: 0.875rem; flex-direction: row-reverse; }
+  .breadcrumb-list li:not(:first-child)::before { content: '/'; margin-left: 0.5rem; color: rgba(255,255,255,0.5); }
+  .breadcrumb-list a { color: rgba(255,255,255,0.8); text-decoration: none; }
+  .breadcrumb-list span { color: white; }
+
+  .page-hero { background: var(--primary-color); color: white; padding: 4rem 0; }
+  .hero-badge { display: inline-block; background: var(--accent-color); padding: 0.5rem 1rem; border-radius: 2rem; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; }
+  .page-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
+  .hero-lead { font-size: 1.125rem; line-height: 1.8; max-width: 800px; opacity: 0.95; margin-bottom: 2rem; }
+
+  .section { padding: 4rem 0; }
+  .section h2 { font-size: 2rem; margin-bottom: 2rem; color: var(--primary-color); }
+
+  .doc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+  .doc-card { text-align: center; padding: 2rem; background: var(--bg-light); border-radius: 12px; }
+  .doc-card i { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem; }
+  .doc-card h3 { font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--primary-color); }
+  .doc-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+  .standards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .standard-item { background: var(--bg-light); padding: 2rem; border-radius: 12px; text-align: center; }
+  .standard-item i { font-size: 2rem; color: var(--accent-color); margin-bottom: 1rem; }
+  .standard-item h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--primary-color); }
+  .standard-item p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
+
+  .content-prose { max-width: 900px; }
+  .content-prose h3 { font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--primary-color); }
+  .content-prose h3:first-child { margin-top: 0; }
+  .content-prose p { line-height: 1.8; margin-bottom: 1.25rem; }
+  .content-list { margin: 1rem 0 1.5rem; padding-right: 1.25rem; }
+  .content-list li { margin-bottom: 0.75rem; line-height: 1.7; }
+
+  .faq-grid { display: grid; gap: 1.5rem; }
+  .faq-item { background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+  .faq-item h3 { font-size: 1.1rem; margin-bottom: 1rem; color: var(--primary-color); }
+  .faq-item p { line-height: 1.7; color: var(--text-muted); margin: 0; }
+
+  .bg-primary { background: var(--primary-color); }
+  .bg-primary h2, .bg-primary p { color: #fff; }
+  .cta-section { text-align: center; max-width: 700px; margin: 0 auto; }
+  .cta-section p { opacity: 0.9; margin-bottom: 2rem; font-size: 1.1rem; }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; text-decoration: none; }
+  .btn--primary { background: var(--accent-color); color: #fff; }
+  .btn-accent { background: var(--accent-color); color: #fff; }
+  .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.5); }
+
+  @media (max-width: 992px) {
+    .doc-grid { grid-template-columns: repeat(2, 1fr); }
+    .standards-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .doc-grid, .standards-grid { grid-template-columns: 1fr; }
+    .page-hero { padding: 3rem 0; }
+  }
+</style>

@@ -1,0 +1,394 @@
+---
+/**
+ * Litigation Hub - Arabic Version
+ * URL: /ar/legal/litigation/
+ */
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const documents = [
+  {
+    title: 'أحكام وقرارات المحاكم',
+    href: '/ar/legal/litigation/verdict/',
+    icon: 'gavel',
+    desc: 'الأحكام النهائية والغيابية والاستئنافية للتنفيذ في الإمارات والسجلات القانونية.',
+    courts: 'محاكم دبي، مركز دبي المالي، المحاكم الاتحادية'
+  },
+  {
+    title: 'قرارات التحكيم',
+    href: '/ar/legal/litigation/arbitration/',
+    icon: 'balance-scale-right',
+    desc: 'قرارات ICC وLCIA وDIAC والتحكيم الحر للاعتراف والتنفيذ.',
+    courts: 'DIAC، ICC، LCIA، SIAC'
+  },
+  {
+    title: 'الإخطارات والمذكرات القانونية',
+    href: '/ar/legal-translation-dubai/',
+    icon: 'file-alt',
+    desc: 'بيانات الدعوى والدفاع والطلبات والمراسلات القانونية للتقديم للمحاكم.',
+    courts: 'جميع محاكم الإمارات'
+  },
+  {
+    title: 'الأدلة والمرفقات',
+    href: '/ar/legal-translation-dubai/',
+    icon: 'folder-open',
+    desc: 'الأدلة المستندية وأقوال الشهود وحزم المرفقات لدعم التقاضي.',
+    courts: 'جميع الاختصاصات'
+  }
+];
+
+const faqs = [
+  {
+    q: "ما الفرق بين الترجمة المعتمدة والموثقة لوثائق المحاكم؟",
+    a: "الترجمة المعتمدة من وزارة العدل تحمل ختم مترجم مرخص (مثل الترخيص رقم 701)، وهي المطلوبة لدى المحاكم الإماراتية لجميع الوثائق الأجنبية. الترجمة الموثقة تُضيف توثيق كاتب العدل للتحقق من توقيع المترجم - مفيدة للوثائق المرسلة للخارج لكنها غير مطلوبة عادة للتقديم للمحاكم الإماراتية."
+  },
+  {
+    q: "ما المدة اللازمة لترجمة وثائق المحاكم؟",
+    a: "وثائق المحاكم العادية (5-15 صفحة) تُنجز خلال 24-48 ساعة. ملفات التقاضي المعقدة مع مذكرات مطولة وحزم أدلة قد تتطلب 3-5 أيام عمل. الخدمة السريعة متاحة للمواعيد النهائية العاجلة."
+  },
+  {
+    q: "أي محاكم في الإمارات تتطلب الترجمة العربية؟",
+    a: "محاكم دبي ودائرة أبوظبي القضائية ومحاكم الشارقة وجميع المحاكم الاتحادية تتطلب العربية كلغة رسمية. محاكم مركز دبي المالي العالمي وسوق أبوظبي العالمي تعمل بالإنجليزية بشكل رئيسي وقد تقبل الوثائق الإنجليزية مباشرة."
+  },
+  {
+    q: "هل يمكنكم ترجمة وثائق المحاكم من أي لغة؟",
+    a: "نعم. نترجم وثائق المحاكم من الإنجليزية والفرنسية والألمانية والإسبانية والروسية والصينية والهندية والأوردو والفارسية ومعظم اللغات الأخرى إلى العربية. كما نترجم وثائق المحاكم العربية إلى الإنجليزية للاستخدام الدولي."
+  },
+  {
+    q: "ما الوثائق المطلوبة لتنفيذ الأحكام الأجنبية في الإمارات؟",
+    a: "لتنفيذ الأحكام الأجنبية تحتاجون عادة: الحكم الأصلي (مُصدق من المحكمة المُصدرة)، إثبات أن الحكم نهائي وواجب النفاذ، دليل الإعلان الصحيح للمدعى عليه، وترجمة عربية معتمدة من وزارة العدل لجميع الوثائق."
+  },
+  {
+    q: "ماذا لو رفضت محاكم دبي ترجمتي؟",
+    a: "إذا رفضت أي محكمة إماراتية ترجمتنا بسبب خطأ منا، نُصحح ونُعيد التسليم مجاناً - بما في ذلك تكاليف البريد السريع إذا لزم الأمر لموعد التقديم."
+  }
+];
+---
+
+<BaseLayoutArabic
+  title="ترجمة وثائق المحاكم دبي | معتمدة من وزارة العدل"
+  description="ترجمة وثائق المحاكم معتمدة من وزارة العدل في دبي. الأحكام وقرارات التحكيم والمذكرات لمحاكم دبي ومركز دبي المالي وسوق أبوظبي."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "خدمات ترجمة وثائق المحاكم دبي",
+      "description": "ترجمة معتمدة من وزارة العدل لوثائق المحاكم شاملة الأحكام وقرارات التحكيم ومواد التقاضي",
+      "provider": {
+        "@type": "Organization",
+        "name": "OnlineTranslation.ae"
+      },
+      "areaServed": ["دبي", "أبوظبي", "الشارقة", "الإمارات"],
+      "serviceType": ["ترجمة وثائق المحاكم", "ترجمة الأحكام", "ترجمة قرارات التحكيم"]
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a
+        }
+      }))
+    })} />
+  </Fragment>
+
+  <nav class="breadcrumb-nav" aria-label="التنقل">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li><a href="/ar/">الرئيسية</a></li>
+        <li><a href="/ar/legal-translation-dubai/">الترجمة القانونية</a></li>
+        <li><span aria-current="page">وثائق التقاضي</span></li>
+      </ol>
+    </div>
+  </nav>
+
+  <section class="page-hero" dir="rtl">
+    <div class="container">
+      <span class="hero-badge">دعم التقاضي</span>
+      <h1>ترجمة وثائق المحاكم في دبي</h1>
+      <p class="hero-lead">التقاضي يتطلب دقة - كل كلمة في وثيقة المحكمة تحمل ثقلاً قانونياً. من تنفيذ الأحكام الأجنبية إلى الاعتراف بقرارات التحكيم، نقدم ترجمات تعتمد عليها المحاكم الإماراتية. مترجمونا المتخصصون يفهمون المتطلبات الإجرائية عبر محاكم دبي ومركز دبي المالي وسوق أبوظبي العالمي والمحاكم الاتحادية.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/971508620217?text=أحتاج%20ترجمة%20وثيقة%20محكمة" class="btn btn--primary">
+          <i class="fab fa-whatsapp"></i> أرسل الوثيقة
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <div class="section-header">
+        <h2>وثائق المحاكم التي نترجمها</h2>
+        <p>اختاروا نوع وثيقتكم للمتطلبات الخاصة والخبرة بالاختصاص.</p>
+      </div>
+
+      <div class="documents-grid">
+        {documents.map(doc => (
+          <a href={doc.href} class="document-card">
+            <div class="document-icon">
+              <i class={`fas fa-${doc.icon}`}></i>
+            </div>
+            <h3>{doc.title}</h3>
+            <p>{doc.desc}</p>
+            <div class="document-courts">
+              <strong>الاختصاصات:</strong> {doc.courts}
+            </div>
+            <span class="document-link">← المزيد</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <h2>خبرة متعددة الاختصاصات</h2>
+      <p class="section-intro">الإمارات تُشغّل أنظمة قضائية متعددة بمتطلبات لغوية وقواعد إجرائية مختلفة. نفهم الفروق.</p>
+
+      <div class="jurisdiction-grid">
+        <div class="jurisdiction-card">
+          <h3>محاكم دبي</h3>
+          <p>اختصاص القانون المدني والعربية اللغة الرسمية. جميع التقديمات تتطلب وثائق عربية. محكمة البداية والاستئناف والتمييز.</p>
+        </div>
+        <div class="jurisdiction-card">
+          <h3>محاكم مركز دبي المالي</h3>
+          <p>اختصاص القانون العام والإنجليزية اللغة الرئيسية. تخدم مركز دبي المالي العالمي بإجراءات تجارية ومدنية متخصصة.</p>
+        </div>
+        <div class="jurisdiction-card">
+          <h3>محاكم سوق أبوظبي العالمي</h3>
+          <p>اختصاص القانون العام في أبوظبي ويعمل بالإنجليزية. مشابه لمركز دبي المالي مع تسوية نزاعات تجارية متخصصة.</p>
+        </div>
+        <div class="jurisdiction-card">
+          <h3>المحاكم الاتحادية</h3>
+          <p>المحكمة الاتحادية العليا والهيئات القضائية الاتحادية تعمل وفق القانون المدني الإماراتي. الوثائق العربية مطلوبة لجميع الإجراءات.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <div class="content-grid">
+        <div class="content-main">
+          <h3>فهم الأنظمة القضائية الإماراتية</h3>
+          <p>تُشغّل الإمارات مشهداً قانونياً معقداً بأنظمة قضائية متوازية متعددة. فهم أي محكمة ستتولى قضيتكم - وما متطلبات الترجمة المطبقة - أمر أساسي لدعم التقاضي الفعال.</p>
+
+          <p>محاكم دبي تتولى معظم القضايا المدنية والتجارية في دبي، تتبع مبادئ القانون المدني الإماراتي المستمدة من التقاليد القانونية المصرية والفرنسية. العربية لغة إلزامية، مما يعني أن كل وثيقة بلغة أجنبية يجب تقديمها مع ترجمة عربية معتمدة من وزارة العدل.</p>
+
+          <p>محاكم مركز دبي المالي العالمي تعمل وفق القانون العام الإنجليزي. تتولى النزاعات المتعلقة بالكيانات المسجلة بالمركز والقضايا التي يختار الأطراف اختصاص المركز فيها وتنفيذ الأحكام وقرارات التحكيم الأجنبية. الإنجليزية اللغة الرئيسية، رغم أن الترجمة العربية قد تكون مطلوبة عند تنفيذ أحكام المركز عبر محاكم دبي ضد أصول البرّ الرئيسي.</p>
+
+          <h3>أنواع وثائق المحاكم التي تتطلب الترجمة</h3>
+          <p>إجراءات التقاضي تُنتج وثائق مكثفة، لكل فئة متطلبات ترجمة محددة:</p>
+
+          <ul class="content-list">
+            <li><strong>المذكرات والتقديمات:</strong> بيانات الدعوى والدفاع والدعاوى المقابلة. هذه الوثائق تؤسس الموقف القانوني لكل طرف ويجب ترجمتها بدقة.</li>
+            <li><strong>الأحكام والأوامر:</strong> الأحكام النهائية والأوامر المؤقتة والإجراءات التحفظية تتطلب ترجمة دقيقة للتنفيذ أو الاستئناف.</li>
+            <li><strong>قرارات التحكيم:</strong> قرارات DIAC وICC وLCIA تتطلب ترجمة عربية معتمدة للتنفيذ في محاكم دبي.</li>
+            <li><strong>الأدلة والمرفقات:</strong> الأدلة المستندية وأقوال الشهود وتقارير الخبراء. الترجمة الدقيقة تضمن فهم الأدلة كما هو مقصود.</li>
+          </ul>
+
+          <h3>الترجمة المعتمدة مقابل الموثقة</h3>
+          <p><strong>الترجمة المعتمدة من وزارة العدل:</strong> مترجم مرخص من وزارة العدل (مثل الترخيص رقم 701) يختم ويوقع الترجمة مُصدقاً على دقتها. هذا المتطلب المعياري لجميع التقديمات للمحاكم الإماراتية.</p>
+
+          <p><strong>الترجمة الموثقة:</strong> كاتب العدل يُصدق أن التوقيع على شهادة الترجمة حقيقي. عادة مطلوبة للوثائق المرسلة للخارج، لكنها غير ضرورية عموماً للإجراءات الإماراتية ما وراء تصديق وزارة العدل.</p>
+        </div>
+
+        <div class="content-sidebar">
+          <div class="info-card">
+            <h4>قائمة التحقق للوثائق</h4>
+            <ul>
+              <li>الحكم/القرار الأصلي</li>
+              <li>اتفاقية التحكيم (للقرارات)</li>
+              <li>إثبات التصديق</li>
+              <li>وثائق الإعلان</li>
+              <li>الترجمة المعتمدة</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h4>الجدول الزمني للترجمة</h4>
+            <ul>
+              <li>1-5 صفحات: نفس اليوم - 24 ساعة</li>
+              <li>6-20 صفحة: 24-48 ساعة</li>
+              <li>21-50 صفحة: 2-3 أيام</li>
+              <li>50+ صفحة: 3-5+ أيام</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight">
+            <h4>تقاضٍ عاجل؟</h4>
+            <p>مواعيد المحاكم لا تنتظر. نقدم ترجمة سريعة للمسائل العاجلة مع تسليم نفس اليوم.</p>
+            <a href="https://wa.me/971508620217?text=وثيقة%20محكمة%20عاجلة" class="btn btn--primary btn--sm">طلب أولوية</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <h2>تنفيذ الأحكام والقرارات الأجنبية</h2>
+      <div class="enforcement-content">
+        <p>تنفيذ الأحكام والقرارات التحكيمية الأجنبية في الإمارات يتطلب تقديم هذه الوثائق للمحاكم الإماراتية بالعربية. الترجمة تصبح الوثيقة التي يقرأها ويعتمد عليها القضاة عند اتخاذ قرار التنفيذ.</p>
+
+        <p>للأحكام، تُقيّم المحاكم ما إذا كانت المحكمة الأجنبية ذات اختصاص، وما إذا اتُبعت الإجراءات القانونية الواجبة، وما إذا كان التنفيذ يخالف النظام العام الإماراتي. الترجمة يجب أن تُقدم بوضوح التاريخ الإجرائي والحكم التنفيذي.</p>
+
+        <p>لقرارات التحكيم، اتفاقية نيويورك توفر إطاراً للقرارات الدولية، بينما قانون التحكيم الإماراتي (القانون الاتحادي رقم 6 لسنة 2018) يحكم القرارات المحلية. الترجمة يجب أن تشمل اتفاقية التحكيم والقرار نفسه وأي أوامر إجرائية داعمة.</p>
+
+        <h3>متطلبات التنفيذ الرئيسية</h3>
+        <ul>
+          <li>الحكم أو القرار الأصلي المُصدق مع شهادة المحكمة أو الأبوستيل</li>
+          <li>ترجمة عربية معتمدة من وزارة العدل للحكم والوثائق الداعمة</li>
+          <li>إثبات الإعلان الصحيح للمدعى عليه في الإجراءات الأصلية</li>
+          <li>دليل أن الحكم نهائي وواجب النفاذ في الاختصاص المُصدر</li>
+          <li>لقرارات التحكيم: اتفاقية التحكيم ودليل الإجراء السليم</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-grid">
+        {faqs.map(faq => (
+          <div class="faq-item">
+            <h3>{faq.q}</h3>
+            <p>{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="related-section section bg-light" dir="rtl">
+    <div class="container">
+      <h2>خدمات ذات صلة</h2>
+      <div class="related-grid">
+        <a href="/ar/legal-translation-dubai/" class="related-card">
+          <i class="fas fa-balance-scale"></i>
+          <h3>محور الترجمة القانونية</h3>
+          <p>خدمات الوثائق القانونية الشاملة</p>
+        </a>
+        <a href="/ar/legal/contracts/" class="related-card">
+          <i class="fas fa-file-contract"></i>
+          <h3>ترجمة العقود</h3>
+          <p>الاتفاقيات التجارية والعقود</p>
+        </a>
+        <a href="/ar/legal/corporate/" class="related-card">
+          <i class="fas fa-building"></i>
+          <h3>وثائق الشركات</h3>
+          <p>عقد التأسيس والقرارات ووثائق المساهمين</p>
+        </a>
+        <a href="/ar/services/attestation/" class="related-card">
+          <i class="fas fa-stamp"></i>
+          <h3>تصديق الوثائق</h3>
+          <p>تصديق وزارة الخارجية والسفارات</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section section bg-dark" dir="rtl">
+    <div class="container text-center">
+      <h2>موعد محكمة قريب؟</h2>
+      <p>وثائق التقاضي تتطلب الدقة والسرعة. أرسلوا وثيقتكم للتقييم ذي الأولوية.</p>
+      <a href="https://wa.me/971508620217" class="btn btn--primary btn--lg">
+        <i class="fab fa-whatsapp"></i> أرسل الوثيقة الآن
+      </a>
+    </div>
+  </section>
+</BaseLayoutArabic>
+
+<style>
+  .breadcrumb-nav { background: var(--primary-color); padding: 1rem 0; }
+  .breadcrumb-list { display: flex; list-style: none; margin: 0; padding: 0; gap: 0.5rem; font-size: 0.875rem; flex-direction: row-reverse; }
+  .breadcrumb-list li:not(:first-child)::before { content: '/'; margin-left: 0.5rem; color: rgba(255,255,255,0.5); }
+  .breadcrumb-list a { color: rgba(255,255,255,0.8); text-decoration: none; }
+  .breadcrumb-list span { color: white; }
+
+  .page-hero { background: var(--primary-color); color: white; padding: 4rem 0; }
+  .hero-badge { display: inline-block; background: var(--accent-color); padding: 0.5rem 1rem; border-radius: 2rem; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; }
+  .page-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
+  .hero-lead { font-size: 1.125rem; line-height: 1.8; max-width: 800px; opacity: 0.95; margin-bottom: 2rem; }
+
+  .section { padding: 4rem 0; }
+  .section h2 { font-size: 2rem; margin-bottom: 2rem; color: var(--primary-color); }
+  .section-header { text-align: center; margin-bottom: 3rem; }
+  .section-header p { color: var(--text-muted); }
+  .section-intro { font-size: 1.125rem; color: var(--text-muted); margin-bottom: 2rem; text-align: center; }
+
+  .documents-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .document-card { background: white; border-radius: 1rem; padding: 2rem; text-decoration: none; color: inherit; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s; }
+  .document-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+  .document-icon { width: 60px; height: 60px; background: var(--accent-color); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
+  .document-icon i { font-size: 1.5rem; color: white; }
+  .document-card h3 { font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--primary-color); }
+  .document-card p { color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem; }
+  .document-courts { font-size: 0.875rem; color: var(--text-muted); padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.08); margin-bottom: 1rem; }
+  .document-link { color: var(--accent-color); font-weight: 600; }
+
+  .jurisdiction-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .jurisdiction-card { background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+  .jurisdiction-card h3 { font-size: 1.125rem; margin-bottom: 0.75rem; color: var(--primary-color); }
+  .jurisdiction-card p { color: var(--text-muted); line-height: 1.6; font-size: 0.95rem; }
+
+  .content-grid { display: grid; grid-template-columns: 1fr 350px; gap: 3rem; }
+  .content-main h3 { font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--primary-color); }
+  .content-main h3:first-child { margin-top: 0; }
+  .content-main p { line-height: 1.8; margin-bottom: 1.25rem; }
+  .content-list { list-style: none; padding: 0; margin: 1.5rem 0; }
+  .content-list li { padding: 0.5rem 1.5rem 0.5rem 0; position: relative; line-height: 1.7; }
+  .content-list li::before { content: '←'; position: absolute; right: 0; color: var(--accent-color); }
+
+  .info-card { background: white; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+  .info-card.highlight { background: var(--primary-color); color: white; }
+  .info-card h4 { font-size: 1rem; margin-bottom: 1rem; }
+  .info-card ul { list-style: none; padding: 0; margin: 0; }
+  .info-card li { padding: 0.4rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .info-card.highlight li { border-bottom-color: rgba(255,255,255,0.2); }
+  .info-card p { margin-bottom: 1rem; }
+
+  .enforcement-content { max-width: 900px; }
+  .enforcement-content p { line-height: 1.8; margin-bottom: 1.25rem; }
+  .enforcement-content h3 { font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--primary-color); }
+  .enforcement-content ul { list-style: none; padding: 0; }
+  .enforcement-content li { padding: 0.5rem 1.5rem 0.5rem 0; position: relative; }
+  .enforcement-content li::before { content: '←'; position: absolute; right: 0; color: var(--accent-color); }
+
+  .faq-grid { display: grid; gap: 1.5rem; }
+  .faq-item { background: var(--bg-light); padding: 2rem; border-radius: 1rem; }
+  .faq-item h3 { font-size: 1.1rem; margin-bottom: 1rem; color: var(--primary-color); }
+  .faq-item p { line-height: 1.7; color: var(--text-muted); margin: 0; }
+
+  .related-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .related-card { background: white; padding: 2rem; border-radius: 1rem; text-decoration: none; color: inherit; text-align: center; transition: all 0.3s; }
+  .related-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+  .related-card i { font-size: 2rem; color: var(--accent-color); margin-bottom: 1rem; }
+  .related-card h3 { font-size: 1.125rem; margin-bottom: 0.5rem; }
+  .related-card p { color: var(--text-muted); font-size: 0.9rem; }
+
+  .cta-section { text-align: center; }
+  .cta-section h2 { color: white; margin-bottom: 1rem; }
+  .cta-section p { color: rgba(255,255,255,0.9); margin-bottom: 2rem; }
+
+  .bg-light { background: var(--bg-light, #f8f9fa); }
+  .bg-dark { background: var(--primary-color); }
+  .text-center { text-align: center; }
+
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; }
+  .btn--primary { background: var(--accent-color); color: white; }
+  .btn--sm { padding: 0.75rem 1.5rem; font-size: 0.9rem; }
+  .btn--lg { padding: 1.125rem 2.25rem; }
+
+  @media (max-width: 991px) {
+    .content-grid { grid-template-columns: 1fr; }
+    .related-grid, .documents-grid, .jurisdiction-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .related-grid, .documents-grid, .jurisdiction-grid { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,291 @@
+---
+/**
+ * Arbitration Translation - Arabic Version
+ * URL: /ar/legal/litigation/arbitration/
+ */
+import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    q: "ما الفرق بين الترجمة المعتمدة والموثقة لقرارات التحكيم؟",
+    a: "الترجمة المعتمدة من وزارة العدل تحمل ختم مترجم مرخص من الوزارة، وهي المطلوبة لدى محاكم دبي للتنفيذ. الترجمة الموثقة تُضيف توثيق كاتب العدل - مطلوبة عادة للوثائق المرسلة للخارج وليست ضرورية للتنفيذ الإماراتي. للتنفيذ المحلي بموجب قانون التحكيم أو اتفاقية نيويورك، تصديق وزارة العدل هو المتطلب المعياري."
+  },
+  {
+    q: "ما المدة اللازمة لترجمة قرار تحكيم؟",
+    a: "قرارات التحكيم العادية (10-20 صفحة) تُنجز خلال 24-48 ساعة. القرارات المعقدة ذات التسبيب المطول أو المطالبات المتعددة أو المحتوى التقني قد تتطلب 3-5 أيام عمل. الخدمة السريعة متاحة للمواعيد العاجلة."
+  },
+  {
+    q: "ما الفرق بين DIAC وICC وLCIA وDIFC-LCIA؟",
+    a: "DIAC (مركز دبي للتحكيم الدولي) هو مؤسسة التحكيم الرئيسية بالإمارات تتبع قواعد إجرائية محلية. ICC (غرفة التجارة الدولية) مؤسسة عالمية مقرها باريس بقواعدها الخاصة. LCIA (محكمة لندن للتحكيم الدولي) تطبق إجراءات القانون العام الإنجليزي. DIFC-LCIA تعمل ضمن المنطقة المالية الحرة بدبي وفق القانون العام الإنجليزي."
+  },
+  {
+    q: "هل يمكن تنفيذ قرارات التحكيم الأجنبية في الإمارات؟",
+    a: "نعم، صادقت الإمارات على اتفاقية نيويورك عام 2006، مما يُمكّن من تنفيذ قرارات التحكيم الأجنبية من الدول الأعضاء الأخرى. التنفيذ يتطلب القرار الأصلي المُصدق واتفاقية التحكيم الأساسية وترجمات عربية معتمدة من وزارة العدل."
+  },
+  {
+    q: "ما الفرق بين التنفيذ عبر محاكم دبي ومحاكم مركز دبي المالي؟",
+    a: "محاكم دبي تتطلب وثائق عربية وتتبع إجراءات القانون المدني. محاكم مركز دبي المالي تقبل الوثائق الإنجليزية وتتبع إجراءات القانون العام. المركز قد يكون أسرع لقرارات دول القانون العام. لكن إذا كانت أصول المدعى عليه بالبرّ الرئيسي، قد يتطلب تنفيذ المركز تنفيذاً لاحقاً عبر محاكم دبي."
+  },
+  {
+    q: "كيف تتعاملون مع حسابات الفوائد في ترجمة القرارات؟",
+    a: "حسابات الفوائد يجب ترجمتها بدقة - المعدل والفترة وطريقة التركيب وأي فترات سماح يجب أن تكون دقيقة. نتحقق من الدقة الرقمية وتسميات العملات ومنهجيات الحساب لضمان تطابق المبلغ المنفذ مع نية هيئة التحكيم."
+  }
+];
+---
+
+<BaseLayoutArabic
+  title="ترجمة قرارات التحكيم دبي | DIAC و ICC"
+  description="ترجمة قرارات التحكيم معتمدة من وزارة العدل في دبي. قرارات DIAC وICC والتحكيم الدولي للتنفيذ والاعتراف في محاكم الإمارات."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "ترجمة قرارات التحكيم",
+      "description": "ترجمة قرارات التحكيم معتمدة من وزارة العدل للتنفيذ والاعتراف",
+      "provider": {
+        "@type": "Organization",
+        "name": "OnlineTranslation.ae"
+      },
+      "areaServed": ["دبي", "أبوظبي", "الشارقة", "الإمارات"],
+      "serviceType": "ترجمة قرارات التحكيم"
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a
+        }
+      }))
+    })} />
+  </Fragment>
+
+  <nav class="breadcrumb-nav" aria-label="التنقل">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li><a href="/ar/">الرئيسية</a></li>
+        <li><a href="/ar/legal-translation-dubai/">الترجمة القانونية</a></li>
+        <li><a href="/ar/legal/litigation/">وثائق التقاضي</a></li>
+        <li><span aria-current="page">التحكيم</span></li>
+      </ol>
+    </div>
+  </nav>
+
+  <section class="page-hero" dir="rtl">
+    <div class="container">
+      <span class="hero-badge">تنفيذ قرارات التحكيم</span>
+      <h1>ترجمة قرارات التحكيم في دبي</h1>
+      <p class="hero-lead">قرارات التحكيم من DIAC وICC وLCIA والهيئات الدولية تتطلب ترجمة عربية معتمدة من وزارة العدل لإجراءات التنفيذ في محاكم دبي والاعتراف بموجب اتفاقية نيويورك.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/971508620217?text=أحتاج%20ترجمة%20قرار%20تحكيم" class="btn btn--primary">
+          <i class="fab fa-whatsapp"></i> أرسل القرار
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <h2>وثائق التحكيم التي نترجمها</h2>
+
+      <div class="arb-grid">
+        <div class="arb-card">
+          <i class="fas fa-award"></i>
+          <h3>القرارات النهائية</h3>
+          <p>قرارات التحكيم الملزمة لإجراءات التنفيذ</p>
+        </div>
+        <div class="arb-card">
+          <i class="fas fa-file-contract"></i>
+          <h3>القرارات المؤقتة</h3>
+          <p>الأحكام الأولية وقرارات الإجراءات التحفظية المؤقتة</p>
+        </div>
+        <div class="arb-card">
+          <i class="fas fa-file-alt"></i>
+          <h3>الأوامر الإجرائية</h3>
+          <p>توجيهات الهيئة وأوامر إدارة القضايا</p>
+        </div>
+        <div class="arb-card">
+          <i class="fas fa-handshake"></i>
+          <h3>قرارات التسوية</h3>
+          <p>قرارات الموافقة التي توثق التسويات المتفاوض عليها</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <h2>فهم ترجمة قرارات التحكيم</h2>
+
+      <div class="content-prose">
+        <h3>لماذا تتطلب ترجمة قرارات التحكيم خبرة</h3>
+        <p>قرارات التحكيم تختلف جوهرياً عن أحكام المحاكم. تنشأ من عمليات تسوية نزاعات خاصة تحكمها قواعد مؤسسية واتفاقيات الأطراف واتفاقيات دولية. يجب أن تعكس الترجمة هذا السياق القانوني الفريد.</p>
+
+        <p>المحاكم الإماراتية تُنفذ قرارات التحكيم بموجب قانون التحكيم الإماراتي (القانون الاتحادي رقم 6 لسنة 2018) واتفاقية نيويورك للاعتراف وتنفيذ قرارات التحكيم الأجنبية. كلا الإطارين يفرضان متطلبات محددة للوثائق المترجمة.</p>
+
+        <h3>مشهد التحكيم في الإمارات</h3>
+        <p><strong>DIAC (مركز دبي للتحكيم الدولي)</strong> هو مؤسسة التحكيم الرئيسية في دبي. يتولى النزاعات التجارية وفق قواعده الإجرائية التي تعكس مبادئ القانون المدني الإماراتي مع دمج أفضل الممارسات الدولية. إجراءات DIAC قد تُجرى بالعربية أو الإنجليزية.</p>
+
+        <p><strong>مركز تحكيم DIFC-LCIA</strong> يعمل ضمن مركز دبي المالي العالمي، يطبق مبادئ القانون العام المبنية على قواعد LCIA المُكيفة لسياق دبي. إجراءات DIFC-LCIA تكون بالإنجليزية بشكل رئيسي. القرارات يمكن تنفيذها مباشرة عبر محاكم مركز دبي المالي (بالإنجليزية) أو عبر محاكم دبي (تتطلب ترجمة عربية).</p>
+
+        <p><strong>ICC (غرفة التجارة الدولية)</strong> التحكيمات المقامة في دبي تتبع قواعد ICC المُدارة من باريس. قرارات ICC تخضع لعملية "فحص" قبل الإصدار لضمان الامتثال الشكلي.</p>
+
+        <h3>أنواع وثائق التحكيم التي نترجمها</h3>
+        <ul class="content-list">
+          <li><strong>القرارات النهائية:</strong> القرار الملزم الذي يحسم جميع المسائل الموضوعية شاملاً تحديد المسؤولية وحساب التعويضات.</li>
+          <li><strong>القرارات الجزئية:</strong> قرارات في مسائل محددة بينما تبقى مسائل أخرى معلقة، مثل أحكام الاختصاص أو النتائج الأولية للمسؤولية.</li>
+          <li><strong>الإجراءات التحفظية المؤقتة:</strong> أوامر للحفاظ على الأدلة أو الحفاظ على الوضع الراهن أو توفير إغاثة مؤقتة انتظاراً للقرار النهائي.</li>
+          <li><strong>الأوامر الإجرائية:</strong> توجيهات الهيئة بشأن الإفصاح وتقديم الوثائق وجداول الجلسات وإدارة القضايا.</li>
+          <li><strong>قرارات الموافقة:</strong> قرارات تُسجل التسويات المتفاوض عليها بين الأطراف مع آليات امتثال وجداول دفع محددة.</li>
+          <li><strong>قرارات التكاليف:</strong> قرارات منفصلة تُخصص تكاليف التحكيم والرسوم القانونية ونفقات الهيئة بين الأطراف.</li>
+        </ul>
+
+        <h3>التنفيذ بموجب اتفاقية نيويورك</h3>
+        <p>صادقت الإمارات على اتفاقية نيويورك عام 2006، مما يُمكّن من تنفيذ قرارات التحكيم الأجنبية من الدول الأعضاء الأخرى - والتي تشمل تقريباً جميع الدول التجارية الكبرى. توفر الاتفاقية إطاراً مُبسطاً للتنفيذ مع أسس محدودة للرفض.</p>
+
+        <p>طلبات التنفيذ بموجب الاتفاقية تتطلب: القرار الأصلي أو نسخة مُصدقة، اتفاقية التحكيم الأصلية أو نسخة مُصدقة، وترجمات مُصدقة لكليهما للعربية إذا كانا بلغة أجنبية.</p>
+
+        <h3>حسابات الفوائد والمبالغ المالية</h3>
+        <p>قرارات التحكيم غالباً تتضمن حسابات مالية معقدة يجب ترجمتها بدقة مطلقة:</p>
+        <ul class="content-list">
+          <li><strong>المبالغ الأصلية:</strong> مبلغ القرار الأساسي يجب ذكره بدقة مع التسميات الصحيحة للعملة.</li>
+          <li><strong>معدلات الفائدة:</strong> سواء بسيطة أو مركبة، يجب ذكر المعدل بدقة.</li>
+          <li><strong>فترات الفائدة:</strong> تاريخ البداية والنهاية وأساس الحساب يجب أن تكون واضحة.</li>
+          <li><strong>تحويلات العملات:</strong> إذا كان القرار يشير لعملات متعددة أو أسعار صرف.</li>
+          <li><strong>توزيع التكاليف:</strong> كيفية توزيع رسوم الهيئة والتكاليف الإدارية والرسوم القانونية بين الأطراف.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <h2>مؤسسات التحكيم</h2>
+
+      <div class="inst-grid">
+        <div class="inst-item">
+          <h3>DIAC</h3>
+          <p>مركز دبي للتحكيم الدولي</p>
+          <span class="inst-note">مصطلحات إجرائية إماراتية، إجراءات عربية/إنجليزية</span>
+        </div>
+        <div class="inst-item">
+          <h3>ICC</h3>
+          <p>غرفة التجارة الدولية</p>
+          <span class="inst-note">مؤسسة عالمية، إدارة باريس، عملية الفحص</span>
+        </div>
+        <div class="inst-item">
+          <h3>LCIA</h3>
+          <p>محكمة لندن للتحكيم الدولي</p>
+          <span class="inst-note">إجراءات القانون العام، مصطلحات إنجليزية</span>
+        </div>
+        <div class="inst-item">
+          <h3>DIFC-LCIA</h3>
+          <p>مركز تحكيم DIFC-LCIA</p>
+          <span class="inst-note">منطقة دبي الحرة، القانون العام، إجراءات إنجليزية</span>
+        </div>
+        <div class="inst-item">
+          <h3>ADCCAC</h3>
+          <p>مركز أبوظبي للتوفيق والتحكيم التجاري</p>
+          <span class="inst-note">مؤسسة أبوظبي، أساس القانون المدني الإماراتي</span>
+        </div>
+        <div class="inst-item">
+          <h3>SIAC</h3>
+          <p>مركز سنغافورة للتحكيم الدولي</p>
+          <span class="inst-note">مركز آسيوي، مكان محايد للنزاعات الإقليمية</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-grid">
+        {faqs.map(faq => (
+          <div class="faq-item">
+            <h3>{faq.q}</h3>
+            <p>{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-primary" dir="rtl">
+    <div class="container cta-section">
+      <h2>تحتاجون ترجمة قرار تحكيم؟</h2>
+      <p>أرسلوا وثائق التحكيم عبر واتساب للتعامل السري والترجمة المعتمدة.</p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/971508620217?text=أحتاج%20ترجمة%20قرار%20تحكيم" class="btn btn-accent">
+          <i class="fab fa-whatsapp"></i> أرسل القرار
+        </a>
+        <a href="/ar/legal/litigation/" class="btn btn-outline">
+          <i class="fas fa-arrow-right"></i> جميع وثائق المحاكم
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayoutArabic>
+
+<style>
+  .breadcrumb-nav { background: var(--primary-color); padding: 1rem 0; }
+  .breadcrumb-list { display: flex; list-style: none; margin: 0; padding: 0; gap: 0.5rem; font-size: 0.875rem; flex-direction: row-reverse; }
+  .breadcrumb-list li:not(:first-child)::before { content: '/'; margin-left: 0.5rem; color: rgba(255,255,255,0.5); }
+  .breadcrumb-list a { color: rgba(255,255,255,0.8); text-decoration: none; }
+  .breadcrumb-list span { color: white; }
+
+  .page-hero { background: var(--primary-color); color: white; padding: 4rem 0; }
+  .hero-badge { display: inline-block; background: var(--accent-color); padding: 0.5rem 1rem; border-radius: 2rem; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; }
+  .page-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
+  .hero-lead { font-size: 1.125rem; line-height: 1.8; max-width: 800px; opacity: 0.95; margin-bottom: 2rem; }
+
+  .section { padding: 4rem 0; }
+  .section h2 { font-size: 2rem; margin-bottom: 2rem; color: var(--primary-color); }
+
+  .arb-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+  .arb-card { text-align: center; padding: 2rem; background: var(--bg-light); border-radius: 12px; }
+  .arb-card i { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem; }
+  .arb-card h3 { font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--primary-color); }
+  .arb-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+  .inst-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .inst-item { background: var(--bg-light); padding: 2rem; border-radius: 12px; text-align: center; }
+  .inst-item h3 { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--accent-color); font-weight: 700; }
+  .inst-item p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .inst-note { font-size: 0.75rem; color: var(--text-muted); opacity: 0.8; font-style: italic; }
+
+  .content-prose { max-width: 900px; }
+  .content-prose h3 { font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--primary-color); }
+  .content-prose h3:first-child { margin-top: 0; }
+  .content-prose p { line-height: 1.8; margin-bottom: 1.25rem; }
+  .content-list { margin: 1rem 0 1.5rem; padding-right: 1.25rem; }
+  .content-list li { margin-bottom: 0.75rem; line-height: 1.7; }
+
+  .faq-grid { display: grid; gap: 1.5rem; }
+  .faq-item { background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+  .faq-item h3 { font-size: 1.1rem; margin-bottom: 1rem; color: var(--primary-color); }
+  .faq-item p { line-height: 1.7; color: var(--text-muted); margin: 0; }
+
+  .bg-primary { background: var(--primary-color); }
+  .bg-primary h2, .bg-primary p { color: #fff; }
+  .cta-section { text-align: center; max-width: 700px; margin: 0 auto; }
+  .cta-section p { opacity: 0.9; margin-bottom: 2rem; font-size: 1.1rem; }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; text-decoration: none; }
+  .btn--primary { background: var(--accent-color); color: #fff; }
+  .btn-accent { background: var(--accent-color); color: #fff; }
+  .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.5); }
+
+  @media (max-width: 992px) {
+    .arb-grid { grid-template-columns: repeat(2, 1fr); }
+    .inst-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .arb-grid, .inst-grid { grid-template-columns: 1fr; }
+    .page-hero { padding: 3rem 0; }
+  }
+</style>
