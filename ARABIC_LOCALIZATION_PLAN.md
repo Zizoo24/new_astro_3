@@ -399,7 +399,7 @@ function getAlternateUrl(currentPath, targetLang) {
 
 ### Current Status (Updated January 31, 2026)
 
-**Existing Arabic Pages (20 pages):**
+**Existing Arabic Pages (23 pages):**
 
 | Page | URL | Status |
 |------|-----|--------|
@@ -419,8 +419,11 @@ function getAlternateUrl(currentPath, targetLang) {
 | Death Certificate | `/ar/personal/vital-records/death/` | ✅ Complete (Jan 31) |
 | Academic Hub | `/ar/personal/academic/` | ✅ Complete |
 | NYUAD | `/ar/personal/academic/nyuad/` | ✅ Complete |
+| Degree Certificate | `/ar/personal/academic/degree/` | ✅ Complete (Jan 31) |
+| Immigration - PCC | `/ar/personal/immigration/pcc/` | ✅ Complete (Jan 31) |
 | Attestation Hub | `/ar/services/attestation/` | ✅ Complete |
 | India Attestation | `/ar/services/attestation/india/` | ✅ Complete (Jan 31) |
+| UK Attestation | `/ar/services/attestation/uk/` | ✅ Complete (Jan 31) |
 | Abu Dhabi | `/ar/locations/abu-dhabi/` | ✅ Complete |
 | Dubai | `/ar/locations/dubai/` | ✅ Complete |
 
@@ -461,16 +464,16 @@ function getAlternateUrl(currentPath, targetLang) {
 - [x] Divorce certificate (`/ar/personal/vital-records/divorce/`) ✅ Jan 31
 - [x] Death certificate (`/ar/personal/vital-records/death/`) ✅ Jan 31
 - [ ] Immigration hub (`/ar/personal/immigration/`)
-- [ ] PCC translation (`/ar/personal/immigration/pcc/`)
+- [x] PCC translation (`/ar/personal/immigration/pcc/`) ✅ Jan 31
 - [ ] Bank statements (`/ar/personal/immigration/bank/`)
 - [ ] Driving license (`/ar/personal/immigration/license/`)
-- [ ] Degree certificate (`/ar/personal/academic/degree/`)
+- [x] Degree certificate (`/ar/personal/academic/degree/`) ✅ Jan 31
 - [ ] Transcripts (`/ar/personal/academic/transcripts/`)
 
 ### Week 5 Deliverables - IN PROGRESS
 - [x] Attestation hub (`/ar/services/attestation/`)
 - [x] India attestation (`/ar/services/attestation/india/`) ✅ Jan 31
-- [ ] UK attestation (`/ar/services/attestation/uk/`)
+- [x] UK attestation (`/ar/services/attestation/uk/`) ✅ Jan 31
 - [ ] US attestation (`/ar/services/attestation/us/`)
 - [ ] Golden Visa (`/ar/services/golden-visa-translation/`)
 - [ ] Specialized hub (`/ar/specialized-translation/`)
@@ -535,4 +538,4 @@ Based on SEO value and user demand:
 ---
 
 *Document maintained by: Translation Team*  
-*Last updated: January 30, 2026*
+*Last updated: January 31, 2026*
