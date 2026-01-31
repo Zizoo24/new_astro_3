@@ -1,0 +1,758 @@
+---
+/**
+ * Arabic Abu Dhabi Location Page
+ * URL: /ar/locations/abu-dhabi/
+ * Target Keywords: ترجمة قانونية أبوظبي, مكتب ترجمة أبوظبي, ترجمة معتمدة أبوظبي
+ * PRIMARY SEO TARGET - Abu Dhabi first strategy
+ */
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const pageTitle = 'ترجمة قانونية معتمدة في أبوظبي | مكتب ترجمة أبوظبي | OnlineTranslation.ae';
+const metaDescription = 'مكتب ترجمة قانونية معتمدة في أبوظبي. ترجمة معتمدة من وزارة العدل لدائرة القضاء وسوق أبوظبي العالمي. تسليم في نفس اليوم. واتساب: 971508620217+';
+
+const areas = [
+  { name: 'جزيرة أبوظبي', desc: 'المكاتب الحكومية والسفارات ومقرات الشركات' },
+  { name: 'جزيرة الريم', desc: 'الأبراج السكنية ومراكز الأعمال' },
+  { name: 'جزيرة ياس', desc: 'السياحة والترفيه والوثائق السكنية' },
+  { name: 'جزيرة السعديات', desc: 'الحي الثقافي والخدمات السكنية' },
+  { name: 'مدينة خليفة', desc: 'المجمعات السكنية ومجمعات الأعمال' },
+  { name: 'مصفح', desc: 'المنطقة الصناعية ووثائق العمال' },
+  { name: 'العين', desc: 'خدمات المنطقة الشرقية والمدينة الجامعية' }
+];
+
+const authorities = [
+  { name: 'دائرة القضاء', icon: 'fas fa-gavel', desc: 'وثائق المحاكم والإجراءات القانونية' },
+  { name: 'الهوية والجنسية', icon: 'fas fa-passport', desc: 'التأشيرات والإقامة' },
+  { name: 'سوق أبوظبي العالمي', icon: 'fas fa-landmark', desc: 'المركز المالي - القانون العام' },
+  { name: 'التنمية الاقتصادية', icon: 'fas fa-briefcase', desc: 'تراخيص الأعمال والتسجيل التجاري' },
+  { name: 'دائرة الصحة', icon: 'fas fa-hospital', desc: 'ترخيص المهنيين الصحيين' },
+  { name: 'تم', icon: 'fas fa-building', desc: 'منصة الخدمات الحكومية المتكاملة' },
+  { name: 'التعليم والمعرفة', icon: 'fas fa-graduation-cap', desc: 'التسجيل المدرسي والشهادات' },
+  { name: 'بلدية أبوظبي', icon: 'fas fa-city', desc: 'الخدمات البلدية وشؤون العقارات' }
+];
+
+const services = [
+  {
+    title: 'الترجمة القانونية',
+    url: '/ar/legal-translation-dubai/',
+    icon: 'fas fa-balance-scale',
+    desc: 'وثائق المحاكم والعقود والأحكام لدائرة القضاء وسوق أبوظبي العالمي.'
+  },
+  {
+    title: 'الوثائق الشخصية',
+    url: '/ar/personal-documents/',
+    icon: 'fas fa-user',
+    desc: 'شهادات الميلاد والزواج والشهادات الأكاديمية للتأشيرات والهجرة.'
+  },
+  {
+    title: 'وثائق الشركات',
+    url: '/ar/legal-translation-dubai/',
+    icon: 'fas fa-building',
+    desc: 'عقود التأسيس والرخص التجارية وقرارات مجلس الإدارة.'
+  },
+  {
+    title: 'الشهادات الطبية',
+    url: '/ar/services/',
+    icon: 'fas fa-user-md',
+    desc: 'وثائق المهنيين الصحيين لترخيص دائرة الصحة.'
+  },
+  {
+    title: 'خدمات التصديق',
+    url: '/ar/services/attestation/',
+    icon: 'fas fa-stamp',
+    desc: 'سلسلة التصديق الكاملة لوزارة الخارجية والسفارات.'
+  },
+  {
+    title: 'الفيزا الذهبية',
+    url: '/ar/services/golden-visa-translation/',
+    icon: 'fas fa-passport',
+    desc: 'حزمة وثائق كاملة لطلبات الفيزا الذهبية.'
+  }
+];
+
+const faqs = [
+  {
+    question: 'كم تكلفة الترجمة القانونية في أبوظبي؟',
+    answer: 'تبدأ الترجمة القانونية في أبوظبي من 150 درهم للترجمة المعتمدة من وزارة العدل. وثائق المحاكم والعقود والملفات التجارية تُسعر حسب الصفحة. نقدم تسليم في نفس اليوم في جميع أنحاء جزيرة أبوظبي والريم وياس والعين.'
+  },
+  {
+    question: 'أين يمكنني الحصول على ترجمة قانونية في أبوظبي؟',
+    answer: 'OnlineTranslation.ae يقدم ترجمة قانونية معتمدة من وزارة العدل في أي مكان في أبوظبي. أرسل الوثائق عبر واتساب (971508620217+) واستلم الترجمات المعتمدة دون زيارة مكتب. نوصل إلى جزيرة أبوظبي وسوق أبوظبي العالمي ومصفح ومدينة خليفة وجميع المناطق بما في ذلك العين.'
+  },
+  {
+    question: 'هل ترجمتكم مقبولة في الجهات الحكومية في أبوظبي؟',
+    answer: 'نعم. جميع ترجماتنا معتمدة من وزارة العدل. مقبولة في دائرة القضاء أبوظبي والهوية والجنسية وسوق أبوظبي العالمي ودائرة التنمية الاقتصادية ومنصة تم ودائرة الصحة. بلدية أبوظبي وجميع الجهات الحكومية تقبلها.'
+  },
+  {
+    question: 'هل يمكنكم ترجمة وثائق لشركات سوق أبوظبي العالمي؟',
+    answer: 'نعم. نخدم الشركات في سوق أبوظبي العالمي بترجمات لوثائق التسجيل والملفات التجارية والتقديمات التنظيمية. سوق أبوظبي العالمي يعمل بالقانون العام مع الإنجليزية كلغة رئيسية، لكن قد تُحتاج الترجمات العربية للتعامل مع سلطات أبوظبي البرية.'
+  },
+  {
+    question: 'ما وقت التسليم لأبوظبي؟',
+    answer: 'الوثائق القياسية ذات الصفحة الواحدة تكتمل خلال 4-6 ساعات. التسليم الرقمي عبر واتساب فوري عند الإكمال. النسخ الورقية بأختام وزارة العدل الأصلية يمكن توصيلها بالبريد السريع إلى أي عنوان في أبوظبي في نفس اليوم للطلبات المكتملة قبل الساعة 2 ظهراً.'
+  },
+  {
+    question: 'هل تترجمون وثائق محاكم أبوظبي؟',
+    answer: 'نعم. نترجم الوثائق لدائرة القضاء أبوظبي بما في ذلك القضايا المدنية والنزاعات التجارية وقضايا الأسرة والإجراءات الجنائية. كما نتعامل مع وثائق محاكم سوق أبوظبي العالمي التي تعمل بالقانون العام.'
+  },
+  {
+    question: 'هل يمكنكم المساعدة في وثائق ترخيص دائرة الصحة؟',
+    answer: 'نعم. نترجم الشهادات الطبية والشهادات المهنية ووثائق الترخيص لترخيص المهنيين الصحيين في دائرة الصحة أبوظبي. يشمل ذلك الشهادات الطبية وشهادات التخصص وشهادات حسن السيرة وخطابات الخبرة.'
+  },
+  {
+    question: 'ما المناطق التي تخدمونها في أبوظبي؟',
+    answer: 'نخدم جميع مناطق أبوظبي. يشمل ذلك جزيرة أبوظبي والريم وياس والسعديات ومدينة خليفة ومصفح ومدينة محمد بن زايد والعين. الاستلام والتوصيل بالبريد السريع متاح لأي عنوان.'
+  },
+  {
+    question: 'هل تترجمون وثائق من العين؟',
+    answer: 'نعم. نخدم العين بنفس الخدمات المتاحة في مدينة أبوظبي. أرسل الوثائق عبر واتساب من أي مكان. الاستلام والتوصيل بالبريد السريع متاح في جميع أنحاء العين بما في ذلك مركز مدينة العين والجيمي والمويجعي والخبيصي والمناطق المحيطة.'
+  },
+  {
+    question: 'ما اللغات التي تترجمونها لعملاء أبوظبي؟',
+    answer: 'نترجم أكثر من 43 لغة لعملاء أبوظبي مع العربية-الإنجليزية كأكثر اللغات شيوعاً. اللغات الأخرى المطلوبة بشكل متكرر تشمل الهندية والأوردية والمالايالامية والتاغالوغ والبنغالية والنيبالية والروسية والفرنسية والألمانية والصينية. جميع الترجمات تحصل على نفس شهادة وزارة العدل المقبولة في سلطات أبوظبي.'
+  }
+];
+---
+
+<BaseLayoutArabic
+  title={pageTitle}
+  description={metaDescription}
+>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>أبوظبي - العاصمة</span>
+        </div>
+
+        <h1>ترجمة قانونية معتمدة في أبوظبي</h1>
+
+        <p class="hero-lead">
+          مكتب ترجمة معتمد من وزارة العدل في أبوظبي. نخدم دائرة القضاء وسوق أبوظبي العالمي
+          وجميع الجهات الحكومية. تسليم في نفس اليوم لجميع مناطق أبوظبي والعين.
+        </p>
+
+        <div class="hero-features">
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>معتمد من وزارة العدل</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-building"></i>
+            <span>مقبول في دائرة القضاء</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-truck"></i>
+            <span>تسليم في نفس اليوم</span>
+          </div>
+        </div>
+
+        <div class="hero-ctas">
+          <a href="https://wa.me/971508620217" class="cta-primary">
+            <i class="fab fa-whatsapp"></i>
+            أرسل وثائقك عبر واتساب
+          </a>
+          <a href="/ar/contact/" class="cta-secondary">
+            اطلب عرض سعر
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Authorities Section -->
+  <section class="authorities-section">
+    <div class="container">
+      <h2>الجهات الحكومية التي نخدمها</h2>
+      <p class="section-intro">
+        ترجماتنا المعتمدة مقبولة في جميع الجهات الحكومية في أبوظبي.
+      </p>
+
+      <div class="authorities-grid">
+        {authorities.map(auth => (
+          <div class="authority-card">
+            <div class="authority-icon">
+              <i class={auth.icon}></i>
+            </div>
+            <h3>{auth.name}</h3>
+            <p>{auth.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services-section">
+    <div class="container">
+      <h2>خدماتنا في أبوظبي</h2>
+
+      <div class="services-grid">
+        {services.map(service => (
+          <a href={service.url} class="service-card">
+            <div class="service-icon">
+              <i class={service.icon}></i>
+            </div>
+            <h3>{service.title}</h3>
+            <p>{service.desc}</p>
+            <span class="card-link">اعرف المزيد <i class="fas fa-arrow-left"></i></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Areas Section -->
+  <section class="areas-section">
+    <div class="container">
+      <h2>المناطق التي نخدمها</h2>
+      <p class="section-intro">
+        تسليم واستلام في جميع مناطق أبوظبي والعين.
+      </p>
+
+      <div class="areas-grid">
+        {areas.map(area => (
+          <div class="area-card">
+            <h3><i class="fas fa-map-marker-alt"></i> {area.name}</h3>
+            <p>{area.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Abu Dhabi Section -->
+  <section class="why-section">
+    <div class="container">
+      <h2>لماذا تختارنا في أبوظبي؟</h2>
+
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <i class="fas fa-shield-alt"></i>
+          <h3>خبرة محلية</h3>
+          <p>نفهم متطلبات دائرة القضاء وسوق أبوظبي العالمي وجميع الجهات الحكومية في أبوظبي.</p>
+        </div>
+        <div class="benefit-card">
+          <i class="fas fa-truck"></i>
+          <h3>تسليم سريع</h3>
+          <p>تسليم في نفس اليوم لجميع مناطق أبوظبي. خدمة البريد السريع متاحة للعين.</p>
+        </div>
+        <div class="benefit-card">
+          <i class="fas fa-language"></i>
+          <h3>43+ لغة</h3>
+          <p>نترجم من وإلى أكثر من 43 لغة. العربية-الإنجليزية الأكثر شيوعاً.</p>
+        </div>
+        <div class="benefit-card">
+          <i class="fas fa-certificate"></i>
+          <h3>ضمان القبول</h3>
+          <p>إذا رُفضت ترجمتنا بسبب خطأنا، نصححها مجاناً ونعيد التوصيل.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <h2>الأسئلة الشائعة - أبوظبي</h2>
+
+      <div class="faq-list">
+        {faqs.map(faq => (
+          <details class="faq-item" name="faq">
+            <summary>
+              <span class="faq-question">{faq.question}</span>
+              <i class="fas fa-chevron-down"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>جاهز للبدء في أبوظبي؟</h2>
+      <p>أرسل وثائقك عبر واتساب واحصل على ترجمة معتمدة مع توصيل في نفس اليوم.</p>
+
+      <div class="cta-buttons">
+        <a href="https://wa.me/971508620217" class="cta-primary">
+          <i class="fab fa-whatsapp"></i>
+          أرسل عبر واتساب
+        </a>
+        <a href="tel:+971508620217" class="cta-secondary">
+          <i class="fas fa-phone"></i>
+          اتصل الآن
+        </a>
+      </div>
+
+      <p class="contact-info">
+        <span class="ltr-content">+971 50 862 0217</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "OnlineTranslation.ae - أبوظبي",
+    "description": "خدمات الترجمة القانونية المعتمدة في أبوظبي",
+    "telephone": "+971508620217",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "أبوظبي",
+      "addressCountry": "AE"
+    },
+    "areaServed": ["أبوظبي", "العين", "جزيرة الريم", "جزيرة ياس"],
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": 24.4539,
+        "longitude": 54.3773
+      },
+      "geoRadius": "100000"
+    }
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  })} />
+</BaseLayoutArabic>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, var(--surface-navy, #0E2B48) 0%, #1a3a5c 100%);
+    color: #ffffff;
+    padding: 4rem 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 22, 84, 0.2);
+    color: var(--accent-coral, #FF1654);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-section h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .hero-lead {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+    max-width: 700px;
+  }
+
+  .hero-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .feature i {
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #25D366;
+    color: #ffffff;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .cta-primary:hover {
+    background: #20bd5a;
+    transform: translateY(-2px);
+  }
+
+  .cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: #ffffff;
+    padding: 1rem 2rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .cta-secondary:hover {
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Sections */
+  section {
+    padding: 4rem 0;
+  }
+
+  section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--surface-navy, #0E2B48);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .section-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-secondary, #64748b);
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+  }
+
+  /* Authorities Grid */
+  .authorities-section {
+    background: var(--bg-secondary, #f8f9fa);
+  }
+
+  .authorities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .authority-card {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .authority-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--surface-navy, #0E2B48), #1a3a5c);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+
+  .authority-icon i {
+    color: #ffffff;
+    font-size: 1.25rem;
+  }
+
+  .authority-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--surface-navy, #0E2B48);
+    margin-bottom: 0.5rem;
+  }
+
+  .authority-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary, #64748b);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Services Grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+    display: block;
+    border: 1px solid var(--border-light, #e2e8f0);
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .service-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--accent-coral, #FF1654), #ff6b6b);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .service-icon i {
+    color: #ffffff;
+    font-size: 1.25rem;
+  }
+
+  .service-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--surface-navy, #0E2B48);
+    margin-bottom: 0.5rem;
+  }
+
+  .service-card p {
+    color: var(--text-secondary, #64748b);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .card-link {
+    color: var(--accent-coral, #FF1654);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  /* Areas Grid */
+  .areas-section {
+    background: var(--bg-secondary, #f8f9fa);
+  }
+
+  .areas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  .area-card {
+    background: #ffffff;
+    padding: 1.25rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-light, #e2e8f0);
+  }
+
+  .area-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--surface-navy, #0E2B48);
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .area-card h3 i {
+    color: var(--accent-coral, #FF1654);
+    font-size: 0.9rem;
+  }
+
+  .area-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary, #64748b);
+    margin: 0;
+  }
+
+  /* Benefits Grid */
+  .why-section {
+    background: #ffffff;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .benefit-card {
+    background: var(--bg-secondary, #f8f9fa);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .benefit-card i {
+    font-size: 2.5rem;
+    color: var(--accent-coral, #FF1654);
+    margin-bottom: 1rem;
+  }
+
+  .benefit-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--surface-navy, #0E2B48);
+    margin-bottom: 0.75rem;
+  }
+
+  .benefit-card p {
+    color: var(--text-secondary, #64748b);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  /* FAQ Section */
+  .faq-section {
+    background: var(--bg-secondary, #f8f9fa);
+  }
+
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: #ffffff;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    border: 1px solid var(--border-light, #e2e8f0);
+  }
+
+  .faq-item summary {
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: var(--surface-navy, #0E2B48);
+    list-style: none;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item summary i {
+    color: var(--accent-coral, #FF1654);
+    transition: transform 0.2s ease;
+  }
+
+  .faq-item[open] summary i {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.25rem;
+    color: var(--text-secondary, #64748b);
+    line-height: 1.7;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, var(--surface-navy, #0E2B48) 0%, #1a3a5c 100%);
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    color: #ffffff;
+  }
+
+  .cta-section > .container > p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-info {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .ltr-content {
+    direction: ltr;
+    unicode-bidi: embed;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .hero-section h1 {
+      font-size: 1.75rem;
+    }
+
+    .hero-features {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .hero-ctas {
+      flex-direction: column;
+    }
+
+    .cta-primary,
+    .cta-secondary {
+      width: 100%;
+      justify-content: center;
+    }
+
+    section {
+      padding: 3rem 0;
+    }
+
+    section h2 {
+      font-size: 1.5rem;
+    }
+  }
+</style>
