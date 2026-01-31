@@ -1,0 +1,1417 @@
+---
+/**
+ * /ar/services/attestation/uk/ - تصديق الوثائق البريطانية (UK Attestation Arabic)
+ *
+ * Target Keywords: تصديق وثائق بريطانية, أبوستيل FCDO, تصديق شهادات بريطانية
+ * Layout: BaseLayoutArabic
+ * Silo: Services > Attestation (Arabic)
+ */
+import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: 'ما هو أبوستيل FCDO؟',
+    answer: 'أبوستيل FCDO (مكتب الشؤون الخارجية والكومنولث والتنمية) هو الشهادة الحكومية البريطانية التي توثق الوثائق للاستخدام الدولي بموجب اتفاقية لاهاي للأبوستيل. الأبوستيل شهادة موحدة تُرفق بوثيقتك تؤكد أنها أصلية. للاستخدام في الإمارات، يتبع الأبوستيل تصديق سفارة الإمارات ثم وزارة الخارجية الإماراتية.'
+  },
+  {
+    question: 'هل تقبل الإمارات الأبوستيل البريطاني مباشرة؟',
+    answer: 'انضمت الإمارات لاتفاقية لاهاي للأبوستيل في 2023، لكن التطبيق يختلف. حالياً، معظم الجهات الإماراتية لا تزال تتطلب تصديق سفارة الإمارات بعد أبوستيل FCDO، ثم تصديق وزارة الخارجية. نتابع المتطلبات المتطورة وننصحك بالإجراء الحالي لنوع وثيقتك والغرض منها.'
+  },
+  {
+    question: 'كم يستغرق تصديق الوثائق البريطانية؟',
+    answer: 'تصديق الوثائق البريطانية يستغرق عادةً 7-10 أيام عمل للسلسلة الكاملة: أبوستيل FCDO (3-5 أيام عادي، نفس اليوم للخدمة السريعة)، سفارة الإمارات لندن (2-3 أيام)، ووزارة الخارجية الإماراتية (1-2 يوم). الخدمة السريعة تقلل المدة إلى 5-7 أيام.'
+  },
+  {
+    question: 'ما الوثائق البريطانية التي تحتاج تصديق للإمارات؟',
+    answer: 'الوثائق الشائعة تشمل: شهادات الجامعة والسجلات الأكاديمية، شهادات الميلاد والزواج، شهادة الشرطة (ACRO)، المؤهلات المهنية، وثائق الشركات، والتوكيلات. أي وثيقة بريطانية مخصصة للاستخدام الرسمي في الإمارات تحتاج عادةً تصديق.'
+  },
+  {
+    question: 'هل يجب أن أكون في بريطانيا للتصديق؟',
+    answer: 'لا. يمكنك إرسال وثائقك البريطانية إلينا أو مباشرة لشريكنا في بريطانيا. ننسق أبوستيل FCDO، تصديق سفارة الإمارات في لندن، ونرتب شحن آمن لدبي لإتمام MOFA. يمكن إدارة العملية بالكامل عن بُعد وأنت في الإمارات.'
+  },
+  {
+    question: 'ما الوثائق التي تحتاج شهادة محامٍ؟',
+    answer: 'النسخ، الوثائق غير الموقعة، وبعض الوثائق الخاصة تحتاج محامٍ بريطاني للتصديق عليها قبل أن يضيف FCDO الأبوستيل. الوثائق الأصلية الموقعة من جهات رسمية (الجامعات، GRO، Companies House) عادةً لا تحتاج هذه الخطوة.'
+  },
+  {
+    question: 'هل الترجمة مطلوبة بعد التصديق؟',
+    answer: 'نعم، لمعظم التقديمات للجهات الإماراتية. الوثائق البريطانية بالإنجليزية، لكن الجهات الإماراتية تتطلب عادةً ترجمة عربية من مترجم معتمد من وزارة العدل. نقدم خدمات تصديق وترجمة مجتمعة لتصل وثيقتك جاهزة للتقديم الفوري.'
+  },
+  {
+    question: 'ماذا عن الوثائق الاسكتلندية أو الأيرلندية الشمالية؟',
+    answer: 'وثائق اسكتلندا وأيرلندا الشمالية تتبع نفس إجراءات أبوستيل FCDO مثل وثائق إنجلترا وويلز. FCDO يتعامل مع الأبوستيل لجميع الولايات البريطانية. بعض الوثائق قد تتطلب شهادة أولية من السلطات الاسكتلندية أو الأيرلندية الشمالية قبل معالجة FCDO.'
+  }
+];
+
+// Attestation chain steps
+const attestationChain = [
+  {
+    step: 1,
+    title: "شهادة المحامي",
+    titleEn: "Solicitor Certification",
+    desc: "للنسخ والوثائق غير الموقعة - ليست مطلوبة دائماً",
+    timeline: "1-2 يوم",
+    optional: true
+  },
+  {
+    step: 2,
+    title: "أبوستيل FCDO",
+    titleEn: "FCDO Apostille",
+    desc: "مكتب الشؤون الخارجية والكومنولث والتنمية - التوثيق الحكومي البريطاني",
+    timeline: "3-5 أيام (نفس اليوم متاح)"
+  },
+  {
+    step: 3,
+    title: "سفارة الإمارات لندن",
+    titleEn: "UAE Embassy London",
+    desc: "تصديق السفارة يؤكد اعتراف الإمارات",
+    timeline: "2-3 أيام"
+  },
+  {
+    step: 4,
+    title: "MOFA الإمارات",
+    titleEn: "UAE MOFA",
+    desc: "التصديق النهائي للقبول الحكومي الإماراتي",
+    timeline: "1-2 يوم"
+  }
+];
+
+// Document categories
+const documentCategories = [
+  {
+    category: "الوثائق التعليمية",
+    icon: "graduation-cap",
+    items: ["شهادات الجامعة", "A-Levels وGCSEs", "ACCA وCIMA وCFA", "الدبلومات والشهادات المهنية"],
+    note: "قد يُطلب تحقق HEDD للتوظيف"
+  },
+  {
+    category: "الوثائق الشخصية",
+    icon: "user",
+    items: ["شهادة الميلاد (GRO)", "شهادة الزواج", "حكم الطلاق النهائي", "شهادة الشرطة (ACRO)"],
+    note: "صلاحية ACRO 6 أشهر من تاريخ الإصدار"
+  },
+  {
+    category: "وثائق الشركات",
+    icon: "building",
+    items: ["شهادة التأسيس", "وثائق Companies House", "قرارات مجلس الإدارة", "التوكيلات"],
+    note: "قرارات مجلس الإدارة تحتاج شهادة محامٍ عادةً"
+  }
+];
+
+// UK regions
+const ukRegions = [
+  { region: "إنجلترا", authority: "FCDO", notes: "إجراء قياسي" },
+  { region: "ويلز", authority: "FCDO", notes: "إجراء قياسي" },
+  { region: "اسكتلندا", authority: "FCDO", notes: "بعض الوثائق قد تحتاج شهادة أولية" },
+  { region: "أيرلندا الشمالية", authority: "FCDO", notes: "إجراء قياسي" },
+  { region: "جزر القنال", authority: "سلطة محلية", notes: "إجراءات مختلفة عن البر الرئيسي" },
+  { region: "جزيرة مان", authority: "General Registry", notes: "إجراءات مختلفة عن البر الرئيسي" }
+];
+
+const pageTitle = 'تصديق الوثائق البريطانية في الإمارات | أبوستيل FCDO';
+const pageDescription = 'تصديق الوثائق البريطانية للإمارات. أبوستيل FCDO، سفارة الإمارات لندن، وزارة الخارجية. الشهادات والوثائق التعليمية والشركات. 7-10 أيام.';
+---
+
+<BaseLayoutArabic
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL="https://onlinetranslation.ae/ar/services/attestation/uk/"
+>
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  })} />
+
+  <!-- Service Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "UK Document Attestation Service",
+    "alternateName": "تصديق الوثائق البريطانية",
+    "description": pageDescription,
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "OnlineTranslation.ae",
+      "@id": "https://onlinetranslation.ae/#organization"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "United Arab Emirates"
+    },
+    "serviceType": "Document Attestation"
+  })} />
+
+  <main class="service-page rtl-page" dir="rtl">
+
+    <!-- Hero Section -->
+    <section class="hero-section bg-navy">
+      <div class="container">
+        <nav class="breadcrumb-nav" aria-label="مسار التنقل">
+          <ol class="breadcrumb">
+            <li><a href="/ar/">الرئيسية</a></li>
+            <li><a href="/ar/services/attestation/">تصديق الوثائق</a></li>
+            <li aria-current="page">بريطانيا</li>
+          </ol>
+        </nav>
+
+        <div class="hero-content">
+          <div class="service-badge">
+            <i class="fas fa-certificate"></i>
+            <span>خدمة معتمدة</span>
+          </div>
+
+          <h1>تصديق الوثائق البريطانية في دبي</h1>
+
+          <p class="hero-intro">
+            سلسلة التصديق الكاملة للوثائق البريطانية. أبوستيل FCDO، سفارة الإمارات في لندن،
+            ووزارة الخارجية الإماراتية. الشهادات التعليمية، الوثائق الشخصية، ووثائق الشركات
+            تُعالج من البداية للنهاية مع تتبع في كل خطوة.
+          </p>
+
+          <ul class="hero-features">
+            <li><i class="fas fa-clock"></i> 7-10 أيام للسلسلة الكاملة</li>
+            <li><i class="fas fa-globe"></i> تنسيق عن بُعد—لا حاجة للسفر</li>
+            <li><i class="fas fa-stamp"></i> أبوستيل FCDO + سفارة الإمارات</li>
+            <li><i class="fas fa-file-alt"></i> خدمة شاملة مع الترجمة</li>
+          </ul>
+
+          <div class="hero-cta">
+            <a href="https://wa.me/971508620217" class="btn btn-coral btn-lg">
+              <i class="fab fa-whatsapp"></i>
+              استشارة مجانية عبر واتساب
+            </a>
+            <a href="tel:+971508620217" class="btn btn-outline-light btn-lg">
+              <i class="fas fa-phone"></i>
+              <span dir="ltr">+971 50 862 0217</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Important Note about Hague -->
+    <section class="hague-note-section">
+      <div class="container">
+        <div class="hague-note">
+          <div class="note-icon">
+            <i class="fas fa-info-circle"></i>
+          </div>
+          <div class="note-content">
+            <h3>ملاحظة مهمة عن اتفاقية لاهاي</h3>
+            <p>
+              بريطانيا عضو في اتفاقية لاهاي للأبوستيل منذ 1965.
+              لكن بما أن الإمارات ليست عضواً كاملاً في الاتفاقية،
+              الوثائق البريطانية لا تزال تحتاج تصديق سفارة الإمارات ووزارة الخارجية—
+              <strong>الأبوستيل وحده لا يكفي</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Attestation Chain Visual -->
+    <section class="chain-section bg-light">
+      <div class="container">
+        <h2 class="section-title">سلسلة تصديق الوثائق البريطانية</h2>
+
+        <div class="attestation-chain">
+          {attestationChain.map((step, index) => (
+            <div class={`chain-step ${step.optional ? 'optional' : ''}`}>
+              {step.optional && <span class="optional-badge">اختياري</span>}
+              <div class="step-number">{step.step}</div>
+              <div class="step-content">
+                <h3>{step.title}</h3>
+                <span class="step-en">{step.titleEn}</span>
+                <p>{step.desc}</p>
+                <span class="step-timeline">
+                  <i class="fas fa-clock"></i> {step.timeline}
+                </span>
+              </div>
+              {index < attestationChain.length - 1 && (
+                <div class="chain-arrow">
+                  <i class="fas fa-arrow-left"></i>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        <div class="chain-total">
+          <div class="total-item">
+            <span class="total-label">الخدمة العادية:</span>
+            <span class="total-value">7-10 أيام عمل</span>
+          </div>
+          <div class="total-item">
+            <span class="total-label">الخدمة السريعة:</span>
+            <span class="total-value">5-7 أيام عمل</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Document Categories -->
+    <section class="documents-section">
+      <div class="container">
+        <h2 class="section-title">الوثائق التي نصدقها</h2>
+
+        <div class="document-grid">
+          {documentCategories.map(cat => (
+            <div class="document-card">
+              <div class="card-icon">
+                <i class={`fas fa-${cat.icon}`}></i>
+              </div>
+              <h3>{cat.category}</h3>
+              <ul class="document-list">
+                {cat.items.map(item => (
+                  <li><i class="fas fa-check"></i> {item}</li>
+                ))}
+              </ul>
+              <div class="document-note">
+                <i class="fas fa-info-circle"></i>
+                <span>{cat.note}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- UK Regions -->
+    <section class="regions-section bg-light">
+      <div class="container">
+        <h2 class="section-title">الوثائق من جميع مناطق المملكة المتحدة</h2>
+        <p class="section-subtitle">
+          نتعامل مع وثائق من إنجلترا، ويلز، اسكتلندا، أيرلندا الشمالية، وأقاليم التاج
+        </p>
+
+        <div class="regions-grid">
+          {ukRegions.map(region => (
+            <div class="region-card">
+              <h3>{region.region}</h3>
+              <div class="region-details">
+                <div class="detail-row">
+                  <span class="label">جهة الأبوستيل:</span>
+                  <span class="value">{region.authority}</span>
+                </div>
+                <div class="detail-row">
+                  <span class="label">ملاحظات:</span>
+                  <span class="value">{region.notes}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+      <div class="container">
+        <h2 class="section-title">كيف نعمل</h2>
+
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="step-icon">
+              <span>1</span>
+            </div>
+            <h3>أرسل وثيقتك</h3>
+            <p>
+              صور واضحة عبر واتساب. نؤكد إذا كانت تحتاج شهادة محامٍ قبل الأبوستيل
+              وننصحك بسلسلة التصديق الكاملة.
+            </p>
+          </div>
+
+          <div class="process-step">
+            <div class="step-icon">
+              <span>2</span>
+            </div>
+            <h3>شهادة المحامي (إذا لزم)</h3>
+            <p>
+              إذا كانت مطلوبة، محامٍ بريطاني يصادق على الوثيقة كنسخة طبق الأصل
+              أو يشهد على التواقيع. ليس كل الوثائق تحتاج هذه الخطوة.
+            </p>
+          </div>
+
+          <div class="process-step">
+            <div class="step-icon">
+              <span>3</span>
+            </div>
+            <h3>أبوستيل FCDO</h3>
+            <p>
+              مكتب الشؤون الخارجية والكومنولث والتنمية يضع الأبوستيل.
+              هذا هو التوثيق الحكومي البريطاني الرسمي بموجب اتفاقية لاهاي.
+            </p>
+          </div>
+
+          <div class="process-step">
+            <div class="step-icon">
+              <span>4</span>
+            </div>
+            <h3>سفارة الإمارات وMOFA</h3>
+            <p>
+              سفارة الإمارات في لندن تصادق على الوثيقة، ثم وزارة الخارجية
+              في الإمارات تُكمل السلسلة. وثيقتك جاهزة للاستخدام الرسمي.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACRO Section -->
+    <section class="acro-section bg-navy">
+      <div class="container">
+        <div class="acro-grid">
+          <div class="acro-content">
+            <h2>شهادة الشرطة البريطانية (ACRO)</h2>
+            <p>
+              مكتب السجلات الجنائية (ACRO) يُصدر شهادات الشرطة للمقيمين والمقيمين السابقين
+              في بريطانيا. الشهادة مطلوبة لتأشيرات العمل والتوظيف في الإمارات.
+            </p>
+
+            <ul class="acro-list">
+              <li>
+                <i class="fas fa-clock"></i>
+                <span>معالجة ACRO: 10-15 يوم عمل</span>
+              </li>
+              <li>
+                <i class="fas fa-calendar-alt"></i>
+                <span>صلاحية الشهادة: 6 أشهر من تاريخ الإصدار</span>
+              </li>
+              <li>
+                <i class="fas fa-route"></i>
+                <span>بعد الإصدار: أبوستيل FCDO ← سفارة الإمارات ← MOFA</span>
+              </li>
+            </ul>
+
+            <div class="acro-warning">
+              <i class="fas fa-exclamation-triangle"></i>
+              <span>خطط توقيت التصديق بعناية—الشهادة تنتهي صلاحيتها بعد 6 أشهر</span>
+            </div>
+          </div>
+
+          <div class="acro-highlight">
+            <div class="highlight-box">
+              <h3>نساعدك في</h3>
+              <ul>
+                <li><i class="fas fa-check"></i> توجيهات طلب ACRO</li>
+                <li><i class="fas fa-check"></i> تنسيق أبوستيل FCDO</li>
+                <li><i class="fas fa-check"></i> تصديق سفارة الإمارات</li>
+                <li><i class="fas fa-check"></i> ترجمة معتمدة من وزارة العدل</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section bg-light">
+      <div class="container">
+        <h2 class="section-title">خيارات الخدمة</h2>
+
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>عادي</h3>
+            </div>
+            <div class="pricing-body">
+              <div class="timeline">7-10 أيام عمل</div>
+              <ul class="features">
+                <li><i class="fas fa-check"></i> أبوستيل FCDO عادي</li>
+                <li><i class="fas fa-check"></i> سفارة الإمارات لندن</li>
+                <li><i class="fas fa-check"></i> MOFA الإمارات</li>
+                <li><i class="fas fa-check"></i> تتبع في كل مرحلة</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pricing-card featured">
+            <div class="pricing-badge">الأسرع</div>
+            <div class="pricing-header">
+              <h3>سريع</h3>
+            </div>
+            <div class="pricing-body">
+              <div class="timeline">5-7 أيام عمل</div>
+              <ul class="features">
+                <li><i class="fas fa-check"></i> أبوستيل FCDO نفس اليوم</li>
+                <li><i class="fas fa-check"></i> معالجة سفارة مستعجلة</li>
+                <li><i class="fas fa-check"></i> MOFA بأولوية</li>
+                <li><i class="fas fa-check"></i> منسق مخصص</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>مع الترجمة</h3>
+            </div>
+            <div class="pricing-body">
+              <div class="timeline">حزمة كاملة</div>
+              <ul class="features">
+                <li><i class="fas fa-check"></i> التصديق الكامل</li>
+                <li><i class="fas fa-check"></i> ترجمة معتمدة من وزارة العدل</li>
+                <li><i class="fas fa-check"></i> جاهز للتقديم الفوري</li>
+                <li><i class="fas fa-check"></i> سعر مجمع مخفض</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="pricing-note">
+          <i class="fas fa-info-circle"></i>
+          <p>
+            الأسعار تختلف حسب نوع الوثيقة ومستوى الخدمة. أرسل وثيقتك عبر واتساب
+            للحصول على عرض سعر دقيق يشمل جميع الرسوم.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="container">
+        <h2 class="section-title">الأسئلة الشائعة</h2>
+
+        <div class="faq-grid">
+          {faqs.map(faq => (
+            <details class="faq-item" name="faq-group">
+              <summary>
+                <span class="faq-question">{faq.question}</span>
+                <i class="fas fa-chevron-down"></i>
+              </summary>
+              <div class="faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Services -->
+    <section class="related-section bg-light">
+      <div class="container">
+        <h2 class="section-title">خدمات ذات صلة</h2>
+
+        <div class="related-grid">
+          <a href="/ar/services/attestation/india/" class="related-card">
+            <i class="fas fa-globe-asia"></i>
+            <h3>تصديق الوثائق الهندية</h3>
+            <p>HRD + MEA + سفارة الإمارات</p>
+          </a>
+
+          <a href="/ar/services/attestation/" class="related-card">
+            <i class="fas fa-certificate"></i>
+            <h3>جميع خدمات التصديق</h3>
+            <p>جميع الدول والوثائق</p>
+          </a>
+
+          <a href="/ar/personal/academic/degree/" class="related-card">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>ترجمة الشهادات الجامعية</h3>
+            <p>ترجمة معتمدة من وزارة العدل</p>
+          </a>
+
+          <a href="/ar/personal/immigration/pcc/" class="related-card">
+            <i class="fas fa-shield-alt"></i>
+            <h3>ترجمة شهادة الشرطة</h3>
+            <p>للتأشيرات والتوظيف</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-section bg-navy">
+      <div class="container">
+        <div class="cta-content">
+          <h2>هل لديك وثيقة بريطانية تحتاج تصديق؟</h2>
+          <p>
+            أرسل صورة الوثيقة عبر واتساب. نُخبرك بالضبط ما تحتاجه،
+            المدة المتوقعة، والتكلفة الشاملة.
+          </p>
+
+          <div class="cta-buttons">
+            <a href="https://wa.me/971508620217?text=أريد%20تصديق%20وثيقة%20بريطانية" class="btn btn-coral btn-lg">
+              <i class="fab fa-whatsapp"></i>
+              أرسل وثيقتك الآن
+            </a>
+            <a href="tel:+971508620217" class="btn btn-outline-light btn-lg">
+              <i class="fas fa-phone"></i>
+              اتصل بنا
+            </a>
+          </div>
+
+          <div class="cta-trust">
+            <div class="trust-item">
+              <i class="fas fa-globe-europe"></i>
+              <span>شريك في بريطانيا</span>
+            </div>
+            <div class="trust-item">
+              <i class="fas fa-building"></i>
+              <span>مكتب في دبي</span>
+            </div>
+            <div class="trust-item">
+              <i class="fas fa-clock"></i>
+              <span>7-10 أيام عمل</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <style>
+    /* Page-specific styles */
+    .rtl-page {
+      direction: rtl;
+      text-align: right;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 3rem 0 4rem;
+      color: var(--text-on-dark);
+    }
+
+    .breadcrumb-nav {
+      margin-bottom: 2rem;
+    }
+
+    .breadcrumb {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    .breadcrumb li:not(:last-child)::after {
+      content: '←';
+      margin-right: 0.5rem;
+      opacity: 0.6;
+    }
+
+    .breadcrumb a {
+      color: var(--text-on-dark-muted);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--text-on-dark);
+    }
+
+    .service-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-section h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+
+    .hero-intro {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      max-width: 700px;
+      opacity: 0.95;
+    }
+
+    .hero-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .hero-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-features i {
+      color: var(--accent-coral);
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* Section Styles */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      line-height: 1.6;
+    }
+
+    /* Hague Note */
+    .hague-note-section {
+      padding: 2rem 0;
+    }
+
+    .hague-note {
+      display: flex;
+      gap: 1.5rem;
+      background: #fff5f5;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      border-right: 4px solid var(--accent-coral);
+    }
+
+    .note-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--accent-coral);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .note-content h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: #c92a2a;
+    }
+
+    .note-content p {
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* Attestation Chain */
+    .chain-section {
+      padding: 4rem 0;
+    }
+
+    .attestation-chain {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .chain-step {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .chain-step.optional {
+      opacity: 0.8;
+    }
+
+    .optional-badge {
+      position: absolute;
+      top: -0.75rem;
+      right: 0;
+      background: var(--text-muted);
+      color: white;
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.25rem;
+      font-size: 0.7rem;
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      background: var(--accent-coral);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .step-content {
+      background: white;
+      padding: 1rem 1.25rem;
+      border-radius: 0.5rem;
+      min-width: 160px;
+      border: 1px solid var(--border-light);
+    }
+
+    .step-content h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin: 0 0 0.25rem;
+    }
+
+    .step-en {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: block;
+      direction: ltr;
+      text-align: right;
+    }
+
+    .step-content p {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin: 0.5rem 0;
+    }
+
+    .step-timeline {
+      font-size: 0.75rem;
+      color: var(--accent-coral);
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .chain-arrow {
+      color: var(--text-muted);
+      font-size: 1.25rem;
+    }
+
+    .chain-total {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .total-item {
+      background: var(--accent-coral);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      text-align: center;
+    }
+
+    .total-label {
+      display: block;
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    .total-value {
+      display: block;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    /* Document Categories */
+    .documents-section {
+      padding: 4rem 0;
+    }
+
+    .document-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .document-card {
+      background: var(--surface-light);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      border: 1px solid var(--border-light);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--surface-navy);
+      color: white;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .document-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .document-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1rem;
+    }
+
+    .document-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0;
+      font-size: 0.9rem;
+    }
+
+    .document-list i {
+      color: var(--accent-coral);
+      font-size: 0.75rem;
+    }
+
+    .document-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      padding: 0.75rem;
+      background: rgba(0,0,0,0.03);
+      border-radius: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .document-note i {
+      color: var(--accent-coral);
+      flex-shrink: 0;
+    }
+
+    /* Regions Section */
+    .regions-section {
+      padding: 4rem 0;
+    }
+
+    .regions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+
+    .region-card {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      border: 1px solid var(--border-light);
+      text-align: center;
+    }
+
+    .region-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .region-details {
+      font-size: 0.85rem;
+    }
+
+    .detail-row {
+      padding: 0.35rem 0;
+    }
+
+    .detail-row .label {
+      display: block;
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+    }
+
+    /* Process Section */
+    .process-section {
+      padding: 4rem 0;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .step-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--surface-navy);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 auto 1rem;
+    }
+
+    .process-step h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .process-step p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ACRO Section */
+    .acro-section {
+      padding: 4rem 0;
+      color: var(--text-on-dark);
+    }
+
+    .acro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .acro-content h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .acro-content p {
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      opacity: 0.95;
+    }
+
+    .acro-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem;
+    }
+
+    .acro-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+    }
+
+    .acro-list i {
+      color: var(--accent-coral);
+    }
+
+    .acro-warning {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(255,107,107,0.2);
+      padding: 1rem;
+      border-radius: 0.5rem;
+    }
+
+    .acro-warning i {
+      color: #ff6b6b;
+    }
+
+    .acro-highlight {
+      text-align: center;
+    }
+
+    .highlight-box {
+      background: rgba(255,255,255,0.1);
+      padding: 2rem;
+      border-radius: 0.75rem;
+    }
+
+    .highlight-box h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .highlight-box ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: right;
+    }
+
+    .highlight-box ul li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0;
+    }
+
+    .highlight-box ul li i {
+      color: var(--accent-coral);
+    }
+
+    /* Pricing Section */
+    .pricing-section {
+      padding: 4rem 0;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .pricing-card {
+      background: white;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+      position: relative;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--accent-coral);
+      box-shadow: 0 8px 30px rgba(255,22,84,0.15);
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--accent-coral);
+      color: white;
+      text-align: center;
+      padding: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .pricing-card.featured .pricing-header {
+      margin-top: 2rem;
+    }
+
+    .pricing-header {
+      padding: 1.5rem;
+      text-align: center;
+      background: var(--surface-light);
+    }
+
+    .pricing-header h3 {
+      font-size: 1.25rem;
+      margin: 0;
+    }
+
+    .pricing-body {
+      padding: 1.5rem;
+    }
+
+    .timeline {
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--accent-coral);
+      margin-bottom: 1.5rem;
+    }
+
+    .features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .features li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .features li:last-child {
+      border-bottom: none;
+    }
+
+    .features i {
+      color: var(--accent-coral);
+    }
+
+    .pricing-note {
+      display: flex;
+      gap: 1rem;
+      background: white;
+      padding: 1.25rem;
+      border-radius: 0.5rem;
+      border: 1px solid var(--border-light);
+    }
+
+    .pricing-note i {
+      color: var(--accent-coral);
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .pricing-note p {
+      margin: 0;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      padding: 4rem 0;
+    }
+
+    .faq-grid {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--surface-light);
+      border-radius: 0.5rem;
+      margin-bottom: 0.75rem;
+      border: 1px solid var(--border-light);
+    }
+
+    .faq-item summary {
+      padding: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-question {
+      font-weight: 600;
+      padding-left: 1rem;
+    }
+
+    .faq-item summary i {
+      transition: transform 0.3s ease;
+      color: var(--text-muted);
+    }
+
+    .faq-item[open] summary i {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      padding: 0 1.25rem 1.25rem;
+    }
+
+    .faq-answer p {
+      margin: 0;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+
+    /* Related Section */
+    .related-section {
+      padding: 4rem 0;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .related-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid var(--border-light);
+      transition: all 0.3s ease;
+    }
+
+    .related-card:hover {
+      border-color: var(--accent-coral);
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .related-card i {
+      font-size: 2rem;
+      color: var(--accent-coral);
+      margin-bottom: 1rem;
+    }
+
+    .related-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .related-card p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 4rem 0;
+      color: var(--text-on-dark);
+      text-align: center;
+    }
+
+    .cta-content h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .cta-content > p {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      line-height: 1.8;
+      opacity: 0.95;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .cta-trust {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-lg {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+    }
+
+    .btn-coral {
+      background: var(--accent-coral);
+      color: white;
+    }
+
+    .btn-coral:hover {
+      background: #e0144c;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-light {
+      border: 2px solid rgba(255,255,255,0.5);
+      color: white;
+    }
+
+    .btn-outline-light:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: white;
+    }
+
+    /* Backgrounds */
+    .bg-navy {
+      background: var(--surface-navy);
+    }
+
+    .bg-light {
+      background: var(--surface-light);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-section h1 {
+        font-size: 1.75rem;
+      }
+
+      .hero-intro {
+        font-size: 1rem;
+      }
+
+      .attestation-chain {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .chain-step {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .chain-arrow {
+        transform: rotate(90deg);
+        margin: 0.5rem 0;
+      }
+
+      .acro-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .cta-content h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+
+</BaseLayoutArabic>
