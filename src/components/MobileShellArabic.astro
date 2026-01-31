@@ -5,8 +5,12 @@
  *
  * Uses navigation-ar.ts for Arabic labels and URLs
  */
-import { mainNavigationAr, siteContactAr, uiLabelsAr, footerNavAr } from '../data/navigation-ar';
+import { mainNavigationAr, siteContactAr, uiLabelsAr, footerNavAr, getEnglishUrl } from '../data/navigation-ar';
 import LanguageSwitcher from './LanguageSwitcher.astro';
+
+// Get current path for language switcher
+const currentPath = Astro.url.pathname;
+const englishEquivalent = getEnglishUrl(currentPath);
 
 // Convert mainNavigationAr to mobile hub format
 const mobileNavHubsAr = mainNavigationAr
@@ -40,7 +44,7 @@ const searchQuickLinksAr = [
   <button type="button" id="mobileThemeToggle" class="header-icon" aria-label={uiLabelsAr.toggleTheme}>
     <i class="fas fa-moon"></i>
   </button>
-  <a href="/ar/" class="header-title"><span>.ae</span>OnlineTranslation</a>
+  <a href="/ar/" class="header-title" dir="ltr">OnlineTranslation<span>.ae</span></a>
   <button type="button" class="header-icon" id="sidebarToggle" aria-label={uiLabelsAr.openMenu}>
     <i class="fas fa-bars"></i>
   </button>
@@ -56,7 +60,7 @@ const searchQuickLinksAr = [
     <i class="fab fa-whatsapp"></i>
     <span>واتساب</span>
   </a>
-  <a href="/" class="footer-item footer-lang-switch" aria-label="Switch to English">
+  <a href={englishEquivalent} class="footer-item footer-lang-switch" aria-label="Switch to English">
     <i class="fas fa-globe"></i>
     <span>EN</span>
   </a>
