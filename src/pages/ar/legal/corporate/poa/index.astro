@@ -1,0 +1,1122 @@
+---
+/**
+ * /ar/legal/corporate/poa/ - صفحة ترجمة التوكيل الرسمي (Arabic POA Translation)
+ *
+ * Target Keywords: ترجمة توكيل رسمي, ترجمة وكالة قانونية, ترجمة توكيل دبي
+ * Layout: BaseLayoutArabic
+ * Silo: Legal (Arabic)
+ */
+import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: 'ما الفرق بين التوكيل العام والتوكيل الخاص؟',
+    answer: 'التوكيل العام يمنح صلاحيات واسعة على العقارات والبنوك والشؤون القانونية. التوكيل الخاص يحدد الصلاحيات لمعاملات محددة—مثل بيع عقار واحد فقط. الإمارات تُفضل التوكيلات الخاصة للعقارات لأنها تحدد نطاق الصلاحيات بوضوح وتقلل النزاعات.'
+  },
+  {
+    question: 'هل ترجمة التوكيل هذه مقبولة في دائرة الأراضي والأملاك (DLD)؟',
+    answer: 'نعم. ترجماتنا المعتمدة من وزارة العدل مقبولة في دائرة الأراضي والأملاك بدبي. كل ترجمة تتضمن تفاصيل العقار ونوع المعاملة والأطراف والختم الرسمي مع رمز QR للتحقق.'
+  },
+  {
+    question: 'هل توكيلي الأجنبي يحتاج تصديقاً؟',
+    answer: 'لمعظم الاستخدامات الإماراتية، نعم. التوكيلات الأجنبية تحتاج: توثيق، وزارة الخارجية في بلد المصدر، سفارة الإمارات، ووزارة الخارجية MOFA. نتحقق من حالة التصديق أثناء مراجعتنا المجانية قبل أن تدفع.'
+  },
+  {
+    question: 'كم تستغرق ترجمة التوكيل؟',
+    answer: 'القياسي: 24 ساعة. السريع: 6 ساعات. VIP الكونسيرج: مسودات خلال ساعة واحدة للإغلاقات الفورية أو مواعيد البنك.'
+  },
+  {
+    question: 'هل يمكنكم المساعدة في التوثيق أيضاً؟',
+    answer: 'نركز على الترجمة. يمكننا تقديم النصح حول عملية التوثيق والتوقيت. كثير من العملاء يترجمون أولاً، ثم يزورون كاتب العدل الإماراتي إذا كان إعادة التوثيق المحلي مطلوباً.'
+  },
+  {
+    question: 'ما هي متطلبات DLD للتوكيلات العقارية؟',
+    answer: 'دائرة الأراضي والأملاك صارمة في توثيق التوكيلات. التوكيلات العقارية يجب أن تحدد بوضوح الوحدة المحددة (رقم القطعة، اسم المبنى، معرف الوحدة) ونوع المعاملة المصرح بها—بيع، شراء، رهن، أو إيجار.'
+  },
+  {
+    question: 'ماذا عن معايير التوكيلات البنكية؟',
+    answer: 'البنوك الإماراتية تطلب توكيلات تحدد صراحةً العمليات التي يمكن للوكيل تنفيذها. اللغة العامة مثل "إدارة شؤوني البنكية" غير كافية. البنوك تريد صلاحيات محددة مُدرجة: فتح الحسابات، إصدار الشيكات، إدارة الاستثمارات، التوقيع على وثائق القروض.'
+  }
+];
+
+const processSteps = [
+  {
+    number: 1,
+    title: 'إرسال التوكيل',
+    text: 'تضمين جميع الصفحات وأختام التوثيق وأي علامات تصديق. حدد الاستخدام المقصود (عقارات، بنوك، إلخ).'
+  },
+  {
+    number: 2,
+    title: 'إعداد الترجمة',
+    text: 'مترجم مرخص من وزارة العدل يتعامل مع المصطلحات القانونية وتعريفات النطاق بدقة.'
+  },
+  {
+    number: 3,
+    title: 'الاستلام أو التوصيل',
+    text: 'الاستلام من دبي أو ترتيب التوصيل بالمندوب. PDF رقمي يُرسل فوراً عند الانتهاء.'
+  }
+];
+
+const poaTypes = [
+  {
+    title: 'التوكيل العام',
+    icon: 'file-alt',
+    desc: 'صلاحيات واسعة عبر العقارات والبنوك والعقود والتمثيل القانوني للغياب المطول.'
+  },
+  {
+    title: 'التوكيل الخاص',
+    icon: 'file-signature',
+    desc: 'يقتصر على معاملات محددة—بيع عقار واحد، إدارة حساب واحد. المُفضل في الإمارات للصفقات الكبرى.'
+  },
+  {
+    title: 'توكيل العقارات',
+    icon: 'home',
+    desc: 'تنسيق DLD المحدد للشراء والبيع والرهن أو تأجير العقارات.'
+  },
+  {
+    title: 'التوكيل البنكي',
+    icon: 'university',
+    desc: 'صلاحيات صريحة لإدارة الحسابات والتحويلات والقروض وتفويض التوقيع.'
+  }
+];
+
+const commonUses = [
+  {
+    title: 'المعاملات العقارية',
+    icon: 'building',
+    desc: 'منسق لمتطلبات DLD. توكيلات خاصة للشراء والبيع أو إدارة العقارات.'
+  },
+  {
+    title: 'إدارة الشركات',
+    icon: 'briefcase',
+    desc: 'توكيلات عامة لعمليات الأعمال وقرارات مجلس الإدارة والأنشطة التجارية.'
+  },
+  {
+    title: 'العمليات البنكية',
+    icon: 'credit-card',
+    desc: 'توكيلات لإدارة الحسابات البنكية وتفويض التوقيع والمعاملات المالية.'
+  },
+  {
+    title: 'التمثيل القانوني',
+    icon: 'gavel',
+    desc: 'صلاحيات التمثيل في الإجراءات القضائية والشؤون القانونية.'
+  }
+];
+---
+
+<BaseLayoutArabic
+  title="ترجمة التوكيل الرسمي دبي | معتمد من وزارة العدل | DLD والبنوك"
+  description="ترجمة التوكيلات المعتمدة في دبي وأبوظبي. توكيل عام وخاص وعقاري. مقبول في DLD والبنوك. تسليم سريع خلال ساعات."
+>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-certificate"></i>
+          <span>معتمدة من وزارة العدل</span>
+        </div>
+
+        <h1>ترجمة التوكيل الرسمي في الإمارات</h1>
+        <p class="hero-subtitle">معتمد للعقارات والأعمال</p>
+
+        <p class="hero-intro">
+          وثائق التوكيل تمنح صلاحيات قانونية للتصرف نيابةً عنك. سواء كنت تحتاج توكيلاً عاماً لإدارة أعمال واسعة أو توكيلاً خاصاً لمعاملة عقارية محددة في DLD، يجب أن تنقل الترجمة بدقة نطاق وحدود الصلاحيات الممنوحة.
+        </p>
+
+        <div class="hero-features">
+          <div class="hero-feature">
+            <i class="fas fa-home"></i>
+            <span>مقبول في DLD</span>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-university"></i>
+            <span>جاهز للبنوك</span>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-clock"></i>
+            <span>6-24 ساعة</span>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-stamp"></i>
+            <span>ختم وزارة العدل</span>
+          </div>
+        </div>
+
+        <div class="hero-cta">
+          <a href="https://wa.me/971508620217" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i>
+            <span>واتساب الآن</span>
+          </a>
+          <a href="tel:+971508620217" class="btn btn-outline">
+            <i class="fas fa-phone"></i>
+            <span>اتصل بنا</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why POA Matters Section -->
+  <section class="section">
+    <div class="container">
+      <h2>لماذا كل كلمة مهمة في ترجمة التوكيل</h2>
+      <p class="section-intro">
+        التوكيل يمنح شخصاً آخر الصلاحية القانونية للتوقيع على العقود، بيع العقارات، إدارة الحسابات البنكية، أو اتخاذ قرارات ملزمة باسمك. ترجمة غامضة قد تمنح صلاحيات أوسع من المقصود. ترجمة ضيقة جداً قد تمنع الإجراءات الضرورية.
+      </p>
+
+      <div class="uses-grid">
+        {commonUses.map(use => (
+          <div class="use-card">
+            <div class="use-icon">
+              <i class={`fas fa-${use.icon}`}></i>
+            </div>
+            <h3>{use.title}</h3>
+            <p>{use.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- POA Types Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>أنواع التوكيلات التي نترجمها</h2>
+      <p class="section-intro">فهم الفرق بين التوكيل العام والخاص ضروري لمعاملات الإمارات.</p>
+
+      <div class="types-grid">
+        {poaTypes.map(type => (
+          <div class="type-card">
+            <div class="type-icon">
+              <i class={`fas fa-${type.icon}`}></i>
+            </div>
+            <h3>{type.title}</h3>
+            <p>{type.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="comparison-table">
+        <h3>مقارنة التوكيل العام والخاص</h3>
+        <div class="table-container">
+          <div class="table-row header">
+            <span>النوع</span>
+            <span>النطاق</span>
+            <span>تفضيل الإمارات</span>
+          </div>
+          <div class="table-row">
+            <span>التوكيل العام</span>
+            <span>صلاحيات واسعة—عقارات، بنوك، قانونية</span>
+            <span>مقبول، فحص أعلى</span>
+          </div>
+          <div class="table-row">
+            <span>التوكيل الخاص</span>
+            <span>معاملة أو غرض واحد</span>
+            <span>المُفضل للصفقات الكبرى</span>
+          </div>
+          <div class="table-row">
+            <span>توكيل عقاري</span>
+            <span>وحدة واحدة، نوع معاملة واحد</span>
+            <span>مطلوب من DLD</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DLD Requirements Section -->
+  <section class="section">
+    <div class="container">
+      <h2>متطلبات DLD للتوكيلات العقارية</h2>
+
+      <div class="requirements-content">
+        <div class="requirements-text">
+          <p>دائرة الأراضي والأملاك بدبي صارمة في توثيق التوكيلات. التوكيلات العقارية يجب أن تحدد بوضوح الوحدة المحددة ونوع المعاملة المصرح بها. صلاحية الوكيل يجب أن تكون مُفصلة صراحةً في كلٍ من الأصل والترجمة العربية.</p>
+
+          <h4>ما يجب أن تتضمنه الترجمة:</h4>
+          <ul>
+            <li><strong>تحديد العقار:</strong> رقم القطعة، اسم المبنى، رقم الوحدة، اسم المجتمع/التطوير</li>
+            <li><strong>نوع المعاملة:</strong> بيع، شراء، رهن، إيجار، أو إجراءات محددة أخرى مصرح بها</li>
+            <li><strong>تفاصيل الوكيل:</strong> الاسم الكامل، جواز السفر/الهوية الإماراتية، جنسية الوكيل المفوض</li>
+            <li><strong>تفاصيل الموكل:</strong> معلوماتك مطابقة تماماً لسجلات العقار</li>
+            <li><strong>حدود النطاق:</strong> أي شروط، نطاقات سعرية، أو أُطر زمنية محددة</li>
+            <li><strong>التوقيعات والتوثيق:</strong> وصف دقيق لعناصر المصادقة</li>
+          </ul>
+        </div>
+
+        <div class="requirements-sidebar">
+          <div class="guarantee-card">
+            <i class="fas fa-shield-alt"></i>
+            <h4>ضمان القبول</h4>
+            <p>إذا رفضت DLD أو أي بنك إماراتي أو محكمة ترجمة توكيلنا بسبب خطأ منا، نصحح ونُعيد التسليم بدون رسوم—بما في ذلك تكاليف التوصيل للوفاء بموعدك النهائي.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>خطوات ترجمة التوكيل</h2>
+
+      <div class="process-grid">
+        {processSteps.map(step => (
+          <div class="process-card">
+            <div class="process-number">{step.number}</div>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Attestation Section -->
+  <section class="section">
+    <div class="container">
+      <h2>متطلبات التصديق للتوكيلات الأجنبية</h2>
+
+      <div class="attestation-info">
+        <div class="attestation-content">
+          <p>التوكيلات الصادرة في الخارج تحتاج عادةً <a href="/ar/services/attestation/">تصديقاً</a> قبل استخدامها في الإمارات. العملية تعتمد على مكان إنشاء التوكيل.</p>
+
+          <div class="attestation-paths">
+            <div class="path-card">
+              <h4>دول اتفاقية لاهاي (بريطانيا، أمريكا، الهند، كندا، أستراليا)</h4>
+              <p>توكيلك يحصل على أبوستيل من السلطة المختصة في بلد الإصدار. للاستخدام الإماراتي، هذا عادةً لا يزال يتطلب تصديق سفارة الإمارات وتصديق MOFA/MOFAIC داخل الإمارات.</p>
+            </div>
+            <div class="path-card">
+              <h4>دول غير لاهاي (باكستان، مصر)</h4>
+              <p>سلسلة التصديق التقليدية تنطبق—التوثيق، وزارة الخارجية في بلد الإصدار، تصديق سفارة الإمارات، ثم تصديق MOFA في الإمارات.</p>
+            </div>
+          </div>
+
+          <p>نتحقق من حالة التصديق أثناء التحقق المسبق. خطوات التصديق المفقودة المكتشفة بعد الترجمة تُسبب تأخيرات وتكاليف إضافية.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>مستويات الخدمة والأسعار</h2>
+      <p class="section-intro">اختر بناءً على جدول معاملتك الزمني:</p>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>قياسي</h3>
+          <div class="pricing-amount">200 درهم</div>
+          <div class="pricing-time">تسليم 24 ساعة</div>
+          <ul>
+            <li><i class="fas fa-check"></i> ترجمة معتمدة من وزارة العدل</li>
+            <li><i class="fas fa-check"></i> PDF رقمي + نسخة فعلية</li>
+            <li><i class="fas fa-check"></i> توصيل مجاني لدبي</li>
+            <li><i class="fas fa-check"></i> تحديثات واتساب</li>
+          </ul>
+          <a href="https://wa.me/971508620217" class="btn btn-outline">احصل على عرض سعر</a>
+        </div>
+
+        <div class="pricing-card featured">
+          <div class="pricing-badge">الأكثر طلباً</div>
+          <h3>سريع</h3>
+          <div class="pricing-amount">350 درهم</div>
+          <div class="pricing-time">تسليم 6 ساعات</div>
+          <ul>
+            <li><i class="fas fa-check"></i> كل شيء في القياسي</li>
+            <li><i class="fas fa-check"></i> أولوية في الطابور</li>
+            <li><i class="fas fa-check"></i> منسق مخصص</li>
+            <li><i class="fas fa-check"></i> توصيل فعلي نفس اليوم</li>
+          </ul>
+          <a href="https://wa.me/971508620217" class="btn btn-primary">احصل على عرض سعر</a>
+        </div>
+
+        <div class="pricing-card">
+          <h3>VIP كونسيرج</h3>
+          <div class="pricing-amount">550 درهم</div>
+          <div class="pricing-time">مسودة خلال ساعة</div>
+          <ul>
+            <li><i class="fas fa-check"></i> كل شيء في السريع</li>
+            <li><i class="fas fa-check"></i> تعيين مترجم فوري</li>
+            <li><i class="fas fa-check"></i> خط هاتف مباشر</li>
+            <li><i class="fas fa-check"></i> تنسيق المعاملة</li>
+          </ul>
+          <a href="https://wa.me/971508620217?text=VIP" class="btn btn-outline">طلب VIP</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container">
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-grid">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" name="faq">
+            <summary class="faq-question">
+              <span>{faq.question}</span>
+              <i class="fas fa-chevron-down"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>خدمات ذات صلة</h2>
+      <div class="related-grid">
+        <a href="/ar/legal/corporate/" class="related-card">
+          <i class="fas fa-building"></i>
+          <h3>الوثائق التجارية</h3>
+          <p>عقود التأسيس والرخص وقرارات مجلس الإدارة</p>
+        </a>
+        <a href="/ar/legal/corporate/moa/" class="related-card">
+          <i class="fas fa-file-contract"></i>
+          <h3>عقد التأسيس</h3>
+          <p>وثائق تأسيس الشركات لـ DED والمناطق الحرة</p>
+        </a>
+        <a href="/ar/services/attestation/" class="related-card">
+          <i class="fas fa-stamp"></i>
+          <h3>خدمات التصديق</h3>
+          <p>تصديق MOFA والسفارات للوثائق الأجنبية</p>
+        </a>
+        <a href="/ar/personal/vital-records/marriage/" class="related-card">
+          <i class="fas fa-ring"></i>
+          <h3>ترجمة عقد الزواج</h3>
+          <p>للملكية المشتركة والحسابات البنكية</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>هل تحتاج ترجمة توكيل رسمي؟</h2>
+        <p>أرسل توكيلك عبر واتساب للتقييم المجاني. نتحقق من التصديق والنطاق قبل أن تدفع.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/971508620217" class="btn btn-primary btn-lg">
+            <i class="fab fa-whatsapp"></i>
+            <span dir="ltr">واتساب: +971 50 862 0217</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  })} />
+
+</BaseLayoutArabic>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, var(--surface-navy) 0%, #1a3a5c 100%);
+    color: #fff;
+    padding: 4rem 0;
+  }
+
+  .hero-content {
+    max-width: 800px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-section h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 0.75rem;
+    line-height: 1.4;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-intro {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+  }
+
+  .hero-features {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.75rem 1.25rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    flex-direction: row-reverse;
+  }
+
+  .hero-feature i {
+    color: var(--accent-coral);
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--accent-coral);
+    color: #fff;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  /* Sections */
+  .section {
+    padding: 4rem 0;
+  }
+
+  .section h2 {
+    font-size: 1.75rem;
+    margin: 0 0 1rem;
+    color: var(--primary-color);
+  }
+
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 800px;
+    line-height: 1.8;
+  }
+
+  .bg-light {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  /* Uses Grid */
+  .uses-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .use-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .use-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-coral);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+
+  .use-icon i {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+
+  .use-card h3 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .use-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* Types Grid */
+  .types-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .type-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .type-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--surface-navy);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+
+  .type-icon i {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+
+  .type-card h3 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .type-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* Comparison Table */
+  .comparison-table {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .comparison-table h3 {
+    font-size: 1.25rem;
+    margin: 0 0 1.5rem;
+    color: var(--primary-color);
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .table-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+  }
+
+  .table-row.header {
+    background: var(--bg-light);
+    font-weight: 600;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .table-row:last-child {
+    border-bottom: none;
+  }
+
+  /* Requirements Section */
+  .requirements-content {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .requirements-text p {
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .requirements-text h4 {
+    font-size: 1.1rem;
+    margin: 1.5rem 0 1rem;
+    color: var(--primary-color);
+  }
+
+  .requirements-text ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .requirements-text li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #eee;
+    padding-right: 1.5rem;
+    position: relative;
+  }
+
+  .requirements-text li::before {
+    content: '✓';
+    position: absolute;
+    right: 0;
+    color: var(--accent-coral);
+    font-weight: 700;
+  }
+
+  .guarantee-card {
+    background: linear-gradient(135deg, var(--surface-navy) 0%, #1a3a5c 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .guarantee-card i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--accent-coral);
+  }
+
+  .guarantee-card h4 {
+    font-size: 1.25rem;
+    margin: 0 0 1rem;
+  }
+
+  .guarantee-card p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
+    opacity: 0.9;
+  }
+
+  /* Process Grid */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .process-card {
+    text-align: center;
+  }
+
+  .process-number {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-coral);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .process-card h3 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .process-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* Attestation Section */
+  .attestation-info p {
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .attestation-info a {
+    color: var(--accent-coral);
+  }
+
+  .attestation-paths {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .path-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .path-card h4 {
+    font-size: 1rem;
+    margin: 0 0 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .path-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* Pricing Grid */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+  }
+
+  .pricing-card {
+    background: #fff;
+    border: 2px solid #eee;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .pricing-card.featured {
+    background: var(--surface-navy);
+    color: #fff;
+    transform: scale(1.05);
+    border-color: var(--surface-navy);
+  }
+
+  .pricing-badge {
+    background: var(--accent-coral);
+    color: #fff;
+    padding: 0.35rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    position: absolute;
+    top: -12px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .pricing-card h3 {
+    font-size: 1.15rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .pricing-card.featured h3 {
+    color: #fff;
+  }
+
+  .pricing-amount {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-coral);
+    margin-bottom: 0.25rem;
+  }
+
+  .pricing-time {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-card.featured .pricing-time {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .pricing-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    text-align: right;
+  }
+
+  .pricing-card li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-direction: row-reverse;
+  }
+
+  .pricing-card.featured li {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .pricing-card li i {
+    color: var(--accent-coral);
+  }
+
+  .pricing-card .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .pricing-card .btn-outline {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+
+  .pricing-card.featured .btn-outline {
+    color: #fff;
+    border-color: #fff;
+  }
+
+  /* FAQ Section */
+  .faq-grid {
+    display: grid;
+    gap: 1rem;
+    max-width: 900px;
+  }
+
+  .faq-item {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .faq-question {
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: var(--primary-color);
+    list-style: none;
+    gap: 1rem;
+    flex-direction: row-reverse;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question i {
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .faq-item[open] .faq-question i {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.25rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    text-align: right;
+  }
+
+  .faq-answer p {
+    margin: 0;
+  }
+
+  /* Related Services */
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .related-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+  }
+
+  .related-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .related-card i {
+    font-size: 2rem;
+    color: var(--accent-coral);
+    margin-bottom: 1rem;
+  }
+
+  .related-card h3 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .related-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, var(--accent-coral) 0%, #e63946 100%);
+    color: #fff;
+    text-align: center;
+  }
+
+  .cta-content h2 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-content p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  .cta-section .btn-primary {
+    background: #fff;
+    color: var(--accent-coral);
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .uses-grid,
+    .types-grid,
+    .related-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 991px) {
+    .requirements-content {
+      grid-template-columns: 1fr;
+    }
+
+    .attestation-paths {
+      grid-template-columns: 1fr;
+    }
+
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+    }
+
+    .pricing-card.featured {
+      transform: none;
+    }
+
+    .process-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .table-row {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 3rem 0;
+    }
+
+    .hero-section h1 {
+      font-size: 1.75rem;
+    }
+
+    .hero-features {
+      justify-content: center;
+    }
+
+    .section {
+      padding: 3rem 0;
+    }
+
+    .uses-grid,
+    .types-grid,
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

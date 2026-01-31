@@ -1,0 +1,682 @@
+---
+/**
+ * /ar/personal/academic/degree/ - ترجمة الشهادات الجامعية (Degree Certificate Arabic)
+ *
+ * Target Keywords: ترجمة شهادة جامعية, ترجمة شهادة بكالوريوس, ترجمة درجة علمية
+ * Layout: BaseLayoutArabic
+ * Silo: Personal > Academic (Arabic)
+ */
+import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: 'هل ترجمة الشهادة الجامعية مقبولة لتصريح العمل؟',
+    answer: 'نعم. ترجمتنا المعتمدة من وزارة العدل مقبولة في MOHRE لطلبات تصريح العمل. الترجمة تتضمن جميع العناصر المطلوبة: اسم المؤسسة، عنوان الدرجة، التخصص، تاريخ التخرج، والختم الرسمي مع رمز QR للتحقق.'
+  },
+  {
+    question: 'ما المطلوب للإقامة الذهبية؟',
+    answer: 'الإقامة الذهبية (فئة الموظفين المهرة) تتطلب ترجمة معتمدة من وزارة العدل ومعادلة من وزارة التعليم العالي. نجهز وثائقك بالمصطلحات المطلوبة من الوزارة لتسهيل المعادلة.'
+  },
+  {
+    question: 'هل تحتاج الشهادة تصديق قبل الترجمة؟',
+    answer: 'لمعظم الاستخدامات الرسمية في الإمارات، نعم. سلسلة التصديق تشمل: تصديق الجامعة، وزارة التعليم (بلد المصدر)، وزارة الخارجية، سفارة الإمارات، ثم وزارة الخارجية الإماراتية. نتحقق من حالة التصديق قبل قبول الوثيقة.'
+  },
+  {
+    question: 'كم تستغرق ترجمة الشهادة الجامعية؟',
+    answer: 'الخدمة العادية: خلال 24 ساعة. الخدمة السريعة: 6 ساعات. خدمة كبار العملاء: مسودة خلال ساعة. نقدم أسعار خاصة للحزم (الشهادة + كشف الدرجات + شهادات الخبرة).'
+  },
+  {
+    question: 'ماذا لو كانت شهادتي بلغة غير الإنجليزية؟',
+    answer: 'نترجم الشهادات الجامعية من أي لغة: الهندية، الأوردية، الفلبينية، الصينية، الفرنسية، العربية، وغيرها. لدينا مترجمون متخصصون للمصطلحات الأكاديمية في كل لغة.'
+  },
+  {
+    question: 'ما متطلبات المهن الصحية (DHA)؟',
+    answer: 'العاملون في الرعاية الصحية—أطباء، ممرضون، صيادلة، فنيون—يواجهون متطلبات تحقق أكثر صرامة. الترجمة يجب أن تتوافق مع كيفية ظهور مؤهلاتك في قواعد بيانات DataFlow. نستخدم مصطلحات طبية معتمدة.'
+  },
+  {
+    question: 'هل يمكنكم ترجمة كشف الدرجات والشهادات المهنية؟',
+    answer: 'نعم. نترجم حزم الوثائق الأكاديمية الكاملة: الشهادات الجامعية، كشوف الدرجات، شهادات الخبرة، شهادات التدريب، والمؤهلات المهنية (ACCA، CIMA، CFA). أسعار خاصة للحزم.'
+  }
+];
+
+// Degree uses in UAE
+const degreeUses = [
+  {
+    title: "تصاريح العمل",
+    icon: "briefcase",
+    desc: "مطلوبة من MOHRE لجميع تصاريح العمل",
+    authority: "MOHRE"
+  },
+  {
+    title: "الإقامة الذهبية",
+    icon: "star",
+    desc: "فئة الموظفين المهرة والمستثمرين",
+    authority: "ICP"
+  },
+  {
+    title: "التراخيص الصحية",
+    icon: "user-md",
+    desc: "الأطباء، الممرضون، الصيادلة، الفنيون",
+    authority: "DHA، DOH، MOH"
+  },
+  {
+    title: "معادلة الشهادات",
+    icon: "university",
+    desc: "تقييم المعادلة الأكاديمية",
+    authority: "وزارة التعليم العالي"
+  },
+  {
+    title: "التراخيص المهنية",
+    icon: "certificate",
+    desc: "المهندسون، المحاسبون، المحامون",
+    authority: "الجهات المهنية"
+  },
+  {
+    title: "الدراسات العليا",
+    icon: "graduation-cap",
+    desc: "التقديم للجامعات الإماراتية",
+    authority: "الجامعات"
+  }
+];
+
+// Degree types we translate
+const degreeTypes = [
+  { type: "بكالوريوس", examples: ["B.A.", "B.Sc.", "B.Com.", "B.Tech.", "BBA"], icon: "graduation-cap" },
+  { type: "ماجستير", examples: ["M.A.", "M.Sc.", "MBA", "M.Tech.", "M.Ed."], icon: "user-graduate" },
+  { type: "دكتوراه", examples: ["Ph.D.", "M.D.", "Ed.D.", "D.B.A."], icon: "book-reader" },
+  { type: "دبلوم", examples: ["Diploma", "PG Diploma", "Advanced Diploma"], icon: "scroll" },
+  { type: "شهادات مهنية", examples: ["ACCA", "CPA", "CFA", "CIMA", "PMP"], icon: "award" },
+  { type: "شهادات تخصصية", examples: ["Fellowship", "Board Certification", "Specialty"], icon: "medal" }
+];
+
+const pageTitle = 'ترجمة الشهادات الجامعية دبي | ترجمة معتمدة من وزارة العدل';
+const pageDescription = 'ترجمة الشهادات الجامعية في دبي من 150 درهم. ترجمة معتمدة من وزارة العدل لتصاريح العمل، الإقامة الذهبية، وتراخيص DHA. تسليم في نفس اليوم.';
+---
+
+<BaseLayoutArabic
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL="https://onlinetranslation.ae/ar/personal/academic/degree/"
+>
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  })} />
+
+  <!-- Service Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Degree Certificate Translation",
+    "alternateName": "ترجمة الشهادات الجامعية",
+    "description": pageDescription,
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "OnlineTranslation.ae",
+      "@id": "https://onlinetranslation.ae/#organization"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "United Arab Emirates"
+    },
+    "serviceType": "Legal Translation"
+  })} />
+
+  <main class="service-page rtl-page" dir="rtl">
+
+    <!-- Hero Section -->
+    <section class="hero-section bg-navy">
+      <div class="container">
+        <nav class="breadcrumb-nav" aria-label="مسار التنقل">
+          <ol class="breadcrumb">
+            <li><a href="/ar/">الرئيسية</a></li>
+            <li><a href="/ar/personal/">الوثائق الشخصية</a></li>
+            <li><a href="/ar/personal/academic/">الوثائق الأكاديمية</a></li>
+            <li aria-current="page">الشهادات الجامعية</li>
+          </ol>
+        </nav>
+
+        <div class="hero-content">
+          <div class="service-badge">
+            <i class="fas fa-stamp"></i>
+            <span>وزارة العدل - ترخيص #701</span>
+          </div>
+
+          <h1>ترجمة الشهادات الجامعية في دبي</h1>
+
+          <p class="hero-intro">
+            ترجمة قانونية معتمدة من وزارة العدل مقبولة في MOHRE وDHA ووزارة التعليم العالي.
+            ترجمة غير صحيحة لعنوان الدرجة أو اسم المؤسسة من أكثر أسباب رفض تصاريح العمل
+            وتأخير التراخيص.
+          </p>
+
+          <ul class="hero-features">
+            <li><i class="fas fa-clock"></i> مسودة رقمية خلال 60 دقيقة عادةً</li>
+            <li><i class="fas fa-briefcase"></i> مقبولة في MOHRE وDHA</li>
+            <li><i class="fas fa-star"></i> جاهزة للإقامة الذهبية</li>
+            <li><i class="fas fa-qrcode"></i> ختم وزارة العدل مع رمز QR للتحقق</li>
+          </ul>
+
+          <div class="hero-cta">
+            <a href="https://wa.me/971508620217" class="btn btn-coral btn-lg">
+              <i class="fab fa-whatsapp"></i>
+              أرسل شهادتك عبر واتساب
+            </a>
+            <a href="tel:+971508620217" class="btn btn-outline-light btn-lg">
+              <i class="fas fa-phone"></i>
+              <span dir="ltr">+971 50 862 0217</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Rejections Happen -->
+    <section class="rejection-section">
+      <div class="container">
+        <h2 class="section-title">لماذا تُرفض ترجمات الشهادات الجامعية</h2>
+
+        <div class="rejection-grid">
+          <div class="rejection-card">
+            <div class="rejection-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h3>عنوان الدرجة غير دقيق</h3>
+            <p>
+              "Bachelor of Commerce" مترجمة كـ"درجة تجارية" تخلق مشاكل معادلة.
+              نستخدم مصطلحات المعادلة المعتمدة في الإمارات.
+            </p>
+          </div>
+
+          <div class="rejection-card">
+            <div class="rejection-icon">
+              <i class="fas fa-university"></i>
+            </div>
+            <h3>اسم المؤسسة لا يتطابق</h3>
+            <p>
+              DHA يتحقق من خلال DataFlow—الترجمات التي لا تتطابق مع سجلات
+              قاعدة البيانات تُرفض تلقائياً.
+            </p>
+          </div>
+
+          <div class="rejection-card">
+            <div class="rejection-icon">
+              <i class="fas fa-user-times"></i>
+            </div>
+            <h3>تناقض الأسماء</h3>
+            <p>
+              الاسم في الشهادة يجب أن يتطابق مع جواز السفر.
+              نتحقق من التطابق قبل الترجمة.
+            </p>
+          </div>
+
+          <div class="rejection-card">
+            <div class="rejection-icon">
+              <i class="fas fa-unlink"></i>
+            </div>
+            <h3>سلسلة التصديق ناقصة</h3>
+            <p>
+              MOHRE يرفض طلبات تصريح العمل مع ترجمات لوثائق غير مصدقة.
+              يجب أن يكتمل التصديق قبل الترجمة.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="uses-section bg-light">
+      <div class="container">
+        <h2 class="section-title">أين ستستخدم ترجمة الشهادة الجامعية</h2>
+
+        <div class="uses-grid">
+          {degreeUses.map(use => (
+            <div class="use-card">
+              <div class="use-icon">
+                <i class={`fas fa-${use.icon}`}></i>
+              </div>
+              <h3>{use.title}</h3>
+              <p>{use.desc}</p>
+              <span class="use-authority">
+                <i class="fas fa-building"></i> {use.authority}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Degree Types -->
+    <section class="types-section">
+      <div class="container">
+        <h2 class="section-title">أنواع الشهادات التي نترجمها</h2>
+
+        <div class="types-grid">
+          {degreeTypes.map(deg => (
+            <div class="type-card">
+              <div class="type-icon">
+                <i class={`fas fa-${deg.icon}`}></i>
+              </div>
+              <h3>{deg.type}</h3>
+              <div class="type-examples">
+                {deg.examples.map(ex => (
+                  <span class="example-tag">{ex}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Healthcare Requirements -->
+    <section class="healthcare-section bg-navy">
+      <div class="container">
+        <div class="healthcare-grid">
+          <div class="healthcare-content">
+            <h2>متطلبات المهن الصحية</h2>
+
+            <p>
+              العاملون في الرعاية الصحية—أطباء، ممرضون، صيادلة، فنيون—يواجهون
+              أكثر متطلبات التحقق صرامة في الإمارات. هيئة صحة دبي (DHA)،
+              دائرة الصحة أبوظبي (DOH)، ووزارة الصحة (MOH) جميعها تتطلب
+              ترجمة الشهادات الطبية، شهادات التخصص، رسائل إتمام التدريب، وشهادات الخبرة.
+            </p>
+
+            <ul class="healthcare-list">
+              <li>
+                <i class="fas fa-check"></i>
+                <span>الترجمة تتوافق مع قواعد بيانات DataFlow</span>
+              </li>
+              <li>
+                <i class="fas fa-check"></i>
+                <span>مصطلحات التخصصات الطبية المعتمدة</span>
+              </li>
+              <li>
+                <i class="fas fa-check"></i>
+                <span>الزمالات وشهادات البورد بمصطلحات دقيقة</span>
+              </li>
+              <li>
+                <i class="fas fa-check"></i>
+                <span>شهادات التعليم الطبي المستمر (CME)</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="healthcare-highlight">
+            <div class="highlight-box">
+              <i class="fas fa-user-md"></i>
+              <h3>نخدم</h3>
+              <ul>
+                <li>الأطباء والجراحون</li>
+                <li>الممرضون والممرضات</li>
+                <li>الصيادلة</li>
+                <li>فنيو المختبرات</li>
+                <li>أخصائيو الأشعة</li>
+                <li>أطباء الأسنان</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section bg-light">
+      <div class="container">
+        <h2 class="section-title">كيف نعمل</h2>
+
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="step-icon">
+              <span>1</span>
+            </div>
+            <h3>أرسل شهادتك</h3>
+            <p>
+              صور واضحة عبر واتساب. تأكد من ظهور الختم الجامعي وتوقيع المسجل
+              وجميع أختام التصديق.
+            </p>
+          </div>
+
+          <div class="process-step">
+            <div class="step-icon">
+              <span>2</span>
+            </div>
+            <h3>مراجعة مجانية</h3>
+            <p>
+              نتحقق من سلسلة التصديق، مطابقة الأسماء، وصحة الوثيقة.
+              إذا وجدنا مشكلة، ننصحك قبل أن تدفع.
+            </p>
+          </div>
+
+          <div class="process-step">
+            <div class="step-icon">
+              <span>3</span>
+            </div>
+            <h3>الترجمة المعتمدة</h3>
+            <p>
+              مترجم معتمد من وزارة العدل يترجم الشهادة بمصطلحات أكاديمية دقيقة
+              تتوافق مع متطلبات المعادلة.
+            </p>
+          </div>
+
+          <div class="process-step">
+            <div class="step-icon">
+              <span>4</span>
+            </div>
+            <h3>التسليم</h3>
+            <p>
+              نسخة PDF رقمية فوراً. النسخة الورقية المختومة للاستلام
+              أو التوصيل لموقعك.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+      <div class="container">
+        <h2 class="section-title">مستويات الخدمة والأسعار</h2>
+
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>عادي</h3>
+            </div>
+            <div class="pricing-body">
+              <div class="price">150 درهم</div>
+              <div class="timeline">تسليم خلال 24 ساعة</div>
+              <ul class="features">
+                <li><i class="fas fa-check"></i> ترجمة معتمدة من وزارة العدل</li>
+                <li><i class="fas fa-check"></i> نسخة PDF رقمية + نسخة ورقية</li>
+                <li><i class="fas fa-check"></i> توصيل مجاني في دبي</li>
+                <li><i class="fas fa-check"></i> مراجعة التصديق مجانية</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pricing-card featured">
+            <div class="pricing-badge">للمواعيد العاجلة</div>
+            <div class="pricing-header">
+              <h3>سريع</h3>
+            </div>
+            <div class="pricing-body">
+              <div class="price">250 درهم</div>
+              <div class="timeline">تسليم خلال 6 ساعات</div>
+              <ul class="features">
+                <li><i class="fas fa-check"></i> كل ما في الخدمة العادية</li>
+                <li><i class="fas fa-check"></i> أولوية في الطابور</li>
+                <li><i class="fas fa-check"></i> منسق مخصص</li>
+                <li><i class="fas fa-check"></i> توصيل في نفس اليوم</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>حزمة أكاديمية</h3>
+            </div>
+            <div class="pricing-body">
+              <div class="price">سعر خاص</div>
+              <div class="timeline">للوثائق المتعددة</div>
+              <ul class="features">
+                <li><i class="fas fa-check"></i> الشهادة الجامعية</li>
+                <li><i class="fas fa-check"></i> كشف الدرجات</li>
+                <li><i class="fas fa-check"></i> شهادات الخبرة</li>
+                <li><i class="fas fa-check"></i> خصم على المجموعة</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section bg-light">
+      <div class="container">
+        <h2 class="section-title">الأسئلة الشائعة</h2>
+
+        <div class="faq-grid">
+          {faqs.map(faq => (
+            <details class="faq-item" name="faq-group">
+              <summary>
+                <span class="faq-question">{faq.question}</span>
+                <i class="fas fa-chevron-down"></i>
+              </summary>
+              <div class="faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Services -->
+    <section class="related-section">
+      <div class="container">
+        <h2 class="section-title">خدمات ذات صلة</h2>
+
+        <div class="related-grid">
+          <a href="/ar/personal/immigration/pcc/" class="related-card">
+            <i class="fas fa-shield-alt"></i>
+            <h3>ترجمة شهادة حسن السيرة</h3>
+            <p>للتأشيرات والتوظيف</p>
+          </a>
+
+          <a href="/ar/services/attestation/india/" class="related-card">
+            <i class="fas fa-globe-asia"></i>
+            <h3>تصديق الوثائق الهندية</h3>
+            <p>HRD + MEA + سفارة الإمارات</p>
+          </a>
+
+          <a href="/ar/services/attestation/uk/" class="related-card">
+            <i class="fas fa-globe-europe"></i>
+            <h3>تصديق الوثائق البريطانية</h3>
+            <p>أبوستيل FCDO</p>
+          </a>
+
+          <a href="/ar/services/attestation/" class="related-card">
+            <i class="fas fa-certificate"></i>
+            <h3>جميع خدمات التصديق</h3>
+            <p>من جميع الدول</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-section bg-navy">
+      <div class="container">
+        <div class="cta-content">
+          <h2>هل لديك شهادة جامعية تحتاج ترجمة؟</h2>
+          <p>
+            أرسل صورة الشهادة عبر واتساب. نتحقق من التصديق ونقدم عرض سعر فوري.
+          </p>
+
+          <div class="cta-buttons">
+            <a href="https://wa.me/971508620217?text=أريد%20ترجمة%20شهادة%20جامعية" class="btn btn-coral btn-lg">
+              <i class="fab fa-whatsapp"></i>
+              أرسل شهادتك الآن
+            </a>
+            <a href="tel:+971508620217" class="btn btn-outline-light btn-lg">
+              <i class="fas fa-phone"></i>
+              اتصل بنا
+            </a>
+          </div>
+
+          <div class="cta-trust">
+            <div class="trust-item">
+              <i class="fas fa-briefcase"></i>
+              <span>مقبولة في MOHRE</span>
+            </div>
+            <div class="trust-item">
+              <i class="fas fa-user-md"></i>
+              <span>جاهزة لـDHA</span>
+            </div>
+            <div class="trust-item">
+              <i class="fas fa-star"></i>
+              <span>للإقامة الذهبية</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <style>
+    /* Page-specific styles - reusing patterns from other Arabic pages */
+    .rtl-page { direction: rtl; text-align: right; }
+
+    /* Hero Section */
+    .hero-section { padding: 3rem 0 4rem; color: var(--text-on-dark); }
+    .breadcrumb-nav { margin-bottom: 2rem; }
+    .breadcrumb { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; padding: 0; margin: 0; font-size: 0.9rem; }
+    .breadcrumb li:not(:last-child)::after { content: '←'; margin-right: 0.5rem; opacity: 0.6; }
+    .breadcrumb a { color: var(--text-on-dark-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--text-on-dark); }
+    .service-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: 2rem; font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .hero-section h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.3; }
+    .hero-intro { font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem; max-width: 700px; opacity: 0.95; }
+    .hero-features { list-style: none; padding: 0; margin: 0 0 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .hero-features li { display: flex; align-items: center; gap: 0.75rem; }
+    .hero-features i { color: var(--accent-coral); }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+    /* Section Styles */
+    .section-title { font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 0.75rem; }
+    .section-subtitle { text-align: center; color: var(--text-secondary); max-width: 600px; margin: 0 auto 3rem; line-height: 1.6; }
+
+    /* Rejection Section */
+    .rejection-section { padding: 4rem 0; }
+    .rejection-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+    .rejection-card { background: #fff5f5; border-radius: 0.75rem; padding: 1.5rem; border-right: 4px solid #ff6b6b; }
+    .rejection-icon { width: 48px; height: 48px; background: #ff6b6b; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; margin-bottom: 1rem; }
+    .rejection-card h3 { font-size: 1.1rem; margin-bottom: 0.75rem; color: #c92a2a; }
+    .rejection-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+
+    /* Uses Section */
+    .uses-section { padding: 4rem 0; }
+    .uses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .use-card { background: white; border-radius: 0.75rem; padding: 1.5rem; border: 1px solid var(--border-light); transition: all 0.3s ease; }
+    .use-card:hover { border-color: var(--accent-coral); transform: translateY(-4px); }
+    .use-icon { width: 48px; height: 48px; background: var(--surface-navy); color: white; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; margin-bottom: 1rem; }
+    .use-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .use-card p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem; }
+    .use-authority { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--accent-coral); }
+
+    /* Types Section */
+    .types-section { padding: 4rem 0; }
+    .types-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+    .type-card { background: var(--surface-light); border-radius: 0.75rem; padding: 1.5rem; text-align: center; border: 1px solid var(--border-light); }
+    .type-icon { width: 48px; height: 48px; background: var(--surface-navy); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; margin: 0 auto 1rem; }
+    .type-card h3 { font-size: 1rem; margin-bottom: 0.75rem; }
+    .type-examples { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+    .example-tag { background: white; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; color: var(--text-secondary); }
+
+    /* Healthcare Section */
+    .healthcare-section { padding: 4rem 0; color: var(--text-on-dark); }
+    .healthcare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .healthcare-content h2 { font-size: 1.75rem; margin-bottom: 1rem; }
+    .healthcare-content p { line-height: 1.8; margin-bottom: 1.5rem; opacity: 0.95; }
+    .healthcare-list { list-style: none; padding: 0; margin: 0; }
+    .healthcare-list li { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .healthcare-list i { color: var(--accent-coral); }
+    .healthcare-highlight { text-align: center; }
+    .highlight-box { background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 0.75rem; }
+    .highlight-box i { font-size: 3rem; color: var(--accent-coral); margin-bottom: 1rem; }
+    .highlight-box h3 { font-size: 1.25rem; margin-bottom: 1rem; }
+    .highlight-box ul { list-style: none; padding: 0; margin: 0; text-align: right; }
+    .highlight-box ul li { padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+    /* Process Section */
+    .process-section { padding: 4rem 0; }
+    .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+    .process-step { text-align: center; padding: 1.5rem; }
+    .step-icon { width: 60px; height: 60px; background: var(--surface-navy); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; margin: 0 auto 1rem; }
+    .process-step h3 { font-size: 1.1rem; margin-bottom: 0.75rem; }
+    .process-step p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* Pricing Section */
+    .pricing-section { padding: 4rem 0; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .pricing-card { background: var(--surface-light); border-radius: 0.75rem; overflow: hidden; border: 1px solid var(--border-light); position: relative; }
+    .pricing-card.featured { border-color: var(--accent-coral); box-shadow: 0 8px 30px rgba(255,22,84,0.15); }
+    .pricing-badge { position: absolute; top: 0; left: 0; right: 0; background: var(--accent-coral); color: white; text-align: center; padding: 0.5rem; font-size: 0.85rem; font-weight: 600; }
+    .pricing-card.featured .pricing-header { margin-top: 2rem; }
+    .pricing-header { padding: 1.5rem; text-align: center; background: white; }
+    .pricing-header h3 { font-size: 1.25rem; margin: 0; }
+    .pricing-body { padding: 1.5rem; text-align: center; }
+    .price { font-size: 2.5rem; font-weight: 700; color: var(--accent-coral); }
+    .timeline { color: var(--text-secondary); margin-bottom: 1.5rem; }
+    .features { list-style: none; padding: 0; margin: 0; text-align: right; }
+    .features li { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0; border-bottom: 1px solid var(--border-light); }
+    .features li:last-child { border-bottom: none; }
+    .features i { color: var(--accent-coral); }
+
+    /* FAQ Section */
+    .faq-section { padding: 4rem 0; }
+    .faq-grid { max-width: 800px; margin: 0 auto; }
+    .faq-item { background: white; border-radius: 0.5rem; margin-bottom: 0.75rem; border: 1px solid var(--border-light); }
+    .faq-item summary { padding: 1.25rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-question { font-weight: 600; padding-left: 1rem; }
+    .faq-item summary i { transition: transform 0.3s ease; color: var(--text-muted); }
+    .faq-item[open] summary i { transform: rotate(180deg); }
+    .faq-answer { padding: 0 1.25rem 1.25rem; }
+    .faq-answer p { margin: 0; line-height: 1.8; color: var(--text-secondary); }
+
+    /* Related Section */
+    .related-section { padding: 4rem 0; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+    .related-card { background: var(--surface-light); padding: 1.5rem; border-radius: 0.75rem; text-align: center; text-decoration: none; color: inherit; border: 1px solid var(--border-light); transition: all 0.3s ease; }
+    .related-card:hover { border-color: var(--accent-coral); transform: translateY(-4px); }
+    .related-card i { font-size: 2rem; color: var(--accent-coral); margin-bottom: 1rem; }
+    .related-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+    .related-card p { font-size: 0.85rem; color: var(--text-secondary); margin: 0; }
+
+    /* CTA Section */
+    .cta-section { padding: 4rem 0; color: var(--text-on-dark); text-align: center; }
+    .cta-content h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .cta-content > p { max-width: 600px; margin: 0 auto 2rem; line-height: 1.8; opacity: 0.95; }
+    .cta-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
+    .cta-trust { display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; }
+    .trust-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; opacity: 0.9; }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
+    .btn-lg { padding: 1rem 2rem; font-size: 1.1rem; }
+    .btn-coral { background: var(--accent-coral); color: white; }
+    .btn-coral:hover { background: #e0144c; transform: translateY(-2px); }
+    .btn-outline-light { border: 2px solid rgba(255,255,255,0.5); color: white; }
+    .btn-outline-light:hover { background: rgba(255,255,255,0.1); border-color: white; }
+
+    /* Backgrounds */
+    .bg-navy { background: var(--surface-navy); }
+    .bg-light { background: var(--surface-light); }
+
+    /* Container */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-section h1 { font-size: 1.75rem; }
+      .hero-intro { font-size: 1rem; }
+      .healthcare-grid { grid-template-columns: 1fr; }
+      .section-title { font-size: 1.5rem; }
+      .cta-content h2 { font-size: 1.5rem; }
+    }
+  </style>
+
+</BaseLayoutArabic>

@@ -1,0 +1,825 @@
+---
+/**
+ * /ar/legal/corporate/ - صفحة ترجمة الوثائق التجارية (Arabic Corporate Documents Hub)
+ *
+ * Target Keywords: ترجمة وثائق تجارية, ترجمة عقد تأسيس, ترجمة توكيل رسمي
+ * Layout: BaseLayoutArabic
+ * Silo: Legal (Arabic)
+ */
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: 'ما هي الوثائق التجارية التي تحتاج ترجمة معتمدة من وزارة العدل في دبي؟',
+    answer: 'جميع الوثائق التجارية للجهات الحكومية الإماراتية تحتاج اعتماد وزارة العدل. تشمل عقد التأسيس، النظام الأساسي، قرارات مجلس الإدارة، اتفاقيات المساهمين، التوكيلات، الرخص التجارية، ومستخرجات السجل التجاري. الوثائق لـ DED وDMCC وJAFZA ومحاكم دبي والبنوك كلها تحتاجها.'
+  },
+  {
+    question: 'كم تستغرق ترجمة الوثائق التجارية؟',
+    answer: 'الرخص التجارية: 4-6 ساعات. عقود التأسيس البسيطة: 24 ساعة. عقود التأسيس المعقدة: 48 ساعة. قرارات مجلس الإدارة: 24 ساعة. التوكيلات: 6-12 ساعة. المعالجة المستعجلة متاحة—تواصل معنا عبر واتساب لخيارات نفس اليوم.'
+  },
+  {
+    question: 'هل تقدمون أسعار حزم لوثائق تأسيس الشركات؟',
+    answer: 'نعم. الحزمة النموذجية تشمل عقد التأسيس، الرخصة التجارية، نسخ جوازات السفر، وخطابات البنك. تسعير الحزم يوفر 15-20% مقارنة بالأسعار الفردية. أرسل قائمة وثائقك عبر واتساب للحصول على عرض سعر.'
+  },
+  {
+    question: 'ما الفرق بين متطلبات DED والمناطق الحرة؟',
+    answer: 'DED البر الرئيسي تتطلب العربية الكاملة للحكومة والتأشيرات والبنوك المحلية. المناطق الحرة (DMCC وJAFZA وDAFZA) تستخدم الإنجليزية بشكل رئيسي لكن تحتاج العربية للبنوك والإجراءات القانونية. DIFC وADGM تعمل بالقانون العام مع الإنجليزية كلغة أساسية.'
+  },
+  {
+    question: 'هل تترجمون وثائق من دول أخرى غير الإمارات؟',
+    answer: 'نعم. نترجم من أي دولة إلى العربية للاستخدام الإماراتي. الوثائق الأجنبية تحتاج عادةً تصديقاً قبل الترجمة. ننصحك بالتسلسل الصحيح ويمكننا تنسيق السلسلة الكاملة: توثيق بلد المصدر، سفارة الإمارات، ووزارة الخارجية.'
+  },
+  {
+    question: 'ماذا يحدث إذا رفضت جهة حكومية وثيقتي المترجمة؟',
+    answer: 'إذا رُفضت بسبب خطأ منا، نصححها بدون رسوم. نغطي أيضاً تكاليف التوصيل لإعادة التسليم. نعالج آلاف الوثائق التجارية شهرياً مع قبول مستمر.'
+  }
+];
+
+const documents = [
+  {
+    title: 'عقد التأسيس',
+    href: '/ar/legal/corporate/moa/',
+    icon: 'file-contract',
+    desc: 'وثائق تأسيس الشركات لـ DED والمناطق الحرة والتسجيل الخارجي.',
+    use: 'تأسيس الشركات، فتح الحسابات'
+  },
+  {
+    title: 'التوكيل الرسمي',
+    href: '/ar/legal/corporate/poa/',
+    icon: 'stamp',
+    desc: 'توكيلات الشركات والأفراد للمعاملات التجارية والتمثيل القانوني.',
+    use: 'العقارات، البنوك، القانونية'
+  },
+  {
+    title: 'قرارات مجلس الإدارة',
+    href: '/ar/legal/corporate/resolution/',
+    icon: 'users',
+    desc: 'تعيينات المديرين، تفويضات البنوك، قرارات المساهمين، والإجراءات التجارية.',
+    use: 'البنوك، الحكومة، القانونية'
+  },
+  {
+    title: 'الرخص التجارية',
+    href: '/ar/legal/corporate/license/',
+    icon: 'id-card',
+    desc: 'الرخص التجارية، التصاريح المهنية، وشهادات تسجيل الأعمال.',
+    use: 'معالجة التأشيرات، البنوك'
+  }
+];
+
+const jurisdictions = [
+  {
+    name: 'DED البر الرئيسي',
+    desc: 'الشركات المسجلة في دائرة التنمية الاقتصادية. التوثيق العربي الكامل مطلوب لجميع التعاملات الحكومية والحسابات البنكية ومعالجة التأشيرات.'
+  },
+  {
+    name: 'DMCC',
+    desc: 'مركز دبي للسلع المتعددة. الإنجليزية أساسية مع ترجمات عربية مطلوبة لبعض التقديمات الحكومية والبنوك.'
+  },
+  {
+    name: 'DIFC',
+    desc: 'مركز دبي المالي العالمي. ولاية القانون العام مع التوثيق الإنجليزي، ترجمات عربية لشؤون المحاكم والحكومة المحددة.'
+  },
+  {
+    name: 'JAFZA والمناطق الحرة الأخرى',
+    desc: 'جبل علي، واحة دبي للسيليكون، مدينة دبي للإنترنت، والمناطق الحرة الأخرى. متطلبات لغوية مختلطة حسب التعاملات المحددة.'
+  }
+];
+---
+
+<BaseLayoutArabic
+  title="ترجمة الوثائق التجارية دبي | عقد تأسيس، توكيل رسمي | وزارة العدل"
+  description="ترجمة معتمدة للوثائق التجارية في دبي وأبوظبي. عقود التأسيس والرخص التجارية والتوكيلات لـ DED والمناطق الحرة والبنوك."
+>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-certificate"></i>
+          <span>معتمدة من وزارة العدل</span>
+        </div>
+
+        <h1>ترجمة الوثائق التجارية في الإمارات</h1>
+        <p class="hero-subtitle">متخصصون في توثيق الأعمال</p>
+
+        <p class="hero-intro">
+          عمليات الأعمال في الإمارات تتطلب توثيقاً عربياً في كل مرحلة—من تأسيس الشركة عبر العمليات اليومية إلى الخروج النهائي. نترجم الوثائق التجارية التي تحافظ على امتثال أعمالك عبر DED والمناطق الحرة والبنوك والجهات الحكومية.
+        </p>
+
+        <div class="hero-features">
+          <div class="hero-feature">
+            <i class="fas fa-building"></i>
+            <span>جميع الولايات</span>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-clock"></i>
+            <span>4-24 ساعة</span>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-stamp"></i>
+            <span>ختم وزارة العدل</span>
+          </div>
+          <div class="hero-feature">
+            <i class="fas fa-university"></i>
+            <span>مقبولة في البنوك</span>
+          </div>
+        </div>
+
+        <div class="hero-cta">
+          <a href="https://wa.me/971508620217" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i>
+            <span>واتساب الآن</span>
+          </a>
+          <a href="tel:+971508620217" class="btn btn-outline">
+            <i class="fas fa-phone"></i>
+            <span>اتصل بنا</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Documents Grid Section -->
+  <section class="section">
+    <div class="container">
+      <h2>الوثائق التجارية التي نترجمها</h2>
+      <p class="section-intro">اختر نوع وثيقتك للمتطلبات المحددة وأوقات التسليم. جميع الترجمات تتضمن اعتماد وزارة العدل ومنسقة للتقديم الفوري.</p>
+
+      <div class="documents-grid">
+        {documents.map(doc => (
+          <a href={doc.href} class="document-card">
+            <div class="document-icon">
+              <i class={`fas fa-${doc.icon}`}></i>
+            </div>
+            <h3>{doc.title}</h3>
+            <p>{doc.desc}</p>
+            <div class="document-use">
+              <strong>الاستخدام الشائع:</strong> {doc.use}
+            </div>
+            <span class="document-link">
+              <span>عرض المتطلبات</span>
+              <i class="fas fa-arrow-left"></i>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Jurisdictions Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>الولايات التجارية التي نخدمها</h2>
+      <p class="section-intro">الهياكل التجارية المختلفة تتطلب توثيقاً مختلفاً. نفهم المتطلبات المحددة عبر مشهد الأعمال المتنوع في الإمارات وننسق الترجمات وفقاً لذلك.</p>
+
+      <div class="jurisdiction-grid">
+        {jurisdictions.map(j => (
+          <div class="jurisdiction-card">
+            <h3>{j.name}</h3>
+            <p>{j.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Turnaround Section -->
+  <section class="section">
+    <div class="container">
+      <h2>أوقات التسليم</h2>
+
+      <div class="turnaround-grid">
+        <div class="turnaround-card">
+          <div class="turnaround-icon">
+            <i class="fas fa-id-card"></i>
+          </div>
+          <h3>الرخصة التجارية</h3>
+          <div class="turnaround-time">4-6 ساعات</div>
+        </div>
+        <div class="turnaround-card">
+          <div class="turnaround-icon">
+            <i class="fas fa-file-contract"></i>
+          </div>
+          <h3>عقد التأسيس (بسيط)</h3>
+          <div class="turnaround-time">24 ساعة</div>
+        </div>
+        <div class="turnaround-card">
+          <div class="turnaround-icon">
+            <i class="fas fa-file-contract"></i>
+          </div>
+          <h3>عقد التأسيس (معقد)</h3>
+          <div class="turnaround-time">48 ساعة</div>
+        </div>
+        <div class="turnaround-card">
+          <div class="turnaround-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>قرار مجلس الإدارة</h3>
+          <div class="turnaround-time">24 ساعة</div>
+        </div>
+        <div class="turnaround-card">
+          <div class="turnaround-icon">
+            <i class="fas fa-stamp"></i>
+          </div>
+          <h3>التوكيل الرسمي</h3>
+          <div class="turnaround-time">6-12 ساعة</div>
+        </div>
+        <div class="turnaround-card">
+          <div class="turnaround-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <h3>شهادة الأسهم</h3>
+          <div class="turnaround-time">4-6 ساعات</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Banking Section -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>ترجمة الوثائق التجارية للبنوك</h2>
+      <p class="section-intro">فتح وصيانة الحسابات البنكية للشركات في الإمارات يتطلب وثائق مترجمة تلبي معايير الامتثال الصارمة.</p>
+
+      <div class="banking-grid">
+        <div class="banking-card">
+          <h3><i class="fas fa-university"></i> فتح الحساب</h3>
+          <p>الحسابات الجديدة للشركات تتطلب ترجمة عقد التأسيس والرخصة التجارية وقرار مجلس الإدارة لتعيين المفوضين بالتوقيع ونسخ جوازات سفر المساهمين وإثبات العنوان.</p>
+        </div>
+        <div class="banking-card">
+          <h3><i class="fas fa-user-edit"></i> تغيير المفوضين بالتوقيع</h3>
+          <p>إضافة أو إزالة المفوضين بالتوقيع يتطلب قرارات مجلس إدارة مترجمة بلغة محددة تعترف بها البنوك. المصطلحات غير الصحيحة تُسبب تأخيرات وتقديمات متكررة.</p>
+        </div>
+        <div class="banking-card">
+          <h3><i class="fas fa-search-dollar"></i> العناية الواجبة</h3>
+          <p>البنوك تطلب دورياً وثائق محدثة لامتثال KYC. نحتفظ بسجلات الترجمة لضمان الاتساق عبر جميع وثائقك التجارية مع الوقت.</p>
+        </div>
+        <div class="banking-card">
+          <h3><i class="fas fa-hand-holding-usd"></i> طلبات التمويل</h3>
+          <p>تمويل الأعمال يتطلب ترجمة البيانات المالية والضمانات التجارية وتفويضات مجلس الإدارة. نفهم الدقة المطلوبة لوثائق الإقراض.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container">
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-grid">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" name="faq">
+            <summary class="faq-question">
+              <span>{faq.question}</span>
+              <i class="fas fa-chevron-down"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2>خدمات ذات صلة</h2>
+      <div class="related-grid">
+        <a href="/ar/legal-translation-dubai/" class="related-card">
+          <i class="fas fa-balance-scale"></i>
+          <h3>الترجمة القانونية</h3>
+          <p>خدمات ترجمة الوثائق القانونية الشاملة</p>
+        </a>
+        <a href="/ar/legal/contracts/" class="related-card">
+          <i class="fas fa-file-contract"></i>
+          <h3>ترجمة العقود</h3>
+          <p>الاتفاقيات التجارية وعقود العمل والإيجارات</p>
+        </a>
+        <a href="/ar/services/attestation/" class="related-card">
+          <i class="fas fa-stamp"></i>
+          <h3>تصديق الوثائق</h3>
+          <p>تصديق MOFA والسفارات للوثائق الأجنبية</p>
+        </a>
+        <a href="/ar/locations/abu-dhabi/" class="related-card">
+          <i class="fas fa-map-marker-alt"></i>
+          <h3>خدماتنا في أبوظبي</h3>
+          <p>ترجمة الوثائق التجارية في أبوظبي</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>هل تحتاج ترجمة وثائق تجارية؟</h2>
+        <p>أرسل وثائقك عبر واتساب للتقييم المجاني. نؤكد عدد الصفحات واحتياجات التصديق وعرض السعر الثابت خلال 5-10 دقائق.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/971508620217" class="btn btn-primary btn-lg">
+            <i class="fab fa-whatsapp"></i>
+            <span dir="ltr">واتساب: +971 50 862 0217</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  })} />
+
+</BaseLayoutArabic>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, var(--surface-navy) 0%, #1a3a5c 100%);
+    color: #fff;
+    padding: 4rem 0;
+  }
+
+  .hero-content {
+    max-width: 800px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-section h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 0.75rem;
+    line-height: 1.4;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-intro {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+  }
+
+  .hero-features {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.75rem 1.25rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    flex-direction: row-reverse;
+  }
+
+  .hero-feature i {
+    color: var(--accent-coral);
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--accent-coral);
+    color: #fff;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  /* Sections */
+  .section {
+    padding: 4rem 0;
+  }
+
+  .section h2 {
+    font-size: 1.75rem;
+    margin: 0 0 1rem;
+    color: var(--primary-color);
+  }
+
+  .section-intro {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 800px;
+    line-height: 1.8;
+  }
+
+  .bg-light {
+    background: var(--bg-light, #f8f9fa);
+  }
+
+  /* Documents Grid */
+  .documents-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .document-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    display: block;
+  }
+
+  .document-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .document-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--accent-coral);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .document-icon i {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+
+  .document-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .document-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .document-use {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    margin-bottom: 1rem;
+  }
+
+  .document-link {
+    color: var(--accent-coral);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* Jurisdiction Grid */
+  .jurisdiction-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .jurisdiction-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .jurisdiction-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .jurisdiction-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  /* Turnaround Grid */
+  .turnaround-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .turnaround-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .turnaround-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--surface-navy);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+
+  .turnaround-icon i {
+    font-size: 1.25rem;
+    color: #fff;
+  }
+
+  .turnaround-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .turnaround-time {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent-coral);
+  }
+
+  /* Banking Grid */
+  .banking-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .banking-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+
+  .banking-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-direction: row-reverse;
+  }
+
+  .banking-card h3 i {
+    color: var(--accent-coral);
+  }
+
+  .banking-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  /* FAQ Section */
+  .faq-grid {
+    display: grid;
+    gap: 1rem;
+    max-width: 900px;
+  }
+
+  .faq-item {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .faq-question {
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: var(--primary-color);
+    list-style: none;
+    gap: 1rem;
+    flex-direction: row-reverse;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question i {
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .faq-item[open] .faq-question i {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.25rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    text-align: right;
+  }
+
+  .faq-answer p {
+    margin: 0;
+  }
+
+  /* Related Services */
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .related-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+  }
+
+  .related-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .related-card i {
+    font-size: 2rem;
+    color: var(--accent-coral);
+    margin-bottom: 1rem;
+  }
+
+  .related-card h3 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .related-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, var(--accent-coral) 0%, #e63946 100%);
+    color: #fff;
+    text-align: center;
+  }
+
+  .cta-content h2 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-content p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  .cta-section .btn-primary {
+    background: #fff;
+    color: var(--accent-coral);
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .jurisdiction-grid,
+    .related-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .turnaround-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 991px) {
+    .documents-grid,
+    .banking-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .turnaround-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 3rem 0;
+    }
+
+    .hero-section h1 {
+      font-size: 1.75rem;
+    }
+
+    .hero-features {
+      justify-content: center;
+    }
+
+    .section {
+      padding: 3rem 0;
+    }
+
+    .jurisdiction-grid,
+    .turnaround-grid,
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

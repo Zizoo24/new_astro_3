@@ -1,0 +1,1589 @@
+---
+/**
+ * /ar/personal/vital-records/divorce/ - ترجمة شهادة الطلاق (Divorce Certificate Arabic)
+ *
+ * Target Keywords: ترجمة شهادة الطلاق دبي, ترجمة حكم طلاق, ترجمة قانونية طلاق
+ * Layout: BaseLayoutArabic
+ * Silo: Personal > Vital Records (Arabic)
+ */
+import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: 'هل ترجمة شهادة الطلاق مقبولة للزواج مرة أخرى في الإمارات؟',
+    answer: 'نعم. ترجمتنا المعتمدة من وزارة العدل مقبولة في محاكم دبي وأبوظبي لطلبات الزواج الجديد. الترجمة تتضمن جميع العناصر المطلوبة قانونياً، بما في ذلك الختم الرسمي وتفاصيل ترخيص المترجم.'
+  },
+  {
+    question: 'ما الوثائق المطلوبة لترجمة شهادة الطلاق؟',
+    answer: 'كحد أدنى، تحتاج حكم الطلاق النهائي أو الشهادة الرسمية. حسب وضعك، قد تحتاج أيضاً أوامر مؤقتة، اتفاقيات الحضانة، أو وثائق التسوية المالية. أرسل ما لديك وسنُخبرك بما هو مطلوب لغرضك المحدد.'
+  },
+  {
+    question: 'هل يجب تصديق شهادة الطلاق الأجنبية قبل الترجمة؟',
+    answer: 'لمعظم الاستخدامات الرسمية في الإمارات، نعم. أحكام الطلاق الأجنبية تحتاج عادةً تصديق من سلطات بلدك، وزارة الخارجية، سفارة الإمارات، ثم وزارة الخارجية الإماراتية. نتحقق من ذلك خلال مراجعتنا المجانية قبل الدفع.'
+  },
+  {
+    question: 'كم تستغرق ترجمة شهادة الطلاق؟',
+    answer: 'الخدمة العادية: خلال 24 ساعة. الخدمة السريعة: 6 ساعات مع معالجة ذات أولوية. خدمة كبار العملاء: مسودة خلال ساعة واحدة. القضايا المعقدة متعددة الوثائق قد تحتاج وقتاً إضافياً نؤكده مسبقاً.'
+  },
+  {
+    question: 'هل معلومات طلاقي تبقى سرية؟',
+    answer: 'نعم. نفهم الطبيعة الحساسة لوثائق الطلاق. وثائقك تُعالج بسرية تامة، تُحفظ بشكل آمن، ويصل إليها فقط المترجم المكلف ومراجع الجودة. لا نشارك معلومات العملاء مع أي طرف ثالث.'
+  },
+  {
+    question: 'ما العناصر التي يجب أن تتضمنها ترجمة الطلاق؟',
+    answer: 'الترجمة الصحيحة تتضمن: أسماء الطرفين كما تظهر في السجلات الرسمية، تاريخ الطلاق الفعلي، تفاصيل المحكمة، رقم القضية، اسم القاضي أو المسجل، أحكام الحضانة إن وجدت، الشروط المالية، وصف الأختام الرسمية.'
+  },
+  {
+    question: 'ماذا لو كان حكم الطلاق يتضمن أحكام حضانة؟',
+    answer: 'أحكام الحضانة تتطلب ترجمة دقيقة خاصة. نستخدم مصطلحات قانون الأحوال الشخصية الإماراتي (المادة 102) لضمان وضوح ترتيبات الحضانة والزيارة والنفقة في الترجمة.'
+  }
+];
+
+// Divorce document uses
+const divorceUses = [
+  {
+    title: "الزواج مرة أخرى",
+    icon: "ring",
+    desc: "إثبات انتهاء الزواج السابق للسلطات الإماراتية",
+    authority: "محاكم دبي - الأحوال الشخصية"
+  },
+  {
+    title: "تحديث الحالة المدنية",
+    icon: "id-card",
+    desc: "تحديث حالة الزواج في الهوية الإماراتية والتأشيرة",
+    authority: "الهيئة الاتحادية للهوية"
+  },
+  {
+    title: "التأشيرات والإقامة",
+    icon: "passport",
+    desc: "تغيير الكفالة أو طلبات الإقامة الجديدة",
+    authority: "GDRFA"
+  },
+  {
+    title: "إجراءات الحضانة",
+    icon: "users",
+    desc: "تنفيذ أو الإشارة إلى أحكام الحضانة في الإمارات",
+    authority: "محكمة الأحوال الشخصية"
+  },
+  {
+    title: "المعاملات المالية",
+    icon: "university",
+    desc: "تحديث الحسابات المصرفية وملكية العقارات",
+    authority: "البنوك، دائرة الأراضي"
+  },
+  {
+    title: "شؤون الميراث",
+    icon: "balance-scale",
+    desc: "إثبات الحالة الزوجية في قضايا التركة",
+    authority: "محاكم الإمارات"
+  }
+];
+
+// Attestation paths
+const attestationPaths = [
+  {
+    type: "دول اتفاقية لاهاي",
+    countries: "الهند، بريطانيا، أمريكا، كندا، الفلبين",
+    steps: ["أبوستيل من المحكمة/الولاية", "سفارة الإمارات", "MOFA الإمارات"],
+    note: "الأبوستيل يحل محل سلسلة التصديق التقليدية"
+  },
+  {
+    type: "الدول غير الأعضاء",
+    countries: "باكستان، مصر، الأردن، سوريا",
+    steps: ["تصديق المحكمة", "وزارة الخارجية (بلد المصدر)", "سفارة الإمارات", "MOFA الإمارات"],
+    note: "السلسلة التقليدية الكاملة مطلوبة"
+  }
+];
+
+const pageTitle = 'ترجمة شهادة الطلاق دبي | ترجمة معتمدة من وزارة العدل';
+const pageDescription = 'ترجمة شهادة الطلاق في دبي وأبوظبي مقبولة في محاكم الإمارات وGDRFA والأحوال المدنية. ترجمة معتمدة من وزارة العدل للزواج الجديد وتحديث الحالة.';
+---
+
+<BaseLayoutArabic
+  title={pageTitle}
+  description={pageDescription}
+  canonicalURL="https://onlinetranslation.ae/ar/personal/vital-records/divorce/"
+>
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  })} />
+
+  <!-- Service Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Divorce Certificate Translation",
+    "alternateName": "ترجمة شهادة الطلاق",
+    "description": pageDescription,
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "OnlineTranslation.ae",
+      "@id": "https://onlinetranslation.ae/#organization"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "United Arab Emirates"
+    },
+    "serviceType": "Legal Translation"
+  })} />
+
+  <main class="service-page rtl-page" dir="rtl">
+
+    <!-- Hero Section -->
+    <section class="hero-section bg-navy">
+      <div class="container">
+        <nav class="breadcrumb-nav" aria-label="مسار التنقل">
+          <ol class="breadcrumb">
+            <li><a href="/ar/">الرئيسية</a></li>
+            <li><a href="/ar/personal/">الوثائق الشخصية</a></li>
+            <li><a href="/ar/personal/vital-records/">السجلات الحيوية</a></li>
+            <li aria-current="page">شهادة الطلاق</li>
+          </ol>
+        </nav>
+
+        <div class="hero-content">
+          <div class="service-badge">
+            <i class="fas fa-stamp"></i>
+            <span>وزارة العدل - ترخيص #701</span>
+          </div>
+
+          <h1>ترجمة شهادة الطلاق في دبي</h1>
+
+          <p class="hero-intro">
+            ترجمة قانونية معتمدة من وزارة العدل مقبولة في محكمة الأحوال الشخصية بدبي،
+            GDRFA، والسجل المدني الإماراتي. ترجمة غير صحيحة لأحكام الحضانة أو بنود الممتلكات
+            من أكثر أسباب الرفض في محكمة الأحوال الشخصية.
+          </p>
+
+          <ul class="hero-features">
+            <li><i class="fas fa-clock"></i> مسودة رقمية خلال 60 دقيقة عادةً</li>
+            <li><i class="fas fa-gavel"></i> مقبولة في محاكم دبي وأبوظبي</li>
+            <li><i class="fas fa-lock"></i> معالجة سرية للوثائق الحساسة</li>
+            <li><i class="fas fa-qrcode"></i> ختم وزارة العدل مع رمز QR للتحقق</li>
+          </ul>
+
+          <div class="hero-cta">
+            <a href="https://wa.me/971508620217" class="btn btn-coral btn-lg">
+              <i class="fab fa-whatsapp"></i>
+              أرسل وثيقتك عبر واتساب
+            </a>
+            <a href="tel:+971508620217" class="btn btn-outline-light btn-lg">
+              <i class="fas fa-phone"></i>
+              <span dir="ltr">+971 50 862 0217</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Divorce Translations Get Rejected -->
+    <section class="rejection-section">
+      <div class="container">
+        <h2 class="section-title">لماذا تُرفض ترجمات الطلاق في المحاكم الإماراتية</h2>
+
+        <div class="rejection-grid">
+          <div class="rejection-card">
+            <div class="rejection-icon">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3>مصطلحات الحضانة غير دقيقة</h3>
+            <p>
+              ترتيبات الحضانة والزيارة والانتقال تتطلب مصطلحات دقيقة وفق المادة 102
+              من قانون الأحوال الشخصية الإماراتي. الترجمة الغامضة تُرفض.
+            </p>
+          </div>
+
+          <div class="rejection-card">
+            <div class="rejection-icon">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3>تناقض الأسماء</h3>
+            <p>
+              تناقض الأسماء بين حكم الطلاق وجواز السفر يؤدي إلى رفض تلقائي
+              في أنظمة GDRFA. نتحقق من تطابق الأسماء قبل الترجمة.
+            </p>
+          </div>
+
+          <div class="rejection-card">
+            <div class="rejection-icon">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3>بنود النفقة غير واضحة</h3>
+            <p>
+              أحكام النفقة والتسوية المالية تستخدم مصطلحات قانونية محددة.
+              الترجمة العامة لا تُقبل في المحاكم.
+            </p>
+          </div>
+
+          <div class="rejection-card">
+            <div class="rejection-icon">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3>سلسلة التصديق ناقصة</h3>
+            <p>
+              الترجمة قبل اكتمال التصديق قد تُبطل الوثيقة لإجراءات المحكمة.
+              نتحقق من حالة التصديق قبل قبول الوثيقة.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="uses-section bg-light">
+      <div class="container">
+        <h2 class="section-title">أين ستستخدم ترجمة شهادة الطلاق</h2>
+
+        <div class="uses-grid">
+          {divorceUses.map(use => (
+            <div class="use-card">
+              <div class="use-icon">
+                <i class={`fas fa-${use.icon}`}></i>
+              </div>
+              <h3>{use.title}</h3>
+              <p>{use.desc}</p>
+              <span class="use-authority">
+                <i class="fas fa-building"></i> {use.authority}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- What's Included -->
+    <section class="included-section">
+      <div class="container">
+        <h2 class="section-title">ما يجب أن تتضمنه ترجمة الطلاق</h2>
+        <p class="section-subtitle">
+          الترجمة الصحيحة تلتقط كل عنصر قانوني مهم
+        </p>
+
+        <div class="included-grid">
+          <div class="included-item">
+            <i class="fas fa-user"></i>
+            <div>
+              <strong>أسماء الطرفين</strong>
+              <span>كما تظهر في السجلات الرسمية، مطابقة لجواز السفر</span>
+            </div>
+          </div>
+
+          <div class="included-item">
+            <i class="fas fa-calendar"></i>
+            <div>
+              <strong>تاريخ الطلاق</strong>
+              <span>التاريخ الفعلي لانتهاء الزواج</span>
+            </div>
+          </div>
+
+          <div class="included-item">
+            <i class="fas fa-landmark"></i>
+            <div>
+              <strong>تفاصيل المحكمة</strong>
+              <span>المحكمة أو السلطة التي أصدرت حكم الطلاق</span>
+            </div>
+          </div>
+
+          <div class="included-item">
+            <i class="fas fa-hashtag"></i>
+            <div>
+              <strong>رقم القضية</strong>
+              <span>أرقام المرجع للتحقق</span>
+            </div>
+          </div>
+
+          <div class="included-item">
+            <i class="fas fa-gavel"></i>
+            <div>
+              <strong>القاضي أو المسجل</strong>
+              <span>المسؤول الذي وقع على الحكم</span>
+            </div>
+          </div>
+
+          <div class="included-item">
+            <i class="fas fa-child"></i>
+            <div>
+              <strong>أحكام الحضانة</strong>
+              <span>أسماء الأطفال وترتيبات الحضانة إن وجدت</span>
+            </div>
+          </div>
+
+          <div class="included-item">
+            <i class="fas fa-money-bill"></i>
+            <div>
+              <strong>الشروط المالية</strong>
+              <span>النفقة أو تقسيم الممتلكات إن تضمنها الحكم</span>
+            </div>
+          </div>
+
+          <div class="included-item">
+            <i class="fas fa-stamp"></i>
+            <div>
+              <strong>الأختام والتواقيع</strong>
+              <span>وصف دقيق للعلامات الرسمية</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Attestation Requirements -->
+    <section class="attestation-section bg-navy">
+      <div class="container">
+        <h2 class="section-title text-white">متطلبات التصديق</h2>
+        <p class="section-subtitle text-white-muted">
+          أحكام الطلاق الأجنبية تحتاج تصديق قبل الاعتراف بها في الإمارات
+        </p>
+
+        <div class="attestation-grid">
+          {attestationPaths.map(path => (
+            <div class="attestation-card">
+              <div class="attestation-header">
+                <h3>{path.type}</h3>
+                <span class="countries">{path.countries}</span>
+              </div>
+              <div class="attestation-steps">
+                {path.steps.map((step, i) => (
+                  <div class="step-item">
+                    <span class="step-num">{i + 1}</span>
+                    <span class="step-text">{step}</span>
+                  </div>
+                ))}
+              </div>
+              <div class="attestation-note">
+                <i class="fas fa-info-circle"></i>
+                <span>{path.note}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="attestation-warning">
+          <i class="fas fa-exclamation-circle"></i>
+          <div>
+            <strong>مهم:</strong> يجب إجراء الترجمة المعتمدة من وزارة العدل بعد اكتمال التصديق.
+            الترجمة قبل التصديق الكامل قد تُبطل الوثيقة لإجراءات محكمة الأحوال الشخصية.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Confidentiality -->
+    <section class="confidential-section">
+      <div class="container">
+        <div class="confidential-grid">
+          <div class="confidential-content">
+            <h2>السرية ومعالجة الوثائق الحساسة</h2>
+
+            <p>
+              شهادات الطلاق تحتوي على معلومات شخصية حساسة—ترتيبات الحضانة،
+              التسويات المالية، أسباب الانفصال. بموجب المادة 378 من قانون العقوبات الإماراتي،
+              يحمل الإفصاح غير المصرح به عقوبات كبيرة. بروتوكولاتنا تتجاوز هذه المتطلبات.
+            </p>
+
+            <ul class="confidential-list">
+              <li>
+                <i class="fas fa-user-lock"></i>
+                <span>مترجم واحد مكلف يوقع تعهد سرية</span>
+              </li>
+              <li>
+                <i class="fas fa-shield-alt"></i>
+                <span>معالجة على أنظمة مشفرة بوصول محدود</span>
+              </li>
+              <li>
+                <i class="fas fa-server"></i>
+                <span>لا نستخدم خدمات سحابية أو منصات خارجية</span>
+              </li>
+              <li>
+                <i class="fas fa-trash-alt"></i>
+                <span>حذف فوري للوثائق عند الطلب بعد التسليم</span>
+              </li>
+            </ul>
+
+            <p class="confidential-note">
+              للقضايا البارزة التي تشمل شخصيات عامة أو رجال أعمال أو نزاعات حضانة معقدة،
+              بروتوكولات إضافية متاحة: محطات عمل آمنة مخصصة، اتفاقيات عدم إفصاح تشمل فريقنا بالكامل.
+            </p>
+          </div>
+
+          <div class="confidential-image">
+            <div class="trust-badge">
+              <i class="fas fa-shield-alt"></i>
+              <span>سرية تامة</span>
+            </div>
+            <div class="stats-box">
+              <div class="stat">
+                <span class="stat-value">100%</span>
+                <span class="stat-label">سرية مضمونة</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value">صفر</span>
+                <span class="stat-label">تسريب للبيانات</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Multiple Documents -->
+    <section class="documents-section bg-light">
+      <div class="container">
+        <h2 class="section-title">وثائق متعددة في إجراءات الطلاق</h2>
+        <p class="section-subtitle">
+          كثير من حالات الطلاق تتضمن أكثر من شهادة واحدة
+        </p>
+
+        <div class="documents-list">
+          <div class="doc-item">
+            <i class="fas fa-file-alt"></i>
+            <div>
+              <strong>عريضة الطلاق الأولية</strong>
+              <span>طلب الطلاق المقدم للمحكمة</span>
+            </div>
+          </div>
+
+          <div class="doc-item">
+            <i class="fas fa-file-alt"></i>
+            <div>
+              <strong>الأوامر المؤقتة</strong>
+              <span>حضانة مؤقتة، نفقة، أوامر حماية</span>
+            </div>
+          </div>
+
+          <div class="doc-item">
+            <i class="fas fa-file-alt"></i>
+            <div>
+              <strong>الحكم النهائي</strong>
+              <span>القرار النهائي أو حكم الطلاق</span>
+            </div>
+          </div>
+
+          <div class="doc-item">
+            <i class="fas fa-file-alt"></i>
+            <div>
+              <strong>اتفاقية الانفصال</strong>
+              <span>اتفاق بالتراضي أو أمر موافقة</span>
+            </div>
+          </div>
+
+          <div class="doc-item">
+            <i class="fas fa-file-alt"></i>
+            <div>
+              <strong>اتفاقية تقسيم الممتلكات</strong>
+              <span>التسوية المالية وتقسيم الأصول</span>
+            </div>
+          </div>
+
+          <div class="doc-item">
+            <i class="fas fa-file-alt"></i>
+            <div>
+              <strong>التعديلات</strong>
+              <span>تغييرات أو تعديلات على الأوامر الأصلية</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="documents-advice">
+          <i class="fas fa-lightbulb"></i>
+          <p>
+            أخبرنا بالغرض من استخدام الوثيقة، وسننصحك أي الوثائق تحتاج ترجمة فعلاً.
+            أحياناً الحكم النهائي وحده يكفي. حالات أخرى تتطلب الحزمة الكاملة.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+      <div class="container">
+        <h2 class="section-title">مستويات الخدمة والأسعار</h2>
+        <p class="section-subtitle">
+          اختر مستوى الخدمة المناسب لجدولك الزمني. جميع الخيارات تتضمن نفس جودة الترجمة وشهادة وزارة العدل.
+        </p>
+
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>عادي</h3>
+            </div>
+            <div class="pricing-body">
+              <div class="price">150 درهم</div>
+              <div class="timeline">تسليم خلال 24 ساعة</div>
+              <ul class="features">
+                <li><i class="fas fa-check"></i> ترجمة معتمدة من وزارة العدل</li>
+                <li><i class="fas fa-check"></i> نسخة PDF رقمية + نسخة ورقية</li>
+                <li><i class="fas fa-check"></i> توصيل مجاني في دبي</li>
+                <li><i class="fas fa-check"></i> تحديثات عبر واتساب</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pricing-card featured">
+            <div class="pricing-badge">الأكثر طلباً</div>
+            <div class="pricing-header">
+              <h3>سريع</h3>
+            </div>
+            <div class="pricing-body">
+              <div class="price">250 درهم</div>
+              <div class="timeline">تسليم خلال 6 ساعات</div>
+              <ul class="features">
+                <li><i class="fas fa-check"></i> كل ما في الخدمة العادية</li>
+                <li><i class="fas fa-check"></i> أولوية في الطابور</li>
+                <li><i class="fas fa-check"></i> منسق مخصص</li>
+                <li><i class="fas fa-check"></i> توصيل في نفس اليوم</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>كبار العملاء</h3>
+            </div>
+            <div class="pricing-body">
+              <div class="price">450 درهم</div>
+              <div class="timeline">مسودة خلال ساعة</div>
+              <ul class="features">
+                <li><i class="fas fa-check"></i> كل ما في الخدمة السريعة</li>
+                <li><i class="fas fa-check"></i> تكليف فوري للمترجم</li>
+                <li><i class="fas fa-check"></i> خط هاتف مباشر</li>
+                <li><i class="fas fa-check"></i> خدمة استلام الوثائق</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="pricing-note">
+          <i class="fas fa-info-circle"></i>
+          <p>
+            الأسعار للوثيقة الواحدة حتى 5 صفحات. الوثائق المعقدة أو متعددة الأجزاء
+            قد تختلف أسعارها. أرسل وثيقتك للحصول على عرض سعر دقيق.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- What You Receive -->
+    <section class="deliverables-section bg-light">
+      <div class="container">
+        <h2 class="section-title">ما تحصل عليه</h2>
+
+        <div class="deliverables-grid">
+          <div class="deliverable-card">
+            <div class="deliverable-icon">
+              <i class="fas fa-file-pdf"></i>
+            </div>
+            <h3>نسخة PDF رقمية</h3>
+            <p>تُرسل عبر واتساب والبريد الإلكتروني خلال الوقت المحدد. مناسبة للتقديم الأولي.</p>
+          </div>
+
+          <div class="deliverable-card">
+            <div class="deliverable-icon">
+              <i class="fas fa-stamp"></i>
+            </div>
+            <h3>النسخة الأصلية المختومة</h3>
+            <p>نسخة ورقية بختم وزارة العدل الرسمي، رمز QR للتحقق، وتفاصيل ترخيص المترجم.</p>
+          </div>
+
+          <div class="deliverable-card">
+            <div class="deliverable-icon">
+              <i class="fas fa-copy"></i>
+            </div>
+            <h3>نسخ معتمدة إضافية</h3>
+            <p>نسخ مختومة إضافية متاحة عند الطلب للتقديم لجهات مختلفة.</p>
+          </div>
+
+          <div class="deliverable-card">
+            <div class="deliverable-icon">
+              <i class="fas fa-truck"></i>
+            </div>
+            <h3>توصيل بالبريد السريع</h3>
+            <p>توصيل مجاني في دبي. توصيل في اليوم التالي إلى أبوظبي والشارقة والإمارات الأخرى.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="container">
+        <h2 class="section-title">الأسئلة الشائعة</h2>
+
+        <div class="faq-grid">
+          {faqs.map(faq => (
+            <details class="faq-item" name="faq-group">
+              <summary>
+                <span class="faq-question">{faq.question}</span>
+                <i class="fas fa-chevron-down"></i>
+              </summary>
+              <div class="faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Services -->
+    <section class="related-section bg-light">
+      <div class="container">
+        <h2 class="section-title">خدمات ذات صلة</h2>
+
+        <div class="related-grid">
+          <a href="/ar/personal/vital-records/marriage/" class="related-card">
+            <i class="fas fa-ring"></i>
+            <h3>ترجمة عقد الزواج</h3>
+            <p>للتأشيرات وكفالة العائلة</p>
+          </a>
+
+          <a href="/ar/personal/vital-records/birth/" class="related-card">
+            <i class="fas fa-baby"></i>
+            <h3>ترجمة شهادة الميلاد</h3>
+            <p>للحضانة وإجراءات العائلة</p>
+          </a>
+
+          <a href="/ar/personal/vital-records/death/" class="related-card">
+            <i class="fas fa-scroll"></i>
+            <h3>ترجمة شهادة الوفاة</h3>
+            <p>لشؤون الميراث والتركة</p>
+          </a>
+
+          <a href="/ar/services/attestation/" class="related-card">
+            <i class="fas fa-certificate"></i>
+            <h3>تصديق الوثائق</h3>
+            <p>سلسلة التصديق الكاملة</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-section bg-navy">
+      <div class="container">
+        <div class="cta-content">
+          <h2>هل لديك شهادة طلاق تحتاج ترجمة؟</h2>
+          <p>
+            أرسل صورة الوثيقة عبر واتساب. نتحقق من حالة التصديق،
+            نُخبرك بالضبط ما تحتاجه، ونقدم عرض سعر دقيق.
+          </p>
+
+          <div class="cta-buttons">
+            <a href="https://wa.me/971508620217?text=أريد%20ترجمة%20شهادة%20طلاق" class="btn btn-coral btn-lg">
+              <i class="fab fa-whatsapp"></i>
+              أرسل وثيقتك الآن
+            </a>
+            <a href="tel:+971508620217" class="btn btn-outline-light btn-lg">
+              <i class="fas fa-phone"></i>
+              اتصل بنا
+            </a>
+          </div>
+
+          <div class="cta-trust">
+            <div class="trust-item">
+              <i class="fas fa-gavel"></i>
+              <span>مقبولة في محاكم دبي</span>
+            </div>
+            <div class="trust-item">
+              <i class="fas fa-lock"></i>
+              <span>سرية تامة</span>
+            </div>
+            <div class="trust-item">
+              <i class="fas fa-clock"></i>
+              <span>تسليم خلال 24 ساعة</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <style>
+    /* Page-specific styles */
+    .rtl-page {
+      direction: rtl;
+      text-align: right;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 3rem 0 4rem;
+      color: var(--text-on-dark);
+    }
+
+    .breadcrumb-nav {
+      margin-bottom: 2rem;
+    }
+
+    .breadcrumb {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    .breadcrumb li:not(:last-child)::after {
+      content: '←';
+      margin-right: 0.5rem;
+      opacity: 0.6;
+    }
+
+    .breadcrumb a {
+      color: var(--text-on-dark-muted);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--text-on-dark);
+    }
+
+    .service-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-section h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+
+    .hero-intro {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      max-width: 700px;
+      opacity: 0.95;
+    }
+
+    .hero-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .hero-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-features i {
+      color: var(--accent-coral);
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* Section Styles */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title.text-white {
+      color: var(--text-on-dark);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      line-height: 1.6;
+    }
+
+    .section-subtitle.text-white-muted {
+      color: var(--text-on-dark-muted);
+    }
+
+    /* Rejection Section */
+    .rejection-section {
+      padding: 4rem 0;
+    }
+
+    .rejection-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .rejection-card {
+      background: #fff5f5;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      border-right: 4px solid #ff6b6b;
+    }
+
+    .rejection-icon {
+      width: 48px;
+      height: 48px;
+      background: #ff6b6b;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .rejection-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      color: #c92a2a;
+    }
+
+    .rejection-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Uses Section */
+    .uses-section {
+      padding: 4rem 0;
+    }
+
+    .uses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .use-card {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      border: 1px solid var(--border-light);
+      transition: all 0.3s ease;
+    }
+
+    .use-card:hover {
+      border-color: var(--accent-coral);
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .use-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--surface-navy);
+      color: white;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .use-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .use-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .use-authority {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--accent-coral);
+    }
+
+    /* Included Section */
+    .included-section {
+      padding: 4rem 0;
+    }
+
+    .included-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .included-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--surface-light);
+      border-radius: 0.5rem;
+    }
+
+    .included-item i {
+      width: 40px;
+      height: 40px;
+      background: var(--accent-coral);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .included-item strong {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .included-item span {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    /* Attestation Section */
+    .attestation-section {
+      padding: 4rem 0;
+      color: var(--text-on-dark);
+    }
+
+    .attestation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .attestation-card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 0.75rem;
+      overflow: hidden;
+    }
+
+    .attestation-header {
+      background: rgba(255,255,255,0.1);
+      padding: 1.25rem;
+    }
+
+    .attestation-header h3 {
+      font-size: 1.1rem;
+      margin: 0 0 0.25rem;
+    }
+
+    .attestation-header .countries {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    .attestation-steps {
+      padding: 1.25rem;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+    }
+
+    .step-num {
+      width: 28px;
+      height: 28px;
+      background: var(--accent-coral);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .step-text {
+      font-size: 0.95rem;
+    }
+
+    .attestation-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      padding: 1rem 1.25rem;
+      background: rgba(255,255,255,0.05);
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    .attestation-warning {
+      display: flex;
+      gap: 1rem;
+      background: rgba(255,107,107,0.2);
+      padding: 1.25rem;
+      border-radius: 0.5rem;
+    }
+
+    .attestation-warning i {
+      font-size: 1.5rem;
+      color: #ff6b6b;
+      flex-shrink: 0;
+    }
+
+    .attestation-warning strong {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    /* Confidential Section */
+    .confidential-section {
+      padding: 4rem 0;
+    }
+
+    .confidential-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .confidential-content h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .confidential-content p {
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .confidential-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem;
+    }
+
+    .confidential-list li {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .confidential-list i {
+      color: var(--accent-coral);
+      font-size: 1.1rem;
+    }
+
+    .confidential-note {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .confidential-image {
+      text-align: center;
+    }
+
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--surface-navy);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .trust-badge i {
+      font-size: 1.5rem;
+    }
+
+    .stats-box {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-value {
+      display: block;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-coral);
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* Documents Section */
+    .documents-section {
+      padding: 4rem 0;
+    }
+
+    .documents-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .doc-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem;
+      background: white;
+      border-radius: 0.5rem;
+      border: 1px solid var(--border-light);
+    }
+
+    .doc-item i {
+      color: var(--accent-coral);
+      font-size: 1.25rem;
+      margin-top: 0.25rem;
+    }
+
+    .doc-item strong {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .doc-item span {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .documents-advice {
+      display: flex;
+      gap: 1rem;
+      background: #e6f7ff;
+      padding: 1.25rem;
+      border-radius: 0.5rem;
+      border-right: 4px solid var(--link-color);
+    }
+
+    .documents-advice i {
+      color: var(--link-color);
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .documents-advice p {
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* Pricing Section */
+    .pricing-section {
+      padding: 4rem 0;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .pricing-card {
+      background: var(--surface-light);
+      border-radius: 0.75rem;
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+      position: relative;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--accent-coral);
+      box-shadow: 0 8px 30px rgba(255,22,84,0.15);
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--accent-coral);
+      color: white;
+      text-align: center;
+      padding: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .pricing-card.featured .pricing-header {
+      margin-top: 2rem;
+    }
+
+    .pricing-header {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .pricing-header h3 {
+      font-size: 1.25rem;
+      margin: 0;
+    }
+
+    .pricing-body {
+      padding: 0 1.5rem 1.5rem;
+      text-align: center;
+    }
+
+    .price {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent-coral);
+    }
+
+    .timeline {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: right;
+    }
+
+    .features li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .features li:last-child {
+      border-bottom: none;
+    }
+
+    .features i {
+      color: var(--accent-coral);
+    }
+
+    .pricing-note {
+      display: flex;
+      gap: 1rem;
+      background: var(--surface-light);
+      padding: 1.25rem;
+      border-radius: 0.5rem;
+    }
+
+    .pricing-note i {
+      color: var(--accent-coral);
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .pricing-note p {
+      margin: 0;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Deliverables Section */
+    .deliverables-section {
+      padding: 4rem 0;
+    }
+
+    .deliverables-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .deliverable-card {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      border: 1px solid var(--border-light);
+    }
+
+    .deliverable-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--surface-navy);
+      color: white;
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .deliverable-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .deliverable-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      padding: 4rem 0;
+    }
+
+    .faq-grid {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--surface-light);
+      border-radius: 0.5rem;
+      margin-bottom: 0.75rem;
+      border: 1px solid var(--border-light);
+    }
+
+    .faq-item summary {
+      padding: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-question {
+      font-weight: 600;
+      padding-left: 1rem;
+    }
+
+    .faq-item summary i {
+      transition: transform 0.3s ease;
+      color: var(--text-muted);
+    }
+
+    .faq-item[open] summary i {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      padding: 0 1.25rem 1.25rem;
+    }
+
+    .faq-answer p {
+      margin: 0;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+
+    /* Related Section */
+    .related-section {
+      padding: 4rem 0;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .related-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid var(--border-light);
+      transition: all 0.3s ease;
+    }
+
+    .related-card:hover {
+      border-color: var(--accent-coral);
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .related-card i {
+      font-size: 2rem;
+      color: var(--accent-coral);
+      margin-bottom: 1rem;
+    }
+
+    .related-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .related-card p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 4rem 0;
+      color: var(--text-on-dark);
+      text-align: center;
+    }
+
+    .cta-content h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .cta-content > p {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      line-height: 1.8;
+      opacity: 0.95;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .cta-trust {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-lg {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+    }
+
+    .btn-coral {
+      background: var(--accent-coral);
+      color: white;
+    }
+
+    .btn-coral:hover {
+      background: #e0144c;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-light {
+      border: 2px solid rgba(255,255,255,0.5);
+      color: white;
+    }
+
+    .btn-outline-light:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: white;
+    }
+
+    /* Backgrounds */
+    .bg-navy {
+      background: var(--surface-navy);
+    }
+
+    .bg-light {
+      background: var(--surface-light);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-section h1 {
+        font-size: 1.75rem;
+      }
+
+      .hero-intro {
+        font-size: 1rem;
+      }
+
+      .confidential-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .cta-content h2 {
+        font-size: 1.5rem;
+      }
+
+      .attestation-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+</BaseLayoutArabic>
