@@ -821,6 +821,63 @@ After delivery, offer:
 
 ---
 
+# AUTOMATED BUILD VERIFICATION
+
+## What Happens Automatically on Build
+
+When you run `npm run build`, the following verifications happen automatically:
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  BUILD PIPELINE (Automatic)                                         │
+│                                                                      │
+│  1. PRE-BUILD CHECKS (prebuild script)                              │
+│     ├─ npm run nav:check   → Verifies all navigation links exist   │
+│     └─ npm run lang:check  → Verifies EN/AR page mappings          │
+│                                                                      │
+│  2. ASTRO BUILD                                                      │
+│     ├─ Compiles all .astro pages                                    │
+│     └─ Generates sitemap at dist/sitemap-0.xml                     │
+│                                                                      │
+│  3. POST-BUILD                                                       │
+│     ├─ Minifies CSS/JS                                              │
+│     └─ Generates Pagefind search index at dist/pagefind/           │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+## Language Mapping Verification
+
+The `npm run lang:check` script ensures:
+- Every Arabic page (`/ar/...`) has a matching English equivalent
+- Language switcher will work correctly on all pages
+- Reports English pages that still need Arabic localization
+
+**Run manually:** `npm run lang:check`
+
+## Navigation Link Verification
+
+The `npm run nav:check` script ensures:
+- All links in navigation data point to existing pages
+- No broken navigation links in header, footer, or mobile menu
+
+**Run manually:** `npm run nav:check`
+
+## Search Index
+
+Pagefind automatically indexes all pages during build:
+- Index stored at `dist/pagefind/`
+- Supports both English and Arabic content
+- No manual action needed
+
+## Sitemap
+
+`@astrojs/sitemap` automatically generates sitemap:
+- Generated at `dist/sitemap-0.xml`
+- Includes all pages (EN and AR)
+- Submitted to Google via robots.txt
+
+---
+
 # POST-PUBLICATION WORKFLOW
 
 ## After Content Goes Live
