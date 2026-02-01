@@ -1,0 +1,465 @@
+---
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: "ما هي الترجمة المعتمدة؟",
+    answer: "في الإمارات، هي ترجمة رسمية تحمل الختم والتوقيع المطلوب من الجهة المستلمة. الأكثر شيوعاً هو إما ختم مترجم وزارة العدل أو ختم شركة الترجمة."
+  },
+  {
+    question: "هل الترجمة المعتمدة نفس الترجمة القانونية؟",
+    answer: "ليس دائماً. عملياً، 'الترجمة المعتمدة' غالباً تعني ترجمة بختم الشركة، بينما 'الترجمة القانونية' تعني عادةً ترجمة وزارة العدل القانونية. كثيرون يخلطون بين المصطلحات—تأكد دائماً من نوع الختم المطلوب مع الجهة المستلمة."
+  },
+  {
+    question: "هل الترجمة بختم الشركة مقبولة في المحاكم؟",
+    answer: "تُستخدم بشكل شائع في سير العمل المتعلق بالمحاكم مثل إعداد القضايا وملفات المحامين والمراجعة الداخلية. لمتطلبات التقديم الرسمية، يختلف القبول—تأكد مما تطلبه المحكمة بالتحديد. إذا كانت التعليمات تقول 'وزارة العدل'، ستحتاج ترجمة قانونية من وزارة العدل."
+  },
+  {
+    question: "هل تتطلب السفارات ترجمة قانونية من وزارة العدل؟",
+    answer: "بعضها نعم وبعضها لا. متطلبات السفارات تختلف حسب بلد الوجهة ونوع المستند. إذا قالت السفارة 'وزارة العدل' أو 'ترجمة قانونية'، اختر وزارة العدل. عند الشك، اسأل مباشرة."
+  },
+  {
+    question: "كيف أتجنب الرفض؟",
+    answer: "أرسل لنا صورة أو مسح لمستندك الأصلي وأخبرنا أين ستقدمه (وزارة الخارجية، كاتب العدل، السفارة، المدرسة، بوابة التأشيرات، الموارد البشرية، إلخ). سنخبرك بنوع الترجمة المناسب والخيار الأكثر فعالية من حيث التكلفة."
+  },
+  {
+    question: "لماذا الترجمة بختم الشركة أرخص؟",
+    answer: "الترجمة المعتمدة بختم الشركة عادةً أرخص بنسبة 40-50% من ترجمة وزارة العدل القانونية. إنها خيار جيد عندما لا تطلب الجهة المستلمة تحديداً شهادة وزارة العدل."
+  },
+  {
+    question: "ما المستندات التي تحتاج عادةً ترجمة رسمية؟",
+    answer: "شهادات الزواج، شهادات الميلاد، شهادات الطلاق، الدبلومات، كشوف الدرجات، التوكيلات، العقود القانونية، مستندات المحاكم، مستندات الشركات، ملفات الهجرة، وأي مستندات تُستخدم للعمليات الحكومية أو القانونية أو الرسمية."
+  },
+  {
+    question: "ما الفرق بين الترجمة والتصديق؟",
+    answer: "الترجمة تحول المحتوى إلى اللغة الهدف. التصديق يؤكد أن المستند الأصلي أصيل للاستخدام الرسمي—غالباً عبر وزارة الخارجية أو السفارة أو خطوات أخرى. أحياناً تحتاج كليهما، حسب مستندك وأين تقدمه."
+  }
+];
+---
+
+<BaseLayoutArabic
+  title="الترجمة المعتمدة دبي | وزارة العدل مقابل المعتمدة | دليل الإمارات"
+  description="شرح الترجمة المعتمدة في دبي. ترجمة وزارة العدل القانونية مقابل الترجمة المعتمدة - أيهما تحتاج للمحاكم والسفارات والحكومة. مقارنة الأسعار ودليل القبول."
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://onlinetranslation.ae/ar/resources/authenticated-translation/" />
+    <link rel="alternate" hreflang="en" href="https://onlinetranslation.ae/resources/authenticated-translation/" />
+    <link rel="alternate" hreflang="ar" href="https://onlinetranslation.ae/ar/resources/authenticated-translation/" />
+  </Fragment>
+
+  <section class="hero-section bg-dark" dir="rtl">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="مسار التنقل">
+        <a href="/ar/">الرئيسية</a>
+        <span class="separator">&lt;</span>
+        <a href="/ar/resources/">الموارد</a>
+        <span class="separator">&lt;</span>
+        <span class="current">الترجمة المعتمدة</span>
+      </nav>
+
+      <span class="hero-badge">دليل ترجمة الإمارات</span>
+      <h1>الترجمة المعتمدة في دبي والإمارات</h1>
+      <p class="hero-intro">
+        إذا قيل لك أنك تحتاج <strong>ترجمة قانونية</strong>، <strong>ترجمة وزارة العدل</strong>،
+        <strong>ترجمة معتمدة</strong>، أو <strong>ترجمة رسمية</strong> في دبي—هذا هو الجزء
+        الذي يسبب الارتباك عادةً.
+      </p>
+      <p class="hero-highlight">
+        الناس يستخدمون أسماء مختلفة، لكن في الإمارات ينحصر الأمر في <strong>نوعين</strong> من الترجمة المعتمدة.
+      </p>
+
+      <div class="service-snapshot">
+        <div class="snapshot-item">
+          <i class="fas fa-stamp"></i>
+          <span><strong>خياران:</strong> وزارة العدل أو ختم الشركة</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-check-circle"></i>
+          <span><strong>قاعدة بسيطة:</strong> اسأل عن الختم المطلوب</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-clock"></i>
+          <span><strong>وقت التسليم:</strong> نفس اليوم متاح</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section" dir="rtl">
+    <div class="container">
+      <div class="bottom-line-box">
+        <h2>الخلاصة: نوعان فقط في الإمارات</h2>
+        <p>
+          في الإمارات، "الترجمة المعتمدة" تعني أن مستندك المترجم مختوم وموقع
+          بطريقة تعترف بها الجهة المستلمة. هناك فقط <strong>خياران عمليان</strong>:
+        </p>
+        <div class="two-types-grid">
+          <div class="type-card type-moj">
+            <div class="type-number">1</div>
+            <h3>ترجمة وزارة العدل القانونية</h3>
+            <p>ترجمة مختومة وموقعة من <strong>مترجم قانوني مسجل لدى وزارة العدل</strong> (معتمد من وزارة العدل).</p>
+            <span class="type-badge">ختم حكومي</span>
+          </div>
+          <div class="type-card type-certified">
+            <div class="type-number">2</div>
+            <h3>الترجمة المعتمدة بختم الشركة</h3>
+            <p>ترجمة مختومة من <strong>مكتب ترجمة / مقدم خدمة ترجمة</strong> (ختم الشركة).</p>
+            <span class="type-badge">ختم المكتب</span>
+          </div>
+        </div>
+        <p class="bottom-line-note">
+          هذا كل شيء. كل المصطلحات الأخرى (محلفة، قانونية، معتمدة، رسمية، موثقة...) تشير عادةً إلى <strong>أحد هذين النوعين</strong>.
+        </p>
+      </div>
+
+      <h2>وزارة العدل مقابل الترجمة المعتمدة: أيهما تحتاج؟</h2>
+
+      <div class="comparison-table-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>النوع</th>
+              <th>ماذا يعني في الإمارات</th>
+              <th>مقبولة عادةً من</th>
+              <th>الأفضل لـ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>ترجمة وزارة العدل القانونية</strong></td>
+              <td>ختم + توقيع <strong>مترجم قانوني معتمد من وزارة العدل</strong></td>
+              <td><span class="table-badge gold">الحكومة، المحاكم، الوزارات، الجهات الصارمة</span></td>
+              <td>المستندات الرسمية، الهجرة التي تتطلب وزارة العدل، العقود القانونية للتقديم</td>
+            </tr>
+            <tr>
+              <td><strong>معتمدة بختم الشركة</strong></td>
+              <td>ختم <strong>شركة ترجمة</strong> (شهادة المكتب)</td>
+              <td><span class="table-badge">الموارد البشرية، البنوك، الشركات الخاصة، سير العمل الداخلي</span></td>
+              <td>الحالات الحساسة للتكلفة حيث وزارة العدل غير مطلوبة</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>لماذا الفرق مهم (التكلفة + القبول)</h2>
+
+      <p>اختيار خدمة الترجمة الصحيحة مهم لسببين:</p>
+
+      <div class="reasons-grid">
+        <div class="reason-card">
+          <div class="reason-icon">
+            <i class="fas fa-dollar-sign"></i>
+          </div>
+          <h3>1. السعر</h3>
+          <p>
+            في كثير من الحالات، <strong>الترجمة المعتمدة بختم الشركة أرخص بنسبة 40-50%</strong>
+            من ترجمة وزارة العدل القانونية.
+          </p>
+        </div>
+        <div class="reason-card">
+          <div class="reason-icon">
+            <i class="fas fa-building"></i>
+          </div>
+          <h3>2. القبول</h3>
+          <p>
+            "ترجمة معتمدة" قد تكون مثالية لمكان ومرفوضة من آخر—لأن
+            <strong>الجهة المستلمة تقرر</strong> ما تقبله.
+          </p>
+        </div>
+      </div>
+
+      <h2>أيهما يجب أن تختار؟</h2>
+
+      <p>استخدم هذه القاعدة البسيطة:</p>
+
+      <div class="decision-grid">
+        <div class="decision-card certified">
+          <h3><i class="fas fa-building"></i> اختر المعتمدة بختم الشركة إذا:</h3>
+          <ul>
+            <li>تقدم إلى <strong>أقسام الموارد البشرية</strong> أو امتثال الشركة العام</li>
+            <li>بنك أو صاحب عمل أو منظمة خاصة تريد ترجمة معتمدة لكن <strong>لا</strong> تحدد "وزارة العدل"</li>
+            <li>تحتاج ترجمة مستندات سريعة واحترافية للاستخدام العملي داخل الإمارات</li>
+            <li>تريد <strong>خياراً أقل تكلفة</strong> ومتطلبات القبول مرنة</li>
+          </ul>
+        </div>
+        <div class="decision-card moj">
+          <h3><i class="fas fa-gavel"></i> اختر ترجمة وزارة العدل القانونية إذا:</h3>
+          <ul>
+            <li>الجهة المستلمة تطلب صراحةً <strong>ترجمة قانونية</strong>، <strong>ترجمة وزارة العدل</strong>، أو معتمدة من وزارة العدل</li>
+            <li>تحتاج خطوات تصديق/توثيق وزارة العدل بعد الترجمة</li>
+            <li>الأمر يتضمن متطلبات <strong>كاتب العدل</strong> أو العمليات الحكومية الصارمة</li>
+            <li>بعض الجهات التعليمية (خاصة في أبوظبي) تصر على ترجمة مختومة من وزارة العدل</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <div class="info-box-header">
+          <i class="fas fa-lightbulb"></i>
+          نصيحة احترافية
+        </div>
+        <p>
+          إذا لم تكن متأكداً، الخطوة الأسلم بسيطة: <strong>اسأل الجهة المستلمة عن الختم المطلوب</strong>
+          (ختم مترجم وزارة العدل أو ختم شركة الترجمة). هذا السؤال الواحد يوفر الوقت ويتجنب الرفض.
+        </p>
+      </div>
+
+      <h2>ماذا يقصد الناس عادةً بالمصطلحات المختلفة</h2>
+
+      <p>العملاء غالباً يسمعون مصطلحات مختلفة حسب البلد أو السفارة أو الموظف:</p>
+
+      <div class="terminology-list">
+        <div class="term-item">
+          <span class="term">"ترجمة قانونية" (دبي / الإمارات)</span>
+          <span class="arrow">←</span>
+          <span class="meaning">تعني عادةً <strong>ترجمة وزارة العدل القانونية</strong></span>
+        </div>
+        <div class="term-item">
+          <span class="term">"ترجمة وزارة العدل"</span>
+          <span class="arrow">←</span>
+          <span class="meaning"><strong>ترجمة وزارة العدل القانونية</strong></span>
+        </div>
+        <div class="term-item">
+          <span class="term">"ترجمة معتمدة"</span>
+          <span class="arrow">←</span>
+          <span class="meaning">غالباً تعني <strong>بختم الشركة</strong>، لكن كثيرون يستخدمونها لتعني وزارة العدل أيضاً</span>
+        </div>
+        <div class="term-item">
+          <span class="term">"ترجمة محلفة"</span>
+          <span class="arrow">←</span>
+          <span class="meaning">تُستخدم في بلدان أخرى؛ في الإمارات تشير عادةً لنمط وزارة العدل</span>
+        </div>
+      </div>
+
+      <div class="pullquote">
+        <p>
+          عندما يقول أحدهم "معتمدة"، سؤالك التالي يجب أن يكون:
+          <strong>"هل تحتاج ختم مترجم وزارة العدل، أم ختم شركة الترجمة كافٍ؟"</strong>
+        </p>
+      </div>
+
+      <h2>المستندات التي تحتاج عادةً ترجمة رسمية</h2>
+
+      <p>
+        إذا كان مستنداً مهماً يُستخدم للعمليات القانونية أو الهجرة أو الحكومية،
+        غالباً يتطلب ترجمة رسمية—خاصةً عندما تختلف اللغة المصدر عن الهدف.
+      </p>
+
+      <div class="two-column">
+        <div class="column-card">
+          <h4>
+            <i class="fas fa-user"></i>
+            المستندات الشخصية
+          </h4>
+          <ul>
+            <li><a href="/ar/personal/vital-records/marriage/">شهادات الزواج</a></li>
+            <li><a href="/ar/personal/vital-records/birth/">شهادات الميلاد</a></li>
+            <li><a href="/ar/personal/vital-records/divorce/">شهادات الطلاق</a></li>
+            <li><a href="/ar/personal/academic/degree/">الدبلومات وكشوف الدرجات</a></li>
+            <li>شهادات التدريب</li>
+          </ul>
+        </div>
+        <div class="column-card">
+          <h4>
+            <i class="fas fa-gavel"></i>
+            المستندات القانونية
+          </h4>
+          <ul>
+            <li><a href="/ar/legal/corporate/poa/">التوكيلات</a></li>
+            <li><a href="/ar/legal/contracts/">العقود القانونية</a></li>
+            <li><a href="/ar/legal/litigation/verdict/">مستندات المحاكم</a></li>
+            <li><a href="/ar/legal/corporate/">مستندات الشركات</a></li>
+            <li><a href="/ar/personal/immigration/pcc/">ملفات الهجرة/التأشيرات</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>أين يأتي دور "التصديق"</h2>
+
+      <p>شيئان يختلطان طوال الوقت:</p>
+
+      <div class="distinction-grid">
+        <div class="distinction-card">
+          <h4><i class="fas fa-language"></i> الترجمة</h4>
+          <p>تحويل المحتوى إلى اللغة الهدف بدقة واكتمال.</p>
+        </div>
+        <div class="distinction-card">
+          <h4><i class="fas fa-certificate"></i> التصديق / التوثيق</h4>
+          <p>تأكيد أن <strong>المستند الأصلي</strong> أصيل للاستخدام الرسمي (غالباً عبر وزارة الخارجية أو السفارة أو خطوات أخرى).</p>
+        </div>
+      </div>
+
+      <p>
+        أحياناً تحتاج الترجمة فقط. أحياناً تحتاج التصديق أولاً، ثم الترجمة،
+        ثم خطوات توثيق إضافية—حسب نوع المستند ومكان إصداره
+        والجهة الحكومية/السفارة/البوابة التي تقدم إليها.
+      </p>
+
+      <div class="info-box info-box-warning">
+        <div class="info-box-header">
+          <i class="fas fa-exclamation-triangle"></i>
+          مهم: الإمارات والأبوستيل
+        </div>
+        <p>
+          الإمارات <strong>ليست عضواً</strong> في اتفاقية لاهاي للأبوستيل. المستندات من الدول الأعضاء في لاهاي
+          لا تزال تتطلب سلسلة التصديق الكاملة (السفارة + وزارة الخارجية) للاستخدام في الإمارات.
+        </p>
+      </div>
+
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-section">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+
+      <div class="cta-box">
+        <h3>هل تحتاج ترجمة رسمية في دبي؟</h3>
+        <p>
+          شارك مستندك الأصلي وغرض تقديمك. سننصح بالخيار الصحيح
+          (والأكثر فعالية من حيث التكلفة) مع وقت تسليم واضح.
+        </p>
+        <div class="cta-services">
+          <span><i class="fas fa-check"></i> ترجمة وزارة العدل القانونية</span>
+          <span><i class="fas fa-check"></i> ترجمة معتمدة بختم الشركة</span>
+          <span><i class="fas fa-check"></i> توجيه واضح لخطوات التصديق</span>
+        </div>
+        <div class="cta-buttons">
+          <a href="https://wa.me/971508620217?text=مرحباً، أحتاج ترجمة معتمدة" class="btn btn--whatsapp">
+            <i class="fab fa-whatsapp"></i> واتساب
+          </a>
+          <a href="/ar/resources/moj-vs-certified/" class="btn btn--secondary">
+            <i class="fas fa-balance-scale"></i> دليل وزارة العدل مقابل المعتمدة
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayoutArabic>
+
+<style>
+  .hero-section { background: linear-gradient(135deg, var(--primary-color, #0E2B48) 0%, #1a3a5c 100%); color: white; padding: 4rem 0 3rem; }
+  .breadcrumb { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.7); flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: white; }
+  .breadcrumb .current { color: white; }
+
+  .hero-badge { display: inline-block; padding: 0.5rem 1.25rem; background: rgba(127, 209, 255, 0.1); border: 1px solid rgba(127, 209, 255, 0.3); border-radius: 50px; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: #7fd1ff; margin-bottom: 1.5rem; }
+  .hero-section h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; margin-bottom: 1rem; line-height: 1.4; }
+  .hero-intro { line-height: 1.8; color: rgba(255,255,255,0.9); margin-bottom: 1rem; }
+  .hero-highlight { font-size: 1.15rem; line-height: 1.6; color: #7fd1ff; font-weight: 500; margin-bottom: 2rem; }
+
+  .service-snapshot { display: flex; flex-wrap: wrap; gap: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.2); }
+  .snapshot-item { display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.9); }
+  .snapshot-item i { color: #7fd1ff; font-size: 1.1rem; }
+
+  .content-section { padding: 4rem 0; background: var(--bg-primary, white); }
+  .content-section h2 { font-size: 1.5rem; font-weight: 700; color: var(--primary-color, #0E2B48); margin: 2.5rem 0 1rem; line-height: 1.5; }
+  .content-section p { line-height: 1.8; margin-bottom: 1.5rem; }
+
+  .bottom-line-box { background: #f8f9fa; border-radius: 1rem; padding: 2rem; margin-bottom: 2rem; }
+  .bottom-line-box h2 { margin-top: 0; text-align: center; }
+  .bottom-line-box > p { text-align: center; max-width: 700px; margin: 0 auto 2rem; }
+
+  .two-types-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .type-card { padding: 2rem; border-radius: 1rem; position: relative; }
+  .type-moj { background: linear-gradient(135deg, rgba(14, 43, 72, 0.08) 0%, rgba(127, 209, 255, 0.05) 100%); border: 2px solid #0077b6; }
+  .type-certified { background: linear-gradient(135deg, rgba(184, 134, 11, 0.08) 0%, rgba(255, 225, 120, 0.05) 100%); border: 2px solid #d4a54c; }
+  .type-number { width: 36px; height: 36px; background: var(--primary-color); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; margin-bottom: 1rem; }
+  .type-card h3 { font-size: 1.1rem; margin-bottom: 0.75rem; }
+  .type-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem; }
+  .type-badge { display: inline-block; padding: 0.35rem 0.75rem; background: var(--primary-color); color: #fff; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; border-radius: 4px; }
+
+  .bottom-line-note { text-align: center; font-size: 1rem; margin: 0; padding-top: 1.5rem; border-top: 1px solid #e5e7eb; }
+
+  .comparison-table-wrapper { margin: 2rem 0; overflow-x: auto; border-radius: 0.75rem; }
+  .comparison-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  .comparison-table thead { background: var(--primary-color); }
+  .comparison-table th { padding: 1rem 1.25rem; text-align: right; font-weight: 600; font-size: 0.85rem; color: white; }
+  .comparison-table td { padding: 1rem 1.25rem; border-bottom: 1px solid #eee; }
+  .table-badge { display: inline-block; padding: 0.25rem 0.75rem; background: rgba(14, 43, 72, 0.1); border-radius: 50px; font-size: 0.8rem; }
+  .table-badge.gold { background: rgba(184, 134, 11, 0.15); color: #b8860b; }
+
+  .reasons-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .reason-card { padding: 2rem; background: #f8f9fa; border-radius: 1rem; text-align: center; }
+  .reason-icon { width: 60px; height: 60px; background: linear-gradient(135deg, #0077b6, #FF1654); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; }
+  .reason-icon i { font-size: 1.5rem; color: #fff; }
+  .reason-card h3 { font-size: 1.1rem; margin-bottom: 0.75rem; }
+  .reason-card p { font-size: 0.95rem; color: var(--text-muted); margin: 0; }
+
+  .decision-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .decision-card { padding: 2rem; border-radius: 1rem; }
+  .decision-card.certified { background: linear-gradient(135deg, rgba(184, 134, 11, 0.08) 0%, rgba(255, 225, 120, 0.03) 100%); border: 1px solid rgba(184, 134, 11, 0.3); }
+  .decision-card.moj { background: linear-gradient(135deg, rgba(14, 43, 72, 0.08) 0%, rgba(127, 209, 255, 0.03) 100%); border: 1px solid rgba(14, 43, 72, 0.3); }
+  .decision-card h3 { font-size: 1rem; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem; }
+  .decision-card h3 i { color: #0077b6; }
+  .decision-card ul { list-style: none; padding: 0; margin: 0; }
+  .decision-card li { padding: 0.6rem 0; padding-right: 1.5rem; position: relative; font-size: 0.95rem; border-bottom: 1px solid #eee; }
+  .decision-card li:last-child { border-bottom: none; }
+  .decision-card li::before { content: '✓'; position: absolute; right: 0; color: #059669; font-weight: 600; }
+
+  .terminology-list { margin: 2rem 0; display: flex; flex-direction: column; gap: 0.75rem; }
+  .term-item { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; background: #f8f9fa; border-radius: 0.75rem; border-right: 3px solid #0077b6; flex-wrap: wrap; }
+  .term { font-weight: 600; min-width: 200px; }
+  .arrow { color: var(--text-muted); font-size: 1.25rem; }
+  .meaning { flex: 1; min-width: 200px; color: var(--text-muted); }
+
+  .pullquote { margin: 2.5rem 0; padding: 2rem; padding-right: 2.5rem; background: linear-gradient(135deg, #f8f9fa 0%, rgba(14, 43, 72, 0.05) 100%); border-right: 4px solid #d4a54c; border-radius: 0.75rem 0 0 0.75rem; }
+  .pullquote p { font-family: Georgia, serif; font-size: 1.15rem; font-style: italic; line-height: 1.6; margin: 0; }
+
+  .info-box { margin: 2.5rem 0; padding: 1.75rem; background: linear-gradient(135deg, rgba(14, 43, 72, 0.05) 0%, rgba(127, 209, 255, 0.05) 100%); border: 1px solid rgba(14, 43, 72, 0.15); border-radius: 0.75rem; }
+  .info-box-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; }
+  .info-box-header i { font-size: 1.25rem; color: #0077b6; }
+  .info-box p { color: var(--text-body); margin: 0; font-size: 0.95rem; }
+  .info-box-warning { background: linear-gradient(135deg, #fff7ed 0%, rgba(217, 119, 6, 0.05) 100%); border-color: #fed7aa; }
+  .info-box-warning .info-box-header i { color: #d97706; }
+
+  .two-column { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .column-card { padding: 1.5rem; background: #f8f9fa; border-radius: 1rem; }
+  .column-card h4 { font-size: 1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+  .column-card h4 i { color: #0077b6; }
+  .column-card ul { list-style: none; padding: 0; margin: 0; font-size: 0.9rem; }
+  .column-card li { padding: 0.5rem 0; border-bottom: 1px solid #eee; }
+  .column-card li:last-child { border-bottom: none; }
+  .column-card li a { color: #0077b6; text-decoration: none; }
+  .column-card li a:hover { color: var(--accent-color); }
+
+  .distinction-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .distinction-card { padding: 1.5rem; background: #f8f9fa; border-radius: 1rem; text-align: center; }
+  .distinction-card h4 { font-size: 1rem; margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+  .distinction-card h4 i { color: #0077b6; }
+  .distinction-card p { font-size: 0.95rem; color: var(--text-muted); margin: 0; }
+
+  .faq-section { margin: 2rem 0; }
+  .faq-item { background: #f8f9fa; border-radius: 8px; margin-bottom: 0.75rem; }
+  .faq-item summary { padding: 1.25rem 1.5rem; cursor: pointer; font-weight: 600; color: var(--primary-color); list-style: none; display: flex; justify-content: space-between; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 1.5rem; }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-answer { padding: 0 1.5rem 1.25rem; }
+  .faq-answer p { margin: 0; line-height: 1.7; }
+
+  .cta-box { background: linear-gradient(135deg, var(--primary-color, #0E2B48) 0%, #1a3a5c 100%); color: white; padding: 2rem; border-radius: 12px; text-align: center; margin: 3rem 0; }
+  .cta-box h3 { font-size: 1.5rem; margin: 0 0 0.75rem; color: white; }
+  .cta-box > p { margin: 0 0 1.5rem; color: rgba(255,255,255,0.9); }
+  .cta-services { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2rem; }
+  .cta-services span { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(127, 209, 255, 0.1); border-radius: 50px; font-size: 0.9rem; }
+  .cta-services i { color: #7fd1ff; }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
+  .btn--whatsapp { background: #25D366; color: white; }
+  .btn--secondary { background: transparent; border: 2px solid white; color: white; }
+
+  @media (max-width: 768px) {
+    .two-types-grid { grid-template-columns: 1fr; }
+    .decision-grid { grid-template-columns: 1fr; }
+    .term-item { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .arrow { display: none; }
+    .cta-buttons { flex-direction: column; }
+  }
+</style>

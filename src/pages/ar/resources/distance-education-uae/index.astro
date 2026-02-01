@@ -1,0 +1,377 @@
+---
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: "هل شهادات التعليم عن بُعد صالحة لتصاريح العمل الإماراتية؟",
+    answer: "نعم، لكن بشروط. وزارة الموارد البشرية تقبل شهادات التعليم عن بُعد من جامعات معتمدة معترف بها من وزارة التعليم في البلد المُصدِر. يجب تصديق الشهادة عبر السلسلة القياسية (الأبوستيل/المصادقة ← السفارة الإماراتية ← وزارة الخارجية)، ثم ترجمتها من مترجم معتمد من وزارة العدل. الشهادات الإلكترونية من مؤسسات غير معتمدة أو مصانع الشهادات تُرفض."
+  },
+  {
+    question: "هل وزارة الموارد البشرية تقبل الشهادات الإلكترونية؟",
+    answer: "وزارة الموارد البشرية تقبل الشهادات الإلكترونية إذا: (1) الجامعة معتمدة في بلدها، (2) الشهادة معترف بها من وزارة التعليم في البلد الأصلي، و(3) التصديق الصحيح مكتمل. شهادة الدرجة نفسها لا تحتاج أن تذكر ما إذا كانت مُكتسبة عبر الإنترنت أو حضورياً—المهم هو حالة اعتماد المؤسسة."
+  },
+  {
+    question: "هل شهادات الجامعة المفتوحة مقبولة في الإمارات؟",
+    answer: "شهادات الجامعة المفتوحة البريطانية مقبولة من وزارة الموارد البشرية لأن الجامعة المفتوحة مؤسسة بريطانية معتمدة بالكامل. لتصديق الشهادات البريطانية، تحتاج أبوستيل FCDO، تصديق السفارة الإماراتية، ووزارة الخارجية. وبالمثل، إندرا غاندي (الهند) مع أبوستيل MEA والجامعات المفتوحة الحكومية الأخرى مقبولة."
+  },
+  {
+    question: "هل شهادة التعليم عن بُعد ستحتاج معادلة وزارة التربية؟",
+    answer: "لمعظم التوظيف في القطاع الخاص، لا—فقط ترجمة معتمدة من وزارة العدل مطلوبة. معادلة وزارة التربية مطلوبة لـ: الوظائف الحكومية، الإقامة الذهبية (فئة الماهرين)، مناصب التدريس، وبعض التراخيص المهنية مثل ترخيص هيئة الصحة بدبي."
+  },
+  {
+    question: "هل يمكنني الحصول على الإقامة الذهبية بشهادة تعليم عن بُعد؟",
+    answer: "محتمل نعم. فئة الموظف الماهر للإقامة الذهبية تتطلب بكالوريوس أو أعلى من مؤسسة معتمدة، بالإضافة لمعادلة وزارة التربية. شهادات التعليم عن بُعد التي تحصل على معادلة وزارة التربية مقبولة. راجع قائمة مستندات الإقامة الذهبية للمتطلبات الكاملة."
+  },
+  {
+    question: "كيف أثبت أن شهادتي الإلكترونية معتمدة؟",
+    answer: "سلسلة التصديق نفسها تُثبت الاعتماد. عندما تصادق وزارة التعليم في بلدك (أو MEA/وزارة الخارجية) على الشهادة، فإنها تتحقق من المؤسسة المُصدِرة. للشهادات الهندية، أبوستيل MEA يؤكد اعتراف UGC. للشهادات الأمريكية، مصادقة الولاية تؤكد الاعتماد الإقليمي."
+  },
+  {
+    question: "هل شهادات المراسلة نفس التعليم عن بُعد؟",
+    answer: "نعم، لأغراض الإمارات 'المراسلة' و'التعليم عن بُعد' و'الإلكتروني' تُعامَل بنفس الطريقة. المهم هو ما إذا كانت المؤسسة المُصدِرة معتمدة. شهادات المراسلة القديمة من جامعات راسخة (مثل برامج التعليم عن بُعد للجامعات الهندية) مقبولة إذا صُدقت بشكل صحيح عبر MEA."
+  },
+  {
+    question: "ماذا لو كانت شهادتي تقول 'تعليم عن بُعد' عليها؟",
+    answer: "هذا لا يؤثر على القبول لمعظم الأغراض. وزارة الموارد البشرية لا تميز بين الشهادات عن بُعد والعادية على الشهادة نفسها. خدمة ترجمة الشهادات لدينا تترجم بالضبط ما يظهر على شهادتك. بعض أصحاب العمل قد يكون لديهم سياساتهم الخاصة، لكن قانونياً، الشهادة المصدقة من مؤسسة معتمدة صالحة."
+  }
+];
+
+const acceptedInstitutions = [
+  { type: "الجامعات المفتوحة البريطانية", examples: "الجامعة المفتوحة (OU)، برامج جامعة لندن الدولية", status: "مقبولة" },
+  { type: "التعليم عن بُعد الهندي", examples: "إندرا غاندي (IGNOU)، برامج الجامعات الحكومية عن بُعد (معتمدة من DEB)", status: "مقبولة" },
+  { type: "الشهادات الإلكترونية الأمريكية", examples: "الجامعات المعتمدة إقليمياً (WGU، SNHU، ASU Online)", status: "مقبولة" },
+  { type: "برامج ODL الفلبينية", examples: "جامعة الفلبين المفتوحة، PNU، برامج HEI المعتمدة عن بُعد", status: "مقبولة" },
+  { type: "المدارس الإلكترونية غير المعتمدة", examples: "مصانع الشهادات، المؤسسات غير المعترف بها", status: "مرفوضة" },
+  { type: "الشهادات المهنية", examples: "شهادات غير جامعية، معسكرات تدريب، دورات قصيرة", status: "حالة بحالة" }
+];
+
+const rejectionReasons = [
+  { reason: "المؤسسة غير معتمدة", solution: "تحقق من الاعتماد قبل التسجيل. راجع مع وزارة التعليم في البلد الأصلي." },
+  { reason: "التصديق غير مكتمل", solution: "أكمل السلسلة الكاملة: أبوستيل ← السفارة الإماراتية ← وزارة الخارجية. جميع الخطوات مطلوبة." },
+  { reason: "عدم تطابق الأسماء في المستندات", solution: "تأكد أن الاسم على الشهادة يطابق جواز السفر تماماً. احصل على التصحيحات قبل التصديق." },
+  { reason: "الجامعة مغلقة/محذوفة", solution: "احصل على خطاب تحقق من المؤسسة الخلف أو وزارة التعليم." },
+  { reason: "الشهادة غير معترف بها من البلد الأصلي", solution: "بعض الشهادات الإلكترونية تفتقر لاعتراف البلد الأصلي. تحقق قبل الاستخدام في الإمارات." }
+];
+---
+
+<BaseLayoutArabic
+  title="هل شهادات التعليم عن بُعد صالحة في الإمارات؟ | دليل وزارة الموارد البشرية 2026"
+  description="اكتشف ما إذا كانت الشهادات الإلكترونية وعن بُعد مقبولة من وزارة الموارد البشرية لتصاريح العمل الإماراتية. متطلبات التصديق والترجمة للتعليم عن بُعد."
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://onlinetranslation.ae/ar/resources/distance-education-uae/" />
+    <link rel="alternate" hreflang="en" href="https://onlinetranslation.ae/resources/distance-education-uae/" />
+    <link rel="alternate" hreflang="ar" href="https://onlinetranslation.ae/ar/resources/distance-education-uae/" />
+  </Fragment>
+
+  <section class="hero-section bg-dark" dir="rtl">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="مسار التنقل">
+        <a href="/ar/">الرئيسية</a>
+        <span class="separator">&lt;</span>
+        <a href="/ar/resources/">الموارد</a>
+        <span class="separator">&lt;</span>
+        <span class="current">التعليم عن بُعد في الإمارات</span>
+      </nav>
+
+      <h1>هل شهادات التعليم عن بُعد صالحة في الإمارات؟</h1>
+      <p class="hero-subtitle">متطلبات وزارة الموارد البشرية والإقامة الذهبية والتوظيف</p>
+      <p class="hero-intro">نعم، شهادات التعليم عن بُعد صالحة للتوظيف في الإمارات—إذا استوفت متطلبات الاعتماد والتصديق المحددة. هذا الدليل يشرح ما تتطلبه وزارة الموارد البشرية فعلياً وكيفية تجنب أسباب الرفض الشائعة.</p>
+
+      <div class="quick-answer">
+        <div class="quick-answer-header">
+          <i class="fas fa-bolt"></i>
+          <span>الإجابة السريعة</span>
+        </div>
+        <p><strong>شهادات التعليم عن بُعد مقبولة من وزارة الموارد البشرية</strong> إذا كانت المؤسسة المُصدِرة معتمدة من وزارة التعليم في البلد الأصلي. يجب أن تُكمل الشهادة سلسلة التصديق القياسية قبل الترجمة. طريقة الدراسة (إلكتروني، عن بُعد، مراسلة) لا تؤثر على الصلاحية.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section" dir="rtl">
+    <div class="container">
+      <h2>ما تتطلبه وزارة الموارد البشرية فعلياً</h2>
+
+      <p>وزارة الموارد البشرية والتوطين لا تميز بين الشهادات المكتسبة عبر الحضور أو التعليم عن بُعد. متطلباتها هي:</p>
+
+      <div class="requirements-grid">
+        <div class="requirement-card">
+          <div class="requirement-icon"><i class="fas fa-university"></i></div>
+          <h3>مؤسسة معتمدة</h3>
+          <p>الجامعة يجب أن تكون معترف بها رسمياً من وزارة التعليم في البلد الذي تعمل فيه. يتم التحقق من هذا عبر عملية التصديق.</p>
+        </div>
+        <div class="requirement-card">
+          <div class="requirement-icon"><i class="fas fa-stamp"></i></div>
+          <h3>تصديق كامل</h3>
+          <p>الشهادة يجب أن تُكمل سلسلة المصادقة الكاملة: أبوستيل/تصديق البلد الأصلي ← السفارة الإماراتية ← وزارة الخارجية الإماراتية. بدون اختصارات.</p>
+        </div>
+        <div class="requirement-card">
+          <div class="requirement-icon"><i class="fas fa-language"></i></div>
+          <h3>ترجمة معتمدة من وزارة العدل</h3>
+          <p>بعد التصديق، الشهادة تحتاج <a href="/ar/personal/academic/degree/">ترجمة معتمدة من وزارة العدل</a> لتقديمها لوزارة الموارد البشرية.</p>
+        </div>
+      </div>
+
+      <div class="info-callout">
+        <i class="fas fa-info-circle"></i>
+        <div>
+          <strong>عملية التصديق نفسها تتحقق من الاعتماد.</strong> عندما تمنح وزارة التعليم في بلدك المصادقة، فإنها تؤكد أن المؤسسة معترف بها. إذا صُدقت شهادتك، فقد اجتازت فحص الاعتماد.
+        </div>
+      </div>
+
+      <h2>أي شهادات تعليم عن بُعد مقبولة؟</h2>
+      <p class="section-intro">العامل الرئيسي هو اعتماد المؤسسة، وليس طريقة الدراسة.</p>
+
+      <div class="table-wrapper">
+        <table class="status-table">
+          <thead>
+            <tr>
+              <th>نوع المؤسسة</th>
+              <th>أمثلة</th>
+              <th>الحالة</th>
+            </tr>
+          </thead>
+          <tbody>
+            {acceptedInstitutions.map(item => (
+              <tr>
+                <td><strong>{item.type}</strong></td>
+                <td>{item.examples}</td>
+                <td>
+                  <span class={`status-badge ${item.status === 'مقبولة' ? 'accepted' : item.status === 'مرفوضة' ? 'rejected' : 'case-by-case'}`}>
+                    {item.status}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h3>أمثلة مقبولة تحديداً</h3>
+      <div class="example-grid">
+        <div class="example-card accepted">
+          <h4><i class="fas fa-check-circle"></i> الجامعة المفتوحة البريطانية</h4>
+          <p>مؤسسة بريطانية معتمدة بالكامل. شهادات OU معترف بها عالمياً ومقبولة من وزارة الموارد البشرية. راجع <a href="/ar/services/attestation/uk/">متطلبات تصديق المملكة المتحدة</a>.</p>
+        </div>
+        <div class="example-card accepted">
+          <h4><i class="fas fa-check-circle"></i> إندرا غاندي (الهند)</h4>
+          <p>جامعة حكومية تحت UGC. شهادات IGNOU مع <a href="/ar/services/attestation/india/">أبوستيل MEA</a> الصحيح مقبولة للتوظيف في الإمارات.</p>
+        </div>
+        <div class="example-card accepted">
+          <h4><i class="fas fa-check-circle"></i> الشهادات الإلكترونية الأمريكية المعتمدة إقليمياً</h4>
+          <p>جامعات مثل WGU، SNHU، أو ASU Online مع الاعتماد الإقليمي صالحة. راجع <a href="/ar/services/attestation/us/">عملية التصديق الأمريكية</a>.</p>
+        </div>
+        <div class="example-card rejected">
+          <h4><i class="fas fa-times-circle"></i> المدارس الإلكترونية غير المعتمدة</h4>
+          <p>مصانع الشهادات والمؤسسات غير المعترف بها وشهادات "الخبرة الحياتية" مرفوضة. <a href="/ar/resources/attestation-guide/">التصديق</a> سيُرفض.</p>
+        </div>
+      </div>
+
+      <h2>عملية التصديق لشهادات التعليم عن بُعد</h2>
+      <p class="section-intro">العملية مطابقة للشهادات العادية. لا حاجة لمعاملة خاصة.</p>
+
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>مصادقة البلد الأصلي</h4>
+            <p>احصل على تصديق شهادتك من وزارة التعليم أو MEA (لدول لاهاي). للهند: أبوستيل MEA. لباكستان: HEC ثم وزارة الخارجية. للمملكة المتحدة: أبوستيل FCDO. للولايات المتحدة: سكرتير الولاية + الأبوستيل الفيدرالي.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>تصديق السفارة الإماراتية</h4>
+            <p>قدم الشهادة المصدقة للسفارة الإماراتية في بلدك. هذه الخطوة مطلوبة حتى لدول لاهاي الأعضاء لأن <a href="/ar/resources/attestation-guide/">الإمارات ليست عضواً في لاهاي</a>.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>تصديق وزارة الخارجية الإماراتية</h4>
+            <p>التصديق النهائي من <a href="/ar/services/attestation/mofa/">وزارة الخارجية</a> في الإمارات. يمكن إكماله بعد الوصول. يستغرق 1-3 أيام عمل في مراكز خدمة وزارة الخارجية.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h4>ترجمة معتمدة من وزارة العدل</h4>
+            <p>بعد التصديق، احصل على <a href="/ar/personal/academic/degree/">ترجمة معتمدة من وزارة العدل</a> لتقديمها لوزارة الموارد البشرية. نُسلّم في 24 ساعة أو أقل. تحتاج <a href="/ar/personal/academic/transcripts/">ترجمة كشوف الدرجات</a> أيضاً؟ نقدم أسعار الحزمة.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>أسباب الرفض الشائعة والحلول</h2>
+
+      <div class="rejection-grid">
+        {rejectionReasons.map(item => (
+          <div class="rejection-card">
+            <div class="rejection-reason">
+              <i class="fas fa-times-circle"></i>
+              <span>{item.reason}</span>
+            </div>
+            <div class="rejection-solution">
+              <i class="fas fa-check-circle"></i>
+              <span>{item.solution}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h2>التعليم عن بُعد والإقامة الذهبية</h2>
+
+      <p>فئة الموظف الماهر <a href="/ar/services/golden-visa-translation/">للإقامة الذهبية</a> تتطلب بكالوريوس أو أعلى بالإضافة <a href="/ar/resources/mohesr-equivalency/">لمعادلة وزارة التربية</a>. شهادات التعليم عن بُعد يمكن أن تتأهل، لكنها تواجه تدقيقاً إضافياً. راجع <a href="/ar/resources/golden-visa-checklist/">قائمة مستندات الإقامة الذهبية</a> للمتطلبات الكاملة.</p>
+
+      <div class="golden-visa-box">
+        <h3>معادلة وزارة التربية لشهادات عن بُعد</h3>
+        <p><a href="/ar/resources/mohesr-equivalency/">وزارة التربية</a> تقيّم شهادات التعليم عن بُعد على هذه العوامل:</p>
+        <ul>
+          <li><strong>سمعة المؤسسة:</strong> الجامعات المعروفة (OU، IGNOU) تُعالج بسلاسة أكبر</li>
+          <li><strong>هيكل البرنامج:</strong> البرامج ذات الاختبارات تحت الإشراف مفضلة</li>
+          <li><strong>جهة الاعتماد:</strong> الاعتماد الإقليمي (أمريكا) أو الاعتراف الحكومي مطلوب</li>
+          <li><strong>مدة الدراسة:</strong> البرامج ذات المدة القياسية (3-4 سنوات بكالوريوس) أقل تدقيقاً</li>
+        </ul>
+        <p class="note">وزارة التربية قد تطلب وثائق إضافية بما فيها كشوف الدرجات وتوصيف المقررات أو سجلات الاختبارات.</p>
+      </div>
+
+      <h2>متطلبات الترجمة لشهادات التعليم عن بُعد</h2>
+
+      <p>بعد التصديق، شهادة التعليم عن بُعد تحتاج <a href="/ar/personal/academic/degree/">ترجمة معتمدة من وزارة العدل</a> لتقديمها لوزارة الموارد البشرية. عملية الترجمة مطابقة للشهادات العادية.</p>
+
+      <div class="translation-info">
+        <h3>ما نترجمه</h3>
+        <ul>
+          <li>عنوان الشهادة ومجال الدراسة (كما هو مذكور بالضبط)</li>
+          <li>اسم المؤسسة (نقل حروف موثق)</li>
+          <li>اسم الخريج (مطابق لجواز السفر)</li>
+          <li>تاريخ المنح</li>
+          <li>أي مراتب شرف أو تصنيفات معروضة</li>
+          <li>أختام التصديق (موصوفة في الترجمة)</li>
+        </ul>
+
+        <h3>لا نُعدّل</h3>
+        <ul>
+          <li>إذا كانت الشهادة تقول "تعليم عن بُعد" ← تُترجم كما هي</li>
+          <li>إذا كانت الشهادة تقول "برنامج إلكتروني" ← تُترجم كما هي</li>
+          <li>إشارة طريقة الدراسة لا تؤثر على قبول وزارة الموارد البشرية</li>
+        </ul>
+      </div>
+
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-section">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+
+      <div class="cta-box">
+        <h3>أسئلة حول شهادتك عن بُعد؟</h3>
+        <p>أرسل لنا شهادتك. سنتحقق من حالة التصديق وننصح بعملية الترجمة لوضعك المحدد.</p>
+        <a href="https://wa.me/971508620217?text=مرحباً، لدي شهادة تعليم عن بُعد وأحتاج استشارة" class="btn btn--whatsapp">
+          <i class="fab fa-whatsapp"></i> احصل على استشارة مجانية
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayoutArabic>
+
+<style>
+  .hero-section { background: linear-gradient(135deg, var(--primary-color, #0E2B48) 0%, #1a3a5c 100%); color: white; padding: 4rem 0 3rem; }
+  .breadcrumb { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.7); flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: white; }
+  .breadcrumb .current { color: white; }
+  .hero-section h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; margin-bottom: 0.5rem; line-height: 1.4; }
+  .hero-subtitle { font-size: 1.15rem; color: var(--accent-color, #FF1654); margin-bottom: 1.5rem; }
+  .hero-intro { line-height: 1.8; color: rgba(255,255,255,0.9); margin-bottom: 2rem; max-width: 700px; }
+
+  .quick-answer { background: rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.25rem 1.5rem; max-width: 650px; border-right: 4px solid var(--accent-color); }
+  .quick-answer-header { display: flex; align-items: center; gap: 0.5rem; color: var(--accent-color); font-weight: 600; margin-bottom: 0.5rem; }
+  .quick-answer p { margin: 0; color: rgba(255,255,255,0.95); font-size: 0.95rem; line-height: 1.6; }
+
+  .content-section { padding: 4rem 0; background: var(--bg-primary, white); }
+  .content-section h2 { font-size: 1.5rem; font-weight: 700; color: var(--primary-color, #0E2B48); margin: 2.5rem 0 1rem; line-height: 1.5; }
+  .content-section h2:first-of-type { margin-top: 0; }
+  .content-section h3 { font-size: 1.25rem; margin: 2rem 0 1rem; }
+  .content-section p { line-height: 1.8; margin-bottom: 1.5rem; }
+  .section-intro { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; }
+
+  .requirements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .requirement-card { background: #f8f9fa; border-radius: 1rem; padding: 1.5rem; text-align: center; }
+  .requirement-icon { width: 60px; height: 60px; background: var(--primary-color); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 1rem; }
+  .requirement-card h3 { font-size: 1.1rem; margin: 0 0 0.5rem; }
+  .requirement-card p { margin: 0; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+  .requirement-card a { color: var(--accent-color); }
+
+  .info-callout { display: flex; gap: 1rem; background: #e6f7ff; border-right: 4px solid #0077b6; padding: 1.25rem 1.5rem; border-radius: 0.75rem 0 0 0.75rem; margin: 2rem 0; }
+  .info-callout > i { color: #0077b6; font-size: 1.25rem; flex-shrink: 0; }
+  .info-callout div { line-height: 1.6; }
+
+  .table-wrapper { overflow-x: auto; margin-bottom: 2rem; }
+  .status-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 0.75rem; overflow: hidden; }
+  .status-table th { background: var(--primary-color); color: #fff; padding: 1rem; text-align: right; font-weight: 600; }
+  .status-table td { padding: 1rem; border-bottom: 1px solid #f0f0f0; }
+  .status-badge { padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+  .status-badge.accepted { background: #dcfce7; color: #059669; }
+  .status-badge.rejected { background: #fee2e2; color: #dc2626; }
+  .status-badge.case-by-case { background: #fef3c7; color: #d97706; }
+
+  .example-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .example-card { padding: 1.25rem; border-radius: 0.75rem; }
+  .example-card.accepted { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .example-card.rejected { background: #fef2f2; border: 1px solid #fecaca; }
+  .example-card h4 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.5rem; font-size: 1rem; }
+  .example-card.accepted h4 { color: #059669; }
+  .example-card.rejected h4 { color: #dc2626; }
+  .example-card p { margin: 0; font-size: 0.9rem; line-height: 1.5; }
+  .example-card a { color: var(--accent-color); }
+
+  .process-steps { display: flex; flex-direction: column; gap: 1rem; margin: 2rem 0; }
+  .process-step { display: flex; gap: 1.25rem; align-items: flex-start; background: #fff; padding: 1.5rem; border-radius: 0.75rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+  .step-number { width: 40px; height: 40px; background: var(--primary-color); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+  .step-content h4 { margin: 0 0 0.5rem; font-size: 1.1rem; }
+  .step-content p { margin: 0; color: var(--text-muted); line-height: 1.6; }
+  .step-content a { color: var(--accent-color); }
+
+  .rejection-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+  .rejection-card { background: #fff; border-radius: 0.75rem; padding: 1.25rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+  .rejection-reason { display: flex; align-items: center; gap: 0.75rem; color: #dc2626; font-weight: 600; margin-bottom: 0.75rem; }
+  .rejection-solution { display: flex; align-items: flex-start; gap: 0.75rem; color: #059669; font-size: 0.9rem; }
+
+  .golden-visa-box { background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 1rem; padding: 2rem; margin: 2rem 0; border-right: 4px solid #d97706; }
+  .golden-visa-box h3 { margin: 0 0 1rem; color: #92400e; }
+  .golden-visa-box ul { margin: 1rem 0; padding-right: 1.25rem; }
+  .golden-visa-box li { margin-bottom: 0.5rem; line-height: 1.6; }
+  .golden-visa-box .note { font-size: 0.9rem; color: #92400e; margin: 1rem 0 0; font-style: italic; }
+
+  .translation-info { background: #fff; padding: 2rem; border-radius: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin: 2rem 0; }
+  .translation-info h3 { margin: 0 0 1rem; font-size: 1.1rem; color: var(--primary-color); }
+  .translation-info h3:not(:first-child) { margin-top: 1.5rem; }
+  .translation-info ul { margin: 0; padding-right: 1.25rem; }
+  .translation-info li { margin-bottom: 0.4rem; line-height: 1.5; }
+
+  .faq-section { margin: 2rem 0; }
+  .faq-item { background: #f8f9fa; border-radius: 8px; margin-bottom: 0.75rem; }
+  .faq-item summary { padding: 1.25rem 1.5rem; cursor: pointer; font-weight: 600; color: var(--primary-color); list-style: none; display: flex; justify-content: space-between; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 1.5rem; }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-answer { padding: 0 1.5rem 1.25rem; }
+  .faq-answer p { margin: 0; line-height: 1.7; }
+
+  .cta-box { background: linear-gradient(135deg, var(--primary-color, #0E2B48) 0%, #1a3a5c 100%); color: white; padding: 2rem; border-radius: 12px; text-align: center; margin: 3rem 0; }
+  .cta-box h3 { font-size: 1.5rem; margin: 0 0 0.75rem; color: white; }
+  .cta-box p { margin: 0 0 1.5rem; color: rgba(255,255,255,0.9); }
+  .btn--whatsapp { background: #25D366; color: white; padding: 0.875rem 1.5rem; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600; }
+
+  @media (max-width: 768px) {
+    .requirements-grid { grid-template-columns: 1fr; }
+    .example-grid { grid-template-columns: 1fr; }
+    .rejection-grid { grid-template-columns: 1fr; }
+  }
+</style>
