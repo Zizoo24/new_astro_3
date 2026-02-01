@@ -1,0 +1,277 @@
+---
+/**
+ * Blog Post: UAE Attestation Process Guide (Arabic)
+ * Target Keyword: تصديق المستندات الإمارات
+ */
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const pageTitle = "عملية التصديق في الإمارات 2026: السفارة vs وزارة الخارجية vs الأبوستيل";
+const metaDescription = "دليل شامل لتصديق المستندات في الإمارات. الفرق بين تصديق السفارة ووزارة الخارجية والأبوستيل، والمتطلبات حسب البلد، والأخطاء الشائعة.";
+
+const publishDate = "2026-02-01";
+const readTime = "12 دقيقة قراءة";
+
+const faqs = [
+  {
+    q: "هل تقبل الإمارات الأبوستيل للمستندات الأجنبية؟",
+    a: "نعم، لكن فقط من البلدان الأعضاء في اتفاقية لاهاي. الإمارات انضمت لنظام لاهاي لقبول الأبوستيل من البلدان الأعضاء الأخرى. مستندات من الهند وبريطانيا وأمريكا والفلبين وكندا وغيرها من أعضاء لاهاي يمكن أن تستخدم الأبوستيل بدلاً من تصديق السفارة. لكن المستندات المصدقة بالأبوستيل لا تزال تتطلب تصديق وزارة الخارجية في الإمارات لمعظم الأغراض الحكومية."
+  },
+  {
+    q: "هل الإمارات عضو في اتفاقية لاهاي للأبوستيل؟",
+    a: "الإمارات تشارك الآن في نظام لاهاي لقبول الأبوستيل من البلدان الأعضاء. لكن مستندات الإمارات للخارج قد لا تزال تحتاج تصديق السفارة حسب متطلبات بلد الوجهة. تحققوا دائماً من سلطات البلد المستلم."
+  },
+  {
+    q: "ما هو تصديق وزارة الخارجية ومتى يُطلب؟",
+    a: "تصديق وزارة الخارجية هو تحقق الحكومة الإماراتية من أن المستند الأجنبي تم توثيقه بشكل صحيح. يُطلب لمعظم الأغراض الحكومية: تأشيرات الإقامة، طلبات GDRFA، تقديمات المحاكم، الترخيص المهني. تصديق وزارة الخارجية عادة هو الخطوة الأخيرة بعد توثيق بلد المصدر."
+  },
+  {
+    q: "كم يستغرق التصديق؟",
+    a: "الجداول الزمنية تختلف حسب البلد ونوع التصديق. تصديق وزارة الخارجية في الإمارات عادة يستغرق 1-3 أيام عمل. تصديق السفارة يمكن أن يستغرق 5-15 يوم عمل حسب السفارة. توثيق بلد المصدر يختلف بشكل كبير—بعض البلدان تُنجز في أيام، والبعض يستغرق أسابيع. خططوا لـ 2-4 أسابيع إجمالاً للسلسلة الكاملة."
+  },
+  {
+    q: "هل أحتاج الترجمة قبل أو بعد التصديق؟",
+    a: "أكملوا التصديق أولاً، ثم ترجموا. الترجمة يجب أن تشمل جميع أختام وأوسمة التصديق. إذا ترجمتم أولاً ثم صدقتم، ستحتاجون ترجمة جديدة تُظهر علامات التصديق. هذا أحد أكثر الأخطاء شيوعاً التي تكلف العملاء وقتاً ومالاً."
+  },
+  {
+    q: "ما المستندات التي تتطلب تصديقاً للإمارات؟",
+    a: "معظم المستندات الأجنبية المعدة للاستخدام الحكومي الإماراتي تتطلب تصديقاً: الشهادات التعليمية (درجات، دبلومات، كشوف درجات)، المستندات الشخصية (شهادات ميلاد، زواج، طلاق)، شهادات حسن السيرة، التقارير الطبية، مستندات الشركات، والتوكيلات. الشركات الخاصة قد تطلب أيضاً مستندات مصدقة."
+  }
+];
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": pageTitle,
+  "description": metaDescription,
+  "inLanguage": "ar",
+  "datePublished": publishDate,
+  "author": { "@type": "Organization", "name": "OnlineTranslation.ae" }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({ "@type": "Question", "name": faq.q, "acceptedAnswer": { "@type": "Answer", "text": faq.a } }))
+};
+---
+
+<BaseLayoutArabic title={`${pageTitle} | مدونة OnlineTranslation.ae`} description={metaDescription}>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://onlinetranslation.ae/ar/blog/uae-attestation-process-guide/" />
+    <link rel="alternate" hreflang="en" href="https://onlinetranslation.ae/blog/uae-attestation-process-guide/" />
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <article class="blog-post" dir="rtl">
+    <header class="post-hero">
+      <div class="container">
+        <nav class="breadcrumbs"><a href="/ar/">الرئيسية</a> / <a href="/ar/blog/">المدونة</a> / <span>دليل التصديق</span></nav>
+        <div class="post-meta">
+          <span class="category-tag">التصديق</span>
+          <span class="read-time">{readTime}</span>
+        </div>
+        <h1>{pageTitle}</h1>
+        <p class="post-intro">نقل المستندات عبر الحدود الدولية يتطلب توثيقاً. في الإمارات، ثلاثة أنظمة تتداخل: تصديق السفارة، تحقق وزارة الخارجية، وأبوستيل لاهاي. فهم أيها ينطبق على وضعكم يوفر أسابيع من التأخير ويمنع الرفض المكلف.</p>
+        <time datetime={publishDate}>{new Date(publishDate).toLocaleDateString('ar-AE', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+      </div>
+    </header>
+
+    <div class="post-content">
+      <div class="container container--narrow">
+
+        <h2>أنظمة التوثيق الثلاثة موضحة</h2>
+        <p>توثيق المستندات يثبت أن أوراقكم حقيقية وصادرة قانونياً. البلدان والأوضاع المختلفة تتطلب طرق توثيق مختلفة. إليكم ما يفعله كل نظام ومتى تحتاجونه.</p>
+
+        <h3>تصديق السفارة: الطريق التقليدي</h3>
+        <p>تصديق السفارة يتضمن سفارة الإمارات في بلدكم الأصلي للتحقق من مستنداتكم. كانت هذه الطريقة القياسية لعقود ولا تزال ضرورية لبعض البلدان.</p>
+
+        <p><strong>السلسلة النموذجية:</strong></p>
+        <ol>
+          <li>توثيق بلد المصدر (يختلف حسب البلد—كاتب عدل، سلطة ولاية، أو هيئة اتحادية)</li>
+          <li>تحقق وزارة خارجية بلد المصدر</li>
+          <li>تصديق سفارة الإمارات في بلدكم الأصلي</li>
+          <li>تصديق وزارة الخارجية في الإمارات</li>
+        </ol>
+
+        <p>تصديق السفارة لا يزال مطلوباً للبلدان التي لم تنضم لاتفاقية لاهاي للأبوستيل. باكستان وبعض البلدان الأخرى تتبع هذا المسار. العملية تستغرق وقتاً أطول لأن المستندات يجب أن تنتقل فعلياً بين عدة مكاتب.</p>
+
+        <h3>أبوستيل لاهاي: النظام المبسط</h3>
+        <p><a href="/ar/services/attestation/">اتفاقية لاهاي للأبوستيل</a> أنشأت نظام توثيق مبسطاً. بدلاً من تصديق السفارة، المستندات تحصل على "أبوستيل"—شهادة موحدة. البلدان التي انضمت للاتفاقية توافق على قبول أبوستيل بعضها البعض.</p>
+
+        <div class="info-box">
+          <h4>البلدان الأعضاء في اتفاقية لاهاي (قائمة جزئية)</h4>
+          <p><strong>الشائع استخدامها في الإمارات:</strong> الهند، بريطانيا، أمريكا، كندا، الفلبين، أستراليا، ألمانيا، فرنسا، هولندا، جنوب أفريقيا</p>
+          <p><strong>إضافات حديثة:</strong> كندا (2024)، بنغلاديش (2025)</p>
+          <p><strong>ليست أعضاء:</strong> باكستان، الإمارات (كبلد مُصدر)، بعض دول الشرق الأوسط</p>
+        </div>
+
+        <p>للبلدان الأعضاء في لاهاي، السلسلة المبسطة هي:</p>
+        <ol>
+          <li>توثيق بلد المصدر (كاتب عدل أو سلطة معينة)</li>
+          <li>أبوستيل من السلطة المختصة المعينة</li>
+          <li>تصديق وزارة الخارجية في الإمارات</li>
+        </ol>
+
+        <p>هذا يلغي خطوة السفارة، موفراً الوقت والتكلفة. لكن تصديق وزارة الخارجية لا يزال مطلوباً لمعظم الأغراض الحكومية الإماراتية.</p>
+
+        <h3>تصديق وزارة الخارجية: التحقق النهائي للإمارات</h3>
+        <p>وزارة الخارجية الإماراتية تقدم الختم النهائي للمستندات الأجنبية. تصديق وزارة الخارجية يؤكد أن المستند تم توثيقه بشكل صحيح—سواء عبر السفارة أو الأبوستيل. معظم الجهات الحكومية الإماراتية تتطلب تصديق وزارة الخارجية قبل قبول المستندات الأجنبية.</p>
+
+        <p><strong>الجهات التي تتطلب تصديق وزارة الخارجية:</strong></p>
+        <ul>
+          <li><strong>GDRFA</strong> — تأشيرات الإقامة والكفالة</li>
+          <li><strong>MOHRE</strong> — تصاريح العمل والقضايا العمالية</li>
+          <li><strong>محاكم دبي</strong> — الإجراءات المدنية والأسرية</li>
+          <li><strong>DHA/HAAD</strong> — ترخيص المتخصصين الصحيين</li>
+          <li><strong>KHDA/ADEK</strong> — معادلة الشهادات التعليمية</li>
+          <li><strong>البنوك</strong> — فتح الحسابات وطلبات القروض (أحياناً)</li>
+        </ul>
+
+        <h2>متطلبات التصديق حسب البلد</h2>
+        <p>كل بلد لديه إجراءات مختلفة لتوثيق المستندات. إليكم السيناريوهات الأكثر شيوعاً لسكان الإمارات.</p>
+
+        <h3>الهند</h3>
+        <p>الهند انضمت لاتفاقية لاهاي في يوليو 2005. المستندات الهندية يمكن أن تستخدم مسار الأبوستيل.</p>
+        <p><strong>العملية:</strong></p>
+        <ol>
+          <li>توثيق كاتب عدل هندي</li>
+          <li>تصديق وزارة الداخلية للولاية (للمستندات الصادرة من الولاية)</li>
+          <li>أبوستيل وزارة الشؤون الخارجية (MEA)</li>
+          <li>تصديق وزارة الخارجية الإماراتية</li>
+        </ol>
+        <p>للمستندات التعليمية، الجامعة أو المجلس المُصدر يجب أن يتحقق من الشهادة أولاً. تصديق HRD قد يكون مطلوباً حسب نوع المستند.</p>
+
+        <h3>باكستان</h3>
+        <p>باكستان ليست عضواً في اتفاقية لاهاي. تصديق السفارة مطلوب.</p>
+        <p><strong>العملية:</strong></p>
+        <ol>
+          <li>تحقق نادرا (للمستندات المعنية)</li>
+          <li>تصديق HEC (للمستندات التعليمية)</li>
+          <li>تصديق وزارة الخارجية الباكستانية</li>
+          <li>تصديق سفارة الإمارات في باكستان</li>
+          <li>تصديق وزارة الخارجية الإماراتية</li>
+        </ol>
+        <p>عملية باكستان أطول بسبب متطلب السفارة. احسبوا 3-4 أسابيع كحد أدنى للسلسلة الكاملة.</p>
+
+        <h3>المملكة المتحدة</h3>
+        <p>بريطانيا عضو في لاهاي منذ 1965. الأبوستيل متاح عبر FCDO (مكتب الخارجية والكومنولث والتنمية).</p>
+        <p><strong>العملية:</strong></p>
+        <ol>
+          <li>تصديق محامٍ (إذا كان المستند نسخة)</li>
+          <li>أبوستيل FCDO</li>
+          <li>تصديق وزارة الخارجية الإماراتية</li>
+        </ol>
+        <p>أبوستيل بريطانيا يمكن الحصول عليه عبر الإنترنت من موقع FCDO. المعالجة عادة تستغرق 2-5 أيام عمل.</p>
+
+        <h3>الولايات المتحدة</h3>
+        <p>أمريكا عضو في لاهاي منذ 1981. إجراءات الأبوستيل تختلف حسب الولاية لأن كل ولاية تتعامل مع مستنداتها.</p>
+        <p><strong>العملية:</strong></p>
+        <ol>
+          <li>توثيق كاتب عدل أمريكي</li>
+          <li>تصديق كاتب المقاطعة (مطلوب أحياناً)</li>
+          <li>أبوستيل وزير الولاية</li>
+          <li>تصديق وزارة الخارجية الإماراتية</li>
+        </ol>
+        <p>المستندات الفيدرالية (تقارير FBI، سجلات المحاكم الفيدرالية) يصدق عليها أبوستيل من وزارة الخارجية الأمريكية. كل ولاية لها أوقات معالجة مختلفة—بعضها يقدم نفس اليوم، والبعض يستغرق أسابيع.</p>
+
+        <h3>الفلبين</h3>
+        <p>الفلبين انضمت لاتفاقية لاهاي في 2019. DFA (وزارة الخارجية) تُصدر الأبوستيل.</p>
+        <p><strong>العملية:</strong></p>
+        <ol>
+          <li>توثيق PSA (للسجلات المدنية)</li>
+          <li>أبوستيل DFA</li>
+          <li>تصديق وزارة الخارجية الإماراتية</li>
+        </ol>
+        <p>المستندات التعليمية تتطلب تحقق CHED أو DepEd قبل أبوستيل DFA. توثيق الشريط الأحمر (مسار السفارة القديم) لم يعد مطلوباً لأغراض لاهاي.</p>
+
+        <h2>أخطاء التصديق الشائعة</h2>
+
+        <h3>الترجمة قبل التصديق</h3>
+        <p>هذا الخطأ الأكثر تكلفة. إذا ترجمتم مستندكم أولاً ثم صدقتموه، الترجمة لا تُظهر أختام التصديق. ستحتاجون ترجمة جديدة تشمل جميع علامات التصديق. <strong>أكملوا التصديق دائماً قبل <a href="/ar/legal-translation-dubai/">الترجمة</a>.</strong></p>
+
+        <h3>مسار تصديق خاطئ</h3>
+        <p>استخدام التوثيق عندما يكون تصديق السفارة مطلوباً. الحصول على أبوستيل لبلد غير عضو في لاهاي. تفويت خطوة في سلسلة التوثيق. كل خطأ يعني البدء من جديد—المستندات المرفوضة في وزارة الخارجية يجب أن تعود عبر العملية الصحيحة.</p>
+
+        <h3>التصديقات المنتهية</h3>
+        <p>بعض التصديقات لها فترات صلاحية. تصديق وزارة الخارجية صالح عموماً إلى أجل غير مسمى، لكن تصديقات السفارات من بعض البلدان تنتهي. إذا صُدق مستندكم منذ سنوات، تحققوا من صلاحيته قبل الاعتماد عليه.</p>
+
+        <h3>تغييرات المستند بعد التصديق</h3>
+        <p>أي تعديل على مستند مصدق يُبطل التصديق. هذا يشمل:</p>
+        <ul>
+          <li>إضافة أختام أو توقيعات</li>
+          <li>كتابة ملاحظات على المستند</li>
+          <li>ثقب أو تجليد</li>
+          <li>التغليف (أحياناً)</li>
+        </ul>
+        <p>حافظوا على المستندات المصدقة نظيفة. إذا كانت هناك حاجة لتصديق إضافي، تأكدوا من إنجازه بشكل صحيح دون تعديل سلسلة التصديق الأصلية.</p>
+
+        <h2>كيف نساعد في التصديق</h2>
+        <p>التنقل في عملية التصديق معقد. بلدان مختلفة، قواعد متغيرة، مكاتب متعددة—من السهل ارتكاب أخطاء تكلف الوقت والمال. نقدم:</p>
+        <ul>
+          <li><strong>إرشاد العملية:</strong> نحدد مسار التصديق الصحيح لمستنداتكم المحددة ووجهتكم</li>
+          <li><strong>التنسيق:</strong> يمكننا إدارة السلسلة كاملة من توثيق بلد المصدر حتى وزارة الخارجية</li>
+          <li><strong>الترجمة:</strong> بعد التصديق، نقدم ترجمة معتمدة من وزارة العدل تشمل جميع أختام التصديق</li>
+          <li><strong>المراجعة:</strong> نفحص المستندات قبل التقديم لاكتشاف مشاكل الرفض المحتملة</li>
+        </ul>
+
+        <div class="cta-box">
+          <h3>تحتاجون مساعدة في التصديق؟</h3>
+          <p>أرسلوا مستنداتكم عبر واتساب. سنحدد مسار التصديق الصحيح ونقدم دليل عملية كاملاً لوضعكم المحدد.</p>
+          <a href="https://wa.me/971508620217" class="cta-button"><i class="fab fa-whatsapp"></i> أرسل عبر واتساب</a>
+          <p class="contact-note">أو اتصلوا: <span dir="ltr">+971 50 862 0217</span></p>
+        </div>
+
+        <h2>الأسئلة الشائعة</h2>
+        <div class="faq-list">
+          {faqs.map((faq) => (
+            <details class="faq-item">
+              <summary class="faq-question">{faq.q}</summary>
+              <div class="faq-answer"><p>{faq.a}</p></div>
+            </details>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </article>
+</BaseLayoutArabic>
+
+<style>
+  .blog-post { background: var(--bg-primary, #ffffff); }
+  .post-hero { background: linear-gradient(135deg, var(--surface-navy, #0E2B48) 0%, #1a3a5c 100%); color: white; padding: 3rem 0 4rem; }
+  .breadcrumbs { font-size: 0.85rem; margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.7); }
+  .breadcrumbs a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .post-meta { display: flex; gap: 1rem; margin-bottom: 1rem; }
+  .category-tag { background: #7C3AED; color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; }
+  .read-time { color: rgba(255, 255, 255, 0.7); font-size: 0.85rem; }
+  .post-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; line-height: 1.4; margin: 0 0 1rem; }
+  .post-intro { font-size: 1.15rem; color: rgba(255, 255, 255, 0.9); max-width: 700px; line-height: 1.7; margin: 0 0 1.5rem; }
+  .post-content { padding: 3rem 0 4rem; }
+  .container--narrow { max-width: 800px; margin: 0 auto; padding: 0 1.5rem; }
+  .post-content h2 { font-size: 1.5rem; font-weight: 700; color: var(--surface-navy, #0E2B48); margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 1px solid rgba(0, 0, 0, 0.08); }
+  .post-content h2:first-of-type { border-top: none; }
+  .post-content h3 { font-size: 1.15rem; font-weight: 700; color: var(--surface-navy, #0E2B48); margin: 1.5rem 0 0.75rem; }
+  .post-content p { line-height: 1.8; margin-bottom: 1rem; }
+  .post-content a { color: var(--accent-teal, #0077b6); }
+  .post-content ul, .post-content ol { margin: 1rem 1.5rem 1.5rem 0; padding-right: 1rem; }
+  .post-content li { margin-bottom: 0.5rem; line-height: 1.7; }
+  .info-box { background: var(--bg-secondary, #f8f9fa); border-right: 4px solid #7C3AED; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; }
+  .info-box h4 { margin-top: 0; margin-bottom: 1rem; color: var(--surface-navy, #0E2B48); }
+  .info-box p { margin-bottom: 0.75rem; }
+  .info-box p:last-child { margin-bottom: 0; }
+  .cta-box { background: linear-gradient(135deg, var(--surface-navy, #0E2B48) 0%, #1a3a5c 100%); color: #ffffff; padding: 2rem; border-radius: 12px; text-align: center; margin: 2.5rem 0; }
+  .cta-box h3 { color: #ffffff; margin-top: 0; }
+  .cta-box p { color: rgba(255, 255, 255, 0.9); }
+  .cta-button { display: inline-flex; align-items: center; gap: 0.5rem; background: #25D366; color: #ffffff; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; margin: 1rem 0; }
+  .cta-button:hover { background: #20bd5a; }
+  .contact-note { font-size: 0.9rem; color: rgba(255, 255, 255, 0.7); margin-bottom: 0; }
+  .faq-list { display: flex; flex-direction: column; gap: 0.75rem; margin: 1.5rem 0; }
+  .faq-item { background: var(--bg-secondary, #f8f9fa); border-radius: 8px; overflow: hidden; }
+  .faq-question { padding: 1rem 1.25rem; font-weight: 600; cursor: pointer; list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; float: left; margin-left: 0.75rem; font-size: 1.25rem; color: #7C3AED; }
+  .faq-item[open] .faq-question::after { content: '−'; }
+  .faq-answer { padding: 0 1.25rem 1rem; color: var(--text-secondary, #4a5568); }
+  .faq-answer p { margin: 0; }
+</style>

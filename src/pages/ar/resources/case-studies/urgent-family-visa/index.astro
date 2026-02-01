@@ -1,0 +1,765 @@
+---
+/**
+ * دراسة حالة: تأشيرة عائلية عاجلة
+ * E-E-A-T: الخبرة من خلال إدارة المواعيد الموثقة
+ */
+import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+
+const documents = [
+  { name: "شهادة الزواج", source: "مصر", status: "ترجمة + تصديق" },
+  { name: "شهادة ميلاد (الزوج/ة)", source: "مصر", status: "ترجمة + تصديق" },
+  { name: "شهادات ميلاد (طفلان)", source: "الإمارات", status: "عربي إلى إنجليزي" },
+  { name: "نسخ جوازات السفر (4)", source: "متعدد", status: "نسخ مصدقة" },
+  { name: "شهادات تعليمية (2)", source: "مصر", status: "ترجمة + تصديق" },
+  { name: "شهادة راتب", source: "صاحب عمل إماراتي", status: "عربي إلى إنجليزي" },
+  { name: "عقد العمل", source: "صاحب عمل إماراتي", status: "عربي إلى إنجليزي" },
+  { name: "عقد الإيجار", source: "الإمارات", status: "عربي إلى إنجليزي" },
+  { name: "كشف حساب بنكي", source: "بنك إماراتي", status: "ترجمة مصدقة" },
+  { name: "شهادة حسن السيرة (الزوج/ة)", source: "مصر", status: "ترجمة + تصديق" },
+  { name: "شهادة اللياقة الطبية", source: "الإمارات", status: "عربي إلى إنجليزي" },
+  { name: "هوية إمارات الكفيل", source: "الإمارات", status: "نسخة مصدقة" }
+];
+
+const timeline = [
+  { time: "9:00 صباحاً", day: "اليوم 1", event: "العميل يتواصل عبر واتساب مع قائمة المستندات" },
+  { time: "9:30 صباحاً", day: "اليوم 1", event: "اكتمال تقييم المستندات — 12 عنصراً تتطلب ترجمة" },
+  { time: "10:00 صباحاً", day: "اليوم 1", event: "العميل يسلم المستندات الفعلية لمكتب شريكنا" },
+  { time: "11:00 صباحاً", day: "اليوم 1", event: "فريق الترجمة يبدأ المعالجة المتوازية" },
+  { time: "2:00 مساءً", day: "اليوم 1", event: "اكتمال الدفعة الأولى (6 مستندات)" },
+  { time: "4:00 مساءً", day: "اليوم 1", event: "تقديم وزارة الخارجية للمستندات المصرية" },
+  { time: "6:00 مساءً", day: "اليوم 1", event: "اكتمال الدفعة الثانية (4 مستندات)" },
+  { time: "9:00 مساءً", day: "اليوم 1", event: "اكتمال الدفعة النهائية (مستندان)" },
+  { time: "10:00 مساءً", day: "اليوم 1", event: "تسليم الحزمة الكاملة عبر شحن نفس اليوم" },
+  { time: "9:30 صباحاً", day: "اليوم 2", event: "العميل يحضر مقابلة الإقامة بالحزمة الكاملة" },
+  { time: "11:00 صباحاً", day: "اليوم 2", event: "الموافقة على التأشيرة من المقابلة الأولى" }
+];
+---
+
+<BaseLayoutArabic
+  title="تأشيرة عائلية: 12 مستنداً في 24 ساعة | OnlineTranslation.ae"
+  description="مع مقابلة تأشيرة الزوج/ة المجدولة في اليوم التالي، ترجمنا وصدقنا 12 مستنداً في 24 ساعة. الموافقة على تأشيرة العائلة من المقابلة الأولى."
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://onlinetranslation.ae/ar/resources/case-studies/urgent-family-visa/" />
+    <link rel="alternate" hreflang="en" href="https://onlinetranslation.ae/resources/case-studies/urgent-family-visa/" />
+    <link rel="alternate" hreflang="ar" href="https://onlinetranslation.ae/ar/resources/case-studies/urgent-family-visa/" />
+  </Fragment>
+
+  <section class="hero-section bg-dark" data-theme="dark" dir="rtl">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="مسار التنقل">
+        <a href="/ar/">الرئيسية</a>
+        <span class="separator">&lt;</span>
+        <a href="/ar/resources/">الموارد</a>
+        <span class="separator">&lt;</span>
+        <a href="/ar/resources/case-studies/">دراسات الحالة</a>
+        <span class="separator">&lt;</span>
+        <span class="current">تأشيرة عائلية عاجلة</span>
+      </nav>
+
+      <div class="case-meta">
+        <span class="case-category">الهجرة</span>
+        <span class="case-date">فبراير 2024</span>
+      </div>
+
+      <h1>تأشيرة عائلية تحت الموعد النهائي</h1>
+      <p class="hero-subtitle">12 مستنداً في 24 ساعة</p>
+
+      <div class="outcome-banner">
+        <div class="outcome-item">
+          <span class="outcome-icon">✅</span>
+          <span class="outcome-label">النتيجة</span>
+          <span class="outcome-value">الموافقة على التأشيرة من المقابلة الأولى</span>
+        </div>
+        <div class="outcome-item">
+          <span class="outcome-icon">⏱️</span>
+          <span class="outcome-label">الوقت الإجمالي</span>
+          <span class="outcome-value">24 ساعة للحزمة الكاملة</span>
+        </div>
+        <div class="outcome-item">
+          <span class="outcome-icon">📄</span>
+          <span class="outcome-label">المستندات</span>
+          <span class="outcome-value">12 عنصراً مترجماً ومصدقاً</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <div class="content-grid">
+        <div class="main-content">
+          <h2>الموقف</h2>
+          <p>مهندس مقيم في دبي تلقى تأكيداً بأن مقابلة تأشيرة الزوج/ة مجدولة في الصباح التالي. كان قد قدم الطلب الأولي قبل أسابيع، لكن حزمة المستندات الكاملة لا تزال ناقصة.</p>
+
+          <p>العائلة—بما في ذلك طفلان صغيران—كانت تنتظر في مصر. موعد المقابلة لا يمكن إعادة جدولته دون بدء عملية الطلب بأكملها من جديد. تفويت المقابلة كان يعني 4-6 أسابيع أخرى من الانفصال.</p>
+
+          <div class="quote-block">
+            <p>"زوجتي وأطفالي ينتظرون منذ 3 أشهر. لا أستطيع تفويت هذه المقابلة. ما الذي يمكنكم فعله؟"</p>
+            <cite>— رسالة واتساب العميل، 9:00 صباحاً</cite>
+          </div>
+
+          <h2>التحدي</h2>
+          <p>حزمة المستندات قدمت عدة تعقيدات:</p>
+
+          <ul class="feature-list">
+            <li><strong>مصادر مختلطة:</strong> مستندات من مصر (تتطلب تصديق وزارة الخارجية)، مستندات إماراتية عربية، ونسخ مصدقة</li>
+            <li><strong>الحجم:</strong> 12 عنصراً منفصلاً، كل منها يتطلب معالجة مختلفة</li>
+            <li><strong>متطلب التصديق:</strong> المستندات المصرية احتاجت معالجة وزارة الخارجية في نفس اليوم</li>
+            <li><strong>التسليم الفعلي:</strong> الحزمة الكاملة مطلوبة للصباح التالي</li>
+          </ul>
+
+          <h2>نهجنا</h2>
+          <p>هيكلنا العمل في ثلاثة مسارات متوازية:</p>
+
+          <div class="approach-grid">
+            <div class="approach-card">
+              <span class="approach-icon">🔴</span>
+              <h3>المسار 1: المستندات المصرية</h3>
+              <p>شهادة الزواج، شهادات الميلاد، المستندات التعليمية، شهادة حسن السيرة. هذه تتطلب ترجمة وزارة العدل وتصديق وزارة الخارجية.</p>
+              <p class="approach-note">الأولوية: التقديم لوزارة الخارجية بحلول 4 مساءً للاستلام في نفس اليوم</p>
+            </div>
+
+            <div class="approach-card">
+              <span class="approach-icon">🟡</span>
+              <h3>المسار 2: المستندات الإماراتية العربية</h3>
+              <p>شهادة الراتب، عقد العمل، عقد الإيجار، اللياقة الطبية. ترجمة قياسية بدون تصديق.</p>
+              <p class="approach-note">الاكتمال بحلول 6 مساءً</p>
+            </div>
+
+            <div class="approach-card">
+              <span class="approach-icon">🟢</span>
+              <h3>المسار 3: النسخ المصدقة</h3>
+              <p>نسخ جوازات السفر، هوية الإمارات، كشف الحساب البنكي. تتطلب ترجمة مصدقة وتوثيق.</p>
+              <p class="approach-note">الاكتمال بحلول 9 مساءً</p>
+            </div>
+          </div>
+
+          <h2>حزمة المستندات</h2>
+          <div class="documents-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>المستند</th>
+                  <th>المصدر</th>
+                  <th>الخدمة</th>
+                </tr>
+              </thead>
+              <tbody>
+                {documents.map(doc => (
+                  <tr>
+                    <td>{doc.name}</td>
+                    <td>{doc.source}</td>
+                    <td><span class="status-badge">{doc.status}</span></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <h2>النتيجة</h2>
+          <p>سُلمت الحزمة الكاملة للعميل الساعة 10 مساءً عبر شحن نفس اليوم. وصل إلى مكتب الإقامة في الصباح التالي مع ملف منظم باحترافية يحتوي جميع الـ 12 مستنداً مترجماً ومصدقاً.</p>
+
+          <p>تمت الموافقة على التأشيرة من المقابلة الأولى. وصلت عائلته إلى دبي خلال أسبوعين.</p>
+
+          <div class="success-box">
+            <div class="success-icon">✅</div>
+            <div class="success-content">
+              <h3>نتيجة المقابلة</h3>
+              <p>الموافقة على تأشيرة العائلة بدون طلبات مستندات إضافية. الحزمة الكاملة والمنسقة بشكل صحيح ألغت الذهاب والإياب الذي غالباً يمدد معالجة التأشيرات.</p>
+            </div>
+          </div>
+
+          <h2>العوامل الرئيسية</h2>
+          <ul class="feature-list">
+            <li><strong>المعالجة المتوازية:</strong> ثلاثة مسارات تعمل بشكل متزامن قللت الوقت الإجمالي</li>
+            <li><strong>علاقة وزارة الخارجية:</strong> تصديق نفس اليوم من خلال التنسيق المُؤسس</li>
+            <li><strong>اللوجستيات الفعلية:</strong> استلام المستندات ومعالجتها وتسليمها كلها تُدار كخدمة واحدة</li>
+            <li><strong>تنظيم الحزمة:</strong> المستندات رُتبت بالترتيب المفضل للإقامة مع فهرس</li>
+          </ul>
+        </div>
+
+        <aside class="sidebar">
+          <div class="timeline-box">
+            <h3>الجدول الزمني 24 ساعة</h3>
+            <div class="timeline">
+              {timeline.map(item => (
+                <div class="timeline-item">
+                  <span class="timeline-day">{item.day}</span>
+                  <span class="timeline-time">{item.time}</span>
+                  <span class="timeline-event">{item.event}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="sidebar-box">
+            <h3>نوع التأشيرة</h3>
+            <p>تأشيرة العائلة/الزوج</p>
+            <p class="small-text">تصريح إقامة مكفول</p>
+          </div>
+
+          <div class="sidebar-box">
+            <h3>جهة المعالجة</h3>
+            <p>الإقامة دبي</p>
+            <p class="small-text">الإدارة العامة للإقامة وشؤون الأجانب</p>
+          </div>
+
+          <div class="sidebar-box highlight">
+            <h3>موعد تأشيرة عاجل؟</h3>
+            <p>نتعامل مع حزم المستندات المتعددة بتنسيق نفس اليوم لمقابلات التأشيرات.</p>
+            <a href="https://wa.me/971508620217?text=عندي%20موعد%20تأشيرة%20عاجل" class="btn btn-primary btn-sm">
+              <i class="fab fa-whatsapp"></i> احصل على مساعدة عاجلة
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <h2 class="section-title">الخدمات ذات الصلة</h2>
+      <div class="services-grid">
+        <a href="/ar/personal/vital-records/marriage/" class="service-card">
+          <div class="service-icon"><i class="fas fa-heart"></i></div>
+          <h3>ترجمة شهادة الزواج</h3>
+          <p>ترجمة مصدقة من وزارة العدل مع تصديق وزارة الخارجية لطلبات تأشيرة الزوج/ة.</p>
+        </a>
+        <a href="/ar/personal/vital-records/birth/" class="service-card">
+          <div class="service-icon"><i class="fas fa-baby"></i></div>
+          <h3>ترجمة شهادة الميلاد</h3>
+          <p>ترجمة لطلبات تأشيرة المعالين وكفالة العائلة.</p>
+        </a>
+        <a href="/ar/personal/immigration/pcc/" class="service-card">
+          <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>ترجمة شهادة حسن السيرة</h3>
+          <p>شهادة حسن السيرة مترجمة ومصدقة لمتطلبات التأشيرة الإماراتية.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <div class="more-cases">
+        <h2>المزيد من دراسات الحالة</h2>
+        <div class="cases-nav">
+          <a href="/ar/resources/case-studies/rejected-document-rescue/" class="case-nav-item">
+            <span class="case-nav-category">مستندات المحاكم</span>
+            <span class="case-nav-title">إنقاذ المستند المرفوض</span>
+            <span class="case-nav-outcome">تقديم المحكمة أُنقذ في ساعتين</span>
+          </a>
+          <a href="/ar/resources/case-studies/dha-dataflow-deadline/" class="case-nav-item">
+            <span class="case-nav-category">الرعاية الصحية</span>
+            <span class="case-nav-title">موعد DataFlow هيئة الصحة</span>
+            <span class="case-nav-outcome">رخصة الرعاية الصحية مُنجزة</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Article Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "دراسة حالة: 12 مستنداً في 24 ساعة لتأشيرة العائلة",
+    "description": "مع مقابلة تأشيرة الزوج/ة المجدولة في اليوم التالي، ترجمنا وصدقنا 12 مستنداً في 24 ساعة. الموافقة على تأشيرة العائلة من المقابلة الأولى.",
+    "author": {
+      "@type": "Organization",
+      "name": "OnlineTranslation.ae"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "OnlineTranslation.ae",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://onlinetranslation.ae/assets/images/logo/brand/emblem-256.png"
+      }
+    },
+    "datePublished": "2024-02-20",
+    "mainEntityOfPage": "https://onlinetranslation.ae/ar/resources/case-studies/urgent-family-visa/"
+  })} />
+</BaseLayoutArabic>
+
+<style>
+  .hero-section {
+    padding: 8rem 0 4rem;
+    background: var(--primary-color);
+  }
+
+  .breadcrumb {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.7);
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    color: #ffffff;
+  }
+
+  .breadcrumb .current {
+    color: #ffffff;
+  }
+
+  .case-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .case-category,
+  .case-date {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--accent-coral, #FF1654);
+    margin-bottom: 2rem;
+  }
+
+  .outcome-banner {
+    display: flex;
+    gap: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    flex-wrap: wrap;
+  }
+
+  .outcome-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .outcome-icon {
+    font-size: 1.5rem;
+  }
+
+  .outcome-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .outcome-value {
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 3rem;
+  }
+
+  .main-content h2 {
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .main-content h2:first-child {
+    margin-top: 0;
+  }
+
+  .main-content p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+  }
+
+  .quote-block {
+    background: var(--bg-light);
+    border-right: 4px solid var(--accent-coral);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0.5rem 0 0 0.5rem;
+  }
+
+  .quote-block p {
+    font-style: italic;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .quote-block cite {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: normal;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+  }
+
+  .feature-list li {
+    padding: 0.75rem 0;
+    padding-right: 1.5rem;
+    position: relative;
+    line-height: 1.7;
+  }
+
+  .feature-list li::before {
+    content: "←";
+    position: absolute;
+    right: 0;
+    color: var(--accent-coral);
+    font-weight: bold;
+  }
+
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .approach-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
+
+  .approach-icon {
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .approach-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+  }
+
+  .approach-card p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .approach-note {
+    font-weight: 600;
+    color: var(--accent-coral) !important;
+    font-size: 0.85rem !important;
+  }
+
+  .documents-table {
+    margin: 2rem 0;
+    overflow-x: auto;
+  }
+
+  .documents-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .documents-table th,
+  .documents-table td {
+    padding: 0.75rem 1rem;
+    text-align: right;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .documents-table th {
+    background: var(--bg-light);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+  }
+
+  .documents-table td {
+    font-size: 0.95rem;
+  }
+
+  .status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba(16, 185, 129, 0.1);
+    color: #059669;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .success-box {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 1rem;
+    margin: 2rem 0;
+    align-items: flex-start;
+  }
+
+  .success-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+  }
+
+  .success-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #059669;
+  }
+
+  .success-content p {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .timeline-box,
+  .sidebar-box {
+    background: var(--bg-light);
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
+
+  .sidebar-box.highlight {
+    background: var(--primary-color);
+    color: #fff;
+  }
+
+  .sidebar-box.highlight h3 {
+    color: #fff;
+  }
+
+  .sidebar-box.highlight p {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .sidebar h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .sidebar p {
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .small-text {
+    font-size: 0.85rem !important;
+    color: var(--text-muted);
+    margin-top: 0.25rem !important;
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 50px 60px 1fr;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .timeline-item:last-child {
+    border-bottom: none;
+  }
+
+  .timeline-day {
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+
+  .timeline-time {
+    color: var(--accent-coral);
+    font-weight: 500;
+  }
+
+  .timeline-event {
+    color: var(--text-color);
+  }
+
+  .btn-sm {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent-coral);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+  }
+
+  .btn-sm:hover {
+    opacity: 0.9;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .service-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .service-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .more-cases h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+  }
+
+  .cases-nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .case-nav-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    background: var(--bg-light);
+    border-radius: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+  }
+
+  .case-nav-item:hover {
+    border-color: var(--accent-coral);
+  }
+
+  .case-nav-category {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-coral);
+  }
+
+  .case-nav-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+
+  .case-nav-outcome {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 991px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+      order: -1;
+    }
+
+    .approach-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cases-nav {
+      grid-template-columns: 1fr;
+    }
+
+    .outcome-banner {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+</style>

@@ -1,0 +1,572 @@
+---
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: "ما الفرق بين ترجمة الشهادة ومعادلة وزارة التربية؟",
+    answer: "الترجمة تحول شهادتك إلى العربية/الإنجليزية. المعادلة تقيّم ما إذا كانت مؤهلاتك الأجنبية معترف بها كمعادلة لمعيار الشهادة الإماراتية. الترجمة خدمة وثائق (نقوم بها). المعادلة عملية تقييم حكومية (وزارة التربية تقوم بها). معظم احتياجات التوظيف تتطلب فقط ترجمة معتمدة من وزارة العدل؛ أغراض محددة تتطلب المعادلة."
+  },
+  {
+    question: "متى أحتاج معادلة وزارة التربية؟",
+    answer: "تحتاج المعادلة لـ: (1) الإقامة الذهبية فئة الموظف الماهر، (2) الوظائف الحكومية، (3) مناصب التدريس في مدارس وزارة التربية، (4) بعض التراخيص المهنية مثل الهندسة (جمعية المهندسين) والرعاية الصحية (هيئة الصحة بدبي)، و(5) الالتحاق بالتعليم العالي في الإمارات. توظيف القطاع الخاص يتطلب عادة فقط ترجمة معتمدة من وزارة العدل وليس المعادلة."
+  },
+  {
+    question: "كم تستغرق معادلة وزارة التربية؟",
+    answer: "المعالجة القياسية تستغرق 2-4 أسابيع بعد تقديم المستندات الكاملة. الحالات المعقدة (أنواع الشهادات غير العادية، الجامعات المغلقة، البرامج غير المعتمدة) قد تستغرق وقتاً أطول. يمكنك تتبع حالة طلبك عبر بوابة وزارة التربية. في هذه الأثناء، قم بترجمة شهادتك وكشوف درجاتك لتكون المستندات جاهزة."
+  },
+  {
+    question: "كم تكلفة معادلة وزارة التربية؟",
+    answer: "رسوم طلب معادلة وزارة التربية حوالي 330 درهم. التكاليف الإضافية تشمل التصديق (يختلف حسب البلد)، والترجمة المعتمدة من وزارة العدل (150 درهم+)، وأي رسوم بريد."
+  },
+  {
+    question: "هل يمكنني التقدم للمعادلة قبل القدوم إلى الإمارات؟",
+    answer: "نعم، يمكن التقدم لمعادلة وزارة التربية عبر الإنترنت. ومع ذلك، تحتاج: (1) مستندات أصلية مصدقة (بما في ذلك تصديق السفارة الإماراتية)، (2) ترجمة معتمدة من وزارة العدل (تتطلب وجود المستند في الإمارات)، و(3) الهوية الإماراتية لإنشاء الحساب. أكمل التصديق في الخارج، ثم أنهِ الترجمة بعد الوصول."
+  },
+  {
+    question: "ماذا لو لم تكن شهادتي معادلة للمعيار الإماراتي؟",
+    answer: "قد تصدر وزارة التربية: (1) معادلة كاملة (شهادتك تعادل شهادة إماراتية)، (2) معادلة جزئية (أقل من المُدّعى، مثلاً الماجستير يعادل بكالوريوس)، أو (3) عدم المعادلة (غير معترف بها). المعادلة الجزئية قد تفي ببعض المتطلبات للإقامة الذهبية. عدم المعادلة يعني أن الشهادة لا يمكن استخدامها للأغراض التي تتطلب المعادلة."
+  },
+  {
+    question: "هل أحتاج المعادلة لوظائف القطاع الخاص؟",
+    answer: "عادةً لا. أصحاب العمل في القطاع الخاص وتصاريح عمل وزارة الموارد البشرية تتطلب عادةً فقط ترجمة معتمدة من وزارة العدل لشهادتك المصدقة. المعادلة غير مطلوبة عموماً للتوظيف الخاص في مركز دبي المالي العالمي أو أبراج بحيرات جميرا أو المناطق الحرة الأخرى."
+  },
+  {
+    question: "هل الترجمة مطلوبة قبل التقدم للمعادلة؟",
+    answer: "نعم. تتطلب وزارة التربية ترجمة عربية معتمدة من وزارة العدل لشهادة الدرجة وكشوف الدرجات كجزء من الطلب. يجب أن تكون الترجمة من المستندات الأصلية المصدقة. نوفر ترجمة نفس اليوم لطلبات المعادلة."
+  },
+  {
+    question: "ما المستندات التي تطلبها وزارة التربية؟",
+    answer: "المتطلبات القياسية: (1) شهادة الدرجة المصدقة (السلسلة الكاملة تنتهي بوزارة الخارجية الإماراتية)، (2) كشوف الدرجات الأكاديمية المصدقة، (3) ترجمة عربية معتمدة من وزارة العدل لكليهما، (4) الهوية الإماراتية سارية، (5) نسخة جواز السفر، (6) صورة بحجم جواز السفر."
+  },
+  {
+    question: "هل يمكن للشهادات عن بُعد/الإلكترونية الحصول على معادلة وزارة التربية؟",
+    answer: "نعم، إذا كانت المؤسسة معتمدة. تقيّم وزارة التربية شهادات التعليم عن بُعد حالة بحالة، مع مراعاة حالة الاعتماد وهيكل البرنامج وطرق الاختبار. الجامعات المعروفة للتعليم عن بُعد (الجامعة المفتوحة البريطانية، إندرا غاندي الهندية) تحصل عادةً على المعادلة."
+  }
+];
+
+const comparisonData = {
+  translation: {
+    title: "ترجمة وزارة العدل فقط",
+    description: "تحويل المستند إلى العربية",
+    timeline: "نفس اليوم - 24 ساعة",
+    cost: "150 درهم+",
+    useCases: [
+      "توظيف القطاع الخاص",
+      "تصريح عمل وزارة الموارد البشرية",
+      "توظيف شركات المناطق الحرة",
+      "فتح حساب بنكي",
+      "سجلات الموارد البشرية",
+      "طلبات التوظيف الأولية"
+    ]
+  },
+  equivalency: {
+    title: "معادلة وزارة التربية",
+    description: "اعتراف رسمي بالشهادة",
+    timeline: "2-4 أسابيع",
+    cost: "330 درهم + الترجمة",
+    useCases: [
+      "الإقامة الذهبية (فئة الماهرين)",
+      "الوظائف الحكومية",
+      "مناصب التدريس (وزارة التربية)",
+      "تسجيل الهندسة (جمعية المهندسين)",
+      "الالتحاق بالجامعات الإماراتية",
+      "بعض التراخيص المهنية"
+    ]
+  }
+};
+
+const processSteps = [
+  {
+    step: 1,
+    title: "إكمال التصديق",
+    description: "يجب أن تكمل شهادتك وكشوف درجاتك سلسلة التصديق الكاملة: مصادقة البلد الأصلي ← السفارة الإماراتية ← وزارة الخارجية الإماراتية. لا يمكن التقدم للمعادلة بدون ختم وزارة الخارجية."
+  },
+  {
+    step: 2,
+    title: "الحصول على ترجمة وزارة العدل",
+    description: "تتطلب وزارة التربية ترجمة عربية معتمدة من وزارة العدل لجميع المستندات الأكاديمية. أحضر أصولك المصدقة إلينا للترجمة نفس اليوم."
+  },
+  {
+    step: 3,
+    title: "إنشاء حساب وزارة التربية",
+    description: "سجل على بوابة وزارة التربية (mohesr.gov.ae) باستخدام الهوية الإماراتية. ارفع المستندات المطلوبة بما فيها الترجمات."
+  },
+  {
+    step: 4,
+    title: "تقديم الطلب",
+    description: "ادفع رسوم الطلب (330 درهم) وقدم. تتبع الحالة عبر البوابة. المعالجة تستغرق 2-4 أسابيع."
+  },
+  {
+    step: 5,
+    title: "استلام شهادة المعادلة",
+    description: "بمجرد الموافقة، حمّل شهادة المعادلة من البوابة. هذه هي وثيقة الاعتراف الرسمية."
+  }
+];
+
+const requiredDocuments = [
+  { document: "شهادة الدرجة", requirement: "الأصل المصدق + ترجمة وزارة العدل", notes: "سلسلة التصديق الكاملة مطلوبة" },
+  { document: "كشوف الدرجات الأكاديمية", requirement: "الأصل المصدق + ترجمة وزارة العدل", notes: "جميع الفصول/السنوات" },
+  { document: "الهوية الإماراتية", requirement: "هوية سارية", notes: "مطلوبة للتسجيل في البوابة" },
+  { document: "جواز السفر", requirement: "نسخة من صفحة البيانات", notes: "يجب أن يطابق اسم الشهادة" },
+  { document: "صورة جواز السفر", requirement: "صورة حديثة", notes: "خلفية بيضاء" },
+  { document: "رسوم الطلب", requirement: "330 درهم", notes: "تُدفع إلكترونياً" }
+];
+---
+
+<BaseLayoutArabic
+  title="معادلة وزارة التربية مقابل الترجمة | متى تحتاج كل منهما | دليل الإمارات"
+  description="افهم متى تحتاج معادلة وزارة التربية ومتى تكفي ترجمة وزارة العدل. متطلبات الإقامة الذهبية والوظائف الحكومية والترخيص المهني في الإمارات."
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://onlinetranslation.ae/ar/resources/mohesr-equivalency/" />
+    <link rel="alternate" hreflang="en" href="https://onlinetranslation.ae/resources/mohesr-equivalency/" />
+    <link rel="alternate" hreflang="ar" href="https://onlinetranslation.ae/ar/resources/mohesr-equivalency/" />
+  </Fragment>
+
+  <section class="hero-section bg-dark" dir="rtl">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="مسار التنقل">
+        <a href="/ar/">الرئيسية</a>
+        <span class="separator">&lt;</span>
+        <a href="/ar/resources/">الموارد</a>
+        <span class="separator">&lt;</span>
+        <span class="current">معادلة وزارة التربية</span>
+      </nav>
+
+      <h1>معادلة وزارة التربية مقابل الترجمة</h1>
+      <p class="hero-subtitle">ما الذي تحتاجه فعلاً</p>
+      <p class="hero-intro">الترجمة تحول شهادتك إلى العربية. المعادلة تقيّم ما إذا كانت تستوفي المعايير الإماراتية. معظم الناس يحتاجون الترجمة فقط. هذا الدليل يوضح متى تحتاج كل منهما—ومتى تحتاج كليهما.</p>
+
+      <div class="quick-answer">
+        <div class="quick-answer-header">
+          <i class="fas fa-bolt"></i>
+          <span>الإجابة السريعة: أيهما تحتاج؟</span>
+        </div>
+        <p><strong>وظيفة قطاع خاص؟</strong> الترجمة فقط.<br>
+        <strong>الإقامة الذهبية، وظيفة حكومية، أو تدريس؟</strong> الترجمة والمعادلة معاً.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section" dir="rtl">
+    <div class="container">
+      <h2>الترجمة مقابل المعادلة: الفروقات الرئيسية</h2>
+
+      <div class="comparison-grid">
+        <div class="comparison-card translation">
+          <div class="card-header">
+            <i class="fas fa-language"></i>
+            <h3>{comparisonData.translation.title}</h3>
+          </div>
+          <p class="card-description">{comparisonData.translation.description}</p>
+          <div class="card-meta">
+            <span><i class="fas fa-clock"></i> {comparisonData.translation.timeline}</span>
+            <span><i class="fas fa-tag"></i> {comparisonData.translation.cost}</span>
+          </div>
+          <h4>حالات الاستخدام:</h4>
+          <ul>
+            {comparisonData.translation.useCases.map(item => (
+              <li><i class="fas fa-check"></i> {item}</li>
+            ))}
+          </ul>
+          <a href="/ar/personal/academic/degree/" class="card-cta">احصل على الترجمة ←</a>
+        </div>
+
+        <div class="comparison-card equivalency">
+          <div class="card-header">
+            <i class="fas fa-certificate"></i>
+            <h3>{comparisonData.equivalency.title}</h3>
+          </div>
+          <p class="card-description">{comparisonData.equivalency.description}</p>
+          <div class="card-meta">
+            <span><i class="fas fa-clock"></i> {comparisonData.equivalency.timeline}</span>
+            <span><i class="fas fa-tag"></i> {comparisonData.equivalency.cost}</span>
+          </div>
+          <h4>حالات الاستخدام:</h4>
+          <ul>
+            {comparisonData.equivalency.useCases.map(item => (
+              <li><i class="fas fa-check"></i> {item}</li>
+            ))}
+          </ul>
+          <span class="card-note">يتطلب الترجمة أولاً</span>
+        </div>
+      </div>
+
+      <div class="key-insight">
+        <i class="fas fa-lightbulb"></i>
+        <div>
+          <strong>الترجمة مطلوبة دائماً.</strong> المعادلة إضافية ومطلوبة فقط لأغراض محددة. إذا احتجت المعادلة، فأنت لا تزال بحاجة للترجمة أولاً—وزارة التربية تتطلب ترجمة عربية معتمدة من وزارة العدل كجزء من طلب المعادلة.
+        </div>
+      </div>
+
+      <h2>متى تحتاج المعادلة</h2>
+
+      <div class="use-case-grid">
+        <div class="use-case-card">
+          <div class="use-case-icon golden-visa"><i class="fas fa-passport"></i></div>
+          <h3>الإقامة الذهبية</h3>
+          <p>فئة الموظف الماهر تتطلب معادلة وزارة التربية تؤكد أن شهادتك بكالوريوس أو أعلى. يجب أن يتطابق مجال شهادتك مع عملك.</p>
+          <a href="/ar/services/golden-visa-translation/">دليل الإقامة الذهبية ←</a>
+        </div>
+
+        <div class="use-case-card">
+          <div class="use-case-icon government"><i class="fas fa-landmark"></i></div>
+          <h3>الوظائف الحكومية</h3>
+          <p>الوظائف الاتحادية والمحلية تتطلب المعادلة كجزء من عملية التوظيف. ينطبق على الوزارات والبلديات والجهات الحكومية.</p>
+        </div>
+
+        <div class="use-case-card">
+          <div class="use-case-icon teaching"><i class="fas fa-chalkboard-teacher"></i></div>
+          <h3>مناصب التدريس</h3>
+          <p>مدارس وزارة التربية تتطلب المعادلة. المدارس الخاصة تحت هيئة المعرفة قد يكون لها متطلبات مختلفة حسب المنهج.</p>
+        </div>
+
+        <div class="use-case-card">
+          <div class="use-case-icon engineering"><i class="fas fa-drafting-compass"></i></div>
+          <h3>تسجيل الهندسة</h3>
+          <p>تسجيل جمعية المهندسين يتطلب معادلة الشهادة للمهندسين الممارسين. ينطبق على الهندسة المدنية والميكانيكية والكهربائية وغيرها.</p>
+        </div>
+
+        <div class="use-case-card">
+          <div class="use-case-icon education"><i class="fas fa-graduation-cap"></i></div>
+          <h3>الالتحاق بالجامعات الإماراتية</h3>
+          <p>استكمال التعليم في الجامعات الإماراتية يتطلب معادلة مؤهلاتك السابقة قبل القبول.</p>
+        </div>
+
+        <div class="use-case-card">
+          <div class="use-case-icon healthcare"><i class="fas fa-heartbeat"></i></div>
+          <h3>بعض أدوار الرعاية الصحية</h3>
+          <p>بينما هيئة الصحة بدبي لها عملية تقييم خاصة، بعض الأدوار الإدارية الصحية قد تتطلب معادلة وزارة التربية بالإضافة للترخيص المهني.</p>
+          <a href="/ar/specialized/medical/dha-dataflow/">متطلبات هيئة الصحة ←</a>
+        </div>
+      </div>
+
+      <h2>متى تكفي الترجمة وحدها</h2>
+
+      <p>لمعظم حالات التوظيف، ترجمة وزارة العدل المعتمدة هي كل ما تحتاجه. وزارة الموارد البشرية تقبل الشهادات المترجمة لمعالجة تصاريح العمل دون الحاجة للمعادلة.</p>
+
+      <div class="sufficient-grid">
+        <div class="sufficient-item">
+          <i class="fas fa-building"></i>
+          <div>
+            <h4>توظيف القطاع الخاص</h4>
+            <p>الشركات في دبي وأبوظبي والإمارات الأخرى</p>
+          </div>
+        </div>
+        <div class="sufficient-item">
+          <i class="fas fa-city"></i>
+          <div>
+            <h4>شركات المناطق الحرة</h4>
+            <p>مركز دبي المالي، دي إم سي سي، جافزا، وأصحاب العمل الآخرين في المناطق الحرة</p>
+          </div>
+        </div>
+        <div class="sufficient-item">
+          <i class="fas fa-id-card"></i>
+          <div>
+            <h4>تصاريح عمل وزارة الموارد البشرية</h4>
+            <p>معالجة تأشيرات التوظيف القياسية</p>
+          </div>
+        </div>
+        <div class="sufficient-item">
+          <i class="fas fa-university"></i>
+          <div>
+            <h4>متطلبات البنوك</h4>
+            <p>فتح الحسابات والقروض والتحقق المصرفي</p>
+          </div>
+        </div>
+        <div class="sufficient-item">
+          <i class="fas fa-folder-open"></i>
+          <div>
+            <h4>سجلات الموارد البشرية</h4>
+            <p>توثيق الشركة الداخلي والامتثال</p>
+          </div>
+        </div>
+        <div class="sufficient-item">
+          <i class="fas fa-file-alt"></i>
+          <div>
+            <h4>طلبات التوظيف</h4>
+            <p>تقديم المؤهلات لأصحاب العمل المحتملين</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="translation-cta">
+        <h3>تحتاج ترجمة الشهادة فقط؟</h3>
+        <p>معظم العملاء يحتاجون فقط ترجمة معتمدة من وزارة العدل. التسليم نفس اليوم متاح.</p>
+        <a href="/ar/personal/academic/degree/" class="btn btn-secondary">خدمة ترجمة الشهادات ←</a>
+      </div>
+
+      <h2>عملية معادلة وزارة التربية</h2>
+      <p class="section-intro">إذا كنت تحتاج المعادلة فعلاً، إليك العملية الكاملة.</p>
+
+      <div class="process-timeline">
+        {processSteps.map(item => (
+          <div class="timeline-item">
+            <div class="timeline-marker">{item.step}</div>
+            <div class="timeline-content">
+              <h4>{item.title}</h4>
+              <p>{item.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h2>المستندات المطلوبة للمعادلة</h2>
+
+      <div class="table-wrapper">
+        <table class="documents-table">
+          <thead>
+            <tr>
+              <th>المستند</th>
+              <th>المتطلب</th>
+              <th>ملاحظات</th>
+            </tr>
+          </thead>
+          <tbody>
+            {requiredDocuments.map(item => (
+              <tr>
+                <td><strong>{item.document}</strong></td>
+                <td>{item.requirement}</td>
+                <td class="notes">{item.notes}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="additional-docs">
+        <h3>مستندات إضافية (بعض الحالات)</h3>
+        <ul>
+          <li><strong>ملخص الرسالة:</strong> للماجستير والدكتوراه</li>
+          <li><strong>توصيف المقررات:</strong> إذا طلبت وزارة التربية معلومات تفصيلية عن المنهج</li>
+          <li><strong>خطاب اعتماد الجامعة:</strong> للشهادات من مؤسسات أقل شهرة</li>
+          <li><strong>الشهادة السابقة:</strong> لطلبات الدراسات العليا (بكالوريوس لطلبة الماجستير)</li>
+        </ul>
+      </div>
+
+      <h2>نتائج المعادلة</h2>
+
+      <p>تقيّم وزارة التربية شهادتك وتصدر إحدى ثلاث نتائج:</p>
+
+      <div class="outcome-grid">
+        <div class="outcome-card full">
+          <div class="outcome-header">
+            <i class="fas fa-check-circle"></i>
+            <h3>معادلة كاملة</h3>
+          </div>
+          <p>شهادتك معترف بها كمعادلة للمعيار الإماراتي لمستوى ذلك المؤهل. مثلاً، البكالوريوس يعادل بكالوريوس إماراتي.</p>
+          <span class="outcome-result">يمكن المضي قدماً بالإقامة الذهبية والوظائف الحكومية إلخ.</span>
+        </div>
+
+        <div class="outcome-card partial">
+          <div class="outcome-header">
+            <i class="fas fa-adjust"></i>
+            <h3>معادلة جزئية</h3>
+          </div>
+          <p>شهادتك معترف بها بمستوى أدنى من المُدّعى. مثلاً، بكالوريوس 3 سنوات قد يُعادَل بدبلوم، أو ماجستير بالمقررات يُعادَل بدبلوم عالي.</p>
+          <span class="outcome-result">قد يفي أو لا يفي بمتطلبك المحدد</span>
+        </div>
+
+        <div class="outcome-card non">
+          <div class="outcome-header">
+            <i class="fas fa-times-circle"></i>
+            <h3>عدم المعادلة</h3>
+          </div>
+          <p>شهادتك غير معترف بها. يحدث هذا عادةً مع المؤسسات غير المعتمدة أو مصانع الشهادات أو الشهادات التي لا تستوفي المعايير الدنيا.</p>
+          <span class="outcome-result">لا يمكن استخدامها للأغراض التي تتطلب المعادلة</span>
+        </div>
+      </div>
+
+      <div class="appeal-note">
+        <i class="fas fa-info-circle"></i>
+        <p>إذا حصلت على معادلة جزئية أو عدم معادلة، يمكنك الاستئناف بوثائق إضافية. فكر في استشارة وزارة التربية مباشرة أو مستشار تعليمي قبل الاستئناف.</p>
+      </div>
+
+      <h2>كيف نساعدك</h2>
+
+      <p>نوفر مكون الترجمة المطلوب لطلبات معادلة وزارة التربية.</p>
+
+      <div class="services-grid">
+        <div class="service-item">
+          <i class="fas fa-file-signature"></i>
+          <h4>ترجمة معتمدة من وزارة العدل</h4>
+          <p>ترجمة عربية لشهادة الدرجة وكشوف الدرجات، كما تتطلب وزارة التربية.</p>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-search"></i>
+          <h4>التحقق من التصديق</h4>
+          <p>نتحقق من اكتمال تصديق مستنداتك قبل البدء بالترجمة.</p>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-clock"></i>
+          <h4>خدمة نفس اليوم</h4>
+          <p>الترجمة القياسية خلال 24 ساعة. خدمة مستعجلة متاحة للطلبات العاجلة.</p>
+        </div>
+        <div class="service-item">
+          <i class="fas fa-file-alt"></i>
+          <h4>حزمة كاملة</h4>
+          <p>الشهادة + كشوف الدرجات مترجمة معاً بأسعار الحزمة.</p>
+        </div>
+      </div>
+
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-section">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+
+      <div class="cta-box">
+        <h3>هل أنت جاهز للتقدم للمعادلة؟</h3>
+        <p>أرسل لنا شهادتك وكشوف درجاتك المصدقة. نوفر ترجمة معتمدة من وزارة العدل لطلب وزارة التربية.</p>
+        <a href="https://wa.me/971508620217?text=مرحباً، أحتاج ترجمة لطلب معادلة وزارة التربية" class="btn btn--whatsapp">
+          <i class="fab fa-whatsapp"></i> أرسل مستنداتك عبر واتساب
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayoutArabic>
+
+<style>
+  .hero-section { background: linear-gradient(135deg, var(--primary-color, #0E2B48) 0%, #1a3a5c 100%); color: white; padding: 4rem 0 3rem; }
+  .breadcrumb { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.7); flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: white; }
+  .breadcrumb .current { color: white; }
+  .hero-section h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; margin: 0 0 0.5rem; line-height: 1.4; }
+  .hero-subtitle { font-size: 1.15rem; color: var(--accent-color, #FF1654); margin: 0 0 1.5rem; }
+  .hero-intro { line-height: 1.8; color: rgba(255,255,255,0.9); margin-bottom: 1.5rem; max-width: 700px; }
+
+  .quick-answer { background: rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.25rem 1.5rem; max-width: 500px; border-right: 4px solid var(--accent-color); }
+  .quick-answer-header { display: flex; align-items: center; gap: 0.5rem; color: var(--accent-color); font-weight: 600; margin-bottom: 0.5rem; }
+  .quick-answer p { margin: 0; color: rgba(255,255,255,0.95); font-size: 0.95rem; line-height: 1.7; }
+
+  .content-section { padding: 4rem 0; background: var(--bg-primary, white); }
+  .content-section h2 { font-size: 1.5rem; font-weight: 700; color: var(--primary-color, #0E2B48); margin: 2.5rem 0 1rem; line-height: 1.5; }
+  .content-section h2:first-of-type { margin-top: 0; }
+  .content-section p { line-height: 1.8; margin-bottom: 1.5rem; }
+  .section-intro { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; max-width: 700px; }
+
+  .comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .comparison-card { background: #f8f9fa; border-radius: 1rem; padding: 1.5rem; }
+  .comparison-card.translation { border-top: 4px solid var(--accent-color); }
+  .comparison-card.equivalency { border-top: 4px solid #d97706; }
+  .card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+  .card-header i { font-size: 1.5rem; }
+  .comparison-card.translation .card-header i { color: var(--accent-color); }
+  .comparison-card.equivalency .card-header i { color: #d97706; }
+  .card-header h3 { margin: 0; font-size: 1.25rem; }
+  .card-description { color: var(--text-muted); margin-bottom: 1rem; }
+  .card-meta { display: flex; gap: 1.5rem; margin-bottom: 1rem; font-size: 0.9rem; }
+  .card-meta i { margin-left: 0.25rem; color: var(--text-muted); }
+  .comparison-card h4 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin: 1rem 0 0.75rem; }
+  .comparison-card ul { list-style: none; padding: 0; margin: 0; }
+  .comparison-card li { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0; font-size: 0.95rem; }
+  .comparison-card li i { color: #059669; font-size: 0.8rem; }
+  .card-cta { display: inline-block; margin-top: 1rem; color: var(--accent-color); font-weight: 600; text-decoration: none; }
+  .card-cta:hover { text-decoration: underline; }
+  .card-note { display: block; margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted); font-style: italic; }
+
+  .key-insight { display: flex; gap: 1rem; background: #fef3c7; border-right: 4px solid #d97706; padding: 1.25rem 1.5rem; border-radius: 0 0.75rem 0.75rem 0; margin: 2rem 0; }
+  .key-insight > i { color: #d97706; font-size: 1.25rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .key-insight div { line-height: 1.6; }
+
+  .use-case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .use-case-card { background: #f8f9fa; border-radius: 1rem; padding: 1.5rem; }
+  .use-case-icon { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; margin-bottom: 1rem; color: #fff; }
+  .use-case-icon.golden-visa { background: linear-gradient(135deg, #d97706, #f59e0b); }
+  .use-case-icon.government { background: linear-gradient(135deg, #1e40af, #3b82f6); }
+  .use-case-icon.teaching { background: linear-gradient(135deg, #059669, #10b981); }
+  .use-case-icon.engineering { background: linear-gradient(135deg, #7c3aed, #a78bfa); }
+  .use-case-icon.education { background: linear-gradient(135deg, #dc2626, #f87171); }
+  .use-case-icon.healthcare { background: linear-gradient(135deg, #0891b2, #22d3ee); }
+  .use-case-card h3 { margin: 0 0 0.5rem; font-size: 1.1rem; }
+  .use-case-card p { margin: 0; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+  .use-case-card a { display: inline-block; margin-top: 0.75rem; color: var(--accent-color); font-size: 0.9rem; text-decoration: none; }
+  .use-case-card a:hover { text-decoration: underline; }
+
+  .sufficient-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 2rem 0; }
+  .sufficient-item { display: flex; gap: 1rem; align-items: flex-start; background: #f0fdf4; padding: 1.25rem; border-radius: 0.75rem; }
+  .sufficient-item > i { font-size: 1.5rem; color: #059669; flex-shrink: 0; }
+  .sufficient-item h4 { margin: 0 0 0.25rem; font-size: 1rem; }
+  .sufficient-item p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
+
+  .translation-cta { background: #f8f9fa; padding: 2rem; border-radius: 1rem; text-align: center; margin-top: 2rem; }
+  .translation-cta h3 { margin: 0 0 0.5rem; }
+  .translation-cta p { margin: 0 0 1rem; color: var(--text-muted); }
+  .btn-secondary { background: var(--primary-color); color: #fff; padding: 0.75rem 1.5rem; border-radius: 0.5rem; text-decoration: none; display: inline-block; font-weight: 600; }
+  .btn-secondary:hover { background: #0a1e3a; }
+
+  .process-timeline { position: relative; padding-right: 2rem; }
+  .process-timeline::before { content: ''; position: absolute; right: 15px; top: 0; bottom: 0; width: 2px; background: #e5e7eb; }
+  .timeline-item { position: relative; padding-bottom: 2rem; }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-marker { position: absolute; right: -2rem; width: 32px; height: 32px; background: var(--primary-color); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; }
+  .timeline-content { background: #f8f9fa; padding: 1.25rem; border-radius: 0.75rem; margin-right: 1rem; }
+  .timeline-content h4 { margin: 0 0 0.5rem; font-size: 1.1rem; }
+  .timeline-content p { margin: 0; color: var(--text-muted); line-height: 1.6; }
+
+  .table-wrapper { overflow-x: auto; margin: 1.5rem 0; }
+  .documents-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 0.75rem; overflow: hidden; }
+  .documents-table th { background: var(--primary-color); color: #fff; padding: 1rem; text-align: right; font-weight: 600; }
+  .documents-table td { padding: 1rem; border-bottom: 1px solid #f0f0f0; }
+  .documents-table .notes { font-size: 0.9rem; color: var(--text-muted); }
+
+  .additional-docs { background: #f8f9fa; padding: 1.5rem; border-radius: 0.75rem; margin-top: 1.5rem; }
+  .additional-docs h3 { margin: 0 0 1rem; font-size: 1.1rem; }
+  .additional-docs ul { margin: 0; padding-right: 1.25rem; }
+  .additional-docs li { margin-bottom: 0.5rem; line-height: 1.5; }
+
+  .outcome-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .outcome-card { background: #f8f9fa; border-radius: 1rem; padding: 1.5rem; }
+  .outcome-card.full { border-top: 4px solid #059669; }
+  .outcome-card.partial { border-top: 4px solid #d97706; }
+  .outcome-card.non { border-top: 4px solid #dc2626; }
+  .outcome-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+  .outcome-header i { font-size: 1.25rem; }
+  .outcome-card.full .outcome-header i { color: #059669; }
+  .outcome-card.partial .outcome-header i { color: #d97706; }
+  .outcome-card.non .outcome-header i { color: #dc2626; }
+  .outcome-header h3 { margin: 0; font-size: 1.1rem; }
+  .outcome-card p { margin: 0 0 1rem; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+  .outcome-result { display: block; font-size: 0.85rem; font-weight: 600; padding: 0.5rem 0.75rem; border-radius: 0.5rem; }
+  .outcome-card.full .outcome-result { background: #f0fdf4; color: #059669; }
+  .outcome-card.partial .outcome-result { background: #fff7ed; color: #c2410c; }
+  .outcome-card.non .outcome-result { background: #fef2f2; color: #dc2626; }
+
+  .appeal-note { display: flex; gap: 1rem; background: #e6f7ff; padding: 1.25rem 1.5rem; border-radius: 0.75rem; margin-top: 1.5rem; }
+  .appeal-note > i { color: #0077b6; font-size: 1.25rem; flex-shrink: 0; }
+  .appeal-note p { margin: 0; line-height: 1.6; }
+
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .service-item { text-align: center; }
+  .service-item > i { font-size: 2rem; color: var(--accent-color); margin-bottom: 0.75rem; }
+  .service-item h4 { margin: 0 0 0.5rem; font-size: 1rem; }
+  .service-item p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
+
+  .faq-section { margin: 2rem 0; }
+  .faq-item { background: #f8f9fa; border-radius: 8px; margin-bottom: 0.75rem; }
+  .faq-item summary { padding: 1.25rem 1.5rem; cursor: pointer; font-weight: 600; color: var(--primary-color); list-style: none; display: flex; justify-content: space-between; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 1.5rem; }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-answer { padding: 0 1.5rem 1.25rem; }
+  .faq-answer p { margin: 0; line-height: 1.7; }
+
+  .cta-box { background: linear-gradient(135deg, var(--primary-color, #0E2B48) 0%, #1a3a5c 100%); color: white; padding: 2rem; border-radius: 12px; text-align: center; margin: 3rem 0; }
+  .cta-box h3 { font-size: 1.5rem; margin: 0 0 0.75rem; color: white; }
+  .cta-box p { margin: 0 0 1.5rem; color: rgba(255,255,255,0.9); }
+  .btn--whatsapp { background: #25D366; color: white; padding: 0.875rem 1.5rem; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600; }
+
+  @media (max-width: 768px) {
+    .comparison-grid { grid-template-columns: 1fr; }
+    .sufficient-grid { grid-template-columns: 1fr; }
+    .use-case-grid { grid-template-columns: 1fr; }
+    .outcome-grid { grid-template-columns: 1fr; }
+  }
+</style>

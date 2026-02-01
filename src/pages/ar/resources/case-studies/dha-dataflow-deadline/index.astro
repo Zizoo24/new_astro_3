@@ -1,0 +1,792 @@
+---
+/**
+ * دراسة حالة: موعد DataFlow هيئة الصحة
+ * E-E-A-T: الخبرة من خلال نجاح موثق في ترخيص الرعاية الصحية
+ */
+import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+
+const documents = [
+  { name: "شهادة الدرجة الطبية", format: "مصدقة من وزارة العدل مع التحقق من صيغة التاريخ" },
+  { name: "شهادة إتمام التدريب", format: "المدة محددة بالسنوات/الأشهر" },
+  { name: "شهادة تدريب الإقامة", format: "التخصص والمدة مفصلة" },
+  { name: "خطاب حسن السيرة", format: "التحقق من الوضع الحالي من مصر" },
+  { name: "شهادات الخبرة (3)", format: "صيغة التحقق من صاحب العمل" },
+  { name: "شهادة البورد التخصصي", format: "نتائج الامتحان والشهادة" }
+];
+
+const dataflowChecks = [
+  {
+    check: "التحقق من صيغة التاريخ",
+    description: "يقوم DataFlow بمطابقة التواريخ عبر جميع المستندات. الصيغ غير المتسقة تؤدي لتأخيرات المراجعة اليدوية."
+  },
+  {
+    check: "حسابات المدة",
+    description: "مدد التدريب والخبرة يجب أن تكون متسقة رياضياً مع تواريخ الشهادات."
+  },
+  {
+    check: "مطابقة اسم المؤسسة",
+    description: "أسماء الجامعات/المستشفيات يجب أن تتطابق تماماً مع قاعدة بيانات DataFlow."
+  },
+  {
+    check: "التسلسل الهرمي للشهادات",
+    description: "المستندات يجب أن تُظهر تسلسلاً منطقياً (درجة ← تدريب ← إقامة ← تخصص)."
+  }
+];
+
+const timeline = [
+  { time: "اليوم 1 - 8 صباحاً", event: "العميل يتواصل مع موعد DataFlow بعد 3 أيام" },
+  { time: "اليوم 1 - 10 صباحاً", event: "تقييم المستندات وتحليل الفجوات" },
+  { time: "اليوم 1 - 12 ظهراً", event: "تحديد خطاب حسن السيرة المفقود — العميل يتواصل مع مصر" },
+  { time: "اليوم 1 - 4 مساءً", event: "بدء ترجمات الدفعة الأولى (الدرجة، الإقامة)" },
+  { time: "اليوم 1 - 9 مساءً", event: "استلام خطاب حسن السيرة رقمياً من مصر" },
+  { time: "اليوم 2 - 9 صباحاً", event: "إكمال جميع الترجمات — مراجعة تنسيق DataFlow الداخلية" },
+  { time: "اليوم 2 - 2 مساءً", event: "تقديم تصديق وزارة الخارجية" },
+  { time: "اليوم 2 - 6 مساءً", event: "استلام تصديق وزارة الخارجية" },
+  { time: "اليوم 2 - 8 مساءً", event: "تسليم الحزمة الكاملة للعميل" },
+  { time: "اليوم 3 - 10 صباحاً", event: "العميل يقدم لبوابة DataFlow هيئة الصحة" },
+  { time: "اليوم 14", event: "اكتمال تحقق DataFlow — لا استفسارات" },
+  { time: "اليوم 21", event: "صدور رخصة هيئة الصحة" }
+];
+---
+
+<BaseLayoutArabic
+  title="رخصة هيئة الصحة DataFlow في 48 ساعة | OnlineTranslation.ae"
+  description="كيف ساعدنا طبيباً في الوفاء بموعد DataFlow مع ترجمات شهادات طبية منسقة بشكل صحيح. صدور رخصة هيئة الصحة بدون استفسارات تحقق."
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://onlinetranslation.ae/ar/resources/case-studies/dha-dataflow-deadline/" />
+    <link rel="alternate" hreflang="en" href="https://onlinetranslation.ae/resources/case-studies/dha-dataflow-deadline/" />
+    <link rel="alternate" hreflang="ar" href="https://onlinetranslation.ae/ar/resources/case-studies/dha-dataflow-deadline/" />
+  </Fragment>
+
+  <section class="hero-section bg-dark" data-theme="dark" dir="rtl">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="مسار التنقل">
+        <a href="/ar/">الرئيسية</a>
+        <span class="separator">&lt;</span>
+        <a href="/ar/resources/">الموارد</a>
+        <span class="separator">&lt;</span>
+        <a href="/ar/resources/case-studies/">دراسات الحالة</a>
+        <span class="separator">&lt;</span>
+        <span class="current">موعد DataFlow هيئة الصحة</span>
+      </nav>
+
+      <div class="case-meta">
+        <span class="case-category">الرعاية الصحية</span>
+        <span class="case-date">يناير 2024</span>
+      </div>
+
+      <h1>موعد DataFlow هيئة الصحة</h1>
+      <p class="hero-subtitle">رخصة الرعاية الصحية مُنجزة</p>
+
+      <div class="outcome-banner">
+        <div class="outcome-item">
+          <span class="outcome-icon">✅</span>
+          <span class="outcome-label">النتيجة</span>
+          <span class="outcome-value">صدور رخصة هيئة الصحة بنجاح</span>
+        </div>
+        <div class="outcome-item">
+          <span class="outcome-icon">⏱️</span>
+          <span class="outcome-label">وقت الترجمة</span>
+          <span class="outcome-value">48 ساعة شاملة التصديق</span>
+        </div>
+        <div class="outcome-item">
+          <span class="outcome-icon">📋</span>
+          <span class="outcome-label">نتيجة DataFlow</span>
+          <span class="outcome-value">لا استفسارات تحقق</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <div class="content-grid">
+        <div class="main-content">
+          <h2>الموقف</h2>
+          <p>طبيب من مصر تلقى عرض عمل مشروطاً من مجموعة مستشفيات خاصة في دبي. العرض كان مشروطاً بالحصول على ترخيص هيئة الصحة خلال 30 يوماً. أكمل معظم المتطلبات، لكن شهاداته المترجمة أُعيدت من DataFlow بسبب مشاكل التنسيق.</p>
+
+          <p>مع موعد تقديم DataFlow بعد 3 أيام، احتاج إعادة ترجمة كاملة لـ 8 مستندات منسقة خصيصاً لمتطلبات التحقق من DataFlow.</p>
+
+          <div class="quote-block">
+            <p>"DataFlow رفض ترجماتي مرتين. المستشفى يقول إذا فاتني هذا الموعد، سيضطرون لسحب العرض."</p>
+            <cite>— استشارة العميل الأولية</cite>
+          </div>
+
+          <h2>لماذا تحدث رفضات DataFlow</h2>
+          <p>DataFlow ليس مجرد فحص مستندات بسيط. إنه نظام تحقق من المصدر الأساسي يتواصل مع المؤسسات المصدرة مباشرة. الترجمات المقبولة لأغراض أخرى غالباً تفشل في DataFlow للأسباب التالية:</p>
+
+          <div class="checks-grid">
+            {dataflowChecks.map(item => (
+              <div class="check-card">
+                <h3>{item.check}</h3>
+                <p>{item.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <h2>نهجنا</h2>
+          <p>تعاملنا مع مئات حزم ترخيص هيئة الصحة ودائرة الصحة. نعرف تماماً ما يبحث عنه تحقق DataFlow:</p>
+
+          <ul class="feature-list">
+            <li><strong>تدقيق ما قبل الترجمة:</strong> راجعنا ترجماته السابقة لتحديد المشاكل المحددة</li>
+            <li><strong>تحليل الفجوات:</strong> حددنا خطاب حسن السيرة المفقود الذي كان سيسبب رفضاً آخر</li>
+            <li><strong>توحيد التنسيق:</strong> جميع التواريخ حُولت لصيغة DD/MM/YYYY مع التحقق مقابل المستندات المصدر</li>
+            <li><strong>التحقق من اسم المؤسسة:</strong> مطابقة أسماء كليات الطب المصرية مع قاعدة بيانات DataFlow</li>
+          </ul>
+
+          <h2>حزمة المستندات</h2>
+          <div class="documents-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>المستند</th>
+                  <th>التنسيق الخاص</th>
+                </tr>
+              </thead>
+              <tbody>
+                {documents.map(doc => (
+                  <tr>
+                    <td>{doc.name}</td>
+                    <td><span class="format-note">{doc.format}</span></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <h2>التفصيل الحاسم: خطاب حسن السيرة</h2>
+          <p>خلال مراجعة المستندات، حددنا أن خطاب حسن السيرة من نقابة الأطباء المصرية مؤرخ قبل 8 أشهر. DataFlow يتطلب خطابات حسن السيرة صادرة خلال 6 أشهر من التقديم.</p>
+
+          <p>أخطرنا العميل فوراً. تواصل مع النقابة في المساء واستلم خطاباً محدثاً عبر البريد الإلكتروني في الصباح التالي. هذا الاكتشاف الواحد وفّر دورة رفض أخرى.</p>
+
+          <div class="success-box">
+            <div class="success-icon">💡</div>
+            <div class="success-content">
+              <h3>تحليل الفجوات الاستباقي</h3>
+              <p>لا نترجم فقط ما يُسلم لنا. نراجع الحزمة الكاملة للكشف عن محفزات الرفض المحتملة قبل بدء العمل.</p>
+            </div>
+          </div>
+
+          <h2>النتيجة</h2>
+          <p>العميل قدم لـ DataFlow في اليوم 3. على عكس تقديماته السابقة، اجتازت هذه الحزمة التحقق بدون أي استفسارات. صدرت رخصة هيئة الصحة بعد 21 يوماً—ضمن موعد المستشفى النهائي.</p>
+
+          <div class="result-stats">
+            <div class="result-stat">
+              <span class="result-number">0</span>
+              <span class="result-label">استفسارات DataFlow</span>
+            </div>
+            <div class="result-stat">
+              <span class="result-number">21</span>
+              <span class="result-label">يوماً للرخصة</span>
+            </div>
+            <div class="result-stat">
+              <span class="result-number">48</span>
+              <span class="result-label">ساعة ترجمة</span>
+            </div>
+          </div>
+
+          <h2>ترخيص الرعاية الصحية: ما تعلمناه</h2>
+          <ul class="feature-list">
+            <li><strong>DataFlow له توقعات محددة:</strong> الترجمات القانونية العامة غالباً تفشل في تحقق الرعاية الصحية</li>
+            <li><strong>الحزم الكاملة مهمة:</strong> المستندات المفقودة تسبب رفضات أكثر من أخطاء الترجمة</li>
+            <li><strong>اتساق التاريخ حاسم:</strong> صيغة تاريخ واحدة غير متطابقة تؤدي للمراجعة اليدوية</li>
+            <li><strong>الخبرة مهمة:</strong> عالجنا أكثر من 200 حزمة ترخيص رعاية صحية لهيئة الصحة ودائرة الصحة</li>
+          </ul>
+        </div>
+
+        <aside class="sidebar">
+          <div class="timeline-box">
+            <h3>الجدول الزمني</h3>
+            <div class="timeline">
+              {timeline.map(item => (
+                <div class="timeline-item">
+                  <span class="timeline-time">{item.time}</span>
+                  <span class="timeline-event">{item.event}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="sidebar-box">
+            <h3>جهة الترخيص</h3>
+            <p>هيئة الصحة بدبي (DHA)</p>
+            <p class="small-text">ترخيص المهنيين الصحيين</p>
+          </div>
+
+          <div class="sidebar-box">
+            <h3>نظام التحقق</h3>
+            <p>مجموعة DataFlow</p>
+            <p class="small-text">التحقق من المصدر الأساسي</p>
+          </div>
+
+          <div class="sidebar-box highlight">
+            <h3>ترخيص رعاية صحية؟</h3>
+            <p>نتخصص في ترجمات منسقة لـ DataFlow لترخيص هيئة الصحة ودائرة الصحة.</p>
+            <a href="https://wa.me/971508620217?text=أحتاج%20ترجمات%20لترخيص%20هيئة%20الصحة" class="btn btn-primary btn-sm">
+              <i class="fab fa-whatsapp"></i> احصل على المساعدة
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <h2 class="section-title">الخدمات ذات الصلة</h2>
+      <div class="services-grid">
+        <a href="/ar/specialized/medical/dha-dataflow/" class="service-card">
+          <div class="service-icon"><i class="fas fa-hospital"></i></div>
+          <h3>ترجمة DataFlow هيئة الصحة</h3>
+          <p>تنسيق متخصص لتحقق DataFlow من المصدر الأساسي.</p>
+        </a>
+        <a href="/ar/personal/academic/degree/" class="service-card">
+          <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+          <h3>ترجمة شهادات الدرجات</h3>
+          <p>ترجمات الدرجات الطبية بتنسيق مؤسسي صحيح.</p>
+        </a>
+        <a href="/ar/services/attestation/mofa/" class="service-card">
+          <div class="service-icon"><i class="fas fa-stamp"></i></div>
+          <h3>تصديق وزارة الخارجية</h3>
+          <p>ترجمة مع تصديق لمتطلبات ترخيص الرعاية الصحية.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <div class="more-cases">
+        <h2>المزيد من دراسات الحالة</h2>
+        <div class="cases-nav">
+          <a href="/ar/resources/case-studies/rejected-document-rescue/" class="case-nav-item">
+            <span class="case-nav-category">مستندات المحاكم</span>
+            <span class="case-nav-title">إنقاذ المستند المرفوض</span>
+            <span class="case-nav-outcome">تقديم المحكمة أُنقذ في ساعتين</span>
+          </a>
+          <a href="/ar/resources/case-studies/urgent-family-visa/" class="case-nav-item">
+            <span class="case-nav-category">الهجرة</span>
+            <span class="case-nav-title">تأشيرة عائلية تحت الموعد النهائي</span>
+            <span class="case-nav-outcome">12 مستنداً في 24 ساعة</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Article Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "دراسة حالة: رخصة هيئة الصحة DataFlow للرعاية الصحية في 48 ساعة",
+    "description": "كيف ساعدنا طبيباً في الوفاء بموعد DataFlow مع ترجمات شهادات طبية منسقة بشكل صحيح. صدور رخصة هيئة الصحة بدون استفسارات تحقق.",
+    "author": {
+      "@type": "Organization",
+      "name": "OnlineTranslation.ae"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "OnlineTranslation.ae",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://onlinetranslation.ae/assets/images/logo/brand/emblem-256.png"
+      }
+    },
+    "datePublished": "2024-01-15",
+    "mainEntityOfPage": "https://onlinetranslation.ae/ar/resources/case-studies/dha-dataflow-deadline/"
+  })} />
+</BaseLayoutArabic>
+
+<style>
+  .hero-section {
+    padding: 8rem 0 4rem;
+    background: var(--primary-color);
+  }
+
+  .breadcrumb {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.7);
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    color: #ffffff;
+  }
+
+  .breadcrumb .current {
+    color: #ffffff;
+  }
+
+  .case-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .case-category,
+  .case-date {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--accent-coral, #FF1654);
+    margin-bottom: 2rem;
+  }
+
+  .outcome-banner {
+    display: flex;
+    gap: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    flex-wrap: wrap;
+  }
+
+  .outcome-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .outcome-icon {
+    font-size: 1.5rem;
+  }
+
+  .outcome-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .outcome-value {
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 3rem;
+  }
+
+  .main-content h2 {
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .main-content h2:first-child {
+    margin-top: 0;
+  }
+
+  .main-content p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+  }
+
+  .quote-block {
+    background: var(--bg-light);
+    border-right: 4px solid var(--accent-coral);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0.5rem 0 0 0.5rem;
+  }
+
+  .quote-block p {
+    font-style: italic;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .quote-block cite {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: normal;
+  }
+
+  .checks-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .check-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+  }
+
+  .check-card h3 {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .check-card p {
+    font-size: 0.85rem;
+    margin: 0;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+  }
+
+  .feature-list li {
+    padding: 0.75rem 0;
+    padding-right: 1.5rem;
+    position: relative;
+    line-height: 1.7;
+  }
+
+  .feature-list li::before {
+    content: "←";
+    position: absolute;
+    right: 0;
+    color: var(--accent-coral);
+    font-weight: bold;
+  }
+
+  .documents-table {
+    margin: 2rem 0;
+    overflow-x: auto;
+  }
+
+  .documents-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .documents-table th,
+  .documents-table td {
+    padding: 0.75rem 1rem;
+    text-align: right;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .documents-table th {
+    background: var(--bg-light);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+  }
+
+  .documents-table td {
+    font-size: 0.95rem;
+  }
+
+  .format-note {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .success-box {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 1rem;
+    margin: 2rem 0;
+    align-items: flex-start;
+  }
+
+  .success-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+  }
+
+  .success-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #2563eb;
+  }
+
+  .success-content p {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .result-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .result-stat {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--bg-light);
+    border-radius: 1rem;
+  }
+
+  .result-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent-coral);
+  }
+
+  .result-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .timeline-box,
+  .sidebar-box {
+    background: var(--bg-light);
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
+
+  .sidebar-box.highlight {
+    background: var(--primary-color);
+    color: #fff;
+  }
+
+  .sidebar-box.highlight h3 {
+    color: #fff;
+  }
+
+  .sidebar-box.highlight p {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .sidebar h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .sidebar p {
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .small-text {
+    font-size: 0.85rem !important;
+    color: var(--text-muted);
+    margin-top: 0.25rem !important;
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .timeline-item:last-child {
+    border-bottom: none;
+  }
+
+  .timeline-time {
+    font-weight: 600;
+    color: var(--accent-coral);
+  }
+
+  .timeline-event {
+    color: var(--text-color);
+  }
+
+  .btn-sm {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent-coral);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+  }
+
+  .btn-sm:hover {
+    opacity: 0.9;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .service-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .service-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .more-cases h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+  }
+
+  .cases-nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .case-nav-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    background: var(--bg-light);
+    border-radius: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+  }
+
+  .case-nav-item:hover {
+    border-color: var(--accent-coral);
+  }
+
+  .case-nav-category {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-coral);
+  }
+
+  .case-nav-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+
+  .case-nav-outcome {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 991px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+      order: -1;
+    }
+
+    .checks-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .result-stats {
+      grid-template-columns: 1fr;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cases-nav {
+      grid-template-columns: 1fr;
+    }
+
+    .outcome-banner {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+</style>

@@ -1,0 +1,330 @@
+---
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const caseStudies = [
+  {
+    title: "إنقاذ مستند مرفوض: تقديم محكمة أُنجز في ساعتين",
+    category: "مستندات المحاكم",
+    excerpt: "تلقى مسؤول علاقات عامة رفضاً في محاكم دبي بسبب مشاكل تنسيق في ترجمة وكالة. خدمة 'إنقاذ الرفض' لدينا حددت 4 أخطاء تنسيق محددة وسلمت نسخة مصححة مقبولة من المحكمة في نفس اليوم.",
+    outcome: "قبلت المحكمة في التقديم الثاني",
+    turnaround: "ساعتان بعد التواصل الأول",
+    icon: "⚖️"
+  },
+  {
+    title: "تأشيرة عائلية تحت الموعد النهائي: 12 مستنداً في 24 ساعة",
+    category: "الهجرة",
+    excerpt: "مع موعد مقابلة تأشيرة الزوج/ة في اليوم التالي، احتاج مقيم في دبي ترجمة وتوثيق 12 مستنداً. نسقنا مع وزارة الخارجية للتصديق في نفس اليوم وسلمنا الحزمة الكاملة بحلول الـ 10 مساءً.",
+    outcome: "الموافقة على التأشيرة من المقابلة الأولى",
+    turnaround: "24 ساعة للحزمة الكاملة",
+    icon: "👨‍👩‍👧"
+  },
+  {
+    title: "موعد DataFlow هيئة الصحة: ترخيص الرعاية الصحية مُنجز",
+    category: "الرعاية الصحية",
+    excerpt: "واجه طبيب من مصر موعداً نهائياً لـ DataFlow لترخيص هيئة الصحة بدبي. شهادات درجات متعددة احتاجت ترجمة وزارة العدل بتنسيق محدد للتحقق الصحي. أنجزنا الحزمة الكاملة في 48 ساعة.",
+    outcome: "صدور رخصة هيئة الصحة بنجاح",
+    turnaround: "48 ساعة شاملة التصديق",
+    icon: "🏥"
+  }
+];
+
+const stats = [
+  { value: "+500", label: "حالة منجزة 2024" },
+  { value: "98%", label: "قبول من التقديم الأول" },
+  { value: "ساعتان", label: "متوسط وقت الحالات العاجلة" },
+  { value: "4.9★", label: "رضا العملاء" }
+];
+---
+
+<BaseLayoutArabic
+  title="دراسات حالة | قصص العملاء | OnlineTranslation.ae"
+  description="استكشف دراسات حالة حقيقية تُظهر كيف نتعامل مع الترجمات العاجلة ورفض المحاكم وحزم المستندات المعقدة. نتائج موثقة من عملاء دبي."
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://onlinetranslation.ae/ar/resources/case-studies/" />
+    <link rel="alternate" hreflang="en" href="https://onlinetranslation.ae/resources/case-studies/" />
+    <link rel="alternate" hreflang="ar" href="https://onlinetranslation.ae/ar/resources/case-studies/" />
+  </Fragment>
+
+  <section class="hero-section bg-dark" dir="rtl">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="مسار التنقل">
+        <a href="/ar/">الرئيسية</a>
+        <span class="separator">&lt;</span>
+        <a href="/ar/resources/">الموارد</a>
+        <span class="separator">&lt;</span>
+        <span class="current">دراسات الحالة</span>
+      </nav>
+
+      <span class="kicker">قصص عملاء حقيقية</span>
+      <h1>دراسات الحالة</h1>
+      <p class="hero-subtitle">نتائج موثقة، وليست ادعاءات تسويقية</p>
+
+      <div class="hero-intro">
+        <p class="lead-text">كل ترجمة لها قصة. دراسات الحالة هذه تُظهر كيف نتعامل مع التحديات الحقيقية—المواعيد النهائية العاجلة، رفض المحاكم، سلاسل التصديق المعقدة، والطلبات ذات المخاطر العالية.</p>
+
+        <div class="stats-grid">
+          {stats.map(stat => (
+            <div class="stat-item">
+              <span class="stat-value">{stat.value}</span>
+              <span class="stat-label">{stat.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section" dir="rtl">
+    <div class="container">
+      <div class="intro-text">
+        <h2>لماذا نوثق دراسات الحالة</h2>
+        <p>خدمات الترجمة غالباً تُحكم على السعر فقط. نؤمن أن المقياس الحقيقي هو النتائج. هل قبلت المحكمة المستند؟ هل تمت الموافقة على التأشيرة؟ هل تم الوفاء بالموعد النهائي؟ دراسات الحالة هذه تقدم إجابات شفافة.</p>
+        <p>كل دراسة حالة مبنية على حالات عملاء حقيقية. الأسماء والتفاصيل المميزة تم تغييرها للخصوصية، لكن التحديات والحلول والنتائج موثقة بدقة.</p>
+      </div>
+
+      <h2>دراسات الحالة المميزة</h2>
+
+      <div class="case-studies-grid">
+        {caseStudies.map(study => (
+          <div class="case-study-card">
+            <div class="case-icon">{study.icon}</div>
+            <span class="case-category">{study.category}</span>
+            <h3>{study.title}</h3>
+            <p class="case-excerpt">{study.excerpt}</p>
+            <div class="case-results">
+              <div class="result-item">
+                <span class="result-label">النتيجة:</span>
+                <span class="result-value">{study.outcome}</span>
+              </div>
+              <div class="result-item">
+                <span class="result-label">وقت التسليم:</span>
+                <span class="result-value">{study.turnaround}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <h2>ما تُظهره دراسات الحالة لدينا</h2>
+
+      <div class="demo-grid">
+        <div class="demo-item">
+          <div class="demo-icon"><i class="fas fa-clock"></i></div>
+          <h3>إدارة المواعيد النهائية</h3>
+          <p>كيف نتعامل مع الطلبات العاجلة—من المستندات القياسية في 60 دقيقة إلى حزم المستندات المعقدة التي تتطلب تصديقاً في نفس اليوم.</p>
+        </div>
+
+        <div class="demo-item">
+          <div class="demo-icon"><i class="fas fa-exclamation-triangle"></i></div>
+          <h3>التعافي من الرفض</h3>
+          <p>عندما تُرفض المستندات في المحاكم أو المكاتب الحكومية، نحدد المشاكل بالضبط ونقدم نسخاً مصححة بسرعة.</p>
+        </div>
+
+        <div class="demo-item">
+          <div class="demo-icon"><i class="fas fa-project-diagram"></i></div>
+          <h3>التنسيق المعقد</h3>
+          <p>حزم المستندات المتعددة التي تتطلب الترجمة والتوثيق وتصديق السفارة ووزارة الخارجية—جميعها تُنسق كعملية مُدارة واحدة.</p>
+        </div>
+
+        <div class="demo-item">
+          <div class="demo-icon"><i class="fas fa-check-double"></i></div>
+          <h3>نجاح من التقديم الأول</h3>
+          <p>عملية مراجعة ما قبل التقديم لدينا تكتشف مشاكل التنسيق والمصطلحات قبل أن تصل المستندات للمكاتب الحكومية.</p>
+        </div>
+      </div>
+
+      <h2>السيناريوهات الشائعة التي نتعامل معها</h2>
+
+      <div class="scenarios-list">
+        <details class="scenario-item" name="scenarios">
+          <summary>
+            <span class="scenario-title">رفض تقديمات المحاكم</span>
+            <span class="scenario-arrow">▼</span>
+          </summary>
+          <div class="scenario-content">
+            <p>محاكم دبي والمحاكم الاتحادية لها متطلبات تنسيق محددة يتجاهلها الكثير من مكاتب الترجمة. المشاكل الشائعة تشمل:</p>
+            <ul>
+              <li>وضع الرأس/التذييل غير الصحيح</li>
+              <li>أختام وزارة العدل مفقودة أو في مكان خاطئ</li>
+              <li>تناقضات المصطلحات بين المستندات</li>
+              <li>تناقضات صيغة التاريخ</li>
+            </ul>
+            <p>خدمة "إنقاذ الرفض" لدينا تراجع المستند المرفوض، تحدد المشاكل المحددة، وتسلم نسخة مصححة—عادةً خلال 2-4 ساعات.</p>
+          </div>
+        </details>
+
+        <details class="scenario-item" name="scenarios">
+          <summary>
+            <span class="scenario-title">مواعيد مقابلات التأشيرات</span>
+            <span class="scenario-arrow">▼</span>
+          </summary>
+          <div class="scenario-content">
+            <p>مقابلات الإقامة وهيئة الهوية غالباً تتطلب حزم مستندات كاملة. الترجمات المفقودة أو المنسقة بشكل خاطئ يمكن أن تؤدي لإعادة جدولة المقابلات وتأخير التأشيرات.</p>
+            <ul>
+              <li>حزم تأشيرات العائلة (الزواج، شهادات الميلاد، شهادة الحالة الجنائية)</li>
+              <li>مستندات تأهيل الإقامة الذهبية</li>
+              <li>الشهادات الأكاديمية لتأشيرات العمل</li>
+              <li>التوثيق المالي لتأشيرات المستثمرين</li>
+            </ul>
+            <p>نقدم ترجمة نفس اليوم مع تنسيق وزارة الخارجية عندما تكون المقابلات وشيكة.</p>
+          </div>
+        </details>
+
+        <details class="scenario-item" name="scenarios">
+          <summary>
+            <span class="scenario-title">مواعيد التراخيص المهنية</span>
+            <span class="scenario-arrow">▼</span>
+          </summary>
+          <div class="scenario-content">
+            <p>هيئة الصحة بدبي ودائرة الصحة أبوظبي تتطلب شهادات مترجمة لترخيص الرعاية الصحية. التحقق عبر DataFlow يضيف تعقيداً بمتطلبات تنسيق محددة.</p>
+            <ul>
+              <li>شهادات الدرجات الطبية</li>
+              <li>شهادات التدريب التخصصي</li>
+              <li>خطابات حسن السيرة</li>
+              <li>شهادات الخبرة بصيغ مدة محددة</li>
+            </ul>
+            <p>نفهم متطلبات ترخيص الرعاية الصحية وننسق الترجمات لقبول DataFlow.</p>
+          </div>
+        </details>
+
+        <details class="scenario-item" name="scenarios">
+          <summary>
+            <span class="scenario-title">إغلاق صفقات العقارات</span>
+            <span class="scenario-arrow">▼</span>
+          </summary>
+          <div class="scenario-content">
+            <p>معاملات دائرة الأراضي ومؤسسة التنظيم العقاري لها جداول زمنية ضيقة. الترجمات المفقودة يمكن أن تؤخر الإغلاقات وتهدد الصفقات.</p>
+            <ul>
+              <li>عقود البيع والشراء</li>
+              <li>التوكيل لمعاملات العقارات</li>
+              <li>مستندات الشركات للعقارات المملوكة للشركات</li>
+              <li>توثيق الائتمان والوصية لحالات الميراث</li>
+            </ul>
+            <p>ننسق مع مكاتب المحاماة ومسؤولي العلاقات العامة للوفاء بمواعيد المعاملات.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="cta-box">
+        <h3>هل لديك حالة صعبة؟</h3>
+        <p>موعد نهائي عاجل؟ مستند مرفوض؟ سلسلة تصديق معقدة؟ صف حالتك وسنخبرك بالضبط كيف يمكننا المساعدة.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/971508620217?text=مرحباً، لدي حالة صعبة وأحتاج مساعدة" class="btn btn--whatsapp">
+            <i class="fab fa-whatsapp"></i> صف حالتك
+          </a>
+          <a href="/ar/about/credentials/" class="btn btn--secondary">
+            عرض أوراق اعتمادنا
+          </a>
+        </div>
+      </div>
+
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-section">
+        <details class="faq-item" open>
+          <summary class="faq-question">ماذا يحدث إذا رُفض مستندي المترجم؟</summary>
+          <div class="faq-answer">
+            <p>خدمة إنقاذ الرفض لدينا تحدد المشاكل المحددة وتسلم نسخة مصححة، عادةً خلال 2-4 ساعات. نحلل سبب الرفض ونتأكد أن الترجمة المعدلة تستوفي المتطلبات الدقيقة للجهة المستلمة.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">ما مدى سرعة إكمال الترجمات العاجلة؟</summary>
+          <div class="faq-answer">
+            <p>المستندات القياسية ذات الصفحة الواحدة يمكن إكمالها في 60 دقيقة. حزم المستندات المتعددة مع التصديق تتطلب عادةً 24-48 ساعة. ننسق مع وزارة الخارجية للتصديق في نفس اليوم عند الحاجة.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">ما نسبة قبولكم من التقديم الأول؟</summary>
+          <div class="faq-answer">
+            <p>نحافظ على نسبة قبول 98% من التقديم الأول في المكاتب الحكومية الإماراتية. يتحقق هذا من خلال عملية مراجعة ما قبل التقديم التي تكتشف مشاكل التنسيق والمصطلحات قبل أن تصل المستندات للكاونترات الحكومية.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+</BaseLayoutArabic>
+
+<style>
+  .hero-section { background: linear-gradient(135deg, var(--primary-color, #0E2B48) 0%, #1a3a5c 100%); color: white; padding: 4rem 0 3rem; }
+  .breadcrumb { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.7); flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: white; }
+  .breadcrumb .current { color: white; }
+
+  .kicker { display: inline-block; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent-color, #FF1654); margin-bottom: 0.5rem; }
+  .hero-section h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; margin-bottom: 0.5rem; }
+  .hero-subtitle { font-size: 1.25rem; color: var(--accent-color, #FF1654); margin-bottom: 1.5rem; }
+  .lead-text { font-size: 1.1rem; color: rgba(255, 255, 255, 0.9); line-height: 1.7; margin-bottom: 2rem; }
+
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 1rem; border: 1px solid rgba(255, 255, 255, 0.1); }
+  .stat-item { text-align: center; }
+  .stat-value { display: block; font-size: 2rem; font-weight: 800; color: #ffffff; }
+  .stat-label { font-size: 0.8rem; color: rgba(255, 255, 255, 0.7); text-transform: uppercase; letter-spacing: 0.05em; }
+
+  .content-section { padding: 4rem 0; background: var(--bg-primary, white); }
+  .content-section h2 { font-size: 1.5rem; font-weight: 700; color: var(--primary-color, #0E2B48); margin: 2.5rem 0 1rem; line-height: 1.5; }
+  .content-section h2:first-of-type { margin-top: 0; }
+
+  .intro-text { max-width: 800px; margin: 0 auto 3rem; text-align: center; }
+  .intro-text p { font-size: 1.05rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 1rem; }
+
+  .case-studies-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0; }
+  .case-study-card { background: #f8f9fa; border-radius: 1rem; padding: 1.5rem; }
+  .case-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .case-category { display: inline-block; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--accent-color); background: rgba(255, 22, 84, 0.1); padding: 0.25rem 0.75rem; border-radius: 20px; margin-bottom: 0.75rem; }
+  .case-study-card h3 { font-size: 1.1rem; margin: 0 0 0.75rem; line-height: 1.4; }
+  .case-excerpt { font-size: 0.95rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 1rem; }
+  .case-results { border-top: 1px solid #e5e7eb; padding-top: 1rem; }
+  .result-item { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.9rem; }
+  .result-label { color: var(--text-muted); }
+  .result-value { font-weight: 600; color: #059669; }
+
+  .demo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .demo-item { background: #f8f9fa; padding: 1.5rem; border-radius: 1rem; }
+  .demo-icon { width: 48px; height: 48px; background: var(--primary-color); color: #fff; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; margin-bottom: 1rem; }
+  .demo-item h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--primary-color); }
+  .demo-item p { font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); margin: 0; }
+
+  .scenarios-list { display: flex; flex-direction: column; gap: 1rem; margin: 2rem 0; }
+  .scenario-item { background: #f8f9fa; border-radius: 0.75rem; overflow: hidden; }
+  .scenario-item summary { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 1.5rem; cursor: pointer; list-style: none; }
+  .scenario-item summary::-webkit-details-marker { display: none; }
+  .scenario-title { font-weight: 600; color: var(--primary-color); }
+  .scenario-arrow { font-size: 0.75rem; color: var(--text-muted); transition: transform 0.2s; }
+  .scenario-item[open] .scenario-arrow { transform: rotate(180deg); }
+  .scenario-content { padding: 0 1.5rem 1.5rem; border-top: 1px solid #e5e7eb; }
+  .scenario-content p { font-size: 0.95rem; line-height: 1.7; color: var(--text-muted); margin: 1rem 0; }
+  .scenario-content ul { margin: 1rem 0; padding-right: 1.25rem; }
+  .scenario-content li { font-size: 0.9rem; line-height: 1.6; color: var(--text-muted); margin-bottom: 0.5rem; }
+
+  .cta-box { background: linear-gradient(135deg, var(--primary-color, #0E2B48) 0%, #1a3a5c 100%); color: white; padding: 2rem; border-radius: 12px; text-align: center; margin: 3rem 0; }
+  .cta-box h3 { font-size: 1.5rem; margin: 0 0 0.75rem; color: white; }
+  .cta-box p { margin: 0 0 1.5rem; color: rgba(255,255,255,0.9); }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
+  .btn--whatsapp { background: #25D366; color: white; }
+  .btn--whatsapp:hover { background: #20bd5a; transform: translateY(-2px); }
+  .btn--secondary { background: transparent; border: 2px solid white; color: white; }
+  .btn--secondary:hover { background: rgba(255,255,255,0.1); }
+
+  .faq-section { margin: 2rem 0; }
+  .faq-item { background: #f8f9fa; border-radius: 8px; margin-bottom: 0.75rem; }
+  .faq-item summary { padding: 1.25rem 1.5rem; cursor: pointer; font-weight: 600; color: var(--primary-color); list-style: none; display: flex; justify-content: space-between; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 1.5rem; }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-answer { padding: 0 1.5rem 1.25rem; }
+  .faq-answer p { margin: 0; line-height: 1.7; }
+
+  @media (max-width: 991px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .case-studies-grid { grid-template-columns: 1fr; }
+    .demo-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .stats-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .stat-value { font-size: 1.5rem; }
+    .cta-buttons { flex-direction: column; }
+  }
+</style>

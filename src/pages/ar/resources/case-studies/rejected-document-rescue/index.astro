@@ -1,0 +1,671 @@
+---
+/**
+ * دراسة حالة: إنقاذ المستند المرفوض
+ * E-E-A-T: الخبرة من خلال حل المشاكل الموثق
+ */
+import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+
+const timeline = [
+  { time: "10:15 صباحاً", event: "التواصل الأول عبر واتساب مع صور المستند المرفوض" },
+  { time: "10:25 صباحاً", event: "اكتمال تحليل المشكلة — تحديد 4 أخطاء تنسيق" },
+  { time: "10:30 صباحاً", event: "موافقة العميل على خدمة التصحيح" },
+  { time: "11:45 صباحاً", event: "اكتمال الترجمة المصححة بأختام جديدة" },
+  { time: "12:20 ظهراً", event: "استلام العميل للمستندات في محاكم دبي" },
+  { time: "1:30 مساءً", event: "قبول تقديم المحكمة في المحاولة الثانية" }
+];
+
+const issues = [
+  {
+    problem: "تنسيق الرأس غير صحيح",
+    detail: "الرأس العربي يفتقد موضع رقم الإشارة المطلوب من المحكمة",
+    solution: "أُعيد تنسيقه ليتطابق مع قالب محاكم دبي مع رقم القضية في الموضع المحدد"
+  },
+  {
+    problem: "مشكلة موضع الختم",
+    detail: "ختم وزارة العدل يتداخل مع كتلة التوقيع، مما يصعب التحقق من التوقيع",
+    solution: "أُعيد الختم بهامش 3 سم صحيح من التوقيع حسب متطلبات المحكمة"
+  },
+  {
+    problem: "عدم اتساق صيغة التاريخ",
+    detail: "القسم الإنجليزي استخدم DD/MM/YYYY بينما العربي استخدم الهجري — المحاكم تتطلب صيغاً متطابقة",
+    solution: "حُولت كلا القسمين للميلادي مع كتابة الشهر (15 مارس 2024)"
+  },
+  {
+    problem: "كتابة اسم الطرف",
+    detail: "كتابة اللقب بالحروف اللاتينية لا تتطابق مع هجاء جواز السفر المقدم للمحكمة",
+    solution: "أُجريت مطابقة مع نسخة جواز السفر لضمان التطابق التام في الهجاء"
+  }
+];
+---
+
+<BaseLayoutArabic
+  title="إنقاذ مستند المحكمة في ساعتين | OnlineTranslation.ae"
+  description="كيف حددنا 4 أخطاء تنسيق في ترجمة وكالة مرفوضة وسلمنا تصحيحات مقبولة من المحكمة في ساعتين. دراسة حالة حقيقية من محاكم دبي."
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://onlinetranslation.ae/ar/resources/case-studies/rejected-document-rescue/" />
+    <link rel="alternate" hreflang="en" href="https://onlinetranslation.ae/resources/case-studies/rejected-document-rescue/" />
+    <link rel="alternate" hreflang="ar" href="https://onlinetranslation.ae/ar/resources/case-studies/rejected-document-rescue/" />
+  </Fragment>
+
+  <section class="hero-section bg-dark" data-theme="dark" dir="rtl">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="مسار التنقل">
+        <a href="/ar/">الرئيسية</a>
+        <span class="separator">&lt;</span>
+        <a href="/ar/resources/">الموارد</a>
+        <span class="separator">&lt;</span>
+        <a href="/ar/resources/case-studies/">دراسات الحالة</a>
+        <span class="separator">&lt;</span>
+        <span class="current">إنقاذ المستند المرفوض</span>
+      </nav>
+
+      <div class="case-meta">
+        <span class="case-category">مستندات المحاكم</span>
+        <span class="case-date">مارس 2024</span>
+      </div>
+
+      <h1>إنقاذ المستند المرفوض</h1>
+      <p class="hero-subtitle">تقديم المحكمة أُنقذ في ساعتين</p>
+
+      <div class="outcome-banner">
+        <div class="outcome-item">
+          <span class="outcome-icon">✅</span>
+          <span class="outcome-label">النتيجة</span>
+          <span class="outcome-value">قبلت المحكمة في التقديم الثاني</span>
+        </div>
+        <div class="outcome-item">
+          <span class="outcome-icon">⏱️</span>
+          <span class="outcome-label">وقت الحل</span>
+          <span class="outcome-value">ساعتان من التواصل للقبول</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <div class="content-grid">
+        <div class="main-content">
+          <h2>الموقف</h2>
+          <p>وصل مسؤول علاقات عامة لشركة محاماة في دبي إلى محاكم دبي لتقديم وكالة (توكيل) لمعاملة عقارية. الترجمة كانت قد أُنجزت من مكتب ترجمة آخر الأسبوع السابق.</p>
+
+          <p>عند الكاونتر، رُفض المستند. أشار الموظف لمشاكل التنسيق لكن—كما هو شائع—لم يقدم شرحاً مفصلاً. صوّر مسؤول العلاقات العامة ختم الرفض والمستند، ثم تواصل معنا عبر واتساب.</p>
+
+          <div class="quote-block">
+            <p>"المحكمة للتو رفضت الوكالة. عندي موعد تقديم نهائي اليوم. هل تقدرون تساعدون؟"</p>
+            <cite>— رسالة واتساب الأولى لمسؤول العلاقات العامة، 10:15 صباحاً</cite>
+          </div>
+
+          <h2>تحليلنا</h2>
+          <p>خلال 10 دقائق من استلام الصور، حدد فريقنا أربع مشاكل محددة. لم تكن هذه أخطاء في محتوى الترجمة نفسه—النص العربي كان دقيقاً. المشاكل كانت تنسيق وعرض عادةً تسبب رفضات المحاكم:</p>
+
+          <div class="issues-grid">
+            {issues.map((issue, index) => (
+              <div class="issue-card">
+                <div class="issue-number">{index + 1}</div>
+                <h3>{issue.problem}</h3>
+                <p class="issue-detail">{issue.detail}</p>
+                <div class="issue-solution">
+                  <strong>الحل:</strong> {issue.solution}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <h2>الحل</h2>
+          <p>بدلاً من مجرد إصلاح الترجمة المرفوضة، طلبنا المستند المصدر الأصلي من العميل. هذا سمح لنا بإنتاج ترجمة جديدة بالكامل بتنسيق صحيح من البداية.</p>
+
+          <p>طُبع المستند المصحح على ورق مطبوع مصدق من وزارة العدل مع وضع الختم الصحيح. سلمنا المستندات الفعلية لمسؤول العلاقات العامة الذي كان ينتظر بالقرب من مكتب شريكنا في بارشا هايتس.</p>
+
+          <h2>لماذا يحدث هذا</h2>
+          <p>رفضات المحاكم بسبب مشاكل التنسيق أكثر شيوعاً من أخطاء المحتوى. الكثير من مكاتب الترجمة تركز فقط على الدقة اللغوية دون فهم متطلبات المحاكم المحددة:</p>
+
+          <ul class="feature-list">
+            <li><strong>الإلمام بالقوالب:</strong> محاكم دبي ومحاكم مركز دبي المالي العالمي والمحاكم الاتحادية لكل منها توقعات تنسيق مختلفة قليلاً</li>
+            <li><strong>بروتوكولات الأختام:</strong> موضع وحجم أختام وزارة العدل يؤثر على قبول المستند</li>
+            <li><strong>اتساق الأسماء:</strong> الكتابة بالحروف اللاتينية يجب أن تتطابق تماماً مع المستندات المقدمة الأخرى</li>
+            <li><strong>اصطلاحات التاريخ:</strong> صيغ التاريخ المختلطة سبب رفض شائع</li>
+          </ul>
+
+          <h2>دروس لمسؤولي العلاقات العامة والفرق القانونية</h2>
+          <p>هذه الحالة توضح لماذا نوصي بطلب ترجمة "جاهزة للمحكمة" عندما تكون المستندات موجهة للتقديم القانوني. خدمتنا الجاهزة للمحكمة تشمل:</p>
+
+          <ul class="feature-list">
+            <li>تنسيق مسبق لمتطلبات المحكمة المستهدفة</li>
+            <li>مطابقة مع المستندات المقدمة الأخرى (جواز السفر، الرخصة التجارية)</li>
+            <li>ضمان التصحيح في نفس اليوم إذا حدث الرفض</li>
+          </ul>
+        </div>
+
+        <aside class="sidebar">
+          <div class="timeline-box">
+            <h3>الجدول الزمني</h3>
+            <div class="timeline">
+              {timeline.map((item) => (
+                <div class="timeline-item">
+                  <span class="timeline-time">{item.time}</span>
+                  <span class="timeline-event">{item.event}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="sidebar-box">
+            <h3>نوع المستند</h3>
+            <p>الوكالة (التوكيل)</p>
+            <p class="small-text">تفويض معاملة عقارية</p>
+          </div>
+
+          <div class="sidebar-box">
+            <h3>الجهة المستهدفة</h3>
+            <p>محاكم دبي</p>
+            <p class="small-text">قسم الأحوال الشخصية</p>
+          </div>
+
+          <div class="sidebar-box highlight">
+            <h3>موقف مشابه؟</h3>
+            <p>نقدم خدمة "إنقاذ الرفض" للمستندات المرفوضة في أي مكتب حكومي إماراتي.</p>
+            <a href="https://wa.me/971508620217?text=عندي%20مستند%20مرفوض%20يحتاج%20تصحيح" class="btn btn-primary btn-sm">
+              <i class="fab fa-whatsapp"></i> احصل على المساعدة الآن
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <h2 class="section-title">الخدمات ذات الصلة</h2>
+      <div class="services-grid">
+        <a href="/ar/legal/corporate/poa/" class="service-card">
+          <div class="service-icon"><i class="fas fa-file-signature"></i></div>
+          <h3>ترجمة الوكالات</h3>
+          <p>ترجمات وكالات جاهزة للمحكمة بتنسيق صحيح لمحاكم دبي ومركز دبي المالي والمحاكم الاتحادية.</p>
+        </a>
+        <a href="/ar/legal-translation-dubai/" class="service-card">
+          <div class="service-icon"><i class="fas fa-gavel"></i></div>
+          <h3>خدمات الترجمة القانونية</h3>
+          <p>ترجمات مصدقة من وزارة العدل منسقة لقبول المحاكم.</p>
+        </a>
+        <a href="/ar/services/attestation/mofa/" class="service-card">
+          <div class="service-icon"><i class="fas fa-stamp"></i></div>
+          <h3>تصديق وزارة الخارجية</h3>
+          <p>ترجمة مع تصديق للتقديمات الحكومية.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <div class="more-cases">
+        <h2>المزيد من دراسات الحالة</h2>
+        <div class="cases-nav">
+          <a href="/ar/resources/case-studies/urgent-family-visa/" class="case-nav-item">
+            <span class="case-nav-category">الهجرة</span>
+            <span class="case-nav-title">تأشيرة عائلية تحت الموعد النهائي</span>
+            <span class="case-nav-outcome">12 مستنداً في 24 ساعة</span>
+          </a>
+          <a href="/ar/resources/case-studies/dha-dataflow-deadline/" class="case-nav-item">
+            <span class="case-nav-category">الرعاية الصحية</span>
+            <span class="case-nav-title">موعد DataFlow هيئة الصحة</span>
+            <span class="case-nav-outcome">رخصة الرعاية الصحية مُنجزة</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Article Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "دراسة حالة: إنقاذ رفض مستند المحكمة في ساعتين",
+    "description": "كيف حددنا 4 أخطاء تنسيق في ترجمة وكالة مرفوضة وسلمنا تصحيحات مقبولة من المحكمة في ساعتين.",
+    "author": {
+      "@type": "Organization",
+      "name": "OnlineTranslation.ae"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "OnlineTranslation.ae",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://onlinetranslation.ae/assets/images/logo/brand/emblem-256.png"
+      }
+    },
+    "datePublished": "2024-03-15",
+    "mainEntityOfPage": "https://onlinetranslation.ae/ar/resources/case-studies/rejected-document-rescue/"
+  })} />
+</BaseLayoutArabic>
+
+<style>
+  .hero-section {
+    padding: 8rem 0 4rem;
+    background: var(--primary-color);
+  }
+
+  .breadcrumb {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.7);
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    color: #ffffff;
+  }
+
+  .breadcrumb .current {
+    color: #ffffff;
+  }
+
+  .case-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .case-category,
+  .case-date {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--accent-coral, #FF1654);
+    margin-bottom: 2rem;
+  }
+
+  .outcome-banner {
+    display: flex;
+    gap: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    flex-wrap: wrap;
+  }
+
+  .outcome-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .outcome-icon {
+    font-size: 1.5rem;
+  }
+
+  .outcome-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .outcome-value {
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 3rem;
+  }
+
+  .main-content h2 {
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .main-content h2:first-child {
+    margin-top: 0;
+  }
+
+  .main-content p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+  }
+
+  .quote-block {
+    background: var(--bg-light);
+    border-right: 4px solid var(--accent-coral);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0.5rem 0 0 0.5rem;
+  }
+
+  .quote-block p {
+    font-style: italic;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .quote-block cite {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: normal;
+  }
+
+  .issues-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .issue-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    position: relative;
+  }
+
+  .issue-number {
+    position: absolute;
+    top: -10px;
+    right: 1rem;
+    width: 28px;
+    height: 28px;
+    background: var(--accent-coral);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  .issue-card h3 {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    color: var(--primary-color);
+  }
+
+  .issue-detail {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .issue-solution {
+    font-size: 0.85rem;
+    padding: 0.75rem;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 0.5rem;
+    color: #059669;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+  }
+
+  .feature-list li {
+    padding: 0.75rem 0;
+    padding-right: 1.5rem;
+    position: relative;
+    line-height: 1.7;
+  }
+
+  .feature-list li::before {
+    content: "←";
+    position: absolute;
+    right: 0;
+    color: var(--accent-coral);
+    font-weight: bold;
+  }
+
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .timeline-box,
+  .sidebar-box {
+    background: var(--bg-light);
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
+
+  .sidebar-box.highlight {
+    background: var(--primary-color);
+    color: #fff;
+  }
+
+  .sidebar-box.highlight h3 {
+    color: #fff;
+  }
+
+  .sidebar-box.highlight p {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .sidebar h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .sidebar p {
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .small-text {
+    font-size: 0.85rem !important;
+    color: var(--text-muted);
+    margin-top: 0.25rem !important;
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .timeline-time {
+    font-weight: 600;
+    color: var(--accent-coral);
+  }
+
+  .timeline-event {
+    color: var(--text-color);
+  }
+
+  .btn-sm {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent-coral);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+  }
+
+  .btn-sm:hover {
+    opacity: 0.9;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .service-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .service-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .more-cases h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+  }
+
+  .cases-nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .case-nav-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    background: var(--bg-light);
+    border-radius: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+  }
+
+  .case-nav-item:hover {
+    border-color: var(--accent-coral);
+  }
+
+  .case-nav-category {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-coral);
+  }
+
+  .case-nav-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+
+  .case-nav-outcome {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 991px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+      order: -1;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .timeline-box {
+      flex: 1 1 100%;
+    }
+
+    .sidebar-box {
+      flex: 1 1 calc(50% - 0.75rem);
+    }
+
+    .issues-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cases-nav {
+      grid-template-columns: 1fr;
+    }
+
+    .outcome-banner {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+</style>
