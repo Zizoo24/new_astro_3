@@ -1,0 +1,281 @@
+---
+/**
+ * Locations Hub - Arabic Version
+ * URL: /ar/locations/
+ */
+import BaseLayoutArabic from '../../../layouts/BaseLayoutArabic.astro';
+
+const dubaiAreas = [
+  { name: 'دبي مارينا', href: '/ar/locations/dubai/marina/', desc: 'مجتمع الواجهة البحرية، شركات DMCC' },
+  { name: 'داون تاون دبي', href: '/ar/locations/dubai/downtown/', desc: 'منطقة برج خليفة، قرب DIFC' },
+  { name: 'بزنس باي', href: '/ar/locations/dubai/business-bay/', desc: 'مركز تجاري، مكاتب الشركات' },
+  { name: 'أبراج بحيرات جميرا', href: '/ar/locations/dubai/jlt/', desc: 'JLT، منطقة DMCC الحرة' },
+  { name: 'ديرة', href: '/ar/locations/dubai/deira/', desc: 'منطقة الأعمال التقليدية' },
+  { name: 'بر دبي', href: '/ar/locations/dubai/bur-dubai/', desc: 'المنطقة التاريخية، قرب المحاكم' }
+];
+
+const otherEmirates = [
+  { name: 'أبوظبي', href: '/ar/locations/abu-dhabi/', desc: 'خدمات العاصمة' },
+  { name: 'الشارقة', href: '/ar/locations/sharjah/', desc: 'مجتمع الأعمال في الشارقة' }
+];
+---
+
+<BaseLayoutArabic
+  title="خدمات الترجمة في الإمارات | دبي وأبوظبي والشارقة"
+  description="ترجمة قانونية معتمدة من وزارة العدل تخدم جميع الإمارات. توصيل رقمي لدبي وأبوظبي والشارقة. عبر واتساب، دون الحاجة لزيارة المكتب."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "OnlineTranslation.ae",
+      "description": "خدمات ترجمة قانونية معتمدة من وزارة العدل في جميع أنحاء الإمارات",
+      "areaServed": [
+        { "@type": "City", "name": "دبي" },
+        { "@type": "City", "name": "أبوظبي" },
+        { "@type": "City", "name": "الشارقة" },
+        { "@type": "City", "name": "عجمان" }
+      ],
+      "telephone": "+971508620217",
+      "url": "https://onlinetranslation.ae"
+    })} />
+  </Fragment>
+
+  <nav class="breadcrumb-nav" aria-label="التنقل">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li><a href="/ar/">الرئيسية</a></li>
+        <li><span aria-current="page">المواقع</span></li>
+      </ol>
+    </div>
+  </nav>
+
+  <section class="page-hero" dir="rtl">
+    <div class="container">
+      <span class="hero-badge">تغطية الإمارات</span>
+      <h1>خدمات الترجمة في دبي وجميع أنحاء الإمارات</h1>
+      <p class="hero-lead">نخدم العملاء في جميع أنحاء الإمارات بنفس سير العمل عبر واتساب - أرسلوا مستندكم واستلموا ترجمتكم المعتمدة رقمياً. لا حاجة لزيارة المكتب، دون قيود جغرافية. النسخ المادية تُسلّم بالبريد السريع إلى أي عنوان في الإمارات.</p>
+
+      <div class="hero-coverage">
+        <h3>تغطية الخدمة في جميع الإمارات:</h3>
+        <ul>
+          <li><strong><a href="/ar/locations/dubai/">دبي</a></strong> — خدمة في نفس اليوم تغطي DIFC وبزنس باي والمارينا وJLT وداون تاون وجميع مناطق دبي</li>
+          <li><strong><a href="/ar/locations/abu-dhabi/">أبوظبي</a></strong> — تغطية العاصمة بما في ذلك ADGM والمنطقة الحكومية والسفارات وجميع مناطق أبوظبي</li>
+          <li><strong><a href="/ar/locations/sharjah/">الشارقة</a></strong> — تغطية كاملة للشارقة بنفس العملية الرقمية وخيارات التوصيل بالبريد السريع</li>
+          <li><strong>جميع الإمارات</strong> — عجمان ورأس الخيمة والفجيرة وأم القيوين مشمولة بنهجنا الرقمي أولاً</li>
+        </ul>
+      </div>
+
+      <div class="hero-actions">
+        <a href="https://wa.me/971508620217?text=أحتاج%20ترجمة%20معتمدة" class="btn btn--primary">
+          <i class="fab fa-whatsapp"></i> ابدأ عبر واتساب
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <div class="section-header">
+        <h2>مواقع دبي</h2>
+        <p>نخدم جميع مجتمعات دبي بخبرة محلية وراحة رقمية.</p>
+      </div>
+      <div class="locations-grid">
+        {dubaiAreas.map(area => (
+          <a href={area.href} class="location-card">
+            <h3>{area.name}</h3>
+            <p>{area.desc}</p>
+            <span class="card-link">عرض الخدمات ←</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <div class="section-header">
+        <h2>الإمارات الأخرى</h2>
+        <p>نفس الخدمة الرقمية، نفس الجودة، أينما كنتم في الإمارات.</p>
+      </div>
+      <div class="locations-grid cols-2">
+        {otherEmirates.map(emirate => (
+          <a href={emirate.href} class="location-card">
+            <h3>{emirate.name}</h3>
+            <p>{emirate.desc}</p>
+            <span class="card-link">عرض الخدمات ←</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <h2>كيف تعمل خدمتنا المستقلة عن الموقع</h2>
+      <div class="content-prose">
+        <p>خدمات الترجمة التقليدية تتطلب زيارة المكتب والانتظار في الطوابير والعودة لاستلام المستندات. ألغينا كل ذلك بنهجنا الرقمي أولاً في <a href="/ar/legal-translation-dubai/">الترجمة القانونية المعتمدة من وزارة العدل</a>.</p>
+
+        <p>سير العمل عبر واتساب يعني أنكم تستطيعون الحصول على ترجمات معتمدة من أي مكان في الإمارات - سواء من شقة في <a href="/ar/locations/dubai/marina/">دبي مارينا</a> أو فيلا في <a href="/ar/locations/abu-dhabi/">أبوظبي</a> أو مكتب في <a href="/ar/locations/sharjah/">الشارقة</a>. العملية متطابقة بغض النظر عن موقعكم:</p>
+
+        <div class="process-steps">
+          <div class="step"><span class="step-num">1</span><div><strong>أرسلوا مستندكم عبر واتساب</strong><p>صورة أو PDF، نقبل كليهما</p></div></div>
+          <div class="step"><span class="step-num">2</span><div><strong>استلموا عرض السعر الفوري</strong><p>السعر والوقت يُؤكدان خلال دقائق</p></div></div>
+          <div class="step"><span class="step-num">3</span><div><strong>وافقوا وادفعوا إلكترونياً</strong><p>تحويل بنكي أو بطاقة</p></div></div>
+          <div class="step"><span class="step-num">4</span><div><strong>استلموا PDF المعتمد</strong><p>توصيل رقمي، عادة خلال ساعات</p></div></div>
+          <div class="step"><span class="step-num">5</span><div><strong>توصيل مادي (اختياري)</strong><p>بريد سريع لأي عنوان في الإمارات</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <h2>الجهات الحكومية التي ندعمها</h2>
+      <p class="section-intro">ترجماتنا مقبولة من الجهات الحكومية في جميع الإمارات.</p>
+      <div class="govt-grid">
+        <div class="govt-card">
+          <h3>دبي</h3>
+          <ul>
+            <li>محاكم دبي</li>
+            <li>الإقامة والهوية دبي</li>
+            <li>دائرة الأراضي والأملاك</li>
+            <li>دائرة التنمية الاقتصادية</li>
+            <li>محاكم DIFC</li>
+          </ul>
+        </div>
+        <div class="govt-card">
+          <h3>أبوظبي</h3>
+          <ul>
+            <li>محاكم أبوظبي</li>
+            <li>الهيئة الاتحادية للهوية</li>
+            <li>سوق أبوظبي العالمي</li>
+            <li>دائرة التنمية الاقتصادية</li>
+            <li>دائرة القضاء</li>
+          </ul>
+        </div>
+        <div class="govt-card">
+          <h3>الاتحادية</h3>
+          <ul>
+            <li>وزارة الخارجية</li>
+            <li>وزارة الموارد البشرية</li>
+            <li>المحاكم الاتحادية</li>
+            <li>المصرف المركزي</li>
+            <li>وزارة التعليم العالي</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <h2>ساعات الخدمة والتوصيل</h2>
+      <div class="info-grid">
+        <div class="info-card">
+          <h4><i class="fas fa-clock"></i> ساعات العمل</h4>
+          <ul>
+            <li><strong>واتساب:</strong> 8 صباحاً - 10 مساءً</li>
+            <li><strong>وقت الاستجابة:</strong> دقائق</li>
+            <li><strong>صلاحية العرض:</strong> 24 ساعة</li>
+            <li><strong>نهاية الأسبوع:</strong> خدمة محدودة</li>
+          </ul>
+        </div>
+        <div class="info-card highlight">
+          <h4><i class="fas fa-truck"></i> توصيل البريد السريع</h4>
+          <p>النسخ المادية تُسلّم لأي عنوان في الإمارات. التوصيل في نفس اليوم متاح في دبي.</p>
+          <p class="small">رسوم توصيل إضافية حسب الموقع.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section section bg-primary" dir="rtl">
+    <div class="container text-center">
+      <h2>مستعدون للبدء؟</h2>
+      <p>نفس جودة الخدمة، في أي مكان في الإمارات. أرسلوا مستندكم الآن.</p>
+      <a href="https://wa.me/971508620217?text=أحتاج%20ترجمة%20معتمدة" class="btn btn--primary btn--lg">
+        <i class="fab fa-whatsapp"></i> تواصلوا معنا
+      </a>
+    </div>
+  </section>
+</BaseLayoutArabic>
+
+<style>
+  .breadcrumb-nav { background: var(--primary-color); padding: 1rem 0; }
+  .breadcrumb-list { display: flex; list-style: none; margin: 0; padding: 0; gap: 0.5rem; font-size: 0.875rem; flex-direction: row-reverse; }
+  .breadcrumb-list li:not(:first-child)::before { content: '/'; margin-left: 0.5rem; color: rgba(255,255,255,0.5); }
+  .breadcrumb-list a { color: rgba(255,255,255,0.8); text-decoration: none; }
+  .breadcrumb-list span { color: white; }
+
+  .page-hero { background: linear-gradient(135deg, var(--primary-color) 0%, #1a3a5c 100%); color: white; padding: 5rem 0; }
+  .hero-badge { display: inline-block; background: var(--accent-color); padding: 0.5rem 1rem; border-radius: 2rem; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; }
+  .page-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
+  .hero-lead { font-size: 1.125rem; line-height: 1.8; max-width: 800px; opacity: 0.95; margin-bottom: 2rem; }
+  .hero-coverage { margin: 2rem 0; }
+  .hero-coverage h3 { font-size: 1.1rem; margin-bottom: 1rem; }
+  .hero-coverage ul { list-style: none; padding: 0; margin: 0; }
+  .hero-coverage li { padding: 0.5rem 0; line-height: 1.7; }
+  .hero-coverage a { color: var(--accent-color); text-decoration: none; }
+  .hero-actions { margin-top: 2rem; }
+
+  .section { padding: 4rem 0; }
+  .section-header { text-align: center; margin-bottom: 3rem; }
+  .section-header h2 { font-size: 2rem; margin-bottom: 0.5rem; color: var(--primary-color); }
+  .section-header p { color: var(--text-muted); }
+  .section-intro { font-size: 1.125rem; color: var(--text-muted); margin-bottom: 2rem; text-align: center; }
+
+  .locations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .locations-grid.cols-2 { grid-template-columns: repeat(2, 1fr); max-width: 700px; margin: 0 auto; }
+  .location-card { background: white; padding: 2rem; border-radius: 1rem; text-decoration: none; color: inherit; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s; border-right: 4px solid var(--primary-color); }
+  .location-card:hover { transform: translateY(-4px); border-right-color: var(--accent-color); }
+  .location-card h3 { font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--primary-color); }
+  .location-card p { color: var(--text-muted); margin-bottom: 1rem; }
+  .card-link { color: var(--accent-color); font-weight: 600; }
+
+  .content-prose { max-width: 800px; }
+  .content-prose p { line-height: 1.8; margin-bottom: 1.25rem; }
+  .content-prose a { color: var(--accent-color); text-decoration: none; }
+
+  .process-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; margin: 2rem 0; }
+  .step { background: var(--bg-light); padding: 1.25rem; border-radius: 8px; text-align: center; }
+  .step-num { width: 32px; height: 32px; background: var(--accent-color); color: white; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; margin-bottom: 0.75rem; }
+  .step strong { display: block; font-size: 0.9rem; margin-bottom: 0.25rem; color: var(--primary-color); }
+  .step p { margin: 0; font-size: 0.8rem; color: var(--text-muted); }
+
+  .govt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .govt-card { background: white; padding: 2rem; border-radius: 1rem; }
+  .govt-card h3 { font-size: 1.125rem; margin-bottom: 1rem; color: var(--primary-color); }
+  .govt-card ul { list-style: none; padding: 0; margin: 0; }
+  .govt-card li { padding: 0.4rem 0; color: var(--text-muted); border-bottom: 1px solid rgba(0,0,0,0.06); }
+
+  .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 800px; }
+  .info-card { background: var(--bg-light); border-radius: 1rem; padding: 1.5rem; }
+  .info-card.highlight { background: var(--primary-color); color: white; }
+  .info-card h4 { font-size: 1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+  .info-card h4 i { color: var(--accent-color); }
+  .info-card.highlight h4 i { color: white; }
+  .info-card ul { list-style: none; padding: 0; margin: 0; }
+  .info-card li { padding: 0.4rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .info-card.highlight li { border-bottom-color: rgba(255,255,255,0.2); }
+  .info-card p { margin-bottom: 0.5rem; }
+  .info-card .small { font-size: 0.85rem; opacity: 0.8; }
+
+  .cta-section { text-align: center; }
+  .cta-section h2 { color: white; margin-bottom: 1rem; }
+  .cta-section p { color: rgba(255,255,255,0.9); margin-bottom: 2rem; }
+  .bg-primary { background: var(--primary-color); }
+  .bg-light { background: var(--bg-light, #f8f9fa); }
+  .text-center { text-align: center; }
+
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; }
+  .btn--primary { background: var(--accent-color); color: white; }
+  .btn--lg { padding: 1.125rem 2.25rem; }
+
+  @media (max-width: 991px) {
+    .govt-grid { grid-template-columns: 1fr; }
+    .info-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr; }
+    .locations-grid.cols-2 { grid-template-columns: 1fr; }
+  }
+</style>

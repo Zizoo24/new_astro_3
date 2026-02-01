@@ -399,7 +399,7 @@ function getAlternateUrl(currentPath, targetLang) {
 
 ### Current Status (Updated February 1, 2026)
 
-**Existing Arabic Pages (44 pages):**
+**Existing Arabic Pages (48 pages):**
 
 | Page | URL | Status |
 |------|-----|--------|
@@ -447,6 +447,10 @@ function getAlternateUrl(currentPath, targetLang) {
 | Technical Translation | `/ar/specialized/technical/` | ✅ Complete (Feb 1) |
 | Hospitality Translation | `/ar/specialized/hospitality/` | ✅ Complete (Feb 1) |
 | Digital Translation | `/ar/specialized/digital/` | ✅ Complete (Feb 1) |
+| Locations Hub | `/ar/locations/` | ✅ Complete (Feb 1) |
+| Sharjah | `/ar/locations/sharjah/` | ✅ Complete (Feb 1) |
+| Dubai DIFC | `/ar/locations/dubai/difc/` | ✅ Complete (Feb 1) |
+| Dubai JLT | `/ar/locations/dubai/jlt/` | ✅ Complete (Feb 1) |
 
 ### Week 1 Deliverables ✅ COMPLETE
 - [x] navigation-ar.ts created
@@ -503,12 +507,15 @@ function getAlternateUrl(currentPath, targetLang) {
 - [x] Hospitality translation (`/ar/specialized/hospitality/`) ✅ Feb 1
 - [x] Digital translation (`/ar/specialized/digital/`) ✅ Feb 1
 
-### Week 6 Deliverables - PARTIAL
+### Week 6 Deliverables - IN PROGRESS
 - [x] Abu Dhabi location (`/ar/locations/abu-dhabi/`)
 - [x] Dubai location (`/ar/locations/dubai/`)
-- [ ] Locations hub (`/ar/locations/`)
-- [ ] Sharjah location (`/ar/locations/sharjah/`)
-- [ ] Dubai sub-locations (DIFC, JLT, Marina, etc.)
+- [x] Locations hub (`/ar/locations/`) ✅ Feb 1
+- [x] Sharjah location (`/ar/locations/sharjah/`) ✅ Feb 1
+- [x] Dubai DIFC (`/ar/locations/dubai/difc/`) ✅ Feb 1
+- [x] Dubai JLT (`/ar/locations/dubai/jlt/`) ✅ Feb 1
+- [ ] Dubai Marina (`/ar/locations/dubai/marina/`)
+- [ ] Dubai Business Bay (`/ar/locations/dubai/business-bay/`)
 - [ ] Resources hub (`/ar/resources/`)
 - [ ] FAQ (`/ar/resources/faq/`)
 - [ ] Pricing guide (`/ar/resources/pricing-guide/`)
