@@ -397,9 +397,9 @@ function getAlternateUrl(currentPath, targetLang) {
 
 ## 📊 Progress Tracking
 
-### Current Status (Updated January 31, 2026)
+### Current Status (Updated February 1, 2026)
 
-**Existing Arabic Pages (39 pages):**
+**Existing Arabic Pages (44 pages):**
 
 | Page | URL | Status |
 |------|-----|--------|
@@ -442,6 +442,11 @@ function getAlternateUrl(currentPath, targetLang) {
 | Verdict Translation | `/ar/legal/litigation/verdict/` | ✅ Complete (Jan 31) |
 | Arbitration Translation | `/ar/legal/litigation/arbitration/` | ✅ Complete (Jan 31) |
 | Wills Translation | `/ar/legal/wills/` | ✅ Complete (Jan 31) |
+| Specialized Hub | `/ar/specialized-translation/` | ✅ Complete (Feb 1) |
+| Medical Translation | `/ar/specialized/medical/` | ✅ Complete (Feb 1) |
+| Technical Translation | `/ar/specialized/technical/` | ✅ Complete (Feb 1) |
+| Hospitality Translation | `/ar/specialized/hospitality/` | ✅ Complete (Feb 1) |
+| Digital Translation | `/ar/specialized/digital/` | ✅ Complete (Feb 1) |
 
 ### Week 1 Deliverables ✅ COMPLETE
 - [x] navigation-ar.ts created
@@ -486,17 +491,17 @@ function getAlternateUrl(currentPath, targetLang) {
 - [x] Degree certificate (`/ar/personal/academic/degree/`) ✅ Jan 31
 - [x] Transcripts (`/ar/personal/academic/transcripts/`) ✅ Jan 31
 
-### Week 5 Deliverables - IN PROGRESS
+### Week 5 Deliverables ✅ COMPLETE
 - [x] Attestation hub (`/ar/services/attestation/`)
 - [x] India attestation (`/ar/services/attestation/india/`) ✅ Jan 31
 - [x] UK attestation (`/ar/services/attestation/uk/`) ✅ Jan 31
 - [x] US attestation (`/ar/services/attestation/us/`) ✅ Jan 31
 - [x] Golden Visa (`/ar/services/golden-visa-translation/`) ✅ Jan 31
-- [ ] Specialized hub (`/ar/specialized-translation/`)
-- [ ] Medical translation (`/ar/specialized/medical/`)
-- [ ] Technical translation (`/ar/specialized/technical/`)
-- [ ] Hospitality translation (`/ar/specialized/hospitality/`)
-- [ ] Digital translation (`/ar/specialized/digital/`)
+- [x] Specialized hub (`/ar/specialized-translation/`) ✅ Feb 1
+- [x] Medical translation (`/ar/specialized/medical/`) ✅ Feb 1
+- [x] Technical translation (`/ar/specialized/technical/`) ✅ Feb 1
+- [x] Hospitality translation (`/ar/specialized/hospitality/`) ✅ Feb 1
+- [x] Digital translation (`/ar/specialized/digital/`) ✅ Feb 1
 
 ### Week 6 Deliverables - PARTIAL
 - [x] Abu Dhabi location (`/ar/locations/abu-dhabi/`)
@@ -553,5 +558,5 @@ Based on SEO value and user demand:
 
 ---
 
-*Document maintained by: Translation Team*  
-*Last updated: January 31, 2026*
+*Document maintained by: Translation Team*
+*Last updated: February 1, 2026*
