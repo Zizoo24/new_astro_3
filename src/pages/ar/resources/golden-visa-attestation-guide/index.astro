@@ -1,0 +1,575 @@
+---
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: "ما هي سلسلة التصديق لمستندات الإقامة الذهبية؟",
+    answer: "للمستندات الأجنبية: 1) توثيق البلد الأصلي، 2) تصديق وزارة الخارجية في بلدك، 3) تصديق السفارة الإماراتية في بلدك، 4) تصديق وزارة الخارجية الإماراتية. يجب إكمال جميع الخطوات بالترتيب قبل التقديم."
+  },
+  {
+    question: "هل أترجم المستندات قبل أم بعد التصديق؟",
+    answer: "أكمل التصديق أولاً على المستند الأصلي، ثم ترجم المستند المصدق بالكامل. ستشمل الترجمة جميع أختام التصديق. إذا ترجمت قبل التصديق، ستحتاج للترجمة مرة أخرى بعده—وتدفع مرتين."
+  },
+  {
+    question: "هل جميع مستنداتي تحتاج ترجمة قانونية من وزارة العدل؟",
+    answer: "ليس بالضرورة. المستندات التي تمر عبر قنوات الهوية/الإقامة الحكومية قد تتطلب ترجمة قانونية من وزارة العدل. لكن بعض المستندات الداعمة قد تحتاج فقط ترجمة معتمدة. تحقق من المتطلبات لكل نوع مستند."
+  },
+  {
+    question: "ماذا يحدث إذا لم تتطابق الأسماء تماماً في المستندات؟",
+    answer: "عدم اتساق الأسماء—حتى الاختلافات الإملائية البسيطة مثل 'محمد' مقابل 'Mohammed'—يمكن أن يرفع طلبك للتحقق الإضافي أو يسبب الرفض. تأكد أن جميع الأسماء المترجمة تطابق تماماً تهجئة جواز سفرك."
+  },
+  {
+    question: "كم تستغرق تجهيز مستندات الإقامة الذهبية؟",
+    answer: "إذا بدأت بمستندات أجنبية تحتاج تصديقاً وترجمة كاملة، احسب 6-10 أسابيع. تصديق البلد الأصلي يستغرق 1-3 أسابيع، تصديق السفارة الإماراتية 1-2 أسبوع، تصديق وزارة الخارجية 1-3 أيام، بالإضافة لوقت الترجمة."
+  },
+  {
+    question: "شهادتي من جامعة إلكترونية. هل ستُقبل؟",
+    answer: "شهادات الجامعات الإلكترونية تواجه تدقيقاً إضافياً. إذا كانت مؤسستك تفتقر لاعتماد واضح من هيئة التعليم في بلدك، توقع أسئلة. قد تحتاج وثائق إضافية للتحقق من صحة الشهادة."
+  }
+];
+---
+
+<BaseLayoutArabic
+  title="دليل تصديق مستندات الإقامة الذهبية | تجنب أخطاء الترجمة"
+  description="دليل شامل لتصديق وترجمة مستندات الإقامة الذهبية. تعلم كيف تتجنب الأخطاء التي تؤخر طلب إقامتك الإماراتية لـ 10 سنوات."
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://onlinetranslation.ae/ar/resources/golden-visa-attestation-guide/" />
+    <link rel="alternate" hreflang="en" href="https://onlinetranslation.ae/resources/golden-visa-attestation-guide/" />
+    <link rel="alternate" hreflang="ar" href="https://onlinetranslation.ae/ar/resources/golden-visa-attestation-guide/" />
+  </Fragment>
+
+  <section class="hero-section bg-dark" dir="rtl">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="مسار التنقل">
+        <a href="/ar/">الرئيسية</a>
+        <span class="separator">&lt;</span>
+        <a href="/ar/resources/">الموارد</a>
+        <span class="separator">&lt;</span>
+        <span class="current">دليل تصديق الإقامة الذهبية</span>
+      </nav>
+
+      <h1>تصديق مستندات الإقامة الذهبية</h1>
+      <p class="hero-subtitle">كيف تؤخر أخطاء الترجمة إقامتك الإماراتية لـ 10 سنوات</p>
+      <p class="hero-intro">لقد استوفيت عتبة الاستثمار. اكتمل شراء عقارك. بكل المقاييس، أنت مؤهل للإقامة الذهبية الإماراتية. ثم يتوقف طلبك—ليس لأنك غير مؤهل، بل بسبب مشكلة ترجمة أو تصديق بدت بسيطة عندما بدأت.</p>
+
+      <div class="service-snapshot">
+        <div class="snapshot-item">
+          <i class="fas fa-passport"></i>
+          <span><strong>10 سنوات</strong> إقامة قابلة للتجديد</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-file-signature"></i>
+          <span><strong>السلسلة الكاملة</strong> تصديق مطلوب</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-exclamation-triangle"></i>
+          <span><strong>تطابق الأسماء</strong> يجب أن يكون دقيقاً</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section" dir="rtl">
+    <div class="container">
+      <h2>لماذا متطلبات الإقامة الذهبية أكثر صرامة</h2>
+      <p>تأشيرات العمل العادية لها متطلبات مستندات متساهلة نسبياً—صاحب العمل يتولى معظم العملية. الإقامة الذهبية مختلفة.</p>
+
+      <p>أنت تقول للإمارات: "أنا مؤهل للإقامة طويلة الأمد بناءً على إنجازاتي واستثماراتي أو مواهبي." الحكومة تستجيب بطلب إثبات شامل مع كل مستند مصدق بشكل صحيح.</p>
+
+      <div class="requirements-grid">
+        <div class="requirement-item">
+          <i class="fas fa-globe"></i>
+          <span>المستندات الأجنبية يجب أن تمر بسلسلة التصديق الكاملة</span>
+        </div>
+        <div class="requirement-item">
+          <i class="fas fa-language"></i>
+          <span>المستندات غير العربية تحتاج ترجمة صحيحة</span>
+        </div>
+        <div class="requirement-item">
+          <i class="fas fa-graduation-cap"></i>
+          <span>شهادات الدرجات غالباً تحتاج التحقق من المعادلة</span>
+        </div>
+        <div class="requirement-item">
+          <i class="fas fa-chart-line"></i>
+          <span>المستندات المالية تحتاج أنماطاً واضحة وقابلة للتحقق</span>
+        </div>
+        <div class="requirement-item">
+          <i class="fas fa-user-check"></i>
+          <span>تطابق الأسماء عبر جميع المستندات يجب أن يكون دقيقاً</span>
+        </div>
+      </div>
+
+      <div class="warning-note">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div>
+          عدم اتساق واحد—حتى لو كان بسبب طريقة نقل المترجم لاسمك—يمكن أن يؤدي لطلبات تحقق إضافية أو الرفض المباشر.
+        </div>
+      </div>
+
+      <h2>سلسلة تصديق المستندات</h2>
+
+      <div class="attestation-chain">
+        <h3>للمستندات الصادرة خارج الإمارات</h3>
+        <div class="chain-steps">
+          <div class="chain-step">
+            <span class="step-num">1</span>
+            <div class="step-content">
+              <strong>توثيق البلد الأصلي</strong>
+              <p>مستندك يتم التحقق منه من سلطة معترف بها في البلد المُصدِر</p>
+            </div>
+          </div>
+          <div class="chain-arrow"><i class="fas fa-arrow-down"></i></div>
+          <div class="chain-step">
+            <span class="step-num">2</span>
+            <div class="step-content">
+              <strong>وزارة الخارجية في البلد الأصلي</strong>
+              <p>وزارة الشؤون الخارجية (الهند)، مكتب الخارجية والكومنولث (بريطانيا)، أو السلطة المعادلة تصدق المستند</p>
+            </div>
+          </div>
+          <div class="chain-arrow"><i class="fas fa-arrow-down"></i></div>
+          <div class="chain-step">
+            <span class="step-num">3</span>
+            <div class="step-content">
+              <strong>تصديق السفارة الإماراتية</strong>
+              <p>السفارة أو القنصلية الإماراتية في بلدك تصدق المستند</p>
+            </div>
+          </div>
+          <div class="chain-arrow"><i class="fas fa-arrow-down"></i></div>
+          <div class="chain-step">
+            <span class="step-num">4</span>
+            <div class="step-content">
+              <strong>تصديق وزارة الخارجية الإماراتية</strong>
+              <p>ختم وزارة الخارجية في الإمارات</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="translation-order-box">
+        <i class="fas fa-info-circle"></i>
+        <div>
+          <strong>أين تأتي الترجمة:</strong> أكمل سلسلة التصديق أولاً (على المستند الأصلي بلغته الأصلية)، ثم ترجم المستند المصدق بالكامل. ستشمل الترجمة جميع أختام التصديق والتوقيعات.
+          <p><strong>خطأ مكلف شائع:</strong> الترجمة قبل إكمال التصديق تعني أنك ستحتاج للترجمة مرة أخرى بعده—وتدفع مرتين.</p>
+        </div>
+      </div>
+
+      <h2>فئات المستندات ومشاكلها</h2>
+
+      <div class="document-categories">
+        <div class="category-card">
+          <div class="category-header">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>المؤهلات الأكاديمية</h3>
+          </div>
+          <p class="who-needs"><strong>من يحتاجها:</strong> المحترفون المهرة، الطلاب المتقدمون بناءً على التفوق الأكاديمي</p>
+
+          <div class="category-section">
+            <h4>متطلبات التصديق:</h4>
+            <ul>
+              <li>سلسلة تصديق البلد الأصلي الكاملة</li>
+              <li>تصديق السفارة الإماراتية في البلد الأصلي</li>
+              <li>تصديق وزارة الخارجية في الإمارات</li>
+              <li>شهادة معادلة وزارة التربية (غالباً مطلوبة)</li>
+            </ul>
+          </div>
+
+          <div class="category-section">
+            <h4>المشاكل الشائعة:</h4>
+            <ul>
+              <li><strong>عدم اتساق الأسماء:</strong> الشهادة تقول "Muhammad Ali Khan" لكن جواز السفر يقول "Mohammed Ali Khan"—توقع تأخيرات التحقق</li>
+              <li><strong>الجامعة غير معترف بها:</strong> الشهادات الإلكترونية تواجه تدقيقاً إضافياً</li>
+              <li><strong>التصديق الجزئي:</strong> تخطي تصديق السفارة الإماراتية قبل الوصول يكسر السلسلة</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="category-card">
+          <div class="category-header">
+            <i class="fas fa-briefcase"></i>
+            <h3>مستندات التوظيف</h3>
+          </div>
+          <p class="who-needs"><strong>من يحتاجها:</strong> المحترفون المؤهلون بناءً على متطلبات الراتب الشهري</p>
+
+          <div class="category-section">
+            <h4>المشاكل الشائعة:</h4>
+            <ul>
+              <li><strong>لبس عتبة الراتب:</strong> المتطلب ينطبق على الراتب الأساسي وليس الحزمة الكاملة. وضح التفصيل في الترجمات</li>
+              <li><strong>المسميات العامة:</strong> "مدير" عام جداً. استخدم مسميات محددة مثل "مدير تحليلات البيانات الأول" التي تعكس التخصص</li>
+              <li><strong>تغييرات العمل الأخيرة:</strong> مستندات أصحاب العمل المتعددين تحتاج كل منها تصديقاً وترجمة صحيحة</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="category-card">
+          <div class="category-header">
+            <i class="fas fa-home"></i>
+            <h3>مستندات العقارات</h3>
+          </div>
+          <p class="who-needs"><strong>من يحتاجها:</strong> المستثمرون المؤهلون بناءً على الاستثمار العقاري</p>
+
+          <div class="category-section">
+            <h4>المشاكل الشائعة:</h4>
+            <ul>
+              <li><strong>العقارات على الخارطة:</strong> ليست كل العقارات على الخارطة مؤهلة. يجب أن تكون من مطور إماراتي معتمد</li>
+              <li><strong>الملكية المشتركة:</strong> حساب العتبة يتغير؛ التوثيق يجب أن يظهر نسب الملكية</li>
+              <li><strong>العقارات المرهونة:</strong> متطلبات توثيق أكثر تعقيداً</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="category-card">
+          <div class="category-header">
+            <i class="fas fa-university"></i>
+            <h3>المستندات المالية</h3>
+          </div>
+          <p class="who-needs"><strong>من يحتاجها:</strong> المستثمرون المؤهلون عبر الودائع</p>
+
+          <div class="category-section">
+            <h4>المشاكل الشائعة:</h4>
+            <ul>
+              <li><strong>عدم تطابق اسم صاحب الحساب:</strong> الحساب البنكي باسم مختلف قليلاً عن جواز السفر يخلق مشاكل تحقق</li>
+              <li><strong>سجل غير كافٍ:</strong> الودائع الكبيرة المفاجئة بدون مصدر واضح تثير تساؤلات</li>
+              <li><strong>تحويل العملات:</strong> الترجمات يجب أن تظهر بوضوح القيم المعادلة بالدرهم</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="category-card">
+          <div class="category-header">
+            <i class="fas fa-users"></i>
+            <h3>مستندات العائلة</h3>
+          </div>
+          <p class="who-needs"><strong>من يحتاجها:</strong> جميع المتقدمين الذين يكفلون الزوج/ة، الأطفال، أو الوالدين</p>
+
+          <div class="category-section">
+            <h4>متطلبات التصديق:</h4>
+            <ul>
+              <li>سلسلة تصديق البلد الأصلي الكاملة</li>
+              <li>تصديق السفارة الإماراتية</li>
+              <li>تصديق وزارة الخارجية في الإمارات</li>
+              <li>ترجمة قانونية من وزارة العدل عادةً مطلوبة</li>
+            </ul>
+          </div>
+
+          <div class="category-section">
+            <h4>المشاكل الشائعة:</h4>
+            <ul>
+              <li><strong>الاختصاصات غير القياسية:</strong> الزواجات من بعض البلدان تواجه تدقيقاً إضافياً</li>
+              <li><strong>عدم تطابق أسماء الوالدين في شهادة الميلاد:</strong> أسماء الوالدين يجب أن تطابق جوازات السفر بالضبط</li>
+              <li><strong>الزيجات السابقة:</strong> مستندات الطلاق قد تكون مطلوبة مع سلسلة تصديق خاصة بها</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h2>أخطاء الترجمة التي تسبب أكثر التأخيرات</h2>
+
+      <div class="errors-list">
+        <div class="error-card">
+          <div class="error-header">
+            <span class="error-num">1</span>
+            <h3>عدم اتساق نقل الأسماء</h3>
+          </div>
+          <p>العربية والإنجليزية يتعاملان مع الأسماء بشكل مختلف. المترجم قد ينقل "عبدالرحمن" إلى "Abdulrahman" أو "Abdul Rahman" أو "Abd Al-Rahman" أو "Abderrahmane".</p>
+          <div class="solution">
+            <strong>الحل:</strong> قبل تقديم أي ترجمة، قارن كل اسم بجواز سفرك. أصر على أن يستخدم المترجم تهجئة جواز سفرك بالضبط، حتى لو لم تكن طريقته المفضلة.
+          </div>
+        </div>
+
+        <div class="error-card">
+          <div class="error-header">
+            <span class="error-num">2</span>
+            <h3>لبس صيغة التاريخ</h3>
+          </div>
+          <p>"03/05/1985"—هل هذا 3 مارس أم 5 مايو؟ البلدان المختلفة تستخدم صيغاً مختلفة، والمترجمون لا يلتقطون دائماً الاتفاقية.</p>
+          <div class="solution">
+            <strong>الحل:</strong> تحقق من أن جميع التواريخ تستخدم صيغة الإمارات يوم/شهر/سنة وتطابق جواز سفرك بالضبط.
+          </div>
+        </div>
+
+        <div class="error-card">
+          <div class="error-header">
+            <span class="error-num">3</span>
+            <h3>ترجمة المسمى/المنصب</h3>
+          </div>
+          <p>"Ingenieur" بالألمانية قد تصبح "مهندس" أو "مهندس خريج" أو "محترف هندسي"—كل منها بوزن مختلف في طلبات الإقامة الذهبية.</p>
+          <div class="solution">
+            <strong>الحل:</strong> ناقش معاني المؤهل أو المسمى الوظيفي مع مترجمك قبل أن يبدأ. وفر السياق عما تمثله المسميات فعلاً.
+          </div>
+        </div>
+
+        <div class="error-card">
+          <div class="error-header">
+            <span class="error-num">4</span>
+            <h3>ترجمة المصطلحات المالية</h3>
+          </div>
+          <p>"راتب" مقابل "أجور" مقابل "تعويضات" مقابل "مكافآت"—هذه ليست قابلة للتبادل في السياقات القانونية. وكذلك "وديعة ثابتة" و"وديعة لأجل".</p>
+          <div class="solution">
+            <strong>الحل:</strong> استخدم مترجمين ذوي خبرة في المصطلحات المصرفية والمالية.
+          </div>
+        </div>
+
+        <div class="error-card">
+          <div class="error-header">
+            <span class="error-num">5</span>
+            <h3>اختلافات المصطلحات القانونية</h3>
+          </div>
+          <p>القانون العام والقانون المدني يستخدمان مفاهيم قانونية مختلفة. "التوكيل" البريطاني له نطاق مختلف عن "الوكالة" الإماراتية.</p>
+          <div class="solution">
+            <strong>الحل:</strong> للمستندات القانونية، استخدم مترجمين ذوي تخصص قانوني وخبرة إماراتية.
+          </div>
+        </div>
+      </div>
+
+      <h2>اعتبارات الجدول الزمني</h2>
+      <p>معالجة الإقامة الذهبية تستغرق 2-6 أسابيع بمجرد اكتمال طلبك. لكن تجهيز المستندات يستغرق وقتاً أطول بكثير:</p>
+
+      <div class="timeline-breakdown">
+        <div class="timeline-section">
+          <h3><i class="fas fa-stamp"></i> جدول التصديق</h3>
+          <div class="timeline-items">
+            <div class="timeline-item">
+              <span class="item-label">تصديق البلد الأصلي</span>
+              <span class="item-duration">1-3 أسابيع</span>
+            </div>
+            <div class="timeline-item">
+              <span class="item-label">تصديق السفارة الإماراتية</span>
+              <span class="item-duration">1-2 أسبوع</span>
+            </div>
+            <div class="timeline-item">
+              <span class="item-label">تصديق وزارة الخارجية في الإمارات</span>
+              <span class="item-duration">1-3 أيام عمل</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-section">
+          <h3><i class="fas fa-language"></i> جدول الترجمة</h3>
+          <div class="timeline-items">
+            <div class="timeline-item">
+              <span class="item-label">الترجمة المعتمدة القياسية</span>
+              <span class="item-duration">2-5 أيام عمل</span>
+            </div>
+            <div class="timeline-item">
+              <span class="item-label">ترجمة وزارة العدل القانونية</span>
+              <span class="item-duration">3-7 أيام عمل</span>
+            </div>
+            <div class="timeline-item">
+              <span class="item-label">المستندات المعقدة</span>
+              <span class="item-duration">قد تستغرق أطول</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-section warning">
+          <h3><i class="fas fa-exclamation-circle"></i> إذا رُفضت المستندات</h3>
+          <div class="timeline-items">
+            <div class="timeline-item">
+              <span class="item-label">التصحيح وإعادة التقديم</span>
+              <span class="item-duration">أضف 2-4 أسابيع</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="total-timeline">
+        <strong>الجدول الزمني الواقعي الإجمالي:</strong> إذا بدأت من الصفر بمستندات أجنبية تحتاج تصديقاً وترجمة كاملة، احسب <strong>6-10 أسابيع</strong> قبل أن تكون مستنداتك جاهزة للتقديم.
+      </div>
+
+      <h2>إيجاد ترجمة موثوقة للإقامة الذهبية</h2>
+      <p>عند تجهيز مستندات الإقامة الذهبية، أعطِ الأولوية لـ:</p>
+
+      <div class="finding-priorities">
+        <div class="priority-item">
+          <i class="fas fa-award"></i>
+          <div>
+            <h3>خبرة مع طلبات الإقامة الذهبية</h3>
+            <p>المترجمون الذين يتعاملون بانتظام مع مستندات الإقامة الذهبية يفهمون المصطلحات ومتطلبات التنسيق المحددة.</p>
+          </div>
+        </div>
+        <div class="priority-item">
+          <i class="fas fa-certificate"></i>
+          <div>
+            <h3>تسجيل وزارة العدل</h3>
+            <p>للمستندات التي تمر عبر الهوية/الإقامة، المترجمون المسجلون لدى وزارة العدل يوفرون القبول القانوني الذي تحتاجه.</p>
+          </div>
+        </div>
+        <div class="priority-item">
+          <i class="fas fa-tasks"></i>
+          <div>
+            <h3>عرض خدمات كاملة</h3>
+            <p>مقدمو الخدمة الذين يتولون الترجمة وتنسيق التصديق معاً يوفرون الوقت ويقللون الأخطاء.</p>
+          </div>
+        </div>
+        <div class="priority-item">
+          <i class="fas fa-user-check"></i>
+          <div>
+            <h3>ضمان اتساق الأسماء</h3>
+            <p>قبل البدء، يجب أن يؤكد مقدم الخدمة أنه سيستخدم تهجئة جواز سفرك بالضبط عبر جميع المستندات.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="questions-to-ask">
+        <h3>أسئلة يجب طرحها:</h3>
+        <ul>
+          <li>"هل تعاملتم مع ترجمات مستندات الإقامة الذهبية من قبل؟"</li>
+          <li>"هل يمكنكم تنسيق عملية التصديق، أم أتولى ذلك بشكل منفصل؟"</li>
+          <li>"كيف تتعاملون مع اتساق نقل الأسماء؟"</li>
+          <li>"ما مدة التسليم لمستنداتي المحددة؟"</li>
+        </ul>
+      </div>
+
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-section">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+
+      <div class="cta-box">
+        <h3>هل تجهز مستندات الإقامة الذهبية؟</h3>
+        <p>نتخصص في الترجمة القانونية وتنسيق التصديق لطلبات الإقامة الإماراتية، نضمن أن كل مستند يستوفي المتطلبات من المرة الأولى. تواصل معنا لمناقشة حالتك المحددة.</p>
+        <a href="https://wa.me/971508620217?text=مرحباً، أحتاج مساعدة في مستندات الإقامة الذهبية" class="btn btn--whatsapp">
+          <i class="fab fa-whatsapp"></i> واتساب: +971 50 862 0217
+        </a>
+      </div>
+
+      <h2>الموارد ذات الصلة</h2>
+      <div class="related-links">
+        <a href="/ar/resources/moj-vs-certified/" class="related-link">
+          <i class="fas fa-balance-scale"></i>
+          <span>دليل وزارة العدل مقابل الترجمة المعتمدة</span>
+        </a>
+        <a href="/ar/resources/mohesr-equivalency/" class="related-link">
+          <i class="fas fa-certificate"></i>
+          <span>دليل معادلة وزارة التربية</span>
+        </a>
+        <a href="/ar/resources/golden-visa-checklist/" class="related-link">
+          <i class="fas fa-list-check"></i>
+          <span>قائمة مستندات الإقامة الذهبية</span>
+        </a>
+        <a href="/ar/services/attestation/" class="related-link">
+          <i class="fas fa-stamp"></i>
+          <span>خدمات تصديق المستندات</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayoutArabic>
+
+<style>
+  .hero-section { background: linear-gradient(135deg, var(--primary-color, #0E2B48) 0%, #1a3a5c 100%); color: white; padding: 4rem 0 3rem; }
+  .breadcrumb { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.7); flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: white; }
+  .breadcrumb .current { color: white; }
+  .hero-section h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; margin: 0 0 0.5rem; line-height: 1.4; }
+  .hero-subtitle { font-size: 1.15rem; color: var(--accent-color, #FF1654); margin: 0 0 1.5rem; }
+  .hero-intro { line-height: 1.8; color: rgba(255,255,255,0.9); margin-bottom: 1.5rem; max-width: 800px; }
+
+  .service-snapshot { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.5rem; }
+  .snapshot-item { display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.9); }
+  .snapshot-item i { color: var(--accent-color); font-size: 1.25rem; }
+
+  .content-section { padding: 4rem 0; background: var(--bg-primary, white); }
+  .content-section h2 { font-size: 1.5rem; font-weight: 700; color: var(--primary-color, #0E2B48); margin: 2.5rem 0 1rem; line-height: 1.5; }
+  .content-section h2:first-of-type { margin-top: 0; }
+  .content-section p { line-height: 1.8; margin-bottom: 1.5rem; }
+
+  .requirements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+  .requirement-item { display: flex; align-items: center; gap: 0.75rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; }
+  .requirement-item i { color: var(--accent-color); font-size: 1.25rem; flex-shrink: 0; }
+
+  .warning-note { display: flex; gap: 1rem; background: #fff3e0; padding: 1.25rem; border-radius: 8px; margin-top: 1.5rem; }
+  .warning-note i { color: #ff9800; font-size: 1.5rem; flex-shrink: 0; }
+  .warning-note div { color: #e65100; line-height: 1.6; }
+
+  .attestation-chain { background: #f8f9fa; padding: 2rem; border-radius: 12px; margin-bottom: 1.5rem; }
+  .attestation-chain h3 { margin: 0 0 1.5rem; }
+  .chain-steps { display: flex; flex-direction: column; gap: 0.5rem; }
+  .chain-step { display: flex; gap: 1rem; padding: 1rem; background: white; border-radius: 8px; }
+  .step-num { width: 32px; height: 32px; background: var(--primary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; flex-shrink: 0; }
+  .step-content strong { display: block; margin-bottom: 0.25rem; }
+  .step-content p { margin: 0; color: var(--text-muted); font-size: 0.9rem; }
+  .chain-arrow { text-align: center; color: var(--accent-color); }
+
+  .translation-order-box { display: flex; gap: 1rem; background: #e3f2fd; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; }
+  .translation-order-box i { color: #1976d2; font-size: 1.5rem; flex-shrink: 0; }
+  .translation-order-box div { line-height: 1.6; }
+  .translation-order-box p { margin: 0.5rem 0 0; color: #c62828; }
+
+  .document-categories { display: flex; flex-direction: column; gap: 2rem; }
+  .category-card { background: #f8f9fa; padding: 2rem; border-radius: 12px; }
+  .category-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+  .category-header i { font-size: 2rem; color: var(--accent-color); }
+  .category-header h3 { margin: 0; }
+  .who-needs { color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem; }
+  .category-section { margin-top: 1rem; }
+  .category-section h4 { margin: 0 0 0.5rem; font-size: 1rem; }
+  .category-section ul { padding-right: 1.5rem; margin: 0; }
+  .category-section li { margin: 0.5rem 0; line-height: 1.6; }
+
+  .errors-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .error-card { background: #f8f9fa; padding: 1.5rem; border-radius: 12px; }
+  .error-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem; }
+  .error-num { width: 32px; height: 32px; background: #f44336; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; flex-shrink: 0; }
+  .error-header h3 { margin: 0; font-size: 1.1rem; }
+  .error-card p { line-height: 1.7; margin: 0 0 1rem; }
+  .error-card .solution { background: #e8f5e9; padding: 1rem; border-radius: 8px; color: #2e7d32; }
+
+  .timeline-breakdown { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+  .timeline-section { background: #f8f9fa; padding: 1.5rem; border-radius: 12px; }
+  .timeline-section.warning { background: #ffebee; }
+  .timeline-section h3 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 1rem; font-size: 1rem; }
+  .timeline-section h3 i { color: var(--accent-color); }
+  .timeline-section.warning h3 i { color: #c62828; }
+  .timeline-items { display: flex; flex-direction: column; gap: 0.5rem; }
+  .timeline-item { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #eee; }
+  .timeline-item:last-child { border-bottom: none; }
+  .item-label { color: var(--text-body); }
+  .item-duration { font-weight: 600; }
+  .total-timeline { background: #e8f5e9; padding: 1rem 1.5rem; border-radius: 8px; color: #2e7d32; text-align: center; margin-top: 1rem; }
+
+  .finding-priorities { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+  .priority-item { display: flex; gap: 1rem; background: #f8f9fa; padding: 1.5rem; border-radius: 12px; }
+  .priority-item i { font-size: 1.5rem; color: var(--accent-color); flex-shrink: 0; }
+  .priority-item h3 { margin: 0 0 0.5rem; font-size: 1rem; }
+  .priority-item p { margin: 0; font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
+  .questions-to-ask { background: #f8f9fa; padding: 1.5rem; border-radius: 12px; border: 2px solid var(--primary-color); margin-top: 1.5rem; }
+  .questions-to-ask h3 { margin: 0 0 1rem; }
+  .questions-to-ask ul { padding-right: 1.5rem; margin: 0; }
+  .questions-to-ask li { margin: 0.5rem 0; }
+
+  .faq-section { margin: 2rem 0; }
+  .faq-item { background: #f8f9fa; border-radius: 8px; margin-bottom: 0.75rem; }
+  .faq-item summary { padding: 1.25rem 1.5rem; cursor: pointer; font-weight: 600; color: var(--primary-color); list-style: none; display: flex; justify-content: space-between; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 1.5rem; }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-answer { padding: 0 1.5rem 1.25rem; }
+  .faq-answer p { margin: 0; line-height: 1.7; }
+
+  .cta-box { background: linear-gradient(135deg, var(--primary-color, #0E2B48) 0%, #1a3a5c 100%); color: white; padding: 2rem; border-radius: 12px; text-align: center; margin: 3rem 0; }
+  .cta-box h3 { font-size: 1.5rem; margin: 0 0 0.75rem; color: white; }
+  .cta-box p { margin: 0 0 1.5rem; color: rgba(255,255,255,0.9); }
+  .btn--whatsapp { background: #25D366; color: white; padding: 0.875rem 1.5rem; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600; }
+
+  .related-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+  .related-link { display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: #f8f9fa; border-radius: 8px; text-decoration: none; color: var(--primary-color); transition: all 0.3s ease; border: 1px solid #eee; }
+  .related-link:hover { border-color: var(--accent-color); transform: translateY(-2px); }
+  .related-link i { font-size: 1.5rem; color: var(--accent-color); }
+
+  @media (max-width: 768px) {
+    .service-snapshot { flex-direction: column; }
+    .finding-priorities { grid-template-columns: 1fr; }
+    .timeline-breakdown { grid-template-columns: 1fr; }
+  }
+</style>
