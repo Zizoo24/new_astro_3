@@ -399,7 +399,7 @@ function getAlternateUrl(currentPath, targetLang) {
 
 ### Current Status (Updated February 1, 2026)
 
-**Existing Arabic Pages (50 pages):**
+**Existing Arabic Pages (52 pages):**
 
 | Page | URL | Status |
 |------|-----|--------|
@@ -453,6 +453,8 @@ function getAlternateUrl(currentPath, targetLang) {
 | Dubai JLT | `/ar/locations/dubai/jlt/` | ✅ Complete (Feb 1) |
 | Dubai Marina | `/ar/locations/dubai/marina/` | ✅ Complete (Feb 1) |
 | Dubai Business Bay | `/ar/locations/dubai/business-bay/` | ✅ Complete (Feb 1) |
+| Resources Hub | `/ar/resources/` | ✅ Complete (Feb 1) |
+| FAQ | `/ar/resources/faq/` | ✅ Complete (Feb 1) |
 
 ### Week 1 Deliverables ✅ COMPLETE
 - [x] navigation-ar.ts created
@@ -518,8 +520,8 @@ function getAlternateUrl(currentPath, targetLang) {
 - [x] Dubai JLT (`/ar/locations/dubai/jlt/`) ✅ Feb 1
 - [x] Dubai Marina (`/ar/locations/dubai/marina/`) ✅ Feb 1
 - [x] Dubai Business Bay (`/ar/locations/dubai/business-bay/`) ✅ Feb 1
-- [ ] Resources hub (`/ar/resources/`)
-- [ ] FAQ (`/ar/resources/faq/`)
+- [x] Resources hub (`/ar/resources/`) ✅ Feb 1
+- [x] FAQ (`/ar/resources/faq/`) ✅ Feb 1
 - [ ] Pricing guide (`/ar/resources/pricing-guide/`)
 - [ ] Document checklist (`/ar/resources/document-checklist/`)
 - [ ] Blog hub (`/ar/blog/`)
