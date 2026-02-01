@@ -1,0 +1,244 @@
+---
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const postDate = '2026-01-26';
+const postTitle = "ترجمة الدكتوراه والـDBA في الإمارات: المتطلبات حسب الجهة";
+const postDescription = "DHA وMOHRE وMOHESR لها متطلبات مختلفة لترجمة شهادات الدكتوراه. هذا ما تحتاجه كل جهة لشهادات PhD وDBA والدكتوراه.";
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": postTitle,
+  "description": postDescription,
+  "datePublished": postDate,
+  "inLanguage": "ar",
+  "author": { "@type": "Organization", "name": "OnlineTranslation.ae" },
+  "publisher": { "@type": "Organization", "name": "OnlineTranslation.ae" }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "هل أحتاج معادلة MOHESR لشهادة الدكتوراه للعمل في الإمارات؟",
+      "acceptedAnswer": { "@type": "Answer", "text": "يعتمد على صاحب العمل. الوظائف الحكومية والفيزا الذهبية تتطلب معادلة MOHESR. القطاع الخاص عادةً يقبل المستندات المصدقة والمترجمة بدون معادلة. الوظائف الصحية لها تحقق خاص عبر DataFlow." }
+    },
+    {
+      "@type": "Question",
+      "name": "كم تستغرق ترجمة شهادة الدكتوراه؟",
+      "acceptedAnswer": { "@type": "Answer", "text": "الترجمة وحدها تستغرق 24-48 ساعة لمعظم شهادات الدكتوراه. إذا كنتم تحتاجون تصديق، أضيفوا 2-4 أسابيع حسب بلدكم. معادلة MOHESR تضيف 2-3 أسابيع أخرى بعد إتمام التصديق." }
+    },
+    {
+      "@type": "Question",
+      "name": "هل DBA يُعامل مثل PhD في الإمارات؟",
+      "acceptedAnswer": { "@type": "Answer", "text": "نعم، DBA (دكتوراه إدارة الأعمال) يُعامل كدرجة دكتوراه. يتبع نفس متطلبات الترجمة والتصديق والمعادلة مثل PhD. كلاهما مؤهل للفيزا الذهبية فئة المهنيين." }
+    }
+  ]
+};
+---
+
+<BaseLayoutArabic title={`${postTitle} | OnlineTranslation.ae`} description={postDescription}>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://onlinetranslation.ae/ar/blog/phd-dba-doctorate-translation-uae/" />
+    <link rel="alternate" hreflang="en" href="https://onlinetranslation.ae/blog/phd-dba-doctorate-translation-uae/" />
+    <link rel="alternate" hreflang="ar" href="https://onlinetranslation.ae/ar/blog/phd-dba-doctorate-translation-uae/" />
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="article-header" dir="rtl">
+    <div class="container">
+      <div class="article-meta">
+        <a href="/ar/blog/" class="back-link"><i class="fas fa-arrow-right"></i> العودة للمدونة</a>
+        <span class="category-badge">الترجمة الأكاديمية</span>
+      </div>
+      <h1>{postTitle}</h1>
+      <p class="header-lead">ما تحتاجه كل جهة إماراتية لشهادات الدكتوراه</p>
+      <div class="post-info">
+        <time datetime={postDate}><i class="far fa-calendar-alt"></i> {new Date(postDate).toLocaleDateString('ar-AE', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        <span class="read-time"><i class="far fa-clock"></i> 8 دقائق قراءة</span>
+      </div>
+    </div>
+  </section>
+
+  <article class="article-content" dir="rtl">
+    <div class="container">
+      <div class="content-wrapper">
+
+        <div class="highlight-box">
+          <p>شهادات الدكتوراه (PhD, DBA, EdD وغيرها) لها متطلبات مختلفة حسب الجهة الإماراتية المستقبلة. هذا الدليل يوضح ما تحتاجه كل جهة.</p>
+        </div>
+
+        <h2>المتطلبات حسب الجهة</h2>
+        <div class="authority-grid">
+          <div class="authority-card">
+            <h3><i class="fas fa-briefcase"></i> MOHRE (وزارة الموارد البشرية)</h3>
+            <p class="authority-use">للتوظيف في القطاع الخاص</p>
+            <ul>
+              <li>شهادة مصدقة ومترجمة</li>
+              <li><a href="/ar/legal-translation-dubai/">ترجمة معتمدة من وزارة العدل</a></li>
+              <li>معادلة MOHESR: غير مطلوبة عادةً</li>
+            </ul>
+          </div>
+          <div class="authority-card">
+            <h3><i class="fas fa-landmark"></i> MOHESR (وزارة التعليم العالي)</h3>
+            <p class="authority-use">للوظائف الحكومية والفيزا الذهبية</p>
+            <ul>
+              <li>شهادة مصدقة ومترجمة</li>
+              <li>ترجمة معتمدة من وزارة العدل</li>
+              <li><a href="/ar/resources/mohesr-equivalency/">معادلة MOHESR</a>: مطلوبة</li>
+            </ul>
+          </div>
+          <div class="authority-card">
+            <h3><i class="fas fa-hospital"></i> DHA/DOH/MOH (الهيئات الصحية)</h3>
+            <p class="authority-use">للمهنيين الصحيين</p>
+            <ul>
+              <li>شهادة مصدقة ومترجمة</li>
+              <li>ترجمة معتمدة من وزارة العدل</li>
+              <li><a href="/ar/specialized/medical/dha-dataflow/">تحقق DataFlow</a>: مطلوب</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>أنواع شهادات الدكتوراه</h2>
+        <ul>
+          <li><strong>PhD (دكتوراه الفلسفة):</strong> الدرجة البحثية الأكثر شيوعاً</li>
+          <li><strong>DBA (دكتوراه إدارة الأعمال):</strong> دكتوراه مهنية في الأعمال</li>
+          <li><strong>EdD (دكتوراه التربية):</strong> دكتوراه مهنية في التعليم</li>
+          <li><strong>MD (دكتور في الطب):</strong> للأطباء (يتطلب DataFlow)</li>
+          <li><strong>DDS/DMD:</strong> لأطباء الأسنان (يتطلب DataFlow)</li>
+        </ul>
+
+        <div class="tip-box">
+          <h4><i class="fas fa-lightbulb"></i> نصيحة مهمة</h4>
+          <p>جميع أنواع الدكتوراه تُعامل بنفس الطريقة من حيث الترجمة والتصديق. الفرق يكون في متطلبات المعادلة والتحقق حسب المجال والجهة المستقبلة.</p>
+        </div>
+
+        <h2>عملية الترجمة والتصديق</h2>
+        <div class="process-flow">
+          <div class="process-step">
+            <div class="process-number">1</div>
+            <div><strong>تصديق بلد المصدر</strong><br>تصديق الشهادة من وزارة التعليم والخارجية في بلدكم</div>
+          </div>
+          <div class="process-step">
+            <div class="process-number">2</div>
+            <div><strong>تصديق سفارة الإمارات</strong><br>تصديق من سفارة الإمارات في بلدكم (أو أبوستيل للدول الأعضاء)</div>
+          </div>
+          <div class="process-step">
+            <div class="process-number">3</div>
+            <div><strong>تصديق وزارة الخارجية الإماراتية</strong><br>التصديق النهائي في الإمارات</div>
+          </div>
+          <div class="process-step">
+            <div class="process-number">4</div>
+            <div><strong>الترجمة المعتمدة</strong><br><a href="/ar/personal/academic/degree/">ترجمة من مترجم مرخص من وزارة العدل</a></div>
+          </div>
+          <div class="process-step">
+            <div class="process-number">5</div>
+            <div><strong>المعادلة (إن لزم)</strong><br>معادلة MOHESR للوظائف الحكومية والفيزا الذهبية</div>
+          </div>
+        </div>
+
+        <h2>المواعيد الزمنية</h2>
+        <ul>
+          <li><strong>الترجمة:</strong> 24-48 ساعة</li>
+          <li><strong>التصديق الكامل:</strong> 2-4 أسابيع (حسب البلد)</li>
+          <li><strong>معادلة MOHESR:</strong> 2-3 أسابيع إضافية</li>
+          <li><strong>تحقق DataFlow:</strong> 4-8 أسابيع</li>
+        </ul>
+
+        <h2>الفيزا الذهبية لحملة الدكتوراه</h2>
+        <p>حملة الدكتوراه مؤهلون للفيزا الذهبية فئة المهنيين. المتطلبات:</p>
+        <ul>
+          <li>شهادة دكتوراه من جامعة معترف بها</li>
+          <li>تصديق ومعادلة من MOHESR</li>
+          <li><a href="/ar/services/golden-visa-translation/">ترجمة معتمدة من وزارة العدل</a></li>
+          <li>راتب شهري <span dir="ltr">30,000</span> درهم أو أكثر</li>
+        </ul>
+
+        <h2>الأسئلة الشائعة</h2>
+        <div class="faq-section">
+          <details class="faq-item" name="faq">
+            <summary>هل أحتاج معادلة MOHESR لشهادة الدكتوراه للعمل في الإمارات؟</summary>
+            <div class="faq-answer"><p>يعتمد على صاحب العمل. الوظائف الحكومية و<a href="/ar/services/golden-visa-translation/">الفيزا الذهبية</a> فئة المهنيين تتطلب معادلة MOHESR. أصحاب العمل في القطاع الخاص عادةً يقبلون المستندات المصدقة والمترجمة بدون معادلة. الوظائف الصحية عبر DHA لها تحقق خاص عبر <a href="/ar/specialized/medical/dha-dataflow/">DataFlow</a>.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary>كم تستغرق ترجمة شهادة الدكتوراه؟</summary>
+            <div class="faq-answer"><p>الترجمة وحدها تستغرق 24-48 ساعة لمعظم شهادات الدكتوراه. إذا كنتم تحتاجون تصديق، أضيفوا 2-4 أسابيع حسب بلدكم. <a href="/ar/resources/mohesr-equivalency/">معادلة MOHESR</a> تضيف 2-3 أسابيع أخرى بعد إتمام التصديق.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary>هل DBA يُعامل مثل PhD في الإمارات؟</summary>
+            <div class="faq-answer"><p>نعم، DBA (دكتوراه إدارة الأعمال) يُعامل كدرجة دكتوراه. يتبع نفس متطلبات الترجمة والتصديق والمعادلة مثل PhD. كلاهما مؤهل للفيزا الذهبية فئة المهنيين بشرط استيفاء متطلبات الراتب.</p></div>
+          </details>
+        </div>
+
+        <div class="article-cta">
+          <h3>ترجمة شهادة الدكتوراه</h3>
+          <p>أرسلوا شهادتكم للحصول على عرض سعر. نتعامل مع جميع أنواع شهادات الدكتوراه.</p>
+          <div class="cta-buttons">
+            <a href="https://wa.me/971508620217?text=استفسار ترجمة شهادة دكتوراه" class="btn btn--whatsapp"><i class="fab fa-whatsapp"></i> واتساب</a>
+            <a href="/ar/personal/academic/degree/" class="btn btn--primary"><i class="fas fa-graduation-cap"></i> ترجمة الشهادات</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </article>
+</BaseLayoutArabic>
+
+<style>
+  .article-header { background: linear-gradient(135deg, var(--primary-color, #0E2B48) 0%, #1a3a5c 100%); color: white; padding: 3rem 0 2rem; }
+  .article-meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .back-link { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; }
+  .back-link:hover { color: white; }
+  .category-badge { background: rgba(255,255,255,0.15); padding: 0.35rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+  .article-header h1 { font-size: clamp(1.6rem, 4vw, 2.25rem); font-weight: 800; line-height: 1.6; margin: 0 0 1rem; }
+  .header-lead { font-size: 1.1rem; color: rgba(255,255,255,0.9); margin: 0 0 1.5rem; line-height: 1.8; }
+  .post-info { display: flex; gap: 1.5rem; color: rgba(255,255,255,0.8); font-size: 0.9rem; }
+  .article-content { padding: 3rem 0 4rem; background: var(--bg-primary, white); }
+  .content-wrapper { max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8; }
+  .content-wrapper p { margin-bottom: 1.5rem; }
+  .content-wrapper h2 { font-size: 1.5rem; font-weight: 700; color: var(--primary-color, #0E2B48); margin: 3rem 0 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.08); line-height: 1.6; }
+  .content-wrapper h2:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+  .content-wrapper ul { margin-bottom: 1.5rem; padding-right: 1.5rem; }
+  .content-wrapper li { margin-bottom: 0.5rem; }
+  .content-wrapper a { color: var(--accent-teal, #0077b6); text-decoration: none; }
+  .content-wrapper a:hover { text-decoration: underline; }
+  .highlight-box { background: #f8f9fa; border-right: 4px solid var(--primary-color, #0E2B48); padding: 1.5rem 2rem; margin: 2rem 0; border-radius: 8px 0 0 8px; }
+  .highlight-box p:last-child { margin-bottom: 0; }
+  .authority-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .authority-card { background: #f8f9fa; padding: 1.5rem; border-radius: 8px; border-right: 4px solid var(--accent-color, #FF1654); }
+  .authority-card h3 { font-size: 1rem; margin: 0 0 0.25rem; display: flex; align-items: center; gap: 0.5rem; color: var(--primary-color, #0E2B48); }
+  .authority-card .authority-use { font-size: 0.85rem; color: var(--text-muted, #5a6a7a); margin: 0 0 1rem; }
+  .authority-card ul { margin: 0; padding-right: 1.25rem; font-size: 0.95rem; }
+  .authority-card li { margin-bottom: 0.35rem; }
+  .tip-box { background: #e8f4fd; border-right: 4px solid #2196f3; padding: 1.25rem 1.5rem; margin: 2rem 0; border-radius: 8px 0 0 8px; }
+  .tip-box h4 { margin: 0 0 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; color: #1565c0; }
+  .tip-box p { margin: 0; color: #1565c0; }
+  .process-flow { background: white; border: 2px solid #e0e0e0; padding: 1.5rem; margin: 2rem 0; border-radius: 8px; }
+  .process-step { display: flex; align-items: flex-start; margin: 1rem 0; padding: 1rem; background: #f8f9fa; border-radius: 6px; gap: 1rem; }
+  .process-step:first-child { margin-top: 0; }
+  .process-step:last-child { margin-bottom: 0; }
+  .process-number { background: var(--primary-color, #0E2B48); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; font-size: 0.9rem; }
+  .process-step div:last-child { flex: 1; }
+  .process-step strong { color: var(--primary-color, #0E2B48); }
+  .faq-section { margin: 2rem 0; }
+  .faq-item { background: #f8f9fa; border-radius: 8px; margin-bottom: 0.75rem; overflow: hidden; }
+  .faq-item summary { padding: 1.25rem 1.5rem; cursor: pointer; font-weight: 600; color: var(--primary-color, #0E2B48); list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 1.5rem; font-weight: 300; }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-answer { padding: 0 1.5rem 1.25rem; }
+  .faq-answer p:first-child { margin-top: 0; }
+  .faq-answer p:last-child { margin-bottom: 0; }
+  .article-cta { background: linear-gradient(135deg, var(--primary-color, #0E2B48) 0%, #1a3a5c 100%); color: white; padding: 2rem; border-radius: 12px; text-align: center; margin: 3rem 0; }
+  .article-cta h3 { font-size: 1.5rem; margin: 0 0 0.75rem; color: white; }
+  .article-cta > p { margin: 0 0 0.75rem; color: rgba(255,255,255,0.9); }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem; }
+  .article-cta .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; }
+  .article-cta .btn--primary { background: var(--accent-color, #FF1654); color: white; }
+  .article-cta .btn--whatsapp { background: #25D366; color: white; }
+  .article-cta .btn:hover { transform: translateY(-2px); opacity: 0.95; }
+  @media (max-width: 768px) { .article-header { padding: 2rem 0 1.5rem; } .content-wrapper { font-size: 1rem; } .authority-grid { grid-template-columns: 1fr; } .cta-buttons { flex-direction: column; } .article-cta .btn { justify-content: center; width: 100%; } }
+</style>
