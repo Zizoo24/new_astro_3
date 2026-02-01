@@ -32,11 +32,12 @@ const posts = [
     slug: 'legal-translation-dubai-moj-guide',
     title: "الترجمة القانونية في دبي: دليل متطلبات وزارة العدل الكامل",
     excerpt: "كل ما تحتاجون معرفته عن الترجمة القانونية المعتمدة من وزارة العدل في دبي. المتطلبات، التكاليف، المواعيد، وكيفية تجنب أخطاء الرفض الشائعة.",
-    date: '2026-01-30',
+    date: '2026-02-01',
     category: 'legal-translation',
     categoryLabel: 'الترجمة القانونية',
-    readTime: '10 دقائق قراءة',
-    englishUrl: '/blog/legal-translation-dubai-moj-guide/'
+    readTime: '15 دقيقة قراءة',
+    url: '/ar/blog/legal-translation-dubai-moj-guide/',
+    hasArabicVersion: true
   },
   {
     slug: 'marriage-certificate-translation-dubai',
@@ -113,7 +114,7 @@ const posts = [
       {posts.length > 0 ? (
         <div class="posts-grid">
           {posts.map(post => (
-            <a href={post.englishUrl} class={`post-card ${post.featured ? 'featured' : ''}`} title={post.title}>
+            <a href={post.url || post.englishUrl} class={`post-card ${post.featured ? 'featured' : ''}`} title={post.title}>
               <div class="post-card-content">
                 <div class="post-meta">
                   <span class="category-tag" data-category={post.category}>{post.categoryLabel}</span>
