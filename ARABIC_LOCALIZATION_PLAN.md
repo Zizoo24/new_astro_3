@@ -399,7 +399,7 @@ function getAlternateUrl(currentPath, targetLang) {
 
 ### Current Status (Updated February 1, 2026)
 
-**Existing Arabic Pages (48 pages):**
+**Existing Arabic Pages (50 pages):**
 
 | Page | URL | Status |
 |------|-----|--------|
@@ -451,6 +451,8 @@ function getAlternateUrl(currentPath, targetLang) {
 | Sharjah | `/ar/locations/sharjah/` | ✅ Complete (Feb 1) |
 | Dubai DIFC | `/ar/locations/dubai/difc/` | ✅ Complete (Feb 1) |
 | Dubai JLT | `/ar/locations/dubai/jlt/` | ✅ Complete (Feb 1) |
+| Dubai Marina | `/ar/locations/dubai/marina/` | ✅ Complete (Feb 1) |
+| Dubai Business Bay | `/ar/locations/dubai/business-bay/` | ✅ Complete (Feb 1) |
 
 ### Week 1 Deliverables ✅ COMPLETE
 - [x] navigation-ar.ts created
@@ -514,8 +516,8 @@ function getAlternateUrl(currentPath, targetLang) {
 - [x] Sharjah location (`/ar/locations/sharjah/`) ✅ Feb 1
 - [x] Dubai DIFC (`/ar/locations/dubai/difc/`) ✅ Feb 1
 - [x] Dubai JLT (`/ar/locations/dubai/jlt/`) ✅ Feb 1
-- [ ] Dubai Marina (`/ar/locations/dubai/marina/`)
-- [ ] Dubai Business Bay (`/ar/locations/dubai/business-bay/`)
+- [x] Dubai Marina (`/ar/locations/dubai/marina/`) ✅ Feb 1
+- [x] Dubai Business Bay (`/ar/locations/dubai/business-bay/`) ✅ Feb 1
 - [ ] Resources hub (`/ar/resources/`)
 - [ ] FAQ (`/ar/resources/faq/`)
 - [ ] Pricing guide (`/ar/resources/pricing-guide/`)
