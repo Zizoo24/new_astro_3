@@ -1,0 +1,260 @@
+---
+/**
+ * Dubai Marina Location - Arabic Version
+ * URL: /ar/locations/dubai/marina/
+ */
+import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    q: "أي مدارس المارينا تقبل وثائقكم المترجمة؟",
+    a: "جميع مدارس منطقة المارينا بما في ذلك GEMS Wellington International ومدرسة دبي البريطانية وNord Anglia تقبل ترجماتنا المعتمدة من وزارة العدل لوثائق التسجيل. نترجم شهادات الميلاد والسجلات المدرسية السابقة والسجلات الأكاديمية بالصيغ التي تطلبها المدارس."
+  },
+  {
+    q: "هل يمكنكم استلام الوثائق من برجي في المارينا؟",
+    a: "نعم. نقدم استلاماً مجانياً من أي عنوان في المارينا. سائقنا يستطيع استلام الوثائق الأصلية من استقبال البرج أو منكم مباشرة. للطلبات العاجلة، ننصح بإرسال صور الوثائق عبر واتساب للمعالجة الفورية."
+  },
+  {
+    q: "كيف أترجم وثائق لتسجيل إيجاري؟",
+    a: "تسجيل إيجاري لإيجارات المارينا يتطلب ترجمة عقد الإيجار إذا لم يكن الأصل بالعربية. نقدم ترجمات جاهزة لإيجاري تشمل جميع الحقول والتنسيقات المطلوبة. معظم عقود الإيجار تُنجز خلال 4-6 ساعات."
+  },
+  {
+    q: "ماذا لو كانت وثائقي بلغة غير الإنجليزية؟",
+    a: "نترجم مباشرة من اللغة المصدر للعربية دون ترجمة إنجليزية وسيطة. اللغات الشائعة في المارينا تشمل الهندية والأوردية والروسية والصينية والفرنسية والألمانية والإسبانية. الترجمة المباشرة تحافظ على الدقة والمصطلحات القانونية."
+  },
+  {
+    q: "ما سرعة التوصيل للمارينا؟",
+    a: "التوصيل في نفس اليوم قياسي لخدمة Express. PDFs الرقمية تُرسل فوراً عند الانتهاء للحالات العاجلة. نوصّل لجميع أبراج المارينا من Marina Gate إلى Princess Tower."
+  }
+];
+---
+
+<BaseLayoutArabic
+  title="الترجمة القانونية دبي مارينا | معتمدة من وزارة العدل"
+  description="ترجمة قانونية في دبي مارينا من 150 درهم. معتمدة من وزارة العدل للمحاكم والتأشيرات والعقارات. توصيل نفس اليوم للمارينا وJBR وJLT."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "خدمات الترجمة القانونية في دبي مارينا",
+      "description": "ترجمة قانونية معتمدة من وزارة العدل لسكان دبي مارينا مع توصيل نفس اليوم",
+      "provider": { "@type": "Organization", "name": "OnlineTranslation.ae" },
+      "areaServed": "دبي، الإمارات - دبي مارينا",
+      "serviceType": "ترجمة قانونية"
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({ "@type": "Question", "name": faq.q, "acceptedAnswer": { "@type": "Answer", "text": faq.a } }))
+    })} />
+  </Fragment>
+
+  <nav class="breadcrumb-nav" aria-label="التنقل">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li><a href="/ar/">الرئيسية</a></li>
+        <li><a href="/ar/locations/">المواقع</a></li>
+        <li><a href="/ar/locations/dubai/">دبي</a></li>
+        <li><span aria-current="page">مارينا</span></li>
+      </ol>
+    </div>
+  </nav>
+
+  <section class="page-hero" dir="rtl">
+    <div class="container">
+      <span class="hero-badge">معتمدة من وزارة العدل • توصيل نفس اليوم • JBR إلى JLT</span>
+      <h1>خدمات الترجمة القانونية في دبي مارينا</h1>
+      <p class="hero-lead">مجتمع دبي مارينا الدولي يعتمد على خدمات <a href="/ar/services/legal-translation/">الترجمة القانونية</a> المحترفة لوثائق الإقامة وعقود الأعمال والشهادات الشخصية. نقدم ترجمات معتمدة من وزارة العدل مع خيارات استلام وتوصيل مريحة في جميع أنحاء منطقة المارينا من <a href="/ar/locations/dubai/jlt/">JLT</a> إلى JBR.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/971508620217?text=أحتاج%20ترجمة%20في%20دبي%20مارينا" class="btn btn--primary">
+          <i class="fab fa-whatsapp"></i> أرسل الوثائق
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <h2>خدمات لسكان المارينا</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <i class="fas fa-passport"></i>
+          <h3>وثائق الإقامة</h3>
+          <p><a href="/ar/personal/immigration/">وثائق الهجرة</a>، طلبات الهوية الإماراتية، و<a href="/ar/services/golden-visa-translation/">الفيزا الذهبية</a></p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-home"></i>
+          <h3>وثائق العقارات</h3>
+          <p><a href="/ar/legal/contracts/lease/">عقود الإيجار</a>، <a href="/ar/legal/contracts/spa/">SPAs</a>، ووثائق DLD لعقارات المارينا</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-briefcase"></i>
+          <h3>وثائق الأعمال</h3>
+          <p><a href="/ar/legal/corporate/">الترجمة المؤسسية</a> بما في ذلك <a href="/ar/legal/corporate/moa/">عقود التأسيس</a> و<a href="/ar/legal/contracts/">العقود</a></p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-file-alt"></i>
+          <h3>الشهادات الشخصية</h3>
+          <p>وثائق <a href="/ar/personal/vital-records/birth/">الميلاد</a> و<a href="/ar/personal/vital-records/marriage/">الزواج</a> و<a href="/ar/personal/academic/degree/">التعليمية</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <h2>مريحة لموقع المارينا</h2>
+      <div class="convenience-grid">
+        <div class="conv-item"><i class="fas fa-truck"></i><h3>استلام وتوصيل مجاني</h3><p>جمع وتوصيل مجاني في جميع أنحاء دبي مارينا</p></div>
+        <div class="conv-item"><i class="fas fa-clock"></i><h3>خدمة نفس اليوم</h3><p>ترجمة سريعة مع توصيل نفس اليوم متاح</p></div>
+        <div class="conv-item"><i class="fab fa-whatsapp"></i><h3>إرسال عبر واتساب</h3><p>أرسلوا الوثائق عبر واتساب للمعالجة الفورية</p></div>
+        <div class="conv-item"><i class="fas fa-map-marker-alt"></i><h3>خدمة قريبة</h3><p>إنجاز سريع مع فريقنا في دبي</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <h2>لماذا يحتاج سكان المارينا الترجمة؟</h2>
+      <div class="content-prose">
+        <p>دبي مارينا أحد أكثر المجتمعات دولية في الإمارات. امشوا في أي برج مارينا وستسمعون عشرات اللغات. هذا التنوع يخلق احتياجات ترجمة مستمرة. جاركم قد يحتاج ترجمة شهادته الهندية لطلبات العمل. الشركة في الطابق الأسفل تحتاج عقدها الألماني بالعربية للمحكمة. العائلة في الأعلى تحتاج شهادات الميلاد للتسجيل المدرسي.</p>
+
+        <p>القاسم المشترك هو أن الحياة في الإمارات تتطلب في النهاية وثائق عربية. سواء التعامل مع الجهات الحكومية أو البنوك أو المحاكم أو المدارس، الترجمة العربية المعتمدة تصبح ضرورية.</p>
+
+        <h3>معاملات العقارات في المارينا</h3>
+        <p>عقارات دبي مارينا تتغير ملكيتها بشكل متكرر. المشترون الدوليون يشترون شققاً كاستثمارات أو منازل عطلات. المستأجرون يوقعون عقود إيجار ثم يحتاجون ترجمتها لطلبات التأشيرة.</p>
+
+        <div class="comparison-grid">
+          <div class="comparison-box">
+            <h4>شراء عقار</h4>
+            <ul>
+              <li><a href="/ar/legal/contracts/spa/">ترجمة SPA</a> لتسجيل DLD</li>
+              <li><a href="/ar/legal/corporate/poa/">التوكيل</a> للشراء عن بُعد</li>
+              <li>وثائق الرهن العقاري للبنك</li>
+              <li>سند الملكية للسجلات</li>
+            </ul>
+          </div>
+          <div class="comparison-box">
+            <h4>استئجار عقار</h4>
+            <ul>
+              <li><a href="/ar/legal/contracts/lease/">عقد الإيجار</a> لإيجاري</li>
+              <li>شهادة إيجاري للتأشيرة</li>
+              <li>خطاب توصيل ديوا</li>
+              <li>عدم ممانعة المالك إذا لزم</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>وثائق العمل والتأشيرات</h3>
+        <p>سكان المارينا يعملون في جميع أنحاء دبي. كثيرون يتنقلون إلى <a href="/ar/locations/dubai/difc/">DIFC</a> أو <a href="/ar/locations/dubai/business-bay/">بزنس باي</a> أو مدينة الإعلام. تغييرات العمل تعني تغييرات التأشيرة، مما يعني احتياجات ترجمة.</p>
+
+        <h3>احتياجات وثائق العائلة</h3>
+        <p>عائلات المارينا تحتاج الترجمة لمراحل الحياة الغربية. الأطفال يحتاجون ترجمة <a href="/ar/personal/vital-records/birth/">شهادات الميلاد</a> للتسجيل المدرسي وطلبات الجواز. <a href="/ar/personal/vital-records/marriage/">عقود الزواج</a> يجب ترجمتها لكفالة الزوج/الزوجة.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <h2>المعالم القريبة التي نخدمها</h2>
+      <div class="landmarks-grid">
+        <div class="landmark">Marina Walk</div>
+        <div class="landmark">شاطئ JBR</div>
+        <div class="landmark">مارينا مول</div>
+        <div class="landmark">Pier 7</div>
+        <div class="landmark">Marina Promenade</div>
+        <div class="landmark">جزيرة بلوواترز</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-grid">
+        {faqs.map(faq => (<div class="faq-item"><h3>{faq.q}</h3><p>{faq.a}</p></div>))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section section bg-primary" dir="rtl">
+    <div class="container text-center">
+      <h2>ابدأوا اليوم</h2>
+      <p>أرسلوا وثائقكم عبر واتساب واستلموا ترجمتكم المعتمدة مع توصيل مجاني لدبي مارينا.</p>
+      <a href="https://wa.me/971508620217?text=أحتاج%20ترجمة%20في%20دبي%20مارينا" class="btn btn--primary btn--lg">
+        <i class="fab fa-whatsapp"></i> أرسل الوثائق
+      </a>
+    </div>
+  </section>
+</BaseLayoutArabic>
+
+<style>
+  .breadcrumb-nav { background: var(--primary-color); padding: 1rem 0; }
+  .breadcrumb-list { display: flex; list-style: none; margin: 0; padding: 0; gap: 0.5rem; font-size: 0.875rem; flex-direction: row-reverse; }
+  .breadcrumb-list li:not(:first-child)::before { content: '/'; margin-left: 0.5rem; color: rgba(255,255,255,0.5); }
+  .breadcrumb-list a { color: rgba(255,255,255,0.8); text-decoration: none; }
+  .breadcrumb-list span { color: white; }
+
+  .page-hero { background: linear-gradient(135deg, var(--primary-color) 0%, #1a3a5c 100%); color: white; padding: 5rem 0; }
+  .hero-badge { display: inline-block; background: var(--accent-color); padding: 0.5rem 1rem; border-radius: 2rem; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; }
+  .page-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
+  .hero-lead { font-size: 1.125rem; line-height: 1.8; max-width: 800px; opacity: 0.95; margin-bottom: 2rem; }
+  .hero-lead a { color: var(--accent-color); text-decoration: none; }
+
+  .section { padding: 4rem 0; }
+  .section h2 { font-size: 2rem; margin-bottom: 2rem; color: var(--primary-color); }
+
+  .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .service-card { text-align: center; padding: 2rem; background: var(--bg-light); border-radius: 12px; }
+  .service-card i { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem; }
+  .service-card h3 { font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--primary-color); }
+  .service-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+  .service-card a { color: var(--accent-color); text-decoration: none; }
+
+  .convenience-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .conv-item { background: #fff; padding: 2rem; border-radius: 12px; text-align: center; box-shadow: 0 2px 15px rgba(0,0,0,0.05); }
+  .conv-item i { font-size: 2rem; color: var(--accent-color); margin-bottom: 1rem; }
+  .conv-item h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--primary-color); }
+  .conv-item p { font-size: 0.85rem; color: var(--text-muted); }
+
+  .content-prose { max-width: 800px; line-height: 1.8; }
+  .content-prose h3 { margin-top: 2rem; margin-bottom: 1rem; font-size: 1.25rem; color: var(--primary-color); }
+  .content-prose p { margin-bottom: 1.25rem; }
+  .content-prose a { color: var(--accent-color); text-decoration: none; }
+
+  .comparison-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin: 2rem 0; }
+  .comparison-box { background: #f8f9fa; border-radius: 1rem; padding: 1.5rem; border: 1px solid rgba(0,0,0,0.08); }
+  .comparison-box h4 { margin: 0 0 1rem; font-size: 1.1rem; color: var(--primary-color); border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem; }
+  .comparison-box ul { margin: 0; padding-right: 1.25rem; }
+  .comparison-box li { margin-bottom: 0.5rem; line-height: 1.5; }
+  .comparison-box a { color: var(--accent-color); text-decoration: none; }
+
+  .landmarks-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; }
+  .landmark { background: #fff; padding: 1rem; border-radius: 8px; text-align: center; font-weight: 500; color: var(--primary-color); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+
+  .faq-grid { display: grid; gap: 1.5rem; }
+  .faq-item { background: var(--bg-light); padding: 2rem; border-radius: 1rem; }
+  .faq-item h3 { font-size: 1.1rem; margin-bottom: 1rem; color: var(--primary-color); }
+  .faq-item p { line-height: 1.7; color: var(--text-muted); margin: 0; }
+
+  .cta-section { text-align: center; }
+  .cta-section h2 { color: white; margin-bottom: 1rem; }
+  .cta-section p { color: rgba(255,255,255,0.9); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+  .bg-primary { background: var(--primary-color); }
+  .bg-light { background: var(--bg-light, #f8f9fa); }
+  .text-center { text-align: center; }
+
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; }
+  .btn--primary { background: var(--accent-color); color: white; }
+  .btn--lg { padding: 1.125rem 2.25rem; }
+
+  @media (max-width: 991px) {
+    .services-grid, .convenience-grid { grid-template-columns: repeat(2, 1fr); }
+    .landmarks-grid { grid-template-columns: repeat(3, 1fr); }
+    .comparison-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .services-grid, .convenience-grid, .landmarks-grid { grid-template-columns: 1fr; }
+  }
+</style>

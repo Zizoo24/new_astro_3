@@ -1,0 +1,166 @@
+---
+/**
+ * Hospitality Translation - Arabic Version
+ * URL: /ar/specialized/hospitality/
+ */
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    q: "ما وثائق الضيافة التي تترجمونها؟",
+    a: "نترجم قوائم المطاعم والكتيبات الفندقية ومحتوى السياحة واتصالات الضيوف ومواد التسويق والوصف على مواقع الحجز ولوائح الأطعمة والمشروبات. نُكيّف المحتوى ثقافياً ليتناسب مع جمهوركم المستهدف."
+  },
+  {
+    q: "هل تترجمون قوائم الطعام مع التكييف الثقافي؟",
+    a: "نعم. لا نترجم حرفياً بل نُكيّف الأوصاف لتتناسب مع الذوق المحلي. نتجنب المصطلحات التي قد لا تُفهم ونُوضح المكونات غير المألوفة. كما ننتبه للاعتبارات الحلال والحساسية الثقافية."
+  },
+  {
+    q: "هل تعملون مع الفنادق الكبرى؟",
+    a: "نعم. نعمل مع فنادق ومطاعم ومنتجعات في دبي وأبوظبي. نفهم معايير الضيافة الفاخرة ونُحافظ على نبرة العلامة التجارية عبر جميع المواد."
+  },
+  {
+    q: "ما المدة اللازمة لترجمة قائمة مطعم؟",
+    a: "قوائم الطعام العادية (20-40 صنف): 24-48 ساعة. القوائم الكاملة مع الأوصاف التفصيلية: 2-3 أيام. نُقدم ملفات جاهزة للطباعة بالتنسيق المطلوب."
+  },
+  {
+    q: "هل تترجمون مواقع الحجز الإلكترونية؟",
+    a: "نعم. نترجم محتوى المواقع وأوصاف الغرف ووسائل الراحة والسياسات. نُحسّن المحتوى لمحركات البحث العربية ونتأكد من جاهزية RTL."
+  },
+  {
+    q: "كيف تتعاملون مع أسماء الأطباق الأجنبية؟",
+    a: "نحافظ على الأسماء الأصلية مع إضافة وصف عربي توضيحي. هذا يُحافظ على أصالة الطبق مع تمكين الضيوف من فهم المكونات."
+  }
+];
+---
+
+<BaseLayoutArabic
+  title="ترجمة الضيافة دبي | قوائم وفنادق"
+  description="ترجمة الضيافة في دبي. قوائم المطاعم ومحتوى الفنادق والسياحة. تكييف ثقافي للسوق العربي."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "ترجمة الضيافة دبي",
+      "description": "ترجمة متخصصة لقوائم المطاعم ومحتوى الفنادق والسياحة مع تكييف ثقافي",
+      "provider": { "@type": "Organization", "name": "OnlineTranslation.ae" },
+      "areaServed": ["دبي", "أبوظبي", "الشارقة", "الإمارات"],
+      "serviceType": "ترجمة الضيافة"
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({ "@type": "Question", "name": faq.q, "acceptedAnswer": { "@type": "Answer", "text": faq.a } }))
+    })} />
+  </Fragment>
+
+  <nav class="breadcrumb-nav" aria-label="التنقل">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li><a href="/ar/">الرئيسية</a></li>
+        <li><a href="/ar/specialized-translation/">الترجمة المتخصصة</a></li>
+        <li><span aria-current="page">ترجمة الضيافة</span></li>
+      </ol>
+    </div>
+  </nav>
+
+  <section class="page-hero" dir="rtl">
+    <div class="container">
+      <span class="hero-badge">المطاعم والفنادق والسياحة</span>
+      <h1>ترجمة الضيافة في دبي</h1>
+      <p class="hero-lead">قوائم الطعام ومحتوى الفنادق والسياحة تتطلب أكثر من الترجمة الحرفية. التكييف الثقافي يضمن تواصل رسالتكم مع الضيوف العرب بطريقة تُناسب توقعاتهم. نجمع بين الخبرة اللغوية ومعرفة قطاع الضيافة.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/971508620217?text=أحتاج%20ترجمة%20ضيافة" class="btn btn--primary">
+          <i class="fab fa-whatsapp"></i> ناقش مشروعك
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <h2>خدمات ترجمة الضيافة</h2>
+      <div class="doc-grid">
+        <div class="doc-card"><i class="fas fa-utensils"></i><h3>قوائم المطاعم</h3><p>ترجمة القوائم مع تكييف أوصاف الأطباق وإيضاح المكونات والاهتمام بالحلال والحساسية.</p></div>
+        <div class="doc-card"><i class="fas fa-hotel"></i><h3>محتوى الفنادق</h3><p>كتيبات الغرف ووسائل الراحة والخدمات واتصالات الضيوف ومواد التسويق.</p></div>
+        <div class="doc-card"><i class="fas fa-map-marked-alt"></i><h3>محتوى السياحة</h3><p>أوصاف الجولات والمعالم والأنشطة والتجارب السياحية.</p></div>
+        <div class="doc-card"><i class="fas fa-glass-cheers"></i><h3>الأطعمة والمشروبات</h3><p>قوائم البارات والمشروبات وبرامج المناسبات وتذوق الطعام.</p></div>
+        <div class="doc-card"><i class="fas fa-spa"></i><h3>السبا والعافية</h3><p>قوائم العلاجات وأوصاف الخدمات وتجارب العافية.</p></div>
+        <div class="doc-card"><i class="fas fa-concierge-bell"></i><h3>اتصالات الضيوف</h3><p>رسائل الترحيب والسياسات والإرشادات وخدمة العملاء.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <h2>التكييف الثقافي: ما يعنيه حقاً</h2>
+      <div class="content-prose">
+        <p>الترجمة الحرفية للقوائم غالباً ما تفشل. "Beef carpaccio" لا يُترجم حرفياً - يحتاج وصفاً يُوضح أنه لحم بقري نيء مُقطع شرائح رقيقة. نهجنا:</p>
+        <ul class="content-list">
+          <li><strong>الوضوح:</strong> نُوضح المكونات والطرق غير المألوفة</li>
+          <li><strong>الحساسية الثقافية:</strong> نتجنب الأوصاف التي قد تُسيء</li>
+          <li><strong>الحلال:</strong> ننتبه لمحتوى الكحول ولحم الخنزير</li>
+          <li><strong>الفخامة:</strong> نُحافظ على نبرة العلامة التجارية الراقية</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-grid">
+        {faqs.map(faq => (<div class="faq-item"><h3>{faq.q}</h3><p>{faq.a}</p></div>))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-primary" dir="rtl">
+    <div class="container cta-section">
+      <h2>تحتاجون ترجمة ضيافة؟</h2>
+      <p>شاركوا مشروعكم عبر واتساب للتكييف الثقافي المتخصص.</p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/971508620217?text=أحتاج%20ترجمة%20ضيافة" class="btn btn-accent"><i class="fab fa-whatsapp"></i> ناقش المشروع</a>
+        <a href="/ar/specialized-translation/" class="btn btn-outline"><i class="fas fa-arrow-right"></i> الترجمة المتخصصة</a>
+      </div>
+    </div>
+  </section>
+</BaseLayoutArabic>
+
+<style>
+  .breadcrumb-nav { background: var(--primary-color); padding: 1rem 0; }
+  .breadcrumb-list { display: flex; list-style: none; margin: 0; padding: 0; gap: 0.5rem; font-size: 0.875rem; flex-direction: row-reverse; }
+  .breadcrumb-list li:not(:first-child)::before { content: '/'; margin-left: 0.5rem; color: rgba(255,255,255,0.5); }
+  .breadcrumb-list a { color: rgba(255,255,255,0.8); text-decoration: none; }
+  .breadcrumb-list span { color: white; }
+  .page-hero { background: linear-gradient(135deg, var(--primary-color) 0%, #1a3a5c 100%); color: white; padding: 5rem 0; }
+  .hero-badge { display: inline-block; background: var(--accent-color); padding: 0.5rem 1rem; border-radius: 2rem; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; }
+  .page-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
+  .hero-lead { font-size: 1.125rem; line-height: 1.8; max-width: 800px; opacity: 0.95; margin-bottom: 2rem; }
+  .section { padding: 4rem 0; }
+  .section h2 { font-size: 2rem; margin-bottom: 2rem; color: var(--primary-color); }
+  .doc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .doc-card { background: var(--bg-light); padding: 2rem; border-radius: 12px; }
+  .doc-card i { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem; }
+  .doc-card h3 { font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--primary-color); }
+  .doc-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+  .content-prose { max-width: 800px; }
+  .content-prose p { line-height: 1.8; margin-bottom: 1.25rem; }
+  .content-list { margin: 1rem 0; padding-right: 1.25rem; }
+  .content-list li { margin-bottom: 0.5rem; line-height: 1.7; }
+  .faq-grid { display: grid; gap: 1.5rem; }
+  .faq-item { background: var(--bg-light); padding: 2rem; border-radius: 1rem; }
+  .faq-item h3 { font-size: 1.1rem; margin-bottom: 1rem; color: var(--primary-color); }
+  .faq-item p { line-height: 1.7; color: var(--text-muted); margin: 0; }
+  .bg-primary { background: var(--primary-color); }
+  .bg-primary h2, .bg-primary p { color: #fff; }
+  .cta-section { text-align: center; max-width: 700px; margin: 0 auto; }
+  .cta-section p { opacity: 0.9; margin-bottom: 2rem; font-size: 1.1rem; }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; text-decoration: none; }
+  .btn--primary { background: var(--accent-color); color: #fff; }
+  .btn-accent { background: var(--accent-color); color: #fff; }
+  .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.5); }
+  @media (max-width: 992px) { .doc-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 768px) { .doc-grid { grid-template-columns: 1fr; } }
+</style>

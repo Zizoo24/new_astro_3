@@ -1,0 +1,351 @@
+---
+/**
+ * Sharjah Location - Arabic Version
+ * URL: /ar/locations/sharjah/
+ */
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    q: "ما سرعة التوصيل إلى الشارقة؟",
+    a: "PDF الرقمي يُرسل فوراً عند الانتهاء. النسخ المادية تُسلّم في اليوم التالي لعناوين الشارقة عبر البريد السريع. التوصيل في نفس اليوم متاح للأمور العاجلة."
+  },
+  {
+    q: "هل ختم وزارة العدل مقبول في الشارقة؟",
+    a: "نعم. اعتماد وزارة العدل اتحادي ومقبول في جميع الإمارات. ترجماتنا مقبولة من محاكم الشارقة والجهات الحكومية وجميع المؤسسات في الإمارة."
+  },
+  {
+    q: "هل أحتاج للذهاب إلى دبي؟",
+    a: "لا. سير العمل بالكامل يتم عبر واتساب. أرسلوا المستندات من الشارقة واستلموا الترجمات مُسلّمة لعنوانكم في الشارقة. لا حاجة للسفر."
+  },
+  {
+    q: "هل تترجمون مستندات المناطق الحرة في الشارقة؟",
+    a: "نعم. الشارقة لديها عدة مناطق حرة منها SAIF Zone وشمس ومدينة الشارقة للنشر. نترجم وثائق المناطق الحرة للبنوك والتراخيص وأغراض أخرى."
+  },
+  {
+    q: "هل توصّلون لجميع مناطق الشارقة؟",
+    a: "نعم. نوصّل لجميع مواقع الشارقة بما في ذلك النهدة والخان والمجاز والقاسمية والمناطق الصناعية والمجتمعات المحيطة. أوقات التوصيل متسقة عبر الإمارة."
+  }
+];
+---
+
+<BaseLayoutArabic
+  title="خدمات الترجمة في الشارقة | معتمدة من وزارة العدل"
+  description="خدمات ترجمة معتمدة من وزارة العدل للشارقة. المستندات الشخصية والتجارية مع توصيل في اليوم التالي. نفس الجودة، سير عمل مريح عن بُعد."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "خدمات الترجمة في الشارقة",
+      "description": "ترجمة قانونية معتمدة من وزارة العدل لسكان الشارقة مع توصيل في اليوم التالي",
+      "provider": { "@type": "Organization", "name": "OnlineTranslation.ae" },
+      "areaServed": "الشارقة، الإمارات",
+      "serviceType": "ترجمة قانونية"
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({ "@type": "Question", "name": faq.q, "acceptedAnswer": { "@type": "Answer", "text": faq.a } }))
+    })} />
+  </Fragment>
+
+  <nav class="breadcrumb-nav" aria-label="التنقل">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li><a href="/ar/">الرئيسية</a></li>
+        <li><a href="/ar/locations/">المواقع</a></li>
+        <li><span aria-current="page">الشارقة</span></li>
+      </ol>
+    </div>
+  </nav>
+
+  <section class="page-hero" dir="rtl">
+    <div class="container">
+      <span class="hero-badge">معتمدة من وزارة العدل • توصيل اليوم التالي</span>
+      <h1>خدمات الترجمة في الشارقة</h1>
+      <p class="hero-lead">نخدم عملاء الشارقة بنفس الجودة المعتمدة من وزارة العدل التي نقدمها في <a href="/ar/locations/dubai/">دبي</a>. أرسلوا المستندات عبر واتساب واستلموا ترجماتكم المعتمدة مُسلّمة لعنوانكم في الشارقة. التوصيل في اليوم التالي قياسي، في نفس اليوم متاح للاحتياجات العاجلة. لا حاجة للسفر إلى دبي.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/971508620217?text=أحتاج%20ترجمة%20في%20الشارقة" class="btn btn--primary">
+          <i class="fab fa-whatsapp"></i> ابدأ عبر واتساب
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <h2>لماذا يختارنا سكان الشارقة</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <i class="fas fa-car"></i>
+          <h3>لا سفر إلى دبي</h3>
+          <p>تعاملوا مع جميع احتياجات الترجمة عبر واتساب من منزلكم أو مكتبكم في الشارقة.</p>
+        </div>
+        <div class="benefit-card">
+          <i class="fas fa-stamp"></i>
+          <h3>اعتماد وزارة العدل اتحادي</h3>
+          <p>الاعتماد من دبي صالح في جميع أنحاء الإمارات. محاكم الشارقة وجميع الجهات تقبله.</p>
+        </div>
+        <div class="benefit-card">
+          <i class="fas fa-shipping-fast"></i>
+          <h3>اليوم التالي قياسي، نفس اليوم متاح</h3>
+          <p>PDF الرقمي يُرسل فوراً؛ النسخ المادية بالبريد السريع في اليوم التالي.</p>
+        </div>
+        <div class="benefit-card">
+          <i class="fas fa-map-marked-alt"></i>
+          <h3>تغطية كاملة للشارقة</h3>
+          <p>النهدة، الخان، المجاز، القاسمية، المناطق الصناعية، المدينة الجامعية، المويلح مشمولة.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <h2>الاحتياجات الشائعة للترجمة في الشارقة</h2>
+      <div class="needs-grid">
+        <div class="need-card">
+          <h3><i class="fas fa-users"></i> مستندات العائلة</h3>
+          <ul>
+            <li><a href="/ar/personal/vital-records/birth/">شهادات الميلاد</a> للمدارس والتأشيرات</li>
+            <li><a href="/ar/personal/vital-records/marriage/">عقود الزواج</a> لكفالة الأسرة</li>
+            <li><a href="/ar/personal/vital-records/divorce/">صكوك الطلاق</a> للأحوال الشخصية</li>
+          </ul>
+          <p>تعالجون <a href="/ar/services/golden-visa-translation/">الفيزا الذهبية</a>؟ ننسق الترجمة والتصديق معاً.</p>
+        </div>
+        <div class="need-card">
+          <h3><i class="fas fa-graduation-cap"></i> المستندات التعليمية</h3>
+          <p>الشارقة تستضيف جامعات كبرى:</p>
+          <ul>
+            <li>جامعة الشارقة</li>
+            <li>الجامعة الأمريكية في الشارقة</li>
+          </ul>
+          <p>تحتاجون ترجمة <a href="/ar/personal/academic/degree/">الشهادات</a> والسجلات الأكاديمية؟ نتعامل مع المصطلحات الأكاديمية بدقة.</p>
+        </div>
+        <div class="need-card">
+          <h3><i class="fas fa-briefcase"></i> مستندات العمل</h3>
+          <ul>
+            <li><a href="/ar/legal/contracts/">عقود العمل</a></li>
+            <li><a href="/ar/personal/immigration/bank/">شهادات الراتب</a></li>
+            <li>رسائل عدم الممانعة</li>
+          </ul>
+          <p>وزارة الموارد البشرية تقبل ترجماتنا لجميع شؤون التوظيف.</p>
+        </div>
+        <div class="need-card">
+          <h3><i class="fas fa-building"></i> مستندات الأعمال</h3>
+          <ul>
+            <li><a href="/ar/legal/corporate/moa/">عقود التأسيس</a> والرخص التجارية</li>
+            <li><a href="/ar/legal/corporate/poa/">التوكيلات الرسمية</a></li>
+            <li><a href="/ar/legal/corporate/resolution/">قرارات مجلس الإدارة</a></li>
+          </ul>
+          <p>للبنوك والجهات والتعاملات العابرة للحدود.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <h2>محاكم الشارقة والشؤون القانونية</h2>
+      <div class="content-prose">
+        <h3>ترجمة مستندات المحاكم</h3>
+        <p>محاكم الشارقة تقبل الترجمات المعتمدة من وزارة العدل لجميع <a href="/ar/legal/litigation/">الإجراءات القانونية</a>. سواء كنتم ترفعون دعوى مدنية أو تردون على مطالبة أو تقدمون أدلة، المستندات المترجمة باعتماد صحيح مقبولة.</p>
+
+        <h3>شؤون الأحوال الشخصية</h3>
+        <p><a href="/ar/personal/vital-records/divorce/">الطلاق</a> والحضانة والميراث وشؤون الأحوال الشخصية الأخرى غالباً تتضمن مستندات من خارج الإمارات. <a href="/ar/personal/vital-records/marriage/">عقود الزواج</a> الأجنبية والأوامر القضائية والوثائق الرسمية تحتاج ترجمة معتمدة لإجراءات محاكم الشارقة.</p>
+
+        <h3>العقارات والإيجارات</h3>
+        <p>الشارقة لديها نظام تسجيل عقارات خاص وتسوية نزاعات الإيجارات. لعقود الإيجار، ترجمة عقد الإيجار لبلدية الشارقة مطلوبة عند حساب رسوم التسجيل 4%. نتعامل أيضاً مع <a href="/ar/legal/contracts/lease/">اتفاقيات الإيجار</a> و<a href="/ar/legal/contracts/spa/">ترجمة SPA</a> لمشتريات العقارات.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <h2>المناطق الحرة في الشارقة</h2>
+      <div class="freezone-grid">
+        <div class="freezone-card">
+          <h3>SAIF Zone</h3>
+          <p>منطقة مطار الشارقة الدولية الحرة تستضيف شركات الخدمات اللوجستية والتجارة والصناعات الخفيفة. وثائق SAIF Zone - الرخص التجارية وبطاقات التأسيس والمراسلات التنظيمية - قد تحتاج ترجمة للبنوك أو التعاملات مع البر الرئيسي.</p>
+        </div>
+        <div class="freezone-card">
+          <h3>مدينة الشارقة للإعلام (شمس)</h3>
+          <p>شمس تخدم الإعلام والإبداع والعمل الحر. الشركات المسجلة في شمس قد تحتاج وثائق مترجمة للحسابات البنكية ومعالجة التأشيرات أو العقود مع عملاء البر الرئيسي.</p>
+        </div>
+        <div class="freezone-card">
+          <h3>مدينة الشارقة للنشر</h3>
+          <p>هذه المنطقة الحرة المتخصصة تخدم الناشرين والمؤلفين وصانعي المحتوى. احتياجات الترجمة قد تشمل العقود واتفاقيات الحقوق والوثائق التجارية.</p>
+        </div>
+        <div class="freezone-card">
+          <h3>منطقة الحمرية الحرة</h3>
+          <p>التركيز الصناعي والتصنيعي في الحمرية يخلق احتياجات ترجمة حول العقود والوثائق التنظيمية والأوراق التجارية الدولية.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <h2>التوصيل في جميع أنحاء الشارقة</h2>
+      <div class="delivery-grid">
+        <div class="delivery-area">
+          <h3>وسط الشارقة</h3>
+          <p>النهدة والخان والمجاز ومناطق وسط الشارقة تستلم توصيل البريد السريع في اليوم التالي كمعيار. التوصيل في نفس اليوم متاح لخدمة Express وVIP Concierge.</p>
+        </div>
+        <div class="delivery-area">
+          <h3>القاسمية والتعاون</h3>
+          <p>هذه المناطق التجارية والسكنية المزدحمة مخدومة جيداً بشبكات البريد السريع. التوصيل في اليوم التالي قياسي.</p>
+        </div>
+        <div class="delivery-area">
+          <h3>المناطق الصناعية</h3>
+          <p>مناطق الشارقة الصناعية - من 1 إلى 18 وسجعة وغيرها - تستلم نفس خدمة التوصيل كالمناطق السكنية.</p>
+        </div>
+        <div class="delivery-area">
+          <h3>المدينة الجامعية والمويلح</h3>
+          <p>المنطقة التعليمية والمناطق السكنية المحيطة لديها سكان متزايدون. خدمة التوصيل تغطي هذه المناطق بالتوقيت القياسي.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <h2>مستويات الخدمة</h2>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>قياسي</h3>
+          <div class="pricing-price">من 150 درهم</div>
+          <p class="pricing-time">24 ساعة + توصيل اليوم التالي</p>
+          <ul class="pricing-features">
+            <li>ترجمة معتمدة من وزارة العدل</li>
+            <li>PDF رقمي فوراً</li>
+            <li>بريد سريع الشارقة اليوم التالي</li>
+            <li>تحديثات واتساب</li>
+          </ul>
+        </div>
+        <div class="pricing-card featured">
+          <h3>سريع</h3>
+          <div class="pricing-price">من 300 درهم</div>
+          <p class="pricing-time">6 ساعات + بريد نفس اليوم</p>
+          <ul class="pricing-features">
+            <li>كل ما في القياسي</li>
+            <li>معالجة ذات أولوية</li>
+            <li>توصيل الشارقة نفس اليوم</li>
+            <li>دعم مواعيد المحاكم</li>
+          </ul>
+        </div>
+        <div class="pricing-card">
+          <h3>VIP Concierge</h3>
+          <div class="pricing-price">من 500 درهم</div>
+          <p class="pricing-time">مسودة ساعة واحدة + بريد عاجل</p>
+          <ul class="pricing-features">
+            <li>كل ما في السريع</li>
+            <li>تعيين فوري</li>
+            <li>مسودة خلال 60 دقيقة</li>
+            <li>إرسال بريد عاجل</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-grid">
+        {faqs.map(faq => (<div class="faq-item"><h3>{faq.q}</h3><p>{faq.a}</p></div>))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section section bg-primary" dir="rtl">
+    <div class="container text-center">
+      <h2>مستعدون للبدء؟</h2>
+      <p>أرسلوا مستنداتكم عبر واتساب من أي مكان في الشارقة. سنؤكد المتطلبات والوقت والتكلفة خلال دقائق.</p>
+      <a href="https://wa.me/971508620217?text=أحتاج%20ترجمة%20في%20الشارقة" class="btn btn--primary btn--lg">
+        <i class="fab fa-whatsapp"></i> تواصلوا معنا
+      </a>
+    </div>
+  </section>
+</BaseLayoutArabic>
+
+<style>
+  .breadcrumb-nav { background: var(--primary-color); padding: 1rem 0; }
+  .breadcrumb-list { display: flex; list-style: none; margin: 0; padding: 0; gap: 0.5rem; font-size: 0.875rem; flex-direction: row-reverse; }
+  .breadcrumb-list li:not(:first-child)::before { content: '/'; margin-left: 0.5rem; color: rgba(255,255,255,0.5); }
+  .breadcrumb-list a { color: rgba(255,255,255,0.8); text-decoration: none; }
+  .breadcrumb-list span { color: white; }
+
+  .page-hero { background: linear-gradient(135deg, var(--primary-color) 0%, #1a3a5c 100%); color: white; padding: 5rem 0; }
+  .hero-badge { display: inline-block; background: var(--accent-color); padding: 0.5rem 1rem; border-radius: 2rem; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; }
+  .page-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
+  .hero-lead { font-size: 1.125rem; line-height: 1.8; max-width: 800px; opacity: 0.95; margin-bottom: 2rem; }
+  .hero-lead a { color: var(--accent-color); text-decoration: none; }
+
+  .section { padding: 4rem 0; }
+  .section h2 { font-size: 2rem; margin-bottom: 2rem; color: var(--primary-color); }
+
+  .benefits-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .benefit-card { background: var(--bg-light); padding: 2rem; border-radius: 12px; text-align: center; }
+  .benefit-card i { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem; }
+  .benefit-card h3 { font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--primary-color); }
+  .benefit-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+  .needs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .need-card { background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 12px; padding: 1.5rem; }
+  .need-card h3 { font-size: 1.1rem; margin-bottom: 1rem; color: var(--primary-color); display: flex; align-items: center; gap: 0.5rem; }
+  .need-card h3 i { color: var(--accent-color); }
+  .need-card ul { list-style: none; padding: 0; margin: 0.5rem 0 1rem; }
+  .need-card li { padding: 0.35rem 0; padding-right: 1.25rem; position: relative; font-size: 0.9rem; }
+  .need-card li::before { content: '←'; position: absolute; right: 0; color: var(--accent-color); }
+  .need-card p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
+  .need-card a { color: var(--accent-color); text-decoration: none; }
+
+  .content-prose { max-width: 800px; }
+  .content-prose h3 { font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--primary-color); }
+  .content-prose h3:first-child { margin-top: 0; }
+  .content-prose p { line-height: 1.8; margin-bottom: 1.25rem; }
+  .content-prose a { color: var(--accent-color); text-decoration: none; }
+
+  .freezone-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .freezone-card { background: #fff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+  .freezone-card h3 { font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--primary-color); }
+  .freezone-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+  .delivery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .delivery-area { background: var(--bg-light); padding: 1.5rem; border-radius: 12px; }
+  .delivery-area h3 { font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--primary-color); }
+  .delivery-area p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .pricing-card { background: #fff; border-radius: 1rem; padding: 2rem; text-align: center; border: 1px solid rgba(0,0,0,0.05); }
+  .pricing-card.featured { border-color: var(--accent-color); box-shadow: 0 8px 30px rgba(255,22,84,0.15); }
+  .pricing-card h3 { margin: 0 0 0.5rem; font-size: 1.25rem; }
+  .pricing-price { font-size: 2rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.25rem; }
+  .pricing-time { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .pricing-features { list-style: none; padding: 0; margin: 0; text-align: right; }
+  .pricing-features li { padding: 0.5rem 1.5rem 0.5rem 0; position: relative; font-size: 0.95rem; border-bottom: 1px solid rgba(0,0,0,0.05); }
+  .pricing-features li::before { content: '✓'; position: absolute; right: 0; color: var(--accent-color); font-weight: 700; }
+
+  .faq-grid { display: grid; gap: 1.5rem; }
+  .faq-item { background: var(--bg-light); padding: 2rem; border-radius: 1rem; }
+  .faq-item h3 { font-size: 1.1rem; margin-bottom: 1rem; color: var(--primary-color); }
+  .faq-item p { line-height: 1.7; color: var(--text-muted); margin: 0; }
+
+  .cta-section { text-align: center; }
+  .cta-section h2 { color: white; margin-bottom: 1rem; }
+  .cta-section p { color: rgba(255,255,255,0.9); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+  .bg-primary { background: var(--primary-color); }
+  .bg-light { background: var(--bg-light, #f8f9fa); }
+  .text-center { text-align: center; }
+
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; }
+  .btn--primary { background: var(--accent-color); color: white; }
+  .btn--lg { padding: 1.125rem 2.25rem; }
+
+  @media (max-width: 991px) {
+    .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+    .needs-grid, .freezone-grid, .delivery-grid, .pricing-grid { grid-template-columns: 1fr; }
+  }
+</style>

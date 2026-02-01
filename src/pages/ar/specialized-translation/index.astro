@@ -1,0 +1,355 @@
+---
+/**
+ * Specialized Translation Hub - Arabic Version
+ * URL: /ar/specialized-translation/
+ */
+import BaseLayoutArabic from '../../../layouts/BaseLayoutArabic.astro';
+
+const services = [
+  {
+    title: 'الترجمة الطبية',
+    href: '/ar/specialized/medical/',
+    icon: 'heartbeat',
+    desc: 'التقارير الطبية وسجلات المرضى والوثائق السريرية. مترجمون بخلفيات طبية لهيئة الصحة بدبي.',
+    featured: true
+  },
+  {
+    title: 'الترجمة التقنية',
+    href: '/ar/specialized/technical/',
+    icon: 'cogs',
+    desc: 'أدلة المستخدم والمواصفات الهندسية ووثائق السلامة. دقة تقنية للتصنيع والبناء.',
+    featured: false
+  },
+  {
+    title: 'ترجمة الضيافة',
+    href: '/ar/specialized/hospitality/',
+    icon: 'utensils',
+    desc: 'قوائم الطعام ومحتوى الفنادق والسياحة. تكييف ثقافي يتناسب مع جمهوركم.',
+    featured: false
+  },
+  {
+    title: 'توطين المواقع',
+    href: '/ar/specialized/digital/',
+    icon: 'globe',
+    desc: 'محتوى المواقع والتطبيقات والتسويق الرقمي. ترجمات مُحسّنة لمحركات البحث للأسواق العربية.',
+    featured: false
+  }
+];
+
+const industries = [
+  { icon: 'heartbeat', title: 'الرعاية الصحية', desc: 'المستشفيات والعيادات والصيدلة', href: '/ar/specialized/medical/' },
+  { icon: 'hard-hat', title: 'البناء', desc: 'المقاولون والهندسة', href: '/ar/specialized/technical/' },
+  { icon: 'oil-can', title: 'النفط والغاز', desc: 'شركات الطاقة والعمليات البحرية', href: '/ar/specialized/technical/' },
+  { icon: 'plane', title: 'الطيران', desc: 'الخطوط الجوية ووثائق الصيانة', href: '/ar/specialized/technical/' },
+  { icon: 'hotel', title: 'الضيافة', desc: 'الفنادق والمطاعم والسياحة', href: '/ar/specialized/hospitality/' },
+  { icon: 'laptop-code', title: 'التكنولوجيا', desc: 'البرمجيات وتوطين المواقع', href: '/ar/specialized/digital/' },
+  { icon: 'shopping-cart', title: 'التجارة الإلكترونية', desc: 'المتاجر الإلكترونية والعلامات التجارية', href: '/ar/specialized/digital/' },
+  { icon: 'university', title: 'المالية', desc: 'البنوك والاستثمار والتقارير المالية', href: '/ar/legal-translation-dubai/' }
+];
+---
+
+<BaseLayoutArabic
+  title="الترجمة المتخصصة دبي | طبية وتقنية"
+  description="خدمات الترجمة المتخصصة في دبي. التقارير الطبية والأدلة التقنية وقوائم الضيافة وتوطين المواقع. خبراء في كل مجال."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "خدمات الترجمة المتخصصة دبي",
+      "description": "خدمات ترجمة متخصصة حسب القطاع تشمل الترجمة الطبية والتقنية والضيافة والرقمية",
+      "provider": {
+        "@type": "Organization",
+        "name": "OnlineTranslation.ae"
+      },
+      "areaServed": ["دبي", "أبوظبي", "الشارقة", "الإمارات"],
+      "serviceType": ["الترجمة الطبية", "الترجمة التقنية", "ترجمة الضيافة", "توطين المواقع"]
+    })} />
+  </Fragment>
+
+  <nav class="breadcrumb-nav" aria-label="التنقل">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li><a href="/ar/">الرئيسية</a></li>
+        <li><span aria-current="page">الترجمة المتخصصة</span></li>
+      </ol>
+    </div>
+  </nav>
+
+  <section class="page-hero" dir="rtl">
+    <div class="container">
+      <span class="hero-badge">خبراء في كل مجال</span>
+      <h1>خدمات الترجمة المتخصصة في دبي</h1>
+      <p class="hero-lead">الترجمة العامة تفشل مع المحتوى المتخصص. اللغة الخاصة بكل صناعة تتطلب مترجمين ذوي خبرة موضوعية. نوفر خبراء في الطب والهندسة والضيافة والتقنية لضمان دقة المصطلحات.</p>
+
+      <div class="hero-mosaic">
+        <a href="/ar/specialized/medical/" class="mosaic-tile">
+          <span class="mosaic-icon"><i class="fas fa-heartbeat"></i></span>
+          <span class="mosaic-label">الترجمة الطبية</span>
+          <span class="mosaic-desc">تقارير هيئة الصحة</span>
+        </a>
+        <a href="/ar/specialized/technical/" class="mosaic-tile">
+          <span class="mosaic-icon"><i class="fas fa-cogs"></i></span>
+          <span class="mosaic-label">التقنية</span>
+          <span class="mosaic-desc">أدلة ومواصفات</span>
+        </a>
+        <a href="/ar/specialized/hospitality/" class="mosaic-tile">
+          <span class="mosaic-icon"><i class="fas fa-utensils"></i></span>
+          <span class="mosaic-label">الضيافة</span>
+          <span class="mosaic-desc">قوائم وسياحة</span>
+        </a>
+        <a href="/ar/specialized/digital/" class="mosaic-tile">
+          <span class="mosaic-icon"><i class="fas fa-globe"></i></span>
+          <span class="mosaic-label">الرقمية</span>
+          <span class="mosaic-desc">مواقع وتطبيقات</span>
+        </a>
+      </div>
+
+      <div class="hero-actions">
+        <a href="https://wa.me/971508620217?text=أحتاج%20ترجمة%20متخصصة" class="btn btn--primary">
+          <i class="fab fa-whatsapp"></i> ناقش مشروعك
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="section bg-white" dir="rtl">
+    <div class="container">
+      <div class="section-header">
+        <h2>فئات الترجمة المتخصصة</h2>
+        <p>اختاروا مجالكم للحصول على حلول ترجمة مُخصصة.</p>
+      </div>
+
+      <div class="service-grid">
+        {services.map(service => (
+          <a href={service.href} class={`service-card ${service.featured ? 'featured' : ''}`}>
+            {service.featured && <div class="service-badge">الأكثر طلباً</div>}
+            <div class="service-icon"><i class={`fas fa-${service.icon}`}></i></div>
+            <h3>{service.title}</h3>
+            <p>{service.desc}</p>
+            <span class="card-link">← المزيد</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <div class="section-header">
+        <h2>لماذا الترجمة المتخصصة مهمة</h2>
+        <p>الفرق بين الترجمة العامة والمتخصصة.</p>
+      </div>
+
+      <div class="comparison-grid">
+        <div class="comparison-card bad">
+          <div class="comparison-header">
+            <i class="fas fa-times-circle"></i>
+            <h3>الترجمة العامة</h3>
+          </div>
+          <ul>
+            <li>ترجمة حرفية بدون سياق</li>
+            <li>المصطلحات التقنية مفقودة أو خاطئة</li>
+            <li>تجاهل معايير الصناعة</li>
+            <li>مشاكل امتثال محتملة</li>
+            <li>إرباك القارئ وأخطاء</li>
+          </ul>
+        </div>
+
+        <div class="comparison-card good">
+          <div class="comparison-header">
+            <i class="fas fa-check-circle"></i>
+            <h3>الترجمة المتخصصة</h3>
+          </div>
+          <ul>
+            <li>ترجمة واعية بالسياق من خبراء</li>
+            <li>مصطلحات تقنية دقيقة</li>
+            <li>اتباع معايير الصناعة</li>
+            <li>ضمان الامتثال التنظيمي</li>
+            <li>نتائج احترافية موثوقة</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <div class="section-header">
+        <h2>القطاعات التي نخدمها</h2>
+        <p>خبرة عميقة في القطاعات الرئيسية لاقتصاد الإمارات.</p>
+      </div>
+
+      <div class="industry-grid">
+        {industries.map(ind => (
+          <a href={ind.href} class="industry-item">
+            <i class={`fas fa-${ind.icon}`}></i>
+            <h3>{ind.title}</h3>
+            <p>{ind.desc}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <div class="section-header">
+        <h2>عملية الترجمة المتخصصة</h2>
+        <p>سير عمل مضمون الجودة للمشاريع المعقدة.</p>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <h3>تعيين الخبير</h3>
+          <p>يُسند مشروعكم لمترجم ذي خبرة موثقة في مجالكم ونوع وثيقتكم.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <h3>بحث المصطلحات</h3>
+          <p>نجمع قوائم المصطلحات والمراجع الخاصة بالصناعة لضمان الاتساق.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <h3>الترجمة والمراجعة</h3>
+          <p>ترجمة أولية تليها مراجعة خبير للدقة التقنية والجودة اللغوية.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <h3>ضمان الجودة</h3>
+          <p>فحص نهائي يشمل التحقق من المصطلحات ومراجعة التنسيق وفحص الامتثال.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-dark" dir="rtl">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">+50</div>
+          <div class="stat-label">خبير متخصص</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">15</div>
+          <div class="stat-label">قطاع متخصص</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">+10K</div>
+          <div class="stat-label">مشروع تقني</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">99%</div>
+          <div class="stat-label">معدل الدقة</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-primary" dir="rtl">
+    <div class="container cta-section">
+      <h2>لديكم مشروع ترجمة متخصص؟</h2>
+      <p>صِفوا مشروعكم وسنوصلكم بالخبير المناسب. شاركوا وثائقكم والجدول الزمني وأي متطلبات خاصة للحصول على عرض سعر مُخصص.</p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/971508620217?text=لدي%20مشروع%20ترجمة%20متخصص" class="btn btn-accent">
+          <i class="fab fa-whatsapp"></i> ابدأوا مشروعكم
+        </a>
+        <a href="/ar/contact/" class="btn btn-outline">
+          <i class="fas fa-envelope"></i> نموذج التواصل
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayoutArabic>
+
+<style>
+  .breadcrumb-nav { background: var(--primary-color); padding: 1rem 0; }
+  .breadcrumb-list { display: flex; list-style: none; margin: 0; padding: 0; gap: 0.5rem; font-size: 0.875rem; flex-direction: row-reverse; }
+  .breadcrumb-list li:not(:first-child)::before { content: '/'; margin-left: 0.5rem; color: rgba(255,255,255,0.5); }
+  .breadcrumb-list a { color: rgba(255,255,255,0.8); text-decoration: none; }
+  .breadcrumb-list span { color: white; }
+
+  .page-hero { background: linear-gradient(135deg, var(--primary-color) 0%, #1a3a5c 100%); color: white; padding: 5rem 0; }
+  .hero-badge { display: inline-block; background: var(--accent-color); padding: 0.5rem 1rem; border-radius: 2rem; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; }
+  .page-hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem; font-weight: 800; }
+  .hero-lead { font-size: 1.125rem; line-height: 1.8; max-width: 800px; opacity: 0.95; margin-bottom: 2rem; }
+
+  .hero-mosaic { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 2rem 0; padding: 1rem; background: rgba(255,255,255,0.08); border-radius: 12px; }
+  .mosaic-tile { display: flex; flex-direction: column; align-items: center; padding: 1.25rem 0.75rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; text-decoration: none; color: inherit; transition: all 0.25s ease; text-align: center; }
+  .mosaic-tile:hover { background: rgba(255,255,255,0.18); border-color: var(--accent-color); transform: translateY(-3px); }
+  .mosaic-icon { width: 50px; height: 50px; background: var(--accent-color); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem; }
+  .mosaic-icon i { font-size: 1.5rem; color: white; }
+  .mosaic-label { font-weight: 600; font-size: 0.95rem; color: white; margin-bottom: 0.25rem; }
+  .mosaic-desc { font-size: 0.75rem; color: rgba(255,255,255,0.7); }
+
+  .section { padding: 5rem 0; }
+  .section-header { text-align: center; margin-bottom: 3rem; }
+  .section-header h2 { font-size: 2.25rem; margin-bottom: 0.75rem; color: var(--primary-color); }
+  .section-header p { font-size: 1.1rem; color: var(--text-muted); }
+
+  .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  .service-card { background: #fff; border-radius: 16px; padding: 2.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; text-decoration: none; color: inherit; display: block; position: relative; border: 1px solid rgba(0,0,0,0.05); }
+  .service-card:hover { transform: translateY(-5px); box-shadow: 0 12px 35px rgba(0,0,0,0.12); }
+  .service-card.featured { border: 2px solid var(--accent-color); }
+  .service-badge { position: absolute; top: 1rem; left: 1rem; background: var(--accent-color); color: #fff; padding: 0.35rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+  .service-icon { width: 70px; height: 70px; background: linear-gradient(135deg, var(--primary-color), #0a1a30); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
+  .service-icon i { font-size: 1.75rem; color: #fff; }
+  .service-card h3 { font-size: 1.35rem; margin-bottom: 0.75rem; color: var(--primary-color); }
+  .service-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.25rem; }
+  .card-link { color: var(--accent-color); font-weight: 600; font-size: 0.95rem; }
+
+  .comparison-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 900px; margin: 0 auto; }
+  .comparison-card { background: #fff; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 15px rgba(0,0,0,0.05); }
+  .comparison-card.bad { border-top: 4px solid #dc3545; }
+  .comparison-card.good { border-top: 4px solid #28a745; }
+  .comparison-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
+  .comparison-header i { font-size: 1.5rem; }
+  .comparison-card.bad .comparison-header i { color: #dc3545; }
+  .comparison-card.good .comparison-header i { color: #28a745; }
+  .comparison-header h3 { font-size: 1.25rem; color: var(--primary-color); margin: 0; }
+  .comparison-card ul { list-style: none; padding: 0; margin: 0; }
+  .comparison-card li { padding: 0.6rem 0; border-bottom: 1px solid #eee; font-size: 0.95rem; color: var(--text-muted); }
+  .comparison-card li:last-child { border-bottom: none; }
+
+  .industry-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .industry-item { text-align: center; padding: 2rem 1.5rem; background: var(--bg-light); border-radius: 12px; transition: all 0.3s ease; text-decoration: none; color: inherit; }
+  .industry-item:hover { background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transform: translateY(-3px); }
+  .industry-item i { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem; }
+  .industry-item h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--primary-color); }
+  .industry-item p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+
+  .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+  .process-step { text-align: center; padding: 2rem 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 2px 15px rgba(0,0,0,0.05); }
+  .step-number { width: 50px; height: 50px; background: var(--accent-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; color: #fff; font-size: 1.25rem; font-weight: 700; }
+  .process-step h3 { font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--primary-color); }
+  .process-step p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+  .bg-dark { background: var(--primary-color); }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
+  .stat-item { padding: 2rem; }
+  .stat-number { font-size: 3rem; font-weight: 800; color: var(--accent-color); margin-bottom: 0.5rem; }
+  .stat-label { font-size: 1rem; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 0.1em; }
+
+  .bg-primary { background: var(--primary-color); }
+  .bg-primary h2, .bg-primary p { color: #fff; }
+  .cta-section { text-align: center; max-width: 700px; margin: 0 auto; }
+  .cta-section p { opacity: 0.9; margin-bottom: 2rem; font-size: 1.1rem; }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
+  .btn--primary { background: var(--accent-color); color: #fff; }
+  .btn-accent { background: var(--accent-color); color: #fff; }
+  .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.5); }
+
+  @media (max-width: 992px) {
+    .service-grid, .comparison-grid, .process-grid, .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .industry-grid, .hero-mosaic { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .service-grid, .comparison-grid, .industry-grid, .process-grid, .stats-grid, .hero-mosaic { grid-template-columns: 1fr; }
+    .page-hero { padding: 4rem 0; }
+  }
+</style>

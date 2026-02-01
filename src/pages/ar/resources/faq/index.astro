@@ -1,0 +1,428 @@
+---
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    category: "حول خدماتنا",
+    items: [
+      {
+        question: "ماذا تعني الترجمة المعتمدة من وزارة العدل؟",
+        answer: "اعتماد وزارة العدل يعني أن الترجمة أُنجزت وختمها مترجم مرخص من وزارة العدل الإماراتية. هذا الاعتماد مطلوب لقبول المستندات في المحاكم الإماراتية والدوائر الحكومية والعديد من المؤسسات الخاصة."
+      },
+      {
+        question: "كم من الوقت تستغرق ترجمة مستندي؟",
+        answer: "الوقت القياسي لمعظم المستندات ذات الصفحة الواحدة هو نفس اليوم. المستندات المعقدة أو الطويلة عادةً تستغرق 2-3 أيام عمل. الخدمة السريعة متاحة للمتطلبات العاجلة برسوم إضافية. أرسلوا لنا مستندكم وسنوفر جدولاً زمنياً دقيقاً."
+      },
+      {
+        question: "ما اللغات التي تترجمونها؟",
+        answer: "نتخصص في الترجمة من العربية إلى الإنجليزية ومن الإنجليزية إلى العربية. للأزواج اللغوية الأخرى، نعمل مع شبكة من المترجمين المعتمدين. تواصلوا معنا لمناقشة متطلباتكم اللغوية المحددة."
+      },
+      {
+        question: "هل تقدمون خدمات التصديق؟",
+        answer: "نعم، يمكننا ترتيب تصديق وزارة الخارجية وتصديق السفارات والتوثيق الرسمي. نرشدكم خلال العملية الكاملة ونتولى اللوجستيات."
+      }
+    ]
+  },
+  {
+    category: "العملية والتسليم",
+    items: [
+      {
+        question: "كيف أرسل مستنداتي؟",
+        answer: "الطريقة الأسرع عبر الواتساب. ببساطة التقطوا صورة واضحة أو امسحوا مستندكم ضوئياً وأرسلوه إلينا. يمكنكم أيضاً إرسال المستندات بالبريد الإلكتروني كمرفقات PDF. للمستندات الأصلية التي تتطلب جمعاً، يمكننا ترتيب استلام بالبريد السريع."
+      },
+      {
+        question: "هل سأستلم نسخة ورقية؟",
+        answer: "نعم، ستستلمون نسخة رقمية (PDF) والنسخة الأصلية المعتمدة مع ختم وزارة العدل. نوصل في دبي في نفس اليوم وإلى الإمارات الأخرى في اليوم التالي."
+      },
+      {
+        question: "هل يمكنني الاستلام من مكتبكم؟",
+        answer: "نعم، يمكنكم الاستلام من مكتبنا في دبي. يرجى ترتيب وقت الاستلام معنا مسبقاً. ستكون مستنداتكم جاهزة ومختومة للاستلام."
+      }
+    ]
+  },
+  {
+    category: "الأسعار والدفع",
+    items: [
+      {
+        question: "كم تكلفة الترجمة؟",
+        answer: "التسعير يعتمد على نوع المستند وطوله وتعقيده. معظم الشهادات القياسية (الميلاد، الزواج، الشهادات) تُسعر بالصفحة. أرسلوا لنا مستندكم للحصول على عرض سعر دقيق. لا نفرض رسوماً مخفية."
+      },
+      {
+        question: "متى أدفع؟",
+        answer: "الدفع مطلوب مقدماً للطلبات القياسية. نقبل التحويل البنكي وبطاقات الائتمان/الخصم والدفع عند الاستلام داخل دبي. العملاء من الشركات يمكنهم ترتيب شروط حساب."
+      },
+      {
+        question: "هل يوجد خصم لمستندات متعددة؟",
+        answer: "نعم، نقدم خصومات للكميات على المستندات المتعددة المترجمة معاً. ناقشوا متطلباتكم معنا وسنوفر عرض سعر للحزمة."
+      }
+    ]
+  },
+  {
+    category: "الجودة والدقة",
+    items: [
+      {
+        question: "ماذا لو كان هناك خطأ في الترجمة؟",
+        answer: "إذا اكتشفتم خطأً في ترجمتنا، أبلغونا خلال 7 أيام من التسليم. سنراجع ونصحح أخطاء الترجمة الحقيقية دون رسوم إضافية. عملية مراجعة الجودة لدينا تقلل الأخطاء، لكننا نقف وراء عملنا."
+      },
+      {
+        question: "هل سيُقبل مستندي المترجم؟",
+        answer: "ترجماتنا المعتمدة من وزارة العدل مقبولة من المحاكم الإماراتية والدوائر الحكومية وسلطات الهجرة ومعظم المؤسسات الدولية. إذا كانت لديكم متطلبات محددة لجهة معينة، أخبرونا وسنضمن الامتثال."
+      }
+    ]
+  },
+  {
+    category: "متطلبات المستندات",
+    items: [
+      {
+        question: "ما المستندات التي تحتاج ترجمة معتمدة من وزارة العدل؟",
+        answer: "المستندات المقدمة للمحاكم الإماراتية والوزارات والهجرة (GDRFA) ودائرة الأراضي تتطلب اعتماد وزارة العدل. هذا يشمل شهادات الميلاد والزواج والشهادات الأكاديمية والعقود والتوكيلات."
+      },
+      {
+        question: "ما الفرق بين الترجمة المعتمدة والمصدقة؟",
+        answer: "الترجمة المعتمدة من وزارة العدل تحمل ختم مترجم مرخص وهي مطلوبة للأغراض الحكومية. الترجمة المصدقة تحمل توقيع المترجم وقد تكفي للأغراض الخاصة مثل الموارد البشرية في الشركات أو البنوك."
+      },
+      {
+        question: "هل تحتاج مستنداتي تصديق وزارة الخارجية أيضاً؟",
+        answer: "كثير من المستندات الأجنبية تحتاج تصديق وزارة الخارجية بعد الترجمة. هذا يشمل الشهادات الأكاديمية للتوظيف والوثائق الشخصية للإقامة ومستندات الشركات لتأسيس الأعمال. نساعد في تحديد ما إذا كانت مستنداتكم تحتاج تصديقاً إضافياً."
+      }
+    ]
+  }
+];
+
+// Flatten FAQs for schema
+const allFaqs = faqs.flatMap(category => category.items);
+---
+
+<BaseLayoutArabic
+  title="الأسئلة الشائعة | ترجمة قانونية دبي"
+  description="أسئلة شائعة حول الترجمة القانونية في دبي. اعتماد وزارة العدل، المواعيد، الأسعار، وشرح عملية الترجمة."
+>
+  <section class="hero-section bg-dark" data-theme="dark" dir="rtl">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="التنقل">
+        <ol class="breadcrumb-list">
+          <li><a href="/ar/">الرئيسية</a></li>
+          <li class="separator">&lt;</li>
+          <li><a href="/ar/resources/">الموارد</a></li>
+          <li class="separator">&lt;</li>
+          <li class="current">الأسئلة الشائعة</li>
+        </ol>
+      </nav>
+
+      <h1>الأسئلة الشائعة</h1>
+      <p class="hero-subtitle">إجابات على أسئلتكم</p>
+      <p class="hero-intro">إليكم إجابات على الأسئلة التي نتلقاها بشكل متكرر. إذا لم تجدوا ما تبحثون عنه، أرسلوا لنا رسالة وسنسعد بمساعدتكم.</p>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container content-container">
+      {faqs.map(category => (
+        <div class="faq-section">
+          <h2>{category.category}</h2>
+
+          {category.items.map(faq => (
+            <details class="faq-item">
+              <summary class="faq-question">
+                <h3>{faq.question}</h3>
+                <i class="fas fa-chevron-down"></i>
+              </summary>
+              <div class="faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <div class="related-resources">
+        <h2>موارد ذات صلة</h2>
+        <div class="resource-grid">
+          <a href="/ar/resources/pricing-guide/" class="resource-card">
+            <i class="fas fa-coins"></i>
+            <h3>دليل الأسعار</h3>
+            <p>فهم تكاليف الترجمة والعوامل المؤثرة</p>
+          </a>
+
+          <a href="/ar/services/attestation/" class="resource-card">
+            <i class="fas fa-stamp"></i>
+            <h3>دليل التصديق</h3>
+            <p>تصديق وزارة الخارجية والسفارات</p>
+          </a>
+
+          <a href="/ar/resources/document-checklist/" class="resource-card">
+            <i class="fas fa-clipboard-check"></i>
+            <h3>قائمة المستندات</h3>
+            <p>تحضير مستنداتكم للترجمة</p>
+          </a>
+
+          <a href="/ar/legal-translation-dubai/" class="resource-card">
+            <i class="fas fa-balance-scale"></i>
+            <h3>الترجمة القانونية</h3>
+            <p>خدمات معتمدة من وزارة العدل</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container cta-section">
+      <h2>لم تجدوا إجابتكم؟</h2>
+      <p>إذا لم تجدوا الإجابة التي تبحثون عنها، أرسلوا لنا رسالة. نحن هنا للمساعدة.</p>
+      <a href="https://wa.me/971508620217?text=مرحباً، لدي سؤال حول خدمات الترجمة" class="btn btn-primary">
+        <i class="fab fa-whatsapp"></i> اسألوا سؤالكم
+      </a>
+    </div>
+  </section>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": allFaqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  })} />
+</BaseLayoutArabic>
+
+<style>
+  .hero-section {
+    padding: 8rem 0 4rem;
+    background: var(--primary-color);
+  }
+
+  .breadcrumb {
+    font-size: 0.85rem;
+    letter-spacing: 0;
+    margin-bottom: 2rem;
+  }
+
+  .breadcrumb-list {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 0.5rem;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    color: #ffffff;
+  }
+
+  .breadcrumb .separator {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .breadcrumb .current {
+    color: #ffffff;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+    line-height: 1.6;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-intro {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 700px;
+  }
+
+  .content-container {
+    max-width: 800px;
+  }
+
+  .faq-section {
+    margin-bottom: 3rem;
+  }
+
+  .faq-section h2 {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-color);
+    font-size: 1.5rem;
+  }
+
+  .faq-item {
+    margin-bottom: 1rem;
+    background: #f8f9fa;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+  }
+
+  .faq-item:hover {
+    border-color: var(--accent-color);
+  }
+
+  .faq-item[open] {
+    background: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .faq-question i {
+    color: var(--accent-color);
+    transition: transform 0.3s ease;
+    margin-right: 1rem;
+  }
+
+  .faq-item[open] .faq-question i {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.5rem;
+  }
+
+  .faq-answer p {
+    margin: 0;
+    line-height: 1.8;
+    color: var(--text-color);
+  }
+
+  .related-resources h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .resource-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .resource-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    border-color: var(--accent-color);
+  }
+
+  .resource-card i {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .resource-card h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+  }
+
+  .resource-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .cta-section {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .cta-section h2 {
+    margin-bottom: 1rem;
+  }
+
+  .cta-section p {
+    margin-bottom: 2rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary {
+    background: var(--accent-color);
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    background: #e0144c;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .resource-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .resource-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

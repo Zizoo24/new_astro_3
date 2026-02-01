@@ -1,0 +1,328 @@
+---
+/**
+ * Medical Translation - Arabic Version
+ * URL: /ar/specialized/medical/
+ */
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    q: "ما الوثائق الطبية التي تترجمونها؟",
+    a: "نترجم كل أنواع الوثائق الطبية: سجلات المرضى، ملخصات الخروج، تقارير المختبر، تقارير الأشعة، الملاحظات الجراحية، الوصفات الطبية، الشهادات الطبية، مطالبات التأمين، وثائق التجارب السريرية، والأدبيات الصيدلانية. كما نترجم أوراق اعتماد المهنيين الصحيين لترخيص هيئة الصحة بدبي."
+  },
+  {
+    q: "هل مترجموكم لديهم خلفيات طبية؟",
+    a: "نعم. مترجمونا الطبيون يشملون مهنيين صحيين وصيادلة ومتخصصين ذوي تعليم طبي. هذه الخلفية ضرورية - الترجمة الطبية تتطلب فهم السياق وليس فقط المفردات. يجب أن يُدرك المترجم متى يكون للمصطلح معانٍ مختلفة في تخصصات مختلفة."
+  },
+  {
+    q: "كيف تتعاملون مع أسماء الأدوية؟",
+    a: "نستخدم الأسماء الدولية غير المسجلة (INN) إلى جانب الأسماء التجارية عند الاقتضاء. جرعات الأدوية تُحفظ تماماً كما هي مكتوبة مع الترميز العربي المناسب. نُنبه لأي خلط محتمل بين أسماء أدوية متشابهة ونضمن وضوح تعليمات الجرعات."
+  },
+  {
+    q: "هل الترجمات مقبولة لدى هيئة الصحة للترخيص؟",
+    a: "نعم. ترجماتنا المعتمدة من وزارة العدل مقبولة لدى هيئة الصحة بدبي لطلبات ترخيص المهنيين الصحيين. نفهم متطلبات تنسيق الهيئة ونضمن توافق الشهادات وخطابات حسن السيرة وخطابات الخبرة مع معايير التقديم."
+  },
+  {
+    q: "كيف تحمون سرية المرضى؟",
+    a: "وثائق المرضى تُعامل بسرية تامة. نستخدم نقل ملفات آمناً ونقصر الوصول على المترجم المُعيّن. يمكننا توقيع اتفاقيات عدم إفصاح للمواد الحساسة. جميع المعلومات المُعرّفة للمريض محمية وفق معايير خصوصية الرعاية الصحية."
+  },
+  {
+    q: "هل يمكنكم ترجمة السجلات الطبية من أي لغة؟",
+    a: "نعم. نترجم السجلات الطبية من الإنجليزية والهندية والأوردو والتاغالوغ والعربية والفرنسية والألمانية والصينية والروسية والعديد من اللغات الأخرى. المصطلحات الطبية غالباً لها جذور لاتينية يتعرف عليها المترجمون الطبيون ذوو الخبرة عبر اللغات."
+  }
+];
+---
+
+<BaseLayoutArabic
+  title="الترجمة الطبية دبي | متوافقة مع هيئة الصحة"
+  description="الترجمة الطبية في دبي. سجلات المرضى والتقارير الطبية وأوراق اعتماد المهنيين لترخيص هيئة الصحة. مصطلحات دقيقة."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "الترجمة الطبية دبي",
+      "description": "ترجمة طبية متخصصة لسجلات المرضى والتقارير الطبية وأوراق اعتماد المهنيين الصحيين",
+      "provider": {
+        "@type": "Organization",
+        "name": "OnlineTranslation.ae"
+      },
+      "areaServed": ["دبي", "أبوظبي", "الشارقة", "الإمارات"],
+      "serviceType": "الترجمة الطبية"
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a
+        }
+      }))
+    })} />
+  </Fragment>
+
+  <nav class="breadcrumb-nav" aria-label="التنقل">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li><a href="/ar/">الرئيسية</a></li>
+        <li><a href="/ar/specialized-translation/">الترجمة المتخصصة</a></li>
+        <li><span aria-current="page">الترجمة الطبية</span></li>
+      </ol>
+    </div>
+  </nav>
+
+  <section class="page-hero" dir="rtl">
+    <div class="container">
+      <span class="hero-badge">الرعاية الصحية والوثائق السريرية</span>
+      <h1>الترجمة الطبية في دبي</h1>
+      <p class="hero-lead">الترجمة الطبية في الإمارات تحمل مسؤولية سريرية. كل سجل مريض وتقرير تشخيصي ووصفة نترجمها لتقديمات هيئة الصحة بدبي ودائرة الصحة بأبوظبي ووزارة الصحة يجب أن تحافظ على المصطلحات الطبية الدقيقة. مترجمونا ذوو الخلفيات الطبية يضمنون تواصل وثائقكم بالدقة التي تتطلبها سلامة المرضى.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/971508620217?text=أحتاج%20ترجمة%20طبية" class="btn btn--primary">
+          <i class="fab fa-whatsapp"></i> أرسل الوثيقة الطبية
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <h2>الوثائق الطبية التي نترجمها</h2>
+
+      <div class="doc-grid">
+        <div class="doc-card">
+          <i class="fas fa-file-medical"></i>
+          <h3>سجلات المرضى</h3>
+          <p>التاريخ الطبي الكامل وملخصات الخروج وملاحظات الاستشارة وسجلات العلاج. ضرورية لاستمرارية الرعاية عند انتقال المرضى بين الأنظمة الصحية.</p>
+        </div>
+        <div class="doc-card">
+          <i class="fas fa-vial"></i>
+          <h3>التقارير التشخيصية</h3>
+          <p>نتائج المختبر وتقارير علم الأمراض وتفسيرات الأشعة ونتائج التصوير التشخيصي. المصطلحات الدقيقة تضمن الفهم السريري الصحيح.</p>
+        </div>
+        <div class="doc-card">
+          <i class="fas fa-prescription"></i>
+          <h3>الوصفات والأدوية</h3>
+          <p>ترجمة الوصفات مع أسماء الأدوية والجرعات والتكرار وتعليمات الإعطاء. دقة حرجة لسلامة المرضى.</p>
+        </div>
+        <div class="doc-card">
+          <i class="fas fa-user-md"></i>
+          <h3>أوراق الاعتماد الصحية</h3>
+          <p>الشهادات الطبية وشهادات التخصص وشهادات حسن السيرة وخطابات الخبرة لطلبات ترخيص هيئة الصحة ودائرة الصحة ووزارة الصحة.</p>
+        </div>
+        <div class="doc-card">
+          <i class="fas fa-file-invoice-dollar"></i>
+          <h3>التأمين والقانونية</h3>
+          <p>مطالبات التأمين الطبي والتقارير الطبية القانونية وآراء الخبراء ووثائق التقاضي الصحي.</p>
+        </div>
+        <div class="doc-card">
+          <i class="fas fa-flask"></i>
+          <h3>الصيدلانية والسريرية</h3>
+          <p>وثائق التجارب السريرية ونشرات معلومات الأدوية والبحوث الصيدلانية والتقديمات التنظيمية.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <h2>ما تحتاجون معرفته عن الترجمة الطبية</h2>
+
+      <div class="content-prose">
+        <h3>السؤال الحقيقي: هل سيفهم الطبيب هذا؟</h3>
+        <p>الترجمة الطبية ليست تحويل الكلمات من لغة لأخرى. إنها ضمان قدرة طبيب في دبي على قراءة سجل مريض من الهند أو باكستان أو الفلبين واتخاذ قرارات سريرية صحيحة. اسم دواء واحد أو جرعة خاطئة يمكن أن تكون خطيرة. نتيجة فحص غير واضحة يمكن أن تؤدي لعلاج خاطئ.</p>
+
+        <p>لهذا نستخدم فقط مترجمين بخلفيات طبية. هم يفهمون السياق. يعرفون أن زراعة الدم "السلبية" خبر جيد. يُدركون متى يكون للمصطلح معانٍ مختلفة في تخصصات مختلفة.</p>
+
+        <h3>متطلبات ترخيص هيئة الصحة ودائرة الصحة ووزارة الصحة</h3>
+        <p>المهنيون الصحيون المنتقلون للإمارات يحتاجون ترجمة أوراق اعتمادهم لطلبات الترخيص:</p>
+
+        <div class="comparison-box">
+          <div class="comparison-col">
+            <h4>الوثائق المطلوبة</h4>
+            <ul>
+              <li>الشهادة الطبية والكشوف الدراسية</li>
+              <li>شهادات التخصص</li>
+              <li>شهادة حسن السيرة</li>
+              <li>خطابات الخبرة</li>
+              <li>إتمام التدريب</li>
+              <li>شهادات البورد</li>
+            </ul>
+          </div>
+          <div class="comparison-col">
+            <h4>متطلبات الجهات</h4>
+            <ul>
+              <li>DHA: هيئة الصحة بدبي</li>
+              <li>DOH: دائرة الصحة (أبوظبي)</li>
+              <li>MOH: وزارة الصحة (اتحادية)</li>
+              <li>التحقق من HAAD لبعض الجنسيات</li>
+              <li>قد يُطلب التحقق من DataFlow</li>
+              <li>الترجمة العربية إلزامية</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>أسماء الأدوية والجرعات: عدم تسامح مع الأخطاء</h3>
+
+        <div class="process-breakdown">
+          <h4>الأسماء العامة مقابل التجارية</h4>
+          <p>نستخدم الأسماء الدولية غير المسجلة (INN) إلى جانب الأسماء التجارية. دواء معروف بـ"Panadol" في دولة قد يكون "Tylenol" في أخرى - لكن كلاهما باراسيتامول/أسيتامينوفين.</p>
+
+          <h4>دقة الجرعات</h4>
+          <p>100 ملغ ليست نفسها 100 ميكروغرام. نحافظ على ترميز الجرعة بالضبط ونُنبه لأي غموض محتمل. العلامات العشرية والأصفار تُحفظ تماماً.</p>
+
+          <h4>طرق الإعطاء</h4>
+          <p>IV، IM، PO، SC - هذه الاختصارات لها مقابلات عربية محددة. سوء فهم طريقة الإعطاء يمكن أن يكون خطيراً.</p>
+        </div>
+
+        <h3>التخصصات التي نتعامل معها</h3>
+        <p>الترجمة الطبية تختلف حسب التخصص. مصطلحات أمراض القلب تختلف عن الأورام. وثائق الأطفال لها اعتبارات فريدة. مترجمونا يُعيّنون حسب تطابق التخصص:</p>
+
+        <ul class="content-list">
+          <li><strong>أمراض القلب:</strong> تقارير ECG والإيكو والقسطرة القلبية</li>
+          <li><strong>الأورام:</strong> علم الأمراض والمراحل وبروتوكولات الكيميائي</li>
+          <li><strong>العظام:</strong> تقارير التصوير والملاحظات الجراحية وخطط التأهيل</li>
+          <li><strong>التوليد:</strong> سجلات ما قبل الولادة وملخصات الولادة وتقارير الموجات فوق الصوتية</li>
+          <li><strong>الطب النفسي:</strong> التقييمات وملاحظات العلاج (تُعامل بسرية إضافية)</li>
+          <li><strong>الأشعة:</strong> تقارير CT وMRI والأشعة السينية بدقة تشريحية</li>
+        </ul>
+
+        <h3>معايير السرية</h3>
+        <p>السجلات الطبية تحتوي معلومات صحية شخصية حساسة. إجراءات السرية لدينا تشمل:</p>
+
+        <ul class="content-list">
+          <li>نقل ملفات آمن (مشفر)</li>
+          <li>الوصول مقصور على المترجم المُعيّن</li>
+          <li>اتفاقية عدم إفصاح متاحة عند الطلب</li>
+          <li>عدم الاحتفاظ ببيانات تُعرّف المريض بعد التسليم</li>
+          <li>ممارسات تعامل متوافقة مع HIPAA</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <h2>الجدول الزمني الواقعي</h2>
+
+      <div class="timeline-grid">
+        <div class="timeline-card">
+          <div class="timeline-time">6-12 ساعة</div>
+          <h3>التقارير الطبية العادية</h3>
+          <p>2-5 صفحات، التقارير التشخيصية والملخصات</p>
+        </div>
+        <div class="timeline-card">
+          <div class="timeline-time">24-48 ساعة</div>
+          <h3>ملفات المرضى الكاملة</h3>
+          <p>تقارير متعددة، التاريخ الطبي الشامل</p>
+        </div>
+        <div class="timeline-card">
+          <div class="timeline-time">2-3 أيام</div>
+          <h3>حزمة أوراق الاعتماد</h3>
+          <p>الشهادة والتخصصات وحسن السيرة والخبرة</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-grid">
+        {faqs.map(faq => (
+          <div class="faq-item">
+            <h3>{faq.q}</h3>
+            <p>{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-primary" dir="rtl">
+    <div class="container cta-section">
+      <h2>تحتاجون ترجمة طبية؟</h2>
+      <p>أرسلوا وثيقتكم الطبية عبر واتساب للتعامل السري والترجمة المتخصصة.</p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/971508620217?text=أحتاج%20ترجمة%20طبية" class="btn btn-accent">
+          <i class="fab fa-whatsapp"></i> أرسل الوثيقة
+        </a>
+        <a href="/ar/specialized-translation/" class="btn btn-outline">
+          <i class="fas fa-arrow-right"></i> الترجمة المتخصصة
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayoutArabic>
+
+<style>
+  .breadcrumb-nav { background: var(--primary-color); padding: 1rem 0; }
+  .breadcrumb-list { display: flex; list-style: none; margin: 0; padding: 0; gap: 0.5rem; font-size: 0.875rem; flex-direction: row-reverse; }
+  .breadcrumb-list li:not(:first-child)::before { content: '/'; margin-left: 0.5rem; color: rgba(255,255,255,0.5); }
+  .breadcrumb-list a { color: rgba(255,255,255,0.8); text-decoration: none; }
+  .breadcrumb-list span { color: white; }
+
+  .page-hero { background: linear-gradient(135deg, var(--primary-color) 0%, #1a3a5c 100%); color: white; padding: 5rem 0; }
+  .hero-badge { display: inline-block; background: var(--accent-color); padding: 0.5rem 1rem; border-radius: 2rem; font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; }
+  .page-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
+  .hero-lead { font-size: 1.125rem; line-height: 1.8; max-width: 800px; opacity: 0.95; margin-bottom: 2rem; }
+
+  .section { padding: 4rem 0; }
+  .section h2 { font-size: 2rem; margin-bottom: 2rem; color: var(--primary-color); }
+
+  .doc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .doc-card { background: var(--bg-light); padding: 2rem; border-radius: 12px; }
+  .doc-card i { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem; }
+  .doc-card h3 { font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--primary-color); }
+  .doc-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+  .content-prose { max-width: 900px; }
+  .content-prose h3 { font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--primary-color); }
+  .content-prose h3:first-child { margin-top: 0; }
+  .content-prose p { line-height: 1.8; margin-bottom: 1.25rem; }
+  .content-list { margin: 1rem 0 1.5rem; padding-right: 1.25rem; }
+  .content-list li { margin-bottom: 0.5rem; line-height: 1.7; }
+
+  .comparison-box { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin: 2rem 0; }
+  .comparison-col { background: #ffffff; border-radius: 1rem; padding: 1.5rem; border: 1px solid rgba(0,0,0,0.08); }
+  .comparison-col h4 { margin: 0 0 1rem; font-size: 1.1rem; color: var(--primary-color); border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem; }
+  .comparison-col ul { margin: 0; padding-right: 1.25rem; }
+  .comparison-col li { margin-bottom: 0.5rem; line-height: 1.5; }
+
+  .process-breakdown { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 1rem; padding: 1.5rem; margin: 2rem 0; border-right: 4px solid var(--primary-color); }
+  .process-breakdown h4 { margin: 0 0 0.75rem; font-size: 1rem; color: var(--primary-color); }
+  .process-breakdown h4:not(:first-child) { margin-top: 1.5rem; }
+  .process-breakdown p { margin: 0; line-height: 1.6; }
+
+  .timeline-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .timeline-card { background: var(--bg-light); padding: 2rem; border-radius: 12px; text-align: center; }
+  .timeline-time { font-size: 1.5rem; font-weight: 700; color: var(--accent-color); margin-bottom: 0.5rem; }
+  .timeline-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--primary-color); }
+  .timeline-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
+
+  .faq-grid { display: grid; gap: 1.5rem; }
+  .faq-item { background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+  .faq-item h3 { font-size: 1.1rem; margin-bottom: 1rem; color: var(--primary-color); }
+  .faq-item p { line-height: 1.7; color: var(--text-muted); margin: 0; }
+
+  .bg-primary { background: var(--primary-color); }
+  .bg-primary h2, .bg-primary p { color: #fff; }
+  .cta-section { text-align: center; max-width: 700px; margin: 0 auto; }
+  .cta-section p { opacity: 0.9; margin-bottom: 2rem; font-size: 1.1rem; }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; text-decoration: none; }
+  .btn--primary { background: var(--accent-color); color: #fff; }
+  .btn-accent { background: var(--accent-color); color: #fff; }
+  .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.5); }
+
+  @media (max-width: 992px) {
+    .doc-grid, .timeline-grid { grid-template-columns: repeat(2, 1fr); }
+    .comparison-box { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .doc-grid, .timeline-grid { grid-template-columns: 1fr; }
+    .page-hero { padding: 3rem 0; }
+  }
+</style>
