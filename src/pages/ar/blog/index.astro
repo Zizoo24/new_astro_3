@@ -1,0 +1,581 @@
+---
+/**
+ * /ar/blog/ - Arabic Blog Index Page
+ * Static blog landing page with Arabic content
+ */
+import BaseLayoutArabic from '../../../layouts/BaseLayoutArabic.astro';
+
+// Category config
+const categories = [
+  { key: 'legal-translation', label: 'الترجمة القانونية', color: 'var(--surface-navy, #0E2B48)' },
+  { key: 'personal-documents', label: 'المستندات الشخصية', color: 'var(--state-info, #2563EB)' },
+  { key: 'attestation', label: 'التصديق', color: '#7C3AED' },
+  { key: 'golden-visa', label: 'الفيزا الذهبية', color: 'var(--accent-gold, #D4AF37)' },
+  { key: 'corporate', label: 'الشركات', color: 'var(--state-success-vivid, #059669)' },
+  { key: 'how-to-guides', label: 'أدلة إرشادية', color: '#EA580C' }
+];
+
+// Blog posts data (Arabic versions of key posts)
+const posts = [
+  {
+    slug: 'court-document-translation-dubai',
+    title: "ترجمة مستندات المحاكم في دبي: ما يُقبل وما يُرفض",
+    excerpt: "دليل شامل لترجمة مستندات المحاكم في دبي. تعرفوا على متطلبات محاكم دبي وDIFC وADGM، وأسباب الرفض الشائعة، وكيفية تجنب التأخير.",
+    date: '2026-01-30',
+    category: 'legal-translation',
+    categoryLabel: 'مستندات المحاكم',
+    readTime: '9 دقائق قراءة',
+    featured: true,
+    englishUrl: '/blog/court-document-translation-dubai/'
+  },
+  {
+    slug: 'legal-translation-dubai-moj-guide',
+    title: "الترجمة القانونية في دبي: دليل متطلبات وزارة العدل الكامل",
+    excerpt: "كل ما تحتاجون معرفته عن الترجمة القانونية المعتمدة من وزارة العدل في دبي. المتطلبات، التكاليف، المواعيد، وكيفية تجنب أخطاء الرفض الشائعة.",
+    date: '2026-01-30',
+    category: 'legal-translation',
+    categoryLabel: 'الترجمة القانونية',
+    readTime: '10 دقائق قراءة',
+    englishUrl: '/blog/legal-translation-dubai-moj-guide/'
+  },
+  {
+    slug: 'marriage-certificate-translation-dubai',
+    title: "ترجمة عقد الزواج لتأشيرة الإمارات: دليل GDRFA الكامل",
+    excerpt: "دليل خطوة بخطوة لترجمة عقد الزواج لتأشيرة الزوج في دبي. متطلبات GDRFA، عملية التصديق، وأسباب الرفض الشائعة.",
+    date: '2026-01-30',
+    category: 'personal-documents',
+    categoryLabel: 'مستندات التأشيرة',
+    readTime: '10 دقائق قراءة',
+    englishUrl: '/blog/marriage-certificate-translation-dubai/'
+  },
+  {
+    slug: 'uae-attestation-process-guide',
+    title: "عملية التصديق في الإمارات 2026: السفارة vs وزارة الخارجية vs الأبوستيل",
+    excerpt: "دليل شامل لتصديق المستندات في الإمارات. السفارة مقابل وزارة الخارجية مقابل الأبوستيل، والمتطلبات حسب الدولة، والأخطاء الشائعة.",
+    date: '2026-01-30',
+    category: 'attestation',
+    categoryLabel: 'التصديق',
+    readTime: '12 دقيقة قراءة',
+    englishUrl: '/blog/uae-attestation-process-guide/'
+  },
+  {
+    slug: 'degree-certificate-translation-dubai',
+    title: "ترجمة الشهادات الجامعية لتصديق الإمارات",
+    excerpt: "ترجمة قانونية معتمدة من وزارة العدل للشهادات الجامعية في دبي. الخطوة الأولى الحاسمة قبل التصديق. تعلموا لماذا الترجمة الصحيحة تمنع الرفض والتأخير المكلف.",
+    date: '2024-12-26',
+    category: 'how-to-guides',
+    categoryLabel: 'دليل إرشادي',
+    readTime: '15 دقيقة قراءة',
+    englishUrl: '/blog/degree-certificate-translation-dubai/'
+  },
+  {
+    slug: 'authenticated-translation-moj-vs-certified',
+    title: "الترجمة المعتمدة في دبي: وزارة العدل vs المصدقة — ما تحتاجونه فعلاً",
+    excerpt: "محتارون بين الترجمة القانونية أو المصدقة أو الرسمية في الإمارات؟ تعرفوا على الفرق بين ترجمة وزارة العدل والترجمة المصدقة، ومتى تحتاجون كل منهما.",
+    date: '2024-12-26',
+    category: 'how-to-guides',
+    categoryLabel: 'دليل إرشادي',
+    readTime: '6 دقائق قراءة',
+    englishUrl: '/blog/authenticated-translation-moj-vs-certified/'
+  }
+];
+---
+
+<BaseLayoutArabic
+  title="المدونة | رؤى وأدلة الترجمة في دبي"
+  description="رؤى الخبراء حول الترجمة القانونية والتصديق ومتطلبات الفيزا الذهبية في الإمارات. أدلة من متخصصي دبي المعتمدين."
+>
+  <!-- Hero Section -->
+  <section class="blog-hero" dir="rtl">
+    <div class="container">
+      <h1>رؤى وأدلة الترجمة</h1>
+      <p class="hero-subtitle">معرفة متخصصة حول الترجمة القانونية وعمليات التصديق ومتطلبات المستندات في الإمارات</p>
+    </div>
+  </section>
+
+  <!-- Category Filter -->
+  <section class="category-filter" dir="rtl">
+    <div class="container">
+      <div class="filter-scroll">
+        <a href="/ar/blog/" class="filter-btn active" title="عرض جميع المقالات">الكل</a>
+        {categories.map(cat => (
+          <span class="filter-btn" style={`--cat-color: ${cat.color}`}>
+            {cat.label}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Posts Grid -->
+  <section class="posts-section" dir="rtl">
+    <div class="container">
+      {posts.length > 0 ? (
+        <div class="posts-grid">
+          {posts.map(post => (
+            <a href={post.englishUrl} class={`post-card ${post.featured ? 'featured' : ''}`} title={post.title}>
+              <div class="post-card-content">
+                <div class="post-meta">
+                  <span class="category-tag" data-category={post.category}>{post.categoryLabel}</span>
+                  <span class="read-time">{post.readTime}</span>
+                  {post.featured && <span class="featured-badge"><i class="fas fa-star"></i> مميز</span>}
+                </div>
+                <h2>{post.title}</h2>
+                <p>{post.excerpt}</p>
+                <div class="post-footer">
+                  <time datetime={post.date}>
+                    {new Date(post.date).toLocaleDateString('ar-AE', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </time>
+                  <span class="read-more"><i class="fas fa-arrow-left"></i> اقرأوا المزيد</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="no-posts">
+          <i class="fas fa-newspaper"></i>
+          <h2>قريباً</h2>
+          <p>نحن نعد رؤى متخصصة وأدلة حول الترجمة القانونية وعمليات التصديق ومتطلبات المستندات في الإمارات. عودوا قريباً.</p>
+          <a href="/ar/" class="btn btn--primary" title="العودة للرئيسية">العودة للرئيسية</a>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Quick Links Section -->
+  <section class="quick-links-section" dir="rtl">
+    <div class="container">
+      <h2>روابط سريعة للخدمات</h2>
+      <div class="quick-links-grid">
+        <a href="/ar/legal-translation-dubai/" class="quick-link">
+          <i class="fas fa-balance-scale"></i>
+          <span>الترجمة القانونية</span>
+        </a>
+        <a href="/ar/services/attestation/" class="quick-link">
+          <i class="fas fa-stamp"></i>
+          <span>خدمات التصديق</span>
+        </a>
+        <a href="/ar/services/golden-visa-translation/" class="quick-link">
+          <i class="fas fa-passport"></i>
+          <span>الفيزا الذهبية</span>
+        </a>
+        <a href="/ar/personal/" class="quick-link">
+          <i class="fas fa-user"></i>
+          <span>المستندات الشخصية</span>
+        </a>
+        <a href="/ar/legal/contracts/" class="quick-link">
+          <i class="fas fa-file-contract"></i>
+          <span>ترجمة العقود</span>
+        </a>
+        <a href="/ar/resources/faq/" class="quick-link">
+          <i class="fas fa-question-circle"></i>
+          <span>الأسئلة الشائعة</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="newsletter-section" dir="rtl">
+    <div class="container">
+      <div class="newsletter-card">
+        <div class="newsletter-content">
+          <h2>ابقوا على اطلاع</h2>
+          <p>احصلوا على إشعارات بالأدلة الجديدة والتغييرات التنظيمية ونصائح الترجمة.</p>
+        </div>
+        <a href="https://wa.me/971508620217?text=أريد الاشتراك في التحديثات" class="btn btn--primary btn--lg" title="احصلوا على التحديثات عبر الواتساب">
+          <i class="fab fa-whatsapp"></i>
+          احصلوا على التحديثات عبر الواتساب
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayoutArabic>
+
+<style>
+  .blog-hero {
+    background: linear-gradient(135deg, var(--primary-color, #0E2B48) 0%, #1a3a5c 100%);
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .blog-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    margin: 0 0 1rem;
+    line-height: 1.6;
+  }
+
+  .hero-subtitle {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .category-filter {
+    background: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .filter-scroll {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    background: var(--bg-light, #f8f9fa);
+    color: var(--text-muted, #5a6a7a);
+    transition: all 0.2s;
+    border: 2px solid transparent;
+  }
+
+  .filter-btn:hover {
+    background: white;
+    border-color: var(--cat-color, var(--primary-color));
+    color: var(--cat-color, var(--primary-color));
+  }
+
+  .filter-btn.active {
+    background: var(--primary-color);
+    color: white;
+  }
+
+  .posts-section {
+    padding: 3rem 0 4rem;
+    background: var(--bg-primary, white);
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .post-card {
+    background: var(--bg-secondary, #f8f9fa);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .post-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .post-card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .category-tag {
+    background: var(--primary-color, #0E2B48);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .category-tag[data-category="attestation"] {
+    background: #7C3AED;
+  }
+
+  .category-tag[data-category="legal-translation"] {
+    background: #0E2B48;
+  }
+
+  .category-tag[data-category="how-to-guides"] {
+    background: #EA580C;
+  }
+
+  .category-tag[data-category="personal-documents"] {
+    background: #2563EB;
+  }
+
+  .read-time {
+    font-size: 0.8rem;
+    color: var(--text-muted, #5a6a7a);
+  }
+
+  .post-card h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary, #1a1a1a);
+    margin: 0 0 0.75rem;
+    line-height: 1.6;
+  }
+
+  .post-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted, #5a6a7a);
+    line-height: 1.8;
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  .post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .post-footer time {
+    font-size: 0.85rem;
+    color: var(--text-muted, #5a6a7a);
+  }
+
+  .read-more {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary-color, #0E2B48);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .read-more i {
+    font-size: 0.7rem;
+    transition: transform 0.2s;
+  }
+
+  .post-card:hover .read-more i {
+    transform: translateX(-4px);
+  }
+
+  .post-card.featured {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, #0E2B48 0%, #1a3a5c 100%);
+    color: white;
+  }
+
+  .post-card.featured h2 {
+    font-size: 1.5rem;
+    color: white;
+  }
+
+  .post-card.featured p {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .post-card.featured .post-footer {
+    border-top-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .post-card.featured .post-footer time {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .post-card.featured .read-more {
+    color: var(--accent-color, #FF1654);
+  }
+
+  .featured-badge {
+    background: #f1c40f;
+    color: #1a1a1a;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .featured-badge i {
+    font-size: 0.6rem;
+  }
+
+  .no-posts {
+    text-align: center;
+    padding: 4rem 0;
+  }
+
+  .no-posts i {
+    font-size: 3rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .no-posts h2 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .no-posts p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+  }
+
+  .quick-links-section {
+    background: var(--bg-light, #f8f9fa);
+    padding: 3rem 0;
+  }
+
+  .quick-links-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .quick-links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .quick-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.5rem 1rem;
+    background: white;
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+  }
+
+  .quick-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border-color: var(--accent-color);
+  }
+
+  .quick-link i {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+  }
+
+  .quick-link span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .newsletter-section {
+    background: var(--primary-color);
+    padding: 3rem 0;
+  }
+
+  .newsletter-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .newsletter-content {
+    color: white;
+  }
+
+  .newsletter-content h2 {
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .newsletter-content p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.8;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .btn--primary {
+    background: var(--accent-color, #FF1654);
+    color: white;
+  }
+
+  .btn--primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn--lg {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .blog-hero {
+      padding: 3rem 0;
+    }
+
+    .posts-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .newsletter-card {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .quick-links-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .quick-links-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

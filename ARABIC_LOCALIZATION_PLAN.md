@@ -399,7 +399,7 @@ function getAlternateUrl(currentPath, targetLang) {
 
 ### Current Status (Updated February 1, 2026)
 
-**Existing Arabic Pages (52 pages):**
+**Existing Arabic Pages (55 pages):**
 
 | Page | URL | Status |
 |------|-----|--------|
@@ -455,6 +455,9 @@ function getAlternateUrl(currentPath, targetLang) {
 | Dubai Business Bay | `/ar/locations/dubai/business-bay/` | ✅ Complete (Feb 1) |
 | Resources Hub | `/ar/resources/` | ✅ Complete (Feb 1) |
 | FAQ | `/ar/resources/faq/` | ✅ Complete (Feb 1) |
+| Pricing Guide | `/ar/resources/pricing-guide/` | ✅ Complete (Feb 1) |
+| Document Checklist | `/ar/resources/document-checklist/` | ✅ Complete (Feb 1) |
+| Blog Hub | `/ar/blog/` | ✅ Complete (Feb 1) |
 
 ### Week 1 Deliverables ✅ COMPLETE
 - [x] navigation-ar.ts created
@@ -511,7 +514,7 @@ function getAlternateUrl(currentPath, targetLang) {
 - [x] Hospitality translation (`/ar/specialized/hospitality/`) ✅ Feb 1
 - [x] Digital translation (`/ar/specialized/digital/`) ✅ Feb 1
 
-### Week 6 Deliverables - IN PROGRESS
+### Week 6 Deliverables ✅ COMPLETE
 - [x] Abu Dhabi location (`/ar/locations/abu-dhabi/`)
 - [x] Dubai location (`/ar/locations/dubai/`)
 - [x] Locations hub (`/ar/locations/`) ✅ Feb 1
@@ -522,9 +525,9 @@ function getAlternateUrl(currentPath, targetLang) {
 - [x] Dubai Business Bay (`/ar/locations/dubai/business-bay/`) ✅ Feb 1
 - [x] Resources hub (`/ar/resources/`) ✅ Feb 1
 - [x] FAQ (`/ar/resources/faq/`) ✅ Feb 1
-- [ ] Pricing guide (`/ar/resources/pricing-guide/`)
-- [ ] Document checklist (`/ar/resources/document-checklist/`)
-- [ ] Blog hub (`/ar/blog/`)
+- [x] Pricing guide (`/ar/resources/pricing-guide/`) ✅ Feb 1
+- [x] Document checklist (`/ar/resources/document-checklist/`) ✅ Feb 1
+- [x] Blog hub (`/ar/blog/`) ✅ Feb 1
 
 ---
 
