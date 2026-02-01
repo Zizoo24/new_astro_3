@@ -399,7 +399,7 @@ function getAlternateUrl(currentPath, targetLang) {
 
 ### Current Status (Updated January 31, 2026)
 
-**Existing Arabic Pages (29 pages):**
+**Existing Arabic Pages (39 pages):**
 
 | Page | URL | Status |
 |------|-----|--------|
@@ -432,6 +432,16 @@ function getAlternateUrl(currentPath, targetLang) {
 | Golden Visa | `/ar/services/golden-visa-translation/` | ✅ Complete (Jan 31) |
 | Abu Dhabi | `/ar/locations/abu-dhabi/` | ✅ Complete |
 | Dubai | `/ar/locations/dubai/` | ✅ Complete |
+| NDA Translation | `/ar/legal/contracts/nda/` | ✅ Complete (Jan 31) |
+| SPA Translation | `/ar/legal/contracts/spa/` | ✅ Complete (Jan 31) |
+| MOU Translation | `/ar/legal/contracts/mou/` | ✅ Complete (Jan 31) |
+| Lease Translation | `/ar/legal/contracts/lease/` | ✅ Complete (Jan 31) |
+| MOA Translation | `/ar/legal/corporate/moa/` | ✅ Complete (Jan 31) |
+| Resolution Translation | `/ar/legal/corporate/resolution/` | ✅ Complete (Jan 31) |
+| Litigation Hub | `/ar/legal/litigation/` | ✅ Complete (Jan 31) |
+| Verdict Translation | `/ar/legal/litigation/verdict/` | ✅ Complete (Jan 31) |
+| Arbitration Translation | `/ar/legal/litigation/arbitration/` | ✅ Complete (Jan 31) |
+| Wills Translation | `/ar/legal/wills/` | ✅ Complete (Jan 31) |
 
 ### Week 1 Deliverables ✅ COMPLETE
 - [x] navigation-ar.ts created
@@ -445,21 +455,21 @@ function getAlternateUrl(currentPath, targetLang) {
 - [x] Contact page Arabic
 - [x] Abu Dhabi landing page
 
-### Week 3 Deliverables - IN PROGRESS
+### Week 3 Deliverables ✅ COMPLETE
 - [x] Legal translation pillar page (`/ar/legal-translation-dubai/`)
 - [x] Contracts hub (`/ar/legal/contracts/`)
-- [ ] NDA translation (`/ar/legal/contracts/nda/`)
-- [ ] SPA translation (`/ar/legal/contracts/spa/`)
-- [ ] MOU translation (`/ar/legal/contracts/mou/`)
-- [ ] Lease translation (`/ar/legal/contracts/lease/`)
+- [x] NDA translation (`/ar/legal/contracts/nda/`) ✅ Jan 31
+- [x] SPA translation (`/ar/legal/contracts/spa/`) ✅ Jan 31
+- [x] MOU translation (`/ar/legal/contracts/mou/`) ✅ Jan 31
+- [x] Lease translation (`/ar/legal/contracts/lease/`) ✅ Jan 31
 - [x] Corporate hub (`/ar/legal/corporate/`) ✅ Jan 31
-- [ ] MOA translation (`/ar/legal/corporate/moa/`)
+- [x] MOA translation (`/ar/legal/corporate/moa/`) ✅ Jan 31
 - [x] POA translation (`/ar/legal/corporate/poa/`) ✅ Jan 31
-- [ ] Resolution translation (`/ar/legal/corporate/resolution/`)
-- [ ] Litigation hub (`/ar/legal/litigation/`)
-- [ ] Verdict translation (`/ar/legal/litigation/verdict/`)
-- [ ] Arbitration translation (`/ar/legal/litigation/arbitration/`)
-- [ ] Wills translation (`/ar/legal/wills/`)
+- [x] Resolution translation (`/ar/legal/corporate/resolution/`) ✅ Jan 31
+- [x] Litigation hub (`/ar/legal/litigation/`) ✅ Jan 31
+- [x] Verdict translation (`/ar/legal/litigation/verdict/`) ✅ Jan 31
+- [x] Arbitration translation (`/ar/legal/litigation/arbitration/`) ✅ Jan 31
+- [x] Wills translation (`/ar/legal/wills/`) ✅ Jan 31
 
 ### Week 4 Deliverables ✅ COMPLETE
 - [x] Personal documents pillar (`/ar/personal/`)
