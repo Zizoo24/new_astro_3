@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import compress from 'astro-compress';
 
 export default defineConfig({
   site: 'https://onlinetranslation.ae',
@@ -101,6 +102,48 @@ export default defineConfig({
         }
         return item;
       }
+    }),
+    // Compress HTML, CSS, JS, images, and SVGs at build time
+    compress({
+      CSS: true,
+      HTML: {
+        'html-minifier-terser': {
+          removeComments: true,
+          collapseWhitespace: true,
+          removeAttributeQuotes: true,
+          minifyCSS: true,
+          minifyJS: true,
+        }
+      },
+      Image: {
+        // Convert images to modern formats
+        sharp: {
+          // WebP settings for lossy compression
+          webp: {
+            quality: 80,
+            effort: 6,
+          },
+          // AVIF for browsers that support it
+          avif: {
+            quality: 65,
+            effort: 6,
+          },
+          // PNG optimization
+          png: {
+            quality: 80,
+            compressionLevel: 9,
+          },
+          // JPEG optimization
+          jpeg: {
+            quality: 80,
+            mozjpeg: true,
+          },
+        },
+      },
+      JavaScript: true,
+      SVG: true,
+      // Log compression results
+      Logger: 1,
     })
   ],
   server: {

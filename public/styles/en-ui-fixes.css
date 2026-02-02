@@ -1,0 +1,495 @@
+/**
+ * English UI/UX Fixes
+ * Visual polish ported from ar-ui-fixes.css
+ * Created: 2026-02-02
+ *
+ * Priority fixes for contrast, accessibility, and visual consistency
+ * Note: RTL-specific rules removed - these are visual enhancements only
+ */
+
+/* ============================================
+   P0: TOP BAR CONTRAST FIX
+   Issue: Gray text on dark background - poor contrast
+   ============================================ */
+.coral-top-bar,
+.top-bar {
+  background: var(--ot-coral, #FF1654) !important;
+}
+
+.coral-top-bar a,
+.coral-top-bar span,
+.coral-top-link,
+.coral-top-hours,
+.top-bar a,
+.top-bar span {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+.coral-top-bar .coral-top-hours {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* ============================================
+   P0: HERO SECONDARY CTA CONTRAST FIX
+   Issue: Blue link on dark background - poor contrast
+   ============================================ */
+.hero-cta-secondary,
+.hero-section .hero-cta-secondary {
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-decoration: underline !important;
+  text-underline-offset: 4px !important;
+}
+
+.hero-cta-secondary:hover {
+  color: #ffffff !important;
+  text-decoration-color: var(--ot-coral, #FF1654) !important;
+}
+
+/* ============================================
+   P0: FORM INPUT CONTRAST & FOCUS STATES
+   Issue: Dark background with light borders - low contrast
+   ============================================ */
+.contact-form input,
+.contact-form textarea,
+.contact-form select,
+.form-group input,
+.form-group textarea {
+  transition: all 0.2s ease !important;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none !important;
+  border-color: var(--ot-coral, #FF1654) !important;
+  box-shadow: 0 0 0 3px rgba(255, 22, 84, 0.2) !important;
+}
+
+/* Dark background form inputs */
+.bg-dark .contact-form input,
+.bg-dark .contact-form textarea,
+.bg-dark .contact-form select,
+.bg-dark .form-group input,
+.bg-dark .form-group textarea,
+.hero-section .contact-form input,
+.hero-section .contact-form textarea {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 2px solid rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+}
+
+.bg-dark .contact-form input::placeholder,
+.bg-dark .contact-form textarea::placeholder,
+.bg-dark .form-group input::placeholder,
+.bg-dark .form-group textarea::placeholder,
+.hero-section .contact-form input::placeholder,
+.hero-section .contact-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.bg-dark .contact-form input:focus,
+.bg-dark .contact-form textarea:focus,
+.bg-dark .form-group input:focus,
+.bg-dark .form-group textarea:focus,
+.hero-section .contact-form input:focus,
+.hero-section .contact-form textarea:focus {
+  background: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Form labels on dark backgrounds */
+.bg-dark .contact-form label,
+.bg-dark .form-group label,
+.hero-section .contact-form label {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Submit button consistent styling */
+.contact-form .submit-btn,
+.contact-form button[type="submit"] {
+  background: var(--ot-coral, #FF1654) !important;
+  color: #ffffff !important;
+  border: none !important;
+  font-weight: 600 !important;
+  padding: 1rem 2rem !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+.contact-form .submit-btn:hover,
+.contact-form button[type="submit"]:hover {
+  background: #e01349 !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Contact buttons below form */
+.contact-buttons {
+  gap: 1rem !important;
+  margin-top: 1.5rem !important;
+}
+
+.contact-buttons .contact-btn {
+  padding: 0.875rem 1.25rem !important;
+  border-radius: 8px !important;
+}
+
+/* ============================================
+   P1: STATISTICS BAR FIX
+   Issue: Pink too vibrant, uneven spacing, poor hierarchy
+   ============================================ */
+.ot-metrics {
+  background: linear-gradient(135deg, #FF1654 0%, #e01349 100%) !important;
+  padding: 2rem 0 !important;
+}
+
+.ot-metrics-inner {
+  display: flex !important;
+  justify-content: space-around !important;
+  align-items: center !important;
+  gap: 2rem !important;
+  flex-wrap: wrap !important;
+}
+
+.ot-metric {
+  text-align: center !important;
+  padding: 0.5rem 1.5rem !important;
+  min-width: 120px !important;
+  position: relative !important;
+}
+
+.ot-metric-value {
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  display: block !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.ot-metric-label {
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  display: block !important;
+}
+
+.ot-metric-note {
+  font-size: 0.75rem !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  display: block !important;
+  margin-top: 0.25rem !important;
+}
+
+/* Add separators between metrics */
+.ot-metric:not(:last-child)::after {
+  content: '' !important;
+  position: absolute !important;
+  right: -1rem !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 1px !important;
+  height: 50% !important;
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* ============================================
+   P1: FAQ ACCORDION STYLING
+   Issue: Thin borders, hard to see icons, poor padding
+   ============================================ */
+.faq-section .faq-list,
+.faq-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1rem !important;
+}
+
+.faq-item {
+  background: var(--bg-secondary, #f8f9fa) !important;
+  border: 2px solid rgba(0, 0, 0, 0.08) !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  transition: all 0.2s ease !important;
+}
+
+.faq-item:hover {
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+.faq-item.is-open,
+.faq-item[open] {
+  border-color: var(--ot-coral, #FF1654) !important;
+  background: #ffffff !important;
+}
+
+.faq-question,
+.faq-item summary {
+  padding: 1.25rem 1.5rem !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  cursor: pointer !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  list-style: none !important;
+}
+
+.faq-question::-webkit-details-marker,
+.faq-item summary::-webkit-details-marker {
+  display: none !important;
+}
+
+/* FAQ chevron icon - more visible */
+.faq-question i,
+.faq-question::after,
+.faq-item summary::after {
+  font-size: 1rem !important;
+  color: var(--ot-coral, #FF1654) !important;
+  transition: transform 0.2s ease !important;
+}
+
+.faq-item.is-open .faq-question i,
+.faq-item[open] summary::after {
+  transform: rotate(180deg) !important;
+}
+
+.faq-answer,
+.faq-item .faq-answer {
+  padding: 0 1.5rem 1.25rem !important;
+  color: var(--text-secondary, #4a5568) !important;
+  line-height: 1.7 !important;
+}
+
+/* ============================================
+   P1: STANDARDIZE BORDER-RADIUS
+   Issue: Inconsistent values (8px, 12px, 16px, 24px)
+   Using consistent 8px for small, 12px for medium, 16px for large
+   ============================================ */
+
+/* Small elements: 8px */
+.tag,
+.badge,
+.service-tag {
+  border-radius: 8px !important;
+}
+
+/* Medium elements: 12px */
+.category-card,
+.service-card,
+.service-card-v2,
+.why-card,
+.specialist-card,
+.faq-item,
+.overlap-card,
+.feature-card {
+  border-radius: 12px !important;
+}
+
+/* Large elements: 16px */
+.section,
+.cta-banner,
+.newsletter-card {
+  border-radius: 16px !important;
+}
+
+/* Buttons: consistent 8px */
+.btn,
+.cta-btn,
+.hero-cta,
+.contact-btn {
+  border-radius: 8px !important;
+}
+
+/* ============================================
+   P2: FEATURE CARDS (Pink Cards) FIX
+   Issue: No hover effects, poor vertical centering
+   ============================================ */
+.overlap-card {
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+.overlap-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+.overlap-card-content {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+/* Icon circles - modernize shadows */
+.overlap-card-icon {
+  box-shadow: 0 4px 12px rgba(255, 22, 84, 0.2) !important;
+}
+
+/* ============================================
+   P2: SERVICE CARDS FIX
+   Issue: Subtle shadows, weak hover feedback
+   ============================================ */
+.service-card-v2 {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+  transition: all 0.3s ease !important;
+}
+
+.service-card-v2:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Card badge - fix pixel issues */
+.service-card-v2 .card-badge {
+  background: rgba(255, 22, 84, 0.1) !important;
+}
+
+.service-card-v2 .card-badge svg {
+  stroke: var(--ot-coral, #FF1654) !important;
+}
+
+/* ============================================
+   P2: TESTIMONIALS CAROUSEL FIX
+   Issue: Excessive padding, small dots, missing quote marks
+   ============================================ */
+.testimonials-section .testimonial-card,
+.testimonial-card {
+  padding: 2rem !important;
+  position: relative !important;
+}
+
+/* Quote mark decoration */
+.testimonial-card::before {
+  content: '"' !important;
+  position: absolute !important;
+  top: 1rem !important;
+  left: 1.5rem !important;
+  font-size: 4rem !important;
+  font-family: Georgia, serif !important;
+  color: rgba(255, 22, 84, 0.15) !important;
+  line-height: 1 !important;
+}
+
+/* Navigation dots */
+.testimonials-section .carousel-dots,
+.testimonial-dots {
+  gap: 0.75rem !important;
+}
+
+.testimonials-section .carousel-dot,
+.testimonial-dot {
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+  background: rgba(0, 0, 0, 0.2) !important;
+  transition: all 0.2s ease !important;
+}
+
+.testimonials-section .carousel-dot.active,
+.testimonial-dot.active {
+  background: var(--ot-coral, #FF1654) !important;
+  transform: scale(1.2) !important;
+}
+
+/* Carousel controls */
+.testimonials-section .carousel-prev,
+.testimonials-section .carousel-next {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  background: rgba(0, 0, 0, 0.05) !important;
+  border: 2px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.testimonials-section .carousel-prev:hover,
+.testimonials-section .carousel-next:hover {
+  background: var(--ot-coral, #FF1654) !important;
+  border-color: var(--ot-coral, #FF1654) !important;
+  color: #ffffff !important;
+}
+
+/* ============================================
+   P3: FOOTER SPACING FIX
+   Issue: Uneven spacing, too tall
+   ============================================ */
+.site-footer {
+  padding: 3rem 0 2rem !important;
+}
+
+.footer-grid {
+  gap: 2rem !important;
+}
+
+.footer-column {
+  margin-bottom: 1.5rem !important;
+}
+
+.footer-column h4 {
+  margin-bottom: 1rem !important;
+  font-size: 1rem !important;
+}
+
+.footer-links {
+  gap: 0.5rem !important;
+}
+
+.footer-links a {
+  padding: 0.25rem 0 !important;
+  font-size: 0.9rem !important;
+}
+
+.footer-bottom {
+  padding-top: 1.5rem !important;
+  margin-top: 1.5rem !important;
+}
+
+.footer-copyright {
+  font-size: 0.85rem !important;
+}
+
+/* ============================================
+   GENERAL: TRANSITION SMOOTHNESS
+   Issue: Missing or too fast transitions
+   ============================================ */
+a,
+button,
+.btn,
+input,
+textarea,
+.card,
+[class*="card"] {
+  transition: all 0.2s ease !important;
+}
+
+/* ============================================
+   GENERAL: SMOOTH SCROLL
+   ============================================ */
+html {
+  scroll-behavior: smooth !important;
+}
+
+/* ============================================
+   RESPONSIVE FIXES
+   ============================================ */
+@media (max-width: 768px) {
+  .ot-metrics-inner {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+  }
+
+  .ot-metric::after {
+    display: none !important;
+  }
+
+  .overlap-cards {
+    flex-direction: column !important;
+  }
+
+  .faq-question,
+  .faq-item summary {
+    padding: 1rem 1.25rem !important;
+    font-size: 0.95rem !important;
+  }
+}
