@@ -193,12 +193,17 @@ const criticalCSS = `*,*::before,*::after{box-sizing:border-box}html{font-size:8
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   </noscript>
   
-  <!-- Font Awesome - Load synchronously (required for header buttons) -->
-  <link 
-    rel="stylesheet" 
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
+  <!-- Font Awesome - Deferred loading for performance (preload already in head) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    media="print"
+    onload="this.media='all'"
     crossorigin="anonymous"
   >
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous">
+  </noscript>
   
   <!-- Main CSS - Deferred loading with media trick -->
   <!-- FOUNDATION - Load async -->
@@ -228,6 +233,7 @@ const criticalCSS = `*,*::before,*::after{box-sizing:border-box}html{font-size:8
   <link rel="stylesheet" href="/styles/dark-mode-tokenized.css" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="/styles/hero-intro-optimized.css" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="/styles/hero-optimization.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/styles/en-ui-fixes.css" media="print" onload="this.media='all'">
 
   <!-- RESPONSIVE LAYOUTS -->
   <link rel="stylesheet" href="/styles/responsive-layouts.css" media="print" onload="this.media='all'">
@@ -257,6 +263,7 @@ const criticalCSS = `*,*::before,*::after{box-sizing:border-box}html{font-size:8
     <link rel="stylesheet" href="/styles/dark-mode-tokenized.css">
     <link rel="stylesheet" href="/styles/hero-intro-optimized.css">
     <link rel="stylesheet" href="/styles/hero-optimization.css">
+    <link rel="stylesheet" href="/styles/en-ui-fixes.css">
     <link rel="stylesheet" href="/styles/responsive-layouts.css">
     <link rel="stylesheet" href="/styles/footer-redesign.css">
     <link rel="stylesheet" href="/styles/faq-accordion.css">

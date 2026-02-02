@@ -3,8 +3,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import TestimonialsCarousel from '../components/TestimonialsCarousel.astro';
 import TrustBar from '../components/TrustBar.astro';
 import { getHomepageServices, servicesGridDefaults } from '../data/servicesGrid';
-import { Image } from 'astro:assets';
+import { Image, type ImageMetadata } from 'astro:assets';
 import heroImageSrc from '../assets/images/hero/office-team.png';
+
+// Import optimized service card images (Astro will convert to WebP/AVIF)
+import tileCourts from '../assets/images/services/tile-courts.png';
+import tileImmigration from '../assets/images/services/tile-immigration.png';
+import tileCorporate from '../assets/images/services/tile-corporate.png';
+import services4 from '../assets/images/services/services-4.jpg';
+import services5 from '../assets/images/services/services-5.jpg';
+import palmJumeirah from '../assets/images/services/palm-jumeirah.png';
+
+// Map old public paths to optimized images
+const serviceImageMap: Record<string, ImageMetadata> = {
+  '/assets/images/onedrive/tiles/tile-courts.png': tileCourts,
+  '/assets/images/onedrive/tiles/tile-immigration.png': tileImmigration,
+  '/assets/images/onedrive/tiles/tile-corporate.png': tileCorporate,
+  '/assets/images/onedrive/services/services-4.jpg': services4,
+  '/assets/images/onedrive/services/services-5.jpg': services5,
+  '/assets/images/onedrive/locations/palm-jumeirah.png': palmJumeirah,
+};
 
 // SEO - Updated for certified/authenticated translation focus
 // Target keywords: certified translation dubai, translation services dubai
@@ -385,30 +403,45 @@ const contactSection = {
         <h2 class="section-title">{servicesTitle}</h2>
       </div>
       <div class="services-grid-enhanced">
-        {servicesItems.map((service) => (
-          <a href={service.href} class="service-card-v2">
-            <div class="card-badge">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                <path d="M2 17l10 5 10-5"></path>
-                <path d="M2 12l10 5 10-5"></path>
-              </svg>
-            </div>
-            <div class="card-image">
-              <img src={service.image} alt={service.imageAlt} loading="lazy" width="400" height="300">
-            </div>
-            <div class="card-body">
-              <h3>{service.heading}</h3>
-              <p>{service.text}</p>
-              <span class="card-arrow">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M5 12h14"></path>
-                  <path d="M12 5l7 7-7 7"></path>
+        {servicesItems.map((service) => {
+          const optimizedImage = serviceImageMap[service.image];
+          return (
+            <a href={service.href} class="service-card-v2">
+              <div class="card-badge">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                  <path d="M2 17l10 5 10-5"></path>
+                  <path d="M2 12l10 5 10-5"></path>
                 </svg>
-              </span>
-            </div>
-          </a>
-        ))}
+              </div>
+              <div class="card-image">
+                {optimizedImage ? (
+                  <Image
+                    src={optimizedImage}
+                    alt={service.imageAlt}
+                    width={400}
+                    height={300}
+                    format="webp"
+                    quality={80}
+                    loading="lazy"
+                  />
+                ) : (
+                  <img src={service.image} alt={service.imageAlt} loading="lazy" width="400" height="300" />
+                )}
+              </div>
+              <div class="card-body">
+                <h3>{service.heading}</h3>
+                <p>{service.text}</p>
+                <span class="card-arrow">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14"></path>
+                    <path d="M12 5l7 7-7 7"></path>
+                  </svg>
+                </span>
+              </div>
+            </a>
+          );
+        })}
       </div>
     </div>
   </section>
