@@ -35,7 +35,7 @@ const englishEquivalent = fullCanonical
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <!-- GTM deferred - see end of body for deferred loading script -->
+  <!-- GTM runs in Partytown web worker - see end of body -->
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover">
@@ -211,25 +211,14 @@ const englishEquivalent = fullCanonical
 
   <MobileShellArabic />
 
-  <!-- Google Tag Manager - Deferred until interaction (matches English layout) -->
-  <script is:inline>
-    (function() {
-      var gtmLoaded = false;
-      function loadGTM() {
-        if (gtmLoaded) return;
-        gtmLoaded = true;
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-N7L2H37W');
-      }
-      // Load on user interaction or after 3 seconds
-      ['scroll','click','touchstart','mousemove'].forEach(function(evt){
-        window.addEventListener(evt, loadGTM, {once:true,passive:true});
-      });
-      setTimeout(loadGTM, 3000);
-    })();
+  <!-- Google Tag Manager - Running in Partytown web worker for better performance -->
+  <!-- Partytown moves this to a separate thread, freeing up the main thread -->
+  <script type="text/partytown">
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N7L2H37W');
   </script>
 
   <!-- Scripts -->
