@@ -273,31 +273,14 @@ const criticalCSS = `*,*::before,*::after{box-sizing:border-box}html{font-size:8
   
   <slot name="head" />
   
-  <!-- Google Tag Manager - Deferred until interaction -->
-  <script is:inline>
-    (function() {
-      var gtmLoaded = false;
-      function loadGTM() {
-        if (gtmLoaded) return;
-        gtmLoaded = true;
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-N7L2H37W');
-      }
-      // Load GTM on user interaction or after 3s idle
-      if (document.readyState === 'complete') {
-        setTimeout(loadGTM, 3000);
-      } else {
-        window.addEventListener('load', function() {
-          setTimeout(loadGTM, 3000);
-        });
-      }
-      ['scroll','click','touchstart','keydown'].forEach(function(evt){
-        window.addEventListener(evt, loadGTM, {once:true,passive:true});
-      });
-    })();
+  <!-- Google Tag Manager - Running in Partytown web worker for better performance -->
+  <!-- Partytown moves this to a separate thread, freeing up the main thread -->
+  <script type="text/partytown">
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N7L2H37W');
   </script>
   
   <!-- Vercel Web Analytics - moved before closing head for proper initialization -->

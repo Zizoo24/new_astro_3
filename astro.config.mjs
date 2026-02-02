@@ -1,6 +1,9 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import partytown from '@astrojs/partytown';
 import compress from 'astro-compress';
+import inline from '@playform/inline';
+import purgecss from 'astro-purgecss';
 
 export default defineConfig({
   site: 'https://onlinetranslation.ae',
@@ -27,6 +30,7 @@ export default defineConfig({
     widths: [400, 800, 1200, 1920],
   },
   integrations: [
+    // 1. Sitemap - generates sitemap.xml
     sitemap({
       changefreq: 'weekly',
       priority: 0.7,
@@ -103,7 +107,83 @@ export default defineConfig({
         return item;
       }
     }),
-    // Compress HTML, CSS, JS, images, and SVGs at build time
+
+    // 2. Partytown - move third-party scripts to web worker
+    partytown({
+      config: {
+        // Forward dataLayer.push calls to main thread (required for GTM)
+        forward: ['dataLayer.push'],
+        // Debug mode (disable in production)
+        debug: false,
+      },
+    }),
+
+    // 3. PurgeCSS - remove unused CSS (runs BEFORE inline for proper CSS extraction)
+    purgecss({
+      // Keep keyframes for animations and View Transitions
+      keyframes: false,
+      // Keep CSS variables
+      variables: false,
+      // Safelist dynamic classes that can't be detected statically
+      safelist: [
+        // FAQ accordion states
+        'is-open',
+        'is-active',
+        'is-visible',
+        'is-hidden',
+        'is-loading',
+        // Navigation states
+        'active',
+        'open',
+        'closed',
+        'expanded',
+        'collapsed',
+        // Mobile menu
+        'mobile-menu-open',
+        'sidebar-open',
+        'overlay-visible',
+        // Theme classes
+        'theme-light',
+        'theme-dark',
+        'dark-mode',
+        // Animation classes
+        'fade-in',
+        'fade-out',
+        'slide-in',
+        'slide-out',
+        // View Transitions
+        /^astro-/,
+        // Font Awesome (dynamic icons)
+        /^fa-/,
+        /^fas$/,
+        /^fab$/,
+        /^far$/,
+        // RTL classes
+        'rtl',
+        'rtl-page',
+        'ltr',
+        // OS-specific classes
+        /^os-/,
+        // Homepage class
+        'homepage',
+        'is-homepage',
+      ],
+    }),
+
+    // 4. Inline - extract and inline critical CSS from purged stylesheets (uses Beasties)
+    inline({
+      // Beasties options for critical CSS extraction
+      Beasties: {
+        // Inline critical CSS
+        inlineFonts: false,
+        // Preload remaining CSS
+        preload: 'swap',
+        // Don't prune unused selectors (purgecss already handled this)
+        pruneSource: false,
+      },
+    }),
+
+    // 5. Compress - minify HTML, CSS, JS, images, SVGs (MUST BE LAST)
     compress({
       CSS: true,
       HTML: {
@@ -144,7 +224,7 @@ export default defineConfig({
       SVG: true,
       // Log compression results
       Logger: 1,
-    })
+    }),
   ],
   server: {
     port: 5000,
@@ -152,8 +232,8 @@ export default defineConfig({
   },
   build: {
     assets: '_astro',
-    // Inline stylesheets smaller than 4KB
-    inlineStylesheets: 'auto',
+    // IMPORTANT: Set to 'never' for purgecss to work on external stylesheets
+    inlineStylesheets: 'never',
     // Enable CSS code splitting
     cssCodeSplit: true,
   },
