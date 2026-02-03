@@ -169,8 +169,9 @@ const searchQuickLinksAr = [
   </div>
 </div>
 
-<!-- Pagefind CSS -->
-<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<!-- Pagefind CSS - Deferred to avoid render-blocking on mobile -->
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="/pagefind/pagefind-ui.css" rel="stylesheet"></noscript>
 
 <style>
   /* RTL Mobile Header */
