@@ -800,25 +800,6 @@ navigation.forEach(item => {
     color: #ffffff;
   }
 
-  .dropdown-footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 12px 20px;
-    margin-top: 8px;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
-    color: var(--ot-teal, #0077b6);
-    font-weight: 600;
-    font-size: 13px;
-    text-decoration: none;
-    transition: all 0.15s ease;
-  }
-
-  .dropdown-footer:hover {
-    color: var(--ot-coral, #FF1654);
-  }
-
   /* "+N more" link - compact indicator */
   .dropdown-more-item {
     border-top: 1px dashed rgba(0, 0, 0, 0.08);
@@ -854,6 +835,25 @@ navigation.forEach(item => {
     font-size: 10px;
     opacity: 0.6;
     width: auto !important;
+  }
+
+  .dropdown-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    margin-top: 8px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    color: var(--ot-teal, #0077b6);
+    font-weight: 600;
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.15s ease;
+  }
+
+  .dropdown-footer:hover {
+    color: var(--ot-coral, #FF1654);
   }
 
   /* Flyout submenus */
@@ -1092,6 +1092,10 @@ navigation.forEach(item => {
     flex-direction: row-reverse;
   }
 
+  :global(html[lang="ar"]) .dropdown-more-link {
+    flex-direction: row-reverse;
+  }
+
   /* Flyout submenus flip */
   :global(html[lang="ar"]) .dropdown-submenu > .dropdown-menu {
     left: auto;
@@ -1111,10 +1115,6 @@ navigation.forEach(item => {
     margin-inline-end: 0;
   }
 
-  :global(html[lang="ar"]) .dropdown-more-link {
-    flex-direction: row-reverse;
-  }
-
   /* Actions column */
   :global(html[lang="ar"]) .header-column-actions {
     margin-inline-start: 0;
@@ -1132,8 +1132,8 @@ navigation.forEach(item => {
 
     // ========================================
     // SCROLL BEHAVIOR
-    // ========================================
     // Coral bar compacts (stays visible), header shrinks
+    // ========================================
     const coralTopBar = document.getElementById('coralTopBar');
     const header = document.getElementById('header');
     const scrollThreshold = 50;
@@ -1259,14 +1259,12 @@ navigation.forEach(item => {
         const viewportWidth = window.innerWidth;
 
         if (isRTL) {
-          // RTL: check if flyout goes past left edge
           if (rect.left < 20) {
             parent.classList.add('dropdown-reverse');
           } else {
             parent.classList.remove('dropdown-reverse');
           }
         } else {
-          // LTR: check if flyout goes past right edge
           if (rect.right > viewportWidth - 20) {
             parent.classList.add('dropdown-reverse');
           } else {
