@@ -60,7 +60,7 @@ const searchQuickLinksAr = [
     <i class="fab fa-whatsapp"></i>
     <span>واتساب</span>
   </a>
-  <a href={englishEquivalent} class="footer-item footer-lang-switch" aria-label="Switch to English">
+  <a href={englishEquivalent} class="footer-item footer-lang-switch" aria-label="Switch to English" data-astro-reload>
     <i class="fas fa-globe"></i>
     <span>EN</span>
   </a>
@@ -371,22 +371,28 @@ const searchQuickLinksAr = [
 
     // Theme Toggle
     const mobileThemeToggle = document.getElementById('mobileThemeToggle');
-    mobileThemeToggle?.addEventListener('click', () => {
-      const html = document.documentElement;
-      const body = document.body;
-      const currentTheme = html.getAttribute('data-theme') || 'light';
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    if (mobileThemeToggle) {
+      mobileThemeToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
 
-      html.setAttribute('data-theme', newTheme);
-      body.classList.remove('theme-light', 'theme-dark');
-      body.classList.add('theme-' + newTheme);
-      localStorage.setItem('theme', newTheme);
+        const html = document.documentElement;
+        const body = document.body;
+        const currentTheme = html.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
-      // Update icon
-      const icon = mobileThemeToggle.querySelector('i');
-      if (icon) {
-        icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-      }
-    });
+        html.setAttribute('data-theme', newTheme);
+        html.className = html.className.replace(/theme-\w+/, 'theme-' + newTheme);
+        body.classList.remove('theme-light', 'theme-dark');
+        body.classList.add('theme-' + newTheme);
+        localStorage.setItem('theme', newTheme);
+
+        // Update icon
+        const icon = mobileThemeToggle.querySelector('i');
+        if (icon) {
+          icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+      });
+    }
   });
 </script>
