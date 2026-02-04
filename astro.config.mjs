@@ -1,9 +1,10 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import partytown from '@astrojs/partytown';
-import compress from 'astro-compress';
-import inline from '@playform/inline';
 import purgecss from 'astro-purgecss';
+import inline from '@playform/inline';
+import min from 'astro-min';
+import compressor from 'astro-compressor';
 
 export default defineConfig({
   site: 'https://onlinetranslation.ae',
@@ -126,31 +127,20 @@ export default defineConfig({
       variables: false,
       // Safelist dynamic classes that can't be detected statically
       safelist: [
-        // FAQ accordion states
+        // State classes
         'is-open',
         'is-active',
         'is-visible',
         'is-hidden',
         'is-loading',
-        // Navigation states
         'active',
         'open',
-        'closed',
-        'expanded',
-        'collapsed',
-        // Mobile menu
-        'mobile-menu-open',
-        'sidebar-open',
-        'overlay-visible',
+        'scrolled',
+        'hidden',
+        'compact',
         // Theme classes
         'theme-light',
         'theme-dark',
-        'dark-mode',
-        // Animation classes
-        'fade-in',
-        'fade-out',
-        'slide-in',
-        'slide-out',
         // View Transitions
         /^astro-/,
         // Font Awesome (dynamic icons)
@@ -158,12 +148,6 @@ export default defineConfig({
         /^fas$/,
         /^fab$/,
         /^far$/,
-        // RTL classes
-        'rtl',
-        'rtl-page',
-        'ltr',
-        // OS-specific classes
-        /^os-/,
         // Homepage class
         'homepage',
         'is-homepage',
@@ -183,47 +167,13 @@ export default defineConfig({
       },
     }),
 
-    // 5. Compress - minify HTML, CSS, JS, images, SVGs (MUST BE LAST)
-    compress({
-      CSS: true,
-      HTML: {
-        'html-minifier-terser': {
-          removeComments: true,
-          collapseWhitespace: true,
-          removeAttributeQuotes: true,
-          minifyCSS: true,
-          minifyJS: true,
-        }
-      },
-      Image: {
-        // Convert images to modern formats
-        sharp: {
-          // WebP settings for lossy compression
-          webp: {
-            quality: 80,
-            effort: 6,
-          },
-          // AVIF for browsers that support it
-          avif: {
-            quality: 65,
-            effort: 6,
-          },
-          // PNG optimization
-          png: {
-            quality: 80,
-            compressionLevel: 9,
-          },
-          // JPEG optimization
-          jpeg: {
-            quality: 80,
-            mozjpeg: true,
-          },
-        },
-      },
-      JavaScript: true,
-      SVG: true,
-      // Log compression results
-      Logger: 1,
+    // 5. Minify - Rust-based minification for HTML, CSS, JS, SVG (faster than astro-compress)
+    min(),
+
+    // 6. Compressor - Brotli + gzip compression (MUST BE LAST)
+    compressor({
+      gzip: true,
+      brotli: true,
     }),
   ],
   server: {
