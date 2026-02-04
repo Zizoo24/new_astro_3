@@ -291,23 +291,37 @@ const socialLinksAr = [
     color: var(--accent-coral, #FF1654);
   }
   
-  /* Contact Items - RTL */
+  /* Contact Items - Icon on LEFT, Text on RIGHT (even in RTL) */
   .footer-rtl .footer-contact li {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     align-items: flex-start;
     gap: 10px;
     margin-bottom: 0.75rem;
     color: var(--text-on-dark-muted, #c5d4e8);
     font-size: 0.95rem;
     font-family: 'Noto Sans Arabic', var(--font-secondary), sans-serif;
+    direction: ltr; /* Force LTR for icon-text layout */
   }
-  
+
   .footer-rtl .footer-contact li i {
     color: var(--accent-coral, #FF1654);
     width: 16px;
     margin-top: 3px;
     flex-shrink: 0;
+  }
+
+  /* Text content stays RTL for Arabic text */
+  .footer-rtl .footer-contact li a,
+  .footer-rtl .footer-contact li span {
+    direction: rtl;
+    text-align: right;
+  }
+
+  /* Keep phone/email LTR for readability */
+  .footer-rtl .footer-contact li a[dir="ltr"] {
+    direction: ltr;
+    text-align: left;
   }
   
   .footer-rtl .footer-contact a {

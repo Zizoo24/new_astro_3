@@ -16,7 +16,7 @@ interface Props {
   /** Current page path */
   currentPath?: string;
   /** Visual variant */
-  variant?: 'pill' | 'text' | 'icon';
+  variant?: 'pill' | 'text' | 'icon' | 'globe';
   /** Size variant */
   size?: 'sm' | 'md' | 'lg';
   /** For light backgrounds */
@@ -95,7 +95,7 @@ const arAriaLabel = isArabic ? 'اللغة الحالية: العربية' : 'ا
   {variant === 'icon' && (
     <div class="lang-icon-group">
       <i class="fas fa-globe lang-globe"></i>
-      <a 
+      <a
         href={englishUrl}
         class:list={['lang-icon-link', { 'is-active': !isArabic }]}
         aria-current={!isArabic ? 'page' : undefined}
@@ -104,7 +104,7 @@ const arAriaLabel = isArabic ? 'اللغة الحالية: العربية' : 'ا
         En
       </a>
       <span class="lang-divider">/</span>
-      <a 
+      <a
         href={arabicUrl}
         class:list={['lang-icon-link', 'lang-ar', { 'is-active': isArabic }]}
         aria-current={isArabic ? 'page' : undefined}
@@ -113,6 +113,19 @@ const arAriaLabel = isArabic ? 'اللغة الحالية: العربية' : 'ا
         ع
       </a>
     </div>
+  )}
+
+  {variant === 'globe' && (
+    <a
+      href={isArabic ? englishUrl : arabicUrl}
+      class="lang-globe-btn"
+      aria-label={isArabic ? 'Switch to English' : 'التبديل إلى العربية'}
+      hreflang={isArabic ? 'en' : 'ar'}
+      title={isArabic ? 'Switch to English' : 'التبديل إلى العربية'}
+    >
+      <i class="fas fa-globe" aria-hidden="true"></i>
+      <span class="lang-globe-badge">{isArabic ? 'En' : 'ع'}</span>
+    </a>
   )}
 </div>
 
@@ -335,6 +348,91 @@ const arAriaLabel = isArabic ? 'اللغة الحالية: العربية' : 'ا
   .footer-lang-row .lang-option.is-active {
     background: rgba(255, 255, 255, 0.15);
     border-radius: 12px;
+  }
+
+  /* ====================================
+     GLOBE VARIANT (Circle button with icon)
+     ==================================== */
+  .lang-globe-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 0;
+    border-radius: 50%;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    position: relative;
+  }
+
+  .lang-globe-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+  }
+
+  .lang-globe-btn:active {
+    transform: scale(0.95);
+  }
+
+  .lang-globe-btn i {
+    font-size: 1rem;
+    color: #ffffff;
+  }
+
+  .lang-globe-badge {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    background: var(--ot-coral, #FF1654);
+    color: #ffffff;
+    font-size: 0.6rem;
+    font-weight: 700;
+    border-radius: 9px;
+    font-family: var(--font-secondary, 'Open Sans', sans-serif);
+  }
+
+  .lang-globe-badge:has(:only-child) {
+    font-family: 'Noto Sans Arabic', var(--font-secondary), sans-serif;
+  }
+
+  /* Scrolled state - compact globe button */
+  :global(.site-header.scrolled) .lang-globe-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  :global(.site-header.scrolled) .lang-globe-btn i {
+    font-size: 0.9rem;
+  }
+
+  :global(.site-header.scrolled) .lang-globe-badge {
+    min-width: 16px;
+    height: 16px;
+    font-size: 0.55rem;
+  }
+
+  /* Light background version */
+  .lang-switcher.on-light .lang-globe-btn {
+    background: rgba(14, 43, 72, 0.08);
+    color: var(--ot-navy, #0E2B48);
+  }
+
+  .lang-switcher.on-light .lang-globe-btn:hover {
+    background: rgba(14, 43, 72, 0.15);
+  }
+
+  .lang-switcher.on-light .lang-globe-btn i {
+    color: var(--ot-navy, #0E2B48);
   }
 
   /* ====================================

@@ -71,6 +71,51 @@ function isActive(href: string): boolean {
   if (href === '/' || href === '/ar/') return currentPath === href;
   return currentPath.startsWith(href);
 }
+
+// Dropdown compacting - max items before showing "+ more"
+const MAX_DROPDOWN_ITEMS = 6;
+
+// Process navigation to add truncation info
+const processedNavigation = navigation.map(item => {
+  if (!item.dropdown) return { ...item, truncatedCount: 0 };
+
+  // Count total items across all categories
+  let totalItems = 0;
+  item.dropdown.categories.forEach(cat => {
+    totalItems += cat.items.length;
+  });
+
+  // If within limit, no truncation needed
+  if (totalItems <= MAX_DROPDOWN_ITEMS) {
+    return { ...item, truncatedCount: 0 };
+  }
+
+  // Truncate items
+  let itemsShown = 0;
+  const truncatedCategories = item.dropdown.categories.map(cat => {
+    if (itemsShown >= MAX_DROPDOWN_ITEMS) {
+      return { ...cat, items: [] }; // Skip all items in this category
+    }
+
+    const remainingSlots = MAX_DROPDOWN_ITEMS - itemsShown;
+    const truncatedItems = cat.items.slice(0, remainingSlots);
+    itemsShown += truncatedItems.length;
+
+    return { ...cat, items: truncatedItems };
+  }).filter(cat => cat.items.length > 0 || !cat.header); // Keep headers only if they have items
+
+  return {
+    ...item,
+    dropdown: {
+      ...item.dropdown,
+      categories: truncatedCategories
+    },
+    truncatedCount: totalItems - MAX_DROPDOWN_ITEMS
+  };
+});
+
+// More link labels
+const moreLabel = isArabic ? 'المزيد' : 'more';
 ---
 
 <!-- Fixed Header Wrapper -->
@@ -141,7 +186,7 @@ function isActive(href: string): boolean {
               <div class="header-nav-main header-nav-main-effect-1">
                 <nav id="mainNav" aria-label={labels.mainNav}>
                   <ul class="nav nav-pills" role="menubar">
-                    {navigation.map((item) => (
+                    {processedNavigation.map((item) => (
                       <li
                         class:list={[
                           item.dropdown ? 'dropdown' : '',
@@ -239,6 +284,20 @@ function isActive(href: string): boolean {
                                 </>
                               ))}
 
+                              {/* "+ X more" link if items were truncated */}
+                              {item.truncatedCount > 0 && (
+                                <li role="none" class="dropdown-more-item">
+                                  <a
+                                    href={item.href}
+                                    class="dropdown-more-link"
+                                    role="menuitem"
+                                  >
+                                    <span>+{item.truncatedCount} {moreLabel}</span>
+                                    <i class={isArabic ? "fas fa-arrow-left" : "fas fa-arrow-right"} aria-hidden="true"></i>
+                                  </a>
+                                </li>
+                              )}
+
                               {item.dropdown.footerLink && (
                                 <li role="none">
                                   <a
@@ -283,7 +342,7 @@ function isActive(href: string): boolean {
 
           <!-- Language Switcher, Search Toggle & Theme Toggle -->
           <div class="header-column header-column-actions">
-            <LanguageSwitcher variant="pill" size="md" />
+            <LanguageSwitcher variant="globe" size="md" />
             <button
               id="desktopSearchToggle"
               class="header-action-btn search-toggle"
@@ -338,8 +397,11 @@ function isActive(href: string): boolean {
     will-change: transform;
   }
 
-  .header-wrapper.is-scrolled {
-    transform: translateY(calc(-1 * var(--coral-bar-height)));
+  /* Coral bar compacts on scroll instead of disappearing */
+  .header-wrapper.is-scrolled .coral-top-bar {
+    height: 32px;
+    padding: 6px 0;
+    font-size: 0.75rem;
   }
 
   .header-spacer {
@@ -380,10 +442,7 @@ function isActive(href: string): boolean {
     transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .coral-top-bar.hidden {
-    opacity: 0;
-    pointer-events: none;
-  }
+  /* Coral bar now compacts instead of hiding - remove hidden state */
 
   .coral-top-content {
     display: flex;
@@ -727,6 +786,30 @@ function isActive(href: string): boolean {
     color: #ffffff;
   }
 
+  /* "+ X more" link */
+  .dropdown-more-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    margin: 4px 8px;
+    border: 1px dashed rgba(0, 119, 182, 0.3);
+    border-radius: 6px;
+    color: var(--ot-teal, #0077b6);
+    font-weight: 600;
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    background: rgba(0, 119, 182, 0.05);
+  }
+
+  .dropdown-more-link:hover {
+    background: rgba(0, 119, 182, 0.1);
+    border-color: var(--ot-teal, #0077b6);
+    color: var(--ot-teal, #0077b6);
+  }
+
   .dropdown-footer {
     display: flex;
     align-items: center;
@@ -982,6 +1065,10 @@ function isActive(href: string): boolean {
     flex-direction: row-reverse;
   }
 
+  :global(html[lang="ar"]) .dropdown-more-link {
+    flex-direction: row-reverse;
+  }
+
   /* Flyout submenus flip */
   :global(html[lang="ar"]) .dropdown-submenu > .dropdown-menu {
     left: auto;
@@ -1028,11 +1115,10 @@ function isActive(href: string): boolean {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY > scrollThreshold) {
-        coralTopBar?.classList.add('hidden');
+        // Coral bar compacts instead of hiding
         header?.classList.add('scrolled');
         headerWrapper?.classList.add('is-scrolled');
       } else {
-        coralTopBar?.classList.remove('hidden');
         header?.classList.remove('scrolled');
         headerWrapper?.classList.remove('is-scrolled');
       }
