@@ -41,14 +41,14 @@ Track bugs, fixes, and known issues for OnlineTranslation.ae
 - **Files:** `public/styles/porto-desktop.css`
 
 #### 5. Mobile dark mode toggle not working (Arabic)
-- **Commit:** `TBD`
+- **Commit:** `1486ea4`
 - **Issue:** Tapping the moon icon in mobile header on Arabic pages did nothing
 - **Root Cause:** Arabic `MobileShellArabic.astro` was missing `e.preventDefault()` and `e.stopPropagation()` in the click handler, and also missing the `html.className` replacement that the English version had
 - **Fix:** Updated theme toggle handler to match English version with proper event prevention and class replacement
 - **Files:** `src/components/MobileShellArabic.astro`
 
 #### 6. Mobile language switch causing CSS loading issues
-- **Commit:** `TBD`
+- **Commit:** `1486ea4`
 - **Issue:** Tapping language switch (EN/ع) in mobile footer bar caused CSS to not load properly on the target page
 - **Root Cause:** Same View Transitions + deferred CSS issue as #2, but the mobile footer bar links weren't updated with `data-astro-reload`
 - **Fix:** Added `data-astro-reload` attribute to language switch links in both `MobileShell.astro` and `MobileShellArabic.astro`
