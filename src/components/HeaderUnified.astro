@@ -451,11 +451,14 @@ navigation.forEach(item => {
     transition: height 0.3s ease, padding 0.3s ease, font-size 0.3s ease;
   }
 
-  /* Compact coral bar when scrolled */
-  .coral-top-bar.compact {
-    height: var(--coral-bar-compact);
-    padding: 6px 0;
-    font-size: 0.75rem;
+  /* Hide coral bar when scrolled */
+  .coral-top-bar.hidden {
+    height: 0;
+    padding: 0;
+    opacity: 0;
+    transform: translateY(-100%);
+    pointer-events: none;
+    overflow: hidden;
   }
 
   .coral-top-content {
@@ -720,6 +723,8 @@ navigation.forEach(item => {
     left: 0;
     right: auto;
     min-width: 280px;
+    max-height: 70vh;
+    overflow-y: auto;
     background: #ffffff;
     border-radius: 8px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
@@ -1142,10 +1147,10 @@ navigation.forEach(item => {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY > scrollThreshold) {
-        coralTopBar?.classList.add('compact');
+        coralTopBar?.classList.add('hidden');
         header?.classList.add('scrolled');
       } else {
-        coralTopBar?.classList.remove('compact');
+        coralTopBar?.classList.remove('hidden');
         header?.classList.remove('scrolled');
       }
     }
