@@ -70,16 +70,70 @@ Track bugs, fixes, and known issues for OnlineTranslation.ae
 | Dark mode tokens defined twice | Low | Both `base-architecture.css` and component files define dark mode values |
 | Z-index stacking complexity | Medium | Mobile sidebar uses z-index: 2000, overlay: 1999, header: 1050 |
 
-### CSS File Risk Assessment (February 4, 2026)
+### CSS File Risk Assessment (February 4, 2026) — 80%+ Audit Complete
 
-| File | Lines | Risk | Optimization Priority |
-|------|-------|------|----------------------|
-| `porto-desktop.css` | 8,234 | **High** | Extract component styles |
-| `dark-mode-tokenized.css` | 1,980 | **Low** | Uses @layer, token-based |
-| `base-architecture.css` | 1,752 | **Low** | Well-structured foundation |
-| `sticky-mobile.css` | 1,407 | **Medium** | Complex sidebar state |
-| `rtl.css` | 1,361 | **Medium** | Necessary !important usage |
-| `navigation-glassmorphism.css` | 1,258 | **Medium** | Heavy specificity overrides |
+#### High Priority Files (Large / Complex)
+| File | Lines | Risk | Key Patterns | Action |
+|------|-------|------|--------------|--------|
+| `porto-desktop.css` | 8,234 | **High** | Legacy Porto theme | Extract component styles |
+| `navigation-glassmorphism.css` | 1,259 | **Medium** | Dark glassmorphism, specificity wars | Consider merging with megamenu |
+| `responsive-layouts.css` | 1,110 | **Low** | Well-structured grid utilities | Keep as-is |
+| `services-enhanced.css` | 884 | **Low** | Service page components | Keep as-is |
+| `hero-optimization.css` | 844 | **Low** | CTA strategy, PWA optimizations | Consider merging hero files |
+| `porto-dropdown-onlinetranslation.css` | 856 | **Medium** | Dropdown overrides | Merge with navigation |
+
+#### Medium Priority Files (Moderate Size)
+| File | Lines | Risk | Key Patterns | Action |
+|------|-------|------|--------------|--------|
+| `ar-ui-fixes.css` | 686 | **Low** | Arabic-specific fixes, RTL | Keep separate |
+| `dark-section-scoping.css` | 545 | **Low** | @layer cascade control | Keep as-is |
+| `en-ui-fixes.css` | 496 | **Low** | English UI polish | Keep separate |
+| `megamenu.css` | 488 | **Medium** | Alt nav system (light bg) | Evaluate usage |
+| `text-breaking.css` | 457 | **Low** | Visual relief utilities (14 classes) | Keep as-is |
+| `contrast-fixes.css` | 451 | **Low** | Dark mode contrast | Keep as-is |
+| `document-pages.css` | 393 | **Low** | Document templates | Keep as-is |
+| `micro-cues.css` | 392 | **Low** | Animations, scroll indicators | Keep as-is |
+
+#### Low Priority Files (Small / Well-Contained)
+| File | Lines | Risk | Notes |
+|------|-------|------|-------|
+| `mobile-ios.css` | 385 | **Low** | iOS-specific overrides |
+| `hero-enhancements.css` | 379 | **Low** | Hero gradients/patterns |
+| `mobile-android.css` | 329 | **Low** | Material Design ripples |
+| `faq-accordion.css` | 316 | **Low** | FAQ-specific styles |
+| `subsection-menu.css` | 281 | **Low** | Sticky sidebar nav |
+| `print.css` | 255 | **Low** | Print stylesheet |
+| `trust-bar.css` | 179 | **Low** | Trust logo carousel |
+| `desktop-macos.css` | 174 | **Low** | macOS-specific |
+| `mobile-action-bar.css` | 156 | **Low** | Mobile bottom bar |
+| `hero-intro-optimized.css` | 153 | **Low** | text-wrap: balance |
+| `critical.css` | 135 | **Low** | Above-fold critical |
+
+#### Key Findings from Audit
+
+**1. CSS Architecture Quality:**
+- `dark-section-scoping.css` - Excellent @layer usage for cascade control
+- `text-breaking.css` - Well-documented 14 visual relief utilities
+- `critical.css` - Properly optimized for first paint
+
+**2. Merge Candidates:**
+- Hero files (3): `hero-enhancements.css`, `hero-intro-optimized.css`, `hero-optimization.css`
+- Navigation files (3): `navigation-glassmorphism.css`, `megamenu.css`, `porto-dropdown-onlinetranslation.css`
+
+**3. Platform-Specific CSS:**
+- iOS: Frosted glass, safe-area-inset, haptic feedback
+- Android: Material Design shadows, ripple effects
+- macOS: System fonts, scrollbar styling
+
+**4. Z-Index Stack Documented:**
+| Element | Z-Index | File |
+|---------|---------|------|
+| Mobile sidebar | 2000 | sticky-mobile.css |
+| Sidebar overlay | 1999 | sticky-mobile.css |
+| Mobile header | 1050 | sticky-mobile.css |
+| Desktop header | 1000 | navigation-glassmorphism.css |
+| Dropdowns | 999+ | porto-dropdown.css |
+| Mobile action bar | 999 | mobile-action-bar.css |
 
 ### Performance
 
