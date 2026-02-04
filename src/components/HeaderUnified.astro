@@ -43,14 +43,16 @@ const labels = isArabic ? {
   search: 'بحث',
   toggleDark: 'تبديل الوضع المظلم',
   mainNav: 'التنقل الرئيسي',
-  viewAll: 'عرض الكل'
+  viewAll: 'عرض الكل',
+  more: 'المزيد'
 } : {
   topBarHours: 'Daily: 8:00 AM - 10:00 PM',
   openSidebar: 'Open sidebar menu',
   search: 'Search',
   toggleDark: 'Toggle dark mode',
   mainNav: 'Main navigation',
-  viewAll: 'View All'
+  viewAll: 'View All',
+  more: 'more'
 };
 
 // Badge translations
@@ -71,11 +73,62 @@ function isActive(href: string): boolean {
   if (href === '/' || href === '/ar/') return currentPath === href;
   return currentPath.startsWith(href);
 }
+
+// ========================================
+// DROPDOWN TRUNCATION
+// Limits dropdown items to MAX_DROPDOWN_ITEMS
+// Shows "+N more" link when truncated
+// ========================================
+const MAX_DROPDOWN_ITEMS = 6;
+
+interface DropdownMeta {
+  truncated: boolean;
+  hiddenCount: number;
+  displayCategories: typeof navigation[0]['dropdown']['categories'];
+}
+
+const dropdownMeta = new Map<string, DropdownMeta>();
+
+navigation.forEach(item => {
+  if (!item.dropdown) return;
+  
+  let totalItems = 0;
+  item.dropdown.categories.forEach(cat => totalItems += cat.items.length);
+  
+  if (totalItems <= MAX_DROPDOWN_ITEMS) {
+    dropdownMeta.set(item.label, { 
+      truncated: false, 
+      hiddenCount: 0, 
+      displayCategories: item.dropdown.categories 
+    });
+    return;
+  }
+  
+  // Truncate: keep first MAX_DROPDOWN_ITEMS across all categories
+  let count = 0;
+  const displayCategories: typeof item.dropdown.categories = [];
+  
+  for (const category of item.dropdown.categories) {
+    if (count >= MAX_DROPDOWN_ITEMS) break;
+    const remaining = MAX_DROPDOWN_ITEMS - count;
+    const truncatedItems = category.items.slice(0, remaining);
+    count += truncatedItems.length;
+    if (truncatedItems.length > 0) {
+      displayCategories.push({ ...category, items: truncatedItems });
+    }
+  }
+  
+  dropdownMeta.set(item.label, { 
+    truncated: true, 
+    hiddenCount: totalItems - count, 
+    displayCategories 
+  });
+});
 ---
 
 <!-- Fixed Header Wrapper -->
 <div class="header-wrapper" id="headerWrapper">
-  <!-- Coral Top Bar - Disappears on scroll -->
+  <!-- Coral Top Bar - Compacts on scroll (stays visible) -->
   <div class="coral-top-bar" id="coralTopBar">
     <div class="container">
       <div class="coral-top-content">
@@ -141,7 +194,11 @@ function isActive(href: string): boolean {
               <div class="header-nav-main header-nav-main-effect-1">
                 <nav id="mainNav" aria-label={labels.mainNav}>
                   <ul class="nav nav-pills" role="menubar">
-                    {navigation.map((item) => (
+                    {navigation.map((item) => {
+                      const meta = item.dropdown ? dropdownMeta.get(item.label) : null;
+                      const displayCategories = meta?.displayCategories || item.dropdown?.categories;
+                      
+                      return (
                       <li
                         class:list={[
                           item.dropdown ? 'dropdown' : '',
@@ -178,7 +235,7 @@ function isActive(href: string): boolean {
                             </a>
 
                             <ul class="dropdown-menu" role="menu" aria-label={item.dropdown.label}>
-                              {item.dropdown.categories.map((category) => (
+                              {displayCategories.map((category) => (
                                 <>
                                   {category.header && (
                                     <li class="dropdown-header" role="presentation">
@@ -239,6 +296,21 @@ function isActive(href: string): boolean {
                                 </>
                               ))}
 
+                              {/* Truncation indicator: "+N more" link */}
+                              {meta?.truncated && (
+                                <li class="dropdown-more-item" role="none">
+                                  <a
+                                    href={item.href}
+                                    class="dropdown-more-link"
+                                    role="menuitem"
+                                  >
+                                    <i class="fas fa-plus-circle" aria-hidden="true"></i>
+                                    <span>+{meta.hiddenCount} {labels.more}</span>
+                                    <i class={isArabic ? "fas fa-arrow-left dropdown-more-arrow" : "fas fa-arrow-right dropdown-more-arrow"} aria-hidden="true"></i>
+                                  </a>
+                                </li>
+                              )}
+
                               {item.dropdown.footerLink && (
                                 <li role="none">
                                   <a
@@ -264,7 +336,7 @@ function isActive(href: string): boolean {
                           </a>
                         )}
                       </li>
-                    ))}
+                    )})}
                   </ul>
                 </nav>
               </div>
@@ -281,9 +353,9 @@ function isActive(href: string): boolean {
             </div>
           </div>
 
-          <!-- Language Switcher, Search Toggle & Theme Toggle -->
+          <!-- Globe Language Switcher, Search Toggle & Theme Toggle -->
           <div class="header-column header-column-actions">
-            <LanguageSwitcher variant="pill" size="md" />
+            <LanguageSwitcher variant="globe" />
             <button
               id="desktopSearchToggle"
               class="header-action-btn search-toggle"
@@ -319,6 +391,7 @@ function isActive(href: string): boolean {
   /* CSS Variables */
   :root {
     --coral-bar-height: 40px;
+    --coral-bar-compact: 32px;
     --header-height: 70px;
     --header-compact: 50px;
   }
@@ -334,17 +407,14 @@ function isActive(href: string): boolean {
     z-index: 1030;
     width: 100%;
     background: transparent;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
+    will-change: auto;
   }
 
-  .header-wrapper.is-scrolled {
-    transform: translateY(calc(-1 * var(--coral-bar-height)));
-  }
-
+  /* Spacer accounts for coral bar + header */
   .header-spacer {
-    height: calc(var(--coral-bar-height) + var(--header-compact));
+    height: calc(var(--coral-bar-height) + var(--header-height));
     background: var(--surface-base, #ffffff);
+    transition: height 0.3s ease;
   }
 
   :global([data-theme="dark"]) .header-spacer,
@@ -367,7 +437,8 @@ function isActive(href: string): boolean {
   }
 
   /* ====================================
-     CORAL TOP BAR
+     CORAL TOP BAR - Always visible
+     Compacts on scroll instead of hiding
      ==================================== */
   .coral-top-bar {
     background: var(--ot-coral, #FF1654);
@@ -377,12 +448,14 @@ function isActive(href: string): boolean {
     font-weight: 500;
     height: var(--coral-bar-height);
     box-sizing: border-box;
-    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: height 0.3s ease, padding 0.3s ease, font-size 0.3s ease;
   }
 
-  .coral-top-bar.hidden {
-    opacity: 0;
-    pointer-events: none;
+  /* Compact coral bar when scrolled */
+  .coral-top-bar.compact {
+    height: var(--coral-bar-compact);
+    padding: 6px 0;
+    font-size: 0.75rem;
   }
 
   .coral-top-content {
@@ -746,6 +819,43 @@ function isActive(href: string): boolean {
     color: var(--ot-coral, #FF1654);
   }
 
+  /* "+N more" link - compact indicator */
+  .dropdown-more-item {
+    border-top: 1px dashed rgba(0, 0, 0, 0.08);
+    margin-top: 4px;
+  }
+
+  .dropdown-more-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    color: var(--ot-teal, #0077b6);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s ease;
+  }
+
+  .dropdown-more-link:hover {
+    background: rgba(0, 119, 182, 0.06);
+    color: var(--ot-coral, #FF1654);
+  }
+
+  .dropdown-more-link i:first-child {
+    font-size: 12px;
+    color: var(--ot-teal, #0077b6);
+    width: 20px;
+    text-align: center;
+  }
+
+  .dropdown-more-arrow {
+    margin-inline-start: auto;
+    font-size: 10px;
+    opacity: 0.6;
+    width: auto !important;
+  }
+
   /* Flyout submenus */
   .dropdown-submenu {
     position: relative;
@@ -791,7 +901,7 @@ function isActive(href: string): boolean {
     align-items: center;
     justify-content: flex-end;
     gap: 8px;
-    min-width: 160px;
+    min-width: 120px;
     padding-inline-start: 15px;
     margin-inline-start: auto;
     position: relative;
@@ -1001,6 +1111,10 @@ function isActive(href: string): boolean {
     margin-inline-end: 0;
   }
 
+  :global(html[lang="ar"]) .dropdown-more-link {
+    flex-direction: row-reverse;
+  }
+
   /* Actions column */
   :global(html[lang="ar"]) .header-column-actions {
     margin-inline-start: 0;
@@ -1019,22 +1133,20 @@ function isActive(href: string): boolean {
     // ========================================
     // SCROLL BEHAVIOR
     // ========================================
+    // Coral bar compacts (stays visible), header shrinks
     const coralTopBar = document.getElementById('coralTopBar');
     const header = document.getElementById('header');
-    const headerWrapper = document.getElementById('headerWrapper');
     const scrollThreshold = 50;
 
     function handleScrollBehavior() {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY > scrollThreshold) {
-        coralTopBar?.classList.add('hidden');
+        coralTopBar?.classList.add('compact');
         header?.classList.add('scrolled');
-        headerWrapper?.classList.add('is-scrolled');
       } else {
-        coralTopBar?.classList.remove('hidden');
+        coralTopBar?.classList.remove('compact');
         header?.classList.remove('scrolled');
-        headerWrapper?.classList.remove('is-scrolled');
       }
     }
 
@@ -1051,16 +1163,11 @@ function isActive(href: string): boolean {
         e.preventDefault();
         e.stopPropagation();
 
-        console.log('[Header] Desktop sidebar toggle clicked');
-
         const menuSidebar = document.getElementById('menu-sidebar');
         const sidebarOverlay = document.getElementById('sidebarOverlay');
 
         if (menuSidebar) {
           menuSidebar.classList.add('is-open');
-          console.log('[Header] Sidebar opened');
-        } else {
-          console.error('[Header] #menu-sidebar not found');
         }
 
         if (sidebarOverlay) {
@@ -1103,8 +1210,6 @@ function isActive(href: string): boolean {
         e.preventDefault();
         e.stopPropagation();
 
-        console.log('[Header] Search toggle clicked');
-
         const searchOverlay = document.getElementById('search-overlay');
         const searchInput = document.getElementById('searchInput');
 
@@ -1114,8 +1219,6 @@ function isActive(href: string): boolean {
           setTimeout(() => {
             searchInput?.focus();
           }, 100);
-        } else {
-          console.error('[Header] #search-overlay not found');
         }
       });
     }

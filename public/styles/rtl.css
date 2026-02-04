@@ -778,13 +778,28 @@ html[lang="ar"] .footer-contact ul {
 
 html[lang="ar"] .footer-contact li {
   display: flex !important;
-  flex-direction: row-reverse !important;
-  justify-content: flex-end !important;
+  flex-direction: row !important;
+  direction: ltr !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
   text-align: right !important;
 }
 
+html[lang="ar"] .footer-contact li a,
+html[lang="ar"] .footer-contact li span {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+html[lang="ar"] .footer-contact li a[dir="ltr"],
+html[lang="ar"] .footer-contact li a[href^="tel:"],
+html[lang="ar"] .footer-contact li a[href^="mailto:"] {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
 html[lang="ar"] .footer-contact li i {
-  margin-left: 10px !important;
+  margin-left: 0 !important;
   margin-right: 0 !important;
 }
 

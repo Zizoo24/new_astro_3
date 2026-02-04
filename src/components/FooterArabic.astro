@@ -291,16 +291,36 @@ const socialLinksAr = [
     color: var(--accent-coral, #FF1654);
   }
   
-  /* Contact Items - RTL */
+  /* Contact Items - RTL
+     Icons on the left, text on the right for consistent visual layout.
+     Uses explicit direction override so icon+text order is predictable
+     regardless of parent RTL context. Text content inside still respects
+     its own direction (Arabic text right-aligned, phone numbers LTR). */
   .footer-rtl .footer-contact li {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
+    direction: ltr;
     align-items: flex-start;
     gap: 10px;
     margin-bottom: 0.75rem;
     color: var(--text-on-dark-muted, #c5d4e8);
     font-size: 0.95rem;
     font-family: 'Noto Sans Arabic', var(--font-secondary), sans-serif;
+  }
+
+  /* Text content inside contact items - restore RTL for Arabic text */
+  .footer-rtl .footer-contact li a,
+  .footer-rtl .footer-contact li span {
+    direction: rtl;
+    text-align: right;
+  }
+
+  /* Phone numbers and emails stay LTR */
+  .footer-rtl .footer-contact li a[dir="ltr"],
+  .footer-rtl .footer-contact li a[href^="tel:"],
+  .footer-rtl .footer-contact li a[href^="mailto:"] {
+    direction: ltr;
+    text-align: left;
   }
   
   .footer-rtl .footer-contact li i {
