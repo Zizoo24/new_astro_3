@@ -2,7 +2,7 @@
 /**
  * LanguageSwitcher.astro
  * Bilingual toggle for EN/AR navigation
- * 
+ *
  * Features:
  * - Globe variant: compact globe icon for navbar (matches action buttons)
  * - Pill variant: compact "En - ع" format
@@ -11,6 +11,11 @@
  * - Detects current language from URL
  * - Maps to equivalent page in other language
  * - RTL-aware styling
+ *
+ * NOTE: All language links use data-astro-reload to force full page reload.
+ * This is required because EN/AR layouts load different CSS files (rtl.css,
+ * ar-ui-fixes.css vs en-ui-fixes.css) and the deferred CSS loading pattern
+ * (media="print" onload) doesn't re-execute during View Transitions.
  */
 
 import { getArabicUrl, getEnglishUrl } from '../data/navigation-ar';
@@ -63,6 +68,7 @@ const arAriaLabel = isArabic ? 'اللغة الحالية: العربية' : 'ا
       aria-label={toggleAriaLabel}
       title={toggleLabel}
       hreflang={isArabic ? 'en' : 'ar'}
+      data-astro-reload
     >
       <i class="fas fa-globe" aria-hidden="true"></i>
       <span class="lang-globe-label">{isArabic ? 'En' : 'ع'}</span>
@@ -71,22 +77,24 @@ const arAriaLabel = isArabic ? 'اللغة الحالية: العربية' : 'ا
 
   {variant === 'pill' && (
     <div class="lang-pill">
-      <a 
+      <a
         href={englishUrl}
         class:list={['lang-option', 'lang-en', { 'is-active': !isArabic }]}
         aria-current={!isArabic ? 'page' : undefined}
         aria-label={enAriaLabel}
         hreflang="en"
+        data-astro-reload
       >
         En
       </a>
       <span class="lang-divider">-</span>
-      <a 
+      <a
         href={arabicUrl}
         class:list={['lang-option', 'lang-ar', { 'is-active': isArabic }]}
         aria-current={isArabic ? 'page' : undefined}
         aria-label={arAriaLabel}
         hreflang="ar"
+        data-astro-reload
       >
         ع
       </a>
@@ -95,20 +103,22 @@ const arAriaLabel = isArabic ? 'اللغة الحالية: العربية' : 'ا
 
   {variant === 'text' && (
     <div class="lang-text-group">
-      <a 
+      <a
         href={englishUrl}
         class:list={['lang-text-link', { 'is-active': !isArabic }]}
         aria-current={!isArabic ? 'page' : undefined}
         hreflang="en"
+        data-astro-reload
       >
         English
       </a>
       <span class="lang-divider">|</span>
-      <a 
+      <a
         href={arabicUrl}
         class:list={['lang-text-link', 'lang-ar', { 'is-active': isArabic }]}
         aria-current={isArabic ? 'page' : undefined}
         hreflang="ar"
+        data-astro-reload
       >
         العربية
       </a>
@@ -118,20 +128,22 @@ const arAriaLabel = isArabic ? 'اللغة الحالية: العربية' : 'ا
   {variant === 'icon' && (
     <div class="lang-icon-group">
       <i class="fas fa-globe lang-globe"></i>
-      <a 
+      <a
         href={englishUrl}
         class:list={['lang-icon-link', { 'is-active': !isArabic }]}
         aria-current={!isArabic ? 'page' : undefined}
         hreflang="en"
+        data-astro-reload
       >
         En
       </a>
       <span class="lang-divider">/</span>
-      <a 
+      <a
         href={arabicUrl}
         class:list={['lang-icon-link', 'lang-ar', { 'is-active': isArabic }]}
         aria-current={isArabic ? 'page' : undefined}
         hreflang="ar"
+        data-astro-reload
       >
         ع
       </a>
