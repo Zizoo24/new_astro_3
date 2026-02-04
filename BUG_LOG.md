@@ -64,9 +64,22 @@ Track bugs, fixes, and known issues for OnlineTranslation.ae
 |-------|----------|-------|
 | 30 CSS files totaling 606KB | High | Needs consolidation and dead code removal |
 | `porto-desktop.css` is 162KB | High | Single massive file, difficult to maintain |
-| Multiple `!important` overrides | Medium | Specificity wars between stylesheets |
+| Multiple `!important` overrides | High | `navigation-glassmorphism.css` has 200+ !important to override porto-desktop |
 | Deferred CSS loading + View Transitions conflict | Medium | Workaround in place (data-astro-reload) |
 | Duplicate styles across files | Medium | RTL, dark mode, mobile styles have overlap |
+| Dark mode tokens defined twice | Low | Both `base-architecture.css` and component files define dark mode values |
+| Z-index stacking complexity | Medium | Mobile sidebar uses z-index: 2000, overlay: 1999, header: 1050 |
+
+### CSS File Risk Assessment (February 4, 2026)
+
+| File | Lines | Risk | Optimization Priority |
+|------|-------|------|----------------------|
+| `porto-desktop.css` | 8,234 | **High** | Extract component styles |
+| `dark-mode-tokenized.css` | 1,980 | **Low** | Uses @layer, token-based |
+| `base-architecture.css` | 1,752 | **Low** | Well-structured foundation |
+| `sticky-mobile.css` | 1,407 | **Medium** | Complex sidebar state |
+| `rtl.css` | 1,361 | **Medium** | Necessary !important usage |
+| `navigation-glassmorphism.css` | 1,258 | **Medium** | Heavy specificity overrides |
 
 ### Performance
 
@@ -90,7 +103,32 @@ Track bugs, fixes, and known issues for OnlineTranslation.ae
 - [ ] Consolidate hero-related CSS (3 files: hero-enhancements, hero-intro-optimized, hero-optimization)
 - [ ] Review navigation CSS (3 files: navigation-glassmorphism, megamenu, porto-dropdown-onlinetranslation)
 - [ ] Evaluate CSS-in-JS or CSS modules for component styles
-- [ ] Test PurgeCSS or similar tool for dead code removal
+- [x] Upgrade build plugins (astro-min, astro-compressor) - Completed Feb 4, 2026
+
+---
+
+## Build Optimization Status
+
+### February 4, 2026
+
+**Plugin Upgrades Applied:**
+- Replaced `astro-compress` with `astro-min` (Rust-based, faster)
+- Added `astro-compressor` for Brotli/gzip compression
+- Trimmed PurgeCSS safelist to reduce false positives
+
+**Build Results:**
+- Total CSS savings: 114.2 KB (34% reduction)
+- Build time: ~same as before
+- Compression: Both .br and .gz files generated
+
+**Config Changes:**
+```javascript
+// astro.config.mjs
+import min from 'astro-min';
+import compressor from 'astro-compressor';
+
+// Plugin order: purgecss → inline → min → compressor
+```
 
 ---
 
@@ -109,4 +147,4 @@ Track bugs, fixes, and known issues for OnlineTranslation.ae
 
 ---
 
-*Last Updated: February 4, 2026*
+*Last Updated: February 4, 2026 (CSS Audit Complete)*
