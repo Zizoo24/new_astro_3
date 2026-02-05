@@ -87,34 +87,127 @@ High-impression, low-CTR pages need compelling descriptions:
 
 ### 2.1 Realistic Backlink Targets
 
-**Tier A: UAE Business Directories (10-15 links)**
-- Yellow Pages UAE
-- Dubizzle Business
-- UAE Business Directory
-- Dubai/Abu Dhabi Chamber (if member)
-- Connex UAE
-- Companylist.ae
+**⚠️ Why government backlinks are fantasy:**
+Government sites (mofa.gov.ae, moj.gov.ae, dha.gov.ae) do NOT link to commercial services. They link to other government entities only. Focus on directories and community sites instead.
 
-**Tier B: Expat & Community Sites (5-8 links)**
-- ExpatWoman.com
-- Dubai Expat Forum
-- Internations Dubai
-- UAE Expats Forum
+---
 
-**Tier C: Industry & Legal (3-5 links)**
-- Legal blogs (UAE-focused)
-- Translation industry blogs
-- Immigration consultancy sites
+#### Tier A: UAE Business Directories (Target: 10-15 links)
 
-### 2.2 Local PR
+| Directory | URL | Type | Priority | Notes |
+|-----------|-----|------|----------|-------|
+| Yellow Pages UAE | yellowpages-uae.com | Free listing | HIGH | Add business, verify phone |
+| Dubizzle Business | dubizzle.com/business | Free/Paid | HIGH | Create business profile |
+| Companylist.ae | companylist.ae | Free submission | HIGH | Translation services category |
+| Connex UAE | connexuae.com | Free listing | MEDIUM | B2B directory |
+| UAE Business Directory | uaebusinessdirectory.com | Free/Paid | MEDIUM | Service provider listing |
+| Clutch.co | clutch.co | Review-based | MEDIUM | Language services category |
+| GoodFirms | goodfirms.co | Review-based | MEDIUM | Translation companies |
+| Crunchbase | crunchbase.com | Free profile | LOW | Company profile + link |
 
-- Press release on service features
-- Expert quote availability for journalists
-- Business feature pitches
+**Action items:**
+1. Create consistent NAP (Name, Address, Phone) before submissions
+2. Use exact business name: "OnlineTranslation.ae"
+3. Category: "Translation Services" or "Legal Services"
+4. Include WhatsApp: +971 50 862 0217
+5. Request review from past clients after listing
 
-### 2.3 Citation Building
+---
 
-Ensure NAP consistency across all platforms.
+#### Tier B: Expat & Community Sites (Target: 5-8 links)
+
+| Site | URL | Link Type | Priority | Approach |
+|------|-----|-----------|----------|----------|
+| ExpatWoman.com | expatwoman.com | Directory + Forum | HIGH | Business listing + helpful forum posts |
+| Internations Dubai | internations.org/dubai | Community | HIGH | Member profile + recommendations |
+| Dubai Expat Forum | dubaiforum.com | Forum signature | MEDIUM | Answer visa/document questions |
+| UAE Expats Blog | uaeexpatsblog.com | Guest post | MEDIUM | Pitch article on document requirements |
+| Expat.com UAE | expat.com/en/destination/middle-east/united-arab-emirates | Directory | MEDIUM | Business listing |
+| Just Landed UAE | justlanded.com/english/UAE | Directory | LOW | Service provider listing |
+
+**Forum Strategy (for ExpatWoman, Dubai Expat Forum):**
+1. Create genuine helpful account (not promotional)
+2. Answer questions about: visa documents, attestation, MOFA requirements
+3. Include signature link after 10+ helpful posts
+4. Never spam or self-promote in posts
+
+---
+
+#### Tier C: Industry & Translation Sites (Target: 3-5 links)
+
+| Site | URL | Link Type | Priority | Approach |
+|------|-----|-----------|----------|----------|
+| ProZ.com | proz.com | Translator directory | HIGH | Agency listing + translator profiles |
+| TranslatorsCafe | translatorscafe.com | Agency profile | MEDIUM | Free agency listing |
+| GALA Global | gala-global.org | Industry association | MEDIUM | Membership (paid) |
+| ATA Directory | atanet.org | Association | LOW | Membership required |
+| Slator | slator.com | Industry news | LOW | PR/news submission |
+
+---
+
+#### Tier D: Local Business & Legal (Target: 3-5 links)
+
+| Opportunity | Approach | Priority | Expected Outcome |
+|-------------|----------|----------|------------------|
+| Immigration consultants | Partnership exchange | HIGH | Referral links from 2-3 consultants |
+| Law firm websites | Service provider listing | MEDIUM | "Recommended vendors" pages |
+| PRO service companies | Partnership | MEDIUM | Cross-referral arrangement |
+| Typing centers | Referral partnership | LOW | Local citations |
+
+**Partnership pitch template:**
+> "We refer clients to you for [visa/PRO/legal services]. Would you consider adding us to your recommended translation partners?"
+
+---
+
+### 2.2 Citation Building (NAP Consistency)
+
+**Business information to use consistently:**
+
+| Field | Value |
+|-------|-------|
+| Business Name | OnlineTranslation.ae |
+| Address | Dubai, UAE |
+| Phone | +971 50 862 0217 |
+| Website | https://onlinetranslation.ae |
+| Category | Translation Services / Legal Translation |
+| Hours | Sun-Thu 9am-6pm, Sat 10am-4pm |
+
+**Citation checklist:**
+- [ ] Google Business Profile (claimed and optimized)
+- [ ] Apple Maps / Apple Business Connect
+- [ ] Bing Places for Business
+- [ ] Facebook Business Page
+- [ ] LinkedIn Company Page
+- [ ] Instagram Business Profile
+
+---
+
+### 2.3 Local PR Opportunities
+
+| Opportunity | Platform | Approach |
+|-------------|----------|----------|
+| Press release | PRNewswire Arabia, AME Info | Service launch/milestone announcement |
+| Expert quotes | Gulf News, Khaleej Times | HARO-style journalist queries |
+| Business features | Entrepreneur Middle East, SME10x | Pitch founder story |
+| Podcast appearances | UAE business podcasts | Offer expertise on document processes |
+
+**Press release angles:**
+1. "60-Minute Translation Service Launches in Dubai"
+2. "How Digital Translation is Changing Golden Visa Applications"
+3. Milestone: "X documents translated" or "serving clients from Y countries"
+
+---
+
+### 2.4 Weekly Backlink Building Schedule
+
+| Week | Focus | Target Links | Activities |
+|------|-------|--------------|------------|
+| Week 3 | Directories | 5-7 | Submit to Yellow Pages, Dubizzle, Companylist, Clutch |
+| Week 4 | Expat sites | 3-4 | ExpatWoman listing, Internations profile, forum accounts |
+| Week 5 | Industry | 2-3 | ProZ agency listing, TranslatorsCafe profile |
+| Week 6 | Partnerships | 2-3 | Reach out to 5 immigration consultants |
+
+**Total Phase 2 target: 12-17 new backlinks**
 
 ---
 
