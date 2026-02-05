@@ -210,6 +210,9 @@ const criticalCSS = `*,*::before,*::after{box-sizing:border-box}html{font-size:8
   </noscript>
   
   <!-- Main CSS - Deferred loading with media trick -->
+  <!-- LAYER ORDER - Must load FIRST (sync) to establish cascade -->
+  <link rel="stylesheet" href="/styles/css-layer-order.css">
+
   <!-- FOUNDATION - Load async -->
   <link rel="stylesheet" href="/styles/base-architecture.css" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="/styles/porto-desktop.css" media="print" onload="this.media='all'">
@@ -251,6 +254,7 @@ const criticalCSS = `*,*::before,*::after{box-sizing:border-box}html{font-size:8
 
   <!-- Fallback for users with JS disabled -->
   <noscript>
+    <link rel="stylesheet" href="/styles/css-layer-order.css">
     <link rel="stylesheet" href="/styles/base-architecture.css">
     <link rel="stylesheet" href="/styles/porto-desktop.css">
     <link rel="stylesheet" href="/styles/services-enhanced.css">
