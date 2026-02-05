@@ -304,9 +304,8 @@ navigation.forEach(item => {
                                     class="dropdown-more-link"
                                     role="menuitem"
                                   >
-                                    <i class="fas fa-plus-circle" aria-hidden="true"></i>
+                                    <i class="fas fa-ellipsis-h" aria-hidden="true"></i>
                                     <span>+{meta.hiddenCount} {labels.more}</span>
-                                    <i class={isArabic ? "fas fa-arrow-left dropdown-more-arrow" : "fas fa-arrow-right dropdown-more-arrow"} aria-hidden="true"></i>
                                   </a>
                                 </li>
                               )}
@@ -319,7 +318,7 @@ navigation.forEach(item => {
                                     role="menuitem"
                                   >
                                     {item.dropdown.footerLink.label}
-                                    <i class={isArabic ? "fas fa-arrow-left" : "fas fa-arrow-right"} aria-hidden="true"></i>
+                                    <i class="fas fa-long-arrow-alt-right dropdown-footer-arrow" aria-hidden="true"></i>
                                   </a>
                                 </li>
                               )}
@@ -858,6 +857,24 @@ navigation.forEach(item => {
 
   .dropdown-footer:hover {
     color: var(--ot-coral, #FF1654);
+  }
+
+  .dropdown-footer-arrow {
+    font-size: 14px;
+    transition: transform 0.2s ease;
+  }
+
+  .dropdown-footer:hover .dropdown-footer-arrow {
+    transform: translateX(4px);
+  }
+
+  /* RTL footer arrow */
+  :global(html[lang="ar"]) .dropdown-footer-arrow {
+    transform: scaleX(-1);
+  }
+
+  :global(html[lang="ar"]) .dropdown-footer:hover .dropdown-footer-arrow {
+    transform: scaleX(-1) translateX(4px);
   }
 
   /* Flyout submenus */
