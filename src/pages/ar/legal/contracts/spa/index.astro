@@ -7,6 +7,8 @@
  * Schemas: BreadcrumbList, Service, FAQPage
  */
 import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+import RelatedServices from '../../../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../../../components/CrossSiloLinks.astro';
 
 const faqs = [
   {
@@ -345,29 +347,14 @@ const serviceSchema = {
   <!-- Related Services -->
   <section class="section bg-light">
     <div class="container">
-      <h2>قد تحتاجون أيضاً</h2>
-      <div class="related-grid">
-        <a href="/ar/legal/contracts/nda/" class="related-card">
-          <i class="fas fa-user-secret"></i>
-          <h3>اتفاقيات السرية</h3>
-          <p>حماية المعلومات في مفاوضات الصفقات</p>
-        </a>
-        <a href="/ar/legal/contracts/mou/" class="related-card">
-          <i class="fas fa-handshake"></i>
-          <h3>مذكرات التفاهم</h3>
-          <p>الاتفاقيات التمهيدية للشراكات</p>
-        </a>
-        <a href="/ar/legal/corporate/poa/" class="related-card">
-          <i class="fas fa-stamp"></i>
-          <h3>التوكيلات</h3>
-          <p>للتمثيل في معاملات العقارات</p>
-        </a>
-        <a href="/ar/services/golden-visa-translation/" class="related-card">
-          <i class="fas fa-medal"></i>
-          <h3>التأشيرة الذهبية</h3>
-          <p>حزمة مستندات الاستثمار العقاري</p>
-        </a>
-      </div>
+      <RelatedServices pageKey="spa" title="خدمات ذات صلة" maxItems={6} />
+    </div>
+  </section>
+
+  <!-- Cross-Silo Links -->
+  <section class="section">
+    <div class="container">
+      <CrossSiloLinks pageKey="spa" title="استكشف خدمات أخرى" />
     </div>
   </section>
 
