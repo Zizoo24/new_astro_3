@@ -339,6 +339,190 @@ Format 2: مكتب + [Service] + في + [Location]
 
 ---
 
+## Phase Verification Checklists
+
+### Phase 1 Verification (Weeks 1-2)
+
+| Task | How to Verify | Tool | ✓ |
+|------|---------------|------|---|
+| Meta titles shortened (<60 chars) | Run Screaming Frog crawl | Screaming Frog | ☐ |
+| Meta descriptions optimized | Check GSC "Pages" report for CTR changes | GSC | ☐ |
+| GBP claimed and optimized | Search "OnlineTranslation.ae" on Google Maps | Google Maps | ☐ |
+| GBP photos added (10+) | Check GBP dashboard | GBP | ☐ |
+| Priority pages submitted to GSC | Check "URL Inspection" for each URL | GSC | ☐ |
+| Internal linking fixes deployed | Run internal link audit | Screaming Frog | ☐ |
+
+**Success Criteria:** CTR improvement of 0.1-0.2% on optimized pages within 2 weeks.
+
+---
+
+### Phase 2 Verification (Weeks 3-6)
+
+| Task | How to Verify | Tool | ✓ |
+|------|---------------|------|---|
+| Directory submissions (10-15) | Check each directory for live listing | Manual | ☐ |
+| Expat site profiles (5-8) | Verify profiles are approved and indexed | Google site: search | ☐ |
+| Industry listings (3-5) | Check ProZ, TranslatorsCafe profiles | Manual | ☐ |
+| Partnership outreach (5+) | Track responses in spreadsheet | Google Sheets | ☐ |
+| NAP consistency verified | Check all citations match exactly | BrightLocal/Manual | ☐ |
+| Backlink count increased | Check Ahrefs/Semrush backlink report | Ahrefs/Semrush | ☐ |
+
+**Success Criteria:** 12-17 new backlinks, 3+ directory listings indexed.
+
+---
+
+### Phase 3 Verification (Weeks 7-12)
+
+| Task | How to Verify | Tool | ✓ |
+|------|---------------|------|---|
+| Language pages expanded (5+) | Word count >2,000 per page | Manual/Screaming Frog | ☐ |
+| Internal linking audit complete | No orphan pages in crawl report | Screaming Frog | ☐ |
+| FAQs added to thin pages | Check FAQ schema in Rich Results Test | Google Rich Results | ☐ |
+| Content calendar executed | All blog posts published on schedule | CMS/Git commits | ☐ |
+| Schema markup validated | Test all service pages | Schema Validator | ☐ |
+
+**Success Criteria:** 25+ clicks/month increase, 2-3 new keywords in Top 10.
+
+---
+
+### Phase 4 Verification (Weeks 13-18)
+
+| Task | How to Verify | Tool | ✓ |
+|------|---------------|------|---|
+| Arabic keywords optimized | Check GSC Performance for /ar/ pages | GSC (Arabic filter) | ☐ |
+| Abu Dhabi content expanded | Word count and keyword density check | Manual | ☐ |
+| Arabic backlinks acquired | Check referring domains for Arabic sites | Ahrefs | ☐ |
+| Arabic pages indexed | site:onlinetranslation.ae/ar/ | Google Search | ☐ |
+
+**Success Criteria:** Arabic traffic +50% from baseline, Abu Dhabi keywords in Top 20.
+
+---
+
+### Phase 5 Verification (Weeks 19-26)
+
+| Task | How to Verify | Tool | ✓ |
+|------|---------------|------|---|
+| Blog posts published (2/week) | Check /blog/ page count | Manual | ☐ |
+| Resource guides created (3+) | Check for backlinks to guides | Ahrefs | ☐ |
+| Case studies published (3+) | Verify E-E-A-T signals present | Manual | ☐ |
+| Partnership referrals active | Track referral traffic in GA4 | GA4 | ☐ |
+| Backlink target met (250+) | Total backlink count | Ahrefs/Semrush | ☐ |
+
+**Success Criteria:** 130-160 clicks/month, 250+ total backlinks.
+
+---
+
+## Monthly Monitoring Protocol
+
+### GSC Metrics to Track (Every Monday)
+
+| Metric | Where to Find | Baseline | Target |
+|--------|---------------|----------|--------|
+| Total clicks (28 days) | GSC > Performance | 36-40 | +15% MoM |
+| Average position | GSC > Performance | Varies | Improve by 5+ positions |
+| CTR | GSC > Performance | 0.3% | +0.1% per month |
+| Impressions | GSC > Performance | ~12,000 | +20% MoM |
+| Indexed pages | GSC > Coverage | ~120 | Maintain/grow |
+| Pages with errors | GSC > Coverage | 0 | Keep at 0 |
+
+### Backlink Metrics to Track (Every 2 Weeks)
+
+| Metric | Tool | Baseline | Target |
+|--------|------|----------|--------|
+| Total backlinks | Ahrefs/Semrush | 144 | +15-20/month |
+| Referring domains | Ahrefs/Semrush | ~50 | +5-10/month |
+| Domain Rating | Ahrefs | ~15 | +2-3 per quarter |
+| Toxic backlinks | Ahrefs/Semrush | 0 | Keep at 0 |
+
+### Keyword Ranking Tracker (Monthly)
+
+| Keyword | Baseline Position | Month 1 | Month 2 | Month 3 | Month 4 | Month 5 | Month 6 |
+|---------|-------------------|---------|---------|---------|---------|---------|---------|
+| legal translation dubai | 70.33 | | | | | | |
+| certified translation dubai | 87 | | | | | | |
+| medical translation dubai | 9 | | | | | | |
+| degree certificate translation | 9.3 | | | | | | |
+| document translation uae | TBD | | | | | | |
+| mofa attestation dubai | TBD | | | | | | |
+
+---
+
+## Verification Tools Checklist
+
+### Free Tools (Required)
+
+| Tool | Purpose | Setup Required |
+|------|---------|----------------|
+| Google Search Console | Performance tracking, indexation | ✅ Already connected |
+| Google Analytics 4 | Traffic analysis, user behavior | ✅ Already connected |
+| Google Business Profile | Local SEO, reviews | Verify ownership |
+| Google Rich Results Test | Schema validation | No setup |
+| PageSpeed Insights | Core Web Vitals | No setup |
+
+### Recommended Paid Tools
+
+| Tool | Purpose | Cost | Priority |
+|------|---------|------|----------|
+| Ahrefs Lite | Backlink tracking, competitor analysis | $99/mo | HIGH |
+| Screaming Frog | Technical SEO audits | $259/yr | HIGH |
+| Semrush | Keyword tracking, site audit | $130/mo | MEDIUM |
+| BrightLocal | Citation tracking, local SEO | $39/mo | LOW |
+
+### Free Alternatives
+
+| Instead of | Use | Limitations |
+|------------|-----|-------------|
+| Ahrefs | Ubersuggest (free tier) | Limited data |
+| Screaming Frog | Sitebulb (trial) | 14-day trial |
+| Semrush | Google Search Console | No competitor data |
+
+---
+
+## End-of-Phase Review Template
+
+### Phase __ Completion Review
+
+**Date:** _______________
+**Phase Duration:** Week __ to Week __
+
+#### Quantitative Results
+
+| Metric | Baseline | Target | Actual | Variance |
+|--------|----------|--------|--------|----------|
+| Organic clicks | | | | |
+| Keywords in Top 10 | | | | |
+| Backlinks | | | | |
+| CTR | | | | |
+
+#### Qualitative Assessment
+
+1. **What worked well?**
+   -
+
+2. **What underperformed?**
+   -
+
+3. **Unexpected findings:**
+   -
+
+4. **Adjustments for next phase:**
+   -
+
+#### Blockers/Issues
+
+| Issue | Impact | Resolution |
+|-------|--------|------------|
+| | | |
+
+#### Sign-off
+
+- [ ] All checklist items verified
+- [ ] Metrics recorded in tracking sheet
+- [ ] Next phase tasks prioritized
+- [ ] Learnings documented
+
+---
+
 ## Related Documents
 
 - [`SEO-STRATEGY.md`](./SEO-STRATEGY.md) - Current keyword data
