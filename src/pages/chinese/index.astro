@@ -72,6 +72,29 @@ const specialistsCards = [
   { href: '/services/corporate-translation/', icon: 'fas fa-briefcase', title: '企业和商业翻译', bullets: ['营业执照和章程', '股东协议', '自由区文件'], tags: ['DMCC', '自由区', 'DED'] },
 ];
 
+// Chinese Community Document Types
+const chineseDocs = [
+  { icon: 'fas fa-file-alt', title: '出生和婚姻证明', desc: '中国民政局签发的出生证明、结婚证和离婚证的翻译。适用于阿联酋家庭签证和居留申请。', tags: ['出生证明', '结婚证', '民政局'] },
+  { icon: 'fas fa-graduation-cap', title: '教育文件', desc: '学位证书、毕业证书和成绩单的翻译。包括中国教育部认证的文件。', tags: ['学位证书', '成绩单', '教育部认证'] },
+  { icon: 'fas fa-id-card', title: '身份证件', desc: '中国身份证、户口本和护照的翻译。阿联酋移民局所需的身份验证文件。', tags: ['身份证', '户口本', '护照'] },
+  { icon: 'fas fa-stamp', title: '海牙认证文件', desc: '中国自2023年11月加入海牙公约。中国外交部的海牙认证现在在阿联酋被接受，简化了认证流程。', tags: ['海牙认证', '外交部', '简化流程'] },
+  { icon: 'fas fa-shield-alt', title: '无犯罪证明', desc: '中国公安局出具的无犯罪记录证明翻译。阿联酋签证和就业所需。', tags: ['无犯罪证明', '公安局', '签证要求'] },
+  { icon: 'fas fa-briefcase', title: '商业文件', desc: '中国工商局营业执照、公司章程和商业合同的翻译。适用于阿联酋自由区公司设立。', tags: ['营业执照', '公司章程', '自由区'] },
+];
+
+const chineseDocsLabel = '中国文件类型';
+const chineseDocsTitle = '中国社区常用文件翻译';
+
+// Attestation Process for Chinese Documents
+const attestationSteps = [
+  { step: '1', title: '中国海牙认证', desc: '中国自2023年11月7日起成为海牙公约成员国。您的文件可以通过中国外交部获得海牙认证（Apostille），无需传统的使馆认证链。' },
+  { step: '2', title: 'MOJ认证翻译', desc: '海牙认证后，我们将您的文件翻译成阿拉伯语并由阿联酋司法部认证翻译员盖章。这是阿联酋政府接受的强制性步骤。' },
+  { step: '3', title: 'MOFA认证（如需要）', desc: '某些用途（如法院提交、政府合同）可能需要阿联酋外交部（MOFA）的额外认证。我们协调整个流程。' },
+];
+
+const attestationLabel = '认证流程';
+const attestationTitle = '中国文件在阿联酋的认证流程';
+
 const languagesLabel = '我们支持的语言';
 const languagesTitle = '43+语言的翻译服务';
 const languages = ['阿拉伯语', '英语', '俄语', '法语', '中文', '印地语', '乌尔都语', '西班牙语', '德语', '葡萄牙语', '意大利语', '土耳其语', '波斯语', '日语', '韩语', '荷兰语', '波兰语', '罗马尼亚语', '孟加拉语', '泰米尔语', '他加禄语', '印尼语', '泰语'];
@@ -90,6 +113,13 @@ const faqItems = [
   { question: '获得认证法律翻译需要多长时间？', answer: '标准文件（出生证明、结婚证、学历证书）通常在3-6个工作小时内完成。紧急法律需求可提供加急处理。' },
   { question: '你们提供认证服务吗？', answer: '是的。当您的法律文件需要MOFA或其他政府机构的认证时，我们协调整个流程，包括原件的安全运输。' },
   { question: '你们翻译阿拉伯语到英语和英语到阿拉伯语吗？', answer: '是的。我们的认证翻译员双向工作，提供全面的阿拉伯语翻译服务。' },
+  { question: '中国加入海牙公约对我有什么影响？', answer: '中国自2023年11月7日起成为海牙公约成员国。这意味着您的中国文件现在可以通过海牙认证（Apostille）在阿联酋使用，无需传统的使馆认证链，大大简化了流程并缩短了时间。' },
+  { question: '户口本需要翻译吗？', answer: '是的，户口本是阿联酋移民局常见的要求文件。我们提供户口本的MOJ认证翻译，适用于家庭签证、居留申请和其他移民用途。' },
+  { question: '中国学位证书在阿联酋被认可吗？', answer: '中国学位证书经过海牙认证和MOJ认证翻译后在阿联酋被认可。某些职业可能还需要通过阿联酋高等教育部（MOHESR）的学历认证。' },
+  { question: '你们能翻译简体和繁体中文吗？', answer: '是的，我们的翻译员精通简体中文和繁体中文。无论您的文件来自中国大陆、香港、台湾还是其他华语地区，我们都能提供准确的翻译。' },
+  { question: '中国无犯罪证明在阿联酋有效期多长？', answer: '中国公安局出具的无犯罪证明通常在签发后6个月内有效。建议在需要时再申请，以确保文件在阿联酋提交时仍在有效期内。' },
+  { question: '你们能协助中国商业文件翻译吗？', answer: '是的，我们翻译中国工商局营业执照、公司章程、股东决议和商业合同。这些翻译适用于阿联酋自由区公司设立、银行开户和商业许可申请。' },
+  { question: '翻译费用是多少？', answer: '费用取决于文件类型和复杂程度。标准个人文件（如出生证明、结婚证）起价AED 150。通过WhatsApp发送您的文件获取准确报价。' },
 ];
 
 const ctaBanner = { title: '我们处理合规事务。您专注于重要的事情。', body: '加入迪拜、阿布扎比和北部酋长国信任OnlineTranslation.ae的企业和个人。', buttonLabel: '通过WhatsApp发送文件', buttonUrl: 'https://wa.me/971508620217' };
@@ -137,6 +167,54 @@ const contactSection = { label: '联系我们', title: '请求免费报价', des
     <div class="container"><div class="section-header"><span class="section-label exodus-label">{specialistsLabel}</span><h2 class="section-title exodus-section-title">{specialistsTitle}</h2></div>
       <div class="grid grid-4 grid--auto-fit specialists-grid">{specialistsCards.map((card) => (<a href={card.href} class="specialist-card"><div class="specialist-icon"><i class={card.icon}></i></div><h3>{card.title}</h3><ul class="specialist-bullets">{card.bullets.map((b) => (<li>{b}</li>))}</ul><div class="specialist-tags">{card.tags.map((t) => (<span class="tag">{t}</span>))}</div></a>))}</div>
       <div class="team-cta-wrapper"><p class="team-tagline">您的文件由专业专家处理，并在交付前进行审核。</p><a href="https://wa.me/971508620217" class="team-cta"><i class="fab fa-whatsapp"></i> 通过WhatsApp发送文件</a></div>
+    </div>
+  </section>
+
+  <!-- Chinese Community Document Types Section -->
+  <section class="section bg-white chinese-docs-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">{chineseDocsLabel}</span>
+        <h2 class="section-title">{chineseDocsTitle}</h2>
+      </div>
+      <div class="grid grid-3 grid--auto-fit">
+        {chineseDocs.map((doc) => (
+          <article class="specialist-card">
+            <div class="specialist-icon"><i class={doc.icon}></i></div>
+            <h3>{doc.title}</h3>
+            <p>{doc.desc}</p>
+            <div class="specialist-tags">
+              {doc.tags.map((tag) => (<span class="tag">{tag}</span>))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Attestation Process Section -->
+  <section class="section bg-light attestation-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">{attestationLabel}</span>
+        <h2 class="section-title">{attestationTitle}</h2>
+        <p class="section-subtitle">中国是海牙公约成员国 — 您的文件认证流程更简便</p>
+      </div>
+      <div class="grid grid-3 grid--auto-fit process-steps exodus-process-steps">
+        {attestationSteps.map((step) => (
+          <article class="process-step exodus-step">
+            <div class="step-header">
+              <span class="step-index">{step.step}</span>
+              <div class="step-icon"><i class="fas fa-check-circle"></i></div>
+            </div>
+            <h3 class="step-title">{step.title}</h3>
+            <p class="step-desc">{step.desc}</p>
+          </article>
+        ))}
+      </div>
+      <div class="text-center" style="margin-top: 2rem;">
+        <a href="/services/attestation/" class="hero-cta-secondary">了解更多认证服务 →</a>
+      </div>
     </div>
   </section>
 

@@ -87,7 +87,17 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
       </div>
       
     </div><!-- /.footer-grid - exactly 4 direct children -->
-    
+
+    <!-- Translation Languages Row - Links to community pages -->
+    <div class="footer-languages-row">
+      <h4>Translation Languages</h4>
+      <div class="footer-languages-grid">
+        {footerNav.languages.map(lang => (
+          <a href={lang.href}>{lang.label}</a>
+        ))}
+      </div>
+    </div>
+
     <!-- Language Switcher Row -->
     <div class="footer-lang-row">
       <span class="footer-lang-label"><i class="fas fa-globe"></i> Language:</span>
@@ -342,9 +352,51 @@ import LanguageSwitcher from './LanguageSwitcher.astro';
   }
   
   /* ============================================
+     TRANSLATION LANGUAGES ROW
+     Links to community-specific pages
+     ============================================ */
+  .footer-languages-row {
+    margin-top: 30px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+  }
+
+  .footer-languages-row h4 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    color: #ffffff;
+  }
+
+  .footer-languages-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 16px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .footer-languages-grid a {
+    color: var(--text-on-dark-muted, #c5d4e8);
+    font-size: 0.875rem;
+    transition: color 0.2s ease;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+
+  .footer-languages-grid a:hover {
+    color: var(--accent-coral, #FF1654);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  /* ============================================
      FOOTER BOTTOM
      ============================================ */
-  
+
   /* Language Switcher Row */
   .footer-lang-row {
     display: flex;

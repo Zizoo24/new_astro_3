@@ -234,17 +234,44 @@ export const mainNav: (NavLink | NavGroup)[] = [
       { label: 'Website Localization', href: '/specialized/digital/' },
       { label: 'Financial Documents', href: '/specialized/financial/' },
 
+      // Additional Services
+      { label: 'Certificate Translation', href: '/services/certificate-translation/' },
+      { label: 'Corporate Translation', href: '/services/corporate-translation/' },
+      { label: 'Proofreading Services', href: '/services/proofreading/' },
+      { label: 'Title Deed Translation', href: '/services/title-deed-translation-dubai/' },
+
       // High-value packages
       { label: 'Golden Visa Package', href: '/services/golden-visa-translation/', badge: 'POPULAR' },
     ],
     headers: [
       { index: 0, label: 'Technical Translation' },
       { index: 1, label: 'Industry Verticals' },
-      { index: 6, label: 'Packages' },
+      { index: 6, label: 'Additional Services' },
+      { index: 10, label: 'Packages' },
     ],
-    dividers: [0, 5],
+    dividers: [0, 5, 9],
   },
   
+  // ========================================
+  // INDUSTRIES (B2B Verticals)
+  // ========================================
+  {
+    id: 'industries',
+    label: 'Industries',
+    href: '/industries/',
+    children: [
+      { label: 'Industries Hub', href: '/industries/', badge: 'HUB' },
+      { label: 'Healthcare', href: '/industries/healthcare/', icon: 'fas fa-hospital' },
+      { label: 'Legal Sector', href: '/industries/legal/', icon: 'fas fa-balance-scale' },
+      { label: 'Real Estate', href: '/industries/real-estate/', icon: 'fas fa-building' },
+      { label: 'E-Commerce', href: '/industries/e-commerce/', icon: 'fas fa-shopping-cart' },
+    ],
+    headers: [
+      { index: 0, label: 'Industry Solutions' },
+    ],
+    dividers: [],
+  },
+
   // ========================================
   // SILO 5: LOCATIONS (Geo-targeting)
   // ========================================
@@ -295,6 +322,9 @@ export const mainNav: (NavLink | NavGroup)[] = [
       { label: 'Golden Visa Checklist', href: '/resources/golden-visa-checklist/' },
       { label: 'Distance Education UAE', href: '/resources/distance-education-uae/' },
       { label: 'MOHESR Equivalency', href: '/resources/mohesr-equivalency/' },
+      { label: 'Japan Visa Guide', href: '/resources/japan-visa-guide/' },
+      { label: 'Court Interpreter Guide', href: '/resources/court-interpreter-guide/' },
+      { label: 'Turnaround Times', href: '/resources/turnaround-times/' },
       { label: 'FAQ', href: '/resources/faq/' },
     ],
   },
@@ -398,6 +428,20 @@ export const mobileNav = {
         { label: 'Technical Translation', href: '/specialized/technical/' },
         { label: 'Hospitality Translation', href: '/specialized/hospitality/' },
         { label: 'Digital Content', href: '/specialized/digital/' },
+      ],
+    },
+
+    // INDUSTRIES (B2B Verticals)
+    {
+      id: 'industries',
+      label: 'Industries',
+      href: '/industries/',
+      children: [
+        { label: 'Industries Hub', href: '/industries/' },
+        { label: 'Healthcare', href: '/industries/healthcare/' },
+        { label: 'Legal Sector', href: '/industries/legal/' },
+        { label: 'Real Estate', href: '/industries/real-estate/' },
+        { label: 'E-Commerce', href: '/industries/e-commerce/' },
       ],
     },
 
@@ -520,6 +564,21 @@ export const mobileNavHubs = [
     ],
   },
 
+  // INDUSTRIES - B2B Verticals
+  {
+    id: 'industries',
+    label: 'Industries',
+    href: '/industries/',
+    hubLabel: 'Industry Solutions',
+    icon: 'fas fa-industry',
+    children: [
+      { label: 'Healthcare', href: '/industries/healthcare/', icon: 'fas fa-hospital' },
+      { label: 'Legal Sector', href: '/industries/legal/', icon: 'fas fa-balance-scale' },
+      { label: 'Real Estate', href: '/industries/real-estate/', icon: 'fas fa-building' },
+      { label: 'E-Commerce', href: '/industries/e-commerce/', icon: 'fas fa-shopping-cart' },
+    ],
+  },
+
   // LOCATIONS - Hub + main areas
   {
     id: 'locations',
@@ -586,11 +645,12 @@ export const footerNav = {
     { label: 'Legal Translation', href: '/legal-translation-dubai/' },
     { label: 'Personal Documents', href: '/personal-documents/' },
     { label: 'Attestation', href: '/services/attestation/' },
+    { label: 'Industries', href: '/industries/' },
     { label: 'Case Studies', href: '/resources/case-studies/' },
     { label: 'Our Credentials', href: '/about/credentials/' },
     { label: 'Contact', href: '/contact/' },
   ],
-  
+
   popularServices: [
     { label: 'Golden Visa Translation', href: '/services/golden-visa-translation/' },
     { label: 'Birth Certificate', href: '/personal/vital-records/birth/' },
@@ -599,7 +659,20 @@ export const footerNav = {
     { label: 'Power of Attorney', href: '/legal/corporate/poa/' },
     { label: 'India Attestation', href: '/services/attestation/india/' },
   ],
-  
+
+  // Language-specific pages for community SEO
+  languages: [
+    { label: 'Hindi Translation', href: '/hindi/' },
+    { label: 'Urdu Translation', href: '/urdu/' },
+    { label: 'Tagalog Translation', href: '/tagalog/' },
+    { label: 'Bengali Translation', href: '/bengali/' },
+    { label: 'Chinese Translation', href: '/chinese/' },
+    { label: 'Russian Translation', href: '/russian/' },
+    { label: 'French Translation', href: '/french/' },
+    { label: 'Farsi Translation', href: '/farsi/' },
+    { label: 'Malayalam Translation', href: '/malayalam/' },
+  ],
+
   legal: [
     { label: 'Privacy Policy', href: '/privacy/' },
     { label: 'Terms of Service', href: '/terms/' },

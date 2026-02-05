@@ -72,6 +72,29 @@ const specialistsCards = [
   { href: '/services/corporate-translation/', icon: 'fas fa-briefcase', title: 'Корпоративный перевод', bullets: ['Лицензии и учредительные документы', 'Соглашения акционеров', 'Документы свободных зон'], tags: ['DMCC', 'Свободные зоны', 'DED'] },
 ];
 
+// Russian Community Document Types
+const russianDocs = [
+  { icon: 'fas fa-file-alt', title: 'Свидетельства ЗАГС', desc: 'Перевод свидетельств о рождении, браке, разводе и смерти из российских ЗАГСов. Форматирование для иммиграционных органов ОАЭ.', tags: ['Свидетельство о рождении', 'Свидетельство о браке', 'ЗАГС'] },
+  { icon: 'fas fa-graduation-cap', title: 'Образовательные документы', desc: 'Дипломы, аттестаты и приложения из российских вузов и школ. Включая документы с советскими печатями.', tags: ['Диплом', 'Аттестат', 'Приложение'] },
+  { icon: 'fas fa-id-card', title: 'Документы удостоверения личности', desc: 'Внутренний паспорт РФ, заграничный паспорт, СНИЛС, ИНН. Требуется для проверки личности в ОАЭ.', tags: ['Паспорт РФ', 'Загранпаспорт', 'СНИЛС'] },
+  { icon: 'fas fa-stamp', title: 'Апостилированные документы', desc: 'Россия — член Гаагской конвенции с 1992 года. Апостиль Минюста России принимается в ОАЭ, что упрощает процесс легализации.', tags: ['Апостиль', 'Гаагская конвенция', 'Минюст'] },
+  { icon: 'fas fa-shield-alt', title: 'Справка о несудимости', desc: 'Перевод справки о наличии (отсутствии) судимости из МВД России. Требуется для виз и трудоустройства в ОАЭ.', tags: ['Справка МВД', 'Несудимость', 'Виза'] },
+  { icon: 'fas fa-briefcase', title: 'Коммерческие документы', desc: 'Выписки ЕГРЮЛ, уставы компаний, учредительные документы из российских реестров. Для открытия бизнеса в свободных зонах ОАЭ.', tags: ['ЕГРЮЛ', 'Устав', 'Свободная зона'] },
+];
+
+const russianDocsLabel = 'Типы российских документов';
+const russianDocsTitle = 'Популярные документы российского сообщества';
+
+// Attestation Process for Russian Documents
+const attestationSteps = [
+  { step: '1', title: 'Апостиль в России', desc: 'Россия является членом Гаагской конвенции с 1992 года. Ваши документы апостилируются в Министерстве юстиции РФ или территориальных органах. Это заменяет традиционную цепочку легализации через посольство.' },
+  { step: '2', title: 'Сертифицированный перевод MOJ', desc: 'После апостилирования мы переводим ваши документы на арабский язык с заверением сертифицированного переводчика Министерства юстиции ОАЭ. Это обязательный шаг для принятия государственными органами.' },
+  { step: '3', title: 'Легализация MOFA (при необходимости)', desc: 'Для некоторых целей (судебные дела, государственные контракты) может потребоваться дополнительная легализация в МИД ОАЭ (MOFA). Мы координируем весь процесс.' },
+];
+
+const attestationLabel = 'Процесс легализации';
+const attestationTitle = 'Легализация российских документов в ОАЭ';
+
 const languagesLabel = 'Поддерживаемые языки';
 const languagesTitle = 'Услуги перевода на 43+ языках';
 const languages = ['Арабский', 'Английский', 'Русский', 'Французский', 'Китайский', 'Хинди', 'Урду', 'Испанский', 'Немецкий', 'Португальский', 'Итальянский', 'Турецкий', 'Персидский', 'Японский', 'Корейский', 'Голландский', 'Польский', 'Румынский', 'Бенгальский', 'Тамильский', 'Тагальский', 'Индонезийский', 'Тайский'];
@@ -90,6 +113,13 @@ const faqItems = [
   { question: 'Сколько времени занимает сертифицированный перевод?', answer: 'Стандартные документы (свидетельства о рождении, браке, образовании) обычно готовы за 3-6 рабочих часов. Срочная обработка доступна.' },
   { question: 'Предоставляете ли вы услуги легализации?', answer: 'Да. Когда вашим документам требуется легализация от MOFA или других госорганов, мы координируем весь процесс, включая безопасную транспортировку оригиналов.' },
   { question: 'Переводите ли вы с арабского на английский и наоборот?', answer: 'Да. Наши сертифицированные переводчики работают в обоих направлениях.' },
+  { question: 'Россия является членом Гаагской конвенции?', answer: 'Да, Россия присоединилась к Гаагской конвенции в 1992 году. Это означает, что российские документы с апостилем Минюста России принимаются в ОАЭ без необходимости традиционной цепочки легализации через посольство.' },
+  { question: 'Нужно ли апостилировать документы в России перед отправкой?', answer: 'Да, рекомендуется получить апостиль в России (Минюст или территориальные органы) до отправки документов. Это значительно упрощает процесс легализации в ОАЭ.' },
+  { question: 'Вы переводите документы советского периода?', answer: 'Да, мы переводим документы любого периода, включая советские дипломы, аттестаты и свидетельства. Наши переводчики знакомы со старыми форматами и терминологией.' },
+  { question: 'Как долго действительна справка о несудимости?', answer: 'Справка о несудимости из МВД России обычно действительна 6 месяцев с даты выдачи. Рекомендуем запрашивать её незадолго до подачи документов в ОАЭ.' },
+  { question: 'Можете ли вы помочь с выпиской из ЕГРЮЛ?', answer: 'Да, мы переводим выписки из ЕГРЮЛ, уставы компаний и другие коммерческие документы. Эти переводы нужны для открытия бизнеса в свободных зонах ОАЭ или банковских операций.' },
+  { question: 'Работаете ли вы с документами из СНГ?', answer: 'Да, мы переводим документы из всех стран СНГ: Украины, Беларуси, Казахстана, Узбекистана и других. Уточните статус Гаагской конвенции для вашей страны.' },
+  { question: 'Сколько стоит перевод российских документов?', answer: 'Стоимость зависит от типа и сложности документа. Стандартные личные документы (свидетельства, справки) от 150 AED. Отправьте документ через WhatsApp для точного расчёта.' },
 ];
 
 const ctaBanner = { title: 'Мы позаботимся о соответствии. Вы сосредоточьтесь на важном.', body: 'Присоединяйтесь к компаниям и частным лицам в Дубае, Абу-Даби и северных эмиратах, которые доверяют OnlineTranslation.ae.', buttonLabel: 'Отправить документы в WhatsApp', buttonUrl: 'https://wa.me/971508620217' };
@@ -137,6 +167,54 @@ const contactSection = { label: 'Связаться', title: 'Запросить
     <div class="container"><div class="section-header"><span class="section-label exodus-label">{specialistsLabel}</span><h2 class="section-title exodus-section-title">{specialistsTitle}</h2></div>
       <div class="grid grid-4 grid--auto-fit specialists-grid">{specialistsCards.map((card) => (<a href={card.href} class="specialist-card"><div class="specialist-icon"><i class={card.icon}></i></div><h3>{card.title}</h3><ul class="specialist-bullets">{card.bullets.map((b) => (<li>{b}</li>))}</ul><div class="specialist-tags">{card.tags.map((t) => (<span class="tag">{t}</span>))}</div></a>))}</div>
       <div class="team-cta-wrapper"><p class="team-tagline">Ваши документы обрабатываются специалистами и проверяются перед доставкой.</p><a href="https://wa.me/971508620217" class="team-cta"><i class="fab fa-whatsapp"></i> Отправить документы в WhatsApp</a></div>
+    </div>
+  </section>
+
+  <!-- Russian Community Document Types Section -->
+  <section class="section bg-white russian-docs-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">{russianDocsLabel}</span>
+        <h2 class="section-title">{russianDocsTitle}</h2>
+      </div>
+      <div class="grid grid-3 grid--auto-fit">
+        {russianDocs.map((doc) => (
+          <article class="specialist-card">
+            <div class="specialist-icon"><i class={doc.icon}></i></div>
+            <h3>{doc.title}</h3>
+            <p>{doc.desc}</p>
+            <div class="specialist-tags">
+              {doc.tags.map((tag) => (<span class="tag">{tag}</span>))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Attestation Process Section -->
+  <section class="section bg-light attestation-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">{attestationLabel}</span>
+        <h2 class="section-title">{attestationTitle}</h2>
+        <p class="section-subtitle">Россия — член Гаагской конвенции — упрощённая легализация документов</p>
+      </div>
+      <div class="grid grid-3 grid--auto-fit process-steps exodus-process-steps">
+        {attestationSteps.map((step) => (
+          <article class="process-step exodus-step">
+            <div class="step-header">
+              <span class="step-index">{step.step}</span>
+              <div class="step-icon"><i class="fas fa-check-circle"></i></div>
+            </div>
+            <h3 class="step-title">{step.title}</h3>
+            <p class="step-desc">{step.desc}</p>
+          </article>
+        ))}
+      </div>
+      <div class="text-center" style="margin-top: 2rem;">
+        <a href="/services/attestation/" class="hero-cta-secondary">Подробнее об услугах легализации →</a>
+      </div>
     </div>
   </section>
 

@@ -72,6 +72,29 @@ const specialistsCards = [
   { href: '/services/corporate-translation/', icon: 'fas fa-briefcase', title: 'Traduction entreprise et commerce', bullets: ['Licences commerciales et statuts', 'Accords d\'actionnaires', 'Documentation zone franche'], tags: ['DMCC', 'Zones franches', 'DED'] },
 ];
 
+// French & Francophone Community Document Types
+const frenchDocs = [
+  { icon: 'fas fa-file-alt', title: 'Actes d\'état civil', desc: 'Traduction d\'actes de naissance, mariage, divorce et décès des mairies françaises et consulats. Formatés pour l\'immigration aux EAU.', tags: ['Acte de naissance', 'Acte de mariage', 'Mairie'] },
+  { icon: 'fas fa-graduation-cap', title: 'Documents éducatifs', desc: 'Diplômes, relevés de notes et attestations des universités françaises. Baccalauréat, Licence, Master et Doctorat.', tags: ['Diplôme', 'Baccalauréat', 'Relevé de notes'] },
+  { icon: 'fas fa-stamp', title: 'Documents apostillés', desc: 'La France est membre de la Convention de La Haye depuis 1965. L\'apostille du Ministère des Affaires étrangères français est acceptée aux EAU.', tags: ['Apostille', 'Convention de La Haye', 'MAE'] },
+  { icon: 'fas fa-shield-alt', title: 'Casier judiciaire', desc: 'Traduction du bulletin n°3 du casier judiciaire. Requis pour les visas et l\'emploi aux EAU.', tags: ['Bulletin n°3', 'Casier judiciaire', 'Visa'] },
+  { icon: 'fas fa-globe-africa', title: 'Documents Afrique francophone', desc: 'Traduction de documents du Maroc, Algérie, Tunisie, Sénégal et autres pays francophones. Vérifiez le statut de la Convention de La Haye pour votre pays.', tags: ['Maroc', 'Algérie', 'Tunisie', 'Sénégal'] },
+  { icon: 'fas fa-briefcase', title: 'Documents commerciaux', desc: 'Extrait Kbis, statuts de société, PV d\'assemblée générale. Pour création d\'entreprise dans les zones franches des EAU.', tags: ['Extrait Kbis', 'Statuts', 'Zone franche'] },
+];
+
+const frenchDocsLabel = 'Types de documents';
+const frenchDocsTitle = 'Documents courants de la communauté francophone';
+
+// Attestation Process for French Documents
+const attestationSteps = [
+  { step: '1', title: 'Apostille en France', desc: 'La France est membre de la Convention de La Haye depuis 1965. Obtenez l\'apostille auprès du Ministère des Affaires étrangères ou de la Cour d\'appel compétente. Cela remplace la légalisation consulaire traditionnelle.' },
+  { step: '2', title: 'Traduction certifiée MOJ', desc: 'Après apostille, nous traduisons vos documents en arabe avec certification d\'un traducteur agréé par le Ministère de la Justice des EAU. Étape obligatoire pour l\'acceptation gouvernementale.' },
+  { step: '3', title: 'Légalisation MOFA (si nécessaire)', desc: 'Certains usages (procédures judiciaires, contrats gouvernementaux) peuvent nécessiter une légalisation supplémentaire par le MOFA des EAU. Nous coordonnons l\'ensemble du processus.' },
+];
+
+const attestationLabel = 'Processus de légalisation';
+const attestationTitle = 'Légalisation des documents français aux EAU';
+
 const languagesLabel = 'Langues prises en charge';
 const languagesTitle = 'Services de traduction en 43+ langues';
 const languages = ['Arabe', 'Anglais', 'Russe', 'Français', 'Chinois', 'Hindi', 'Ourdou', 'Espagnol', 'Allemand', 'Portugais', 'Italien', 'Turc', 'Persan', 'Japonais', 'Coréen', 'Néerlandais', 'Polonais', 'Roumain', 'Bengali', 'Tamoul', 'Tagalog', 'Indonésien', 'Thaï'];
@@ -90,6 +113,13 @@ const faqItems = [
   { question: 'Combien de temps pour obtenir une traduction juridique certifiée ?', answer: 'Les documents standards (actes de naissance, mariage, diplômes) sont généralement prêts en 3-6 heures ouvrables. Traitement express disponible pour les besoins juridiques urgents.' },
   { question: 'Offrez-vous des services de légalisation ?', answer: 'Oui. Lorsque vos documents juridiques nécessitent une légalisation par MOFA ou d\'autres organismes gouvernementaux, nous coordonnons l\'ensemble du processus, y compris le transport sécurisé des originaux.' },
   { question: 'Traduisez-vous de l\'arabe vers l\'anglais et vice versa ?', answer: 'Oui. Nos traducteurs certifiés travaillent dans les deux sens pour fournir des services de traduction arabe complets.' },
+  { question: 'La France est-elle membre de la Convention de La Haye ?', answer: 'Oui, la France a rejoint la Convention de La Haye en 1965. Cela signifie que vos documents français apostillés par le MAE ou la Cour d\'appel sont acceptés aux EAU sans légalisation consulaire traditionnelle.' },
+  { question: 'Où obtenir l\'apostille pour mes documents français ?', answer: 'En France, l\'apostille est délivrée par la Cour d\'appel de votre lieu de résidence ou le Ministère des Affaires étrangères. Pour les documents consulaires, contactez le consulat français compétent.' },
+  { question: 'Traduisez-vous des documents d\'Afrique francophone ?', answer: 'Oui, nous traduisons des documents du Maroc, Algérie, Tunisie, Sénégal, Côte d\'Ivoire et autres pays francophones. Le statut de la Convention de La Haye varie selon le pays — contactez-nous pour vérifier.' },
+  { question: 'Quelle est la durée de validité du casier judiciaire ?', answer: 'Le bulletin n°3 du casier judiciaire français est généralement valable 3 à 6 mois pour les procédures d\'immigration aux EAU. Nous recommandons de le demander peu avant votre soumission.' },
+  { question: 'Pouvez-vous traduire un extrait Kbis ?', answer: 'Oui, nous traduisons les extraits Kbis, statuts de société et autres documents commerciaux français. Ces traductions sont nécessaires pour créer une entreprise dans les zones franches des EAU.' },
+  { question: 'Les diplômes français sont-ils reconnus aux EAU ?', answer: 'Les diplômes français apostillés et traduits par un traducteur certifié MOJ sont reconnus aux EAU. Certaines professions peuvent nécessiter une équivalence via le MOHESR.' },
+  { question: 'Combien coûte la traduction de documents français ?', answer: 'Le coût dépend du type et de la complexité du document. Les documents personnels standards (actes, certificats) commencent à 150 AED. Envoyez votre document via WhatsApp pour un devis précis.' },
 ];
 
 const ctaBanner = { title: 'Nous gérons la conformité. Concentrez-vous sur l\'essentiel.', body: 'Rejoignez les entreprises et particuliers à Dubaï, Abu Dhabi et les émirats du nord qui font confiance à OnlineTranslation.ae.', buttonLabel: 'Envoyer documents via WhatsApp', buttonUrl: 'https://wa.me/971508620217' };
@@ -137,6 +167,54 @@ const contactSection = { label: 'Nous contacter', title: 'Demander un devis grat
     <div class="container"><div class="section-header"><span class="section-label exodus-label">{specialistsLabel}</span><h2 class="section-title exodus-section-title">{specialistsTitle}</h2></div>
       <div class="grid grid-4 grid--auto-fit specialists-grid">{specialistsCards.map((card) => (<a href={card.href} class="specialist-card"><div class="specialist-icon"><i class={card.icon}></i></div><h3>{card.title}</h3><ul class="specialist-bullets">{card.bullets.map((b) => (<li>{b}</li>))}</ul><div class="specialist-tags">{card.tags.map((t) => (<span class="tag">{t}</span>))}</div></a>))}</div>
       <div class="team-cta-wrapper"><p class="team-tagline">Vos documents sont traités par des spécialistes dédiés et vérifiés avant livraison.</p><a href="https://wa.me/971508620217" class="team-cta"><i class="fab fa-whatsapp"></i> Envoyer documents via WhatsApp</a></div>
+    </div>
+  </section>
+
+  <!-- French Community Document Types Section -->
+  <section class="section bg-white french-docs-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">{frenchDocsLabel}</span>
+        <h2 class="section-title">{frenchDocsTitle}</h2>
+      </div>
+      <div class="grid grid-3 grid--auto-fit">
+        {frenchDocs.map((doc) => (
+          <article class="specialist-card">
+            <div class="specialist-icon"><i class={doc.icon}></i></div>
+            <h3>{doc.title}</h3>
+            <p>{doc.desc}</p>
+            <div class="specialist-tags">
+              {doc.tags.map((tag) => (<span class="tag">{tag}</span>))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Attestation Process Section -->
+  <section class="section bg-light attestation-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">{attestationLabel}</span>
+        <h2 class="section-title">{attestationTitle}</h2>
+        <p class="section-subtitle">La France est membre de la Convention de La Haye — processus simplifié</p>
+      </div>
+      <div class="grid grid-3 grid--auto-fit process-steps exodus-process-steps">
+        {attestationSteps.map((step) => (
+          <article class="process-step exodus-step">
+            <div class="step-header">
+              <span class="step-index">{step.step}</span>
+              <div class="step-icon"><i class="fas fa-check-circle"></i></div>
+            </div>
+            <h3 class="step-title">{step.title}</h3>
+            <p class="step-desc">{step.desc}</p>
+          </article>
+        ))}
+      </div>
+      <div class="text-center" style="margin-top: 2rem;">
+        <a href="/services/attestation/" class="hero-cta-secondary">En savoir plus sur la légalisation →</a>
+      </div>
     </div>
   </section>
 
