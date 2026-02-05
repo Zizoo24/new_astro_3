@@ -1031,6 +1031,45 @@ navigation.forEach(item => {
     .header-row {
       gap: 8px;
     }
+    /* Tighter nav padding for smaller desktops */
+    .nav-link {
+      padding: 8px 10px;
+      font-size: 11px;
+    }
+    /* Smaller action buttons */
+    .header-column-actions {
+      gap: 8px;
+      min-width: 120px;
+      padding-inline-start: 10px;
+    }
+    .header-action-btn {
+      width: 34px;
+      height: 34px;
+    }
+    .header-action-btn i {
+      font-size: 0.85rem;
+    }
+  }
+
+  /* Very tight desktop (992-1100px) - further reduce spacing */
+  @media (max-width: 1100px) and (min-width: 992px) {
+    .nav-link {
+      padding: 8px 8px;
+      font-size: 10px;
+    }
+    .header-column-actions {
+      gap: 6px;
+      min-width: 100px;
+      padding-inline-start: 8px;
+    }
+    .header-action-btn {
+      width: 32px;
+      height: 32px;
+    }
+    /* Hide logo text block to save space */
+    .logo-text-block {
+      display: none;
+    }
   }
 
   @media (max-width: 991px) {
