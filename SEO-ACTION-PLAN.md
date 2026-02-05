@@ -293,6 +293,254 @@ Format 2: مكتب + [Service] + في + [Location]
 
 ---
 
+## Internal Linking Enhancement Plan (70% → Extreme)
+
+**Current State (Baseline Assessment):**
+- 35 service pages total
+- 29 pages with RelatedServices component (83%)
+- 15 pages with CrossSiloLinks component (43%)
+- Hub pages have manual internal links (functional but not systematic)
+- **Overall Score: 70%**
+
+This plan escalates internal linking from good (70%) to extreme (95%+) coverage through three phases.
+
+---
+
+### Phase A: Foundation (70% → 80%)
+
+**Timeline:** 1-2 weeks
+**Goal:** Deploy components to ALL qualifying pages
+
+#### A.1 RelatedServices Deployment
+
+| Page Category | Pages Missing | Action |
+|---------------|---------------|--------|
+| Hub pages (legal/, personal/, etc.) | 4 | Add RelatedServices with child page links |
+| Location pages | 2 | Add RelatedServices with relevant services |
+
+**Implementation:**
+```astro
+<!-- Add to each hub page before footer -->
+<RelatedServices
+  currentPage="/legal/"
+  maxItems={6}
+/>
+```
+
+#### A.2 CrossSiloLinks Expansion
+
+| Current Coverage | Target | Gap |
+|------------------|--------|-----|
+| 15/35 pages (43%) | 30/35 pages (86%) | 15 pages |
+
+**Priority pages for CrossSiloLinks:**
+1. All `/personal/` child pages → link to `/legal/` services
+2. All `/legal/` child pages → link to `/personal/` relevant docs
+3. All `/specialized/` pages → link to attestation services
+4. Location pages → link to all service categories
+
+#### A.3 Blog → Service Linking
+
+| Blog Post | Target Service Link | Status |
+|-----------|---------------------|--------|
+| Every blog post | Minimum 3 service page links | ☐ |
+| Document guides | Related document type pages | ☐ |
+| Location content | Location hub + services | ☐ |
+
+**Verification Checklist:**
+- [ ] RelatedServices on 100% of service pages
+- [ ] CrossSiloLinks on 85%+ of service pages
+- [ ] Blog posts average 3+ internal links each
+- [ ] No orphan pages in Screaming Frog crawl
+
+**Target Score: 80%**
+
+---
+
+### Phase B: Contextual Enhancement (80% → 90%)
+
+**Timeline:** 2-3 weeks
+**Goal:** Add strategic in-content links beyond components
+
+#### B.1 In-Content Link Injection
+
+Every service page should have **8+ internal links minimum** (per CLAUDE.md requirement).
+
+**Link placement strategy:**
+
+| Section | Required Links | Link Type |
+|---------|----------------|-----------|
+| Hero/Intro paragraph | 1-2 | Parent category, related service |
+| Module A (Checklist) | 2-3 | Document types, requirements pages |
+| Module B (Process) | 1-2 | Next steps, related processes |
+| Module C (After-Care) | 2-3 | Follow-up services, attestation |
+| FAQ answers | 2-3 | Contextual to question topic |
+
+**Example implementation:**
+```markdown
+<!-- Before -->
+You'll need your degree certificate translated for visa applications.
+
+<!-- After -->
+You'll need your [degree certificate translated](/personal/academic/degree/)
+for [Golden Visa applications](/golden-visa/).
+```
+
+#### B.2 FAQ Answer Link Strategy
+
+| FAQ Type | Target Link |
+|----------|-------------|
+| "How long does X take?" | Link to process page |
+| "What documents needed?" | Link to document type pages |
+| "How much does X cost?" | Link to pricing/service tier page |
+| "Do I need attestation?" | Link to /services/attestation/ |
+| "What about MOFA/GDRFA?" | Link to relevant authority page |
+
+**Target: 2-3 links per FAQ answer where contextually relevant**
+
+#### B.3 Bidirectional Link Audit
+
+Ensure every link has a return path:
+
+| If Page A links to | Page B must link back to |
+|--------------------|--------------------------|
+| /legal/contracts/nda/ | /legal/contracts/ (hub) |
+| /personal/vital-records/birth/ | /personal/ AND /attestation/ |
+| /specialized/medical/ | /personal/immigration/ (license) |
+
+**Verification Checklist:**
+- [ ] All service pages have 8+ internal links
+- [ ] FAQ sections include contextual links
+- [ ] Bidirectional linking verified (no dead ends)
+- [ ] Link anchor text uses target keywords
+- [ ] No broken internal links (404s)
+
+**Target Score: 90%**
+
+---
+
+### Phase C: Extreme Optimization (90% → 95%+)
+
+**Timeline:** 3-4 weeks
+**Goal:** Topic cluster architecture with semantic linking
+
+#### C.1 Topic Cluster Implementation
+
+Create pillar-spoke architecture:
+
+**Pillar 1: Legal Translation**
+```
+/legal/ (pillar)
+├── /legal/contracts/ (sub-pillar)
+│   ├── /legal/contracts/nda/ (spoke)
+│   ├── /legal/contracts/spa/ (spoke)
+│   ├── /legal/contracts/mou/ (spoke)
+│   └── /legal/contracts/lease/ (spoke)
+├── /legal/corporate/ (sub-pillar)
+│   └── [spokes...]
+└── /legal/litigation/ (sub-pillar)
+    └── [spokes...]
+```
+
+**Each spoke must link to:**
+1. Its parent sub-pillar
+2. The main pillar
+3. 2-3 sibling spokes
+4. 1-2 cross-silo pages
+
+#### C.2 Semantic Link Clusters
+
+Group pages by user intent and cross-link:
+
+| Intent Cluster | Pages | Required Cross-Links |
+|----------------|-------|----------------------|
+| "New resident setup" | birth, marriage, degree, visa | All 4 must interlink |
+| "Business formation" | moa, license, poa, contracts | All 4 must interlink |
+| "Court proceedings" | verdict, arbitration, poa, contracts | All 4 must interlink |
+| "Healthcare career" | dha-dataflow, degree, pcc, medical | All 4 must interlink |
+
+#### C.3 Arabic Mirror Linking
+
+Every English page with Arabic equivalent must cross-link:
+
+| English Page | Arabic Page | Link Method |
+|--------------|-------------|-------------|
+| /legal-translation-dubai/ | /ar/legal-translation-dubai/ | hreflang + in-content |
+| /golden-visa/ | /ar/golden-visa/ | hreflang + footer link |
+| /locations/abu-dhabi/ | /ar/locations/abu-dhabi/ | Language switcher |
+
+**Add visible "Read in Arabic / اقرأ بالعربية" link on relevant pages**
+
+#### C.4 Anchor Text Optimization
+
+| Current State | Target State |
+|---------------|--------------|
+| "Click here" | Never use |
+| "Learn more" | Minimize usage |
+| "our services" | Use specific service name |
+| Generic anchors | Keyword-rich anchors |
+
+**Anchor text formula:**
+- Primary keyword: 30% of anchors
+- Secondary keyword variations: 40%
+- Brand + keyword: 20%
+- Natural/generic: 10%
+
+#### C.5 Link Depth Optimization
+
+**Target:** No page more than 3 clicks from homepage
+
+| Current Depth | Example | Target Depth |
+|---------------|---------|--------------|
+| 4 clicks | Home → Legal → Contracts → NDA | 3 clicks max |
+| 5 clicks | Home → Personal → Vital → Birth → Attestation | 3 clicks max |
+
+**Solutions:**
+1. Add deep pages to homepage "Popular Services"
+2. Add direct links from hub pages to grandchild pages
+3. Create contextual shortcuts in content
+
+#### C.6 Footer Link Enhancement
+
+| Section | Current | Target |
+|---------|---------|--------|
+| Popular Services | 6 links | 10 links (top traffic pages) |
+| Quick Links | Basic | Add all hub pages |
+| Resources | Minimal | Add blog categories |
+
+**Verification Checklist:**
+- [ ] Topic clusters implemented with pillar/spoke structure
+- [ ] Semantic clusters cross-linked (4+ pages per cluster)
+- [ ] Arabic ↔ English bidirectional linking complete
+- [ ] Anchor text audit passed (keyword-rich)
+- [ ] All pages within 3 clicks of homepage
+- [ ] Footer links optimized
+- [ ] Zero orphan pages
+- [ ] Zero broken internal links
+
+**Target Score: 95%+ (Extreme)**
+
+---
+
+### Internal Linking Scoring Rubric
+
+| Score | Level | Criteria |
+|-------|-------|----------|
+| 70% | Good | RelatedServices on most pages, basic navigation |
+| 80% | Strong | All components deployed, blog linking active |
+| 90% | Excellent | 8+ links/page, contextual in-content, bidirectional |
+| 95%+ | Extreme | Topic clusters, semantic grouping, anchor optimization, 3-click depth |
+
+### Progress Tracker
+
+| Phase | Target Score | Due Date | Actual Score | Status |
+|-------|--------------|----------|--------------|--------|
+| A: Foundation | 80% | Week +2 | | ☐ |
+| B: Contextual | 90% | Week +5 | | ☐ |
+| C: Extreme | 95%+ | Week +9 | | ☐ |
+
+---
+
 ## Realistic 6-Month Projections
 
 ### Traffic
