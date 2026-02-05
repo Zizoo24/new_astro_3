@@ -147,17 +147,22 @@ Track bugs, fixes, and known issues for OnlineTranslation.ae
 
 | Issue | Severity | Notes |
 |-------|----------|-------|
+| Contrast ratio issues in Arabic pages | **High** | Affects both light and dark modes |
+| Contrast ratio issues in English dark mode | **Medium** | Dark mode only, light mode OK |
 | Some gray text on dark backgrounds | Low | `contrast-fixes.css` addresses most cases |
 
 ---
 
 ## Investigation Queue
 
+- [ ] **Fix contrast ratio issues in Arabic pages** (both light/dark modes) - HIGH PRIORITY
+- [ ] **Fix contrast ratio issues in English dark mode** - MEDIUM PRIORITY
 - [ ] Audit `porto-desktop.css` for unused styles
-- [ ] Consolidate hero-related CSS (3 files: hero-enhancements, hero-intro-optimized, hero-optimization)
+- [x] Consolidate hero-related CSS (3 files → hero-unified.css) - Completed Feb 4, 2026
 - [ ] Review navigation CSS (3 files: navigation-glassmorphism, megamenu, porto-dropdown-onlinetranslation)
 - [ ] Evaluate CSS-in-JS or CSS modules for component styles
 - [x] Upgrade build plugins (astro-min, astro-compressor) - Completed Feb 4, 2026
+- [x] Consolidate mobile platform CSS (3 files → mobile-platform.css) - Completed Feb 4, 2026
 
 ---
 
@@ -201,4 +206,4 @@ import compressor from 'astro-compressor';
 
 ---
 
-*Last Updated: February 4, 2026 (CSS Audit Complete)*
+*Last Updated: February 5, 2026 (Added contrast ratio bugs, CSS merge complete)*
