@@ -40,7 +40,16 @@
     "quality": "npm run check && npm run lint && npm run lint:css && npm run format:check",
     "prebuild": "npm run nav:check && npm run lang:check",
     "postbuild": "echo 'Sitemap generated at dist/sitemap-0.xml, Pagefind search index generated at dist/pagefind/'",
-    "og:generate": "node scripts/generate-og-images.js"
+    "og:generate": "node scripts/generate-og-images.js",
+    "test": "playwright test",
+    "test:visual": "playwright test tests/visual/",
+    "test:visual:update": "playwright test tests/visual/ --update-snapshots",
+    "test:visual:ui": "playwright test tests/visual/ --ui",
+    "test:hero": "playwright test tests/visual/hero.spec.ts",
+    "test:nav": "playwright test tests/visual/navigation.spec.ts",
+    "test:arabic": "playwright test tests/visual/arabic.spec.ts",
+    "test:dark": "playwright test tests/visual/dark-mode.spec.ts",
+    "test:report": "playwright show-report"
   },
   "dependencies": {
     "@astrojs/partytown": "^2.1.4",
@@ -57,6 +66,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.6",
     "@eslint/js": "^9.39.2",
+    "@playwright/test": "^1.58.1",
     "@typescript-eslint/eslint-plugin": "^8.49.0",
     "@typescript-eslint/parser": "^8.49.0",
     "cssnano": "^7.0.0",

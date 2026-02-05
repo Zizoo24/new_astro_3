@@ -178,11 +178,38 @@ Track bugs, fixes, and known issues for OnlineTranslation.ae
 
 ### Testing & Debugging
 
-| Idea | Priority | Notes |
-|------|----------|-------|
-| Use Playwright for visual regression testing | Medium | Catch CSS regressions before deploy |
-| Automated screenshot comparison | Medium | Compare staging vs production |
-| E2E tests for critical user flows | Low | Form submissions, language switching |
+| Idea | Priority | Status | Notes |
+|------|----------|--------|-------|
+| Playwright visual regression testing | Medium | **In Progress** | See setup below |
+| Automated screenshot comparison | Medium | Included | Part of Playwright setup |
+| E2E tests for critical user flows | Low | Pending | Form submissions, language switching |
+
+#### Playwright Setup (February 5, 2026)
+
+**Installed:** `@playwright/test` added to devDependencies
+
+**Test Files Created:**
+- `tests/visual/hero.spec.ts` - Hero section, overlap cards, Font Awesome loading
+- `tests/visual/navigation.spec.ts` - Dropdowns, hover states, +more link
+- `tests/visual/dark-mode.spec.ts` - Dark mode toggle, contrast checks
+- `tests/visual/arabic.spec.ts` - RTL layout, Arabic typography, LTR islands
+- `tests/visual/pages.spec.ts` - Full-page screenshots of critical pages
+
+**NPM Scripts:**
+```bash
+npm run test:visual        # Run all visual tests
+npm run test:visual:update # Update baseline screenshots
+npm run test:visual:ui     # Interactive UI mode
+npm run test:hero          # Test hero section only
+npm run test:nav           # Test navigation only
+npm run test:arabic        # Test Arabic pages only
+npm run test:dark          # Test dark mode only
+npm run test:report        # View HTML report
+```
+
+**First Run:** After installing Chromium (`npx playwright install chromium`), run `npm run test:visual:update` to create baseline screenshots.
+
+**CI Integration:** Tests run against dev server on port 5000. Add to CI pipeline before deploy.
 
 ---
 
