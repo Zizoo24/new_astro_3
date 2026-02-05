@@ -10,6 +10,8 @@
  * Voice: Boutique Concierge - honest, helpful, no hype
  */
 import CategoryLayout from '../../../layouts/CategoryLayout.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../components/CrossSiloLinks.astro';
 
 const breadcrumbs = [
   { label: 'Home', href: '/' },
@@ -251,30 +253,8 @@ const faqs = [
 
   <section class="section bg-light">
     <div class="container">
-      <h2>Related Personal Document Services</h2>
-      <p class="section-intro">Vital records often accompany other documents in visa applications and government procedures. We handle complete document packages.</p>
-      
-      <div class="category-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-        <a href="/personal/immigration/" class="category-card">
-          <h3>Immigration Documents</h3>
-          <p>Police clearance certificates, bank statements, salary certificates, and other documents required for visa applications and renewals.</p>
-        </a>
-        
-        <a href="/personal/academic/" class="category-card">
-          <h3>Academic Documents</h3>
-          <p>Degree certificates, transcripts, and educational credentials for UAE recognition, equivalency, and professional licensing.</p>
-        </a>
-        
-        <a href="/services/attestation/" class="category-card">
-          <h3>Attestation Guidance</h3>
-          <p>Information on MOFA attestation and embassy legalization requirements for documents from different countries.</p>
-        </a>
-        
-        <a href="/personal/" class="category-card">
-          <h3>Personal Documents Hub</h3>
-          <p>Complete guide to personal document translation services for UAE residents and visa applicants.</p>
-        </a>
-      </div>
+      <RelatedServices pageKey="vitalRecords" title="Related Vital Record Services" maxItems={6} />
+      <CrossSiloLinks pageKey="vitalRecords" title="Explore Other Services" />
     </div>
   </section>
 

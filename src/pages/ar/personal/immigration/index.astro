@@ -4,6 +4,8 @@
  * URL: /ar/personal/immigration/
  */
 import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+import RelatedServices from '../../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../../components/CrossSiloLinks.astro';
 
 const serviceSchema = {
   "@context": "https://schema.org",
@@ -304,6 +306,14 @@ const faqSchema = {
             </div>
           ))}
         </div>
+      </div>
+    </section>
+
+    <!-- Related Services & Cross-Silo Links -->
+    <section class="section bg-light">
+      <div class="container">
+        <RelatedServices pageKey="immigration" title="خدمات ذات صلة" maxItems={6} />
+        <CrossSiloLinks pageKey="immigration" title="استكشف خدمات أخرى" />
       </div>
     </section>
 

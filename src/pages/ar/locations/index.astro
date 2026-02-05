@@ -4,6 +4,8 @@
  * URL: /ar/locations/
  */
 import BaseLayoutArabic from '../../../layouts/BaseLayoutArabic.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../components/CrossSiloLinks.astro';
 
 const dubaiAreas = [
   { name: 'دبي مارينا', href: '/ar/locations/dubai/marina/', desc: 'مجتمع الواجهة البحرية، شركات DMCC' },
@@ -187,6 +189,14 @@ const otherEmirates = [
           <p class="small">رسوم توصيل إضافية حسب الموقع.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Related Services & Cross-Silo Links -->
+  <section class="section bg-white" dir="rtl">
+    <div class="container">
+      <RelatedServices pageKey="locations" title="خدمات ذات صلة" maxItems={6} />
+      <CrossSiloLinks pageKey="locations" title="استكشف خدمات أخرى" />
     </div>
   </section>
 
