@@ -72,6 +72,29 @@ const specialistsCards = [
   { href: '/services/corporate-translation/', icon: 'fas fa-briefcase', title: 'കോർപ്പറേറ്റ് & കൊമേഴ്സ്യൽ വിവർത്തനം', bullets: ['ട്രേഡ് ലൈസൻസുകളും MOA-കളും', 'ഷെയർഹോൾഡർ കരാറുകൾ', 'ഫ്രീ സോൺ ഡോക്യുമെന്റേഷൻ'], tags: ['DMCC', 'ഫ്രീ സോണുകൾ', 'DED'] },
 ];
 
+// Kerala Community Document Types
+const keralaDocs = [
+  { icon: 'fas fa-file-alt', title: 'ജനന & വിവാഹ സർട്ടിഫിക്കറ്റുകൾ', desc: 'കേരള മുനിസിപ്പാലിറ്റി, പഞ്ചായത്ത്, കോർപ്പറേഷൻ എന്നിവ ഇഷ്യൂ ചെയ്ത ജനന, വിവാഹ, മരണ സർട്ടിഫിക്കറ്റുകളുടെ വിവർത്തനം.', tags: ['ജനന സർട്ടിഫിക്കറ്റ്', 'വിവാഹ സർട്ടിഫിക്കറ്റ്', 'പഞ്ചായത്ത്'] },
+  { icon: 'fas fa-graduation-cap', title: 'വിദ്യാഭ്യാസ രേഖകൾ', desc: 'SSLC, Plus Two, ഡിഗ്രി, പോസ്റ്റ് ഗ്രാഡുവേറ്റ് സർട്ടിഫിക്കറ്റുകൾ. കേരള യൂണിവേഴ്സിറ്റി, MG യൂണിവേഴ്സിറ്റി, കാലിക്കറ്റ് യൂണിവേഴ്സിറ്റി രേഖകൾ ഉൾപ്പെടെ.', tags: ['SSLC', 'Plus Two', 'ഡിഗ്രി സർട്ടിഫിക്കറ്റ്'] },
+  { icon: 'fas fa-id-card', title: 'ഐഡന്റിറ്റി രേഖകൾ', desc: 'ആധാർ കാർഡ്, പാൻ കാർഡ്, വോട്ടർ ഐഡി, ഡ്രൈവിംഗ് ലൈസൻസ് എന്നിവയുടെ വിവർത്തനം. UAE ഇമിഗ്രേഷൻ ആവശ്യങ്ങൾക്ക്.', tags: ['ആധാർ', 'പാൻ കാർഡ്', 'വോട്ടർ ഐഡി'] },
+  { icon: 'fas fa-stamp', title: 'MEA അപ്പോസ്റ്റിൽ രേഖകൾ', desc: 'ഇന്ത്യ 2005 മുതൽ ഹേഗ് കൺവെൻഷൻ അംഗമാണ്. MEA അപ്പോസ്റ്റിൽ UAE-യിൽ സ്വീകരിക്കപ്പെടുന്നു, ഇത് പ്രക്രിയ ലളിതമാക്കുന്നു.', tags: ['MEA അപ്പോസ്റ്റിൽ', 'ഹേഗ് കൺവെൻഷൻ', 'ലളിതമായ പ്രക്രിയ'] },
+  { icon: 'fas fa-shield-alt', title: 'പോലീസ് ക്ലിയറൻസ് സർട്ടിഫിക്കറ്റ്', desc: 'കേരള പോലീസ് ഇഷ്യൂ ചെയ്ത PCC-യുടെ വിവർത്തനം. UAE വിസയ്ക്കും തൊഴിലിനും ആവശ്യമാണ്.', tags: ['PCC', 'പോലീസ് ക്ലിയറൻസ്', 'വിസ'] },
+  { icon: 'fas fa-briefcase', title: 'തൊഴിൽ & പ്രൊഫഷണൽ രേഖകൾ', desc: 'എക്സ്പീരിയൻസ് സർട്ടിഫിക്കറ്റുകൾ, സാലറി സ്ലിപ്പുകൾ, നഴ്സിംഗ് ലൈസൻസ്, എഞ്ചിനീയറിംഗ് സർട്ടിഫിക്കറ്റുകൾ. DHA DataFlow-നും ലൈസൻസിംഗിനും.', tags: ['എക്സ്പീരിയൻസ്', 'നഴ്സിംഗ് ലൈസൻസ്', 'DHA'] },
+];
+
+const keralaDocsLabel = 'കേരള രേഖ തരങ്ങൾ';
+const keralaDocsTitle = 'കേരള കമ്മ്യൂണിറ്റി സാധാരണ രേഖകൾ';
+
+// Attestation Process for Kerala/Indian Documents
+const attestationSteps = [
+  { step: '1', title: 'MEA അപ്പോസ്റ്റിൽ ഇന്ത്യയിൽ', desc: 'ഇന്ത്യ 2005 മുതൽ ഹേഗ് കൺവെൻഷൻ അംഗമാണ്. നിങ്ങളുടെ രേഖകൾക്ക് വിദേശകാര്യ മന്ത്രാലയം (MEA) വഴി അപ്പോസ്റ്റിൽ ലഭിക്കും, പരമ്പരാഗത എംബസി ചെയിൻ ഒഴിവാക്കി.' },
+  { step: '2', title: 'MOJ സർട്ടിഫൈഡ് വിവർത്തനം', desc: 'അപ്പോസ്റ്റിലിന് ശേഷം, ഞങ്ങൾ നിങ്ങളുടെ രേഖകൾ അറബിയിലേക്ക് വിവർത്തനം ചെയ്യുകയും UAE നീതിന്യായ മന്ത്രാലയം സർട്ടിഫൈഡ് വിവർത്തകൻ മുദ്ര വയ്ക്കുകയും ചെയ്യുന്നു.' },
+  { step: '3', title: 'MOFA അറ്റസ്റ്റേഷൻ (ആവശ്യമെങ്കിൽ)', desc: 'ചില ഉപയോഗങ്ങൾക്ക് (കോടതി സമർപ്പണങ്ങൾ, സർക്കാർ കരാറുകൾ) UAE MOFA-യിൽ നിന്ന് അധിക അറ്റസ്റ്റേഷൻ ആവശ്യമായേക്കാം. ഞങ്ങൾ മുഴുവൻ പ്രക്രിയയും ഏകോപിപ്പിക്കുന്നു.' },
+];
+
+const attestationLabel = 'അറ്റസ്റ്റേഷൻ പ്രക്രിയ';
+const attestationTitle = 'കേരള രേഖകൾ UAE-യിൽ അറ്റസ്റ്റ് ചെയ്യുന്നത്';
+
 const languagesLabel = 'ഞങ്ങൾ പിന്തുണയ്ക്കുന്ന ഭാഷകൾ';
 const languagesTitle = '43+ ഭാഷകളിൽ വിവർത്തന സേവനങ്ങൾ';
 const languages = ['അറബിക്', 'ഇംഗ്ലീഷ്', 'റഷ്യൻ', 'ഫ്രഞ്ച്', 'ചൈനീസ്', 'ഹിന്ദി', 'ഉറുദു', 'സ്പാനിഷ്', 'ജർമ്മൻ', 'പോർച്ചുഗീസ്', 'ഇറ്റാലിയൻ', 'ടർക്കിഷ്', 'പേർഷ്യൻ', 'ജാപ്പനീസ്', 'കൊറിയൻ', 'ഡച്ച്', 'പോളിഷ്', 'റൊമാനിയൻ', 'ബംഗാളി', 'തമിഴ്', 'തഗാലോഗ്', 'ഇന്തോനേഷ്യൻ', 'തായ്'];
@@ -90,6 +113,13 @@ const faqItems = [
   { question: 'സർട്ടിഫൈഡ് നിയമ വിവർത്തനം ലഭിക്കാൻ എത്ര സമയമെടുക്കും?', answer: 'സ്റ്റാൻഡേർഡ് രേഖകൾ (ജനന സർട്ടിഫിക്കറ്റുകൾ, വിവാഹ സർട്ടിഫിക്കറ്റുകൾ, വിദ്യാഭ്യാസ സർട്ടിഫിക്കറ്റുകൾ) സാധാരണയായി 3-6 ബിസിനസ് മണിക്കൂറുകൾക്കുള്ളിൽ തയ്യാറാകും. അടിയന്തിര നിയമ ആവശ്യങ്ങൾക്ക് എക്സ്പ്രസ് പ്രോസസ്സിംഗ് ലഭ്യമാണ്.' },
   { question: 'നിങ്ങൾ അറ്റസ്റ്റേഷൻ സേവനങ്ങൾ നൽകുന്നുണ്ടോ?', answer: 'അതെ. നിങ്ങളുടെ നിയമ രേഖകൾക്ക് MOFA-യിൽ നിന്നോ മറ്റ് സർക്കാർ സ്ഥാപനങ്ങളിൽ നിന്നോ അറ്റസ്റ്റേഷൻ ആവശ്യമുള്ളപ്പോൾ, സുരക്ഷിത ഒറിജിനൽ ട്രാൻസ്പോർട്ട് ഉൾപ്പെടെ മുഴുവൻ പ്രക്രിയയും ഞങ്ങൾ ഏകോപിപ്പിക്കുന്നു.' },
   { question: 'അറബിയിൽ നിന്ന് ഇംഗ്ലീഷിലേക്കും ഇംഗ്ലീഷിൽ നിന്ന് അറബിയിലേക്കും വിവർത്തനം ചെയ്യുന്നുണ്ടോ?', answer: 'അതെ. ഞങ്ങളുടെ സർട്ടിഫൈഡ് വിവർത്തകർ സമഗ്രമായ അറബി വിവർത്തന സേവനങ്ങൾ നൽകാൻ രണ്ട് ദിശകളിലും പ്രവർത്തിക്കുന്നു.' },
+  { question: 'ഇന്ത്യ ഹേഗ് കൺവെൻഷൻ അംഗമാണോ?', answer: 'അതെ, ഇന്ത്യ 2005 മുതൽ ഹേഗ് അപ്പോസ്റ്റിൽ കൺവെൻഷൻ അംഗമാണ്. ഇതിനർത്ഥം MEA അപ്പോസ്റ്റിൽ ഉള്ള കേരള രേഖകൾ UAE-യിൽ സ്വീകരിക്കപ്പെടുന്നു, പരമ്പരാഗത എംബസി ചെയിൻ ഒഴിവാക്കി.' },
+  { question: 'MEA അപ്പോസ്റ്റിൽ എവിടെ നിന്ന് ലഭിക്കും?', answer: 'MEA അപ്പോസ്റ്റിൽ ഡൽഹിയിലെ MEA ഓഫീസ്, കൊച്ചിയിലെ MEA ബ്രാഞ്ച് ഓഫീസ്, അല്ലെങ്കിൽ അംഗീകൃത ഏജൻസികൾ വഴി ലഭിക്കും. കൊച്ചി ഓഫീസ് കേരള നിവാസികൾക്ക് സൗകര്യപ്രദമാണ്.' },
+  { question: 'SSLC, Plus Two സർട്ടിഫിക്കറ്റുകൾ വിവർത്തനം ചെയ്യുമോ?', answer: 'അതെ, ഞങ്ങൾ എല്ലാ കേരള വിദ്യാഭ്യാസ രേഖകളും വിവർത്തനം ചെയ്യുന്നു: SSLC, Plus Two, VHSC, ഡിഗ്രി, PG സർട്ടിഫിക്കറ്റുകൾ. UAE ഇമിഗ്രേഷൻ, തൊഴിൽ ആവശ്യങ്ങൾക്ക്.' },
+  { question: 'നഴ്സിംഗ് ലൈസൻസ് DHA DataFlow-നായി വിവർത്തനം ചെയ്യുമോ?', answer: 'അതെ, ഞങ്ങൾ നഴ്സിംഗ് ലൈസൻസുകൾ, ഡിഗ്രി സർട്ടിഫിക്കറ്റുകൾ, എക്സ്പീരിയൻസ് ലെറ്ററുകൾ DHA DataFlow വെരിഫിക്കേഷനും UAE ഹെൽത്ത് ലൈസൻസിംഗിനും വിവർത്തനം ചെയ്യുന്നു.' },
+  { question: 'PCC (പോലീസ് ക്ലിയറൻസ്) എത്ര കാലം സാധുവാണ്?', answer: 'കേരള പോലീസ് ഇഷ്യൂ ചെയ്ത PCC സാധാരണയായി ഇഷ്യു തീയതി മുതൽ 6 മാസം സാധുവാണ്. UAE-യിൽ സമർപ്പിക്കുന്നതിന് മുമ്പ് അഭ്യർത്ഥിക്കാൻ ശുപാർശ ചെയ്യുന്നു.' },
+  { question: 'പഞ്ചായത്ത് ജനന സർട്ടിഫിക്കറ്റുകൾ സ്വീകരിക്കുമോ?', answer: 'അതെ, കേരള പഞ്ചായത്ത്, മുനിസിപ്പാലിറ്റി, കോർപ്പറേഷൻ ഇഷ്യൂ ചെയ്ത ജനന സർട്ടിഫിക്കറ്റുകൾ MEA അപ്പോസ്റ്റിൽ, MOJ വിവർത്തനത്തിന് ശേഷം UAE-യിൽ സ്വീകരിക്കപ്പെടുന്നു.' },
+  { question: 'വിവർത്തന ചെലവ് എത്രയാണ്?', answer: 'ചെലവ് രേഖയുടെ തരവും സങ്കീർണ്ണതയും അനുസരിച്ച് വ്യത്യാസപ്പെടുന്നു. സ്റ്റാൻഡേർഡ് വ്യക്തിഗത രേഖകൾ (സർട്ടിഫിക്കറ്റുകൾ) AED 150 മുതൽ തുടങ്ങുന്നു. കൃത്യമായ വില അറിയാൻ WhatsApp വഴി രേഖ അയയ്ക്കുക.' },
 ];
 
 const ctaBanner = { title: 'കംപ്ലയൻസ് ഞങ്ങൾ കൈകാര്യം ചെയ്യും. പ്രധാനപ്പെട്ടവയിൽ ശ്രദ്ധ കേന്ദ്രീകരിക്കുക.', body: 'ദുബായ്, അബുദാബി, വടക്കൻ എമിറേറ്റുകളിൽ OnlineTranslation.ae-യിൽ വിശ്വസിക്കുന്ന ബിസിനസുകളും വ്യക്തികളും ചേരുക.', buttonLabel: 'WhatsApp വഴി രേഖകൾ അയയ്ക്കുക', buttonUrl: 'https://wa.me/971508620217' };
@@ -137,6 +167,54 @@ const contactSection = { label: 'ബന്ധപ്പെടുക', title: 'സ
     <div class="container"><div class="section-header"><span class="section-label exodus-label">{specialistsLabel}</span><h2 class="section-title exodus-section-title">{specialistsTitle}</h2></div>
       <div class="grid grid-4 grid--auto-fit specialists-grid">{specialistsCards.map((card) => (<a href={card.href} class="specialist-card"><div class="specialist-icon"><i class={card.icon}></i></div><h3>{card.title}</h3><ul class="specialist-bullets">{card.bullets.map((b) => (<li>{b}</li>))}</ul><div class="specialist-tags">{card.tags.map((t) => (<span class="tag">{t}</span>))}</div></a>))}</div>
       <div class="team-cta-wrapper"><p class="team-tagline">നിങ്ങളുടെ രേഖകൾ സമർപ്പിത വിദഗ്ധർ കൈകാര്യം ചെയ്യുകയും ഡെലിവറിക്ക് മുമ്പ് അവലോകനം ചെയ്യുകയും ചെയ്യുന്നു.</p><a href="https://wa.me/971508620217" class="team-cta"><i class="fab fa-whatsapp"></i> WhatsApp വഴി രേഖകൾ അയയ്ക്കുക</a></div>
+    </div>
+  </section>
+
+  <!-- Kerala Community Document Types Section -->
+  <section class="section bg-white kerala-docs-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">{keralaDocsLabel}</span>
+        <h2 class="section-title">{keralaDocsTitle}</h2>
+      </div>
+      <div class="grid grid-3 grid--auto-fit">
+        {keralaDocs.map((doc) => (
+          <article class="specialist-card">
+            <div class="specialist-icon"><i class={doc.icon}></i></div>
+            <h3>{doc.title}</h3>
+            <p>{doc.desc}</p>
+            <div class="specialist-tags">
+              {doc.tags.map((tag) => (<span class="tag">{tag}</span>))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Attestation Process Section -->
+  <section class="section bg-light attestation-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">{attestationLabel}</span>
+        <h2 class="section-title">{attestationTitle}</h2>
+        <p class="section-subtitle">ഇന്ത്യ ഹേഗ് കൺവെൻഷൻ അംഗമാണ് — ലളിതമായ പ്രക്രിയ</p>
+      </div>
+      <div class="grid grid-3 grid--auto-fit process-steps exodus-process-steps">
+        {attestationSteps.map((step) => (
+          <article class="process-step exodus-step">
+            <div class="step-header">
+              <span class="step-index">{step.step}</span>
+              <div class="step-icon"><i class="fas fa-check-circle"></i></div>
+            </div>
+            <h3 class="step-title">{step.title}</h3>
+            <p class="step-desc">{step.desc}</p>
+          </article>
+        ))}
+      </div>
+      <div class="text-center" style="margin-top: 2rem;">
+        <a href="/services/attestation/" class="hero-cta-secondary">അറ്റസ്റ്റേഷൻ സേവനങ്ങളെക്കുറിച്ച് കൂടുതൽ അറിയുക →</a>
+      </div>
     </div>
   </section>
 
