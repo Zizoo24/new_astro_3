@@ -800,6 +800,60 @@ body.theme-dark .header-desktop.exodus-header .social-icons a:hover {
 }
 
 /* --------------------------------------
+   "+N MORE" TRUNCATION LINK
+   Shows when dropdown items exceed limit
+   -------------------------------------- */
+.dropdown-menu .dropdown-more-item {
+    border-top: 1px dashed rgba(255, 255, 255, 0.15) !important;
+    margin-top: 4px !important;
+}
+
+.dropdown-menu .dropdown-more-link {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 0.65rem 1rem !important;
+    font-size: 0.8rem !important;
+    font-weight: 500 !important;
+    color: var(--ot-teal, #7fd1ff) !important;
+    background: transparent !important;
+    transition: all 0.2s ease !important;
+}
+
+.dropdown-menu .dropdown-more-link:hover {
+    background: rgba(255, 22, 84, 0.15) !important;
+    color: #FF1654 !important;
+}
+
+.dropdown-menu .dropdown-more-link i:first-child {
+    font-size: 12px !important;
+    color: var(--ot-teal, #7fd1ff) !important;
+    opacity: 0.8 !important;
+}
+
+.dropdown-menu .dropdown-more-link:hover i {
+    color: #FF1654 !important;
+    opacity: 1 !important;
+}
+
+.dropdown-menu .dropdown-more-arrow {
+    margin-inline-start: auto !important;
+    font-size: 10px !important;
+    opacity: 0.6 !important;
+    transition: transform 0.2s ease !important;
+}
+
+.dropdown-menu .dropdown-more-link:hover .dropdown-more-arrow {
+    transform: translateX(4px) !important;
+    opacity: 1 !important;
+}
+
+/* RTL support for +more link */
+html[lang="ar"] .dropdown-menu .dropdown-more-link:hover .dropdown-more-arrow {
+    transform: translateX(-4px) !important;
+}
+
+/* --------------------------------------
    SUBMENU ARROW - CORAL
    -------------------------------------- */
 .dropdown-menu li.dropdown-submenu > a::after {
