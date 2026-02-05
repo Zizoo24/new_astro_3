@@ -1,0 +1,72 @@
+/**
+ * CSS Layer Order Definition
+ *
+ * This file MUST be loaded FIRST - it establishes the cascade priority.
+ * Layers listed first have LOWEST priority, layers listed last have HIGHEST.
+ *
+ * Purpose: Eliminate specificity wars and 200+ !important declarations
+ * by using proper cascade layers instead.
+ *
+ * Created: February 5, 2026
+ * Part of: CSS Risk Mitigation Plan Phase 3
+ */
+
+/* ==========================================================================
+   LAYER ORDER - Single Source of Truth
+
+   Priority (lowest to highest):
+   1. reset      - Browser normalization (currently unused)
+   2. base       - Design tokens, typography, colors
+   3. tokens     - Theme tokens (light/dark mode)
+   4. layout     - Grid, containers, responsive utilities
+   5. components - UI components (porto-desktop, services, etc.)
+   6. patterns   - Reusable patterns (hero, faq, document pages)
+   7. utilities  - Utility classes (text-breaking, contrast fixes)
+   8. overrides  - Final overrides (navigation-glassmorphism)
+
+   Note: Unlayered styles (no @layer) have HIGHEST priority of all.
+   This is why we wrap legacy CSS in layers - so new layered code can override.
+   ========================================================================== */
+
+@layer reset, base, tokens, layout, components, patterns, utilities, overrides;
+
+/* ==========================================================================
+   LAYER ASSIGNMENT MAP
+
+   base:
+     - base-architecture.css (partial - tokens section)
+
+   tokens:
+     - dark-mode-tokenized.css
+     - dark-section-scoping.css
+
+   layout:
+     - responsive-layouts.css
+     - sticky-mobile.css (layout parts)
+
+   components:
+     - porto-desktop.css (legacy - needs wrapping)
+     - services-enhanced.css
+     - document-pages.css
+     - faq-accordion.css
+     - trust-bar.css
+     - footer-redesign.css
+
+   patterns:
+     - hero-unified.css
+     - mobile-platform.css
+     - subsection-menu.css
+     - micro-cues.css
+
+   utilities:
+     - text-breaking.css
+     - contrast-fixes.css
+     - en-ui-fixes.css
+     - ar-ui-fixes.css
+     - print.css
+
+   overrides:
+     - navigation-glassmorphism.css (after !important removal)
+     - porto-dropdown-onlinetranslation.css
+     - megamenu.css
+   ========================================================================== */
