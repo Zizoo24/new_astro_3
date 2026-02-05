@@ -2013,34 +2013,75 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .overlap-card {
-        padding: 28px 24px;
-        text-align: center;
-        border-radius: 12px;
-        border: none;
-        box-shadow: 0 8px 24px rgba(255, 22, 84, 0.25);
+        padding: 1.25rem !important;
+        border-radius: 12px !important;
+        border: none !important;
+        box-shadow: 0 8px 24px rgba(255, 22, 84, 0.25) !important;
+        display: flex !important;
+        gap: 1rem !important;
+        align-items: flex-start !important;
+        text-align: left !important;
     }
-    
+
     /* Secondary Navy Card on Mobile */
     .overlap-card.overlap-card--secondary {
         background: var(--primary-color) !important;
         box-shadow: 0 8px 24px rgba(14, 43, 72, 0.25);
     }
-    
+
     .overlap-card:last-child {
         border-bottom: none;
     }
-    
+
     /* iOS Feature Cards Section - Fix Overlap */
     .feature-cards-section.os-ios-only {
         margin-top: 0;
         padding-top: 40px;
         padding-bottom: 40px;
     }
-    
+
+    .overlap-card-icon {
+        width: 48px !important;
+        height: 48px !important;
+        min-width: 48px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .overlap-card-content {
+        flex: 1 !important;
+        min-width: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .overlap-card-title,
+    .overlap-card h4 {
+        font-size: 16px !important;
+        font-weight: 700 !important;
+        margin: 0 0 8px 0 !important;
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: unset !important;
+    }
+
+    .overlap-card-desc,
+    .overlap-card p {
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+        margin: 0 !important;
+        max-width: none !important;
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: unset !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+    }
+
     .overlap-icon {
-        width: 70px;
-        height: 70px;
-        margin: 0 auto 20px;
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        flex-shrink: 0;
+        margin: 0 !important;
         background: rgba(255, 255, 255, 0.15);
         border: 2px solid rgba(255, 255, 255, 0.3);
     }
@@ -2048,22 +2089,9 @@ h1, h2, h3, h4, h5, h6 {
     .overlap-icon i {
         font-size: 28px;
     }
-    
-    .overlap-card h4 {
-        font-size: 16px;
-        font-weight: 700;
-        margin-bottom: 12px;
-        letter-spacing: 0.5px;
-    }
-    
-    .overlap-card p {
-        font-size: 14px;
-        line-height: 1.6;
-        max-width: 280px;
-        margin: 0 auto;
-        color: rgba(255, 255, 255, 0.85);
-    }
-    
+
+    /* h4 and p styles moved above with overlap-card-title and overlap-card-desc */
+
     .overlap-card:hover {
         transform: none;
         box-shadow: none;
