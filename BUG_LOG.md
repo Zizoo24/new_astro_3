@@ -174,6 +174,18 @@ Track bugs, fixes, and known issues for OnlineTranslation.ae
 
 ---
 
+## Ideas / Future Improvements
+
+### Testing & Debugging
+
+| Idea | Priority | Notes |
+|------|----------|-------|
+| Use Playwright for visual regression testing | Medium | Catch CSS regressions before deploy |
+| Automated screenshot comparison | Medium | Compare staging vs production |
+| E2E tests for critical user flows | Low | Form submissions, language switching |
+
+---
+
 ## Build Optimization Status
 
 ### February 4, 2026

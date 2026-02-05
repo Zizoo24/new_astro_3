@@ -196,19 +196,14 @@ const criticalCSS = `*,*::before,*::after{box-sizing:border-box}html{font-size:8
   <noscript>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   </noscript>
-  
-  <!-- Font Awesome - Deferred loading for performance (preload already in head) -->
+
+  <!-- Font Awesome - Load synchronously (preload in head ensures fast delivery) -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    media="print"
-    onload="this.media='all'"
     crossorigin="anonymous"
   >
-  <noscript>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous">
-  </noscript>
-  
+
   <!-- Main CSS - Deferred loading with media trick -->
   <!-- LAYER ORDER - Must load FIRST (sync) to establish cascade -->
   <link rel="stylesheet" href="/styles/css-layer-order.css">
