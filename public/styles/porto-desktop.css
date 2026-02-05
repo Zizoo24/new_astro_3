@@ -1,10 +1,23 @@
+/* ============================================
+   PORTO DESKTOP STYLES
+
+   Wrapped in @layer components - lower priority
+   than @layer overrides (navigation-glassmorphism).
+   This enables proper cascade control without
+   needing !important declarations.
+
+   Phase 3 of CSS Risk Mitigation Plan
+   ============================================ */
+
+@layer components {
+
 :root {
     /* ============================================
        COLOR TOKENS ARE IN base-architecture.css
        This file only contains component-specific
        styles. All color variables inherit from
        the unified token system.
-       
+
        Source of truth: styles/base-architecture.css
        ============================================ */
     
@@ -8232,3 +8245,5 @@ body.search-open {
         margin-bottom: 0;
     }
 }
+
+} /* End @layer components */
