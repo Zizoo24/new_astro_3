@@ -261,10 +261,10 @@ body.theme-dark {
   /* Show dropdown on hover */
   .header-nav-main nav > ul > li.dropdown:hover > .dropdown-menu,
   .header-nav-main nav > ul > li.dropdown.open > .dropdown-menu {
-    top: 100%;
-    opacity: 1;
-    visibility: visible;
-    transform: translate3d(0, 0, 0);
+    top: 100% !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translate3d(0, 0, 0) !important;
   }
 
   /* Dropdown reverse (opens to left) */
@@ -420,6 +420,7 @@ body.theme-dark {
     margin-left: 0;
     z-index: 1001;
 
+    display: block !important; /* Override navigation-glassmorphism display:none */
     opacity: 0;
     visibility: hidden;
     transform: translate3d(-10px, 0, 0);
@@ -436,9 +437,9 @@ body.theme-dark {
   }
 
   .dropdown-menu li.dropdown-submenu:hover > .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translate3d(0, 0, 0);
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translate3d(0, 0, 0) !important;
   }
 
   /* Reverse flyout (opens left when near edge) */
@@ -449,7 +450,7 @@ body.theme-dark {
   }
 
   .dropdown-menu li.dropdown-submenu.dropdown-reverse:hover > .dropdown-menu {
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0) !important;
   }
 
   .dropdown-menu li.dropdown-submenu.dropdown-reverse > a::after {

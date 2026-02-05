@@ -55,12 +55,13 @@ export default defineConfig({
   },
 
   // Configure projects for different viewports
+  // Using Firefox since Chromium download is blocked in some environments
   projects: [
     // Desktop - Primary testing viewport
     {
       name: 'desktop',
       use: {
-        ...devices['Desktop Chrome'],
+        ...devices['Desktop Firefox'],
         viewport: { width: 1280, height: 800 },
       },
     },
@@ -69,7 +70,7 @@ export default defineConfig({
     {
       name: 'tablet',
       use: {
-        ...devices['iPad Mini'],
+        ...devices['Desktop Firefox'],
         viewport: { width: 768, height: 1024 },
       },
     },
@@ -78,7 +79,7 @@ export default defineConfig({
     {
       name: 'mobile',
       use: {
-        ...devices['iPhone 13'],
+        ...devices['Desktop Firefox'],
         viewport: { width: 390, height: 844 },
       },
     },
