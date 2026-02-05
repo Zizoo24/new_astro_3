@@ -143,6 +143,13 @@ Track bugs, fixes, and known issues for OnlineTranslation.ae
 | No CSS purging in production | High | Shipping unused styles |
 | No CSS minification pipeline | Medium | `scripts/minify-assets.js` exists but needs audit |
 
+### Search
+
+| Issue | Severity | Notes |
+|-------|----------|-------|
+| Pagefind doesn't index Arabic content | **High** | Arabic pages not searchable |
+| No Arabic stemming support | **Medium** | Pagefind warns: "doesn't support stemming for the language ar" |
+
 ### Accessibility
 
 | Issue | Severity | Notes |
@@ -155,6 +162,7 @@ Track bugs, fixes, and known issues for OnlineTranslation.ae
 
 ## Investigation Queue
 
+- [ ] **Fix Pagefind Arabic indexing/search** - HIGH PRIORITY
 - [ ] **Fix contrast ratio issues in Arabic pages** (both light/dark modes) - HIGH PRIORITY
 - [ ] **Fix contrast ratio issues in English dark mode** - MEDIUM PRIORITY
 - [ ] Audit `porto-desktop.css` for unused styles
@@ -206,4 +214,4 @@ import compressor from 'astro-compressor';
 
 ---
 
-*Last Updated: February 5, 2026 (Added contrast ratio bugs, CSS merge complete)*
+*Last Updated: February 5, 2026 (Added Arabic search indexing bug)*
