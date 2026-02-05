@@ -6,6 +6,29 @@ Track bugs, fixes, and known issues for OnlineTranslation.ae
 
 ## Fixed Bugs
 
+### February 5, 2026
+
+#### 7. Mobile overlap cards showing 3-column grid instead of stacked
+- **Commit:** `0f71271`
+- **Issue:** On mobile, overlap cards displayed as cramped 3-column grid with truncated text ("60...", "AC...", "DU...")
+- **Root Cause:** Desktop `.overlap-cards` had `grid-template-columns: repeat(3, 1fr) !important` which overrode mobile's `display: flex; flex-direction: column` (no !important)
+- **Fix:** Added `!important` to mobile `.overlap-cards` styles and explicit `grid-template-columns: none !important`
+- **Files:** `public/styles/porto-desktop.css`
+
+#### 8. Mobile overlap cards text truncation
+- **Commit:** `48366b3`
+- **Issue:** Card text was truncated with ellipsis even when cards were stacked
+- **Root Cause:** Multiple issues: `.overlap-card p` had `max-width: 280px`, missing `flex: 1` on content wrapper, missing `min-width: 0` for flex shrinking
+- **Fix:** Added comprehensive mobile styles with `max-width: none !important`, `white-space: normal !important`, `overflow: visible !important` for text, and proper flex properties for content wrapper
+- **Files:** `public/styles/porto-desktop.css`
+
+#### 9. Mobile overlap cards wrapper positioning (green CTA bleed-through)
+- **Commit:** `e8ed692`
+- **Issue:** Green "SEND DOCUMENTS" CTA button visible behind/between cards on mobile
+- **Root Cause:** Desktop `.overlap-cards-wrapper` had `position: absolute !important` overriding mobile's `position: relative` (no !important)
+- **Fix:** Added `!important` to all mobile wrapper positioning: `position: relative`, `transform: none`, `bottom/left/right: auto`
+- **Files:** `public/styles/porto-desktop.css`
+
 ### February 4, 2026
 
 #### 1. Dropdown max-height not working
