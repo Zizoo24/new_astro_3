@@ -1,0 +1,656 @@
+---
+/**
+ * Resource Page: After DHA DataFlow — Post-Licensing Documents
+ * Target Keyword: DHA licensing documents, healthcare worker UAE documents
+ * Pillar: 1 (Authority Process Guide)
+ * Word Count: ~2,800 words
+ * Created: 2026-02-06
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+
+const pageTitle = "After DHA DataFlow: Documents for UAE Residency and Licensing";
+const metaDescription = "Healthcare professionals: what documents you need after passing DataFlow and Prometric. Translation, attestation, and residency requirements nobody covers.";
+
+const breadcrumbItems = [
+  { name: 'Home', url: '/' },
+  { name: 'Resources', url: '/resources/' },
+  { name: 'DHA Post-Licensing Documents', url: '/resources/dha-post-licensing-documents/' }
+];
+
+const faqs = [
+  {
+    question: "Do I need translated documents for DataFlow verification?",
+    answer: "No. DataFlow performs Primary Source Verification directly with your issuing institutions. They do not require translated documents. Translation becomes necessary later — when you apply for DHA registration, employment through MOHRE, and UAE residency through GDRFA."
+  },
+  {
+    question: "When exactly do I need Arabic translation in the DHA licensing process?",
+    answer: "After passing DataFlow and Prometric. When you submit your DHA registration application on Sheryan, any document not in English or Arabic needs certified legal translation. DHA Manual Section 5.7 requires original copies with certified legal translation."
+  },
+  {
+    question: "Which documents need translation for DHA registration?",
+    answer: "Educational certificates, transcripts, experience letters, professional licenses, Good Standing Certificates, and surgical logbooks — if they are in a language other than English or Arabic. Documents in English or Arabic do not need translation."
+  },
+  {
+    question: "What is the difference between Sheryan and DHCC?",
+    answer: "Sheryan (services.dha.gov.ae/sheryan) handles all DHA mainland Dubai licensing. DHCC (Dubai Healthcare City) is a separate free zone track that performs its own verification and does not use DataFlow. If you're working in DHCC, requirements differ. This guide covers the mainland DHA/Sheryan process."
+  },
+  {
+    question: "How long does the full DHA licensing process take?",
+    answer: "From initial self-assessment to active license: typically 3-6 months. DataFlow PSV takes 3-6 weeks. Prometric scheduling adds 2-4 weeks. DHA review takes 5-10 working days. Employment, entry permit, and residency processing adds another 4-8 weeks."
+  },
+  {
+    question: "Do I need MOHESR equivalency for DHA licensing?",
+    answer: "Not always. MOHESR equivalency (Certificate of Recognition) may be required if your degree is from a university not in DHA's recognized list, or for certain specialties. Your employer or DHA Sheryan application will indicate if equivalency is needed. See our <a href='/resources/mohesr-degree-translation-guide/'>MOHESR guide</a> for details."
+  },
+  {
+    question: "What is the cost of DataFlow verification?",
+    answer: "DataFlow PSV costs AED 935-1,235 depending on the profession and number of documents verified. This is separate from Prometric exam fees, DHA registration fees, and translation costs."
+  },
+  {
+    question: "Can I start working before my DHA license is activated?",
+    answer: "No. You cannot practice healthcare in Dubai without an activated DHA license. After DHA issues your registration certificate, your employer must activate your license on Sheryan. Only then can you legally practice."
+  },
+  {
+    question: "Do I need separate translations for DHA and GDRFA?",
+    answer: "No. The same MOJ-certified translation works for both DHA registration and GDRFA residency applications. One translation serves all UAE government authorities. Send your documents via <a href='https://wa.me/971508620217'>WhatsApp</a> and we handle everything."
+  },
+  {
+    question: "What if my Good Standing Certificate is not in English?",
+    answer: "Good Standing Certificates from non-English-speaking countries need MOJ-certified Arabic translation for DHA registration. Countries like China, Japan, South Korea, and Middle Eastern countries commonly issue these in their local language."
+  }
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={metaDescription}
+>
+  <Fragment slot="head">
+    <!-- FAQ Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer.replace(/<[^>]*>/g, '')
+        }
+      }))
+    })} />
+
+    <!-- HowTo Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Complete Document Requirements After DHA DataFlow",
+      "description": "Step-by-step guide for healthcare professionals to prepare documents for DHA registration, MOHRE employment, and UAE residency after passing DataFlow verification.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Pass DataFlow PSV and Prometric exam",
+          "text": "Complete DataFlow Primary Source Verification and pass the Prometric competency exam. No translation needed at this stage."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Get non-English documents translated",
+          "text": "Translate educational certificates, experience letters, professional licenses, and Good Standing Certificates into Arabic via MOJ-certified translator."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Submit DHA registration on Sheryan",
+          "text": "Upload original documents with translations to Sheryan portal. DHA reviews within 5-10 working days."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Complete employment and residency",
+          "text": "After DHA registration, complete MOHRE work permit, entry permit, medical fitness, Emirates ID, and residence visa stamping."
+        }
+      ],
+      "totalTime": "P180D"
+    })} />
+
+    <!-- Article Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": pageTitle,
+      "description": metaDescription,
+      "author": {
+        "@type": "Organization",
+        "name": "OnlineTranslation.ae",
+        "url": "https://onlinetranslation.ae"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "OnlineTranslation.ae",
+        "url": "https://onlinetranslation.ae",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://onlinetranslation.ae/assets/images/logo.png"
+        }
+      },
+      "datePublished": "2026-02-06",
+      "dateModified": "2026-02-06",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://onlinetranslation.ae/resources/dha-post-licensing-documents/"
+      }
+    })} />
+  </Fragment>
+
+  <!-- Hero Section -->
+  <section class="hero-section bg-dark">
+    <div class="container">
+      <Breadcrumb items={breadcrumbItems} />
+      <h1>{pageTitle}</h1>
+      <p class="hero-subtitle">The document phase nobody prepares you for</p>
+      <p class="hero-intro">
+        Every guide about DHA licensing covers DataFlow and Prometric. Nobody covers what comes after — the document preparation for DHA registration, MOHRE employment, and UAE residency. This is where translation and attestation become critical. DataFlow does not require translated documents. DHA registration does.
+      </p>
+      <div class="service-snapshot">
+        <div class="snapshot-item">
+          <i class="fas fa-hospital"></i>
+          <div>
+            <strong>3-6 months total</strong>
+            <span>from self-assessment to active license</span>
+          </div>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-file-lines"></i>
+          <div>
+            <strong>Translation after DataFlow</strong>
+            <span>not before or during</span>
+          </div>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-stethoscope"></i>
+          <div>
+            <strong>DHA Manual Section 5.7</strong>
+            <span>certified legal translation required</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Full Journey -->
+  <section class="section bg-white">
+    <div class="container container--narrow">
+      <h2>The Full DHA Licensing Journey</h2>
+      <p>Understanding where translation fits requires seeing the complete timeline. Here is the Sheryan (mainland Dubai) process from start to finish.</p>
+
+      <div class="journey-timeline">
+        <div class="journey-phase">
+          <div class="phase-header phase-header--no-translation">
+            <span class="phase-badge">No Translation Needed</span>
+            <h3>Phase 1: Verification and Exam</h3>
+          </div>
+          <div class="phase-steps">
+            <div class="phase-step">
+              <span class="phase-step-num">1</span>
+              <div>
+                <strong>Self-Assessment on Sheryan</strong>
+                <p>Check eligibility for your profession on the Sheryan portal (services.dha.gov.ae/sheryan).</p>
+              </div>
+            </div>
+            <div class="phase-step">
+              <span class="phase-step-num">2</span>
+              <div>
+                <strong>DataFlow Primary Source Verification (PSV)</strong>
+                <p>DataFlow contacts your universities and previous employers directly. They verify authenticity at the source. No translated documents required — DataFlow works with original-language documents. Takes 3-6 weeks, costs AED 935-1,235.</p>
+              </div>
+            </div>
+            <div class="phase-step">
+              <span class="phase-step-num">3</span>
+              <div>
+                <strong>Prometric Competency Exam (CBT)</strong>
+                <p>Computer-based test in your specialty. Schedule at a Prometric center in Dubai. Exam is in English.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-phase">
+          <div class="phase-header phase-header--translation">
+            <span class="phase-badge">Translation Required Here</span>
+            <h3>Phase 2: DHA Registration</h3>
+          </div>
+          <div class="phase-steps">
+            <div class="phase-step">
+              <span class="phase-step-num">4</span>
+              <div>
+                <strong>"Get Registered" on Sheryan</strong>
+                <p>Upload all documents to Sheryan. <strong>DHA Manual Section 5.7:</strong> "All required documents must be submitted as original copies, along with a certified legal translation if the original is not in English or Arabic."</p>
+              </div>
+            </div>
+            <div class="phase-step">
+              <span class="phase-step-num">5</span>
+              <div>
+                <strong>DHA Review</strong>
+                <p>DHA reviews your application within 5-10 working days. If documents are incomplete or translations missing, the application is returned for correction.</p>
+              </div>
+            </div>
+            <div class="phase-step">
+              <span class="phase-step-num">6</span>
+              <div>
+                <strong>Registration Certificate Issued</strong>
+                <p>DHA issues your professional registration certificate. You are now registered but cannot practice until a licensed facility activates your license.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-phase">
+          <div class="phase-header phase-header--translation">
+            <span class="phase-badge">More Translation Needed</span>
+            <h3>Phase 3: Employment and Residency</h3>
+          </div>
+          <div class="phase-steps">
+            <div class="phase-step">
+              <span class="phase-step-num">7</span>
+              <div>
+                <strong>Secure Employment</strong>
+                <p>Find a position at a DHA-licensed facility. Your employer initiates the license activation process on Sheryan.</p>
+              </div>
+            </div>
+            <div class="phase-step">
+              <span class="phase-step-num">8</span>
+              <div>
+                <strong><a href="/resources/mohre-work-permit-guide/">MOHRE Work Permit</a></strong>
+                <p>Your employer submits work permit application through Tasheel. Your attested, translated degree and employment contract are required.</p>
+              </div>
+            </div>
+            <div class="phase-step">
+              <span class="phase-step-num">9</span>
+              <div>
+                <strong>Entry Permit, Medical Fitness, and Residency</strong>
+                <p>Entry permit &rarr; Medical fitness test &rarr; Emirates ID &rarr; Residence visa stamping. At this stage, <a href="/resources/gdrfa-family-visa-documents/">family sponsorship</a> becomes possible.</p>
+              </div>
+            </div>
+            <div class="phase-step">
+              <span class="phase-step-num">10</span>
+              <div>
+                <strong>License Activation</strong>
+                <p>Employer activates your DHA license on Sheryan. You can now legally practice healthcare in Dubai.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Documents That Need Translation -->
+  <section class="section bg-light">
+    <div class="container container--narrow">
+      <h2>Which Documents Need Translation?</h2>
+      <p>This is the key question. The answer depends on what language your documents are in and at which stage you are.</p>
+
+      <h3>For DHA Registration (Phase 2)</h3>
+      <p>Per DHA Manual Version 1.1 (November 2024), Section 5.7, these documents need certified legal translation if not in English or Arabic:</p>
+      <ul class="checklist">
+        <li><strong><a href="/personal/academic/degree/">Educational certificates</a></strong> — degree, diploma, specialization certificates</li>
+        <li><strong>Academic transcripts</strong> — full transcript of marks/grades</li>
+        <li><strong>Experience letters</strong> — from all previous healthcare employers</li>
+        <li><strong>Professional licenses</strong> — from your home country's health authority</li>
+        <li><strong>Good Standing Certificates</strong> — from every country where you practiced</li>
+        <li><strong>Surgical logbooks</strong> — for surgical specialties</li>
+      </ul>
+
+      <h3>For Employment and Residency (Phase 3)</h3>
+      <p>Additional documents that need translation at the employment stage:</p>
+      <ul class="checklist">
+        <li><strong>Attested degree</strong> — for <a href="/resources/mohre-work-permit-guide/">MOHRE work permit</a> application</li>
+        <li><strong>Employment contract</strong> — MOHRE standard dual-language contract</li>
+        <li><strong><a href="/personal/vital-records/marriage/">Marriage certificate</a></strong> — if sponsoring family</li>
+        <li><strong><a href="/personal/vital-records/birth/">Birth certificates</a></strong> — for dependent children</li>
+        <li><strong><a href="/personal/immigration/pcc/">Police clearance certificate</a></strong> — if required for your nationality</li>
+      </ul>
+
+      <div class="callout-block callout-block--info">
+        <h4>Documents You Do NOT Need to Translate</h4>
+        <p>Documents already in English or Arabic do not need translation. This includes UK, US, Australian, Canadian, and many GCC-issued documents. DataFlow PSV report itself does not need translation. Prometric exam results are in English. Check our <a href="/resources/translation-type-decision-guide/">translation type guide</a> to determine what needs translating.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DHCC vs Sheryan -->
+  <section class="section bg-white">
+    <div class="container container--narrow">
+      <h2>Sheryan vs DHCC: Two Different Tracks</h2>
+      <p>Dubai has two separate healthcare licensing systems. Understanding which applies to you prevents wasted effort.</p>
+
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>DHA / Sheryan</th>
+            <th>DHCC</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Jurisdiction</td>
+            <td>All mainland Dubai facilities</td>
+            <td>Dubai Healthcare City free zone only</td>
+          </tr>
+          <tr>
+            <td>Verification</td>
+            <td>DataFlow PSV</td>
+            <td>Own internal verification (not DataFlow)</td>
+          </tr>
+          <tr>
+            <td>Portal</td>
+            <td>services.dha.gov.ae/sheryan</td>
+            <td>dhcc.ae</td>
+          </tr>
+          <tr>
+            <td>Exam required?</td>
+            <td>Prometric CBT</td>
+            <td>Varies by profession</td>
+          </tr>
+          <tr>
+            <td>Translation requirement</td>
+            <td>Certified legal translation (Section 5.7)</td>
+            <td>DHCC-specific requirements</td>
+          </tr>
+          <tr>
+            <td>Our translation accepted?</td>
+            <td>Yes (MOJ-certified)</td>
+            <td>Yes (MOJ-certified)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>This guide focuses on the DHA/Sheryan mainland track. If you are working in DHCC, contact the DHCC licensing department directly for their specific requirements. Our translations are accepted by both systems.</p>
+    </div>
+  </section>
+
+  <!-- Common Professions -->
+  <section class="section bg-light">
+    <div class="container container--narrow">
+      <h2>Translation Requirements by Profession</h2>
+      <p>Different healthcare professions have different document volumes. Here is what to expect.</p>
+
+      <div class="profession-grid">
+        <div class="profession-card">
+          <h3><i class="fas fa-user-nurse"></i> Nurses</h3>
+          <ul>
+            <li>Nursing degree certificate</li>
+            <li>Transcripts</li>
+            <li>Nursing license from home country</li>
+            <li>Good Standing Certificate</li>
+            <li>Experience letters</li>
+          </ul>
+          <p class="profession-note">Most common profession. Filipino, Indian, and Bangladeshi nurses often need translation of nursing council certificates.</p>
+        </div>
+
+        <div class="profession-card">
+          <h3><i class="fas fa-user-doctor"></i> Physicians</h3>
+          <ul>
+            <li>Medical degree (MBBS/MD)</li>
+            <li>Specialty certificates</li>
+            <li>Transcripts</li>
+            <li>Medical license</li>
+            <li>Good Standing Certificates (all countries)</li>
+            <li>Surgical logbook (if applicable)</li>
+          </ul>
+          <p class="profession-note">Higher document volume. Specialists from non-English countries may have 8-12 documents needing translation.</p>
+        </div>
+
+        <div class="profession-card">
+          <h3><i class="fas fa-tooth"></i> Dentists</h3>
+          <ul>
+            <li>Dental degree (BDS/DDS)</li>
+            <li>Specialty certificates</li>
+            <li>Dental license</li>
+            <li>Good Standing Certificate</li>
+            <li>Experience letters</li>
+          </ul>
+          <p class="profession-note">Similar to physicians. Iranian and Egyptian dentists commonly need translation of dental council certificates.</p>
+        </div>
+
+        <div class="profession-card">
+          <h3><i class="fas fa-pills"></i> Pharmacists</h3>
+          <ul>
+            <li>Pharmacy degree</li>
+            <li>Pharmacy license</li>
+            <li>Good Standing Certificate</li>
+            <li>Experience letters</li>
+          </ul>
+          <p class="profession-note">Lower document volume. Indian pharmacists need translation of Pharmacy Council of India certificates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Attestation Timing -->
+  <section class="section bg-white">
+    <div class="container container--narrow">
+      <h2>When to Attest and Translate</h2>
+      <p>The most efficient approach is to prepare your attestation and translation documents during the DataFlow and Prometric phase — not after. Here is the optimal timeline.</p>
+
+      <div class="timing-advice">
+        <div class="timing-row">
+          <div class="timing-when">During DataFlow (weeks 1-6)</div>
+          <div class="timing-what">
+            <strong>Start attestation of your degree in parallel</strong>
+            <p>DataFlow and attestation are independent processes. Begin the <a href="/services/attestation/">attestation chain</a> while DataFlow verifies your credentials. This saves 2-4 weeks.</p>
+          </div>
+        </div>
+        <div class="timing-row">
+          <div class="timing-when">After attestation completes</div>
+          <div class="timing-what">
+            <strong>Get translations done</strong>
+            <p>Once MOFA attestation stamps are on your documents, get <a href="/legal-translation-dubai/">MOJ-certified Arabic translation</a>. Standard delivery: 24 hours. Express: 2-4 hours.</p>
+          </div>
+        </div>
+        <div class="timing-row">
+          <div class="timing-when">After Prometric</div>
+          <div class="timing-what">
+            <strong>Submit DHA registration with all translated documents ready</strong>
+            <p>If you prepared in parallel, your translated, attested documents are ready the moment you pass Prometric. No additional waiting.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-block callout-block--warning">
+        <h4>The Sequencing Rule Still Applies</h4>
+        <p>Attestation must be completed before translation. Your Arabic translation must include the MOFA attestation stamps. Translating before attesting means paying for translation twice. This rule applies to all UAE government processes, not just DHA.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-light">
+    <div class="container container--narrow">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details class="faq-item" name="dha-faq">
+            <summary>{faq.question}</summary>
+            <div class="faq-answer" set:html={faq.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section bg-dark">
+    <div class="container container--narrow" style="text-align: center;">
+      <h2 style="color: var(--text-on-dark);">Need Your Healthcare Documents Translated?</h2>
+      <p style="color: var(--text-on-dark-muted); max-width: 600px; margin: 0 auto 2rem;">Send your degree, Good Standing Certificate, or other healthcare documents via WhatsApp. We confirm what needs translation and deliver within 24 hours.</p>
+      <a href="https://wa.me/971508620217" class="cta-button">
+        <i class="fab fa-whatsapp"></i> Send Documents on WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- Related Guides -->
+  <section class="section bg-white">
+    <div class="container container--narrow">
+      <h2>Related Guides</h2>
+      <div class="related-grid">
+        <a href="/specialized/medical/dha-dataflow/" class="related-card">
+          <i class="fas fa-hospital"></i>
+          <h3>DHA DataFlow Guide</h3>
+          <p>The DataFlow verification process and what healthcare documents are checked.</p>
+        </a>
+        <a href="/resources/mohre-work-permit-guide/" class="related-card">
+          <i class="fas fa-briefcase"></i>
+          <h3>MOHRE Work Permit</h3>
+          <p>The employee's guide to work permit documents after securing employment.</p>
+        </a>
+        <a href="/resources/mohesr-degree-translation-guide/" class="related-card">
+          <i class="fas fa-graduation-cap"></i>
+          <h3>MOHESR Degree Guide</h3>
+          <p>When you need degree equivalency for your healthcare qualifications.</p>
+        </a>
+        <a href="/resources/gdrfa-family-visa-documents/" class="related-card">
+          <i class="fas fa-users"></i>
+          <h3>Family Visa Documents</h3>
+          <p>After getting your residency, sponsor your family through GDRFA.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero-section { padding: 3rem 0; color: var(--text-on-dark); }
+  .hero-section h1 { font-size: 2.25rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-on-dark); }
+  .hero-subtitle { font-size: 1.2rem; color: var(--text-on-dark-muted); margin-bottom: 1.5rem; }
+  .hero-intro { font-size: 1.05rem; line-height: 1.7; max-width: 720px; color: var(--text-on-dark); opacity: 0.95; }
+  .service-snapshot { display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; }
+  .snapshot-item { display: flex; align-items: center; gap: 0.75rem; }
+  .snapshot-item i { font-size: 1.5rem; color: var(--accent-coral); }
+  .snapshot-item strong { display: block; font-size: 1rem; color: var(--text-on-dark); }
+  .snapshot-item span { font-size: 0.85rem; color: var(--text-on-dark-muted); }
+
+  /* Layout */
+  .container--narrow { max-width: 800px; margin: 0 auto; }
+  .section { padding: 3rem 0; }
+  h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-heading); }
+  h3 { font-size: 1.25rem; font-weight: 700; margin: 2rem 0 0.75rem; color: var(--text-heading); }
+  p { line-height: 1.7; margin-bottom: 1rem; }
+
+  /* Journey Timeline */
+  .journey-timeline { margin: 2rem 0; }
+  .journey-phase { margin-bottom: 2rem; border: 1px solid rgba(0,0,0,0.08); border-radius: 0.75rem; overflow: hidden; }
+  .phase-header { padding: 1rem 1.5rem; display: flex; align-items: center; gap: 1rem; }
+  .phase-header--no-translation { background: #f0f9f0; }
+  .phase-header--translation { background: #fff3e6; }
+  .phase-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    white-space: nowrap;
+  }
+  .phase-header--no-translation .phase-badge { background: #d4edda; color: #155724; }
+  .phase-header--translation .phase-badge { background: #ffeeba; color: #856404; }
+  .phase-header h3 { margin: 0; font-size: 1.15rem; }
+  .phase-steps { padding: 0 1.5rem 1rem; }
+  .phase-step { display: flex; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.04); }
+  .phase-step:last-child { border-bottom: none; }
+  .phase-step-num {
+    width: 28px; height: 28px; min-width: 28px;
+    border-radius: 50%; background: var(--primary-color); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; font-weight: 700; margin-top: 0.15rem;
+  }
+  .phase-step strong { display: block; margin-bottom: 0.25rem; }
+  .phase-step p { margin: 0; font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* Checklists */
+  .checklist { list-style: none; padding: 0; margin: 1rem 0 2rem; }
+  .checklist li {
+    padding: 0.75rem 0 0.75rem 2rem; position: relative;
+    border-bottom: 1px solid rgba(0,0,0,0.06); line-height: 1.6;
+  }
+  .checklist li::before {
+    content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+    position: absolute; left: 0; color: var(--accent-coral); font-size: 0.9rem;
+  }
+
+  /* Callout Blocks */
+  .callout-block { padding: 1.25rem 1.5rem; border-radius: 0 0.75rem 0.75rem 0; margin: 1.5rem 0; }
+  .callout-block h4 { margin: 0 0 0.5rem; font-size: 1rem; }
+  .callout-block p { margin: 0; }
+  .callout-block--info { background: linear-gradient(135deg, #e6f7ff, #d6f0ff); border-left: 4px solid var(--link-color); }
+  .callout-block--info h4 { color: var(--primary-color); }
+  .callout-block--warning { background: linear-gradient(135deg, #fff8e1, #fff3cd); border-left: 4px solid #f0ad4e; }
+  .callout-block--warning h4 { color: #856404; }
+
+  /* Comparison Table */
+  .comparison-table {
+    width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem;
+    border: 1px solid rgba(0,0,0,0.08); border-radius: 0.75rem; overflow: hidden;
+  }
+  .comparison-table th { background: var(--primary-color); color: #fff; padding: 0.75rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem; }
+  .comparison-table td { padding: 0.75rem 1rem; border-bottom: 1px solid rgba(0,0,0,0.06); line-height: 1.5; }
+  .comparison-table tr:last-child td { border-bottom: none; }
+  .comparison-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+
+  /* Profession Grid */
+  .profession-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.25rem; margin: 1.5rem 0; }
+  .profession-card { background: #fff; border-radius: 0.75rem; padding: 1.5rem; border: 1px solid rgba(0,0,0,0.06); }
+  .profession-card h3 { margin: 0 0 1rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem; }
+  .profession-card h3 i { color: var(--accent-coral); }
+  .profession-card ul { margin: 0 0 1rem; padding-left: 1.25rem; font-size: 0.95rem; }
+  .profession-card li { margin-bottom: 0.35rem; line-height: 1.5; }
+  .profession-note { font-size: 0.85rem; color: var(--text-muted); font-style: italic; margin: 0; }
+
+  /* Timing Advice */
+  .timing-advice { margin: 1.5rem 0; }
+  .timing-row { display: flex; gap: 1.5rem; padding: 1.25rem 0; border-bottom: 1px solid rgba(0,0,0,0.08); }
+  .timing-row:last-child { border-bottom: none; }
+  .timing-when {
+    min-width: 180px; font-weight: 600; font-size: 0.95rem; color: var(--primary-color); padding-top: 0.15rem;
+  }
+  .timing-what strong { display: block; margin-bottom: 0.25rem; }
+  .timing-what p { margin: 0; font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* FAQ */
+  .faq-list { margin: 1.5rem 0; }
+  .faq-item { border-bottom: 1px solid rgba(0,0,0,0.08); }
+  .faq-item summary { padding: 1rem 0; cursor: pointer; font-weight: 600; font-size: 1.05rem; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .faq-item summary::after { content: '+'; font-size: 1.5rem; font-weight: 300; color: var(--text-muted); }
+  .faq-item[open] summary::after { content: '\2212'; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-answer { padding: 0 0 1rem; line-height: 1.7; color: var(--text-muted); }
+
+  /* CTA */
+  .cta-button { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: #25D366; color: #fff; border-radius: 0.5rem; font-weight: 700; font-size: 1.1rem; text-decoration: none; transition: background 0.2s; }
+  .cta-button:hover { background: #1fb855; color: #fff; }
+
+  /* Related Grid */
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .related-card { background: #f8f9fa; border-radius: 0.75rem; padding: 1.5rem; text-decoration: none; border: 1px solid rgba(0,0,0,0.06); transition: box-shadow 0.2s, border-color 0.2s; }
+  .related-card:hover { border-color: var(--accent-coral); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .related-card i { font-size: 1.5rem; color: var(--accent-coral); margin-bottom: 0.75rem; display: block; }
+  .related-card h3 { margin: 0 0 0.5rem; font-size: 1.05rem; color: var(--text-heading); }
+  .related-card p { margin: 0; font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .hero-section h1 { font-size: 1.75rem; }
+    .service-snapshot { flex-direction: column; gap: 1rem; }
+    .profession-grid { grid-template-columns: 1fr; }
+    .timing-row { flex-direction: column; gap: 0.5rem; }
+    .timing-when { min-width: auto; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>

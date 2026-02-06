@@ -1,0 +1,559 @@
+---
+/**
+ * Resource Page: MOHESR Degree Translation Guide
+ * Target Keyword: MOHESR translation requirements, degree equivalency UAE
+ * Pillar: 1 (Authority Process Guide)
+ * Word Count: ~2,800 words
+ * Created: 2026-02-06
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+
+const pageTitle = "MOHESR Degree Equivalency: Which Degrees Need Translation";
+const metaDescription = "Find out if you need MOHESR equivalency and which documents need Arabic translation. The 5 rejection reasons and how to avoid the 7-day deadline trap.";
+
+const breadcrumbItems = [
+  { name: 'Home', url: '/' },
+  { name: 'Resources', url: '/resources/' },
+  { name: 'MOHESR Degree Translation Guide', url: '/resources/mohesr-degree-translation-guide/' }
+];
+
+const faqs = [
+  {
+    question: "Do I need MOHESR equivalency for my degree?",
+    answer: "It depends on your profession and employer. Equivalency is mandatory for healthcare, engineering, teaching, government, Golden Visa, and law. It is NOT required for most private-sector roles unless your employer specifically demands it. Graduates of CAA-licensed UAE universities are also exempt."
+  },
+  {
+    question: "What is the difference between attestation and MOHESR equivalency?",
+    answer: "Attestation verifies your document is genuine (handled by MOFA). Equivalency evaluates whether your degree meets UAE academic standards (handled by MOHESR). Attestation is a prerequisite for equivalency — you need attestation first. Many people complete attestation and think they are done."
+  },
+  {
+    question: "Does my degree certificate need Arabic translation for MOHESR?",
+    answer: "Yes, if your degree is not in Arabic or English. MOHESR requires MOJ-certified Arabic translation. Translations done abroad — even German sworn translations or UK certified translations — are rejected. Only UAE MOJ-certified translations are accepted."
+  },
+  {
+    question: "Can online or distance learning degrees get MOHESR equivalency?",
+    answer: "Since 2023, some distance learning degrees are accepted if properly accredited. However, degrees in medicine, engineering, and law are excluded from distance learning recognition. Check whether your specific program qualifies before applying."
+  },
+  {
+    question: "What happens if I miss the MOHESR 7-day document deadline?",
+    answer: "Auto-rejection with no refund. If MOHESR requests additional documents, you have exactly 7 days to respond. Missing this deadline means your application is automatically rejected and you must reapply and pay the fee again."
+  },
+  {
+    question: "My university is accredited by HEC/UGC. Does UAE recognize it?",
+    answer: "Not necessarily. Home-country accreditation (HEC in Pakistan, UGC in India) does NOT automatically mean UAE recognition. MOHESR maintains its own list of recognized institutions. An accredited university in your home country may still be unrecognized by MOHESR."
+  },
+  {
+    question: "How long does MOHESR equivalency take?",
+    answer: "Typically 2-4 weeks if all documents are correct and complete. If MOHESR requests additional documents, the 7-day response window starts and can add time. Rejected applications require full resubmission."
+  },
+  {
+    question: "Is MOHESR equivalency the same as the old MOE equivalency?",
+    answer: "Yes. Since November 2024, degree equivalency officially transferred from the Ministry of Education (MOE) to MOHESR. It is now called a 'Certificate of Recognition' rather than 'Equivalency Certificate.' The process is the same."
+  },
+  {
+    question: "Do I need MOHESR equivalency for Golden Visa?",
+    answer: "Yes. Golden Visa applicants with foreign degrees typically need MOHESR recognition. This is separate from the degree attestation that GDRFA requires. Both are needed — attestation for the visa application and equivalency for the qualification verification."
+  },
+  {
+    question: "What documents do I need for MOHESR equivalency application?",
+    answer: "You need your attested degree certificate with Arabic translation, academic transcripts with Arabic translation, passport copy, and any additional documents MOHESR may request for your specific degree type. All translations must be MOJ-certified in the UAE."
+  }
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={metaDescription}
+>
+  <Fragment slot="head">
+    <!-- FAQ Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer.replace(/<[^>]*>/g, '')
+        }
+      }))
+    })} />
+
+    <!-- Article Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": pageTitle,
+      "description": metaDescription,
+      "author": {
+        "@type": "Organization",
+        "name": "OnlineTranslation.ae",
+        "url": "https://onlinetranslation.ae"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "OnlineTranslation.ae",
+        "url": "https://onlinetranslation.ae",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://onlinetranslation.ae/assets/images/logo.png"
+        }
+      },
+      "datePublished": "2026-02-06",
+      "dateModified": "2026-02-06",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://onlinetranslation.ae/resources/mohesr-degree-translation-guide/"
+      }
+    })} />
+  </Fragment>
+
+  <!-- Hero Section -->
+  <section class="hero-section bg-dark">
+    <div class="container">
+      <Breadcrumb items={breadcrumbItems} />
+      <h1>{pageTitle}</h1>
+      <p class="hero-subtitle">The equivalency process nobody explains clearly</p>
+      <p class="hero-intro">
+        MOHESR degree equivalency — now called "Certificate of Recognition" — confuses almost everyone. People mix it up with attestation. They assume home-country accreditation means UAE recognition. They miss the 7-day document deadline and lose their application fee. This guide covers who actually needs equivalency, what documents require Arabic translation, and the five predictable reasons applications get rejected.
+      </p>
+      <div class="service-snapshot">
+        <div class="snapshot-item">
+          <i class="fas fa-graduation-cap"></i>
+          <div>
+            <strong>Certificate of Recognition</strong>
+            <span>formerly "Equivalency Certificate"</span>
+          </div>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-clock"></i>
+          <div>
+            <strong>7-day deadline</strong>
+            <span>for additional documents</span>
+          </div>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-file-certificate"></i>
+          <div>
+            <strong>MOJ translation only</strong>
+            <span>foreign translations rejected</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Do You Need It? -->
+  <section class="section bg-white">
+    <div class="container container--narrow">
+      <h2>Do You Actually Need MOHESR Equivalency?</h2>
+      <p>Not everyone does. Here is the clear breakdown.</p>
+
+      <div class="need-grid">
+        <div class="need-card need-card--yes">
+          <h3>Equivalency Required</h3>
+          <ul>
+            <li><strong>Healthcare professionals</strong> — doctors, nurses, pharmacists, dentists (also need <a href="/resources/dha-post-licensing-documents/">DHA licensing</a>)</li>
+            <li><strong>Engineers</strong> — for Society of Engineers registration</li>
+            <li><strong>Teachers</strong> — for KHDA or ADEK licensing</li>
+            <li><strong>Government/semi-government</strong> — all positions</li>
+            <li><strong><a href="/services/golden-visa-translation/">Golden Visa</a> applicants</strong> — foreign degree holders</li>
+            <li><strong>Legal professionals</strong> — lawyers, legal consultants</li>
+          </ul>
+        </div>
+        <div class="need-card need-card--no">
+          <h3>Equivalency NOT Required</h3>
+          <ul>
+            <li><strong>Private sector roles</strong> — unless employer specifically demands it</li>
+            <li><strong>Graduates of UAE universities</strong> — those licensed by the Commission for Academic Accreditation (CAA)</li>
+            <li><strong>Free zone employees</strong> — many free zones do not require MOHESR (check with your zone)</li>
+            <li><strong>Short-term assignments</strong> — some temporary positions</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout-block callout-block--info">
+        <h4>Attestation Is NOT Equivalency</h4>
+        <p>Attestation (MOFA) verifies your document is genuine. Equivalency (MOHESR) evaluates whether your degree meets UAE academic standards. You need attestation first — it is a prerequisite. Many complete attestation and assume they are done. They are not. These are two separate processes with different outcomes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The 5 Rejection Reasons -->
+  <section class="section bg-light">
+    <div class="container container--narrow">
+      <h2>The 5 Reasons MOHESR Rejects Applications</h2>
+      <p>These are predictable and preventable. Knowing them in advance saves weeks and application fees.</p>
+
+      <div class="rejection-cards">
+        <div class="rejection-card">
+          <span class="rejection-num">1</span>
+          <div>
+            <h3>Unrecognized University</h3>
+            <p>The most common rejection. Your university may be fully accredited in your home country — by HEC (Pakistan), UGC (India), or equivalent bodies — and still be unrecognized by MOHESR. UAE maintains its own recognition list.</p>
+            <p class="rejection-action">Check MOHESR's recognized institution list before applying. If your university is not listed, the application will be rejected regardless of how good your documents are.</p>
+          </div>
+        </div>
+
+        <div class="rejection-card">
+          <span class="rejection-num">2</span>
+          <div>
+            <h3>Distance Learning or Online Degree</h3>
+            <p>A 2023 policy change allows some accredited distance learning degrees. However, degrees in medicine, engineering, and law are permanently excluded from distance learning recognition.</p>
+            <p class="rejection-action">If your degree was earned online or via distance learning, verify that your specific program qualifies under the 2023 policy before submitting.</p>
+          </div>
+        </div>
+
+        <div class="rejection-card">
+          <span class="rejection-num">3</span>
+          <div>
+            <h3>Missing or Incomplete Documents</h3>
+            <p>This includes failing to respond to MOHESR's request for additional documents within their <strong>7-day deadline</strong>. Missing this deadline triggers automatic rejection with no refund. MOHESR does not extend this window.</p>
+            <p class="rejection-action">Prepare all possible documents before applying. Keep your email and phone accessible during the review period. Respond to any MOHESR request immediately.</p>
+          </div>
+        </div>
+
+        <div class="rejection-card">
+          <span class="rejection-num">4</span>
+          <div>
+            <h3>Name Discrepancies</h3>
+            <p>Even minor transliteration differences between your passport and academic documents trigger rejection. "Mohamed" vs "Mohammed," "Ahmed" vs "Ahmad," or different ordering of family name components are all flagged.</p>
+            <p class="rejection-action">Ensure your <a href="/personal/academic/degree/">degree certificate</a> translation matches your passport name exactly. Alert your translator to any name variations so they can note them properly.</p>
+          </div>
+        </div>
+
+        <div class="rejection-card">
+          <span class="rejection-num">5</span>
+          <div>
+            <h3>Translation Issues</h3>
+            <p>Two common translation problems: (1) documents without MOJ-certified Arabic translation, and (2) translations done abroad. German "sworn" translations, UK certified translations, and any non-UAE translation are rejected by MOHESR.</p>
+            <p class="rejection-action">Only submit translations from <a href="/legal-translation-dubai/">UAE MOJ-certified translators</a>. Foreign translations — regardless of certification in their country — are not accepted.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Documents Need Translation -->
+  <section class="section bg-white">
+    <div class="container container--narrow">
+      <h2>Documents That Need Arabic Translation</h2>
+      <p>If your academic documents are in any language other than Arabic or English, they need MOJ-certified Arabic translation for MOHESR submission.</p>
+
+      <h3>Required for All Applications</h3>
+      <ul class="checklist">
+        <li><strong><a href="/personal/academic/degree/">Degree certificate</a></strong> — fully attested, then translated</li>
+        <li><strong>Academic transcripts</strong> — complete transcript, not a summary</li>
+      </ul>
+
+      <h3>May Be Required (Case-by-Case)</h3>
+      <ul class="checklist">
+        <li><strong>Course descriptions</strong> — MOHESR sometimes requests details of specific courses</li>
+        <li><strong>Professional license</strong> — for regulated professions</li>
+        <li><strong>Internship or training certificates</strong> — for medical and engineering degrees</li>
+        <li><strong>Previous degree</strong> — if applying for postgraduate equivalency</li>
+      </ul>
+
+      <div class="callout-block callout-block--warning">
+        <h4>Foreign Translations Are Rejected</h4>
+        <p>MOHESR only accepts translations from UAE MOJ-certified translators. Even professionally certified translations from Germany, UK, India, or any other country are not accepted. If you already have a foreign translation, you still need a UAE MOJ-certified one. Send your documents via <a href="https://wa.me/971508620217">WhatsApp</a> and we confirm what's needed.</p>
+      </div>
+
+      <h3>Documents That Do NOT Need Translation</h3>
+      <ul class="no-translate-list">
+        <li>Degrees already in Arabic or English</li>
+        <li>Passport copy (for identification only)</li>
+        <li>MOFA attestation receipt</li>
+        <li>MOHESR application form (filled online)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- The Process -->
+  <section class="section bg-light">
+    <div class="container container--narrow">
+      <h2>MOHESR Equivalency Process: Step by Step</h2>
+      <p>The process involves three government systems: your home country's authorities, UAE MOFA, and MOHESR.</p>
+
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3>Complete Attestation Chain First</h3>
+            <p>Your degree must be attested before MOHESR will accept it. The chain depends on your country:</p>
+            <ul>
+              <li><strong>Hague countries</strong> (India, USA, UK, Philippines, Bangladesh): Notarize &rarr; Apostille &rarr; <a href="/services/attestation/">UAE MOFA</a></li>
+              <li><strong>Non-Hague countries</strong> (Pakistan, Egypt): Home ministry &rarr; Home MOFA &rarr; UAE Embassy &rarr; UAE MOFA</li>
+            </ul>
+            <p>MOFA attestation costs AED 150 per document and takes 1-3 working days.</p>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3>Get MOJ-Certified Arabic Translation</h3>
+            <p>After attestation, translate your degree and transcripts. The translation must include all attestation stamps and stickers. Standard delivery: 24 hours. Express: 2-4 hours.</p>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h3>Submit Online to MOHESR</h3>
+            <p>Apply through the MOHESR online portal. Upload all attested and translated documents. The application fee is non-refundable.</p>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h3>Respond to Any Requests Within 7 Days</h3>
+            <p>If MOHESR needs additional documents, they send a notification. You have exactly 7 days to respond. Missing this deadline means automatic rejection and loss of your application fee.</p>
+            <div class="callout-block callout-block--danger">
+              <h4>The 7-Day Trap</h4>
+              <p>MOHESR's 7-day deadline is strict and non-negotiable. If they request a translated course description and your translator needs 2 days, plus you need 1 day to review — you have already used nearly half your window. Prepare supplementary documents in advance.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h3>Receive Certificate of Recognition</h3>
+            <p>If approved, MOHESR issues the Certificate of Recognition. This document is required for <a href="/resources/mohre-work-permit-guide/">MOHRE work permits</a> in regulated professions and for <a href="/services/golden-visa-translation/">Golden Visa</a> applications.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Connection to Other Processes -->
+  <section class="section bg-white">
+    <div class="container container--narrow">
+      <h2>How MOHESR Connects to Other UAE Processes</h2>
+      <p>MOHESR equivalency is one step in larger journeys. Here is where it fits.</p>
+
+      <table class="connection-table">
+        <thead>
+          <tr>
+            <th>Process</th>
+            <th>Role of MOHESR</th>
+            <th>When Needed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong><a href="/resources/mohre-work-permit-guide/">MOHRE Work Permit</a></strong></td>
+            <td>Verifies degree for regulated professions</td>
+            <td>Before or alongside work permit application</td>
+          </tr>
+          <tr>
+            <td><strong><a href="/resources/dha-post-licensing-documents/">DHA Healthcare Licensing</a></strong></td>
+            <td>Verifies non-recognized degrees</td>
+            <td>If university is not on DHA's recognized list</td>
+          </tr>
+          <tr>
+            <td><strong><a href="/services/golden-visa-translation/">Golden Visa</a></strong></td>
+            <td>Validates foreign qualifications</td>
+            <td>Required for qualification-based applications</td>
+          </tr>
+          <tr>
+            <td><strong>Engineering Registration</strong></td>
+            <td>Required by Society of Engineers UAE</td>
+            <td>Before engineering license application</td>
+          </tr>
+          <tr>
+            <td><strong>Teaching License</strong></td>
+            <td>Required by KHDA (Dubai) or ADEK (Abu Dhabi)</td>
+            <td>Before teaching certification</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-light">
+    <div class="container container--narrow">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details class="faq-item" name="mohesr-faq">
+            <summary>{faq.question}</summary>
+            <div class="faq-answer" set:html={faq.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section bg-dark">
+    <div class="container container--narrow" style="text-align: center;">
+      <h2 style="color: var(--text-on-dark);">Need Your Degree Translated for MOHESR?</h2>
+      <p style="color: var(--text-on-dark-muted); max-width: 600px; margin: 0 auto 2rem;">Send your degree and transcripts via WhatsApp. We confirm attestation status, translate within 24 hours, and ensure your documents are MOHESR-ready.</p>
+      <a href="https://wa.me/971508620217" class="cta-button">
+        <i class="fab fa-whatsapp"></i> Send Documents on WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- Related Guides -->
+  <section class="section bg-white">
+    <div class="container container--narrow">
+      <h2>Related Guides</h2>
+      <div class="related-grid">
+        <a href="/resources/mohre-work-permit-guide/" class="related-card">
+          <i class="fas fa-briefcase"></i>
+          <h3>MOHRE Work Permit</h3>
+          <p>The employee's guide to document preparation for UAE work permits.</p>
+        </a>
+        <a href="/resources/dha-post-licensing-documents/" class="related-card">
+          <i class="fas fa-stethoscope"></i>
+          <h3>After DHA DataFlow</h3>
+          <p>Documents healthcare professionals need after passing verification.</p>
+        </a>
+        <a href="/services/golden-visa-translation/" class="related-card">
+          <i class="fas fa-passport"></i>
+          <h3>Golden Visa Translation</h3>
+          <p>Degree translation requirements for Golden Visa qualification.</p>
+        </a>
+        <a href="/resources/translation-type-decision-guide/" class="related-card">
+          <i class="fas fa-route"></i>
+          <h3>Translation Type Guide</h3>
+          <p>MOJ vs Certified vs Notarized — which type for MOHESR.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero-section { padding: 3rem 0; color: var(--text-on-dark); }
+  .hero-section h1 { font-size: 2.25rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-on-dark); }
+  .hero-subtitle { font-size: 1.2rem; color: var(--text-on-dark-muted); margin-bottom: 1.5rem; }
+  .hero-intro { font-size: 1.05rem; line-height: 1.7; max-width: 720px; color: var(--text-on-dark); opacity: 0.95; }
+  .service-snapshot { display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; }
+  .snapshot-item { display: flex; align-items: center; gap: 0.75rem; }
+  .snapshot-item i { font-size: 1.5rem; color: var(--accent-coral); }
+  .snapshot-item strong { display: block; font-size: 1rem; color: var(--text-on-dark); }
+  .snapshot-item span { font-size: 0.85rem; color: var(--text-on-dark-muted); }
+
+  /* Layout */
+  .container--narrow { max-width: 800px; margin: 0 auto; }
+  .section { padding: 3rem 0; }
+  h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-heading); }
+  h3 { font-size: 1.25rem; font-weight: 700; margin: 2rem 0 0.75rem; color: var(--text-heading); }
+  p { line-height: 1.7; margin-bottom: 1rem; }
+
+  /* Need Grid */
+  .need-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 1.5rem 0; }
+  .need-card { border-radius: 0.75rem; padding: 1.5rem; }
+  .need-card h3 { margin: 0 0 1rem; font-size: 1.1rem; }
+  .need-card ul { margin: 0; padding-left: 1.25rem; }
+  .need-card li { margin-bottom: 0.5rem; line-height: 1.6; font-size: 0.95rem; }
+  .need-card--yes { background: #fff3e6; border: 1px solid #ffeeba; }
+  .need-card--yes h3 { color: #856404; }
+  .need-card--no { background: #f0f9f0; border: 1px solid #d4edda; }
+  .need-card--no h3 { color: #155724; }
+
+  /* Callout Blocks */
+  .callout-block { padding: 1.25rem 1.5rem; border-radius: 0 0.75rem 0.75rem 0; margin: 1.5rem 0; }
+  .callout-block h4 { margin: 0 0 0.5rem; font-size: 1rem; }
+  .callout-block p { margin: 0; }
+  .callout-block--info { background: linear-gradient(135deg, #e6f7ff, #d6f0ff); border-left: 4px solid var(--link-color); }
+  .callout-block--info h4 { color: var(--primary-color); }
+  .callout-block--warning { background: linear-gradient(135deg, #fff8e1, #fff3cd); border-left: 4px solid #f0ad4e; }
+  .callout-block--warning h4 { color: #856404; }
+  .callout-block--danger { background: linear-gradient(135deg, #fde8e8, #fdd); border-left: 4px solid var(--state-error); }
+  .callout-block--danger h4 { color: #842029; }
+
+  /* Rejection Cards */
+  .rejection-cards { margin: 1.5rem 0; }
+  .rejection-card { display: flex; gap: 1.25rem; padding: 1.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.08); }
+  .rejection-card:last-child { border-bottom: none; }
+  .rejection-num {
+    width: 40px; height: 40px; min-width: 40px;
+    border-radius: 50%; background: #fde8e8; color: var(--state-error);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; font-weight: 700; margin-top: 0.25rem;
+  }
+  .rejection-card h3 { margin: 0 0 0.35rem; font-size: 1.1rem; }
+  .rejection-card p { margin: 0 0 0.5rem; color: var(--text-muted); line-height: 1.6; font-size: 0.95rem; }
+  .rejection-action { font-style: italic; font-size: 0.9rem; color: var(--primary-color); margin: 0; }
+
+  /* Checklists */
+  .checklist { list-style: none; padding: 0; margin: 1rem 0 2rem; }
+  .checklist li {
+    padding: 0.75rem 0 0.75rem 2rem; position: relative;
+    border-bottom: 1px solid rgba(0,0,0,0.06); line-height: 1.6;
+  }
+  .checklist li::before {
+    content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+    position: absolute; left: 0; color: var(--accent-coral); font-size: 0.9rem;
+  }
+
+  .no-translate-list { padding-left: 1.25rem; margin: 1rem 0; }
+  .no-translate-list li { margin-bottom: 0.35rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* Process Steps */
+  .process-steps { margin: 2rem 0; }
+  .process-step { display: flex; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.08); }
+  .process-step:last-child { border-bottom: none; }
+  .step-num {
+    width: 48px; height: 48px; min-width: 48px;
+    border-radius: 50%; background: var(--accent-coral); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.25rem; font-weight: 700; margin-top: 0.25rem;
+  }
+  .step-body h3 { margin-top: 0; margin-bottom: 0.5rem; }
+  .step-body ul { margin: 0.5rem 0; padding-left: 1.25rem; }
+  .step-body li { margin-bottom: 0.35rem; line-height: 1.6; }
+
+  /* Connection Table */
+  .connection-table {
+    width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem;
+    border: 1px solid rgba(0,0,0,0.08); border-radius: 0.75rem; overflow: hidden;
+  }
+  .connection-table th { background: var(--primary-color); color: #fff; padding: 0.75rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem; }
+  .connection-table td { padding: 0.75rem 1rem; border-bottom: 1px solid rgba(0,0,0,0.06); line-height: 1.5; }
+  .connection-table tr:last-child td { border-bottom: none; }
+  .connection-table tr:nth-child(even) { background: rgba(0,0,0,0.02); }
+
+  /* FAQ */
+  .faq-list { margin: 1.5rem 0; }
+  .faq-item { border-bottom: 1px solid rgba(0,0,0,0.08); }
+  .faq-item summary { padding: 1rem 0; cursor: pointer; font-weight: 600; font-size: 1.05rem; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .faq-item summary::after { content: '+'; font-size: 1.5rem; font-weight: 300; color: var(--text-muted); }
+  .faq-item[open] summary::after { content: '\2212'; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-answer { padding: 0 0 1rem; line-height: 1.7; color: var(--text-muted); }
+
+  /* CTA */
+  .cta-button { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: #25D366; color: #fff; border-radius: 0.5rem; font-weight: 700; font-size: 1.1rem; text-decoration: none; transition: background 0.2s; }
+  .cta-button:hover { background: #1fb855; color: #fff; }
+
+  /* Related Grid */
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .related-card { background: #f8f9fa; border-radius: 0.75rem; padding: 1.5rem; text-decoration: none; border: 1px solid rgba(0,0,0,0.06); transition: box-shadow 0.2s, border-color 0.2s; }
+  .related-card:hover { border-color: var(--accent-coral); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .related-card i { font-size: 1.5rem; color: var(--accent-coral); margin-bottom: 0.75rem; display: block; }
+  .related-card h3 { margin: 0 0 0.5rem; font-size: 1.05rem; color: var(--text-heading); }
+  .related-card p { margin: 0; font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .hero-section h1 { font-size: 1.75rem; }
+    .service-snapshot { flex-direction: column; gap: 1rem; }
+    .need-grid { grid-template-columns: 1fr; }
+    .process-step { flex-direction: column; gap: 0.75rem; }
+    .step-num { width: 36px; height: 36px; min-width: 36px; font-size: 1rem; }
+    .rejection-card { flex-direction: column; gap: 0.75rem; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>

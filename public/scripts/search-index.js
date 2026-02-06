@@ -166,6 +166,30 @@ const searchIndex = [
         "keywords": "translation type moj certified notarized decision guide which need authority uae court gdrfa mohre difc adgm"
     },
     {
+        "title": "GDRFA Family Visa Document Checklist",
+        "url": "/resources/gdrfa-family-visa-documents/",
+        "category": "Resources",
+        "keywords": "gdrfa family visa documents checklist spouse dependent child attestation translation sequence rejection typing center"
+    },
+    {
+        "title": "MOHRE Work Permit Employee Guide",
+        "url": "/resources/mohre-work-permit-guide/",
+        "category": "Resources",
+        "keywords": "mohre work permit employee guide documents degree attestation translation tasheel eye ai nawakas employment contract"
+    },
+    {
+        "title": "After DHA DataFlow: Post-Licensing Documents",
+        "url": "/resources/dha-post-licensing-documents/",
+        "category": "Resources",
+        "keywords": "dha dataflow post licensing documents healthcare worker nurse doctor sheryan prometric translation attestation residency"
+    },
+    {
+        "title": "MOHESR Degree Translation Guide",
+        "url": "/resources/mohesr-degree-translation-guide/",
+        "category": "Resources",
+        "keywords": "mohesr degree equivalency translation certificate recognition university accreditation attestation 7 day deadline rejection"
+    },
+    {
         "title": "Pricing Guide",
         "url": "/resources/pricing-guide/",
         "category": "Resources",

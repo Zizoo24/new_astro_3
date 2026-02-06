@@ -1,0 +1,992 @@
+---
+/**
+ * Resource Page: MOHRE Work Permit — Employee's Guide
+ * Target Keyword: MOHRE work permit documents, work permit requirements UAE employee
+ * Pillar: 1 (Authority Process Guide)
+ * Word Count: ~3,000 words
+ * Created: 2026-02-06
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+
+const pageTitle = "MOHRE Work Permit: The Employee's Document Guide";
+const metaDescription = "Every document employees need for a UAE work permit through MOHRE. What needs translation, the Eye AI review system, and how to avoid Nawakas delays.";
+
+const breadcrumbItems = [
+  { name: 'Home', url: '/' },
+  { name: 'Resources', url: '/resources/' },
+  { name: 'MOHRE Work Permit Guide', url: '/resources/mohre-work-permit-guide/' }
+];
+
+const faqs = [
+  {
+    question: "What documents do I need for a UAE work permit?",
+    answer: "You need a valid passport (minimum 6 months validity), degree certificate (attested), passport photographs, employment offer letter, and Emirates ID application. Your degree and any experience letters from non-English/Arabic countries must be translated. Your employer handles the work permit application through Tasheel."
+  },
+  {
+    question: "Does my degree certificate need Arabic translation for MOHRE?",
+    answer: "If your degree is in a language other than Arabic or English, yes. MOHRE's Eye AI system reads Arabic and English. Degrees in Hindi, Urdu, Chinese, Filipino, or any other language require MOJ-certified Arabic translation. <a href='https://wa.me/971508620217'>Send your degree via WhatsApp</a> and we confirm what's needed."
+  },
+  {
+    question: "What is MOHRE's Eye AI system?",
+    answer: "Eye is an AI-powered document verification system MOHRE launched in October 2025. It uses OCR and computer vision to check document authenticity, completeness, and compliance before any human reviewer sees your application. Errors that a clerk might overlook are now caught automatically."
+  },
+  {
+    question: "What happens if MOHRE flags my application as incomplete?",
+    answer: "Your application enters the Nawakas process — MOHRE's system for handling missing or deficient documents. You receive a specific notification about what's missing and must submit corrections through Tasheel. This adds days to weeks to your timeline depending on what needs fixing."
+  },
+  {
+    question: "Should I get my degree attested before or after translation?",
+    answer: "Attestation first, translation second. Your degree must go through the full attestation chain (home country authentication, then UAE MOFA) before translation. The Arabic translation must include all attestation stamps and stickers. Translating before attesting means paying for translation twice."
+  },
+  {
+    question: "Do I need MOHESR equivalency for my degree?",
+    answer: "Not always. MOHESR equivalency (now called Certificate of Recognition) is required when your degree is from a university not recognized by MOHESR, or when your profession requires specific degree verification. Check with your employer — they know whether your role requires it. Our <a href='/resources/mohesr-degree-translation-guide/'>MOHESR guide</a> covers this in detail."
+  },
+  {
+    question: "What languages does the MOHRE employment contract come in?",
+    answer: "MOHRE standard employment contracts are dual-language: Arabic and English. Since January 2016, a third language can be added — Bengali, Chinese, Dari, Hindi, Malayalam, Nepalese, Sinhalese, Tamil, or Urdu. The Arabic version is legally binding in case of disputes."
+  },
+  {
+    question: "Can I start working before my work permit is approved?",
+    answer: "No. Working before your work permit is issued is illegal and can result in fines for both you and your employer. The typical timeline from application to work permit issuance is 5-10 working days if all documents are correct. Some free zones have different processes."
+  },
+  {
+    question: "My employer says documents are their responsibility. What should I prepare?",
+    answer: "Your employer handles the MOHRE application through Tasheel, but you provide the documents. Prepare your attested degree, passport copies, photographs, and any translated documents in advance. Delays happen because employees wait for their employer to ask rather than preparing proactively."
+  },
+  {
+    question: "Do experience letters need translation for MOHRE?",
+    answer: "If your experience letters are in a language other than Arabic or English, they need MOJ-certified translation. Even English experience letters may need translation if they are from companies that issue bilingual letters where the primary language is not Arabic or English."
+  }
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={metaDescription}
+>
+  <Fragment slot="head">
+    <!-- FAQ Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer.replace(/<[^>]*>/g, '')
+        }
+      }))
+    })} />
+
+    <!-- HowTo Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Prepare Documents for a UAE Work Permit (MOHRE)",
+      "description": "Employee's step-by-step guide to preparing documents for MOHRE work permit application, including attestation, translation, and Tasheel submission.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Get your degree certificate attested",
+          "text": "Complete the attestation chain: home country authentication, then UAE MOFA attestation. For Hague countries, get an apostille first."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Translate documents into Arabic",
+          "text": "After attestation, get MOJ-certified Arabic translation of your degree, experience letters, and any other non-Arabic/English documents."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Provide documents to your employer",
+          "text": "Give your employer the attested and translated originals plus passport copies and photographs for submission through Tasheel."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "MOHRE reviews via Eye AI system",
+          "text": "MOHRE's automated Eye system verifies document authenticity and completeness. If anything is flagged, the Nawakas process requests corrections."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 5,
+          "name": "Work permit issued",
+          "text": "Once approved, your employer receives the work permit. You then proceed to entry permit, medical fitness, Emirates ID, and visa stamping."
+        }
+      ],
+      "totalTime": "P14D"
+    })} />
+
+    <!-- Article Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": pageTitle,
+      "description": metaDescription,
+      "author": {
+        "@type": "Organization",
+        "name": "OnlineTranslation.ae",
+        "url": "https://onlinetranslation.ae"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "OnlineTranslation.ae",
+        "url": "https://onlinetranslation.ae",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://onlinetranslation.ae/assets/images/logo.png"
+        }
+      },
+      "datePublished": "2026-02-06",
+      "dateModified": "2026-02-06",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://onlinetranslation.ae/resources/mohre-work-permit-guide/"
+      }
+    })} />
+  </Fragment>
+
+  <!-- Hero Section -->
+  <section class="hero-section bg-dark">
+    <div class="container">
+      <Breadcrumb items={breadcrumbItems} />
+      <h1>{pageTitle}</h1>
+      <p class="hero-subtitle">What you need to prepare before your employer files the application</p>
+      <p class="hero-intro">
+        Every guide about MOHRE work permits is written for employers and PROs. This one is for you — the employee. Your employer handles the Tasheel submission, but you provide the documents. If your degree is wrong, your experience letter is untranslated, or your attestation is incomplete, the application stalls and your start date slips.
+      </p>
+      <div class="service-snapshot">
+        <div class="snapshot-item">
+          <i class="fas fa-robot"></i>
+          <div>
+            <strong>Eye AI review</strong>
+            <span>automated document verification</span>
+          </div>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-clock"></i>
+          <div>
+            <strong>5-10 working days</strong>
+            <span>if documents are correct</span>
+          </div>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-file-lines"></i>
+          <div>
+            <strong>Arabic required</strong>
+            <span>for non-English documents</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Your Document Checklist -->
+  <section class="section bg-white">
+    <div class="container container--narrow">
+      <h2>Your Document Checklist</h2>
+      <p>These are the documents you need to prepare. Your employer or their PRO will tell you what to bring, but having everything ready in advance prevents delays.</p>
+
+      <h3>Documents You Provide</h3>
+      <ul class="checklist">
+        <li><strong>Passport</strong> — minimum 6 months validity remaining. MOHRE's system blocks applications where the passport expires within 6 months.</li>
+        <li><strong><a href="/personal/academic/degree/">Degree certificate</a></strong> — attested through the full chain, then translated to Arabic if not in English or Arabic</li>
+        <li><strong>Experience letters</strong> — from previous employers, translated if not in English or Arabic</li>
+        <li><strong>Passport photographs</strong> — white background, recent</li>
+        <li><strong>Any professional licenses</strong> — for regulated professions (healthcare, engineering, teaching)</li>
+      </ul>
+
+      <h3>Documents Your Employer Handles</h3>
+      <ul class="checklist checklist--employer">
+        <li><strong>Employment offer letter</strong> — must match the MOHRE standard contract format</li>
+        <li><strong>MOHRE standard employment contract</strong> — dual-language Arabic + English</li>
+        <li><strong>Company trade license</strong> — proving the business is authorized to hire</li>
+        <li><strong>Establishment card</strong> — company's MOHRE registration</li>
+        <li><strong>Quota approval</strong> — some company types have hiring limits</li>
+      </ul>
+
+      <div class="callout-block callout-block--info">
+        <h4>Documents You Do NOT Need to Translate</h4>
+        <p>Passports, Emirates ID, and documents already in Arabic or English do not need translation. Your employer's trade license and establishment card are their responsibility. Only translate documents from your home country that are in other languages. Check our <a href="/resources/translation-type-decision-guide/">translation type guide</a> if unsure.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Process -->
+  <section class="section bg-light">
+    <div class="container container--narrow">
+      <h2>The Work Permit Process: Your Part</h2>
+      <p>MOHRE work permit applications go through Tasheel service centers. Your employer or their PRO submits everything. Here is what the process looks like from your side.</p>
+
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3>Attest Your Degree Certificate</h3>
+            <p>Before anything else, your <a href="/personal/academic/degree/">degree certificate</a> must be attested. The chain depends on your home country.</p>
+            <div class="path-grid">
+              <div class="path-box">
+                <h4>Hague Countries</h4>
+                <p>India, Philippines, Bangladesh, USA, UK, Canada</p>
+                <p>Notarize &rarr; Apostille &rarr; UAE MOFA</p>
+              </div>
+              <div class="path-box">
+                <h4>Non-Hague Countries</h4>
+                <p>Pakistan, Egypt, Syria, Jordan</p>
+                <p>Home Ministry &rarr; Home MOFA &rarr; UAE Embassy &rarr; UAE MOFA</p>
+              </div>
+            </div>
+            <p>UAE MOFA <a href="/services/attestation/">attestation</a> costs AED 150 per document and takes 1-3 working days through the eDAS 2.0 system.</p>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3>Translate Non-English/Arabic Documents</h3>
+            <p>After attestation, have your documents translated by an <a href="/legal-translation-dubai/">MOJ-certified translator</a>. Documents that typically need translation:</p>
+            <ul>
+              <li><a href="/personal/academic/degree/">Degree certificates</a> in Hindi, Urdu, Chinese, Filipino, Bengali, or other languages</li>
+              <li>Experience letters from companies that issue in non-English languages</li>
+              <li>Professional licenses from home country regulatory bodies</li>
+              <li><a href="/personal/immigration/pcc/">Police clearance certificates</a> in non-English/Arabic</li>
+            </ul>
+            <p>Send documents via <a href="https://wa.me/971508620217">WhatsApp</a> and we confirm which ones need translation. Standard delivery is 24 hours; express is 2-4 hours.</p>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h3>Give Documents to Your Employer</h3>
+            <p>Provide all originals plus Arabic translations to your employer or their PRO. They compile the full package and submit through Tasheel.</p>
+            <p>Common delays at this stage:</p>
+            <ul>
+              <li>Employee waits for employer to ask instead of preparing proactively</li>
+              <li>Employer assumes degree is already attested when it is not</li>
+              <li>Documents are scattered between home country and UAE</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h3>MOHRE Eye AI Reviews Your Application</h3>
+            <p>Since October 2025, MOHRE uses the "Eye" AI system for initial document review. This system uses Regula OCR and Azure AI Vision to verify:</p>
+            <ul>
+              <li>Document authenticity (detecting alterations or forgeries)</li>
+              <li>Completeness (all required documents present)</li>
+              <li>Compliance (attestation chain intact, translations certified)</li>
+              <li>Hard blocks: passport validity under 6 months, residency under 1 month</li>
+            </ul>
+            <p>The AI catches errors that human clerks sometimes missed. Blurry scans, missing attestation stamps, and unsigned translations are all flagged automatically.</p>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h3>Work Permit Issued (or Nawakas)</h3>
+            <p>If everything passes review, the work permit is issued within 5-10 working days.</p>
+            <p>If something is missing or incorrect, your application enters <strong>Nawakas</strong> — MOHRE's process for handling deficient applications. The system identifies what is missing and provides a specific notification. Your employer must submit corrections through Tasheel.</p>
+            <p>Nawakas is more informative than GDRFA rejections. MOHRE usually tells you what is wrong. But each correction cycle adds days to weeks.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Eye AI Section -->
+  <section class="section bg-white">
+    <div class="container container--narrow">
+      <h2>What MOHRE's Eye AI System Actually Checks</h2>
+      <p>Understanding what the automated system looks for helps you avoid triggering Nawakas delays.</p>
+
+      <div class="check-grid">
+        <div class="check-card">
+          <div class="check-icon"><i class="fas fa-passport"></i></div>
+          <h3>Passport Validity</h3>
+          <p>Hard block if your passport expires within 6 months. The system will not even accept the application. Renew your passport before starting the process.</p>
+        </div>
+        <div class="check-card">
+          <div class="check-icon"><i class="fas fa-stamp"></i></div>
+          <h3>Attestation Chain</h3>
+          <p>The AI verifies attestation stamps and stickers are present and legible. Missing or unclear MOFA attestation triggers a flag. Ensure your documents are attested before translation.</p>
+        </div>
+        <div class="check-card">
+          <div class="check-icon"><i class="fas fa-language"></i></div>
+          <h3>Translation Certification</h3>
+          <p>MOJ stamp, QR code, and translator license number must be visible. Non-certified translations or translations from unlicensed providers are flagged.</p>
+        </div>
+        <div class="check-card">
+          <div class="check-icon"><i class="fas fa-graduation-cap"></i></div>
+          <h3>Academic Documents</h3>
+          <p>Degree must be clear and complete. Missing or unclear academic certificates are among the most common MOHRE rejection reasons. The degree title and university name must be readable.</p>
+        </div>
+        <div class="check-card">
+          <div class="check-icon"><i class="fas fa-image"></i></div>
+          <h3>Document Quality</h3>
+          <p>Blurry scans, cropped edges, and unreadable text are flagged. Submit clear, high-resolution scans. Phone photos of documents are risky — use a scanner when possible.</p>
+        </div>
+        <div class="check-card">
+          <div class="check-icon"><i class="fas fa-user-check"></i></div>
+          <h3>Name Consistency</h3>
+          <p>Your name must match across all documents: passport, degree, experience letters, and translations. Transliteration variations (common in Arabic, Hindi, Urdu names) should be noted by the translator.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Common Rejection Reasons -->
+  <section class="section bg-light">
+    <div class="container container--narrow">
+      <h2>Most Common MOHRE Rejection Reasons</h2>
+      <p>Based on MOHRE's published guidance and what we see from clients who need urgent retranslation after rejection.</p>
+
+      <ol class="rejection-list">
+        <li>
+          <strong>Missing documents</strong>
+          <p>The single most frequent cause. Usually a degree that was never submitted, or an experience letter that was forgotten. Use the checklist above.</p>
+        </li>
+        <li>
+          <strong>Expired passport or residency</strong>
+          <p>MOHRE's Eye system blocks these automatically. No human even reviews the application.</p>
+        </li>
+        <li>
+          <strong>Missing or unclear academic certificates</strong>
+          <p>Degrees that are blurry, partially cropped, or in a language the system cannot process. Always provide a clear scan plus the Arabic translation.</p>
+        </li>
+        <li>
+          <strong>Job offer contradicts labor law</strong>
+          <p>Employer issue, not yours. But it stalls the permit. The job title and description must match your qualifications and the company's licensed activities.</p>
+        </li>
+        <li>
+          <strong>Occupation-to-business mismatch</strong>
+          <p>Your job title must align with your employer's trade license activities. A restaurant cannot hire an "engineer" through MOHRE.</p>
+        </li>
+        <li>
+          <strong>Company violations or quota exceeded</strong>
+          <p>If your employer has unresolved labor violations or has exceeded their hiring quota, no new permits are issued. This is outside your control.</p>
+        </li>
+      </ol>
+
+      <p>For a detailed look at document-related work permit rejections, read our <a href="/blog/mohre-work-permit-document-issues/">MOHRE rejection prevention guide</a>.</p>
+    </div>
+  </section>
+
+  <!-- Employment Contract Language -->
+  <section class="section bg-white">
+    <div class="container container--narrow">
+      <h2>Understanding the MOHRE Employment Contract</h2>
+      <p>MOHRE mandates a standard employment contract format. Understanding its language requirements protects you.</p>
+
+      <h3>Language Requirements</h3>
+      <p>Every MOHRE standard employment contract is dual-language: <strong>Arabic and English</strong>. Since January 2016, a third language can be added for the worker's benefit:</p>
+      <ul>
+        <li>Bengali, Chinese, Dari, Hindi, Malayalam</li>
+        <li>Nepalese, Sinhalese, Tamil, Urdu</li>
+      </ul>
+      <p>The job offer letter must also be in Arabic, English, and a language the worker understands.</p>
+
+      <div class="callout-block callout-block--warning">
+        <h4>The Arabic Version Controls</h4>
+        <p>In any dispute, the Arabic text of the employment contract is the legally binding version. If the English text contradicts the Arabic, the Arabic prevails. Make sure you understand both versions before signing. If your contract includes a <a href="/legal/contracts/lease/">lease agreement</a> or other supplementary documents, these may also require Arabic translation.</p>
+      </div>
+
+      <h3>What You Should Check</h3>
+      <ul>
+        <li><strong>Job title</strong> — matches your qualifications and the actual role</li>
+        <li><strong>Salary</strong> — matches the offer letter exactly</li>
+        <li><strong>Probation period</strong> — maximum 6 months under UAE labor law</li>
+        <li><strong>Notice period</strong> — standard is 30 days; confirm in both language versions</li>
+        <li><strong>Benefits</strong> — housing, transport, medical insurance terms</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- After Work Permit -->
+  <section class="section bg-light">
+    <div class="container container--narrow">
+      <h2>After the Work Permit: What Comes Next</h2>
+      <p>The work permit is step one. Here is the full post-approval sequence.</p>
+
+      <div class="next-steps">
+        <div class="next-step">
+          <span class="next-step-num">1</span>
+          <div>
+            <h4>Entry Permit</h4>
+            <p>If you are outside the UAE, your employer arranges the entry permit (employment visa). Valid for 60 days.</p>
+          </div>
+        </div>
+        <div class="next-step">
+          <span class="next-step-num">2</span>
+          <div>
+            <h4>Medical Fitness Test</h4>
+            <p>Required at a DHA-approved medical center within 60 days of entry. Blood test and chest X-ray.</p>
+          </div>
+        </div>
+        <div class="next-step">
+          <span class="next-step-num">3</span>
+          <div>
+            <h4>Emirates ID</h4>
+            <p>Apply through ICP. Biometrics at a service center. Usually takes 5-7 working days.</p>
+          </div>
+        </div>
+        <div class="next-step">
+          <span class="next-step-num">4</span>
+          <div>
+            <h4>Residence Visa Stamping</h4>
+            <p>Visa stamped in your passport. Then you can open a bank account, get a <a href="/personal/immigration/license/">driving license</a>, and sponsor family members through <a href="/resources/gdrfa-family-visa-documents/">GDRFA</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <p>Need translations for other documents in your employment journey? We handle <a href="/personal/immigration/pcc/">police clearance certificates</a>, <a href="/personal/immigration/bank/">bank statements</a>, and all <a href="/personal/immigration/">immigration documents</a>.</p>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-white">
+    <div class="container container--narrow">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq) => (
+          <details class="faq-item" name="mohre-faq">
+            <summary>{faq.question}</summary>
+            <div class="faq-answer" set:html={faq.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-dark">
+    <div class="container container--narrow" style="text-align: center;">
+      <h2 style="color: var(--text-on-dark);">Need Your Documents Translated for MOHRE?</h2>
+      <p style="color: var(--text-on-dark-muted); max-width: 600px; margin: 0 auto 2rem;">Send your degree, experience letters, or other documents via WhatsApp. We confirm what needs translation, check attestation status, and deliver within 24 hours.</p>
+      <a href="https://wa.me/971508620217" class="cta-button">
+        <i class="fab fa-whatsapp"></i> Send Documents on WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- Related Guides -->
+  <section class="section bg-light">
+    <div class="container container--narrow">
+      <h2>Related Guides</h2>
+      <div class="related-grid">
+        <a href="/blog/mohre-work-permit-document-issues/" class="related-card">
+          <i class="fas fa-exclamation-triangle"></i>
+          <h3>MOHRE Rejection Prevention</h3>
+          <p>Common document issues employees miss that cause work permit delays.</p>
+        </a>
+        <a href="/resources/gdrfa-family-visa-documents/" class="related-card">
+          <i class="fas fa-users"></i>
+          <h3>Family Visa Documents</h3>
+          <p>After your work permit, sponsor your family through GDRFA.</p>
+        </a>
+        <a href="/resources/translation-type-decision-guide/" class="related-card">
+          <i class="fas fa-route"></i>
+          <h3>What Translation Do I Need?</h3>
+          <p>MOJ vs Certified vs Notarized — sorted by authority.</p>
+        </a>
+        <a href="/resources/mohesr-degree-translation-guide/" class="related-card">
+          <i class="fas fa-graduation-cap"></i>
+          <h3>MOHESR Degree Guide</h3>
+          <p>When you need degree equivalency and which degrees need translation.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero-section {
+    padding: 3rem 0;
+    color: var(--text-on-dark);
+  }
+
+  .hero-section h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: var(--text-on-dark);
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-on-dark-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-intro {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 720px;
+    color: var(--text-on-dark);
+    opacity: 0.95;
+  }
+
+  .service-snapshot {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .snapshot-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .snapshot-item i {
+    font-size: 1.5rem;
+    color: var(--accent-coral);
+  }
+
+  .snapshot-item strong {
+    display: block;
+    font-size: 1rem;
+    color: var(--text-on-dark);
+  }
+
+  .snapshot-item span {
+    font-size: 0.85rem;
+    color: var(--text-on-dark-muted);
+  }
+
+  /* Container */
+  .container--narrow {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .section {
+    padding: 3rem 0;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-heading);
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 2rem 0 0.75rem;
+    color: var(--text-heading);
+  }
+
+  h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 1rem 0 0.5rem;
+    color: var(--text-heading);
+  }
+
+  p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  /* Checklists */
+  .checklist {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 2rem;
+  }
+
+  .checklist li {
+    padding: 0.75rem 0 0.75rem 2rem;
+    position: relative;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    line-height: 1.6;
+  }
+
+  .checklist li::before {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: var(--accent-coral);
+    font-size: 0.9rem;
+  }
+
+  .checklist--employer li::before {
+    color: var(--text-muted);
+  }
+
+  /* Callout Blocks */
+  .callout-block {
+    padding: 1.25rem 1.5rem;
+    border-radius: 0 0.75rem 0.75rem 0;
+    margin: 1.5rem 0;
+  }
+
+  .callout-block h4 {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+  }
+
+  .callout-block p {
+    margin: 0;
+  }
+
+  .callout-block--info {
+    background: linear-gradient(135deg, #e6f7ff, #d6f0ff);
+    border-left: 4px solid var(--link-color);
+  }
+
+  .callout-block--info h4 {
+    color: var(--primary-color);
+  }
+
+  .callout-block--warning {
+    background: linear-gradient(135deg, #fff8e1, #fff3cd);
+    border-left: 4px solid #f0ad4e;
+  }
+
+  .callout-block--warning h4 {
+    color: #856404;
+  }
+
+  /* Process Steps */
+  .process-steps {
+    margin: 2rem 0;
+  }
+
+  .process-step {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .process-step:last-child {
+    border-bottom: none;
+  }
+
+  .step-num {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 50%;
+    background: var(--accent-coral);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-top: 0.25rem;
+  }
+
+  .step-body h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-body ul, .step-body ol {
+    margin: 0.5rem 0;
+    padding-left: 1.25rem;
+  }
+
+  .step-body li {
+    margin-bottom: 0.35rem;
+    line-height: 1.6;
+  }
+
+  /* Path Grid */
+  .path-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+  .path-box {
+    background: #fff;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    border: 1px solid rgba(0,0,0,0.08);
+    font-size: 0.95rem;
+  }
+
+  .path-box h4 {
+    margin: 0 0 0.25rem;
+    color: var(--primary-color);
+    font-size: 1rem;
+  }
+
+  .path-box p {
+    margin: 0 0 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .path-box p:last-child {
+    font-weight: 600;
+    color: var(--text-heading);
+  }
+
+  /* Check Grid (Eye AI) */
+  .check-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+  }
+
+  .check-card {
+    background: #f8f9fa;
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+  }
+
+  .check-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--primary-color);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .check-card h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.05rem;
+  }
+
+  .check-card p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* Rejection List */
+  .rejection-list {
+    margin: 1.5rem 0;
+    padding-left: 1.25rem;
+  }
+
+  .rejection-list li {
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .rejection-list li:last-child {
+    border-bottom: none;
+  }
+
+  .rejection-list li strong {
+    display: block;
+    font-size: 1.05rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .rejection-list li p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  /* Next Steps */
+  .next-steps {
+    margin: 1.5rem 0;
+  }
+
+  .next-step {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .next-step:last-child {
+    border-bottom: none;
+  }
+
+  .next-step-num {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-top: 0.25rem;
+  }
+
+  .next-step h4 {
+    margin: 0 0 0.25rem;
+  }
+
+  .next-step p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* FAQ */
+  .faq-list {
+    margin: 1.5rem 0;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .faq-item summary {
+    padding: 1rem 0;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.05rem;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .faq-item summary::after {
+    content: '+';
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--text-muted);
+  }
+
+  .faq-item[open] summary::after {
+    content: '\2212';
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-answer {
+    padding: 0 0 1rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  /* CTA */
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: #25D366;
+    color: #fff;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .cta-button:hover {
+    background: #1fb855;
+    color: #fff;
+  }
+
+  /* Related Grid */
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .related-card {
+    background: #fff;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    text-decoration: none;
+    border: 1px solid rgba(0,0,0,0.06);
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+
+  .related-card:hover {
+    border-color: var(--accent-coral);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  .related-card i {
+    font-size: 1.5rem;
+    color: var(--accent-coral);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .related-card h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.05rem;
+    color: var(--text-heading);
+  }
+
+  .related-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .hero-section h1 {
+      font-size: 1.75rem;
+    }
+
+    .service-snapshot {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .path-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .process-step {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .step-num {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      font-size: 1rem;
+    }
+
+    .check-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
