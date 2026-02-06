@@ -56,6 +56,35 @@ Track bugs, fixes, and known issues for OnlineTranslation.ae
 
 ---
 
+## Fixed Bugs (February 6, 2026)
+
+### 7. Missing Arabic language pages cause 404 on language switch
+- **Commit:** `37c052d`
+- **Issue:** Clicking language switcher on English language pages (e.g., `/russian/`) navigated to non-existent Arabic versions
+- **Fix:** Added 9 Vercel redirects in `vercel.json` to redirect `/ar/{language}/` pages to `/ar/` homepage
+- **Files:** `vercel.json`
+
+### 8. Arabic text displays with strikethrough styling
+- **Commit:** (this commit)
+- **Issue:** The `.section-label` badge had a decorative line on the left (`padding-left: 45px` + `::before` pseudo-element), but RTL wasn't flipping it to the right
+- **Fix:** Added `padding-left: 0 !important; padding-right: 45px !important;` in rtl.css
+- **Files:** `public/styles/rtl.css`
+
+### 9. Search results visibility issue (dark background)
+- **Commit:** (this commit)
+- **Issue:** Pagefind's default yellow highlight was hard to read on dark search overlay
+- **Fix:** Added custom styles for `.search-overlay mark` with coral background and white text
+- **Files:** `public/styles/text-breaking.css`
+
+### 10. Dark mode toggle and search icon not working (English desktop)
+- **Commit:** (this commit)
+- **Issue:** HeaderUnified.astro JavaScript used `DOMContentLoaded` which doesn't fire on View Transitions navigation
+- **Root Cause:** After navigating via View Transitions, the event listeners weren't re-attached
+- **Fix:** Wrapped JS in `initHeaderJS()` function and added both `DOMContentLoaded` and `astro:page-load` listeners
+- **Files:** `src/components/HeaderUnified.astro`
+
+---
+
 ## Known Issues / Technical Debt
 
 ### CSS Architecture
@@ -257,4 +286,4 @@ import compressor from 'astro-compressor';
 
 ---
 
-*Last Updated: February 5, 2026 (Added Arabic search indexing bug)*
+*Last Updated: February 6, 2026 (Fixed 5 bugs: language switcher redirects, Arabic strikethrough, search visibility, desktop dark mode, desktop search)*
