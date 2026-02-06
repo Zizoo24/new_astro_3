@@ -110,6 +110,25 @@ Track bugs, fixes, and known issues for OnlineTranslation.ae
   - Reviews: links to legal translation, golden visa, services
 - **Files:** `src/pages/about/credentials/index.astro`, `src/pages/about/reviews/index.astro`
 
+### 14. SEO: Internal linking gaps on translator and about pages
+- **Commit:** `79f7352`
+- **Issue:** `/about/translator/` had only 1 internal link, `/about/` CTA had no navigation links
+- **Impact:** Missed internal link equity, users couldn't navigate to related content
+- **Fix:** Added internal navigation links:
+  - Translator page: links to legal translation, credentials, MOJ vs certified guide in CTA + court submissions link in content
+  - About page: links to legal translation, services, pricing guide in CTA
+- **Files:** `src/pages/about/translator/index.astro`, `src/pages/about.astro`
+
+### 15. SEO: Internal linking gaps on contact, privacy, terms pages
+- **Commit:** `df90fb7`
+- **Issue:** Contact page had only 1 link (breadcrumb), privacy and terms pages had 1 link each
+- **Impact:** Poor internal link distribution on key site pages
+- **Fix:** Added internal navigation links:
+  - Contact page: 6-link quick links grid (legal translation, golden visa, attestation, pricing, about, FAQ)
+  - Privacy page: 4-link related pages section (terms, contact, about, services)
+  - Terms page: 4-link related pages section (privacy, contact, about, services)
+- **Files:** `src/pages/contact.astro`, `src/pages/privacy.astro`, `src/pages/terms.astro`
+
 ---
 
 ## Known Issues / Technical Debt
@@ -309,4 +328,4 @@ import compressor from 'astro-compressor';
 
 ---
 
-*Last Updated: February 6, 2026 (Fixed 8 issues: language switcher redirects, Arabic strikethrough, search visibility, desktop dark mode, desktop search, build failure, SEO titles/descriptions, internal linking)*
+*Last Updated: February 6, 2026 (Fixed 10 issues: language switcher redirects, Arabic strikethrough, search visibility, desktop dark mode, desktop search, build failure, SEO titles/descriptions, internal linking across about, translator, contact, privacy, terms pages)*
