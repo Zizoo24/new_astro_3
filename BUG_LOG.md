@@ -162,7 +162,11 @@ Track bugs, fixes, and known issues for OnlineTranslation.ae
 
 ## Investigation Queue
 
-- [ ] **Fix Pagefind Arabic indexing/search** - HIGH PRIORITY
+- [x] **Fix Pagefind Arabic indexing/search** - RESOLVED Feb 6, 2026
+  - Arabic content IS indexed (98 pages in `pagefind-entry.json`)
+  - Arabic has WASM support enabled
+  - UI translations configured in `MobileShellArabic.astro`
+  - Note: Arabic stemming not supported by Pagefind (library limitation, not fixable)
 - [ ] **Fix contrast ratio issues in Arabic pages** (both light/dark modes) - HIGH PRIORITY
 - [ ] **Fix contrast ratio issues in English dark mode** - MEDIUM PRIORITY
 - [ ] Audit `porto-desktop.css` for unused styles
