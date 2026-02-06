@@ -294,11 +294,53 @@ The critical content opportunity across all nationalities: UAE is NOT a Hague me
 
 | Competitor | Domain(s) | Content Volume | Strategy |
 |---|---|---|---|
-| **Al Alsun** | alsuntranslation.com + 4 domains | 350+ posts | Mass content mill across 5 separate domains |
+| **Al Syed** | translationindubai.com (NOT alsyedlegaltranslation.com) | 350+ pages (all English) | English volume play: 160+ blog posts, 60+ language pages, zero Arabic content. #1-2 for "legal translation Dubai." Custom PHP/Laravel. No schema, no sitemap, no robots.txt. |
+| **Alsun** | alsuntranslation.com + legaltranslation-dubai.ae + alsuntranslation-riyadh.com | 100-200 English + 40-70 Arabic | Bilingual multi-domain strategy. 256+ Google reviews at 4.9 stars. Dominates Arabic SERPs. Only serious Arabic competitor. |
 | **CLT** | clt-translate.com | 100+ pages | Enterprise brand, operating since 1996 |
 | **AGATO** | agato-translation.com | 50+ pages | Industry reputation, 20+ years |
 | **Prime Translation** | primetranslation.ae | 50+ pages | Mid-market content play |
 | **Dubai Translation Service** | dubaitranslationservice.com | 30+ pages | Long-tail SEO, operating since 2002 |
+
+### Al Syed Deep Profile (February 2026)
+
+**Domain:** translationindubai.com. The expected domain alsyedlegaltranslation.com does not exist — Google returns zero indexed pages for it. The company uses "alsyedlegaltranslation" as social media handles but runs everything through the generic domain. This creates brand fragmentation: the domain carries keyword weight ("translation in Dubai") but zero brand equity. There is circumstantial evidence that legaltranslationdubai.com may also be operated by Al Syed (matching JLT/Al Mas Tower address, same 2007 founding year).
+
+**Site structure:** Custom PHP/Laravel (not WordPress). Flat URL structure — all pages at root level with descriptive slugs. No folder hierarchy. Massive mega-menu with 150+ links across 7 primary navigation items.
+
+**Content breakdown:**
+- ~160-168 blog posts across 14 paginated pages (all English, no dates displayed)
+- ~60+ language pages (Albanian through Vietnamese, one per language)
+- ~26 interpreter language pages
+- ~19 professional translation sub-pages (medical, technical, financial, gaming, etc.)
+- ~11 certified translation pages by document type
+- ~30+ PRO services pages (15 POA types, 7 visa types, 7 notary services)
+- 3 location pages only (JLT, Dubai Mall, Tecom)
+
+**Critical finding: Zero Arabic content.** No /ar/ directory, no language switcher, no hreflang tags, no Arabic text, no RTL support, no Arabic meta tags. A Dubai legal translation company whose core service is English-Arabic translation has zero Arabic content on its website.
+
+**Technical SEO gaps:** No schema markup (no LocalBusiness, FAQ, Service), no XML sitemap, no robots.txt, no breadcrumbs, no blog post dates. URL inconsistencies (typos like `/propoerty-selling-poa`, mixed case URLs).
+
+**SERP performance:** Ranks #1-2 for "legal translation Dubai" but invisible for most other queries including "MOJ translation Dubai" (OnlineTranslation.ae #1-2), "certified translation Dubai" (Alsun #1), and all Arabic queries (Alsun /ar/ #1).
+
+**Contact:** Phone/WhatsApp +971 50 306 0266, toll-free 800-7378-4237. JLT Branch: Al Mas Tower, Level 1, Shop 35. SZR Branch: Emirates Towers, Level 41. Mon-Fri 9am-5pm, Sat 11am-4pm, Sun Closed.
+
+### Alsun vs Al Syed: Correcting the Record
+
+Previous versions of this document grouped Al Syed and Alsun together or conflated their strategies. They are distinct competitors with fundamentally different approaches:
+
+| Factor | Al Syed | Alsun |
+|--------|---------|-------|
+| Primary domain | translationindubai.com (.com) | alsuntranslation.com + legaltranslation-dubai.ae (.com + .ae) |
+| English pages | ~350+ | ~100-200 |
+| Arabic pages | **0** | **40-70+** |
+| Platform | Custom PHP/Laravel | WordPress (WPML) |
+| Schema markup | None | Likely present |
+| Google reviews | ~32 (GoodFirms) | 256+ at 4.9 stars |
+| Arabic SERP presence | Zero | Dominant (#1 for key Arabic queries) |
+| English head term ranking | #1-2 for "legal translation Dubai" | #1 for "certified translation Dubai" |
+| Strategy | English volume play | Bilingual multi-domain |
+
+**Strategic implication:** Al Syed is an English-only threat that proves content volume works. Alsun is a bilingual threat that proves Arabic content matters. OnlineTranslation.ae's opportunity is to combine authority-specific depth (which neither has) with Arabic scale (where Al Syed is absent and Alsun is moderate).
 
 ### Process-Guide Competitors (Our Actual Competitive Set)
 
