@@ -244,10 +244,10 @@ Track bugs, fixes, and known issues for OnlineTranslation.ae
   - Note: Arabic stemming not supported by Pagefind (library limitation, not fixable)
 - [ ] **Fix contrast ratio issues in Arabic pages** (both light/dark modes) - HIGH PRIORITY
 - [ ] **Fix contrast ratio issues in English dark mode** - MEDIUM PRIORITY
-- [ ] Audit `porto-desktop.css` for unused styles
+- [x] ~~Audit `porto-desktop.css` for unused styles~~ - SCRAPPED (CSS plans removed Feb 6)
 - [x] Consolidate hero-related CSS (3 files → hero-unified.css) - Completed Feb 4, 2026
-- [ ] Review navigation CSS (3 files: navigation-glassmorphism, megamenu, porto-dropdown-onlinetranslation)
-- [ ] Evaluate CSS-in-JS or CSS modules for component styles
+- [x] ~~Review navigation CSS~~ - SCRAPPED (CSS plans removed Feb 6)
+- [x] ~~Evaluate CSS-in-JS or CSS modules~~ - SCRAPPED (CSS plans removed Feb 6)
 - [x] Upgrade build plugins (astro-min, astro-compressor) - Completed Feb 4, 2026
 - [x] Consolidate mobile platform CSS (3 files → mobile-platform.css) - Completed Feb 4, 2026
 
