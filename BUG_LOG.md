@@ -222,15 +222,15 @@ Track bugs, fixes, and known issues for OnlineTranslation.ae
 
 | Issue | Severity | Notes |
 |-------|----------|-------|
-| Pagefind doesn't index Arabic content | **High** | Arabic pages not searchable |
-| No Arabic stemming support | **Medium** | Pagefind warns: "doesn't support stemming for the language ar" |
+| ~~Pagefind doesn't index Arabic content~~ | ~~High~~ | RESOLVED — Arabic IS indexed (98 pages), WASM support enabled |
+| No Arabic stemming support | **Low** | Pagefind library limitation, not fixable. Search still works. |
 
 ### Accessibility
 
 | Issue | Severity | Notes |
 |-------|----------|-------|
-| Contrast ratio issues in Arabic pages | **High** | Affects both light and dark modes |
-| Contrast ratio issues in English dark mode | **Medium** | Dark mode only, light mode OK |
+| ~~Contrast ratio issues in Arabic pages~~ | ~~High~~ | RESOLVED — Replaced hardcoded colors with theme-aware tokens |
+| ~~Contrast ratio issues in English dark mode~~ | ~~Medium~~ | RESOLVED — Added .theme-dark selectors, replaced #666/#888 |
 | Some gray text on dark backgrounds | Low | `contrast-fixes.css` addresses most cases |
 
 ---
@@ -337,4 +337,4 @@ import compressor from 'astro-compressor';
 
 ---
 
-*Last Updated: February 6, 2026 — All investigation queue items resolved. CSS plans scrapped.*
+*Last Updated: February 6, 2026 — All investigation queue items resolved. CSS plans scrapped. Known Issues table updated to reflect resolved items.*
