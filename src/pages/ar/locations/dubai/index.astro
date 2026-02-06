@@ -7,6 +7,8 @@
  * Silo: Locations (Arabic)
  */
 import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+import RelatedServices from '../../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../../components/CrossSiloLinks.astro';
 
 const faqs = [
   {
@@ -382,6 +384,20 @@ const services = [
       }
     }))
   })} />
+
+  <!-- Related Services -->
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <RelatedServices pageKey="dubai" title="خدمات ذات صلة" maxItems={6} />
+    </div>
+  </section>
+
+  <!-- Cross-Silo Links -->
+  <section class="section" dir="rtl">
+    <div class="container">
+      <CrossSiloLinks pageKey="dubai" title="استكشف خدمات أخرى" />
+    </div>
+  </section>
 
 </BaseLayoutArabic>
 

@@ -4,6 +4,8 @@
  * URL: /ar/specialized/medical/
  */
 import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+import RelatedServices from '../../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../../components/CrossSiloLinks.astro';
 
 const faqs = [
   {
@@ -253,6 +255,20 @@ const faqs = [
           <i class="fas fa-arrow-right"></i> الترجمة المتخصصة
         </a>
       </div>
+    </div>
+  </section>
+
+  <!-- Related Services -->
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <RelatedServices pageKey="medical" title="خدمات ذات صلة" maxItems={6} />
+    </div>
+  </section>
+
+  <!-- Cross-Silo Links -->
+  <section class="section" dir="rtl">
+    <div class="container">
+      <CrossSiloLinks pageKey="medical" title="استكشف خدمات أخرى" />
     </div>
   </section>
 </BaseLayoutArabic>
