@@ -1192,7 +1192,7 @@ navigation.forEach(item => {
 
 <script is:inline>
   // Unified Header JavaScript
-  document.addEventListener('DOMContentLoaded', () => {
+  function initHeaderJS() {
     // Detect RTL for flyout logic
     const isRTL = document.documentElement.lang === 'ar' || document.documentElement.dir === 'rtl';
 
@@ -1390,5 +1390,10 @@ navigation.forEach(item => {
         }
       });
     }
-  });
+  }
+
+  // Run on initial page load
+  document.addEventListener('DOMContentLoaded', initHeaderJS);
+  // Run on View Transitions navigation
+  document.addEventListener('astro:page-load', initHeaderJS);
 </script>

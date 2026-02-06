@@ -56,39 +56,32 @@ Track bugs, fixes, and known issues for OnlineTranslation.ae
 
 ---
 
-## Open Bugs (Reported February 6, 2026)
+## Fixed Bugs (February 6, 2026)
 
-### 1. Missing Arabic language pages cause 404 on language switch
-- **Severity:** High
-- **URL:** `/ar/russian/` (and other language pages)
-- **Issue:** Clicking language switcher on English language pages (e.g., `/russian/`) navigates to non-existent Arabic versions (e.g., `/ar/russian/`)
-- **Impact:** Users get 404 errors when trying to switch to Arabic on language-specific pages
-- **Fix Needed:** Add Vercel redirects in `vercel.json` to redirect missing `/ar/{language}/` pages to `/ar/` homepage
+### 7. Missing Arabic language pages cause 404 on language switch
+- **Commit:** `37c052d`
+- **Issue:** Clicking language switcher on English language pages (e.g., `/russian/`) navigated to non-existent Arabic versions
+- **Fix:** Added 9 Vercel redirects in `vercel.json` to redirect `/ar/{language}/` pages to `/ar/` homepage
+- **Files:** `vercel.json`
 
-### 2. Arabic text displays with strikethrough styling
-- **Severity:** Medium
-- **Location:** Arabic homepage hero section, specifically the coral/red badge text "لماذا تختارنا؟"
-- **Issue:** Arabic text appears with a line through it (strikethrough effect)
-- **Possible Cause:** CSS `text-decoration` rule affecting Arabic text, or font rendering issue
-- **Screenshot:** See screenshot showing strikethrough on badge text
+### 8. Arabic text displays with strikethrough styling
+- **Commit:** (this commit)
+- **Issue:** The `.section-label` badge had a decorative line on the left (`padding-left: 45px` + `::before` pseudo-element), but RTL wasn't flipping it to the right
+- **Fix:** Added `padding-left: 0 !important; padding-right: 45px !important;` in rtl.css
+- **Files:** `public/styles/rtl.css`
 
-### 3. Search results visibility issue (Arabic)
-- **Severity:** Medium
-- **Location:** Search overlay/modal on Arabic pages
-- **Issue:** Search result text has yellow highlighted keywords on dark background, making text hard to read
-- **Possible Cause:** Pagefind highlight styling not adapted for dark theme
+### 9. Search results visibility issue (dark background)
+- **Commit:** (this commit)
+- **Issue:** Pagefind's default yellow highlight was hard to read on dark search overlay
+- **Fix:** Added custom styles for `.search-overlay mark` with coral background and white text
+- **Files:** `public/styles/text-breaking.css`
 
-### 4. Dark mode toggle not working (English desktop)
-- **Severity:** High
-- **Location:** English pages, desktop header
-- **Issue:** Clicking moon/sun icon in desktop header does not toggle dark mode
-- **Note:** Was previously fixed for Arabic mobile (#5 in Fixed Bugs) but desktop English still broken
-
-### 5. Search icon not working (English desktop)
-- **Severity:** High
-- **Location:** English pages, desktop header
-- **Issue:** Clicking search icon in desktop header does nothing
-- **Note:** Search functionality may be missing event handlers on desktop
+### 10. Dark mode toggle and search icon not working (English desktop)
+- **Commit:** (this commit)
+- **Issue:** HeaderUnified.astro JavaScript used `DOMContentLoaded` which doesn't fire on View Transitions navigation
+- **Root Cause:** After navigating via View Transitions, the event listeners weren't re-attached
+- **Fix:** Wrapped JS in `initHeaderJS()` function and added both `DOMContentLoaded` and `astro:page-load` listeners
+- **Files:** `src/components/HeaderUnified.astro`
 
 ---
 
@@ -289,4 +282,4 @@ import compressor from 'astro-compressor';
 
 ---
 
-*Last Updated: February 6, 2026 (Added 5 open bugs: language switcher 404s, Arabic strikethrough, search visibility, desktop dark mode, desktop search)*
+*Last Updated: February 6, 2026 (Fixed 5 bugs: language switcher redirects, Arabic strikethrough, search visibility, desktop dark mode, desktop search)*
