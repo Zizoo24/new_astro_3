@@ -83,6 +83,13 @@ Track bugs, fixes, and known issues for OnlineTranslation.ae
 - **Fix:** Wrapped JS in `initHeaderJS()` function and added both `DOMContentLoaded` and `astro:page-load` listeners
 - **Files:** `src/components/HeaderUnified.astro`
 
+### 11. Build failure: "ar is not defined" in Arabic blog post
+- **Commit:** `138149c`
+- **Issue:** Vercel build failed with `ReferenceError: ar is not defined` in `/ar/blog/uae-attestation-process-guide/`
+- **Root Cause:** FAQ answer string in frontmatter contained HTML anchor tags like `<a href="/ar/personal/vital-records/birth/">`. During Astro compilation, the href paths were mangled with spaces (`<a href=" / ar / personal / vital - records / birth / ">`), causing `/ar/` to be interpreted as JavaScript division operators with undefined `ar` variable
+- **Fix:** Removed HTML links from FAQ answer strings in frontmatter const, using plain text instead
+- **Files:** `src/pages/ar/blog/uae-attestation-process-guide/index.astro`
+
 ---
 
 ## Known Issues / Technical Debt
@@ -286,4 +293,4 @@ import compressor from 'astro-compressor';
 
 ---
 
-*Last Updated: February 6, 2026 (Fixed 5 bugs: language switcher redirects, Arabic strikethrough, search visibility, desktop dark mode, desktop search)*
+*Last Updated: February 6, 2026 (Fixed 6 bugs: language switcher redirects, Arabic strikethrough, search visibility, desktop dark mode, desktop search, build failure)*
