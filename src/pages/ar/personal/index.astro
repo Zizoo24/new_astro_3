@@ -7,6 +7,8 @@
  * Silo: Personal & Civil (Arabic)
  */
 import BaseLayoutArabic from '../../../layouts/BaseLayoutArabic.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../components/CrossSiloLinks.astro';
 
 const faqs = [
   {
@@ -406,6 +408,14 @@ const processSteps = [
           </details>
         ))}
       </div>
+    </div>
+  </section>
+
+  <!-- Related Services Section -->
+  <section class="section bg-white">
+    <div class="container">
+      <RelatedServices pageKey="personalDocuments" title="خدمات ذات صلة" maxItems={6} />
+      <CrossSiloLinks pageKey="personalDocuments" title="استكشف خدمات أخرى" />
     </div>
   </section>
 

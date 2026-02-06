@@ -6,6 +6,8 @@
  * PRIMARY SEO TARGET - Abu Dhabi first strategy
  */
 import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+import RelatedServices from '../../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../../components/CrossSiloLinks.astro';
 
 const pageTitle = 'ترجمة قانونية معتمدة في أبوظبي | مكتب ترجمة أبوظبي | OnlineTranslation.ae';
 const metaDescription = 'مكتب ترجمة قانونية معتمدة في أبوظبي. ترجمة معتمدة من وزارة العدل لدائرة القضاء وسوق أبوظبي العالمي. تسليم في نفس اليوم. واتساب: 971508620217+';
@@ -40,33 +42,33 @@ const services = [
   },
   {
     title: 'الوثائق الشخصية',
-    url: '/ar/personal-documents/',
+    url: '/ar/personal/',
     icon: 'fas fa-user',
     desc: 'شهادات الميلاد والزواج والشهادات الأكاديمية للتأشيرات والهجرة.'
   },
   {
     title: 'وثائق الشركات',
-    url: '/ar/legal-translation-dubai/',
+    url: '/ar/legal/corporate/',
     icon: 'fas fa-building',
     desc: 'عقود التأسيس والرخص التجارية وقرارات مجلس الإدارة.'
   },
   {
-    title: 'الشهادات الطبية',
-    url: '/ar/services/',
+    title: 'الترجمة الطبية',
+    url: '/ar/specialized/medical/',
     icon: 'fas fa-user-md',
-    desc: 'وثائق المهنيين الصحيين لترخيص دائرة الصحة.'
+    desc: 'سجلات المرضى والتقارير الطبية لترخيص دائرة الصحة.'
+  },
+  {
+    title: 'الترجمة التقنية',
+    url: '/ar/specialized/technical/',
+    icon: 'fas fa-cogs',
+    desc: 'أدلة المستخدم والمواصفات الهندسية ووثائق السلامة.'
   },
   {
     title: 'خدمات التصديق',
     url: '/ar/services/attestation/',
     icon: 'fas fa-stamp',
     desc: 'سلسلة التصديق الكاملة لوزارة الخارجية والسفارات.'
-  },
-  {
-    title: 'الفيزا الذهبية',
-    url: '/ar/services/golden-visa-translation/',
-    icon: 'fas fa-passport',
-    desc: 'حزمة وثائق كاملة لطلبات الفيزا الذهبية.'
   }
 ];
 
@@ -145,7 +147,7 @@ const faqs = [
 
         <p class="hero-lead">
           مكتب ترجمة معتمد من وزارة العدل في أبوظبي. نخدم دائرة القضاء وسوق أبوظبي العالمي
-          وجميع الجهات الحكومية. تسليم في نفس اليوم لجميع مناطق أبوظبي والعين.
+          وجميع الجهات الحكومية. تسليم في نفس اليوم لجميع مناطق أبوظبي والعين. نقدم نفس الخدمات في <a href="/ar/locations/dubai/">دبي</a> و<a href="/ar/locations/sharjah/">الشارقة</a>.
         </p>
 
         <!-- Desktop hero features (hidden on mobile) -->
@@ -251,7 +253,7 @@ const faqs = [
         <div class="benefit-card">
           <i class="fas fa-shield-alt"></i>
           <h3>خبرة محلية</h3>
-          <p>نفهم متطلبات دائرة القضاء وسوق أبوظبي العالمي وجميع الجهات الحكومية في أبوظبي.</p>
+          <p>نفهم متطلبات دائرة القضاء وسوق أبوظبي العالمي. نخدم أيضاً <a href="/ar/locations/dubai/difc/">DIFC</a> في دبي.</p>
         </div>
         <div class="benefit-card">
           <i class="fas fa-truck"></i>
@@ -261,7 +263,7 @@ const faqs = [
         <div class="benefit-card">
           <i class="fas fa-language"></i>
           <h3>43+ لغة</h3>
-          <p>نترجم من وإلى أكثر من 43 لغة. العربية-الإنجليزية الأكثر شيوعاً.</p>
+          <p>نترجم من وإلى أكثر من 43 لغة. خدمات <a href="/ar/specialized/hospitality/">الضيافة</a> و<a href="/ar/specialized/digital/">الرقمية</a> متاحة.</p>
         </div>
         <div class="benefit-card">
           <i class="fas fa-certificate"></i>
@@ -352,6 +354,20 @@ const faqs = [
       }
     }))
   })} />
+
+  <!-- Related Services -->
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <RelatedServices pageKey="abuDhabi" title="خدمات ذات صلة" maxItems={6} />
+    </div>
+  </section>
+
+  <!-- Cross-Silo Links -->
+  <section class="section" dir="rtl">
+    <div class="container">
+      <CrossSiloLinks pageKey="abuDhabi" title="استكشف خدمات أخرى" />
+    </div>
+  </section>
 </BaseLayoutArabic>
 
 <style>

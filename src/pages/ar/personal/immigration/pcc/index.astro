@@ -7,6 +7,8 @@
  * Silo: Personal > Immigration (Arabic)
  */
 import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+import RelatedServices from '../../../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../../../components/CrossSiloLinks.astro';
 
 const faqs = [
   {
@@ -508,35 +510,16 @@ const pageDescription = 'ترجمة شهادة حسن السيرة مقبولة 
     </section>
 
     <!-- Related Services -->
-    <section class="related-section bg-light">
+    <section class="section bg-light">
       <div class="container">
-        <h2 class="section-title">خدمات ذات صلة</h2>
+        <RelatedServices pageKey="pcc" title="خدمات ذات صلة" maxItems={6} />
+      </div>
+    </section>
 
-        <div class="related-grid">
-          <a href="/ar/services/attestation/india/" class="related-card">
-            <i class="fas fa-globe-asia"></i>
-            <h3>تصديق الوثائق الهندية</h3>
-            <p>سلسلة التصديق من الهند</p>
-          </a>
-
-          <a href="/ar/services/attestation/uk/" class="related-card">
-            <i class="fas fa-globe-europe"></i>
-            <h3>تصديق الوثائق البريطانية</h3>
-            <p>ACRO + أبوستيل FCDO</p>
-          </a>
-
-          <a href="/ar/personal/academic/degree/" class="related-card">
-            <i class="fas fa-graduation-cap"></i>
-            <h3>ترجمة الشهادات الجامعية</h3>
-            <p>للتوظيف والتراخيص</p>
-          </a>
-
-          <a href="/ar/services/attestation/" class="related-card">
-            <i class="fas fa-certificate"></i>
-            <h3>جميع خدمات التصديق</h3>
-            <p>من جميع الدول</p>
-          </a>
-        </div>
+    <!-- Cross-Silo Links -->
+    <section class="section">
+      <div class="container">
+        <CrossSiloLinks pageKey="pcc" title="استكشف خدمات أخرى" />
       </div>
     </section>
 

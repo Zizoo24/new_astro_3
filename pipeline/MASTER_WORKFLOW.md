@@ -2,8 +2,8 @@
 
 ## OnlineTranslation.ae — Single Unified Process for All Content
 
-**Version:** 3.3
-**Last Updated:** January 31, 2026
+**Version:** 3.4
+**Last Updated:** February 6, 2026
 
 ---
 
@@ -875,6 +875,205 @@ Pagefind automatically indexes all pages during build:
 - Generated at `dist/sitemap-0.xml`
 - Includes all pages (EN and AR)
 - Submitted to Google via robots.txt
+
+---
+
+# INTERNAL LINKING ENHANCEMENT WORKFLOW
+
+## Systematic Internal Link Audit Process
+
+When improving internal linking across existing pages, follow this systematic approach:
+
+### Step 1: Audit Current Link Counts
+
+```bash
+# Count internal links on Arabic pages
+for file in src/pages/ar/**/*.astro; do
+  count=$(grep -c 'href="/ar' "$file" 2>/dev/null || echo "0")
+  echo "$file: $count links"
+done | sort -t: -k2 -n
+
+# Count internal links on English pages
+for file in src/pages/**/*.astro; do
+  count=$(grep -c 'href="/' "$file" 2>/dev/null || echo "0")
+  echo "$file: $count links"
+done | sort -t: -k2 -n
+```
+
+### Step 2: Identify Pages Below Threshold
+
+Target: **8+ internal links per page** (per CLAUDE.md requirement)
+
+Priority order for enhancement:
+1. Hub pages (highest PageRank to distribute)
+2. High-traffic service pages
+3. Location pages
+4. Blog posts
+5. Specialized pages
+
+### Step 3: Link Injection Strategy
+
+**Where to add contextual links:**
+
+| Location | Link Count | Best Practices |
+|----------|------------|----------------|
+| Hero/intro paragraph | 1-2 | Establish context early |
+| Body section cards | 2-4 | Natural within content descriptions |
+| Service/feature lists | 2-3 | Link service names to dedicated pages |
+| FAQ answers | 1-2 | Expand answers with related pages |
+| CTA sections | 1 | Link to related hub or service |
+
+**Link patterns to use:**
+
+```astro
+<!-- Contextual in-paragraph link -->
+<p>We serve clients in <a href="/ar/locations/dubai/">دبي</a>
+and <a href="/ar/locations/abu-dhabi/">أبوظبي</a>.</p>
+
+<!-- Service card with link -->
+<div class="service-card">
+  <a href="/ar/specialized/medical/">الترجمة الطبية</a>
+  <p>Translation for healthcare professionals...</p>
+</div>
+
+<!-- FAQ answer expansion -->
+<p>Yes, we translate all corporate documents including
+<a href="/ar/legal/contracts/">العقود</a> and
+<a href="/ar/legal/corporate/">وثائق الشركات</a>.</p>
+```
+
+### Step 4: Component-Based Linking
+
+For pages that need bottom-of-page related content, use these components:
+
+```astro
+import RelatedServices from '../components/RelatedServices.astro';
+import CrossSiloLinks from '../components/CrossSiloLinks.astro';
+
+<!-- Related Services within same silo -->
+<section class="section bg-light" dir="rtl">
+  <div class="container">
+    <RelatedServices pageKey="medical" title="خدمات ذات صلة" maxItems={6} />
+  </div>
+</section>
+
+<!-- Cross-Silo Links to other areas -->
+<section class="section" dir="rtl">
+  <div class="container">
+    <CrossSiloLinks pageKey="medical" title="استكشف خدمات أخرى" />
+  </div>
+</section>
+```
+
+**pageKey values** are defined in `/src/data/serviceLinks.ts`
+
+### Step 5: Verify and Commit
+
+After adding links:
+1. Count links again to confirm 8+ threshold met
+2. Run build to check for broken links: `npm run build`
+3. Commit with descriptive message including link counts
+
+---
+
+# PLAYWRIGHT VISUAL REGRESSION TESTING
+
+## Overview
+
+Visual regression testing catches unintended UI changes before deployment. Playwright takes screenshots and compares them against baseline images.
+
+## Test Commands
+
+```bash
+# Run all visual tests
+npm run test:visual
+
+# Run specific test suites
+npm run test:hero      # Hero section tests
+npm run test:nav       # Navigation tests
+npm run test:arabic    # Arabic RTL tests
+npm run test:dark      # Dark mode tests
+
+# Update baseline screenshots (after intentional changes)
+npm run test:visual:update
+
+# Interactive test UI
+npm run test:visual:ui
+
+# View test report
+npm run test:report
+```
+
+## Test Files
+
+| File | What It Tests |
+|------|---------------|
+| `tests/visual/pages.spec.ts` | Critical pages (home, hubs, service pages) |
+| `tests/visual/hero.spec.ts` | Hero sections across pages |
+| `tests/visual/navigation.spec.ts` | Header, footer, mobile menu |
+| `tests/visual/arabic.spec.ts` | RTL layout, Arabic typography |
+| `tests/visual/dark-mode.spec.ts` | Dark theme rendering |
+
+## Viewports Tested
+
+| Device | Width | Height |
+|--------|-------|--------|
+| Desktop | 1280px | 800px |
+| Tablet | 768px | 1024px |
+| Mobile | 390px | 844px |
+
+## When to Run Visual Tests
+
+1. **Before deploying CSS changes** — Catch layout regressions
+2. **After adding new components** — Ensure consistent styling
+3. **After RTL modifications** — Verify Arabic layout
+4. **Before major releases** — Full regression check
+
+## Updating Baselines
+
+When you intentionally change the UI:
+
+```bash
+# Update all baselines
+npm run test:visual:update
+
+# Review changes in git diff
+git diff --stat tests/visual/
+
+# Commit new baselines with change description
+git add tests/visual/*.png
+git commit -m "chore: update visual baselines after [change description]"
+```
+
+## Adding New Visual Tests
+
+```typescript
+// tests/visual/new-feature.spec.ts
+import { test, expect } from '@playwright/test';
+
+test.describe('New Feature', () => {
+  test.use({ viewport: { width: 1280, height: 800 } });
+
+  test('component renders correctly', async ({ page }) => {
+    await page.goto('/page-with-feature/');
+    await page.waitForLoadState('networkidle');
+    await page.waitForTimeout(500); // Wait for animations
+
+    const component = page.locator('.new-component');
+    await expect(component).toBeVisible();
+    await expect(component).toHaveScreenshot('new-component.png');
+  });
+});
+```
+
+## CI Integration
+
+Visual tests run automatically on:
+- Pull request creation
+- Push to main branch
+- Manual trigger via GitHub Actions
+
+Failed tests block deployment until resolved.
 
 ---
 

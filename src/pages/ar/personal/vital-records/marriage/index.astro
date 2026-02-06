@@ -7,6 +7,8 @@
  * Silo: Personal (Arabic)
  */
 import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+import RelatedServices from '../../../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../../../components/CrossSiloLinks.astro';
 
 const faqs = [
   {
@@ -447,29 +449,14 @@ const commonUses = [
   <!-- Related Services -->
   <section class="section bg-light">
     <div class="container">
-      <h2>خدمات ذات صلة</h2>
-      <div class="related-grid">
-        <a href="/ar/personal/vital-records/birth/" class="related-card">
-          <i class="fas fa-baby"></i>
-          <h3>ترجمة شهادة الميلاد</h3>
-          <p>لتأشيرات المعالين والتسجيل المدرسي</p>
-        </a>
-        <a href="/ar/personal/vital-records/" class="related-card">
-          <i class="fas fa-file-alt"></i>
-          <h3>السجلات الحيوية</h3>
-          <p>جميع شهادات الميلاد والزواج والطلاق والوفاة</p>
-        </a>
-        <a href="/ar/services/attestation/" class="related-card">
-          <i class="fas fa-stamp"></i>
-          <h3>خدمات التصديق</h3>
-          <p>تصديق الوثائق للاستخدام في الإمارات</p>
-        </a>
-        <a href="/ar/legal/corporate/poa/" class="related-card">
-          <i class="fas fa-file-signature"></i>
-          <h3>ترجمة التوكيل الرسمي</h3>
-          <p>للمعاملات العقارية والبنكية</p>
-        </a>
-      </div>
+      <RelatedServices pageKey="marriageCertificate" title="خدمات ذات صلة" maxItems={6} />
+    </div>
+  </section>
+
+  <!-- Cross-Silo Links -->
+  <section class="section">
+    <div class="container">
+      <CrossSiloLinks pageKey="marriageCertificate" title="استكشف خدمات أخرى" />
     </div>
   </section>
 

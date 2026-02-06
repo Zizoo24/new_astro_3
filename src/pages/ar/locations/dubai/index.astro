@@ -7,6 +7,8 @@
  * Silo: Locations (Arabic)
  */
 import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+import RelatedServices from '../../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../../components/CrossSiloLinks.astro';
 
 const faqs = [
   {
@@ -52,14 +54,14 @@ const faqs = [
 ];
 
 const areas = [
-  { name: "الخليج التجاري", desc: "المقرات الرئيسية للشركات ووثائق تأسيس الأعمال" },
-  { name: "وسط مدينة دبي", desc: "معاملات العقارات وخدمات الوثائق الشخصية" },
-  { name: "DIFC", desc: "ترجمات قانونية وشركات للمركز المالي" },
-  { name: "دبي مارينا", desc: "وثائق السكن والعقارات" },
-  { name: "JLT", desc: "وثائق المناطق الحرة والأعمال والوثائق الشخصية" },
-  { name: "نخلة جميرا", desc: "تسجيل الملكية ووثائق التأشيرات" },
-  { name: "ديرة", desc: "التراخيص التجارية والترجمات التجارية" },
-  { name: "بر دبي", desc: "وثائق المحاكم وخدمات القنصليات" }
+  { name: "الخليج التجاري", desc: "المقرات الرئيسية للشركات ووثائق تأسيس الأعمال", href: "/ar/locations/dubai/business-bay/" },
+  { name: "وسط مدينة دبي", desc: "معاملات العقارات وخدمات الوثائق الشخصية", href: "/ar/locations/dubai/downtown/" },
+  { name: "DIFC", desc: "ترجمات قانونية وشركات للمركز المالي", href: "/ar/locations/dubai/difc/" },
+  { name: "دبي مارينا", desc: "وثائق السكن والعقارات", href: "/ar/locations/dubai/marina/" },
+  { name: "JLT", desc: "وثائق المناطق الحرة والأعمال والوثائق الشخصية", href: "/ar/locations/dubai/jlt/" },
+  { name: "نخلة جميرا", desc: "تسجيل الملكية ووثائق التأشيرات", href: "/ar/locations/dubai/palm-jumeirah/" },
+  { name: "ديرة", desc: "التراخيص التجارية والترجمات التجارية", href: null },
+  { name: "بر دبي", desc: "وثائق المحاكم وخدمات القنصليات", href: null }
 ];
 
 const authorities = [
@@ -102,21 +104,21 @@ const services = [
   },
   {
     title: "وثائق الشركات",
-    href: "/legal/corporate/",
+    href: "/ar/legal/corporate/",
     icon: "building",
     desc: "عقود التأسيس، التراخيص التجارية، قرارات مجلس الإدارة، ووثائق المناطق الحرة."
   },
   {
-    title: "حزمة الإقامة الذهبية",
-    href: "/services/golden-visa-translation/",
-    icon: "star",
-    desc: "حزم وثائق كاملة لطلبات تأشيرات المستثمرين والمهنيين."
+    title: "الترجمة الطبية",
+    href: "/ar/specialized/medical/",
+    icon: "hospital",
+    desc: "سجلات المرضى والتقارير الطبية وأوراق اعتماد المهنيين الصحيين."
   },
   {
-    title: "وثائق العقارات",
-    href: "/legal/contracts/spa/",
-    icon: "home",
-    desc: "عقود البيع والشراء، صكوك الملكية، التوكيلات، ومتطلبات تسجيل DLD."
+    title: "الترجمة التقنية",
+    href: "/ar/specialized/technical/",
+    icon: "cogs",
+    desc: "أدلة المستخدم والمواصفات الهندسية ووثائق السلامة."
   },
   {
     title: "خدمات التصديق",
@@ -145,7 +147,7 @@ const services = [
         <p class="hero-subtitle">معتمدة من وزارة العدل • تسليم نفس اليوم • جميع المناطق</p>
 
         <p class="hero-intro">
-          بيئة الأعمال في دبي تتطلب توثيقاً دقيقاً. سواء كنت تسجل ملكية في دائرة الأراضي، أو تقدم ملفاً في محاكم دبي، أو تعالج إقامة ذهبية عبر GDRFA، أو تؤسس شركة في DIFC، نقدم ترجمات معتمدة من وزارة العدل تقبلها جهات دبي.
+          بيئة الأعمال في دبي تتطلب توثيقاً دقيقاً. سواء كنت تسجل ملكية في دائرة الأراضي، أو تقدم ملفاً في محاكم دبي، أو تعالج إقامة ذهبية عبر GDRFA، أو تؤسس شركة في <a href="/ar/locations/dubai/difc/">DIFC</a>، نقدم <a href="/ar/legal-translation-dubai/">ترجمات معتمدة من وزارة العدل</a> تقبلها جهات دبي. نخدم أيضاً <a href="/ar/locations/abu-dhabi/">أبوظبي</a> و<a href="/ar/locations/sharjah/">الشارقة</a>.
         </p>
 
         <!-- Desktop hero highlights (hidden on mobile) -->
@@ -240,10 +242,17 @@ const services = [
 
       <div class="areas-grid">
         {areas.map(area => (
-          <div class="area-card">
-            <h3>{area.name}</h3>
-            <p>{area.desc}</p>
-          </div>
+          area.href ? (
+            <a href={area.href} class="area-card area-card-link">
+              <h3>{area.name}</h3>
+              <p>{area.desc}</p>
+            </a>
+          ) : (
+            <div class="area-card">
+              <h3>{area.name}</h3>
+              <p>{area.desc}</p>
+            </div>
+          )
         ))}
       </div>
 
@@ -382,6 +391,20 @@ const services = [
       }
     }))
   })} />
+
+  <!-- Related Services -->
+  <section class="section bg-light" dir="rtl">
+    <div class="container">
+      <RelatedServices pageKey="dubai" title="خدمات ذات صلة" maxItems={6} />
+    </div>
+  </section>
+
+  <!-- Cross-Silo Links -->
+  <section class="section" dir="rtl">
+    <div class="container">
+      <CrossSiloLinks pageKey="dubai" title="استكشف خدمات أخرى" />
+    </div>
+  </section>
 
 </BaseLayoutArabic>
 
@@ -680,6 +703,19 @@ const services = [
     color: var(--text-muted);
     margin: 0;
     line-height: 1.5;
+  }
+
+  .area-card-link {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+    display: block;
+  }
+
+  .area-card-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-color: var(--accent-coral);
   }
 
   .areas-note {

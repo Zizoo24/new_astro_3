@@ -7,6 +7,8 @@
  * Silo: Personal (Arabic)
  */
 import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+import RelatedServices from '../../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../../components/CrossSiloLinks.astro';
 
 const faqs = [
   {
@@ -381,6 +383,14 @@ const vitalRecords = [
           </details>
         ))}
       </div>
+    </div>
+  </section>
+
+  <!-- Related Services & Cross-Silo Links -->
+  <section class="section bg-light">
+    <div class="container">
+      <RelatedServices pageKey="vitalRecords" title="خدمات ذات صلة" maxItems={6} />
+      <CrossSiloLinks pageKey="vitalRecords" title="استكشف خدمات أخرى" />
     </div>
   </section>
 

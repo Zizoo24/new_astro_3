@@ -7,6 +7,8 @@
  * Silo: Personal > Vital Records (Arabic)
  */
 import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+import RelatedServices from '../../../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../../../components/CrossSiloLinks.astro';
 
 const faqs = [
   {
@@ -691,35 +693,16 @@ const pageDescription = 'ترجمة شهادة الوفاة في دبي وأبو
     </section>
 
     <!-- Related Services -->
-    <section class="related-section bg-light">
+    <section class="section bg-light">
       <div class="container">
-        <h2 class="section-title">خدمات ذات صلة</h2>
+        <RelatedServices pageKey="deathCertificate" title="خدمات ذات صلة" maxItems={6} />
+      </div>
+    </section>
 
-        <div class="related-grid">
-          <a href="/ar/personal/vital-records/marriage/" class="related-card">
-            <i class="fas fa-ring"></i>
-            <h3>ترجمة عقد الزواج</h3>
-            <p>إثبات صفة الزوج/الزوجة الباقي</p>
-          </a>
-
-          <a href="/ar/personal/vital-records/birth/" class="related-card">
-            <i class="fas fa-baby"></i>
-            <h3>ترجمة شهادة الميلاد</h3>
-            <p>إثبات صلة القرابة للورثة</p>
-          </a>
-
-          <a href="/ar/legal/corporate/poa/" class="related-card">
-            <i class="fas fa-file-signature"></i>
-            <h3>ترجمة التوكيل</h3>
-            <p>لإدارة شؤون التركة</p>
-          </a>
-
-          <a href="/ar/services/attestation/" class="related-card">
-            <i class="fas fa-certificate"></i>
-            <h3>تصديق الوثائق</h3>
-            <p>سلسلة التصديق الكاملة</p>
-          </a>
-        </div>
+    <!-- Cross-Silo Links -->
+    <section class="section">
+      <div class="container">
+        <CrossSiloLinks pageKey="deathCertificate" title="استكشف خدمات أخرى" />
       </div>
     </section>
 

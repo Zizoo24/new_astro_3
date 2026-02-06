@@ -7,6 +7,8 @@
  * Silo: Legal (Arabic)
  */
 import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+import RelatedServices from '../../../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../../../components/CrossSiloLinks.astro';
 
 const faqs = [
   {
@@ -373,29 +375,14 @@ const commonUses = [
   <!-- Related Services -->
   <section class="section bg-light">
     <div class="container">
-      <h2>خدمات ذات صلة</h2>
-      <div class="related-grid">
-        <a href="/ar/legal/corporate/" class="related-card">
-          <i class="fas fa-building"></i>
-          <h3>الوثائق التجارية</h3>
-          <p>عقود التأسيس والرخص وقرارات مجلس الإدارة</p>
-        </a>
-        <a href="/ar/legal/corporate/moa/" class="related-card">
-          <i class="fas fa-file-contract"></i>
-          <h3>عقد التأسيس</h3>
-          <p>وثائق تأسيس الشركات لـ DED والمناطق الحرة</p>
-        </a>
-        <a href="/ar/services/attestation/" class="related-card">
-          <i class="fas fa-stamp"></i>
-          <h3>خدمات التصديق</h3>
-          <p>تصديق MOFA والسفارات للوثائق الأجنبية</p>
-        </a>
-        <a href="/ar/personal/vital-records/marriage/" class="related-card">
-          <i class="fas fa-ring"></i>
-          <h3>ترجمة عقد الزواج</h3>
-          <p>للملكية المشتركة والحسابات البنكية</p>
-        </a>
-      </div>
+      <RelatedServices pageKey="poa" title="خدمات ذات صلة" maxItems={6} />
+    </div>
+  </section>
+
+  <!-- Cross-Silo Links -->
+  <section class="section">
+    <div class="container">
+      <CrossSiloLinks pageKey="poa" title="استكشف خدمات أخرى" />
     </div>
   </section>
 

@@ -6,6 +6,8 @@
  * Geographic Priority: Abu Dhabi → Dubai → UAE
  */
 import BaseLayoutArabic from '../../../layouts/BaseLayoutArabic.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../components/CrossSiloLinks.astro';
 
 const pageTitle = 'خدمات الترجمة المعتمدة في أبوظبي ودبي | OnlineTranslation.ae';
 const metaDescription = 'خدمات ترجمة معتمدة في أبوظبي ودبي. ترجمة قانونية، شهادات، وثائق شخصية، تصديق. معتمد من وزارة العدل. تسليم سريع. واتساب: 971508620217+';
@@ -242,6 +244,14 @@ const faqs = [
           </details>
         ))}
       </div>
+    </div>
+  </section>
+
+  <!-- Related Services & Cross-Silo Links -->
+  <section class="linking-section" style="background: var(--bg-secondary, #f8f9fa); padding: 4rem 0;">
+    <div class="container">
+      <RelatedServices pageKey="services" title="خدمات ذات صلة" maxItems={6} />
+      <CrossSiloLinks pageKey="services" title="استكشف خدمات أخرى" />
     </div>
   </section>
 

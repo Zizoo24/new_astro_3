@@ -7,6 +7,8 @@
  * Schemas: BreadcrumbList, Service, FAQPage
  */
 import BaseLayoutArabic from '../../../../../layouts/BaseLayoutArabic.astro';
+import RelatedServices from '../../../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../../../components/CrossSiloLinks.astro';
 
 const faqs = [
   {
@@ -381,31 +383,16 @@ const serviceSchema = {
   </section>
 
   <!-- Related Services -->
+  <section class="section bg-light">
+    <div class="container">
+      <RelatedServices pageKey="nda" title="خدمات ذات صلة" maxItems={6} />
+    </div>
+  </section>
+
+  <!-- Cross-Silo Links -->
   <section class="section">
     <div class="container">
-      <h2>خدمات العقود ذات الصلة</h2>
-      <div class="related-grid">
-        <a href="/ar/legal/contracts/spa/" class="related-card">
-          <i class="fas fa-file-signature"></i>
-          <h3>ترجمة عقود البيع والشراء</h3>
-          <p>عقود الشراء للعقارات والأعمال</p>
-        </a>
-        <a href="/ar/legal/contracts/mou/" class="related-card">
-          <i class="fas fa-handshake"></i>
-          <h3>ترجمة مذكرات التفاهم</h3>
-          <p>اتفاقيات الشراكة التمهيدية</p>
-        </a>
-        <a href="/ar/legal/corporate/poa/" class="related-card">
-          <i class="fas fa-stamp"></i>
-          <h3>ترجمة التوكيلات</h3>
-          <p>تفويضات التمثيل القانوني</p>
-        </a>
-        <a href="/ar/legal/contracts/" class="related-card">
-          <i class="fas fa-folder-open"></i>
-          <h3>جميع العقود</h3>
-          <p>تصفح جميع خدمات ترجمة العقود</p>
-        </a>
-      </div>
+      <CrossSiloLinks pageKey="nda" title="استكشف خدمات أخرى" />
     </div>
   </section>
 

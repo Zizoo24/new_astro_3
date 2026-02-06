@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../components/CrossSiloLinks.astro';
 
 const breadcrumbs = [
   { name: 'Home', url: '/' },
@@ -339,31 +341,10 @@ const faqs = [
     </div>
   </section>
 
-  <section class="related-section section bg-light">
+  <section class="linking-section section bg-light">
     <div class="container">
-      <h2>Related Services</h2>
-      <div class="related-grid">
-        <a href="/legal-translation-dubai/" class="related-card">
-          <i class="fas fa-balance-scale"></i>
-          <h3>Legal Translation Hub</h3>
-          <p>Complete legal document services</p>
-        </a>
-        <a href="/legal/contracts/" class="related-card">
-          <i class="fas fa-file-contract"></i>
-          <h3>Contract Translation</h3>
-          <p>Commercial agreements and contracts</p>
-        </a>
-        <a href="/legal/corporate/" class="related-card">
-          <i class="fas fa-building"></i>
-          <h3>Corporate Documents</h3>
-          <p>MOA, resolutions, shareholder documents</p>
-        </a>
-        <a href="/services/attestation/" class="related-card">
-          <i class="fas fa-stamp"></i>
-          <h3>Document Attestation</h3>
-          <p>MOFA and embassy legalization</p>
-        </a>
-      </div>
+      <RelatedServices pageKey="litigation" title="Related Court Document Services" maxItems={6} />
+      <CrossSiloLinks pageKey="litigation" title="Explore Other Services" />
     </div>
   </section>
 
