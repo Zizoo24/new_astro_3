@@ -1,220 +1,156 @@
-# SEO Strategy & Keyword Action Plan
+# SEO Strategy & Competitive Landscape
 
 **Site**: OnlineTranslation.ae
-**Analysis Date**: January 9, 2026
-**Data Period**: December 9, 2025 - January 8, 2026
-**Status**: Implementation Complete - Monitoring Phase
+**Version**: 2.0
+**Updated**: February 6, 2026
+**Data Sources**: GSC (Dec 2025 - Jan 2026), competitive audit (Feb 2026, 40+ searches)
 
 ---
 
 ## Executive Summary
 
-Analysis of Google Search Console data revealed **three problem layers**:
+The January 2026 strategy focused on generic keyword rankings ("legal translation dubai" at position 70). A comprehensive competitive audit in February 2026 revealed this approach is unwinnable:
 
-| Layer | Problem | Impact | Status |
-|-------|---------|--------|--------|
-| **CTR Crisis** | 10+ pages ranking <10 with 0 clicks | 443 impressions wasted | ✅ Fixed |
-| **Cannibalization** | 5+ pages competing for "legal translation dubai" | Diluted authority | ✅ Fixed (canonical) |
-| **Position Crisis** | Legal keywords at position 70-90 | #1 priority invisible | ⏳ Monitoring |
+| Reality | Implication |
+|---------|-------------|
+| Al Alsun has 350+ posts across 5 domains | Cannot win a volume war with 18 posts |
+| 15+ competitors fight for "legal translation dubai" | Generic head terms are oversaturated |
+| Zero translation companies target authority-specific queries | Process-knowledge content is wide open |
+| OnlineTranslation.ae already ranks for MOFA attestation | The "own the journey" model is proven |
 
-**Next Steps**: See [`CONTENT-PLAN.md`](./CONTENT-PLAN.md) for keyword targets, content calendar, and publishing schedule.
-
----
-
-## Part I: Priority Keywords
-
-### Tier 1: Legal Translation (Business Priority #1)
-
-| Keyword | Position | Impressions | Target | Action Taken |
-|---------|----------|-------------|--------|--------------|
-| legal translation dubai | 70.33 | 9 | <30 | Primary page optimized |
-| legal translation | 69.08 | 37 | <40 | Internal links added |
-| legal translation services dubai | 87.00 | 12 | <40 | Canonical consolidation |
-| legal translation services | 85.47 | 19 | <50 | Content expanded |
-
-**Primary Page**: `/legal-translation-dubai/`
-**Strategy**: Canonical URLs from `/services/legal-translation/` consolidate authority without redirects.
-
-### Tier 2: High-Volume Service Keywords
-
-| Keyword | Position | Impressions | Status |
-|---------|----------|-------------|--------|
-| proofreading services dubai | 1.2 | 30 | ✅ Ranking #1 |
-| translation services dubai | 3.8 | 87 | ✅ Strong |
-| arabic translation dubai | 5.1 | 45 | ✅ Strong |
-| certificate translation dubai | 8.3 | 38 | ⏳ Monitor |
-
-### Tier 3: CTR Crisis Keywords (Fixed)
-
-| Keyword | Page | Position | Before CTR | Fix Applied |
-|---------|------|----------|------------|-------------|
-| attestation guide dubai | `/resources/attestation-guide/` | 7.28 | 0% | Title optimized |
-| pcc translation dubai | `/personal/immigration/pcc/` | 9.02 | 0% | Title + meta |
-| urdu translation dubai | `/urdu/` | 6.0 | 0% | Removed RTL script |
-| academic transcript translation | `/personal/academic/transcripts/` | 11.02 | 0% | Added keywords |
-
-### Tier 4: Long-Tail Opportunities
-
-| Keyword | Position | Impressions | Page | Opportunity |
-|---------|----------|-------------|------|-------------|
-| degree certificate translation dubai | 5.29 | 42 | Blog | Add CTA |
-| marriage certificate translation | 12.4 | 28 | Vital records | Expand content |
-| police clearance translation gdrfa | 9.5 | 18 | PCC page | Already optimized |
-| moj certified translation | 15.2 | 22 | Services | Add to primary pages |
+**Strategic pivot:** Stop chasing generic keywords. Own the document journey where translation is a required step. See [`CONTENT-PLAN.md`](./CONTENT-PLAN.md) for the full execution plan.
 
 ---
 
-## Part II: Page-Level Optimizations
+## Part I: What We Stopped Targeting
 
-### Pages Optimized (January 2026)
+### Retired Keywords (Generic Head Terms)
 
-| Page | Change | Target Keyword |
-|------|--------|----------------|
-| `/legal-translation-dubai/` | Title, meta, keywords, internal links | legal translation dubai |
-| `/legal/` | +1 FAQ, +1 category (Wills), title | legal translation services dubai |
-| `/urdu/` | Removed RTL script from title | urdu translation dubai |
-| `/personal/academic/transcripts/` | Added "academic" + "service" to title | academic transcript translation service |
-| `/resources/attestation-guide/` | Title optimized for CTR | attestation guide dubai |
-| `/personal/immigration/pcc/` | Title + meta optimized | pcc translation dubai |
-| `/industries/real-estate/` | +6 FAQs with schema, title | real estate translation dubai |
-| `/services/legal-translation/` | Added canonical to primary page | certified translation dubai |
+These keywords are not worth pursuing with content. Existing pages will continue to rank where they do, but no new investment.
 
-### Canonical URL Strategy
+| Keyword | Position | Why Retired |
+|---------|----------|-------------|
+| legal translation dubai | 70.33 | 15+ competitors, Al Alsun dominates with 350+ posts |
+| legal translation services dubai | 87.00 | Same competitive set, position too deep to recover |
+| translation company dubai | 28.42 | Brand keyword — competitors have decades of domain authority |
+| dubai translation services | 23.92 | Generic, low conversion intent |
 
-Instead of redirects (which lose page content), we use canonical URLs:
+### What We Keep
 
-```
-/services/legal-translation/  →  canonical: /legal-translation-dubai/
-```
-
-This consolidates ranking signals while keeping both pages accessible.
+| Keyword | Position | Impressions | Why Keep |
+|---------|----------|-------------|----------|
+| proofreading services dubai | 1.2 | 30 | Already #1. Defend position. |
+| translation services dubai | 3.8 | 87 | Strong position. Maintain, don't invest heavily. |
+| arabic translation dubai | 5.1 | 45 | Strong. Maintain. |
+| degree certificate translation dubai | 5.29 | 42 | Near top 5. Expand with MOHRE/Golden Visa angle. |
+| moj translation dubai | ~1 | - | Only #1 ranking. Core brand query. Defend. |
 
 ---
 
-## Part III: Content Gaps to Address
+## Part II: Competitive Landscape (February 2026 Audit)
 
-**Full content roadmap**: See [`CONTENT-PLAN.md`](./CONTENT-PLAN.md) for 4-week calendar and specifications.
+### The Generic Keyword Battlefield (Avoid)
 
-### Missing Content (Future)
+| Competitor | Domain Age | Content Volume | Approach |
+|------------|-----------|----------------|----------|
+| Al Alsun (alsuntranslation.com + 4 domains) | 10+ years | 350+ posts | Mass content across 5 domains |
+| CLT (clt-translate.com) | Since 1996 | 100+ pages | Enterprise brand authority |
+| AGATO (agato-translation.com) | 20+ years | 50+ pages | Industry reputation |
+| Prime Translation (primetranslation.ae) | 5+ years | 50+ pages | Mid-market content |
+| Dubai Translation Service (dubaitranslationservice.com) | Since 2002 | 30+ pages | Long-tail SEO |
 
-| Topic | Search Volume | Current State | Recommendation |
-|-------|---------------|---------------|----------------|
-| Proofreading services | High | No dedicated page | Create `/services/proofreading/` |
-| Medical translation | Medium | Basic page exists | Expand with DHA DataFlow content |
-| Arabic website localization | Medium | Digital page exists | Add SEO-focused content |
+**Verdict:** Competing here requires 5-10x our current content volume AND years of domain authority. Not viable.
 
-### FAQ Coverage Added
+### The Authority-Specific Landscape (Our Territory)
 
-| Page | FAQs Added | Schema |
-|------|------------|--------|
-| `/legal/` | 11 total | ✅ FAQPage |
-| `/industries/real-estate/` | 6 | ✅ FAQPage |
-| `/resources/authenticated-translation/` | 8 | ✅ FAQPage |
-| `/specialized/digital/` | 8 | ✅ FAQPage |
+| Authority | Who Ranks Today | Translation Company Presence | Our Strategy |
+|-----------|----------------|------------------------------|--------------|
+| **MOHRE** | HR tech (Pebl, Remote), PRO companies | 1 — Translayte.com (UK-based) | Employee-facing process guide (all existing content targets employers) |
+| **GDRFA** | PRO/Amer centers, typing centers, visa agencies | Zero | Family visa document checklist, rejection prevention |
+| **DHA** | Exam prep academies, recruitment consultancies | Zero | Post-licensing document preparation (nobody covers this phase) |
+| **MOFA** | Attestation companies (QuickAttest, GloboPrime) | Us — already ranking | Consolidate. Don't over-invest. |
+| **MOHESR** | PRO companies (attestationuae.ae, eduprime.ae) | Zero | Language-specific angle: "degree in French/Hindi/Urdu — what translation for MOHESR?" |
+| **DIFC** | International law firms (CMS, K&L Gates) | Zero | Practical translation guide for judgment enforcement (Dubai Law No. 2 of 2025) |
+| **ADJD** | Will-writing services, law firms | 1 — aburuf.ae (proves the model) | Court translation requirements + Circular No. 8 exemptions |
+| **ADGM** | Official ADGM.com only | Zero | Biggest content desert. 31% growth in registrations. |
+
+### Nationality-Specific Landscape
+
+| Nationality | Population | Content Status | Opportunity |
+|-------------|-----------|---------------|-------------|
+| Bangladeshi | 920K | Virtually zero English content | Highest ROI — massive underserved audience |
+| Egyptian | 530K | Almost nothing | Second highest ROI — biggest gap relative to population |
+| Pakistani | 2.09M | Moderate gaps | Good ROI — families underserved |
+| Filipino | 760K | DHA/healthcare only | Niche opportunity for non-healthcare workers |
+| Indian | 4.75M | Saturated | Low ROI — too competitive |
+| British | 240K | Well-served by UK apostille firms | Low ROI |
 
 ---
 
-## Part IV: Technical SEO Status
+## Part III: Technical SEO Status
 
 ### Redirects
 
-- **Total redirects**: 286 in vercel.json
-- **404 errors (GSC)**: 78 (likely stale data from before redirects)
-- **Legacy URL patterns**: All covered
-
-### Key Redirect Chains
-
-| Legacy Pattern | Destination |
-|----------------|-------------|
-| `/translation_agency_dubai/*` | Various modern pages |
-| `/onehourx-solutions-uae-translation/*` | Various modern pages |
-| `/legal-translation-services/` | `/legal-translation-dubai/` |
-| `/certified-translation/*` | Service pages |
+| Metric | Count |
+|--------|-------|
+| Total redirects in vercel.json | 309 |
+| WordPress infrastructure paths blocked (robots.txt) | 10 |
+| Legacy OnehourX brand redirects | 12 |
+| Legacy translation_agency_dubai redirects | 15+ |
 
 ### Indexing Status
 
 | Status | Count | Action |
 |--------|-------|--------|
-| Indexed | ~100 pages | ✅ OK |
-| Crawled not indexed | 10 | Monitor |
-| Discovered not indexed | 33 | Add internal links |
+| Indexed | ~100 pages | OK |
+| Crawled not indexed | 10 | New internal links from authority content should help |
+| Discovered not indexed | 33 | Authority guides will create link paths to these |
+
+### Critical Technical Issues
+
+| Issue | Severity | Status |
+|-------|----------|--------|
+| 5 Vercel staging sites indexed by Google | HIGH | Requires Vercel dashboard access — noindex headers or delete deployments |
+| Legacy WordPress pages in Google cache | MEDIUM | 309 redirects in place. Google needs to re-crawl. |
+| robots.txt WordPress blocks | DONE | wp-admin, wp-login, wp-json, xmlrpc, wp-content, wp-includes blocked |
+
+### Page Performance
+
+| Metric | Target | Current |
+|--------|--------|---------|
+| CTR crisis pages (0 clicks) | < 3 | ~5 remaining |
+| Pages in top 10 | 15 | ~10 |
+| Monthly clicks (non-brand) | 80+ | ~20 |
+| FAQ rich snippet appearances | 8+ | Unknown |
 
 ---
 
-## Part V: Monitoring Dashboard
+## Part IV: What The Data Proves
 
-### Weekly Checks
+### Validated Assumptions
 
-| Metric | Tool | Target |
-|--------|------|--------|
-| `/urdu/` CTR | GSC | >0% (currently 0%) |
-| `/legal-translation-dubai/` position | GSC | <20 (currently 21.25) |
-| "legal translation dubai" position | GSC | <30 (currently 70.33) |
-| Total site clicks | GSC | 60+/month (currently 36) |
+1. **Process-guide content works for translation companies.** aburuf.ae ranks for ADJD will registration with one guide. Translayte.com (UK) outranks Dubai-based companies for MOHRE work visa content. OnlineTranslation.ae ranks for MOFA attestation.
 
-### 8-Week Targets
+2. **Authority-specific queries have zero translation company competition.** Across 8 major UAE authorities and 40+ searches, only 3 translation companies create any process-guide content (including us).
 
-| Metric | Current | Target |
-|--------|---------|--------|
-| CTR crisis pages with clicks | 0/10 | 5/10 |
-| Legal keyword avg position | 75 | <40 |
-| Monthly clicks | 36 | 60+ |
-| Pages in top 10 | ~8 | 12+ |
+3. **Rejection prevention content doesn't exist.** Zero results across 9 targeted searches for "visa rejected + translation" or "document rejected + [authority]." Stravision.ae claims 20% rejection rate for sequencing/translation errors — the demand exists, the content doesn't.
 
-### Success Indicators
+4. **Nationality-specific document guides don't exist from translation companies.** 1.45 million Bangladeshi and Egyptian expats have virtually no English-language document content. Attestation companies create country pages, but not nationality-specific process guides.
 
-- ✅ CTR improvement on Urdu page (RTL fix)
-- ✅ Position improvement on academic transcripts
-- ⏳ Legal keyword consolidation (8+ weeks needed)
-- ⏳ Real estate FAQ rich snippets
+5. **The old approach cannot work.** "Legal translation dubai" has 15+ entrenched competitors with decades of domain authority and 5-10x our content volume. No amount of blog posts changes this math.
+
+### Open Questions (Monitor)
+
+- Will Phase 1 rejection-prevention content get indexed and earn impressions within 4 weeks?
+- Which authority queries generate the highest CTR?
+- Do nationality-specific guides attract the target audience or mostly generic traffic?
+- Is 1 substantial piece per week sufficient publishing pace?
 
 ---
 
-## Part VI: Competitor Benchmarks
+## Part V: Keyword Baseline (January 2026 GSC Data)
 
-### "Legal Translation Dubai" SERP
-
-| Competitor | Domain Authority | Content Depth | Our Gap |
-|------------|-----------------|---------------|---------|
-| Alsun | High | 3000+ words | Content depth |
-| Prime | Medium | 2000 words | Similar |
-| Al Syed | Medium | 1500 words | We're competitive |
-
-### Competitive Advantages
-
-1. **WhatsApp-first workflow** - Differentiator in CTAs
-2. **60-minute delivery** - Speed messaging
-3. **MOJ License #701** - Trust signal
-4. **Specialized pages** - DIFC, ADGM, DHA content
-
----
-
-## Part VII: Action Items (Pending)
-
-**For content creation tasks**: Follow the schedule in [`CONTENT-PLAN.md`](./CONTENT-PLAN.md)
-
-### Short-term (Next 2 weeks)
-
-- [ ] Monitor CTR changes in GSC
-- [ ] Check if Urdu page gets clicks
-- [ ] Verify FAQ rich snippets appear
-- [ ] Begin Week 1 content from CONTENT-PLAN.md
-
-### Medium-term (4-8 weeks)
-
-- [ ] Review legal keyword positions
-- [ ] Expand content if positions stagnate
-- [ ] Create `/services/proofreading/` page (Week 3 in content plan)
-
-### Long-term (8+ weeks)
-
-- [ ] Full content audit
-- [ ] Competitor content analysis
-- [ ] Backlink building for legal pages
-
----
-
-## Appendix: Key Data Reference
+Preserved for historical reference. These numbers are the baseline before the strategy pivot.
 
 ### Top 20 Keywords by Impressions
 
@@ -247,12 +183,12 @@ This consolidates ranking signals while keeping both pages accessible.
 
 | Document | Purpose |
 |----------|---------|
-| [`CONTENT-PLAN.md`](./CONTENT-PLAN.md) | Content calendar, keyword targets, publishing schedule |
-| [`CLAUDE.md`](./CLAUDE.md) | Master blueprint for content creation guidelines |
-| [`AI-AGENT-ONBOARDING.md`](./AI-AGENT-ONBOARDING.md) | Quick start for AI agents |
+| [`CONTENT-PLAN.md`](./CONTENT-PLAN.md) | Execution plan — 4 pillars, 5 phases, 19 weeks |
+| [`CLAUDE.md`](./CLAUDE.md) | Master blueprint — voice, structure, facts |
+| [`SEO_ARABIC_KEYWORDS.md`](./SEO_ARABIC_KEYWORDS.md) | Arabic keyword targets |
 
 ---
 
-*Strategy Version: 1.0*
-*Last Updated: January 9, 2026*
-*Next Review: February 2026*
+*Strategy Version: 2.0*
+*Last Updated: February 6, 2026*
+*Next Review: March 2026 (after Phase 1 results)*
