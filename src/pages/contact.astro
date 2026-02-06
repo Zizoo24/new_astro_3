@@ -118,6 +118,39 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
+  <!-- Quick Links Section -->
+  <section class="section bg-white quick-links-section">
+    <div class="container">
+      <h2>Explore Our Services</h2>
+      <div class="quick-links-grid">
+        <a href="/legal-translation-dubai/" class="quick-link">
+          <i class="fas fa-gavel"></i>
+          <span>Legal Translation</span>
+        </a>
+        <a href="/services/golden-visa-translation/" class="quick-link">
+          <i class="fas fa-passport"></i>
+          <span>Golden Visa</span>
+        </a>
+        <a href="/services/attestation/" class="quick-link">
+          <i class="fas fa-stamp"></i>
+          <span>Attestation</span>
+        </a>
+        <a href="/resources/pricing-guide/" class="quick-link">
+          <i class="fas fa-tag"></i>
+          <span>Pricing Guide</span>
+        </a>
+        <a href="/about/" class="quick-link">
+          <i class="fas fa-info-circle"></i>
+          <span>About Us</span>
+        </a>
+        <a href="/resources/faq/" class="quick-link">
+          <i class="fas fa-question-circle"></i>
+          <span>FAQ</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Location Map Section -->
   <section class="section bg-light">
     <div class="container">
@@ -428,6 +461,68 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .map-embed iframe {
     display: block;
+  }
+
+  /* Quick Links Section */
+  .quick-links-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .quick-links-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+  }
+
+  .quick-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem 1rem;
+    background: #f8f9fa;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .quick-link:hover {
+    background: var(--primary-color, #0E2B48);
+    color: #ffffff;
+    transform: translateY(-4px);
+  }
+
+  .quick-link i {
+    font-size: 1.5rem;
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .quick-link:hover i {
+    color: #ffffff;
+  }
+
+  .quick-link span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-heading, #1a202c);
+  }
+
+  .quick-link:hover span {
+    color: #ffffff;
+  }
+
+  @media (max-width: 992px) {
+    .quick-links-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .quick-links-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   @media (max-width: 768px) {
