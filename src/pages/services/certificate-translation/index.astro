@@ -10,6 +10,8 @@
  * Type: Service Page
  */
 import CategoryLayout from '../../../layouts/CategoryLayout.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+import CrossSiloLinks from '../../../components/CrossSiloLinks.astro';
 
 const breadcrumbs = [
   { label: 'Home', href: '/' },
@@ -407,6 +409,24 @@ const useCases = [
           <p>Court documents and legal certificates</p>
         </a>
       </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <RelatedServices
+        pageKey="certificateTranslation"
+        title="Related Services"
+        showFamily={true}
+        showCrossSilo={true}
+        maxItems={6}
+      />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <CrossSiloLinks pageKey="certificateTranslation" title="Explore Other Services" />
     </div>
   </section>
 

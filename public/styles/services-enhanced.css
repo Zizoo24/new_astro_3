@@ -62,7 +62,7 @@
 .title-prefix {
     display: block;
     font-size: 0.95rem;
-    color: #666;
+    color: var(--text-muted, #5a6a7a);
     font-weight: 500;
     margin-bottom: 0.75rem;
     text-transform: uppercase;
@@ -160,7 +160,7 @@
 .trust-item {
     text-align: center;
     font-size: 0.9rem;
-    color: #666;
+    color: var(--text-muted, #5a6a7a);
 }
 
 .trust-item strong {
@@ -286,7 +286,7 @@
 
 .card-features-enhanced li {
     font-size: 0.9rem;
-    color: #666;
+    color: var(--text-muted, #5a6a7a);
     padding: 0.4rem 0;
     display: flex;
     align-items: center;
@@ -507,7 +507,7 @@ body.theme-dark .service-card-v2 .card-body p {
 
 .pricing-tier-tagline {
     font-size: 0.95rem;
-    color: #666;
+    color: var(--text-muted, #5a6a7a);
     margin-bottom: 1.5rem;
     line-height: 1.5;
 }
@@ -521,7 +521,7 @@ body.theme-dark .service-card-v2 .card-body p {
 
 .pricing-tier-time-label {
     font-size: 0.85rem;
-    color: #888;
+    color: var(--text-muted, #5a6a7a);
     margin-bottom: 2rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -683,7 +683,7 @@ body.theme-dark .service-card-v2 .card-body p {
 
 .accordion-arrow {
     font-size: 0.9rem;
-    color: #666;
+    color: var(--text-muted, #5a6a7a);
     transition: transform 0.3s ease;
 }
 
@@ -852,32 +852,44 @@ body.theme-dark .service-card-v2 .card-body p {
         background: #1a1a1a;
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
     }
-    
+
     .service-card-enhanced:hover {
         box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
     }
-    
+
     .card-title-enhanced {
         color: #ffffff;
     }
-    
+
     .card-description-enhanced {
         color: #cccccc;
     }
-    
+
     .card-features-enhanced li {
         color: #aaaaaa;
     }
-    
+
     .title-main {
         color: #ffffff;
     }
-    
+
     .hero-subtitle {
         color: #cccccc;
     }
-    
+
     .trust-item {
         color: #aaaaaa;
     }
 }
+
+/* Class-based dark mode (site theme toggle) */
+.theme-dark .service-card-enhanced {
+    background: var(--surface-card, #1a1a1a);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+.theme-dark .card-title-enhanced { color: var(--text-heading, #ffffff); }
+.theme-dark .card-description-enhanced { color: var(--text-body, #cccccc); }
+.theme-dark .card-features-enhanced li { color: var(--text-muted, #aaaaaa); }
+.theme-dark .title-main { color: var(--text-heading, #ffffff); }
+.theme-dark .hero-subtitle { color: var(--text-body, #cccccc); }
+.theme-dark .trust-item { color: var(--text-muted, #aaaaaa); }

@@ -242,12 +242,17 @@ Track bugs, fixes, and known issues for OnlineTranslation.ae
   - Arabic has WASM support enabled
   - UI translations configured in `MobileShellArabic.astro`
   - Note: Arabic stemming not supported by Pagefind (library limitation, not fixable)
-- [ ] **Fix contrast ratio issues in Arabic pages** (both light/dark modes) - HIGH PRIORITY
-- [ ] **Fix contrast ratio issues in English dark mode** - MEDIUM PRIORITY
-- [ ] Audit `porto-desktop.css` for unused styles
+- [x] **Fix contrast ratio issues in Arabic pages** - RESOLVED Feb 6, 2026
+  - FAQ answer text: replaced hardcoded fallback with var(--text-body) token
+  - Mobile footer: replaced hardcoded color with theme-aware token
+- [x] **Fix contrast ratio issues in English dark mode** - RESOLVED Feb 6, 2026
+  - services-enhanced.css: added .theme-dark class selectors
+  - Replaced hardcoded #666/#888 colors with var(--text-muted) tokens
+  - Updated #666 fallbacks to WCAG AA compliant #5a6a7a in base-architecture.css
+- [x] ~~Audit `porto-desktop.css` for unused styles~~ - SCRAPPED (CSS plans removed Feb 6)
 - [x] Consolidate hero-related CSS (3 files → hero-unified.css) - Completed Feb 4, 2026
-- [ ] Review navigation CSS (3 files: navigation-glassmorphism, megamenu, porto-dropdown-onlinetranslation)
-- [ ] Evaluate CSS-in-JS or CSS modules for component styles
+- [x] ~~Review navigation CSS~~ - SCRAPPED (CSS plans removed Feb 6)
+- [x] ~~Evaluate CSS-in-JS or CSS modules~~ - SCRAPPED (CSS plans removed Feb 6)
 - [x] Upgrade build plugins (astro-min, astro-compressor) - Completed Feb 4, 2026
 - [x] Consolidate mobile platform CSS (3 files → mobile-platform.css) - Completed Feb 4, 2026
 
@@ -332,4 +337,4 @@ import compressor from 'astro-compressor';
 
 ---
 
-*Last Updated: February 6, 2026 (Fixed 10 issues: language switcher redirects, Arabic strikethrough, search visibility, desktop dark mode, desktop search, build failure, SEO titles/descriptions, internal linking across about, translator, contact, privacy, terms pages)*
+*Last Updated: February 6, 2026 — All investigation queue items resolved. CSS plans scrapped.*
