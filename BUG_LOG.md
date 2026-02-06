@@ -56,6 +56,42 @@ Track bugs, fixes, and known issues for OnlineTranslation.ae
 
 ---
 
+## Open Bugs (Reported February 6, 2026)
+
+### 1. Missing Arabic language pages cause 404 on language switch
+- **Severity:** High
+- **URL:** `/ar/russian/` (and other language pages)
+- **Issue:** Clicking language switcher on English language pages (e.g., `/russian/`) navigates to non-existent Arabic versions (e.g., `/ar/russian/`)
+- **Impact:** Users get 404 errors when trying to switch to Arabic on language-specific pages
+- **Fix Needed:** Add Vercel redirects in `vercel.json` to redirect missing `/ar/{language}/` pages to `/ar/` homepage
+
+### 2. Arabic text displays with strikethrough styling
+- **Severity:** Medium
+- **Location:** Arabic homepage hero section, specifically the coral/red badge text "لماذا تختارنا؟"
+- **Issue:** Arabic text appears with a line through it (strikethrough effect)
+- **Possible Cause:** CSS `text-decoration` rule affecting Arabic text, or font rendering issue
+- **Screenshot:** See screenshot showing strikethrough on badge text
+
+### 3. Search results visibility issue (Arabic)
+- **Severity:** Medium
+- **Location:** Search overlay/modal on Arabic pages
+- **Issue:** Search result text has yellow highlighted keywords on dark background, making text hard to read
+- **Possible Cause:** Pagefind highlight styling not adapted for dark theme
+
+### 4. Dark mode toggle not working (English desktop)
+- **Severity:** High
+- **Location:** English pages, desktop header
+- **Issue:** Clicking moon/sun icon in desktop header does not toggle dark mode
+- **Note:** Was previously fixed for Arabic mobile (#5 in Fixed Bugs) but desktop English still broken
+
+### 5. Search icon not working (English desktop)
+- **Severity:** High
+- **Location:** English pages, desktop header
+- **Issue:** Clicking search icon in desktop header does nothing
+- **Note:** Search functionality may be missing event handlers on desktop
+
+---
+
 ## Known Issues / Technical Debt
 
 ### CSS Architecture
@@ -253,4 +289,4 @@ import compressor from 'astro-compressor';
 
 ---
 
-*Last Updated: February 5, 2026 (Added Arabic search indexing bug)*
+*Last Updated: February 6, 2026 (Added 5 open bugs: language switcher 404s, Arabic strikethrough, search visibility, desktop dark mode, desktop search)*
