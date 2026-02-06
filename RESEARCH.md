@@ -559,6 +559,28 @@ Combined with DIFC Law No. 2 of 2025 (March 2025), these Q1 2025 developments si
 
 **Non-Latin script challenges**: Chinese (character-based, dual-language binding, Hukou has no Western equivalent), Japanese (Koseki family register replaces separate birth/marriage certs, three writing systems), Korean (legally mandated Certified Public Translation Attorney), Bengali (unique script, Islamic terminology overlay, transliteration inconsistencies).
 
+#### Abu Dhabi Driving License Conversion (Partner Intelligence — Feb 2026)
+
+Abu Dhabi's license conversion process differs significantly from Dubai's RTA process. Confirmed via OnlineTranslation.ae's Abu Dhabi partner:
+
+**Abu Dhabi requirements:**
+- Emirates ID (both sides)
+- Foreign driving license (both sides)
+- Video of applicant holding both sides of the license (unique to Abu Dhabi — not required in Dubai)
+- Eye test receipt from Al Jabeer or Yateem opticians specifically (not generic "approved optician")
+- Passport copy
+- Personal photo
+- Valid UAE mobile number for SMS notifications
+- Must specify transmission type (automatic vs manual)
+
+**Key differences from Dubai/RTA:**
+- Abu Dhabi process is "somewhat longer" than Dubai
+- Video verification requirement is unique — no other emirate requires this
+- Eye test limited to specific optician chains (Al Jabeer, Yateem) vs Dubai's broader RTA-approved network
+- Gear type specification required upfront
+
+**Content implication:** The existing `/personal/immigration/license/` page covers Dubai/RTA only. Expanding with Abu Dhabi-specific requirements creates genuinely differentiated content that no competitor documents. This also validates the "Abu Dhabi vs Dubai: different requirements, same country" blog post planned for Phase 5.
+
 ---
 
 ### E. Conversion Path Intelligence (Q9-Q11, Q12-Q14 — ANSWERED)

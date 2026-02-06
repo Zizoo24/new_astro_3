@@ -243,6 +243,7 @@ These existing pages are close to ranking well. Small expansions can push them h
 | `/services/golden-visa-translation/` | Exists but thin on degree angle | Add "degree translation for Golden Visa" section per zero-competition query |
 | `/legal/wills/` | Exists | Add ADJD-specific will registration process section |
 | `/legal/contracts/lease/` | Exists | Add Ejari-specific tenancy contract section |
+| `/personal/immigration/license/` | Dubai/RTA only | Add Abu Dhabi section: video requirement, Al Jabeer/Yateem opticians, gear type specification. Partner-sourced intel. |
 
 ---
 
