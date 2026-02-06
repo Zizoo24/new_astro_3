@@ -160,6 +160,12 @@ const searchIndex = [
         "keywords": "resources guides checklists help information"
     },
     {
+        "title": "Translation Type Decision Guide",
+        "url": "/resources/translation-type-decision-guide/",
+        "category": "Resources",
+        "keywords": "translation type moj certified notarized decision guide which need authority uae court gdrfa mohre difc adgm"
+    },
+    {
         "title": "Pricing Guide",
         "url": "/resources/pricing-guide/",
         "category": "Resources",
@@ -308,6 +314,18 @@ const searchIndex = [
         "url": "/resources/mohesr-equivalency/",
         "category": "Resources",
         "keywords": "mohesr equivalency degree certificate foreign qualification recognition uae ministry higher education attestation"
+    },
+    {
+        "title": "GDRFA Visa Rejected? Document Problems",
+        "url": "/blog/gdrfa-visa-document-problems/",
+        "category": "Blog",
+        "keywords": "gdrfa visa rejected documents rejection uae translation attestation family spouse visa dubai immigration residency"
+    },
+    {
+        "title": "MOHRE Work Permit Rejected: Document Issues",
+        "url": "/blog/mohre-work-permit-document-issues/",
+        "category": "Blog",
+        "keywords": "mohre work permit rejected documents employee uae tasheel nawakas degree attestation translation employment visa"
     },
     {
         "title": "PhD and DBA Translation for UAE",

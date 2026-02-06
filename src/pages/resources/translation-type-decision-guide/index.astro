@@ -1,0 +1,908 @@
+---
+/**
+ * Resource Page: Translation Type Decision Guide
+ * Target Keyword: what translation do I need UAE, MOJ vs certified
+ * Pillar: 3 (Decision Content / Right-Selling)
+ * Word Count: ~3,000 words
+ * Created: 2026-02-06
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+
+const pageTitle = "What Translation Do I Need? MOJ vs Certified vs Notarized";
+const metaDescription = "Find out which translation type you need in UAE. MOJ-certified, certified, or notarized — sorted by authority. Stop overpaying for translation you don't need.";
+
+const breadcrumbItems = [
+  { name: 'Home', url: '/' },
+  { name: 'Resources', url: '/resources/' },
+  { name: 'Translation Type Decision Guide', url: '/resources/translation-type-decision-guide/' }
+];
+
+const faqs = [
+  {
+    question: "What is MOJ-certified translation?",
+    answer: "MOJ-certified translation is performed by a translator licensed by the UAE Ministry of Justice. The translated document bears the translator's official MOJ stamp, signature, and license number. It is required for courts, most government ministries, and official proceedings. You can verify any MOJ translator's license through the MOJ Hotline 800 333333."
+  },
+  {
+    question: "What is certified translation without MOJ?",
+    answer: "Certified translation is performed by a professional translator who provides a signed declaration of accuracy, but does not hold an MOJ license. This is accepted by many private companies, banks, HR departments, and some free zone authorities. It is less expensive than MOJ-certified translation."
+  },
+  {
+    question: "What is notarized translation?",
+    answer: "Notarized translation is a certified translation that has been additionally verified by a Notary Public. The notary confirms the translator's identity and signature, not the translation quality. Some foreign embassies and specific legal contexts require notarization on top of certification."
+  },
+  {
+    question: "Do I always need MOJ translation for government submissions?",
+    answer: "Not always. DIFC and ADGM accept English documents without Arabic translation for most filings. Abu Dhabi Judicial Department exempts certain financial documents (bank statements, invoices) from translation under Circular No. 8 of 2023. And some MOHRE processes accept bilingual forms without separate translation. Check the authority-specific table in this guide."
+  },
+  {
+    question: "Can I use a certified translation from my home country in the UAE?",
+    answer: "No, for government and court submissions. UAE authorities require translation by a UAE MOJ-licensed translator. A certified translation from the UK, Germany, India, or any other country will be rejected by GDRFA, MOHRE, courts, and MOFA. For private-sector use (HR, banks), some entities may accept foreign certified translations, but this varies."
+  },
+  {
+    question: "How much does MOJ translation cost compared to certified?",
+    answer: "MOJ-certified translation starts at AED 150 per document. Certified translation (without MOJ) may start lower, typically AED 100-150 per document. The price difference is modest, but if you only need certified translation, there is no reason to pay for MOJ certification. We tell you which type you need before quoting."
+  },
+  {
+    question: "What if I'm not sure which translation type I need?",
+    answer: "Send your document and tell us where you plan to submit it. We will tell you exactly which translation type is required — MOJ, certified, or notarized — based on the receiving authority. If certified is sufficient, we won't charge you for MOJ. WhatsApp us at +971 50 862 0217."
+  },
+  {
+    question: "Does DIFC require Arabic translation?",
+    answer: "DIFC Courts operate in English and accept English documents for filings within DIFC jurisdiction. However, if you need to enforce a DIFC judgment in mainland Dubai Courts, Arabic MOJ-certified translation is required. Dubai Law No. 2 of 2025 codified this requirement."
+  },
+  {
+    question: "What about documents for banks and private companies?",
+    answer: "Most UAE banks and private companies accept certified translation without MOJ stamp. However, some banks have stricter policies and may request MOJ certification. Check with the specific institution before ordering translation. When in doubt, MOJ-certified covers all bases."
+  },
+  {
+    question: "Do I need translation for documents already in Arabic?",
+    answer: "No. If your original document is in Arabic, no translation is needed for UAE authorities. If the authority also requires English (like some DIFC or ADGM filings), you would need Arabic-to-English certified translation. Most UAE proceedings only require Arabic."
+  }
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={metaDescription}
+>
+  <Fragment slot="head">
+    <!-- FAQPage Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    })} />
+
+    <!-- Article Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": pageTitle,
+      "description": metaDescription,
+      "author": {
+        "@type": "Organization",
+        "name": "OnlineTranslation.ae",
+        "url": "https://onlinetranslation.ae"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "OnlineTranslation.ae",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://onlinetranslation.ae/assets/images/logo/brand/logo-full.png"
+        }
+      },
+      "datePublished": "2026-02-06",
+      "dateModified": "2026-02-06",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://onlinetranslation.ae/resources/translation-type-decision-guide/"
+      }
+    })} />
+  </Fragment>
+
+  <!-- Hero Section -->
+  <section class="hero-section bg-dark">
+    <div class="container">
+      <Breadcrumb items={breadcrumbItems} />
+
+      <h1>{pageTitle}</h1>
+      <p class="hero-subtitle">By Authority: Which Translation Each UAE Entity Actually Requires</p>
+
+      <p class="hero-intro">
+        Every translation company tells you to get MOJ-certified translation for everything. That is not always true. Some authorities accept certified translation without MOJ. Some accept English documents with no Arabic translation at all. This guide tells you exactly what you need, sorted by where you are submitting.
+      </p>
+
+      <div class="service-snapshot">
+        <div class="snapshot-item">
+          <i class="fas fa-gavel"></i>
+          <span>8 UAE authorities covered</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-check-circle"></i>
+          <span>When you DON'T need MOJ</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-coins"></i>
+          <span>Save AED 50-150 per document</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="section bg-white">
+    <div class="container content-container">
+
+      <p class="lead-text">
+        There are three types of translation in the UAE: MOJ-certified, certified (without MOJ), and notarized. Each serves a different purpose. Paying for MOJ when you only need certified wastes money. Submitting certified when MOJ is required wastes time. This guide eliminates the guessing.
+      </p>
+
+      <!-- The Three Types -->
+      <h2 id="three-types">The Three Translation Types</h2>
+
+      <div class="comparison-grid">
+        <div class="comparison-card moj">
+          <div class="card-header">
+            <h3>MOJ-Certified</h3>
+            <span class="card-badge">Government / Courts</span>
+          </div>
+          <div class="card-body">
+            <p><strong>What it is:</strong> Translation by a UAE Ministry of Justice licensed translator. Bears official MOJ stamp, signature, and license number.</p>
+            <p><strong>Starting price:</strong> AED 150+ per document</p>
+            <p><strong>Required by:</strong> Dubai Courts, GDRFA, MOFA, MOHRE, MOHESR, Abu Dhabi Courts</p>
+            <p><strong>Verify:</strong> MOJ Hotline 800 333333, License #701</p>
+          </div>
+        </div>
+
+        <div class="comparison-card certified">
+          <div class="card-header">
+            <h3>Certified (No MOJ)</h3>
+            <span class="card-badge">Private / Banks / HR</span>
+          </div>
+          <div class="card-body">
+            <p><strong>What it is:</strong> Translation by a professional translator with a signed accuracy declaration. No MOJ stamp.</p>
+            <p><strong>Starting price:</strong> AED 100-150 per document</p>
+            <p><strong>Accepted by:</strong> Banks, private companies, HR departments, some free zone authorities</p>
+            <p><strong>Limitation:</strong> Not accepted by courts or most government entities</p>
+          </div>
+        </div>
+
+        <div class="comparison-card notarized">
+          <div class="card-header">
+            <h3>Notarized</h3>
+            <span class="card-badge">Embassies / Specific Legal</span>
+          </div>
+          <div class="card-body">
+            <p><strong>What it is:</strong> Certified translation verified by a Notary Public. Notary confirms translator's identity, not translation quality.</p>
+            <p><strong>Starting price:</strong> AED 200+ per document (translation + notary fee)</p>
+            <p><strong>Required by:</strong> Some foreign embassies, specific cross-border legal contexts</p>
+            <p><strong>Note:</strong> Most UAE domestic submissions do not require notarization</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Authority-by-Authority Table -->
+      <h2 id="authority-table">Which Translation for Which Authority</h2>
+
+      <p>
+        This is the table that saves you money. Check where you are submitting, then confirm the translation type required.
+      </p>
+
+      <div class="table-wrapper">
+        <table class="authority-table">
+          <thead>
+            <tr>
+              <th>Authority</th>
+              <th>MOJ Required?</th>
+              <th>Arabic Required?</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Dubai Courts</strong></td>
+              <td class="yes">Yes</td>
+              <td class="yes">Yes</td>
+              <td>All documents. Clerk checks MOJ stamp at filing. <a href="/blog/court-document-translation-dubai/">Court translation guide</a></td>
+            </tr>
+            <tr>
+              <td><strong>ADJD (Abu Dhabi Courts)</strong></td>
+              <td class="yes">Yes</td>
+              <td class="yes">Yes</td>
+              <td>Exception: Circular No. 8 of 2023 exempts bank statements and invoices with numerical data</td>
+            </tr>
+            <tr>
+              <td><strong>GDRFA (Visa/Residency)</strong></td>
+              <td class="yes">Yes</td>
+              <td class="yes">Yes</td>
+              <td>All foreign-language documents for visa applications. <a href="/blog/gdrfa-visa-document-problems/">Common GDRFA document problems</a></td>
+            </tr>
+            <tr>
+              <td><strong>MOHRE (Work Permits)</strong></td>
+              <td class="yes">Yes</td>
+              <td class="yes">Yes</td>
+              <td>Academic certificates, experience letters. <a href="/blog/mohre-work-permit-document-issues/">MOHRE rejection causes</a></td>
+            </tr>
+            <tr>
+              <td><strong>MOFA (Attestation)</strong></td>
+              <td class="yes">Yes</td>
+              <td class="yes">Yes</td>
+              <td>Documents going through <a href="/resources/attestation-guide/">attestation chain</a> need translation after MOFA attestation</td>
+            </tr>
+            <tr>
+              <td><strong>MOHESR (Degree Equivalency)</strong></td>
+              <td class="yes">Yes</td>
+              <td class="yes">Yes</td>
+              <td>Foreign-language academic documents. <a href="/resources/mohesr-equivalency/">MOHESR equivalency guide</a></td>
+            </tr>
+            <tr>
+              <td><strong>DHA (Healthcare Licensing)</strong></td>
+              <td class="yes">Yes</td>
+              <td class="partial">If not in English or Arabic</td>
+              <td>DHA Manual v1.1, Section 5.7. Documents in English accepted. Other languages need MOJ translation.</td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>DIFC Courts</strong></td>
+              <td class="no">No (usually)</td>
+              <td class="no">No (within DIFC)</td>
+              <td>English common law jurisdiction. Arabic MOJ translation only needed for <a href="/blog/court-document-translation-dubai/">mainland enforcement</a></td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>ADGM Courts</strong></td>
+              <td class="no">No (usually)</td>
+              <td class="no">No (within ADGM)</td>
+              <td>English common law jurisdiction. Arabic translation needed for Abu Dhabi Courts enforcement</td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>Banks (private)</strong></td>
+              <td class="no">No (usually)</td>
+              <td class="partial">Varies</td>
+              <td>Most accept certified translation. Some request MOJ. Check with your bank first.</td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>HR / Private Companies</strong></td>
+              <td class="no">No</td>
+              <td class="partial">Varies</td>
+              <td>Certified translation sufficient. Some multinationals accept English documents without translation.</td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>Free Zones (JAFZA, DMCC, etc.)</strong></td>
+              <td class="no">No (usually)</td>
+              <td class="no">No (usually)</td>
+              <td>Most free zones operate in English. Arabic translation not required for internal free zone processes.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout-block">
+        <strong>The money-saving rows are highlighted.</strong> If you are submitting to DIFC, ADGM, a bank, a private company, or a free zone, you may not need MOJ-certified translation. That saves AED 50-150 per document. Confirm with the receiving entity before ordering.
+      </div>
+
+      <!-- When You DON'T Need MOJ -->
+      <h2 id="dont-need-moj">When You DON'T Need MOJ Certification</h2>
+
+      <p>
+        Here are the common situations where certified translation (without MOJ) is sufficient:
+      </p>
+
+      <ul>
+        <li><strong>Employment contracts for private companies:</strong> Your employer's HR department typically accepts <a href="/blog/authenticated-translation-moj-vs-certified/">certified translation</a> of your academic documents.</li>
+        <li><strong>Bank account opening:</strong> Most UAE banks accept certified translation of supporting documents. Some banks are stricter — always confirm first.</li>
+        <li><strong>Free zone company formation:</strong> JAFZA, DMCC, Dubai Internet City, and most other free zones accept English documents. Arabic translation is rarely required for internal processes.</li>
+        <li><strong>DIFC and ADGM filings:</strong> Both operate in English. No Arabic translation needed unless you are enforcing across jurisdictions.</li>
+        <li><strong>Insurance claims:</strong> Certified translation is generally accepted for medical reports and supporting documents.</li>
+        <li><strong>School enrollment:</strong> KHDA-regulated schools in Dubai typically accept certified translation of academic records.</li>
+      </ul>
+
+      <p>
+        <a href="/resources/moj-vs-certified/">Our detailed MOJ vs Certified comparison</a> covers the technical differences between the two types.
+      </p>
+
+      <!-- When You MUST Have MOJ -->
+      <h2 id="must-have-moj">When MOJ Certification Is Mandatory</h2>
+
+      <p>
+        No shortcuts here. These submissions require MOJ-certified Arabic translation:
+      </p>
+
+      <ul>
+        <li><strong>Any court filing</strong> — Dubai Courts, Abu Dhabi Courts, Federal Courts, Sharjah Courts</li>
+        <li><strong>Visa and residency applications</strong> — GDRFA, ICP</li>
+        <li><strong>Work permit applications</strong> — MOHRE, Tasheel</li>
+        <li><strong>Document attestation</strong> — MOFA attestation chain</li>
+        <li><strong>Degree equivalency</strong> — <a href="/resources/mohesr-equivalency/">MOHESR Certificate of Recognition</a></li>
+        <li><strong>Property transactions</strong> — DLD (Dubai Land Department), DMT (Abu Dhabi)</li>
+        <li><strong>Wills and estate matters</strong> — <a href="/legal/wills/">ADJD will registration</a>, probate proceedings</li>
+        <li><strong>Criminal matters</strong> — All criminal proceedings in the UAE</li>
+      </ul>
+
+      <p>
+        The legal basis: Federal Decree-Law No. 22 of 2022 regulates the translation profession. Only MOJ-registered translators may practice, and courts may reject translations from unregistered translators. Federal Decree-Law No. 42 of 2022, Article 48 requires certified Arabic translation for all foreign-language documents submitted as evidence.
+      </p>
+
+      <!-- The ADJD Exception -->
+      <h2 id="adjd-exception">The Abu Dhabi Exception: ADJD Circular No. 8</h2>
+
+      <p>
+        Abu Dhabi Judicial Department issued Circular No. 8 of 2023, which exempts certain documents from translation:
+      </p>
+
+      <ul>
+        <li>Bank statements with primarily numerical content</li>
+        <li>Invoices where the key information (amounts, dates, parties) is clear from context</li>
+      </ul>
+
+      <p>
+        This exemption applies only to ADJD proceedings in Abu Dhabi. Dubai Courts, Sharjah Courts, and Federal Courts still require full translation of all documents, including bank statements. Do not assume this exemption applies outside Abu Dhabi.
+      </p>
+
+      <!-- Decision Flowchart -->
+      <h2 id="quick-check">Quick Decision Check</h2>
+
+      <p>
+        Answer these three questions to determine your translation type:
+      </p>
+
+      <div class="decision-steps">
+        <div class="decision-step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Where are you submitting?</h3>
+            <p><strong>Court, GDRFA, MOHRE, MOFA, MOHESR, DLD?</strong> You need MOJ-certified Arabic translation. No exceptions.</p>
+            <p><strong>DIFC, ADGM, bank, private company, free zone?</strong> Continue to question 2.</p>
+          </div>
+        </div>
+
+        <div class="decision-step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Will this document ever leave the free zone or private context?</h3>
+            <p><strong>Yes</strong> (e.g., DIFC judgment enforced in mainland Dubai): Get MOJ-certified Arabic translation now. It saves a second translation later.</p>
+            <p><strong>No</strong> (stays within DIFC/ADGM/company): Continue to question 3.</p>
+          </div>
+        </div>
+
+        <div class="decision-step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Does the receiving entity specifically request MOJ?</h3>
+            <p><strong>Yes:</strong> Get MOJ-certified translation.</p>
+            <p><strong>No or unsure:</strong> Certified translation is sufficient. You can always upgrade to MOJ later if needed.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="cta-section">
+        <h2>Not Sure? Ask Us.</h2>
+        <p>
+          Send your document and tell us where you are submitting. We will tell you the exact translation type required — and if certified is enough, we will not charge you for MOJ.
+        </p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/971508620217" class="btn btn--primary">
+            <i class="fab fa-whatsapp"></i> WhatsApp Your Document
+          </a>
+          <a href="/contact/" class="btn btn--secondary">
+            Request Written Quote
+          </a>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <section id="faqs" class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-list">
+          {faqs.map((faq) => (
+            <details class="faq-item">
+              <summary class="faq-question">{faq.question}</summary>
+              <div class="faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- Related Content -->
+      <section class="related-links-section">
+        <h2>Related Guides</h2>
+        <div class="related-links">
+          <a href="/resources/moj-vs-certified/" class="related-link">
+            <i class="fas fa-balance-scale"></i>
+            <span>MOJ vs Certified: Full Technical Comparison</span>
+          </a>
+          <a href="/blog/authenticated-translation-moj-vs-certified/" class="related-link">
+            <i class="fas fa-file-alt"></i>
+            <span>Authenticated Translation: What You Actually Need</span>
+          </a>
+          <a href="/resources/notary-vs-moj-translation/" class="related-link">
+            <i class="fas fa-stamp"></i>
+            <span>Notary vs MOJ Translation: When You Need Each</span>
+          </a>
+          <a href="/blog/gdrfa-visa-document-problems/" class="related-link">
+            <i class="fas fa-passport"></i>
+            <span>GDRFA Visa Document Problems</span>
+          </a>
+          <a href="/blog/mohre-work-permit-document-issues/" class="related-link">
+            <i class="fas fa-briefcase"></i>
+            <span>MOHRE Work Permit Document Issues</span>
+          </a>
+          <a href="/services/legal-translation/" class="related-link">
+            <i class="fas fa-file-contract"></i>
+            <span>Legal Translation Services</span>
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero-section {
+    background: linear-gradient(135deg, var(--surface-navy, #0E2B48) 0%, #1a3a5c 100%);
+    color: white;
+    padding: 3rem 0 4rem;
+  }
+
+  .hero-section h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 1rem 0 0.75rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 0 1.25rem;
+    font-weight: 400;
+  }
+
+  .hero-intro {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 700px;
+    line-height: 1.6;
+    margin: 0 0 1.5rem;
+  }
+
+  .service-snapshot {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+
+  .snapshot-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .snapshot-item i {
+    color: var(--accent-coral, #FF1654);
+  }
+
+  /* Content */
+  .content-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .lead-text {
+    font-size: 1.15rem;
+    color: var(--text-secondary, #4a5568);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--surface-navy, #0E2B48);
+    margin: 2.5rem 0 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .section h2:first-of-type {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .section h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--surface-navy, #0E2B48);
+    margin: 1.5rem 0 0.75rem;
+  }
+
+  .section p {
+    color: var(--text-primary, #1a1a1a);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .section a {
+    color: var(--accent-teal, #0077b6);
+    text-decoration: underline;
+  }
+
+  .section a:hover {
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .section ul, .section ol {
+    margin: 1rem 0 1.5rem 1.5rem;
+    line-height: 1.7;
+  }
+
+  .section li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Comparison Cards */
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0 2rem;
+  }
+
+  .comparison-card {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .card-header {
+    padding: 1rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .card-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: white;
+  }
+
+  .card-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+  }
+
+  .comparison-card.moj .card-header {
+    background: var(--surface-navy, #0E2B48);
+  }
+
+  .comparison-card.certified .card-header {
+    background: var(--accent-teal, #0077b6);
+  }
+
+  .comparison-card.notarized .card-header {
+    background: #7C3AED;
+  }
+
+  .card-body {
+    padding: 1.25rem;
+    background: white;
+  }
+
+  .card-body p {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Authority Table */
+  .table-wrapper {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .authority-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  .authority-table th {
+    background: var(--surface-navy, #0E2B48);
+    color: white;
+    padding: 0.875rem 1rem;
+    text-align: left;
+    font-weight: 600;
+  }
+
+  .authority-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    vertical-align: top;
+  }
+
+  .authority-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .authority-table .yes {
+    color: var(--surface-navy, #0E2B48);
+    font-weight: 600;
+  }
+
+  .authority-table .no {
+    color: #059669;
+    font-weight: 600;
+  }
+
+  .authority-table .partial {
+    color: #d97706;
+    font-weight: 600;
+  }
+
+  .highlight-row {
+    background: #f0fdf4;
+  }
+
+  .authority-table a {
+    font-size: 0.85rem;
+  }
+
+  /* Callout Block */
+  .callout-block {
+    background: var(--bg-secondary, #f8f9fa);
+    border-left: 4px solid var(--accent-coral, #FF1654);
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .callout-block strong {
+    color: var(--surface-navy, #0E2B48);
+  }
+
+  /* Decision Steps */
+  .decision-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 1.5rem 0 2rem;
+  }
+
+  .decision-step {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .step-number {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    background: var(--surface-navy, #0E2B48);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .step-content h3 {
+    margin: 0 0 0.5rem;
+  }
+
+  .step-content p {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: var(--bg-secondary, #f8f9fa);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    margin: 2.5rem 0;
+  }
+
+  .cta-section h2 {
+    border: none;
+    padding: 0;
+    margin: 0 0 0.75rem;
+  }
+
+  .cta-section p {
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary, #4a5568);
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .btn--primary {
+    background: var(--accent-coral, #FF1654);
+    color: white;
+  }
+
+  .btn--primary:hover {
+    opacity: 0.9;
+    color: white;
+  }
+
+  .btn--secondary {
+    background: white;
+    color: var(--surface-navy, #0E2B48);
+    border: 2px solid var(--surface-navy, #0E2B48);
+  }
+
+  .btn--secondary:hover {
+    background: var(--surface-navy, #0E2B48);
+    color: white;
+  }
+
+  /* FAQ Section */
+  .faq-section {
+    margin: 2.5rem 0;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .faq-item {
+    background: var(--bg-secondary, #f8f9fa);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .faq-question {
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question::after {
+    content: '+';
+    font-size: 1.25rem;
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .faq-item[open] .faq-question::after {
+    content: '−';
+  }
+
+  .faq-answer {
+    padding: 0 1.25rem 1rem;
+    color: var(--text-secondary, #4a5568);
+  }
+
+  .faq-answer p {
+    margin: 0;
+  }
+
+  /* Related Links */
+  .related-links-section {
+    margin: 2.5rem 0 0;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .related-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .related-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    background: var(--bg-secondary, #f8f9fa);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-primary, #1a1a1a);
+    transition: all 0.2s;
+  }
+
+  .related-link:hover {
+    background: var(--surface-navy, #0E2B48);
+    color: white;
+  }
+
+  .related-link i {
+    color: var(--accent-teal, #0077b6);
+    font-size: 1.1rem;
+    min-width: 20px;
+  }
+
+  .related-link:hover i {
+    color: var(--accent-coral, #FF1654);
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 2rem 0 3rem;
+    }
+
+    .service-snapshot {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .comparison-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+    }
+
+    .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .authority-table {
+      font-size: 0.8rem;
+    }
+
+    .authority-table th,
+    .authority-table td {
+      padding: 0.5rem;
+    }
+  }
+</style>
