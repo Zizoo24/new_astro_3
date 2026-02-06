@@ -90,6 +90,26 @@ Track bugs, fixes, and known issues for OnlineTranslation.ae
 - **Fix:** Removed HTML links from FAQ answer strings in frontmatter const, using plain text instead
 - **Files:** `src/pages/ar/blog/uae-attestation-process-guide/index.astro`
 
+### 12. SEO: 51 pages with titles/descriptions exceeding Google limits
+- **Commits:** `25fe7f6`, `2083652`
+- **Issue:** 24 meta descriptions exceeded 155 chars, 35+ titles exceeded 60 chars (with suffix)
+- **Impact:** Truncated snippets in Google SERPs, reduced click-through rates
+- **Fix:** Optimized all titles and descriptions while preserving keywords:
+  - Shortened verbose Arabic/English blog post titles
+  - Condensed descriptions to essential information
+  - Fixed language pages (Bengali, Chinese, Farsi, French, Hindi, Malayalam, Russian, Tagalog, Urdu)
+  - Fixed service pages, about pages, case studies
+- **Files:** 51 pages across `src/pages/`
+
+### 13. SEO: Internal linking gaps on about pages
+- **Commit:** `3e480f0`
+- **Issue:** `/about/credentials/` and `/about/reviews/` had 0 internal links (only external links to WhatsApp/Google)
+- **Impact:** Poor internal link distribution, users couldn't navigate to services
+- **Fix:** Added internal navigation links to CTA sections:
+  - Credentials: links to translator, legal translation, services
+  - Reviews: links to legal translation, golden visa, services
+- **Files:** `src/pages/about/credentials/index.astro`, `src/pages/about/reviews/index.astro`
+
 ---
 
 ## Known Issues / Technical Debt
@@ -293,4 +313,4 @@ import compressor from 'astro-compressor';
 
 ---
 
-*Last Updated: February 6, 2026 (Fixed 6 bugs: language switcher redirects, Arabic strikethrough, search visibility, desktop dark mode, desktop search, build failure)*
+*Last Updated: February 6, 2026 (Fixed 8 issues: language switcher redirects, Arabic strikethrough, search visibility, desktop dark mode, desktop search, build failure, SEO titles/descriptions, internal linking)*
