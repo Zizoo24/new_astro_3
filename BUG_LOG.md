@@ -101,6 +101,15 @@ Track bugs, fixes, and known issues for OnlineTranslation.ae
   - Fixed service pages, about pages, case studies
 - **Files:** 51 pages across `src/pages/`
 
+### 13. SEO: Internal linking gaps on about pages
+- **Commit:** `3e480f0`
+- **Issue:** `/about/credentials/` and `/about/reviews/` had 0 internal links (only external links to WhatsApp/Google)
+- **Impact:** Poor internal link distribution, users couldn't navigate to services
+- **Fix:** Added internal navigation links to CTA sections:
+  - Credentials: links to translator, legal translation, services
+  - Reviews: links to legal translation, golden visa, services
+- **Files:** `src/pages/about/credentials/index.astro`, `src/pages/about/reviews/index.astro`
+
 ---
 
 ## Known Issues / Technical Debt
@@ -300,4 +309,4 @@ import compressor from 'astro-compressor';
 
 ---
 
-*Last Updated: February 6, 2026 (Fixed 7 issues: language switcher redirects, Arabic strikethrough, search visibility, desktop dark mode, desktop search, build failure, SEO titles/descriptions)*
+*Last Updated: February 6, 2026 (Fixed 8 issues: language switcher redirects, Arabic strikethrough, search visibility, desktop dark mode, desktop search, build failure, SEO titles/descriptions, internal linking)*
