@@ -1,0 +1,257 @@
+---
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: "هل جميع مستندات محاكم أبوظبي تحتاج ترجمة عربية؟",
+    answer: "نعم. محاكم أبوظبي (ADJD) تعمل بالقانون المدني الإماراتي واللغة العربية هي اللغة الرسمية. كل مستند بلغة أجنبية يُقدم للمحكمة يتطلب ترجمة عربية معتمدة من وزارة العدل. بدون الترجمة المعتمدة، المحكمة لا تقبل المستند."
+  },
+  {
+    question: "ما الفرق بين محاكم ADJD ومحاكم ADGM؟",
+    answer: "محاكم ADJD تعمل بالقانون المدني الإماراتي والعربية لغتها الرسمية — كل مستند أجنبي يحتاج ترجمة. محاكم ADGM تعمل بالقانون الإنجليزي العام والإنجليزية لغتها الرسمية — لا تحتاج ترجمة عربية. إذا انتقلت قضية من ADGM للمحاكم المحلية، تحتاج ترجمة كل الملفات."
+  },
+  {
+    question: "كم تستغرق ترجمة مستندات المحاكم؟",
+    answer: "المستندات القياسية (1-5 صفحات) تكتمل نفس اليوم خلال 4-6 ساعات. الأحكام والعقود الطويلة تستغرق 24-48 ساعة. ملفات القضايا الكبيرة (50+ صفحة) تحتاج 3-5 أيام. خدمة VIP ساعة واحدة متاحة للمواعيد النهائية العاجلة."
+  },
+  {
+    question: "هل تتعاملون مع قضايا الأحوال الشخصية (الطلاق والحضانة)؟",
+    answer: "نعم. قضايا الأحوال الشخصية في محاكم أبوظبي تتطلب ترجمة عقود الزواج، شهادات الميلاد، اتفاقيات الحضانة، والمراسلات. نفهم المصطلحات المتخصصة في قانون الأحوال الشخصية ونضمن الدقة في ترجمة الأسماء والتواريخ."
+  },
+  {
+    question: "ما متطلبات ترجمة تسجيل الوصايا في أبوظبي؟",
+    answer: "تسجيل الوصايا في محاكم أبوظبي يتطلب ترجمة عربية معتمدة للوصية الأصلية وأي مرفقات. هذا يختلف عن تسجيل الوصايا في DIFC الذي يقبل الإنجليزية. نترجم الوصايا مع الحفاظ على المصطلحات القانونية الدقيقة لشروط التوزيع والمستفيدين."
+  },
+  {
+    question: "هل ترجماتكم مقبولة في جميع محاكم أبوظبي؟",
+    answer: "نعم. ترجماتنا المعتمدة من وزارة العدل (رخصة رقم 701) مقبولة في جميع فروع ADJD: المحكمة الابتدائية، محكمة الاستئناف، محكمة النقض، ومحاكم الأحوال الشخصية. الختم الرسمي وتوقيع المترجم المعتمد يؤكدان صحة الترجمة."
+  },
+  {
+    question: "ما تكلفة ترجمة مستندات المحاكم؟",
+    answer: "ترجمة مستندات المحاكم تبدأ من 150 درهم للصفحة شاملة اعتماد وزارة العدل. الأحكام والعقود الطويلة تُسعر بالصفحة مع تخفيض للمستندات الكبيرة. خدمة VIP المستعجلة تضيف 50%. نقدم عرض سعر دقيق بعد مراجعة المستند."
+  },
+  {
+    question: "هل المستندات الأجنبية تحتاج تصديق قبل تقديمها لمحاكم أبوظبي؟",
+    answer: "نعم. المستندات الأجنبية تحتاج سلسلة التصديق الكاملة: توثيق في الدولة المصدرة، تصديق سفارة الإمارات، تصديق وزارة الخارجية الإماراتية. الإمارات ليست عضواً في اتفاقية لاهاي، لذا الأبوستيل وحده غير كافٍ. بعد التصديق، تحتاج ترجمة معتمدة."
+  },
+  {
+    question: "هل تتعاملون مع النزاعات التجارية في محاكم أبوظبي؟",
+    answer: "نعم. النزاعات التجارية في ADJD تتطلب ترجمة العقود والمراسلات والفواتير والبيانات المالية وتقارير الخبراء. نحتفظ بقواعد بيانات المصطلحات للقضايا المستمرة لضمان الاتساق عبر مستندات متعددة."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<BaseLayoutArabic
+  title="متطلبات الترجمة في محاكم أبوظبي ADJD | معتمدة"
+  description="دليل متطلبات الترجمة في دائرة القضاء أبوظبي ADJD. ترجمة مستندات المحاكم معتمدة من وزارة العدل. قضايا تجارية وأحوال شخصية ووصايا."
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://onlinetranslation.ae/ar/resources/adjd-translation-requirements/" />
+    <link rel="alternate" hreflang="en" href="https://onlinetranslation.ae/resources/adjd-translation-requirements/" />
+    <link rel="alternate" hreflang="ar" href="https://onlinetranslation.ae/ar/resources/adjd-translation-requirements/" />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="hero-section" dir="rtl">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="مسار التنقل">
+        <a href="/ar/">الرئيسية</a>
+        <span class="separator">&lt;</span>
+        <a href="/ar/resources/">الأدلة</a>
+        <span class="separator">&lt;</span>
+        <span class="current">ترجمة محاكم أبوظبي</span>
+      </nav>
+
+      <h1>متطلبات الترجمة في محاكم أبوظبي (ADJD)</h1>
+      <p class="hero-subtitle">ترجمة معتمدة من وزارة العدل لدائرة القضاء أبوظبي</p>
+      <div class="hero-intro">
+        <p>دائرة القضاء في أبوظبي (ADJD) تتطلب ترجمة عربية معتمدة لكل مستند بلغة أجنبية. سواء كانت قضية تجارية، أحوال شخصية، تسجيل وصية، أو نزاع عقاري — المحكمة لا تقبل مستندات غير مترجمة. نوفر <a href="/ar/services/legal-translation/">ترجمة قانونية معتمدة</a> من وزارة العدل مقبولة في جميع فروع ADJD.</p>
+      </div>
+      <div class="hero-cta">
+        <a href="https://wa.me/971508620217?text=استفسار ترجمة مستندات محاكم أبوظبي" class="btn btn--whatsapp">
+          <i class="fab fa-whatsapp"></i> واتساب
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section" dir="rtl">
+    <div class="container">
+
+      <h2>نظام محاكم أبوظبي</h2>
+      <p>ADJD هي السلطة القضائية لإمارة أبوظبي. تشمل:</p>
+      <ul>
+        <li><strong>المحكمة الابتدائية:</strong> القضايا الجديدة — تجارية، مدنية، أحوال شخصية</li>
+        <li><strong>محكمة الاستئناف:</strong> الطعن في أحكام المحكمة الابتدائية</li>
+        <li><strong>محكمة النقض:</strong> أعلى محكمة في الإمارة</li>
+        <li><strong>محاكم الأحوال الشخصية:</strong> الزواج، الطلاق، الحضانة، الميراث</li>
+      </ul>
+      <p>جميع هذه المحاكم تتطلب العربية كلغة رسمية. المادة 4 من قانون الإجراءات المدنية الإماراتي تفرض الترجمة المعتمدة لجميع المستندات بلغات أجنبية.</p>
+
+      <h2>أنواع القضايا ومتطلبات الترجمة</h2>
+
+      <h3>القضايا التجارية</h3>
+      <p>النزاعات التجارية في ADJD تتطلب ترجمة:</p>
+      <ul>
+        <li><a href="/ar/legal/contracts/">العقود والاتفاقيات</a> محل النزاع</li>
+        <li>المراسلات التجارية (إيميلات، خطابات)</li>
+        <li>الفواتير والبيانات المالية</li>
+        <li>تقارير الخبراء والمحاسبين</li>
+        <li><a href="/ar/legal/litigation/arbitration/">قرارات التحكيم</a> المطلوب تنفيذها</li>
+      </ul>
+
+      <h3>الأحوال الشخصية</h3>
+      <p>قضايا الأسرة تتطلب ترجمة مستندات حساسة:</p>
+      <ul>
+        <li><a href="/ar/personal/vital-records/marriage/">عقود الزواج</a> الأجنبية</li>
+        <li><a href="/ar/personal/vital-records/birth/">شهادات الميلاد</a> للأبناء</li>
+        <li><a href="/ar/personal/vital-records/divorce/">أحكام الطلاق</a> من دول أخرى</li>
+        <li>اتفاقيات الحضانة والنفقة</li>
+        <li>إثبات القرابة والعلاقة الأسرية</li>
+      </ul>
+
+      <h3>تسجيل الوصايا</h3>
+      <p>تسجيل <a href="/ar/legal/wills/">الوصايا</a> في محاكم أبوظبي يختلف عن تسجيلها في DIFC:</p>
+      <div class="comparison-box">
+        <div class="compare-item">
+          <h4>محاكم أبوظبي (ADJD)</h4>
+          <ul>
+            <li>اللغة: العربية مطلوبة</li>
+            <li>القانون: الشريعة الإسلامية أو القانون المدني</li>
+            <li>تحتاج ترجمة معتمدة من وزارة العدل</li>
+          </ul>
+        </div>
+        <div class="compare-item">
+          <h4>سجل وصايا DIFC</h4>
+          <ul>
+            <li>اللغة: الإنجليزية مقبولة</li>
+            <li>القانون: القانون العام (اختياري لغير المسلمين)</li>
+            <li>لا تحتاج ترجمة عربية عادةً</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>المستندات الأجنبية والتصديق</h2>
+      <p>المستندات الأجنبية المقدمة لمحاكم أبوظبي تحتاج:</p>
+      <ol>
+        <li><strong>التصديق:</strong> توثيق الدولة المصدرة ← سفارة الإمارات ← <a href="/ar/services/attestation/">وزارة الخارجية MOFA</a></li>
+        <li><strong>الترجمة:</strong> ترجمة عربية معتمدة من وزارة العدل</li>
+      </ol>
+      <div class="warning-box">
+        <p><strong>ملاحظة:</strong> الإمارات ليست عضواً في اتفاقية لاهاي للأبوستيل. ختم الأبوستيل وحده غير كافٍ — تحتاجون سلسلة التصديق الكاملة عبر السفارة ووزارة الخارجية.</p>
+      </div>
+
+      <h2>لماذا تُرفض المستندات في ADJD</h2>
+      <p>أسباب رفض الترجمات في محاكم أبوظبي:</p>
+      <ul>
+        <li><strong>ترجمة غير معتمدة:</strong> بدون ختم وزارة العدل والتوقيع الرسمي</li>
+        <li><strong>أخطاء في الأسماء:</strong> عدم تطابق الاسم المترجم مع جواز السفر أو الهوية</li>
+        <li><strong>تصديق ناقص:</strong> مستند أجنبي بدون سلسلة التصديق الكاملة</li>
+        <li><strong>مصطلحات غير دقيقة:</strong> ترجمة حرفية لا تعكس المعنى القانوني الصحيح</li>
+      </ul>
+
+      <h2>مستويات الخدمة</h2>
+      <div class="service-grid">
+        <div class="service-card">
+          <span class="service-time">ساعة واحدة</span>
+          <h3>VIP مستعجل</h3>
+          <p>مواعيد محاكم عاجلة</p>
+        </div>
+        <div class="service-card">
+          <span class="service-time">4-6 ساعات</span>
+          <h3>نفس اليوم</h3>
+          <p>مستندات 1-5 صفحات</p>
+        </div>
+        <div class="service-card">
+          <span class="service-time">24-48 ساعة</span>
+          <h3>قياسي</h3>
+          <p>مستندات طويلة</p>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <h4><i class="fas fa-shield-alt"></i> ترجمة معتمدة من وزارة العدل</h4>
+        <p>رخصة رقم 701 — أركان للترجمة القانونية. ترجماتنا مقبولة في جميع محاكم الإمارات بما فيها ADJD. <a href="/ar/resources/moj-vs-certified/">تعرفوا على الفرق بين أنواع الترجمة</a>.</p>
+      </div>
+
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-section">
+        {faqs.map(faq => (
+          <details class="faq-item" name="faq">
+            <summary>{faq.question}</summary>
+            <div class="faq-answer"><p>{faq.answer}</p></div>
+          </details>
+        ))}
+      </div>
+
+      <div class="cta-box">
+        <h3>تحتاجون ترجمة لمحاكم أبوظبي؟</h3>
+        <p>أرسلوا مستنداتكم عبر واتساب. نقدم عرض سعر وجدول زمني دقيق.</p>
+        <a href="https://wa.me/971508620217?text=أريد ترجمة مستندات محاكم أبوظبي" class="btn btn--whatsapp">
+          <i class="fab fa-whatsapp"></i> أرسلوا المستندات
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayoutArabic>
+
+<style>
+  .hero-section { background: linear-gradient(135deg, var(--primary-color, #0E2B48) 0%, #1a3a5c 100%); color: white; padding: 3rem 0; }
+  .breadcrumb { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.7); flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: white; }
+  .breadcrumb .current { color: white; }
+  .hero-section h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; margin: 0 0 0.5rem; line-height: 1.4; }
+  .hero-subtitle { font-size: 1.15rem; color: rgba(255,255,255,0.9); margin: 0 0 1.5rem; }
+  .hero-intro p { line-height: 1.8; color: rgba(255,255,255,0.9); margin-bottom: 1rem; }
+  .hero-intro a { color: rgba(255,255,255,0.9); text-decoration: underline; }
+  .hero-cta { margin-top: 2rem; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; }
+  .btn--whatsapp { background: #25D366; color: white; }
+  .content-section { padding: 4rem 0; background: var(--bg-primary, white); }
+  .content-section h2 { font-size: 1.5rem; font-weight: 700; color: var(--primary-color, #0E2B48); margin: 2.5rem 0 1rem; line-height: 1.5; }
+  .content-section h2:first-of-type { margin-top: 0; }
+  .content-section h3 { font-size: 1.2rem; font-weight: 600; color: var(--primary-color, #0E2B48); margin: 1.5rem 0 0.75rem; }
+  .content-section p { line-height: 1.8; margin-bottom: 1.5rem; }
+  .content-section ul, .content-section ol { padding-right: 1.5rem; margin-bottom: 1.5rem; }
+  .content-section li { margin-bottom: 0.5rem; line-height: 1.7; }
+  .content-section a { color: var(--accent-teal, #0077b6); text-decoration: none; }
+  .comparison-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+  .compare-item { background: #f8f9fa; padding: 1.5rem; border-radius: 8px; }
+  .compare-item h4 { font-size: 1rem; margin: 0 0 0.75rem; color: var(--primary-color); }
+  .compare-item ul { margin: 0; padding-right: 1.25rem; }
+  .compare-item li { font-size: 0.95rem; margin-bottom: 0.3rem; }
+  .warning-box { background: #fef3c7; border-right: 4px solid #f59e0b; padding: 1.25rem; border-radius: 8px 0 0 8px; margin: 1.5rem 0; }
+  .info-box { background: #e6f7ff; border-right: 4px solid #0077b6; padding: 1.25rem; border-radius: 8px 0 0 8px; margin: 2rem 0; }
+  .info-box h4 { margin: 0 0 0.5rem; color: var(--primary-color); display: flex; align-items: center; gap: 0.5rem; }
+  .info-box p { margin: 0; }
+  .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 2rem 0; }
+  .service-card { background: #f8f9fa; padding: 1.5rem; border-radius: 8px; text-align: center; }
+  .service-card .service-time { display: block; font-size: 1.25rem; font-weight: 700; color: var(--accent-color, #FF1654); margin-bottom: 0.5rem; }
+  .service-card h3 { font-size: 1rem; margin: 0 0 0.5rem; color: var(--primary-color); }
+  .service-card p { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
+  .faq-section { margin: 2rem 0; }
+  .faq-item { background: #f8f9fa; border-radius: 8px; margin-bottom: 0.75rem; }
+  .faq-item summary { padding: 1.25rem 1.5rem; cursor: pointer; font-weight: 600; color: var(--primary-color); list-style: none; display: flex; justify-content: space-between; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 1.5rem; }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-answer { padding: 0 1.5rem 1.25rem; line-height: 1.8; }
+  .cta-box { background: linear-gradient(135deg, var(--primary-color, #0E2B48) 0%, #1a3a5c 100%); color: white; padding: 2rem; border-radius: 12px; text-align: center; margin: 3rem 0; }
+  .cta-box h3 { font-size: 1.5rem; margin: 0 0 0.75rem; color: white; }
+  .cta-box p { margin: 0 0 1.5rem; color: rgba(255,255,255,0.9); }
+  @media (max-width: 768px) { .hero-section { padding: 2rem 0; } .comparison-box, .service-grid { grid-template-columns: 1fr; } }
+</style>
