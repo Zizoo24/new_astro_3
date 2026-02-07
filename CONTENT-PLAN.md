@@ -1,9 +1,10 @@
 # Content Strategy: Own the Journey (EN + AR)
 
 **Site**: OnlineTranslation.ae
-**Version**: 3.0
+**Version**: 3.1
 **Created**: February 6, 2026
-**Replaces**: v2.0 (English-only plan)
+**Updated**: February 7, 2026
+**Replaces**: v3.0 (phasing updated per keyword demand audit)
 
 ---
 
@@ -11,12 +12,20 @@
 
 The February 2026 Al Syed competitive analysis revealed a critical insight: the company that ranks #1-2 for "legal translation Dubai" in English has **zero Arabic pages**. Meanwhile, OnlineTranslation.ae already has **~82 Arabic pages** — more than any single competitor domain. The Arabic content gap is not page count, it is optimization and strategic expansion.
 
-**Key changes:**
-- Added Arabic content as a parallel track (not an afterthought at Phase 4)
-- Arabic optimization runs alongside English content creation from Week 1
-- New Arabic-specific content priorities: authority guides, blog posts, location pages
+**Key changes (v3.0 → v3.1):**
+- **Phasing reordered**: Abu Dhabi content moved from Phase 4 to Phase 2 (fewer competitors, growing ADGM demand)
+- **hreflang implementation added as Week 1 critical priority** — missing tags explain why Arabic pages aren't appearing in SERPs
+- **Google review campaign added as parallel workstream** (Alsun 256+ vs OT.ae <10)
+- **Nationality guides reordered**: Indian first (highest demand), Egyptian second, Pakistani third, Bangladeshi deprioritized
+- **Service pages before rejection prevention** in Phase 1 — direct conversion vs indirect awareness
+- **Arabic effort increased to 60%** of total content effort (from 50%)
+- **4 government keywords deprioritized** (GDRFA, MOHRE, DHA, visa rejection — zero translation company presence)
+- Arabic Google Ads identified as untapped quick-win channel
+
+**Unchanged from v3.0:**
+- Arabic content as a parallel track from Week 1
 - Target: 120+ Arabic pages by end of 19-week plan
-- Corrected competitor profiles: Al Syed (translationindubai.com) and Alsun are distinct competitors
+- "Own the Journey" English strategy for authority guides
 
 ---
 
@@ -151,19 +160,28 @@ Research validated across 40+ searches (February 2026):
 
 ## Execution Phases — Dual Track (English + Arabic)
 
-Each phase now has both an English and Arabic component running in parallel.
+Each phase has both an English and Arabic component running in parallel. **Arabic receives 60% of content effort.**
 
-### Phase 1: Rejection Prevention + Arabic Optimization (Weeks 1-3)
+### Phase 1: Technical Foundation + Service Optimization (Weeks 1-4)
 
-**English Track:**
+**Week 1 Technical Priorities (BEFORE any content work):**
+
+| # | Task | Type | Severity |
+|---|------|------|----------|
+| T1 | **Implement hreflang tags sitewide** (EN↔AR page pairs) | Technical | CRITICAL |
+| T2 | **Deindex Vercel staging sites** (replit1, manus, ot-astro2) | Technical | HIGH |
+| T3 | Verify /ar/ pages in XML sitemap | Technical | HIGH |
+| T4 | Check Arabic page indexation in GSC | Technical | HIGH |
+
+**English Track (Weeks 1-4):**
 
 | # | Content | Type | URL | Target Query |
 |---|---------|------|-----|--------------|
-| 1 | "GDRFA visa rejected? Document problems that cause delays and how to fix them" | Blog | `/blog/gdrfa-visa-document-problems/` | gdrfa visa rejected documents |
-| 2 | "MOHRE work permit rejected: common document issues employees miss" | Blog | `/blog/mohre-work-permit-document-issues/` | work permit rejected UAE |
-| 3 | "What translation type do I need? MOJ vs Certified vs Notarized — by authority" | Resource | `/resources/translation-type-decision-guide/` | what translation do I need UAE |
+| 1 | "What translation type do I need? MOJ vs Certified vs Notarized — by authority" | Resource | `/resources/translation-type-decision-guide/` | what translation do I need UAE |
+| 2 | "What is MOJ certified translation? Complete explainer" | Blog | `/blog/what-is-moj-certified-translation/` | what is MOJ translation |
+| 3 | Expand `/resources/moj-vs-certified/` with authority-specific table | Expansion | Existing page | MOJ vs certified by authority |
 
-**Arabic Track:**
+**Arabic Track (Weeks 1-4):**
 
 | # | Task | Type | Details |
 |---|------|------|---------|
@@ -171,86 +189,94 @@ Each phase now has both an English and Arabic component running in parallel.
 | A2 | Optimize Arabic homepage (title, meta, H1, hero) | SEO | Target: ترجمة قانونية معتمدة في أبوظبي |
 | A3 | Optimize Arabic legal translation page | SEO | Target: مكتب ترجمة قانونية في أبوظبي |
 | A4 | Add Arabic FAQ sections to top 5 Arabic service pages | Content | FAQPage schema in Arabic |
+| A5 | Optimize remaining Arabic service pages (batch 2 of titles/meta) | SEO | 20 more pages |
 
-**Content approach (English):**
-- Frame around the PROBLEM (rejection, delay, confusion), not the service (translation)
-- Include specific authority portal screenshots or step references where possible
-- End with "how proper translation prevents this" — natural service connection
-- Each piece 2,000-3,000 words following CLAUDE.md structure
+**Content approach:**
+- Service pages and commercial content FIRST — direct conversion path
+- Rejection prevention content moves to Phase 3-4 (indirect conversion)
+- Arabic: Use keyword formulas from `SEO_ARABIC_KEYWORDS.md`, Abu Dhabi before Dubai
 
-**Content approach (Arabic):**
-- Use keyword formulas from `SEO_ARABIC_KEYWORDS.md`
-- Abu Dhabi appears before Dubai in all title tags and meta descriptions
-- FAQ sections in natural Arabic (not machine-translated)
-- Internal links between Arabic pages (not just EN↔AR hreflang)
+**Parallel workstreams (from Day 1):**
+- Launch Google review campaign (WhatsApp post-delivery requests, QR codes)
+- Consider Arabic Google Ads for ترجمة قانونية دبي, ترجمة معتمدة دبي
+- Target: 50+ Google reviews within 6 months
 
 ---
 
-### Phase 2: Authority Process Guides + Arabic Authority Content (Weeks 4-7)
+### Phase 2: Abu Dhabi + Core Authority Guides (Weeks 5-8)
 
 **English Track:**
 
 | # | Content | Type | URL | Target Query |
 |---|---------|------|-----|--------------|
-| 4 | "GDRFA family visa: complete document checklist with translation requirements" | Resource | `/resources/gdrfa-family-visa-documents/` | GDRFA family visa documents |
-| 5 | "MOHRE work permit: the employee's guide to document preparation" | Resource | `/resources/mohre-work-permit-guide/` | MOHRE work permit documents |
-| 6 | "After DHA DataFlow: documents you need for UAE residency and licensing" | Resource | `/resources/dha-post-licensing-documents/` | DHA licensing documents |
-| 7 | "MOHESR degree equivalency: which degrees need translation and which don't" | Resource | `/resources/mohesr-degree-translation-guide/` | MOHESR translation requirements |
+| 4 | "ADGM company setup: when you need Arabic translation (and when you don't)" | Resource | `/resources/adgm-translation-requirements/` | ADGM translation requirements |
+| 5 | "ADJD court proceedings: translation requirements and exemptions" | Resource | `/resources/adjd-translation-requirements/` | ADJD court translation |
+| 6 | "Abu Dhabi vs Dubai: different translation requirements, same country" | Blog | `/blog/abu-dhabi-vs-dubai-translation-requirements/` | Abu Dhabi translation requirements |
+| 7 | "GDRFA family visa: complete document checklist with translation requirements" | Resource | `/resources/gdrfa-family-visa-documents/` | GDRFA family visa documents |
 
 **Arabic Track:**
 
 | # | Content | Type | URL | Target Query |
 |---|---------|------|-----|--------------|
-| A5 | Arabic GDRFA family visa document guide | Resource | `/ar/resources/gdrfa-family-visa-documents/` | وثائق تأشيرة العائلة الإمارات |
-| A6 | Arabic MOHRE work permit guide | Resource | `/ar/resources/mohre-work-permit-guide/` | تصريح العمل وزارة الموارد البشرية |
-| A7 | Arabic translation type decision guide | Resource | `/ar/resources/translation-type-decision-guide/` | ترجمة معتمدة أم قانونية |
-| A8 | Optimize remaining 30 Arabic page titles/meta | SEO | Apply keyword formulas |
+| A6 | Arabic Abu Dhabi landing page expansion | Location | `/ar/locations/abu-dhabi/` | ترجمة قانونية أبوظبي |
+| A7 | Arabic ADGM translation guide | Resource | `/ar/resources/adgm-translation-requirements/` | ترجمة أدغم أبوظبي |
+| A8 | Arabic ADJD court translation guide | Resource | `/ar/resources/adjd-translation-requirements/` | ترجمة محاكم أبوظبي |
+| A9 | Arabic translation type decision guide | Resource | `/ar/resources/translation-type-decision-guide/` | ترجمة معتمدة أم قانونية |
+| A10 | Optimize remaining Arabic page titles/meta (final batch) | SEO | Complete all 82 pages |
+
+**Why Abu Dhabi in Phase 2 (moved from Phase 4):**
+- Fewer competitors in Arabic for ترجمة قانونية أبوظبي (only 2-3)
+- ADGM: 31% registration increase in 2024, expanded to Al Reem Island
+- ADJD: Almost no translation companies have content here
+- OT.ae already has Abu Dhabi page with ADJD, ICA, ADGM, ADDED, TAMM, DOH mentions
 
 ---
 
-### Phase 3: Nationality-Specific Guides + Arabic Blog (Weeks 8-11)
+### Phase 3: Nationality-Specific Guides + Arabic Blog (Weeks 9-12)
 
 **English Track:**
 
 | # | Content | Type | URL | Target Query |
 |---|---------|------|-----|--------------|
-| 8 | "Bangladeshi workers in UAE: complete document translation and attestation guide" | Resource | `/resources/bangladeshi-workers-uae-documents/` | Bangladeshi documents UAE |
-| 9 | "Egyptian professionals in UAE: MOHRE and GDRFA document requirements" | Resource | `/resources/egyptian-professionals-uae-documents/` | Egyptian documents UAE |
-| 10 | "Pakistani families: UAE visa and residency document checklist" | Resource | `/resources/pakistani-families-uae-documents/` | Pakistani documents UAE |
+| 8 | "Indian degree holders: complete attestation and translation guide for UAE" | Resource | `/resources/indian-degree-attestation-uae/` | Indian degree attestation UAE |
+| 9 | "Egyptian professionals in UAE: certificate attestation and translation guide" | Resource | `/resources/egyptian-certificate-attestation-dubai/` | Egyptian certificate attestation Dubai |
+| 10 | "Pakistani marriage certificate (Nikah Nama): translation and attestation for UAE" | Resource | `/resources/pakistani-marriage-certificate-uae/` | Pakistani marriage certificate attestation UAE |
 
 **Arabic Track:**
 
 | # | Content | Type | URL | Target Query |
 |---|---------|------|-----|--------------|
-| A9 | Arabic GDRFA rejection prevention blog post | Blog | `/ar/blog/gdrfa-visa-document-problems/` | رفض التأشيرة مشاكل الوثائق |
-| A10 | Arabic MOHRE rejection prevention blog post | Blog | `/ar/blog/mohre-work-permit-document-issues/` | رفض تصريح العمل وثائق |
-| A11 | Arabic Egyptian professionals guide | Resource | `/ar/resources/egyptian-professionals-uae-documents/` | المصريون في الإمارات وثائق |
-| A12 | Optimize remaining Arabic page titles/meta (final batch) | SEO | Complete all 82 pages |
-
----
-
-### Phase 4: Niche Authority + Arabic Location Expansion (Weeks 12-15)
-
-**English Track:**
-
-| # | Content | Type | URL | Target Query |
-|---|---------|------|-----|--------------|
-| 11 | "ADGM company setup: when you need Arabic translation (and when you don't)" | Resource | `/resources/adgm-translation-requirements/` | ADGM translation requirements |
-| 12 | "DIFC judgment enforcement in Dubai Courts: the Arabic translation requirement" | Resource | `/resources/difc-judgment-translation/` | DIFC translation Dubai Courts |
-| 13 | "ADJD court proceedings: translation requirements and exemptions" | Resource | `/resources/adjd-translation-requirements/` | ADJD court translation |
-
-**Arabic Track:**
-
-| # | Content | Type | URL | Target Query |
-|---|---------|------|-----|--------------|
-| A13 | Arabic "When you don't need MOJ" blog post | Blog | `/ar/blog/when-you-dont-need-moj-certification/` | هل تحتاج ترجمة من وزارة العدل |
+| A11 | Arabic Egyptian professionals guide | Resource | `/ar/resources/egyptian-certificate-attestation-dubai/` | المصريون في الإمارات وثائق |
+| A12 | Arabic GDRFA rejection prevention blog post | Blog | `/ar/blog/gdrfa-visa-document-problems/` | رفض التأشيرة مشاكل الوثائق |
+| A13 | Arabic MOHRE rejection prevention blog post | Blog | `/ar/blog/mohre-work-permit-document-issues/` | رفض تصريح العمل وثائق |
 | A14 | Arabic "Abu Dhabi vs Dubai requirements" blog post | Blog | `/ar/blog/abu-dhabi-vs-dubai-translation-requirements/` | متطلبات الترجمة أبوظبي دبي |
-| A15 | Arabic Al Ain location page | Location | `/ar/locations/al-ain/` | ترجمة قانونية في العين |
-| A16 | Arabic Ajman location page | Location | `/ar/locations/ajman/` | مكتب ترجمة في عجمان |
+
+**Nationality guide order change:** Indian first (very high proven demand), Egyptian second (underserved + Arabic), Pakistani third (moderate demand, keyword refined to include "attestation"). Bangladeshi deprioritized for written guides — better served by video content in Bengali.
 
 ---
 
-### Phase 5: Decision Content + Arabic Neighborhood Content (Weeks 16-19)
+### Phase 4: Authority Guides + Arabic Expansion (Weeks 13-16)
+
+**English Track:**
+
+| # | Content | Type | URL | Target Query |
+|---|---------|------|-----|--------------|
+| 11 | "GDRFA visa rejected? Document problems that cause delays and how to fix them" | Blog | `/blog/gdrfa-visa-document-problems/` | gdrfa visa rejected documents |
+| 12 | "MOHRE work permit rejected: common document issues employees miss" | Blog | `/blog/mohre-work-permit-document-issues/` | work permit rejected UAE |
+| 13 | "DIFC judgment enforcement in Dubai Courts: the Arabic translation requirement" | Resource | `/resources/difc-judgment-translation/` | DIFC translation Dubai Courts |
+
+**Arabic Track:**
+
+| # | Content | Type | URL | Target Query |
+|---|---------|------|-----|--------------|
+| A15 | Arabic "When you don't need MOJ" blog post | Blog | `/ar/blog/when-you-dont-need-moj-certification/` | هل تحتاج ترجمة من وزارة العدل |
+| A16 | Arabic GDRFA family visa guide | Resource | `/ar/resources/gdrfa-family-visa-documents/` | وثائق تأشيرة العائلة الإمارات |
+| A17 | Arabic MOHRE work permit guide | Resource | `/ar/resources/mohre-work-permit-guide/` | تصريح العمل وزارة الموارد البشرية |
+| A18 | Arabic Al Ain + Ajman location pages | Location | `/ar/locations/al-ain/`, `/ar/locations/ajman/` | ترجمة قانونية العين / عجمان |
+
+---
+
+### Phase 5: Scale + Decision Content (Weeks 17-19)
 
 **English Track:**
 
@@ -258,20 +284,18 @@ Each phase now has both an English and Arabic component running in parallel.
 |---|---------|------|-----|--------------|
 | 14 | "When you DON'T need MOJ certification — and save AED 150" | Blog | `/blog/when-you-dont-need-moj-certification/` | do I need MOJ translation |
 | 15 | "Free zone vs mainland: do you actually need Arabic translation?" | Blog | `/blog/free-zone-arabic-translation-requirements/` | free zone translation requirements |
-| 16 | "Do you actually need MOHESR equivalency? Quick check" | Blog | `/blog/mohesr-equivalency-do-you-need-it/` | do I need MOHESR equivalency |
-| 17 | "Abu Dhabi vs Dubai: different translation requirements, same country" | Blog | `/blog/abu-dhabi-vs-dubai-translation-requirements/` | Abu Dhabi translation requirements |
+| 16 | "MOHRE work permit: the employee's guide to document preparation" | Resource | `/resources/mohre-work-permit-guide/` | MOHRE work permit documents |
+| 17 | "MOHESR degree equivalency: which degrees need translation and which don't" | Resource | `/resources/mohesr-degree-translation-guide/` | MOHESR translation requirements |
 
 **Arabic Track:**
 
 | # | Content | Type | URL | Target Query |
 |---|---------|------|-----|--------------|
-| A17 | Arabic free zone translation blog post | Blog | `/ar/blog/free-zone-arabic-translation-requirements/` | ترجمة المنطقة الحرة الإمارات |
-| A18 | Arabic MOHESR degree guide | Resource | `/ar/resources/mohesr-degree-translation-guide/` | معادلة الشهادات ترجمة الإمارات |
-| A19 | Arabic Ras Al Khaimah location page | Location | `/ar/locations/ras-al-khaimah/` | ترجمة قانونية رأس الخيمة |
-| A20 | Arabic Fujairah location page | Location | `/ar/locations/fujairah/` | مكتب ترجمة الفجيرة |
-| A21 | Arabic neighborhood blog: International City | Blog | `/ar/blog/translation-near-international-city/` | ترجمة قانونية المدينة العالمية |
-| A22 | Arabic neighborhood blog: Deira | Blog | `/ar/blog/translation-office-deira/` | مكتب ترجمة ديرة |
-| A23 | Arabic neighborhood blog: Karama | Blog | `/ar/blog/translation-office-karama/` | مكتب ترجمة الكرامة |
+| A19 | Arabic free zone translation blog post | Blog | `/ar/blog/free-zone-arabic-translation-requirements/` | ترجمة المنطقة الحرة الإمارات |
+| A20 | Arabic MOHESR degree guide | Resource | `/ar/resources/mohesr-degree-translation-guide/` | معادلة الشهادات ترجمة الإمارات |
+| A21 | Arabic Ras Al Khaimah + Fujairah location pages | Location | `/ar/locations/ras-al-khaimah/`, `/ar/locations/fujairah/` | ترجمة قانونية رأس الخيمة / الفجيرة |
+| A22 | Arabic neighborhood blog: International City | Blog | `/ar/blog/translation-near-international-city/` | ترجمة قانونية المدينة العالمية |
+| A23 | Arabic neighborhood blog: Deira + Karama | Blog | `/ar/blog/translation-office-deira/`, `/ar/blog/translation-office-karama/` | مكتب ترجمة ديرة / الكرامة |
 
 ---
 
@@ -344,33 +368,35 @@ These existing pages are close to ranking well. Small expansions can push them h
 
 ## Publishing Pace
 
-**Target: 2 pieces per week — 1 English + 1 Arabic.**
+**Target: 2 pieces per week — 1 English + 1.2 Arabic (60/40 split favoring Arabic).**
 
-The English piece follows the 4-pillar strategy. The Arabic piece alternates between SEO optimization of existing pages and new Arabic content creation.
+The English piece follows the 4-pillar strategy. Arabic alternates between optimization and new content. A native Arabic legal writer is recommended for Arabic content (not machine translation).
 
-| Week | English Piece | Arabic Piece |
-|------|---------------|-------------|
-| 1 | GDRFA rejection prevention | Optimize 10 Arabic page titles/meta |
-| 2 | MOHRE rejection prevention | Optimize 10 Arabic page titles/meta |
-| 3 | Translation type decision guide | Arabic FAQ sections on top 5 service pages |
-| 4 | GDRFA family visa document checklist | Arabic GDRFA family visa guide |
-| 5 | MOHRE work permit employee guide | Arabic MOHRE work permit guide |
-| 6 | DHA post-licensing documents | Arabic translation type decision guide |
-| 7 | MOHESR degree translation guide | Optimize 30 Arabic page titles/meta |
-| 8 | Bangladeshi workers guide | Arabic GDRFA rejection blog |
-| 9 | Egyptian professionals guide | Arabic MOHRE rejection blog |
-| 10 | Pakistani families guide | Arabic Egyptian professionals guide |
-| 11 | Death certificate + MOJ vs Certified expansion | Optimize final Arabic pages |
-| 12 | ADGM translation requirements | Arabic "When you don't need MOJ" blog |
-| 13 | DIFC judgment translation | Arabic "Abu Dhabi vs Dubai" blog |
-| 14 | ADJD court translation | Arabic Al Ain + Ajman location pages |
-| 15 | Golden Visa + lease/Ejari expansion | Arabic MOHESR degree guide |
-| 16 | When you DON'T need MOJ | Arabic free zone translation blog |
-| 17 | Free zone vs mainland translation | Arabic Ras Al Khaimah + Fujairah pages |
-| 18 | MOHESR equivalency — do you need it? | Arabic neighborhood blog: International City |
-| 19 | Abu Dhabi vs Dubai requirements | Arabic neighborhood blogs: Deira + Karama |
+| Week | English Piece | Arabic Piece | Parallel |
+|------|---------------|-------------|----------|
+| 1 | **TECHNICAL: hreflang + staging deindex** | Optimize 20 Arabic page titles/meta | Review campaign launch |
+| 2 | Translation type decision guide | Arabic homepage + legal page optimization | Arabic PPC setup |
+| 3 | MOJ explainer blog post | Arabic FAQ sections on top 5 service pages | |
+| 4 | MOJ vs Certified page expansion | Optimize 20 more Arabic pages | |
+| 5 | ADGM translation requirements | Arabic Abu Dhabi landing page | |
+| 6 | ADJD court translation guide | Arabic ADGM translation guide | |
+| 7 | Abu Dhabi vs Dubai requirements | Arabic ADJD court guide | |
+| 8 | GDRFA family visa checklist | Arabic translation type decision guide + final Arabic optimizations | |
+| 9 | Indian degree attestation UAE | Arabic Egyptian professionals guide | |
+| 10 | Egyptian certificate attestation | Arabic GDRFA rejection blog | |
+| 11 | Pakistani marriage certificate | Arabic MOHRE rejection blog | |
+| 12 | Death certificate + Golden Visa expansion | Arabic Abu Dhabi vs Dubai blog | |
+| 13 | GDRFA rejection prevention | Arabic "When you don't need MOJ" blog | |
+| 14 | MOHRE rejection prevention | Arabic GDRFA family visa guide | |
+| 15 | DIFC judgment translation | Arabic MOHRE work permit guide + Al Ain/Ajman pages | |
+| 16 | When you DON'T need MOJ | Arabic free zone translation blog | |
+| 17 | Free zone vs mainland | Arabic MOHESR degree guide + RAK/Fujairah pages | |
+| 18 | MOHRE work permit guide | Arabic International City neighborhood blog | |
+| 19 | MOHESR degree equivalency | Arabic Deira + Karama neighborhood blogs | |
 
-**Total new content: 17 English pieces + 23 Arabic tasks (mix of new pages and optimization)**
+**Total: 17 English pieces + 23 Arabic tasks + 4 Week 1 technical fixes + review campaign**
+
+**Staffing recommendation:** English and Arabic content by separate writers. One person across both languages caps at ~2.1 pieces/week — quality degrades after Week 12.
 
 ---
 
@@ -502,16 +528,50 @@ For major new sections:
 
 ---
 
-## Technical Issues (Parallel Track)
+## Technical Issues (Week 1 Priorities)
 
-These require human action outside the codebase:
+These must be resolved BEFORE content creation begins:
 
-| Issue | Impact | Action Required |
-|-------|--------|-----------------|
-| 5 Vercel staging sites indexed by Google | Duplicate content, brand confusion | Add X-Robots-Tag: noindex in Vercel dashboard OR delete deployments |
-| Legacy WordPress pages in Google cache | Contradictory branding | Redirects added (309 total). Monitor GSC. |
-| Arabic /ar/ page indexation status unknown | Arabic strategy depends on indexed pages | Check GSC for /ar/ page coverage immediately |
-| Arabic pages may not be in sitemap | Crawl discovery issues for Arabic content | Verify @astrojs/sitemap includes /ar/ pages |
+| Issue | Impact | Action Required | Deadline |
+|-------|--------|-----------------|----------|
+| **hreflang tags missing sitewide** | Arabic pages can't surface in Arabic SERPs | Implement EN↔AR hreflang in BaseLayout + BaseLayoutArabic templates | **Week 1** |
+| **Vercel staging sites indexed** | Duplicate content penalty risk | Add X-Robots-Tag: noindex in Vercel dashboard OR delete deployments | **Week 1** |
+| Arabic /ar/ page indexation unknown | Can't measure Arabic strategy impact | Check GSC for /ar/ page coverage immediately | **Week 1** |
+| Arabic pages may not be in sitemap | Crawl discovery issues | Verify @astrojs/sitemap includes /ar/ pages | **Week 1** |
+| Legacy WordPress pages in Google cache | Contradictory branding | Redirects added (309 total). Monitor GSC. | Monitor |
+
+## Google Review Campaign (Parallel from Day 1)
+
+**The problem:** Alsun has 256+ reviews at 4.9 stars. OnlineTranslation.ae has fewer than 10. This 25:1 gap undermines local pack rankings, consumer trust, and brand credibility. No amount of content overcomes this.
+
+**The fix (fits naturally into WhatsApp-first model):**
+
+| Tactic | Implementation | Timeline |
+|--------|---------------|----------|
+| WhatsApp post-delivery review request | Automated message after document delivery | Week 1 |
+| QR code on delivered documents | Link to Google review page | Week 2 |
+| Follow-up WhatsApp message (48hrs) | Gentle reminder if no review | Week 2 |
+| Trustpilot profile setup | Alsun has only 7 Trustpilot reviews — easy to overtake | Week 3 |
+
+**Targets:**
+- 50+ Google reviews within 6 months
+- 20+ Trustpilot reviews within 6 months
+- Maintain 4.8+ star average
+
+## Arabic Google Ads (Quick Win — Parallel Track)
+
+Arabic PPC is significantly less saturated than English. Only 3-4 competitors have Arabic landing pages suitable for Arabic ad campaigns.
+
+**Recommended test campaigns:**
+
+| Arabic Keyword | Landing Page | Expected CPC |
+|---------------|-------------|--------------|
+| ترجمة قانونية دبي | `/ar/services/legal-translation/` | Lower than EN equivalent |
+| ترجمة معتمدة دبي | `/ar/services/certified-translation/` | Lower than EN equivalent |
+| مكتب ترجمة دبي | `/ar/` (homepage) | Lower than EN equivalent |
+| ترجمة قانونية أبوظبي | `/ar/locations/abu-dhabi/` | Very low competition |
+
+**Budget:** Start with small daily budget, measure CPA vs organic. OnlineTranslation.ae's 82 Arabic pages provide natural landing pages.
 
 ---
 
@@ -527,6 +587,6 @@ These require human action outside the codebase:
 
 ---
 
-*Strategy Version: 3.0*
-*Last Updated: February 6, 2026*
+*Strategy Version: 3.1*
+*Last Updated: February 7, 2026*
 *Next Review: March 2026 (after Phase 1 validation)*
