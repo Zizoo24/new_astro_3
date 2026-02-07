@@ -1,0 +1,252 @@
+---
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: "هل تحتاج شركات ADGM ترجمة عربية لتسجيلها؟",
+    answer: "لا. سوق أبوظبي العالمي يعمل بالقانون الإنجليزي العام والإنجليزية هي اللغة الرسمية. التسجيل والتراخيص والتقارير كلها بالإنجليزية. لكن عند التعامل مع جهات اتحادية إماراتية مثل MOHRE أو GDRFA أو البنوك المحلية، تحتاج ترجمة عربية معتمدة من وزارة العدل."
+  },
+  {
+    question: "متى تحتاج شركة ADGM ترجمة عربية؟",
+    answer: "تحتاج ترجمة عربية في 4 حالات: (1) تأشيرات الموظفين عبر MOHRE وGDRFA، (2) فتح حسابات بنكية محلية، (3) تقديم دعاوى في محاكم أبوظبي أو دبي (خارج محاكم ADGM)، (4) تسجيل عقارات لدى بلدية أبوظبي أو دائرة الأراضي. داخل ADGM نفسه، الإنجليزية كافية."
+  },
+  {
+    question: "ما الفرق بين محاكم ADGM والمحاكم المحلية من حيث الترجمة؟",
+    answer: "محاكم ADGM تعمل بالإنجليزية حصرياً — لا تحتاج ترجمة عربية للملفات القضائية فيها. المحاكم المحلية (محاكم أبوظبي/ADJD ومحاكم دبي) تتطلب ترجمة عربية معتمدة من وزارة العدل لكل مستند أجنبي. إذا انتقلت قضية من ADGM للمحاكم المحلية، تحتاج ترجمة كل المستندات."
+  },
+  {
+    question: "هل رخصة ADGM تحتاج ترجمة للبنوك؟",
+    answer: "معظم البنوك الإماراتية تقبل رخصة ADGM بالإنجليزية لفتح حسابات الشركات. لكن بعض البنوك المحلية تطلب ترجمة عربية معتمدة خاصة لعقد التأسيس وقرارات مجلس الإدارة. نُرشدكم حسب متطلبات البنك المحدد."
+  },
+  {
+    question: "كيف تتم ترجمة عقد تأسيس شركة ADGM؟",
+    answer: "نترجم عقد التأسيس مع الحفاظ على المصطلحات القانونية الإنجليزية الدقيقة بما يعادلها في القانون الإماراتي. أسماء المساهمين تُكتب بالعربية مطابقة لجوازات السفر والهويات الإماراتية. الترجمة تحصل على اعتماد وزارة العدل مع ختم رسمي."
+  },
+  {
+    question: "ما تكلفة ترجمة مستندات ADGM؟",
+    answer: "رخصة ADGM تبدأ من 200 درهم. عقد التأسيس من 300 درهم حسب الطول. حزمة فتح الحساب البنكي (رخصة + عقد تأسيس + قرار) من 600 درهم. تأشيرات الموظفين 150 درهم للمستند. نقدم عرض سعر دقيق بعد مراجعة المستندات."
+  },
+  {
+    question: "كم تستغرق ترجمة مستندات ADGM؟",
+    answer: "الرخصة التجارية تكتمل في 4-6 ساعات. عقد التأسيس يستغرق 24 ساعة. حزمة فتح حساب بنكي كاملة خلال 2-3 أيام. خدمة مستعجلة نفس اليوم متاحة بإضافة 50%."
+  },
+  {
+    question: "هل توسع ADGM يؤثر على متطلبات الترجمة؟",
+    answer: "توسع ADGM إلى جزيرة الريم في 2024 وزيادة التسجيلات بنسبة 31% يعني المزيد من الشركات تحتاج خدمات ترجمة للتعامل مع الجهات الاتحادية. المتطلبات نفسها لم تتغير — ADGM بالإنجليزية والجهات الاتحادية بالعربية."
+  },
+  {
+    question: "هل مستندات ADGM الأجنبية تحتاج تصديق؟",
+    answer: "المستندات الصادرة من ADGM نفسه لا تحتاج تصديق للاستخدام داخل الإمارات. المستندات الأجنبية المقدمة لـ ADGM أو للجهات الاتحادية تحتاج تصديق. الإمارات ليست عضواً في اتفاقية لاهاي، لذا المستندات الأجنبية تحتاج سلسلة تصديق: السفارة + وزارة الخارجية."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<BaseLayoutArabic
+  title="متطلبات الترجمة في سوق أبوظبي العالمي ADGM"
+  description="دليل شامل لمتطلبات الترجمة في ADGM أبوظبي. متى تحتاج ترجمة عربية ومتى الإنجليزية كافية. ترجمة معتمدة من وزارة العدل."
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://onlinetranslation.ae/ar/resources/adgm-translation-requirements/" />
+    <link rel="alternate" hreflang="en" href="https://onlinetranslation.ae/resources/adgm-translation-requirements/" />
+    <link rel="alternate" hreflang="ar" href="https://onlinetranslation.ae/ar/resources/adgm-translation-requirements/" />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="hero-section" dir="rtl">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="مسار التنقل">
+        <a href="/ar/">الرئيسية</a>
+        <span class="separator">&lt;</span>
+        <a href="/ar/resources/">الأدلة</a>
+        <span class="separator">&lt;</span>
+        <span class="current">ترجمة ADGM</span>
+      </nav>
+
+      <h1>متطلبات الترجمة في سوق أبوظبي العالمي (ADGM)</h1>
+      <p class="hero-subtitle">متى تحتاج ترجمة عربية ومتى الإنجليزية كافية</p>
+      <div class="hero-intro">
+        <p>سوق أبوظبي العالمي (ADGM) يعمل بالقانون الإنجليزي العام. اللغة الإنجليزية هي اللغة الرسمية داخل المنطقة الحرة. لكن عند تعامل شركتكم مع الجهات الاتحادية الإماراتية — التأشيرات، البنوك، المحاكم المحلية — تحتاجون ترجمة عربية معتمدة من وزارة العدل.</p>
+      </div>
+      <div class="hero-cta">
+        <a href="https://wa.me/971508620217?text=استفسار ترجمة مستندات ADGM" class="btn btn--whatsapp">
+          <i class="fab fa-whatsapp"></i> واتساب
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section" dir="rtl">
+    <div class="container">
+
+      <h2>ADGM: منطقة حرة بقانون مختلف</h2>
+      <p>سوق أبوظبي العالمي ليس منطقة حرة عادية. يطبق القانون العام الإنجليزي بدلاً من القانون المدني الإماراتي. هذا يعني:</p>
+      <ul>
+        <li>اللغة الرسمية <strong>إنجليزية</strong> داخل ADGM</li>
+        <li>محاكم ADGM تعمل بالإنجليزية حصرياً</li>
+        <li>التسجيل والتراخيص والتقارير كلها بالإنجليزية</li>
+        <li>لكن الجهات الاتحادية خارج ADGM تتطلب العربية</li>
+      </ul>
+      <p>هذا الفارق يسبب ارتباكاً للشركات الجديدة. نوضح بالضبط متى تحتاجون ترجمة ومتى لا.</p>
+
+      <h2>متى تحتاج ترجمة عربية</h2>
+      <div class="needs-grid">
+        <div class="need-card yes">
+          <h3><i class="fas fa-check-circle"></i> تحتاج ترجمة عربية</h3>
+          <ul>
+            <li><strong>تأشيرات الموظفين:</strong> MOHRE وGDRFA تتطلب مستندات عربية لإصدار تأشيرات العمل وتصاريح الإقامة</li>
+            <li><strong>فتح حسابات بنكية:</strong> بعض البنوك تطلب ترجمة <a href="/ar/legal/corporate/moa/">عقد التأسيس</a> و<a href="/ar/legal/corporate/license/">الرخصة التجارية</a></li>
+            <li><strong>المحاكم المحلية:</strong> أي نزاع أمام <a href="/ar/resources/adjd-translation-requirements/">محاكم أبوظبي (ADJD)</a> أو محاكم دبي يتطلب ترجمة عربية معتمدة</li>
+            <li><strong>العقارات:</strong> تسجيل الملكية لدى بلدية أبوظبي أو <a href="/ar/services/title-deed-translation-dubai/">دائرة الأراضي والأملاك</a></li>
+            <li><strong>التصديق:</strong> أي <a href="/ar/services/attestation/">مستند أجنبي</a> يحتاج سلسلة التصديق</li>
+          </ul>
+        </div>
+        <div class="need-card no">
+          <h3><i class="fas fa-times-circle"></i> الإنجليزية كافية</h3>
+          <ul>
+            <li>تسجيل الشركة في ADGM</li>
+            <li>إصدار وتجديد رخصة ADGM</li>
+            <li>محاكم ADGM (قضايا داخل المنطقة)</li>
+            <li>التقارير التنظيمية لـ FSRA</li>
+            <li>المراسلات الداخلية والعقود بين شركات ADGM</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>توسع ADGM وتأثيره على الترجمة</h2>
+      <p>في 2024، توسع ADGM إلى جزيرة الريم مع زيادة 31% في التسجيلات. هذا يعني شركات أكثر تحتاج خدمات ترجمة للتعامل مع الجهات الإماراتية.</p>
+      <p>المتطلبات لم تتغير — ADGM يبقى إنجليزي والجهات الاتحادية تبقى عربية. لكن العدد المتزايد من الشركات يجعل فهم هذا الفارق أهم من أي وقت.</p>
+
+      <h2>مستندات ADGM الشائعة وأوقات الترجمة</h2>
+      <div class="doc-grid">
+        <div class="doc-card">
+          <h3>الرخصة التجارية</h3>
+          <p>البنوك، MOHRE، التأشيرات</p>
+          <p class="doc-time">4-6 ساعات</p>
+        </div>
+        <div class="doc-card">
+          <h3><a href="/ar/legal/corporate/moa/">عقد التأسيس</a></h3>
+          <p>البنوك، المحاكم، الشركاء</p>
+          <p class="doc-time">24 ساعة</p>
+        </div>
+        <div class="doc-card">
+          <h3><a href="/ar/legal/corporate/resolution/">قرار مجلس الإدارة</a></h3>
+          <p>تغيير المفوضين بالتوقيع</p>
+          <p class="doc-time">4-6 ساعات</p>
+        </div>
+        <div class="doc-card">
+          <h3><a href="/ar/legal/corporate/poa/">التوكيلات</a></h3>
+          <p>المحاكم، البنوك، العقارات</p>
+          <p class="doc-time">نفس اليوم</p>
+        </div>
+      </div>
+
+      <h2>التصديق للمستندات الأجنبية</h2>
+      <p>المستندات الصادرة من ADGM نفسه لا تحتاج تصديق للاستخدام داخل الإمارات.</p>
+      <p>المستندات الأجنبية (شهادات الدرجات، عقود التأسيس الأجنبية، إلخ) تحتاج سلسلة تصديق:</p>
+      <ol>
+        <li>توثيق في الدولة المصدرة</li>
+        <li>تصديق سفارة الإمارات في تلك الدولة</li>
+        <li>تصديق وزارة الخارجية الإماراتية (MOFA)</li>
+      </ol>
+      <div class="warning-box">
+        <p><strong>ملاحظة:</strong> الإمارات ليست عضواً في اتفاقية لاهاي للأبوستيل. لا يمكن استخدام ختم الأبوستيل بدلاً من سلسلة التصديق الكاملة. اقرأوا المزيد عن <a href="/ar/services/attestation/">خدمات التصديق</a>.</p>
+      </div>
+
+      <h2>الفرق بين ADGM وDIFC</h2>
+      <p>ADGM في أبوظبي وDIFC في دبي — كلاهما منطقتان حرتان بالقانون الإنجليزي العام. من حيث الترجمة، المتطلبات متشابهة:</p>
+      <ul>
+        <li>داخل المنطقة الحرة: الإنجليزية كافية</li>
+        <li>خارج المنطقة (جهات اتحادية): تحتاج ترجمة عربية</li>
+        <li>الفارق: ADGM يتعامل مع <a href="/ar/locations/abu-dhabi/">سلطات أبوظبي</a>، DIFC مع سلطات دبي</li>
+      </ul>
+
+      <h2>كيف نساعد شركات ADGM</h2>
+      <p>نتعامل مع شركات ADGM بشكل منتظم. نفهم أي مستندات تحتاج ترجمة وأيها لا تحتاج. هذا يوفر عليكم المال والوقت.</p>
+      <ul>
+        <li>نُرشدكم قبل الدفع — لا نترجم ما لا تحتاجونه</li>
+        <li><a href="/ar/services/legal-translation/">ترجمة قانونية معتمدة</a> من وزارة العدل مع ختم رسمي</li>
+        <li><a href="/ar/services/corporate-translation/">ترجمة مستندات الشركات</a> بمصطلحات ADGM الصحيحة</li>
+        <li>تنسيق <a href="/ar/services/attestation/">التصديق</a> للمستندات الأجنبية</li>
+      </ul>
+
+      <h2>الأسئلة الشائعة</h2>
+      <div class="faq-section">
+        {faqs.map(faq => (
+          <details class="faq-item" name="faq">
+            <summary>{faq.question}</summary>
+            <div class="faq-answer"><p>{faq.answer}</p></div>
+          </details>
+        ))}
+      </div>
+
+      <div class="cta-box">
+        <h3>تحتاجون ترجمة لمستندات ADGM؟</h3>
+        <p>أرسلوا مستنداتكم عبر واتساب. نؤكد ما يحتاج ترجمة ونقدم عرض سعر خلال دقائق.</p>
+        <a href="https://wa.me/971508620217?text=أريد ترجمة مستندات ADGM" class="btn btn--whatsapp">
+          <i class="fab fa-whatsapp"></i> أرسلوا المستندات
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayoutArabic>
+
+<style>
+  .hero-section { background: linear-gradient(135deg, var(--primary-color, #0E2B48) 0%, #1a3a5c 100%); color: white; padding: 3rem 0; }
+  .breadcrumb { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.7); flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: white; }
+  .breadcrumb .current { color: white; }
+  .hero-section h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; margin: 0 0 0.5rem; line-height: 1.4; }
+  .hero-subtitle { font-size: 1.15rem; color: rgba(255,255,255,0.9); margin: 0 0 1.5rem; }
+  .hero-intro p { line-height: 1.8; color: rgba(255,255,255,0.9); margin-bottom: 1rem; }
+  .hero-cta { margin-top: 2rem; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; }
+  .btn--whatsapp { background: #25D366; color: white; }
+  .content-section { padding: 4rem 0; background: var(--bg-primary, white); }
+  .content-section h2 { font-size: 1.5rem; font-weight: 700; color: var(--primary-color, #0E2B48); margin: 2.5rem 0 1rem; line-height: 1.5; }
+  .content-section h2:first-of-type { margin-top: 0; }
+  .content-section p { line-height: 1.8; margin-bottom: 1.5rem; }
+  .content-section ul, .content-section ol { padding-right: 1.5rem; margin-bottom: 1.5rem; }
+  .content-section li { margin-bottom: 0.5rem; line-height: 1.7; }
+  .content-section a { color: var(--accent-teal, #0077b6); text-decoration: none; }
+  .needs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .need-card { padding: 1.5rem; border-radius: 8px; }
+  .need-card.yes { background: #e6f7ff; border-right: 4px solid #0077b6; }
+  .need-card.no { background: #f0fdf4; border-right: 4px solid #059669; }
+  .need-card h3 { font-size: 1.1rem; margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem; }
+  .need-card.yes h3 { color: #0077b6; }
+  .need-card.no h3 { color: #059669; }
+  .need-card ul { margin: 0; padding-right: 1.25rem; }
+  .need-card li { margin-bottom: 0.4rem; font-size: 0.95rem; }
+  .doc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin: 2rem 0; }
+  .doc-card { background: #f8f9fa; padding: 1.5rem; border-radius: 8px; border-right: 4px solid var(--accent-color, #FF1654); }
+  .doc-card h3 { font-size: 1.1rem; margin: 0 0 0.5rem; color: var(--primary-color); }
+  .doc-card h3 a { color: var(--primary-color); }
+  .doc-card p { font-size: 0.9rem; color: var(--text-muted); margin: 0 0 0.25rem; }
+  .doc-card .doc-time { color: #059669; font-weight: 600; }
+  .warning-box { background: #fef3c7; border-right: 4px solid #f59e0b; padding: 1.25rem; border-radius: 8px 0 0 8px; margin: 1.5rem 0; }
+  .faq-section { margin: 2rem 0; }
+  .faq-item { background: #f8f9fa; border-radius: 8px; margin-bottom: 0.75rem; }
+  .faq-item summary { padding: 1.25rem 1.5rem; cursor: pointer; font-weight: 600; color: var(--primary-color); list-style: none; display: flex; justify-content: space-between; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 1.5rem; }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-answer { padding: 0 1.5rem 1.25rem; line-height: 1.8; }
+  .cta-box { background: linear-gradient(135deg, var(--primary-color, #0E2B48) 0%, #1a3a5c 100%); color: white; padding: 2rem; border-radius: 12px; text-align: center; margin: 3rem 0; }
+  .cta-box h3 { font-size: 1.5rem; margin: 0 0 0.75rem; color: white; }
+  .cta-box p { margin: 0 0 1.5rem; color: rgba(255,255,255,0.9); }
+  @media (max-width: 768px) { .hero-section { padding: 2rem 0; } .needs-grid, .doc-grid { grid-template-columns: 1fr; } }
+</style>
