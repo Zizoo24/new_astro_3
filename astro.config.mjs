@@ -41,7 +41,9 @@ export default defineConfig({
           '/404',
           '/thank-you',
           '/offline',
-          '/private/'
+          '/private/',
+          '/%D8%B9%D8%B1%D8%A8%D9%8A/',  // /عربي/ legacy redirect
+          '/عربي/'
         ];
         return !excludePatterns.some(pattern => page.includes(pattern));
       },
@@ -51,6 +53,11 @@ export default defineConfig({
           // Homepage
           if (item.url === 'https://onlinetranslation.ae/') {
             item.priority = 1.0;
+            item.changefreq = 'daily';
+          }
+          // Arabic homepage
+          else if (item.url === 'https://onlinetranslation.ae/ar/') {
+            item.priority = 0.9;
             item.changefreq = 'daily';
           }
           // Service hub pages

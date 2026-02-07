@@ -1,0 +1,302 @@
+---
+/**
+ * Blog Post: When You Don't Need MOJ Certification (Arabic)
+ * Target Keyword: هل تحتاج ترجمة من وزارة العدل
+ */
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const pageTitle = "متى لا تحتاجون ترجمة وزارة العدل — ووفروا 150 درهم";
+const metaDescription = "ليست كل الترجمات تحتاج اعتماد وزارة العدل. تعرفوا متى تكفي الترجمة المعتمدة ومتى تحتاجون ختم وزارة العدل في أبوظبي ودبي.";
+
+const publishDate = "2026-02-07";
+const readTime = "7 دقائق قراءة";
+
+const faqs = [
+  {
+    q: "ما الفرق بين ترجمة وزارة العدل والترجمة المعتمدة؟",
+    a: "ترجمة وزارة العدل تحمل ختم مترجم مرخص من الوزارة وتُقبل في المحاكم والجهات الحكومية. الترجمة المعتمدة (certified) تحمل شهادة دقة من المترجم لكن بدون ختم الوزارة. تكفي للبنوك والشركات الخاصة والجامعات."
+  },
+  {
+    q: "هل البنوك تقبل الترجمة المعتمدة بدون ختم وزارة العدل؟",
+    a: "نعم في معظم الحالات. البنوك الإماراتية (ENBD، ADCB، FAB وغيرها) تقبل الترجمات المعتمدة لفتح الحسابات وطلبات القروض. الاستثناء: إذا كان البنك يطلب مستنداً للتقديم لجهة حكومية نيابة عنكم."
+  },
+  {
+    q: "هل DIFC وADGM يحتاجون ترجمة وزارة العدل؟",
+    a: "لا. DIFC وADGM يعملون بالإنجليزية. المستندات الإنجليزية مقبولة مباشرة. الترجمة العربية مطلوبة فقط عند تقديم المستند لجهة خارج المنطقة الحرة (مثل محاكم دبي أو ADJD)."
+  },
+  {
+    q: "هل الشركات الخاصة تطلب ترجمة وزارة العدل؟",
+    a: "نادراً. معظم الشركات الخاصة وأقسام HR تقبل الترجمات المعتمدة. الترجمة المعتمدة أرخص وأسرع وتكفي للاستخدام الداخلي. الاستثناء: إذا كانت الشركة تقدم المستند لجهة حكومية."
+  },
+  {
+    q: "متى أحتاج ترجمة وزارة العدل حتماً؟",
+    a: "المحاكم (محاكم دبي، ADJD، المحاكم الاتحادية)، GDRFA (التأشيرات)، MOHRE (تصاريح العمل)، MOFA (التصديق)، DLD (العقارات)، والنيابة العامة. كل جهة حكومية تتطلب ختم وزارة العدل."
+  },
+  {
+    q: "هل يمكن تحويل ترجمة معتمدة إلى ترجمة وزارة العدل؟",
+    a: "لا. يجب إعادة الترجمة بالكامل بواسطة مترجم مرخص من وزارة العدل. لكن إذا بدأتم معنا بترجمة معتمدة واحتجتم ترقيتها لاحقاً، نقدم سعراً مخفضاً لأن المحتوى جاهز."
+  }
+];
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": pageTitle,
+  "description": metaDescription,
+  "inLanguage": "ar",
+  "datePublished": publishDate,
+  "dateModified": publishDate,
+  "author": { "@type": "Organization", "name": "OnlineTranslation.ae" },
+  "publisher": { "@type": "Organization", "name": "OnlineTranslation.ae" }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.a }
+  }))
+};
+---
+
+<BaseLayoutArabic title={`${pageTitle} | مدونة OnlineTranslation.ae`} description={metaDescription}>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://onlinetranslation.ae/ar/blog/when-you-dont-need-moj-certification/" />
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <article class="blog-post" dir="rtl">
+    <header class="post-hero">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="التنقل">
+          <a href="/ar/">الرئيسية</a> / <a href="/ar/blog/">المدونة</a> / <span>متى لا تحتاج وزارة العدل</span>
+        </nav>
+        <div class="post-meta">
+          <span class="category-tag">نصائح</span>
+          <span class="read-time">{readTime}</span>
+        </div>
+        <h1>{pageTitle}</h1>
+        <p class="post-intro">ليست كل ترجمة تحتاج ختم وزارة العدل. كثير من العملاء يدفعون أكثر مما يحتاجون. هذا الدليل يشرح متى تكفي الترجمة المعتمدة ومتى يلزم ختم الوزارة — لتوفروا المال والوقت.</p>
+        <div class="post-info">
+          <time datetime={publishDate}>{new Date(publishDate).toLocaleDateString('ar-AE', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        </div>
+      </div>
+    </header>
+
+    <div class="post-content">
+      <div class="container container--narrow">
+
+        <p class="lead-text">ترجمة وزارة العدل تبدأ من 150 درهم للصفحة. الترجمة المعتمدة تبدأ من 100 درهم. الفرق 50 درهم للصفحة — قد لا يبدو كثيراً، لكن مع مستند من 10 صفحات يصبح 500 درهم. ولا حاجة لدفعه إذا الترجمة المعتمدة تكفي.</p>
+
+        <nav class="toc" aria-label="جدول المحتويات">
+          <h2>في هذا الدليل</h2>
+          <ul>
+            <li><a href="#difference">الفرق بين النوعين</a></li>
+            <li><a href="#when-moj">متى تحتاج وزارة العدل</a></li>
+            <li><a href="#when-certified">متى تكفي المعتمدة</a></li>
+            <li><a href="#decision-guide">كيف تقرر</a></li>
+            <li><a href="#faqs">الأسئلة الشائعة</a></li>
+          </ul>
+        </nav>
+
+        <section id="difference">
+          <h2>الفرق بين ترجمة وزارة العدل والمعتمدة</h2>
+
+          <h3>ترجمة وزارة العدل (MOJ Legal Translation)</h3>
+          <ul>
+            <li>تحمل ختم مترجم مرخص من وزارة العدل الإماراتية</li>
+            <li>مطلوبة للمحاكم والجهات الحكومية</li>
+            <li>تبدأ من 150 درهم للصفحة</li>
+            <li>مقبولة في جميع أنحاء الإمارات</li>
+            <li>لها حجية قانونية أمام المحاكم</li>
+          </ul>
+
+          <h3>الترجمة المعتمدة (Certified Translation)</h3>
+          <ul>
+            <li>تحمل شهادة دقة من المترجم</li>
+            <li>مقبولة في البنوك والشركات الخاصة والجامعات</li>
+            <li>تبدأ من 100 درهم للصفحة</li>
+            <li>أسرع في الإنجاز</li>
+            <li>لا تحمل ختم الوزارة</li>
+          </ul>
+
+          <div class="callout-block">
+            <strong>النصيحة الذهبية:</strong> إذا الجهة المستلمة حكومية → وزارة العدل. إذا الجهة خاصة → المعتمدة تكفي في الغالب. <a href="/ar/resources/translation-type-decision-guide/">دليل اختيار نوع الترجمة</a> يشرح بالتفصيل.
+          </div>
+        </section>
+
+        <section id="when-moj">
+          <h2>متى تحتاجون ترجمة وزارة العدل حتماً</h2>
+
+          <h3>المحاكم</h3>
+          <p>جميع المحاكم الإماراتية تتطلب ختم وزارة العدل:</p>
+          <ul>
+            <li><a href="/ar/blog/court-document-translation-dubai/">محاكم دبي</a> (الابتدائية والاستئناف والتمييز)</li>
+            <li><a href="/ar/resources/adjd-translation-requirements/">دائرة القضاء في أبوظبي (ADJD)</a></li>
+            <li>المحاكم الاتحادية</li>
+            <li>النيابة العامة</li>
+          </ul>
+
+          <h3>الجهات الحكومية</h3>
+          <ul>
+            <li><strong>GDRFA:</strong> جميع مستندات <a href="/ar/blog/gdrfa-visa-document-problems/">التأشيرات والإقامة</a></li>
+            <li><strong>MOHRE:</strong> مستندات <a href="/ar/blog/mohre-work-permit-document-issues/">تصاريح العمل</a></li>
+            <li><strong>MOFA:</strong> <a href="/ar/services/attestation/mofa/">تصديق المستندات</a></li>
+            <li><strong>DLD:</strong> <a href="/ar/services/title-deed-translation-dubai/">معاملات العقارات</a></li>
+            <li><strong>MOHESR:</strong> <a href="/ar/resources/mohesr-equivalency/">معادلة الشهادات</a></li>
+          </ul>
+
+          <h3>التوثيق</h3>
+          <ul>
+            <li><a href="/ar/legal/wills/">الوصايا</a> (تسجيل DIFC أو ADJD)</li>
+            <li><a href="/ar/legal/corporate/poa/">التوكيلات</a> (للاستخدام الحكومي)</li>
+            <li><a href="/ar/legal/corporate/moa/">عقود التأسيس</a> (للتسجيل الحكومي)</li>
+          </ul>
+        </section>
+
+        <section id="when-certified">
+          <h2>متى تكفي الترجمة المعتمدة</h2>
+          <p>هذه الحالات لا تتطلب ختم وزارة العدل:</p>
+
+          <h3>البنوك والمؤسسات المالية</h3>
+          <ul>
+            <li>فتح حساب بنكي</li>
+            <li>طلبات القروض والتمويل</li>
+            <li><a href="/ar/personal/immigration/bank/">كشوف الحساب</a> للاستخدام الداخلي</li>
+          </ul>
+
+          <h3>الشركات الخاصة وHR</h3>
+          <ul>
+            <li>التوظيف (إذا HR لا تقدم لـ MOHRE مباشرة)</li>
+            <li>التقييم الداخلي للمؤهلات</li>
+            <li><a href="/ar/services/corporate-translation/">مستندات الشركات</a> للاستخدام الداخلي</li>
+          </ul>
+
+          <h3>المناطق الحرة</h3>
+          <ul>
+            <li><a href="/ar/resources/adgm-translation-requirements/">ADGM</a> — يعمل بالإنجليزية أصلاً</li>
+            <li><a href="/ar/locations/dubai/difc/">DIFC</a> — يقبل الإنجليزية مباشرة</li>
+            <li>المناطق الحرة الأخرى — معظمها يقبل الإنجليزية</li>
+          </ul>
+
+          <h3>الجامعات والمؤسسات التعليمية</h3>
+          <ul>
+            <li>التقديم للجامعات الإماراتية</li>
+            <li><a href="/ar/personal/academic/transcripts/">كشوف الدرجات</a> للتقييم الأكاديمي</li>
+            <li>شهادات الخبرة للتقديم الأكاديمي</li>
+          </ul>
+
+          <h3>التأمين</h3>
+          <ul>
+            <li>مطالبات التأمين</li>
+            <li>وثائق التأمين والملاحق</li>
+          </ul>
+        </section>
+
+        <section id="decision-guide">
+          <h2>كيف تقررون</h2>
+          <p>اسألوا أنفسكم سؤالاً واحداً: <strong>هل الجهة المستلمة حكومية أم خاصة؟</strong></p>
+
+          <ul>
+            <li><strong>حكومية (محاكم، وزارات، GDRFA، MOHRE):</strong> → وزارة العدل مطلوبة</li>
+            <li><strong>خاصة (بنوك، شركات، جامعات):</strong> → المعتمدة تكفي غالباً</li>
+            <li><strong>غير متأكدين:</strong> → أرسلوا لنا عبر واتساب وسنحدد لكم</li>
+          </ul>
+
+          <p>هذا هو مبدأ "النصيحة الصحيحة" الذي نعمل به. لا نبيعكم خدمة أغلى إذا الأرخص تكفي. <a href="/ar/resources/translation-type-decision-guide/">دليل اختيار نوع الترجمة</a> يشمل جدولاً كاملاً بجميع الجهات ونوع الترجمة المطلوب لكل منها.</p>
+        </section>
+
+        <section class="cta-section">
+          <h2>غير متأكدين أي نوع تحتاجون؟</h2>
+          <p>أخبرونا بالجهة المستلمة وسنحدد النوع المناسب — بدون أن تدفعوا أكثر مما تحتاجون.</p>
+          <div class="cta-buttons">
+            <a href="https://wa.me/971508620217?text=أحتاج%20معرفة%20نوع%20الترجمة%20المناسب" class="btn btn--primary">
+              <i class="fab fa-whatsapp"></i> استشارة مجانية عبر واتساب
+            </a>
+            <a href="/ar/resources/translation-type-decision-guide/" class="btn btn--secondary">دليل اختيار نوع الترجمة</a>
+          </div>
+        </section>
+
+        <section id="faqs" class="faq-section">
+          <h2>الأسئلة الشائعة</h2>
+          <div class="faq-list">
+            {faqs.map((faq) => (
+              <details class="faq-item">
+                <summary class="faq-question">{faq.q}</summary>
+                <div class="faq-answer"><p>{faq.a}</p></div>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        <section class="related-content">
+          <h2>أدلة ذات صلة</h2>
+          <ul>
+            <li><a href="/ar/resources/translation-type-decision-guide/">دليل اختيار نوع الترجمة الكامل</a></li>
+            <li><a href="/ar/resources/moj-vs-certified/">وزارة العدل مقابل المعتمدة: المقارنة الكاملة</a></li>
+            <li><a href="/ar/resources/pricing-guide/">دليل الأسعار</a></li>
+            <li><a href="/ar/services/legal-translation/">الترجمة القانونية المعتمدة</a></li>
+            <li><a href="/ar/services/certificate-translation/">ترجمة الشهادات</a></li>
+          </ul>
+        </section>
+
+      </div>
+    </div>
+  </article>
+</BaseLayoutArabic>
+
+<style>
+  .blog-post { background: var(--bg-primary, #ffffff); }
+  .post-hero { background: linear-gradient(135deg, var(--surface-navy, #0E2B48) 0%, #1a3a5c 100%); color: white; padding: 3rem 0 4rem; }
+  .breadcrumbs { font-size: 0.85rem; margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.7); }
+  .breadcrumbs a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .breadcrumbs a:hover { color: white; }
+  .post-meta { display: flex; gap: 1rem; margin-bottom: 1rem; }
+  .category-tag { background: var(--accent-coral, #FF1654); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; }
+  .read-time { color: rgba(255, 255, 255, 0.7); font-size: 0.85rem; }
+  .post-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; line-height: 1.4; margin: 0 0 1rem; }
+  .post-intro { font-size: 1.15rem; color: rgba(255, 255, 255, 0.9); max-width: 700px; line-height: 1.7; margin: 0 0 1.5rem; }
+  .post-info { font-size: 0.9rem; color: rgba(255, 255, 255, 0.7); }
+  .post-content { padding: 3rem 0 4rem; }
+  .container--narrow { max-width: 800px; margin: 0 auto; padding: 0 1.5rem; }
+  .lead-text { font-size: 1.15rem; color: var(--text-secondary, #4a5568); line-height: 1.8; margin-bottom: 1.5rem; }
+  .post-content h2 { font-size: 1.5rem; font-weight: 700; color: var(--surface-navy, #0E2B48); margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 1px solid rgba(0, 0, 0, 0.08); }
+  .post-content h2:first-of-type { border-top: none; padding-top: 0; }
+  .post-content h3 { font-size: 1.15rem; font-weight: 700; color: var(--surface-navy, #0E2B48); margin: 1.5rem 0 0.75rem; }
+  .post-content p { color: var(--text-primary, #1a1a1a); line-height: 1.8; margin-bottom: 1rem; }
+  .post-content a { color: var(--accent-teal, #0077b6); text-decoration: underline; }
+  .post-content ul, .post-content ol { margin: 1rem 1.5rem 1.5rem 0; padding-right: 1rem; line-height: 1.8; }
+  .post-content li { margin-bottom: 0.5rem; }
+  .toc { background: var(--bg-secondary, #f8f9fa); border-radius: 8px; padding: 1.5rem; margin: 2rem 0; }
+  .toc h2 { font-size: 1rem; margin: 0 0 1rem; padding: 0; border: none; }
+  .toc ul { margin: 0; padding: 0; list-style: none; }
+  .toc li { margin: 0.5rem 0; }
+  .toc a { color: var(--accent-teal, #0077b6); text-decoration: none; font-size: 0.95rem; }
+  .callout-block { background: var(--bg-secondary, #f8f9fa); border-right: 4px solid var(--accent-coral, #FF1654); padding: 1.25rem 1.5rem; margin: 1.5rem 0; border-radius: 8px 0 0 8px; }
+  .callout-block strong { color: var(--surface-navy, #0E2B48); }
+  .cta-section { background: var(--bg-secondary, #f8f9fa); padding: 2rem; border-radius: 12px; text-align: center; margin: 2.5rem 0; }
+  .cta-section h2 { border: none; padding: 0; margin: 0 0 0.75rem; }
+  .cta-section p { margin-bottom: 1.5rem; color: var(--text-secondary, #4a5568); }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; }
+  .btn--primary { background: var(--accent-coral, #FF1654); color: white; }
+  .btn--secondary { background: white; color: var(--surface-navy, #0E2B48); border: 2px solid var(--surface-navy, #0E2B48); }
+  .faq-section { margin: 2.5rem 0; }
+  .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { background: var(--bg-secondary, #f8f9fa); border-radius: 8px; overflow: hidden; }
+  .faq-question { padding: 1rem 1.25rem; font-weight: 600; cursor: pointer; list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; float: left; margin-left: 0.75rem; font-size: 1.25rem; color: var(--accent-coral, #FF1654); }
+  .faq-item[open] .faq-question::after { content: '−'; }
+  .faq-answer { padding: 0 1.25rem 1rem; color: var(--text-secondary, #4a5568); }
+  .faq-answer p { margin: 0; }
+  .related-content { margin: 2.5rem 0; padding-top: 2rem; border-top: 1px solid rgba(0, 0, 0, 0.08); }
+  .related-content ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+  .related-content li { margin: 0; }
+  .related-content a { display: block; padding: 0.75rem 1rem; background: var(--bg-secondary, #f8f9fa); border-radius: 6px; text-decoration: none; }
+  .related-content a:hover { background: var(--surface-navy, #0E2B48); color: white; }
+  @media (max-width: 768px) { .post-hero { padding: 2rem 0 3rem; } .cta-buttons { flex-direction: column; } .btn { width: 100%; justify-content: center; } }
+</style>

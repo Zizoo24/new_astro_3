@@ -91,9 +91,6 @@ export const arabicPages = new Set([
   '/resources/pricing-guide/',
   '/resources/turnaround-times/',
   '/resources/us-citizens-dubai-guide/',
-  '/resources/adgm-translation-requirements/',
-  '/resources/adjd-translation-requirements/',
-  '/resources/translation-type-decision-guide/',
   '/resources/visa-rejection-guide/',
 
   // Services & Attestation

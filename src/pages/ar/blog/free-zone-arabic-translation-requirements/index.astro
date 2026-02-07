@@ -1,0 +1,283 @@
+---
+/**
+ * Blog Post: Free Zone Arabic Translation Requirements (Arabic)
+ * Target Keyword: ترجمة المنطقة الحرة الإمارات
+ */
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const pageTitle = "المنطقة الحرة مقابل البر الرئيسي: هل تحتاجون ترجمة عربية فعلاً؟";
+const metaDescription = "متطلبات الترجمة العربية في المناطق الحرة الإماراتية مقابل البر الرئيسي. DIFC وADGM وJAFZA وRAKEZ وغيرها. متى تحتاج العربية ومتى تكفي الإنجليزية.";
+
+const publishDate = "2026-02-07";
+const readTime = "8 دقائق قراءة";
+
+const faqs = [
+  {
+    q: "هل المناطق الحرة تتطلب ترجمة عربية؟",
+    a: "معظم المناطق الحرة تعمل بالإنجليزية ولا تتطلب ترجمة عربية لعملياتها الداخلية. لكن عند التعامل مع جهات خارج المنطقة الحرة (محاكم، بنوك حكومية، وزارات)، الترجمة العربية مطلوبة."
+  },
+  {
+    q: "ما الفرق بين المنطقة الحرة والبر الرئيسي؟",
+    a: "البر الرئيسي (mainland) يخضع للقوانين الاتحادية والمحلية وجميع المستندات يجب أن تكون بالعربية. المناطق الحرة لها قوانينها الخاصة وتعمل بالإنجليزية عادة. الفرق العملي: شركات البر الرئيسي تحتاج ترجمة عربية لمعظم معاملاتها."
+  },
+  {
+    q: "هل JAFZA تتطلب ترجمة عربية؟",
+    a: "JAFZA تعمل بالإنجليزية لعملياتها الداخلية. التسجيل والتراخيص والعقود كلها بالإنجليزية. الترجمة العربية مطلوبة فقط عند التقديم لجهات خارج JAFZA مثل المحاكم أو MOHRE."
+  },
+  {
+    q: "هل عقد التأسيس في المنطقة الحرة يحتاج ترجمة؟",
+    a: "داخل المنطقة الحرة: لا. لكن إذا احتجتم تقديم عقد التأسيس لبنك محلي أو محكمة أو جهة حكومية، ستحتاجون ترجمة عربية معتمدة (أو وزارة العدل حسب الجهة)."
+  },
+  {
+    q: "هل شركات المنطقة الحرة تحتاج ترجمة لتأشيرات الموظفين؟",
+    a: "نعم. تأشيرات الموظفين تمر عبر GDRFA وMOHRE — وهي جهات اتحادية تتطلب ترجمة وزارة العدل. حتى لو شركتكم في منطقة حرة، مستندات التأشيرة تحتاج ترجمة عربية."
+  },
+  {
+    q: "كم تكلف ترجمة مستندات المنطقة الحرة؟",
+    a: "الترجمة المعتمدة للاستخدام داخل المنطقة الحرة تبدأ من 100 درهم. ترجمة وزارة العدل للتقديم لجهات حكومية تبدأ من 150 درهم. نحدد النوع المناسب لكل حالة لتوفير التكلفة."
+  }
+];
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": pageTitle,
+  "description": metaDescription,
+  "inLanguage": "ar",
+  "datePublished": publishDate,
+  "dateModified": publishDate,
+  "author": { "@type": "Organization", "name": "OnlineTranslation.ae" },
+  "publisher": { "@type": "Organization", "name": "OnlineTranslation.ae" }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.a }
+  }))
+};
+---
+
+<BaseLayoutArabic title={`${pageTitle} | مدونة OnlineTranslation.ae`} description={metaDescription}>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://onlinetranslation.ae/ar/blog/free-zone-arabic-translation-requirements/" />
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <article class="blog-post" dir="rtl">
+    <header class="post-hero">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="التنقل">
+          <a href="/ar/">الرئيسية</a> / <a href="/ar/blog/">المدونة</a> / <span>المنطقة الحرة والترجمة</span>
+        </nav>
+        <div class="post-meta">
+          <span class="category-tag">المناطق الحرة</span>
+          <span class="read-time">{readTime}</span>
+        </div>
+        <h1>{pageTitle}</h1>
+        <p class="post-intro">أسست شركتكم في منطقة حرة. كل شيء بالإنجليزية. لماذا تحتاجون ترجمة عربية؟ الجواب: لا تحتاجون دائماً. لكن في حالات محددة، بدون ترجمة عربية لا تستطيعون التقدم. هذا الدليل يوضح متى.</p>
+        <div class="post-info">
+          <time datetime={publishDate}>{new Date(publishDate).toLocaleDateString('ar-AE', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        </div>
+      </div>
+    </header>
+
+    <div class="post-content">
+      <div class="container container--narrow">
+
+        <p class="lead-text">الإمارات فيها أكثر من 40 منطقة حرة. كل واحدة لها قوانينها. لكن القاعدة العامة بسيطة: داخل المنطقة الحرة = الإنجليزية تكفي. خارجها = العربية مطلوبة. المشكلة أن كثيراً من المعاملات تعبر هذا الخط.</p>
+
+        <nav class="toc" aria-label="جدول المحتويات">
+          <h2>في هذا الدليل</h2>
+          <ul>
+            <li><a href="#general-rule">القاعدة العامة</a></li>
+            <li><a href="#when-arabic">متى تحتاجون العربية</a></li>
+            <li><a href="#when-english">متى تكفي الإنجليزية</a></li>
+            <li><a href="#by-zone">حسب المنطقة الحرة</a></li>
+            <li><a href="#mainland">البر الرئيسي: مختلف تماماً</a></li>
+            <li><a href="#faqs">الأسئلة الشائعة</a></li>
+          </ul>
+        </nav>
+
+        <section id="general-rule">
+          <h2>القاعدة العامة: داخل مقابل خارج</h2>
+          <p>المناطق الحرة أنشئت لتسهيل الأعمال الدولية. لذلك تعمل بالإنجليزية. لكن الجهات الاتحادية والمحلية في الإمارات تعمل بالعربية.</p>
+
+          <h3>داخل المنطقة الحرة (إنجليزية)</h3>
+          <ul>
+            <li>تسجيل الشركة وتجديد الرخصة</li>
+            <li>العقود بين شركات المنطقة الحرة</li>
+            <li>التقارير المالية للمنطقة الحرة</li>
+            <li>المراسلات الداخلية</li>
+          </ul>
+
+          <h3>خارج المنطقة الحرة (عربية مطلوبة)</h3>
+          <ul>
+            <li><a href="/ar/blog/gdrfa-visa-document-problems/">تأشيرات الموظفين</a> (GDRFA)</li>
+            <li><a href="/ar/blog/mohre-work-permit-document-issues/">تصاريح العمل</a> (MOHRE)</li>
+            <li><a href="/ar/blog/court-document-translation-dubai/">المحاكم</a> (محاكم دبي، ADJD)</li>
+            <li>البنوك الحكومية</li>
+            <li><a href="/ar/services/attestation/mofa/">MOFA</a> (التصديق)</li>
+          </ul>
+        </section>
+
+        <section id="when-arabic">
+          <h2>متى تحتاجون ترجمة عربية بالتحديد</h2>
+
+          <h3>1. تأشيرات وتصاريح العمل</h3>
+          <p>حتى لو شركتكم في JAFZA أو DMCC، تأشيرات الموظفين تمر عبر GDRFA وMOHRE. هذه جهات اتحادية تتطلب <a href="/ar/services/legal-translation/">ترجمة وزارة العدل</a>. الشهادات الأكاديمية وشهادات الخبرة والسجلات الشخصية — كلها تحتاج ترجمة.</p>
+
+          <h3>2. النزاعات والتقاضي</h3>
+          <p>إذا نشب نزاع ووصل لمحاكم دبي أو ADJD، جميع مستنداتكم تحتاج ترجمة عربية. حتى لو العقد الأصلي بالإنجليزية ضمن المنطقة الحرة. <a href="/ar/legal/litigation/">مستندات التقاضي</a> يجب ترجمتها بالكامل.</p>
+
+          <h3>3. العقارات خارج المنطقة الحرة</h3>
+          <p>إذا اشتريتم عقاراً في دبي أو أبوظبي (خارج المنطقة الحرة)، <a href="/ar/services/title-deed-translation-dubai/">سند الملكية</a> و<a href="/ar/legal/contracts/lease/">عقد الإيجار</a> يحتاجون ترجمة عربية لدائرة الأراضي.</p>
+
+          <h3>4. التعاقد مع شركات البر الرئيسي</h3>
+          <p>العقود بين شركة منطقة حرة وشركة بر رئيسي قد تحتاج نسخة عربية إذا نُظر فيها من محكمة محلية. <a href="/ar/legal/contracts/">العقود التجارية</a> ثنائية اللغة أكثر أماناً.</p>
+        </section>
+
+        <section id="when-english">
+          <h2>متى تكفي الإنجليزية بدون ترجمة</h2>
+          <ul>
+            <li><strong>محاكم DIFC:</strong> <a href="/ar/locations/dubai/difc/">DIFC</a> يعمل بالإنجليزية بالكامل</li>
+            <li><strong>محاكم ADGM:</strong> <a href="/ar/resources/adgm-translation-requirements/">ADGM</a> يعمل بالإنجليزية</li>
+            <li><strong>التحكيم الدولي:</strong> <a href="/ar/legal/litigation/arbitration/">مراكز التحكيم</a> تقبل الإنجليزية</li>
+            <li><strong>العقود الداخلية:</strong> بين شركات نفس المنطقة الحرة</li>
+            <li><strong>التقارير للمنطقة الحرة:</strong> التقارير المالية والتشغيلية</li>
+          </ul>
+
+          <div class="callout-block">
+            <strong>تحذير:</strong> حتى في DIFC وADGM، إذا احتجتم تنفيذ حكم في محاكم دبي أو ADJD — ستحتاجون ترجمة عربية. خططوا لهذا الاحتمال من البداية.
+          </div>
+        </section>
+
+        <section id="by-zone">
+          <h2>حسب المنطقة الحرة</h2>
+
+          <h3>DIFC (دبي)</h3>
+          <p>يعمل بالقانون العام الإنجليزي. محاكمه تقبل الإنجليزية. الترجمة العربية مطلوبة فقط عند التنفيذ في محاكم دبي الرئيسية.</p>
+
+          <h3>ADGM (أبوظبي)</h3>
+          <p>مثل DIFC — قانون عام إنجليزي. اللغة الرسمية هي الإنجليزية. الترجمة العربية عند التعامل مع <a href="/ar/resources/adjd-translation-requirements/">ADJD</a> أو جهات أبوظبي الأخرى.</p>
+
+          <h3>JAFZA (جبل علي)</h3>
+          <p>أكبر منطقة حرة في الإمارات. تعمل بالإنجليزية. لكن تأشيرات الموظفين وتصاريح العمل تحتاج ترجمة عربية لأنها تمر عبر الجهات الاتحادية.</p>
+
+          <h3>DMCC</h3>
+          <p>منطقة حرة نشطة في JLT. نفس القاعدة: داخل DMCC = إنجليزية. خارجها = عربية مطلوبة.</p>
+
+          <h3>RAKEZ (رأس الخيمة)</h3>
+          <p>تعمل بالإنجليزية. <a href="/ar/locations/ras-al-khaimah/">شركات رأس الخيمة</a> تحتاج ترجمة عربية عند التعامل مع المحاكم المحلية أو الجهات الاتحادية.</p>
+
+          <h3>منطقة عجمان الحرة</h3>
+          <p>تعمل بالإنجليزية. <a href="/ar/locations/ajman/">شركات عجمان</a> تحتاج ترجمة عربية لنفس الأسباب — تأشيرات، محاكم، بنوك حكومية.</p>
+        </section>
+
+        <section id="mainland">
+          <h2>البر الرئيسي: مختلف تماماً</h2>
+          <p>شركات البر الرئيسي تخضع للقوانين المحلية. العربية هي اللغة الرسمية. معظم المعاملات تحتاج ترجمة عربية:</p>
+          <ul>
+            <li><a href="/ar/legal/corporate/license/">الرخصة التجارية</a> من DED/ADDED</li>
+            <li><a href="/ar/legal/corporate/moa/">عقود التأسيس</a></li>
+            <li>العقود التجارية المقدمة للمحاكم</li>
+            <li>جميع التقديمات الحكومية</li>
+          </ul>
+          <p>إذا كنتم في البر الرئيسي، الترجمة العربية جزء أساسي من العمل وليست استثناء.</p>
+        </section>
+
+        <section class="cta-section">
+          <h2>غير متأكدين من متطلبات منطقتكم الحرة؟</h2>
+          <p>أخبرونا باسم المنطقة الحرة والجهة المستلمة. نحدد ما إذا كنتم تحتاجون ترجمة عربية ونوعها — بدون أن تدفعوا أكثر مما يلزم.</p>
+          <div class="cta-buttons">
+            <a href="https://wa.me/971508620217?text=أحتاج%20معرفة%20متطلبات%20الترجمة%20للمنطقة%20الحرة" class="btn btn--primary">
+              <i class="fab fa-whatsapp"></i> استشارة مجانية عبر واتساب
+            </a>
+            <a href="/ar/resources/translation-type-decision-guide/" class="btn btn--secondary">دليل اختيار نوع الترجمة</a>
+          </div>
+        </section>
+
+        <section id="faqs" class="faq-section">
+          <h2>الأسئلة الشائعة</h2>
+          <div class="faq-list">
+            {faqs.map((faq) => (
+              <details class="faq-item">
+                <summary class="faq-question">{faq.q}</summary>
+                <div class="faq-answer"><p>{faq.a}</p></div>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        <section class="related-content">
+          <h2>أدلة ذات صلة</h2>
+          <ul>
+            <li><a href="/ar/blog/abu-dhabi-vs-dubai-translation-requirements/">أبوظبي مقابل دبي: متطلبات الترجمة</a></li>
+            <li><a href="/ar/resources/adgm-translation-requirements/">متطلبات الترجمة لـ ADGM</a></li>
+            <li><a href="/ar/blog/when-you-dont-need-moj-certification/">متى لا تحتاج وزارة العدل</a></li>
+            <li><a href="/ar/services/corporate-translation/">ترجمة مستندات الشركات</a></li>
+            <li><a href="/ar/legal/corporate/">المستندات المؤسسية</a></li>
+          </ul>
+        </section>
+
+      </div>
+    </div>
+  </article>
+</BaseLayoutArabic>
+
+<style>
+  .blog-post { background: var(--bg-primary, #ffffff); }
+  .post-hero { background: linear-gradient(135deg, var(--surface-navy, #0E2B48) 0%, #1a3a5c 100%); color: white; padding: 3rem 0 4rem; }
+  .breadcrumbs { font-size: 0.85rem; margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.7); }
+  .breadcrumbs a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .breadcrumbs a:hover { color: white; }
+  .post-meta { display: flex; gap: 1rem; margin-bottom: 1rem; }
+  .category-tag { background: var(--accent-coral, #FF1654); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; }
+  .read-time { color: rgba(255, 255, 255, 0.7); font-size: 0.85rem; }
+  .post-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; line-height: 1.4; margin: 0 0 1rem; }
+  .post-intro { font-size: 1.15rem; color: rgba(255, 255, 255, 0.9); max-width: 700px; line-height: 1.7; margin: 0 0 1.5rem; }
+  .post-info { font-size: 0.9rem; color: rgba(255, 255, 255, 0.7); }
+  .post-content { padding: 3rem 0 4rem; }
+  .container--narrow { max-width: 800px; margin: 0 auto; padding: 0 1.5rem; }
+  .lead-text { font-size: 1.15rem; color: var(--text-secondary, #4a5568); line-height: 1.8; margin-bottom: 1.5rem; }
+  .post-content h2 { font-size: 1.5rem; font-weight: 700; color: var(--surface-navy, #0E2B48); margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 1px solid rgba(0, 0, 0, 0.08); }
+  .post-content h2:first-of-type { border-top: none; padding-top: 0; }
+  .post-content h3 { font-size: 1.15rem; font-weight: 700; color: var(--surface-navy, #0E2B48); margin: 1.5rem 0 0.75rem; }
+  .post-content p { color: var(--text-primary, #1a1a1a); line-height: 1.8; margin-bottom: 1rem; }
+  .post-content a { color: var(--accent-teal, #0077b6); text-decoration: underline; }
+  .post-content ul, .post-content ol { margin: 1rem 1.5rem 1.5rem 0; padding-right: 1rem; line-height: 1.8; }
+  .post-content li { margin-bottom: 0.5rem; }
+  .toc { background: var(--bg-secondary, #f8f9fa); border-radius: 8px; padding: 1.5rem; margin: 2rem 0; }
+  .toc h2 { font-size: 1rem; margin: 0 0 1rem; padding: 0; border: none; }
+  .toc ul { margin: 0; padding: 0; list-style: none; }
+  .toc li { margin: 0.5rem 0; }
+  .toc a { color: var(--accent-teal, #0077b6); text-decoration: none; font-size: 0.95rem; }
+  .callout-block { background: var(--bg-secondary, #f8f9fa); border-right: 4px solid var(--accent-coral, #FF1654); padding: 1.25rem 1.5rem; margin: 1.5rem 0; border-radius: 8px 0 0 8px; }
+  .callout-block strong { color: var(--surface-navy, #0E2B48); }
+  .cta-section { background: var(--bg-secondary, #f8f9fa); padding: 2rem; border-radius: 12px; text-align: center; margin: 2.5rem 0; }
+  .cta-section h2 { border: none; padding: 0; margin: 0 0 0.75rem; }
+  .cta-section p { margin-bottom: 1.5rem; color: var(--text-secondary, #4a5568); }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; }
+  .btn--primary { background: var(--accent-coral, #FF1654); color: white; }
+  .btn--secondary { background: white; color: var(--surface-navy, #0E2B48); border: 2px solid var(--surface-navy, #0E2B48); }
+  .faq-section { margin: 2.5rem 0; }
+  .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { background: var(--bg-secondary, #f8f9fa); border-radius: 8px; overflow: hidden; }
+  .faq-question { padding: 1rem 1.25rem; font-weight: 600; cursor: pointer; list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; float: left; margin-left: 0.75rem; font-size: 1.25rem; color: var(--accent-coral, #FF1654); }
+  .faq-item[open] .faq-question::after { content: '−'; }
+  .faq-answer { padding: 0 1.25rem 1rem; color: var(--text-secondary, #4a5568); }
+  .faq-answer p { margin: 0; }
+  .related-content { margin: 2.5rem 0; padding-top: 2rem; border-top: 1px solid rgba(0, 0, 0, 0.08); }
+  .related-content ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+  .related-content li { margin: 0; }
+  .related-content a { display: block; padding: 0.75rem 1rem; background: var(--bg-secondary, #f8f9fa); border-radius: 6px; text-decoration: none; }
+  .related-content a:hover { background: var(--surface-navy, #0E2B48); color: white; }
+  @media (max-width: 768px) { .post-hero { padding: 2rem 0 3rem; } .cta-buttons { flex-direction: column; } .btn { width: 100%; justify-content: center; } }
+</style>

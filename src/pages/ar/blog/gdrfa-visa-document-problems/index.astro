@@ -1,0 +1,300 @@
+---
+/**
+ * Blog Post: GDRFA Visa Document Problems (Arabic)
+ * Target Keyword: رفض التأشيرة مشاكل الوثائق
+ */
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const pageTitle = "رفض التأشيرة من GDRFA؟ مشاكل المستندات التي تسبب التأخير وكيف تتجنبها";
+const metaDescription = "أسباب رفض طلبات التأشيرة من GDRFA في أبوظبي ودبي بسبب مشاكل الترجمة والتصديق. حلول عملية لتجنب التأخير.";
+
+const publishDate = "2026-02-07";
+const readTime = "8 دقائق قراءة";
+
+const faqs = [
+  {
+    q: "ما أسباب رفض GDRFA لطلبات التأشيرة؟",
+    a: "الأسباب الشائعة: ترجمة غير معتمدة من وزارة العدل، تصديق ناقص (مفقود من MOFA أو السفارة)، مستندات منتهية الصلاحية، أو عدم تطابق الأسماء بين المستند الأصلي والترجمة. GDRFA تتحقق من كل عنصر قبل قبول الطلب."
+  },
+  {
+    q: "كم مرة يمكنني إعادة تقديم طلب التأشيرة بعد الرفض؟",
+    a: "يمكنكم إعادة التقديم فوراً بعد تصحيح المشكلة. لا يوجد حد لعدد المحاولات، لكن كل رفض يضيف تأخيراً. الأفضل تصحيح جميع المشاكل في المرة الأولى بدلاً من تقديم مستندات ناقصة."
+  },
+  {
+    q: "هل GDRFA أبوظبي ودبي لها نفس المتطلبات؟",
+    a: "نعم من حيث المتطلبات الأساسية (ترجمة وزارة العدل + تصديق). لكن GDRFA أبوظبي قد تطلب مستندات إضافية لبعض أنواع التأشيرات. دائماً تحققوا من قائمة المتطلبات المحددة لنوع تأشيرتكم."
+  },
+  {
+    q: "هل مستندات GDRFA تحتاج تصديق MOFA؟",
+    a: "المستندات الأجنبية المقدمة لـ GDRFA تحتاج سلسلة التصديق الكاملة: تصديق البلد المصدر → سفارة الإمارات → MOFA → ترجمة وزارة العدل. المستندات المحلية الإماراتية تحتاج فقط ترجمة وزارة العدل."
+  },
+  {
+    q: "كم تستغرق ترجمة مستندات التأشيرة؟",
+    a: "المستندات القياسية (شهادة ميلاد، عقد زواج، شهادة أكاديمية) تُنجز خلال ساعة واحدة. حزمة التأشيرة الكاملة (5-10 مستندات) تُنجز خلال 24 ساعة. خدمة سريعة متاحة للحالات العاجلة."
+  },
+  {
+    q: "ماذا أفعل إذا الأسماء مختلفة بين المستندات؟",
+    a: "عدم تطابق الأسماء سبب شائع للرفض. إذا اختلف اسمكم بين جواز السفر وشهادة الميلاد مثلاً، قد تحتاجون إفادة خطية أو تعديل رسمي. نراجع المستندات قبل الترجمة ونُنبهكم لأي تباين."
+  }
+];
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": pageTitle,
+  "description": metaDescription,
+  "inLanguage": "ar",
+  "datePublished": publishDate,
+  "dateModified": publishDate,
+  "author": { "@type": "Organization", "name": "OnlineTranslation.ae" },
+  "publisher": { "@type": "Organization", "name": "OnlineTranslation.ae" }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.a }
+  }))
+};
+---
+
+<BaseLayoutArabic title={`${pageTitle} | مدونة OnlineTranslation.ae`} description={metaDescription}>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://onlinetranslation.ae/ar/blog/gdrfa-visa-document-problems/" />
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <article class="blog-post" dir="rtl">
+    <header class="post-hero">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="التنقل">
+          <a href="/ar/">الرئيسية</a> / <a href="/ar/blog/">المدونة</a> / <span>رفض التأشيرة GDRFA</span>
+        </nav>
+        <div class="post-meta">
+          <span class="category-tag">التأشيرات</span>
+          <span class="read-time">{readTime}</span>
+        </div>
+        <h1>{pageTitle}</h1>
+        <p class="post-intro">طلب التأشيرة رُفض. السبب: مشكلة في المستندات. هذا يحدث يومياً في مكاتب GDRFA في أبوظبي ودبي. معظم حالات الرفض يمكن تجنبها. هذا الدليل يشرح الأسباب والحلول.</p>
+        <div class="post-info">
+          <time datetime={publishDate}>{new Date(publishDate).toLocaleDateString('ar-AE', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        </div>
+      </div>
+    </header>
+
+    <div class="post-content">
+      <div class="container container--narrow">
+
+        <p class="lead-text">الهيئة الاتحادية للهوية والجنسية والجمارك وأمن المنافذ (GDRFA) هي الجهة المسؤولة عن التأشيرات والإقامة في الإمارات. كل طلب تأشيرة يمر بمراجعة دقيقة للمستندات. مشكلة واحدة في الترجمة أو التصديق تعني الرفض والبدء من جديد.</p>
+
+        <nav class="toc" aria-label="جدول المحتويات">
+          <h2>في هذا الدليل</h2>
+          <ul>
+            <li><a href="#common-rejections">أسباب الرفض الشائعة</a></li>
+            <li><a href="#translation-issues">مشاكل الترجمة</a></li>
+            <li><a href="#attestation-chain">سلسلة التصديق</a></li>
+            <li><a href="#visa-types">حسب نوع التأشيرة</a></li>
+            <li><a href="#prevention">كيف تتجنب الرفض</a></li>
+            <li><a href="#faqs">الأسئلة الشائعة</a></li>
+          </ul>
+        </nav>
+
+        <section id="common-rejections">
+          <h2>أسباب الرفض الشائعة</h2>
+          <p>من خبرتنا مع مئات طلبات التأشيرات، هذه الأسباب تتكرر:</p>
+
+          <h3>1. ترجمة غير معتمدة</h3>
+          <p>GDRFA تقبل فقط ترجمات معتمدة من <a href="/ar/services/legal-translation/">وزارة العدل الإماراتية</a>. ترجمات مكاتب أجنبية أو ترجمات محلفة من بلد المنشأ لا تُقبل. حتى لو كانت الترجمة دقيقة، بدون ختم وزارة العدل تُرفض.</p>
+
+          <h3>2. تصديق ناقص</h3>
+          <p>المستندات الأجنبية تحتاج سلسلة تصديق كاملة قبل الترجمة. GDRFA تتحقق من كل خطوة. أي حلقة مفقودة تعني الرفض. تفاصيل السلسلة في القسم التالي.</p>
+
+          <h3>3. عدم تطابق الأسماء</h3>
+          <p>الاسم في الترجمة يجب أن يتطابق تماماً مع جواز السفر. إذا كانت <a href="/ar/personal/vital-records/birth/">شهادة الميلاد</a> تحمل اسماً مختلفاً عن الجواز، GDRFA ترفض الطلب. هذا شائع مع الأسماء المنقحرة من العربية أو الأوردو.</p>
+
+          <h3>4. مستندات منتهية الصلاحية</h3>
+          <p>بعض المستندات لها صلاحية محددة. <a href="/ar/personal/immigration/pcc/">شهادة حسن السيرة</a> تنتهي بعد 3-6 أشهر حسب البلد المصدر. كشوف البنك يجب أن تكون حديثة. مستند منتهي الصلاحية يُرفض حتى لو ترجمته صحيحة.</p>
+
+          <div class="callout-block warning">
+            <strong>تنبيه:</strong> لا تبدأوا بترجمة المستندات قبل التأكد من صلاحيتها. ترجمة مستند منتهي تعني خسارة وقت ومال.
+          </div>
+        </section>
+
+        <section id="translation-issues">
+          <h2>مشاكل الترجمة التي تسبب الرفض</h2>
+
+          <h3>أخطاء الأسماء والتواريخ</h3>
+          <p>الأسماء يجب أن تُنقل بدقة. "محمد" و"Mohammed" و"Muhammad" و"Mohamed" كلها ترجمات مقبولة — لكن يجب أن تتطابق مع جواز السفر. نتحقق من تطابق الأسماء مع الجواز قبل إصدار الترجمة.</p>
+
+          <h3>ترجمة ناقصة</h3>
+          <p>كل عنصر في المستند يجب ترجمته. الأختام والتواقيع والملاحظات الهامشية والحواشي. GDRFA قد ترفض ترجمة إذا وجدت نصاً غير مترجم في المستند الأصلي.</p>
+
+          <h3>ترجمة آلية</h3>
+          <p>GDRFA ترفض الترجمات الآلية أو ترجمات Google. الختم الرسمي من <a href="/ar/blog/legal-translation-dubai-moj-guide/">مترجم مرخص من وزارة العدل</a> (رخصة #701) هو الضمان الوحيد للقبول.</p>
+        </section>
+
+        <section id="attestation-chain">
+          <h2>سلسلة التصديق الصحيحة</h2>
+          <p>المستندات الأجنبية تحتاج التصديق قبل الترجمة. السلسلة تختلف حسب بلد المنشأ:</p>
+
+          <h3>دول اتفاقية لاهاي (أبوستيل)</h3>
+          <p>الدول الأعضاء في <a href="/ar/services/attestation/apostille/">اتفاقية لاهاي</a> يمكنها إصدار أبوستيل:</p>
+          <ul>
+            <li><a href="/ar/services/attestation/india/">الهند</a>: أبوستيل من MEA (عضو منذ 2005)</li>
+            <li><a href="/ar/services/attestation/uk/">المملكة المتحدة</a>: أبوستيل من FCDO</li>
+            <li><a href="/ar/services/attestation/us/">الولايات المتحدة</a>: أبوستيل من الولاية أو الحكومة الفيدرالية</li>
+            <li><a href="/ar/services/attestation/canada/">كندا</a>: أبوستيل (عضو منذ 2024)</li>
+            <li><a href="/ar/services/attestation/philippines/">الفلبين</a>: أبوستيل من DFA</li>
+          </ul>
+          <p>بعد الأبوستيل: ترجمة وزارة العدل → تقديم لـ GDRFA.</p>
+
+          <h3>دول بدون أبوستيل</h3>
+          <p><a href="/ar/services/attestation/pakistan/">باكستان</a> ودول أخرى غير أعضاء تحتاج السلسلة الكاملة:</p>
+          <ol>
+            <li>تصديق البلد المصدر (وزارة الخارجية)</li>
+            <li>سفارة الإمارات في البلد المصدر</li>
+            <li><a href="/ar/services/attestation/mofa/">تصديق MOFA</a> في الإمارات</li>
+            <li>ترجمة وزارة العدل</li>
+          </ol>
+
+          <div class="callout-block">
+            <strong>ملاحظة:</strong> الإمارات ليست عضواً في اتفاقية لاهاي. المستندات الإماراتية المُرسلة للخارج تحتاج تصديق MOFA + سفارة البلد المستلم.
+          </div>
+        </section>
+
+        <section id="visa-types">
+          <h2>المستندات حسب نوع التأشيرة</h2>
+
+          <h3>تأشيرة العائلة (كفالة)</h3>
+          <ul>
+            <li><a href="/ar/personal/vital-records/marriage/">عقد الزواج</a> مترجم ومصدق</li>
+            <li><a href="/ar/personal/vital-records/birth/">شهادات ميلاد الأطفال</a></li>
+            <li><a href="/ar/personal/immigration/bank/">كشف حساب بنكي</a> حديث (آخر 3 أشهر)</li>
+            <li>عقد إيجار باسم الكفيل</li>
+          </ul>
+
+          <h3>تأشيرة العمل</h3>
+          <ul>
+            <li><a href="/ar/personal/academic/degree/">الشهادة الأكاديمية</a> مترجمة ومصدقة</li>
+            <li><a href="/ar/personal/academic/transcripts/">كشف الدرجات</a> (لبعض المهن)</li>
+            <li><a href="/ar/personal/immigration/pcc/">شهادة حسن السيرة</a></li>
+            <li>شهادات الخبرة المهنية</li>
+          </ul>
+
+          <h3><a href="/ar/services/golden-visa-translation/">الفيزا الذهبية</a></h3>
+          <ul>
+            <li>الشهادات الأكاديمية + <a href="/ar/resources/mohesr-equivalency/">معادلة وزارة التربية</a></li>
+            <li>مستندات الملكية العقارية</li>
+            <li>إثبات الاستثمار أو ملكية الشركة</li>
+          </ul>
+        </section>
+
+        <section id="prevention">
+          <h2>كيف تتجنب الرفض</h2>
+          <p>خطوات عملية لتقديم ناجح من المرة الأولى:</p>
+
+          <ol>
+            <li><strong>راجعوا قائمة المتطلبات أولاً.</strong> كل نوع تأشيرة له متطلبات محددة. تأكدوا من القائمة الكاملة قبل البدء.</li>
+            <li><strong>تحققوا من صلاحية المستندات.</strong> لا تترجموا مستنداً منتهياً. تأكدوا من الصلاحية أولاً.</li>
+            <li><strong>أرسلوا المستندات للمراجعة قبل الدفع.</strong> نراجع مستنداتكم مجاناً ونُنبهكم لأي مشكلة محتملة قبل البدء بالترجمة.</li>
+            <li><strong>تأكدوا من تطابق الأسماء.</strong> قارنوا الأسماء في جميع المستندات مع جواز السفر.</li>
+            <li><strong>أكملوا التصديق أولاً.</strong> التصديق قبل الترجمة وليس بعدها.</li>
+          </ol>
+        </section>
+
+        <section class="cta-section">
+          <h2>مراجعة مستندات مجانية قبل الترجمة</h2>
+          <p>أرسلوا مستنداتكم عبر واتساب. نراجعها ونُنبهكم لأي مشكلة قبل البدء — بدون رسوم ولا التزام.</p>
+          <div class="cta-buttons">
+            <a href="https://wa.me/971508620217?text=أحتاج%20مراجعة%20مستندات%20تأشيرة%20GDRFA" class="btn btn--primary">
+              <i class="fab fa-whatsapp"></i> أرسل المستندات للمراجعة
+            </a>
+            <a href="/ar/contact/" class="btn btn--secondary">طلب عرض سعر</a>
+          </div>
+        </section>
+
+        <section id="faqs" class="faq-section">
+          <h2>الأسئلة الشائعة</h2>
+          <div class="faq-list">
+            {faqs.map((faq) => (
+              <details class="faq-item">
+                <summary class="faq-question">{faq.q}</summary>
+                <div class="faq-answer"><p>{faq.a}</p></div>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        <section class="related-content">
+          <h2>أدلة ذات صلة</h2>
+          <ul>
+            <li><a href="/ar/blog/mohre-work-permit-document-issues/">رفض تصريح العمل من MOHRE: مشاكل المستندات الشائعة</a></li>
+            <li><a href="/ar/services/attestation/">خدمات تصديق المستندات</a></li>
+            <li><a href="/ar/resources/golden-visa-checklist/">قائمة مستندات الفيزا الذهبية</a></li>
+            <li><a href="/ar/personal/vital-records/">ترجمة السجلات الشخصية</a></li>
+            <li><a href="/ar/resources/document-checklist/">قائمة المستندات المطلوبة</a></li>
+          </ul>
+        </section>
+
+      </div>
+    </div>
+  </article>
+</BaseLayoutArabic>
+
+<style>
+  .blog-post { background: var(--bg-primary, #ffffff); }
+  .post-hero { background: linear-gradient(135deg, var(--surface-navy, #0E2B48) 0%, #1a3a5c 100%); color: white; padding: 3rem 0 4rem; }
+  .breadcrumbs { font-size: 0.85rem; margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.7); }
+  .breadcrumbs a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .breadcrumbs a:hover { color: white; }
+  .post-meta { display: flex; gap: 1rem; margin-bottom: 1rem; }
+  .category-tag { background: var(--accent-coral, #FF1654); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; }
+  .read-time { color: rgba(255, 255, 255, 0.7); font-size: 0.85rem; }
+  .post-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; line-height: 1.4; margin: 0 0 1rem; }
+  .post-intro { font-size: 1.15rem; color: rgba(255, 255, 255, 0.9); max-width: 700px; line-height: 1.7; margin: 0 0 1.5rem; }
+  .post-info { font-size: 0.9rem; color: rgba(255, 255, 255, 0.7); }
+  .post-content { padding: 3rem 0 4rem; }
+  .container--narrow { max-width: 800px; margin: 0 auto; padding: 0 1.5rem; }
+  .lead-text { font-size: 1.15rem; color: var(--text-secondary, #4a5568); line-height: 1.8; margin-bottom: 1.5rem; }
+  .post-content h2 { font-size: 1.5rem; font-weight: 700; color: var(--surface-navy, #0E2B48); margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 1px solid rgba(0, 0, 0, 0.08); }
+  .post-content h2:first-of-type { border-top: none; padding-top: 0; }
+  .post-content h3 { font-size: 1.15rem; font-weight: 700; color: var(--surface-navy, #0E2B48); margin: 1.5rem 0 0.75rem; }
+  .post-content p { color: var(--text-primary, #1a1a1a); line-height: 1.8; margin-bottom: 1rem; }
+  .post-content a { color: var(--accent-teal, #0077b6); text-decoration: underline; }
+  .post-content ul, .post-content ol { margin: 1rem 1.5rem 1.5rem 0; padding-right: 1rem; line-height: 1.8; }
+  .post-content li { margin-bottom: 0.5rem; }
+  .toc { background: var(--bg-secondary, #f8f9fa); border-radius: 8px; padding: 1.5rem; margin: 2rem 0; }
+  .toc h2 { font-size: 1rem; margin: 0 0 1rem; padding: 0; border: none; }
+  .toc ul { margin: 0; padding: 0; list-style: none; }
+  .toc li { margin: 0.5rem 0; }
+  .toc a { color: var(--accent-teal, #0077b6); text-decoration: none; font-size: 0.95rem; }
+  .callout-block { background: var(--bg-secondary, #f8f9fa); border-right: 4px solid var(--accent-coral, #FF1654); padding: 1.25rem 1.5rem; margin: 1.5rem 0; border-radius: 8px 0 0 8px; }
+  .callout-block.warning { border-right-color: #f59e0b; background: #fffbeb; }
+  .callout-block strong { color: var(--surface-navy, #0E2B48); }
+  .cta-section { background: var(--bg-secondary, #f8f9fa); padding: 2rem; border-radius: 12px; text-align: center; margin: 2.5rem 0; }
+  .cta-section h2 { border: none; padding: 0; margin: 0 0 0.75rem; }
+  .cta-section p { margin-bottom: 1.5rem; color: var(--text-secondary, #4a5568); }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; }
+  .btn--primary { background: var(--accent-coral, #FF1654); color: white; }
+  .btn--secondary { background: white; color: var(--surface-navy, #0E2B48); border: 2px solid var(--surface-navy, #0E2B48); }
+  .faq-section { margin: 2.5rem 0; }
+  .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { background: var(--bg-secondary, #f8f9fa); border-radius: 8px; overflow: hidden; }
+  .faq-question { padding: 1rem 1.25rem; font-weight: 600; cursor: pointer; list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; float: left; margin-left: 0.75rem; font-size: 1.25rem; color: var(--accent-coral, #FF1654); }
+  .faq-item[open] .faq-question::after { content: '−'; }
+  .faq-answer { padding: 0 1.25rem 1rem; color: var(--text-secondary, #4a5568); }
+  .faq-answer p { margin: 0; }
+  .related-content { margin: 2.5rem 0; padding-top: 2rem; border-top: 1px solid rgba(0, 0, 0, 0.08); }
+  .related-content ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+  .related-content li { margin: 0; }
+  .related-content a { display: block; padding: 0.75rem 1rem; background: var(--bg-secondary, #f8f9fa); border-radius: 6px; text-decoration: none; }
+  .related-content a:hover { background: var(--surface-navy, #0E2B48); color: white; }
+  @media (max-width: 768px) { .post-hero { padding: 2rem 0 3rem; } .cta-buttons { flex-direction: column; } .btn { width: 100%; justify-content: center; } }
+</style>
