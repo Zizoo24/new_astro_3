@@ -45,8 +45,6 @@ export const arabicPages = new Set([
   // Locations
   '/locations/',
   '/locations/abu-dhabi/',
-  '/locations/ajman/',
-  '/locations/al-ain/',
   '/locations/dubai/',
   '/locations/dubai/business-bay/',
   '/locations/dubai/difc/',
@@ -54,8 +52,6 @@ export const arabicPages = new Set([
   '/locations/dubai/jlt/',
   '/locations/dubai/marina/',
   '/locations/dubai/palm-jumeirah/',
-  '/locations/fujairah/',
-  '/locations/ras-al-khaimah/',
   '/locations/sharjah/',
 
   // Personal silo
@@ -95,9 +91,6 @@ export const arabicPages = new Set([
   '/resources/pricing-guide/',
   '/resources/turnaround-times/',
   '/resources/us-citizens-dubai-guide/',
-  '/resources/adgm-translation-requirements/',
-  '/resources/adjd-translation-requirements/',
-  '/resources/translation-type-decision-guide/',
   '/resources/visa-rejection-guide/',
 
   // Services & Attestation

@@ -1,0 +1,294 @@
+---
+/**
+ * Blog Post: MOHRE Work Permit Document Issues (Arabic)
+ * Target Keyword: رفض تصريح العمل وثائق
+ */
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const pageTitle = "رفض تصريح العمل من MOHRE: مشاكل المستندات التي يغفلها الموظفون";
+const metaDescription = "أسباب رفض تصريح العمل من وزارة الموارد البشرية MOHRE في أبوظبي ودبي. مشاكل الترجمة والتصديق وكيفية تجنبها.";
+
+const publishDate = "2026-02-07";
+const readTime = "7 دقائق قراءة";
+
+const faqs = [
+  {
+    q: "هل MOHRE تقبل الترجمات المعتمدة من خارج الإمارات؟",
+    a: "لا. MOHRE تقبل فقط ترجمات معتمدة من وزارة العدل الإماراتية. ترجمات محلفة من بلد المنشأ لا تُقبل. المستندات الأجنبية يجب ترجمتها من جديد بواسطة مترجم مرخص من وزارة العدل في الإمارات."
+  },
+  {
+    q: "كم يستغرق تصريح العمل عادة؟",
+    a: "تصريح العمل من MOHRE يستغرق 3-5 أيام عمل بعد تقديم جميع المستندات المكتملة. التأخير يحدث عادة بسبب مستندات ناقصة أو ترجمة مرفوضة. التقديم الصحيح من المرة الأولى يوفر أسابيع."
+  },
+  {
+    q: "هل شهادة الخبرة تحتاج ترجمة؟",
+    a: "نعم، إذا كانت بلغة غير العربية أو الإنجليزية. MOHRE تقبل المستندات بالإنجليزية بدون ترجمة في بعض الحالات، لكن المستندات بلغات أخرى تحتاج ترجمة معتمدة من وزارة العدل."
+  },
+  {
+    q: "ما الفرق بين تصريح العمل وبطاقة العمل؟",
+    a: "تصريح العمل (work permit) هو الموافقة على توظيف شخص. بطاقة العمل (labour card) تُصدر بعد التصريح وتسمح بالعمل فعلياً. كلاهما يتطلب مستندات مترجمة ومصدقة."
+  },
+  {
+    q: "هل أحتاج معادلة الشهادة من وزارة التربية؟",
+    a: "لبعض المهن نعم. MOHRE تتطلب معادلة من وزارة التربية والتعليم (MOHESR) للمهن المتخصصة. الشهادة يجب أن تُترجم وتُصدق قبل تقديمها للمعادلة. ننسق العملية بالكامل."
+  },
+  {
+    q: "ماذا أفعل إذا صاحب العمل لم يقدم مستنداتي؟",
+    a: "يمكنكم المتابعة عبر تطبيق MOHRE أو الاتصال بالرقم 600590000. إذا كانت المشكلة في المستندات، أرسلوها لنا عبر واتساب ونجهز الترجمات المطلوبة ليقدمها صاحب العمل."
+  }
+];
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": pageTitle,
+  "description": metaDescription,
+  "inLanguage": "ar",
+  "datePublished": publishDate,
+  "dateModified": publishDate,
+  "author": { "@type": "Organization", "name": "OnlineTranslation.ae" },
+  "publisher": { "@type": "Organization", "name": "OnlineTranslation.ae" }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.a }
+  }))
+};
+---
+
+<BaseLayoutArabic title={`${pageTitle} | مدونة OnlineTranslation.ae`} description={metaDescription}>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://onlinetranslation.ae/ar/blog/mohre-work-permit-document-issues/" />
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <article class="blog-post" dir="rtl">
+    <header class="post-hero">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="التنقل">
+          <a href="/ar/">الرئيسية</a> / <a href="/ar/blog/">المدونة</a> / <span>رفض تصريح العمل MOHRE</span>
+        </nav>
+        <div class="post-meta">
+          <span class="category-tag">تصاريح العمل</span>
+          <span class="read-time">{readTime}</span>
+        </div>
+        <h1>{pageTitle}</h1>
+        <p class="post-intro">تصريح العمل رُفض. صاحب العمل ينتظر. الموظف الجديد لا يستطيع البدء. السبب في الغالب: مستند ناقص أو ترجمة غير مقبولة. هذا الدليل يشرح ما يحتاجه MOHRE بالضبط.</p>
+        <div class="post-info">
+          <time datetime={publishDate}>{new Date(publishDate).toLocaleDateString('ar-AE', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        </div>
+      </div>
+    </header>
+
+    <div class="post-content">
+      <div class="container container--narrow">
+
+        <p class="lead-text">وزارة الموارد البشرية والتوطين (MOHRE) تدير تصاريح العمل في الإمارات. كل تصريح يتطلب مستندات محددة حسب المهنة والجنسية. خطأ في مستند واحد يؤخر العملية بأسابيع.</p>
+
+        <nav class="toc" aria-label="جدول المحتويات">
+          <h2>في هذا الدليل</h2>
+          <ul>
+            <li><a href="#required-documents">المستندات المطلوبة</a></li>
+            <li><a href="#common-mistakes">الأخطاء الشائعة</a></li>
+            <li><a href="#profession-specific">حسب المهنة</a></li>
+            <li><a href="#attestation">التصديق والمعادلة</a></li>
+            <li><a href="#prevention">تجنب الرفض</a></li>
+            <li><a href="#faqs">الأسئلة الشائعة</a></li>
+          </ul>
+        </nav>
+
+        <section id="required-documents">
+          <h2>المستندات المطلوبة لتصريح العمل</h2>
+          <p>MOHRE تتطلب هذه المستندات الأساسية لكل تصريح عمل:</p>
+
+          <h3>المستندات الأكاديمية</h3>
+          <ul>
+            <li><a href="/ar/personal/academic/degree/">الشهادة الأكاديمية</a> مترجمة ومصدقة</li>
+            <li><a href="/ar/personal/academic/transcripts/">كشف الدرجات</a> (لبعض المهن)</li>
+            <li><a href="/ar/resources/mohesr-equivalency/">معادلة وزارة التربية</a> (للمهن المتخصصة)</li>
+          </ul>
+
+          <h3>المستندات الشخصية</h3>
+          <ul>
+            <li>جواز السفر ساري المفعول</li>
+            <li><a href="/ar/personal/immigration/pcc/">شهادة حسن السيرة</a> من البلد الأم</li>
+            <li>صور شخصية حديثة</li>
+            <li>الفحص الطبي (يُجرى في الإمارات)</li>
+          </ul>
+
+          <h3>مستندات صاحب العمل</h3>
+          <ul>
+            <li><a href="/ar/legal/corporate/license/">الرخصة التجارية</a></li>
+            <li>عقد العمل باللغتين العربية والإنجليزية</li>
+            <li>بطاقة المنشأة</li>
+          </ul>
+        </section>
+
+        <section id="common-mistakes">
+          <h2>الأخطاء الشائعة في مستندات MOHRE</h2>
+
+          <h3>1. شهادة بدون تصديق</h3>
+          <p>أكثر سبب للرفض. الشهادة الأكاديمية يجب أن تمر بسلسلة <a href="/ar/services/attestation/">التصديق</a> الكاملة. شهادة مترجمة بدون تصديق تُرفض حتى لو الترجمة صحيحة.</p>
+
+          <h3>2. المسمى الوظيفي لا يتطابق مع الشهادة</h3>
+          <p>MOHRE تتحقق أن المسمى الوظيفي يتوافق مع المؤهل الأكاديمي. إذا المسمى "مهندس" والشهادة في "إدارة الأعمال"، يُرفض التصريح. تأكدوا من التوافق قبل التقديم.</p>
+
+          <h3>3. ترجمة عقد العمل</h3>
+          <p>عقد العمل يجب أن يكون بالعربية أو مع <a href="/ar/services/legal-translation/">ترجمة عربية معتمدة</a>. MOHRE توفر نموذجاً موحداً، لكن الملاحق والشروط الإضافية تحتاج ترجمة منفصلة.</p>
+
+          <h3>4. شهادة خبرة مفقودة</h3>
+          <p>لبعض المهن، MOHRE تطلب إثبات خبرة. شهادة الخبرة من صاحب العمل السابق يجب أن تُترجم وتُصدق. بدونها، قد يُرفض التصريح أو يُصنف بمسمى أقل.</p>
+
+          <div class="callout-block warning">
+            <strong>تنبيه:</strong> التصنيف المهني الخاطئ يؤثر على الراتب الأدنى المطلوب لكفالة العائلة. تأكدوا أن المسمى الوظيفي صحيح من البداية.
+          </div>
+        </section>
+
+        <section id="profession-specific">
+          <h2>متطلبات حسب المهنة</h2>
+
+          <h3>المهن الطبية</h3>
+          <p>الأطباء والممرضون والصيادلة يحتاجون ترخيصاً من هيئة الصحة (DHA في دبي، DOH في أبوظبي). المستندات المطلوبة:</p>
+          <ul>
+            <li>شهادة الطب/التمريض مترجمة ومصدقة</li>
+            <li>رخصة مزاولة المهنة من البلد الأم</li>
+            <li>شهادة التخصص (إن وُجدت)</li>
+            <li><a href="/ar/specialized/medical/">ترجمة طبية</a> متخصصة مطلوبة</li>
+          </ul>
+
+          <h3>المهن الهندسية</h3>
+          <p>تتطلب تصديق الشهادة + تسجيل في جمعية المهندسين. <a href="/ar/personal/academic/degree/">ترجمة الشهادة</a> يجب أن تتضمن التخصص الدقيق.</p>
+
+          <h3>المهن التعليمية</h3>
+          <p>المعلمون يحتاجون شهادة التدريس مترجمة + <a href="/ar/resources/mohesr-equivalency/">معادلة وزارة التربية</a>. شهادات KHDA للمدارس الخاصة في دبي لها متطلبات إضافية.</p>
+        </section>
+
+        <section id="attestation">
+          <h2>التصديق والمعادلة لـ MOHRE</h2>
+          <p>المستندات الأكاديمية تمر بمسارين:</p>
+
+          <h3>مسار التصديق</h3>
+          <ol>
+            <li>تصديق من البلد المصدر (أبوستيل أو سلسلة التصديق)</li>
+            <li>سفارة الإمارات (للدول بدون أبوستيل)</li>
+            <li><a href="/ar/services/attestation/mofa/">تصديق MOFA</a></li>
+            <li><a href="/ar/services/legal-translation/">ترجمة وزارة العدل</a></li>
+          </ol>
+
+          <h3>مسار المعادلة</h3>
+          <p>بعد التصديق، بعض الشهادات تحتاج <a href="/ar/resources/mohesr-equivalency/">معادلة من وزارة التربية والتعليم (MOHESR)</a>. المعادلة تؤكد أن الشهادة الأجنبية معترف بها في الإمارات.</p>
+
+          <div class="callout-block">
+            <strong>ملاحظة:</strong> <a href="/ar/resources/distance-education-uae/">التعليم عن بعد</a> له قواعد خاصة في المعادلة. ليست جميع الشهادات عن بعد مقبولة. تحققوا من القائمة المعتمدة قبل التقديم.
+          </div>
+        </section>
+
+        <section id="prevention">
+          <h2>كيف تتجنب رفض MOHRE</h2>
+          <ol>
+            <li><strong>تحققوا من المسمى الوظيفي.</strong> هل يتوافق مع شهادتكم الأكاديمية؟</li>
+            <li><strong>أكملوا التصديق أولاً.</strong> لا تبدأوا بتصريح العمل قبل إكمال سلسلة التصديق.</li>
+            <li><strong>جهزوا جميع المستندات معاً.</strong> تقديم ناقص = تأخير مضمون.</li>
+            <li><strong>راجعوا الأسماء.</strong> تطابق الأسماء بين جميع المستندات وجواز السفر ضروري.</li>
+            <li><strong>استخدموا ترجمة معتمدة من وزارة العدل.</strong> لا بديل عنها لـ MOHRE.</li>
+          </ol>
+        </section>
+
+        <section class="cta-section">
+          <h2>تحتاجون ترجمة لتصريح العمل؟</h2>
+          <p>أرسلوا مستنداتكم عبر واتساب. نراجعها ونحدد ما يحتاج ترجمة وتصديقاً — بدون رسوم للمراجعة.</p>
+          <div class="cta-buttons">
+            <a href="https://wa.me/971508620217?text=أحتاج%20ترجمة%20لتصريح%20العمل%20MOHRE" class="btn btn--primary">
+              <i class="fab fa-whatsapp"></i> أرسل المستندات للمراجعة
+            </a>
+            <a href="/ar/contact/" class="btn btn--secondary">طلب عرض سعر</a>
+          </div>
+        </section>
+
+        <section id="faqs" class="faq-section">
+          <h2>الأسئلة الشائعة</h2>
+          <div class="faq-list">
+            {faqs.map((faq) => (
+              <details class="faq-item">
+                <summary class="faq-question">{faq.q}</summary>
+                <div class="faq-answer"><p>{faq.a}</p></div>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        <section class="related-content">
+          <h2>أدلة ذات صلة</h2>
+          <ul>
+            <li><a href="/ar/blog/gdrfa-visa-document-problems/">رفض التأشيرة من GDRFA: مشاكل المستندات</a></li>
+            <li><a href="/ar/personal/academic/degree/">ترجمة الشهادات الأكاديمية</a></li>
+            <li><a href="/ar/resources/mohesr-equivalency/">دليل معادلة الشهادات</a></li>
+            <li><a href="/ar/services/attestation/">خدمات التصديق</a></li>
+            <li><a href="/ar/blog/degrees-accepted-uae-work-permit/">الشهادات المقبولة لتصريح العمل</a></li>
+          </ul>
+        </section>
+
+      </div>
+    </div>
+  </article>
+</BaseLayoutArabic>
+
+<style>
+  .blog-post { background: var(--bg-primary, #ffffff); }
+  .post-hero { background: linear-gradient(135deg, var(--surface-navy, #0E2B48) 0%, #1a3a5c 100%); color: white; padding: 3rem 0 4rem; }
+  .breadcrumbs { font-size: 0.85rem; margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.7); }
+  .breadcrumbs a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .breadcrumbs a:hover { color: white; }
+  .post-meta { display: flex; gap: 1rem; margin-bottom: 1rem; }
+  .category-tag { background: var(--accent-coral, #FF1654); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; }
+  .read-time { color: rgba(255, 255, 255, 0.7); font-size: 0.85rem; }
+  .post-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; line-height: 1.4; margin: 0 0 1rem; }
+  .post-intro { font-size: 1.15rem; color: rgba(255, 255, 255, 0.9); max-width: 700px; line-height: 1.7; margin: 0 0 1.5rem; }
+  .post-info { font-size: 0.9rem; color: rgba(255, 255, 255, 0.7); }
+  .post-content { padding: 3rem 0 4rem; }
+  .container--narrow { max-width: 800px; margin: 0 auto; padding: 0 1.5rem; }
+  .lead-text { font-size: 1.15rem; color: var(--text-secondary, #4a5568); line-height: 1.8; margin-bottom: 1.5rem; }
+  .post-content h2 { font-size: 1.5rem; font-weight: 700; color: var(--surface-navy, #0E2B48); margin: 2.5rem 0 1rem; padding-top: 1rem; border-top: 1px solid rgba(0, 0, 0, 0.08); }
+  .post-content h2:first-of-type { border-top: none; padding-top: 0; }
+  .post-content h3 { font-size: 1.15rem; font-weight: 700; color: var(--surface-navy, #0E2B48); margin: 1.5rem 0 0.75rem; }
+  .post-content p { color: var(--text-primary, #1a1a1a); line-height: 1.8; margin-bottom: 1rem; }
+  .post-content a { color: var(--accent-teal, #0077b6); text-decoration: underline; }
+  .post-content ul, .post-content ol { margin: 1rem 1.5rem 1.5rem 0; padding-right: 1rem; line-height: 1.8; }
+  .post-content li { margin-bottom: 0.5rem; }
+  .toc { background: var(--bg-secondary, #f8f9fa); border-radius: 8px; padding: 1.5rem; margin: 2rem 0; }
+  .toc h2 { font-size: 1rem; margin: 0 0 1rem; padding: 0; border: none; }
+  .toc ul { margin: 0; padding: 0; list-style: none; }
+  .toc li { margin: 0.5rem 0; }
+  .toc a { color: var(--accent-teal, #0077b6); text-decoration: none; font-size: 0.95rem; }
+  .callout-block { background: var(--bg-secondary, #f8f9fa); border-right: 4px solid var(--accent-coral, #FF1654); padding: 1.25rem 1.5rem; margin: 1.5rem 0; border-radius: 8px 0 0 8px; }
+  .callout-block.warning { border-right-color: #f59e0b; background: #fffbeb; }
+  .callout-block strong { color: var(--surface-navy, #0E2B48); }
+  .cta-section { background: var(--bg-secondary, #f8f9fa); padding: 2rem; border-radius: 12px; text-align: center; margin: 2.5rem 0; }
+  .cta-section h2 { border: none; padding: 0; margin: 0 0 0.75rem; }
+  .cta-section p { margin-bottom: 1.5rem; color: var(--text-secondary, #4a5568); }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; }
+  .btn--primary { background: var(--accent-coral, #FF1654); color: white; }
+  .btn--secondary { background: white; color: var(--surface-navy, #0E2B48); border: 2px solid var(--surface-navy, #0E2B48); }
+  .faq-section { margin: 2.5rem 0; }
+  .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { background: var(--bg-secondary, #f8f9fa); border-radius: 8px; overflow: hidden; }
+  .faq-question { padding: 1rem 1.25rem; font-weight: 600; cursor: pointer; list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; float: left; margin-left: 0.75rem; font-size: 1.25rem; color: var(--accent-coral, #FF1654); }
+  .faq-item[open] .faq-question::after { content: '−'; }
+  .faq-answer { padding: 0 1.25rem 1rem; color: var(--text-secondary, #4a5568); }
+  .faq-answer p { margin: 0; }
+  .related-content { margin: 2.5rem 0; padding-top: 2rem; border-top: 1px solid rgba(0, 0, 0, 0.08); }
+  .related-content ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+  .related-content li { margin: 0; }
+  .related-content a { display: block; padding: 0.75rem 1rem; background: var(--bg-secondary, #f8f9fa); border-radius: 6px; text-decoration: none; }
+  .related-content a:hover { background: var(--surface-navy, #0E2B48); color: white; }
+  @media (max-width: 768px) { .post-hero { padding: 2rem 0 3rem; } .cta-buttons { flex-direction: column; } .btn { width: 100%; justify-content: center; } }
+</style>
