@@ -1,9 +1,9 @@
 # SEO Strategy & Competitive Landscape
 
 **Site**: OnlineTranslation.ae
-**Version**: 3.0
-**Updated**: February 6, 2026
-**Data Sources**: GSC (Dec 2025 - Jan 2026), competitive audit (Feb 2026, 40+ searches), Al Syed deep analysis (Feb 2026)
+**Version**: 3.1
+**Updated**: February 7, 2026
+**Data Sources**: GSC (Dec 2025 - Jan 2026), competitive audit (Feb 2026, 40+ searches), Al Syed deep analysis (Feb 2026), keyword demand validation audit (Feb 2026)
 
 ---
 
@@ -25,8 +25,82 @@ Two strategic realities define our position:
 **Strategic direction:**
 - **English:** Own the document journey (authority-specific process guides, rejection prevention, decision content). Do NOT chase generic keywords.
 - **Arabic:** Scale from 82 to 120+ optimized Arabic pages. Dominate Arabic SERPs where Al Syed is invisible and Alsun is the only competitor. Abu Dhabi first, Dubai second.
+- **Technical (Week 1):** Implement hreflang tags sitewide and deindex Vercel staging sites before any content work begins.
+- **Reviews (Parallel):** Launch Google review campaign to close 256-to-<10 gap with Alsun.
 
 See [`CONTENT-PLAN.md`](./CONTENT-PLAN.md) for the full execution plan.
+
+---
+
+## Keyword Demand Validation (February 2026)
+
+### English Keywords: Three-Tier Landscape
+
+Of 20 English keywords tested against live SERPs, the demand splits into three tiers:
+
+**Tier 1 — Strong commercial intent (7 keywords):** OnlineTranslation.ae is absent from page one for all.
+
+| Keyword | Intent | Competitors on Page 1 | Ads Running |
+|---------|--------|----------------------|-------------|
+| legal translation Dubai | Transactional | Al Syed #1-2, 15+ | Yes |
+| certified translation Dubai | Transactional | Alsun #1, 10+ | Yes |
+| birth certificate translation Dubai | Transactional | Alsun #2, 8+ | Yes |
+| marriage certificate translation Dubai | Transactional | 8+ | Yes |
+| driving license translation Dubai | Transactional | 5+ | Yes |
+| translation office near me Dubai | Local | 10+ | Yes |
+| urgent legal translation Dubai | High-intent | 5+ | Yes |
+
+**Tier 2 — Medium intent, realistic targets (7 keywords):** OnlineTranslation.ae already ranks for several.
+
+| Keyword | Current Ranking | Strategy |
+|---------|----------------|----------|
+| MOJ translation Dubai | #1-2 | Defend — core brand query |
+| degree certificate translation Dubai | Visible | Expand with MOHRE/Golden Visa angle |
+| court document translation Dubai | Ranking | Maintain |
+| DIFC translation requirements | Ranking | Expand (existing traction) |
+| document translation Dubai | ~#2 | Maintain |
+| proofreading services Dubai | #1 | Defend |
+| arabic translation dubai | #5 | Maintain |
+
+**Tier 3 — Deprioritize (4 keywords):** Zero translation companies rank. Google serves government portals and immigration consultancies exclusively. Treat as top-of-funnel awareness content, NOT service pages.
+
+| Keyword | Why Deprioritize |
+|---------|-----------------|
+| GDRFA document requirements | Government portals dominate, no translation company presence |
+| MOHRE work permit documents | HR tech and PRO companies own these SERPs |
+| DHA license documents required | Exam prep academies dominate |
+| visa rejection documents UAE | Immigration consultancies own this space |
+
+### Arabic Keywords: Confirmed Commercial Demand
+
+Every Arabic keyword tested returns commercial results. Key validated terms:
+
+| Arabic Keyword | English Equivalent | Competition Level | OnlineTranslation.ae Status |
+|---------------|-------------------|-------------------|---------------------------|
+| ترجمة قانونية دبي | legal translation Dubai | 3-4 competitors | **Not appearing** — needs optimization |
+| مكتب ترجمة دبي | translation office Dubai | 3-4 competitors | Unknown |
+| ترجمة معتمدة دبي | certified translation Dubai | 2-3 competitors | Unknown |
+| أسعار الترجمة القانونية دبي | legal translation prices Dubai | 2-3 competitors | Has pricing guide (advantage) |
+| ترجمة قانونية أبوظبي | legal translation Abu Dhabi | **2 competitors only** | Content gap |
+
+**Critical finding:** OnlineTranslation.ae/ar/ did not appear in Arabic SERPs for ترجمة قانونية دبي despite having 82 Arabic pages. This likely traces to missing hreflang tags and insufficient keyword optimization.
+
+### Journey Keywords: 7.5/10 — Most Target Real Demand
+
+| Score | Keywords | Action |
+|-------|----------|--------|
+| High demand (6) | Document attestation UAE, Indian degree attestation, which docs need Arabic translation, GDRFA family visa checklist, attestation vs translation order, what is MOJ | Keep — proceed as planned |
+| Medium demand (6) | MOHRE work permit rejection, birth certificate attestation, Golden Visa documents, free zone translation, Abu Dhabi vs Dubai requirements, MOJ vs certified | Keep — proceed as planned |
+| Drop/rework (3) | Typing center vs translation office (no search volume), DIFC court judgment translation (law firms own this), Bangladeshi documents UAE visa (too vague) | Rework or drop |
+
+### Nationality Guide Demand Ranking
+
+| Nationality | Demand Level | Search Competition | Priority Order |
+|-------------|-------------|-------------------|---------------|
+| **Indian** | Very High | Heavy but essential | **1st** — highest proven demand |
+| **Egyptian** | Moderate-High | Underserved | **2nd** — strong differentiation |
+| **Pakistani** | Moderate | Moderate | **3rd** — refine keyword to include "attestation" |
+| **Bangladeshi** | Low for written | Very low | **Deprioritize** — video content in Bengali instead |
 
 ---
 
@@ -124,6 +198,24 @@ The Dubai legal translation market has three distinct competitive strategies. Un
 - Content spread across multiple domains fragments their authority
 
 **Strategic takeaway:** Alsun is the benchmark competitor, not Al Syed. Their Arabic content dominance is real but beatable. OnlineTranslation.ae already has ~82 Arabic pages on a single .ae domain — more Arabic content than any single Alsun domain. The gap is optimization and targeting, not page count.
+
+#### Competitor Arabic Page Census (February 2026)
+
+The page count audit produced the most strategically significant finding: **out of eight major competitors, only Alsun has any Arabic pages at all.**
+
+| Competitor | English Pages | Arabic Pages | Arabic Content |
+|------------|--------------|-------------|----------------|
+| Sim-Trans | 500+ | **0** | None |
+| Al Syed (translationindubai.com) | 350+ | **0** | None |
+| Alsun (alsuntranslation.com) | 100-200 | **55-65** | Service, industry, location, blog |
+| Alsun (legaltranslation-dubai.ae) | Est. 50+ | **20-40** | WPML mirror (extent uncertain) |
+| Polyglot UAE | 50+ | **0** | None |
+| Communication Dubai | 30+ | **0** | None |
+| Dubai Translation Service | 30+ | **0** | None |
+| Aburuf | 20+ | **0** | None |
+| **OnlineTranslation.ae** | **~100** | **~82** | **Services, documents, locations, resources, blog** |
+
+**Alsun combined Arabic presence: ~75-105 pages across 2 domains.** At 120+ pages on a single .ae domain, OnlineTranslation.ae would hold a 2:1 advantage over Alsun's primary site.
 
 ---
 
@@ -240,6 +332,16 @@ Arabic blog posts targeting high-volume Arabic queries with zero competition:
 | Abu Dhabi vs Dubai requirements | `/ar/blog/abu-dhabi-vs-dubai-translation-requirements/` | متطلبات الترجمة أبوظبي دبي |
 | Free zone translation requirements | `/ar/blog/free-zone-arabic-translation-requirements/` | ترجمة المنطقة الحرة الإمارات |
 
+#### Priority 2B: Abu Dhabi Content (Moved from Phase 4 — Now Phase 2)
+
+Abu Dhabi has fewer competitors, growing ADGM institutional demand (31% registration increase in 2024), and almost no Arabic content from rivals. Arabic searches for ترجمة قانونية أبوظبي show only 2-3 competitors.
+
+| Content | Arabic URL | Target Query |
+|---------|-----------|--------------|
+| Abu Dhabi landing page (Arabic) | `/ar/locations/abu-dhabi/` | ترجمة قانونية أبوظبي |
+| ADGM translation guide (Arabic) | `/ar/resources/adgm-translation-requirements/` | ترجمة أدغم أبوظبي |
+| ADJD court translation (Arabic) | `/ar/resources/adjd-translation-requirements/` | ترجمة محاكم أبوظبي |
+
 #### Priority 4: Arabic Location Pages (Expansion)
 
 Arabic location pages for areas with high Arabic-speaking populations:
@@ -277,14 +379,18 @@ Arabic location pages for areas with high Arabic-speaking populations:
 
 ### Arabic vs English: Where to Compete
 
+**Resource split: 60% Arabic, 40% English.** Arabic is the higher-ROI investment due to 10x less competition and existing structural advantage.
+
 | Search Intent | English Strategy | Arabic Strategy |
 |---------------|-----------------|-----------------|
 | Generic head terms ("legal translation Dubai") | Avoid — Al Syed owns this | Attack — Al Syed has zero presence |
-| Authority-specific ("GDRFA documents") | Create process guides | Create Arabic process guides |
-| Rejection prevention | High priority — zero competition | High priority — zero competition |
+| Authority-specific ("GDRFA documents") | Create process guides (awareness, not conversion) | Create Arabic process guides |
+| Rejection prevention | Phase 3-4 (not Phase 1) — indirect conversion path | Phase 3-4 — same rationale |
+| Service pages | Optimize existing for commercial keywords | **Phase 1-2 priority** — direct conversion |
 | Decision content ("MOJ vs certified") | Expand existing strength | Create Arabic equivalents |
-| Nationality-specific | Bangladeshi, Egyptian, Pakistani (English) | Egyptian (Arabic is their search language) |
-| Location-specific | Defend existing positions | Abu Dhabi first, expand to other emirates |
+| Nationality-specific | Indian → Egyptian → Pakistani (English) | Egyptian (Arabic is their search language) |
+| Location-specific | Defend existing positions | **Abu Dhabi first (Phase 2)**, expand to other emirates |
+| Google Ads | Heavily competed | **Untapped** — launch Arabic PPC as quick win |
 
 ---
 
@@ -369,18 +475,74 @@ Al Syed's complete absence of schema markup, sitemaps, and robots.txt means thei
 
 ### Critical Technical Issues
 
-| Issue | Severity | Status |
-|-------|----------|--------|
-| 5 Vercel staging sites indexed by Google | HIGH | Requires Vercel dashboard access |
-| Legacy WordPress pages in Google cache | MEDIUM | 309 redirects in place. Google needs to re-crawl. |
-| Arabic page indexation status unknown | HIGH | Check GSC for /ar/ page coverage |
-| robots.txt WordPress blocks | DONE | wp-admin, wp-login, wp-json, xmlrpc, wp-content, wp-includes blocked |
+| Issue | Severity | Status | Deadline |
+|-------|----------|--------|----------|
+| **hreflang tags missing sitewide** | **CRITICAL** | NOT IMPLEMENTED | **Week 1** |
+| 5 Vercel staging sites indexed by Google | HIGH | Requires Vercel dashboard access | Week 1 |
+| **Google review deficit** (Alsun 256+ vs OT.ae <10) | **HIGH** | No campaign in place | Parallel from Day 1 |
+| Arabic page indexation status unknown | HIGH | Check GSC for /ar/ page coverage | Week 1 |
+| Legacy WordPress pages in Google cache | MEDIUM | 309 redirects in place | Monitor |
+| robots.txt WordPress blocks | DONE | Completed | Done |
+
+#### Blind Spot 1: Missing hreflang Tags (CRITICAL)
+
+No hreflang tags exist on any page — neither English nor Arabic. Without hreflang:
+- Google may serve English pages to Arabic searchers (or vice versa)
+- Arabic pages may be treated as duplicate content
+- Arabic pages may fail to index properly
+- This likely explains why OT.ae's Arabic pages don't appear in Arabic SERPs despite 82 pages of content
+
+**Fix:** Each English page needs `hreflang="en-AE"` pointing to its Arabic counterpart, and each Arabic page needs `hreflang="ar"` pointing back. Implementable through BaseLayout.astro and BaseLayoutArabic.astro template changes. **Must be completed Week 1 before any content work.**
+
+#### Blind Spot 2: Google Review Deficit (HIGH)
+
+| Metric | Alsun | OnlineTranslation.ae | Gap |
+|--------|-------|---------------------|-----|
+| Google Reviews | 256+ | <10 | 25:1 |
+| Rating | 4.9 stars | — | — |
+| Trustpilot Reviews | 7 | 0 | Overtakable |
+
+No amount of content creation overcomes a 25:1 review deficit in local search. Launch parallel review campaign:
+- WhatsApp-integrated review requests (post-delivery, natural for service model)
+- QR code on delivered documents linking to Google review page
+- Target: 50+ reviews within 6 months
+- Secondary: Trustpilot (Alsun has only 7 reviews — easy to overtake)
+
+#### Blind Spot 3: Arabic Google Ads (Untapped Channel)
+
+English PPC is heavily competed. Arabic PPC is significantly less saturated. Only 3-4 competitors have Arabic landing pages suitable for Arabic ad campaigns. OnlineTranslation.ae's 82 Arabic pages create a natural landing page advantage.
+
+**Quick-win targets:** ترجمة قانونية دبي, ترجمة معتمدة دبي, مكتب ترجمة دبي — immediate Arabic leads while organic rankings build over 19 weeks.
+
+#### Google 2MB Crawl Limit (February 2026 Documentation Update)
+
+Google now documents that Googlebot crawls only the **first 2MB of uncompressed HTML** for search indexing (down from a previously documented 15MB). Google says this is a documentation clarification, not a new behavioral change — the actual limit has been 2MB for some time.
+
+| Limit | Applies To |
+|-------|-----------|
+| **15 MB** | Default for all Google crawlers/fetchers (infrastructure-wide) |
+| **2 MB** | Googlebot specifically, for HTML/text files (Google Search indexing) |
+| **64 MB** | Googlebot specifically, for PDF files |
+
+**OnlineTranslation.ae status: SAFE.** Largest page is 352KB (Arabic homepage). No pages approach 2MB.
+
+| Page Type | Uncompressed | Gzipped |
+|-----------|-------------|---------|
+| Arabic homepage (largest) | 352 KB | 58 KB |
+| Largest EN page | 334 KB | 60 KB |
+| Typical service page | 250-315 KB | 50-60 KB |
+
+**Page composition insight:** 66-72% of each page's HTML is inline CSS from Astro component scoping. Actual content and schemas are tiny (JSON-LD is only 0.7-1.2KB). This means content indexing is not at risk.
+
+**CSS optimization opportunity:** Each page loads ~200KB inline CSS + 30 external CSS files (360KB). The deferred loading pattern creates 97 `<link>` tags per page (4 per CSS file). Consolidating could improve rendering performance.
+
+**Ongoing monitoring:** As pages grow with FAQ sections, schema, and authority content, keep HTML under 1MB as a safety threshold (50% of Google's limit).
 
 ### Arabic Technical Checklist
 
 | Element | Status | Action |
 |---------|--------|--------|
-| hreflang tags (EN↔AR) | Present | Verify consistency across all pages |
+| hreflang tags (EN↔AR) | **MISSING** | **Implement sitewide — Week 1 critical priority** |
 | Arabic sitemap entries | Unknown | Verify /ar/ pages in sitemap |
 | Arabic pages in GSC | Unknown | Submit /ar/ pages if not indexed |
 | RTL CSS support | Complete | rtl.css handles all RTL overrides |
@@ -449,16 +611,18 @@ Preserved for historical reference. These numbers are the baseline before the st
 
 ## Part VIII: Nationality-Specific Landscape
 
-### Ranked by ROI (demand-to-competition ratio)
+### Ranked by Validated Search Demand (February 2026 Audit)
 
-| Nationality | Population | Content Competition | Hague Member? | Priority | Language |
-|-------------|-----------|---------------------|---------------|----------|----------|
-| Bangladeshi | 920K | Virtually zero English content | Yes (2025) | HIGH | English |
-| Egyptian | 530K | Almost nothing | No | HIGH | Arabic + English |
-| Pakistani | 2.09M | Moderate gaps | No | Medium | English |
-| Filipino | 760K | DHA-focused only | Yes (2019) | Medium | English |
-| Indian | 4.75M | Saturated | Yes (2005) | Low ROI | English |
-| British | 240K | Well-served by UK apostille firms | Yes (1965) | Low ROI | English |
+| Nationality | Population | Search Demand | Content Competition | Hague Member? | Priority | Content Format |
+|-------------|-----------|---------------|---------------------|---------------|----------|----------------|
+| **Indian** | 4.75M | **Very High** (heavy SERP competition proves volume) | High but essential | Yes (2005) | **#1** | Written guide (EN) |
+| **Egyptian** | 530K | **Moderate-High** (underserved relative to community size) | Almost nothing | No | **#2** | Written guide (AR + EN) |
+| **Pakistani** | 2.09M | Moderate | Moderate gaps | No | **#3** | Written guide (EN) — use "attestation" in keyword |
+| Filipino | 760K | Moderate | DHA-focused only | Yes (2019) | Medium | Written guide (EN) |
+| Bangladeshi | 920K | Low for written content | Virtually zero | Yes (2025) | **Deprioritize** | **Video content in Bengali** instead |
+| British | 240K | Low | Well-served by UK firms | Yes (1965) | Low ROI | English |
+
+**Key change from v3.0:** Indian content leads (highest proven demand), then Egyptian (underserved + Arabic opportunity), then Pakistani. Bangladeshi guide deprioritized for written SEO — the community is better served by video content in Bengali.
 
 **Arabic angle:** Egyptian expats search primarily in Arabic. Creating Arabic nationality-specific content for Egyptians targets 530K people in a language where Al Syed has zero content and Alsun has limited coverage.
 
@@ -476,6 +640,6 @@ Preserved for historical reference. These numbers are the baseline before the st
 
 ---
 
-*Strategy Version: 3.0*
-*Last Updated: February 6, 2026*
+*Strategy Version: 3.1*
+*Last Updated: February 7, 2026*
 *Next Review: March 2026 (after Phase 1 results)*

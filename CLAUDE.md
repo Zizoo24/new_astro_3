@@ -91,12 +91,19 @@ This summary covers everything you need for most tasks. Detailed sections follow
 | FAQ schema | Required on service pages |
 | Internal links | 8+ per page |
 
-**Competitive Landscape (Feb 2026):**
+**Competitive Landscape (Feb 2026 — validated by keyword demand audit):**
 - **Al Syed** (translationindubai.com): 350+ English pages, #1-2 "legal translation Dubai", ZERO Arabic pages
-- **Alsun** (3 domains): 40-70 Arabic pages, 256+ Google reviews, dominates Arabic SERPs
+- **Alsun** (3 domains): 55-65 Arabic pages (primary domain), 256+ Google reviews, dominates Arabic SERPs
+- **All other competitors**: ZERO Arabic pages (Sim-Trans, Polyglot, Communication Dubai, Aburuf — all 0)
 - **OnlineTranslation.ae**: ~82 Arabic pages (most of any single domain), 4,500+ words/page, comprehensive schema
-- **Strategy:** English = own the document journey (authority guides). Arabic = optimize + scale to 120+ pages.
+- **Strategy:** English = own the document journey (authority guides). Arabic = optimize + scale to 120+ pages (60% of effort).
 - Arabic content is the primary growth lever. Al Syed is invisible in Arabic. Alsun is beatable.
+
+**Critical Technical Issues (Week 1 priorities):**
+- **hreflang tags MISSING sitewide** — Arabic pages can't surface properly in Arabic SERPs
+- **Vercel staging sites indexed** — duplicate content risk
+- **Google review deficit**: Alsun 256+ reviews vs OnlineTranslation.ae <10 — launch review campaign Day 1
+- **Google 2MB crawl limit** — pages must keep critical content within first 2MB of HTML
 
 **Key Files:**
 - `src/config/site.ts` — Site configuration
@@ -131,8 +138,8 @@ This summary covers everything you need for most tasks. Detailed sections follow
 | Document | Purpose |
 |----------|---------|
 | [`pipeline/MASTER_WORKFLOW.md`](./pipeline/MASTER_WORKFLOW.md) | **Content creation process (EN + AR)** |
-| [`SEO-STRATEGY.md`](./SEO-STRATEGY.md) | **Competitive landscape (v3.0)** — Al Syed/Alsun profiles, Arabic content strategy |
-| [`CONTENT-PLAN.md`](./CONTENT-PLAN.md) | **Content calendar (v3.0)** — Dual-track EN+AR, 19-week execution plan |
+| [`SEO-STRATEGY.md`](./SEO-STRATEGY.md) | **Competitive landscape (v3.1)** — keyword validation, Arabic page census, 3 blind spots |
+| [`CONTENT-PLAN.md`](./CONTENT-PLAN.md) | **Content calendar (v3.1)** — Revised phasing, Abu Dhabi Phase 2, review campaign |
 | [`RESEARCH.md`](./RESEARCH.md) | Competitive audit data, operational intelligence, Al Syed deep profile |
 | [`SEO-ACTION-PLAN.md`](./SEO-ACTION-PLAN.md) | Tactical plan — backlinks, internal linking, phase verification |
 | [`AI-AGENT-ONBOARDING.md`](./AI-AGENT-ONBOARDING.md) | Quick start guide |
@@ -818,6 +825,38 @@ html[lang="ar"] input[type="url"] {
 
 ## **CHANGELOG**
 
+### February 7, 2026 — Keyword Demand Audit + External Skills + 2MB Crawl Limit (v8.8)
+
+**Keyword Demand Audit Integration:**
+- Validated English keywords in 3 tiers: 7 strong commercial, 7 medium (already ranking), 4 to deprioritize (government terms)
+- Confirmed Arabic keywords show commercial demand with 3-4x less competition than English
+- Competitor Arabic page census: only Alsun has Arabic (55-65 pages), ALL other competitors have zero
+- Three critical blind spots identified: missing hreflang, Google review deficit (256 vs <10), Arabic Google Ads untapped
+
+**Strategy Phasing Updates (v3.0 → v3.1):**
+- Abu Dhabi content moved from Phase 4 to Phase 2 (fewer competitors, growing ADGM demand)
+- hreflang implementation added as Week 1 critical priority
+- Google review campaign added as parallel workstream from Day 1
+- Service pages before rejection prevention in Phase 1 (direct vs indirect conversion)
+- Nationality guides reordered: Indian → Egyptian → Pakistani (Bangladeshi → video)
+- Arabic effort increased to 60% (from 50/50 split)
+
+**Claude Code Skills (7 external skills installed):**
+- `seo-audit`, `page-cro`, `programmatic-seo`, `seo-optimizer` — SEO and CRO analysis
+- `copywriting`, `form-cro`, `schema-markup` — content and conversion optimization
+- Source: aitmpl.com (claude-code-templates, MIT license)
+
+**Google 2MB Crawl Limit:**
+- Google now crawls only first 2MB of HTML (down from 15MB)
+- Critical content must be within first 2MB — scripts, schema, and deferred content should load after
+- Added to technical SEO requirements
+
+**Document Updates:**
+- `SEO-STRATEGY.md` v3.1: keyword validation, Arabic page census, 3 blind spots, revised nationality priorities
+- `CONTENT-PLAN.md` v3.1: revised phasing, Abu Dhabi Phase 2, review campaign, Arabic Google Ads
+- `CLAUDE.md` v8.8: technical issues in quick reference, document version updates
+- 7 external skills installed at `.claude/skills/`
+
 ### February 7, 2026 — SEO Strategy Overhaul: Arabic Content Priority (v8.7)
 
 **Al Syed Competitive Analysis:**
@@ -990,9 +1029,11 @@ html[lang="ar"] input[type="url"] {
 **For SEO changes:**
 - Use components in `src/components/` (SEO.astro, Schema.astro)
 - Reference `src/config/site.ts` for configuration
-- Check `SEO-STRATEGY.md` (v3.0) for competitive landscape and Arabic strategy
+- Check `SEO-STRATEGY.md` (v3.1) for competitive landscape, keyword validation, and Arabic strategy
 - Check `SEO_ARABIC_KEYWORDS.md` for Arabic keywords
-- Check `CONTENT-PLAN.md` (v3.0) for dual-track EN+AR execution plan
+- Check `CONTENT-PLAN.md` (v3.1) for dual-track EN+AR execution plan (Abu Dhabi in Phase 2)
+- **Google 2MB crawl limit:** Keep critical content (H1, meta, schema, key body text) within first 2MB of HTML
+- **hreflang:** Must be implemented sitewide before content work proceeds
 
 **For content changes:**
 - Follow Part V structure (Hero → Checklist → Process → After-Care → Pricing → FAQ)
@@ -1006,9 +1047,10 @@ html[lang="ar"] input[type="url"] {
 **Competitive context (read `SEO-STRATEGY.md` for full details):**
 - English generic keywords ("legal translation Dubai") are UNWINNABLE — Al Syed has 350+ pages
 - English strategy = authority-specific process guides where zero competitors exist
-- Arabic is the primary growth lever — Al Syed has 0 Arabic pages, Alsun has 40-70
+- Arabic is the primary growth lever (60% of effort) — Al Syed has 0 Arabic pages, Alsun has 55-65 on primary domain
+- ALL other competitors have ZERO Arabic pages (validated Feb 2026 census)
 - We already have ~82 Arabic pages — optimization and expansion, not starting from scratch
 
 ---
 
-*Last Updated: February 7, 2026 — Version 8.7*
+*Last Updated: February 7, 2026 — Version 8.8*
