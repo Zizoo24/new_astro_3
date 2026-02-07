@@ -140,43 +140,47 @@ export const HERO_IMAGES: Record<string, HeroImage> = {
   
   'stamped-hardcopy': {
     path: '/assets/images/onedrive/stamped-hardcopy.png',
+    pathWebp: '/assets/images/onedrive/stamped-hardcopy.webp',
     alt: 'MOJ certified translated document with official stamp and signature verification',
     category: 'legal',
     keywords: ['attestation', 'certified', 'stamp', 'mofa', 'moj', 'embassy'],
     optimized: true,
-    webp: false,
-    sizeKB: 180
+    webp: true,
+    sizeKB: 69
   },
-  
+
   'stamped-hardcopy-2': {
     path: '/assets/images/onedrive/stamped-hardcopy-2.png',
+    pathWebp: '/assets/images/onedrive/stamped-hardcopy-2.webp',
     alt: 'Attested document with embassy stamps and MOFA authentication seal',
     category: 'legal',
     keywords: ['attestation', 'authenticated', 'embassy', 'mofa', 'legalization'],
     optimized: true,
-    webp: false,
-    sizeKB: 175
+    webp: true,
+    sizeKB: 47
   },
-  
-  // Legacy/fallback images (already in use)
+
+  // Legacy/fallback images (now with WebP)
   'hero-city': {
     path: '/assets/images/hero-city.jpg',
+    pathWebp: '/assets/images/hero-city.webp',
     alt: 'Dubai skyline representing translation services across the UAE',
     category: 'location',
     keywords: ['dubai', 'city', 'skyline', 'uae'],
     optimized: true,
-    webp: false,
-    sizeKB: 245
+    webp: true,
+    sizeKB: 196
   },
-  
+
   'hero-team': {
     path: '/assets/images/hero-team.jpg',
+    pathWebp: '/assets/images/hero-team.webp',
     alt: 'Translation team in Dubai office providing certified document services',
     category: 'general',
     keywords: ['team', 'office', 'professional'],
     optimized: true,
-    webp: false,
-    sizeKB: 176
+    webp: true,
+    sizeKB: 53
   },
 };
 

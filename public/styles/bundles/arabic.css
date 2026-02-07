@@ -1,0 +1,2052 @@
+/* === rtl.css === */
+/**
+ * RTL (Right-to-Left) Stylesheet for Arabic Pages
+ * OnlineTranslation.ae
+ * 
+ * COMPREHENSIVE RTL OVERRIDES
+ * Using !important where necessary to override LTR defaults
+ */
+
+/* ============================================
+   BASE RTL SETUP
+   ============================================ */
+html[lang="ar"],
+html[dir="rtl"],
+[dir="rtl"] {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+body.rtl-page {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+/* ============================================
+   TYPOGRAPHY - Arabic Fonts
+   ============================================ */
+
+/* System Arabic font stack for instant fallback while Google Fonts load */
+/* Order: Google Font → System Arabic → Generic Arabic → Fallback */
+:root {
+  --font-arabic: 'Noto Sans Arabic', 'Geeza Pro', 'Simplified Arabic', 'Tahoma', 'Arial', sans-serif;
+  --font-arabic-heading: 'Noto Sans Arabic', 'Geeza Pro', 'Traditional Arabic', serif;
+}
+
+html[lang="ar"] body,
+html[lang="ar"] p,
+html[lang="ar"] li,
+html[lang="ar"] span,
+html[lang="ar"] a,
+html[lang="ar"] button,
+html[lang="ar"] input,
+html[lang="ar"] textarea,
+html[lang="ar"] select,
+html[lang="ar"] label,
+html[lang="ar"] td,
+html[lang="ar"] th {
+  font-family: var(--font-arabic) !important;
+  line-height: 1.8 !important;
+}
+
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4,
+html[lang="ar"] h5,
+html[lang="ar"] h6 {
+  font-family: var(--font-arabic-heading) !important;
+  line-height: 1.6 !important;
+}
+
+/* ============================================
+   LTR ISLANDS - Numbers, Emails, URLs, Phone
+   ============================================ */
+html[lang="ar"] a[href^="tel:"],
+html[lang="ar"] a[href^="mailto:"],
+html[lang="ar"] .ltr-content,
+html[lang="ar"] [dir="ltr"],
+html[lang="ar"] .phone-number,
+html[lang="ar"] .email-address {
+  direction: ltr !important;
+  unicode-bidi: embed !important;
+  text-align: left !important;
+}
+
+/* Brand name stays LTR - use isolate to prevent interference */
+html[lang="ar"] .logo-text,
+html[lang="ar"] .logo-name,
+html[lang="ar"] .footer-logo-text .logo-name {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+}
+
+/* ============================================
+   CONTAINER ALIGNMENT
+   ============================================ */
+html[lang="ar"] .container {
+  text-align: right !important;
+}
+
+/* ============================================
+   HERO SECTION - RTL
+   ============================================ */
+html[lang="ar"] .hero-section {
+  direction: rtl !important;
+}
+
+html[lang="ar"] .hero-content {
+  text-align: right !important;
+}
+
+html[lang="ar"] .hero-text {
+  align-items: flex-end !important;
+  text-align: right !important;
+}
+
+html[lang="ar"] .hero-title,
+html[lang="ar"] .exodus-title {
+  text-align: right !important;
+}
+
+html[lang="ar"] .hero-lead {
+  text-align: right !important;
+}
+
+html[lang="ar"] .hero-bullets {
+  text-align: right !important;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  list-style-position: inside !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important; /* flex-start is RIGHT in RTL */
+}
+
+html[lang="ar"] .hero-bullets li {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important; /* flex-start is RIGHT in RTL */
+  align-items: center !important;
+  text-align: right !important;
+  gap: 12px !important;
+  width: auto !important;
+}
+
+html[lang="ar"] .hero-bullets li i {
+  order: 2 !important; /* Icon goes after text (on left in RTL) */
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+html[lang="ar"] .hero-cta-group {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important; /* flex-start is RIGHT in RTL */
+  gap: 16px !important;
+  width: 100% !important;
+}
+
+html[lang="ar"] .hero-cta,
+html[lang="ar"] .exodus-cta {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+html[lang="ar"] .hero-cta i,
+html[lang="ar"] .exodus-cta i {
+  order: 2 !important;
+  margin-left: 0 !important;
+  margin-right: 10px !important;
+}
+
+html[lang="ar"] .hero-cta-secondary {
+  text-align: right !important;
+  display: block !important;
+}
+
+/* WhatsApp CTA - Must be green, not coral */
+html[lang="ar"] .hero-cta[href*="wa.me"],
+html[lang="ar"] .hero-cta.exodus-cta[href*="wa.me"],
+html[lang="ar"] .hero-cta-group a[href*="wa.me"] {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%) !important;
+  color: #fff !important;
+}
+
+html[lang="ar"] .hero-cta[href*="wa.me"]:hover,
+html[lang="ar"] .hero-cta.exodus-cta[href*="wa.me"]:hover,
+html[lang="ar"] .hero-cta-group a[href*="wa.me"]:hover {
+  background: linear-gradient(135deg, #128C7E 0%, #075E54 100%) !important;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4) !important;
+}
+
+/* ============================================
+   OVERLAP CARDS - RTL
+   ============================================ */
+html[lang="ar"] .overlap-cards-wrapper {
+  direction: rtl !important;
+}
+
+html[lang="ar"] .overlap-cards {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+}
+
+html[lang="ar"] .overlap-card {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  text-align: right !important;
+}
+
+html[lang="ar"] .overlap-card-icon {
+  margin-left: 16px !important;
+  margin-right: 0 !important;
+}
+
+html[lang="ar"] .overlap-card-content {
+  text-align: right !important;
+  align-items: flex-end !important;
+}
+
+/* ============================================
+   SECTION HEADERS - RTL
+   ============================================ */
+html[lang="ar"] .section-header {
+  text-align: right !important;
+}
+
+html[lang="ar"] .section-label {
+  text-align: right !important;
+  padding-left: 0 !important;
+  padding-right: 45px !important;
+}
+
+html[lang="ar"] .section-title {
+  text-align: right !important;
+}
+
+html[lang="ar"] .section-divider {
+  margin-right: 0 !important;
+  margin-left: auto !important;
+}
+
+/* Section label accent line */
+html[lang="ar"] .section-label::before,
+html[lang="ar"] .section-label::after {
+  right: 0 !important;
+  left: auto !important;
+}
+
+/* ============================================
+   SERVICES GRID - RTL
+   ============================================ */
+html[lang="ar"] .services-grid-enhanced {
+  direction: rtl !important;
+}
+
+html[lang="ar"] .service-card-v2 {
+  text-align: right !important;
+}
+
+html[lang="ar"] .service-card-v2 .card-body {
+  text-align: right !important;
+}
+
+html[lang="ar"] .service-card-v2 .card-body h3 {
+  text-align: right !important;
+}
+
+html[lang="ar"] .service-card-v2 .card-body p {
+  text-align: right !important;
+}
+
+html[lang="ar"] .card-arrow {
+  left: 20px !important;
+  right: auto !important;
+  transform: scaleX(-1) !important;
+}
+
+html[lang="ar"] .card-badge {
+  right: auto !important;
+  left: 16px !important;
+}
+
+/* ============================================
+   WHY SECTION - RTL
+   ============================================ */
+html[lang="ar"] .why-section {
+  direction: rtl !important;
+}
+
+html[lang="ar"] .why-grid {
+  direction: rtl !important;
+}
+
+html[lang="ar"] .why-card {
+  text-align: right !important;
+}
+
+html[lang="ar"] .why-card i {
+  margin-bottom: 16px !important;
+}
+
+html[lang="ar"] .why-card h3 {
+  text-align: right !important;
+}
+
+html[lang="ar"] .why-card p {
+  text-align: right !important;
+}
+
+/* ============================================
+   PROCESS STEPS - RTL
+   ============================================ */
+html[lang="ar"] .process-section {
+  direction: rtl !important;
+}
+
+html[lang="ar"] .process-steps,
+html[lang="ar"] .exodus-process-steps {
+  direction: rtl !important;
+}
+
+html[lang="ar"] .process-step,
+html[lang="ar"] .exodus-step {
+  text-align: right !important;
+}
+
+html[lang="ar"] .step-header {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  justify-content: flex-end !important;
+}
+
+html[lang="ar"] .step-index {
+  margin-left: 16px !important;
+  margin-right: 0 !important;
+}
+
+html[lang="ar"] .step-title {
+  text-align: right !important;
+}
+
+html[lang="ar"] .step-desc {
+  text-align: right !important;
+}
+
+/* ============================================
+   METRICS STRIP - RTL
+   ============================================ */
+html[lang="ar"] .ot-metrics {
+  direction: rtl !important;
+}
+
+html[lang="ar"] .ot-metrics-inner {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+}
+
+html[lang="ar"] .ot-metric {
+  text-align: center !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-right: none !important;
+}
+
+html[lang="ar"] .ot-metric:first-child {
+  border-left: none !important;
+}
+
+/* ============================================
+   SPECIALISTS SECTION - RTL
+   ============================================ */
+html[lang="ar"] .specialists-section {
+  direction: rtl !important;
+}
+
+html[lang="ar"] .specialists-grid {
+  direction: rtl !important;
+}
+
+html[lang="ar"] .specialist-card {
+  text-align: right !important;
+  align-items: flex-end !important;
+}
+
+html[lang="ar"] .specialist-card h3 {
+  text-align: right !important;
+}
+
+html[lang="ar"] .specialist-bullets {
+  text-align: right !important;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  list-style: none !important;
+}
+
+html[lang="ar"] .specialist-bullets li {
+  text-align: right !important;
+  position: relative !important;
+  padding-right: 20px !important;
+  padding-left: 0 !important;
+}
+
+html[lang="ar"] .specialist-bullets li::before {
+  content: '✓' !important;
+  position: absolute !important;
+  right: 0 !important;
+  left: auto !important;
+  color: var(--accent-coral, #FF1654) !important;
+}
+
+html[lang="ar"] .specialist-tags {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: flex-end !important;
+  gap: 8px !important;
+}
+
+html[lang="ar"] .team-cta-wrapper {
+  text-align: right !important;
+}
+
+html[lang="ar"] .team-tagline {
+  text-align: right !important;
+}
+
+html[lang="ar"] .team-cta {
+  display: inline-flex !important;
+  flex-direction: row-reverse !important;
+}
+
+html[lang="ar"] .team-cta i {
+  margin-left: 8px !important;
+  margin-right: 0 !important;
+}
+
+/* ============================================
+   LANGUAGES SECTION - RTL
+   ============================================ */
+html[lang="ar"] .languages-section {
+  direction: rtl !important;
+}
+
+html[lang="ar"] .languages-grid {
+  direction: rtl !important;
+}
+
+html[lang="ar"] .language-item {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  justify-content: flex-start !important;
+  text-align: right !important;
+}
+
+html[lang="ar"] .language-item i {
+  margin-left: 8px !important;
+  margin-right: 0 !important;
+}
+
+html[lang="ar"] .languages-note {
+  text-align: center !important;
+}
+
+/* ============================================
+   ABOUT SECTION - RTL
+   ============================================ */
+html[lang="ar"] .about-section,
+html[lang="ar"] .exodus-about {
+  direction: rtl !important;
+}
+
+html[lang="ar"] .about-grid,
+html[lang="ar"] .exodus-about-grid {
+  direction: rtl !important;
+}
+
+@media (min-width: 992px) {
+  html[lang="ar"] .about-grid,
+  html[lang="ar"] .exodus-about-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1.2fr !important;
+  }
+  
+  html[lang="ar"] .about-image,
+  html[lang="ar"] .exodus-about-image {
+    order: 2 !important;
+  }
+  
+  html[lang="ar"] .about-content,
+  html[lang="ar"] .exodus-about-content {
+    order: 1 !important;
+  }
+}
+
+html[lang="ar"] .about-content,
+html[lang="ar"] .exodus-about-content {
+  text-align: right !important;
+}
+
+html[lang="ar"] .exodus-features-list {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important; /* flex-start is RIGHT in RTL context */
+}
+
+html[lang="ar"] .exodus-feature-item {
+  display: flex !important;
+  flex-direction: row !important; /* In RTL, row flows right-to-left */
+  gap: 10px !important;
+  justify-content: flex-start !important; /* flex-start is RIGHT in RTL */
+  text-align: right !important;
+  width: auto !important;
+}
+
+html[lang="ar"] .exodus-feature-item i {
+  order: 2 !important; /* Icon goes after text (appears on left in RTL) */
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Mobile RTL for about/exodus section */
+@media (max-width: 991px) {
+  html[lang="ar"] .exodus-about-content,
+  html[lang="ar"] .about-content {
+    text-align: right !important;
+  }
+
+  html[lang="ar"] .exodus-features-list {
+    width: 100% !important;
+    align-items: flex-start !important; /* flex-start is RIGHT in RTL */
+  }
+
+  html[lang="ar"] .exodus-feature-item {
+    flex-direction: row !important;
+    width: auto !important;
+    justify-content: flex-start !important;
+  }
+}
+
+html[lang="ar"] .experience-badge,
+html[lang="ar"] .exodus-badge {
+  right: auto !important;
+  left: 20px !important;
+}
+
+html[lang="ar"] .about-summary {
+  text-align: right !important;
+}
+
+html[lang="ar"] .about-cta,
+html[lang="ar"] .exodus-cta-btn {
+  display: inline-flex !important;
+  flex-direction: row-reverse !important;
+}
+
+html[lang="ar"] .about-cta i,
+html[lang="ar"] .exodus-cta-btn i {
+  margin-left: 8px !important;
+  margin-right: 0 !important;
+}
+
+/* ============================================
+   FAQ SECTION - RTL
+   ============================================ */
+html[lang="ar"] .faq-section {
+  direction: rtl !important;
+}
+
+html[lang="ar"] .faq-list {
+  direction: rtl !important;
+}
+
+html[lang="ar"] .faq-item {
+  text-align: right !important;
+}
+
+html[lang="ar"] .faq-question {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  justify-content: space-between !important;
+  text-align: right !important;
+  width: 100% !important;
+  padding: 20px !important;
+}
+
+html[lang="ar"] .faq-question i {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+html[lang="ar"] .faq-answer {
+  text-align: right !important;
+  padding: 0 20px 20px !important;
+}
+
+html[lang="ar"] .faq-answer p {
+  text-align: right !important;
+}
+
+/* ============================================
+   CTA BANNER - RTL
+   ============================================ */
+html[lang="ar"] .cta-banner {
+  direction: rtl !important;
+  text-align: center !important;
+}
+
+html[lang="ar"] .cta-banner h2 {
+  text-align: center !important;
+}
+
+html[lang="ar"] .cta-banner p {
+  text-align: center !important;
+}
+
+html[lang="ar"] .cta-btn {
+  display: inline-flex !important;
+  flex-direction: row-reverse !important;
+}
+
+html[lang="ar"] .cta-btn i {
+  margin-left: 8px !important;
+  margin-right: 0 !important;
+}
+
+/* ============================================
+   CONTACT SECTION - RTL
+   ============================================ */
+html[lang="ar"] .contact-section {
+  direction: rtl !important;
+}
+
+html[lang="ar"] .contact-wrapper {
+  text-align: right !important;
+}
+
+html[lang="ar"] .contact-description {
+  text-align: right !important;
+}
+
+html[lang="ar"] .contact-form {
+  text-align: right !important;
+}
+
+html[lang="ar"] .form-row {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  gap: 20px !important;
+}
+
+html[lang="ar"] .form-group {
+  text-align: right !important;
+}
+
+html[lang="ar"] .form-group label {
+  text-align: right !important;
+  display: block !important;
+}
+
+html[lang="ar"] .form-group input,
+html[lang="ar"] .form-group textarea {
+  text-align: right !important;
+  direction: rtl !important;
+}
+
+/* Email and phone inputs should be LTR for typing */
+html[lang="ar"] .form-group input[type="email"],
+html[lang="ar"] .form-group input[type="tel"] {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+html[lang="ar"] .submit-btn {
+  display: inline-flex !important;
+  flex-direction: row-reverse !important;
+}
+
+html[lang="ar"] .contact-buttons {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  justify-content: center !important;
+  gap: 16px !important;
+}
+
+html[lang="ar"] .contact-btn {
+  display: inline-flex !important;
+  flex-direction: row-reverse !important;
+}
+
+html[lang="ar"] .contact-btn i {
+  margin-left: 8px !important;
+  margin-right: 0 !important;
+}
+
+/* ============================================
+   TRUST BAR - RTL
+   ============================================ */
+html[lang="ar"] .trust-bar {
+  direction: rtl !important;
+}
+
+html[lang="ar"] .trust-bar-title {
+  text-align: center !important;
+}
+
+/* ============================================
+   TESTIMONIALS - RTL
+   ============================================ */
+html[lang="ar"] .testimonials-section {
+  direction: rtl !important;
+}
+
+html[lang="ar"] .testimonial-card {
+  text-align: right !important;
+}
+
+html[lang="ar"] .testimonial-quote {
+  text-align: right !important;
+}
+
+html[lang="ar"] .testimonial-author {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  justify-content: flex-end !important;
+}
+
+html[lang="ar"] .author-info {
+  text-align: right !important;
+  align-items: flex-end !important;
+}
+
+/* ============================================
+   FOOTER - RTL
+   ============================================ */
+html[lang="ar"] .footer {
+  direction: rtl !important;
+}
+
+html[lang="ar"] .footer-grid {
+  direction: rtl !important;
+}
+
+html[lang="ar"] .footer-brand {
+  text-align: right !important;
+  align-items: flex-end !important;
+}
+
+html[lang="ar"] .footer-logo {
+  flex-direction: row-reverse !important;
+}
+
+html[lang="ar"] .footer-logo-text {
+  text-align: right !important;
+}
+
+html[lang="ar"] .footer-brand > p {
+  text-align: right !important;
+}
+
+html[lang="ar"] .footer-partnership {
+  flex-direction: row-reverse !important;
+}
+
+html[lang="ar"] .footer-social {
+  flex-direction: row-reverse !important;
+  justify-content: flex-end !important;
+}
+
+html[lang="ar"] .footer-links,
+html[lang="ar"] .footer-contact {
+  text-align: right !important;
+}
+
+html[lang="ar"] .footer-links h4,
+html[lang="ar"] .footer-contact h4 {
+  text-align: right !important;
+}
+
+html[lang="ar"] .footer-links h4::after,
+html[lang="ar"] .footer-contact h4::after {
+  left: auto !important;
+  right: 0 !important;
+}
+
+html[lang="ar"] .footer-links ul,
+html[lang="ar"] .footer-contact ul {
+  text-align: right !important;
+}
+
+html[lang="ar"] .footer-contact li {
+  display: flex !important;
+  flex-direction: row !important;
+  direction: ltr !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+  text-align: right !important;
+}
+
+html[lang="ar"] .footer-contact li a,
+html[lang="ar"] .footer-contact li span {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+html[lang="ar"] .footer-contact li a[dir="ltr"],
+html[lang="ar"] .footer-contact li a[href^="tel:"],
+html[lang="ar"] .footer-contact li a[href^="mailto:"] {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+html[lang="ar"] .footer-contact li i {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+html[lang="ar"] .address-link {
+  align-items: flex-end !important;
+}
+
+html[lang="ar"] .map-badge::before {
+  content: '\f35d' !important;
+}
+
+html[lang="ar"] .footer-lang-row {
+  flex-direction: row-reverse !important;
+}
+
+html[lang="ar"] .footer-bottom {
+  text-align: center !important;
+}
+
+/* ============================================
+   GRIDS - RTL
+   ============================================ */
+html[lang="ar"] .grid {
+  direction: rtl !important;
+}
+
+html[lang="ar"] .grid-2,
+html[lang="ar"] .grid-3,
+html[lang="ar"] .grid-4 {
+  direction: rtl !important;
+}
+
+/* ============================================
+   LISTS - RTL
+   ============================================ */
+html[lang="ar"] ul,
+html[lang="ar"] ol {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  text-align: right !important;
+}
+
+html[lang="ar"] li {
+  text-align: right !important;
+}
+
+/* ============================================
+   BUTTONS WITH ICONS - RTL
+   ============================================ */
+html[lang="ar"] .btn i,
+html[lang="ar"] button i {
+  margin-left: 8px !important;
+  margin-right: 0 !important;
+}
+
+/* ============================================
+   MOBILE RESPONSIVE - RTL
+   ============================================ */
+@media (max-width: 991px) {
+  html[lang="ar"] .hero-cta-group {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  
+  html[lang="ar"] .overlap-cards {
+    flex-direction: column !important;
+  }
+  
+  html[lang="ar"] .about-grid,
+  html[lang="ar"] .exodus-about-grid {
+    display: block !important;
+  }
+  
+  html[lang="ar"] .form-row {
+    flex-direction: column !important;
+  }
+  
+  html[lang="ar"] .contact-buttons {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  /* Mobile footer centered */
+  html[lang="ar"] .footer-grid {
+    text-align: center !important;
+  }
+  
+  html[lang="ar"] .footer-brand {
+    align-items: center !important;
+  }
+  
+  html[lang="ar"] .footer-logo {
+    justify-content: center !important;
+  }
+  
+  html[lang="ar"] .footer-links h4::after,
+  html[lang="ar"] .footer-contact h4::after {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+  }
+  
+  html[lang="ar"] .footer-contact li {
+    justify-content: center !important;
+  }
+  
+  html[lang="ar"] .footer-social {
+    justify-content: center !important;
+  }
+}
+
+@media (max-width: 768px) {
+  html[lang="ar"] .ot-metrics-inner {
+    flex-direction: column !important;
+  }
+  
+  html[lang="ar"] .ot-metric {
+    border-left: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+/* ============================================
+   UTILITY OVERRIDES - RTL
+   ============================================ */
+html[lang="ar"] .text-left {
+  text-align: right !important;
+}
+
+html[lang="ar"] .text-right {
+  text-align: left !important;
+}
+
+html[lang="ar"] .text-center {
+  text-align: center !important;
+}
+
+html[lang="ar"] .ml-auto {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+html[lang="ar"] .mr-auto {
+  margin-right: 0 !important;
+  margin-left: auto !important;
+}
+
+html[lang="ar"] .float-left {
+  float: right !important;
+}
+
+html[lang="ar"] .float-right {
+  float: left !important;
+}
+
+/* ============================================
+   FOOTER BAR LANGUAGE SWITCHER
+   ============================================ */
+html[lang="ar"] .footer-lang-switch {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 8px !important;
+}
+
+html[lang="ar"] .footer-lang-switch span {
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* ============================================
+   CORAL TOP BAR - RTL
+   ============================================ */
+html[lang="ar"] .coral-top-bar {
+  direction: rtl !important;
+}
+
+html[lang="ar"] .coral-top-content {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+html[lang="ar"] .coral-top-left {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  gap: 20px !important;
+}
+
+html[lang="ar"] .coral-top-right {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+}
+
+html[lang="ar"] .coral-top-link,
+html[lang="ar"] .coral-top-hours {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+html[lang="ar"] .coral-top-link i,
+html[lang="ar"] .coral-top-hours i {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* ============================================
+   HEADER NAVBAR - RTL
+   ============================================ */
+html[lang="ar"] .header-wrapper {
+  direction: rtl !important;
+}
+
+html[lang="ar"] .header-row {
+  display: grid !important;
+  grid-template-columns: auto 1fr auto auto !important;
+  direction: rtl !important;
+}
+
+html[lang="ar"] .header-column-logo {
+  order: 1 !important;
+}
+
+html[lang="ar"] .header-column-nav {
+  order: 2 !important;
+}
+
+html[lang="ar"] .header-column-actions {
+  order: 3 !important;
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  gap: 8px !important;
+}
+
+html[lang="ar"] .header-column-sidebar {
+  order: 4 !important;
+}
+
+/* Logo should NOT reverse - brand identity stays consistent */
+html[lang="ar"] .header-logo {
+  display: flex !important;
+  flex-direction: row !important; /* Keep logo on left, text on right */
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+html[lang="ar"] .logo-text-block {
+  text-align: left !important; /* Brand text stays LTR aligned */
+}
+
+/* Ensure logo text renders correctly as LTR */
+html[lang="ar"] .logo-text {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+  display: inline-block !important;
+}
+
+html[lang="ar"] .logo-text .logo-suffix,
+html[lang="ar"] .logo-text .logo-domain {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+}
+
+html[lang="ar"] .nav.nav-pills {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+}
+
+html[lang="ar"] .nav-link {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+html[lang="ar"] .nav-chevron {
+  margin-left: 0 !important;
+  margin-right: 6px !important;
+}
+
+/* RTL Dropdown Menu */
+html[lang="ar"] .dropdown-menu {
+  left: auto !important;
+  right: 0 !important;
+  text-align: right !important;
+}
+
+html[lang="ar"] .dropdown-item {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  justify-content: flex-start !important;
+  text-align: right !important;
+}
+
+html[lang="ar"] .dropdown-item i {
+  margin-left: 8px !important;
+  margin-right: 0 !important;
+}
+
+html[lang="ar"] .dropdown-item .badge {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+html[lang="ar"] .dropdown-header {
+  text-align: right !important;
+}
+
+html[lang="ar"] .dropdown-footer {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+html[lang="ar"] .dropdown-footer i {
+  margin-left: 0 !important;
+  margin-right: 8px !important;
+  transform: scaleX(-1) !important;
+}
+
+/* RTL Flyout Submenus */
+html[lang="ar"] .dropdown-submenu > .dropdown-menu {
+  left: auto !important;
+  right: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 2px !important;
+}
+
+/* ============================================
+   ARABIC TYPOGRAPHY - CRITICAL FIXES
+   Letter-spacing breaks Arabic text rendering
+   Arabic needs slightly larger sizes for readability
+   ============================================ */
+
+/* Disable letter-spacing globally for Arabic */
+html[lang="ar"],
+html[lang="ar"] * {
+  letter-spacing: 0 !important;
+}
+
+/* Arabic headings - increased line height */
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4,
+html[lang="ar"] h5,
+html[lang="ar"] h6 {
+  letter-spacing: 0 !important;
+  line-height: 1.6 !important;
+}
+
+/* Arabic body text - better readability */
+html[lang="ar"] p,
+html[lang="ar"] li,
+html[lang="ar"] span,
+html[lang="ar"] a {
+  line-height: 1.9 !important;
+}
+
+/* Navigation links - slightly larger for Arabic */
+html[lang="ar"] .nav-link {
+  letter-spacing: 0 !important;
+  font-size: 13px !important;
+}
+
+/* Hero text adjustments */
+html[lang="ar"] .hero-title,
+html[lang="ar"] .exodus-title,
+html[lang="ar"] .page-title {
+  line-height: 1.4 !important;
+  letter-spacing: 0 !important;
+}
+
+html[lang="ar"] .hero-lead,
+html[lang="ar"] .page-lead {
+  line-height: 1.9 !important;
+}
+
+/* Buttons - ensure Arabic text fits */
+html[lang="ar"] .btn,
+html[lang="ar"] button {
+  letter-spacing: 0 !important;
+  line-height: 1.5 !important;
+}
+
+/* Cards and content blocks */
+html[lang="ar"] .card,
+html[lang="ar"] .service-card,
+html[lang="ar"] .value-card {
+  text-align: right !important;
+}
+
+html[lang="ar"] .card p,
+html[lang="ar"] .service-card p {
+  line-height: 1.8 !important;
+}
+
+/* FAQ sections */
+html[lang="ar"] .faq-question,
+html[lang="ar"] .faq-answer {
+  line-height: 1.8 !important;
+}
+
+/* Section labels - uppercase doesn't work well for Arabic */
+html[lang="ar"] .section-label {
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+}
+
+/* Logo tagline adjustment */
+html[lang="ar"] .logo-tagline {
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  font-size: 11px !important;
+}
+
+/* ============================================
+   FORM INPUTS - LTR for data entry
+   Email, phone, URLs must stay LTR
+   ============================================ */
+
+/* Already defined above, but ensuring specificity */
+html[lang="ar"] input[type="email"],
+html[lang="ar"] input[type="tel"],
+html[lang="ar"] input[type="url"],
+html[lang="ar"] input[type="number"],
+html[lang="ar"] input[type="date"] {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+/* Code blocks stay LTR */
+html[lang="ar"] code,
+html[lang="ar"] pre,
+html[lang="ar"] .code-block {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+/* ============================================
+   ICONS THAT SHOULD MIRROR
+   Directional icons flip, symmetrical don't
+   ============================================ */
+
+/* Arrows should flip */
+html[lang="ar"] .fa-arrow-right:not(.no-flip),
+html[lang="ar"] .fa-chevron-right:not(.no-flip),
+html[lang="ar"] .fa-angle-right:not(.no-flip),
+html[lang="ar"] .fa-caret-right:not(.no-flip) {
+  transform: scaleX(-1) !important;
+}
+
+/* Quote icons flip */
+html[lang="ar"] .fa-quote-left {
+  transform: scaleX(-1) !important;
+}
+
+/* Icons that should NOT flip (add .no-flip class) */
+html[lang="ar"] .fa-whatsapp,
+html[lang="ar"] .fa-phone,
+html[lang="ar"] .fa-envelope,
+html[lang="ar"] .fa-search,
+html[lang="ar"] .fa-bars,
+html[lang="ar"] .fa-times,
+html[lang="ar"] .fa-check,
+html[lang="ar"] .fa-star {
+  transform: none !important;
+}
+
+/* ============================================
+   MIXED CONTENT (BiDi) HANDLING
+   English text/numbers within Arabic context
+   ============================================ */
+
+/* Brand names stay LTR */
+html[lang="ar"] .brand-name,
+html[lang="ar"] .logo-text,
+html[lang="ar"] [dir="ltr"] {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+}
+
+/* Numbers in specific contexts */
+html[lang="ar"] .price,
+html[lang="ar"] .phone-number,
+html[lang="ar"] .license-number {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+}
+
+/* WhatsApp number always LTR */
+html[lang="ar"] a[href^="tel:"],
+html[lang="ar"] a[href^="https://wa.me"] {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+}
+
+/* ============================================
+   TEXT-BREAKING.CSS RTL OVERRIDES
+   Visual relief utilities need RTL-aware borders/margins
+   ============================================ */
+
+/* Accent borders: flip left to right for RTL */
+html[lang="ar"] .accent-border-left {
+  padding-left: 0 !important;
+  padding-right: 1rem !important;
+  border-left: none !important;
+  border-right: 4px solid var(--accent-coral, #FF1654) !important;
+}
+
+html[lang="ar"] .accent-border-left--navy {
+  border-right-color: var(--surface-navy, #0E2B48) !important;
+}
+
+html[lang="ar"] .accent-border-left--gold {
+  border-right-color: var(--accent-gold, #d4a54c) !important;
+}
+
+/* Hero split sections: flip borders */
+html[lang="ar"] .hero-split > * {
+  padding-left: 0 !important;
+  padding-right: 1rem !important;
+  border-left: none !important;
+  border-right: 3px solid var(--accent-coral, #FF1654) !important;
+}
+
+/* Metric badges: flip margin */
+html[lang="ar"] .metric-inline {
+  margin-right: 0 !important;
+  margin-left: 1.5rem !important;
+}
+
+/* Callout block: flip border */
+html[lang="ar"] .callout-block {
+  border-left: none !important;
+  border-right: 4px solid var(--accent-coral, #FF1654) !important;
+  border-radius: 8px 0 0 8px !important;
+}
+
+/* Service tags: flip margin */
+html[lang="ar"] .service-tag {
+  margin: 0.25rem 0 0.25rem 0.25rem !important;
+}
+
+/* Text breathe center: works same in RTL */
+/* No changes needed */
+
+/* Kicker labels: letter-spacing already disabled globally */
+/* No changes needed */
+
+/* Content divider accent: flip gradient direction */
+html[lang="ar"] .content-divider--accent {
+  background: linear-gradient(270deg,
+    var(--accent-coral, #FF1654) 0%,
+    transparent 100%
+  ) !important;
+}
+
+
+/* === ar-ui-fixes.css === */
+/**
+ * Arabic UI/UX Fixes
+ * Based on comprehensive audit of /ar/ pages
+ * Created: 2026-01-30
+ *
+ * Priority fixes for contrast, accessibility, and visual consistency
+ */
+
+/* ============================================
+   P0: TOP BAR CONTRAST FIX
+   Issue: Gray text on dark background - poor contrast
+   ============================================ */
+html[lang="ar"] .coral-top-bar,
+html[lang="ar"] .top-bar {
+  background: var(--ot-coral, #FF1654) !important;
+}
+
+html[lang="ar"] .coral-top-bar a,
+html[lang="ar"] .coral-top-bar span,
+html[lang="ar"] .coral-top-link,
+html[lang="ar"] .coral-top-hours,
+html[lang="ar"] .top-bar a,
+html[lang="ar"] .top-bar span {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+html[lang="ar"] .coral-top-bar .coral-top-hours {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* ============================================
+   P0: HERO SECONDARY CTA CONTRAST FIX
+   Issue: Blue link on dark background - poor contrast
+   ============================================ */
+html[lang="ar"] .hero-cta-secondary,
+html[lang="ar"] .hero-section .hero-cta-secondary {
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-decoration: underline !important;
+  text-underline-offset: 4px !important;
+}
+
+html[lang="ar"] .hero-cta-secondary:hover {
+  color: #ffffff !important;
+  text-decoration-color: var(--ot-coral, #FF1654) !important;
+}
+
+/* ============================================
+   P0: FORM INPUT CONTRAST & FOCUS STATES
+   Issue: Dark background with light borders - low contrast
+   ============================================ */
+html[lang="ar"] .contact-form input,
+html[lang="ar"] .contact-form textarea,
+html[lang="ar"] .contact-form select,
+html[lang="ar"] .form-group input,
+html[lang="ar"] .form-group textarea {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 2px solid rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+  transition: all 0.2s ease !important;
+}
+
+html[lang="ar"] .contact-form input::placeholder,
+html[lang="ar"] .contact-form textarea::placeholder,
+html[lang="ar"] .form-group input::placeholder,
+html[lang="ar"] .form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+html[lang="ar"] .contact-form input:focus,
+html[lang="ar"] .contact-form textarea:focus,
+html[lang="ar"] .form-group input:focus,
+html[lang="ar"] .form-group textarea:focus {
+  outline: none !important;
+  border-color: var(--ot-coral, #FF1654) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 0 0 3px rgba(255, 22, 84, 0.2) !important;
+}
+
+/* Form labels */
+html[lang="ar"] .contact-form label,
+html[lang="ar"] .form-group label {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Submit button consistent styling */
+html[lang="ar"] .contact-form .submit-btn,
+html[lang="ar"] .contact-form button[type="submit"] {
+  background: var(--ot-coral, #FF1654) !important;
+  color: #ffffff !important;
+  border: none !important;
+  font-weight: 600 !important;
+  padding: 1rem 2rem !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+html[lang="ar"] .contact-form .submit-btn:hover,
+html[lang="ar"] .contact-form button[type="submit"]:hover {
+  background: #e01349 !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Contact buttons below form */
+html[lang="ar"] .contact-buttons {
+  gap: 1rem !important;
+  margin-top: 1.5rem !important;
+}
+
+html[lang="ar"] .contact-buttons .contact-btn {
+  padding: 0.875rem 1.25rem !important;
+  border-radius: 8px !important;
+}
+
+/* ============================================
+   P1: STATISTICS BAR FIX
+   Issue: Pink too vibrant, uneven spacing, poor hierarchy
+   ============================================ */
+html[lang="ar"] .ot-metrics {
+  background: linear-gradient(135deg, #FF1654 0%, #e01349 100%) !important;
+  padding: 2rem 0 !important;
+}
+
+html[lang="ar"] .ot-metrics-inner {
+  display: flex !important;
+  justify-content: space-around !important;
+  align-items: center !important;
+  gap: 2rem !important;
+  flex-wrap: wrap !important;
+}
+
+html[lang="ar"] .ot-metric {
+  text-align: center !important;
+  padding: 0.5rem 1.5rem !important;
+  min-width: 120px !important;
+}
+
+html[lang="ar"] .ot-metric-value {
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  display: block !important;
+  margin-bottom: 0.25rem !important;
+}
+
+html[lang="ar"] .ot-metric-label {
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  display: block !important;
+}
+
+html[lang="ar"] .ot-metric-note {
+  font-size: 0.75rem !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  display: block !important;
+  margin-top: 0.25rem !important;
+}
+
+/* Add separators between metrics */
+html[lang="ar"] .ot-metric:not(:last-child)::after {
+  content: '' !important;
+  position: absolute !important;
+  right: -1rem !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 1px !important;
+  height: 50% !important;
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+html[lang="ar"] .ot-metric {
+  position: relative !important;
+}
+
+/* ============================================
+   P1: FAQ ACCORDION STYLING
+   Issue: Thin borders, hard to see icons, poor padding
+   ============================================ */
+html[lang="ar"] .faq-section .faq-list,
+html[lang="ar"] .faq-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1rem !important;
+}
+
+html[lang="ar"] .faq-item {
+  background: var(--bg-secondary, #f8f9fa) !important;
+  border: 2px solid rgba(0, 0, 0, 0.08) !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  transition: all 0.2s ease !important;
+}
+
+html[lang="ar"] .faq-item:hover {
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+html[lang="ar"] .faq-item.is-open,
+html[lang="ar"] .faq-item[open] {
+  border-color: var(--ot-coral, #FF1654) !important;
+  background: #ffffff !important;
+}
+
+html[lang="ar"] .faq-question,
+html[lang="ar"] .faq-item summary {
+  padding: 1.25rem 1.5rem !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  cursor: pointer !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  list-style: none !important;
+}
+
+html[lang="ar"] .faq-question::-webkit-details-marker,
+html[lang="ar"] .faq-item summary::-webkit-details-marker {
+  display: none !important;
+}
+
+/* FAQ chevron icon - more visible */
+html[lang="ar"] .faq-question i,
+html[lang="ar"] .faq-question::after,
+html[lang="ar"] .faq-item summary::after {
+  font-size: 1rem !important;
+  color: var(--ot-coral, #FF1654) !important;
+  transition: transform 0.2s ease !important;
+}
+
+html[lang="ar"] .faq-item.is-open .faq-question i,
+html[lang="ar"] .faq-item[open] summary::after {
+  transform: rotate(180deg) !important;
+}
+
+html[lang="ar"] .faq-answer,
+html[lang="ar"] .faq-item .faq-answer {
+  padding: 0 1.5rem 1.25rem !important;
+  color: var(--text-body) !important;
+  line-height: 1.7 !important;
+}
+
+/* ============================================
+   P1: STANDARDIZE BORDER-RADIUS
+   Issue: Inconsistent values (8px, 12px, 16px, 24px)
+   Using consistent 8px for small, 12px for medium, 16px for large
+   ============================================ */
+
+/* Small elements: 8px */
+html[lang="ar"] .tag,
+html[lang="ar"] .badge,
+html[lang="ar"] .service-tag,
+html[lang="ar"] input,
+html[lang="ar"] select,
+html[lang="ar"] textarea {
+  border-radius: 8px !important;
+}
+
+/* Medium elements: 12px */
+html[lang="ar"] .category-card,
+html[lang="ar"] .service-card,
+html[lang="ar"] .service-card-v2,
+html[lang="ar"] .why-card,
+html[lang="ar"] .specialist-card,
+html[lang="ar"] .faq-item,
+html[lang="ar"] .overlap-card,
+html[lang="ar"] .feature-card {
+  border-radius: 12px !important;
+}
+
+/* Large elements: 16px */
+html[lang="ar"] .section,
+html[lang="ar"] .cta-banner,
+html[lang="ar"] .newsletter-card {
+  border-radius: 16px !important;
+}
+
+/* Buttons: consistent 8px */
+html[lang="ar"] .btn,
+html[lang="ar"] .cta-btn,
+html[lang="ar"] .hero-cta,
+html[lang="ar"] .contact-btn {
+  border-radius: 8px !important;
+}
+
+/* ============================================
+   P2: FEATURE CARDS (Pink Cards) FIX
+   Issue: No hover effects, poor vertical centering
+   ============================================ */
+html[lang="ar"] .overlap-card {
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+html[lang="ar"] .overlap-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+html[lang="ar"] .overlap-card-content {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+/* Icon circles - modernize shadows */
+html[lang="ar"] .overlap-card-icon {
+  box-shadow: 0 4px 12px rgba(255, 22, 84, 0.2) !important;
+}
+
+/* ============================================
+   P2: SERVICE CARDS FIX
+   Issue: Subtle shadows, weak hover feedback
+   ============================================ */
+html[lang="ar"] .service-card-v2 {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+  transition: all 0.3s ease !important;
+}
+
+html[lang="ar"] .service-card-v2:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Card badge - fix pixel issues */
+html[lang="ar"] .service-card-v2 .card-badge {
+  background: rgba(255, 22, 84, 0.1) !important;
+}
+
+html[lang="ar"] .service-card-v2 .card-badge svg {
+  stroke: var(--ot-coral, #FF1654) !important;
+}
+
+/* ============================================
+   P2: TESTIMONIALS CAROUSEL FIX
+   Issue: Excessive padding, small dots, missing quote marks
+   ============================================ */
+html[lang="ar"] .testimonials-section .testimonial-card,
+html[lang="ar"] .testimonial-card {
+  padding: 2rem !important;
+  position: relative !important;
+}
+
+/* Quote mark decoration */
+html[lang="ar"] .testimonial-card::before {
+  content: '"' !important;
+  position: absolute !important;
+  top: 1rem !important;
+  right: 1.5rem !important;
+  font-size: 4rem !important;
+  font-family: Georgia, serif !important;
+  color: rgba(255, 22, 84, 0.15) !important;
+  line-height: 1 !important;
+}
+
+/* Navigation dots */
+html[lang="ar"] .testimonials-section .carousel-dots,
+html[lang="ar"] .testimonial-dots {
+  gap: 0.75rem !important;
+}
+
+html[lang="ar"] .testimonials-section .carousel-dot,
+html[lang="ar"] .testimonial-dot {
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+  background: rgba(0, 0, 0, 0.2) !important;
+  transition: all 0.2s ease !important;
+}
+
+html[lang="ar"] .testimonials-section .carousel-dot.active,
+html[lang="ar"] .testimonial-dot.active {
+  background: var(--ot-coral, #FF1654) !important;
+  transform: scale(1.2) !important;
+}
+
+/* Carousel controls */
+html[lang="ar"] .testimonials-section .carousel-prev,
+html[lang="ar"] .testimonials-section .carousel-next {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  background: rgba(0, 0, 0, 0.05) !important;
+  border: 2px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+html[lang="ar"] .testimonials-section .carousel-prev:hover,
+html[lang="ar"] .testimonials-section .carousel-next:hover {
+  background: var(--ot-coral, #FF1654) !important;
+  border-color: var(--ot-coral, #FF1654) !important;
+  color: #ffffff !important;
+}
+
+/* ============================================
+   P3: FOOTER SPACING FIX
+   Issue: Uneven spacing, too tall
+   ============================================ */
+html[lang="ar"] .site-footer {
+  padding: 3rem 0 2rem !important;
+}
+
+html[lang="ar"] .footer-grid {
+  gap: 2rem !important;
+}
+
+html[lang="ar"] .footer-column {
+  margin-bottom: 1.5rem !important;
+}
+
+html[lang="ar"] .footer-column h4 {
+  margin-bottom: 1rem !important;
+  font-size: 1rem !important;
+}
+
+html[lang="ar"] .footer-links {
+  gap: 0.5rem !important;
+}
+
+html[lang="ar"] .footer-links a {
+  padding: 0.25rem 0 !important;
+  font-size: 0.9rem !important;
+}
+
+html[lang="ar"] .footer-bottom {
+  padding-top: 1.5rem !important;
+  margin-top: 1.5rem !important;
+}
+
+html[lang="ar"] .footer-copyright {
+  font-size: 0.85rem !important;
+}
+
+/* ============================================
+   GENERAL: TRANSITION SMOOTHNESS
+   Issue: Missing or too fast transitions
+   ============================================ */
+html[lang="ar"] a,
+html[lang="ar"] button,
+html[lang="ar"] .btn,
+html[lang="ar"] input,
+html[lang="ar"] textarea,
+html[lang="ar"] .card,
+html[lang="ar"] [class*="card"] {
+  transition: all 0.2s ease !important;
+}
+
+/* ============================================
+   GENERAL: SMOOTH SCROLL
+   ============================================ */
+html[lang="ar"] {
+  scroll-behavior: smooth !important;
+}
+
+/* ============================================
+   RESPONSIVE FIXES
+   ============================================ */
+@media (max-width: 768px) {
+  html[lang="ar"] .ot-metrics-inner {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+  }
+
+  html[lang="ar"] .ot-metric::after {
+    display: none !important;
+  }
+
+  html[lang="ar"] .overlap-cards {
+    flex-direction: column !important;
+  }
+
+  html[lang="ar"] .faq-question,
+  html[lang="ar"] .faq-item summary {
+    padding: 1rem 1.25rem !important;
+    font-size: 0.95rem !important;
+  }
+}
+
+/* ============================================
+   RTL CRITICAL FIXES
+   Issue: Logo garbled, icons on wrong side
+   ============================================ */
+
+/* Logo must stay LTR - prevent domain reversal */
+html[lang="ar"] .logo,
+html[lang="ar"] .site-logo,
+html[lang="ar"] .brand-logo,
+html[lang="ar"] .header-logo,
+html[lang="ar"] .navbar-brand,
+html[lang="ar"] [class*="logo"] a,
+html[lang="ar"] .logo-text {
+  direction: ltr !important;
+  unicode-bidi: embed !important;
+  text-align: left !important;
+}
+
+/* Brand name should stay LTR */
+html[lang="ar"] .brand-name,
+html[lang="ar"] .site-name {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+}
+
+/* Icon + text pairs: icons on RIGHT in RTL */
+html[lang="ar"] .hero-bullet,
+html[lang="ar"] .hero-feature,
+html[lang="ar"] .feature,
+html[lang="ar"] .feature-item,
+html[lang="ar"] .bullet-item,
+html[lang="ar"] .list-item-with-icon,
+html[lang="ar"] .icon-text,
+html[lang="ar"] [class*="bullet"] {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: flex-start !important;
+  text-align: right !important;
+  gap: 0.75rem !important;
+}
+
+/* Hero bullets specifically */
+html[lang="ar"] .hero-bullets,
+html[lang="ar"] .hero-features {
+  text-align: right !important;
+}
+
+html[lang="ar"] .hero-bullets li,
+html[lang="ar"] .hero-bullets .bullet,
+html[lang="ar"] .heroBullets > div {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: flex-start !important;
+  justify-content: flex-end !important;
+  text-align: right !important;
+}
+
+/* Icon styling in RTL - ensure proper spacing */
+html[lang="ar"] .hero-bullet i,
+html[lang="ar"] .hero-feature i,
+html[lang="ar"] .feature i:first-child,
+html[lang="ar"] .bullet-item i,
+html[lang="ar"] [class*="bullet"] i {
+  margin-left: 0.5rem !important;
+  margin-right: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+/* Text in icon+text pairs */
+html[lang="ar"] .hero-bullet span,
+html[lang="ar"] .hero-feature span,
+html[lang="ar"] .feature span,
+html[lang="ar"] .bullet-item span {
+  text-align: right !important;
+}
+
+/* Trust items in trust bar */
+html[lang="ar"] .trust-item,
+html[lang="ar"] .trust-badge {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+/* CTA buttons with icons */
+html[lang="ar"] .cta-primary,
+html[lang="ar"] .cta-button,
+html[lang="ar"] .btn-primary,
+html[lang="ar"] a[class*="cta"] {
+  display: inline-flex !important;
+  flex-direction: row-reverse !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+/* Service cards with icons */
+html[lang="ar"] .service-card,
+html[lang="ar"] .specialist-card,
+html[lang="ar"] .overlap-card {
+  text-align: right !important;
+}
+
+/* Card headers with icons */
+html[lang="ar"] .card-header,
+html[lang="ar"] .card-title {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+/* List items with checkmarks/bullets */
+html[lang="ar"] ul li,
+html[lang="ar"] .checklist li,
+html[lang="ar"] .feature-list li {
+  text-align: right !important;
+}
+
+/* Ensure main content flows RTL */
+html[lang="ar"] main,
+html[lang="ar"] section,
+html[lang="ar"] .container,
+html[lang="ar"] article {
+  text-align: right !important;
+}
+
+/* Headers and paragraphs RTL */
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4,
+html[lang="ar"] h5,
+html[lang="ar"] h6,
+html[lang="ar"] p {
+  text-align: right !important;
+}
+
+/* Navigation in header */
+html[lang="ar"] .header-nav,
+html[lang="ar"] .main-nav,
+html[lang="ar"] nav ul {
+  flex-direction: row-reverse !important;
+}
+
+/* Mobile menu items */
+html[lang="ar"] .mobile-nav-item,
+html[lang="ar"] .nav-item {
+  text-align: right !important;
+}
+
+/* Footer alignment */
+html[lang="ar"] .footer-column,
+html[lang="ar"] .footer-links {
+  text-align: right !important;
+}
+
+/* Overlap cards - fix icon positioning */
+html[lang="ar"] .overlap-card-content {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: flex-start !important;
+  gap: 1rem !important;
+}
+
+html[lang="ar"] .overlap-card-icon {
+  order: 1 !important;
+}
+
+html[lang="ar"] .overlap-card-text {
+  order: 2 !important;
+  text-align: right !important;
+}
+
+/* Badge positioning */
+html[lang="ar"] .badge,
+html[lang="ar"] .hero-badge,
+html[lang="ar"] .card-badge {
+  display: inline-flex !important;
+  flex-direction: row-reverse !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+/* Forms - labels on right */
+html[lang="ar"] label {
+  text-align: right !important;
+  display: block !important;
+}
+
+/* Phone numbers and emails stay LTR */
+html[lang="ar"] .phone,
+html[lang="ar"] .phone-number,
+html[lang="ar"] .email,
+html[lang="ar"] [href^="tel:"],
+html[lang="ar"] [href^="mailto:"],
+html[lang="ar"] .ltr-content {
+  direction: ltr !important;
+  unicode-bidi: embed !important;
+}
+
+/* WhatsApp number in buttons */
+html[lang="ar"] a[href*="wa.me"] span.phone {
+  direction: ltr !important;
+}
