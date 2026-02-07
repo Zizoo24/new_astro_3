@@ -1,0 +1,772 @@
+---
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: "هل أحتاج ترجمة شهادتي قبل تقديم طلب معادلة MOHESR؟",
+    answer: "يعتمد على لغة الشهادة الأصلية. الشهادات باللغة الإنجليزية من جامعات معترف بها دولياً لا تحتاج ترجمة للمعادلة فقط. لكن إذا كانت الشهادة بلغة أخرى (عربي غير إماراتي، هندي، أوردو، فرنسي)، تحتاجون ترجمة معتمدة إلى الإنجليزية أو العربية قبل تقديم طلب المعادلة."
+  },
+  {
+    question: "ما الفرق بين المعادلة والترجمة القانونية؟",
+    answer: "المعادلة هي اعتراف وزارة التعليم العالي بالشهادة الأجنبية كمكافئة للشهادة الإماراتية. الترجمة القانونية هي تحويل نص الشهادة من لغة إلى أخرى مع ختم مترجم مرخص. بعض الجهات تطلب المعادلة والبعض يكتفي بالترجمة فقط."
+  },
+  {
+    question: "هل جميع التخصصات تحتاج معادلة MOHESR؟",
+    answer: "لا. المعادلة إلزامية فقط للعمل في القطاع الحكومي، التدريس، المهن الصحية المرخصة (DHA, MOHRE Health)، والتقديم لبرامج الدراسات العليا في الجامعات الإماراتية. القطاع الخاص غالباً يكتفي بالترجمة المعتمدة دون معادلة."
+  },
+  {
+    question: "كم المدة المتوقعة لإصدار المعادلة من MOHESR؟",
+    answer: "المدة تتراوح بين 5-15 يوم عمل حسب نوع الشهادة والجامعة. الشهادات من جامعات معترف بها مسبقاً تكون أسرع (5-7 أيام). الشهادات من جامعات تحتاج مراجعة إضافية قد تأخذ 10-15 يوم أو أكثر."
+  },
+  {
+    question: "هل الشهادات الهندية تحتاج ترجمة للمعادلة؟",
+    answer: "الشهادات من الجامعات الهندية المعترف بها (UGC-approved) باللغة الإنجليزية لا تحتاج ترجمة. لكن تحتاجون تصديق من HRD/SDM في الهند ثم من السفارة الإماراتية في الهند، ثم تصديق MOFA في الإمارات قبل تقديم طلب المعادلة."
+  },
+  {
+    question: "هل يمكن استخدام المعادلة للتأشيرة الذهبية؟",
+    answer: "المعادلة ليست ضرورية للتأشيرة الذهبية. GDRFA يطلب فقط الشهادة الأصلية مع ترجمة قانونية معتمدة من وزارة العدل إذا كانت بلغة غير الإنجليزية أو العربية. المعادلة تفيد لاحقاً في العمل، لكنها ليست شرط للحصول على الفيزا."
+  },
+  {
+    question: "ماذا لو رفضت وزارة التعليم معادلة شهادتي؟",
+    answer: "يمكنكم تقديم اعتراض مع مستندات إضافية توضح اعتماد الجامعة في بلد الصدور. إذا رُفض الاعتراض، بعض الجهات تقبل تقييم من خدمات التقييم الدولية (WES, IQAS) كبديل، لكن هذا يعتمد على السياسات الداخلية للجهة المستفيدة."
+  },
+  {
+    question: "هل ترجمة الشهادة تكفي لترخيص DHA الطبي؟",
+    answer: "لا. DHA DataFlow يطلب معادلة MOHESR إلزامية لجميع المؤهلات الطبية الأجنبية (طب، تمريض، صيدلة، أسنان). الترجمة وحدها غير مقبولة. تحتاجون: معادلة MOHESR + ترجمة قانونية للشهادة + Primary Source Verification عبر DataFlow."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<BaseLayoutArabic
+  title="معادلة الشهادات MOHESR | دليل الترجمة المطلوبة"
+  description="دليل ترجمة الشهادات الجامعية لمعادلة MOHESR في أبوظبي ودبي. متى تحتاجون ترجمة ومتى تكفي المعادلة فقط."
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://onlinetranslation.ae/ar/resources/mohesr-degree-translation-guide/" />
+    <link rel="alternate" hreflang="en" href="https://onlinetranslation.ae/resources/mohesr-degree-translation-guide/" />
+    <link rel="alternate" hreflang="ar" href="https://onlinetranslation.ae/ar/resources/mohesr-degree-translation-guide/" />
+    <link rel="alternate" hreflang="x-default" href="https://onlinetranslation.ae/resources/mohesr-degree-translation-guide/" />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <article class="resource-guide" dir="rtl">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="التنقل">
+      <ol>
+        <li><a href="/ar/">الرئيسية</a></li>
+        <li>&lt;</li>
+        <li><a href="/ar/resources/">الأدلة</a></li>
+        <li>&lt;</li>
+        <li aria-current="page">معادلة الشهادات MOHESR</li>
+      </ol>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+      <div class="badge">دليل شامل</div>
+      <h1>دليل ترجمة الشهادات الجامعية لمعادلة MOHESR في أبوظبي ودبي</h1>
+      <p class="intro">
+        معادلة الشهادات من وزارة التعليم العالي والبحث العلمي (MOHESR) هي الاعتراف الرسمي بالمؤهلات الأكاديمية الأجنبية في الإمارات. هذا الدليل يوضح متى تحتاجون ترجمة قانونية ومتى تكفي المعادلة فقط، مع توضيح الفرق بين الترجمة والمعادلة والتصديق.
+      </p>
+      <ul class="snapshot-bullets">
+        <li>الفرق بين المعادلة والترجمة والتصديق</li>
+        <li>متى تحتاجون ترجمة قبل تقديم طلب المعادلة</li>
+        <li>الجامعات المعترف بها والتي لا تحتاج ترجمة</li>
+        <li>متطلبات الترخيص المهني (DHA، MOHRE، MOIAT)</li>
+        <li>شروط التأشيرة الذهبية للحاصلين على الشهادات</li>
+      </ul>
+      <div class="cta-buttons">
+        <a href="https://wa.me/971508620217?text=مرحباً%2C%20أريد%20ترجمة%20شهادة%20جامعية%20لمعادلة%20MOHESR" class="btn-primary" target="_blank" rel="noopener">
+          واتساب: +971 50 862 0217
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="content-section">
+      <h2>ما هي معادلة MOHESR ولماذا تحتاجونها؟</h2>
+      <p>
+        وزارة التعليم العالي والبحث العلمي (Ministry of Higher Education and Scientific Research) هي الجهة المسؤولة عن الاعتراف بالشهادات الجامعية الأجنبية في الإمارات. المعادلة هي وثيقة رسمية تثبت أن شهادتكم الأجنبية مكافئة لشهادة إماراتية من نفس المستوى.
+      </p>
+      <p>
+        المعادلة إلزامية في هذه الحالات: العمل في القطاع الحكومي، التدريس في المدارس والجامعات، الترخيص المهني للمهن الصحية (طب، تمريض، صيدلة)، التقديم لبرامج الدراسات العليا في الجامعات الإماراتية. القطاع الخاص غالباً يكتفي بالشهادة الأصلية مع <a href="/ar/resources/moj-vs-certified/">ترجمة معتمدة</a> دون حاجة للمعادلة.
+      </p>
+      <p>
+        المعادلة ليست ترجمة. المعادلة هي اعتراف بالمستوى الأكاديمي، بينما الترجمة هي تحويل النص من لغة إلى أخرى. بعض الجهات تطلب المعادلة والترجمة معاً، والبعض يكتفي بإحداهما حسب طبيعة الاستخدام.
+      </p>
+
+      <h2>الفرق بين المعادلة والترجمة والتصديق</h2>
+      <p>
+        هناك ثلاثة مفاهيم مختلفة يخلط بينها الكثيرون: المعادلة، الترجمة القانونية، والتصديق. كل واحدة لها غرض مختلف وجهة مصدرة مختلفة.
+      </p>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>الإجراء</th>
+              <th>الجهة المصدرة</th>
+              <th>الغرض</th>
+              <th>متى يكون إلزامياً</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>المعادلة</td>
+              <td>وزارة التعليم العالي (MOHESR)</td>
+              <td>الاعتراف بالمستوى الأكاديمي</td>
+              <td>العمل الحكومي، التدريس، الترخيص الطبي</td>
+            </tr>
+            <tr>
+              <td>الترجمة القانونية</td>
+              <td>مترجم مرخص من وزارة العدل</td>
+              <td>تحويل النص إلى العربية/الإنجليزية</td>
+              <td>الشهادات بلغات غير الإنجليزية/العربية</td>
+            </tr>
+            <tr>
+              <td>التصديق (Attestation)</td>
+              <td>وزارة الخارجية + السفارة</td>
+              <td>إثبات أصالة الوثيقة</td>
+              <td>جميع الشهادات الأجنبية قبل المعادلة</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        مثال: خريج هندي يريد العمل كمهندس في شركة خاصة في دبي يحتاج فقط <a href="/ar/personal/academic/degree/">ترجمة الشهادة</a> إذا كانت بلغة غير الإنجليزية. لكن إذا أراد العمل في جهة حكومية، يحتاج التصديق من الهند ثم المعادلة من MOHESR ثم الترجمة إذا كانت الشهادة بلغة غير مقبولة.
+      </p>
+
+      <h2>متى تحتاجون ترجمة قبل تقديم طلب المعادلة؟</h2>
+      <p>
+        القاعدة العامة: إذا كانت شهادتكم باللغة الإنجليزية من جامعة معترف بها دولياً، لا تحتاجون ترجمة للمعادلة. MOHESR تقبل الشهادات الإنجليزية مباشرة.
+      </p>
+      <p>
+        تحتاجون ترجمة معتمدة قبل المعادلة في هذه الحالات: الشهادة باللغة العربية من دولة عربية أخرى (مصر، الأردن، السعودية)، الشهادة بلغة أخرى (هندي، أوردو، فرنسي، ألماني، صيني)، الشهادة الإنجليزية من جامعة غير معترف بها تحتاج مستندات إضافية مترجمة.
+      </p>
+      <p>
+        الترجمة يجب أن تكون من مترجم مرخص من وزارة العدل (رخصة 701 كمثال). MOHESR لا تقبل ترجمات غير معتمدة أو ترجمات من مكاتب غير مرخصة. يمكنكم التحقق من الترخيص عبر خط وزارة العدل الساخن 800 333333.
+      </p>
+
+      <h2>الشهادات التي لا تحتاج ترجمة: الجامعات المعترف بها</h2>
+      <p>
+        MOHESR لديها قائمة بالجامعات المعترف بها مسبقاً (Pre-Recognized Universities). الشهادات من هذه الجامعات باللغة الإنجليزية تُقبل مباشرة دون ترجمة ودون تأخير.
+      </p>
+      <p>
+        الجامعات البريطانية والأمريكية والكندية والأسترالية المعتمدة في بلدها عادة تكون ضمن القائمة. الجامعات الهندية المعتمدة من UGC مقبولة. الجامعات الباكستانية المعتمدة من HEC أيضاً مقبولة إذا كانت الشهادة بالإنجليزية.
+      </p>
+      <p>
+        يمكنكم التحقق من القائمة عبر موقع وزارة التعليم أو تطبيق MOHESR الذكي. إذا لم تجدوا جامعتكم في القائمة، هذا لا يعني رفض المعادلة، بل يعني أن الطلب سيحتاج مراجعة إضافية (10-15 يوم بدلاً من 5-7 أيام).
+      </p>
+
+      <h2>معادلة الشهادات للترخيص المهني في الإمارات</h2>
+      <p>
+        الترخيص المهني للمهن الصحية والهندسية والتعليمية له متطلبات خاصة تتجاوز المعادلة البسيطة. كل جهة ترخيص لها شروطها الخاصة.
+      </p>
+
+      <h3>DHA DataFlow (هيئة الصحة في دبي)</h3>
+      <p>
+        جميع المهن الطبية (أطباء، ممرضين، صيادلة، فنيين) يحتاجون معادلة MOHESR إلزامية. الترجمة وحدها غير كافية. <a href="/ar/specialized/medical/dha-dataflow/">DHA DataFlow</a> يطلب: معادلة MOHESR + Primary Source Verification من الجامعة + ترجمة قانونية إذا كانت الشهادة بلغة غير الإنجليزية.
+      </p>
+      <p>
+        مدة الإجراء الكامل: 8-12 أسبوع (2-3 أسابيع للمعادلة + 4-8 أسابيع لـ DataFlow). يجب البدء بالمعادلة أولاً قبل فتح ملف DataFlow.
+      </p>
+
+      <h3>MOHRE (وزارة الموارد البشرية والتوطين)</h3>
+      <p>
+        للحصول على تصريح عمل في المهن المنظمة (مهندس، محاسب، محامي)، تحتاجون معادلة MOHESR إذا كنتم ستعملون في جهة حكومية. القطاع الخاص: الترجمة المعتمدة عادة تكفي، لكن بعض الشركات تطلب المعادلة أيضاً حسب سياساتها الداخلية.
+      </p>
+
+      <h3>MOIAT (وزارة الصناعة والتكنولوجيا المتقدمة)</h3>
+      <p>
+        الترخيص الهندسي للعمل كمهندس استشاري أو مقاول يتطلب معادلة MOHESR + خبرة مثبتة + اختبار مهني. الترجمة وحدها غير مقبولة للترخيص المهني، بينما قد تكفي لتصريح العمل العادي.
+      </p>
+
+      <h2>معادلة الشهادات للتأشيرة الذهبية</h2>
+      <p>
+        الهيئة الاتحادية للهوية والجنسية (GDRFA) لا تطلب معادلة MOHESR للحصول على <a href="/ar/services/golden-visa-translation/">التأشيرة الذهبية</a> للمتخصصين. تحتاجون فقط: الشهادة الأصلية + <a href="/ar/services/attestation/">التصديق</a> من بلد الصدور ووزارة الخارجية + ترجمة قانونية إذا كانت بلغة غير الإنجليزية أو العربية.
+      </p>
+      <p>
+        المعادلة تفيد لاحقاً إذا أردتم العمل في القطاع الحكومي أو المهن المرخصة. لكنها ليست شرط للحصول على الفيزا نفسها. GDRFA يكتفي بالترجمة المعتمدة من وزارة العدل.
+      </p>
+      <p>
+        مدة إصدار التأشيرة الذهبية: 5-10 أيام عمل بعد تقديم المستندات كاملة. إذا احتجتم المعادلة لاحقاً، يمكنكم تقديم الطلب بعد الحصول على الفيزا دون مشاكل.
+      </p>
+
+      <h2>المستندات المطلوبة لطلب معادلة MOHESR</h2>
+      <p>
+        لتقديم طلب معادلة شهادة جامعية أجنبية، تحتاجون المستندات التالية مصدقة بالترتيب الصحيح:
+      </p>
+
+      <ol class="document-list">
+        <li><strong>الشهادة الأصلية:</strong> يجب أن تكون النسخة الأصلية الصادرة من الجامعة مع ختم الجامعة وتوقيع المسؤول.</li>
+        <li><strong>كشف العلامات (Transcript):</strong> تفاصيل المواد الدراسية والدرجات من جميع السنوات. يجب أن يكون أصلياً ومختوماً من الجامعة.</li>
+        <li><strong>التصديق من بلد الصدور:</strong> الشهادة يجب أن تكون مصدقة من وزارة الخارجية في بلد الصدور أو ما يعادلها (MEA في الهند، MOFA في مصر، Foreign Office في باكستان).</li>
+        <li><strong>التصديق من السفارة الإماراتية:</strong> بعد التصديق المحلي، تحتاجون تصديق من السفارة الإماراتية في بلد الصدور.</li>
+        <li><strong>التصديق من وزارة الخارجية الإماراتية (MOFA):</strong> المرحلة الأخيرة قبل تقديم الطلب لـ MOHESR.</li>
+        <li><strong>الترجمة القانونية (إذا لزم الأمر):</strong> إذا كانت الشهادة بلغة غير الإنجليزية، تحتاجون <a href="/ar/personal/academic/transcripts/">ترجمة معتمدة</a> من مترجم مرخص.</li>
+        <li><strong>نسخة من جواز السفر:</strong> صفحة البيانات الشخصية ساري المفعول.</li>
+        <li><strong>صورة شخصية:</strong> خلفية بيضاء حديثة.</li>
+      </ol>
+
+      <p>
+        ملاحظة هامة: الإمارات ليست عضواً في اتفاقية لاهاي للأبوستيل (Apostille). لذلك لا يمكن استخدام الأبوستيل كبديل عن سلسلة التصديقات الكاملة (وزارة خارجية بلد الصدور + سفارة إماراتية + MOFA).
+      </p>
+
+      <h2>خطوات تقديم طلب المعادلة: الإجراء الكامل</h2>
+
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>التحقق من الجامعة</h3>
+            <p>تأكدوا من أن جامعتكم معترف بها في بلد الصدور ومدرجة في قاعدة بيانات MOHESR. يمكنكم استخدام تطبيق MOHESR الذكي أو موقع الوزارة للبحث عن الجامعة.</p>
+            <p>إذا لم تكن الجامعة في القائمة، جهزوا مستندات إضافية توضح اعتماد الجامعة من الجهات الرسمية في بلد الصدور.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>تصديق الشهادة في بلد الصدور</h3>
+            <p>ابدأوا بتصديق الشهادة الأصلية من وزارة الخارجية في بلدكم. في الهند: تصديق HRD/SDM ثم MEA. في مصر: تصديق وزارة الخارجية المصرية. في باكستان: تصديق MOFA Pakistan.</p>
+            <p>بعد التصديق المحلي، اذهبوا إلى السفارة الإماراتية في بلدكم لتصديق الشهادة. المدة: 3-5 أيام عمل. الرسوم تختلف حسب الدولة.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>تصديق MOFA الإمارات والترجمة</h3>
+            <p>عند وصولكم للإمارات، صدقوا الشهادة من وزارة الخارجية الإماراتية (MOFA). يمكنكم تقديم الطلب عبر موقع MOFA أو مراكز الخدمة في أبوظبي ودبي. المدة: 1-2 يوم عمل.</p>
+            <p>إذا كانت الشهادة بلغة غير الإنجليزية، احصلوا على ترجمة قانونية معتمدة من مترجم مرخص من وزارة العدل قبل تقديم طلب المعادلة.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>تقديم طلب المعادلة</h3>
+            <p>قدموا الطلب عبر موقع MOHESR أو تطبيق الهاتف الذكي. ارفعوا نسخ ممسوحة من جميع المستندات. ادفعوا الرسوم (400-800 درهم حسب نوع الشهادة). راجعوا الطلب بعد 5-15 يوم عمل.</p>
+            <p>بعد الموافقة، احصلوا على شهادة المعادلة الرقمية. يمكنكم طباعة نسخة رسمية من مراكز الخدمة إذا احتجتموها.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>ماذا بعد الحصول على المعادلة؟</h2>
+      <p>
+        بعد حصولكم على معادلة MOHESR، يمكنكم استخدامها للتقديم على الوظائف الحكومية، الترخيص المهني، أو الدراسات العليا. المعادلة صالحة دون تاريخ انتهاء طالما الشهادة الأصلية صحيحة.
+      </p>
+      <p>
+        إذا كنتم تتقدمون لترخيص مهني (DHA، MOHRE Health، MOIAT)، ستحتاجون مستندات إضافية: شهادات الخبرة، رخصة المزاولة من بلد الصدور، اختبارات مهنية. المعادلة هي خطوة واحدة فقط من الإجراء الكامل.
+      </p>
+      <p>
+        للقطاع الخاص: أغلب الشركات تقبل المعادلة كإثبات للمؤهل الأكاديمي دون حاجة لمستندات إضافية. بعض الشركات الكبيرة قد تطلب Background Verification من الجامعة مباشرة، لكن هذا نادر.
+      </p>
+
+      <h2>البدائل إذا رُفضت المعادلة</h2>
+      <p>
+        إذا رفضت MOHESR معادلة شهادتكم بسبب عدم اعتراف الوزارة بالجامعة، لديكم عدة خيارات بديلة:
+      </p>
+      <ul>
+        <li><strong>تقديم اعتراض:</strong> يمكنكم تقديم اعتراض مع مستندات إضافية توضح اعتماد الجامعة في بلد الصدور (رسالة من هيئة الاعتماد المحلية).</li>
+        <li><strong>تقييم دولي (WES, IQAS):</strong> بعض الجهات تقبل تقارير التقييم من خدمات التقييم الدولية المعترف بها كبديل عن المعادلة الحكومية.</li>
+        <li><strong>معادلة جزئية:</strong> في بعض الحالات، MOHESR تصدر معادلة "مع ملاحظات" بدلاً من الرفض الكامل. يمكنكم استخدامها للقطاع الخاص.</li>
+        <li><strong>الدراسة الإضافية:</strong> إذا كانت الشهادة من جامعة غير معترف بها بشكل نهائي، قد تحتاجون دراسة سنة تكميلية في جامعة إماراتية معترف بها.</li>
+      </ul>
+      <p>
+        مهم: لا تتخلوا عن طلب المعادلة بسهولة. راجعوا استشاري تعليمي أو محامي متخصص في قضايا التعليم العالي قبل اتخاذ قرار نهائي.
+      </p>
+
+      <h2>خدمات الترجمة المعتمدة للشهادات الجامعية</h2>
+      <p>
+        نقدم خدمة ترجمة الشهادات الجامعية بالشراكة مع مترجمين مرخصين من وزارة العدل (رخصة 701). الترجمة معتمدة لجميع الجهات الحكومية في أبوظبي ودبي والشارقة.
+      </p>
+      <p>
+        المدة: 24-48 ساعة للشهادة مع كشف العلامات. التواصل عبر واتساب فقط، بدون سلاسل إيميلات. نراجع المستندات قبل الدفع للتأكد من أن الترجمة ستكون مقبولة من الجهة المستهدفة.
+      </p>
+      <p>
+        للاستفسار عن ترجمة شهادتكم الجامعية أو كشف العلامات، تواصلوا معنا على واتساب: <span class="ltr-content">+971 50 862 0217</span>. نجيب خلال دقائق ونوضح الإجراء الكامل والمدة المتوقعة.
+      </p>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" dir="rtl">
+      <h2>الأسئلة الشائعة عن معادلة MOHESR</h2>
+
+      {faqs.map((faq, index) => (
+        <details class="faq-item" name="mohesr-faq">
+          <summary>{faq.question}</summary>
+          <div class="faq-answer">
+            <p>{faq.answer}</p>
+          </div>
+        </details>
+      ))}
+    </section>
+
+    <!-- Related Resources -->
+    <section class="related-resources" dir="rtl">
+      <h2>أدلة ذات صلة</h2>
+      <div class="resource-grid">
+        <a href="/ar/resources/mohesr-equivalency/" class="resource-card">
+          <h3>دليل معادلة الشهادات</h3>
+          <p>خطوات كاملة لمعادلة الشهادات الجامعية</p>
+        </a>
+        <a href="/ar/personal/academic/degree/" class="resource-card">
+          <h3>ترجمة الشهادات الجامعية</h3>
+          <p>ترجمة معتمدة من وزارة العدل</p>
+        </a>
+        <a href="/ar/services/attestation/" class="resource-card">
+          <h3>تصديق الشهادات</h3>
+          <p>سلسلة التصديق الكاملة للشهادات الأجنبية</p>
+        </a>
+        <a href="/ar/blog/degrees-accepted-uae-work-permit/" class="resource-card">
+          <h3>الشهادات المقبولة لتصريح العمل</h3>
+          <p>متطلبات MOHRE للمؤهلات الأكاديمية</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" dir="rtl">
+      <h2>هل تحتاجون ترجمة شهادة جامعية لمعادلة MOHESR؟</h2>
+      <p>
+        تواصلوا معنا على واتساب للحصول على استشارة مجانية حول متطلبات الترجمة والمعادلة. نوضح لكم الإجراء الكامل والمدة المتوقعة قبل البدء.
+      </p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/971508620217?text=مرحباً%2C%20أريد%20ترجمة%20شهادة%20جامعية%20لمعادلة%20MOHESR" class="btn-primary" target="_blank" rel="noopener">
+          واتساب: +971 50 862 0217
+        </a>
+      </div>
+    </section>
+  </article>
+</BaseLayoutArabic>
+
+<style>
+  .resource-guide {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  /* Breadcrumb */
+  .breadcrumb {
+    margin-bottom: 2rem;
+  }
+
+  .breadcrumb ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    font-size: 0.9rem;
+    color: var(--text-muted, #666);
+  }
+
+  .breadcrumb a {
+    color: var(--accent-teal, #0077b6);
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+
+  .breadcrumb li[aria-current="page"] {
+    color: var(--text-primary, #0E2B48);
+    font-weight: 600;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    margin-bottom: 3rem;
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--accent-coral, #FF1654);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    color: var(--text-primary, #0E2B48);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .intro {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-secondary, #333);
+    margin-bottom: 1.5rem;
+  }
+
+  .snapshot-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .snapshot-bullets li {
+    padding-right: 1.5rem;
+    position: relative;
+  }
+
+  .snapshot-bullets li::before {
+    content: "✓";
+    position: absolute;
+    right: 0;
+    color: var(--accent-coral, #FF1654);
+    font-weight: bold;
+  }
+
+  /* Content Section */
+  .content-section {
+    margin-bottom: 3rem;
+  }
+
+  .content-section h2 {
+    font-size: 1.6rem;
+    color: var(--text-primary, #0E2B48);
+    margin: 2.5rem 0 1rem 0;
+    line-height: 1.4;
+  }
+
+  .content-section h3 {
+    font-size: 1.3rem;
+    color: var(--text-primary, #0E2B48);
+    margin: 2rem 0 1rem 0;
+  }
+
+  .content-section p {
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    color: var(--text-secondary, #333);
+  }
+
+  .content-section a {
+    color: var(--accent-teal, #0077b6);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .content-section a:hover {
+    border-bottom-color: var(--accent-teal, #0077b6);
+  }
+
+  /* Comparison Table */
+  .comparison-table {
+    overflow-x: auto;
+    margin: 2rem 0;
+  }
+
+  .comparison-table table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #e0e0e0;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 1rem;
+    text-align: right;
+    border: 1px solid #e0e0e0;
+  }
+
+  .comparison-table th {
+    background: var(--surface-navy, #0E2B48);
+    color: white;
+    font-weight: 600;
+  }
+
+  .comparison-table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+
+  /* Document List */
+  .document-list {
+    list-style: none;
+    counter-reset: doc-counter;
+    padding: 0;
+    margin: 1.5rem 0;
+  }
+
+  .document-list li {
+    counter-increment: doc-counter;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: #f5f5f5;
+    border-right: 4px solid var(--accent-coral, #FF1654);
+    position: relative;
+  }
+
+  .document-list li::before {
+    content: counter(doc-counter);
+    position: absolute;
+    right: -1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--accent-coral, #FF1654);
+    color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+
+  .document-list strong {
+    color: var(--text-primary, #0E2B48);
+  }
+
+  /* Process Steps */
+  .process-steps {
+    margin: 2rem 0;
+  }
+
+  .step {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+  }
+
+  .step-number {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    background: var(--accent-coral, #FF1654);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .step-content h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary, #0E2B48);
+  }
+
+  .step-content p {
+    margin-bottom: 0.75rem;
+    line-height: 1.7;
+  }
+
+  .step-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* FAQ Section */
+  .faq-section {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+  }
+
+  .faq-section h2 {
+    font-size: 1.6rem;
+    color: var(--text-primary, #0E2B48);
+    margin-bottom: 1.5rem;
+  }
+
+  .faq-item {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+
+  .faq-item summary {
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-primary, #0E2B48);
+    list-style: none;
+    position: relative;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item summary::after {
+    content: "+";
+    position: absolute;
+    left: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--accent-coral, #FF1654);
+  }
+
+  .faq-item[open] summary::after {
+    content: "−";
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    line-height: 1.7;
+    color: var(--text-secondary, #333);
+  }
+
+  /* Related Resources */
+  .related-resources {
+    margin: 3rem 0;
+  }
+
+  .related-resources h2 {
+    font-size: 1.6rem;
+    color: var(--text-primary, #0E2B48);
+    margin-bottom: 1.5rem;
+  }
+
+  .resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .resource-card {
+    padding: 1.5rem;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .resource-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: var(--accent-coral, #FF1654);
+  }
+
+  .resource-card h3 {
+    font-size: 1.1rem;
+    color: var(--text-primary, #0E2B48);
+    margin-bottom: 0.5rem;
+  }
+
+  .resource-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted, #666);
+    margin: 0;
+  }
+
+  /* Final CTA */
+  .final-cta {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: var(--surface-navy, #0E2B48);
+    color: white;
+    border-radius: 8px;
+    margin: 3rem 0;
+  }
+
+  .final-cta h2 {
+    color: white;
+    margin-bottom: 1rem;
+  }
+
+  .final-cta p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.95;
+  }
+
+  /* CTA Buttons */
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--accent-coral, #FF1654);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+
+  .btn-primary:hover {
+    background: #d91449;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 22, 84, 0.3);
+  }
+
+  .ltr-content {
+    direction: ltr;
+    display: inline-block;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 1.6rem;
+    }
+
+    .content-section h2 {
+      font-size: 1.4rem;
+    }
+
+    .comparison-table {
+      font-size: 0.85rem;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 0.5rem;
+    }
+
+    .step {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .resource-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .final-cta {
+      padding: 2rem 1rem;
+    }
+  }
+</style>

@@ -1,0 +1,1896 @@
+---
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: "ما هي الوثائق المطلوبة للحصول على تصريح عمل من MOHRE؟",
+    answer: "تشمل الوثائق الأساسية: شهادة الدرجة العلمية المصدقة، شهادات الخبرة من أصحاب العمل السابقين، شهادة حسن السيرة والسلوك (PCC)، نسخة من جواز السفر بصلاحية 6 أشهر على الأقل، صور شخصية بخلفية بيضاء، ونموذج الفحص الطبي المعتمد من هيئة الصحة. تختلف المتطلبات حسب المهنة ومستوى التأهيل."
+  },
+  {
+    question: "هل يجب ترجمة جميع الوثائق إلى اللغة العربية لـ MOHRE؟",
+    answer: "نعم، جميع الوثائق الصادرة بلغات غير العربية يجب ترجمتها. الترجمة من وزارة العدل مطلوبة للشهادات الدراسية وشهادات حسن السيرة. الترجمة المعتمدة قد تكفي لشهادات الخبرة من شركات خاصة. يجب التأكد من المتطلبات المحددة حسب نوع العقد."
+  },
+  {
+    question: "كم من الوقت يستغرق الحصول على تصريح العمل من MOHRE؟",
+    answer: "الإطار الزمني المعتاد 3-5 أيام عمل بعد تقديم الطلب الكامل مع جميع الوثائق الصحيحة. التأخير يحدث عادة بسبب الوثائق الناقصة أو غير المصدقة بشكل صحيح. المناطق الحرة قد تكون أسرع (2-3 أيام). تحضير الوثائق والتصديقات قد يستغرق 2-4 أسابيع."
+  },
+  {
+    question: "ما الفرق بين تصديق الأبوستيل والتصديق الكامل؟",
+    answer: "الأبوستيل ختم واحد من الدولة المصدرة يكفي للدول الأعضاء في اتفاقية لاهاي (مثل الهند وبريطانيا والولايات المتحدة والفلبين وبنغلاديش). التصديق الكامل يتطلب سلسلة: وزارة الخارجية في بلد المصدر، ثم سفارة الإمارات، ثم وزارة الخارجية الإماراتية. الإمارات ليست عضواً في اتفاقية لاهاي."
+  },
+  {
+    question: "لماذا يتم رفض طلبات تصريح العمل من MOHRE؟",
+    answer: "الأسباب الشائعة: شهادة دراسية غير مصدقة بشكل صحيح، عدم تطابق اسم مقدم الطلب في الوثائق، شهادة خبرة غير كافية للمهنة المطلوبة، شهادة حسن سيرة منتهية الصلاحية (أكثر من 6 أشهر)، رخصة تجارية للشركة منتهية أو غير متوافقة مع نشاط العامل. الدقة في التحضير تمنع 90% من حالات الرفض."
+  },
+  {
+    question: "هل يجب تصديق شهادات الخبرة من وزارة العدل؟",
+    answer: "شهادات الخبرة من شركات خارج الإمارات تحتاج إلى تصديق من غرفة التجارة ووزارة الخارجية في بلد الإصدار، ثم من سفارة الإمارات. الشهادات من شركات إماراتية تحتاج فقط إلى توقيع صاحب العمل وختم الشركة. الترجمة المعتمدة عادة كافية لشهادات الخبرة من القطاع الخاص."
+  },
+  {
+    question: "ما الفرق بين تصريح العمل في المناطق الحرة وتصريح MOHRE؟",
+    answer: "تصريح MOHRE للشركات في البر الرئيسي (دبي، أبوظبي، الشارقة). المناطق الحرة (DMCC، JAFZA، مطار دبي، أبوظبي العالمي) لها أنظمة تصاريح منفصلة. متطلبات الوثائق مماثلة لكن عمليات التقديم مختلفة. تصريح المنطقة الحرة لا يسمح بالعمل خارج المنطقة الحرة. تصريح MOHRE يغطي جميع إمارات البر الرئيسي."
+  },
+  {
+    question: "كم تكلفة ترجمة وتصديق وثائق تصريح العمل؟",
+    answer: "ترجمة وتصديق الشهادة الدراسية من وزارة العدل تبدأ من 300-400 درهم. شهادة حسن السيرة والسلوك (ترجمة ووزارة العدل) 250-350 درهم. شهادات الخبرة (ترجمة معتمدة) 150-250 درهم للوثيقة. التكلفة الإجمالية لحزمة كاملة 800-1200 درهم. خدمات التوصيل السريع (60 دقيقة) متاحة مقابل رسوم إضافية."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "الرئيسية",
+      "item": "https://onlinetranslation.ae/ar/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "الأدلة",
+      "item": "https://onlinetranslation.ae/ar/resources/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "دليل تصريح العمل MOHRE",
+      "item": "https://onlinetranslation.ae/ar/resources/mohre-work-permit-guide/"
+    }
+  ]
+};
+---
+
+<BaseLayoutArabic
+  title="تصريح العمل MOHRE | دليل ترجمة الوثائق المطلوبة"
+  description="دليل الموظف لتحضير وثائق تصريح العمل من وزارة الموارد البشرية MOHRE في أبوظبي ودبي. متطلبات الترجمة والتصديق."
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://onlinetranslation.ae/ar/resources/mohre-work-permit-guide/" />
+    <link rel="alternate" hreflang="en" href="https://onlinetranslation.ae/resources/mohre-work-permit-guide/" />
+    <link rel="alternate" hreflang="ar" href="https://onlinetranslation.ae/ar/resources/mohre-work-permit-guide/" />
+    <link rel="alternate" hreflang="x-default" href="https://onlinetranslation.ae/resources/mohre-work-permit-guide/" />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <nav class="breadcrumb" dir="rtl" aria-label="التنقل">
+        <a href="/ar/">الرئيسية</a>
+        <span class="separator">&lt;</span>
+        <a href="/ar/resources/">الأدلة</a>
+        <span class="separator">&lt;</span>
+        <span class="current">تصريح العمل MOHRE</span>
+      </nav>
+
+      <div class="hero-content" dir="rtl">
+        <span class="badge">دليل شامل</span>
+        <h1>دليل تصريح العمل من وزارة الموارد البشرية MOHRE</h1>
+        <p class="intro">
+          كل ما تحتاج معرفته لتحضير وثائقك للحصول على تصريح عمل في أبوظبي ودبي والإمارات الشمالية.
+          هذا الدليل يشرح المتطلبات الدقيقة للترجمة والتصديق، ويساعدك على تجنب أسباب الرفض الشائعة.
+        </p>
+
+        <div class="key-points">
+          <div class="point">
+            <strong>الوثائق الأساسية</strong>
+            <span>شهادات دراسية، خبرة، حسن سيرة</span>
+          </div>
+          <div class="point">
+            <strong>متطلبات الترجمة</strong>
+            <span>وزارة العدل للحكومة، معتمدة للخاص</span>
+          </div>
+          <div class="point">
+            <strong>سلسلة التصديق</strong>
+            <span>حسب جنسيتك والبلد المصدر</span>
+          </div>
+          <div class="point">
+            <strong>الإطار الزمني</strong>
+            <span>3-5 أيام عمل بعد تقديم الوثائق</span>
+          </div>
+        </div>
+
+        <div class="cta-group">
+          <a href="https://wa.me/971508620217" class="btn-primary">
+            <i class="fab fa-whatsapp"></i>
+            استشارة مجانية عبر واتساب
+          </a>
+          <a href="/ar/services/attestation/" class="btn-secondary">
+            خدمات التصديق
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview Section -->
+  <section class="content-section bg-light">
+    <div class="container">
+      <div class="content-wrapper" dir="rtl">
+        <h2>ما هو تصريح العمل من MOHRE؟</h2>
+        <p>
+          تصريح العمل من وزارة الموارد البشرية والتوطين (MOHRE) هو الموافقة الرسمية التي تسمح للوافدين بالعمل قانونياً في البر الرئيسي لدولة الإمارات.
+          هذا التصريح مطلوب قبل إصدار تأشيرة الإقامة وبطاقة الهوية الإماراتية.
+          عملية الحصول على التصريح تعتمد على تقديم وثائق كاملة ومصدقة بشكل صحيح.
+        </p>
+        <p>
+          الشركات في دبي وأبوظبي والشارقة وبقية الإمارات (خارج المناطق الحرة) يجب أن تحصل على تصاريح العمل من MOHRE.
+          المناطق الحرة مثل DMCC ومطار دبي وأبوظبي العالمي لها أنظمة تصاريح منفصلة.
+          هذا الدليل يركز على متطلبات MOHRE للبر الرئيسي.
+        </p>
+
+        <div class="info-box">
+          <h3>الفرق بين البر الرئيسي والمناطق الحرة</h3>
+          <div class="comparison-grid">
+            <div class="comparison-item">
+              <h4>البر الرئيسي (MOHRE)</h4>
+              <ul>
+                <li>يغطي جميع إمارات البر الرئيسي</li>
+                <li>يسمح بالعمل في أي مكان خارج المناطق الحرة</li>
+                <li>رخصة تجارية من DED (دائرة التنمية الاقتصادية)</li>
+                <li>تصريح العمل من MOHRE مطلوب</li>
+              </ul>
+            </div>
+            <div class="comparison-item">
+              <h4>المناطق الحرة</h4>
+              <ul>
+                <li>محصور داخل المنطقة الحرة المحددة</li>
+                <li>لا يسمح بالعمل خارج المنطقة الحرة</li>
+                <li>رخصة من سلطة المنطقة الحرة</li>
+                <li>تصريح عمل من سلطة المنطقة الحرة</li>
+              </ul>
+            </div>
+          </div>
+          <p class="note">
+            إذا كانت شركتك في منطقة حرة، راجع سلطة المنطقة الحرة للمتطلبات المحددة.
+            العملية مماثلة لكن نظام التقديم مختلف.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Required Documents Section -->
+  <section class="content-section">
+    <div class="container">
+      <div class="content-wrapper" dir="rtl">
+        <h2>الوثائق المطلوبة للحصول على تصريح العمل</h2>
+        <p>
+          قائمة الوثائق تختلف حسب المهنة ومستوى التأهيل، لكن هناك مستندات أساسية مطلوبة من جميع المتقدمين.
+          جميع الوثائق الصادرة بلغات غير العربية يجب ترجمتها وتصديقها.
+          نوع الترجمة والتصديق يعتمد على الوثيقة واستخدامها.
+        </p>
+
+        <div class="document-checklist">
+          <h3>قائمة الوثائق الأساسية</h3>
+
+          <div class="checklist-category">
+            <h4>1. الشهادات الدراسية</h4>
+            <ul class="checklist">
+              <li>
+                <strong><a href="/ar/personal/academic/degree/">شهادة الدرجة العلمية</a> (بكالوريوس، ماجستير، دكتوراه)</strong>
+                <p>مطلوبة لجميع المهن المؤهلة. يجب أن تكون مصدقة من وزارة التعليم في بلد الإصدار.</p>
+              </li>
+              <li>
+                <strong><a href="/ar/personal/academic/transcripts/">كشوف الدرجات الأكاديمية</a></strong>
+                <p>قد تكون مطلوبة لبعض المهن المتخصصة أو عندما تطلب MOHRE التحقق من التخصص.</p>
+              </li>
+              <li>
+                <strong>شهادات الدراسات العليا أو الدبلومات المهنية</strong>
+                <p>إذا كانت مطلوبة للمهنة المحددة (مثل المحاسبة أو الهندسة).</p>
+              </li>
+            </ul>
+            <div class="requirement-note">
+              <strong>متطلبات الترجمة:</strong>
+              <a href="/ar/resources/moj-vs-certified/">ترجمة وزارة العدل</a> (رخصة #701) مطلوبة لجميع الشهادات الدراسية المستخدمة في طلبات MOHRE.
+            </div>
+          </div>
+
+          <div class="checklist-category">
+            <h4>2. شهادات الخبرة</h4>
+            <ul class="checklist">
+              <li>
+                <strong>شهادات من جميع أصحاب العمل السابقين</strong>
+                <p>يجب أن تتضمن: اسم الشركة، فترة العمل، المسمى الوظيفي، المسؤوليات الرئيسية.</p>
+              </li>
+              <li>
+                <strong>خطابات على ورق رسمي للشركة</strong>
+                <p>يجب أن تحمل توقيع مسؤول HR أو المدير المباشر وختم الشركة.</p>
+              </li>
+              <li>
+                <strong>تصديق من غرفة التجارة (للشهادات الدولية)</strong>
+                <p>شهادات من خارج الإمارات تحتاج إلى تصديق من غرفة التجارة ووزارة الخارجية.</p>
+              </li>
+            </ul>
+            <div class="requirement-note">
+              <strong>متطلبات الترجمة:</strong>
+              الترجمة المعتمدة عادة كافية لشهادات الخبرة من القطاع الخاص. ترجمة وزارة العدل قد تكون مطلوبة لشهادات من جهات حكومية.
+            </div>
+          </div>
+
+          <div class="checklist-category">
+            <h4>3. شهادة حسن السيرة والسلوك (PCC)</h4>
+            <ul class="checklist">
+              <li>
+                <strong><a href="/ar/personal/immigration/pcc/">شهادة حسن سيرة</a> من بلد الجنسية</strong>
+                <p>يجب أن تكون صادرة خلال آخر 6 أشهر. الشهادات الأقدم غير مقبولة.</p>
+              </li>
+              <li>
+                <strong>شهادة من بلد الإقامة السابقة</strong>
+                <p>إذا أقمت في بلد آخر لأكثر من 6 أشهر متواصلة خلال السنتين الماضيتين.</p>
+              </li>
+              <li>
+                <strong>تصديق كامل على الشهادة</strong>
+                <p>يجب تصديق الشهادة من وزارة الخارجية في بلد الإصدار، ثم من سفارة الإمارات.</p>
+              </li>
+            </ul>
+            <div class="requirement-note">
+              <strong>متطلبات الترجمة:</strong>
+              ترجمة وزارة العدل مطلوبة لجميع شهادات حسن السيرة المستخدمة في طلبات حكومية.
+            </div>
+          </div>
+
+          <div class="checklist-category">
+            <h4>4. وثائق الهوية</h4>
+            <ul class="checklist">
+              <li>
+                <strong>نسخة من جواز السفر (ملون)</strong>
+                <p>يجب أن يكون ساري المفعول لمدة 6 أشهر على الأقل. صفحات البيانات الشخصية والتأشيرات.</p>
+              </li>
+              <li>
+                <strong>صور شخصية بخلفية بيضاء</strong>
+                <p>حجم صورة جواز السفر (35×45 مم)، تصوير حديث خلال آخر 6 أشهر.</p>
+              </li>
+              <li>
+                <strong>نسخة من تأشيرة الدخول أو الإقامة الحالية</strong>
+                <p>إذا كنت بالفعل في الإمارات.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="checklist-category">
+            <h4>5. الوثائق الطبية</h4>
+            <ul class="checklist">
+              <li>
+                <strong>نموذج الفحص الطبي المعتمد</strong>
+                <p>يتم إجراؤه في مركز معتمد من هيئة الصحة في دبي (DHA) أو أبوظبي (DOH).</p>
+              </li>
+              <li>
+                <strong>اختبارات الدم والأشعة السينية</strong>
+                <p>فحوصات الأمراض المعدية (HIV، التهاب الكبد B/C، السل).</p>
+              </li>
+            </ul>
+            <div class="requirement-note">
+              <strong>ملاحظة:</strong>
+              الفحص الطبي عادة يتم بعد الموافقة المبدئية على تصريح العمل، لكن بعض الشركات تطلبه مقدماً.
+            </div>
+          </div>
+
+          <div class="checklist-category">
+            <h4>6. وثائق الشركة</h4>
+            <ul class="checklist">
+              <li>
+                <strong><a href="/ar/legal/corporate/license/">رخصة تجارية سارية المفعول</a></strong>
+                <p>يجب أن تتضمن النشاط التجاري المتوافق مع المسمى الوظيفي.</p>
+              </li>
+              <li>
+                <strong>عقد العمل (نموذج MOHRE الموحد)</strong>
+                <p>موقع من الطرفين، يحدد الراتب والبدلات والمزايا.</p>
+              </li>
+              <li>
+                <strong>موافقة المدير أو صاحب العمل</strong>
+                <p>إذا كنت تنتقل من صاحب عمل آخر داخل الإمارات.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pro-tip">
+          <h3>نصيحة مهمة</h3>
+          <p>
+            تحضير جميع الوثائق بشكل صحيح من المرة الأولى يوفر أسابيع من التأخير.
+            <strong>90% من حالات الرفض سببها وثائق غير مصدقة بشكل صحيح أو ترجمات غير مقبولة.</strong>
+            احصل على استشارة مجانية قبل البدء في عملية التصديق.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Attestation Process Section -->
+  <section class="content-section bg-light">
+    <div class="container">
+      <div class="content-wrapper" dir="rtl">
+        <h2>سلسلة التصديق: حسب الجنسية</h2>
+        <p>
+          عملية تصديق الوثائق تختلف حسب بلد الإصدار وما إذا كانت دولة عضو في اتفاقية لاهاي.
+          <strong>الإمارات ليست عضواً في اتفاقية لاهاي،</strong> لكنها تقبل الأبوستيل من الدول الأعضاء.
+          فهم سلسلة التصديق الصحيحة يمنع التأخيرات والرفض.
+        </p>
+
+        <div class="attestation-grid">
+          <div class="attestation-type">
+            <div class="type-header hague">
+              <h3>دول اتفاقية لاهاي</h3>
+              <span class="badge-green">أبوستيل مقبول</span>
+            </div>
+            <div class="country-list">
+              <h4>الدول المشمولة:</h4>
+              <ul>
+                <li><strong>الهند</strong> (منذ يوليو 2005) - أبوستيل من وزارة الشؤون الخارجية (MEA)</li>
+                <li><strong>المملكة المتحدة</strong> (منذ 1965) - أبوستيل من FCDO</li>
+                <li><strong>الولايات المتحدة</strong> (منذ 1981) - أبوستيل من وزير الخارجية في الولاية</li>
+                <li><strong>الفلبين</strong> (منذ 2019) - أبوستيل من DFA</li>
+                <li><strong>بنغلاديش</strong> (منذ مارس 2025) - أبوستيل من وزارة الخارجية</li>
+                <li><strong>كندا</strong> (منذ يناير 2024) - أبوستيل من Global Affairs Canada</li>
+              </ul>
+            </div>
+            <div class="process-steps">
+              <h4>الخطوات للدول الأعضاء:</h4>
+              <ol>
+                <li>الحصول على الوثيقة الأصلية من الجهة المصدرة</li>
+                <li>تصديق الأبوستيل من سلطة الأبوستيل الوطنية</li>
+                <li>ترجمة الوثيقة في الإمارات (وزارة العدل للحكومة)</li>
+                <li>لا حاجة لتصديق من سفارة الإمارات</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="attestation-type">
+            <div class="type-header non-hague">
+              <h3>دول غير أعضاء في اتفاقية لاهاي</h3>
+              <span class="badge-orange">سلسلة تصديق كاملة</span>
+            </div>
+            <div class="country-list">
+              <h4>الدول المشمولة:</h4>
+              <ul>
+                <li><strong>باكستان</strong> - سلسلة كاملة مطلوبة</li>
+                <li><strong>مصر</strong> - سلسلة كاملة مطلوبة</li>
+                <li><strong>الأردن</strong> - سلسلة كاملة مطلوبة</li>
+                <li><strong>نيجيريا</strong> - سلسلة كاملة مطلوبة</li>
+                <li>وجميع الدول غير المذكورة أعلاه</li>
+              </ul>
+            </div>
+            <div class="process-steps">
+              <h4>الخطوات للدول غير الأعضاء:</h4>
+              <ol>
+                <li>الحصول على الوثيقة الأصلية من الجهة المصدرة</li>
+                <li>تصديق من الجهة الحكومية المحلية (محكمة، كاتب عدل)</li>
+                <li>تصديق من وزارة الخارجية في بلد الإصدار</li>
+                <li>تصديق من سفارة الإمارات في بلد الإصدار</li>
+                <li>تصديق من <a href="/ar/services/attestation/">وزارة الخارجية الإماراتية (MOFA)</a></li>
+                <li>ترجمة من وزارة العدل الإماراتية</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-estimate">
+          <h3>الإطار الزمني لسلسلة التصديق</h3>
+          <div class="timeline-grid">
+            <div class="timeline-item">
+              <span class="timeline-duration">5-7 أيام</span>
+              <span class="timeline-label">دول اتفاقية لاهاي (أبوستيل + ترجمة)</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-duration">2-4 أسابيع</span>
+              <span class="timeline-label">دول غير أعضاء (سلسلة كاملة)</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-duration">60 دقيقة</span>
+              <span class="timeline-label">ترجمة وزارة العدل (خدمة سريعة)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="warning-box">
+          <h3>تحذير مهم</h3>
+          <p>
+            <strong>لا تبدأ سلسلة التصديق دون التأكد من المتطلبات الدقيقة.</strong>
+            الخطأ في سلسلة التصديق يعني إعادة العملية من البداية.
+            تكلفة الاستشارة المبدئية (مجانية عبر واتساب) أقل بكثير من تكلفة إعادة التصديق.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Translation Requirements Section -->
+  <section class="content-section">
+    <div class="container">
+      <div class="content-wrapper" dir="rtl">
+        <h2>متطلبات الترجمة لـ MOHRE</h2>
+        <p>
+          MOHRE تطلب ترجمات رسمية لجميع الوثائق الصادرة بلغات غير العربية.
+          نوع الترجمة المطلوبة يعتمد على الوثيقة ومستوى الاستخدام الحكومي.
+          الخلط بين أنواع الترجمة هو سبب شائع لرفض الطلبات.
+        </p>
+
+        <div class="translation-comparison">
+          <div class="translation-type">
+            <h3>ترجمة وزارة العدل</h3>
+            <div class="type-badge moj">رخصة #701</div>
+            <div class="type-description">
+              <p>
+                ترجمة معتمدة من مترجم مرخص من وزارة العدل الإماراتية.
+                تحمل ختم المترجم وتوقيعه، مع رقم الترخيص وتاريخ الصلاحية.
+              </p>
+            </div>
+            <div class="use-cases">
+              <h4>مطلوبة لـ:</h4>
+              <ul>
+                <li>الشهادات الدراسية (بكالوريوس، ماجستير، دكتوراه)</li>
+                <li>شهادات حسن السيرة والسلوك</li>
+                <li>كشوف الدرجات الأكاديمية</li>
+                <li>الشهادات المهنية للمهن المرخصة</li>
+                <li>جميع الوثائق المقدمة إلى MOHRE</li>
+              </ul>
+            </div>
+            <div class="translator-info">
+              <p><strong>المترجم المعتمد:</strong> خالد محمد عبدالوهاب العدل</p>
+              <p><strong>رخصة وزارة العدل:</strong> #701</p>
+              <p><strong>صالحة حتى:</strong> 15 أكتوبر 2026</p>
+            </div>
+          </div>
+
+          <div class="translation-type">
+            <h3>الترجمة المعتمدة</h3>
+            <div class="type-badge certified">معتمدة</div>
+            <div class="type-description">
+              <p>
+                ترجمة من مترجم معتمد مع ختم الشركة وتوقيع المترجم.
+                دقيقة ومهنية لكن بدون ختم وزارة العدل.
+              </p>
+            </div>
+            <div class="use-cases">
+              <h4>قد تكون مقبولة لـ:</h4>
+              <ul>
+                <li>شهادات الخبرة من القطاع الخاص</li>
+                <li>خطابات التوصية</li>
+                <li><a href="/ar/personal/immigration/bank/">كشوف الحسابات البنكية</a></li>
+                <li>عقود الإيجار</li>
+                <li>بعض المستندات الداعمة</li>
+              </ul>
+            </div>
+            <div class="limitation">
+              <p class="note">
+                <strong>تحذير:</strong> بعض مكاتب MOHRE قد ترفض الترجمات المعتمدة حتى لشهادات الخبرة.
+                في حالة الشك، استخدم ترجمة وزارة العدل لضمان القبول من المرة الأولى.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-features">
+          <h3>ما الذي يميز ترجمتنا؟</h3>
+          <div class="features-grid">
+            <div class="feature">
+              <i class="fas fa-certificate"></i>
+              <h4>رخصة وزارة العدل #701</h4>
+              <p>مترجم مرخص من وزارة العدل الإماراتية، صالح حتى أكتوبر 2026</p>
+            </div>
+            <div class="feature">
+              <i class="fas fa-clock"></i>
+              <h4>توصيل خلال 60 دقيقة</h4>
+              <p>للوثائق القياسية، نوصل الترجمة الكاملة خلال ساعة واحدة</p>
+            </div>
+            <div class="feature">
+              <i class="fas fa-shield-check"></i>
+              <h4>فحص مسبق مجاني</h4>
+              <p>نتحقق من صلاحية وثائقك قبل بدء الترجمة، لا دفع إلا عند التأكد</p>
+            </div>
+            <div class="feature">
+              <i class="fab fa-whatsapp"></i>
+              <h4>واتساب فقط، لا إيميلات</h4>
+              <p>أرسل الوثيقة، احصل على عرض سعر، وافق، واستلم. كل شيء عبر واتساب</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Common Rejection Reasons Section -->
+  <section class="content-section bg-light">
+    <div class="container">
+      <div class="content-wrapper" dir="rtl">
+        <h2>أسباب الرفض الشائعة وكيفية تجنبها</h2>
+        <p>
+          معظم طلبات تصريح العمل التي تُرفض سببها أخطاء قابلة للتجنب في تحضير الوثائق.
+          فهم هذه المشاكل الشائعة يساعدك على تجنب التأخيرات المكلفة.
+          <a href="/ar/blog/mohre-work-permit-document-issues/">اقرأ دليلنا الكامل لحل مشاكل وثائق MOHRE</a>.
+        </p>
+
+        <div class="rejection-reasons">
+          <div class="reason-item">
+            <div class="reason-number">1</div>
+            <div class="reason-content">
+              <h3>شهادة دراسية غير مصدقة بشكل صحيح</h3>
+              <div class="problem">
+                <strong>المشكلة:</strong>
+                الشهادة لا تحمل أبوستيل (لدول اتفاقية لاهاي) أو لم تمر بسلسلة التصديق الكاملة.
+                أو الترجمة ليست من مترجم مرخص من وزارة العدل.
+              </div>
+              <div class="solution">
+                <strong>الحل:</strong>
+                تأكد من أن الشهادة مصدقة بالطريقة الصحيحة حسب بلد الإصدار (أبوستيل أو سلسلة كاملة).
+                استخدم ترجمة وزارة العدل فقط للشهادات الدراسية.
+                لا تقبل MOHRE الترجمات المعتمدة العادية للشهادات.
+              </div>
+            </div>
+          </div>
+
+          <div class="reason-item">
+            <div class="reason-number">2</div>
+            <div class="reason-content">
+              <h3>عدم تطابق الأسماء في الوثائق</h3>
+              <div class="problem">
+                <strong>المشكلة:</strong>
+                اسم مقدم الطلب في جواز السفر يختلف عن الاسم في الشهادة الدراسية أو شهادة حسن السيرة.
+                حتى الاختلافات الطفيفة في التهجئة أو ترتيب الأسماء تسبب الرفض.
+              </div>
+              <div class="solution">
+                <strong>الحل:</strong>
+                إذا كان هناك اختلاف في الأسماء، احصل على إفادة قانونية (Affidavit) من بلد الجنسية تؤكد أن الأسماء المختلفة تعود لنفس الشخص.
+                صدق الإفادة من وزارة الخارجية وسفارة الإمارات.
+                أو قم بتحديث جواز السفر ليطابق الاسم في الشهادات.
+              </div>
+            </div>
+          </div>
+
+          <div class="reason-item">
+            <div class="reason-number">3</div>
+            <div class="reason-content">
+              <h3>شهادة خبرة غير كافية أو غير صحيحة</h3>
+              <div class="problem">
+                <strong>المشكلة:</strong>
+                شهادة الخبرة لا تحدد بوضوح المسمى الوظيفي أو المسؤوليات، أو فترة العمل غير كافية للمهنة المطلوبة.
+                MOHRE لها متطلبات محددة لعدد سنوات الخبرة حسب المهنة.
+              </div>
+              <div class="solution">
+                <strong>الحل:</strong>
+                احصل على شهادة خبرة مفصلة من جميع أصحاب العمل السابقين.
+                يجب أن تتضمن: اسم الشركة، فترة العمل (تاريخ البداية والنهاية)، المسمى الوظيفي الكامل، والمسؤوليات الرئيسية.
+                تأكد من أن الخبرة تتوافق مع متطلبات المهنة في نظام MOHRE.
+              </div>
+            </div>
+          </div>
+
+          <div class="reason-item">
+            <div class="reason-number">4</div>
+            <div class="reason-content">
+              <h3>شهادة حسن سيرة منتهية الصلاحية</h3>
+              <div class="problem">
+                <strong>المشكلة:</strong>
+                شهادة حسن السيرة والسلوك (PCC) صادرة منذ أكثر من 6 أشهر.
+                MOHRE لا تقبل شهادات قديمة حتى لو كانت صالحة في بلد الإصدار.
+              </div>
+              <div class="solution">
+                <strong>الحل:</strong>
+                احصل على شهادة حسن سيرة جديدة خلال 6 أشهر قبل تقديم الطلب.
+                خطط مسبقاً لأن الحصول على الشهادة قد يستغرق 2-4 أسابيع في بعض الدول.
+                صدقها فوراً بعد الحصول عليها لتجنب انتهاء الصلاحية خلال عملية التصديق.
+              </div>
+            </div>
+          </div>
+
+          <div class="reason-item">
+            <div class="reason-number">5</div>
+            <div class="reason-content">
+              <h3>رخصة تجارية غير متوافقة مع المسمى الوظيفي</h3>
+              <div class="problem">
+                <strong>المشكلة:</strong>
+                النشاط التجاري المذكور في رخصة الشركة لا يتضمن المسمى الوظيفي المطلوب.
+                مثال: شركة تجارة عامة تحاول توظيف مهندس معماري.
+              </div>
+              <div class="solution">
+                <strong>الحل:</strong>
+                تأكد من أن رخصة الشركة تتضمن النشاط الذي يسمح بتوظيف المهنة المطلوبة.
+                إذا لزم الأمر، قم بتعديل الرخصة لإضافة النشاط المناسب قبل تقديم طلب تصريح العمل.
+                استشر قسم الموارد البشرية أو مكتب PRO للتحقق من التوافق.
+              </div>
+            </div>
+          </div>
+
+          <div class="reason-item">
+            <div class="reason-number">6</div>
+            <div class="reason-content">
+              <h3>عدم دفع رسوم MOHRE أو انتهاء صلاحية الدفع</h3>
+              <div class="problem">
+                <strong>المشكلة:</strong>
+                الرسوم لم تُدفع بالكامل، أو الدفع تم لكن صلاحيته انتهت قبل إكمال الطلب.
+              </div>
+              <div class="solution">
+                <strong>الحل:</strong>
+                تأكد من دفع جميع الرسوم المطلوبة عبر نظام MOHRE الإلكتروني.
+                احتفظ بإيصالات الدفع.
+                أكمل الطلب في أسرع وقت ممكن بعد الدفع لتجنب انتهاء الصلاحية.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="prevention-tip">
+          <h3>الوقاية خير من العلاج</h3>
+          <p>
+            أرسل نسخ من وثائقك عبر واتساب للفحص المبدئي المجاني.
+            نتحقق من صلاحية الوثائق، اكتمال التصديقات، وتطابق الأسماء قبل أن تبدأ في عملية الترجمة والتصديق.
+            <strong>استشارة مجانية لمدة 5 دقائق تمنع تأخيرات لمدة 3 أسابيع.</strong>
+          </p>
+          <a href="https://wa.me/971508620217?text=أحتاج إلى فحص مجاني لوثائق تصريح العمل MOHRE" class="btn-primary">
+            <i class="fab fa-whatsapp"></i>
+            فحص مجاني للوثائق عبر واتساب
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="content-section">
+    <div class="container">
+      <div class="content-wrapper" dir="rtl">
+        <h2>الجدول الزمني الكامل: من التحضير إلى الحصول على التصريح</h2>
+        <p>
+          فهم الإطار الزمني الواقعي يساعدك على التخطيط بشكل أفضل وإدارة توقعاتك.
+          المدة الإجمالية تعتمد على جنسيتك، حالة وثائقك، وكفاءة صاحب العمل.
+        </p>
+
+        <div class="timeline-detailed">
+          <div class="timeline-phase">
+            <div class="phase-header">
+              <h3>المرحلة 1: تحضير الوثائق</h3>
+              <span class="phase-duration">1-3 أسابيع</span>
+            </div>
+            <div class="phase-steps">
+              <div class="step">
+                <span class="step-time">اليوم 1-3</span>
+                <div class="step-content">
+                  <h4>جمع الوثائق الأصلية</h4>
+                  <p>الحصول على الشهادات الدراسية، شهادات الخبرة، وشهادة حسن السيرة من بلدك.</p>
+                </div>
+              </div>
+              <div class="step">
+                <span class="step-time">اليوم 4-14</span>
+                <div class="step-content">
+                  <h4>سلسلة التصديق في بلد الإصدار</h4>
+                  <p>تصديق الوثائق من وزارة الخارجية (أو الحصول على أبوستيل لدول اتفاقية لاهاي).</p>
+                </div>
+              </div>
+              <div class="step">
+                <span class="step-time">اليوم 15-21</span>
+                <div class="step-content">
+                  <h4>تصديق من سفارة الإمارات (للدول غير الأعضاء)</h4>
+                  <p>تقديم الوثائق إلى سفارة الإمارات في بلد الإصدار للتصديق النهائي.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-phase">
+            <div class="phase-header">
+              <h3>المرحلة 2: التصديق والترجمة في الإمارات</h3>
+              <span class="phase-duration">3-5 أيام</span>
+            </div>
+            <div class="phase-steps">
+              <div class="step">
+                <span class="step-time">اليوم 1-2</span>
+                <div class="step-content">
+                  <h4>تصديق MOFA (للدول غير الأعضاء)</h4>
+                  <p>تصديق الوثائق من وزارة الخارجية الإماراتية في دبي أو أبوظبي.</p>
+                </div>
+              </div>
+              <div class="step">
+                <span class="step-time">اليوم 2-3</span>
+                <div class="step-content">
+                  <h4>ترجمة وزارة العدل</h4>
+                  <p>ترجمة جميع الوثائق إلى العربية من مترجم مرخص (خدمة سريعة: 60 دقيقة).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-phase">
+            <div class="phase-header">
+              <h3>المرحلة 3: تقديم الطلب إلى MOHRE</h3>
+              <span class="phase-duration">3-5 أيام عمل</span>
+            </div>
+            <div class="phase-steps">
+              <div class="step">
+                <span class="step-time">اليوم 1</span>
+                <div class="step-content">
+                  <h4>تقديم الطلب الإلكتروني</h4>
+                  <p>قسم HR أو مكتب PRO يقدم الطلب عبر نظام MOHRE الإلكتروني مع جميع الوثائق.</p>
+                </div>
+              </div>
+              <div class="step">
+                <span class="step-time">اليوم 2-4</span>
+                <div class="step-content">
+                  <h4>مراجعة MOHRE</h4>
+                  <p>وزارة الموارد البشرية تراجع الطلب والوثائق. قد تطلب وثائق إضافية إذا لزم الأمر.</p>
+                </div>
+              </div>
+              <div class="step">
+                <span class="step-time">اليوم 5</span>
+                <div class="step-content">
+                  <h4>الموافقة على تصريح العمل</h4>
+                  <p>إصدار تصريح العمل إلكترونياً. يمكن للشركة طباعة نسخة من النظام.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-phase">
+            <div class="phase-header">
+              <h3>المرحلة 4: خطوات ما بعد تصريح العمل</h3>
+              <span class="phase-duration">1-2 أسبوع</span>
+            </div>
+            <div class="phase-steps">
+              <div class="step">
+                <span class="step-time">اليوم 1-2</span>
+                <div class="step-content">
+                  <h4>الفحص الطبي</h4>
+                  <p>إجراء الفحص الطبي في مركز معتمد من DHA أو DOH (فحوصات الدم والأشعة).</p>
+                </div>
+              </div>
+              <div class="step">
+                <span class="step-time">اليوم 3-5</span>
+                <div class="step-content">
+                  <h4>تقديم طلب تأشيرة الإقامة</h4>
+                  <p>تقديم طلب تأشيرة الإقامة لدى GDRFA مع تصريح العمل ونتائج الفحص الطبي.</p>
+                </div>
+              </div>
+              <div class="step">
+                <span class="step-time">اليوم 6-10</span>
+                <div class="step-content">
+                  <h4>ختم تأشيرة الإقامة على جواز السفر</h4>
+                  <p>ختم التأشيرة على جواز السفر والحصول على بطاقة الهوية الإماراتية.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-summary">
+          <h3>الإطار الزمني الإجمالي</h3>
+          <div class="summary-grid">
+            <div class="summary-item">
+              <div class="summary-title">أسرع سيناريو</div>
+              <div class="summary-time">3-4 أسابيع</div>
+              <p>وثائق جاهزة، دولة عضو في اتفاقية لاهاي، لا تأخيرات</p>
+            </div>
+            <div class="summary-item">
+              <div class="summary-title">السيناريو المعتاد</div>
+              <div class="summary-time">5-7 أسابيع</div>
+              <p>دولة غير عضو، سلسلة تصديق كاملة، بعض التأخيرات الإدارية</p>
+            </div>
+            <div class="summary-item">
+              <div class="summary-title">السيناريو الأبطأ</div>
+              <div class="summary-time">8-12 أسبوع</div>
+              <p>وثائق ناقصة، رفض ثم إعادة تقديم، تأخيرات في السفارة</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="content-section bg-light">
+    <div class="container">
+      <div class="content-wrapper" dir="rtl">
+        <h2>الأسئلة الشائعة حول تصريح العمل MOHRE</h2>
+
+        <div class="faq-list">
+          {faqs.map((faq) => (
+            <details class="faq-item">
+              <summary class="faq-question">
+                <span>{faq.question}</span>
+                <i class="fas fa-chevron-down"></i>
+              </summary>
+              <div class="faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+
+        <div class="faq-cta">
+          <h3>لم تجد الإجابة التي تبحث عنها؟</h3>
+          <p>
+            احصل على إجابات مخصصة لحالتك المحددة.
+            أرسل أسئلتك عبر واتساب وسنرد خلال دقائق.
+          </p>
+          <a href="https://wa.me/971508620217?text=لدي سؤال حول تصريح العمل MOHRE" class="btn-primary">
+            <i class="fab fa-whatsapp"></i>
+            اسأل عبر واتساب
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="content-section cta-section">
+    <div class="container">
+      <div class="cta-content" dir="rtl">
+        <h2>جاهز لبدء عملية تصريح العمل؟</h2>
+        <p>
+          أرسل نسخ من وثائقك عبر واتساب للفحص المجاني.
+          نتحقق من صلاحية الوثائق، نقدم لك عرض سعر دقيق، ونبدأ العمل فوراً بعد موافقتك.
+          لا إيميلات، لا نماذج، لا انتظار.
+        </p>
+
+        <div class="cta-features">
+          <div class="feature-item">
+            <i class="fas fa-user-check"></i>
+            <span>فحص مجاني للوثائق</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-certificate"></i>
+            <span>رخصة وزارة العدل #701</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-clock"></i>
+            <span>توصيل خلال 60 دقيقة</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-phone-alt"></i>
+            <span>واتساب: +971 50 862 0217</span>
+          </div>
+        </div>
+
+        <div class="cta-buttons">
+          <a href="https://wa.me/971508620217?text=أحتاج إلى ترجمة وتصديق وثائق لتصريح عمل MOHRE" class="btn-primary btn-lg">
+            <i class="fab fa-whatsapp"></i>
+            ابدأ الآن عبر واتساب
+          </a>
+          <a href="tel:+971508620217" class="btn-secondary btn-lg">
+            <i class="fas fa-phone-alt"></i>
+            اتصل: 050 862 0217
+          </a>
+        </div>
+
+        <p class="verification-note">
+          <i class="fas fa-shield-check"></i>
+          <strong>تحقق من الترخيص:</strong> اتصل بخط وزارة العدل الساخن 800 333333 واطلب التحقق من الرخصة #701
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayoutArabic>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, var(--surface-navy) 0%, #1a3a52 100%);
+    color: var(--text-on-dark);
+    padding: 3rem 0 4rem;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb a {
+    color: var(--text-on-dark-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--text-on-dark);
+  }
+
+  .breadcrumb .separator {
+    color: var(--text-on-dark-muted);
+    opacity: 0.6;
+  }
+
+  .breadcrumb .current {
+    color: var(--text-on-dark);
+  }
+
+  .hero-content {
+    max-width: 900px;
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--accent-coral);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-section h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+    color: var(--text-on-dark);
+  }
+
+  .intro {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--text-on-dark);
+    opacity: 0.95;
+    margin-bottom: 2rem;
+  }
+
+  .key-points {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+
+  .point {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .point strong {
+    color: var(--text-on-dark);
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .point span {
+    color: var(--text-on-dark-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .cta-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+
+  /* Content Sections */
+  .content-section {
+    padding: 4rem 0;
+  }
+
+  .bg-light {
+    background-color: var(--surface-light);
+  }
+
+  .content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .content-wrapper h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--surface-navy);
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+  }
+
+  .content-wrapper h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--surface-navy);
+    margin: 2rem 0 1rem;
+    line-height: 1.4;
+  }
+
+  .content-wrapper h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--surface-navy);
+    margin: 1.5rem 0 0.75rem;
+  }
+
+  .content-wrapper p {
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+  }
+
+  .content-wrapper a {
+    color: var(--link-primary);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .content-wrapper a:hover {
+    border-bottom-color: var(--link-primary);
+  }
+
+  /* Info Box */
+  .info-box {
+    background: white;
+    border: 2px solid var(--border-light);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+  }
+
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 1.5rem 0;
+  }
+
+  .comparison-item h4 {
+    color: var(--accent-coral);
+    margin-top: 0;
+  }
+
+  .comparison-item ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+  }
+
+  .comparison-item li {
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .comparison-item li::before {
+    content: "•";
+    position: absolute;
+    right: 0;
+    color: var(--accent-coral);
+    font-weight: bold;
+  }
+
+  .note {
+    background: #fff8e1;
+    border-right: 4px solid #ffc107;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Document Checklist */
+  .document-checklist {
+    margin: 2rem 0;
+  }
+
+  .checklist-category {
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .checklist-category h4 {
+    color: var(--surface-navy);
+    margin-top: 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--accent-coral);
+  }
+
+  .checklist {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+  }
+
+  .checklist li {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .checklist li:last-child {
+    border-bottom: none;
+  }
+
+  .checklist li strong {
+    display: block;
+    color: var(--surface-navy);
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .checklist li p {
+    margin: 0.5rem 0 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .requirement-note {
+    background: #e3f2fd;
+    border-right: 4px solid #2196f3;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 4px;
+    font-size: 0.95rem;
+  }
+
+  .requirement-note strong {
+    color: var(--surface-navy);
+  }
+
+  /* Pro Tip */
+  .pro-tip {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+  }
+
+  .pro-tip h3 {
+    color: white;
+    margin-top: 0;
+  }
+
+  .pro-tip p {
+    color: white;
+    margin-bottom: 0;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  /* Attestation Grid */
+  .attestation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+
+  .attestation-type {
+    background: white;
+    border: 2px solid var(--border-light);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .type-header {
+    padding: 1.5rem;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .type-header.hague {
+    background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
+  }
+
+  .type-header.non-hague {
+    background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+  }
+
+  .type-header h3 {
+    color: white;
+    margin: 0;
+    font-size: 1.3rem;
+  }
+
+  .badge-green, .badge-orange {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .country-list, .process-steps {
+    padding: 1.5rem;
+  }
+
+  .country-list h4, .process-steps h4 {
+    margin-top: 0;
+    color: var(--surface-navy);
+  }
+
+  .country-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+  }
+
+  .country-list li {
+    padding: 0.6rem 0 0.6rem 1.5rem;
+    position: relative;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .country-list li::before {
+    content: "✓";
+    position: absolute;
+    right: 0;
+    color: #4caf50;
+    font-weight: bold;
+  }
+
+  .process-steps ol {
+    padding-right: 1.5rem;
+    margin: 1rem 0 0;
+  }
+
+  .process-steps li {
+    padding: 0.5rem 0;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  /* Timeline Estimate */
+  .timeline-estimate {
+    background: white;
+    border: 2px solid var(--border-light);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+  }
+
+  .timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .timeline-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--surface-light);
+    border-radius: 8px;
+  }
+
+  .timeline-duration {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent-coral);
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  /* Warning Box */
+  .warning-box {
+    background: #fff3e0;
+    border: 2px solid #ff9800;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .warning-box h3 {
+    color: #e65100;
+    margin-top: 0;
+  }
+
+  .warning-box p {
+    margin-bottom: 0;
+    line-height: 1.7;
+  }
+
+  /* Translation Comparison */
+  .translation-comparison {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+
+  .translation-type {
+    background: white;
+    border: 2px solid var(--border-light);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .type-badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .type-badge.moj {
+    background: var(--accent-coral);
+    color: white;
+  }
+
+  .type-badge.certified {
+    background: #2196f3;
+    color: white;
+  }
+
+  .use-cases ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+  }
+
+  .use-cases li {
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .use-cases li::before {
+    content: "→";
+    position: absolute;
+    right: 0;
+    color: var(--accent-coral);
+    font-weight: bold;
+  }
+
+  .translator-info {
+    background: var(--surface-light);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+
+  .translator-info p {
+    margin: 0.4rem 0;
+    font-size: 0.9rem;
+  }
+
+  .limitation {
+    margin-top: 1rem;
+  }
+
+  /* Service Features */
+  .service-features {
+    margin: 3rem 0;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .feature {
+    text-align: center;
+    padding: 1.5rem;
+    background: white;
+    border: 2px solid var(--border-light);
+    border-radius: 12px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .feature i {
+    font-size: 2.5rem;
+    color: var(--accent-coral);
+    margin-bottom: 1rem;
+  }
+
+  .feature h4 {
+    color: var(--surface-navy);
+    margin: 0 0 0.5rem;
+  }
+
+  .feature p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Rejection Reasons */
+  .rejection-reasons {
+    margin: 2rem 0;
+  }
+
+  .reason-item {
+    display: flex;
+    gap: 1.5rem;
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .reason-number {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: var(--accent-coral);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+
+  .reason-content {
+    flex: 1;
+  }
+
+  .reason-content h3 {
+    color: var(--surface-navy);
+    margin: 0 0 1rem;
+    font-size: 1.2rem;
+  }
+
+  .problem, .solution {
+    margin: 1rem 0;
+  }
+
+  .problem strong, .solution strong {
+    display: block;
+    color: var(--surface-navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .problem {
+    background: #ffebee;
+    border-right: 3px solid #f44336;
+    padding: 1rem;
+    border-radius: 4px;
+  }
+
+  .solution {
+    background: #e8f5e9;
+    border-right: 3px solid #4caf50;
+    padding: 1rem;
+    border-radius: 4px;
+  }
+
+  /* Prevention Tip */
+  .prevention-tip {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+    text-align: center;
+  }
+
+  .prevention-tip h3 {
+    color: white;
+    margin-top: 0;
+  }
+
+  .prevention-tip p {
+    color: white;
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  /* Timeline Detailed */
+  .timeline-detailed {
+    margin: 2rem 0;
+  }
+
+  .timeline-phase {
+    background: white;
+    border: 2px solid var(--border-light);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .phase-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--accent-coral);
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .phase-header h3 {
+    color: var(--surface-navy);
+    margin: 0;
+    font-size: 1.4rem;
+  }
+
+  .phase-duration {
+    background: var(--accent-coral);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .phase-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .step {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .step-time {
+    flex-shrink: 0;
+    background: var(--surface-light);
+    color: var(--surface-navy);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    min-width: 100px;
+  }
+
+  .step-content {
+    flex: 1;
+  }
+
+  .step-content h4 {
+    color: var(--surface-navy);
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .step-content p {
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Timeline Summary */
+  .timeline-summary {
+    background: white;
+    border: 2px solid var(--border-light);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+  }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .summary-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--surface-light);
+    border-radius: 8px;
+  }
+
+  .summary-title {
+    font-weight: 600;
+    color: var(--surface-navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .summary-time {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent-coral);
+    margin: 0.5rem 0;
+  }
+
+  .summary-item p {
+    margin: 0.5rem 0 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  /* FAQ Section */
+  .faq-list {
+    margin: 2rem 0;
+  }
+
+  .faq-item {
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+
+  .faq-question {
+    padding: 1.25rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 600;
+    color: var(--surface-navy);
+    font-size: 1.05rem;
+    line-height: 1.5;
+    user-select: none;
+    transition: background-color 0.2s;
+  }
+
+  .faq-question:hover {
+    background-color: var(--surface-light);
+  }
+
+  .faq-question i {
+    flex-shrink: 0;
+    transition: transform 0.3s;
+    color: var(--accent-coral);
+  }
+
+  .faq-item[open] .faq-question i {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.25rem 1.25rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  .faq-answer p {
+    margin: 0;
+  }
+
+  .faq-cta {
+    background: var(--surface-light);
+    border: 2px solid var(--border-light);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  .faq-cta h3 {
+    color: var(--surface-navy);
+    margin-top: 0;
+  }
+
+  .faq-cta p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, var(--surface-navy) 0%, #1a3a52 100%);
+    color: var(--text-on-dark);
+  }
+
+  .cta-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .cta-content h2 {
+    color: var(--text-on-dark);
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-content > p {
+    color: var(--text-on-dark);
+    opacity: 0.95;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .cta-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+
+  .feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  .feature-item i {
+    font-size: 2rem;
+    color: var(--accent-coral);
+  }
+
+  .feature-item span {
+    color: var(--text-on-dark);
+    font-size: 0.95rem;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+  }
+
+  .verification-note {
+    color: var(--text-on-dark-muted);
+    font-size: 0.9rem;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .verification-note i {
+    color: var(--accent-coral);
+  }
+
+  /* Buttons */
+  .btn-primary, .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+    font-size: 1rem;
+  }
+
+  .btn-primary {
+    background: var(--accent-coral);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #e6003d;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 22, 84, 0.3);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-on-dark);
+    border-color: var(--text-on-dark);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-lg {
+    padding: 1.1rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero-section h1 {
+      font-size: 1.8rem;
+    }
+
+    .intro {
+      font-size: 1rem;
+    }
+
+    .key-points {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .cta-group {
+      flex-direction: column;
+    }
+
+    .btn-primary, .btn-secondary {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .content-wrapper h2 {
+      font-size: 1.6rem;
+    }
+
+    .attestation-grid,
+    .translation-comparison {
+      grid-template-columns: 1fr;
+    }
+
+    .reason-item {
+      flex-direction: column;
+    }
+
+    .step {
+      flex-direction: column;
+    }
+
+    .step-time {
+      width: 100%;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .cta-buttons .btn-primary,
+    .cta-buttons .btn-secondary {
+      width: 100%;
+    }
+  }
+</style>

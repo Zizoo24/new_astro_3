@@ -1,0 +1,1198 @@
+---
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: "هل يجب ترجمة شهادة الزواج للحصول على تأشيرة الزوج/الزوجة؟",
+    answer: "نعم، شهادة الزواج تتطلب ترجمة قانونية معتمدة من وزارة العدل الإماراتية. يجب أن تكون الشهادة الأصلية مصدقة من وزارة الخارجية الإماراتية (MOFA) أو من السفارة الإماراتية في بلد الإصدار. بدون الترجمة المعتمدة والتصديق الكامل، سيتم رفض الطلب من الإدارة العامة للإقامة وشؤون الأجانب."
+  },
+  {
+    question: "ما الفرق بين متطلبات تأشيرة الأبناء والبنات؟",
+    answer: "الأبناء الذكور يمكن كفالتهم حتى سن 18 عاماً، أو حتى 25 عاماً إذا كانوا طلاباً بدوام كامل. البنات يمكن كفالتهن بدون قيود عمرية حتى الزواج. في كلا الحالتين، تحتاج إلى شهادة ميلاد مترجمة ومصدقة من وزارة العدل، وشهادة تعليمية للأبناء فوق 18 عاماً."
+  },
+  {
+    question: "هل يمكن ترجمة شهادة ميلاد قديمة صادرة قبل 30 سنة؟",
+    answer: "نعم، يمكن ترجمة وتصديق شهادات الميلاد القديمة بشرط أن تكون الوثيقة الأصلية في حالة جيدة وقابلة للقراءة. إذا كانت الشهادة تالفة أو باهتة، قد تحتاج إلى طلب نسخة جديدة من الجهة المصدرة في بلدك. المترجمون المعتمدون من وزارة العدل لا يترجمون وثائق غير واضحة أو ناقصة."
+  },
+  {
+    question: "ما مدة صلاحية الترجمة المعتمدة لوثائق التأشيرة؟",
+    answer: "الترجمة المعتمدة من وزارة العدل صالحة للاستخدام لمدة 6 أشهر من تاريخ التصديق. بعد هذه المدة، قد تطلب الإدارة العامة للإقامة ترجمة جديدة. ننصح بإكمال إجراءات التأشيرة خلال 3 أشهر من الترجمة لتجنب الحاجة إلى إعادة الترجمة."
+  },
+  {
+    question: "هل الوثائق الهندية تحتاج تصديق سفارة أم أبوستيل؟",
+    answer: "الهند عضو في اتفاقية لاهاي منذ 2005. الوثائق الهندية تحتاج فقط أبوستيل من وزارة الخارجية الهندية (MEA) ثم ترجمة وتصديق من وزارة العدل الإماراتية. لا تحتاج تصديق السفارة الإماراتية في الهند. هذا يوفر وقتاً كبيراً مقارنة بالدول غير الأعضاء."
+  },
+  {
+    question: "ما هي الوثائق المطلوبة لكفالة الوالدين فوق 60 عاماً؟",
+    answer: "لكفالة الوالدين، تحتاج: شهادة ميلاد الوالد/الوالدة مترجمة ومصدقة، جواز سفر ساري، تقرير طبي من مستشفى معتمد في الإمارات، تأمين صحي شامل، وإثبات دخل شهري للكفيل لا يقل عن 20,000 درهم أو 15,000 درهم مع سكن. جميع الوثائق الأجنبية تحتاج ترجمة قانونية معتمدة."
+  },
+  {
+    question: "كم يستغرق تصديق وترجمة وثائق التأشيرة العائلية؟",
+    answer: "الترجمة القانونية من وزارة العدل تستغرق ساعة واحدة لوثيقة واحدة. التصديق من وزارة الخارجية يستغرق 1-2 يوم عمل. إذا كنت بحاجة إلى تصديق من بلدك أولاً، فالمدة تعتمد على السفارة والجهات الحكومية في بلدك. نقدم خدمة متابعة شاملة عبر واتساب لتسريع العملية."
+  },
+  {
+    question: "ما الفرق بين الترجمة المعتمدة والترجمة القانونية؟",
+    answer: "الترجمة القانونية من وزارة العدل إلزامية لجميع طلبات التأشيرة العائلية في الإمارات. الترجمة المعتمدة العادية (من مترجم غير مرخص) غير مقبولة من الإدارة العامة للإقامة. فقط المترجمين المرخصين من وزارة العدل يمكنهم ختم وتوقيع الترجمات المقبولة للمعاملات الحكومية."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+  }))
+};
+---
+
+<BaseLayoutArabic
+  title="وثائق تأشيرة العائلة الإمارات | ترجمة وتصديق"
+  description="دليل وثائق تأشيرة العائلة والإقامة العائلية في أبوظبي ودبي. متطلبات الترجمة والتصديق لكفالة الزوج والأبناء والوالدين."
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://onlinetranslation.ae/ar/resources/gdrfa-family-visa-documents/" />
+    <link rel="alternate" hreflang="en" href="https://onlinetranslation.ae/resources/gdrfa-family-visa-documents/" />
+    <link rel="alternate" hreflang="ar" href="https://onlinetranslation.ae/ar/resources/gdrfa-family-visa-documents/" />
+    <link rel="alternate" hreflang="x-default" href="https://onlinetranslation.ae/resources/gdrfa-family-visa-documents/" />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <!-- Hero Section -->
+  <section class="hero-section" dir="rtl">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="مسار التنقل">
+        <a href="/ar/">الرئيسية</a>
+        <span class="separator">&lt;</span>
+        <a href="/ar/resources/">الأدلة</a>
+        <span class="separator">&lt;</span>
+        <span class="current">وثائق تأشيرة العائلة</span>
+      </nav>
+
+      <div class="hero-content">
+        <div class="badge">دليل شامل</div>
+        <h1>وثائق تأشيرة العائلة والإقامة العائلية في الإمارات</h1>
+        <p class="lead">
+          دليل كامل لمتطلبات الوثائق والترجمة والتصديق لتأشيرات كفالة الزوج والأبناء والوالدين في أبوظبي ودبي والإمارات الشمالية.
+        </p>
+        <ul class="hero-checklist">
+          <li>قائمة وثائق كاملة لكل نوع تأشيرة عائلية</li>
+          <li>متطلبات الترجمة القانونية من وزارة العدل</li>
+          <li>سلسلة التصديق حسب جنسيتك (دول اتفاقية لاهاي وغيرها)</li>
+          <li>أسباب الرفض الشائعة وكيفية تجنبها</li>
+        </ul>
+        <div class="hero-cta">
+          <a href="https://wa.me/971508620217" class="btn btn-primary" target="_blank" rel="noopener">
+            استشارة مجانية عبر واتساب
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview Section -->
+  <section class="content-section" dir="rtl">
+    <div class="container">
+      <h2>أنواع التأشيرات العائلية في الإمارات</h2>
+      <p>
+        الإدارة العامة للإقامة وشؤون الأجانب (GDRFA) في أبوظبي ودبي تصدر أربعة أنواع رئيسية من التأشيرات العائلية.
+        كل نوع له متطلبات وثائق مختلفة ومعايير أهلية محددة.
+        الترجمة القانونية المعتمدة من وزارة العدل إلزامية لجميع الوثائق الأجنبية.
+      </p>
+
+      <div class="visa-types">
+        <div class="visa-card">
+          <h3>تأشيرة الزوج/الزوجة</h3>
+          <p>
+            يمكن للمقيم في الإمارات براتب لا يقل عن 4,000 درهم (أو 3,000 درهم مع سكن) كفالة الزوج أو الزوجة.
+            شهادة الزواج هي الوثيقة الأساسية وتحتاج <a href="/ar/personal/vital-records/marriage/">ترجمة معتمدة من وزارة العدل</a>.
+            إذا كان الزواج تم خارج الإمارات، يجب تصديق الشهادة من وزارة الخارجية في بلد الإصدار أولاً.
+          </p>
+        </div>
+
+        <div class="visa-card">
+          <h3>تأشيرة الأبناء</h3>
+          <p>
+            الأبناء الذكور يمكن كفالتهم حتى سن 18 عاماً، أو 25 عاماً إذا كانوا طلاباً بدوام كامل.
+            البنات يمكن كفالتهن بدون قيود عمرية حتى الزواج.
+            تحتاج <a href="/ar/personal/vital-records/birth/">شهادة ميلاد مترجمة ومصدقة</a> وشهادة مدرسية للأبناء فوق 18 عاماً.
+          </p>
+        </div>
+
+        <div class="visa-card">
+          <h3>تأشيرة الوالدين</h3>
+          <p>
+            يمكن كفالة الوالدين بشرط دخل شهري لا يقل عن 20,000 درهم أو 15,000 درهم مع سكن.
+            الوالدان يجب أن يكونا فوق 60 عاماً (قد تختلف حسب الإمارة).
+            تحتاج شهادة ميلاد الوالد المترجمة وتأمين صحي شامل وتقرير طبي معتمد.
+          </p>
+        </div>
+
+        <div class="visa-card">
+          <h3>تأشيرة الإخوة/الأخوات</h3>
+          <p>
+            في حالات خاصة، يمكن لمواطني الإمارات والمقيمين بدخل عالي كفالة إخوتهم غير المتزوجين.
+            المتطلبات أكثر صرامة وتحتاج موافقة خاصة من الإدارة العامة للإقامة.
+            جميع الوثائق تحتاج ترجمة قانونية وتصديق كامل.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Required Documents Section -->
+  <section class="content-section alt-bg" dir="rtl">
+    <div class="container">
+      <h2>قائمة الوثائق المطلوبة لكل نوع تأشيرة</h2>
+      <p>
+        هذه القوائم تغطي المتطلبات الأساسية للإدارة العامة للإقامة في دبي وأبوظبي.
+        قد تختلف بعض المتطلبات حسب الإمارة والمنطقة الحرة.
+        جميع الوثائق الأجنبية تحتاج ترجمة قانونية معتمدة من مترجم مرخص من وزارة العدل (رخصة رقم 701).
+      </p>
+
+      <h3>وثائق تأشيرة الزوج/الزوجة</h3>
+      <ul class="document-checklist">
+        <li>شهادة زواج أصلية مصدقة من وزارة الخارجية في بلد الإصدار</li>
+        <li>ترجمة قانونية معتمدة من وزارة العدل الإماراتية للشهادة</li>
+        <li>تصديق الترجمة من وزارة الخارجية الإماراتية (MOFA)</li>
+        <li>جواز سفر الزوج/الزوجة ساري المفعول (صلاحية 6 أشهر على الأقل)</li>
+        <li>صورة شخصية بخلفية بيضاء (حديثة)</li>
+        <li>إثبات دخل الكفيل (راتب لا يقل عن 4,000 درهم أو 3,000 درهم مع سكن)</li>
+        <li>عقد إيجار أو ملكية مسجل في الإمارة (إجاري في دبي، تواثيق في أبوظبي)</li>
+        <li>شهادة عدم ممانعة (NOC) من صاحب العمل</li>
+      </ul>
+
+      <h3>وثائق تأشيرة الأبناء</h3>
+      <ul class="document-checklist">
+        <li>شهادة ميلاد أصلية مصدقة من وزارة الخارجية في بلد الإصدار</li>
+        <li><a href="/ar/personal/vital-records/birth/">ترجمة شهادة الميلاد المعتمدة</a> من وزارة العدل</li>
+        <li>تصديق الترجمة من وزارة الخارجية الإماراتية</li>
+        <li>جواز سفر الابن/الابنة ساري المفعول</li>
+        <li>صورة شخصية بخلفية بيضاء</li>
+        <li>شهادة مدرسية أو جامعية (للأبناء فوق 18 عاماً)</li>
+        <li>ترجمة معتمدة للشهادة التعليمية إذا كانت بلغة أجنبية</li>
+        <li>إثبات العلاقة الأسرية (شهادة زواج الوالدين مترجمة ومصدقة)</li>
+      </ul>
+
+      <h3>وثائق تأشيرة الوالدين</h3>
+      <ul class="document-checklist">
+        <li>شهادة ميلاد الوالد/الوالدة مترجمة ومصدقة (لإثبات العلاقة)</li>
+        <li>جواز سفر الوالد/الوالدة ساري المفعول</li>
+        <li>تقرير طبي من مستشفى معتمد في الإمارات</li>
+        <li>تأمين صحي شامل للوالدين</li>
+        <li>إثبات دخل الكفيل (20,000 درهم أو 15,000 درهم مع سكن)</li>
+        <li>عقد إيجار أو ملكية بمساحة كافية</li>
+        <li>شهادة عدم ممانعة من صاحب العمل</li>
+        <li>خطاب رعاية موقع ومصدق من كاتب العدل</li>
+      </ul>
+
+      <p class="note">
+        <strong>ملاحظة:</strong> جميع الوثائق الأجنبية تحتاج سلسلة تصديق كاملة قبل الترجمة.
+        راجع قسم <a href="/ar/services/attestation/">التصديق والأبوستيل</a> لفهم الإجراءات حسب جنسيتك.
+      </p>
+    </div>
+  </section>
+
+  <!-- Translation Requirements Section -->
+  <section class="content-section" dir="rtl">
+    <div class="container">
+      <h2>متطلبات الترجمة القانونية لوثائق التأشيرة</h2>
+      <p>
+        الإدارة العامة للإقامة وشؤون الأجانب لا تقبل إلا الترجمات المعتمدة من مترجمين مرخصين من وزارة العدل.
+        الترجمات من مكاتب غير مرخصة أو من مترجمين فرديين غير معتمدين سيتم رفضها.
+        نحن نعمل مع المترجم القانوني خالد محمد عبدالوهاب العدل (رخصة وزارة العدل رقم 701).
+      </p>
+
+      <h3>شروط الترجمة المقبولة</h3>
+      <ul>
+        <li>يجب أن تكون من مترجم مرخص من وزارة العدل الإماراتية</li>
+        <li>الختم الرسمي لوزارة العدل يجب أن يظهر بوضوح على الترجمة</li>
+        <li>التوقيع الأصلي للمترجم المعتمد إلزامي</li>
+        <li>رقم رخصة المترجم وتاريخ انتهاء الصلاحية يجب أن يكونا موجودين</li>
+        <li>الترجمة يجب أن تكون مطابقة تماماً للوثيقة الأصلية (كل كلمة وختم)</li>
+      </ul>
+
+      <h3>الوثائق التي تحتاج ترجمة قانونية</h3>
+      <p>
+        ليست كل الوثائق في طلب التأشيرة تحتاج ترجمة.
+        الوثائق التالية يجب ترجمتها من وزارة العدل:
+      </p>
+      <ul>
+        <li>شهادات الزواج الصادرة خارج الإمارات (أي لغة غير العربية أو الإنجليزية)</li>
+        <li>شهادات الميلاد الأجنبية (جميع اللغات)</li>
+        <li>الشهادات التعليمية (شهادات مدرسية، جامعية، كشوف درجات)</li>
+        <li>شهادات الطلاق أو الوفاة (إذا كانت ذات صلة بالطلب)</li>
+        <li>توكيلات رسمية أو خطابات رعاية قانونية</li>
+      </ul>
+
+      <p>
+        جوازات السفر وصور الهوية والنماذج الحكومية الإماراتية لا تحتاج ترجمة.
+        إذا كانت الوثيقة باللغة الإنجليزية ومن دولة معترف بها (مثل الولايات المتحدة أو بريطانيا)، قد لا تحتاج ترجمة عربية.
+        استشر مكتب تصديق الإمارة أو مركز الطباعة قبل التقديم.
+      </p>
+
+      <h3>مدة صلاحية الترجمة</h3>
+      <p>
+        الترجمة المعتمدة من وزارة العدل صالحة لمدة 6 أشهر من تاريخ التصديق.
+        بعد هذه المدة، قد تطلب الإدارة العامة للإقامة ترجمة جديدة.
+        ننصح بإكمال طلب التأشيرة خلال 3 أشهر من تاريخ الترجمة لتجنب الحاجة إلى إعادة الإجراءات.
+      </p>
+
+      <p>
+        نقدم خدمة ترجمة سريعة خلال ساعة واحدة للوثائق القياسية.
+        <a href="https://wa.me/971508620217" target="_blank" rel="noopener">راسلنا عبر واتساب</a> لتحميل الوثيقة والحصول على عرض سعر فوري.
+      </p>
+    </div>
+  </section>
+
+  <!-- Attestation Chain Section -->
+  <section class="content-section alt-bg" dir="rtl">
+    <div class="container">
+      <h2>سلسلة التصديق حسب الجنسية</h2>
+      <p>
+        قبل ترجمة الوثيقة في الإمارات، يجب تصديقها من بلد الإصدار.
+        الإجراءات تختلف بناءً على ما إذا كانت دولتك عضواً في اتفاقية لاهاي للأبوستيل أم لا.
+        <strong>الإمارات ليست عضواً في اتفاقية لاهاي</strong>، لكن تقبل الأبوستيل من الدول الأعضاء.
+      </p>
+
+      <h3>الدول الأعضاء في اتفاقية لاهاي (إجراءات أسرع)</h3>
+      <p>
+        إذا كانت وثيقتك من دولة عضو في اتفاقية لاهاي، تحتاج فقط أبوستيل من وزارة الخارجية في بلدك.
+        لا تحتاج تصديق السفارة الإماراتية.
+        الدول الأعضاء تشمل:
+      </p>
+      <ul>
+        <li><strong>الهند</strong> (عضو منذ 2005): أبوستيل من وزارة الخارجية الهندية (MEA)</li>
+        <li><strong>الولايات المتحدة</strong> (عضو منذ 1981): أبوستيل على مستوى الولاية أو فدرالي</li>
+        <li><strong>المملكة المتحدة</strong> (عضو منذ 1965): أبوستيل من مكتب الخارجية (FCDO)</li>
+        <li><strong>الفلبين</strong> (عضو منذ 2019): أبوستيل من وزارة الخارجية (DFA)</li>
+        <li><strong>كندا</strong> (عضو منذ 2024): أبوستيل من Global Affairs Canada</li>
+        <li><strong>بنغلاديش</strong> (عضو منذ مارس 2025): أبوستيل من وزارة الخارجية</li>
+      </ul>
+
+      <p>
+        بعد الحصول على الأبوستيل من بلدك، الإجراءات في الإمارات:
+      </p>
+      <ol>
+        <li>ترجمة الوثيقة من <a href="/ar/personal/immigration/">مترجم معتمد من وزارة العدل</a></li>
+        <li>تصديق الترجمة من وزارة الخارجية الإماراتية (MOFA)</li>
+        <li>تقديم الوثيقة للإدارة العامة للإقامة أو مركز الطباعة</li>
+      </ol>
+
+      <h3>الدول غير الأعضاء (إجراءات أطول)</h3>
+      <p>
+        إذا كانت دولتك ليست عضواً في اتفاقية لاهاي، تحتاج سلسلة تصديق كاملة:
+      </p>
+      <ul>
+        <li><strong>باكستان:</strong> تصديق من وزارة الخارجية الباكستانية + السفارة الإماراتية في إسلام أباد</li>
+        <li><strong>مصر:</strong> تصديق من وزارة الخارجية المصرية + السفارة الإماراتية في القاهرة</li>
+        <li><strong>الأردن:</strong> تصديق من وزارة الخارجية الأردنية + السفارة الإماراتية في عمان</li>
+      </ul>
+
+      <p>
+        بعد التصديق من السفارة الإماراتية في بلدك، نفس الإجراءات داخل الإمارات:
+        ترجمة معتمدة من وزارة العدل + تصديق من وزارة الخارجية الإماراتية.
+      </p>
+
+      <p>
+        لمزيد من التفاصيل عن سلسلة التصديق الكاملة حسب جنسيتك، راجع <a href="/ar/services/attestation/">دليل التصديق والأبوستيل</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Common Rejection Reasons Section -->
+  <section class="content-section" dir="rtl">
+    <div class="container">
+      <h2>أسباب رفض طلبات التأشيرة العائلية</h2>
+      <p>
+        الإدارة العامة للإقامة ترفض آلاف طلبات التأشيرة العائلية سنوياً بسبب أخطاء في الوثائق.
+        معظم هذه الأخطاء يمكن تجنبها بسهولة.
+        هذه القائمة تغطي الأسباب الأكثر شيوعاً وكيفية تجنبها.
+      </p>
+
+      <h3>1. ترجمة غير معتمدة أو من مترجم غير مرخص</h3>
+      <p>
+        الترجمة من مكتب غير معتمد من وزارة العدل سيتم رفضها فوراً.
+        بعض مراكز الطباعة تقبل ترجمات غير رسمية، لكن الإدارة العامة للإقامة ترفضها عند المراجعة النهائية.
+        استخدم فقط مترجمين مرخصين من وزارة العدل مع ختم وزارة العدل الواضح.
+      </p>
+
+      <h3>2. سلسلة تصديق غير مكتملة</h3>
+      <p>
+        الوثيقة يجب أن تكون مصدقة من وزارة الخارجية في بلد الإصدار قبل الترجمة.
+        إذا كانت دولتك ليست عضواً في اتفاقية لاهاي، تحتاج أيضاً تصديق السفارة الإماراتية في بلدك.
+        تصديق الوثيقة داخل الإمارات فقط غير كافٍ.
+      </p>
+
+      <h3>3. شهادة ميلاد قديمة أو غير واضحة</h3>
+      <p>
+        شهادات الميلاد التي مضى عليها أكثر من 30 عاماً قد تكون باهتة أو تالفة.
+        المترجمون المعتمدون يرفضون ترجمة وثائق غير واضحة.
+        إذا كانت شهادتك قديمة، اطلب نسخة جديدة من السجل المدني في بلدك قبل السفر للإمارات.
+      </p>
+
+      <h3>4. عدم تطابق الأسماء بين الوثائق</h3>
+      <p>
+        الاسم في شهادة الزواج يجب أن يطابق الاسم في جواز السفر تماماً.
+        إذا غيرت اسمك بعد الزواج، يجب إرفاق وثيقة رسمية تثبت تغيير الاسم.
+        أي اختلاف في الإملاء أو الترتيب قد يؤدي للرفض.
+      </p>
+
+      <h3>5. دخل الكفيل غير كافٍ</h3>
+      <p>
+        الحد الأدنى للراتب لكفالة الزوج/الزوجة هو 4,000 درهم أو 3,000 درهم مع سكن.
+        لكفالة الزوجة + أطفال، قد تحتاج 6,000-8,000 درهم حسب عدد المعالين.
+        لكفالة الوالدين، الحد الأدنى 20,000 درهم أو 15,000 درهم مع سكن.
+      </p>
+
+      <h3>6. عقد الإيجار غير مسجل أو منتهي الصلاحية</h3>
+      <p>
+        عقد الإيجار يجب أن يكون مسجلاً في دائرة الأراضي (إجاري في دبي، تواثيق في أبوظبي).
+        العقود غير المسجلة غير مقبولة حتى لو كانت موقعة من المالك.
+        العقد يجب أن يكون صالحاً لمدة 6 أشهر على الأقل من تاريخ التقديم.
+      </p>
+
+      <h3>7. مدة صلاحية جواز السفر أقل من 6 أشهر</h3>
+      <p>
+        جواز سفر المعال (الزوج/الزوجة/الطفل) يجب أن يكون صالحاً لمدة 6 أشهر على الأقل.
+        إذا كان الجواز قريب الانتهاء، جدده قبل تقديم طلب التأشيرة.
+        الإدارة العامة للإقامة لن تصدر تأشيرة لجواز سفر صلاحيته أقل من 6 أشهر.
+      </p>
+
+      <h3>8. شهادة عدم ممانعة (NOC) غير صحيحة</h3>
+      <p>
+        شهادة عدم الممانعة من صاحب العمل يجب أن تكون على ورقة رسمية بختم الشركة.
+        يجب أن تتضمن: اسم الموظف، راتبه، المسمى الوظيفي، وموافقة صريحة على كفالة المعال.
+        بعض الشركات تستخدم نماذج عامة غير مقبولة من الإدارة العامة للإقامة.
+      </p>
+
+      <p class="note">
+        لتجنب الرفض، نقدم خدمة مراجعة مجانية للوثائق قبل التقديم.
+        أرسل نسخة من وثائقك عبر <a href="https://wa.me/971508620217" target="_blank" rel="noopener">واتساب +971 50 862 0217</a> وسنخبرك إذا كانت هناك مشاكل محتملة.
+        راجع أيضاً <a href="/ar/resources/visa-rejection-guide/">دليل تجنب رفض التأشيرة</a> للمزيد من النصائح.
+      </p>
+    </div>
+  </section>
+
+  <!-- Step-by-Step Process Section -->
+  <section class="content-section alt-bg" dir="rtl">
+    <div class="container">
+      <h2>خطوات إجراءات التأشيرة العائلية من البداية للنهاية</h2>
+      <p>
+        هذه العملية تفترض أن لديك جميع الوثائق الأصلية المصدقة من بلدك.
+        إذا لم تصدق وثائقك بعد، ابدأ بمراجعة <a href="/ar/services/attestation/">دليل التصديق</a> أولاً.
+      </p>
+
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>مراجعة الأهلية والوثائق</h3>
+          <p>
+            تأكد من استيفاء متطلبات الدخل والسكن حسب نوع التأشيرة المطلوبة.
+            اجمع جميع الوثائق الأصلية المصدقة: شهادة زواج، شهادات ميلاد، جوازات سفر.
+            تحقق من أن جميع الأسماء متطابقة عبر الوثائق المختلفة.
+            راجع قائمة المتطلبات أعلاه للتأكد من عدم نقص أي وثيقة.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>الترجمة القانونية المعتمدة</h3>
+          <p>
+            أحضر الوثائق الأصلية المصدقة إلى مترجم معتمد من وزارة العدل.
+            الترجمة تستغرق ساعة واحدة للوثائق القياسية (شهادات زواج، ميلاد).
+            الوثائق الطويلة مثل <a href="/ar/personal/academic/degree/">الشهادات الجامعية</a> قد تستغرق يوم عمل واحد.
+            احتفظ بالوثيقة الأصلية والترجمة معاً دائماً.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>تصديق الترجمة من وزارة الخارجية</h3>
+          <p>
+            بعد الترجمة من وزارة العدل، يجب تصديق الترجمة من وزارة الخارجية الإماراتية (MOFA).
+            التصديق يستغرق 1-2 يوم عمل.
+            يمكن التقديم عبر تطبيق MOFA UAE أو مراكز TAMM في أبوظبي أو مراكز التصديق المعتمدة.
+            الرسوم: 150 درهم للوثيقة الواحدة + رسوم الخدمة.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>إكمال الوثائق الإضافية</h3>
+          <p>
+            احصل على شهادة عدم ممانعة من صاحب عملك على ورقة رسمية.
+            سجل عقد الإيجار في إجاري (دبي) أو تواثيق (أبوظبي) إذا لم يكن مسجلاً.
+            التقط صور شخصية بخلفية بيضاء للمعالين (2 صورة لكل شخص).
+            اطبع نسخاً ملونة من جوازات السفر والهويات.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">5</div>
+          <h3>التقديم عبر مركز الطباعة أو مكتب خدمات</h3>
+          <p>
+            معظم المقيمين يستخدمون مركز طباعة معتمد أو مكتب PRO لتقديم الطلب.
+            مركز الطباعة سيراجع الوثائق ويقدم الطلب للإدارة العامة للإقامة.
+            رسوم الطلب تشمل: رسوم التأشيرة، رسوم الفحص الطبي، رسوم البطاقة.
+            المدة: 3-7 أيام عمل للموافقة على التأشيرة.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">6</div>
+          <h3>دخول المعال إلى الإمارات والفحص الطبي</h3>
+          <p>
+            بعد الموافقة على التأشيرة، يمكن للمعال دخول الإمارات خلال 60 يوماً.
+            بعد الدخول، يجب إجراء فحص طبي في مركز صحي معتمد من الإدارة العامة للإقامة.
+            الفحص يشمل: فحص دم، أشعة سينية، فحص أمراض معدية.
+            النتائج تصدر خلال 24-48 ساعة.
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">7</div>
+          <h3>طباعة بطاقة الهوية الإماراتية</h3>
+          <p>
+            بعد اجتياز الفحص الطبي، يمكن طلب طباعة بطاقة الهوية الإماراتية.
+            البطاقة تصدر خلال 3-5 أيام عمل.
+            يمكن استلامها من مراكز الإدارة العامة للإقامة أو توصيلها عبر البريد.
+            بطاقة الهوية صالحة لنفس مدة الإقامة (سنة واحدة، سنتان، أو ثلاث سنوات).
+          </p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">8</div>
+          <h3>تحديث السجلات الرسمية</h3>
+          <p>
+            بعد الحصول على بطاقة الهوية، حدث السجلات في:
+            بنكك (لإضافة المعال كمستفيد)، التأمين الصحي، مدارس الأبناء، دائرة الأراضي (لتحديث عقد الإيجار).
+            احتفظ بنسخ من جميع الوثائق المترجمة والمصدقة لأي معاملات مستقبلية.
+          </p>
+        </div>
+      </div>
+
+      <p class="note">
+        نقدم خدمة متابعة شاملة عبر واتساب لكل خطوة من خطوات العملية.
+        لا حاجة لزيارة المكتب أو سلاسل البريد الإلكتروني الطويلة.
+        فقط أرسل الوثائق عبر <a href="https://wa.me/971508620217" target="_blank" rel="noopener">واتساب</a> وسنتولى الباقي.
+      </p>
+    </div>
+  </section>
+
+  <!-- Service Tiers Section -->
+  <section class="content-section" dir="rtl">
+    <div class="container">
+      <h2>مستويات الخدمة والجداول الزمنية</h2>
+      <p>
+        نقدم ثلاثة مستويات خدمة حسب مدى استعجالك.
+        جميع الخدمات تشمل ترجمة معتمدة من مترجم مرخص من وزارة العدل (رخصة 701).
+        الأسعار تبدأ من 150 درهم للوثيقة الواحدة وتختلف حسب الطول والتعقيد.
+      </p>
+
+      <div class="service-tiers">
+        <div class="tier-card">
+          <div class="tier-badge express">سريع</div>
+          <h3>خدمة التسليم خلال ساعة</h3>
+          <p class="tier-time">التسليم: 60 دقيقة</p>
+          <ul>
+            <li>ترجمة قانونية معتمدة من وزارة العدل</li>
+            <li>ختم وتوقيع المترجم المرخص</li>
+            <li>مراجعة جودة مزدوجة</li>
+            <li>متابعة عبر واتساب</li>
+            <li>مثالية للوثائق القياسية (شهادات زواج، ميلاد، جوازات)</li>
+          </ul>
+          <p class="tier-note">
+            للوثائق حتى 3 صفحات، غير فنية، بلغات شائعة (إنجليزي، أوردو، هندي، تغالوغ).
+          </p>
+        </div>
+
+        <div class="tier-card">
+          <div class="tier-badge standard">قياسي</div>
+          <h3>خدمة التسليم في نفس اليوم</h3>
+          <p class="tier-time">التسليم: 4-6 ساعات</p>
+          <ul>
+            <li>جميع مزايا الخدمة السريعة</li>
+            <li>للوثائق الأطول (4-10 صفحات)</li>
+            <li>الشهادات التعليمية وكشوف الدرجات</li>
+            <li>العقود والاتفاقيات البسيطة</li>
+            <li>تنسيق تصديق وزارة الخارجية إذا طلب</li>
+          </ul>
+          <p class="tier-note">
+            مثالية لـ <a href="/ar/personal/academic/degree/">ترجمة الشهادات الجامعية</a> وكشوف الدرجات متعددة الصفحات.
+          </p>
+        </div>
+
+        <div class="tier-card">
+          <div class="tier-badge premium">شامل</div>
+          <h3>خدمة الإنجاز الكامل</h3>
+          <p class="tier-time">التسليم: 2-3 أيام عمل</p>
+          <ul>
+            <li>ترجمة + تصديق وزارة الخارجية + متابعة مركز الطباعة</li>
+            <li>مراجعة مجانية للوثائق قبل الترجمة</li>
+            <li>استشارة حول متطلبات الإدارة العامة للإقامة</li>
+            <li>تنسيق مع مكتب PRO أو مركز الطباعة</li>
+            <li>تحديثات واتساب لكل خطوة</li>
+          </ul>
+          <p class="tier-note">
+            مثالية لطلبات التأشيرة العائلية الكاملة مع وثائق متعددة من جنسيات مختلفة.
+          </p>
+        </div>
+      </div>
+
+      <p class="pricing-note">
+        الأسعار النهائية تعتمد على: عدد الصفحات، اللغة، التخصص، مستوى الاستعجال.
+        أرسل صورة الوثيقة عبر <a href="https://wa.me/971508620217" target="_blank" rel="noopener">واتساب</a> للحصول على عرض سعر فوري ومجاني.
+        لا رسوم خفية، لا مفاجآت.
+      </p>
+    </div>
+  </section>
+
+  <!-- Additional Resources Section -->
+  <section class="content-section alt-bg" dir="rtl">
+    <div class="container">
+      <h2>موارد إضافية مفيدة</h2>
+      <p>
+        هذه الأدلة توفر معلومات تفصيلية عن موضوعات محددة تتعلق بتأشيرات العائلة:
+      </p>
+
+      <div class="resources-grid">
+        <a href="/ar/personal/vital-records/marriage/" class="resource-card">
+          <h3>ترجمة شهادة الزواج</h3>
+          <p>دليل كامل لترجمة وتصديق شهادات الزواج من جميع الدول للاستخدام في الإمارات.</p>
+        </a>
+
+        <a href="/ar/personal/vital-records/birth/" class="resource-card">
+          <h3>ترجمة شهادة الميلاد</h3>
+          <p>متطلبات ترجمة شهادات الميلاد لتأشيرات الأبناء والإقامة العائلية.</p>
+        </a>
+
+        <a href="/ar/personal/immigration/pcc/" class="resource-card">
+          <h3>شهادة حسن السيرة والسلوك</h3>
+          <p>ترجمة وتصديق شهادات الشرطة للإقامة وتأشيرات العمل.</p>
+        </a>
+
+        <a href="/ar/personal/immigration/bank/" class="resource-card">
+          <h3>ترجمة كشوف الحساب البنكي</h3>
+          <p>لإثبات الدخل والقدرة المالية لكفالة المعالين.</p>
+        </a>
+
+        <a href="/ar/services/attestation/" class="resource-card">
+          <h3>دليل التصديق والأبوستيل</h3>
+          <p>شرح كامل لسلسلة التصديق من بلدك حتى الإمارات.</p>
+        </a>
+
+        <a href="/ar/resources/visa-rejection-guide/" class="resource-card">
+          <h3>تجنب رفض التأشيرة</h3>
+          <p>أسباب الرفض الشائعة وكيفية تجنبها في طلبات التأشيرة.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="content-section faq-section" dir="rtl">
+    <div class="container">
+      <h2>الأسئلة الشائعة عن وثائق تأشيرة العائلة</h2>
+
+      {faqs.map(faq => (
+        <details class="faq-item">
+          <summary>{faq.question}</summary>
+          <p>{faq.answer}</p>
+        </details>
+      ))}
+
+      <p class="faq-cta">
+        لم تجد إجابة لسؤالك؟
+        <a href="https://wa.me/971508620217" target="_blank" rel="noopener">راسلنا عبر واتساب</a>
+        وسنجيب خلال دقائق.
+      </p>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="cta-section" dir="rtl">
+    <div class="container">
+      <h2>جاهز لبدء إجراءات التأشيرة العائلية؟</h2>
+      <p>
+        أرسل صور وثائقك عبر واتساب للمراجعة المجانية.
+        سنخبرك بما تحتاجه بالضبط وكم سيستغرق الأمر.
+        لا التزام، لا رسوم حتى توافق على الخدمة.
+      </p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/971508620217" class="btn btn-primary" target="_blank" rel="noopener">
+          واتساب: +971 50 862 0217
+        </a>
+        <a href="/ar/personal/immigration/" class="btn btn-secondary">
+          تصفح جميع خدمات الترجمة للهجرة
+        </a>
+      </div>
+      <p class="trust-note">
+        نعمل مع المترجم المعتمد خالد محمد عبدالوهاب العدل (رخصة وزارة العدل رقم 701).
+        جميع الترجمات مقبولة من الإدارة العامة للإقامة في دبي وأبوظبي وجميع الإمارات.
+        يمكنك التحقق من الرخصة عبر الخط الساخن لوزارة العدل: 800 333333.
+      </p>
+    </div>
+  </section>
+
+</BaseLayoutArabic>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, var(--surface-navy) 0%, #1a3a52 100%);
+    color: var(--text-on-dark);
+    padding: 4rem 0 3rem;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb a {
+    color: var(--text-on-dark-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--text-on-dark);
+  }
+
+  .breadcrumb .separator {
+    color: var(--text-on-dark-muted);
+    opacity: 0.6;
+  }
+
+  .breadcrumb .current {
+    color: var(--text-on-dark);
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--accent-coral);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-section h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+    color: var(--text-on-dark);
+  }
+
+  .lead {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    color: var(--text-on-dark-muted);
+    opacity: 0.95;
+  }
+
+  .hero-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+  }
+
+  .hero-checklist li {
+    padding: 0.75rem 0;
+    padding-right: 2rem;
+    position: relative;
+    line-height: 1.6;
+    color: var(--text-on-dark-muted);
+  }
+
+  .hero-checklist li::before {
+    content: "✓";
+    position: absolute;
+    right: 0;
+    color: #4ade80;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  .hero-cta {
+    margin-top: 2rem;
+  }
+
+  /* Content Sections */
+  .content-section {
+    padding: 4rem 0;
+  }
+
+  .content-section.alt-bg {
+    background: #f8fafc;
+  }
+
+  .content-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+  }
+
+  .content-section h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 2rem 0 1rem;
+    color: var(--text-primary);
+  }
+
+  .content-section p {
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+  }
+
+  .content-section ul {
+    margin: 1.5rem 0;
+    padding-right: 1.5rem;
+    line-height: 1.8;
+  }
+
+  .content-section ol {
+    margin: 1.5rem 0;
+    padding-right: 1.5rem;
+    line-height: 1.8;
+  }
+
+  .content-section li {
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary);
+  }
+
+  .content-section a {
+    color: var(--accent-teal);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .content-section a:hover {
+    border-bottom-color: var(--accent-teal);
+  }
+
+  /* Visa Types */
+  .visa-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .visa-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: box-shadow 0.3s, transform 0.3s;
+  }
+
+  .visa-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .visa-card h3 {
+    font-size: 1.25rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--surface-navy);
+  }
+
+  .visa-card p {
+    font-size: 0.95rem;
+    margin-bottom: 0;
+  }
+
+  /* Document Checklist */
+  .document-checklist {
+    background: white;
+    border: 2px solid var(--accent-coral);
+    border-radius: 8px;
+    padding: 1.5rem 1.5rem 1.5rem 2.5rem;
+    margin: 1.5rem 0;
+    list-style: none;
+  }
+
+  .document-checklist li {
+    padding: 0.5rem 0;
+    padding-right: 1.5rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .document-checklist li::before {
+    content: "▪";
+    position: absolute;
+    right: 0;
+    color: var(--accent-coral);
+    font-size: 1.2rem;
+  }
+
+  /* Process Steps */
+  .process-steps {
+    margin: 2rem 0;
+  }
+
+  .step {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-right: 5rem;
+  }
+
+  .step-number {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+    background: var(--accent-coral);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .step h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+  }
+
+  .step p {
+    margin-bottom: 0;
+    line-height: 1.7;
+  }
+
+  /* Service Tiers */
+  .service-tiers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+
+  .tier-card {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+  }
+
+  .tier-badge {
+    position: absolute;
+    top: -12px;
+    right: 1.5rem;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: white;
+  }
+
+  .tier-badge.express {
+    background: #ef4444;
+  }
+
+  .tier-badge.standard {
+    background: #3b82f6;
+  }
+
+  .tier-badge.premium {
+    background: #d4a54c;
+  }
+
+  .tier-card h3 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+  }
+
+  .tier-time {
+    color: var(--accent-coral);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .tier-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+  }
+
+  .tier-card li {
+    padding: 0.5rem 0;
+    padding-right: 1.5rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .tier-card li::before {
+    content: "✓";
+    position: absolute;
+    right: 0;
+    color: #4ade80;
+    font-weight: bold;
+  }
+
+  .tier-note {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  .pricing-note {
+    background: #f0f9ff;
+    border-right: 4px solid var(--accent-teal);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+  }
+
+  /* Resources Grid */
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .resource-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    transition: box-shadow 0.3s, transform 0.3s;
+    display: block;
+  }
+
+  .resource-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .resource-card h3 {
+    color: var(--surface-navy);
+    font-size: 1.15rem;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  .resource-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 0;
+    line-height: 1.6;
+  }
+
+  /* Note Boxes */
+  .note {
+    background: #fef3c7;
+    border-right: 4px solid #f59e0b;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+  }
+
+  .note strong {
+    color: var(--text-primary);
+  }
+
+  /* FAQ Section */
+  .faq-section {
+    background: white;
+  }
+
+  .faq-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+
+  .faq-item summary {
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-primary);
+    background: #f8fafc;
+    transition: background 0.2s;
+    list-style: none;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item summary::before {
+    content: "+";
+    font-size: 1.5rem;
+    float: left;
+    margin-left: 0.5rem;
+    color: var(--accent-coral);
+    font-weight: 400;
+  }
+
+  .faq-item[open] summary::before {
+    content: "−";
+  }
+
+  .faq-item summary:hover {
+    background: #f1f5f9;
+  }
+
+  .faq-item p {
+    padding: 1.25rem 1.5rem;
+    margin: 0;
+    line-height: 1.8;
+    background: white;
+  }
+
+  .faq-cta {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e5e7eb;
+    font-size: 1.05rem;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, var(--surface-navy) 0%, #1a3a52 100%);
+    color: var(--text-on-dark);
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-on-dark);
+  }
+
+  .cta-section p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    color: var(--text-on-dark-muted);
+    opacity: 0.95;
+    max-width: 700px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .trust-note {
+    font-size: 0.9rem;
+    color: var(--text-on-dark-muted);
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 2rem auto 0;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    padding: 0.875rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: center;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn-primary {
+    background: var(--accent-coral);
+    color: white;
+  }
+
+  .btn-secondary {
+    background: white;
+    color: var(--surface-navy);
+  }
+
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-section h1 {
+      font-size: 1.8rem;
+    }
+
+    .lead {
+      font-size: 1rem;
+    }
+
+    .content-section h2 {
+      font-size: 1.6rem;
+    }
+
+    .content-section h3 {
+      font-size: 1.2rem;
+    }
+
+    .step {
+      padding-right: 2rem;
+    }
+
+    .step-number {
+      position: static;
+      margin-bottom: 1rem;
+    }
+
+    .visa-types,
+    .service-tiers,
+    .resources-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+</style>
+```
