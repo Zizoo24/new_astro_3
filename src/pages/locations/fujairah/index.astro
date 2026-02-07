@@ -1,0 +1,211 @@
+---
+/**
+ * /locations/fujairah/ - Fujairah Translation Services
+ * Silo: Locations (Silo 5)
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const pageTitle = "Legal Translation Fujairah | MOJ Certified";
+const metaDescription = "MOJ-certified legal translation for Fujairah. Maritime, business, and personal documents. Same-day digital delivery via WhatsApp. Starting AED 150.";
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Locations', url: '/locations/' },
+  { name: 'Fujairah', url: '/locations/fujairah/' }
+];
+
+const faqs = [
+  {
+    question: "Do you provide translation services in Fujairah?",
+    answer: "Yes. Send documents via WhatsApp to +971 50 862 0217. We provide MOJ-certified translation with same-day digital delivery. Physical copies couriered to any Fujairah address including Fujairah City, Dibba Al-Fujairah, and Khor Fakkan."
+  },
+  {
+    question: "Can you translate maritime and shipping documents?",
+    answer: "Yes. Fujairah is a major oil storage and bunkering hub. We translate bills of lading, charter party agreements, crew certificates, and port authority documents. Our translators understand maritime terminology in both Arabic and English."
+  },
+  {
+    question: "Are translations accepted by Fujairah courts?",
+    answer: "Yes. Our MOJ-certified translations meet Fujairah Court requirements for civil, family, commercial, and criminal proceedings. We format documents to court submission standards."
+  },
+  {
+    question: "How much does translation cost for Fujairah clients?",
+    answer: "Legal translation starts from AED 150 per document. Fujairah clients receive the same pricing as Dubai clients. Volume discounts available for maritime companies with regular translation needs."
+  },
+  {
+    question: "What is the delivery time to Fujairah?",
+    answer: "Digital delivery via WhatsApp is same-day for standard documents. Physical MOJ-stamped originals are couriered within 1-2 business days to any Fujairah address. Express delivery available for urgent port and maritime submissions."
+  }
+];
+
+const siteUrl = 'https://onlinetranslation.ae';
+---
+
+<BaseLayout title={pageTitle} description={metaDescription}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Legal Translation Services in Fujairah",
+      "description": metaDescription,
+      "provider": {
+        "@type": "LocalBusiness",
+        "@id": `${siteUrl}/#organization`
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Fujairah",
+        "containedInPlace": { "@type": "AdministrativeArea", "name": "Fujairah Emirate" }
+      },
+      "serviceType": "Legal Translation"
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+      }))
+    })} />
+  </Fragment>
+
+  <section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          {breadcrumbs.map((crumb, i) => (
+            <span>
+              {i > 0 && <span class="breadcrumb-sep">/</span>}
+              {crumb.url ? <a href={crumb.url}>{crumb.name}</a> : <span>{crumb.name}</span>}
+            </span>
+          ))}
+        </nav>
+        <div class="hero-badge">MOJ Certified • Maritime & Business</div>
+        <h1 class="hero-title">Legal Translation Services in Fujairah</h1>
+        <p class="hero-lead">MOJ-certified translation for Fujairah's maritime industry, free zone businesses, and residents. Shipping documents, court filings, and personal certificates — accepted by all UAE authorities.</p>
+        <a href="https://wa.me/971508620217" class="hero-cta" aria-label="Send documents via WhatsApp">
+          <i class="fab fa-whatsapp"></i> Send Documents via WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <h2>Why Fujairah Clients Choose Us</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-bolt"></i></div>
+          <h3>Same-Day Digital Delivery</h3>
+          <p>Standard documents completed within 4-6 hours. Certified PDF sent via WhatsApp the same day.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-truck"></i></div>
+          <h3>Fujairah Courier Service</h3>
+          <p>Physical MOJ-stamped originals couriered to any Fujairah address within 1-2 business days.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-stamp"></i></div>
+          <h3>MOJ License #701</h3>
+          <p>Official Ministry of Justice stamp accepted by Fujairah courts, free zones, and all government entities.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-ship"></i></div>
+          <h3>Maritime Specialists</h3>
+          <p>Fujairah is the UAE's east coast maritime hub. We understand shipping, bunkering, and port authority documents.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Common Translation Needs in Fujairah</h2>
+      <div class="services-grid">
+        <a href="/specialized/technical/" class="service-card">
+          <div class="service-icon"><i class="fas fa-ship"></i></div>
+          <h3>Maritime Documents</h3>
+          <p>Bills of lading, charter parties, crew certificates, and port authority documents for shipping companies.</p>
+        </a>
+        <a href="/legal/corporate/license/" class="service-card">
+          <div class="service-icon"><i class="fas fa-building"></i></div>
+          <h3>Free Zone Documents</h3>
+          <p>Trade licences, MOA, and regulatory filings for Fujairah Free Zone and Creative City.</p>
+        </a>
+        <a href="/personal/vital-records/" class="service-card">
+          <div class="service-icon"><i class="fas fa-file-alt"></i></div>
+          <h3>Personal Documents</h3>
+          <p>Birth, marriage, and death certificates for visa applications and family court matters.</p>
+        </a>
+        <a href="/services/attestation/" class="service-card">
+          <div class="service-icon"><i class="fas fa-stamp"></i></div>
+          <h3>Attestation Services</h3>
+          <p>MOFA attestation and embassy legalization for foreign documents used in Fujairah.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <div class="content-prose">
+        <h2>Fujairah: The UAE's East Coast Maritime Hub</h2>
+        <p>Fujairah is the only UAE emirate located entirely on the Gulf of Oman coast. The Port of Fujairah is one of the world's largest bunkering ports and a major oil storage facility. This maritime focus shapes the emirate's translation needs.</p>
+
+        <p>Shipping companies operating from Fujairah need <a href="/specialized/technical/">technical document translations</a> for crew certifications, vessel registrations, and port authority submissions. The Fujairah Free Zone and Creative City Fujairah attract media and creative businesses that need <a href="/legal/corporate/moa/">corporate document translations</a>. Residents across Fujairah City, Dibba Al-Fujairah, and Khor Fakkan need <a href="/personal/vital-records/birth/">birth certificates</a>, <a href="/personal/vital-records/marriage/">marriage certificates</a>, and other personal documents translated for government processes.</p>
+
+        <h3>Key Government Entities in Fujairah</h3>
+        <ul class="content-list">
+          <li><strong>Fujairah Courts:</strong> Civil, family, commercial, and criminal proceedings</li>
+          <li><strong>Fujairah Free Zone:</strong> Company formation, licensing, and regulatory filings</li>
+          <li><strong>Creative City Fujairah:</strong> Media and creative industry free zone</li>
+          <li><strong>Fujairah Municipality:</strong> Property and municipal services</li>
+          <li><strong>Port of Fujairah:</strong> Maritime authority and port documentation</li>
+        </ul>
+
+        <h3>Maritime Document Translation</h3>
+        <p>Fujairah's position as a global bunkering hub means constant maritime document flow. We translate crew certificates of competency, safety management certificates, bills of lading, charter party agreements, and cargo manifests. Maritime documents require precision — a mistranslation in a bill of lading can delay cargo clearance or create legal liability.</p>
+
+        <div class="info-callout">
+          <h4><i class="fas fa-info-circle"></i> East Coast Logistics</h4>
+          <p>Fujairah's location on the Gulf of Oman (outside the Strait of Hormuz) gives it strategic importance for oil storage and shipping. Documents often involve international parties and multiple jurisdictions. We handle multi-language translation packages for maritime companies operating across the UAE and internationally.</p>
+        </div>
+
+        <h3>Related Guides</h3>
+        <ul class="content-list">
+          <li><a href="/resources/moj-vs-certified/">MOJ vs Certified Translation: Which Do You Need?</a></li>
+          <li><a href="/resources/translation-type-decision-guide/">Translation Type Decision Guide</a></li>
+          <li><a href="/locations/dubai/">Dubai Translation Services</a></li>
+          <li><a href="/locations/ras-al-khaimah/">Ras Al Khaimah Translation Services</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Frequently Asked Questions — Fujairah</h2>
+      <div class="faq-section">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer"><p>{faq.answer}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container" style="text-align:center;">
+      <h2>Get Your Documents Translated Today</h2>
+      <p>Send your documents via WhatsApp for a free assessment. We confirm requirements and pricing before you pay.</p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/971508620217" class="hero-cta">
+          <i class="fab fa-whatsapp"></i> WhatsApp: +971 50 862 0217
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

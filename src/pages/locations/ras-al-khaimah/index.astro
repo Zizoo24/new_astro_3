@@ -1,0 +1,211 @@
+---
+/**
+ * /locations/ras-al-khaimah/ - RAK Translation Services
+ * Silo: Locations (Silo 5)
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const pageTitle = "Legal Translation Ras Al Khaimah | MOJ Certified";
+const metaDescription = "MOJ-certified legal translation for Ras Al Khaimah. RAKEZ, RAK ICC, court documents, and business filings. Same-day digital delivery via WhatsApp.";
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Locations', url: '/locations/' },
+  { name: 'Ras Al Khaimah', url: '/locations/ras-al-khaimah/' }
+];
+
+const faqs = [
+  {
+    question: "Do you provide translation services in Ras Al Khaimah?",
+    answer: "Yes. Send documents via WhatsApp to +971 50 862 0217. We provide MOJ-certified translation with same-day digital delivery. Physical copies couriered to any RAK address including Al Hamra, Al Jazeera Al Hamra, and RAK City."
+  },
+  {
+    question: "Are translations accepted by RAKEZ?",
+    answer: "Yes. Our MOJ-certified translations are accepted by Ras Al Khaimah Economic Zone for company registration, licensing, and all regulatory submissions. We also handle RAK ICC arbitration documents."
+  },
+  {
+    question: "Can you translate documents for RAK courts?",
+    answer: "Yes. Our MOJ-certified translations meet Ras Al Khaimah Court requirements for civil, family, commercial, and criminal matters. We format documents to court submission standards."
+  },
+  {
+    question: "What is the delivery time to Ras Al Khaimah?",
+    answer: "Digital delivery via WhatsApp is same-day for standard documents. Physical MOJ-stamped originals are couriered within 1-2 business days to any RAK address. Express delivery available for urgent requirements."
+  },
+  {
+    question: "Do you translate documents for RAK industrial companies?",
+    answer: "Yes. Ras Al Khaimah's industrial sector often needs translations for trade licences, safety certificates, technical manuals, and regulatory compliance documents. We handle technical and legal translation for manufacturing, ceramics, and pharmaceutical companies operating in RAK."
+  }
+];
+
+const siteUrl = 'https://onlinetranslation.ae';
+---
+
+<BaseLayout title={pageTitle} description={metaDescription}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Legal Translation Services in Ras Al Khaimah",
+      "description": metaDescription,
+      "provider": {
+        "@type": "LocalBusiness",
+        "@id": `${siteUrl}/#organization`
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Ras Al Khaimah",
+        "containedInPlace": { "@type": "AdministrativeArea", "name": "Ras Al Khaimah Emirate" }
+      },
+      "serviceType": "Legal Translation"
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+      }))
+    })} />
+  </Fragment>
+
+  <section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          {breadcrumbs.map((crumb, i) => (
+            <span>
+              {i > 0 && <span class="breadcrumb-sep">/</span>}
+              {crumb.url ? <a href={crumb.url}>{crumb.name}</a> : <span>{crumb.name}</span>}
+            </span>
+          ))}
+        </nav>
+        <div class="hero-badge">MOJ Certified • RAKEZ • RAK ICC</div>
+        <h1 class="hero-title">Legal Translation Services in Ras Al Khaimah</h1>
+        <p class="hero-lead">MOJ-certified translation for RAK's economic zone companies, industrial businesses, and residents. RAKEZ filings, court documents, and personal certificates — accepted by all UAE authorities.</p>
+        <a href="https://wa.me/971508620217" class="hero-cta" aria-label="Send documents via WhatsApp">
+          <i class="fab fa-whatsapp"></i> Send Documents via WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <h2>Why RAK Businesses Choose Us</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-bolt"></i></div>
+          <h3>Same-Day Digital Delivery</h3>
+          <p>Standard documents completed within 4-6 hours. Certified PDF sent via WhatsApp the same day.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-truck"></i></div>
+          <h3>RAK Courier Service</h3>
+          <p>Physical MOJ-stamped originals couriered to any Ras Al Khaimah address within 1-2 business days.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-stamp"></i></div>
+          <h3>MOJ License #701</h3>
+          <p>Official Ministry of Justice stamp accepted by RAK courts, RAKEZ, and all government entities.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-industry"></i></div>
+          <h3>Industrial & RAKEZ Focus</h3>
+          <p>RAK's economic zone and industrial sector have specific document requirements. We know them.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Common Translation Needs in RAK</h2>
+      <div class="services-grid">
+        <a href="/legal/corporate/license/" class="service-card">
+          <div class="service-icon"><i class="fas fa-building"></i></div>
+          <h3>RAKEZ Documents</h3>
+          <p>Trade licences, shareholder agreements, and regulatory filings for Ras Al Khaimah Economic Zone.</p>
+        </a>
+        <a href="/legal/litigation/arbitration/" class="service-card">
+          <div class="service-icon"><i class="fas fa-gavel"></i></div>
+          <h3>RAK ICC Arbitration</h3>
+          <p>Arbitration documents, contracts, and legal correspondence for RAK International Corporate Centre.</p>
+        </a>
+        <a href="/personal/vital-records/" class="service-card">
+          <div class="service-icon"><i class="fas fa-file-alt"></i></div>
+          <h3>Personal Documents</h3>
+          <p>Birth, marriage, and death certificates for visa, school enrollment, and family court submissions.</p>
+        </a>
+        <a href="/specialized/technical/" class="service-card">
+          <div class="service-icon"><i class="fas fa-cogs"></i></div>
+          <h3>Technical Documents</h3>
+          <p>Safety certificates, technical manuals, and compliance documents for RAK's industrial sector.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <div class="content-prose">
+        <h2>Ras Al Khaimah: Economic Zone and Industrial Hub</h2>
+        <p>Ras Al Khaimah combines a thriving economic zone with significant industrial capacity. RAKEZ hosts over 15,000 companies, making it one of the largest free zones in the UAE. RAK's industrial sector includes ceramics (RAK Ceramics), pharmaceuticals (Julphar), and building materials.</p>
+
+        <p>Translation needs in RAK reflect this economic profile. RAKEZ companies need <a href="/legal/corporate/moa/">memoranda of association</a> and <a href="/legal/corporate/license/">trade licence translations</a> for regulatory compliance. Industrial companies require <a href="/specialized/technical/">technical document translation</a> for safety certifications and product documentation. RAK ICC handles international arbitration, generating demand for <a href="/legal/litigation/arbitration/">arbitration document translation</a>.</p>
+
+        <h3>Key Government Entities in RAK</h3>
+        <ul class="content-list">
+          <li><strong>RAK Courts:</strong> Civil, family, commercial, and criminal proceedings</li>
+          <li><strong>RAKEZ:</strong> Economic zone licensing, company formation, regulatory filings</li>
+          <li><strong>RAK ICC:</strong> International Corporate Centre and arbitration</li>
+          <li><strong>RAK DED:</strong> Mainland business licensing and commercial registration</li>
+          <li><strong>RAK Municipality:</strong> Property and municipal services</li>
+        </ul>
+
+        <h3>RAKEZ vs Mainland Requirements</h3>
+        <p>RAKEZ operates as a free zone with English as the primary business language. Internal RAKEZ processes often accept English documents. However, any interaction with RAK mainland authorities (courts, DED, municipality) requires Arabic translation. If a RAKEZ company leases property on the mainland or sponsors employee visas, MOJ-certified Arabic translations become necessary.</p>
+
+        <div class="info-callout">
+          <h4><i class="fas fa-info-circle"></i> RAK ICC Arbitration</h4>
+          <p>RAK International Corporate Centre handles international arbitration cases. These proceedings may be conducted in English, but enforcement through RAK courts requires Arabic translation of awards and related documents. We handle the full translation package for <a href="/legal/litigation/arbitration/">arbitration proceedings</a>.</p>
+        </div>
+
+        <h3>Related Guides</h3>
+        <ul class="content-list">
+          <li><a href="/resources/moj-vs-certified/">MOJ vs Certified Translation: Which Do You Need?</a></li>
+          <li><a href="/resources/translation-type-decision-guide/">Translation Type Decision Guide</a></li>
+          <li><a href="/locations/dubai/">Dubai Translation Services</a></li>
+          <li><a href="/locations/sharjah/">Sharjah Translation Services</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Frequently Asked Questions — Ras Al Khaimah</h2>
+      <div class="faq-section">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer"><p>{faq.answer}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container" style="text-align:center;">
+      <h2>Get Your Documents Translated Today</h2>
+      <p>Send your documents via WhatsApp for a free assessment. We confirm requirements and pricing before you pay.</p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/971508620217" class="hero-cta">
+          <i class="fab fa-whatsapp"></i> WhatsApp: +971 50 862 0217
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

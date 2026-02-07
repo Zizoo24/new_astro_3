@@ -1,0 +1,799 @@
+---
+/**
+ * Blog Post: GDRFA Visa Rejection — Document Problems That Cause Delays
+ * Target Keywords: GDRFA visa rejection, visa rejection document problems, GDRFA document requirements
+ * Created: February 2026
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const pageTitle = "GDRFA Visa Rejection? Document Problems That Cause Delays";
+const metaDescription = "Common GDRFA visa rejection reasons caused by translation and attestation errors. Learn how to prevent document-related delays for family, work, and Golden Visa applications.";
+const publishDate = "2026-02-07";
+const author = "OnlineTranslation.ae";
+const readTime = "8 min read";
+const postCategory = "Visa Guides";
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Blog', url: '/blog/' },
+  { name: 'GDRFA Document Problems', url: '/blog/gdrfa-visa-document-problems/' }
+];
+
+const faqs = [
+  {
+    question: "Why did GDRFA reject my visa application for document issues?",
+    answer: "GDRFA rejects applications when documents fail verification checks. Common triggers include name mismatches between passport and translated documents, missing MOJ certification stamps, incomplete attestation chains, and expired translations. Each issue requires correction before resubmission."
+  },
+  {
+    question: "How long is a translated document valid for GDRFA submission?",
+    answer: "GDRFA does not publish a fixed validity period for translations. However, translations older than six months may face scrutiny if the original document has been reissued. Police clearance certificates and medical reports have their own expiry windows, typically three to six months."
+  },
+  {
+    question: "Does GDRFA accept certified translation instead of MOJ translation?",
+    answer: "GDRFA requires MOJ-certified translation for most visa categories. Certified-only translations without the MOJ stamp are typically rejected for government visa processing. MOJ certification confirms the translator holds a valid Ministry of Justice license, which GDRFA officers verify during review."
+  },
+  {
+    question: "Can I fix a rejected GDRFA application without starting over?",
+    answer: "In most cases, yes. GDRFA allows resubmission after correcting the specific document issue flagged in the rejection. You do not need to refile the entire application. Correct the translation or attestation error, then resubmit through your PRO or typing center."
+  },
+  {
+    question: "What attestation does GDRFA require for non-Hague countries?",
+    answer: "For countries outside the Hague Apostille Convention, such as Pakistan and the UAE itself, GDRFA requires the full embassy attestation chain. This means home country authentication, UAE Embassy attestation in the home country, then MOFA attestation in the UAE. Skipping any step results in rejection."
+  },
+  {
+    question: "Do Golden Visa applicants face different document requirements at GDRFA?",
+    answer: "Golden Visa applications follow stricter document standards. GDRFA requires MOJ-certified translations, full attestation chains, and exact name consistency across all submitted documents. Investment documents, property titles, and academic certificates each have specific requirements depending on the Golden Visa category."
+  },
+  {
+    question: "How do I prevent name mismatch rejections at GDRFA?",
+    answer: "Before submitting, compare every document against your passport. Names must match character by character. If your birth certificate uses a different spelling than your passport, inform your translator so they can note the variation. A professional translator will flag discrepancies before finalizing."
+  },
+  {
+    question: "Does GDRFA accept documents attested with apostille only?",
+    answer: "Apostille alone is not sufficient. Even for Hague Convention member countries, GDRFA typically requires MOFA attestation after the apostille. The apostille replaces embassy attestation but does not replace the MOFA step. Submit documents with both apostille and MOFA stamps."
+  }
+];
+
+// BlogPosting structured data
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": pageTitle,
+  "description": metaDescription,
+  "datePublished": publishDate,
+  "dateModified": publishDate,
+  "author": {
+    "@type": "Organization",
+    "name": "OnlineTranslation.ae",
+    "url": "https://onlinetranslation.ae"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "OnlineTranslation.ae",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://onlinetranslation.ae/assets/images/logo/brand/emblem-256.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://onlinetranslation.ae/blog/gdrfa-visa-document-problems/"
+  },
+  "articleSection": postCategory,
+  "keywords": [
+    "GDRFA visa rejection",
+    "visa rejection document problems",
+    "GDRFA document requirements",
+    "UAE visa translation errors",
+    "GDRFA attestation requirements",
+    "visa rejection name mismatch"
+  ]
+};
+
+// FAQPage structured data
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<BaseLayout
+  title={`${pageTitle} | OnlineTranslation.ae Blog`}
+  description={metaDescription}
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://onlinetranslation.ae/blog/gdrfa-visa-document-problems/" />
+    <meta name="keywords" content="GDRFA visa rejection, visa rejection document problems, GDRFA document requirements, UAE visa translation errors, GDRFA attestation requirements, visa name mismatch" />
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <!-- Article Header -->
+  <section class="article-header">
+    <div class="container">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <ol class="breadcrumb-list">
+          {breadcrumbs.map((crumb, i) => (
+            <li class="breadcrumb-item">
+              {i < breadcrumbs.length - 1 ? (
+                <a href={crumb.url}>{crumb.name}</a>
+              ) : (
+                <span aria-current="page">{crumb.name}</span>
+              )}
+            </li>
+          ))}
+        </ol>
+      </nav>
+      <div class="article-meta">
+        <a href="/blog/" class="back-link">
+          <i class="fas fa-arrow-left"></i> Back to Blog
+        </a>
+        <span class="category-badge">{postCategory}</span>
+      </div>
+      <h1>{pageTitle}</h1>
+      <p class="header-lead">Translation and attestation errors are among the most common reasons GDRFA sends applications back. Most are preventable.</p>
+      <div class="post-info">
+        <time datetime={publishDate}>
+          <i class="far fa-calendar-alt"></i>
+          {new Date(publishDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+        <span class="read-time">
+          <i class="far fa-clock"></i>
+          {readTime}
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Article Content -->
+  <article class="article-content">
+    <div class="container">
+      <div class="content-wrapper">
+
+        <div class="warning-box">
+          <strong>Key fact:</strong> GDRFA officers compare every document against your passport during processing. A single name spelling difference, missing attestation stamp, or expired translation can delay your visa by weeks. This guide covers the document errors that trigger rejection and how to avoid them.
+        </div>
+
+        <!-- Table of Contents -->
+        <nav class="toc" aria-label="Table of contents">
+          <h2 class="toc-title">In This Guide</h2>
+          <ol>
+            <li><a href="#why-documents-cause-rejection">Why Documents Cause GDRFA Rejection</a></li>
+            <li><a href="#name-mismatch">Name Mismatch Problems</a></li>
+            <li><a href="#attestation-errors">Attestation Chain Errors</a></li>
+            <li><a href="#expired-documents">Expired Document Translations</a></li>
+            <li><a href="#visa-type-requirements">Requirements by Visa Type</a></li>
+            <li><a href="#prevention-checklist">Prevention Checklist</a></li>
+            <li><a href="#faqs">Frequently Asked Questions</a></li>
+          </ol>
+        </nav>
+
+        <!-- Section 1: Why Documents Cause Rejection -->
+        <h2 id="why-documents-cause-rejection">Why Documents Cause GDRFA Rejection</h2>
+
+        <p>GDRFA (General Directorate of Residency and Foreigners Affairs) processes thousands of visa applications daily. Each application passes through document verification before an officer reviews the case. Automated and manual checks flag inconsistencies across your submitted documents.</p>
+
+        <p>Document-related rejections fall into four categories:</p>
+
+        <ul>
+          <li><strong>Name mismatches</strong> between passport and translated documents</li>
+          <li><strong>Incomplete attestation</strong> where one or more steps are missing</li>
+          <li><strong>Missing MOJ certification</strong> on Arabic translations</li>
+          <li><strong>Expired or outdated</strong> translations and source documents</li>
+        </ul>
+
+        <p>The frustrating part is that every one of these is preventable. A careful review before submission catches problems that would otherwise add weeks to your timeline. Understanding what GDRFA checks helps you prepare documents correctly the first time.</p>
+
+        <p>Whether you are applying through the GDRFA app, Amer centres, or a typing centre, the document standards are identical. The submission channel does not change what GDRFA accepts.</p>
+
+        <!-- Section 2: Name Mismatch -->
+        <h2 id="name-mismatch">Name Mismatch: The Most Common Rejection Trigger</h2>
+
+        <p>GDRFA officers compare names across every document in your file. Your passport is the reference. If any translated document spells your name differently, the application is flagged.</p>
+
+        <h3>How name mismatches happen</h3>
+
+        <p>Transliteration from non-Latin scripts creates the biggest risk. Arabic, Hindi, Urdu, and Chinese names can be romanised in multiple ways. Your <a href="/personal/vital-records/birth/">birth certificate</a> may show "Mohammed" while your passport reads "Muhammad." Both are valid transliterations, but GDRFA treats them as different names.</p>
+
+        <p>Other common scenarios include:</p>
+
+        <ul>
+          <li>Middle names present on one document but absent on another</li>
+          <li>Father's name included on a birth certificate but not on the passport</li>
+          <li>Married name on a <a href="/personal/vital-records/marriage/">marriage certificate</a> versus maiden name on other records</li>
+          <li>Shortened or informal name variants used in older documents</li>
+        </ul>
+
+        <h3>How to prevent name mismatch rejection</h3>
+
+        <p>Before sending documents for translation, lay every document next to your passport. Compare each name character by character. Flag any differences to your translator. A qualified MOJ translator will note the variation and ensure consistency with the passport spelling in Arabic.</p>
+
+        <p>If the mismatch originates from the source document itself, you may need a name correction from the issuing authority. This adds time, so check early.</p>
+
+        <!-- Section 3: Attestation Chain Errors -->
+        <h2 id="attestation-errors">Attestation Chain Errors</h2>
+
+        <p>GDRFA requires foreign documents to pass through a specific authentication chain before they accept them. Missing even one step in the chain triggers rejection. The required chain depends on your home country's relationship with the <a href="/services/attestation/">Hague Apostille Convention</a>.</p>
+
+        <h3>For Hague Convention member countries</h3>
+
+        <p>Countries like India, UK, USA, Canada, Philippines, and Bangladesh are Hague members. Their documents can use the apostille route:</p>
+
+        <ol>
+          <li>Home country authentication (notary, state authority)</li>
+          <li>Apostille from designated competent authority</li>
+          <li>MOFA attestation in the UAE</li>
+          <li>MOJ-certified Arabic translation</li>
+        </ol>
+
+        <p>The apostille replaces embassy attestation. However, MOFA attestation is still required. Submitting an apostilled document without MOFA attestation is a common error.</p>
+
+        <h3>For non-Hague countries</h3>
+
+        <p>Countries like Pakistan are not Hague members. The UAE is also not a member of the Hague Apostille Convention. Documents from non-Hague countries require the full embassy chain:</p>
+
+        <ol>
+          <li>Home country authentication</li>
+          <li>Foreign ministry attestation in the home country</li>
+          <li>UAE Embassy attestation in the home country</li>
+          <li>MOFA attestation in the UAE</li>
+          <li>MOJ-certified Arabic translation</li>
+        </ol>
+
+        <div class="info-box">
+          <h4>The UAE is NOT a Hague Convention member</h4>
+          <p>This is widely misunderstood. The UAE accepts apostilles from Hague member countries, but the UAE itself is not a member. UAE-issued documents going abroad still need embassy attestation, not apostille. For immigration purposes inside the UAE, foreign documents still require MOFA as the final attestation step.</p>
+        </div>
+
+        <h3>Common attestation mistakes</h3>
+
+        <p>The errors we see most often at our office include:</p>
+
+        <ul>
+          <li><strong>Translating before attesting.</strong> The translation must show all attestation stamps. If you translate first, the translation is incomplete. You will need a new one after attestation. Read more about this in our <a href="/resources/moj-vs-certified/">MOJ vs certified translation guide</a>.</li>
+          <li><strong>Missing the MOFA step.</strong> Even with a valid apostille, GDRFA expects MOFA attestation for most visa types.</li>
+          <li><strong>Using the wrong chain.</strong> Submitting a notarised document when embassy attestation was required invalidates the entire chain.</li>
+        </ul>
+
+        <!-- Section 4: Expired Document Translations -->
+        <h2 id="expired-documents">Expired Document Translations</h2>
+
+        <p>GDRFA does not publish a universal expiry rule for translations. In practice, translations older than six months face increased scrutiny. If the source document has been reissued since translation, the old translation is no longer valid.</p>
+
+        <h3>Time-sensitive documents</h3>
+
+        <p>Some documents have built-in validity periods:</p>
+
+        <ul>
+          <li><strong><a href="/personal/immigration/pcc/">Police clearance certificates</a>:</strong> Typically valid for three to six months from issue date</li>
+          <li><strong>Medical fitness reports:</strong> Usually valid for 60 to 90 days</li>
+          <li><strong><a href="/personal/immigration/bank/">Bank statements</a>:</strong> GDRFA may require statements issued within 30 days</li>
+          <li><strong>Salary certificates:</strong> Often need to be within 30 days of submission</li>
+        </ul>
+
+        <p>If the source document has expired, translating it does not restore validity. You need a fresh document first, then translation.</p>
+
+        <h3>When retranslation is required</h3>
+
+        <p>You need a new translation when the source document has been reissued or amended, the original translation contains errors found during review, additional attestation stamps have been added after the initial translation, or GDRFA specifically requests an updated translation in the rejection notice.</p>
+
+        <!-- Section 5: Requirements by Visa Type -->
+        <h2 id="visa-type-requirements">Document Requirements by Visa Type</h2>
+
+        <p>Different visa categories have different document demands. Understanding what GDRFA expects for your specific visa type prevents unnecessary preparation of documents you do not need and ensures you do not miss those you do.</p>
+
+        <h3>Family and dependent visa</h3>
+
+        <p>Family visa sponsorship typically requires:</p>
+
+        <ul>
+          <li>Marriage certificate (attested and translated) for spouse visa</li>
+          <li><a href="/personal/vital-records/birth/">Birth certificates</a> (attested and translated) for children</li>
+          <li>Sponsor's employment contract or salary certificate</li>
+          <li>Tenancy contract (Ejari) proving accommodation</li>
+          <li>Sponsor's passport and Emirates ID copies</li>
+        </ul>
+
+        <p>GDRFA checks that family relationships match across all documents. Parent names on a child's birth certificate must match the sponsor's passport.</p>
+
+        <h3>Employment and work visa</h3>
+
+        <p>MOHRE handles the work permit, but GDRFA processes the residence visa. Documents typically required include:</p>
+
+        <ul>
+          <li><a href="/personal/academic/degree/">Degree certificates</a> (attested and translated)</li>
+          <li>Professional licences or certifications (if applicable)</li>
+          <li>Police clearance certificate from your last country of residence</li>
+          <li>Medical fitness certificate from a UAE-approved centre</li>
+        </ul>
+
+        <p>Educational documents face extra scrutiny. GDRFA cross-references degree details with MOHRE records. Ensure your degree translation matches the information on your work permit application.</p>
+
+        <h3>Golden Visa</h3>
+
+        <p><a href="/services/golden-visa-translation/">Golden Visa applicants</a> face the highest document standards. Depending on your category (investor, entrepreneur, specialised talent, or academic), you may need:</p>
+
+        <ul>
+          <li>Property title deeds with valuations (for investors)</li>
+          <li>Company registration and financial statements (for entrepreneurs)</li>
+          <li>Academic certificates with equivalency from the Ministry of Education</li>
+          <li>Patents, publications, or award documentation (for specialised talent)</li>
+          <li>All standard personal documents (passport, photos, medical, Emirates ID)</li>
+        </ul>
+
+        <p>Golden Visa rejections often involve investment documentation. Property valuations must be current. Company financials must be audited. Every document needs MOJ-certified translation.</p>
+
+        <!-- Section 6: Prevention Checklist -->
+        <h2 id="prevention-checklist">How to Prevent Document-Related Rejection</h2>
+
+        <p>Follow this checklist before submitting any GDRFA application. Each item addresses a real rejection reason we see regularly.</p>
+
+        <div class="checklist-box">
+          <h3>Pre-Submission Document Checklist</h3>
+          <ol>
+            <li><strong>Name consistency check.</strong> Compare every name on every document against your passport. Character by character.</li>
+            <li><strong>Attestation chain verification.</strong> Confirm each document has the correct attestation path completed. Check for MOFA stamps.</li>
+            <li><strong>MOJ certification confirmation.</strong> Verify the Arabic translation carries the MOJ stamp and translator signature. <a href="/resources/gdrfa-document-requirements/">See GDRFA requirements</a>.</li>
+            <li><strong>Document freshness.</strong> Check that time-sensitive documents (PCC, medical, bank statements) are within their validity window.</li>
+            <li><strong>Translation completeness.</strong> Ensure the translation covers all pages, including amendments, annexures, and supplementary sheets.</li>
+            <li><strong>Attestation-before-translation order.</strong> Confirm attestation was completed before translation, so the translation shows all stamps.</li>
+            <li><strong>Visa-specific requirements.</strong> Cross-check your document set against the requirements for your specific visa category.</li>
+          </ol>
+        </div>
+
+        <p>If you are unsure about any item on this list, send your documents for review before submission. Catching an issue before it reaches GDRFA saves weeks compared to correcting it after rejection.</p>
+
+        <!-- CTA Box -->
+        <div class="cta-box">
+          <h3>Get Your Documents Reviewed Before GDRFA Submission</h3>
+          <p>Send your documents via WhatsApp. We check name consistency, attestation completeness, and MOJ certification before you submit. Pre-validation prevents rejection.</p>
+          <a href="https://wa.me/971508620217" class="cta-button" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-whatsapp"></i> WhatsApp Us for Review
+          </a>
+          <p class="contact-note">MOJ License #701 — Arkan Legal Translation</p>
+        </div>
+
+        <!-- FAQ Section -->
+        <section class="faq-section" id="faqs">
+          <h2>Frequently Asked Questions</h2>
+
+          {faqs.map(faq => (
+            <details class="faq-item" name="gdrfa-faqs">
+              <summary class="faq-question">{faq.question}</summary>
+              <div class="faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </section>
+
+        <!-- Related Links -->
+        <section class="related-links">
+          <h2>Related Resources</h2>
+          <ul>
+            <li><a href="/personal/immigration/pcc/">Police Clearance Certificate Translation</a> — PCC requirements for visa applications</li>
+            <li><a href="/personal/vital-records/birth/">Birth Certificate Translation</a> — Family visa document preparation</li>
+            <li><a href="/personal/vital-records/marriage/">Marriage Certificate Translation</a> — Spouse visa requirements</li>
+            <li><a href="/services/golden-visa-translation/">Golden Visa Translation Services</a> — Investor and talent visa documents</li>
+            <li><a href="/services/attestation/">Attestation Services</a> — Complete attestation chain guidance</li>
+            <li><a href="/resources/moj-vs-certified/">MOJ vs Certified Translation</a> — Which certification GDRFA requires</li>
+            <li><a href="/personal/academic/degree/">Degree Certificate Translation</a> — Work visa educational documents</li>
+            <li><a href="/resources/gdrfa-document-requirements/">GDRFA Document Requirements</a> — Full checklist by visa type</li>
+            <li><a href="/blog/uae-attestation-process-guide/">UAE Attestation Process Guide</a> — Country-specific attestation chains</li>
+          </ul>
+        </section>
+
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .article-header {
+    background: var(--surface-navy, #0E2B48);
+    color: #fff;
+    padding: 3rem 0 2.5rem;
+  }
+
+  .breadcrumb-nav {
+    margin-bottom: 1rem;
+  }
+
+  .breadcrumb-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .breadcrumb-item a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+  }
+
+  .breadcrumb-item a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+
+  .breadcrumb-item span {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .breadcrumb-item + .breadcrumb-item::before {
+    content: '/';
+    margin-right: 0.5rem;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .back-link {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.875rem;
+  }
+
+  .back-link:hover {
+    color: #fff;
+  }
+
+  .category-badge {
+    background: var(--accent-coral, #FF1654);
+    color: #fff;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .article-header h1 {
+    font-size: clamp(1.75rem, 1.3rem + 1.2vw, 2.5rem);
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 0.75rem;
+    line-height: 1.2;
+  }
+
+  .header-lead {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 0 1.5rem;
+    max-width: 640px;
+  }
+
+  .post-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .post-info time,
+  .post-info .read-time {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .article-content {
+    padding: 3rem 0;
+  }
+
+  .content-wrapper {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .content-wrapper h2 {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--surface-navy, #0E2B48);
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .content-wrapper h3 {
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--surface-navy, #0E2B48);
+    font-size: 1.2rem;
+  }
+
+  .content-wrapper p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+    color: var(--text-body, #334155);
+  }
+
+  .content-wrapper ul,
+  .content-wrapper ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .content-wrapper li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  .content-wrapper a {
+    color: var(--accent-teal, #0077b6);
+    text-decoration: none;
+  }
+
+  .content-wrapper a:hover {
+    color: var(--accent-coral, #FF1654);
+    text-decoration: underline;
+  }
+
+  /* Warning box */
+  .warning-box {
+    background: linear-gradient(135deg, #fff3cd 0%, #ffeeba 100%);
+    border: 1px solid #ffc107;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin: 0 0 2rem;
+  }
+
+  .warning-box strong {
+    color: #856404;
+  }
+
+  /* Table of Contents */
+  .toc {
+    background: var(--surface-light, #f8fafc);
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 1.5rem 1.5rem 1.5rem 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .toc-title {
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem;
+    color: var(--surface-navy, #0E2B48);
+  }
+
+  .toc ol {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+
+  .toc li {
+    margin-bottom: 0.4rem;
+  }
+
+  .toc a {
+    color: var(--accent-teal, #0077b6);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+
+  .toc a:hover {
+    text-decoration: underline;
+  }
+
+  /* Info box */
+  .info-box {
+    background: var(--surface-light, #f8fafc);
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid var(--accent-coral, #FF1654);
+    padding: 1.5rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+    margin: 1.5rem 0;
+  }
+
+  .info-box h4 {
+    margin: 0 0 0.75rem;
+    color: var(--surface-navy, #0E2B48);
+    font-size: 1.05rem;
+  }
+
+  .info-box p {
+    margin-bottom: 0.5rem;
+  }
+
+  .info-box p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Checklist box */
+  .checklist-box {
+    background: var(--surface-light, #f8fafc);
+    border-left: 4px solid #25D366;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
+
+  .checklist-box h3 {
+    margin: 0 0 1rem;
+    color: var(--surface-navy, #0E2B48);
+  }
+
+  .checklist-box ol {
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+
+  .checklist-box li {
+    margin-bottom: 0.75rem;
+  }
+
+  /* CTA box */
+  .cta-box {
+    background: linear-gradient(135deg, var(--surface-navy, #0E2B48) 0%, #1a3a5c 100%);
+    color: #fff;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    text-align: center;
+    margin: 3rem 0;
+  }
+
+  .cta-box h3 {
+    color: #fff;
+    margin: 0 0 1rem;
+  }
+
+  .cta-box p {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 1.5rem;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #25D366;
+    color: #fff;
+    padding: 0.875rem 2rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+    color: #fff;
+  }
+
+  .contact-note {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 0.75rem;
+  }
+
+  /* FAQ section */
+  .faq-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .faq-item {
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+  }
+
+  .faq-item[open] {
+    border-color: var(--accent-teal, #0077b6);
+  }
+
+  .faq-question {
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+    color: var(--surface-navy, #0E2B48);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question::after {
+    content: '+';
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--accent-teal, #0077b6);
+    flex-shrink: 0;
+    margin-left: 1rem;
+  }
+
+  .faq-item[open] .faq-question::after {
+    content: '\2212';
+  }
+
+  .faq-question:hover {
+    background: var(--surface-light, #f8fafc);
+  }
+
+  .faq-answer {
+    padding: 0 1.25rem 1rem;
+    color: var(--text-body, #334155);
+  }
+
+  .faq-answer p {
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* Related links */
+  .related-links {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background: var(--surface-light, #f8fafc);
+    border-radius: 0.5rem;
+  }
+
+  .related-links h2 {
+    font-size: 1.25rem;
+    margin: 0 0 1rem;
+  }
+
+  .related-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .related-links li {
+    margin-bottom: 0.75rem;
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .related-links li::before {
+    content: '\2192';
+    position: absolute;
+    left: 0;
+    color: var(--accent-coral, #FF1654);
+  }
+
+  @media (max-width: 768px) {
+    .article-header {
+      padding: 2rem 0 1.5rem;
+    }
+
+    .cta-box {
+      padding: 1.5rem;
+    }
+
+    .checklist-box {
+      padding: 1.25rem;
+    }
+
+    .post-info {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+  }
+</style>

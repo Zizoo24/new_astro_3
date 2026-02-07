@@ -1,0 +1,212 @@
+---
+/**
+ * /locations/al-ain/ - Al Ain Translation Services
+ * Silo: Locations (Silo 5)
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const pageTitle = "Legal Translation Al Ain | MOJ Certified | Same-Day";
+const metaDescription = "MOJ-certified legal translation for Al Ain residents. Academic, personal, and business documents. Same-day delivery via WhatsApp. Starting AED 150.";
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Locations', url: '/locations/' },
+  { name: 'Al Ain', url: '/locations/al-ain/' }
+];
+
+const faqs = [
+  {
+    question: "How do I get legal translation in Al Ain?",
+    answer: "Send your documents via WhatsApp to +971 50 862 0217. We provide MOJ-certified translation with same-day digital delivery and next-day courier to any Al Ain address. No office visit required."
+  },
+  {
+    question: "Are your translations accepted by UAE University?",
+    answer: "Yes. Our MOJ-certified translations are accepted by UAE University, Al Ain University, and all higher education institutions in Al Ain for admission, credential evaluation, and academic processing."
+  },
+  {
+    question: "How much does translation cost in Al Ain?",
+    answer: "Legal translation starts from AED 150 per document. Academic documents, personal certificates, and corporate filings are priced per page. Volume discounts available for multi-document projects."
+  },
+  {
+    question: "Do you deliver physical copies to Al Ain?",
+    answer: "Yes. Digital copies are sent via WhatsApp upon completion. Physical MOJ-stamped originals are couriered to any Al Ain address with next-day delivery. Same-day express delivery is also available."
+  },
+  {
+    question: "Can you translate documents for Al Ain courts?",
+    answer: "Yes. Al Ain courts operate under ADJD (Abu Dhabi Judicial Department). Our MOJ-certified translations meet all ADJD formatting and certification requirements for civil, family, and commercial proceedings."
+  }
+];
+
+const siteUrl = 'https://onlinetranslation.ae';
+---
+
+<BaseLayout title={pageTitle} description={metaDescription}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Legal Translation Services in Al Ain",
+      "description": metaDescription,
+      "provider": {
+        "@type": "LocalBusiness",
+        "@id": `${siteUrl}/#organization`
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Al Ain",
+        "containedInPlace": { "@type": "AdministrativeArea", "name": "Abu Dhabi Emirate" }
+      },
+      "serviceType": "Legal Translation"
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+      }))
+    })} />
+  </Fragment>
+
+  <section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          {breadcrumbs.map((crumb, i) => (
+            <span>
+              {i > 0 && <span class="breadcrumb-sep">/</span>}
+              {crumb.url ? <a href={crumb.url}>{crumb.name}</a> : <span>{crumb.name}</span>}
+            </span>
+          ))}
+        </nav>
+        <div class="hero-badge">MOJ Certified • Al Ain Delivery</div>
+        <h1 class="hero-title">Legal Translation Services in Al Ain</h1>
+        <p class="hero-lead">MOJ-certified translation for Al Ain's university community, government employees, and businesses. Academic credentials, personal documents, and corporate filings — all accepted by ADJD courts and Abu Dhabi authorities.</p>
+        <a href="https://wa.me/971508620217" class="hero-cta" aria-label="Send documents via WhatsApp">
+          <i class="fab fa-whatsapp"></i> Send Documents via WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <h2>Why Al Ain Residents Choose Us</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-bolt"></i></div>
+          <h3>Same-Day Digital Delivery</h3>
+          <p>Standard documents completed within 4-6 hours. Certified PDF sent via WhatsApp the same day you submit.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-truck"></i></div>
+          <h3>Al Ain Courier Service</h3>
+          <p>Physical MOJ-stamped originals delivered to any Al Ain address. Next-day standard, same-day express available.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-stamp"></i></div>
+          <h3>MOJ License #701</h3>
+          <p>Translations carry the official Ministry of Justice stamp. Accepted by ADJD courts, ICA, and all government entities.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-graduation-cap"></i></div>
+          <h3>Academic Specialists</h3>
+          <p>Al Ain is the UAE's university city. We translate degrees, transcripts, and credentials for UAE University, UAEU, and MOHRE.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Common Translation Needs in Al Ain</h2>
+      <div class="services-grid">
+        <a href="/personal/academic/degree/" class="service-card">
+          <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+          <h3>Academic Credentials</h3>
+          <p>Degrees, transcripts, and certificates for university admission, MOHRE work permits, and credential evaluation.</p>
+        </a>
+        <a href="/personal/vital-records/" class="service-card">
+          <div class="service-icon"><i class="fas fa-file-alt"></i></div>
+          <h3>Personal Documents</h3>
+          <p>Birth, marriage, and death certificates for visa applications, school enrollment, and family matters.</p>
+        </a>
+        <a href="/legal/corporate/license/" class="service-card">
+          <div class="service-icon"><i class="fas fa-building"></i></div>
+          <h3>Business Documents</h3>
+          <p>Trade licences, MOA, and corporate filings for ADDED and Al Ain business registration.</p>
+        </a>
+        <a href="/services/attestation/" class="service-card">
+          <div class="service-icon"><i class="fas fa-stamp"></i></div>
+          <h3>Attestation Services</h3>
+          <p>MOFA attestation and embassy legalization for foreign documents. Complete chain coordination.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <div class="content-prose">
+        <h2>Al Ain: The UAE's University and Heritage City</h2>
+        <p>Al Ain is the fourth-largest city in the UAE and the second-largest in Abu Dhabi emirate. Known as the "Garden City," it hosts major educational institutions including UAE University, Al Ain University, and multiple federal government offices.</p>
+
+        <p>Translation needs in Al Ain are shaped by three factors. First, the large student and academic population requires <a href="/personal/academic/degree/">degree translations</a> and <a href="/personal/academic/transcripts/">transcript certifications</a> for MOHRE and university admissions. Second, the Oman border crossing at Hili and Al Ain generates cross-border document needs. Third, government employees transferring between Abu Dhabi and Al Ain need documents formatted for <a href="/resources/adjd-translation-requirements/">ADJD requirements</a>.</p>
+
+        <h3>Key Government Entities in Al Ain</h3>
+        <ul class="content-list">
+          <li><strong>ADJD Al Ain:</strong> Court proceedings follow Abu Dhabi Judicial Department standards</li>
+          <li><strong>ICA Al Ain:</strong> Visa and residency processing for Al Ain residents</li>
+          <li><strong>ADDED Al Ain:</strong> Business licensing and commercial registration</li>
+          <li><strong>ADEK Al Ain:</strong> School enrollment and education credential evaluation</li>
+          <li><strong>DOH Al Ain:</strong> Healthcare professional licensing through Department of Health</li>
+        </ul>
+
+        <h3>Oman Border and Cross-Border Documents</h3>
+        <p>Al Ain's proximity to Oman means many residents need documents for cross-border purposes. Oman is a Hague Convention member since 2012. Documents from Oman with apostille are accepted in the UAE after <a href="/services/attestation/">proper attestation</a> and MOJ-certified translation.</p>
+
+        <div class="info-callout">
+          <h4><i class="fas fa-info-circle"></i> Al Ain to Abu Dhabi Delivery</h4>
+          <p>Documents submitted before 12 PM receive same-day digital delivery. Physical MOJ-stamped originals are couriered next-day to Al Ain, or same-day with express service. Many Al Ain clients receive digital copies first for urgent submissions, then physical originals by courier.</p>
+        </div>
+
+        <h3>Related Guides</h3>
+        <ul class="content-list">
+          <li><a href="/resources/abu-dhabi-vs-dubai-translation/">Abu Dhabi vs Dubai: Translation Requirements Compared</a></li>
+          <li><a href="/resources/adjd-translation-requirements/">ADJD Court Translation Requirements</a></li>
+          <li><a href="/resources/adgm-translation-requirements/">ADGM Translation Requirements</a></li>
+          <li><a href="/locations/abu-dhabi/">Abu Dhabi Translation Services</a></li>
+          <li><a href="/resources/moj-vs-certified/">MOJ vs Certified Translation: Which Do You Need?</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Frequently Asked Questions — Al Ain</h2>
+      <div class="faq-section">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer"><p>{faq.answer}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container" style="text-align:center;">
+      <h2>Get Your Documents Translated Today</h2>
+      <p>Send your documents via WhatsApp for a free assessment. We confirm requirements and pricing before you pay.</p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/971508620217" class="hero-cta">
+          <i class="fab fa-whatsapp"></i> WhatsApp: +971 50 862 0217
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
