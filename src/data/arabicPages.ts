@@ -31,6 +31,7 @@ export const arabicPages = new Set([
   '/blog/free-zone-arabic-translation-requirements/',
   '/blog/abu-dhabi-vs-dubai-translation-requirements/',
   '/blog/translation-near-international-city/',
+  '/blog/translation-office-deira/',
 
   // Legal silo
   '/legal-translation-dubai/',

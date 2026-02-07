@@ -1,0 +1,589 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const faqs = [
+  {
+    question: "What salary is required to sponsor a family in the UAE?",
+    answer: "The minimum salary to sponsor a spouse and children is generally AED 4,000 per month (or AED 3,000 plus accommodation). Requirements may vary by emirate and are subject to change. GDRFA verifies salary through your labour contract and salary certificate. These are employer documents — not something you need to translate."
+  },
+  {
+    question: "Does GDRFA accept certified translation or does it need MOJ?",
+    answer: "GDRFA is a federal government entity. All foreign-language documents must carry the MOJ judiciary seal. Certified translation with only an agency stamp will be rejected. This applies to all visa types processed through GDRFA, including family, employment, and investor visas."
+  },
+  {
+    question: "How long are translated documents valid for GDRFA family visa?",
+    answer: "The MOJ translation itself does not expire. However, the underlying documents may have validity limits. Police clearance certificates expire after 3-6 months. Bank statements should be within the last 3 months. Marriage and birth certificates do not expire, but the translation should reflect the current attested version."
+  },
+  {
+    question: "Can I sponsor parents on a family visa?",
+    answer: "Yes. UAE residents with a minimum salary (generally AED 20,000 or AED 15,000 with accommodation) can sponsor parents. Documents needed include the parent's passport, your birth certificate proving the relationship, a medical fitness certificate, and health insurance. All foreign-language documents need MOJ translation."
+  },
+  {
+    question: "What if my marriage certificate is in a non-English, non-Arabic language?",
+    answer: "The marriage certificate needs MOJ Arabic translation regardless of the original language. Whether your certificate is in Urdu, Hindi, Tagalog, French, or any other language, the same process applies: attest in the issuing country, get MOFA stamp in UAE, then MOJ Arabic translation."
+  },
+  {
+    question: "Do children born in the UAE need birth certificate translation?",
+    answer: "Children born in the UAE receive an Arabic birth certificate from the health authority. This typically does not need translation since it is already in Arabic. However, if the child was born outside the UAE, the foreign birth certificate needs attestation and MOJ Arabic translation."
+  },
+  {
+    question: "What causes family visa rejections at GDRFA?",
+    answer: "Common causes include: name spelling mismatch between documents and passport, missing attestation step in the chain, expired police clearance, salary below the minimum threshold, incomplete medical fitness test, and submitting certified instead of MOJ translation. Document issues are the most preventable cause."
+  },
+  {
+    question: "Can I submit family visa documents online through the GDRFA app?",
+    answer: "GDRFA offers online submission through the GDRFA app and ICA platform for some visa types. You can upload scanned copies of translated and attested documents. However, original documents may be requested for verification during visa stamping. Keep all originals safe."
+  },
+  {
+    question: "Do I need a new translation if I renew my family visa?",
+    answer: "If your documents were previously translated and attested, and the underlying certificates have not changed, you can typically reuse the existing translation for renewal. However, a new police clearance certificate (with new translation) may be required for some renewal categories."
+  },
+  {
+    question: "Is the attestation process the same for all family visa types?",
+    answer: "The attestation chain depends on the issuing country, not the visa type. A marriage certificate from India follows the same apostille process whether it is for a spouse visa, Golden Visa dependent, or parent sponsorship. The visa type determines which documents are needed, not how they are authenticated."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+  }))
+};
+---
+
+<BaseLayout
+  title="GDRFA Family Visa Documents | Translation Checklist"
+  description="Complete document checklist for GDRFA family visa applications. Spouse, children, and parent visa translation and attestation requirements."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="hero-section bg-dark" data-theme="dark">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">HOME</a>
+        <span class="separator">&gt;</span>
+        <a href="/resources/">RESOURCES</a>
+        <span class="separator">&gt;</span>
+        <span class="current">GDRFA FAMILY VISA DOCUMENTS</span>
+      </nav>
+
+      <h1>GDRFA Family Visa Documents</h1>
+      <p class="hero-subtitle">Translation and Attestation Checklist</p>
+      <p class="hero-intro">Sponsoring family members in the UAE requires specific documents for each relationship type. This guide covers the exact documents, attestation chains, and translation requirements for spouse, children, and parent visas — plus the common reasons applications get rejected.</p>
+
+      <div class="service-snapshot">
+        <div class="snapshot-item">
+          <i class="fas fa-users"></i>
+          <span><strong>Visa Types:</strong> Spouse, Children, Parents</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-stamp"></i>
+          <span><strong>Translation:</strong> MOJ seal required</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-clock"></i>
+          <span><strong>Our Turnaround:</strong> 1 hour standard docs</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-passport"></i>
+          <span><strong>Authority:</strong> GDRFA (Federal)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Overview -->
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Family Visa Overview</h2>
+      <p>The General Directorate of Residency and Foreigners Affairs (GDRFA) processes all residence visas in the UAE. Family visas allow UAE residents to sponsor their spouse, children, and in some cases, parents.</p>
+
+      <p>Each family member requires their own set of documents. Every foreign-language document must be attested in the country of origin and translated into Arabic with the MOJ seal. There are no exceptions for any document type or nationality.</p>
+
+      <p>The <a href="/resources/gdrfa-document-requirements/">general GDRFA document requirements guide</a> covers all visa types. This page focuses specifically on family sponsorship.</p>
+
+      <div class="info-callout">
+        <i class="fas fa-info-circle"></i>
+        <div>
+          <strong>Who Prepares the Documents?</strong>
+          <p>You (the sponsor) are responsible for all document preparation. This includes gathering originals, completing attestation, and arranging translation. GDRFA does not accept incomplete packages — all documents must be submitted together.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Spouse Visa -->
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Spouse Visa: Document Checklist</h2>
+      <p>Sponsoring a spouse is the most common family visa application. The focus is on proving the marriage and your ability to support the household.</p>
+
+      <h3>Documents That Need Translation and Attestation</h3>
+      <ul class="content-list">
+        <li><strong><a href="/personal/vital-records/marriage/">Marriage certificate</a></strong> — The primary document. Must be attested through the full chain (apostille or embassy) and MOJ-translated into Arabic. This proves the legal relationship.</li>
+        <li><strong><a href="/personal/immigration/pcc/">Police clearance certificate</a></strong> — Required for the spouse in some categories. Must be from the country of residence for the last 5 years. Attested and MOJ-translated.</li>
+      </ul>
+
+      <h3>Documents That Need Translation Only (No Attestation)</h3>
+      <ul class="content-list">
+        <li><strong><a href="/personal/immigration/bank/">Bank statements</a></strong> — Last 3 months. MOJ Arabic translation required. No attestation needed since these are recent financial records.</li>
+        <li><strong>Salary certificate</strong> — From your UAE employer. If in English, MOJ translation into Arabic. If already in Arabic, no translation needed.</li>
+      </ul>
+
+      <h3>Documents That Do Not Need Translation</h3>
+      <ul class="content-list">
+        <li><strong>Sponsor's passport copy</strong> — Already contains multilingual text.</li>
+        <li><strong>Sponsor's Emirates ID copy</strong> — UAE-issued, already bilingual.</li>
+        <li><strong>Spouse's passport copy</strong> — Used for identification, not translated.</li>
+        <li><strong>Tenancy contract (Ejari)</strong> — If in Arabic, no translation needed. English Ejari may need translation.</li>
+        <li><strong>Passport-size photographs</strong> — White background per UAE specifications.</li>
+        <li><strong>Medical fitness certificate</strong> — Issued in UAE after spouse's arrival. Already in Arabic/English.</li>
+        <li><strong>Health insurance</strong> — UAE-issued policy. Already in Arabic/English.</li>
+      </ul>
+
+      <div class="info-callout">
+        <i class="fas fa-lightbulb"></i>
+        <div>
+          <strong>Minimum Salary Requirement</strong>
+          <p>To sponsor a spouse, you generally need a minimum monthly salary of AED 4,000 (or AED 3,000 plus employer-provided accommodation). Some emirates may apply different thresholds. Your salary certificate and employment contract serve as proof.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Children Visa -->
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Children Visa: Document Checklist</h2>
+      <p>Children can be sponsored up to age 18 (sons) or 21 (daughters), with extensions possible for students. The documents focus on proving parentage and the child's identity.</p>
+
+      <h3>Documents That Need Translation and Attestation</h3>
+      <ul class="content-list">
+        <li><strong><a href="/personal/vital-records/birth/">Birth certificate</a></strong> — The primary document. Must be attested through the full chain and MOJ-translated. This proves the parent-child relationship. If the child was born in the UAE, the local Arabic certificate is typically sufficient.</li>
+        <li><strong><a href="/personal/vital-records/marriage/">Marriage certificate</a></strong> — If not already submitted with the spouse visa. Required to establish the family unit. Same attestation and translation requirements apply.</li>
+      </ul>
+
+      <h3>Additional Documents for Older Children</h3>
+      <ul class="content-list">
+        <li><strong>School enrolment letter</strong> — For children aged 18-21 extending their visa as students. Letter from a KHDA or ADEK-accredited school or university. Translation needed if not in Arabic.</li>
+        <li><strong>Guardianship document</strong> — If the child is from a previous marriage and the non-sponsoring parent has custody rights. Must be attested and translated.</li>
+      </ul>
+
+      <h3>Documents That Do Not Need Translation</h3>
+      <ul class="content-list">
+        <li><strong>Child's passport copy</strong> — Identification only.</li>
+        <li><strong>Child's passport-size photographs</strong> — White background.</li>
+        <li><strong>Medical fitness certificate</strong> — Issued in UAE, already bilingual.</li>
+        <li><strong>Health insurance for the child</strong> — UAE-issued policy.</li>
+      </ul>
+
+      <h3>Multiple Children</h3>
+      <p>Each child needs their own birth certificate translated separately. If you are sponsoring three children, that means three separate birth certificate translations. The marriage certificate translation can be reused — you do not need a new copy for each child.</p>
+    </div>
+  </section>
+
+  <!-- Section: Parent Visa -->
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Parent Visa: Document Checklist</h2>
+      <p>Sponsoring parents has a higher salary requirement and specific documentation needs. This visa type proves the parent-child relationship in reverse — your birth certificate shows you are their child.</p>
+
+      <h3>Salary Requirement</h3>
+      <p>To sponsor parents, the typical minimum salary is AED 20,000 per month (or AED 15,000 plus employer-provided accommodation). This is significantly higher than the spouse visa threshold. Requirements may vary by emirate.</p>
+
+      <h3>Documents That Need Translation and Attestation</h3>
+      <ul class="content-list">
+        <li><strong><a href="/personal/vital-records/birth/">Your birth certificate</a></strong> — This proves the parent-child relationship. Must be attested from the country where it was issued and MOJ-translated.</li>
+        <li><strong>Parent's passport copy</strong> — Identification. If not in English or Arabic, the bio-data page needs translation.</li>
+      </ul>
+
+      <h3>Documents That Need Translation Only</h3>
+      <ul class="content-list">
+        <li><strong><a href="/personal/immigration/bank/">Bank statements</a></strong> — Last 3-6 months showing sufficient funds. MOJ translation required.</li>
+        <li><strong>Salary certificate</strong> — From your UAE employer. Translation required if in a foreign language.</li>
+      </ul>
+
+      <h3>Other Required Documents</h3>
+      <ul class="content-list">
+        <li><strong>Your passport and Emirates ID copies</strong> — No translation needed.</li>
+        <li><strong>Tenancy contract</strong> — Proving adequate accommodation. Arabic Ejari does not need translation.</li>
+        <li><strong>Health insurance for the parent</strong> — Must be arranged before visa stamping.</li>
+        <li><strong>Medical fitness certificate</strong> — Parent takes this test after arrival in UAE.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Section: Attestation Chains -->
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Attestation Chains for Family Documents</h2>
+      <p>Marriage and birth certificates must be authenticated before translation. The <a href="/services/attestation/">attestation process</a> depends on where the document was issued.</p>
+
+      <h3>Hague Convention Countries (Apostille Route)</h3>
+      <p>Countries with Hague membership use the simplified apostille system. The apostille replaces the embassy attestation chain.</p>
+      <ul class="content-list">
+        <li><strong>India</strong> — MEA apostille. Some states require SDM attestation before MEA. Marriage certificates must be from a registered marriage.</li>
+        <li><strong>United Kingdom</strong> — FCDO apostille. Birth and marriage certificates from the General Register Office are eligible.</li>
+        <li><strong>United States</strong> — State-level apostille for state-issued documents. Processing varies by state.</li>
+        <li><strong>Canada</strong> — GAC apostille (member since January 2024). Provincial vital records offices issue the certificates.</li>
+        <li><strong>Philippines</strong> — DFA apostille. PSA-issued birth and marriage certificates on security paper.</li>
+        <li><strong>Bangladesh</strong> — Apostille available since March 2025. Older documents may need the traditional chain.</li>
+      </ul>
+      <p><strong>Route:</strong> Home country attestation (if needed) → Apostille → UAE MOFA → MOJ translation</p>
+
+      <h3>Non-Hague Countries (Full Attestation Chain)</h3>
+      <p>Countries outside the Hague Convention require the traditional, longer process.</p>
+      <ul class="content-list">
+        <li><strong>Pakistan</strong> — Home MOFA → UAE Embassy in Islamabad or Karachi → UAE MOFA → MOJ translation</li>
+        <li><strong>Egypt, Jordan, Syria, Lebanon</strong> — Similar embassy chain through the respective UAE Embassy</li>
+      </ul>
+      <p><strong>Route:</strong> Home country MOFA → UAE Embassy in home country → UAE MOFA → MOJ translation</p>
+
+      <div class="info-callout warning">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div>
+          <strong>UAE is NOT a Hague Convention Member</strong>
+          <p>The UAE has not joined the Hague Convention. This means UAE-issued documents (like a UAE marriage certificate for a couple married in the UAE) cannot use the apostille system when going abroad. For family visa purposes, what matters is the Hague status of the country that issued your document.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Document Validity -->
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Document Validity Periods</h2>
+      <p>Not all documents last forever. GDRFA has specific expectations about document freshness.</p>
+
+      <div class="validity-grid">
+        <div class="validity-card">
+          <h3>No Expiry</h3>
+          <ul>
+            <li><a href="/personal/vital-records/marriage/">Marriage certificate</a> — permanent</li>
+            <li><a href="/personal/vital-records/birth/">Birth certificate</a> — permanent</li>
+            <li>MOJ translation — does not expire</li>
+            <li>Attestation stamps — do not expire</li>
+          </ul>
+        </div>
+        <div class="validity-card time-sensitive">
+          <h3>Time-Sensitive</h3>
+          <ul>
+            <li><a href="/personal/immigration/pcc/">Police clearance</a> — 3-6 months from issue</li>
+            <li><a href="/personal/immigration/bank/">Bank statements</a> — within last 3 months</li>
+            <li>Salary certificate — within last month</li>
+            <li>Medical fitness — valid per GDRFA guidelines</li>
+            <li>Health insurance — must be active at stamping</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>Plan your timeline around the time-sensitive documents. Get permanent documents (marriage, birth) attested and translated first. Order time-sensitive documents (PCC, bank statements) closer to your GDRFA submission date.</p>
+    </div>
+  </section>
+
+  <!-- Section: Common Rejections -->
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Common Family Visa Rejection Reasons</h2>
+      <p>GDRFA family visa rejections typically fall into document problems or eligibility issues. Document problems are preventable. For more details, read our <a href="/blog/gdrfa-visa-document-problems/">article on GDRFA document problems</a>.</p>
+
+      <div class="rejection-list">
+        <div class="rejection-item">
+          <h3><i class="fas fa-times-circle"></i> Name Mismatch Between Documents</h3>
+          <p>The spouse's name on the marriage certificate must match the passport exactly. "Fatima" vs "Fatimah," "Ahmad" vs "Ahmed" — even single-letter differences cause rejection. We cross-reference all names against passports before issuing translation.</p>
+        </div>
+
+        <div class="rejection-item">
+          <h3><i class="fas fa-times-circle"></i> Missing Attestation Step</h3>
+          <p>The attestation chain must be complete. A marriage certificate with an apostille but no MOFA stamp will be rejected. A birth certificate with home country attestation but no UAE Embassy stamp (non-Hague) will be sent back. Every link in the chain matters.</p>
+        </div>
+
+        <div class="rejection-item">
+          <h3><i class="fas fa-times-circle"></i> Expired Police Clearance Certificate</h3>
+          <p>PCCs have a limited validity window. If GDRFA processing takes longer than expected and your PCC expires during that time, the entire application may be returned. Order the PCC at the right time — not too early, not too late.</p>
+        </div>
+
+        <div class="rejection-item">
+          <h3><i class="fas fa-times-circle"></i> Wrong Translation Type</h3>
+          <p>Certified translation (agency stamp only) instead of MOJ translation (judiciary seal) is an automatic rejection. GDRFA requires the MOJ seal on all foreign-language documents. Read our <a href="/resources/moj-vs-certified/">comparison of MOJ vs certified translation</a>.</p>
+        </div>
+
+        <div class="rejection-item">
+          <h3><i class="fas fa-times-circle"></i> Insufficient Salary Proof</h3>
+          <p>If your salary certificate or bank statements do not meet the minimum threshold, the application is rejected. This is an eligibility issue, not a document issue. However, bank statement translation errors (wrong figures) can also trigger this rejection.</p>
+        </div>
+
+        <div class="rejection-item">
+          <h3><i class="fas fa-times-circle"></i> Unregistered Marriage</h3>
+          <p>Religious ceremonies without legal registration are not recognized. A mosque or temple marriage must be legally registered with the civil authority of the issuing country. GDRFA requires the government-registered marriage certificate, not a religious one.</p>
+        </div>
+
+        <div class="rejection-item">
+          <h3><i class="fas fa-times-circle"></i> Incomplete Translation</h3>
+          <p>All text on the original must appear in the Arabic translation. Stamps, seals, handwritten notes, and endorsements cannot be omitted. An incomplete translation is grounds for rejection. We translate every visible element on the document.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Step-by-Step Process -->
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Step-by-Step: Preparing Family Visa Documents</h2>
+      <p>Follow this order. Each step depends on the previous one being complete.</p>
+
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Confirm Eligibility</h3>
+            <p>Check that your salary, accommodation, and job category meet GDRFA sponsorship requirements. Verify which documents are needed for your specific visa type (spouse, child, parent). Contact GDRFA or check the ICA Smart Services portal for current requirements.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Gather and Attest Documents</h3>
+            <p>Collect original <a href="/personal/vital-records/marriage/">marriage certificates</a>, <a href="/personal/vital-records/birth/">birth certificates</a>, and any other required documents. Complete <a href="/services/attestation/">attestation</a> in the issuing country (apostille for Hague members, full chain for others). Then get UAE MOFA attestation.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Get MOJ Arabic Translation</h3>
+            <p>Send all attested documents to us via WhatsApp (+971 50 862 0217). We verify the attestation chain is complete, translate each document with the MOJ seal, and deliver within 1 hour for standard documents. We also cross-check names against passports.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>Submit to GDRFA and Complete Remaining Steps</h3>
+            <p>Submit the complete package to GDRFA (online through the GDRFA app or at a service centre). After entry permit issuance, your family member arrives in the UAE, completes the medical fitness test, obtains health insurance, and gets the visa stamped.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Tips by Relationship -->
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Practical Tips by Visa Type</h2>
+
+      <h3>Spouse Visa Tips</h3>
+      <ul class="content-list">
+        <li>Get the <a href="/personal/vital-records/marriage/">marriage certificate</a> attested before your spouse travels. This avoids delays after arrival.</li>
+        <li>If you married in the UAE, the UAE marriage certificate is already in Arabic. No translation needed — only MOFA attestation if used for another government entity.</li>
+        <li>Name changes after marriage must be reflected in the passport. A marriage certificate showing a maiden name with a passport showing a married name will cause issues.</li>
+        <li>For previously divorced sponsors: a <a href="/personal/vital-records/divorce/">divorce decree</a> from the previous marriage may be required. Check with GDRFA.</li>
+      </ul>
+
+      <h3>Children Visa Tips</h3>
+      <ul class="content-list">
+        <li>Children born in the UAE already have Arabic birth certificates. Foreign birth certificate translation is needed only for children born outside the UAE.</li>
+        <li>For adopted children, the adoption order needs full attestation and translation. The process may take longer due to additional verification.</li>
+        <li>Stepchildren require the marriage certificate to the current spouse plus the child's birth certificate showing the biological parent.</li>
+        <li>Plan translations for all children at once. Submitting as a batch is more efficient than one at a time.</li>
+      </ul>
+
+      <h3>Parent Visa Tips</h3>
+      <ul class="content-list">
+        <li>The salary threshold is high (AED 15,000-20,000). Confirm current requirements before beginning the document process.</li>
+        <li>Your <a href="/personal/vital-records/birth/">birth certificate</a> is the key document — it proves the parent-child relationship.</li>
+        <li>Health insurance for parents must be arranged before visa stamping. Some insurance providers have age restrictions.</li>
+        <li>Parent visas are typically issued for 1 year and are renewable. Keep all original documents for renewal.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Section: Timeline -->
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Realistic Timeline for Family Visa Documents</h2>
+
+      <div class="timeline-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Phase</th>
+              <th>Duration</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Gathering original documents</td>
+              <td>1-5 days</td>
+              <td>May need to order certified copies</td>
+            </tr>
+            <tr>
+              <td>Attestation (Hague countries)</td>
+              <td>5-10 business days</td>
+              <td>Apostille process</td>
+            </tr>
+            <tr>
+              <td>Attestation (non-Hague countries)</td>
+              <td>10-20 business days</td>
+              <td>Embassy chain is longer</td>
+            </tr>
+            <tr>
+              <td>UAE MOFA attestation</td>
+              <td>1-2 business days</td>
+              <td>Can be done through typing centres</td>
+            </tr>
+            <tr>
+              <td>MOJ Arabic translation</td>
+              <td>1 hour per document</td>
+              <td>Same-day service</td>
+            </tr>
+            <tr>
+              <td>GDRFA application processing</td>
+              <td>3-7 business days</td>
+              <td>After complete submission</td>
+            </tr>
+            <tr>
+              <td>Entry permit issuance</td>
+              <td>1-3 business days</td>
+              <td>After GDRFA approval</td>
+            </tr>
+            <tr>
+              <td>Medical + Emirates ID (after arrival)</td>
+              <td>5-10 business days</td>
+              <td>In-UAE process</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>Total from start to visa stamping:</strong> 3-6 weeks for Hague country nationals. 5-8 weeks for non-Hague country nationals. The home country attestation phase is the longest variable.</p>
+
+      <div class="info-callout">
+        <i class="fas fa-lightbulb"></i>
+        <div>
+          <strong>Start Attestation Before Entry Permit</strong>
+          <p>Begin the attestation process while your employer is still arranging the entry permit for your family member. Document preparation and entry permit processing can happen in parallel, saving weeks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Pre-Check -->
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Our Pre-Check for Family Visa Documents</h2>
+      <p>Family visa applications involve multiple documents for multiple people. A single error in one document can hold up the entire family's visa. We check everything before starting translation.</p>
+
+      <h3>What We Verify</h3>
+      <ul class="content-list">
+        <li><strong>Name consistency:</strong> All names match across marriage certificate, birth certificates, and passports</li>
+        <li><strong>Attestation chain:</strong> Every stamp present, in the correct order, for the correct country</li>
+        <li><strong>Document freshness:</strong> PCC and bank statements within validity periods</li>
+        <li><strong>Completeness:</strong> All required documents present before we begin any translation</li>
+        <li><strong>Legibility:</strong> All text, stamps, and seals clearly readable</li>
+      </ul>
+
+      <p>If we find an issue, we explain what needs to be corrected and how. You fix the problem before paying for translation. This is our approach to <a href="/resources/visa-rejection-guide/">preventing visa rejections</a> — catch the problem before it reaches GDRFA.</p>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer"><p>{faq.answer}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-white">
+    <div class="container cta-section">
+      <h2>Free Family Visa Document Review</h2>
+      <p>Send your family visa documents via WhatsApp. We check attestation status, verify name consistency, and provide a complete quote for your entire family — before you pay anything.</p>
+      <a href="https://wa.me/971508620217?text=I%20need%20translation%20for%20GDRFA%20family%20visa%20documents" class="btn btn-primary" aria-label="Send family visa documents for review via WhatsApp">
+        <i class="fab fa-whatsapp"></i> Send Documents for Review
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-section { padding: 8rem 0 4rem; background: var(--primary-color); }
+  .breadcrumb { font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 2rem; }
+  .breadcrumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: #ffffff; }
+  .breadcrumb .separator { margin: 0 0.5rem; color: rgba(255, 255, 255, 0.5); }
+  .breadcrumb .current { color: #ffffff; }
+  h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: #ffffff; }
+  .hero-subtitle { font-size: 1.25rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+  .hero-intro { color: rgba(255,255,255,0.9); font-size: var(--fs-md); line-height: 1.8; max-width: 720px; }
+  .content-container { max-width: 900px; }
+  .content-container p { line-height: 1.8; margin-bottom: 1rem; }
+  .content-container h2 { font-size: 1.5rem; font-weight: 700; margin: 0 0 1.5rem; }
+  .content-container h3 { font-size: 1.15rem; font-weight: 700; margin: 1.5rem 0 0.75rem; }
+  .content-container ul, .content-container ol { padding-left: 1.5rem; margin: 1rem 0 1.5rem; }
+  .content-container li { margin-bottom: 0.5rem; line-height: 1.7; }
+  .content-container a { color: var(--accent-teal, #0077b6); }
+  .service-snapshot { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; }
+  .snapshot-item { display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.9); }
+  .snapshot-item i { font-size: 1.25rem; color: var(--accent-color); }
+  .info-callout { display: flex; gap: 1rem; background: #fffbeb; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #f59e0b; margin: 2rem 0; }
+  .info-callout i { font-size: 1.5rem; color: #f59e0b; flex-shrink: 0; }
+  .info-callout.warning { background: #fef2f2; border-left-color: #ef4444; }
+  .info-callout.warning i { color: #ef4444; }
+  .info-callout strong { color: var(--primary-color); display: block; margin-bottom: 0.25rem; }
+  .info-callout p { margin: 0.5rem 0 0; line-height: 1.7; }
+  .validity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+  .validity-card { background: #fff; padding: 1.5rem; border-radius: 8px; border-top: 3px solid #10b981; }
+  .validity-card.time-sensitive { border-top-color: #f59e0b; }
+  .validity-card h3 { margin: 0 0 0.75rem; font-size: 1.05rem; }
+  .validity-card ul { padding-left: 1.25rem; margin: 0; }
+  .validity-card li { font-size: 0.9rem; margin-bottom: 0.35rem; }
+  .rejection-list { display: flex; flex-direction: column; gap: 1.25rem; margin: 1.5rem 0; }
+  .rejection-item { background: var(--bg-secondary, #f8f9fa); padding: 1.25rem; border-radius: 8px; border-left: 4px solid #ef4444; }
+  .rejection-item h3 { font-size: 1rem; margin: 0 0 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+  .rejection-item h3 i { color: #ef4444; }
+  .rejection-item p { margin: 0; font-size: 0.95rem; line-height: 1.7; }
+  .process-steps { display: flex; flex-direction: column; gap: 1.5rem; margin: 2rem 0; }
+  .step { display: flex; gap: 1.25rem; }
+  .step-number { width: 48px; height: 48px; background: var(--accent-coral, #FF1654); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.25rem; flex-shrink: 0; }
+  .step-content h3 { margin: 0 0 0.5rem; }
+  .step-content p { margin: 0; }
+  .timeline-table { overflow-x: auto; margin: 1.5rem 0; }
+  .timeline-table table { width: 100%; border-collapse: collapse; background: var(--bg-secondary, #f8f9fa); border-radius: 8px; overflow: hidden; }
+  .timeline-table th { background: var(--surface-navy, #0E2B48); color: #fff; padding: 0.75rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem; }
+  .timeline-table td { padding: 0.75rem 1rem; border-bottom: 1px solid #e2e8f0; font-size: 0.9rem; }
+  .timeline-table tr:last-child td { border-bottom: none; }
+  .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { background: var(--bg-secondary, #f8f9fa); border-radius: 8px; overflow: hidden; }
+  .faq-question { padding: 1rem 1.25rem; font-weight: 600; cursor: pointer; list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; float: right; font-size: 1.25rem; color: var(--accent-color); }
+  .faq-item[open] .faq-question::after { content: '\2212'; }
+  .faq-answer { padding: 0 1.25rem 1rem; }
+  .faq-answer p { margin: 0; line-height: 1.7; }
+  .cta-section { text-align: center; max-width: 600px; margin: 0 auto; padding: 3rem 1.5rem; background: var(--surface-navy, #0a1628); border-radius: 12px; }
+  .cta-section h2 { margin-bottom: 1rem; }
+  .cta-section p { margin-bottom: 2rem; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; }
+  .btn-primary { background: var(--accent-color); color: #ffffff; }
+  @media (max-width: 768px) {
+    .service-snapshot { flex-direction: column; }
+    .validity-grid { grid-template-columns: 1fr; }
+  }
+</style>
