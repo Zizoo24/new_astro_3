@@ -91,6 +91,13 @@ This summary covers everything you need for most tasks. Detailed sections follow
 | FAQ schema | Required on service pages |
 | Internal links | 8+ per page |
 
+**Competitive Landscape (Feb 2026):**
+- **Al Syed** (translationindubai.com): 350+ English pages, #1-2 "legal translation Dubai", ZERO Arabic pages
+- **Alsun** (3 domains): 40-70 Arabic pages, 256+ Google reviews, dominates Arabic SERPs
+- **OnlineTranslation.ae**: ~82 Arabic pages (most of any single domain), 4,500+ words/page, comprehensive schema
+- **Strategy:** English = own the document journey (authority guides). Arabic = optimize + scale to 120+ pages.
+- Arabic content is the primary growth lever. Al Syed is invisible in Arabic. Alsun is beatable.
+
 **Key Files:**
 - `src/config/site.ts` — Site configuration
 - `src/components/Schema.astro` — Structured data
@@ -124,10 +131,12 @@ This summary covers everything you need for most tasks. Detailed sections follow
 | Document | Purpose |
 |----------|---------|
 | [`pipeline/MASTER_WORKFLOW.md`](./pipeline/MASTER_WORKFLOW.md) | **Content creation process (EN + AR)** |
-| [`SEO-STRATEGY.md`](./SEO-STRATEGY.md) | Current SEO status, keyword data |
-| [`CONTENT-PLAN.md`](./CONTENT-PLAN.md) | Content calendar, what to write next |
+| [`SEO-STRATEGY.md`](./SEO-STRATEGY.md) | **Competitive landscape (v3.0)** — Al Syed/Alsun profiles, Arabic content strategy |
+| [`CONTENT-PLAN.md`](./CONTENT-PLAN.md) | **Content calendar (v3.0)** — Dual-track EN+AR, 19-week execution plan |
+| [`RESEARCH.md`](./RESEARCH.md) | Competitive audit data, operational intelligence, Al Syed deep profile |
+| [`SEO-ACTION-PLAN.md`](./SEO-ACTION-PLAN.md) | Tactical plan — backlinks, internal linking, phase verification |
 | [`AI-AGENT-ONBOARDING.md`](./AI-AGENT-ONBOARDING.md) | Quick start guide |
-| [`SEO_ARABIC_KEYWORDS.md`](./SEO_ARABIC_KEYWORDS.md) | Arabic SEO keywords |
+| [`SEO_ARABIC_KEYWORDS.md`](./SEO_ARABIC_KEYWORDS.md) | Arabic SEO keywords and formulas |
 
 ---
 
@@ -809,6 +818,26 @@ html[lang="ar"] input[type="url"] {
 
 ## **CHANGELOG**
 
+### February 7, 2026 — SEO Strategy Overhaul: Arabic Content Priority (v8.7)
+
+**Al Syed Competitive Analysis:**
+- Deep-dive on translationindubai.com: 350+ English pages, #1-2 for "legal translation Dubai", zero Arabic content
+- Corrected competitor distinction: Al Syed (English volume) vs Alsun (bilingual multi-domain) are separate strategies
+- Added head-to-head comparison table across 11 competitive factors
+
+**Arabic Content Strategy Elevated:**
+- Arabic content promoted from Phase 4 afterthought to parallel track from Week 1
+- Current inventory: ~82 Arabic pages (already exceeds any single competitor domain)
+- Target: 120+ Arabic pages across 19-week dual-track execution plan
+- Arabic authority process guides, rejection prevention blogs, neighborhood targeting, location expansion
+
+**Document Updates:**
+- `SEO-STRATEGY.md` v3.0: full competitive landscape rewrite with Al Syed profile, Arabic strategy as Part II
+- `CONTENT-PLAN.md` v3.0: dual-track EN+AR execution, 17 English + 23 Arabic tasks, Arabic scaling milestones
+- `RESEARCH.md`: Al Syed deep profile added, Alsun vs Al Syed comparison table
+- `SEO-ACTION-PLAN.md`: updated competitive position table, Phase 4 elevated to parallel
+- `CLAUDE.md`: competitive landscape in quick reference, Arabic agent protocol, updated document references
+
 ### January 30, 2026 — CSS Unification & Pipeline Improvements (v8.6)
 
 **CSS Unification (Arabic layout now matches English):**
@@ -949,21 +978,37 @@ html[lang="ar"] input[type="url"] {
 - Complete `pipeline/checklists/PRE_PUBLISH.md` before deployment
 - If SEO keywords not provided, ASK the user for them
 
+**For Arabic content specifically:**
+- **Read `SEO_ARABIC_KEYWORDS.md`** for keyword formulas and placement rules
+- Abu Dhabi (أبوظبي) appears BEFORE Dubai (دبي) in all Arabic titles and meta
+- Do NOT use أفضل (best) or الأول (first/leading) or رائد (pioneer) in visible content
+- Phone numbers, emails, and brand names stay LTR (see Part VII 7.7.2)
+- Use `BaseLayoutArabic.astro` for Arabic pages
+- Arabic pages must link to OTHER Arabic pages (not only EN↔AR hreflang)
+- Arabic content is NOT a translation of English — it needs its own keyword strategy
+
 **For SEO changes:**
 - Use components in `src/components/` (SEO.astro, Schema.astro)
 - Reference `src/config/site.ts` for configuration
-- Check `SEO-STRATEGY.md` for current keyword data
+- Check `SEO-STRATEGY.md` (v3.0) for competitive landscape and Arabic strategy
 - Check `SEO_ARABIC_KEYWORDS.md` for Arabic keywords
+- Check `CONTENT-PLAN.md` (v3.0) for dual-track EN+AR execution plan
 
 **For content changes:**
 - Follow Part V structure (Hero → Checklist → Process → After-Care → Pricing → FAQ)
-- Check `CONTENT-PLAN.md` for what to write next
+- Check `CONTENT-PLAN.md` for what to write next (both English AND Arabic tracks)
 - Include UAE-specific entities (GDRFA, MOFA, DLD, etc.)
 - Add 8+ internal links per page
 - Include 6-15 FAQ questions
 - **NEVER use:** best, top, #1, elite, leading, premier, market leader
 - **NEVER mention:** competitor names
 
+**Competitive context (read `SEO-STRATEGY.md` for full details):**
+- English generic keywords ("legal translation Dubai") are UNWINNABLE — Al Syed has 350+ pages
+- English strategy = authority-specific process guides where zero competitors exist
+- Arabic is the primary growth lever — Al Syed has 0 Arabic pages, Alsun has 40-70
+- We already have ~82 Arabic pages — optimization and expansion, not starting from scratch
+
 ---
 
-*Last Updated: January 30, 2026 — Version 8.6*
+*Last Updated: February 7, 2026 — Version 8.7*
