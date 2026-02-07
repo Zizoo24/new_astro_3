@@ -1,0 +1,366 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+
+const faqs = [
+  {
+    question: "What is a Nikah Nama?",
+    answer: "A Nikah Nama (نکاح نامہ) is the official Islamic marriage contract used in Pakistan. It's a legally binding document registered with the Union Council. The Nikah Nama has a standardized format with numbered columns covering marriage terms, dower (haq mehr), witnesses, and conditions."
+  },
+  {
+    question: "Is Pakistan a Hague Convention member?",
+    answer: "No. Pakistan is not a Hague member. Pakistani documents require the full attestation chain: MOFA Pakistan → UAE Embassy in Islamabad → UAE MOFA. There is no apostille shortcut."
+  },
+  {
+    question: "Why is Nikah Nama translation so difficult?",
+    answer: "The Nikah Nama is written in Urdu with specialized Islamic legal terminology and includes handwritten entries across 20+ numbered columns. Many columns contain abbreviated Urdu text. The translator must understand both Islamic family law terminology and the specific Nikah Nama format to produce an accurate translation."
+  },
+  {
+    question: "Do all columns of the Nikah Nama need translation?",
+    answer: "Yes. UAE entities require complete translation of all columns, including printed form text and handwritten entries. Incomplete translation (skipping 'empty' columns or abbreviated entries) is a common rejection reason. Even columns with dashes or 'N/A' entries must be translated."
+  },
+  {
+    question: "Can I use my NADRA marriage certificate instead?",
+    answer: "NADRA (National Database and Registration Authority) marriage certificates are a computerized extract of the Nikah Nama. Some UAE entities accept the NADRA certificate; others specifically require the original Nikah Nama. We recommend having both attested and translated to avoid delays."
+  },
+  {
+    question: "What if my Nikah Nama is handwritten and hard to read?",
+    answer: "Many Nikah Namas have partially illegible handwriting. Our translators are experienced with Pakistani marriage documents and can typically read the standard entries. If specific entries are genuinely illegible, we flag them in the translation with a note. This is preferable to guessing."
+  },
+  {
+    question: "How long does Nikah Nama translation take?",
+    answer: "Nikah Nama translation takes 2-4 hours due to the document's complexity (20+ columns, Urdu handwritten text, Islamic legal terminology). This is longer than standard document translation. Rush same-day service is available."
+  },
+  {
+    question: "Do I need to translate the Nikah Nama from Urdu to Arabic?",
+    answer: "For UAE government entities, you need Urdu to Arabic MOJ translation. If the Nikah Nama is needed for DIFC, ADGM, or international purposes, you may also need Urdu to English translation. We handle both language pairs."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+  }))
+};
+---
+
+<BaseLayout
+  title="Pakistani Nikah Nama Translation Guide | UAE"
+  description="How to get your Pakistani Nikah Nama translated and attested for UAE use. Column-by-column guide, attestation chain, and common rejection reasons."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="hero-section bg-dark" data-theme="dark">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">HOME</a>
+        <span class="separator">&gt;</span>
+        <a href="/resources/">RESOURCES</a>
+        <span class="separator">&gt;</span>
+        <span class="current">NIKAH NAMA GUIDE</span>
+      </nav>
+
+      <h1>Pakistani Nikah Nama Translation</h1>
+      <p class="hero-subtitle">Column-by-Column Guide for UAE</p>
+      <p class="hero-intro">The Pakistani Nikah Nama is one of the most complex documents we translate. With 20+ columns in Urdu, handwritten entries, and Islamic legal terminology, it requires specialized expertise. This guide explains every step from Pakistan to UAE acceptance.</p>
+
+      <div class="service-snapshot">
+        <div class="snapshot-item">
+          <i class="fas fa-file-alt"></i>
+          <span><strong>Document:</strong> Nikah Nama (نکاح نامہ)</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-language"></i>
+          <span><strong>Language:</strong> Urdu → Arabic/English</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-clock"></i>
+          <span><strong>Translation:</strong> 2-4 hours</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>What Is a Nikah Nama?</h2>
+      <p>The Nikah Nama (نکاح نامہ) is Pakistan's official Islamic marriage contract. It's a legal document registered with the local Union Council and serves as proof of marriage for all legal purposes. The document follows a standardized format established by Pakistani family law.</p>
+      <p>Key characteristics:</p>
+      <ul>
+        <li><strong>Language:</strong> Urdu (with Arabic Islamic phrases)</li>
+        <li><strong>Format:</strong> Pre-printed form with handwritten entries</li>
+        <li><strong>Columns:</strong> 20+ numbered sections covering all marriage terms</li>
+        <li><strong>Authority:</strong> Registered by a Nikah Registrar (مسجل نکاح) with the Union Council</li>
+        <li><strong>Legal status:</strong> Primary proof of marriage under the Muslim Family Laws Ordinance, 1961</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>The 20+ Columns Explained</h2>
+      <p>Understanding the Nikah Nama structure helps you verify your translation is complete. Here are the key columns:</p>
+
+      <div class="column-grid">
+        <div class="col-group">
+          <h3>Identity & Registration</h3>
+          <ul>
+            <li><strong>Column 1-3:</strong> Registration number, date, and district</li>
+            <li><strong>Column 4-5:</strong> Groom's name, father's name, CNIC, age</li>
+            <li><strong>Column 6-7:</strong> Bride's name, father's name, CNIC, age</li>
+            <li><strong>Column 8:</strong> Whether bride was previously married</li>
+          </ul>
+        </div>
+        <div class="col-group">
+          <h3>Marriage Terms</h3>
+          <ul>
+            <li><strong>Column 9-10:</strong> Haq Mehr (dower) — amount and payment terms (muajjal/muwajjal)</li>
+            <li><strong>Column 11-12:</strong> Witnesses — two male witnesses with CNIC numbers</li>
+            <li><strong>Column 13:</strong> Wali (guardian) details and consent</li>
+            <li><strong>Column 14:</strong> Vakil (representative) if bride/groom absent</li>
+          </ul>
+        </div>
+        <div class="col-group">
+          <h3>Conditions & Signatures</h3>
+          <ul>
+            <li><strong>Column 15-17:</strong> Special conditions (talaq delegation, maintenance terms)</li>
+            <li><strong>Column 18:</strong> Declaration of consent (ijab and qubool)</li>
+            <li><strong>Column 19:</strong> Signatures of bride, groom, witnesses, wali</li>
+            <li><strong>Column 20:</strong> Nikah Registrar seal and signature</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout-box">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div>
+          <strong>Every Column Must Be Translated</strong>
+          <p>UAE entities reject Nikah Nama translations that skip columns — even columns marked with a dash or "N/A." The translation must be complete. Our translators work through every column systematically, noting empty or illegible entries explicitly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Attestation Chain (Pakistan → UAE)</h2>
+      <p>Pakistan is NOT a Hague Convention member. The full attestation chain is required:</p>
+
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Union Council Verification</h3>
+            <p>The Nikah Nama must be verified by the Union Council where the marriage was registered. This confirms the document is genuine and on record. Some Union Councils issue a duplicate if the original is lost.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Deputy Commissioner / District Office</h3>
+            <p>The document goes to the Deputy Commissioner or District Administration for attestation. This is a state-level authentication confirming the Union Council's authority.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Pakistan MOFA</h3>
+            <p>The Ministry of Foreign Affairs in Islamabad attests the document. This confirms the district-level authentication. Processing: 3-5 business days at the Islamabad office.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>UAE Embassy in Islamabad</h3>
+            <p>The UAE Embassy (or Consulate in Karachi) attests the Pakistan MOFA stamp. Processing: 3-7 business days.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h3>UAE MOFA + MOJ Translation</h3>
+            <p>Once in the UAE, <a href="/services/attestation/mofa/">MOFA attestation</a> completes the chain. We then produce the MOJ Arabic translation. Total UAE-side: 1-2 days for attestation + same-day translation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Nikah Nama vs NADRA Certificate</h2>
+      <div class="comparison-table-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Aspect</th>
+              <th>Nikah Nama</th>
+              <th>NADRA Marriage Certificate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Format</strong></td>
+              <td>Pre-printed form, handwritten entries</td>
+              <td>Computerized, typed text</td>
+            </tr>
+            <tr>
+              <td><strong>Language</strong></td>
+              <td>Urdu (with Arabic phrases)</td>
+              <td>English and Urdu</td>
+            </tr>
+            <tr>
+              <td><strong>Content</strong></td>
+              <td>Full 20+ columns, all marriage terms</td>
+              <td>Summary extract of key details</td>
+            </tr>
+            <tr>
+              <td><strong>Translation Difficulty</strong></td>
+              <td>High (handwriting, terminology)</td>
+              <td>Low (typed, standardized)</td>
+            </tr>
+            <tr>
+              <td><strong>UAE Acceptance</strong></td>
+              <td>Accepted everywhere</td>
+              <td>Accepted by most entities</td>
+            </tr>
+            <tr>
+              <td><strong>Our Recommendation</strong></td>
+              <td colspan="2">Have both attested. Submit the NADRA certificate first (faster processing). Keep the Nikah Nama as backup if specifically requested.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Common Translation Issues</h2>
+      <ol>
+        <li><strong>Illegible handwriting:</strong> Nikah Registrars vary in penmanship. Some entries may be partially illegible. Professional translators note illegible entries rather than guessing.</li>
+        <li><strong>Islamic legal terminology:</strong> Terms like mahr muajjal (prompt dower), mahr muwajjal (deferred dower), talaq-e-tafweez (delegated divorce), and iddat require precise Arabic/English equivalents.</li>
+        <li><strong>Name transliteration:</strong> Urdu names transliterate differently to English than to Arabic. The English transliteration must match the passport exactly. "Muhammad" vs "Mohammed" vs "Mohammad" matters.</li>
+        <li><strong>Witness CNIC numbers:</strong> Some Nikah Namas have incomplete or illegible CNIC numbers for witnesses. The translation must reflect what's on the document.</li>
+        <li><strong>Special conditions (Column 15-17):</strong> These columns may contain specific marriage conditions or be left blank. Both scenarios need accurate translation — blank columns noted as "no conditions specified."</li>
+        <li><strong>Haq Mehr amount:</strong> The dower amount in Pakistani Rupees must be accurately translated. If expressed in gold (tola), the measurement must be preserved.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Other Pakistani Documents for UAE</h2>
+      <p>Beyond the Nikah Nama, Pakistani nationals commonly need these documents attested and translated:</p>
+      <ul>
+        <li><a href="/personal/vital-records/birth/">Birth certificates</a> — from NADRA or Union Council</li>
+        <li><a href="/personal/academic/degree/">Degree certificates</a> — HEC attested + full chain + <a href="/resources/mohesr-equivalency/">MOHESR equivalency</a></li>
+        <li><a href="/personal/immigration/pcc/">Police clearance (PCC)</a> — from Pakistan Police + attestation</li>
+        <li><a href="/personal/vital-records/divorce/">Divorce decree</a> — from Family Court + attestation</li>
+        <li><a href="/personal/immigration/bank/">Bank statements</a> — MOJ translation if needed</li>
+        <li><a href="/personal/immigration/license/">Driving license</a> — for UAE license exchange</li>
+      </ul>
+      <p>All Pakistani documents follow the same attestation chain (no Hague apostille). See our <a href="/services/attestation/pakistan/">Pakistan attestation guide</a> for the complete process.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <RelatedServices
+        pageKey="pakistaniGuide"
+        title="Related Services"
+        showFamily={true}
+        showCrossSilo={true}
+        maxItems={6}
+      />
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer"><p>{faq.answer}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container cta-section">
+      <h2>Nikah Nama Translation</h2>
+      <p>Send your Nikah Nama via WhatsApp. We'll review the document quality, confirm attestation status, and provide a quote. If any columns are illegible, we'll let you know before you pay.</p>
+      <a href="https://wa.me/971508620217?text=I%20need%20Nikah%20Nama%20translation%20for%20UAE" class="btn btn-primary">
+        <i class="fab fa-whatsapp"></i> Send Nikah Nama for Review
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-section { padding: 8rem 0 4rem; background: var(--primary-color); }
+  .breadcrumb { font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 2rem; }
+  .breadcrumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: #ffffff; }
+  .breadcrumb .separator { margin: 0 0.5rem; color: rgba(255, 255, 255, 0.5); }
+  .breadcrumb .current { color: #ffffff; }
+  h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: #ffffff; }
+  .hero-subtitle { font-size: 1.25rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+  .content-container { max-width: 900px; }
+  .content-container p { line-height: 1.8; margin-bottom: 1rem; }
+  .content-container h2 { font-size: 1.5rem; font-weight: 700; margin: 0 0 1.5rem; }
+  .content-container h3 { font-size: 1.15rem; font-weight: 700; margin: 1.5rem 0 0.75rem; }
+  .content-container ul, .content-container ol { padding-left: 1.5rem; margin: 1rem 0 1.5rem; }
+  .content-container li { margin-bottom: 0.5rem; line-height: 1.7; }
+  .content-container a { color: var(--accent-teal, #0077b6); }
+  .service-snapshot { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; }
+  .snapshot-item { display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.9); }
+  .snapshot-item i { font-size: 1.25rem; color: var(--accent-color); }
+
+  .column-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+  .col-group { background: white; padding: 1.5rem; border-radius: 8px; border-top: 3px solid var(--accent-color, #FF1654); }
+  .col-group h3 { font-size: 1rem; margin: 0 0 0.75rem; }
+  .col-group ul { padding-left: 1.25rem; margin: 0; }
+  .col-group li { font-size: 0.9rem; margin-bottom: 0.35rem; }
+
+  .callout-box { display: flex; gap: 1rem; background: #fffbeb; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #f59e0b; margin: 2rem 0; }
+  .callout-box i { font-size: 1.5rem; color: #f59e0b; flex-shrink: 0; }
+  .callout-box strong { color: var(--primary-color); }
+  .callout-box p { margin: 0.5rem 0 0; line-height: 1.7; }
+
+  .process-steps { display: flex; flex-direction: column; gap: 1.5rem; margin: 1.5rem 0; }
+  .step { display: flex; gap: 1.25rem; align-items: flex-start; }
+  .step-number { width: 40px; height: 40px; border-radius: 50%; background: var(--primary-color, #0E2B48); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+  .step-content h3 { margin: 0 0 0.5rem; font-size: 1.05rem; }
+  .step-content p { font-size: 0.95rem; line-height: 1.7; margin: 0; }
+
+  .comparison-table-wrapper { overflow-x: auto; margin: 1.5rem 0; }
+  .comparison-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  .comparison-table th, .comparison-table td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid rgba(0,0,0,0.1); }
+  .comparison-table th { background: var(--primary-color, #0E2B48); color: white; }
+
+  .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { background: var(--bg-secondary, #f8f9fa); border-radius: 8px; overflow: hidden; }
+  .faq-question { padding: 1rem 1.25rem; font-weight: 600; cursor: pointer; list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; float: right; font-size: 1.25rem; color: var(--accent-color); }
+  .faq-item[open] .faq-question::after { content: '\2212'; }
+  .faq-answer { padding: 0 1.25rem 1rem; }
+  .faq-answer p { margin: 0; line-height: 1.7; }
+  .cta-section { text-align: center; max-width: 600px; margin: 0 auto; padding: 3rem 1.5rem; background: var(--surface-navy, #0a1628); border-radius: 12px; }
+  .cta-section h2 { margin-bottom: 1rem; }
+  .cta-section p { margin-bottom: 2rem; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; }
+  .btn-primary { background: var(--accent-color); color: #ffffff; }
+  @media (max-width: 768px) { .column-grid { grid-template-columns: 1fr; } .service-snapshot { flex-direction: column; } }
+</style>

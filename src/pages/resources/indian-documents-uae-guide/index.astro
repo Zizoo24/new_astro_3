@@ -1,0 +1,335 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+
+const faqs = [
+  {
+    question: "Do Indian documents need apostille or embassy attestation?",
+    answer: "India is a Hague Convention member (since July 2005). Indian documents need MEA apostille — NOT UAE Embassy attestation. The apostille replaces the old embassy chain. After MEA apostille, go directly to MOFA attestation in UAE, then MOJ Arabic translation."
+  },
+  {
+    question: "What is the HRD attestation and do I need it?",
+    answer: "HRD (Human Resource Development) attestation is required by some Indian states before MEA apostille for educational documents. States like Karnataka, Tamil Nadu, and Maharashtra require HRD attestation. Other states don't. We confirm the requirement based on your state and document type."
+  },
+  {
+    question: "Can I get MEA apostille from the UAE?",
+    answer: "No. MEA apostille must be done in India. You can use an authorized agent in India or send documents via a trusted family member. MEA has regional offices in Delhi, Mumbai, Kolkata, Chennai, Bangalore, and Hyderabad. Processing takes 3-5 business days."
+  },
+  {
+    question: "Is my Indian degree automatically valid in UAE?",
+    answer: "Not automatically. Indian degrees from recognized universities are generally accepted, but you need: MEA apostille, MOFA attestation, MOJ Arabic translation, and for some professions, MOHESR equivalency. Engineering, medical, and teaching professions have additional requirements."
+  },
+  {
+    question: "What about Indian documents already attested the old way?",
+    answer: "Documents attested through the old embassy chain (before India joined Hague) are still valid if the attestation was done correctly. You don't need to re-do the apostille process. However, new documents should follow the apostille route."
+  },
+  {
+    question: "How long does the complete Indian document process take?",
+    answer: "India-side (apostille + HRD if needed): 5-10 business days. MOFA attestation in UAE: 1-2 business days. MOJ Arabic translation: same day (1 hour for standard documents). Total: about 2 weeks if you plan ahead."
+  },
+  {
+    question: "Do Indian marriage certificates need a specific format?",
+    answer: "Indian marriage certificates must be from a registered marriage under the Hindu Marriage Act, Special Marriage Act, Indian Christian Marriage Act, or relevant personal law. Court marriages and registered marriages are both accepted. Temple-only marriages without registration need to be registered first."
+  },
+  {
+    question: "What if my Indian document has spelling variations?",
+    answer: "Name spelling must match your passport exactly. Common issues: 'Mohammed' vs 'Muhammad,' state-specific transliterations, or different name orders. If your certificate spelling differs from your passport, you may need an affidavit or official correction before proceeding."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+  }))
+};
+---
+
+<BaseLayout
+  title="Indian Documents UAE Guide | Apostille & Translation"
+  description="Complete guide for Indian nationals: MEA apostille, HRD attestation, MOFA, and MOJ translation for UAE visas, employment, and residency."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="hero-section bg-dark" data-theme="dark">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">HOME</a>
+        <span class="separator">&gt;</span>
+        <a href="/resources/">RESOURCES</a>
+        <span class="separator">&gt;</span>
+        <span class="current">INDIAN DOCUMENTS</span>
+      </nav>
+
+      <h1>Indian Documents for UAE</h1>
+      <p class="hero-subtitle">Apostille, Attestation & Translation Guide</p>
+      <p class="hero-intro">India has the largest expatriate population in the UAE. This guide covers the complete document journey: from MEA apostille in India to MOJ Arabic translation in the UAE. Every step, every state variation, every common mistake.</p>
+
+      <div class="hero-badges">
+        <span class="badge"><i class="fas fa-briefcase"></i> Employment</span>
+        <span class="badge"><i class="fas fa-home"></i> Residency</span>
+        <span class="badge"><i class="fas fa-ring"></i> Family Visa</span>
+        <span class="badge"><i class="fas fa-graduation-cap"></i> Education</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <div class="overview-box">
+        <h2><i class="fas fa-lightbulb"></i> The Short Version</h2>
+        <p>Indian documents for UAE use follow this chain:</p>
+        <ol class="quick-list">
+          <li><strong>State-level attestation</strong> (Notary + SDM/Home Department, if required)</li>
+          <li><strong>HRD attestation</strong> (educational docs, some states only)</li>
+          <li><strong>MEA Apostille</strong> — India is a Hague Convention member</li>
+          <li><strong>MOFA attestation</strong> in UAE</li>
+          <li><strong>MOJ Arabic translation</strong> — for government submission</li>
+        </ol>
+        <p class="note"><i class="fas fa-clock"></i> Total timeline: 2-3 weeks. MOJ translation in UAE takes 1 hour for standard documents.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>India's Hague Convention Status</h2>
+      <p>India joined the Hague Apostille Convention in July 2005. This means Indian documents use the apostille system — a simplified authentication process.</p>
+
+      <div class="callout-box important">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div>
+          <strong>UAE Is NOT a Hague Member</strong>
+          <p>India has Hague status, but the UAE does not. This means: the MEA apostille authenticates your document's origin, but you still need <a href="/services/attestation/mofa/">MOFA attestation</a> in the UAE. The apostille replaces the old embassy attestation chain — it doesn't eliminate all UAE requirements.</p>
+        </div>
+      </div>
+
+      <h3>What the Apostille Replaces</h3>
+      <ul>
+        <li><strong>Old process:</strong> State attestation → MEA → UAE Embassy in India → MOFA</li>
+        <li><strong>New process:</strong> State attestation (if needed) → HRD (if needed) → MEA Apostille → MOFA</li>
+      </ul>
+      <p>The apostille skips the UAE Embassy step, saving time and cost.</p>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Documents by Purpose</h2>
+
+      <h3><i class="fas fa-briefcase"></i> Employment Visa</h3>
+      <ul>
+        <li><a href="/personal/academic/degree/">Degree certificate</a> — MEA apostille + MOFA + MOJ translation + <a href="/resources/mohesr-equivalency/">MOHESR equivalency</a> (some professions)</li>
+        <li><a href="/personal/academic/transcripts/">Transcripts</a> — MEA apostille + MOFA + MOJ translation (regulated professions)</li>
+        <li><a href="/personal/immigration/pcc/">Police clearance certificate</a> — from Indian state police or Passport Seva + MEA apostille + MOFA + MOJ translation</li>
+        <li>Professional certificates — Engineering Council, Medical Council, etc. as applicable</li>
+      </ul>
+
+      <h3><i class="fas fa-users"></i> Family / Spouse Visa</h3>
+      <ul>
+        <li><a href="/personal/vital-records/marriage/">Marriage certificate</a> — MEA apostille + MOFA + MOJ translation</li>
+        <li><a href="/personal/vital-records/birth/">Birth certificates</a> (children) — MEA apostille + MOFA + MOJ translation</li>
+        <li><a href="/personal/immigration/bank/">Bank statements</a> (3 months) — MOJ translation only (no apostille needed)</li>
+        <li>Salary certificate — from UAE employer (usually no translation needed)</li>
+      </ul>
+
+      <h3><i class="fas fa-star"></i> <a href="/services/golden-visa-translation/">Golden Visa</a></h3>
+      <ul>
+        <li>Academic credentials — full attestation chain + MOJ translation + MOHESR equivalency</li>
+        <li>Property documents (if applicable) — MOJ translation</li>
+        <li>Investment proof — MOJ translation</li>
+        <li>See the <a href="/resources/golden-visa-checklist/">Golden Visa checklist</a> for your category</li>
+      </ul>
+
+      <h3><i class="fas fa-stethoscope"></i> Healthcare Licensing (DHA/DOH)</h3>
+      <ul>
+        <li>Medical degree — full attestation + MOJ translation + <a href="/specialized/medical/dha-dataflow/">DHA DataFlow</a> verification</li>
+        <li>Medical council registration — attestation + translation</li>
+        <li>Experience letters — attestation + translation</li>
+        <li>Good standing certificate — from relevant medical council</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>State-Specific HRD Requirements</h2>
+      <p>HRD (Human Resource Development) attestation is a state-level requirement for educational documents before MEA apostille. Not all states require it.</p>
+
+      <div class="state-grid">
+        <div class="state-card requires">
+          <h3>HRD Required</h3>
+          <ul>
+            <li><strong>Karnataka</strong> — through Department of Education</li>
+            <li><strong>Tamil Nadu</strong> — through Directorate of Collegiate Education</li>
+            <li><strong>Maharashtra</strong> — through Higher & Technical Education</li>
+            <li><strong>Andhra Pradesh / Telangana</strong> — through Education Department</li>
+            <li><strong>Kerala</strong> — through University attestation</li>
+          </ul>
+        </div>
+        <div class="state-card direct">
+          <h3>Direct to MEA (No HRD)</h3>
+          <ul>
+            <li><strong>Delhi</strong> — university attestation then MEA</li>
+            <li><strong>Uttar Pradesh</strong> — varies by university</li>
+            <li><strong>Gujarat</strong> — university attestation then MEA</li>
+            <li><strong>Rajasthan</strong> — varies by document type</li>
+          </ul>
+          <p class="note">State requirements change. We confirm the current chain for your specific state and document before you begin the process.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>MEA Apostille Offices</h2>
+      <p>The Ministry of External Affairs has regional passport offices that handle apostille:</p>
+      <div class="office-grid">
+        <div class="office">
+          <strong>Delhi</strong>
+          <p>Patiala House Annexe, New Delhi</p>
+        </div>
+        <div class="office">
+          <strong>Mumbai</strong>
+          <p>Maker Bhavan, Cuffe Parade</p>
+        </div>
+        <div class="office">
+          <strong>Chennai</strong>
+          <p>Shastri Bhawan Annexe</p>
+        </div>
+        <div class="office">
+          <strong>Kolkata</strong>
+          <p>36, G.N. Block, Sector V, Salt Lake</p>
+        </div>
+        <div class="office">
+          <strong>Bangalore</strong>
+          <p>Khanija Bhavan, Race Course Road</p>
+        </div>
+        <div class="office">
+          <strong>Hyderabad</strong>
+          <p>Kendriya Sadan, Sultan Bazaar</p>
+        </div>
+      </div>
+      <p><strong>Processing time:</strong> 3-5 business days (standard). Express options available through authorized agents. You can also apply through the MEA eSanad portal for some document types.</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Common Mistakes (Indian Documents)</h2>
+      <ol>
+        <li><strong>Skipping HRD:</strong> Submitting to MEA without state-required HRD attestation. MEA will reject the application.</li>
+        <li><strong>Name mismatch:</strong> Indian certificates often use regional transliteration. "Subramaniam" vs "Subramanian" — must match passport exactly.</li>
+        <li><strong>Wrong police clearance:</strong> Using a state police clearance when the employer/GDRFA needs a Passport Seva PCC. Different formats serve different purposes.</li>
+        <li><strong>Old-format certificates:</strong> Some older Indian certificates lack security features. These may need re-issuance before apostille.</li>
+        <li><strong>Unregistered marriages:</strong> Temple or religious ceremonies without legal registration cannot be apostilled. Register the marriage first.</li>
+        <li><strong>Expired PCC:</strong> Indian police clearance certificates are valid for 3-6 months. Plan the timing carefully with your visa application.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <RelatedServices
+        pageKey="indianGuide"
+        title="Related Services"
+        showFamily={true}
+        showCrossSilo={true}
+        maxItems={6}
+      />
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer"><p>{faq.answer}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container cta-section">
+      <h2>Indian Document Translation & Attestation</h2>
+      <p>Send your Indian documents via WhatsApp. We'll confirm the exact attestation chain for your state and document type, then provide a complete quote.</p>
+      <a href="https://wa.me/971508620217?text=I%20have%20Indian%20documents%20that%20need%20attestation%20and%20translation" class="btn btn-primary">
+        <i class="fab fa-whatsapp"></i> Send Documents for Review
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-section { padding: 8rem 0 4rem; background: var(--primary-color); }
+  .breadcrumb { font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 2rem; }
+  .breadcrumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: #ffffff; }
+  .breadcrumb .separator { margin: 0 0.5rem; color: rgba(255, 255, 255, 0.5); }
+  .breadcrumb .current { color: #ffffff; }
+  h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: #ffffff; }
+  .hero-subtitle { font-size: 1.25rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+  .hero-badges { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+  .badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(255,255,255,0.1); border-radius: 2rem; font-size: 0.85rem; color: rgba(255,255,255,0.9); }
+  .badge i { color: var(--accent-color); }
+  .content-container { max-width: 900px; }
+  .content-container p { line-height: 1.8; margin-bottom: 1rem; }
+  .content-container h2 { font-size: 1.5rem; font-weight: 700; margin: 0 0 1.5rem; }
+  .content-container h3 { font-size: 1.15rem; font-weight: 700; margin: 1.5rem 0 0.75rem; }
+  .content-container ul, .content-container ol { padding-left: 1.5rem; margin: 1rem 0 1.5rem; }
+  .content-container li { margin-bottom: 0.5rem; line-height: 1.7; }
+  .content-container a { color: var(--accent-teal, #0077b6); }
+
+  .overview-box { background: var(--bg-secondary, #f8f9fa); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--accent-color); }
+  .overview-box h2 { display: flex; align-items: center; gap: 0.5rem; }
+  .overview-box h2 i { color: var(--accent-color); }
+  .quick-list { padding-left: 1.5rem; margin: 1rem 0; }
+  .quick-list li { margin-bottom: 0.75rem; }
+  .note { font-size: 0.9rem; color: var(--text-muted); margin-top: 1rem; }
+  .note i { color: var(--accent-color); margin-right: 0.25rem; }
+
+  .callout-box { display: flex; gap: 1rem; padding: 1.5rem; border-radius: 8px; margin: 2rem 0; }
+  .callout-box.important { background: #fffbeb; border-left: 4px solid #f59e0b; }
+  .callout-box.important i { font-size: 1.5rem; color: #f59e0b; flex-shrink: 0; }
+  .callout-box strong { color: var(--primary-color); }
+  .callout-box p { margin: 0.5rem 0 0; line-height: 1.7; }
+
+  .state-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+  .state-card { background: white; padding: 1.5rem; border-radius: 8px; }
+  .state-card.requires { border-top: 3px solid #8B2635; }
+  .state-card.direct { border-top: 3px solid #1a5f7a; }
+  .state-card h3 { margin: 0 0 0.75rem; font-size: 1.05rem; }
+  .state-card ul { padding-left: 1.25rem; margin: 0; }
+  .state-card li { font-size: 0.9rem; margin-bottom: 0.35rem; }
+
+  .office-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+  .office { background: var(--bg-secondary, #f8f9fa); padding: 1rem; border-radius: 8px; text-align: center; }
+  .office strong { display: block; margin-bottom: 0.25rem; }
+  .office p { font-size: 0.85rem; margin: 0; color: var(--text-muted); }
+
+  .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { background: var(--bg-secondary, #f8f9fa); border-radius: 8px; overflow: hidden; }
+  .faq-question { padding: 1rem 1.25rem; font-weight: 600; cursor: pointer; list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; float: right; font-size: 1.25rem; color: var(--accent-color); }
+  .faq-item[open] .faq-question::after { content: '\2212'; }
+  .faq-answer { padding: 0 1.25rem 1rem; }
+  .faq-answer p { margin: 0; line-height: 1.7; }
+  .cta-section { text-align: center; max-width: 600px; margin: 0 auto; padding: 3rem 1.5rem; background: var(--surface-navy, #0a1628); border-radius: 12px; }
+  .cta-section h2 { margin-bottom: 1rem; }
+  .cta-section p { margin-bottom: 2rem; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; }
+  .btn-primary { background: var(--accent-color); color: #ffffff; }
+  @media (max-width: 768px) { .state-grid { grid-template-columns: 1fr; } .office-grid { grid-template-columns: repeat(2, 1fr); } }
+</style>

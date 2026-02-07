@@ -1,0 +1,211 @@
+---
+/**
+ * /locations/ajman/ - Ajman Translation Services
+ * Silo: Locations (Silo 5)
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const pageTitle = "Legal Translation Ajman | MOJ Certified | Same-Day";
+const metaDescription = "MOJ-certified legal translation for Ajman residents and businesses. Free zone, personal, and court documents. Same-day delivery via WhatsApp. From AED 150.";
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Locations', url: '/locations/' },
+  { name: 'Ajman', url: '/locations/ajman/' }
+];
+
+const faqs = [
+  {
+    question: "Do you provide translation services in Ajman?",
+    answer: "Yes. Send documents via WhatsApp to +971 50 862 0217. We provide MOJ-certified translation with same-day digital delivery and next-day courier to any Ajman address including Ajman City, Al Rashidiya, Al Nuaimia, and Al Jurf."
+  },
+  {
+    question: "Are translations accepted by Ajman Free Zone?",
+    answer: "Yes. Our MOJ-certified translations are accepted by Ajman Free Zone Authority for company formation, licensing, and regulatory submissions. We also handle documents for Ajman Media City Free Zone."
+  },
+  {
+    question: "How much does legal translation cost in Ajman?",
+    answer: "Legal translation starts from AED 150 per document. Ajman residents receive the same pricing as Dubai clients. Volume discounts available for businesses with recurring translation needs."
+  },
+  {
+    question: "Can you translate documents for Ajman courts?",
+    answer: "Yes. Our MOJ-certified translations meet Ajman Court requirements for civil, family, commercial, and criminal proceedings. We format documents to court submission standards."
+  },
+  {
+    question: "What is the delivery time to Ajman?",
+    answer: "Digital delivery via WhatsApp is same-day for standard documents. Physical MOJ-stamped originals are couriered next-day to any Ajman address. Express same-day physical delivery is available for urgent requirements."
+  }
+];
+
+const siteUrl = 'https://onlinetranslation.ae';
+---
+
+<BaseLayout title={pageTitle} description={metaDescription}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Legal Translation Services in Ajman",
+      "description": metaDescription,
+      "provider": {
+        "@type": "LocalBusiness",
+        "@id": `${siteUrl}/#organization`
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Ajman",
+        "containedInPlace": { "@type": "AdministrativeArea", "name": "Ajman Emirate" }
+      },
+      "serviceType": "Legal Translation"
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+      }))
+    })} />
+  </Fragment>
+
+  <section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          {breadcrumbs.map((crumb, i) => (
+            <span>
+              {i > 0 && <span class="breadcrumb-sep">/</span>}
+              {crumb.url ? <a href={crumb.url}>{crumb.name}</a> : <span>{crumb.name}</span>}
+            </span>
+          ))}
+        </nav>
+        <div class="hero-badge">MOJ Certified • Ajman Delivery</div>
+        <h1 class="hero-title">Legal Translation Services in Ajman</h1>
+        <p class="hero-lead">MOJ-certified translation for Ajman residents, free zone businesses, and court submissions. Personal documents, corporate filings, and real estate paperwork — accepted by all UAE authorities.</p>
+        <a href="https://wa.me/971508620217" class="hero-cta" aria-label="Send documents via WhatsApp">
+          <i class="fab fa-whatsapp"></i> Send Documents via WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <h2>Why Ajman Residents Choose Us</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-bolt"></i></div>
+          <h3>Same-Day Digital Delivery</h3>
+          <p>Standard documents completed within 4-6 hours. Certified PDF sent via WhatsApp the same day.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-truck"></i></div>
+          <h3>Ajman Courier Service</h3>
+          <p>Physical MOJ-stamped originals couriered to any Ajman address. Next-day standard, same-day express.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-stamp"></i></div>
+          <h3>MOJ License #701</h3>
+          <p>Official Ministry of Justice stamp accepted by Ajman courts, free zones, and all UAE government entities.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon"><i class="fas fa-building"></i></div>
+          <h3>Free Zone Specialists</h3>
+          <p>Ajman Free Zone and Ajman Media City document translation. Company formation, licensing, and regulatory filings.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Common Translation Needs in Ajman</h2>
+      <div class="services-grid">
+        <a href="/personal/vital-records/" class="service-card">
+          <div class="service-icon"><i class="fas fa-file-alt"></i></div>
+          <h3>Personal Documents</h3>
+          <p>Birth, marriage, and death certificates for visa applications, school enrollment, and family court matters.</p>
+        </a>
+        <a href="/legal/corporate/license/" class="service-card">
+          <div class="service-icon"><i class="fas fa-building"></i></div>
+          <h3>Free Zone Documents</h3>
+          <p>Trade licences, MOA, shareholder agreements, and regulatory filings for Ajman Free Zone Authority.</p>
+        </a>
+        <a href="/legal/contracts/lease/" class="service-card">
+          <div class="service-icon"><i class="fas fa-home"></i></div>
+          <h3>Real Estate Documents</h3>
+          <p>Tenancy contracts, SPAs, and property documents for Ajman's growing real estate market.</p>
+        </a>
+        <a href="/services/attestation/" class="service-card">
+          <div class="service-icon"><i class="fas fa-stamp"></i></div>
+          <h3>Attestation Services</h3>
+          <p>MOFA attestation and embassy legalization for foreign documents used in Ajman.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container">
+      <div class="content-prose">
+        <h2>Ajman: Growing Free Zone Economy</h2>
+        <p>Ajman is the smallest UAE emirate by area but has one of the fastest-growing free zone economies. Ajman Free Zone Authority and Ajman Media City Free Zone attract businesses with competitive licensing costs and proximity to Sharjah and Dubai.</p>
+
+        <p>Translation needs in Ajman reflect this mixed economy. Free zone companies need <a href="/legal/corporate/moa/">memoranda of association</a> and <a href="/legal/corporate/license/">trade licence translations</a> for regulatory compliance. Residents need <a href="/personal/vital-records/birth/">birth certificates</a> and <a href="/personal/vital-records/marriage/">marriage certificates</a> for visa and school enrollment. The growing real estate sector generates demand for <a href="/legal/contracts/lease/">tenancy contract translations</a>.</p>
+
+        <h3>Key Government Entities in Ajman</h3>
+        <ul class="content-list">
+          <li><strong>Ajman Courts:</strong> Civil, family, and commercial proceedings</li>
+          <li><strong>Ajman Free Zone Authority:</strong> Company formation, licensing, regulatory filings</li>
+          <li><strong>Ajman Media City Free Zone:</strong> Media and creative industry licensing</li>
+          <li><strong>Ajman DED:</strong> Mainland business licensing and registration</li>
+          <li><strong>Ajman Municipality:</strong> Property and municipal services</li>
+        </ul>
+
+        <h3>Sharjah-Ajman Border Corridor</h3>
+        <p>Many Ajman residents work in Sharjah or Dubai. Documents may need to meet requirements for multiple emirates. We advise on which certification level is needed for each authority. In most cases, MOJ-certified translation is accepted across all emirates without additional processing.</p>
+
+        <div class="info-callout">
+          <h4><i class="fas fa-info-circle"></i> Ajman Free Zone Tip</h4>
+          <p>Ajman Free Zone accepts English documents for most internal processes. However, any interaction with Ajman mainland authorities (courts, municipality, DED) requires Arabic translation. We help you determine which documents need <a href="/resources/moj-vs-certified/">MOJ certification vs certified translation</a>.</p>
+        </div>
+
+        <h3>Related Guides</h3>
+        <ul class="content-list">
+          <li><a href="/resources/moj-vs-certified/">MOJ vs Certified Translation: Which Do You Need?</a></li>
+          <li><a href="/locations/sharjah/">Sharjah Translation Services</a></li>
+          <li><a href="/locations/dubai/">Dubai Translation Services</a></li>
+          <li><a href="/resources/translation-type-decision-guide/">Translation Type Decision Guide</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Frequently Asked Questions — Ajman</h2>
+      <div class="faq-section">
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer"><p>{faq.answer}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container" style="text-align:center;">
+      <h2>Get Your Documents Translated Today</h2>
+      <p>Send your documents via WhatsApp for a free assessment. We confirm requirements and pricing before you pay.</p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/971508620217" class="hero-cta">
+          <i class="fab fa-whatsapp"></i> WhatsApp: +971 50 862 0217
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

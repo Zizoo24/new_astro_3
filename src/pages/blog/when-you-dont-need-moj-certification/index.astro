@@ -1,0 +1,704 @@
+---
+/**
+ * Blog Post: When You Don't Need MOJ Certification
+ * Target Keywords: moj translation, certified translation dubai, when to use moj translation
+ * Purpose: Right-selling content — help clients avoid overpaying
+ * Created: February 2026
+ *
+ * Following MASTER_WORKFLOW v3.2
+ */
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const postDate = '2026-02-07';
+const postTitle = "When You Don't Need MOJ Translation — Save Time and Money";
+const postDescription = "Not every document needs MOJ certification. Learn when certified translation is enough and when you actually need Ministry of Justice stamping for UAE submissions.";
+const postCategory = 'Translation Guides';
+const readTime = '6 min read';
+
+const breadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Blog', url: '/blog/' },
+  { name: "When You Don't Need MOJ", url: '/blog/when-you-dont-need-moj-certification/' }
+];
+
+// FAQ data for both schema and visible FAQ section
+const faqs = [
+  {
+    question: "What is the difference between MOJ and certified translation?",
+    answer: "MOJ translation is stamped by a Ministry of Justice-registered translator (License #701 in our case). Certified translation is a professionally translated document with a company certification but no MOJ stamp. Both are accurate — the difference is who accepts which one."
+  },
+  {
+    question: "Do banks in Dubai require MOJ translation?",
+    answer: "Most UAE banks accept certified translation for account opening, loan applications, and mortgage documents. MOJ certification is typically not required. However, confirm with your specific bank branch before ordering."
+  },
+  {
+    question: "Does DIFC accept certified translation without MOJ stamp?",
+    answer: "Yes. DIFC Courts and DIFC-registered companies operate under common law and accept certified English translations. MOJ certification is not required for DIFC submissions, though it is always accepted if you already have it."
+  },
+  {
+    question: "When is MOJ translation mandatory in the UAE?",
+    answer: "MOJ translation is mandatory for Dubai Courts, Abu Dhabi Courts, government ministry submissions, GDRFA visa applications, notarization, and any official government filing. The rule is simple: if it goes to government, use MOJ."
+  },
+  {
+    question: "Can I upgrade from certified to MOJ translation later?",
+    answer: "Yes. If you initially get certified translation and later discover you need MOJ certification, we can arrange the MOJ stamp on the existing translation. This avoids retranslating from scratch, though an additional fee applies."
+  },
+  {
+    question: "Is certified translation cheaper than MOJ translation?",
+    answer: "Both start from AED 150. The cost difference depends on document complexity, not the certification type itself. The real saving is avoiding unnecessary MOJ processing time when certified is sufficient for your purpose."
+  },
+  {
+    question: "Do private companies in UAE accept certified translation?",
+    answer: "Yes. Private companies, including employers, insurers, and landlords acting privately, generally accept certified translation. They have no legal requirement to demand MOJ certification. Only government bodies and courts require the MOJ stamp."
+  },
+  {
+    question: "How do I know which type of translation I need?",
+    answer: "Ask the receiving party. If they are a government entity, court, or ministry, you need MOJ. If they are a private company, bank, free zone authority, or university, certified translation is almost always sufficient. When in doubt, send us your document on WhatsApp and we will advise."
+  }
+];
+
+// BlogPosting structured data
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": postTitle,
+  "description": postDescription,
+  "datePublished": postDate,
+  "dateModified": postDate,
+  "author": {
+    "@type": "Organization",
+    "name": "OnlineTranslation.ae",
+    "url": "https://onlinetranslation.ae"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "OnlineTranslation.ae",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://onlinetranslation.ae/assets/images/logo/brand/emblem-256.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://onlinetranslation.ae/blog/when-you-dont-need-moj-certification/"
+  },
+  "articleSection": postCategory,
+  "keywords": ["moj translation dubai", "certified translation dubai", "moj vs certified translation", "when to use moj translation", "translation requirements uae"]
+};
+
+// FAQPage structured data
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+
+// BreadcrumbList structured data
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": breadcrumbs.map((crumb, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": crumb.name,
+    "item": `https://onlinetranslation.ae${crumb.url}`
+  }))
+};
+---
+
+<BaseLayout
+  title={`${postTitle} | OnlineTranslation.ae Blog`}
+  description={postDescription}
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://onlinetranslation.ae/blog/when-you-dont-need-moj-certification/" />
+    <meta name="keywords" content="moj translation dubai, certified translation dubai, moj vs certified translation, when to use moj, translation requirements uae, right translation type" />
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <!-- Breadcrumb Navigation -->
+  <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        {breadcrumbs.map((crumb, i) => (
+          <li class="breadcrumb-item">
+            {i < breadcrumbs.length - 1 ? (
+              <a href={crumb.url}>{crumb.name}</a>
+            ) : (
+              <span aria-current="page">{crumb.name}</span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Article Header -->
+  <section class="article-header">
+    <div class="container">
+      <div class="article-meta">
+        <a href="/blog/" class="back-link">
+          <i class="fas fa-arrow-left"></i> Back to Blog
+        </a>
+        <span class="category-badge">{postCategory}</span>
+      </div>
+      <h1>{postTitle}</h1>
+      <p class="header-lead">We tell you when you do not need the more expensive option. That is how a concierge service should work.</p>
+      <div class="post-info">
+        <time datetime={postDate}>
+          <i class="far fa-calendar-alt"></i>
+          {new Date(postDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+        <span class="read-time">
+          <i class="far fa-clock"></i>
+          {readTime}
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Article Content -->
+  <article class="article-content">
+    <div class="container">
+      <div class="content-wrapper">
+
+        <p class="lead-text">Many clients ask for MOJ-certified translation when they do not actually need it. We could take the money and say nothing. Instead, we explain the difference and help you choose the right service. That is what right-selling means.</p>
+
+        <div class="callout-block">
+          <i class="fas fa-hand-holding-usd callout-block__icon"></i>
+          <div class="callout-block__content">
+            <p><strong>The Simple Rule:</strong> If your document goes to a UAE government body or court, you need MOJ translation. If it goes to a private company, bank, or free zone, certified translation is usually enough. Read our full <a href="/resources/moj-vs-certified/">MOJ vs Certified comparison</a> for details.</p>
+          </div>
+        </div>
+
+        <h2>Two Types of Translation, Two Different Purposes</h2>
+
+        <p>The UAE has two levels of document translation. Both produce accurate, professional translations. The difference is the stamp and who accepts it.</p>
+
+        <h3>MOJ Legal Translation</h3>
+
+        <p><a href="/resources/moj-translation-explained/">MOJ translation</a> is performed by a translator registered with the Ministry of Justice. The finished document carries the translator's MOJ stamp, signature, and license number. Government bodies and courts require this stamp for acceptance.</p>
+
+        <p>Our translations are executed through Arkan Legal Translation, MOJ License #701. You can verify this license by calling the MOJ hotline at 800 333333.</p>
+
+        <h3>Certified Translation</h3>
+
+        <p>Certified translation is a professional translation with a company certification letter. It confirms the translation is accurate and complete. Private organizations accept this level of certification for their internal processes.</p>
+
+        <p>The translation quality is identical. The only difference is the official MOJ stamp and government recognition that comes with it.</p>
+
+        <h2>When You Definitely Need MOJ Translation</h2>
+
+        <p>Certain submissions in the UAE require MOJ certification. There is no workaround for these situations. If you skip MOJ, your documents will be rejected.</p>
+
+        <ul>
+          <li><strong>Dubai Courts and Abu Dhabi Courts</strong> — All foreign-language evidence and filings</li>
+          <li><strong>GDRFA visa applications</strong> — Residence permits, family sponsorship, Golden Visa</li>
+          <li><strong>Government ministries</strong> — MOHRE work permits, MOFA attestation, federal bodies</li>
+          <li><strong>Notary Public</strong> — Any document being notarized in the UAE</li>
+          <li><strong>Company formation at DED/DET</strong> — Business registration documents</li>
+          <li><strong>Property registration at DLD</strong> — Title deeds and transfer documents</li>
+        </ul>
+
+        <p>For these situations, visit our <a href="/legal/">legal translation services</a> page. We handle court documents, <a href="/legal/contracts/">contracts</a>, and government submissions daily.</p>
+
+        <h2>When Certified Translation Is Enough</h2>
+
+        <p>This is where most people overspend. The following situations typically do not require MOJ certification. Certified translation is accepted and sufficient.</p>
+
+        <h3>Banks and Financial Institutions</h3>
+
+        <p>UAE banks accept certified translation for account opening, loan applications, and mortgage processing. Whether it is Emirates NBD, ADCB, or Mashreq, certified translation meets their requirements. Ask your branch relationship manager to confirm.</p>
+
+        <h3>Private Companies and Employers</h3>
+
+        <p>HR departments need translated documents for employment verification. They verify qualifications, not legal standing. Certified translation satisfies employer requirements for onboarding and compliance.</p>
+
+        <h3>Free Zones: DIFC and ADGM</h3>
+
+        <p>Both <a href="/resources/difc-translation-guide/">DIFC</a> and <a href="/resources/adgm-translation-requirements/">ADGM</a> operate under common law. They accept certified translations from qualified translators. MOJ certification is welcomed but not required. This applies to company registration, employment matters, and commercial disputes within the free zone.</p>
+
+        <h3>Universities and Academic Institutions</h3>
+
+        <p>Admissions offices at UAE universities accept certified translation of <a href="/personal/vital-records/birth/">birth certificates</a>, academic transcripts, and degree certificates. KHDA-regulated institutions follow the same practice.</p>
+
+        <h3>Insurance Companies</h3>
+
+        <p>Health and life insurance claims require translated medical reports and supporting documents. Certified translation is standard for insurance processing. No insurer in the UAE demands MOJ certification for claims.</p>
+
+        <h3>Private Landlords and Real Estate Agents</h3>
+
+        <p>Private tenancy agreements and landlord communications need only certified translation. The exception is if a rental dispute goes to the Rental Disputes Center, which may require MOJ certification.</p>
+
+        <h2>The Decision Guide: A Quick Reference</h2>
+
+        <p>Use this table to determine what you need. For a more detailed breakdown, read our <a href="/resources/translation-type-decision-guide/">translation type decision guide</a>.</p>
+
+        <div class="comparison-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Receiving Party</th>
+                <th>Translation Type</th>
+                <th>Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Dubai Courts / Abu Dhabi Courts</td>
+                <td><strong>MOJ Required</strong></td>
+                <td>Law mandates MOJ stamp</td>
+              </tr>
+              <tr>
+                <td>GDRFA / Immigration</td>
+                <td><strong>MOJ Required</strong></td>
+                <td>Government body</td>
+              </tr>
+              <tr>
+                <td>MOHRE / Labour</td>
+                <td><strong>MOJ Required</strong></td>
+                <td>Federal ministry</td>
+              </tr>
+              <tr>
+                <td>Notary Public</td>
+                <td><strong>MOJ Required</strong></td>
+                <td>Official authentication</td>
+              </tr>
+              <tr>
+                <td>Banks (ENBD, ADCB, etc.)</td>
+                <td>Certified Sufficient</td>
+                <td>Private institution</td>
+              </tr>
+              <tr>
+                <td>DIFC / ADGM</td>
+                <td>Certified Sufficient</td>
+                <td>Common law free zone</td>
+              </tr>
+              <tr>
+                <td>Private Employers</td>
+                <td>Certified Sufficient</td>
+                <td>Internal HR process</td>
+              </tr>
+              <tr>
+                <td>Universities / Schools</td>
+                <td>Certified Sufficient</td>
+                <td>Academic verification</td>
+              </tr>
+              <tr>
+                <td>Insurance Companies</td>
+                <td>Certified Sufficient</td>
+                <td>Claims processing</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Common Scenarios Where People Overpay</h2>
+
+        <p>These are real situations we see every week. Clients request MOJ translation when certified would do the job.</p>
+
+        <h3>Opening a Business Bank Account</h3>
+
+        <p>A client needed their trade license and shareholder documents translated for a new corporate account. They assumed MOJ was mandatory. The bank only needed certified translation. We saved them processing time and unnecessary steps.</p>
+
+        <h3>Joining a DIFC Company</h3>
+
+        <p>An employee relocating to a DIFC-based company ordered MOJ translation for their degree and experience certificates. DIFC HR departments accept certified translation. The MOJ stamp added no value in this case.</p>
+
+        <h3>Filing an Insurance Claim</h3>
+
+        <p>After a medical procedure abroad, a client needed hospital reports translated for their insurer. They requested MOJ certification. No UAE insurance company requires MOJ for claims processing. Certified translation was accepted immediately.</p>
+
+        <h3>University Admission</h3>
+
+        <p>A parent translated their child's school records with MOJ certification for university enrollment. The admissions office needed only certified translation. The MOJ stamp was unnecessary overhead.</p>
+
+        <div class="callout-block callout-block--light">
+          <i class="fas fa-lightbulb callout-block__icon"></i>
+          <div class="callout-block__content">
+            <p><strong>Our Approach:</strong> We check your documents and ask where you plan to submit them. If certified translation is enough, we tell you. We would rather earn your trust than charge you for a service you do not need. Read more about our <a href="/services/">certified translation services</a>.</p>
+          </div>
+        </div>
+
+        <h2>What If You Are Not Sure?</h2>
+
+        <p>When in doubt, follow these three steps:</p>
+
+        <ol>
+          <li><strong>Ask the receiving party.</strong> Call the bank, employer, or institution and ask specifically: "Do you require MOJ-certified translation, or is certified translation acceptable?"</li>
+          <li><strong>Check our decision guide.</strong> The <a href="/resources/translation-type-decision-guide/">translation type decision guide</a> covers dozens of specific scenarios with clear answers.</li>
+          <li><strong>Send us your document.</strong> WhatsApp your document to <a href="https://wa.me/971508620217">+971 50 862 0217</a>. Tell us where you plan to submit it. We will confirm the right translation type within minutes.</li>
+        </ol>
+
+        <p>We never upsell. If certified translation meets your needs, that is what we recommend. If MOJ is required, we explain why. Either way, you get an honest answer before you pay.</p>
+
+        <h2>The Cost Perspective</h2>
+
+        <p>Both MOJ and certified translation start from AED 150. The price depends on document length and complexity, not the certification type. So the direct cost difference is minimal.</p>
+
+        <p>The real savings come from processing time. MOJ translation involves the additional step of official stamping and registration. Certified translation can be completed faster because it skips that step. When you need a document translated urgently for a bank or employer, avoiding the MOJ process saves hours.</p>
+
+        <h2>Frequently Asked Questions</h2>
+
+        {faqs.map(faq => (
+          <details class="faq-item">
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+
+        <h2>Next Steps</h2>
+
+        <p>Not sure which translation type you need? Send your documents on WhatsApp. We review them, ask where you plan to submit, and recommend the right service. No pressure, no upselling.</p>
+
+        <div class="cta-box">
+          <h3>Get Honest Translation Advice</h3>
+          <p>Send your document on WhatsApp. We will tell you exactly what you need — and what you do not.</p>
+          <a href="https://wa.me/971508620217" class="btn-whatsapp">
+            <i class="fab fa-whatsapp"></i> WhatsApp: +971 50 862 0217
+          </a>
+        </div>
+
+        <h2>Related Resources</h2>
+
+        <ul class="related-links">
+          <li><a href="/resources/moj-vs-certified/">MOJ vs Certified Translation — Full Comparison</a></li>
+          <li><a href="/resources/moj-translation-explained/">What Is MOJ Translation?</a></li>
+          <li><a href="/resources/translation-type-decision-guide/">Translation Type Decision Guide</a></li>
+          <li><a href="/resources/difc-translation-guide/">DIFC Translation Requirements</a></li>
+          <li><a href="/resources/adgm-translation-requirements/">ADGM Translation Requirements</a></li>
+          <li><a href="/legal/">Legal Translation Services</a></li>
+          <li><a href="/services/">Certified Translation Services</a></li>
+          <li><a href="/legal/contracts/">Contract Translation</a></li>
+          <li><a href="/personal/vital-records/birth/">Birth Certificate Translation</a></li>
+        </ul>
+
+      </div>
+    </div>
+  </article>
+
+  <style>
+    .breadcrumb-nav {
+      background: var(--surface-navy);
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .breadcrumb-list {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.85rem;
+    }
+
+    .breadcrumb-item a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+    }
+
+    .breadcrumb-item a:hover {
+      color: white;
+    }
+
+    .breadcrumb-item span {
+      color: rgba(255,255,255,0.5);
+    }
+
+    .breadcrumb-item:not(:last-child)::after {
+      content: '/';
+      margin-left: 0.5rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .article-header {
+      background: linear-gradient(135deg, var(--surface-navy) 0%, var(--surface-navy-dark) 100%);
+      color: white;
+      padding: 3rem 0;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .back-link {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .back-link:hover {
+      color: white;
+    }
+
+    .category-badge {
+      background: var(--accent-coral);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .article-header h1 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800;
+      margin: 0 0 1rem;
+      line-height: 1.2;
+    }
+
+    .header-lead {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 1.5rem;
+      max-width: 700px;
+    }
+
+    .post-info {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .post-info i {
+      margin-right: 0.5rem;
+    }
+
+    .article-content {
+      padding: 3rem 0;
+    }
+
+    .content-wrapper {
+      max-width: 750px;
+      margin: 0 auto;
+    }
+
+    .lead-text {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: var(--text-body);
+      margin-bottom: 2rem;
+    }
+
+    .article-content h2 {
+      font-size: 1.75rem;
+      color: var(--text-heading);
+      margin: 2.5rem 0 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .article-content h2:first-of-type {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .article-content h3 {
+      font-size: 1.25rem;
+      color: var(--text-heading);
+      margin: 1.5rem 0 0.75rem;
+    }
+
+    .article-content p {
+      margin-bottom: 1rem;
+      line-height: 1.8;
+    }
+
+    .article-content ul,
+    .article-content ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    .article-content li {
+      margin-bottom: 0.5rem;
+      line-height: 1.7;
+    }
+
+    .callout-block {
+      display: flex;
+      gap: 1rem;
+      padding: 1.25rem;
+      background: rgba(14, 43, 72, 0.05);
+      border-left: 4px solid var(--accent-coral);
+      border-radius: 0 8px 8px 0;
+      margin: 1.5rem 0;
+    }
+
+    .callout-block__icon {
+      font-size: 1.25rem;
+      color: var(--accent-coral);
+      flex-shrink: 0;
+    }
+
+    .callout-block--light {
+      background: #eff6ff;
+      border-left-color: #0369a1;
+    }
+
+    .callout-block--light .callout-block__icon {
+      color: #0369a1;
+    }
+
+    .callout-block__content p {
+      margin: 0;
+    }
+
+    .comparison-table {
+      margin: 2rem 0;
+      overflow-x: auto;
+    }
+
+    .comparison-table table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border: 1px solid var(--border-light, #e2e8f0);
+    }
+
+    .comparison-table th {
+      background: var(--surface-navy, #0E2B48);
+      color: var(--text-on-dark, #f4f7fc);
+      font-weight: 600;
+    }
+
+    .comparison-table tr:nth-child(even) {
+      background: #f8fafc;
+    }
+
+    .faq-item {
+      border: 1px solid var(--border-light, #e2e8f0);
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+    }
+
+    .faq-item summary {
+      padding: 1rem 1.25rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: var(--surface-muted, #f8fafc);
+      list-style: none;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::before {
+      content: '+';
+      margin-right: 0.75rem;
+      font-weight: 700;
+      color: var(--accent-coral);
+    }
+
+    .faq-item[open] summary::before {
+      content: '\2212';
+    }
+
+    .faq-item p {
+      padding: 1rem 1.25rem;
+      margin: 0;
+      background: white;
+      line-height: 1.7;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, var(--surface-navy) 0%, var(--surface-navy-dark) 100%);
+      color: white;
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .cta-box h3 {
+      color: white;
+      margin: 0 0 0.5rem;
+    }
+
+    .cta-box p {
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #25D366;
+      color: white;
+      padding: 0.875rem 1.75rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+    }
+
+    .related-links {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0;
+    }
+
+    .related-links li {
+      margin-bottom: 0.75rem;
+    }
+
+    .related-links a {
+      color: var(--link-color, #0077b6);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .related-links a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .article-header {
+        padding: 2rem 0;
+      }
+
+      .article-content {
+        padding: 2rem 0;
+      }
+
+      .callout-block {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .comparison-table {
+        margin: 1.5rem -1rem;
+        padding: 0 1rem;
+      }
+    }
+  </style>
+</BaseLayout>

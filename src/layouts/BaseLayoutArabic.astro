@@ -36,10 +36,22 @@ const englishEquivalent = fullCanonical
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <!-- GTM runs in Partytown web worker - see end of body -->
+  <!-- Preconnect to critical third-party origins (highest priority) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+
+  <!-- DNS Prefetch for lower-priority third-parties -->
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  <link rel="dns-prefetch" href="https://www.chatbase.co">
+  <link rel="dns-prefetch" href="https://js.clickrank.ai">
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover">
+
+  <!-- Critical CSS - Inlined for fastest paint (Arabic) -->
+  <style>*,*::before,*::after{box-sizing:border-box}html{font-size:80%;scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{margin:0;font-family:'Noto Sans Arabic','Geeza Pro','Simplified Arabic','Tahoma',system-ui,sans-serif;line-height:1.8;color:#2d3748;background:#fff;direction:rtl}:root{--surface-base:#fff;--surface-navy:#0E2B48;--surface-navy-dark:#072035;--text-heading:#0E2B48;--text-body:#2d3748;--text-on-dark:#f4f7fc;--accent-coral:#FF1654;--container-max:1200px;--gutter:clamp(16px,2vw,24px);--section-py:clamp(40px,5vw,80px);--fs-hero:clamp(2.5rem,1.6rem + 2.5vw,4.5rem);--fs-xl:clamp(1.75rem,1.3rem + 1.2vw,2.5rem);--fs-lg:clamp(1.25rem,1rem + 0.6vw,1.5rem);--fs-md:clamp(1rem,0.9rem + 0.35vw,1.125rem);--font-arabic:'Noto Sans Arabic','Geeza Pro','Simplified Arabic','Tahoma',sans-serif}.skip-link{position:absolute;top:-40px;right:0;background:#0E2B48;color:#fff;padding:8px 16px;z-index:9999;transition:top .2s}.skip-link:focus{top:0}.container{width:100%;max-width:var(--container-max);margin:0 auto;padding:0 var(--gutter)}.porto-header{position:sticky;top:0;z-index:1000;background:var(--surface-navy)}.porto-top-bar{background:#FF1654;padding:6px 0;font-size:.75rem;color:#fff}.porto-main-nav{background:var(--surface-navy);padding:12px 0}.porto-logo img{height:40px;width:auto}.porto-nav-links{display:none}@media(min-width:992px){.porto-nav-links{display:flex;gap:1.5rem}}.hero-section{position:relative;min-height:80vh;display:flex;align-items:center;overflow:hidden}.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(14,43,72,0.92) 0%,rgba(7,32,53,0.85) 100%)}.hero-content{position:relative;z-index:1;padding:var(--section-py) 0}.hero-title{font-size:var(--fs-hero);font-weight:700;color:#fff;line-height:1.4;margin:0 0 1rem;letter-spacing:0}.hero-cta{display:inline-flex;align-items:center;gap:.5rem;background:#25D366;color:#fff;padding:14px 28px;border-radius:8px;font-weight:600;text-decoration:none;transition:transform .2s,box-shadow .2s}.section{padding:var(--section-py) 0}.bg-white{background:var(--surface-base)}.bg-light{background:#f8f9fa}.bg-dark{background:var(--surface-navy);color:var(--text-on-dark)}.section-title{font-size:var(--fs-xl);font-weight:700;color:var(--text-heading);margin:0;line-height:1.4;letter-spacing:0}img{max-width:100%;height:auto;display:block}.fa,.fas,.fab,.far,.fal,.fad{display:inline-block;font-style:normal;font-variant:normal;text-rendering:auto;line-height:1}@media(max-width:767px){.hero-section{min-height:auto;padding:60px 0}}</style>
 
   <!-- Theme initialization only - no hiding -->
   <script is:inline>
@@ -111,13 +123,17 @@ const englishEquivalent = fullCanonical
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/icons/favicon-16.png">
   <link rel="apple-touch-icon" href="/assets/images/onedrive/emblem.png">
 
-  <!-- Fonts - Including Arabic (optimized loading) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Preload critical Arabic font CSS for faster first paint -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;600;700&display=swap&subset=arabic">
-  <!-- Load Arabic font (subset to Arabic chars only, reduced weights for performance) -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;600;700&family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap&subset=arabic,latin" rel="stylesheet">
+  <!-- Google Fonts - async loading with media trick (Arabic + Latin subsets, reduced weights) -->
+  <link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="https://fonts.gstatic.com/s/notosansarabic/v28/nwpCtLGrOAZMl5nJ_wfgRg3DrWFZWsnVBJ_sS6tlqHHFlhQ5l3sQWIHPqzCfyGyfuXmr.woff2">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;600;700&family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap&subset=arabic,latin"
+    rel="stylesheet"
+    media="print"
+    onload="this.media='all'"
+  >
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;600;700&family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap&subset=arabic,latin" rel="stylesheet">
+  </noscript>
 
   <!-- Font Awesome - load async -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous">
@@ -224,23 +240,58 @@ const englishEquivalent = fullCanonical
     })(window,document,'script','dataLayer','GTM-N7L2H37W');
   </script>
 
-  <!-- Scripts -->
+  <!-- Scripts - All deferred -->
   <script is:inline src="/scripts/os-detect.js"></script>
   <script defer src="/scripts/preferences.js"></script>
   <script defer src="/scripts/analytics.js"></script>
   <script defer src="/scripts/main-v2.js"></script>
   <script defer src="/scripts/navigation-v2.js"></script>
   <script defer src="/scripts/subsection-menu.js"></script>
-  <!-- Search powered by Pagefind -->
-  <script defer src="/scripts/form-handler.js"></script>
-  <script defer src="/scripts/testimonials-carousel.js"></script>
 
-  <!-- Chatbase Chat Widget - Desktop Only -->
+  <!-- Conditionally loaded scripts -->
+  <script is:inline>
+    // Lazy load form handler only if form exists
+    document.addEventListener('DOMContentLoaded', function() {
+      if (document.querySelector('form#contactForm, form.contact-form')) {
+        var s = document.createElement('script');
+        s.src = '/scripts/form-handler.js';
+        s.defer = true;
+        document.body.appendChild(s);
+      }
+    });
+    // Lazy load carousel only if carousel exists
+    if (document.querySelector('.testimonials-carousel, .testimonial-slider')) {
+      var s = document.createElement('script');
+      s.src = '/scripts/testimonials-carousel.js';
+      s.defer = true;
+      document.body.appendChild(s);
+    }
+  </script>
+  <script defer src="/scripts/micro-cues.js"></script>
+
+  <!-- Chatbase Chat Widget - Desktop Only, Deferred -->
   <script is:inline>
     (function() {
-      // Only load on desktop (992px+ matches the site's desktop breakpoint)
       if (window.innerWidth >= 992) {
-        (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...args)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(args)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...a)=>target(prop,...a)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="XHyFbKkbLOseA1xEcMAm6";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+        var chatbaseLoaded = false;
+        function loadChatbase() {
+          if (chatbaseLoaded) return;
+          chatbaseLoaded = true;
+          if(!window.chatbase||window.chatbase("getState")!=="initialized"){
+            window.chatbase=(...args)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(args)};
+            window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...a)=>target(prop,...a)}})
+          }
+          var script=document.createElement("script");
+          script.src="https://www.chatbase.co/embed.min.js";
+          script.id="XHyFbKkbLOseA1xEcMAm6";
+          script.domain="www.chatbase.co";
+          script.defer = true;
+          document.body.appendChild(script);
+        }
+        ['scroll','click','touchstart','mousemove'].forEach(function(evt){
+          window.addEventListener(evt, loadChatbase, {once:true,passive:true});
+        });
+        setTimeout(loadChatbase, 5000);
       }
     })();
   </script>

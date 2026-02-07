@@ -1,0 +1,404 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+
+const faqs = [
+  {
+    question: "Are MOJ translation requirements the same in Abu Dhabi and Dubai?",
+    answer: "The MOJ certification itself is identical — it's a federal standard. The difference is which court system and government entities you're dealing with. Abu Dhabi uses ADJD courts, Dubai uses Dubai Courts. Both require MOJ-certified Arabic translation, but submission procedures and document formatting may differ."
+  },
+  {
+    question: "Can I use a Dubai MOJ translation in Abu Dhabi?",
+    answer: "Yes. MOJ translation is a federal certification valid across all emirates. A translation certified by an MOJ-licensed translator in Dubai is accepted by Abu Dhabi courts, ADJD, and all Abu Dhabi government entities. There's no need to get a separate translation."
+  },
+  {
+    question: "Which emirate is cheaper for translation services?",
+    answer: "Translation pricing is based on document type and complexity, not location. Our rates are the same whether you're in Abu Dhabi, Dubai, or any other emirate. We deliver digitally via WhatsApp, so geographic location doesn't affect cost or turnaround."
+  },
+  {
+    question: "Do DIFC and ADGM have the same translation requirements?",
+    answer: "Internally, yes — both operate in English under common law. The difference is geographic context. DIFC documents leaving jurisdiction go to Dubai Courts (Arabic required). ADGM documents leaving jurisdiction go to ADJD (Arabic required). Translation requirements when crossing each boundary are identical."
+  },
+  {
+    question: "I'm relocating from Dubai to Abu Dhabi. Do I need new translations?",
+    answer: "No. If your documents already have MOJ-certified Arabic translation, they're valid in Abu Dhabi. MOJ certification is federal. However, check if Abu Dhabi entities require any additional documents that you didn't need in Dubai."
+  },
+  {
+    question: "Which emirate has stricter document requirements?",
+    answer: "Abu Dhabi government entities tend to be more particular about document completeness and formatting. ADJD courts are known for stricter formatting requirements than Dubai Courts. That said, if your translation is properly MOJ-certified with all elements translated, both accept it."
+  },
+  {
+    question: "Do I need Arabic translation for Abu Dhabi healthcare licensing?",
+    answer: "Yes. The Department of Health (DOH) in Abu Dhabi requires Arabic MOJ translation of foreign medical credentials. This parallels Dubai's DHA requirements but goes through a different licensing authority. Academic certificates, professional licenses, and experience letters all need translation."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+  }))
+};
+---
+
+<BaseLayout
+  title="Abu Dhabi vs Dubai Translation | Requirements Compared"
+  description="Side-by-side comparison of translation requirements in Abu Dhabi and Dubai. Courts, free zones, healthcare, real estate, and government entities compared."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="hero-section bg-dark" data-theme="dark">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">HOME</a>
+        <span class="separator">&gt;</span>
+        <a href="/resources/">RESOURCES</a>
+        <span class="separator">&gt;</span>
+        <span class="current">ABU DHABI VS DUBAI</span>
+      </nav>
+
+      <h1>Abu Dhabi vs Dubai Translation</h1>
+      <p class="hero-subtitle">Same Country, Different Systems</p>
+      <p class="hero-intro">Abu Dhabi and Dubai share the same federal translation requirements, but different court systems, free zones, and government entities create practical differences. This guide maps the key distinctions so you submit the right documents to the right authority.</p>
+
+      <div class="service-snapshot">
+        <div class="snapshot-item">
+          <i class="fas fa-gavel"></i>
+          <span><strong>Abu Dhabi:</strong> ADJD courts</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-balance-scale"></i>
+          <span><strong>Dubai:</strong> Dubai Courts</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-stamp"></i>
+          <span><strong>MOJ:</strong> Valid in both</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>The Federal Foundation</h2>
+      <p>Both Abu Dhabi and Dubai operate under the UAE's federal legal system. MOJ translation is a federal certification — valid across all seven emirates. The same <a href="/resources/moj-translation-explained/">MOJ-licensed translator</a> can certify documents for use in Abu Dhabi, Dubai, Sharjah, or any other emirate.</p>
+      <p>What differs between the two emirates:</p>
+      <ul>
+        <li><strong>Court systems:</strong> Abu Dhabi uses <a href="/resources/adjd-translation-requirements/">ADJD</a>, Dubai uses Dubai Courts</li>
+        <li><strong>Free zones:</strong> Abu Dhabi has <a href="/resources/adgm-translation-requirements/">ADGM</a>, Dubai has <a href="/resources/difc-translation-guide/">DIFC</a></li>
+        <li><strong>Healthcare:</strong> Abu Dhabi uses DOH, Dubai uses DHA</li>
+        <li><strong>Real estate:</strong> Abu Dhabi uses DMA/municipalities, Dubai uses DLD</li>
+        <li><strong>Government portals:</strong> Different online systems, same underlying requirements</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Court Systems Compared</h2>
+      <div class="comparison-table-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Aspect</th>
+              <th>Abu Dhabi (ADJD)</th>
+              <th>Dubai Courts</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Court System</strong></td>
+              <td><a href="/resources/adjd-translation-requirements/">Abu Dhabi Judicial Department</a></td>
+              <td>Dubai Courts</td>
+            </tr>
+            <tr>
+              <td><strong>Language</strong></td>
+              <td>Arabic only</td>
+              <td>Arabic only</td>
+            </tr>
+            <tr>
+              <td><strong>Translation</strong></td>
+              <td>MOJ certified required</td>
+              <td>MOJ certified required</td>
+            </tr>
+            <tr>
+              <td><strong>Formatting</strong></td>
+              <td>Stricter — specific cover page format</td>
+              <td>Standard MOJ format accepted</td>
+            </tr>
+            <tr>
+              <td><strong>Numerical Data</strong></td>
+              <td>Circular 8/2023: bank statements and invoices may not need translation if primarily numerical</td>
+              <td>No equivalent circular — all documents must be fully translated</td>
+            </tr>
+            <tr>
+              <td><strong>Personal Status</strong></td>
+              <td>ADJD Personal Status Division</td>
+              <td>Dubai Personal Status Courts</td>
+            </tr>
+            <tr>
+              <td><strong>Free Zone Interface</strong></td>
+              <td>ADGM enforcement via ADJD</td>
+              <td>DIFC enforcement via Dubai Courts</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout-box">
+        <i class="fas fa-lightbulb"></i>
+        <div>
+          <strong>ADJD Circular 8/2023</strong>
+          <p>Abu Dhabi's ADJD issued Circular 8/2023 allowing judges to accept untranslated bank statements and invoices when the data is primarily numerical. Dubai Courts have no equivalent policy — all documents must be fully translated. This can save Abu Dhabi litigants translation costs on financial exhibits.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Free Zones Compared</h2>
+      <div class="fz-comparison">
+        <div class="fz-card">
+          <h3><i class="fas fa-building"></i> ADGM (Abu Dhabi)</h3>
+          <ul>
+            <li><strong>Location:</strong> Al Maryah Island, Abu Dhabi</li>
+            <li><strong>Legal system:</strong> English common law</li>
+            <li><strong>Internal language:</strong> English only</li>
+            <li><strong>When Arabic needed:</strong> Enforcement in <a href="/resources/adjd-translation-requirements/">ADJD</a>, GDRFA submissions, Abu Dhabi government entities</li>
+            <li><strong>Growth:</strong> 31% year-on-year, expanding to Al Reem Island</li>
+          </ul>
+          <p><a href="/resources/adgm-translation-requirements/">Full ADGM translation guide</a></p>
+        </div>
+        <div class="fz-card">
+          <h3><i class="fas fa-city"></i> DIFC (Dubai)</h3>
+          <ul>
+            <li><strong>Location:</strong> Gate Village, Dubai</li>
+            <li><strong>Legal system:</strong> English common law</li>
+            <li><strong>Internal language:</strong> English only</li>
+            <li><strong>When Arabic needed:</strong> Enforcement in Dubai Courts, GDRFA submissions, Dubai government entities</li>
+            <li><strong>Established:</strong> 2004, mature ecosystem</li>
+          </ul>
+          <p><a href="/resources/difc-translation-guide/">Full DIFC translation guide</a></p>
+        </div>
+      </div>
+      <p>Both free zones operate identically for translation purposes. The only practical difference is which local court system you interface with when documents leave the free zone boundary.</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Healthcare Licensing</h2>
+      <div class="comparison-table-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Aspect</th>
+              <th>Abu Dhabi (DOH)</th>
+              <th>Dubai (DHA)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Authority</strong></td>
+              <td>Department of Health</td>
+              <td>Dubai Health Authority</td>
+            </tr>
+            <tr>
+              <td><strong>Verification</strong></td>
+              <td>DataFlow (similar process)</td>
+              <td><a href="/specialized/medical/dha-dataflow/">DHA DataFlow</a></td>
+            </tr>
+            <tr>
+              <td><strong>Translation</strong></td>
+              <td>MOJ Arabic required</td>
+              <td>MOJ Arabic required</td>
+            </tr>
+            <tr>
+              <td><strong>Documents</strong></td>
+              <td>Degree, license, experience letters, good standing</td>
+              <td>Degree, license, experience letters, good standing</td>
+            </tr>
+            <tr>
+              <td><strong>Equivalency</strong></td>
+              <td><a href="/resources/mohesr-equivalency/">MOHESR</a> required for some professions</td>
+              <td>MOHESR required for some professions</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Both authorities require the same core documents with MOJ Arabic translation. The licensing process differs in administrative details, but translation requirements are identical.</p>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Real Estate</h2>
+      <div class="re-comparison">
+        <div class="re-card">
+          <h3>Abu Dhabi Property</h3>
+          <p>Property transactions go through Abu Dhabi municipalities and the Department of Municipalities and Transport. <a href="/services/title-deed-translation-dubai/">Title deeds</a>, <a href="/legal/contracts/spa/">sale agreements</a>, and <a href="/legal/contracts/lease/">lease contracts</a> all require Arabic MOJ translation when submitted to government entities.</p>
+        </div>
+        <div class="re-card">
+          <h3>Dubai Property</h3>
+          <p>Dubai Land Department (DLD) handles all property transactions. The same documents need Arabic MOJ translation. Dubai also requires Ejari registration for rental contracts, which needs Arabic documentation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Visa and Immigration</h2>
+      <p><a href="/resources/gdrfa-document-requirements/">GDRFA</a> is a federal authority with offices in both Abu Dhabi and Dubai. Translation requirements are identical across all emirates:</p>
+      <ul>
+        <li><a href="/personal/vital-records/birth/">Birth certificates</a> — MOJ Arabic translation + attestation</li>
+        <li><a href="/personal/vital-records/marriage/">Marriage certificates</a> — MOJ Arabic translation + attestation</li>
+        <li><a href="/personal/academic/degree/">Academic degrees</a> — MOJ Arabic translation + attestation</li>
+        <li><a href="/personal/immigration/pcc/">Police clearance</a> — MOJ Arabic translation + attestation</li>
+        <li><a href="/personal/immigration/bank/">Bank statements</a> — MOJ Arabic translation</li>
+      </ul>
+      <p>Whether you apply in Abu Dhabi or Dubai, the document requirements and attestation chains are the same. The processing is through the same federal system.</p>
+
+      <div class="callout-box">
+        <i class="fas fa-info-circle"></i>
+        <div>
+          <strong>Golden Visa</strong>
+          <p><a href="/services/golden-visa-translation/">Golden Visa</a> applications can be submitted in either emirate. The document package is identical regardless of where you apply. See our <a href="/resources/golden-visa-checklist/">Golden Visa checklist</a> for the complete requirements by category.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Quick Decision: Abu Dhabi or Dubai?</h2>
+      <p>For most translation needs, the emirate doesn't matter. Here are the few cases where it does:</p>
+
+      <div class="decision-cards">
+        <div class="dec-card">
+          <h3><i class="fas fa-gavel"></i> Court Cases</h3>
+          <p>Submit to the court with jurisdiction. Abu Dhabi disputes go to <a href="/resources/adjd-translation-requirements/">ADJD</a>. Dubai disputes go to Dubai Courts. Cross-emirate enforcement requires filing in the receiving court.</p>
+        </div>
+        <div class="dec-card">
+          <h3><i class="fas fa-building"></i> Free Zone Documents</h3>
+          <p>ADGM documents leaving jurisdiction go through <a href="/resources/adjd-translation-requirements/">ADJD</a>. DIFC documents go through <a href="/resources/difc-translation-guide/">Dubai Courts</a>. Internal free zone operations stay in English.</p>
+        </div>
+        <div class="dec-card">
+          <h3><i class="fas fa-stethoscope"></i> Healthcare Licensing</h3>
+          <p>Abu Dhabi: apply through DOH. Dubai: apply through <a href="/specialized/medical/dha-dataflow/">DHA</a>. Same documents, same translation, different authority.</p>
+        </div>
+        <div class="dec-card">
+          <h3><i class="fas fa-home"></i> Property</h3>
+          <p>Abu Dhabi: municipality registration. Dubai: DLD registration. Translation is the same; the submission destination differs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <RelatedServices
+        pageKey="abuDhabiVsDubai"
+        title="Related Services"
+        showFamily={true}
+        showCrossSilo={true}
+        maxItems={6}
+      />
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer"><p>{faq.answer}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container cta-section">
+      <h2>Translation for Abu Dhabi or Dubai</h2>
+      <p>Send your documents via WhatsApp. We'll confirm exact requirements for your specific emirate and entity, then provide a quote within minutes.</p>
+      <a href="https://wa.me/971508620217?text=I%20need%20translation%20for%20Abu%20Dhabi%20%2F%20Dubai" class="btn btn-primary">
+        <i class="fab fa-whatsapp"></i> Send Documents for Quote
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-section { padding: 8rem 0 4rem; background: var(--primary-color); }
+  .breadcrumb { font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 2rem; }
+  .breadcrumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: #ffffff; }
+  .breadcrumb .separator { margin: 0 0.5rem; color: rgba(255, 255, 255, 0.5); }
+  .breadcrumb .current { color: #ffffff; }
+  h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: #ffffff; }
+  .hero-subtitle { font-size: 1.25rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+  .content-container { max-width: 900px; }
+  .content-container p { line-height: 1.8; margin-bottom: 1rem; }
+  .content-container h2 { font-size: 1.5rem; font-weight: 700; margin: 0 0 1.5rem; }
+  .content-container ul { padding-left: 1.5rem; margin: 1rem 0 1.5rem; }
+  .content-container li { margin-bottom: 0.5rem; line-height: 1.7; }
+  .content-container a { color: var(--accent-teal, #0077b6); }
+  .service-snapshot { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; }
+  .snapshot-item { display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.9); }
+  .snapshot-item i { font-size: 1.25rem; color: var(--accent-color); }
+
+  .comparison-table-wrapper { overflow-x: auto; margin: 1.5rem 0; }
+  .comparison-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  .comparison-table th, .comparison-table td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid rgba(0,0,0,0.1); }
+  .comparison-table th { background: var(--primary-color, #0E2B48); color: white; }
+  .comparison-table a { color: rgba(255,255,255,0.9); text-decoration: underline; }
+
+  .callout-box { display: flex; gap: 1rem; background: var(--bg-secondary, #f8f9fa); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary-color); margin: 2rem 0; }
+  .callout-box i { font-size: 1.5rem; color: var(--primary-color); flex-shrink: 0; }
+  .callout-box strong { color: var(--primary-color); }
+  .callout-box p { margin: 0.5rem 0 0; line-height: 1.7; }
+
+  .fz-comparison { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+  .fz-card { background: var(--bg-secondary, #f8f9fa); padding: 1.5rem; border-radius: 8px; border-top: 3px solid var(--accent-color, #FF1654); }
+  .fz-card h3 { display: flex; align-items: center; gap: 0.5rem; font-size: 1.05rem; margin: 0 0 0.75rem; }
+  .fz-card h3 i { color: var(--accent-color); }
+  .fz-card ul { padding-left: 1.25rem; margin: 0 0 0.75rem; }
+  .fz-card li { font-size: 0.9rem; margin-bottom: 0.3rem; }
+  .fz-card p { font-size: 0.95rem; margin: 0; }
+
+  .re-comparison { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+  .re-card { background: var(--bg-secondary, #f8f9fa); padding: 1.5rem; border-radius: 8px; }
+  .re-card h3 { font-size: 1.05rem; margin: 0 0 0.75rem; }
+  .re-card p { font-size: 0.95rem; line-height: 1.7; margin: 0; }
+
+  .decision-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+  .dec-card { background: var(--bg-secondary, #f8f9fa); padding: 1.25rem; border-radius: 8px; }
+  .dec-card h3 { display: flex; align-items: center; gap: 0.5rem; font-size: 1rem; margin: 0 0 0.5rem; }
+  .dec-card h3 i { color: var(--accent-color); }
+  .dec-card p { font-size: 0.9rem; line-height: 1.6; margin: 0; }
+
+  .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { background: var(--bg-secondary, #f8f9fa); border-radius: 8px; overflow: hidden; }
+  .faq-question { padding: 1rem 1.25rem; font-weight: 600; cursor: pointer; list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; float: right; font-size: 1.25rem; color: var(--accent-color); }
+  .faq-item[open] .faq-question::after { content: '\2212'; }
+  .faq-answer { padding: 0 1.25rem 1rem; }
+  .faq-answer p { margin: 0; line-height: 1.7; }
+  .cta-section { text-align: center; max-width: 600px; margin: 0 auto; padding: 3rem 1.5rem; background: var(--surface-navy, #0a1628); border-radius: 12px; }
+  .cta-section h2 { margin-bottom: 1rem; }
+  .cta-section p { margin-bottom: 2rem; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; }
+  .btn-primary { background: var(--accent-color); color: #ffffff; }
+  @media (max-width: 768px) { .service-snapshot { flex-direction: column; } .fz-comparison { grid-template-columns: 1fr; } .re-comparison { grid-template-columns: 1fr; } .decision-cards { grid-template-columns: 1fr; } }
+</style>

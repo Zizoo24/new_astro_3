@@ -1,0 +1,417 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+
+const faqs = [
+  {
+    question: "What is an MOJ-licensed translator?",
+    answer: "An individual licensed by the UAE Ministry of Justice to produce legally binding translations. The license is personal — it attaches to the translator, not a company. Each MOJ translator has a unique license number, personal seal, and signature registered with the Ministry."
+  },
+  {
+    question: "How do I verify an MOJ translator's license?",
+    answer: "Call the MOJ hotline at 800 333333. Provide the translator's name or license number and they'll confirm active status. You can also verify through the MOJ website. Our translations are executed by Arkan Legal Translation, License #701, valid until October 2026."
+  },
+  {
+    question: "Can a translation company hold an MOJ license?",
+    answer: "No. MOJ licenses are issued to individuals, not companies. Translation companies partner with licensed translators who apply the personal seal and signature. This is a legal requirement — the individual translator bears personal liability for accuracy."
+  },
+  {
+    question: "What makes MOJ translation different from certified translation?",
+    answer: "The authority behind the seal. MOJ translation carries a judiciary-recognized seal from a Ministry-licensed individual. Certified translation carries an agency stamp. Courts and government entities require the MOJ seal. Private companies, banks, and HR departments usually accept either."
+  },
+  {
+    question: "Does Federal Decree-Law No. 22 of 2022 affect me?",
+    answer: "If you're using translation services, yes. This law regulates the translation profession in the UAE. It establishes licensing requirements, translator obligations, and penalties. For clients, the key takeaway: always verify your translator holds a current MOJ license."
+  },
+  {
+    question: "How long does MOJ translation take?",
+    answer: "Standard documents (birth certificates, marriage certificates, academic credentials) are typically ready within 1 hour. Complex documents (contracts, court judgments, corporate filings) may take 3-6 hours depending on length and complexity."
+  },
+  {
+    question: "Is MOJ translation valid in all emirates?",
+    answer: "Yes. MOJ translation is a federal certification valid across all seven emirates. A translation certified in Dubai is accepted in Abu Dhabi, Sharjah, and every other emirate. It's also accepted in DIFC and ADGM courts."
+  },
+  {
+    question: "What happens if an MOJ translation contains an error?",
+    answer: "Under Federal Decree-Law No. 22 of 2022, the licensed translator bears personal liability for translation accuracy. Errors must be corrected and recertified. We use a double-check system and correct any errors at our cost with immediate redelivery."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+  }))
+};
+---
+
+<BaseLayout
+  title="MOJ Translation Explained | How It Works in UAE"
+  description="How MOJ translation works in the UAE. Federal licensing, legal framework, verification process, and what Federal Decree-Law No. 22 of 2022 means for you."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="hero-section bg-dark" data-theme="dark">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">HOME</a>
+        <span class="separator">&gt;</span>
+        <a href="/resources/">RESOURCES</a>
+        <span class="separator">&gt;</span>
+        <span class="current">MOJ TRANSLATION</span>
+      </nav>
+
+      <h1>MOJ Translation Explained</h1>
+      <p class="hero-subtitle">The Legal Framework Behind the Seal</p>
+      <p class="hero-intro">Every UAE court and government ministry requires "MOJ translation." But what does that actually mean? This guide explains the legal framework, licensing system, and recent legislation that governs translation in the UAE.</p>
+
+      <div class="service-snapshot">
+        <div class="snapshot-item">
+          <i class="fas fa-gavel"></i>
+          <span><strong>Authority:</strong> Ministry of Justice</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-id-card"></i>
+          <span><strong>License Type:</strong> Personal (individual)</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-phone"></i>
+          <span><strong>Verify:</strong> 800 333333</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>What Is MOJ Translation?</h2>
+      <p>MOJ translation is a document translation certified by an individual licensed by the UAE Ministry of Justice. The "MOJ" refers to the Ministry of Justice (وزارة العدل), which regulates the translation profession through a personal licensing system.</p>
+      <p>Key characteristics:</p>
+      <ul>
+        <li><strong>Personal license:</strong> Issued to an individual translator, not a company</li>
+        <li><strong>Unique seal:</strong> Each translator has a registered seal with their name and license number</li>
+        <li><strong>Personal signature:</strong> The translator signs every document they certify</li>
+        <li><strong>Legal liability:</strong> The individual translator is personally liable for accuracy</li>
+        <li><strong>Federal recognition:</strong> Valid across all seven emirates and in <a href="/resources/difc-translation-guide/">DIFC</a> and <a href="/resources/adgm-translation-requirements/">ADGM</a> courts</li>
+      </ul>
+      <p>This personal liability model is what gives MOJ translation its authority. Courts trust the seal because a named, licensed individual stakes their professional reputation on every translation.</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>The Legal Framework</h2>
+
+      <div class="framework-cards">
+        <div class="fw-card">
+          <h3><i class="fas fa-scroll"></i> Federal Decree-Law No. 22 of 2022</h3>
+          <p>This is the primary legislation governing translation in the UAE. Published in December 2022, it replaced earlier regulations and established:</p>
+          <ul>
+            <li><strong>Licensing requirements:</strong> Translators must hold an active MOJ license to produce court-admissible translations</li>
+            <li><strong>Professional standards:</strong> Minimum qualifications, continuing education, and ethical obligations</li>
+            <li><strong>Penalties:</strong> Fines and license revocation for errors, fraud, or practicing without a license</li>
+            <li><strong>Client protections:</strong> Right to verify translator credentials, right to corrections</li>
+          </ul>
+          <p>This law is significant because it formalized what was previously governed by scattered regulations. It also introduced stricter penalties for unlicensed translation activity.</p>
+        </div>
+
+        <div class="fw-card">
+          <h3><i class="fas fa-university"></i> Ministry of Justice Oversight</h3>
+          <p>The MOJ maintains a registry of licensed translators and oversees:</p>
+          <ul>
+            <li>License issuance and renewal</li>
+            <li>Translator examination and qualification</li>
+            <li>Complaint investigation and disciplinary action</li>
+            <li>Seal registration and tracking</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>The MOJ Translation Process</h2>
+      <p>Understanding what happens behind the scenes helps you evaluate the service you receive.</p>
+
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Document Review</h3>
+            <p>The translator reviews the original document for completeness. Missing pages, illegible sections, or untranslatable elements are flagged before translation begins. We pre-check every document and alert you to potential issues before payment.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Translation</h3>
+            <p>The licensed translator produces the Arabic (or English) translation. Every element is translated: headers, stamps, handwritten notes, seals, and official markings. Incomplete translation is a common <a href="/resources/gdrfa-document-requirements/">rejection reason</a> at government entities.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Certification</h3>
+            <p>The translator applies their personal MOJ seal and signature. The certification statement includes the translator's name, license number, and a declaration that the translation is accurate and complete. This is the step that makes the document court-admissible.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>Delivery</h3>
+            <p>You receive the certified translation. For court submissions, the original document is typically attached to the translation. We deliver via WhatsApp (digital copy) and can arrange physical delivery for court filings.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>When MOJ Translation Is Required</h2>
+      <p>Not every translation needs MOJ certification. Here's a clear breakdown of when you need it and when <a href="/resources/moj-vs-certified/">certified translation</a> is sufficient.</p>
+
+      <div class="requirement-grid">
+        <div class="req-col required">
+          <h3><i class="fas fa-check-circle"></i> MOJ Required</h3>
+          <ul>
+            <li><a href="/resources/adjd-translation-requirements/">Abu Dhabi Courts (ADJD)</a> — all case types</li>
+            <li><a href="/blog/court-document-translation-dubai/">Dubai Courts</a> — all case types</li>
+            <li>Federal Courts — all submissions</li>
+            <li><a href="/resources/difc-translation-guide/">DIFC Courts</a> — enforcement in local courts</li>
+            <li><a href="/resources/adgm-translation-requirements/">ADGM Courts</a> — enforcement in ADJD</li>
+            <li><a href="/resources/gdrfa-document-requirements/">GDRFA</a> — visa and residence documents</li>
+            <li><a href="/services/attestation/mofa/">MOFA</a> — attestation submissions</li>
+            <li>Notary Public — notarized documents</li>
+          </ul>
+        </div>
+        <div class="req-col not-required">
+          <h3><i class="fas fa-minus-circle"></i> Certified Sufficient</h3>
+          <ul>
+            <li>Banks — account opening, loans</li>
+            <li>HR departments — employee onboarding</li>
+            <li>Private companies — internal records</li>
+            <li>Universities — admissions, transfers</li>
+            <li>Insurance companies — claims</li>
+            <li>Free zones (internal) — <a href="/resources/difc-translation-guide/">DIFC</a>, <a href="/resources/adgm-translation-requirements/">ADGM</a>, JAFZA</li>
+            <li>Embassies — most visa applications</li>
+            <li>Private hospitals — medical records</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>For a detailed comparison with pricing, see our <a href="/resources/translation-type-decision-guide/">translation type decision guide</a>.</p>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Verifying an MOJ Translator</h2>
+      <p>Always verify your translator's credentials. Here's how:</p>
+
+      <div class="verify-methods">
+        <div class="verify-card">
+          <i class="fas fa-phone-alt"></i>
+          <h3>Phone Verification</h3>
+          <p>Call the MOJ hotline at <strong>800 333333</strong>. Provide the translator's name or license number. They'll confirm whether the license is active and valid.</p>
+        </div>
+        <div class="verify-card">
+          <i class="fas fa-laptop"></i>
+          <h3>Online Verification</h3>
+          <p>Use the MOJ website portal to search for registered translators by name or license number.</p>
+        </div>
+        <div class="verify-card">
+          <i class="fas fa-file-alt"></i>
+          <h3>Document Check</h3>
+          <p>Every MOJ-certified translation should include: the translator's full name, license number, personal seal, signature, and a certification statement. If any element is missing, question the document.</p>
+        </div>
+      </div>
+
+      <div class="our-credentials">
+        <h3>Our MOJ Credentials</h3>
+        <table class="credentials-table">
+          <tr>
+            <td><strong>Licensed Partner</strong></td>
+            <td>Arkan Legal Translation</td>
+          </tr>
+          <tr>
+            <td><strong>License Number</strong></td>
+            <td>#701</td>
+          </tr>
+          <tr>
+            <td><strong>Translator</strong></td>
+            <td>Khaled Mohamed Abdulwahab Al-Adl</td>
+          </tr>
+          <tr>
+            <td><strong>Valid Until</strong></td>
+            <td>October 15, 2026</td>
+          </tr>
+          <tr>
+            <td><strong>Verify</strong></td>
+            <td>MOJ Hotline 800 333333</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Common MOJ Translation Documents</h2>
+      <p>These are the document types most frequently requiring MOJ certification:</p>
+
+      <div class="doc-categories">
+        <div class="doc-cat">
+          <h3><i class="fas fa-user"></i> Personal Documents</h3>
+          <ul>
+            <li><a href="/personal/vital-records/birth/">Birth certificates</a> — family visa, school enrollment</li>
+            <li><a href="/personal/vital-records/marriage/">Marriage certificates</a> — spouse visa, name change</li>
+            <li><a href="/personal/vital-records/divorce/">Divorce decrees</a> — legal status updates</li>
+            <li><a href="/personal/vital-records/death/">Death certificates</a> — inheritance, insurance</li>
+            <li><a href="/personal/immigration/pcc/">Police clearance</a> — employment, residency</li>
+          </ul>
+        </div>
+        <div class="doc-cat">
+          <h3><i class="fas fa-briefcase"></i> Legal & Corporate</h3>
+          <ul>
+            <li><a href="/legal/contracts/">Contracts</a> — court submissions, disputes</li>
+            <li><a href="/legal/litigation/verdict/">Court judgments</a> — enforcement, appeals</li>
+            <li><a href="/legal/litigation/arbitration/">Arbitration awards</a> — local court enforcement</li>
+            <li><a href="/legal/corporate/poa/">Powers of attorney</a> — notary submissions</li>
+            <li><a href="/legal/wills/">Wills</a> — probate proceedings</li>
+          </ul>
+        </div>
+        <div class="doc-cat">
+          <h3><i class="fas fa-graduation-cap"></i> Academic</h3>
+          <ul>
+            <li><a href="/personal/academic/degree/">Degree certificates</a> — professional licensing</li>
+            <li><a href="/personal/academic/transcripts/">Transcripts</a> — <a href="/resources/mohesr-equivalency/">MOHESR equivalency</a></li>
+            <li>Professional certificates — regulated professions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <RelatedServices
+        pageKey="mojExplainer"
+        title="Related Services"
+        showFamily={true}
+        showCrossSilo={true}
+        maxItems={6}
+      />
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer"><p>{faq.answer}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container cta-section">
+      <h2>Need MOJ Translation?</h2>
+      <p>Send your documents via WhatsApp. We'll confirm whether MOJ certification is required and provide a quote within minutes.</p>
+      <a href="https://wa.me/971508620217?text=I%20need%20MOJ%20translation" class="btn btn-primary">
+        <i class="fab fa-whatsapp"></i> Send Documents for Quote
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-section { padding: 8rem 0 4rem; background: var(--primary-color); }
+  .breadcrumb { font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 2rem; }
+  .breadcrumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: #ffffff; }
+  .breadcrumb .separator { margin: 0 0.5rem; color: rgba(255, 255, 255, 0.5); }
+  .breadcrumb .current { color: #ffffff; }
+  h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: #ffffff; }
+  .hero-subtitle { font-size: 1.25rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+  .content-container { max-width: 900px; }
+  .content-container p { line-height: 1.8; margin-bottom: 1rem; }
+  .content-container h2 { font-size: 1.5rem; font-weight: 700; margin: 0 0 1.5rem; }
+  .content-container ul { padding-left: 1.5rem; margin: 1rem 0 1.5rem; }
+  .content-container li { margin-bottom: 0.5rem; line-height: 1.7; }
+  .content-container a { color: var(--accent-teal, #0077b6); }
+  .service-snapshot { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; }
+  .snapshot-item { display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.9); }
+  .snapshot-item i { font-size: 1.25rem; color: var(--accent-color); }
+
+  .framework-cards { display: flex; flex-direction: column; gap: 1.5rem; margin: 1.5rem 0; }
+  .fw-card { background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--accent-color, #FF1654); }
+  .fw-card h3 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.75rem; font-size: 1.1rem; }
+  .fw-card h3 i { color: var(--accent-color); }
+  .fw-card p { font-size: 0.95rem; line-height: 1.7; margin: 0.5rem 0; }
+  .fw-card ul { padding-left: 1.5rem; margin: 0.75rem 0; }
+  .fw-card li { font-size: 0.95rem; margin-bottom: 0.4rem; }
+
+  .process-steps { display: flex; flex-direction: column; gap: 1.5rem; margin: 1.5rem 0; }
+  .step { display: flex; gap: 1.25rem; align-items: flex-start; }
+  .step-number { width: 40px; height: 40px; border-radius: 50%; background: var(--primary-color, #0E2B48); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+  .step-content h3 { margin: 0 0 0.5rem; font-size: 1.05rem; }
+  .step-content p { font-size: 0.95rem; line-height: 1.7; margin: 0; }
+
+  .requirement-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+  .req-col { background: white; padding: 1.5rem; border-radius: 8px; }
+  .req-col.required { border-top: 3px solid #8B2635; }
+  .req-col.not-required { border-top: 3px solid #1a5f7a; }
+  .req-col h3 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 1rem; font-size: 1.05rem; }
+  .req-col.required h3 i { color: #8B2635; }
+  .req-col.not-required h3 i { color: #1a5f7a; }
+  .req-col ul { list-style: none; padding: 0; margin: 0; }
+  .req-col li { padding: 0.4rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; }
+  .req-col li:last-child { border-bottom: none; }
+
+  .verify-methods { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+  .verify-card { text-align: center; padding: 1.5rem; background: var(--bg-secondary, #f8f9fa); border-radius: 8px; }
+  .verify-card i { font-size: 2rem; color: var(--primary-color); margin-bottom: 0.75rem; }
+  .verify-card h3 { font-size: 1rem; margin: 0 0 0.5rem; }
+  .verify-card p { font-size: 0.9rem; line-height: 1.6; margin: 0; }
+
+  .our-credentials { background: var(--bg-secondary, #f8f9fa); padding: 1.5rem; border-radius: 8px; margin-top: 2rem; }
+  .our-credentials h3 { margin: 0 0 1rem; font-size: 1.1rem; }
+  .credentials-table { width: 100%; border-collapse: collapse; }
+  .credentials-table td { padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; }
+  .credentials-table td:first-child { width: 40%; color: var(--text-muted); }
+
+  .doc-categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+  .doc-cat { background: white; padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(0,0,0,0.06); }
+  .doc-cat h3 { display: flex; align-items: center; gap: 0.5rem; font-size: 1rem; margin: 0 0 0.75rem; }
+  .doc-cat h3 i { color: var(--accent-color); }
+  .doc-cat ul { list-style: none; padding: 0; margin: 0; }
+  .doc-cat li { padding: 0.35rem 0; font-size: 0.9rem; border-bottom: 1px solid rgba(0,0,0,0.04); }
+  .doc-cat li:last-child { border-bottom: none; }
+
+  .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { background: var(--bg-secondary, #f8f9fa); border-radius: 8px; overflow: hidden; }
+  .faq-question { padding: 1rem 1.25rem; font-weight: 600; cursor: pointer; list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; float: right; font-size: 1.25rem; color: var(--accent-color); }
+  .faq-item[open] .faq-question::after { content: '\2212'; }
+  .faq-answer { padding: 0 1.25rem 1rem; }
+  .faq-answer p { margin: 0; line-height: 1.7; }
+  .cta-section { text-align: center; max-width: 600px; margin: 0 auto; padding: 3rem 1.5rem; background: var(--surface-navy, #0a1628); border-radius: 12px; }
+  .cta-section h2 { margin-bottom: 1rem; }
+  .cta-section p { margin-bottom: 2rem; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; }
+  .btn-primary { background: var(--accent-color); color: #ffffff; }
+  @media (max-width: 768px) { .service-snapshot { flex-direction: column; } .requirement-grid { grid-template-columns: 1fr; } .verify-methods { grid-template-columns: 1fr; } .doc-categories { grid-template-columns: 1fr; } }
+</style>

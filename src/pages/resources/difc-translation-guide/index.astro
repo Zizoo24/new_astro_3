@@ -1,0 +1,283 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+
+const faqs = [
+  {
+    question: "Does DIFC accept Arabic documents?",
+    answer: "DIFC Courts and DIFC Authority operate in English. Arabic documents submitted to DIFC need English translation. This is the reverse of most UAE entities, which require Arabic. DIFC's English-only operation is a key advantage for international businesses."
+  },
+  {
+    question: "When do DIFC companies need Arabic MOJ translation?",
+    answer: "When documents leave DIFC jurisdiction: enforcing DIFC judgments in Dubai Courts, submitting to GDRFA for employee visas, filing with MOFA for attestation, or presenting documents to any Dubai government department. These entities require Arabic."
+  },
+  {
+    question: "Can I enforce a DIFC judgment without Arabic translation?",
+    answer: "Within DIFC — yes. But enforcing a DIFC judgment against assets in 'onshore' Dubai requires filing in Dubai Courts, which means full Arabic MOJ translation of the judgment, evidence, and supporting documents."
+  },
+  {
+    question: "What about the new Dubai Law No. 2 of 2025?",
+    answer: "Dubai Law No. 2 of 2025 updated the framework for DIFC judgment enforcement in Dubai Courts. The process still requires Arabic MOJ translation. The law streamlined procedures but didn't change the language requirement."
+  },
+  {
+    question: "Do DIFC Wills need Arabic translation?",
+    answer: "DIFC Wills are registered in English through the DIFC Wills Service Centre. They don't need Arabic translation for registration. However, if a DIFC Will needs to interact with onshore Dubai Courts (inheritance disputes, for example), Arabic translation becomes necessary."
+  },
+  {
+    question: "How is DIFC different from ADGM for translation?",
+    answer: "Both operate in English under common law. The practical difference is geographic: DIFC is in Dubai (interfaces with Dubai Courts when leaving jurisdiction), ADGM is in Abu Dhabi (interfaces with ADJD). Translation requirements when leaving each jurisdiction are identical — Arabic MOJ required."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+  }))
+};
+---
+
+<BaseLayout
+  title="DIFC Translation Guide | When Arabic Is Needed"
+  description="DIFC operates in English, but Arabic translation is required when documents leave DIFC jurisdiction. Complete guide to DIFC translation requirements."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="hero-section bg-dark" data-theme="dark">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">HOME</a>
+        <span class="separator">&gt;</span>
+        <a href="/resources/">RESOURCES</a>
+        <span class="separator">&gt;</span>
+        <span class="current">DIFC TRANSLATION</span>
+      </nav>
+
+      <h1>DIFC Translation Guide</h1>
+      <p class="hero-subtitle">When English Is Enough — and When It Isn't</p>
+      <p class="hero-intro">Dubai International Financial Centre operates entirely in English. But the boundary between DIFC and "onshore" Dubai creates a translation gap that catches businesses off guard. This guide maps when you need Arabic and when English is sufficient.</p>
+
+      <div class="service-snapshot">
+        <div class="snapshot-item">
+          <i class="fas fa-globe"></i>
+          <span><strong>DIFC Language:</strong> English (common law)</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-gavel"></i>
+          <span><strong>Dubai Courts:</strong> Arabic MOJ needed</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-building"></i>
+          <span><strong>Location:</strong> Gate Village, Dubai</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>DIFC: An English-Language Island</h2>
+      <p>DIFC is a financial free zone in Dubai with its own legal system based on English common law. Unlike the rest of Dubai (which operates under UAE civil law in Arabic), DIFC conducts all business in English.</p>
+      <p>This means:</p>
+      <ul>
+        <li><strong>DIFC Courts:</strong> All proceedings, filings, and judgments in English</li>
+        <li><strong>DIFC Authority:</strong> Company registration, licensing, and regulatory submissions in English</li>
+        <li><strong>DIFC Wills Service:</strong> Will registration and administration in English</li>
+        <li><strong>Contracts:</strong> Agreements between DIFC entities governed by DIFC law in English</li>
+        <li><strong><a href="/legal/litigation/arbitration/">Arbitration</a>:</strong> DIFC-LCIA Arbitration Centre operates in English</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>When Arabic Translation IS Required</h2>
+      <p>The moment your documents cross from DIFC into "onshore" Dubai, Arabic becomes mandatory.</p>
+
+      <div class="scenario-cards">
+        <div class="scenario">
+          <h3><i class="fas fa-gavel"></i> Enforcing DIFC Judgments in Dubai Courts</h3>
+          <p>A DIFC Court judgment is enforceable in Dubai Courts, but the enforcement filing must include Arabic MOJ translation of the judgment, supporting evidence, and any referenced contracts. This is the most common scenario requiring translation for DIFC entities.</p>
+        </div>
+        <div class="scenario">
+          <h3><i class="fas fa-passport"></i> Employee Visas (GDRFA)</h3>
+          <p>DIFC companies process employee visas through <a href="/resources/gdrfa-document-requirements/">GDRFA</a> — a federal entity. <a href="/personal/academic/degree/">Academic certificates</a>, <a href="/personal/vital-records/birth/">birth certificates</a>, and <a href="/personal/immigration/pcc/">police clearances</a> all need Arabic MOJ translation for visa processing.</p>
+        </div>
+        <div class="scenario">
+          <h3><i class="fas fa-home"></i> Property Outside DIFC</h3>
+          <p>DIFC entities or employees buying property in "onshore" Dubai submit documents to DLD (Dubai Land Department). <a href="/services/title-deed-translation-dubai/">Title deeds</a> and <a href="/legal/contracts/lease/">lease agreements</a> need Arabic translation.</p>
+        </div>
+        <div class="scenario">
+          <h3><i class="fas fa-file-contract"></i> Contracts with Onshore Entities</h3>
+          <p>Contracts between a DIFC company and an onshore Dubai company may be governed by DIFC law or UAE law. If a dispute goes to <a href="/blog/court-document-translation-dubai/">Dubai Courts</a> (rather than DIFC Courts), Arabic translation of the entire contract is required.</p>
+        </div>
+        <div class="scenario">
+          <h3><i class="fas fa-file-signature"></i> MOFA Attestation</h3>
+          <p>Documents going through <a href="/services/attestation/mofa/">MOFA attestation</a> for international use need Arabic translation, regardless of DIFC origin.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>When English Is Sufficient</h2>
+      <ul>
+        <li><strong>DIFC Court filings:</strong> All proceedings in English — no Arabic needed</li>
+        <li><strong>Company registration:</strong> DIFC Authority accepts English for all incorporation documents</li>
+        <li><strong>DIFC-LCIA Arbitration:</strong> Awards and submissions in English</li>
+        <li><strong>DIFC Wills:</strong> Registration and initial administration in English</li>
+        <li><strong>DIFC-to-DIFC contracts:</strong> Governed by DIFC law, English is sufficient</li>
+        <li><strong>Regulatory submissions:</strong> DFSA filings and compliance reports in English</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>DIFC vs ADGM vs Dubai Courts</h2>
+      <div class="comparison-table-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Aspect</th>
+              <th><a href="/locations/dubai/difc/">DIFC</a></th>
+              <th><a href="/resources/adgm-translation-requirements/">ADGM</a></th>
+              <th>Dubai Courts</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Legal System</strong></td>
+              <td>English common law</td>
+              <td>English common law</td>
+              <td>UAE civil law</td>
+            </tr>
+            <tr>
+              <td><strong>Language</strong></td>
+              <td>English</td>
+              <td>English</td>
+              <td>Arabic only</td>
+            </tr>
+            <tr>
+              <td><strong>Enforcement Outside</strong></td>
+              <td>Via Dubai Courts (Arabic)</td>
+              <td>Via <a href="/resources/adjd-translation-requirements/">ADJD</a> (Arabic)</td>
+              <td>Direct enforcement</td>
+            </tr>
+            <tr>
+              <td><strong>Wills</strong></td>
+              <td>DIFC Wills Service (English)</td>
+              <td>ADGM Wills Service (English)</td>
+              <td>Sharia courts (Arabic)</td>
+            </tr>
+            <tr>
+              <td><strong>Arbitration</strong></td>
+              <td>DIFC-LCIA (English)</td>
+              <td>ADGM Arbitration (English)</td>
+              <td>DIAC (Arabic + English)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Planning Ahead: The Cross-Boundary Problem</h2>
+      <p>The most expensive translation mistake DIFC entities make is not planning for cross-boundary scenarios. Common situations:</p>
+      <ul>
+        <li><strong>Litigation that escalates:</strong> A DIFC matter that seemed contained within DIFC Courts may need Dubai Court enforcement. Having Arabic translations ready avoids emergency costs.</li>
+        <li><strong>Employee disputes:</strong> Even for DIFC employees, labour disputes that go to MOHRE or Dubai Courts need Arabic documentation.</li>
+        <li><strong>Real estate:</strong> DIFC employees buying property in Dubai need Arabic documents for DLD, even though their employment documents are all English.</li>
+      </ul>
+      <p>Our recommendation: if there's any chance a matter will cross the DIFC boundary, prepare Arabic translations early. The cost of proactive translation is a fraction of rush translation under court deadlines.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <RelatedServices
+        pageKey="difcGuide"
+        title="Related Services"
+        showFamily={true}
+        showCrossSilo={true}
+        maxItems={6}
+      />
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer"><p>{faq.answer}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container cta-section">
+      <h2>DIFC Document Translation</h2>
+      <p>Send your DIFC documents via WhatsApp. We'll confirm whether Arabic translation is needed and quote accordingly — no unnecessary translation, no upselling.</p>
+      <a href="https://wa.me/971508620217?text=I%20need%20translation%20for%20DIFC%20documents" class="btn btn-primary">
+        <i class="fab fa-whatsapp"></i> Send Documents for Quote
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-section { padding: 8rem 0 4rem; background: var(--primary-color); }
+  .breadcrumb { font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 2rem; }
+  .breadcrumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: #ffffff; }
+  .breadcrumb .separator { margin: 0 0.5rem; color: rgba(255, 255, 255, 0.5); }
+  .breadcrumb .current { color: #ffffff; }
+  h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: #ffffff; }
+  .hero-subtitle { font-size: 1.25rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+  .content-container { max-width: 900px; }
+  .content-container p { line-height: 1.8; margin-bottom: 1rem; }
+  .content-container h2 { font-size: 1.5rem; font-weight: 700; margin: 0 0 1.5rem; }
+  .content-container ul { padding-left: 1.5rem; margin: 1rem 0 1.5rem; }
+  .content-container li { margin-bottom: 0.5rem; line-height: 1.7; }
+  .content-container a { color: var(--accent-teal, #0077b6); }
+  .service-snapshot { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; }
+  .snapshot-item { display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.9); }
+  .snapshot-item i { font-size: 1.25rem; color: var(--accent-color); }
+  .scenario-cards { display: grid; gap: 1.5rem; margin: 1.5rem 0; }
+  .scenario { background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--accent-color, #FF1654); }
+  .scenario h3 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.75rem; font-size: 1.05rem; }
+  .scenario h3 i { color: var(--accent-color); }
+  .scenario p { font-size: 0.95rem; line-height: 1.7; margin: 0.5rem 0; }
+  .comparison-table-wrapper { overflow-x: auto; margin: 1.5rem 0; }
+  .comparison-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  .comparison-table th, .comparison-table td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid rgba(0,0,0,0.1); }
+  .comparison-table th { background: var(--primary-color, #0E2B48); color: white; }
+  .comparison-table a { color: rgba(255,255,255,0.9); text-decoration: underline; }
+  .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { background: var(--bg-secondary, #f8f9fa); border-radius: 8px; overflow: hidden; }
+  .faq-question { padding: 1rem 1.25rem; font-weight: 600; cursor: pointer; list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; float: right; font-size: 1.25rem; color: var(--accent-color); }
+  .faq-item[open] .faq-question::after { content: '−'; }
+  .faq-answer { padding: 0 1.25rem 1rem; }
+  .faq-answer p { margin: 0; line-height: 1.7; }
+  .cta-section { text-align: center; max-width: 600px; margin: 0 auto; padding: 3rem 1.5rem; background: var(--surface-navy, #0a1628); border-radius: 12px; }
+  .cta-section h2 { margin-bottom: 1rem; }
+  .cta-section p { margin-bottom: 2rem; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; }
+  .btn-primary { background: var(--accent-color); color: #ffffff; }
+  @media (max-width: 768px) { .service-snapshot { flex-direction: column; } }
+</style>

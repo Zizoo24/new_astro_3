@@ -25,6 +25,11 @@ export const arabicPages = new Set([
   '/blog/professional-certificates-vs-degrees-translation/',
   '/blog/study-gap-uae-employment/',
   '/blog/uae-attestation-process-guide/',
+  '/blog/gdrfa-visa-document-problems/',
+  '/blog/mohre-work-permit-document-issues/',
+  '/blog/when-you-dont-need-moj-certification/',
+  '/blog/free-zone-arabic-translation-requirements/',
+  '/blog/abu-dhabi-vs-dubai-translation-requirements/',
 
   // Legal silo
   '/legal-translation-dubai/',
@@ -53,6 +58,10 @@ export const arabicPages = new Set([
   '/locations/dubai/marina/',
   '/locations/dubai/palm-jumeirah/',
   '/locations/sharjah/',
+  '/locations/al-ain/',
+  '/locations/ajman/',
+  '/locations/ras-al-khaimah/',
+  '/locations/fujairah/',
 
   // Personal silo
   '/personal/',
@@ -88,6 +97,9 @@ export const arabicPages = new Set([
   '/resources/mohesr-equivalency/',
   '/resources/moj-vs-certified/',
   '/resources/notary-vs-moj-translation/',
+  '/resources/adgm-translation-requirements/',
+  '/resources/adjd-translation-requirements/',
+  '/resources/translation-type-decision-guide/',
   '/resources/pricing-guide/',
   '/resources/turnaround-times/',
   '/resources/us-citizens-dubai-guide/',
