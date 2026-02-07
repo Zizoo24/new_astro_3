@@ -45,6 +45,8 @@ export const arabicPages = new Set([
   // Locations
   '/locations/',
   '/locations/abu-dhabi/',
+  '/locations/ajman/',
+  '/locations/al-ain/',
   '/locations/dubai/',
   '/locations/dubai/business-bay/',
   '/locations/dubai/difc/',
@@ -52,6 +54,8 @@ export const arabicPages = new Set([
   '/locations/dubai/jlt/',
   '/locations/dubai/marina/',
   '/locations/dubai/palm-jumeirah/',
+  '/locations/fujairah/',
+  '/locations/ras-al-khaimah/',
   '/locations/sharjah/',
 
   // Personal silo
