@@ -1,0 +1,304 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+
+const faqs = [
+  {
+    question: "Is Egypt a Hague Convention member?",
+    answer: "No. Egypt is not a member of the Hague Apostille Convention. Egyptian documents require the full attestation chain: Egyptian MOFA → UAE Embassy in Cairo → UAE MOFA. There is no apostille shortcut for Egyptian documents."
+  },
+  {
+    question: "Do Egyptian documents need Arabic translation?",
+    answer: "Egyptian documents are already in Arabic, so Arabic-to-Arabic translation isn't needed. However, if the UAE entity requires a fresh Arabic version (different format or typing standard), or if you need English translation for DIFC/ADGM or international purposes, translation is required."
+  },
+  {
+    question: "What about bilingual Egyptian certificates?",
+    answer: "Some Egyptian certificates (especially academic) have Arabic and English. UAE government entities typically require the Arabic version. If only the English version is available, you'll need MOJ Arabic translation. If both languages are on the certificate, the document may be accepted as-is after attestation."
+  },
+  {
+    question: "How long does Egyptian attestation take?",
+    answer: "Egyptian MOFA: 3-5 business days. UAE Embassy in Cairo: 3-7 business days. UAE MOFA: 1-2 business days. Total: approximately 2-3 weeks. Add time if documents need initial authentication from the issuing ministry in Egypt."
+  },
+  {
+    question: "Can I do Egyptian attestation from the UAE?",
+    answer: "The Egyptian MOFA step must be done in Egypt. The UAE Embassy attestation can be done in Cairo. Once documents arrive in the UAE, we handle MOFA attestation and any required MOJ translation. You can use a trusted agent in Egypt for the Egypt-side steps."
+  },
+  {
+    question: "Are Egyptian medical degrees accepted in UAE?",
+    answer: "Egyptian medical degrees from recognized universities (Cairo University, Ain Shams, Alexandria, etc.) are generally accepted. They need the full attestation chain plus MOJ translation, DHA/DOH DataFlow verification, and may require MOHESR equivalency depending on the emirate and specialty."
+  },
+  {
+    question: "What about Al-Azhar University certificates?",
+    answer: "Al-Azhar certificates follow the same attestation path as other Egyptian universities. The certificate must be authenticated by Al-Azhar University first, then Egyptian MOFA, UAE Embassy, and UAE MOFA. MOJ Arabic translation may still be required if the format doesn't match UAE standards."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+  }))
+};
+---
+
+<BaseLayout
+  title="Egyptian Documents UAE Guide | Attestation & Translation"
+  description="Complete guide for Egyptian nationals: attestation chain from Cairo to UAE MOFA, translation requirements, and common issues with Egyptian certificates."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="hero-section bg-dark" data-theme="dark">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">HOME</a>
+        <span class="separator">&gt;</span>
+        <a href="/resources/">RESOURCES</a>
+        <span class="separator">&gt;</span>
+        <span class="current">EGYPTIAN DOCUMENTS</span>
+      </nav>
+
+      <h1>Egyptian Documents for UAE</h1>
+      <p class="hero-subtitle">Attestation & Translation Guide</p>
+      <p class="hero-intro">Egypt is one of the largest source countries for UAE residents. Egyptian documents follow the full attestation chain (no apostille shortcut). This guide covers the complete process, common issues with Egyptian certificates, and when translation is needed for documents already in Arabic.</p>
+
+      <div class="hero-badges">
+        <span class="badge"><i class="fas fa-briefcase"></i> Employment</span>
+        <span class="badge"><i class="fas fa-home"></i> Residency</span>
+        <span class="badge"><i class="fas fa-ring"></i> Family Visa</span>
+        <span class="badge"><i class="fas fa-graduation-cap"></i> Education</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <div class="overview-box">
+        <h2><i class="fas fa-lightbulb"></i> The Short Version</h2>
+        <p>Egyptian documents need the full attestation chain (Egypt is NOT a Hague member):</p>
+        <ol class="quick-list">
+          <li><strong>Issuing authority</strong> authentication in Egypt (ministry or university)</li>
+          <li><strong>Egyptian MOFA</strong> attestation in Cairo</li>
+          <li><strong>UAE Embassy</strong> attestation in Cairo</li>
+          <li><strong>UAE MOFA</strong> attestation once in the UAE</li>
+          <li><strong>MOJ translation</strong> if English or formatting required</li>
+        </ol>
+        <p class="note"><i class="fas fa-clock"></i> Total timeline: 2-3 weeks. Egypt-side steps must be done in Egypt.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Why Egyptian Documents Are Different</h2>
+      <p>Two factors make Egyptian documents unique in the UAE context:</p>
+
+      <div class="factor-cards">
+        <div class="factor">
+          <h3><i class="fas fa-globe-africa"></i> No Hague Convention</h3>
+          <p>Egypt is not a Hague Apostille Convention member. This means Egyptian documents require the full embassy attestation chain. There's no apostille shortcut like there is for <a href="/resources/indian-documents-uae-guide/">Indian</a>, <a href="/resources/us-citizens-dubai-guide/">American</a>, or <a href="/services/attestation/uk/">British</a> documents.</p>
+          <p><strong>Full chain:</strong> Issuing authority → Egyptian MOFA → UAE Embassy in Cairo → UAE MOFA</p>
+        </div>
+        <div class="factor">
+          <h3><i class="fas fa-language"></i> Already in Arabic</h3>
+          <p>Egyptian documents are issued in Arabic. Unlike documents from India, the UK, or the US, they don't automatically need Arabic translation. However, translation may still be required in specific situations (see below).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>When Translation IS Needed</h2>
+      <p>Even though Egyptian documents are in Arabic, translation may be required in these scenarios:</p>
+      <ul>
+        <li><strong>English translation for DIFC/ADGM:</strong> Free zones operating in English need English translation of Egyptian Arabic documents. See our <a href="/resources/difc-translation-guide/">DIFC</a> and <a href="/resources/adgm-translation-requirements/">ADGM</a> guides.</li>
+        <li><strong>Formatting mismatch:</strong> Some UAE entities require a typed Arabic translation even when the original is Arabic, if the original uses handwritten text or a non-standard format.</li>
+        <li><strong>International use:</strong> Egyptian documents going to non-Arabic-speaking countries need English translation.</li>
+        <li><strong>Dual-language certificates:</strong> If the original has both Arabic and English, some entities accept it directly; others require a separate MOJ translation.</li>
+      </ul>
+
+      <h2>When Translation Is NOT Needed</h2>
+      <ul>
+        <li><strong>Government entities:</strong> Standard Egyptian certificates (typed Arabic, modern format) are generally accepted by Dubai Courts, <a href="/resources/adjd-translation-requirements/">ADJD</a>, <a href="/resources/gdrfa-document-requirements/">GDRFA</a>, and other Arabic-language entities after proper attestation.</li>
+        <li><strong>Court submissions:</strong> Arabic Egyptian documents can be submitted to UAE courts after attestation, without additional translation.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Documents by Purpose</h2>
+
+      <h3><i class="fas fa-briefcase"></i> Employment Visa</h3>
+      <ul>
+        <li><a href="/personal/academic/degree/">University degree</a> — full attestation chain (Egyptian MOFA → UAE Embassy → UAE MOFA)</li>
+        <li><a href="/personal/academic/transcripts/">Transcripts</a> — same chain (some professions require <a href="/resources/mohesr-equivalency/">MOHESR equivalency</a>)</li>
+        <li><a href="/personal/immigration/pcc/">Police clearance</a> — from Egyptian Ministry of Interior + attestation chain</li>
+        <li>Professional syndicate registration (doctors, engineers, lawyers) — attestation required</li>
+      </ul>
+
+      <h3><i class="fas fa-users"></i> Family / Spouse Visa</h3>
+      <ul>
+        <li><a href="/personal/vital-records/marriage/">Marriage certificate</a> — from Egyptian Personal Status Court + attestation chain</li>
+        <li><a href="/personal/vital-records/birth/">Birth certificates</a> — from Egyptian Civil Registry + attestation chain</li>
+        <li><a href="/personal/immigration/bank/">Bank statements</a> — MOJ translation if needed</li>
+        <li><a href="/personal/vital-records/divorce/">Divorce decree</a> — from Personal Status Court + attestation chain</li>
+      </ul>
+
+      <h3><i class="fas fa-stethoscope"></i> Healthcare Licensing</h3>
+      <ul>
+        <li>Medical degree — attestation + <a href="/specialized/medical/dha-dataflow/">DataFlow verification</a></li>
+        <li>Medical syndicate registration — attestation</li>
+        <li>Good standing certificate — from Egyptian Medical Syndicate</li>
+        <li>Experience letters — from Egyptian hospitals/clinics + attestation</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Attestation Chain Step by Step</h2>
+
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Issuing Authority Authentication</h3>
+            <p>The document must first be authenticated by its issuing authority in Egypt. For university degrees, this means the university's administration. For civil documents, the relevant Civil Registry or Personal Status Court. For professional certificates, the relevant syndicate.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Egyptian MOFA</h3>
+            <p>The Egyptian Ministry of Foreign Affairs in Cairo attests the document. This confirms the authentication from Step 1 is genuine. Processing: 3-5 business days.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>UAE Embassy in Cairo</h3>
+            <p>The UAE Embassy in Cairo (or the UAE Consulate) attests the Egyptian MOFA stamp. This confirms UAE recognition. Processing: 3-7 business days.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>UAE MOFA + Translation</h3>
+            <p>Once in the UAE, <a href="/services/attestation/mofa/">MOFA attestation</a> completes the chain (1-2 business days). If MOJ Arabic translation or English translation is needed, we handle it same-day.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Common Issues with Egyptian Documents</h2>
+      <ol>
+        <li><strong>Handwritten certificates:</strong> Older Egyptian certificates may be handwritten. UAE entities may require a typed translation even though the document is in Arabic.</li>
+        <li><strong>Name transliteration:</strong> Arabic names on Egyptian documents may transliterate differently to English than on your passport. "Gamal" vs "Jamal," "Ahmed" vs "Ahmad" — the English spelling must match your passport.</li>
+        <li><strong>Civil registry formatting:</strong> Egyptian birth and marriage certificates from smaller governorates may use non-standard formats. UAE entities may request clarification or additional authentication.</li>
+        <li><strong>Military service certificate:</strong> Egyptian males may need military service completion or exemption certificates. These follow the same attestation chain.</li>
+        <li><strong>Missing attestation step:</strong> Skipping the Egyptian MOFA step before going to the UAE Embassy. The chain must be completed in order.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <RelatedServices
+        pageKey="egyptianGuide"
+        title="Related Services"
+        showFamily={true}
+        showCrossSilo={true}
+        maxItems={6}
+      />
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer"><p>{faq.answer}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container cta-section">
+      <h2>Egyptian Document Attestation & Translation</h2>
+      <p>Send your Egyptian documents via WhatsApp. We'll confirm the exact attestation chain, check if translation is needed, and provide a complete quote.</p>
+      <a href="https://wa.me/971508620217?text=I%20have%20Egyptian%20documents%20for%20UAE" class="btn btn-primary">
+        <i class="fab fa-whatsapp"></i> Send Documents for Review
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-section { padding: 8rem 0 4rem; background: var(--primary-color); }
+  .breadcrumb { font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 2rem; }
+  .breadcrumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: #ffffff; }
+  .breadcrumb .separator { margin: 0 0.5rem; color: rgba(255, 255, 255, 0.5); }
+  .breadcrumb .current { color: #ffffff; }
+  h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: #ffffff; }
+  .hero-subtitle { font-size: 1.25rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+  .hero-badges { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+  .badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(255,255,255,0.1); border-radius: 2rem; font-size: 0.85rem; color: rgba(255,255,255,0.9); }
+  .badge i { color: var(--accent-color); }
+  .content-container { max-width: 900px; }
+  .content-container p { line-height: 1.8; margin-bottom: 1rem; }
+  .content-container h2 { font-size: 1.5rem; font-weight: 700; margin: 0 0 1.5rem; }
+  .content-container h3 { font-size: 1.15rem; font-weight: 700; margin: 1.5rem 0 0.75rem; }
+  .content-container ul, .content-container ol { padding-left: 1.5rem; margin: 1rem 0 1.5rem; }
+  .content-container li { margin-bottom: 0.5rem; line-height: 1.7; }
+  .content-container a { color: var(--accent-teal, #0077b6); }
+
+  .overview-box { background: var(--bg-secondary, #f8f9fa); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--accent-color); }
+  .overview-box h2 { display: flex; align-items: center; gap: 0.5rem; }
+  .overview-box h2 i { color: var(--accent-color); }
+  .quick-list { padding-left: 1.5rem; margin: 1rem 0; }
+  .quick-list li { margin-bottom: 0.75rem; }
+  .note { font-size: 0.9rem; color: var(--text-muted); margin-top: 1rem; }
+  .note i { color: var(--accent-color); margin-right: 0.25rem; }
+
+  .factor-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+  .factor { background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--accent-color, #FF1654); }
+  .factor h3 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.75rem; font-size: 1.05rem; }
+  .factor h3 i { color: var(--accent-color); }
+  .factor p { font-size: 0.95rem; line-height: 1.7; margin: 0.5rem 0; }
+
+  .process-steps { display: flex; flex-direction: column; gap: 1.5rem; margin: 1.5rem 0; }
+  .step { display: flex; gap: 1.25rem; align-items: flex-start; }
+  .step-number { width: 40px; height: 40px; border-radius: 50%; background: var(--primary-color, #0E2B48); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+  .step-content h3 { margin: 0 0 0.5rem; font-size: 1.05rem; }
+  .step-content p { font-size: 0.95rem; line-height: 1.7; margin: 0; }
+
+  .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { background: var(--bg-secondary, #f8f9fa); border-radius: 8px; overflow: hidden; }
+  .faq-question { padding: 1rem 1.25rem; font-weight: 600; cursor: pointer; list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; float: right; font-size: 1.25rem; color: var(--accent-color); }
+  .faq-item[open] .faq-question::after { content: '\2212'; }
+  .faq-answer { padding: 0 1.25rem 1rem; }
+  .faq-answer p { margin: 0; line-height: 1.7; }
+  .cta-section { text-align: center; max-width: 600px; margin: 0 auto; padding: 3rem 1.5rem; background: var(--surface-navy, #0a1628); border-radius: 12px; }
+  .cta-section h2 { margin-bottom: 1rem; }
+  .cta-section p { margin-bottom: 2rem; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; }
+  .btn-primary { background: var(--accent-color); color: #ffffff; }
+  @media (max-width: 768px) { .factor-cards { grid-template-columns: 1fr; } }
+</style>
