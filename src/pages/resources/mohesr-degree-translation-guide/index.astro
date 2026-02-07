@@ -1,0 +1,476 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const faqs = [
+  {
+    question: "Do all foreign degrees need MOJ translation for UAE employment?",
+    answer: "Yes, if the degree is in a foreign language and being submitted to a UAE government entity (MOHRE, GDRFA, MOHESR). Private employers may accept certified translation for their internal records, but government submissions always require the MOJ judiciary seal."
+  },
+  {
+    question: "What is the difference between degree translation and MOHESR equivalency?",
+    answer: "Translation converts your degree into Arabic. Equivalency evaluates whether your qualification matches a UAE degree standard. Translation is a document service (we handle this). Equivalency is a government evaluation (MOHESR handles this). Most private-sector jobs need only translation, not equivalency."
+  },
+  {
+    question: "Which professions require MOHESR equivalency in addition to translation?",
+    answer: "Government sector jobs, teaching at MOE-licensed schools, engineering roles requiring Society of Engineers registration, healthcare licensing (DHA, DOH, MOH), Golden Visa skilled worker category, and enrollment in UAE higher education. Private-sector roles in free zones typically do not require equivalency."
+  },
+  {
+    question: "Are degrees from certain universities automatically recognized?",
+    answer: "MOHESR maintains a list of recognized universities and programmes. Degrees from globally ranked institutions generally process faster. However, no degree is automatically exempt from translation. Even a degree from a top-50 university needs MOJ Arabic translation for government submission."
+  },
+  {
+    question: "Can I get my degree translated before attestation is complete?",
+    answer: "We can translate the document, but it will not be accepted by MOHESR or MOHRE without proper attestation. We recommend completing attestation first. The MOJ seal goes on the attested version. Translating an unattested degree means paying for translation twice."
+  },
+  {
+    question: "Do transcripts need separate translation from the degree certificate?",
+    answer: "Yes. The degree certificate and transcripts are separate documents requiring separate translations. Some processes need only the degree translation. Others (MOHESR equivalency, DHA DataFlow, engineering registration) require both. Confirm requirements before translating transcripts to avoid unnecessary cost."
+  },
+  {
+    question: "What about professional certifications (CPA, PMP, ACCA)?",
+    answer: "Professional certifications are separate from academic degrees. They may need translation if an employer or licensing body requests it. However, professional certifications do not go through the MOHESR equivalency process. They follow their own recognition framework."
+  },
+  {
+    question: "How long does MOHESR equivalency take after I submit translated documents?",
+    answer: "Standard processing takes 2-4 weeks after submitting a complete application. Complex cases take longer. Translation itself takes 1 hour through our service. The total timeline depends mostly on attestation (1-3 weeks in your home country) and MOHESR processing."
+  },
+  {
+    question: "Is a provisional degree certificate accepted?",
+    answer: "MOHESR does not accept provisional or temporary degree certificates for equivalency. MOHRE may accept a provisional certificate for initial work permit processing, but the final certificate must be submitted within a specified period. Always clarify this with your employer."
+  },
+  {
+    question: "My degree is bilingual (English and another language). Do I still need translation?",
+    answer: "If one of the languages is Arabic, you may not need translation for the Arabic portion. If the degree is in English and another non-Arabic language, you still need MOJ Arabic translation. The requirement is an Arabic version for government records, regardless of how many languages appear on the original."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+  }))
+};
+---
+
+<BaseLayout
+  title="MOHESR Degree Translation Guide | When You Need It"
+  description="When does your degree need MOJ translation for MOHESR? Guide to translation vs equivalency, pre-recognized universities, and professional licensing."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="hero-section bg-dark" data-theme="dark">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">HOME</a>
+        <span class="separator">&gt;</span>
+        <a href="/resources/">RESOURCES</a>
+        <span class="separator">&gt;</span>
+        <span class="current">MOHESR DEGREE TRANSLATION</span>
+      </nav>
+
+      <h1>MOHESR Degree Translation Guide</h1>
+      <p class="hero-subtitle">When You Actually Need It — And When You Don't</p>
+      <p class="hero-intro">Not every degree needs MOHESR equivalency. Not every job requires more than a translation. This guide helps you identify exactly what your degree needs — translation only, equivalency, or both — so you do not overpay or under-prepare.</p>
+
+      <div class="service-snapshot">
+        <div class="snapshot-item">
+          <i class="fas fa-graduation-cap"></i>
+          <span><strong>Authority:</strong> MOHESR (Federal)</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-stamp"></i>
+          <span><strong>Translation:</strong> MOJ seal required</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-clock"></i>
+          <span><strong>Translation Time:</strong> 1 hour</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-file-alt"></i>
+          <span><strong>Equivalency:</strong> 2-4 weeks (MOHESR)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: The Key Distinction -->
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Translation vs. Equivalency: The Key Distinction</h2>
+      <p>These are two different processes with different purposes. Many people confuse them, leading to unnecessary delays and expense.</p>
+
+      <div class="comparison-grid">
+        <div class="comparison-card">
+          <h3><i class="fas fa-language"></i> MOJ Translation</h3>
+          <p><strong>What it is:</strong> Converting your degree certificate into Arabic with an official judiciary seal.</p>
+          <p><strong>Who does it:</strong> A licensed MOJ translator (we do this).</p>
+          <p><strong>How long:</strong> 1 hour for standard documents.</p>
+          <p><strong>When needed:</strong> Every time a UAE government entity requires your degree. This applies to MOHRE work permits, GDRFA visa applications, and MOHESR equivalency submissions.</p>
+        </div>
+        <div class="comparison-card">
+          <h3><i class="fas fa-balance-scale"></i> MOHESR Equivalency</h3>
+          <p><strong>What it is:</strong> A government evaluation of whether your foreign degree matches a UAE degree standard.</p>
+          <p><strong>Who does it:</strong> MOHESR (Ministry of Higher Education and Scientific Research).</p>
+          <p><strong>How long:</strong> 2-4 weeks after complete submission.</p>
+          <p><strong>When needed:</strong> Government jobs, teaching, regulated professions, Golden Visa, and UAE higher education admission. See the full <a href="/resources/mohesr-equivalency/">MOHESR equivalency guide</a>.</p>
+        </div>
+      </div>
+
+      <div class="info-callout">
+        <i class="fas fa-lightbulb"></i>
+        <div>
+          <strong>The Simple Rule</strong>
+          <p>If your purpose is private-sector employment, you almost certainly need only <a href="/personal/academic/degree/">MOJ translation</a> — not equivalency. If your purpose involves government, teaching, healthcare, or Golden Visa, you likely need both.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: When You Need Translation Only -->
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>When You Need Translation Only (No Equivalency)</h2>
+      <p>Most employees in the UAE private sector fall into this category. Translation alone is sufficient for the following situations.</p>
+
+      <h3>Private-Sector Employment (Mainland)</h3>
+      <p>MOHRE work permit applications require <a href="/personal/academic/degree/">MOJ-certified Arabic translation</a> of your degree. Equivalency is not part of the standard work permit process. Your employer submits the translated degree as proof of qualification level.</p>
+
+      <h3>Free Zone Employment</h3>
+      <p>Free zones like DMCC, JAFZA, DAFZA, and Dubai Internet City have their own employment authorities. Most accept MOJ translation without equivalency. Some smaller free zones accept <a href="/resources/moj-vs-certified/">certified translation</a> for internal records, but MOJ is safer.</p>
+
+      <h3>DIFC and ADGM</h3>
+      <p>Financial free zones follow their own regulatory frameworks. They typically accept degrees based on employer verification, not MOHESR evaluation. Translation may still be required for visa processing through GDRFA.</p>
+
+      <h3>Bank Account Opening</h3>
+      <p>Some UAE banks request degree translation as part of employment verification. MOJ translation satisfies this requirement. No equivalency needed.</p>
+
+      <h3>Tenancy and Personal Use</h3>
+      <p>Landlords, insurance companies, and other private entities sometimes request translated credentials. <a href="/resources/moj-vs-certified/">Certified translation</a> is typically sufficient for private parties. MOJ is not required unless the document goes to a government entity.</p>
+    </div>
+  </section>
+
+  <!-- Section: When You Need Both -->
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>When You Need Both Translation and Equivalency</h2>
+      <p>Certain situations require MOHESR to formally evaluate your degree. In every case, you need MOJ translation first — MOHESR requires it as part of the application.</p>
+
+      <h3>Government Sector Employment</h3>
+      <p>Federal and local government entities (including Abu Dhabi and Dubai government departments) require MOHESR equivalency. This applies to all government roles regardless of the employee's nationality or degree origin.</p>
+
+      <h3>Teaching at MOE-Licensed Schools</h3>
+      <p>The Ministry of Education requires equivalency for teachers at government and government-licensed private schools. International schools with independent curricula (British, American, IB) may not require equivalency, but check with the school directly.</p>
+
+      <h3>Regulated Professional Licensing</h3>
+      <ul class="content-list">
+        <li><strong>Healthcare (DHA, DOH, MOH):</strong> Medical, dental, nursing, and allied health professionals need equivalency plus <a href="/specialized/medical/dha-dataflow/">DHA DataFlow verification</a>. The licensing bodies have their own additional requirements.</li>
+        <li><strong>Engineering:</strong> The Society of Engineers and some projects require equivalency. MOIAT registration may also be necessary.</li>
+        <li><strong>Legal:</strong> Practicing law in UAE courts requires degree equivalency. DIFC and ADGM have separate legal practitioner frameworks.</li>
+      </ul>
+
+      <h3>Golden Visa (Skilled Worker Category)</h3>
+      <p>The <a href="/services/golden-visa-translation/">Golden Visa</a> skilled employee pathway requires MOHESR equivalency as proof of qualification level. The degree must be evaluated at bachelor's level or above. Translation alone does not satisfy this category.</p>
+
+      <h3>UAE Higher Education Admission</h3>
+      <p>Enrolling in a UAE university or postgraduate programme requires MOHESR to evaluate your previous qualification. This confirms your eligibility for the programme level (master's, doctorate).</p>
+    </div>
+  </section>
+
+  <!-- Section: Pre-Recognized Universities -->
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>University Recognition and Processing Speed</h2>
+      <p>MOHESR maintains a database of recognized institutions. How your university ranks in this database affects processing time and outcome.</p>
+
+      <h3>Well-Recognized Institutions</h3>
+      <p>Degrees from globally ranked or well-known accredited universities typically process faster. Examples include universities in the QS World Rankings, Russell Group (UK), IIT system (India), and major US research universities.</p>
+      <p>Faster processing does not mean exemption. You still need <a href="/personal/academic/degree/">MOJ translation</a> and attestation. It simply means the evaluation phase at MOHESR is shorter.</p>
+
+      <h3>Less-Known or Newer Institutions</h3>
+      <p>Degrees from newer universities, smaller private colleges, or recently accredited institutions may take longer to evaluate. MOHESR may request additional documentation such as programme accreditation certificates or university licensing proof.</p>
+
+      <h3>Online and Distance Learning Degrees</h3>
+      <p>MOHESR evaluates distance education degrees on a case-by-case basis. Key factors include the institution's accreditation status, whether the programme includes supervised examinations, and the overall reputation of the distance learning body. Well-established providers like the UK Open University or IGNOU generally receive positive evaluation.</p>
+
+      <h3>Degrees from Closed Institutions</h3>
+      <p>If your university has closed since you graduated, MOHESR may require additional proof. This can include archived transcripts, government records confirming the institution was accredited during your enrolment period, or verification letters from successor institutions.</p>
+    </div>
+  </section>
+
+  <!-- Section: Document Requirements -->
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>What You Need for Each Scenario</h2>
+
+      <h3>For Translation Only (Private Employment)</h3>
+      <ol class="content-list">
+        <li>Original <a href="/personal/academic/degree/">degree certificate</a> — attested (apostille or embassy chain depending on country)</li>
+        <li>MOFA attestation — completed in the UAE</li>
+        <li>MOJ Arabic translation — we handle this in 1 hour</li>
+      </ol>
+      <p><a href="/personal/academic/transcripts/">Transcripts</a> may also need translation if your employer or profession requires them.</p>
+
+      <h3>For Translation + Equivalency</h3>
+      <ol class="content-list">
+        <li>Original degree certificate — attested through the full chain</li>
+        <li>Original <a href="/personal/academic/transcripts/">academic transcripts</a> — attested through the same chain</li>
+        <li>MOFA attestation of both documents</li>
+        <li>MOJ Arabic translation of both documents</li>
+        <li>Emirates ID copy</li>
+        <li>Passport copy</li>
+        <li>Passport-size photograph</li>
+        <li>MOHESR application fee (approximately AED 330)</li>
+      </ol>
+      <p>Full details on the equivalency application process are in our <a href="/resources/mohesr-equivalency/">MOHESR equivalency guide</a>.</p>
+
+      <h3>For Healthcare Licensing</h3>
+      <ol class="content-list">
+        <li>All items from the equivalency list above</li>
+        <li><a href="/specialized/medical/dha-dataflow/">DHA DataFlow</a> primary source verification</li>
+        <li>Good standing certificate from your medical council</li>
+        <li>Professional experience letters — attested and translated</li>
+        <li>Licensing exam results (if applicable)</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Section: Common Mistakes -->
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Common Mistakes to Avoid</h2>
+
+      <div class="mistake-list">
+        <div class="mistake-item">
+          <h3><i class="fas fa-times-circle"></i> Getting Equivalency When You Only Need Translation</h3>
+          <p>Equivalency costs AED 330+, takes 2-4 weeks, and requires extensive documentation. If your private-sector employer only needs a translated degree for MOHRE, equivalency is unnecessary. Ask your employer specifically whether equivalency is required for your role. Read more about <a href="/blog/when-you-dont-need-moj-certification/">when you don't need extra certification</a>.</p>
+        </div>
+
+        <div class="mistake-item">
+          <h3><i class="fas fa-times-circle"></i> Submitting a Provisional Certificate</h3>
+          <p>MOHESR does not accept provisional or temporary degree certificates. If you only have a provisional certificate, contact your university for the final version. MOHRE may accept provisional certificates temporarily, but MOHESR will not.</p>
+        </div>
+
+        <div class="mistake-item">
+          <h3><i class="fas fa-times-circle"></i> Translating Before Attestation</h3>
+          <p>The MOJ seal should go on the attested version of your degree. Translating an unattested document means you pay for translation twice — once now, and again after attestation. Complete attestation first.</p>
+        </div>
+
+        <div class="mistake-item">
+          <h3><i class="fas fa-times-circle"></i> Translating Only the Degree (Not Transcripts)</h3>
+          <p>MOHESR equivalency requires both the degree and transcripts. If you translate only the degree, your application will be incomplete. Confirm requirements before ordering translation to avoid multiple trips.</p>
+        </div>
+
+        <div class="mistake-item">
+          <h3><i class="fas fa-times-circle"></i> Assuming Online Degrees Are Not Accepted</h3>
+          <p>Online and distance degrees from accredited institutions are evaluated by MOHESR. Do not assume yours will be rejected. Submit the application with full documentation. MOHESR evaluates each case on its merits.</p>
+        </div>
+
+        <div class="mistake-item">
+          <h3><i class="fas fa-times-circle"></i> Using Certified Translation Instead of MOJ</h3>
+          <p>MOHESR requires the MOJ judiciary seal. Certified translation with only an agency stamp is not accepted. See our <a href="/resources/moj-vs-certified/">MOJ vs. certified translation</a> comparison to understand the difference.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Decision Flowchart -->
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Quick Decision Guide</h2>
+      <p>Use this checklist to determine what your degree needs.</p>
+
+      <div class="decision-box">
+        <h3>Is your purpose private-sector employment?</h3>
+        <p>If yes: <strong>MOJ translation only.</strong> Attest your <a href="/personal/academic/degree/">degree</a>, get MOFA stamp, then translate. No equivalency needed.</p>
+      </div>
+
+      <div class="decision-box">
+        <h3>Is your purpose government employment?</h3>
+        <p>If yes: <strong>MOJ translation + MOHESR equivalency.</strong> You need both. Start attestation and translation first, then apply for <a href="/resources/mohesr-equivalency/">equivalency</a>.</p>
+      </div>
+
+      <div class="decision-box">
+        <h3>Is your purpose Golden Visa (skilled worker)?</h3>
+        <p>If yes: <strong>MOJ translation + MOHESR equivalency.</strong> The <a href="/services/golden-visa-translation/">Golden Visa</a> skilled pathway requires formal degree evaluation.</p>
+      </div>
+
+      <div class="decision-box">
+        <h3>Is your purpose healthcare licensing?</h3>
+        <p>If yes: <strong>MOJ translation + MOHESR equivalency + <a href="/specialized/medical/dha-dataflow/">DHA DataFlow</a>.</strong> Healthcare has the most requirements of any sector.</p>
+      </div>
+
+      <div class="decision-box">
+        <h3>Is your purpose teaching at a government/MOE school?</h3>
+        <p>If yes: <strong>MOJ translation + MOHESR equivalency.</strong> International schools may differ — confirm with the school.</p>
+      </div>
+
+      <div class="decision-box">
+        <h3>Is your purpose free zone employment (DIFC, ADGM, DMCC)?</h3>
+        <p>If yes: <strong>MOJ translation is usually sufficient.</strong> Free zones have their own credential frameworks. Some accept <a href="/resources/moj-vs-certified/">certified translation</a> for internal use.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Professional Licensing Details -->
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Professional Licensing: Sector-Specific Requirements</h2>
+      <p>Certain regulated professions have requirements beyond standard MOHESR equivalency. Here is a summary by sector.</p>
+
+      <h3>Healthcare</h3>
+      <p>Abu Dhabi (DOH), Dubai (DHA), and federal (MOH) each have their own licensing processes. All require MOHESR equivalency. All also require <a href="/specialized/medical/dha-dataflow/">DataFlow primary source verification</a>. Additional requirements include good standing certificates, experience verification, and possibly licensing examinations.</p>
+
+      <h3>Engineering</h3>
+      <p>The UAE Society of Engineers requires degree equivalency for registration. Some engineering projects also require MOIAT (Ministry of Industry and Advanced Technology) approval. The degree must be from an accredited engineering programme. Washington Accord membership helps but does not guarantee automatic recognition.</p>
+
+      <h3>Education</h3>
+      <p>Teachers at MOE-licensed schools need equivalency. KHDA-regulated schools in Dubai may have different requirements. International schools often evaluate degrees internally. ADEK (Abu Dhabi Department of Education and Knowledge) regulates schools in Abu Dhabi.</p>
+
+      <h3>Legal</h3>
+      <p>Practicing law in UAE courts requires degree equivalency and additional licensing through the Ministry of Justice. DIFC Courts and ADGM Courts have separate frameworks for legal practitioners.</p>
+
+      <h3>Accounting and Audit</h3>
+      <p>Registered auditors need degree equivalency. Professional certifications (ACCA, CPA, CMA) are evaluated separately. The Ministry of Economy regulates audit firms and practitioners.</p>
+    </div>
+  </section>
+
+  <!-- Section: Cost and Timeline -->
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Cost and Timeline Overview</h2>
+
+      <div class="timeline-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Approximate Cost</th>
+              <th>Timeline</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Home country attestation / apostille</td>
+              <td>Varies by country</td>
+              <td>5-15 business days</td>
+            </tr>
+            <tr>
+              <td>UAE MOFA attestation</td>
+              <td>AED 150-200</td>
+              <td>1-2 business days</td>
+            </tr>
+            <tr>
+              <td>MOJ translation (degree)</td>
+              <td>AED 150+</td>
+              <td>1 hour</td>
+            </tr>
+            <tr>
+              <td>MOJ translation (transcripts)</td>
+              <td>AED 150+ per document</td>
+              <td>1-2 hours</td>
+            </tr>
+            <tr>
+              <td>MOHESR equivalency application</td>
+              <td>AED 330</td>
+              <td>2-4 weeks</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>Translation only:</strong> AED 150+ per document, completed same day. <strong>Translation + equivalency:</strong> Add AED 330 and 2-4 weeks for the MOHESR evaluation. Attestation costs and timelines are separate and vary by nationality.</p>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer"><p>{faq.answer}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-white">
+    <div class="container cta-section">
+      <h2>Not Sure What Your Degree Needs?</h2>
+      <p>Send your degree certificate via WhatsApp. We will tell you whether you need translation only, equivalency, or both — based on your specific role and employer.</p>
+      <a href="https://wa.me/971508620217?text=I%20need%20guidance%20on%20MOHESR%20degree%20translation%20requirements" class="btn btn-primary" aria-label="Send degree for review via WhatsApp">
+        <i class="fab fa-whatsapp"></i> Send Your Degree for Review
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-section { padding: 8rem 0 4rem; background: var(--primary-color); }
+  .breadcrumb { font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 2rem; }
+  .breadcrumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: #ffffff; }
+  .breadcrumb .separator { margin: 0 0.5rem; color: rgba(255, 255, 255, 0.5); }
+  .breadcrumb .current { color: #ffffff; }
+  h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: #ffffff; }
+  .hero-subtitle { font-size: 1.25rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+  .hero-intro { color: rgba(255,255,255,0.9); font-size: var(--fs-md); line-height: 1.8; max-width: 720px; }
+  .content-container { max-width: 900px; }
+  .content-container p { line-height: 1.8; margin-bottom: 1rem; }
+  .content-container h2 { font-size: 1.5rem; font-weight: 700; margin: 0 0 1.5rem; }
+  .content-container h3 { font-size: 1.15rem; font-weight: 700; margin: 1.5rem 0 0.75rem; }
+  .content-container ul, .content-container ol { padding-left: 1.5rem; margin: 1rem 0 1.5rem; }
+  .content-container li { margin-bottom: 0.5rem; line-height: 1.7; }
+  .content-container a { color: var(--accent-teal, #0077b6); }
+  .service-snapshot { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; }
+  .snapshot-item { display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.9); }
+  .snapshot-item i { font-size: 1.25rem; color: var(--accent-color); }
+  .info-callout { display: flex; gap: 1rem; background: #fffbeb; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #f59e0b; margin: 2rem 0; }
+  .info-callout i { font-size: 1.5rem; color: #f59e0b; flex-shrink: 0; }
+  .info-callout strong { color: var(--primary-color); display: block; margin-bottom: 0.25rem; }
+  .info-callout p { margin: 0.5rem 0 0; line-height: 1.7; }
+  .comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+  .comparison-card { background: var(--bg-secondary, #f8f9fa); padding: 1.5rem; border-radius: 8px; border-top: 3px solid #0077b6; }
+  .comparison-card h3 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 1rem; font-size: 1.1rem; }
+  .comparison-card h3 i { color: #0077b6; }
+  .comparison-card p { font-size: 0.95rem; margin-bottom: 0.75rem; }
+  .mistake-list { display: flex; flex-direction: column; gap: 1.25rem; margin: 1.5rem 0; }
+  .mistake-item { background: #fff; padding: 1.25rem; border-radius: 8px; border-left: 4px solid #ef4444; }
+  .mistake-item h3 { font-size: 1rem; margin: 0 0 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+  .mistake-item h3 i { color: #ef4444; }
+  .mistake-item p { margin: 0; font-size: 0.95rem; line-height: 1.7; }
+  .decision-box { background: var(--bg-secondary, #f8f9fa); padding: 1.25rem 1.5rem; border-radius: 8px; margin-bottom: 1rem; border-left: 4px solid #0077b6; }
+  .decision-box h3 { font-size: 1rem; margin: 0 0 0.5rem; }
+  .decision-box p { margin: 0; line-height: 1.7; }
+  .timeline-table { overflow-x: auto; margin: 1.5rem 0; }
+  .timeline-table table { width: 100%; border-collapse: collapse; background: var(--bg-secondary, #f8f9fa); border-radius: 8px; overflow: hidden; }
+  .timeline-table th { background: var(--surface-navy, #0E2B48); color: #fff; padding: 0.75rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem; }
+  .timeline-table td { padding: 0.75rem 1rem; border-bottom: 1px solid #e2e8f0; font-size: 0.9rem; }
+  .timeline-table tr:last-child td { border-bottom: none; }
+  .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { background: var(--bg-secondary, #f8f9fa); border-radius: 8px; overflow: hidden; }
+  .faq-question { padding: 1rem 1.25rem; font-weight: 600; cursor: pointer; list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; float: right; font-size: 1.25rem; color: var(--accent-color); }
+  .faq-item[open] .faq-question::after { content: '\2212'; }
+  .faq-answer { padding: 0 1.25rem 1rem; }
+  .faq-answer p { margin: 0; line-height: 1.7; }
+  .cta-section { text-align: center; max-width: 600px; margin: 0 auto; padding: 3rem 1.5rem; background: var(--surface-navy, #0a1628); border-radius: 12px; }
+  .cta-section h2 { margin-bottom: 1rem; }
+  .cta-section p { margin-bottom: 2rem; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; }
+  .btn-primary { background: var(--accent-color); color: #ffffff; }
+  @media (max-width: 768px) {
+    .service-snapshot { flex-direction: column; }
+    .comparison-grid { grid-template-columns: 1fr; }
+  }
+</style>

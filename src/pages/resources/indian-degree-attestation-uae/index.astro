@@ -1,0 +1,759 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const faqs = [
+  {
+    question: "Do I need to come to UAE for Indian degree attestation?",
+    answer: "No. The entire Indian attestation chain happens in India. You get university verification, HRD attestation, and MEA apostille in India before traveling to UAE. Only the UAE translation and MOFA steps happen after arrival."
+  },
+  {
+    question: "What is HRD attestation and why is it required?",
+    answer: "HRD (Human Resource Development) is the state-level education department in India. They verify your degree was issued by a recognized university in that state. This step is mandatory before MEA apostille. Without HRD, MEA will reject your document."
+  },
+  {
+    question: "Can I skip the HRD step and go directly to MEA?",
+    answer: "No. MEA requires HRD attestation as proof that your state education authority verified the degree. The attestation chain must follow the exact order: university, HRD, MEA. Skipping any step invalidates the entire chain."
+  },
+  {
+    question: "How long does Indian degree attestation take in total?",
+    answer: "University verification takes 3-7 days. HRD attestation takes 2-15 days depending on the state. MEA apostille takes 1-3 days. UAE translation takes 1 hour. UAE MOFA attestation takes 1-2 days. Total timeline: 1-4 weeks before submission-ready."
+  },
+  {
+    question: "Does my degree need MOHESR equivalency or just translation?",
+    answer: "For private-sector employment, you need only translation. For government jobs, teaching, healthcare licensing, or Golden Visa, you need both translation and MOHESR equivalency. Your employer or licensing body determines the requirement."
+  },
+  {
+    question: "What is the difference between apostille and attestation?",
+    answer: "Apostille is the international certificate India issues for documents going to Hague Convention countries like UAE. Attestation is the older embassy-based process India no longer uses. Since India joined the Hague Convention in 2005, all UAE-bound documents use MEA apostille."
+  },
+  {
+    question: "Which HRD office do I approach for my degree?",
+    answer: "The HRD office in the state where your university is located. If you studied in Maharashtra, approach Maharashtra HRD. If you studied in Tamil Nadu, approach Tamil Nadu HRD. Using the wrong state HRD will cause rejection."
+  },
+  {
+    question: "Can online degrees from Indian universities be attested?",
+    answer: "Yes, if the university is UGC-recognized and the degree is from an approved distance learning program. IITs, IGNOU, and major universities with valid distance programs are accepted. However, MOHESR may scrutinize distance degrees more closely during equivalency."
+  },
+  {
+    question: "What happens if my name spelling differs on degree and passport?",
+    answer: "MOHESR and MOHRE reject documents with name mismatches. If your degree says Suresh Kumar but your passport says Suresh Kumarr, get a name affidavit from India attested alongside your degree. The translation will use your exact passport spelling."
+  },
+  {
+    question: "Do I need to attest transcripts along with the degree certificate?",
+    answer: "For MOHRE work permits, often only the degree certificate is required. For MOHESR equivalency, both degree and transcripts are mandatory. For DHA healthcare licensing, both are required. Confirm requirements before paying for double attestation."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<BaseLayout
+  title="Indian Degree Attestation for UAE | Complete Guide"
+  description="Indian degree attestation for UAE work permits and Golden Visa. MEA apostille, translation, and MOHESR equivalency. Step-by-step guide with costs."
+>
+  <Fragment slot="head">
+    <meta name="keywords" content="Indian degree attestation UAE, MEA apostille, HRD attestation, Indian degree translation Dubai, MOHESR equivalency India, MOHRE degree attestation, Golden Visa Indian degree" />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="hero-section bg-dark" data-theme="dark">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">HOME</a>
+        <span class="separator">&gt;</span>
+        <a href="/resources/">RESOURCES</a>
+        <span class="separator">&gt;</span>
+        <span class="current">INDIAN DEGREE ATTESTATION</span>
+      </nav>
+
+      <div class="badge">NATIONALITY GUIDE</div>
+      <h1>Indian Degree Attestation for UAE</h1>
+      <p class="hero-subtitle">MEA Apostille, Translation, and MOHESR — Complete Process</p>
+      <p class="hero-intro">With 4.75 million Indians in the UAE, Indian degrees make up the largest share of foreign credentials. India joined the Hague Convention in 2005, simplifying the attestation process. This guide covers every step from university verification to UAE submission.</p>
+
+      <div class="service-snapshot">
+        <div class="snapshot-item">
+          <i class="fas fa-check-circle"></i>
+          <span><strong>India:</strong> Hague member since 2005</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-stamp"></i>
+          <span><strong>MEA apostille</strong> replaces embassy chain</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-university"></i>
+          <span><strong>HRD attestation</strong> is mandatory</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-language"></i>
+          <span><strong>MOJ translation</strong> required in UAE</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>India's Hague Convention Status</h2>
+      <p>India acceded to the Hague Convention on July 14, 2005. Since then, all Indian documents going to Hague member countries use the apostille system instead of embassy attestation.</p>
+
+      <p>The MEA (Ministry of External Affairs) in India issues the apostille. This single certificate replaces the old process of UAE Embassy attestation in India. The UAE accepts MEA apostille for Indian documents, simplifying the process significantly.</p>
+
+      <div class="info-callout">
+        <i class="fas fa-lightbulb"></i>
+        <div>
+          <strong>What This Means Practically</strong>
+          <p>You no longer need to visit the UAE Embassy in India for degree attestation. After HRD attestation, you go directly to MEA for apostille. This saves 1-2 weeks compared to the pre-2005 process.</p>
+        </div>
+      </div>
+
+      <p>However, the UAE is NOT a Hague member. This means when you arrive in UAE with your apostilled degree, you still need MOFA attestation for government submissions. Learn more about <a href="/services/attestation/">UAE attestation requirements</a>.</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>The Attestation Chain for Indian Degrees</h2>
+      <p>Indian degree attestation follows a strict five-step sequence. Each step must be completed in order before the next will accept your document.</p>
+
+      <div class="attestation-chain">
+        <div class="chain-steps">
+          <div class="chain-step">
+            <span class="step-num">1</span>
+            <div class="step-content">
+              <strong>University Verification</strong>
+              <p>Your university registrar verifies the degree certificate is genuine. Most universities require an appointment. Processing takes 3-7 business days. The registrar stamps and signs the back of your certificate.</p>
+            </div>
+          </div>
+          <div class="chain-arrow"><i class="fas fa-arrow-down"></i></div>
+          <div class="chain-step">
+            <span class="step-num">2</span>
+            <div class="step-content">
+              <strong>HRD Attestation (State-Level)</strong>
+              <p>The state HRD office attests the university's verification. You must use the HRD in the state where your university is located. Maharashtra HRD for Mumbai University, Tamil Nadu HRD for Anna University, etc. Processing: 2-15 days depending on state.</p>
+            </div>
+          </div>
+          <div class="chain-arrow"><i class="fas fa-arrow-down"></i></div>
+          <div class="chain-step">
+            <span class="step-num">3</span>
+            <div class="step-content">
+              <strong>MEA Apostille (Federal)</strong>
+              <p>The Ministry of External Affairs issues the apostille certificate. This can be done at MEA offices in Delhi, Mumbai, Chandigarh, Kolkata, or Hyderabad. Cost: approximately INR 50. Processing: 1-3 business days. Online application available.</p>
+            </div>
+          </div>
+          <div class="chain-arrow"><i class="fas fa-arrow-down"></i></div>
+          <div class="chain-step">
+            <span class="step-num">4</span>
+            <div class="step-content">
+              <strong>Arabic Translation in UAE</strong>
+              <p>The fully-attested degree must be translated into Arabic by an MOJ-licensed translator in UAE. This is required for MOHRE, GDRFA, and MOHESR submissions. The translation includes all stamps and signatures from steps 1-3. See our <a href="/personal/academic/degree/">degree translation service</a>.</p>
+            </div>
+          </div>
+          <div class="chain-arrow"><i class="fas fa-arrow-down"></i></div>
+          <div class="chain-step">
+            <span class="step-num">5</span>
+            <div class="step-content">
+              <strong>UAE MOFA Attestation (If Required)</strong>
+              <p>Some entities require MOFA attestation of the original apostilled degree. This is common for Golden Visa and MOHESR equivalency. Not all MOHRE employers require this step. Confirm with your receiving entity. Learn about <a href="/services/attestation/mofa/">MOFA attestation</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="warning-note">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div>
+          <strong>Critical Order:</strong> You cannot skip steps or complete them out of order. MEA will reject documents without HRD attestation. UAE authorities will reject documents without MEA apostille. The chain is unbreakable.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Which Indian Degrees Need Attestation</h2>
+      <p>The attestation requirement depends on where you will submit your degree in UAE. Private employers have different requirements than government entities.</p>
+
+      <div class="use-case-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Use Case</th>
+              <th>Attestation Required</th>
+              <th>Translation Required</th>
+              <th>MOHESR Equivalency</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>MOHRE Work Permit (Private Sector)</strong></td>
+              <td>Full chain (University → HRD → MEA)</td>
+              <td>MOJ legal translation</td>
+              <td>Not required</td>
+            </tr>
+            <tr>
+              <td><strong>MOHRE Work Permit (Government Sector)</strong></td>
+              <td>Full chain + MOFA</td>
+              <td>MOJ legal translation</td>
+              <td>Required</td>
+            </tr>
+            <tr>
+              <td><strong>Golden Visa (Education Category)</strong></td>
+              <td>Full chain + MOFA</td>
+              <td>MOJ legal translation</td>
+              <td>Required</td>
+            </tr>
+            <tr>
+              <td><strong>DHA Healthcare Licensing</strong></td>
+              <td>Full chain + MOFA</td>
+              <td>MOJ legal translation</td>
+              <td>Required + DataFlow</td>
+            </tr>
+            <tr>
+              <td><strong>KHDA School Teaching</strong></td>
+              <td>Full chain + MOFA</td>
+              <td>MOJ legal translation</td>
+              <td>Varies by school</td>
+            </tr>
+            <tr>
+              <td><strong>Private Employer HR Records</strong></td>
+              <td>Often not required</td>
+              <td>Certified translation</td>
+              <td>Not required</td>
+            </tr>
+            <tr>
+              <td><strong>UAE University Admission</strong></td>
+              <td>Full chain + MOFA</td>
+              <td>MOJ legal translation</td>
+              <td>Required</td>
+            </tr>
+            <tr>
+              <td><strong>Free Zone Employment (DMCC, DAFZA, etc.)</strong></td>
+              <td>Full chain</td>
+              <td>MOJ legal translation</td>
+              <td>Not required</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Most Indian degree holders in UAE need full attestation for MOHRE work permits. Learn about <a href="/resources/mohesr-degree-translation-guide/">when you need MOHESR equivalency</a> vs translation only.</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>HRD Attestation by Indian State</h2>
+      <p>Each Indian state has its own HRD office with different procedures and processing times. You must use the HRD in the state where your university is located.</p>
+
+      <div class="state-hrd-list">
+        <div class="state-card">
+          <h3><i class="fas fa-map-marker-alt"></i> Maharashtra (Mumbai, Pune)</h3>
+          <ul>
+            <li><strong>Office:</strong> Commissioner of State Excise, Mumbai</li>
+            <li><strong>Processing:</strong> 7-10 business days</li>
+            <li><strong>Note:</strong> High volume of applications. Book appointment in advance. Mumbai University, Pune University, SNDT, VJTI degrees processed here.</li>
+          </ul>
+        </div>
+
+        <div class="state-card">
+          <h3><i class="fas fa-map-marker-alt"></i> Delhi NCR</h3>
+          <ul>
+            <li><strong>Office:</strong> Home Department, Delhi Secretariat</li>
+            <li><strong>Processing:</strong> 3-5 business days</li>
+            <li><strong>Note:</strong> Relatively faster than other states. Delhi University, JNU, Jamia degrees processed here.</li>
+          </ul>
+        </div>
+
+        <div class="state-card">
+          <h3><i class="fas fa-map-marker-alt"></i> Karnataka (Bangalore)</h3>
+          <ul>
+            <li><strong>Office:</strong> Commissioner for Public Instruction, Bangalore</li>
+            <li><strong>Processing:</strong> 5-7 business days</li>
+            <li><strong>Note:</strong> Bangalore University, Manipal, VTU, Christ University degrees processed here.</li>
+          </ul>
+        </div>
+
+        <div class="state-card">
+          <h3><i class="fas fa-map-marker-alt"></i> Tamil Nadu (Chennai)</h3>
+          <ul>
+            <li><strong>Office:</strong> Directorate of School Education, Chennai</li>
+            <li><strong>Processing:</strong> 5-8 business days</li>
+            <li><strong>Note:</strong> Anna University, Madras University, VIT, SRM degrees processed here.</li>
+          </ul>
+        </div>
+
+        <div class="state-card">
+          <h3><i class="fas fa-map-marker-alt"></i> Kerala</h3>
+          <ul>
+            <li><strong>Office:</strong> Directorate of Higher Secondary Education, Thiruvananthapuram</li>
+            <li><strong>Processing:</strong> 10-15 business days</li>
+            <li><strong>Note:</strong> Slower processing. Kerala University, Calicut University, Cochin University degrees processed here.</li>
+          </ul>
+        </div>
+
+        <div class="state-card">
+          <h3><i class="fas fa-map-marker-alt"></i> Gujarat (Ahmedabad)</h3>
+          <ul>
+            <li><strong>Office:</strong> Commissioner of Higher Education, Gandhinagar</li>
+            <li><strong>Processing:</strong> 5-7 business days</li>
+            <li><strong>Note:</strong> Gujarat University, DAIICT, PDPU, Nirma degrees processed here.</li>
+          </ul>
+        </div>
+
+        <div class="state-card">
+          <h3><i class="fas fa-map-marker-alt"></i> Telangana & Andhra Pradesh (Hyderabad)</h3>
+          <ul>
+            <li><strong>Office:</strong> Commissioner of Intermediate Education</li>
+            <li><strong>Processing:</strong> 7-10 business days</li>
+            <li><strong>Note:</strong> Osmania University, JNTU, University of Hyderabad degrees processed here.</li>
+          </ul>
+        </div>
+
+        <div class="state-card">
+          <h3><i class="fas fa-map-marker-alt"></i> Uttar Pradesh</h3>
+          <ul>
+            <li><strong>Office:</strong> Directorate of Higher Education, Lucknow</li>
+            <li><strong>Processing:</strong> 10-15 business days</li>
+            <li><strong>Note:</strong> Lucknow University, Allahabad University, BHU, AMU degrees processed here.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="info-callout">
+        <i class="fas fa-info-circle"></i>
+        <div>
+          <strong>Using Agents in India</strong>
+          <p>Many applicants use document clearing agents in India to handle the HRD and MEA process. Agents charge INR 3,000-8,000 depending on urgency. They handle queuing, submissions, and follow-ups. If you are already in UAE, an agent may be necessary.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>MEA Apostille Process</h2>
+      <p>After HRD attestation, your degree goes to the Ministry of External Affairs for apostille. MEA has offices in five cities and accepts online applications.</p>
+
+      <h3>MEA Apostille Locations</h3>
+      <ul>
+        <li><strong>Delhi:</strong> MEA, Patiala House Annexe, Tilak Marg</li>
+        <li><strong>Mumbai:</strong> MEA Branch Secretariat, BKC</li>
+        <li><strong>Chandigarh:</strong> MEA Branch Secretariat, Sector 9</li>
+        <li><strong>Kolkata:</strong> MEA Branch Secretariat, Panchanan Tala Lane</li>
+        <li><strong>Hyderabad:</strong> MEA Branch Secretariat, Begumpet</li>
+      </ul>
+
+      <h3>MEA Application Process</h3>
+      <div class="process-steps">
+        <div class="process-step">
+          <span class="step-num">1</span>
+          <div class="step-content">
+            <strong>Submit Documents</strong>
+            <p>Original degree with HRD attestation, photocopy of degree, photocopy of passport. Walk-in or online application via MEA e-Sanad portal.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <span class="step-num">2</span>
+          <div class="step-content">
+            <strong>Pay Fee</strong>
+            <p>Apostille fee is approximately INR 50 per document. Payment via cash counter or online payment gateway.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <span class="step-num">3</span>
+          <div class="step-content">
+            <strong>Collect Apostilled Document</strong>
+            <p>Processing takes 1-3 business days. You receive your original degree with the MEA apostille certificate attached. This certificate has a unique QR code for verification.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Online MEA Application (e-Sanad Portal)</h3>
+      <p>MEA allows online apostille applications through the e-Sanad portal. You upload scanned documents and pay online. After approval, you mail the original documents to MEA. They apostille and return via courier. This option works if you are outside India.</p>
+
+      <div class="info-callout">
+        <i class="fas fa-check-circle"></i>
+        <div>
+          <strong>MEA Apostille Validity</strong>
+          <p>The MEA apostille has no expiration date. Once apostilled, your degree remains valid indefinitely for UAE submissions. However, some UAE entities may request recent attestation if the document is very old.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Translation Requirements in UAE</h2>
+      <p>After completing the Indian attestation chain, you need Arabic translation in UAE. Translation happens AFTER attestation, not before.</p>
+
+      <h3>When MOJ Translation is Required</h3>
+      <p>Any document submitted to a UAE government entity needs MOJ-certified legal translation. This includes MOHRE, GDRFA, MOHESR, DHA, KHDA, and MOFA. The MOJ seal confirms the translation is from a licensed translator recognized by UAE courts.</p>
+
+      <p>Private employers may accept <a href="/resources/moj-vs-certified/">certified translation</a> for internal HR records. However, the MOHRE work permit application requires MOJ translation. To avoid paying twice, get MOJ translation from the start.</p>
+
+      <h3>What the Translator Translates</h3>
+      <p>The MOJ translator translates your entire degree certificate including university seal, signatures, degree title, major, grades, and issue date. The translation also includes notation of all attestation stamps: university registrar, HRD, and MEA apostille.</p>
+
+      <p>The final document is your original degree with translation attached and the MOJ seal. MOHRE, MOHESR, and GDRFA accept this combined document.</p>
+
+      <h3>Name Transliteration</h3>
+      <p>Indian names often have multiple English transliterations. Suresh Kumar might become سوريش كومار or سريش قمار depending on the translator. This causes problems if the Arabic spelling doesn't match other translated documents.</p>
+
+      <div class="warning-note">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div>
+          <strong>Critical Name Matching Rule:</strong> Before translation, provide your passport copy to the translator. Insist they use the exact Arabic spelling from your UAE visa or Emirates ID. If this is your first UAE document, confirm the spelling matches your <a href="/personal/vital-records/birth/">birth certificate translation</a> if you have one.
+        </div>
+      </div>
+
+      <p>We provide <a href="/personal/academic/degree/">MOJ degree translation</a> with name consistency verification. We check your existing UAE documents to ensure uniform spelling across all submissions.</p>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Common Rejection Reasons</h2>
+      <p>MOHRE and MOHESR reject thousands of Indian degrees each year. Most rejections stem from attestation errors or translation issues. Here are the top causes.</p>
+
+      <div class="rejection-list">
+        <div class="rejection-card">
+          <div class="rejection-header">
+            <span class="rejection-icon"><i class="fas fa-times-circle"></i></span>
+            <h3>HRD Stamp Missing or Wrong State</h3>
+          </div>
+          <p><strong>The Problem:</strong> Applicant skipped HRD attestation or used the wrong state HRD office. MEA apostille is present but HRD is missing.</p>
+          <div class="solution">
+            <strong>Solution:</strong> You cannot add HRD attestation after MEA apostille. The document must be redone from step 1. Always complete HRD before MEA.
+          </div>
+        </div>
+
+        <div class="rejection-card">
+          <div class="rejection-header">
+            <span class="rejection-icon"><i class="fas fa-times-circle"></i></span>
+            <h3>University Not UGC-Recognized</h3>
+          </div>
+          <p><strong>The Problem:</strong> The degree is from a university not on the UGC (University Grants Commission) recognized list. MOHESR checks all Indian universities against the UGC database.</p>
+          <div class="solution">
+            <strong>Solution:</strong> Check the UGC website before starting attestation. Degrees from unrecognized universities will not pass MOHESR equivalency. Some may still be accepted for MOHRE work permits if HRD attested.
+          </div>
+        </div>
+
+        <div class="rejection-card">
+          <div class="rejection-header">
+            <span class="rejection-icon"><i class="fas fa-times-circle"></i></span>
+            <h3>MEA Apostille Doesn't Match Degree Name</h3>
+          </div>
+          <p><strong>The Problem:</strong> The degree certificate says "Suresh Kumar" but the MEA apostille document list says "Suresh K." MOHESR flags this as a mismatch.</p>
+          <div class="solution">
+            <strong>Solution:</strong> When applying for MEA apostille, ensure the document description exactly matches the degree certificate. Review the apostille certificate before leaving MEA office.
+          </div>
+        </div>
+
+        <div class="rejection-card">
+          <div class="rejection-header">
+            <span class="rejection-icon"><i class="fas fa-times-circle"></i></span>
+            <h3>Translation Name Doesn't Match Passport</h3>
+          </div>
+          <p><strong>The Problem:</strong> The Arabic translation uses a different name spelling than the passport. This is the most common rejection reason.</p>
+          <div class="solution">
+            <strong>Solution:</strong> Provide passport copy to translator. Insist on exact match. If your passport says "Suresh Kumar" with space, the translation should not combine as "SureshKumar" in English back-translation.
+          </div>
+        </div>
+
+        <div class="rejection-card">
+          <div class="rejection-header">
+            <span class="rejection-icon"><i class="fas fa-times-circle"></i></span>
+            <h3>Distance Learning Degree Without Proper Documentation</h3>
+          </div>
+          <p><strong>The Problem:</strong> The degree is from a recognized university's distance learning program, but MOHESR questions whether it meets in-person exam requirements.</p>
+          <div class="solution">
+            <strong>Solution:</strong> Submit additional documents showing the program was UGC-approved distance learning with supervised examinations. IGNOU, DDE degrees from major universities, and correspondence degrees from the 1990s face extra scrutiny. See our <a href="/resources/distance-education-uae/">distance education guide</a>.
+          </div>
+        </div>
+
+        <div class="rejection-card">
+          <div class="rejection-header">
+            <span class="rejection-icon"><i class="fas fa-times-circle"></i></span>
+            <h3>Provisional Certificate Submitted Instead of Final Degree</h3>
+          </div>
+          <p><strong>The Problem:</strong> Applicant submitted provisional certificate because final degree not issued yet. MOHESR does not accept provisional.</p>
+          <div class="solution">
+            <strong>Solution:</strong> Wait for final degree before starting attestation. MOHRE may accept provisional temporarily, but you must submit final degree within a specified period. MOHESR equivalency requires final degree only.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Cost Breakdown</h2>
+      <p>Indian degree attestation costs depend on whether you handle it yourself or use agents. Here is the typical breakdown for 2026.</p>
+
+      <div class="cost-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Self (DIY)</th>
+              <th>Using Agent in India</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>University Verification</strong></td>
+              <td>INR 200-500</td>
+              <td>Included in agent fee</td>
+              <td>University fees vary</td>
+            </tr>
+            <tr>
+              <td><strong>HRD Attestation</strong></td>
+              <td>INR 500-2000</td>
+              <td>Included in agent fee</td>
+              <td>Varies by state</td>
+            </tr>
+            <tr>
+              <td><strong>MEA Apostille</strong></td>
+              <td>INR 50</td>
+              <td>Included in agent fee</td>
+              <td>Fixed government fee</td>
+            </tr>
+            <tr>
+              <td><strong>Agent Service Fee</strong></td>
+              <td>N/A</td>
+              <td>INR 3,000-8,000</td>
+              <td>Depends on urgency</td>
+            </tr>
+            <tr>
+              <td><strong>Courier Within India</strong></td>
+              <td>INR 300-800</td>
+              <td>Included in agent fee</td>
+              <td>If outside the city</td>
+            </tr>
+            <tr>
+              <td><strong>International Courier to UAE</strong></td>
+              <td>INR 2,000-4,000</td>
+              <td>INR 2,000-4,000</td>
+              <td>DHL, FedEx recommended</td>
+            </tr>
+            <tr>
+              <td><strong>MOJ Translation in UAE</strong></td>
+              <td colspan="2">AED 150+</td>
+              <td>Per degree certificate</td>
+            </tr>
+            <tr>
+              <td><strong>UAE MOFA Attestation</strong></td>
+              <td colspan="2">AED 150-200</td>
+              <td>If required by employer</td>
+            </tr>
+            <tr>
+              <td><strong>MOHESR Equivalency</strong></td>
+              <td colspan="2">AED 330</td>
+              <td>Only if needed</td>
+            </tr>
+            <tr class="total-row">
+              <td><strong>TOTAL (Approximate)</strong></td>
+              <td><strong>INR 4,000-8,000 + AED 300-500</strong></td>
+              <td><strong>INR 8,000-15,000 + AED 300-500</strong></td>
+              <td>Excludes MOHESR if not needed</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="info-callout">
+        <i class="fas fa-calculator"></i>
+        <div>
+          <strong>Cost Optimization Tip</strong>
+          <p>If you need both degree and <a href="/personal/academic/transcripts/">transcript attestation</a>, do both together. Agent fees are often discounted for multiple documents. Translation in UAE is charged per document, so confirm if both are required before ordering.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p set:html={faq.answer} />
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-dark cta-section" data-theme="dark">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Need Indian Degree Translation in UAE?</h2>
+        <p>We provide MOJ-certified translation for Indian degrees with name consistency verification. Send your apostilled degree via WhatsApp for review and quote.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/971508620217?text=I%20need%20Indian%20degree%20translation%20for%20UAE" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i> WhatsApp: +971 50 862 0217
+          </a>
+          <a href="mailto:info@onlinetranslation.ae" class="btn btn-secondary">
+            <i class="fas fa-envelope"></i> info@onlinetranslation.ae
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Related Resources</h2>
+      <div class="related-links">
+        <a href="/personal/academic/degree/" class="related-link">
+          <i class="fas fa-graduation-cap"></i>
+          <span>Degree Certificate Translation</span>
+        </a>
+        <a href="/personal/academic/transcripts/" class="related-link">
+          <i class="fas fa-list-alt"></i>
+          <span>Academic Transcript Translation</span>
+        </a>
+        <a href="/resources/mohesr-degree-translation-guide/" class="related-link">
+          <i class="fas fa-certificate"></i>
+          <span>MOHESR Translation Guide</span>
+        </a>
+        <a href="/resources/mohesr-equivalency/" class="related-link">
+          <i class="fas fa-balance-scale"></i>
+          <span>MOHESR Equivalency Process</span>
+        </a>
+        <a href="/services/attestation/india/" class="related-link">
+          <i class="fas fa-flag"></i>
+          <span>India Attestation Services</span>
+        </a>
+        <a href="/services/golden-visa-translation/" class="related-link">
+          <i class="fas fa-passport"></i>
+          <span>Golden Visa Translation</span>
+        </a>
+        <a href="/resources/distance-education-uae/" class="related-link">
+          <i class="fas fa-laptop"></i>
+          <span>Distance Education Degrees</span>
+        </a>
+        <a href="/resources/attestation-guide/" class="related-link">
+          <i class="fas fa-stamp"></i>
+          <span>Attestation Process Guide</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-section { padding: 8rem 0 4rem; background: var(--primary-color); }
+  .breadcrumb { font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 2rem; }
+  .breadcrumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: #ffffff; }
+  .breadcrumb .separator { margin: 0 0.5rem; color: rgba(255, 255, 255, 0.5); }
+  .breadcrumb .current { color: #ffffff; }
+  .badge { display: inline-block; background: var(--accent-color); color: #ffffff; padding: 0.5rem 1rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 1rem; }
+  h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: #ffffff; }
+  .hero-subtitle { font-size: 1.25rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+  .hero-intro { font-size: 1.1rem; color: rgba(255,255,255,0.9); max-width: 800px; line-height: 1.7; }
+  .content-container { max-width: 900px; }
+
+  .service-snapshot { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; }
+  .snapshot-item { display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.9); }
+  .snapshot-item i { color: var(--accent-color); font-size: 1.25rem; }
+
+  .info-callout { display: flex; gap: 1rem; background: #fffbeb; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #f59e0b; margin: 1.5rem 0; }
+  .info-callout i { font-size: 1.5rem; color: #f59e0b; flex-shrink: 0; }
+  .info-callout strong { color: var(--primary-color); display: block; margin-bottom: 0.25rem; }
+  .info-callout p { margin: 0.5rem 0 0; line-height: 1.7; }
+
+  .warning-note { display: flex; gap: 1rem; background: #fff3e0; padding: 1.25rem; border-radius: 8px; margin-top: 1.5rem; }
+  .warning-note i { color: #ff9800; font-size: 1.5rem; flex-shrink: 0; }
+  .warning-note div { color: #e65100; line-height: 1.6; }
+
+  .attestation-chain { background: var(--surface-base, white); padding: 2rem; border-radius: 12px; margin-bottom: 1.5rem; }
+  .chain-steps { display: flex; flex-direction: column; gap: 0.5rem; }
+  .chain-step { display: flex; gap: 1rem; padding: 1rem; background: var(--surface-raised, #f8f9fa); border-radius: 8px; }
+  .step-num { width: 32px; height: 32px; background: var(--primary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; flex-shrink: 0; }
+  .step-content strong { color: var(--text-heading); display: block; margin-bottom: 0.25rem; }
+  .step-content p { margin: 0; color: var(--text-body); font-size: 0.9rem; line-height: 1.7; }
+  .step-content a { color: var(--accent-teal, #0077b6); }
+  .chain-arrow { text-align: center; color: var(--accent-color); }
+
+  .use-case-table { overflow-x: auto; margin: 1.5rem 0; }
+  .use-case-table table { width: 100%; border-collapse: collapse; background: var(--surface-base, white); border-radius: 8px; overflow: hidden; }
+  .use-case-table th { background: var(--surface-navy, #0E2B48); color: #fff; padding: 0.75rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem; }
+  .use-case-table td { padding: 0.75rem 1rem; border-bottom: 1px solid #e2e8f0; font-size: 0.9rem; }
+  .use-case-table tr:last-child td { border-bottom: none; }
+
+  .state-hrd-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+  .state-card { background: var(--surface-base, white); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--accent-color); }
+  .state-card h3 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 1rem; font-size: 1.1rem; color: var(--text-heading); }
+  .state-card h3 i { color: var(--accent-color); }
+  .state-card ul { padding-left: 1.5rem; margin: 0; }
+  .state-card li { margin: 0.5rem 0; line-height: 1.6; }
+
+  .process-steps { display: flex; flex-direction: column; gap: 1rem; margin: 1.5rem 0; }
+  .process-step { display: flex; gap: 1rem; padding: 1rem; background: var(--surface-raised, #f8f9fa); border-radius: 8px; }
+
+  .rejection-list { display: flex; flex-direction: column; gap: 1.5rem; margin: 1.5rem 0; }
+  .rejection-card { background: var(--surface-raised, #f8f9fa); padding: 1.5rem; border-radius: 12px; }
+  .rejection-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem; }
+  .rejection-icon { width: 40px; height: 40px; background: #ffebee; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .rejection-icon i { color: #ef4444; font-size: 1.25rem; }
+  .rejection-header h3 { margin: 0; color: var(--text-heading); font-size: 1.1rem; }
+  .rejection-card p { color: var(--text-body); line-height: 1.7; margin: 0 0 1rem; }
+  .rejection-card .solution { background: #e8f5e9; padding: 1rem; border-radius: 8px; color: #2e7d32; }
+  .rejection-card a { color: #1976d2; }
+
+  .cost-table { overflow-x: auto; margin: 1.5rem 0; }
+  .cost-table table { width: 100%; border-collapse: collapse; background: var(--surface-base, white); border-radius: 8px; overflow: hidden; }
+  .cost-table th { background: var(--surface-navy, #0E2B48); color: #fff; padding: 0.75rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem; }
+  .cost-table td { padding: 0.75rem 1rem; border-bottom: 1px solid #e2e8f0; font-size: 0.9rem; }
+  .cost-table tr:last-child td { border-bottom: none; }
+  .cost-table .total-row { background: #e8f5e9; font-weight: 600; }
+
+  .faq-list { display: flex; flex-direction: column; gap: 1rem; }
+  .faq-item { background: var(--surface-raised, #f8f9fa); border-radius: 8px; overflow: hidden; }
+  .faq-question { padding: 1.25rem; cursor: pointer; font-weight: 600; color: var(--text-heading); list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; font-size: 1.5rem; color: var(--accent-color); }
+  .faq-item[open] .faq-question::after { content: '−'; }
+  .faq-answer { padding: 0 1.25rem 1.25rem; color: var(--text-body); line-height: 1.7; }
+  .faq-answer p { margin: 0; }
+
+  .cta-section { padding: 4rem 0; }
+  .cta-content { text-align: center; max-width: 700px; margin: 0 auto; }
+  .cta-content h2 { color: #ffffff; margin-bottom: 1rem; }
+  .cta-content p { color: rgba(255,255,255,0.9); margin-bottom: 2rem; line-height: 1.7; }
+  .cta-buttons { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 1.5rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
+  .btn-primary { background: #25D366; color: #ffffff !important; }
+  .btn-primary:hover { background: #20bd5a; transform: translateY(-2px); }
+  .btn-secondary { background: transparent; border: 2px solid #ffffff; color: #ffffff !important; }
+  .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+  .related-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+  .related-link { display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: var(--surface-base, white); border-radius: 8px; text-decoration: none; color: var(--text-heading); transition: all 0.3s ease; border: 1px solid var(--border-light, #eee); }
+  .related-link:hover { border-color: var(--accent-color); transform: translateY(-2px); }
+  .related-link i { font-size: 1.5rem; color: var(--accent-color); }
+
+  @media (max-width: 600px) {
+    .service-snapshot { flex-direction: column; }
+    .cta-buttons { flex-direction: column; }
+    .state-hrd-list { grid-template-columns: 1fr; }
+  }
+</style>

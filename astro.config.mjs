@@ -12,8 +12,8 @@ export default defineConfig({
   trailingSlash: 'always',
   compressHTML: true,
   prefetch: {
-    prefetchAll: true,
-    defaultStrategy: 'hover'
+    prefetchAll: false,
+    defaultStrategy: 'viewport'
   },
   image: {
     // Use Sharp for image optimization (Astro default)
@@ -128,7 +128,7 @@ export default defineConfig({
 
     // 3. PurgeCSS - remove unused CSS (runs BEFORE inline for proper CSS extraction)
     purgecss({
-      // Keep keyframes for animations and View Transitions
+      // Keep keyframes for CSS animations
       keyframes: false,
       // Keep CSS variables
       variables: false,
@@ -177,9 +177,9 @@ export default defineConfig({
     // 5. Minify - Rust-based minification for HTML, CSS, JS, SVG (faster than astro-compress)
     min(),
 
-    // 6. Compressor - Brotli + gzip compression (MUST BE LAST)
+    // 6. Compressor - Brotli + gzip pre-compression for CDN serving
     compressor({
-      gzip: true,
+      gzip: false,
       brotli: true,
     }),
   ],

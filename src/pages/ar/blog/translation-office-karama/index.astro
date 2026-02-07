@@ -1,0 +1,860 @@
+---
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: "هل يجب زيارة مكتب في الكرامة للحصول على ترجمة معتمدة؟",
+    answer: "لا، خدمتنا عبر واتساب تلغي الحاجة لزيارة أي مكتب. أرسلوا صور المستندات عبر واتساب +971 50 862 0217 ونراجعها فوراً. بعد التأكد من صلاحية الملفات، نرسل تأكيد السعر وطريقة الدفع. نوصّل الترجمة المعتمدة بطابع وزارة العدل إلى عنوانكم أو نرسلها إلكترونياً حسب حاجتكم."
+  },
+  {
+    question: "كم تستغرق عملية الترجمة مقارنة بمكاتب الكرامة التقليدية؟",
+    answer: "المستندات القياسية (شهادات ميلاد، جوازات سفر، رخص قيادة) تُسلّم خلال 60 دقيقة من تأكيد الدفع. المكاتب التقليدية تحتاج منكم الانتظار في الصف، ثم العودة لاستلام الترجمة بعد ساعات أو أيام. نحن نوفر الوقت والجهد بإدارة العملية بالكامل عن بُعد."
+  },
+  {
+    question: "هل خدمة الترجمة الإلكترونية معتمدة من وزارة العدل؟",
+    answer: "نعم، جميع ترجماتنا تنفذ عبر شريكنا المرخص من وزارة العدل (رخصة 701 — مكتب أركان). المترجم القانوني خالد محمد عبدالوهاب العدل يختم وُيوقع كل ترجمة. يمكنكم التحقق من الرخصة عبر خط وزارة العدل الساخن 800 333333."
+  },
+  {
+    question: "ما هي المستندات المطلوبة عادة من سكان الكرامة؟",
+    answer: "أغلب الطلبات تشمل شهادات ميلاد وزواج لمعاملات الإقامة، كشوف بنكية لطلبات التأشيرات، شهادات دراسية لتسجيل الأبناء في المدارس، وشهادات حسن سير وسلوك للتوظيف. نساعد أيضاً في ترجمة عقود الإيجار ومستندات الرخص التجارية."
+  },
+  {
+    question: "كيف أدفع دون زيارة مكتب؟",
+    answer: "بعد مراجعة مستنداتكم، نرسل رابط دفع إلكتروني آمن عبر واتساب. تقبلون الدفع ببطاقة ائتمان، بطاقة مدى، أو تحويل بنكي. نبدأ الترجمة فور تأكيد الدفع. لا نطلب نقداً ولا نحتاج بطاقات في آلات الصراف."
+  },
+  {
+    question: "هل تغطون مناطق أخرى غير الكرامة؟",
+    answer: "نعم، خدمتنا الإلكترونية تغطي كل دبي، أبوظبي، الشارقة، عجمان، ورأس الخيمة. الموقع الجغرافي لا يؤثر على السعر أو سرعة التسليم. نوصّل لأي منطقة في الإمارات بنفس الجودة والالتزام."
+  }
+];
+
+const siteUrl = 'https://onlinetranslation.ae';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+  }))
+};
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "خدمات ترجمة في الكرامة دبي | توصيل عبر واتساب",
+  "description": "دليل شامل لخدمات الترجمة المعتمدة لسكان الكرامة: كيف تتجاوز الصفوف والانتظار في المكاتب التقليدية",
+  "inLanguage": "ar",
+  "datePublished": "2026-02-07",
+  "dateModified": "2026-02-07",
+  "publisher": {
+    "@type": "Organization",
+    "@id": `${siteUrl}/#organization`,
+    "name": "OnlineTranslation.ae",
+    "url": siteUrl
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `${siteUrl}/ar/blog/translation-office-karama/`
+  }
+};
+---
+
+<BaseLayoutArabic
+  title="خدمات ترجمة في الكرامة دبي | توصيل عبر واتساب"
+  description="ترجمة قانونية معتمدة لسكان الكرامة ودبي. بدون زيارة مكتب — أرسلوا مستنداتكم عبر واتساب واستلموا الترجمة المعتمدة."
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://onlinetranslation.ae/ar/blog/translation-office-karama/" />
+    <link rel="alternate" hreflang="en" href="https://onlinetranslation.ae/blog/translation-office-karama/" />
+    <link rel="alternate" hreflang="ar" href="https://onlinetranslation.ae/ar/blog/translation-office-karama/" />
+    <link rel="alternate" hreflang="x-default" href="https://onlinetranslation.ae/blog/translation-office-karama/" />
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <article class="blog-post" dir="rtl">
+    <!-- Hero Section with Breadcrumb -->
+    <section class="hero-section">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="مسار التنقل">
+          <a href="/ar/">الرئيسية</a>
+          <span class="separator">&lt;</span>
+          <a href="/ar/blog/">المدونة</a>
+          <span class="separator">&lt;</span>
+          <span class="current">ترجمة الكرامة</span>
+        </nav>
+
+        <h1>خدمات ترجمة في الكرامة دبي: لماذا واتساب أفضل من زيارة مكتب</h1>
+
+        <div class="article-meta">
+          <time datetime="2026-02-07">٧ فبراير ٢٠٢٦</time>
+          <span class="reading-time">٦ دقائق قراءة</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="content-section" dir="rtl">
+      <div class="container">
+        <div class="content-body">
+          <p class="lead">
+            الكرامة من أشهر أحياء دبي السكنية، يسكنها آلاف العائلات من مختلف الجنسيات.
+            الحي معروف بمكاتب الترجمة والطباعة المنتشرة في كل شارع، خاصة قرب محطة مترو العضيبة وبرجمان مول.
+            لكن الصفوف الطويلة والانتظار ساعات أصبحت مشكلة يومية.
+          </p>
+
+          <p>
+            نحن نقدم حلاً بديلاً: <strong>خدمة ترجمة معتمدة من وزارة العدل عبر واتساب، بدون زيارة أي مكتب</strong>.
+            أرسلوا صور مستنداتكم، نراجعها خلال دقائق، وتستلمون الترجمة المعتمدة بطابع وزارة العدل في نفس اليوم.
+            لا صفوف، لا مواعيد، لا تنقلات.
+          </p>
+
+          <h2>الكرامة: مركز خدمات الترجمة التقليدية في دبي</h2>
+
+          <p>
+            حي الكرامة يضم عشرات مكاتب الترجمة والطباعة منذ عقود.
+            موقعه المركزي بين بر دبي ودبي الجديدة، وقربه من الدوائر الحكومية، جعله وجهة أساسية لسكان الإمارات.
+            المكاتب هناك تخدم يومياً مئات العملاء الذين يحتاجون ترجمة شهادات ميلاد، جوازات سفر، عقود، أو مستندات دراسية.
+          </p>
+
+          <p>
+            المشكلة الأساسية في المكاتب التقليدية ليست الجودة.
+            المشكلة في التجربة: الوصول للمكتب، الانتظار في الصف، تسليم المستندات الورقية، ثم العودة بعد ساعات لاستلام الترجمة.
+            إذا كان المستند يحتاج مراجعة إضافية، تضيعون يوماً كاملاً.
+          </p>
+
+          <p>
+            في 2026، لا يوجد سبب منطقي لهذه العملية المعقدة.
+            التكنولوجيا تسمح بإدارة الترجمة بالكامل عن بُعد، بنفس الجودة والاعتماد القانوني، لكن بسرعة وراحة أكبر.
+          </p>
+
+          <h2>لماذا الخدمة الإلكترونية أنسب لسكان الكرامة</h2>
+
+          <h3>١. توفير الوقت والجهد</h3>
+
+          <p>
+            زيارة مكتب ترجمة في الكرامة تعني: البحث عن موقف سيارة (صعب في ساعات الذروة)، الصعود للطابق الثاني أو الثالث، الانتظار خلف ٥-١٠ عملاء، ثم شرح احتياجكم لموظف الاستقبال.
+            بعد التسليم، تعودون للمنزل أو العمل، ثم ترجعون بعد ساعات لاستلام الترجمة.
+          </p>
+
+          <p>
+            خدمتنا عبر <a href="/ar/">واتساب</a> تختصر كل هذا في ٣ دقائق:
+            صوروا المستند، أرسلوه عبر واتساب، نراجعه فوراً ونرد بتأكيد السعر والوقت.
+            بعد الدفع الإلكتروني، تستلمون الترجمة المعتمدة خلال ساعة واحدة للمستندات القياسية.
+          </p>
+
+          <h3>٢. شفافية الأسعار مقدماً</h3>
+
+          <p>
+            في المكاتب التقليدية، الأسعار غالباً غير واضحة حتى تسلموا المستند للموظف.
+            بعض المكاتب تضيف رسوماً إضافية بعد بدء العمل، أو تفرض أسعاراً مختلفة حسب "صعوبة" المستند.
+          </p>
+
+          <p>
+            نحن نراجع مستنداتكم أولاً، ونرسل سعراً نهائياً قبل أن تدفعوا درهماً واحداً.
+            إذا وجدنا مشكلة في المستند (نص غير واضح، ختم مفقود، صفحات ناقصة)، ننبهكم قبل بدء العمل.
+            هذا يمنع المفاجآت ويوفر رحلات إضافية للمكتب.
+          </p>
+
+          <h3>٣. تغطية جميع أنواع المستندات</h3>
+
+          <p>
+            نترجم <a href="/ar/personal/vital-records/">الشهادات الشخصية</a> (ميلاد، زواج، طلاق، وفاة)،
+            <a href="/ar/personal/academic/">الشهادات الدراسية</a> (دبلومات، كشوف درجات)،
+            <a href="/ar/personal/immigration/">مستندات الهجرة</a> (شهادات حسن سير وسلوك، كشوف بنكية، رخص قيادة)،
+            والعقود القانونية.
+          </p>
+
+          <p>
+            كل ترجمة تحمل ختم وتوقيع مترجم قانوني مرخص من وزارة العدل الإماراتية (رخصة ٧٠١).
+            المستندات المترجمة مقبولة في جميع الدوائر الحكومية: الهوية والجنسية (GDRFA)، وزارة الخارجية (MOFA)، دائرة الأراضي (DLD)، هيئة المعرفة (KHDA)، وغيرها.
+          </p>
+
+          <h2>العملية: كيف نعمل خطوة بخطوة</h2>
+
+          <div class="process-steps">
+            <div class="step">
+              <div class="step-number">١</div>
+              <h4>أرسلوا المستندات عبر واتساب</h4>
+              <p>
+                صوروا أو امسحوا (Scan) المستندات المطلوبة.
+                أرسلوها إلى <span class="phone-number ltr-content">+971 50 862 0217</span> عبر واتساب.
+                تأكدوا أن النص واضح والأختام ظاهرة.
+              </p>
+            </div>
+
+            <div class="step">
+              <div class="step-number">٢</div>
+              <h4>مراجعة فورية وتأكيد السعر</h4>
+              <p>
+                نراجع مستنداتكم خلال ٥-١٠ دقائق.
+                إذا كانت صالحة، نرسل تأكيد السعر النهائي والوقت المتوقع للتسليم.
+                إذا وجدنا مشكلة، ننبهكم فوراً قبل أن تدفعوا.
+              </p>
+            </div>
+
+            <div class="step">
+              <div class="step-number">٣</div>
+              <h4>الدفع الإلكتروني الآمن</h4>
+              <p>
+                نرسل رابط دفع آمن عبر واتساب.
+                تدفعون ببطاقة ائتمان، بطاقة مدى، أو تحويل بنكي.
+                نبدأ الترجمة فور تأكيد الدفع.
+              </p>
+            </div>
+
+            <div class="step">
+              <div class="step-number">٤</div>
+              <h4>الاستلام خلال ساعة واحدة</h4>
+              <p>
+                المستندات القياسية تُسلّم خلال ٦٠ دقيقة.
+                نرسل الترجمة المعتمدة بصيغة PDF عبر واتساب أو بريد إلكتروني.
+                إذا طلبتم نسخة ورقية، نوصلها لعنوانكم في نفس اليوم.
+              </p>
+            </div>
+          </div>
+
+          <h2>المستندات الأكثر طلباً من سكان الكرامة</h2>
+
+          <p>
+            بناءً على تعاملنا مع مئات العملاء في منطقة الكرامة وبر دبي، هذه أكثر المستندات المطلوبة:
+          </p>
+
+          <h3>شهادات الميلاد والزواج</h3>
+
+          <p>
+            العائلات تحتاجها لإصدار أو تجديد الإقامات، تسجيل المواليد الجدد، أو إضافة أفراد العائلة على التأشيرات.
+            الدوائر الحكومية تطلب ترجمة معتمدة من وزارة العدل، وليس مجرد ترجمة عادية.
+            يمكنكم قراءة الفرق الكامل في دليلنا: <a href="/ar/resources/moj-vs-certified/">ترجمة وزارة العدل مقابل الترجمة المعتمدة</a>.
+          </p>
+
+          <h3>كشوف بنكية ورخص قيادة</h3>
+
+          <p>
+            طلبات التأشيرات (سياحية أو إقامة) تحتاج كشوف حسابات بنكية مترجمة لإثبات القدرة المالية.
+            رخص القيادة الأجنبية تُترجم لإصدار رخصة إماراتية أو لتأجير سيارات.
+          </p>
+
+          <h3>شهادات دراسية لتسجيل الأبناء</h3>
+
+          <p>
+            المدارس في دبي تطلب ترجمة معتمدة للشهادات الدراسية وكشوف الدرجات.
+            هيئة المعرفة والتنمية البشرية (KHDA) تشترط الاعتماد لقبول الطالب.
+            نساعد أيضاً في <a href="/ar/services/attestation/">تصديق الشهادات</a> من وزارة الخارجية إذا لزم الأمر.
+          </p>
+
+          <h3>شهادات حسن سير وسلوك (Police Clearance)</h3>
+
+          <p>
+            مطلوبة للتوظيف، التأشيرات، أو الرخص المهنية.
+            نترجم الشهادات الصادرة من أي دولة، ونضمن قبولها في الدوائر الإماراتية.
+          </p>
+
+          <h2>التغطية الجغرافية: ليس فقط الكرامة</h2>
+
+          <p>
+            رغم أن هذا المقال يركز على سكان الكرامة، خدمتنا الإلكترونية تغطي كل الإمارات.
+            نخدم يومياً عملاء في <a href="/ar/locations/dubai/">دبي</a>، أبوظبي، الشارقة، عجمان، ورأس الخيمة.
+          </p>
+
+          <p>
+            الموقع الجغرافي لا يؤثر على السعر أو سرعة التسليم.
+            سواء كنتم في الكرامة، <a href="/ar/locations/dubai/marina/">دبي مارينا</a>،
+            <a href="/ar/locations/dubai/jlt/">أبراج بحيرات جميرا</a>، أو أي منطقة أخرى، تحصلون على نفس الخدمة السريعة والموثوقة.
+          </p>
+
+          <h2>القرب من برجمان ومترو العضيبة</h2>
+
+          <p>
+            برجمان مول يُعتبر نقطة مركزية لسكان الكرامة وبر دبي.
+            الكثير من الناس يزورون المكاتب التقليدية بعد التسوق أو في طريقهم من العمل.
+            محطة مترو العضيبة (ADCB) قريبة أيضاً، مما يسهل الوصول.
+          </p>
+
+          <p>
+            لكن حتى مع هذه السهولة، زيارة المكتب تبقى مهمة تستنزف وقتكم.
+            خدمتنا تلغي الحاجة للتنقل تماماً.
+            استمتعوا بوقتكم في برجمان أو في بيوتكم، ونحن نهتم بالترجمة.
+          </p>
+
+          <h2>الاعتماد القانوني: رخصة وزارة العدل ٧٠١</h2>
+
+          <p>
+            جميع ترجماتنا تنفذ عبر شريكنا المرخص من وزارة العدل الإماراتية.
+            المترجم القانوني <strong>خالد محمد عبدالوهاب العدل</strong> (رخصة رقم ٧٠١) يختم ويوقع كل مستند.
+            الرخصة سارية حتى ١٥ أكتوبر ٢٠٢٦، ويمكنكم التحقق منها عبر خط وزارة العدل الساخن: <span class="ltr-content">800 333333</span>.
+          </p>
+
+          <p>
+            هذا الاعتماد يضمن قبول ترجماتنا في جميع الدوائر الحكومية والمحاكم والبنوك والشركات الخاصة.
+            ليست مجرد ترجمة لغوية، بل وثيقة قانونية معتمدة.
+          </p>
+
+          <h2>الأسعار والمدة الزمنية</h2>
+
+          <p>
+            نسعى لتقديم أسعار شفافة ومنافسة.
+            الترجمة المعتمدة من وزارة العدل تبدأ من ١٥٠ درهم للصفحة الواحدة، حسب نوع المستند ولغته وصعوبة النص.
+            المستندات الشخصية القياسية (شهادات ميلاد، جوازات سفر) عادة تكلف ١٥٠-٢٥٠ درهماً.
+          </p>
+
+          <p>
+            المدة الزمنية للتسليم:
+          </p>
+
+          <ul>
+            <li><strong>٦٠ دقيقة:</strong> للمستندات القياسية (شهادات ميلاد، جوازات، رخص)</li>
+            <li><strong>٤-٦ ساعات:</strong> للمستندات التقنية أو المعقدة</li>
+            <li><strong>٢٤-٤٨ ساعة:</strong> للعقود الطويلة أو الوثائق القانونية المتخصصة</li>
+          </ul>
+
+          <p>
+            لمزيد من التفاصيل، راجعوا دليلنا الكامل: <a href="/ar/resources/turnaround-times/">أوقات التسليم</a>
+            و<a href="/ar/resources/pricing-guide/">دليل الأسعار</a>.
+          </p>
+
+          <h2>متى تحتاجون ترجمة وزارة العدل؟</h2>
+
+          <p>
+            ليست كل المستندات تحتاج ترجمة معتمدة من وزارة العدل.
+            بعض الشركات الخاصة والبنوك تقبل ترجمة معتمدة عادية (بدون ختم وزارة العدل).
+          </p>
+
+          <p>
+            <strong>ترجمة وزارة العدل ضرورية لـ:</strong>
+          </p>
+
+          <ul>
+            <li>الدوائر الحكومية (الهوية والجنسية، وزارة الخارجية، دائرة الأراضي)</li>
+            <li>المحاكم والنيابة العامة</li>
+            <li>إجراءات الزواج والطلاق الرسمية</li>
+            <li>تصديق الوثائق من السفارات</li>
+          </ul>
+
+          <p>
+            <strong>الترجمة المعتمدة العادية كافية لـ:</strong>
+          </p>
+
+          <ul>
+            <li>البنوك والمؤسسات المالية الخاصة</li>
+            <li>شركات التأمين</li>
+            <li>بعض الشركات الخاصة لإجراءات التوظيف</li>
+          </ul>
+
+          <p>
+            إذا كنتم غير متأكدين، أرسلوا لنا تفاصيل استخداماتكم عبر واتساب، ونساعدكم في اختيار النوع المناسب.
+            نحن نلتزم بمبدأ "البيع الصحيح" — لن نبيعكم خدمة أغلى إذا كانت الأرخص تفي بالغرض.
+          </p>
+
+          <h2>لماذا نختلف عن المكاتب التقليدية</h2>
+
+          <h3>الشفافية قبل الدفع</h3>
+
+          <p>
+            نراجع مستنداتكم ونخبركم بالسعر النهائي قبل أن تدفعوا.
+            إذا وجدنا مشكلة (نص غير واضح، صفحة ناقصة، ختم مفقود)، ننبهكم فوراً.
+            هذا يمنع الرحلات الضائعة والمفاجآت المالية.
+          </p>
+
+          <h3>الرد السريع</h3>
+
+          <p>
+            نرد على رسائل واتساب خلال ٢-٥ دقائق في أوقات العمل (الأحد-الخميس، ٩ص-٦م).
+            لا انتظار على الهاتف، لا نماذج طلبات، لا رسائل بريد إلكتروني طويلة.
+          </p>
+
+          <h3>البيع الصحيح</h3>
+
+          <p>
+            نخبركم بصراحة إذا كنتم تحتاجون ترجمة وزارة العدل أو إذا كانت الترجمة المعتمدة العادية كافية.
+            هدفنا بناء ثقة طويلة الأمد، وليس بيع الخدمة الأغلى في كل مرة.
+          </p>
+
+          <h2>ابدأوا الآن: أرسلوا مستنداتكم عبر واتساب</h2>
+
+          <p>
+            لا تضيعوا وقتكم في الصفوف والانتظار.
+            صوروا مستنداتكم، أرسلوها عبر واتساب، وستحصلون على ترجمة معتمدة من وزارة العدل خلال ساعة واحدة.
+          </p>
+
+          <div class="cta-box">
+            <h3>جاهزون لبدء طلبكم؟</h3>
+            <p>أرسلوا صور مستنداتكم عبر واتساب الآن ونراجعها خلال دقائق.</p>
+            <div class="cta-buttons">
+              <a
+                href="https://wa.me/971508620217?text=مرحباً، أحتاج ترجمة معتمدة لمستنداتي. هل يمكنكم مساعدتي؟"
+                class="btn-primary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fab fa-whatsapp"></i>
+                راسلونا عبر واتساب
+              </a>
+              <a href="tel:+971508620217" class="btn-secondary">
+                <i class="fas fa-phone"></i>
+                اتصلوا الآن
+              </a>
+            </div>
+            <p class="contact-info">
+              <span class="ltr-content phone-number">+971 50 862 0217</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" dir="rtl">
+      <div class="container">
+        <h2>الأسئلة الشائعة</h2>
+
+        <div class="faq-list">
+          {faqs.map((faq, index) => (
+            <details class="faq-item" name="karama-faq">
+              <summary>
+                <span class="faq-question">{faq.question}</span>
+                <i class="fas fa-chevron-down"></i>
+              </summary>
+              <div class="faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Resources -->
+    <section class="related-section" dir="rtl">
+      <div class="container">
+        <h2>مصادر ذات صلة</h2>
+        <div class="related-grid">
+          <a href="/ar/personal/vital-records/" class="related-card">
+            <h3>ترجمة الوثائق الشخصية</h3>
+            <p>شهادات ميلاد، زواج، طلاق، ووفاة معتمدة من وزارة العدل</p>
+          </a>
+          <a href="/ar/personal/immigration/" class="related-card">
+            <h3>مستندات الهجرة</h3>
+            <p>شهادات حسن سير وسلوك، كشوف بنكية، رخص قيادة</p>
+          </a>
+          <a href="/ar/personal/academic/" class="related-card">
+            <h3>الشهادات الدراسية</h3>
+            <p>دبلومات، كشوف درجات، شهادات دراسية</p>
+          </a>
+          <a href="/ar/locations/dubai/" class="related-card">
+            <h3>خدمات الترجمة في دبي</h3>
+            <p>تغطية شاملة لجميع مناطق دبي</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </article>
+</BaseLayoutArabic>
+
+<style>
+  .blog-post {
+    background: var(--surface-white);
+  }
+
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, var(--surface-navy) 0%, #1a3a52 100%);
+    color: var(--text-on-dark);
+    padding: 3rem 0 4rem;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb a {
+    color: var(--text-on-dark);
+    text-decoration: none;
+    opacity: 0.9;
+    transition: opacity 0.2s;
+  }
+
+  .breadcrumb a:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+
+  .breadcrumb .separator {
+    color: var(--text-on-dark);
+    opacity: 0.6;
+  }
+
+  .breadcrumb .current {
+    color: var(--accent-coral);
+    font-weight: 600;
+  }
+
+  .hero-section h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    color: var(--text-on-dark);
+  }
+
+  .article-meta {
+    display: flex;
+    gap: 1.5rem;
+    color: var(--text-on-dark);
+    opacity: 0.9;
+    font-size: 0.95rem;
+  }
+
+  /* Content Section */
+  .content-section {
+    padding: 4rem 0;
+  }
+
+  .content-body {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    font-weight: 500;
+  }
+
+  .content-body h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    color: var(--surface-navy);
+  }
+
+  .content-body h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--surface-navy);
+  }
+
+  .content-body h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--surface-navy);
+  }
+
+  .content-body p {
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+  }
+
+  .content-body a {
+    color: var(--accent-teal);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .content-body a:hover {
+    border-bottom-color: var(--accent-teal);
+  }
+
+  .content-body ul {
+    margin: 1.5rem 0;
+    padding-right: 1.5rem;
+  }
+
+  .content-body li {
+    margin-bottom: 0.75rem;
+    line-height: 1.7;
+  }
+
+  .content-body strong {
+    font-weight: 600;
+    color: var(--surface-navy);
+  }
+
+  .phone-number {
+    direction: ltr;
+    display: inline-block;
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+  }
+
+  /* Process Steps */
+  .process-steps {
+    margin: 2.5rem 0;
+    display: grid;
+    gap: 2rem;
+  }
+
+  .step {
+    background: var(--surface-light);
+    border-radius: 12px;
+    padding: 2rem;
+    border-right: 4px solid var(--accent-coral);
+  }
+
+  .step-number {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    background: var(--accent-coral);
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 48px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .step h4 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: 1.3rem;
+  }
+
+  .step p {
+    margin-bottom: 0;
+    font-size: 1rem;
+  }
+
+  /* CTA Box */
+  .cta-box {
+    background: linear-gradient(135deg, var(--surface-navy) 0%, #1a3a52 100%);
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    text-align: center;
+    margin: 3rem 0;
+    color: var(--text-on-dark);
+  }
+
+  .cta-box h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-on-dark);
+  }
+
+  .cta-box p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: var(--text-on-dark);
+    opacity: 0.95;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .btn-primary {
+    background: var(--accent-coral);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: #ff3366;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 22, 84, 0.3);
+  }
+
+  .btn-secondary {
+    background: white;
+    color: var(--surface-navy);
+  }
+
+  .btn-secondary:hover {
+    background: var(--surface-light);
+    transform: translateY(-2px);
+  }
+
+  .contact-info {
+    font-size: 1.2rem;
+    color: var(--text-on-dark);
+    opacity: 0.95;
+    margin-bottom: 0;
+  }
+
+  /* FAQ Section */
+  .faq-section {
+    background: var(--surface-light);
+    padding: 4rem 0;
+  }
+
+  .faq-section h2 {
+    text-align: center;
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: var(--surface-navy);
+  }
+
+  .faq-list {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .faq-item summary {
+    padding: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: var(--surface-navy);
+    user-select: none;
+    transition: background 0.2s;
+  }
+
+  .faq-item summary:hover {
+    background: var(--surface-light);
+  }
+
+  .faq-item summary i {
+    transition: transform 0.3s;
+    color: var(--accent-coral);
+  }
+
+  .faq-item[open] summary i {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.5rem;
+    color: var(--text-primary);
+    line-height: 1.7;
+  }
+
+  .faq-answer p {
+    margin: 0;
+  }
+
+  /* Related Section */
+  .related-section {
+    padding: 4rem 0;
+  }
+
+  .related-section h2 {
+    text-align: center;
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: var(--surface-navy);
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .related-card {
+    background: var(--surface-light);
+    border-radius: 12px;
+    padding: 2rem;
+    text-decoration: none;
+    transition: all 0.3s;
+    border: 1px solid transparent;
+  }
+
+  .related-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    border-color: var(--accent-coral);
+  }
+
+  .related-card h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--surface-navy);
+  }
+
+  .related-card p {
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-section h1 {
+      font-size: 1.75rem;
+    }
+
+    .content-body {
+      font-size: 1rem;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+    }
+
+    .content-body h2 {
+      font-size: 1.6rem;
+    }
+
+    .content-body h3 {
+      font-size: 1.3rem;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* LTR content in RTL context */
+  .ltr-content {
+    direction: ltr;
+    display: inline-block;
+  }
+</style>

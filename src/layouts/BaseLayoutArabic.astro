@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+// ViewTransitions removed — saves 20KB JS for a static content site
 import HeaderUnified from '../components/HeaderUnified.astro';
 import FooterArabic from '../components/FooterArabic.astro';
 import MobileShellArabic from '../components/MobileShellArabic.astro';
@@ -96,9 +96,9 @@ const englishEquivalent = fullCanonical
     "@type": "LocalBusiness",
     "@id": `${siteUrl}/#organization`,
     "name": "OnlineTranslation.ae",
-    "description": "خدمات الترجمة القانونية المعتمدة من وزارة العدل في دبي",
+    "description": "خدمات الترجمة القانونية المعتمدة من وزارة العدل في أبوظبي ودبي",
     "url": siteUrl,
-    "logo": `${siteUrl}/assets/images/logo/brand/emblem-256.png`,
+    "logo": `${siteUrl}/assets/images/logo/brand/emblem-256.webp`,
     "telephone": "+971508620217",
     "email": "info@onlinetranslation.ae",
     "address": {"@type": "PostalAddress", "addressLocality": "دبي", "addressCountry": "AE"},
@@ -108,14 +108,35 @@ const englishEquivalent = fullCanonical
     "aggregateRating": {"@type": "AggregateRating", "ratingValue": 5.0, "ratingCount": 15}
   })} />
 
+  <!-- WebSite Schema for Arabic Sitelinks Search Box -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
+    "url": siteUrl,
+    "name": "OnlineTranslation.ae",
+    "description": "خدمات الترجمة القانونية المعتمدة وتصديق المستندات في أبوظبي ودبي",
+    "publisher": {
+      "@id": `${siteUrl}/#organization`
+    },
+    "inLanguage": ["ar", "en-AE"],
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": `${siteUrl}/search?q={search_term_string}`
+      },
+      "query-input": "required name=search_term_string"
+    }
+  })} />
+
   <!-- Theme -->
   <meta name="theme-color" content="#0E2B48">
   <meta name="format-detection" content="telephone=yes">
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="sitemap" href="/sitemap-0.xml">
 
-  <!-- View Transitions for smooth page navigation -->
-  <ViewTransitions />
+  <!-- Prefetching handled by Astro's built-in prefetch (viewport strategy) -->
 
   <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/icons/favicon-64.png">
@@ -139,50 +160,24 @@ const englishEquivalent = fullCanonical
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous"></noscript>
 
-  <!-- Main CSS - Deferred loading with media trick (matches English layout) -->
+  <!-- Main CSS - Bundled for fewer HTTP requests (28 files → 7 requests) -->
   <!-- LAYER ORDER - Must load FIRST (sync) to establish cascade -->
   <link rel="stylesheet" href="/styles/css-layer-order.css">
 
-  <!-- FOUNDATION - Load async -->
-  <link rel="stylesheet" href="/styles/base-architecture.css" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="/styles/porto-desktop.css" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="/styles/services-enhanced.css" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="/styles/document-pages.css" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="/styles/text-breaking.css" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="/styles/hero-unified.css" media="print" onload="this.media='all'">
+  <!-- FOUNDATION BUNDLE - base-architecture + porto-desktop + services + documents + text-breaking + hero -->
+  <link rel="stylesheet" href="/styles/bundles/foundation.css" media="print" onload="this.media='all'">
 
-  <!-- NAVIGATION (desktop-only) -->
-  <link rel="stylesheet" href="/styles/subsection-menu.css" media="(min-width: 992px)">
-  <link rel="stylesheet" href="/styles/megamenu.css" media="(min-width: 992px)">
-  <link rel="stylesheet" href="/styles/porto-dropdown-onlinetranslation.css" media="(min-width: 992px)">
-  <link rel="stylesheet" href="/styles/navigation-glassmorphism.css" media="(min-width: 992px)">
-  <link rel="stylesheet" href="/styles/desktop-macos.css" media="(min-width: 992px)">
+  <!-- DESKTOP NAV BUNDLE - subsection + megamenu + dropdown + glassmorphism + macos (desktop only) -->
+  <link rel="stylesheet" href="/styles/bundles/desktop-nav.css" media="(min-width: 992px)">
 
-  <!-- MOBILE + SHARED OVERLAYS -->
-  <link rel="stylesheet" href="/styles/sticky-mobile.css" media="print" onload="this.media='all'">
+  <!-- MOBILE (media query gated) -->
   <link rel="stylesheet" href="/styles/mobile-platform.css" media="(max-width: 991px)">
 
-  <!-- COMPONENTS & POLISH - Async -->
-  <link rel="stylesheet" href="/styles/trust-bar.css" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="/styles/dark-section-scoping.css" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="/styles/dark-mode-tokenized.css" media="print" onload="this.media='all'">
+  <!-- COMPONENTS BUNDLE - sticky-mobile + trust-bar + dark-mode + responsive + footer + faq + micro-cues + contrast -->
+  <link rel="stylesheet" href="/styles/bundles/components.css" media="print" onload="this.media='all'">
 
-  <!-- RESPONSIVE LAYOUTS -->
-  <link rel="stylesheet" href="/styles/responsive-layouts.css" media="print" onload="this.media='all'">
-
-  <!-- DEFERRED CSS - Below-fold components -->
-  <link rel="stylesheet" href="/styles/footer-redesign.css" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="/styles/faq-accordion.css" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="/styles/micro-cues.css" media="print" onload="this.media='all'">
-
-  <!-- ACCESSIBILITY - Contrast fixes (loads last to override) -->
-  <link rel="stylesheet" href="/styles/contrast-fixes.css" media="print" onload="this.media='all'">
-
-  <!-- RTL STYLES - Arabic-specific overrides (must load after base styles) -->
-  <link rel="stylesheet" href="/styles/rtl.css" media="print" onload="this.media='all'">
-
-  <!-- ARABIC UI FIXES - Contrast, accessibility, visual consistency (loads after RTL) -->
-  <link rel="stylesheet" href="/styles/ar-ui-fixes.css" media="print" onload="this.media='all'">
+  <!-- ARABIC BUNDLE - RTL overrides + Arabic UI fixes (must load after components) -->
+  <link rel="stylesheet" href="/styles/bundles/arabic.css" media="print" onload="this.media='all'">
 
   <!-- PRINT -->
   <link rel="stylesheet" href="/styles/print.css" media="print">
@@ -190,24 +185,11 @@ const englishEquivalent = fullCanonical
   <!-- Fallback for users with JS disabled -->
   <noscript>
     <link rel="stylesheet" href="/styles/css-layer-order.css">
-    <link rel="stylesheet" href="/styles/base-architecture.css">
-    <link rel="stylesheet" href="/styles/porto-desktop.css">
-    <link rel="stylesheet" href="/styles/services-enhanced.css">
-    <link rel="stylesheet" href="/styles/document-pages.css">
-    <link rel="stylesheet" href="/styles/text-breaking.css">
-    <link rel="stylesheet" href="/styles/hero-unified.css">
-    <link rel="stylesheet" href="/styles/sticky-mobile.css">
+    <link rel="stylesheet" href="/styles/bundles/foundation.css">
+    <link rel="stylesheet" href="/styles/bundles/desktop-nav.css">
     <link rel="stylesheet" href="/styles/mobile-platform.css">
-    <link rel="stylesheet" href="/styles/trust-bar.css">
-    <link rel="stylesheet" href="/styles/dark-section-scoping.css">
-    <link rel="stylesheet" href="/styles/dark-mode-tokenized.css">
-    <link rel="stylesheet" href="/styles/responsive-layouts.css">
-    <link rel="stylesheet" href="/styles/footer-redesign.css">
-    <link rel="stylesheet" href="/styles/faq-accordion.css">
-    <link rel="stylesheet" href="/styles/micro-cues.css">
-    <link rel="stylesheet" href="/styles/contrast-fixes.css">
-    <link rel="stylesheet" href="/styles/rtl.css">
-    <link rel="stylesheet" href="/styles/ar-ui-fixes.css">
+    <link rel="stylesheet" href="/styles/bundles/components.css">
+    <link rel="stylesheet" href="/styles/bundles/arabic.css">
   </noscript>
 
   <slot name="head" />
@@ -240,17 +222,13 @@ const englishEquivalent = fullCanonical
     })(window,document,'script','dataLayer','GTM-N7L2H37W');
   </script>
 
-  <!-- Scripts - All deferred -->
-  <script is:inline src="/scripts/os-detect.js"></script>
-  <script defer src="/scripts/preferences.js"></script>
-  <script defer src="/scripts/analytics.js"></script>
-  <script defer src="/scripts/main-v2.js"></script>
-  <script defer src="/scripts/navigation-v2.js"></script>
-  <script defer src="/scripts/subsection-menu.js"></script>
+  <!-- Scripts - Bundled (6 files → 2 bundles + 1 inline) -->
+  <script is:inline>(function(){var d=document,r=d.documentElement,b=d.body||d.createElement('body');function o(){var u=navigator.userAgent||'';if(/iPad|iPhone|iPod/.test(u)&&!window.MSStream)return'ios';if(/android/i.test(u))return'android';return'other'}function a(){var os=o();b.className=b.className.replace(/os-\w+/g,'');b.classList.add('os-'+os);if(os==='ios'){r.style.setProperty('--os-font','-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif');r.style.setProperty('--os-radius','14px');r.style.setProperty('--os-nav-height','83px');d.querySelectorAll('.os-ios-only').forEach(function(e){e.style.display=''})}else if(os==='android'){r.style.setProperty('--os-font','"Roboto","Google Sans",sans-serif');r.style.setProperty('--os-radius','8px');r.style.setProperty('--os-nav-height','64px');d.querySelectorAll('.os-android-only').forEach(function(e){e.style.display=''})}d.querySelectorAll('.os-'+(os==='ios'?'android':'ios')+'-only').forEach(function(e){e.style.display='none'});return os}if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',a);else a();window.detectOS=o;window.applyOSStyles=a})();</script>
+  <script defer src="/scripts/bundles/core.js"></script>
+  <script defer src="/scripts/bundles/ui.js"></script>
 
   <!-- Conditionally loaded scripts -->
   <script is:inline>
-    // Lazy load form handler only if form exists
     document.addEventListener('DOMContentLoaded', function() {
       if (document.querySelector('form#contactForm, form.contact-form')) {
         var s = document.createElement('script');
@@ -258,63 +236,24 @@ const englishEquivalent = fullCanonical
         s.defer = true;
         document.body.appendChild(s);
       }
+      if (document.querySelector('.testimonials-carousel, .testimonial-slider')) {
+        var s2 = document.createElement('script');
+        s2.src = '/scripts/testimonials-carousel.js';
+        s2.defer = true;
+        document.body.appendChild(s2);
+      }
     });
-    // Lazy load carousel only if carousel exists
-    if (document.querySelector('.testimonials-carousel, .testimonial-slider')) {
-      var s = document.createElement('script');
-      s.src = '/scripts/testimonials-carousel.js';
-      s.defer = true;
-      document.body.appendChild(s);
-    }
-  </script>
-  <script defer src="/scripts/micro-cues.js"></script>
-
-  <!-- Chatbase Chat Widget - Desktop Only, Deferred -->
-  <script is:inline>
-    (function() {
-      if (window.innerWidth >= 992) {
-        var chatbaseLoaded = false;
-        function loadChatbase() {
-          if (chatbaseLoaded) return;
-          chatbaseLoaded = true;
-          if(!window.chatbase||window.chatbase("getState")!=="initialized"){
-            window.chatbase=(...args)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(args)};
-            window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...a)=>target(prop,...a)}})
-          }
-          var script=document.createElement("script");
-          script.src="https://www.chatbase.co/embed.min.js";
-          script.id="XHyFbKkbLOseA1xEcMAm6";
-          script.domain="www.chatbase.co";
-          script.defer = true;
-          document.body.appendChild(script);
-        }
-        ['scroll','click','touchstart','mousemove'].forEach(function(evt){
-          window.addEventListener(evt, loadChatbase, {once:true,passive:true});
-        });
-        setTimeout(loadChatbase, 5000);
-      }
-    })();
   </script>
 
-  <!-- ClickRank AI SEO - Deferred until user interaction or 5s idle -->
-  <!-- Matches BaseLayout deferred pattern for consistent performance.     -->
-  <!-- Google WRS executes JS in a second indexing wave, so deferred       -->
-  <!-- loading still allows ClickRank to inject optimised meta/schema.     -->
+  <!-- Third-party loaders — consolidated into single script block -->
   <script is:inline>
-    (function() {
-      var clickRankLoaded = false;
-      function loadClickRank() {
-        if (clickRankLoaded) return;
-        clickRankLoaded = true;
-        var s = document.createElement("script");
-        s.src = "https://js.clickrank.ai/seo/4ec5887b-e7a8-43e1-a971-567e38ec258c/script?" + new Date().getTime();
-        s.async = true;
-        document.head.appendChild(s);
-      }
-      ['scroll','click','touchstart','mousemove'].forEach(function(evt){
-        window.addEventListener(evt, loadClickRank, {once:true,passive:true});
-      });
-      setTimeout(loadClickRank, 5000);
+    (function(){
+      var evts=['scroll','click','touchstart','mousemove'];
+      function onInteract(fn){evts.forEach(function(e){window.addEventListener(e,fn,{once:true,passive:true})});setTimeout(fn,5000)}
+      // Chatbase (desktop only)
+      if(window.innerWidth>=992){var cb=false;onInteract(function(){if(cb)return;cb=true;if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=function(){if(!window.chatbase.q)window.chatbase.q=[];window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get:function(t,p){return p==="q"?t.q:function(){return t(p,...arguments)}}})}var s=document.createElement("script");s.src="https://www.chatbase.co/embed.min.js";s.id="XHyFbKkbLOseA1xEcMAm6";s.defer=true;document.body.appendChild(s)})}
+      // ClickRank AI SEO
+      var cr=false;onInteract(function(){if(cr)return;cr=true;var s=document.createElement("script");s.src="https://js.clickrank.ai/seo/4ec5887b-e7a8-43e1-a971-567e38ec258c/script?"+Date.now();s.async=true;document.head.appendChild(s)});
     })();
   </script>
 

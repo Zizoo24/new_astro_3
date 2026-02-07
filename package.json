@@ -38,7 +38,7 @@
     "scan:404:quick": "bash scripts/scan-404s.sh --quick",
     "scan:404:prod": "bash scripts/scan-404s.sh --url https://onlinetranslation.ae",
     "quality": "npm run check && npm run lint && npm run lint:css && npm run format:check",
-    "prebuild": "npm run nav:check && npm run lang:check",
+    "prebuild": "node scripts/bundle-css.js && node scripts/bundle-js.js && npm run nav:check && npm run lang:check",
     "postbuild": "echo 'Sitemap generated at dist/sitemap-0.xml, Pagefind search index generated at dist/pagefind/'",
     "og:generate": "node scripts/generate-og-images.js",
     "test": "playwright test",

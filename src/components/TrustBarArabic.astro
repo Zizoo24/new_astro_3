@@ -11,13 +11,13 @@ interface Props {
 
 const { title = "موثوق ومعتمد من" } = Astro.props;
 
-// Logo data with Arabic alt text
+// Logo data with Arabic alt text (WebP for performance)
 const logos = [
-  { src: "/assets/images/logos/moj.png", alt: "وزارة العدل الإمارات" },
-  { src: "/assets/images/logos/dubai-courts.png", alt: "محاكم دبي" },
-  { src: "/assets/images/logos/dubai-police.png", alt: "شرطة دبي" },
-  { src: "/assets/images/logos/dld.png", alt: "دائرة الأراضي والأملاك دبي" },
-  { src: "/assets/images/logos/mofaic.png", alt: "وزارة الخارجية والتعاون الدولي" },
+  { src: "/assets/images/logos/moj.webp", alt: "وزارة العدل الإمارات" },
+  { src: "/assets/images/logos/dubai-courts.webp", alt: "محاكم دبي" },
+  { src: "/assets/images/logos/dubai-police.webp", alt: "شرطة دبي" },
+  { src: "/assets/images/logos/dld.webp", alt: "دائرة الأراضي والأملاك دبي" },
+  { src: "/assets/images/logos/mofaic.webp", alt: "وزارة الخارجية والتعاون الدولي" },
 ];
 ---
 
@@ -31,13 +31,13 @@ const logos = [
         <!-- First set of logos -->
         {logos.map((logo) => (
           <div class="trust-capsule">
-            <img src={logo.src} alt={logo.alt} loading="lazy" />
+            <img src={logo.src} alt={logo.alt} loading="lazy" width="160" height="72" />
           </div>
         ))}
         <!-- Duplicate for seamless loop -->
         {logos.map((logo) => (
           <div class="trust-capsule">
-            <img src={logo.src} alt={logo.alt} loading="lazy" />
+            <img src={logo.src} alt={logo.alt} loading="lazy" width="160" height="72" />
           </div>
         ))}
       </div>

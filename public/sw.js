@@ -7,11 +7,12 @@ const CACHE_NAME = 'ot-cache-v5';
 const STATIC_CACHE = 'ot-static-v5';
 const RUNTIME_CACHE = 'ot-runtime-v5';
 
-// Critical assets to precache
+// Critical assets to precache (bundled CSS for fast repeat visits)
 const PRECACHE_ASSETS = [
   '/',
   '/styles/css-layer-order.css',
-  '/styles/base-architecture.css',
+  '/styles/bundles/foundation.css',
+  '/styles/bundles/components.css',
   '/assets/images/icons/favicon-64.png',
   '/manifest.webmanifest'
 ];

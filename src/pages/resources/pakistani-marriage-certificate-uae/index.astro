@@ -1,0 +1,1154 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const faqs = [
+  {
+    question: "What is the difference between Nikah Nama and NADRA marriage certificate?",
+    answer: "Nikah Nama is the original Islamic marriage contract issued by Union Council. NADRA marriage certificate is a computerized version registered in Pakistan's national database. Both are valid, but some UAE entities specifically request the original Nikah Nama. For family visa applications, either is typically accepted if properly attested."
+  },
+  {
+    question: "Is Pakistan a Hague Convention country?",
+    answer: "No. Pakistan is NOT a member of the Hague Apostille Convention. This means Pakistani documents require the full attestation chain: Pakistan MOFA attestation, UAE Embassy attestation in Pakistan, UAE MOFA attestation, then MOJ-certified translation in Dubai. The process takes longer than Hague member countries."
+  },
+  {
+    question: "How much does Pakistani Nikah Nama translation cost in Dubai?",
+    answer: "MOJ-certified Nikah Nama translation starts from AED 150. Complex documents with handwritten Urdu text or poor legibility may cost more. The attestation chain (Pakistan MOFA + UAE Embassy + UAE MOFA) typically costs between AED 300-500 depending on service provider. Total process including attestation and translation ranges AED 500-800."
+  },
+  {
+    question: "Why does GDRFA reject some Nikah Nama translations?",
+    answer: "Common rejection reasons: missing attestation stamps, name spelling doesn't match passport, illegible handwritten Urdu text, missing witness information in translation, or using NADRA certificate when original Nikah Nama was specifically requested. Name consistency is the most frequent issue—even small differences like 'Mohammad' vs 'Mohammed' cause rejection."
+  },
+  {
+    question: "Can I use NADRA marriage certificate instead of Nikah Nama?",
+    answer: "It depends on the UAE entity's requirements. GDRFA typically accepts either for spouse visa if properly attested. However, some banks and courts specifically request the original Nikah Nama. NADRA certificate is easier to process (computerized, clear text) but verify requirements before proceeding. We advise based on your specific use case."
+  },
+  {
+    question: "How do I get Nikah Nama attested from UAE Embassy in Pakistan?",
+    answer: "After Pakistan MOFA attestation, submit your Nikah Nama to UAE Embassy in Islamabad or UAE Consulate in Karachi. Required: original document with Pakistan MOFA stamp, passport copy, application form, and fees. Processing takes 3-7 working days. Many use attestation agencies in Pakistan to handle the entire chain, which costs more but saves travel time."
+  },
+  {
+    question: "What if my Nikah Nama has handwritten Urdu that is hard to read?",
+    answer: "Illegible handwriting is a common challenge with older Nikah Nama documents. If text is unclear, our translator contacts you to verify details. In severe cases, you may need to obtain a NADRA computerized certificate as a clearer alternative. Courts and GDRFA understand Nikah Nama legibility issues and may accept NADRA certificates if originals are unreadable."
+  },
+  {
+    question: "Does Mehr amount need to be translated?",
+    answer: "Yes. The Mehr (dower) amount must be included in the translation as it's a legal component of the Nikah contract. We translate the amount as stated, whether in Pakistani Rupees or other currency. GDRFA doesn't verify Mehr amounts but includes it as part of the complete document translation for legal accuracy."
+  },
+  {
+    question: "How long does the complete attestation and translation process take?",
+    answer: "If starting in Pakistan: Pakistan MOFA (1-2 weeks), UAE Embassy Pakistan (1 week), shipping to UAE (3-5 days), UAE MOFA (2-3 days), MOJ translation (1-2 days). Total: 3-4 weeks minimum. If your document is already attested and in Dubai, translation takes 24-48 hours. Express same-day translation available for urgent cases."
+  },
+  {
+    question: "What if my name spelling on Nikah Nama doesn't match my passport?",
+    answer: "This is a serious issue causing visa rejection. If the mismatch is minor (transliteration variation like 'Mohammad' vs 'Mohammed'), obtain a name equivalence letter from Pakistan Embassy in UAE confirming both spellings refer to the same person. For major discrepancies, you may need to correct your passport or obtain a <a href='/personal/vital-records/birth/'>birth certificate</a> with the correct spelling."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<BaseLayout
+  title="Pakistani Nikah Nama Translation for UAE | Guide"
+  description="Pakistani Nikah Nama translation and attestation for UAE visa and family sponsorship. Embassy chain required. Complete guide with costs and timeline."
+>
+  <Fragment slot="head">
+    <meta name="keywords" content="Pakistani marriage certificate attestation UAE, Nikah Nama translation Dubai, Pakistani marriage certificate translation, Nikah Nama attestation Dubai, NADRA marriage certificate UAE, Pakistan marriage certificate GDRFA, spouse visa Pakistani documents, Union Council Nikah Nama translation" />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="hero-section bg-dark" data-theme="dark">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">HOME</a>
+        <span class="separator">&gt;</span>
+        <a href="/resources/">RESOURCES</a>
+        <span class="separator">&gt;</span>
+        <span class="current">PAKISTANI MARRIAGE CERTIFICATE UAE</span>
+      </nav>
+
+      <div class="badge">NATIONALITY GUIDE</div>
+
+      <h1>Pakistani Nikah Nama: Translation and Attestation for UAE</h1>
+      <p class="hero-intro">You are one of 2.09 million Pakistanis living in the UAE. When sponsoring a spouse, opening joint accounts, or registering property, your Nikah Nama proves the marriage. The challenge: Pakistan is not a Hague Convention member. Your Nikah Nama needs the full attestation chain before it reaches Dubai for MOJ-certified translation.</p>
+
+      <div class="service-snapshot">
+        <div class="snapshot-item">
+          <i class="fas fa-clipboard-check"></i>
+          <span><strong>Full Chain</strong> Pakistan MOFA + UAE Embassy required</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-language"></i>
+          <span><strong>Urdu Text</strong> specialized Islamic terminology</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-clock"></i>
+          <span><strong>3-4 Weeks</strong> complete process timeline</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>What Is a Nikah Nama?</h2>
+      <p>The Nikah Nama is your Islamic marriage contract. In Pakistan, it serves as the legal and religious record of your marriage. It's issued by the Nikah Registrar at your local Union Council after the marriage ceremony.</p>
+
+      <p>The document is legally binding under Pakistani law. It contains essential details that UAE authorities verify when processing visa and banking applications.</p>
+
+      <div class="document-details">
+        <h3>What a Nikah Nama Contains:</h3>
+        <ul>
+          <li>Full names of bride and groom</li>
+          <li>Father's names for both parties</li>
+          <li>Witnesses (shahid) with their details</li>
+          <li>Mehr (dower amount) agreed upon</li>
+          <li>Date of marriage (Islamic and Gregorian calendar)</li>
+          <li>Location where Nikah was performed</li>
+          <li>Nikah Registrar or Qazi signature and stamp</li>
+          <li>Union Council registration number</li>
+          <li>Any special conditions agreed in the contract</li>
+        </ul>
+      </div>
+
+      <p>Most Nikah Nama documents are written in Urdu. Some contain Arabic religious phrases and Quranic references. Older certificates often have handwritten sections that can be difficult to read.</p>
+
+      <div class="comparison-box">
+        <h3>Nikah Nama vs NADRA Marriage Certificate</h3>
+        <p>NADRA (National Database and Registration Authority) issues a computerized marriage certificate. It contains the same information as Nikah Nama but in typed format registered in Pakistan's national database.</p>
+        <p><strong>Key difference:</strong> NADRA certificate is easier to read and process. However, some UAE entities specifically request the original Nikah Nama because it's the primary Islamic marriage document. We advise which version you need based on your use case.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Pakistan's Attestation Status: NOT a Hague Member</h2>
+
+      <div class="critical-warning">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div>
+          <strong>Critical Fact:</strong> Pakistan is NOT a member of the Hague Apostille Convention. This means your Nikah Nama cannot use the simplified apostille process. It requires the complete embassy attestation chain—a longer, more complex procedure than Hague member countries.
+        </div>
+      </div>
+
+      <p>Countries like India, UK, USA, and Philippines joined the Hague Convention. Their documents only need a single apostille stamp. Pakistani documents need four separate authentication steps before they're accepted in Dubai.</p>
+
+      <p>This is not optional. GDRFA, banks, and UAE courts will reject Pakistani marriage documents without complete attestation. No shortcuts exist.</p>
+
+      <div class="hague-comparison">
+        <div class="comparison-card">
+          <h3>Hague Member Countries</h3>
+          <ul class="check-list">
+            <li>Single apostille stamp</li>
+            <li>1-2 week process</li>
+            <li>Simpler, cheaper</li>
+            <li>Examples: India, UK, USA, Philippines</li>
+          </ul>
+        </div>
+        <div class="comparison-card highlight">
+          <h3>Pakistan (NON-Hague)</h3>
+          <ul class="cross-list">
+            <li>Four-step attestation chain</li>
+            <li>3-4 week process minimum</li>
+            <li>More complex, higher cost</li>
+            <li>Requires UAE Embassy visit in Pakistan</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>Learn more about the <a href="/services/attestation/apostille/">Hague Apostille Convention</a> and how it differs from embassy attestation.</p>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>The Complete Attestation Chain for Pakistani Nikah Nama</h2>
+      <p>Your Nikah Nama must pass through four checkpoints before it's ready for use in Dubai. Each step verifies the previous authority's authenticity.</p>
+
+      <div class="attestation-chain">
+        <div class="chain-step">
+          <span class="step-num">1</span>
+          <div class="step-content">
+            <strong>Original Nikah Nama from Union Council</strong>
+            <p>Obtain certified copy from the Union Council that registered your marriage. Verify all details are correct and stamps are clear. If your original is damaged or illegible, request a fresh certified copy now.</p>
+          </div>
+        </div>
+        <div class="chain-arrow"><i class="fas fa-arrow-down"></i></div>
+        <div class="chain-step">
+          <span class="step-num">2</span>
+          <div class="step-content">
+            <strong>Pakistan Ministry of Foreign Affairs Attestation</strong>
+            <p>Submit your Nikah Nama to Pakistan MOFA in Islamabad or regional offices. They verify the Union Council's authority and add their official stamp. Processing time: 1-2 weeks. Cost: PKR 500-1000.</p>
+          </div>
+        </div>
+        <div class="chain-arrow"><i class="fas fa-arrow-down"></i></div>
+        <div class="chain-step">
+          <span class="step-num">3</span>
+          <div class="step-content">
+            <strong>UAE Embassy Attestation in Pakistan</strong>
+            <p>After Pakistan MOFA stamp, take the document to UAE Embassy in Islamabad or UAE Consulate in Karachi. They verify Pakistan MOFA's stamp and add UAE Embassy attestation. Processing: 3-7 working days. Most people use attestation agencies to handle this step.</p>
+          </div>
+        </div>
+        <div class="chain-arrow"><i class="fas fa-arrow-down"></i></div>
+        <div class="chain-step">
+          <span class="step-num">4</span>
+          <div class="step-content">
+            <strong>UAE MOFA Attestation in Dubai</strong>
+            <p>Once your Nikah Nama arrives in UAE with Pakistan MOFA + UAE Embassy stamps, take it to UAE Ministry of Foreign Affairs (MOFAIC) for final attestation. Processing: 1-3 business days. Learn more about <a href="/services/attestation/mofa/">MOFA attestation services</a>.</p>
+          </div>
+        </div>
+        <div class="chain-arrow"><i class="fas fa-arrow-down"></i></div>
+        <div class="chain-step final">
+          <span class="step-num">5</span>
+          <div class="step-content">
+            <strong>MOJ-Certified Arabic Translation in Dubai</strong>
+            <p>With full attestation complete, your Nikah Nama is now ready for MOJ-certified translation. Our translators handle Urdu text and Islamic terminology accurately. Delivery: 24-48 hours. Express same-day available for urgent <a href="/personal/vital-records/marriage/">marriage certificate translation</a> needs.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-note">
+        <i class="fas fa-lightbulb"></i>
+        <div>
+          <strong>Pro Tip:</strong> If you're in Pakistan, complete Steps 1-3 before traveling to UAE. If you're already in Dubai, send your original Nikah Nama to family in Pakistan who can handle attestation through agencies, then courier the attested document to you. This saves travel costs.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>When You Need Nikah Nama Translation in the UAE</h2>
+      <p>Your Pakistani Nikah Nama becomes essential documentation for multiple UAE processes. Understanding when you need it helps you prepare in advance.</p>
+
+      <div class="use-cases">
+        <div class="use-case-card">
+          <i class="fas fa-id-card"></i>
+          <h3>Family Visa and Spouse Sponsorship</h3>
+          <p>GDRFA requires attested and translated Nikah Nama for spouse residency visa applications. Your sponsor's salary must meet minimum thresholds. The marriage certificate proves the legal relationship allowing sponsorship.</p>
+          <p><strong>Common issue:</strong> Name spelling on Nikah Nama must exactly match both passports. Character-by-character matching is strict.</p>
+        </div>
+
+        <div class="use-case-card">
+          <i class="fas fa-university"></i>
+          <h3>Joint Bank Account Opening</h3>
+          <p>UAE banks require proof of marriage when adding a spouse to accounts or opening joint accounts. Most banks accept NADRA certificate if attested. Some specifically request original Nikah Nama.</p>
+          <p>Translation must be MOJ-certified for Emirates NBD, ADCB, and other major banks.</p>
+        </div>
+
+        <div class="use-case-card">
+          <i class="fas fa-heartbeat"></i>
+          <h3>Health Insurance Coverage</h3>
+          <p>Adding your spouse to company health insurance requires marriage proof. HR departments and insurance providers need attested translation. Processing typically takes 7-10 days after document submission.</p>
+        </div>
+
+        <div class="use-case-card">
+          <i class="fas fa-child"></i>
+          <h3>Child Enrollment in Schools</h3>
+          <p>Schools in Dubai and Abu Dhabi request parents' marriage documentation when enrolling children. This verifies parental relationship and custodial rights. GEMS schools, ADEK-licensed schools, and international schools all require attested documents.</p>
+        </div>
+
+        <div class="use-case-card">
+          <i class="fas fa-home"></i>
+          <h3>Property Joint Ownership</h3>
+          <p>Dubai Land Department (DLD) requires marriage proof for registering property in joint names. Off-plan purchases, mortgage applications, and property transfers involving married couples need attested Nikah Nama translation.</p>
+        </div>
+
+        <div class="use-case-card">
+          <i class="fas fa-id-badge"></i>
+          <h3>Name Change After Marriage</h3>
+          <p>If your spouse changed their surname after marriage, official name changes in UAE require attested marriage documentation. This affects passport updates, visa applications, and bank records.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Translation Challenges with Pakistani Nikah Nama</h2>
+      <p>Nikah Nama documents present unique translation challenges. Understanding these helps you prepare better documentation and avoid delays.</p>
+
+      <div class="challenges-grid">
+        <div class="challenge-card">
+          <div class="challenge-header">
+            <i class="fas fa-pen"></i>
+            <h3>Handwritten Urdu Text</h3>
+          </div>
+          <p>Many Nikah Nama certificates have handwritten Urdu sections. Older documents especially may have faded ink or unclear handwriting. This creates legibility issues that slow translation.</p>
+          <div class="solution">
+            <strong>Solution:</strong> If text is illegible, obtain a NADRA computerized marriage certificate. It contains the same information in typed format. Many translators prefer NADRA certificates for accuracy.
+          </div>
+        </div>
+
+        <div class="challenge-card">
+          <div class="challenge-header">
+            <i class="fas fa-language"></i>
+            <h3>Arabic Religious Phrases in Urdu Text</h3>
+          </div>
+          <p>Nikah Nama includes Arabic religious phrases (Bismillah, Quranic verses, Islamic date references) embedded in Urdu text. These need accurate rendering in Arabic translation that UAE authorities recognize.</p>
+          <div class="solution">
+            <strong>Solution:</strong> Use translators experienced with Islamic marriage documents. Our MOJ-licensed translator understands Islamic terminology and provides accurate Arabic equivalents.
+          </div>
+        </div>
+
+        <div class="challenge-card">
+          <div class="challenge-header">
+            <i class="fas fa-signature"></i>
+            <h3>Name Transliteration from Urdu</h3>
+          </div>
+          <p>Pakistani names have multiple valid English spellings. Your Nikah Nama might show "محمد" which could become Mohammad, Mohammed, Muhammad, or Muhammed. This creates matching problems with passports.</p>
+          <div class="solution">
+            <strong>Solution:</strong> Before translation, we verify name spellings against your passport. If Nikah Nama and passport show different spellings, we advise on obtaining name equivalence letters from Pakistan Embassy in UAE.
+          </div>
+        </div>
+
+        <div class="challenge-card">
+          <div class="challenge-header">
+            <i class="fas fa-table"></i>
+            <h3>Column Format Layout</h3>
+          </div>
+          <p>Nikah Nama uses a distinctive multi-column layout with information in specific sections. Translation must preserve this structure so GDRFA officers can easily locate required details.</p>
+          <div class="solution">
+            <strong>Solution:</strong> Our translations maintain the original document structure. Each section is clearly labeled matching the Urdu original, making verification straightforward for UAE authorities.
+          </div>
+        </div>
+
+        <div class="challenge-card">
+          <div class="challenge-header">
+            <i class="fas fa-balance-scale"></i>
+            <h3>Legal vs Religious Terminology</h3>
+          </div>
+          <p>Nikah Nama contains both legal terms (registration numbers, Union Council authority) and religious terms (Mehr, Wali, Shahid). Each requires appropriate Arabic equivalents recognized in UAE legal and Islamic contexts.</p>
+          <div class="solution">
+            <strong>Solution:</strong> We use established Arabic legal and Islamic terminology. For example, Mehr becomes "المهر" (dower), Wali becomes "الولي" (guardian), Shahid becomes "الشاهد" (witness).
+          </div>
+        </div>
+
+        <div class="challenge-card">
+          <div class="challenge-header">
+            <i class="fas fa-calendar-alt"></i>
+            <h3>Dual Calendar System</h3>
+          </div>
+          <p>Nikah Nama shows dates in both Islamic (Hijri) and Gregorian calendars. Translation must include both. GDRFA uses Gregorian dates but Islamic dates verify authenticity.</p>
+          <div class="solution">
+            <strong>Solution:</strong> We translate both calendar dates exactly as shown. If only one calendar is present, we note this in the translation to avoid confusion.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Common Rejection Reasons for Pakistani Nikah Nama</h2>
+      <p>Understanding why GDRFA and UAE banks reject Pakistani marriage documents helps you avoid costly delays. These are the most frequent issues we see.</p>
+
+      <div class="rejection-list">
+        <div class="rejection-item">
+          <span class="reject-num">1</span>
+          <div class="reject-content">
+            <h3>Missing or Incomplete Attestation Stamps</h3>
+            <p>Your Nikah Nama needs all four stamps: Union Council, Pakistan MOFA, UAE Embassy Pakistan, and UAE MOFA. Missing even one stamp causes immediate rejection.</p>
+            <p><strong>How to avoid:</strong> Before submitting documents, verify all stamps are present and clearly visible. Check that each stamp is recent and hasn't faded. Take photos at each attestation stage.</p>
+          </div>
+        </div>
+
+        <div class="rejection-item">
+          <span class="reject-num">2</span>
+          <div class="reject-content">
+            <h3>Name Spelling Doesn't Match Passport</h3>
+            <p>This is the single most common reason for spouse visa rejection. GDRFA's system performs character-by-character matching. "Mohammad Ali" on Nikah Nama versus "Mohammed Ali" on passport flags a mismatch.</p>
+            <p><strong>How to avoid:</strong> Compare both spouses' names on Nikah Nama against their passports before starting attestation. If there's any difference, obtain a name equivalence letter from Pakistan Embassy UAE before applying.</p>
+          </div>
+        </div>
+
+        <div class="rejection-item">
+          <span class="reject-num">3</span>
+          <div class="reject-content">
+            <h3>Using NADRA Certificate When Original Nikah Nama Was Requested</h3>
+            <p>Some UAE entities specifically request the original Nikah Nama issued by Union Council. Submitting NADRA certificate instead causes rejection even if both are valid marriage proofs.</p>
+            <p><strong>How to avoid:</strong> When receiving requirements, ask specifically: "Do you need the original Nikah Nama or will NADRA certificate work?" Clarify before starting expensive attestation process.</p>
+          </div>
+        </div>
+
+        <div class="rejection-item">
+          <span class="reject-num">4</span>
+          <div class="reject-content">
+            <h3>Illegible Original Document</h3>
+            <p>Handwritten Urdu text that's faded, smudged, or unclear makes accurate translation impossible. GDRFA may question authenticity if they cannot verify the translation against the original.</p>
+            <p><strong>How to avoid:</strong> If your Nikah Nama has poor legibility, obtain a fresh certified copy from Union Council or get NADRA computerized certificate. High-resolution scans help translators work with borderline cases.</p>
+          </div>
+        </div>
+
+        <div class="rejection-item">
+          <span class="reject-num">5</span>
+          <div class="reject-content">
+            <h3>Missing Witness Information</h3>
+            <p>UAE authorities verify that marriage ceremonies included proper witnesses as required under Islamic law. If your translation omits witness (Shahid) names and details, this raises authenticity questions.</p>
+            <p><strong>How to avoid:</strong> Ensure your translation includes complete witness information: names, father's names, CNIC numbers if shown. Our translations include all details from the original Nikah Nama.</p>
+          </div>
+        </div>
+
+        <div class="rejection-item">
+          <span class="reject-num">6</span>
+          <div class="reject-content">
+            <h3>Outdated Attestation Stamps</h3>
+            <p>While attestation doesn't technically "expire," some UAE banks and visa centers prefer recent attestation (within 6-12 months). Very old attestation from 5+ years ago may face additional scrutiny.</p>
+            <p><strong>How to avoid:</strong> If your Nikah Nama has old attestation stamps, check with the specific UAE entity whether they accept it or require fresh attestation. Many do accept older stamps if clear and verifiable.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Cost and Timeline Breakdown</h2>
+      <p>Understanding the complete cost and timeline helps you plan your spouse visa or banking application realistically.</p>
+
+      <div class="cost-timeline">
+        <div class="timeline-section">
+          <h3><i class="fas fa-money-bill-wave"></i> Attestation Costs</h3>
+          <div class="cost-items">
+            <div class="cost-item">
+              <span class="item-label">Union Council certified copy</span>
+              <span class="item-amount">PKR 200-500</span>
+            </div>
+            <div class="cost-item">
+              <span class="item-label">Pakistan MOFA attestation</span>
+              <span class="item-amount">PKR 500-1000</span>
+            </div>
+            <div class="cost-item">
+              <span class="item-label">UAE Embassy attestation (Pakistan)</span>
+              <span class="item-amount">PKR 1500-2500</span>
+            </div>
+            <div class="cost-item">
+              <span class="item-label">Courier to UAE (if needed)</span>
+              <span class="item-amount">PKR 3000-5000</span>
+            </div>
+            <div class="cost-item">
+              <span class="item-label">UAE MOFA attestation</span>
+              <span class="item-amount">AED 150</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-section">
+          <h3><i class="fas fa-language"></i> Translation Costs in UAE</h3>
+          <div class="cost-items">
+            <div class="cost-item">
+              <span class="item-label">MOJ-certified translation</span>
+              <span class="item-amount">AED 150+</span>
+            </div>
+            <div class="cost-item">
+              <span class="item-label">Complex/illegible documents</span>
+              <span class="item-amount">AED 200-300</span>
+            </div>
+            <div class="cost-item">
+              <span class="item-label">Multiple certified copies</span>
+              <span class="item-amount">AED 30 each</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-section timing">
+          <h3><i class="fas fa-clock"></i> Complete Timeline</h3>
+          <div class="cost-items">
+            <div class="cost-item">
+              <span class="item-label">Union Council copy</span>
+              <span class="item-amount">1-3 days</span>
+            </div>
+            <div class="cost-item">
+              <span class="item-label">Pakistan MOFA attestation</span>
+              <span class="item-amount">1-2 weeks</span>
+            </div>
+            <div class="cost-item">
+              <span class="item-label">UAE Embassy attestation</span>
+              <span class="item-amount">3-7 days</span>
+            </div>
+            <div class="cost-item">
+              <span class="item-label">Courier to UAE</span>
+              <span class="item-amount">3-5 days</span>
+            </div>
+            <div class="cost-item">
+              <span class="item-label">UAE MOFA attestation</span>
+              <span class="item-amount">1-3 days</span>
+            </div>
+            <div class="cost-item">
+              <span class="item-label">MOJ translation in Dubai</span>
+              <span class="item-amount">1-2 days</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="total-estimate">
+        <h3>Total Estimates:</h3>
+        <div class="estimate-row">
+          <span><strong>Cost:</strong> PKR 5,000-9,000 + AED 300-500 (approximately AED 500-800 total)</span>
+        </div>
+        <div class="estimate-row">
+          <span><strong>Timeline:</strong> 3-4 weeks minimum from start to completion</span>
+        </div>
+      </div>
+
+      <div class="info-note">
+        <i class="fas fa-info-circle"></i>
+        <div>
+          Many Pakistani families use attestation agencies in Islamabad or Karachi that handle the complete chain for a flat fee. This costs more (PKR 8,000-15,000) but saves multiple trips and handles document tracking. Contact us for recommended agency referrals.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer" set:html={faq.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-dark cta-section" data-theme="dark">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Need Pakistani Nikah Nama Translation in Dubai?</h2>
+        <p>OnlineTranslation.ae specializes in Pakistani marriage document translation with accurate Urdu-to-Arabic rendering and proper Islamic terminology. MOJ License #701. Send us your attested Nikah Nama via WhatsApp for same-day translation.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/971508620217" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i> WhatsApp: +971 50 862 0217
+          </a>
+          <a href="mailto:info@onlinetranslation.ae" class="btn btn-secondary">
+            <i class="fas fa-envelope"></i> info@onlinetranslation.ae
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Related Resources</h2>
+      <div class="related-links">
+        <a href="/personal/vital-records/marriage/" class="related-link">
+          <i class="fas fa-ring"></i>
+          <span>Marriage Certificate Translation Services</span>
+        </a>
+        <a href="/services/attestation/" class="related-link">
+          <i class="fas fa-stamp"></i>
+          <span>Document Attestation Guide</span>
+        </a>
+        <a href="/services/attestation/pakistan/" class="related-link">
+          <i class="fas fa-flag"></i>
+          <span>Pakistan Document Attestation</span>
+        </a>
+        <a href="/personal/vital-records/birth/" class="related-link">
+          <i class="fas fa-baby"></i>
+          <span>Birth Certificate Translation</span>
+        </a>
+        <a href="/services/attestation/mofa/" class="related-link">
+          <i class="fas fa-building-columns"></i>
+          <span>UAE MOFA Attestation Services</span>
+        </a>
+        <a href="/resources/moj-vs-certified/" class="related-link">
+          <i class="fas fa-balance-scale"></i>
+          <span>MOJ vs Certified Translation</span>
+        </a>
+        <a href="/locations/dubai/" class="related-link">
+          <i class="fas fa-city"></i>
+          <span>Legal Translation in Dubai</span>
+        </a>
+        <a href="/resources/golden-visa-attestation-guide/" class="related-link">
+          <i class="fas fa-passport"></i>
+          <span>Golden Visa Attestation Guide</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-section { padding: 8rem 0 4rem; background: var(--surface-navy); }
+  .breadcrumb { font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 2rem; }
+  .breadcrumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: #ffffff; }
+  .breadcrumb .separator { margin: 0 0.5rem; color: rgba(255, 255, 255, 0.5); }
+  .breadcrumb .current { color: #ffffff; }
+
+  .badge {
+    display: inline-block;
+    background: var(--accent-coral);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+    color: var(--text-on-dark);
+  }
+
+  .hero-intro {
+    font-size: 1.1rem;
+    color: var(--text-on-dark-muted);
+    max-width: 900px;
+    line-height: 1.7;
+  }
+
+  .content-container { max-width: 900px; }
+
+  .service-snapshot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .snapshot-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-on-dark-muted);
+  }
+
+  .snapshot-item i {
+    color: var(--accent-coral);
+    font-size: 1.25rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-heading);
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    margin: 2rem 0 1rem;
+    color: var(--text-heading);
+  }
+
+  p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    color: var(--text-body);
+  }
+
+  ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+
+  ul li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  .document-details {
+    background: var(--surface-raised, #f8f9fa);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 1.5rem 0;
+  }
+
+  .document-details h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+  }
+
+  .comparison-box {
+    background: #e3f2fd;
+    border-left: 4px solid var(--link-color);
+    padding: 1.5rem;
+    border-radius: 0 0.75rem 0.75rem 0;
+    margin: 1.5rem 0;
+  }
+
+  .comparison-box h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+  }
+
+  .critical-warning {
+    display: flex;
+    gap: 1rem;
+    background: #fff3e0;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    border-left: 4px solid #ff9800;
+  }
+
+  .critical-warning i {
+    color: #ff9800;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .critical-warning div {
+    color: #e65100;
+    line-height: 1.6;
+  }
+
+  .hague-comparison {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .comparison-card {
+    background: var(--surface-base, white);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid var(--border-light, #eee);
+  }
+
+  .comparison-card.highlight {
+    border-color: var(--accent-coral);
+    background: #fff5f5;
+  }
+
+  .comparison-card h3 {
+    margin-top: 0;
+    color: var(--text-heading);
+  }
+
+  .check-list li {
+    color: #2e7d32;
+  }
+
+  .cross-list li {
+    color: #c62828;
+  }
+
+  .attestation-chain {
+    background: var(--surface-raised, #f8f9fa);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 1.5rem 0;
+  }
+
+  .chain-step {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--surface-base, white);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+
+  .chain-step.final {
+    background: #e8f5e9;
+    border: 2px solid #4caf50;
+  }
+
+  .step-num {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+    font-size: 1.25rem;
+  }
+
+  .step-content strong {
+    color: var(--text-heading);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-content p {
+    margin: 0;
+    color: var(--text-body);
+    font-size: 0.95rem;
+  }
+
+  .chain-arrow {
+    text-align: center;
+    color: var(--accent-coral);
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+  }
+
+  .info-note {
+    display: flex;
+    gap: 1rem;
+    background: #e3f2fd;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+  }
+
+  .info-note i {
+    color: #1976d2;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .info-note div {
+    color: var(--text-body);
+    line-height: 1.6;
+  }
+
+  .use-cases {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .use-case-card {
+    background: var(--surface-base, white);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-light, #eee);
+  }
+
+  .use-case-card i {
+    font-size: 2rem;
+    color: var(--accent-coral);
+    margin-bottom: 1rem;
+  }
+
+  .use-case-card h3 {
+    margin: 0 0 1rem;
+    color: var(--text-heading);
+    font-size: 1.1rem;
+  }
+
+  .use-case-card p {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+  }
+
+  .challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .challenge-card {
+    background: var(--surface-raised, #f8f9fa);
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .challenge-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .challenge-header i {
+    font-size: 1.5rem;
+    color: var(--accent-coral);
+  }
+
+  .challenge-header h3 {
+    margin: 0;
+    color: var(--text-heading);
+    font-size: 1rem;
+  }
+
+  .challenge-card p {
+    margin: 0 0 1rem;
+    font-size: 0.95rem;
+  }
+
+  .solution {
+    background: #e8f5e9;
+    padding: 1rem;
+    border-radius: 8px;
+    color: #2e7d32;
+    font-size: 0.9rem;
+  }
+
+  .rejection-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .rejection-item {
+    display: flex;
+    gap: 1rem;
+    background: var(--surface-base, white);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid #c62828;
+  }
+
+  .reject-num {
+    width: 36px;
+    height: 36px;
+    background: #c62828;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .reject-content h3 {
+    margin: 0 0 0.5rem;
+    color: var(--text-heading);
+    font-size: 1.1rem;
+  }
+
+  .reject-content p {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+  }
+
+  .cost-timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .timeline-section {
+    background: var(--surface-raised, #f8f9fa);
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .timeline-section.timing {
+    background: #fff3e0;
+  }
+
+  .timeline-section h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 1rem;
+    font-size: 1rem;
+    color: var(--text-heading);
+  }
+
+  .cost-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .cost-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-light, #eee);
+  }
+
+  .cost-item:last-child {
+    border-bottom: none;
+  }
+
+  .item-label {
+    color: var(--text-body);
+    font-size: 0.95rem;
+  }
+
+  .item-amount {
+    font-weight: 600;
+    color: var(--text-heading);
+  }
+
+  .total-estimate {
+    background: #e8f5e9;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+  }
+
+  .total-estimate h3 {
+    margin: 0 0 1rem;
+    color: #2e7d32;
+  }
+
+  .estimate-row {
+    padding: 0.5rem 0;
+    color: #2e7d32;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .faq-item {
+    background: var(--surface-raised, #f8f9fa);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .faq-question {
+    padding: 1.25rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-heading);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question::after {
+    content: '+';
+    font-size: 1.5rem;
+    color: var(--accent-coral);
+    flex-shrink: 0;
+  }
+
+  .faq-item[open] .faq-question::after {
+    content: '−';
+  }
+
+  .faq-answer {
+    padding: 0 1.25rem 1.25rem;
+    color: var(--text-body);
+    line-height: 1.7;
+  }
+
+  .cta-section {
+    padding: 4rem 0;
+  }
+
+  .cta-content {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .cta-content h2 {
+    color: var(--text-on-dark);
+    margin-bottom: 1rem;
+  }
+
+  .cta-content p {
+    color: var(--text-on-dark-muted);
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+
+  .cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary {
+    background: #25D366;
+    color: #ffffff !important;
+  }
+
+  .btn-primary:hover {
+    background: #20bd5a;
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    border: 2px solid #ffffff;
+    color: #ffffff !important;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.1);
+  }
+
+  .related-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+
+  .related-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface-raised, #f8f9fa);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-heading);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-light, #eee);
+  }
+
+  .related-link:hover {
+    border-color: var(--accent-coral);
+    transform: translateY(-2px);
+  }
+
+  .related-link i {
+    font-size: 1.5rem;
+    color: var(--accent-coral);
+  }
+
+  @media (max-width: 600px) {
+    .service-snapshot {
+      flex-direction: column;
+    }
+    .cta-buttons {
+      flex-direction: column;
+    }
+    .hague-comparison,
+    .use-cases,
+    .challenges-grid,
+    .cost-timeline {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
