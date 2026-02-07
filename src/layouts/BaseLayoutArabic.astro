@@ -96,9 +96,9 @@ const englishEquivalent = fullCanonical
     "@type": "LocalBusiness",
     "@id": `${siteUrl}/#organization`,
     "name": "OnlineTranslation.ae",
-    "description": "خدمات الترجمة القانونية المعتمدة من وزارة العدل في دبي",
+    "description": "خدمات الترجمة القانونية المعتمدة من وزارة العدل في أبوظبي ودبي",
     "url": siteUrl,
-    "logo": `${siteUrl}/assets/images/logo/brand/emblem-256.png`,
+    "logo": `${siteUrl}/assets/images/logo/brand/emblem-256.webp`,
     "telephone": "+971508620217",
     "email": "info@onlinetranslation.ae",
     "address": {"@type": "PostalAddress", "addressLocality": "دبي", "addressCountry": "AE"},
@@ -108,14 +108,35 @@ const englishEquivalent = fullCanonical
     "aggregateRating": {"@type": "AggregateRating", "ratingValue": 5.0, "ratingCount": 15}
   })} />
 
+  <!-- WebSite Schema for Arabic Sitelinks Search Box -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
+    "url": siteUrl,
+    "name": "OnlineTranslation.ae",
+    "description": "خدمات الترجمة القانونية المعتمدة وتصديق المستندات في أبوظبي ودبي",
+    "publisher": {
+      "@id": `${siteUrl}/#organization`
+    },
+    "inLanguage": ["ar", "en-AE"],
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": `${siteUrl}/search?q={search_term_string}`
+      },
+      "query-input": "required name=search_term_string"
+    }
+  })} />
+
   <!-- Theme -->
   <meta name="theme-color" content="#0E2B48">
   <meta name="format-detection" content="telephone=yes">
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="sitemap" href="/sitemap-0.xml">
 
-  <!-- Prefetching for smooth navigation (replaces ViewTransitions — 20KB lighter) -->
-  <link rel="prefetch" />
+  <!-- Prefetching handled by Astro's built-in prefetch (viewport strategy) -->
 
   <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/icons/favicon-64.png">
@@ -202,7 +223,7 @@ const englishEquivalent = fullCanonical
   </script>
 
   <!-- Scripts - Bundled (6 files → 2 bundles + 1 inline) -->
-  <script is:inline src="/scripts/os-detect.js"></script>
+  <script is:inline>(function(){var d=document,r=d.documentElement,b=d.body||d.createElement('body');function o(){var u=navigator.userAgent||'';if(/iPad|iPhone|iPod/.test(u)&&!window.MSStream)return'ios';if(/android/i.test(u))return'android';return'other'}function a(){var os=o();b.className=b.className.replace(/os-\w+/g,'');b.classList.add('os-'+os);if(os==='ios'){r.style.setProperty('--os-font','-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif');r.style.setProperty('--os-radius','14px');r.style.setProperty('--os-nav-height','83px');d.querySelectorAll('.os-ios-only').forEach(function(e){e.style.display=''})}else if(os==='android'){r.style.setProperty('--os-font','"Roboto","Google Sans",sans-serif');r.style.setProperty('--os-radius','8px');r.style.setProperty('--os-nav-height','64px');d.querySelectorAll('.os-android-only').forEach(function(e){e.style.display=''})}d.querySelectorAll('.os-'+(os==='ios'?'android':'ios')+'-only').forEach(function(e){e.style.display='none'});return os}if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',a);else a();window.detectOS=o;window.applyOSStyles=a})();</script>
   <script defer src="/scripts/bundles/core.js"></script>
   <script defer src="/scripts/bundles/ui.js"></script>
 

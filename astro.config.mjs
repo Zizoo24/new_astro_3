@@ -128,7 +128,7 @@ export default defineConfig({
 
     // 3. PurgeCSS - remove unused CSS (runs BEFORE inline for proper CSS extraction)
     purgecss({
-      // Keep keyframes for animations and View Transitions
+      // Keep keyframes for CSS animations
       keyframes: false,
       // Keep CSS variables
       variables: false,

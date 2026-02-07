@@ -180,7 +180,7 @@ const criticalCSS = `*,*::before,*::after{box-sizing:border-box}html{font-size:8
   <MobileShell />
 
   <!-- Scripts - Bundled (6 files → 2 bundles + 1 inline) -->
-  <script is:inline src="/scripts/os-detect.js"></script>
+  <script is:inline>(function(){var d=document,r=d.documentElement,b=d.body||d.createElement('body');function o(){var u=navigator.userAgent||'';if(/iPad|iPhone|iPod/.test(u)&&!window.MSStream)return'ios';if(/android/i.test(u))return'android';return'other'}function a(){var os=o();b.className=b.className.replace(/os-\w+/g,'');b.classList.add('os-'+os);if(os==='ios'){r.style.setProperty('--os-font','-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif');r.style.setProperty('--os-radius','14px');r.style.setProperty('--os-nav-height','83px');d.querySelectorAll('.os-ios-only').forEach(function(e){e.style.display=''})}else if(os==='android'){r.style.setProperty('--os-font','"Roboto","Google Sans",sans-serif');r.style.setProperty('--os-radius','8px');r.style.setProperty('--os-nav-height','64px');d.querySelectorAll('.os-android-only').forEach(function(e){e.style.display=''})}d.querySelectorAll('.os-'+(os==='ios'?'android':'ios')+'-only').forEach(function(e){e.style.display='none'});return os}if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',a);else a();window.detectOS=o;window.applyOSStyles=a})();</script>
   <script defer src="/scripts/bundles/core.js"></script>
   <script defer src="/scripts/bundles/ui.js"></script>
 
