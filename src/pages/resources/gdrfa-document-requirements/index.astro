@@ -1,0 +1,243 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import RelatedServices from '../../../components/RelatedServices.astro';
+
+const faqs = [
+  {
+    question: "Which documents need MOJ translation for GDRFA?",
+    answer: "All foreign-language personal documents: birth certificates, marriage certificates, academic credentials, police clearance certificates, and bank statements. GDRFA requires MOJ-certified Arabic translation with the judiciary seal — no exceptions for any document type."
+  },
+  {
+    question: "Does GDRFA accept certified translation without MOJ seal?",
+    answer: "No. GDRFA is a federal government entity and requires the MOJ judiciary seal on all translated documents. Certified translation (agency stamp only) will be rejected. This applies to all GDRFA offices across the UAE."
+  },
+  {
+    question: "What's the attestation chain for GDRFA documents?",
+    answer: "For Hague Convention countries (India, UK, US, Canada, Philippines): Apostille from issuing country → MOJ translation in UAE. For non-Hague countries (Pakistan, etc.): Home country attestation → UAE Embassy attestation → MOFA attestation → MOJ translation."
+  },
+  {
+    question: "How long do translated documents stay valid for GDRFA?",
+    answer: "The translation itself doesn't expire. However, the underlying documents may have validity periods: police clearance certificates typically expire after 3-6 months, bank statements should be within the last 3 months. Check GDRFA requirements for your specific visa type."
+  },
+  {
+    question: "What causes GDRFA to reject translated documents?",
+    answer: "Common rejections: name spelling doesn't match passport, missing attestation in the chain, expired underlying document, incomplete translation (headers/stamps not translated), wrong paper size (must be A4). We pre-check all these before issuing the translation."
+  },
+  {
+    question: "Is GDRFA the same in all emirates?",
+    answer: "GDRFA is a federal authority with offices in each emirate. Requirements are the same nationwide. Whether you apply in Dubai, Abu Dhabi, Sharjah, or any other emirate, the translation and attestation requirements are identical."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+  }))
+};
+---
+
+<BaseLayout
+  title="GDRFA Document Requirements | Visa Translation Guide"
+  description="Complete guide to document translation requirements for GDRFA visa applications. MOJ requirements, attestation chains, and common rejection reasons."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="hero-section bg-dark" data-theme="dark">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">HOME</a>
+        <span class="separator">&gt;</span>
+        <a href="/resources/">RESOURCES</a>
+        <span class="separator">&gt;</span>
+        <span class="current">GDRFA DOCUMENTS</span>
+      </nav>
+
+      <h1>GDRFA Document Requirements</h1>
+      <p class="hero-subtitle">Visa & Residence Translation Guide</p>
+      <p class="hero-intro">The General Directorate of Residency and Foreigners Affairs (GDRFA) processes all visa and residence permit applications in the UAE. Every foreign-language document must have MOJ-certified Arabic translation. This guide covers what's needed for each visa type and how to avoid rejection.</p>
+
+      <div class="service-snapshot">
+        <div class="snapshot-item">
+          <i class="fas fa-passport"></i>
+          <span><strong>Authority:</strong> Federal (all emirates)</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-stamp"></i>
+          <span><strong>Translation:</strong> MOJ seal required</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-clock"></i>
+          <span><strong>Our Turnaround:</strong> 1 hour standard docs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Documents by Visa Type</h2>
+
+      <h3>Family Visa (Sponsorship)</h3>
+      <ul>
+        <li><a href="/personal/vital-records/marriage/">Marriage certificate</a> — translated + attested</li>
+        <li><a href="/personal/vital-records/birth/">Birth certificates</a> for children — translated + attested</li>
+        <li><a href="/personal/immigration/bank/">Bank statements</a> (last 3 months) — translated</li>
+        <li>Tenancy contract (Ejari in Dubai) — Arabic version required</li>
+        <li>Salary certificate from employer</li>
+      </ul>
+
+      <h3>Employment Visa</h3>
+      <ul>
+        <li><a href="/personal/academic/degree/">Academic degree</a> — translated + attested + <a href="/resources/mohesr-equivalency/">MOHESR equivalency</a> (some professions)</li>
+        <li><a href="/personal/academic/transcripts/">Transcripts</a> (certain professions) — translated + attested</li>
+        <li><a href="/personal/immigration/pcc/">Police clearance certificate</a> — translated + attested</li>
+        <li>Professional certificates or license (regulated professions)</li>
+      </ul>
+
+      <h3><a href="/services/golden-visa-translation/">Golden Visa</a></h3>
+      <ul>
+        <li>Academic credentials — translated + attested + MOHESR equivalency</li>
+        <li>Property ownership documents — translated</li>
+        <li>Investment proof — translated</li>
+        <li>Company ownership documents (entrepreneurs) — translated</li>
+        <li>See our <a href="/resources/golden-visa-checklist/">Golden Visa document checklist</a></li>
+      </ul>
+
+      <h3>Tourist / Visit Visa</h3>
+      <ul>
+        <li>Generally fewer translation requirements</li>
+        <li>Invitation letter (if applicable) — may need translation</li>
+        <li><a href="/personal/immigration/bank/">Bank statements</a> — may need translation</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Attestation Chain by Country</h2>
+      <p>Before translation, foreign documents must complete the correct attestation chain. The process depends on whether the issuing country is a Hague Convention member.</p>
+
+      <h3>Hague Convention Members (Apostille)</h3>
+      <p>These countries issue apostilles that replace the full embassy chain:</p>
+      <ul>
+        <li><a href="/services/attestation/india/">India</a> — MEA apostille (member since 2005)</li>
+        <li><a href="/services/attestation/uk/">United Kingdom</a> — FCDO apostille</li>
+        <li><a href="/services/attestation/us/">United States</a> — State/Federal apostille</li>
+        <li><a href="/services/attestation/canada/">Canada</a> — GAC apostille (member since 2024)</li>
+        <li><a href="/services/attestation/philippines/">Philippines</a> — DFA apostille</li>
+      </ul>
+      <p><strong>Process:</strong> Apostille from issuing country → MOJ Arabic translation in UAE → Submit to GDRFA</p>
+
+      <h3>Non-Hague Countries (Full Chain)</h3>
+      <ul>
+        <li><a href="/services/attestation/pakistan/">Pakistan</a> — Full attestation chain required</li>
+        <li>Bangladesh, Egypt, and others not in the Hague Convention</li>
+      </ul>
+      <p><strong>Process:</strong> Home country MOFA → UAE Embassy in home country → <a href="/services/attestation/mofa/">UAE MOFA</a> → MOJ Arabic translation → Submit to GDRFA</p>
+
+      <div class="callout-box">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div>
+          <strong>UAE is NOT a Hague Member</strong>
+          <p>The UAE itself is not a Hague Convention member. UAE documents going abroad need MOFA attestation + destination country embassy legalization. Do not confuse the Hague status of the document's origin country with the UAE's status.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Common Rejection Reasons</h2>
+      <ol>
+        <li><strong>Name mismatch:</strong> Transliterated name doesn't match passport. "Mohammed" vs "Muhammad" vs "Mohamed" — must match passport exactly.</li>
+        <li><strong>Missing attestation step:</strong> Skipping one link in the attestation chain. Each step must be completed in order.</li>
+        <li><strong>Expired document:</strong> Police clearance certificates expire after 3-6 months. Bank statements must be recent (within 3 months).</li>
+        <li><strong>No MOJ seal:</strong> Certified translation (agency stamp) submitted instead of MOJ translation. GDRFA accepts only MOJ.</li>
+        <li><strong>Incomplete translation:</strong> Stamps, headers, or handwritten notes left untranslated.</li>
+      </ol>
+
+      <p>We pre-check every document for these issues before starting the translation. If we spot a potential problem, we alert you before you pay — not after.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <RelatedServices
+        pageKey="gdrfaRequirements"
+        title="Related Services"
+        showFamily={true}
+        showCrossSilo={true}
+        maxItems={6}
+      />
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer"><p>{faq.answer}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container cta-section">
+      <h2>Free Document Review</h2>
+      <p>Send your visa documents via WhatsApp. We'll check attestation status, identify any issues, and provide an exact quote — before you pay anything.</p>
+      <a href="https://wa.me/971508620217?text=I%20need%20translation%20for%20GDRFA%20visa%20application" class="btn btn-primary">
+        <i class="fab fa-whatsapp"></i> Send Documents for Review
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-section { padding: 8rem 0 4rem; background: var(--primary-color); }
+  .breadcrumb { font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 2rem; }
+  .breadcrumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: #ffffff; }
+  .breadcrumb .separator { margin: 0 0.5rem; color: rgba(255, 255, 255, 0.5); }
+  .breadcrumb .current { color: #ffffff; }
+  h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: #ffffff; }
+  .hero-subtitle { font-size: 1.25rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+  .content-container { max-width: 900px; }
+  .content-container p { line-height: 1.8; margin-bottom: 1rem; }
+  .content-container h2 { font-size: 1.5rem; font-weight: 700; margin: 0 0 1.5rem; }
+  .content-container h3 { font-size: 1.15rem; font-weight: 700; margin: 1.5rem 0 0.75rem; }
+  .content-container ul, .content-container ol { padding-left: 1.5rem; margin: 1rem 0 1.5rem; }
+  .content-container li { margin-bottom: 0.5rem; line-height: 1.7; }
+  .content-container a { color: var(--accent-teal, #0077b6); }
+  .service-snapshot { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; }
+  .snapshot-item { display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.9); }
+  .snapshot-item i { font-size: 1.25rem; color: var(--accent-color); }
+  .callout-box { display: flex; gap: 1rem; background: #fffbeb; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #f59e0b; margin: 2rem 0; }
+  .callout-box i { font-size: 1.5rem; color: #f59e0b; flex-shrink: 0; }
+  .callout-box strong { color: var(--primary-color); }
+  .callout-box p { margin: 0.5rem 0 0; line-height: 1.7; }
+  .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { background: var(--bg-secondary, #f8f9fa); border-radius: 8px; overflow: hidden; }
+  .faq-question { padding: 1rem 1.25rem; font-weight: 600; cursor: pointer; list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; float: right; font-size: 1.25rem; color: var(--accent-color); }
+  .faq-item[open] .faq-question::after { content: '−'; }
+  .faq-answer { padding: 0 1.25rem 1rem; }
+  .faq-answer p { margin: 0; line-height: 1.7; }
+  .cta-section { text-align: center; max-width: 600px; margin: 0 auto; padding: 3rem 1.5rem; background: var(--surface-navy, #0a1628); border-radius: 12px; }
+  .cta-section h2 { margin-bottom: 1rem; }
+  .cta-section p { margin-bottom: 2rem; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; }
+  .btn-primary { background: var(--accent-color); color: #ffffff; }
+  @media (max-width: 768px) { .service-snapshot { flex-direction: column; } }
+</style>
