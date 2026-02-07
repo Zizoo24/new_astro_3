@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+// ViewTransitions removed — saves 20KB JS for a static content site
 import HeaderUnified from '../components/HeaderUnified.astro';
 import FooterArabic from '../components/FooterArabic.astro';
 import MobileShellArabic from '../components/MobileShellArabic.astro';
@@ -114,8 +114,8 @@ const englishEquivalent = fullCanonical
   <link rel="manifest" href="/manifest.webmanifest">
   <link rel="sitemap" href="/sitemap-0.xml">
 
-  <!-- View Transitions for smooth page navigation -->
-  <ViewTransitions />
+  <!-- Prefetching for smooth navigation (replaces ViewTransitions — 20KB lighter) -->
+  <link rel="prefetch" />
 
   <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/icons/favicon-64.png">
@@ -224,52 +224,15 @@ const englishEquivalent = fullCanonical
     });
   </script>
 
-  <!-- Chatbase Chat Widget - Desktop Only, Deferred -->
+  <!-- Third-party loaders — consolidated into single script block -->
   <script is:inline>
-    (function() {
-      if (window.innerWidth >= 992) {
-        var chatbaseLoaded = false;
-        function loadChatbase() {
-          if (chatbaseLoaded) return;
-          chatbaseLoaded = true;
-          if(!window.chatbase||window.chatbase("getState")!=="initialized"){
-            window.chatbase=(...args)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(args)};
-            window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...a)=>target(prop,...a)}})
-          }
-          var script=document.createElement("script");
-          script.src="https://www.chatbase.co/embed.min.js";
-          script.id="XHyFbKkbLOseA1xEcMAm6";
-          script.domain="www.chatbase.co";
-          script.defer = true;
-          document.body.appendChild(script);
-        }
-        ['scroll','click','touchstart','mousemove'].forEach(function(evt){
-          window.addEventListener(evt, loadChatbase, {once:true,passive:true});
-        });
-        setTimeout(loadChatbase, 5000);
-      }
-    })();
-  </script>
-
-  <!-- ClickRank AI SEO - Deferred until user interaction or 5s idle -->
-  <!-- Matches BaseLayout deferred pattern for consistent performance.     -->
-  <!-- Google WRS executes JS in a second indexing wave, so deferred       -->
-  <!-- loading still allows ClickRank to inject optimised meta/schema.     -->
-  <script is:inline>
-    (function() {
-      var clickRankLoaded = false;
-      function loadClickRank() {
-        if (clickRankLoaded) return;
-        clickRankLoaded = true;
-        var s = document.createElement("script");
-        s.src = "https://js.clickrank.ai/seo/4ec5887b-e7a8-43e1-a971-567e38ec258c/script?" + new Date().getTime();
-        s.async = true;
-        document.head.appendChild(s);
-      }
-      ['scroll','click','touchstart','mousemove'].forEach(function(evt){
-        window.addEventListener(evt, loadClickRank, {once:true,passive:true});
-      });
-      setTimeout(loadClickRank, 5000);
+    (function(){
+      var evts=['scroll','click','touchstart','mousemove'];
+      function onInteract(fn){evts.forEach(function(e){window.addEventListener(e,fn,{once:true,passive:true})});setTimeout(fn,5000)}
+      // Chatbase (desktop only)
+      if(window.innerWidth>=992){var cb=false;onInteract(function(){if(cb)return;cb=true;if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=function(){if(!window.chatbase.q)window.chatbase.q=[];window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get:function(t,p){return p==="q"?t.q:function(){return t(p,...arguments)}}})}var s=document.createElement("script");s.src="https://www.chatbase.co/embed.min.js";s.id="XHyFbKkbLOseA1xEcMAm6";s.defer=true;document.body.appendChild(s)})}
+      // ClickRank AI SEO
+      var cr=false;onInteract(function(){if(cr)return;cr=true;var s=document.createElement("script");s.src="https://js.clickrank.ai/seo/4ec5887b-e7a8-43e1-a971-567e38ec258c/script?"+Date.now();s.async=true;document.head.appendChild(s)});
     })();
   </script>
 
