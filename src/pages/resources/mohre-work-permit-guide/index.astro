@@ -1,0 +1,555 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const faqs = [
+  {
+    question: "Does MOHRE require MOJ translation or certified translation?",
+    answer: "MOHRE is a federal government entity. All foreign-language documents submitted to MOHRE must carry the MOJ judiciary seal. Certified translation with only an agency stamp will be rejected. See our guide on MOJ vs certified translation for a detailed comparison."
+  },
+  {
+    question: "Which documents does the employee need to provide for a work permit?",
+    answer: "Employees typically provide: degree certificate, academic transcripts (some professions), police clearance certificate, and passport copy. Your employer handles the work permit application itself. Your role is to prepare documents with proper attestation and translation."
+  },
+  {
+    question: "Do I need MOHESR equivalency for my work permit?",
+    answer: "Not always. Most private-sector roles require only MOJ-certified translation of your attested degree. Equivalency is needed for government jobs, teaching positions (MOE schools), regulated professions (engineering, healthcare), and Golden Visa skilled worker category."
+  },
+  {
+    question: "How long does the document preparation process take?",
+    answer: "Attestation in your home country takes 5-15 business days depending on nationality. MOFA attestation in the UAE takes 1-2 business days. MOJ Arabic translation takes 1 hour for standard documents. Plan for 2-3 weeks total from start to finish."
+  },
+  {
+    question: "What happens if my work permit documents are rejected?",
+    answer: "MOHRE returns rejected documents with a reason code. Common causes include name mismatches, missing attestation steps, or expired documents. You must fix the issue and resubmit. We pre-check all documents before translation to catch these problems early."
+  },
+  {
+    question: "Can my employer start the work permit while I prepare documents?",
+    answer: "Your employer can initiate the work permit application and obtain an entry permit (visa) before all documents are ready. However, the employment visa cannot be stamped and your Emirates ID cannot be issued until all attested, translated documents are submitted."
+  },
+  {
+    question: "Do police clearance certificates expire?",
+    answer: "Yes. Police clearance certificates are typically valid for 3-6 months from the date of issue. If your PCC expires before MOHRE processes your application, you will need a new one. Time the issuance carefully with your employment start date."
+  },
+  {
+    question: "Is the attestation process different for free zone employees?",
+    answer: "Free zones like JAFZA, DMCC, and DAFZA have their own authorities but follow similar document requirements. Some free zones accept certified translation without MOJ seal for internal processes. However, any document going to MOHRE or GDRFA needs the MOJ seal."
+  },
+  {
+    question: "What if my degree is in English — do I still need translation?",
+    answer: "Yes. MOHRE requires Arabic translation regardless of the original language. Even English-language degrees from UK, US, or Australian universities must have MOJ-certified Arabic translation. The translation goes alongside the original, not as a replacement."
+  },
+  {
+    question: "Can I use documents attested for a previous UAE employer?",
+    answer: "Yes, if the attestation is still valid and your documents have not expired. Previously attested and translated documents can be reused for a new employer. However, you may need a new police clearance certificate if the old one has expired."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+  }))
+};
+---
+
+<BaseLayout
+  title="MOHRE Work Permit Documents | Employee Guide"
+  description="Employee's guide to MOHRE work permit document preparation. Translation, attestation requirements by nationality, and common rejection reasons."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="hero-section bg-dark" data-theme="dark">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">HOME</a>
+        <span class="separator">&gt;</span>
+        <a href="/resources/">RESOURCES</a>
+        <span class="separator">&gt;</span>
+        <span class="current">MOHRE WORK PERMIT GUIDE</span>
+      </nav>
+
+      <h1>MOHRE Work Permit Documents</h1>
+      <p class="hero-subtitle">The Employee's Guide to Document Preparation</p>
+      <p class="hero-intro">Your employer handles the work permit application. Your job is to prepare the documents. This guide covers what you need, how to get it attested, and what causes rejections — from the employee's perspective.</p>
+
+      <div class="service-snapshot">
+        <div class="snapshot-item">
+          <i class="fas fa-building"></i>
+          <span><strong>Authority:</strong> MOHRE (Federal)</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-stamp"></i>
+          <span><strong>Translation:</strong> MOJ seal required</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-clock"></i>
+          <span><strong>Our Turnaround:</strong> 1 hour standard docs</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-file-alt"></i>
+          <span><strong>Typical Docs:</strong> 3-5 per employee</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Overview -->
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>What MOHRE Expects from You</h2>
+      <p>The Ministry of Human Resources and Emiratisation (MOHRE) regulates employment in the UAE. When your employer applies for a work permit, they submit your documents to MOHRE on your behalf.</p>
+
+      <p>MOHRE does not accept photocopies or unofficial translations. Every foreign-language document must have MOJ-certified Arabic translation. Most documents also need attestation from your home country.</p>
+
+      <p>Your employer usually tells you what they need. But many employees receive a vague checklist with no guidance on attestation or translation. This guide fills that gap.</p>
+
+      <div class="info-callout">
+        <i class="fas fa-info-circle"></i>
+        <div>
+          <strong>Your Role vs. Your Employer's Role</strong>
+          <p>You prepare and attest your personal documents (degree, PCC, birth certificate). Your employer prepares the offer letter, labour contract, and company documents. Translation of your documents is your responsibility unless your employer offers to cover it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Required Documents -->
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Required Documents for MOHRE Work Permits</h2>
+      <p>The exact list depends on your profession, nationality, and visa category. Below are the documents most employees need to prepare.</p>
+
+      <h3>Documents Almost Always Required</h3>
+      <ul class="content-list">
+        <li><strong><a href="/personal/academic/degree/">Degree certificate</a></strong> — Attested and MOJ-translated. This is the single most important document. MOHRE uses it to verify your qualification level.</li>
+        <li><strong>Passport copy</strong> — Clear copy of the bio-data page. No translation needed if in English or Arabic.</li>
+        <li><strong>Passport-size photographs</strong> — White background, recent. Follow UAE specifications.</li>
+      </ul>
+
+      <h3>Documents Required for Some Professions</h3>
+      <ul class="content-list">
+        <li><strong><a href="/personal/academic/transcripts/">Academic transcripts</a></strong> — Required for regulated professions (engineering, healthcare, teaching). Must be attested and translated.</li>
+        <li><strong><a href="/personal/immigration/pcc/">Police clearance certificate (PCC)</a></strong> — Required for most professional and skilled categories. Must be from your country of residence for the last 5 years.</li>
+        <li><strong>Professional license or registration</strong> — Engineers (from home country's engineering council), doctors (medical council), teachers (teaching license). Attested and translated.</li>
+        <li><strong>Experience letters</strong> — From previous employers. Some regulated professions require verified work experience. Attested originals preferred.</li>
+      </ul>
+
+      <h3>Documents You Do NOT Need to Prepare</h3>
+      <ul class="content-list">
+        <li>Offer letter — your employer prepares this</li>
+        <li>Labour contract — generated through MOHRE's system</li>
+        <li>Company trade license — your employer submits this</li>
+        <li>Establishment card — your employer's document</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Section: Attestation by Nationality -->
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Attestation Requirements by Nationality</h2>
+      <p>Before translation, your documents must be authenticated. The process depends on whether your country is a member of the Hague Apostille Convention.</p>
+
+      <h3>Hague Convention Countries (Apostille Route)</h3>
+      <p>If your country is a Hague member, you use the apostille system. This is simpler and faster than the full attestation chain.</p>
+
+      <div class="country-grid">
+        <div class="country-card">
+          <h4>India</h4>
+          <p>MEA apostille (member since 2005). Some states require HRD attestation before MEA. Processing takes 5-10 business days.</p>
+        </div>
+        <div class="country-card">
+          <h4>United Kingdom</h4>
+          <p>FCDO apostille. Apply online or by post. Processing takes 2-5 business days for standard service.</p>
+        </div>
+        <div class="country-card">
+          <h4>United States</h4>
+          <p>State-level or federal apostille depending on the document. Processing varies by state (1-8 weeks).</p>
+        </div>
+        <div class="country-card">
+          <h4>Canada</h4>
+          <p>GAC apostille (member since January 2024). Apply through Global Affairs Canada. Relatively new process.</p>
+        </div>
+        <div class="country-card">
+          <h4>Philippines</h4>
+          <p>DFA apostille. Apply through the Department of Foreign Affairs. Processing takes 3-7 business days.</p>
+        </div>
+        <div class="country-card">
+          <h4>Bangladesh</h4>
+          <p>Apostille available (member since March 2025). Apply through the Ministry of Foreign Affairs in Dhaka.</p>
+        </div>
+      </div>
+
+      <p><strong>Apostille route:</strong> Home country attestation (if needed) → Apostille → MOFA attestation in UAE → <a href="/resources/moj-vs-certified/">MOJ Arabic translation</a></p>
+
+      <h3>Non-Hague Countries (Full Attestation Chain)</h3>
+      <p>Countries outside the Hague Convention require the traditional, longer <a href="/services/attestation/">attestation chain</a>.</p>
+
+      <div class="country-grid">
+        <div class="country-card non-hague">
+          <h4>Pakistan</h4>
+          <p>Home country MOFA → UAE Embassy in Pakistan → UAE MOFA → MOJ translation. Processing takes 10-15 business days in Pakistan.</p>
+        </div>
+        <div class="country-card non-hague">
+          <h4>Other Non-Hague Countries</h4>
+          <p>Egypt, Jordan, Syria, Lebanon, and others follow the same chain. Home MOFA → UAE Embassy → UAE MOFA → MOJ translation.</p>
+        </div>
+      </div>
+
+      <p><strong>Full chain:</strong> Home country MOFA → UAE Embassy in home country → UAE MOFA → MOJ Arabic translation</p>
+
+      <div class="info-callout warning">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div>
+          <strong>UAE is NOT a Hague Convention Member</strong>
+          <p>The UAE itself has not joined the Hague Convention. Documents originating from the UAE cannot use the apostille system abroad. This does not affect your incoming documents — only your home country's Hague status matters for work permit preparation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Translation Requirements -->
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Translation Requirements for MOHRE</h2>
+      <p>MOHRE is a federal government entity. All foreign-language documents must carry the MOJ judiciary seal. There is no alternative. Understanding the difference between <a href="/resources/moj-vs-certified/">MOJ and certified translation</a> is critical.</p>
+
+      <h3>What Needs MOJ Translation</h3>
+      <ul class="content-list">
+        <li><a href="/personal/academic/degree/">Degree certificates</a> — Always required. The Arabic translation must include all text, stamps, and seals visible on the original.</li>
+        <li><a href="/personal/academic/transcripts/">Academic transcripts</a> — When required by profession. Every course name, grade, and credit hour is translated.</li>
+        <li><a href="/personal/immigration/pcc/">Police clearance certificates</a> — Full translation including issuing authority details, reference numbers, and validity dates.</li>
+        <li>Professional certificates — Engineering registrations, medical council certificates, teaching qualifications.</li>
+        <li>Experience letters — When attested originals are submitted for regulated professions.</li>
+      </ul>
+
+      <h3>What Does NOT Need Translation</h3>
+      <ul class="content-list">
+        <li>Passport — Already multilingual. MOHRE reads the machine-readable zone.</li>
+        <li>UAE-issued documents — Emirates ID, existing UAE visa copies, local salary certificates in English or Arabic.</li>
+        <li>Photographs — No text to translate.</li>
+      </ul>
+
+      <h3>Translation Standards MOHRE Expects</h3>
+      <p>The translation must be a complete, faithful rendering of the original. Partial translations are rejected. Headers, footers, stamps, handwritten notes, and watermarks must all be accounted for in the translated version.</p>
+
+      <p>The MOJ seal confirms that a licensed translator (License #701, Arkan Legal Translation) has verified the accuracy. The seal includes the translator's name, license number, and date.</p>
+
+      <p>We translate the document, add the MOJ seal, and return it within 1 hour for standard documents. You receive both the physical stamped copy and a digital scan via WhatsApp.</p>
+    </div>
+  </section>
+
+  <!-- Section: Step-by-Step Process -->
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Step-by-Step: Preparing Your Documents</h2>
+      <p>Follow this sequence. Each step depends on the previous one.</p>
+
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Gather Originals</h3>
+            <p>Collect your original <a href="/personal/academic/degree/">degree certificate</a>, transcripts, and any professional licenses. Confirm with your employer exactly which documents they need. Do not guess — ask for the specific MOHRE checklist for your job category.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Complete Attestation in Home Country</h3>
+            <p>Get apostille (Hague countries) or full attestation chain (non-Hague). If you need a <a href="/personal/immigration/pcc/">police clearance certificate</a>, apply for it at this stage. PCC processing can take 1-3 weeks in some countries.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>MOFA Attestation in UAE</h3>
+            <p>Once you arrive in the UAE (or through an agent), submit your attested documents to the UAE Ministry of Foreign Affairs for final attestation. This takes 1-2 business days through typing centres or the MOFA office.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>MOJ Arabic Translation</h3>
+            <p>Send your attested documents to us via WhatsApp (+971 50 862 0217). We verify attestation completeness, translate into Arabic with the MOJ seal, and deliver within 1 hour. Your employer then submits everything to MOHRE.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Common Rejections -->
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Common MOHRE Rejection Reasons</h2>
+      <p>MOHRE rejections delay your employment start date. Most are avoidable. Here are the issues we see repeatedly, and how to prevent each one. For more details, read our <a href="/blog/mohre-work-permit-document-issues/">in-depth article on MOHRE document issues</a>.</p>
+
+      <div class="rejection-list">
+        <div class="rejection-item">
+          <h3><i class="fas fa-times-circle"></i> Name Spelling Mismatch</h3>
+          <p>Your translated name must match your passport exactly. "Mohammed" on your degree but "Muhammad" on your passport will cause rejection. We cross-check every name against your passport before issuing the translation.</p>
+        </div>
+
+        <div class="rejection-item">
+          <h3><i class="fas fa-times-circle"></i> Incomplete Attestation Chain</h3>
+          <p>Skipping any step in the attestation chain invalidates the entire process. A degree with MEA apostille but no MOFA stamp will be rejected. We verify the full chain before starting translation.</p>
+        </div>
+
+        <div class="rejection-item">
+          <h3><i class="fas fa-times-circle"></i> Expired Police Clearance</h3>
+          <p>PCCs expire 3-6 months after issuance. If yours expires before MOHRE processes the application, you need a new one. Time the PCC issuance carefully — too early means it may expire.</p>
+        </div>
+
+        <div class="rejection-item">
+          <h3><i class="fas fa-times-circle"></i> Wrong Translation Type</h3>
+          <p>Submitting a certified translation (agency stamp only) instead of <a href="/resources/moj-vs-certified/">MOJ-sealed translation</a> is an automatic rejection. MOHRE accepts only MOJ. No exceptions.</p>
+        </div>
+
+        <div class="rejection-item">
+          <h3><i class="fas fa-times-circle"></i> Partial Translation</h3>
+          <p>Leaving stamps, headers, or handwritten notes untranslated results in rejection. MOHRE requires the complete document to be rendered in Arabic. Every element on the original must appear in the translation.</p>
+        </div>
+
+        <div class="rejection-item">
+          <h3><i class="fas fa-times-circle"></i> Degree Not Recognized</h3>
+          <p>Some degrees from unaccredited institutions are not accepted. MOHRE may also flag degrees where the university has closed. If this applies, you may need <a href="/resources/mohesr-equivalency/">MOHESR equivalency</a> or additional documentation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Timeline -->
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Realistic Timeline: Start to Finish</h2>
+      <p>Document preparation is usually the longest part of the employment process. Here is a realistic breakdown by phase.</p>
+
+      <div class="timeline-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Phase</th>
+              <th>Duration</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Gathering originals</td>
+              <td>1-3 days</td>
+              <td>Assuming you have access to your documents</td>
+            </tr>
+            <tr>
+              <td>Home country attestation (Hague)</td>
+              <td>5-10 business days</td>
+              <td>Apostille from MEA, FCDO, State Dept, etc.</td>
+            </tr>
+            <tr>
+              <td>Home country attestation (non-Hague)</td>
+              <td>10-20 business days</td>
+              <td>MOFA + UAE Embassy chain</td>
+            </tr>
+            <tr>
+              <td>PCC issuance</td>
+              <td>5-15 business days</td>
+              <td>Varies significantly by country</td>
+            </tr>
+            <tr>
+              <td>UAE MOFA attestation</td>
+              <td>1-2 business days</td>
+              <td>After arrival in UAE or via agent</td>
+            </tr>
+            <tr>
+              <td>MOJ Arabic translation</td>
+              <td>1 hour (same day)</td>
+              <td>Standard documents via our service</td>
+            </tr>
+            <tr>
+              <td>MOHRE processing</td>
+              <td>2-5 business days</td>
+              <td>After employer submits complete package</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>Total estimate:</strong> 2-4 weeks for Hague country nationals. 3-6 weeks for non-Hague country nationals. The home country attestation phase accounts for most of the time.</p>
+
+      <div class="info-callout">
+        <i class="fas fa-lightbulb"></i>
+        <div>
+          <strong>Start Before Your Visa Interview</strong>
+          <p>Begin attestation the moment you receive a job offer. Do not wait for the employment visa to start the process. Attestation can run in parallel with your employer's internal paperwork.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Special Cases -->
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Special Cases and Exceptions</h2>
+
+      <h3>Free Zone Employment</h3>
+      <p>Free zones (JAFZA, DMCC, DAFZA, DIFC) have their own employment authorities. Document requirements overlap heavily with MOHRE but differ in some areas. DIFC and ADGM are financial free zones with unique regulatory frameworks.</p>
+      <p>Key difference: some free zones accept certified translation for internal records. However, any document routed through <a href="/resources/gdrfa-document-requirements/">GDRFA for visa stamping</a> still needs the MOJ seal.</p>
+
+      <h3>Switching Employers (Visa Transfer)</h3>
+      <p>If you are transferring between UAE employers, your previously attested documents remain valid. You do not need to re-attest. However, check that your PCC has not expired. A new employer may request fresh translations if the existing ones are older than 2 years.</p>
+
+      <h3>Regulated Professions</h3>
+      <p>Engineering, healthcare, and teaching roles have additional requirements beyond standard MOHRE documentation.</p>
+      <ul class="content-list">
+        <li><strong>Healthcare:</strong> <a href="/specialized/medical/dha-dataflow/">DHA DataFlow verification</a> plus licensing requirements. Separate from the MOHRE work permit process.</li>
+        <li><strong>Engineering:</strong> Society of Engineers registration may be required. Degree must often be from an accredited programme.</li>
+        <li><strong>Teaching:</strong> MOE-licensed schools require MOHESR equivalency. International schools may have different standards.</li>
+      </ul>
+
+      <h3>Documents from Multiple Countries</h3>
+      <p>If you have a degree from one country and work experience from another, each document follows the attestation chain of its issuing country. A UK degree gets an FCDO apostille. Pakistani experience letters go through Pakistan's attestation chain. The processes run independently.</p>
+    </div>
+  </section>
+
+  <!-- Section: Pre-Check -->
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Our Pre-Check Process</h2>
+      <p>We review every document before starting translation. This is not a courtesy — it protects you from paying for work that will be rejected.</p>
+
+      <h3>What We Check</h3>
+      <ul class="content-list">
+        <li><strong>Attestation completeness:</strong> Every stamp in the chain, in the correct order</li>
+        <li><strong>Name consistency:</strong> All names match across documents and passport</li>
+        <li><strong>Document validity:</strong> PCC not expired, bank statements recent enough</li>
+        <li><strong>Legibility:</strong> All text, stamps, and seals clearly visible</li>
+        <li><strong>Correct document type:</strong> Provisional vs. final degree, specific PCC format</li>
+      </ul>
+
+      <p>If we find an issue, we tell you before you pay. We explain what needs to be fixed and how to fix it. This is the <a href="/resources/moj-vs-certified/">right-selling approach</a> — we would rather delay a translation than let you submit a document that will be rejected.</p>
+
+      <p>Send your documents via WhatsApp for a free pre-check. We review within 30 minutes during business hours.</p>
+    </div>
+  </section>
+
+  <!-- Section: Specific Nationality Guides -->
+  <section class="section bg-light">
+    <div class="container content-container">
+      <h2>Nationality-Specific Considerations</h2>
+
+      <h3>Indian Nationals</h3>
+      <p>India's large expatriate community in the UAE means the process is well-established. Key points: MEA apostille is required (India is a Hague member since 2005). Some states require HRD attestation before MEA. <a href="/personal/vital-records/birth/">Birth certificates</a> from Indian municipalities may need additional notarization.</p>
+
+      <h3>Pakistani Nationals</h3>
+      <p>Pakistan is not a Hague member. Full attestation chain required: HEC attestation (degrees) → Pakistan MOFA → UAE Embassy in Islamabad/Karachi → UAE MOFA. This is one of the longer processes. Plan 3-4 weeks minimum for the attestation phase alone.</p>
+
+      <h3>Filipino Nationals</h3>
+      <p>Philippines is a Hague member (since 2019). Documents go through DFA apostille. CHED authentication may be needed for educational documents before DFA. PSA documents (birth, <a href="/personal/vital-records/marriage/">marriage certificates</a>) must be on PSA security paper.</p>
+
+      <h3>UK and US Nationals</h3>
+      <p>Both are long-standing Hague members. UK uses FCDO apostille. US apostille comes from either the state (for state-issued documents) or the US Department of State (for federal documents). Processing times vary significantly by US state.</p>
+
+      <h3>Bangladeshi Nationals</h3>
+      <p>Bangladesh joined the Hague Convention in March 2025. Documents issued before that date may still need the traditional attestation chain. Documents issued after March 2025 can use apostille. Confirm with the issuing authority which route applies to your specific document.</p>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer"><p>{faq.answer}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section bg-white">
+    <div class="container cta-section">
+      <h2>Free Document Pre-Check</h2>
+      <p>Send your work permit documents via WhatsApp. We check attestation status, identify any issues, and provide an exact quote — before you pay anything.</p>
+      <a href="https://wa.me/971508620217?text=I%20need%20translation%20for%20MOHRE%20work%20permit%20documents" class="btn btn-primary" aria-label="Send documents for review via WhatsApp">
+        <i class="fab fa-whatsapp"></i> Send Documents for Review
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-section { padding: 8rem 0 4rem; background: var(--primary-color); }
+  .breadcrumb { font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 2rem; }
+  .breadcrumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: #ffffff; }
+  .breadcrumb .separator { margin: 0 0.5rem; color: rgba(255, 255, 255, 0.5); }
+  .breadcrumb .current { color: #ffffff; }
+  h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: #ffffff; }
+  .hero-subtitle { font-size: 1.25rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+  .hero-intro { color: rgba(255,255,255,0.9); font-size: var(--fs-md); line-height: 1.8; max-width: 720px; }
+  .content-container { max-width: 900px; }
+  .content-container p { line-height: 1.8; margin-bottom: 1rem; }
+  .content-container h2 { font-size: 1.5rem; font-weight: 700; margin: 0 0 1.5rem; }
+  .content-container h3 { font-size: 1.15rem; font-weight: 700; margin: 1.5rem 0 0.75rem; }
+  .content-container h4 { font-size: 1.05rem; font-weight: 700; margin: 1rem 0 0.5rem; }
+  .content-container ul, .content-container ol { padding-left: 1.5rem; margin: 1rem 0 1.5rem; }
+  .content-container li { margin-bottom: 0.5rem; line-height: 1.7; }
+  .content-container a { color: var(--accent-teal, #0077b6); }
+  .service-snapshot { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; }
+  .snapshot-item { display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.9); }
+  .snapshot-item i { font-size: 1.25rem; color: var(--accent-color); }
+  .info-callout { display: flex; gap: 1rem; background: #fffbeb; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #f59e0b; margin: 2rem 0; }
+  .info-callout i { font-size: 1.5rem; color: #f59e0b; flex-shrink: 0; }
+  .info-callout.warning { background: #fef2f2; border-left-color: #ef4444; }
+  .info-callout.warning i { color: #ef4444; }
+  .info-callout strong { color: var(--primary-color); display: block; margin-bottom: 0.25rem; }
+  .info-callout p { margin: 0.5rem 0 0; line-height: 1.7; }
+  .country-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+  .country-card { background: var(--bg-secondary, #f8f9fa); padding: 1.25rem; border-radius: 8px; border-top: 3px solid #0077b6; }
+  .country-card.non-hague { border-top-color: #8B2635; }
+  .country-card h4 { margin: 0 0 0.5rem; font-size: 1rem; }
+  .country-card p { margin: 0; font-size: 0.9rem; line-height: 1.6; }
+  .process-steps { display: flex; flex-direction: column; gap: 1.5rem; margin: 2rem 0; }
+  .step { display: flex; gap: 1.25rem; }
+  .step-number { width: 48px; height: 48px; background: var(--accent-coral, #FF1654); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.25rem; flex-shrink: 0; }
+  .step-content h3 { margin: 0 0 0.5rem; }
+  .step-content p { margin: 0; }
+  .rejection-list { display: flex; flex-direction: column; gap: 1.25rem; margin: 1.5rem 0; }
+  .rejection-item { background: #fff; padding: 1.25rem; border-radius: 8px; border-left: 4px solid #ef4444; }
+  .rejection-item h3 { font-size: 1rem; margin: 0 0 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+  .rejection-item h3 i { color: #ef4444; }
+  .rejection-item p { margin: 0; font-size: 0.95rem; line-height: 1.7; }
+  .timeline-table { overflow-x: auto; margin: 1.5rem 0; }
+  .timeline-table table { width: 100%; border-collapse: collapse; background: var(--bg-secondary, #f8f9fa); border-radius: 8px; overflow: hidden; }
+  .timeline-table th { background: var(--surface-navy, #0E2B48); color: #fff; padding: 0.75rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem; }
+  .timeline-table td { padding: 0.75rem 1rem; border-bottom: 1px solid #e2e8f0; font-size: 0.9rem; }
+  .timeline-table tr:last-child td { border-bottom: none; }
+  .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { background: var(--bg-secondary, #f8f9fa); border-radius: 8px; overflow: hidden; }
+  .faq-question { padding: 1rem 1.25rem; font-weight: 600; cursor: pointer; list-style: none; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; float: right; font-size: 1.25rem; color: var(--accent-color); }
+  .faq-item[open] .faq-question::after { content: '\2212'; }
+  .faq-answer { padding: 0 1.25rem 1rem; }
+  .faq-answer p { margin: 0; line-height: 1.7; }
+  .cta-section { text-align: center; max-width: 600px; margin: 0 auto; padding: 3rem 1.5rem; background: var(--surface-navy, #0a1628); border-radius: 12px; }
+  .cta-section h2 { margin-bottom: 1rem; }
+  .cta-section p { margin-bottom: 2rem; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; }
+  .btn-primary { background: var(--accent-color); color: #ffffff; }
+  @media (max-width: 768px) {
+    .service-snapshot { flex-direction: column; }
+    .country-grid { grid-template-columns: 1fr; }
+  }
+</style>

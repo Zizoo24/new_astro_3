@@ -30,6 +30,7 @@ export const arabicPages = new Set([
   '/blog/when-you-dont-need-moj-certification/',
   '/blog/free-zone-arabic-translation-requirements/',
   '/blog/abu-dhabi-vs-dubai-translation-requirements/',
+  '/blog/translation-near-international-city/',
 
   // Legal silo
   '/legal-translation-dubai/',
@@ -104,6 +105,7 @@ export const arabicPages = new Set([
   '/resources/turnaround-times/',
   '/resources/us-citizens-dubai-guide/',
   '/resources/visa-rejection-guide/',
+  '/resources/egyptian-documents-uae-guide/',
 
   // Services & Attestation
   '/services/',

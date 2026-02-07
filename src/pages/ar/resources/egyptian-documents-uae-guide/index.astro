@@ -1,0 +1,685 @@
+---
+import BaseLayoutArabic from '../../../../layouts/BaseLayoutArabic.astro';
+
+const faqs = [
+  {
+    question: "هل مصر عضو في اتفاقية لاهاي للأبوستيل؟",
+    answer: "لا، مصر ليست عضواً في اتفاقية لاهاي. لذلك لا يمكن استخدام الأبوستيل للمستندات المصرية. تحتاج المستندات لسلسلة التصديق الكاملة: وزارة الخارجية المصرية ثم السفارة الإماراتية في القاهرة ثم وزارة الخارجية الإماراتية."
+  },
+  {
+    question: "كم تستغرق سلسلة تصديق الشهادة المصرية؟",
+    answer: "الجدول الزمني المعتاد: 3-5 أيام لتصديق وزارة الخارجية المصرية، 5-7 أيام للسفارة الإماراتية في القاهرة، ثم 1-3 أيام لوزارة الخارجية الإماراتية بعد الوصول. المجموع الإجمالي 2-3 أسابيع تقريباً."
+  },
+  {
+    question: "هل شهادات جامعة الأزهر تحتاج معاملة خاصة؟",
+    answer: "نعم. شهادات الأزهر تصدر من جهة دينية وليست مدنية بالكامل. يجب أولاً تصديقها من مشيخة الأزهر، ثم وزارة الخارجية المصرية، قبل تقديمها للسفارة الإماراتية. هذا يضيف خطوة إضافية مقارنة بالجامعات المدنية."
+  },
+  {
+    question: "ما الفرق بين ترجمة وزارة العدل والترجمة المعتمدة للمصريين في الإمارات؟",
+    answer: "ترجمة وزارة العدل مطلوبة للمحاكم والوزارات الحكومية، وتحمل ختم مترجم مسجل بوزارة العدل الإماراتية. الترجمة المعتمدة كافية للشركات الخاصة والبنوك وأقسام الموارد البشرية. استخدام النوع الخاطئ يؤدي للرفض أو لنفقات غير ضرورية."
+  },
+  {
+    question: "هل يمكن ترجمة عقد الزواج المصري في الإمارات؟",
+    answer: "نعم. عقد الزواج المصري يُترجم بعد إتمام سلسلة التصديق الكاملة. نحتاج النسخة الأصلية المصدقة لإنجاز الترجمة المعتمدة من وزارة العدل. التسليم خلال ساعة للمستندات القياسية."
+  },
+  {
+    question: "ما المستندات المطلوبة لتأشيرة عائلة مصري في الإمارات؟",
+    answer: "تحتاج: عقد الزواج المصدق والمترجم، شهادات ميلاد الأطفال المصدقة والمترجمة، نسخ جوازات السفر، شهادة راتب أو عقد عمل، وعقد إيجار (إيجاري). جميع المستندات المصرية تحتاج سلسلة التصديق الكاملة قبل الترجمة."
+  },
+  {
+    question: "هل شهادة حسن السيرة والسلوك المصرية مقبولة في الإمارات؟",
+    answer: "نعم، بعد التصديق الكامل. تُستخرج من وزارة الداخلية المصرية، ثم تُصدق من وزارة الخارجية المصرية والسفارة الإماراتية. يجب ألا يتجاوز عمرها 6 أشهر عند التقديم."
+  },
+  {
+    question: "كم تكلفة ترجمة المستندات المصرية في الإمارات؟",
+    answer: "ترجمة وزارة العدل تبدأ من 150 درهم للمستند القياسي. عقود الزواج والشهادات الأكاديمية قد تكلف أكثر حسب عدد الصفحات. نقدم عرض سعر فوري عبر واتساب بعد مراجعة المستند."
+  },
+  {
+    question: "هل يمكن بدء إجراءات التصديق من داخل الإمارات؟",
+    answer: "جزئياً. تصديق وزارة الخارجية المصرية والسفارة الإماراتية في القاهرة يتطلب وجود المستند في مصر. يمكنك توكيل شخص في مصر أو استخدام خدمة وسيطة. بعد الوصول للإمارات، نتولى تصديق وزارة الخارجية الإماراتية والترجمة."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+  }))
+};
+---
+
+<BaseLayoutArabic
+  title="المصريون في الإمارات | دليل تصديق وترجمة الوثائق"
+  description="دليل تصديق وترجمة المستندات المصرية في أبوظبي ودبي. سلسلة التصديق، شهادات الأزهر، عقود الزواج، والشهادات الأكاديمية."
+>
+  <Fragment slot="head">
+    <link rel="canonical" href="https://onlinetranslation.ae/ar/resources/egyptian-documents-uae-guide/" />
+    <link rel="alternate" hreflang="en" href="https://onlinetranslation.ae/resources/egyptian-documents-uae-guide/" />
+    <link rel="alternate" hreflang="ar" href="https://onlinetranslation.ae/ar/resources/egyptian-documents-uae-guide/" />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <section class="hero-section bg-dark" dir="rtl">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="مسار التنقل">
+        <a href="/ar/">الرئيسية</a>
+        <span class="separator">&lt;</span>
+        <a href="/ar/resources/">الموارد</a>
+        <span class="separator">&lt;</span>
+        <span class="current">دليل المستندات المصرية</span>
+      </nav>
+
+      <h1>المصريون في الإمارات: دليل تصديق وترجمة الوثائق</h1>
+      <p class="hero-subtitle">كل ما تحتاج معرفته عن تجهيز مستنداتك المصرية للاستخدام الرسمي</p>
+      <div class="hero-intro">
+        <p>الجالية المصرية من أكبر الجاليات العربية في الإمارات. سواء كنت موظفاً جديداً أو مقيماً تجدد إقامتك أو تكفل عائلتك، ستحتاج مستنداتك المصرية مصدقة ومترجمة. هذا الدليل يشرح كل خطوة بالتفصيل.</p>
+      </div>
+
+      <div class="service-snapshot">
+        <div class="snapshot-item">
+          <i class="fas fa-globe-africa"></i>
+          <span><strong>مصر:</strong> ليست عضواً في اتفاقية لاهاي</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-link"></i>
+          <span><strong>التصديق:</strong> سلسلة كاملة مطلوبة</span>
+        </div>
+        <div class="snapshot-item">
+          <i class="fas fa-clock"></i>
+          <span><strong>المدة:</strong> 2-3 أسابيع للسلسلة الكاملة</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- سلسلة التصديق المصرية -->
+  <section class="section bg-white" dir="rtl">
+    <div class="container content-container">
+      <h2>لماذا المستندات المصرية تحتاج سلسلة تصديق كاملة</h2>
+      <p>مصر ليست عضواً في اتفاقية لاهاي للأبوستيل. هذا يعني أن نظام الأبوستيل المبسط لا ينطبق على المستندات المصرية. بدلاً من ذلك، تحتاج كل وثيقة لسلسلة تصديق من عدة جهات قبل قبولها في الإمارات.</p>
+
+      <p>الإمارات أيضاً ليست عضواً في اتفاقية لاهاي. لذلك التعامل بين البلدين يتطلب المسار الدبلوماسي الكامل. هذا المسار أطول من الأبوستيل لكنه ضروري ولا بديل عنه.</p>
+
+      <div class="attestation-chain">
+        <h3>سلسلة التصديق الكاملة للمستندات المصرية</h3>
+        <div class="chain-steps">
+          <div class="chain-step">
+            <div class="chain-number">1</div>
+            <div class="chain-content">
+              <h4>الجهة المصدرة في مصر</h4>
+              <p>توثيق المستند من الجهة الأصلية. مثال: الجامعة للشهادات الأكاديمية، مكتب الصحة لشهادات الميلاد.</p>
+            </div>
+          </div>
+          <div class="chain-step">
+            <div class="chain-number">2</div>
+            <div class="chain-content">
+              <h4>وزارة الخارجية المصرية</h4>
+              <p>تصديق المستند من إدارة التصديقات بوزارة الخارجية المصرية في التحرير أو فروعها. المدة: 3-5 أيام عمل.</p>
+            </div>
+          </div>
+          <div class="chain-step">
+            <div class="chain-number">3</div>
+            <div class="chain-content">
+              <h4>السفارة الإماراتية في القاهرة</h4>
+              <p>تصديق من السفارة أو القنصلية الإماراتية. تقع في الزمالك بالقاهرة. المدة: 5-7 أيام عمل.</p>
+            </div>
+          </div>
+          <div class="chain-step">
+            <div class="chain-number">4</div>
+            <div class="chain-content">
+              <h4>وزارة الخارجية الإماراتية (MOFA)</h4>
+              <p>التصديق النهائي بعد وصول المستند للإمارات. المدة: 1-3 أيام عمل. متوفر في أبوظبي ودبي.</p>
+            </div>
+          </div>
+          <div class="chain-step final">
+            <div class="chain-number">5</div>
+            <div class="chain-content">
+              <h4>الترجمة المعتمدة من وزارة العدل</h4>
+              <p>ترجمة عربية-إنجليزية (أو العكس) من مترجم مسجل بوزارة العدل. <a href="/ar/services/legal-translation/">خدمة الترجمة القانونية</a> — تسليم خلال ساعة.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-callout">
+        <i class="fas fa-info-circle"></i>
+        <p>تفاصيل كاملة عن خدمات التصديق وإجراءاتها في <a href="/ar/services/attestation/">دليل التصديق الشامل</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- الشهادات الأكاديمية المصرية -->
+  <section class="section bg-light" dir="rtl">
+    <div class="container content-container">
+      <h2>تصديق وترجمة الشهادات الأكاديمية المصرية</h2>
+      <p>الشهادات الأكاديمية من أكثر المستندات التي يحتاجها المصريون في الإمارات. سواء كنت تتقدم لوظيفة أو تجدد إقامتك أو تطلب الإقامة الذهبية، ستحتاج شهادتك مصدقة ومترجمة.</p>
+
+      <div class="doc-types-grid">
+        <div class="doc-type-card">
+          <h3><i class="fas fa-university"></i> الجامعات الحكومية المصرية</h3>
+          <p>شهادات جامعة القاهرة وعين شمس والإسكندرية وغيرها تتبع المسار القياسي:</p>
+          <ul>
+            <li>تصديق من شؤون الطلاب بالجامعة</li>
+            <li>تصديق وزارة التعليم العالي المصري</li>
+            <li>وزارة الخارجية المصرية</li>
+            <li>السفارة الإماراتية في القاهرة</li>
+          </ul>
+        </div>
+
+        <div class="doc-type-card azhar">
+          <h3><i class="fas fa-mosque"></i> شهادات جامعة الأزهر</h3>
+          <p>شهادات الأزهر تحتاج خطوة إضافية لأنها تصدر من جهة دينية:</p>
+          <ul>
+            <li>تصديق من مشيخة الأزهر (خطوة إضافية)</li>
+            <li>تصديق وزارة التعليم العالي</li>
+            <li>وزارة الخارجية المصرية</li>
+            <li>السفارة الإماراتية في القاهرة</li>
+          </ul>
+          <div class="special-note">
+            <strong>تنبيه:</strong> نسيان تصديق مشيخة الأزهر سبب شائع لرفض المستندات. تأكد من إتمام هذه الخطوة قبل التقدم لوزارة الخارجية.
+          </div>
+        </div>
+
+        <div class="doc-type-card">
+          <h3><i class="fas fa-building"></i> الجامعات الخاصة المصرية</h3>
+          <p>الجامعة الأمريكية، جامعة المستقبل، أكتوبر للعلوم وغيرها:</p>
+          <ul>
+            <li>تصديق من الجامعة مباشرة</li>
+            <li>تصديق المجلس الأعلى للجامعات الخاصة</li>
+            <li>وزارة الخارجية المصرية</li>
+            <li>السفارة الإماراتية في القاهرة</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>بعد إتمام سلسلة التصديق، تحتاج الشهادة <a href="/ar/personal/academic/degree/">ترجمة معتمدة</a> من مترجم وزارة العدل. كشوف الدرجات تحتاج أيضاً <a href="/ar/personal/academic/transcripts/">ترجمة منفصلة</a> إذا كانت مطلوبة مع الشهادة.</p>
+    </div>
+  </section>
+
+  <!-- عقود الزواج وشهادات الأحوال المدنية -->
+  <section class="section bg-white" dir="rtl">
+    <div class="container content-container">
+      <h2>عقود الزواج والأحوال المدنية المصرية</h2>
+      <p>عقد الزواج المصري من المستندات الأساسية لكفالة الزوجة والأطفال في الإمارات. تنسيق عقد الزواج المصري يختلف عن معظم الدول، مما يتطلب اهتماماً خاصاً عند الترجمة.</p>
+
+      <h3>عقد الزواج (وثيقة الزواج الرسمية)</h3>
+      <div class="document-detail">
+        <div class="detail-grid">
+          <div class="detail-item">
+            <strong>الجهة المصدرة:</strong>
+            <span>مكتب التوثيق (الشهر العقاري) أو المأذون الشرعي</span>
+          </div>
+          <div class="detail-item">
+            <strong>اللغة الأصلية:</strong>
+            <span>العربية</span>
+          </div>
+          <div class="detail-item">
+            <strong>الترجمة المطلوبة:</strong>
+            <span>عربي إلى إنجليزي (ترجمة وزارة العدل)</span>
+          </div>
+          <div class="detail-item">
+            <strong>الاستخدام في الإمارات:</strong>
+            <span>كفالة الزوجة، تأشيرة العائلة، فتح حساب مشترك</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="common-issues">
+        <h3><i class="fas fa-exclamation-triangle"></i> مشاكل شائعة مع عقد الزواج المصري</h3>
+        <div class="issue-list">
+          <div class="issue-item">
+            <strong>اختلاف كتابة الأسماء:</strong>
+            <p>عقد الزواج المصري يكتب الأسماء بالعربية فقط. عند الترجمة للإنجليزية، يجب أن تطابق كتابة الأسماء ما في جواز السفر تماماً. أي اختلاف يسبب الرفض من الهجرة.</p>
+          </div>
+          <div class="issue-item">
+            <strong>اسم الأب والجد:</strong>
+            <p>العقد المصري يذكر سلسلة الأسماء كاملة. الترجمة يجب أن تحافظ على نفس التسلسل المستخدم في جواز السفر.</p>
+          </div>
+          <div class="issue-item">
+            <strong>التاريخ الهجري والميلادي:</strong>
+            <p>بعض العقود المصرية القديمة تذكر التاريخ الهجري فقط. الترجمة تحول التاريخ للميلادي مع الإشارة للتاريخ الأصلي.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>شهادات الميلاد المصرية</h3>
+      <p>شهادة الميلاد المصرية تصدر من مكتب الصحة أو السجل المدني. تحتاج نفس سلسلة التصديق الكاملة. <a href="/ar/personal/vital-records/birth/">تفاصيل ترجمة شهادات الميلاد</a> متوفرة في الدليل المخصص.</p>
+
+      <p>لكفالة الأطفال، تحتاج شهادة ميلاد كل طفل مصدقة ومترجمة بشكل منفصل. تأكد أن أسماء الوالدين في شهادة الميلاد تطابق عقد الزواج وجوازات السفر.</p>
+
+      <h3>وثائق الأحوال المدنية الأخرى</h3>
+      <ul class="content-list">
+        <li><strong>شهادة الوفاة:</strong> مطلوبة لإجراءات الميراث والتوكيلات. تحتاج نفس سلسلة التصديق.</li>
+        <li><strong>حكم الطلاق:</strong> يصدر من المحكمة المصرية. يحتاج تصديقاً إضافياً من وزارة العدل المصرية قبل الخارجية.</li>
+        <li><strong>قيد عائلي:</strong> مستند مصري فريد يوضح العلاقات العائلية. مقبول كمستند داعم بعد التصديق والترجمة.</li>
+      </ul>
+
+      <p>جميع وثائق <a href="/ar/personal/vital-records/">الأحوال المدنية</a> تحتاج ترجمة معتمدة من وزارة العدل للاستخدام الرسمي في الإمارات.</p>
+    </div>
+  </section>
+
+  <!-- شهادة حسن السيرة والسلوك -->
+  <section class="section bg-light" dir="rtl">
+    <div class="container content-container">
+      <h2>شهادة حسن السيرة والسلوك (الفيش والتشبيه)</h2>
+      <p>شهادة حسن السيرة والسلوك مطلوبة لمعظم تأشيرات العمل والإقامة في الإمارات. المستند المصري يُعرف بـ "الفيش والتشبيه" ويصدر من وزارة الداخلية المصرية.</p>
+
+      <div class="process-box">
+        <h3>خطوات استخراج وتصديق الفيش والتشبيه</h3>
+        <div class="process-steps">
+          <div class="process-step">
+            <span class="step-num">1</span>
+            <div>
+              <strong>الاستخراج من مصر</strong>
+              <p>من قسم الشرطة التابع لمحل إقامتك المسجل في مصر. المدة: 3-7 أيام.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <span class="step-num">2</span>
+            <div>
+              <strong>تصديق وزارة الخارجية المصرية</strong>
+              <p>تصديق من إدارة التصديقات. المدة: 3-5 أيام عمل.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <span class="step-num">3</span>
+            <div>
+              <strong>تصديق السفارة الإماراتية</strong>
+              <p>من السفارة في القاهرة أو القنصلية في الإسكندرية. المدة: 5-7 أيام.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <span class="step-num">4</span>
+            <div>
+              <strong>وزارة الخارجية الإماراتية + الترجمة</strong>
+              <p>التصديق النهائي ثم <a href="/ar/personal/immigration/pcc/">ترجمة معتمدة</a> من وزارة العدل.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="warning-box">
+        <i class="fas fa-clock"></i>
+        <div>
+          <strong>مهم: صلاحية المستند</strong>
+          <p>شهادة حسن السيرة والسلوك صالحة لمدة 3-6 أشهر فقط من تاريخ الإصدار. خطط لجدولك الزمني بحيث تنتهي سلسلة التصديق والترجمة قبل انتهاء الصلاحية.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- مشاكل التنسيق الخاصة بالمستندات المصرية -->
+  <section class="section bg-white" dir="rtl">
+    <div class="container content-container">
+      <h2>مشاكل تنسيق المستندات المصرية</h2>
+      <p>المستندات المصرية لها خصائص تنسيقية معينة تسبب مشاكل متكررة. معرفة هذه المشاكل مسبقاً يوفر عليك الوقت والرفض.</p>
+
+      <div class="format-issues">
+        <div class="format-card">
+          <h3><i class="fas fa-pen-fancy"></i> الكتابة اليدوية</h3>
+          <p>كثير من المستندات المصرية الرسمية مكتوبة بخط اليد. عقود الزواج القديمة والقيد العائلي غالباً يدويان. هذا يتطلب مترجماً ذا خبرة بالخط المصري الرسمي لضمان دقة الترجمة.</p>
+        </div>
+
+        <div class="format-card">
+          <h3><i class="fas fa-stamp"></i> الأختام والطوابع</h3>
+          <p>المستندات المصرية تحمل أختاماً متعددة من جهات مختلفة. كل ختم يحتاج إثباتاً في الترجمة. الأختام الباهتة أو غير الواضحة قد تسبب مشاكل في التصديق.</p>
+        </div>
+
+        <div class="format-card">
+          <h3><i class="fas fa-id-card"></i> الرقم القومي مقابل رقم جواز السفر</h3>
+          <p>المستندات المصرية تستخدم الرقم القومي (14 رقماً). الجهات الإماراتية تعتمد رقم جواز السفر. الترجمة يجب أن تتضمن كلا الرقمين عند وجودهما في المستند الأصلي.</p>
+        </div>
+
+        <div class="format-card">
+          <h3><i class="fas fa-calendar-alt"></i> صيغة التاريخ</h3>
+          <p>مصر تستخدم يوم/شهر/سنة مثل الإمارات. لكن بعض المستندات القديمة تستخدم التاريخ الهجري. الترجمة تحول التاريخ الهجري للميلادي مع ذكر الأصلي.</p>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <h3><i class="fas fa-lightbulb"></i> نصيحة قبل التقديم</h3>
+        <p>أرسل صورة المستند عبر واتساب قبل الحضور. نراجع المستند مجاناً ونحدد أي مشاكل محتملة قبل البدء بالترجمة. هذا يوفر عليك زيارة ثانية وتكاليف إضافية.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ترجمة وزارة العدل مقابل المعتمدة -->
+  <section class="section bg-light" dir="rtl">
+    <div class="container content-container">
+      <h2>أي نوع ترجمة تحتاج؟</h2>
+      <p>المصريون في الإمارات غالباً يدفعون أكثر من اللازم باختيار نوع الترجمة الخاطئ. الفرق بين ترجمة وزارة العدل والمعتمدة يحدد التكلفة والقبول.</p>
+
+      <div class="comparison-grid">
+        <div class="comparison-card moj">
+          <h3><i class="fas fa-gavel"></i> ترجمة وزارة العدل</h3>
+          <p>مطلوبة عندما يكون المستند موجهاً لجهة حكومية أو قضائية.</p>
+          <ul>
+            <li>محاكم دبي وأبوظبي</li>
+            <li>الإقامة العامة (GDRFA)</li>
+            <li>وزارة الموارد البشرية (MOHRE)</li>
+            <li>دائرة الأراضي والأملاك (DLD)</li>
+            <li>وزارة التربية والتعليم (MOHESR)</li>
+          </ul>
+        </div>
+        <div class="comparison-card certified">
+          <h3><i class="fas fa-certificate"></i> الترجمة المعتمدة</h3>
+          <p>كافية للجهات غير الحكومية والاستخدام الخاص.</p>
+          <ul>
+            <li>الشركات الخاصة وأقسام الموارد البشرية</li>
+            <li>البنوك (فتح حساب، قرض)</li>
+            <li>المدارس الخاصة والجامعات</li>
+            <li>شركات التأمين</li>
+            <li>المناطق الحرة (بعضها يقبل المعتمدة)</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>لا تعرف أي نوع تحتاج؟ اقرأ <a href="/ar/resources/moj-vs-certified/">الدليل الكامل: وزارة العدل مقابل المعتمدة</a> أو أرسل استفسارك عبر واتساب ونحدد لك النوع المطلوب مجاناً.</p>
+    </div>
+  </section>
+
+  <!-- التراخيص المهنية والتجارية -->
+  <section class="section bg-white" dir="rtl">
+    <div class="container content-container">
+      <h2>المستندات المهنية والتجارية للمصريين</h2>
+      <p>رجال الأعمال والمهنيون المصريون في الإمارات يحتاجون مستندات إضافية حسب نوع النشاط.</p>
+
+      <h3>الرخص المهنية المصرية</h3>
+      <p>إذا كنت طبيباً أو مهندساً أو محاسباً، قد تحتاج ترجمة وتصديق رخصتك المهنية المصرية. <a href="/ar/personal/immigration/license/">دليل ترجمة الرخص المهنية</a> يشرح المتطلبات حسب كل تخصص.</p>
+
+      <ul class="content-list">
+        <li><strong>الأطباء:</strong> شهادة مزاولة المهنة من وزارة الصحة المصرية + شهادة التخصص</li>
+        <li><strong>المهندسون:</strong> عضوية نقابة المهندسين المصرية + شهادة الدرجة</li>
+        <li><strong>المحاسبون:</strong> شهادة مزاولة من هيئة الرقابة المالية أو النقابة</li>
+        <li><strong>المحامون:</strong> عضوية نقابة المحامين المصرية (للاستخدام كمرجع فقط)</li>
+      </ul>
+
+      <h3>المستندات التجارية</h3>
+      <p>المصريون الذين يؤسسون شركات في الإمارات أو يشاركون في نشاط تجاري قد يحتاجون:</p>
+      <ul class="content-list">
+        <li><strong>السجل التجاري المصري:</strong> مطلوب أحياناً كمرجع للخبرة التجارية</li>
+        <li><strong>عقد التأسيس:</strong> <a href="/ar/legal/corporate/">ترجمة المستندات التجارية</a> متوفرة بنفس اليوم</li>
+        <li><strong>التوكيلات:</strong> التوكيل المصري يحتاج تصديقاً كاملاً للاستخدام في الإمارات</li>
+        <li><strong>القوائم المالية:</strong> قد تُطلب للإقامة الذهبية أو تأسيس شركة</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- جدول زمني واقعي -->
+  <section class="section bg-light" dir="rtl">
+    <div class="container content-container">
+      <h2>الجدول الزمني الواقعي للمصريين</h2>
+      <p>التخطيط المسبق يوفر عليك أسابيع من التأخير. إليك جدولاً زمنياً واقعياً لتجهيز المستندات المصرية.</p>
+
+      <div class="timeline-table">
+        <table>
+          <thead>
+            <tr>
+              <th>المرحلة</th>
+              <th>المدة المتوقعة</th>
+              <th>المكان</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>استخراج المستندات الأصلية</td>
+              <td>1-7 أيام</td>
+              <td>مصر</td>
+            </tr>
+            <tr>
+              <td>تصديق الجهة المصدرة / الجامعة</td>
+              <td>1-3 أيام</td>
+              <td>مصر</td>
+            </tr>
+            <tr>
+              <td>وزارة الخارجية المصرية</td>
+              <td>3-5 أيام</td>
+              <td>القاهرة</td>
+            </tr>
+            <tr>
+              <td>السفارة الإماراتية في القاهرة</td>
+              <td>5-7 أيام</td>
+              <td>القاهرة (الزمالك)</td>
+            </tr>
+            <tr>
+              <td>شحن المستندات للإمارات</td>
+              <td>2-4 أيام</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>وزارة الخارجية الإماراتية</td>
+              <td>1-3 أيام</td>
+              <td>أبوظبي أو دبي</td>
+            </tr>
+            <tr class="highlight-row">
+              <td>الترجمة المعتمدة من وزارة العدل</td>
+              <td>ساعة واحدة</td>
+              <td>عبر واتساب</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>المجموع:</strong> 2-4 أسابيع من البداية للنهاية. التخطيط المسبق ضروري خاصة إذا كانت المستندات ستُستخدم لتقديم تأشيرة بموعد محدد.</p>
+    </div>
+  </section>
+
+  <!-- قائمة فحص شاملة -->
+  <section class="section bg-white" dir="rtl">
+    <div class="container content-container">
+      <h2>قائمة الفحص قبل التقديم</h2>
+      <p>استخدم هذه القائمة للتأكد من جاهزية مستنداتك المصرية للاستخدام في الإمارات.</p>
+
+      <div class="checklist">
+        <div class="checklist-item">
+          <i class="fas fa-check-square"></i>
+          <span><strong>المستندات الأصلية موجودة</strong> — ليست صوراً أو نسخاً غير مصدقة</span>
+        </div>
+        <div class="checklist-item">
+          <i class="fas fa-check-square"></i>
+          <span><strong>ختم وزارة الخارجية المصرية</strong> واضح وصالح</span>
+        </div>
+        <div class="checklist-item">
+          <i class="fas fa-check-square"></i>
+          <span><strong>ختم السفارة الإماراتية</strong> في القاهرة أو الإسكندرية</span>
+        </div>
+        <div class="checklist-item">
+          <i class="fas fa-check-square"></i>
+          <span><strong>ختم وزارة الخارجية الإماراتية</strong> (MOFA)</span>
+        </div>
+        <div class="checklist-item">
+          <i class="fas fa-check-square"></i>
+          <span><strong>الأسماء تطابق جواز السفر</strong> حرفاً بحرف في جميع المستندات</span>
+        </div>
+        <div class="checklist-item">
+          <i class="fas fa-check-square"></i>
+          <span><strong>التواريخ بالصيغة الميلادية</strong> يوم/شهر/سنة</span>
+        </div>
+        <div class="checklist-item">
+          <i class="fas fa-check-square"></i>
+          <span><strong>نوع الترجمة صحيح</strong> (وزارة العدل للحكومة، معتمدة للخاص)</span>
+        </div>
+        <div class="checklist-item">
+          <i class="fas fa-check-square"></i>
+          <span><strong>المستندات ذات الصلاحية</strong> لم تنتهِ (الفيش والتشبيه: 6 أشهر)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- الأسئلة الشائعة -->
+  <section class="section bg-light faq-section" dir="rtl">
+    <div class="container content-container">
+      <h2>الأسئلة الشائعة — المستندات المصرية في الإمارات</h2>
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" open={index === 0}>
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section bg-white" dir="rtl">
+    <div class="container cta-section">
+      <h2>مستنداتك المصرية جاهزة للترجمة؟</h2>
+      <p>أرسل صورة المستند المصدق عبر واتساب. نراجعه مجاناً ونقدم عرض سعر فوري مع تسليم خلال ساعة للمستندات القياسية.</p>
+      <div class="cta-details">
+        <span><i class="fas fa-stamp"></i> ترخيص وزارة العدل رقم 701</span>
+        <span><i class="fas fa-user-tie"></i> المترجم: خالد محمد عبدالوهاب العدل</span>
+      </div>
+      <a href="https://wa.me/971508620217?text=أحتاج ترجمة مستند مصري" class="btn btn-primary">
+        <i class="fab fa-whatsapp"></i> واتساب: <span dir="ltr">+971 50 862 0217</span>
+      </a>
+      <p class="cta-note">للتحقق من الترخيص: الخط الساخن لوزارة العدل <span dir="ltr">800 333333</span></p>
+    </div>
+  </section>
+</BaseLayoutArabic>
+
+<style>
+  .hero-section { background: linear-gradient(135deg, var(--primary-color, #0E2B48) 0%, #1a3a5c 100%); color: white; padding: 3rem 0; }
+  .breadcrumb { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.7); flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,0.7); text-decoration: none; }
+  .breadcrumb a:hover { color: white; }
+  .breadcrumb .current { color: white; }
+  .hero-section h1 { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 800; margin: 0 0 0.5rem; line-height: 1.6; }
+  .hero-subtitle { font-size: 1.1rem; color: var(--accent-color, #FF1654); margin: 0 0 1.5rem; }
+  .hero-intro { line-height: 1.8; color: rgba(255,255,255,0.9); margin-bottom: 1.5rem; max-width: 700px; }
+
+  .service-snapshot { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.5rem; }
+  .snapshot-item { display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.9); }
+  .snapshot-item i { color: var(--accent-color); font-size: 1.25rem; }
+
+  .section { padding: 4rem 0; }
+  .section h2 { font-size: 1.5rem; font-weight: 700; color: var(--primary-color, #0E2B48); margin: 0 0 1rem; }
+  .content-container { max-width: 900px; margin: 0 auto; }
+  .content-container p { line-height: 1.8; margin-bottom: 1.5rem; }
+  .content-container a { color: var(--accent-color, #FF1654); }
+  .content-container h3 { margin-top: 2rem; margin-bottom: 1rem; font-size: 1.2rem; }
+
+  .attestation-chain { background: #f8f9fa; padding: 2rem; border-radius: 12px; margin: 2rem 0; }
+  .attestation-chain h3 { margin-top: 0; }
+  .chain-steps { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+  .chain-step { display: flex; gap: 1.25rem; align-items: flex-start; padding: 1rem; background: white; border-radius: 8px; }
+  .chain-step.final { background: #d1fae5; }
+  .chain-number { width: 36px; height: 36px; background: var(--primary-color, #0E2B48); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+  .chain-step.final .chain-number { background: #059669; }
+  .chain-content h4 { margin: 0 0 0.25rem; font-size: 1rem; }
+  .chain-content p { margin: 0; line-height: 1.7; font-size: 0.95rem; }
+  .chain-content a { color: var(--accent-color); }
+
+  .info-callout { display: flex; align-items: flex-start; gap: 0.75rem; background: #e0f2fe; padding: 1rem 1.25rem; border-radius: 8px; margin-top: 1.5rem; }
+  .info-callout i { color: #0077b6; font-size: 1.25rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .info-callout p { margin: 0; line-height: 1.7; }
+  .info-callout a { color: #0077b6; }
+
+  .doc-types-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .doc-type-card { background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .doc-type-card.azhar { border: 2px solid #d4a54c; }
+  .doc-type-card h3 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.75rem; font-size: 1.1rem; }
+  .doc-type-card h3 i { color: var(--accent-color); }
+  .doc-type-card p { line-height: 1.7; margin: 0 0 0.75rem; font-size: 0.95rem; }
+  .doc-type-card ul { padding-right: 1.25rem; margin: 0; }
+  .doc-type-card li { margin: 0.4rem 0; font-size: 0.95rem; }
+  .special-note { background: #fef3cd; padding: 0.75rem 1rem; border-radius: 6px; margin-top: 0.75rem; font-size: 0.9rem; border-right: 3px solid #d4a54c; }
+
+  .document-detail { background: #f8f9fa; padding: 1.5rem; border-radius: 12px; margin: 1rem 0; }
+  .detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .detail-item { display: flex; flex-direction: column; gap: 0.25rem; }
+  .detail-item strong { font-size: 0.85rem; color: var(--primary-color); }
+  .detail-item span { font-size: 0.95rem; }
+
+  .common-issues { background: #fff5f5; padding: 1.5rem; border-radius: 12px; margin: 2rem 0; border-right: 4px solid #e53e3e; }
+  .common-issues h3 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 1rem; color: #c53030; }
+  .common-issues h3 i { color: #e53e3e; }
+  .issue-list { display: flex; flex-direction: column; gap: 1rem; }
+  .issue-item { padding: 0.75rem; background: white; border-radius: 8px; }
+  .issue-item strong { color: var(--primary-color); display: block; margin-bottom: 0.25rem; }
+  .issue-item p { margin: 0; line-height: 1.7; font-size: 0.95rem; }
+
+  .content-list { padding-right: 1.25rem; }
+  .content-list li { margin: 0.75rem 0; line-height: 1.7; }
+
+  .process-box { background: #f8f9fa; padding: 2rem; border-radius: 12px; margin: 1.5rem 0; }
+  .process-box h3 { margin-top: 0; }
+  .process-steps { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+  .process-step { display: flex; gap: 1rem; align-items: flex-start; }
+  .step-num { width: 32px; height: 32px; background: var(--primary-color, #0E2B48); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
+  .process-step strong { display: block; margin-bottom: 0.25rem; }
+  .process-step p { margin: 0; line-height: 1.7; font-size: 0.95rem; }
+  .process-step a { color: var(--accent-color); }
+
+  .warning-box { display: flex; gap: 1rem; align-items: flex-start; background: #fff3cd; padding: 1.25rem; border-radius: 8px; margin-top: 1.5rem; border-right: 3px solid #ffc107; }
+  .warning-box i { color: #856404; font-size: 1.25rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .warning-box strong { display: block; margin-bottom: 0.25rem; color: #856404; }
+  .warning-box p { margin: 0; line-height: 1.7; }
+
+  .format-issues { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+  .format-card { background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .format-card h3 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.75rem; font-size: 1.05rem; }
+  .format-card h3 i { color: var(--accent-color); }
+  .format-card p { margin: 0; line-height: 1.7; font-size: 0.95rem; }
+
+  .tip-box { background: #d1fae5; padding: 1.5rem; border-radius: 12px; margin-top: 2rem; border-right: 4px solid #059669; }
+  .tip-box h3 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.75rem; color: #059669; }
+  .tip-box p { margin: 0; line-height: 1.7; }
+
+  .comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+  .comparison-card { padding: 1.5rem; border-radius: 12px; }
+  .comparison-card.moj { background: #fce7f3; border: 2px solid #be185d; }
+  .comparison-card.certified { background: #e0f2fe; border: 2px solid #0077b6; }
+  .comparison-card h3 { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.75rem; font-size: 1.1rem; }
+  .comparison-card.moj h3 { color: #be185d; }
+  .comparison-card.certified h3 { color: #0077b6; }
+  .comparison-card p { margin: 0 0 0.75rem; font-size: 0.95rem; line-height: 1.7; }
+  .comparison-card ul { list-style: none; padding: 0; margin: 0; }
+  .comparison-card li { padding: 0.4rem 0; font-size: 0.95rem; }
+
+  .timeline-table { overflow-x: auto; margin: 1.5rem 0; }
+  .timeline-table table { width: 100%; border-collapse: collapse; }
+  .timeline-table th { background: var(--primary-color, #0E2B48); color: white; padding: 1rem; text-align: right; font-weight: 600; }
+  .timeline-table td { padding: 0.75rem 1rem; border-bottom: 1px solid #e2e8f0; }
+  .timeline-table tr:nth-child(even) { background: #f8f9fa; }
+  .highlight-row { background: #d1fae5; }
+  .highlight-row td { font-weight: 600; color: #059669; }
+
+  .checklist { display: flex; flex-direction: column; gap: 0.75rem; }
+  .checklist-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.75rem; background: #f8f9fa; border-radius: 8px; }
+  .checklist-item i { color: #059669; font-size: 1.25rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .checklist-item span { line-height: 1.5; }
+
+  .faq-section h2 { margin-bottom: 2rem; }
+  .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .faq-item { background: white; border-radius: 0.75rem; }
+  .faq-question { padding: 1.25rem 1.5rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; color: var(--primary-color); }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; font-size: 1.5rem; color: var(--accent-color); }
+  .faq-item[open] .faq-question::after { content: '\2212'; }
+  .faq-answer { padding: 0 1.5rem 1.25rem; }
+  .faq-answer p { margin: 0; line-height: 1.7; }
+
+  .cta-section { text-align: center; max-width: 600px; margin: 0 auto; background: linear-gradient(135deg, var(--primary-color) 0%, #1a3a5c 100%); color: white; padding: 2.5rem; border-radius: 12px; }
+  .cta-section h2 { margin-bottom: 1rem; color: white; }
+  .cta-section > p { margin-bottom: 1.5rem; color: rgba(255,255,255,0.9); }
+  .cta-details { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; color: rgba(255,255,255,0.8); }
+  .cta-details span { display: flex; align-items: center; gap: 0.5rem; }
+  .cta-details i { color: var(--accent-color); }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; border-radius: 0.5rem; font-weight: 600; text-decoration: none; }
+  .btn-primary { background: #25D366; color: #ffffff; }
+  .cta-note { font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-top: 1rem; }
+
+  @media (max-width: 600px) {
+    .service-snapshot { flex-direction: column; }
+    .doc-types-grid { grid-template-columns: 1fr; }
+    .format-issues { grid-template-columns: 1fr; }
+    .comparison-grid { grid-template-columns: 1fr; }
+  }
+</style>
