@@ -1,16 +1,26 @@
 # Content Strategy: Own the Journey (EN + AR)
 
 **Site**: OnlineTranslation.ae
-**Version**: 3.1
+**Version**: 3.2
 **Created**: February 6, 2026
 **Updated**: February 7, 2026
-**Replaces**: v3.0 (phasing updated per keyword demand audit)
+**Replaces**: v3.1 (Phase 1 + Phase 3 English complete, all expansions complete)
 
 ---
 
 ## What Changed in v3.0
 
 The February 2026 Al Syed competitive analysis revealed a critical insight: the company that ranks #1-2 for "legal translation Dubai" in English has **zero Arabic pages**. Meanwhile, OnlineTranslation.ae already has **~82 Arabic pages** — more than any single competitor domain. The Arabic content gap is not page count, it is optimization and strategic expansion.
+
+**Key changes (v3.1 → v3.2):**
+- **Phase 1 English track COMPLETE**: Translation type decision guide, MOJ explainer blog, MOJ vs Certified expansion all published
+- **Phase 3 English track COMPLETE**: Indian, Egyptian, Pakistani nationality guides all published
+- **All 6 page expansions COMPLETE**: Death certificate estate section, MOJ vs certified authority table, Golden Visa degree section, Wills ADJD section, Lease Ejari section, Driving license Abu Dhabi section
+- **hreflang tags ALREADY IMPLEMENTED**: EN↔AR pairs working in BaseLayout + BaseLayoutArabic via arabicPages.ts mapping
+- **Additional nationality guides created** (beyond plan): Indian, Egyptian, Pakistani general guides + attestation-specific deep-dives
+- **Search index updated** with all new pages
+- **Blog index updated** with all new blog posts
+- **Cross-links established** between general nationality guides and attestation deep-dives
 
 **Key changes (v3.0 → v3.1):**
 - **Phasing reordered**: Abu Dhabi content moved from Phase 4 to Phase 2 (fewer competitors, growing ADGM demand)
@@ -166,20 +176,20 @@ Each phase has both an English and Arabic component running in parallel. **Arabi
 
 **Week 1 Technical Priorities (BEFORE any content work):**
 
-| # | Task | Type | Severity |
-|---|------|------|----------|
-| T1 | **Implement hreflang tags sitewide** (EN↔AR page pairs) | Technical | CRITICAL |
-| T2 | **Deindex Vercel staging sites** (replit1, manus, ot-astro2) | Technical | HIGH |
-| T3 | Verify /ar/ pages in XML sitemap | Technical | HIGH |
-| T4 | Check Arabic page indexation in GSC | Technical | HIGH |
+| # | Task | Type | Severity | Status |
+|---|------|------|----------|--------|
+| T1 | **Implement hreflang tags sitewide** (EN↔AR page pairs) | Technical | CRITICAL | ✅ DONE — implemented in BaseLayout + BaseLayoutArabic via arabicPages.ts (117 pairs) |
+| T2 | **Deindex Vercel staging sites** (replit1, manus, ot-astro2) | Technical | HIGH | ⏳ Requires Vercel dashboard access |
+| T3 | Verify /ar/ pages in XML sitemap | Technical | HIGH | ✅ DONE — @astrojs/sitemap includes all /ar/ pages |
+| T4 | Check Arabic page indexation in GSC | Technical | HIGH | ⏳ Requires GSC access |
 
 **English Track (Weeks 1-4):**
 
-| # | Content | Type | URL | Target Query |
-|---|---------|------|-----|--------------|
-| 1 | "What translation type do I need? MOJ vs Certified vs Notarized — by authority" | Resource | `/resources/translation-type-decision-guide/` | what translation do I need UAE |
-| 2 | "What is MOJ certified translation? Complete explainer" | Blog | `/blog/what-is-moj-certified-translation/` | what is MOJ translation |
-| 3 | Expand `/resources/moj-vs-certified/` with authority-specific table | Expansion | Existing page | MOJ vs certified by authority |
+| # | Content | Type | URL | Target Query | Status |
+|---|---------|------|-----|--------------|--------|
+| 1 | "What translation type do I need? MOJ vs Certified vs Notarized — by authority" | Resource | `/resources/translation-type-decision-guide/` | what translation do I need UAE | ✅ DONE |
+| 2 | "What is MOJ certified translation? Complete explainer" | Blog | `/blog/what-is-moj-certified-translation/` | what is MOJ translation | ✅ DONE |
+| 3 | Expand `/resources/moj-vs-certified/` with authority-specific table | Expansion | Existing page | MOJ vs certified by authority | ✅ DONE |
 
 **Arabic Track (Weeks 1-4):**
 
@@ -236,11 +246,11 @@ Each phase has both an English and Arabic component running in parallel. **Arabi
 
 **English Track:**
 
-| # | Content | Type | URL | Target Query |
-|---|---------|------|-----|--------------|
-| 8 | "Indian degree holders: complete attestation and translation guide for UAE" | Resource | `/resources/indian-degree-attestation-uae/` | Indian degree attestation UAE |
-| 9 | "Egyptian professionals in UAE: certificate attestation and translation guide" | Resource | `/resources/egyptian-certificate-attestation-dubai/` | Egyptian certificate attestation Dubai |
-| 10 | "Pakistani marriage certificate (Nikah Nama): translation and attestation for UAE" | Resource | `/resources/pakistani-marriage-certificate-uae/` | Pakistani marriage certificate attestation UAE |
+| # | Content | Type | URL | Target Query | Status |
+|---|---------|------|-----|--------------|--------|
+| 8 | "Indian degree holders: complete attestation and translation guide for UAE" | Resource | `/resources/indian-degree-attestation-uae/` | Indian degree attestation UAE | ✅ DONE |
+| 9 | "Egyptian professionals in UAE: certificate attestation and translation guide" | Resource | `/resources/egyptian-certificate-attestation-dubai/` | Egyptian certificate attestation Dubai | ✅ DONE |
+| 10 | "Pakistani marriage certificate (Nikah Nama): translation and attestation for UAE" | Resource | `/resources/pakistani-marriage-certificate-uae/` | Pakistani marriage certificate attestation UAE | ✅ DONE |
 
 **Arabic Track:**
 
@@ -303,14 +313,14 @@ Each phase has both an English and Arabic component running in parallel. **Arabi
 
 These existing pages are close to ranking well. Small expansions can push them higher:
 
-| Page | Current State | Expansion |
-|------|--------------|-----------|
-| `/personal/vital-records/death/` | Ranks #2 for "death certificate translation UAE" | Add estate settlement process section (+500 words) |
-| `/resources/moj-vs-certified/` | Best decision piece in market | Add authority-specific table: "which type for which authority" |
-| `/services/golden-visa-translation/` | Exists but thin on degree angle | Add "degree translation for Golden Visa" section |
-| `/legal/wills/` | Exists | Add ADJD-specific will registration process section |
-| `/legal/contracts/lease/` | Exists | Add Ejari-specific tenancy contract section |
-| `/personal/immigration/license/` | Dubai/RTA only | Add Abu Dhabi section with video requirement, Al Jabeer/Yateem opticians |
+| Page | Current State | Expansion | Status |
+|------|--------------|-----------|--------|
+| `/personal/vital-records/death/` | Ranks #2 for "death certificate translation UAE" | Add estate settlement process section (+500 words) | ✅ DONE |
+| `/resources/moj-vs-certified/` | Best decision piece in market | Add authority-specific table: "which type for which authority" | ✅ DONE |
+| `/services/golden-visa-translation/` | Exists but thin on degree angle | Add "degree translation for Golden Visa" section | ✅ DONE |
+| `/legal/wills/` | Exists | Add ADJD-specific will registration process section | ✅ DONE |
+| `/legal/contracts/lease/` | Exists | Add Ejari-specific tenancy contract section | ✅ DONE |
+| `/personal/immigration/license/` | Dubai/RTA only | Add Abu Dhabi section with video requirement, Al Jabeer/Yateem opticians | ✅ DONE |
 
 ---
 
@@ -587,6 +597,6 @@ Arabic PPC is significantly less saturated than English. Only 3-4 competitors ha
 
 ---
 
-*Strategy Version: 3.1*
+*Strategy Version: 3.2*
 *Last Updated: February 7, 2026*
-*Next Review: March 2026 (after Phase 1 validation)*
+*Next Review: March 2026 (after Phase 2 content begins)*

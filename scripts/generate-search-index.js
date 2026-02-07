@@ -230,6 +230,16 @@ function buildSearchIndex() {
     { title: 'Court Document Translation Dubai Guide', url: '/blog/court-document-translation-dubai/', category: 'Blog', keywords: 'court document translation dubai courts difc adgm judgment verdict arbitration litigation accepted rejected' },
     { title: 'Marriage Certificate Translation for UAE Visa', url: '/blog/marriage-certificate-translation-dubai/', category: 'Blog', keywords: 'marriage certificate translation dubai spouse visa gdrfa attestation nikah nama religious civil wedding' },
     { title: 'UAE Attestation Process Guide 2026', url: '/blog/uae-attestation-process-guide/', category: 'Blog', keywords: 'uae attestation mofa embassy apostille hague convention document legalization india pakistan uk usa philippines' },
+    { title: 'MOJ vs Certified Translation: Which Do You Need?', url: '/resources/moj-vs-certified/', category: 'Resources', keywords: 'moj certified translation difference ministry justice court government private hr banks which type need' },
+    { title: 'Translation Type Decision Guide', url: '/resources/translation-type-decision-guide/', category: 'Resources', keywords: 'translation type decision guide moj certified notarized which need authority gdrfa mofa dld mohre' },
+    { title: 'What is MOJ Certified Translation?', url: '/blog/what-is-moj-certified-translation/', category: 'Blog', keywords: 'moj certified translation ministry justice explainer guide license 701 stamp seal legal government court' },
+    { title: 'Common Document Translation Mistakes in UAE', url: '/blog/document-translation-mistakes-uae/', category: 'Blog', keywords: 'document translation mistakes errors uae rejected common problems avoid tips accuracy' },
+    { title: 'Indian Documents UAE Guide', url: '/resources/indian-documents-uae-guide/', category: 'Resources', keywords: 'indian documents uae guide attestation mea apostille hague convention hrd degree certificate visa work permit' },
+    { title: 'Egyptian Documents UAE Guide', url: '/resources/egyptian-documents-uae-guide/', category: 'Resources', keywords: 'egyptian documents uae guide attestation embassy mofa certificate degree work permit visa' },
+    { title: 'Pakistani Nikah Nama Translation Guide', url: '/resources/pakistani-nikah-nama-guide/', category: 'Resources', keywords: 'pakistani nikah nama translation marriage certificate attestation embassy mofa spouse visa uae' },
+    { title: 'Indian Degree Attestation UAE Guide', url: '/resources/indian-degree-attestation-uae/', category: 'Resources', keywords: 'indian degree attestation uae mea apostille hrd state verification university translation mohre golden visa' },
+    { title: 'Egyptian Certificate Attestation Dubai Guide', url: '/resources/egyptian-certificate-attestation-dubai/', category: 'Resources', keywords: 'egyptian certificate attestation dubai mofa embassy translation degree marriage birth document legalization' },
+    { title: 'Pakistani Marriage Certificate UAE Guide', url: '/resources/pakistani-marriage-certificate-uae/', category: 'Resources', keywords: 'pakistani marriage certificate nikah nama attestation translation uae spouse visa gdrfa embassy mofa' },
   ];
 
   // Add static pages, avoiding duplicates
