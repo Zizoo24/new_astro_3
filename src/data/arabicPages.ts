@@ -1,0 +1,121 @@
+/**
+ * Set of all English paths that have an Arabic equivalent at /ar/{path}.
+ * Used by BaseLayout.astro to emit page-specific hreflang tags.
+ *
+ * Maintain this list when adding or removing Arabic pages.
+ */
+export const arabicPages = new Set([
+  // Core pages
+  '/',
+  '/about/',
+  '/contact/',
+
+  // Blog
+  '/blog/',
+  '/blog/birth-certificate-translation-uae-visa/',
+  '/blog/certified-translator-uae/',
+  '/blog/court-document-translation-dubai/',
+  '/blog/degrees-accepted-uae-work-permit/',
+  '/blog/difc-vs-dubai-courts-translation/',
+  '/blog/legal-translation-cost-dubai-2026/',
+  '/blog/legal-translation-dubai-moj-guide/',
+  '/blog/marriage-certificate-translation-dubai/',
+  '/blog/medical-translation-dha-license/',
+  '/blog/phd-dba-doctorate-translation-uae/',
+  '/blog/professional-certificates-vs-degrees-translation/',
+  '/blog/study-gap-uae-employment/',
+  '/blog/uae-attestation-process-guide/',
+
+  // Legal silo
+  '/legal-translation-dubai/',
+  '/legal/contracts/',
+  '/legal/contracts/lease/',
+  '/legal/contracts/mou/',
+  '/legal/contracts/nda/',
+  '/legal/contracts/spa/',
+  '/legal/corporate/',
+  '/legal/corporate/moa/',
+  '/legal/corporate/poa/',
+  '/legal/corporate/resolution/',
+  '/legal/litigation/',
+  '/legal/litigation/arbitration/',
+  '/legal/litigation/verdict/',
+  '/legal/wills/',
+
+  // Locations
+  '/locations/',
+  '/locations/abu-dhabi/',
+  '/locations/dubai/',
+  '/locations/dubai/business-bay/',
+  '/locations/dubai/difc/',
+  '/locations/dubai/downtown/',
+  '/locations/dubai/jlt/',
+  '/locations/dubai/marina/',
+  '/locations/dubai/palm-jumeirah/',
+  '/locations/sharjah/',
+
+  // Personal silo
+  '/personal/',
+  '/personal/academic/',
+  '/personal/academic/degree/',
+  '/personal/academic/nyuad/',
+  '/personal/academic/transcripts/',
+  '/personal/immigration/',
+  '/personal/immigration/bank/',
+  '/personal/immigration/license/',
+  '/personal/immigration/pcc/',
+  '/personal/vital-records/',
+  '/personal/vital-records/birth/',
+  '/personal/vital-records/death/',
+  '/personal/vital-records/divorce/',
+  '/personal/vital-records/marriage/',
+
+  // Resources
+  '/resources/',
+  '/resources/attestation-guide/',
+  '/resources/authenticated-translation/',
+  '/resources/case-studies/',
+  '/resources/case-studies/dha-dataflow-deadline/',
+  '/resources/case-studies/rejected-document-rescue/',
+  '/resources/case-studies/urgent-family-visa/',
+  '/resources/court-interpreter-guide/',
+  '/resources/distance-education-uae/',
+  '/resources/document-checklist/',
+  '/resources/faq/',
+  '/resources/golden-visa-attestation-guide/',
+  '/resources/golden-visa-checklist/',
+  '/resources/japan-visa-guide/',
+  '/resources/mohesr-equivalency/',
+  '/resources/moj-vs-certified/',
+  '/resources/notary-vs-moj-translation/',
+  '/resources/pricing-guide/',
+  '/resources/turnaround-times/',
+  '/resources/us-citizens-dubai-guide/',
+  '/resources/visa-rejection-guide/',
+
+  // Services & Attestation
+  '/services/',
+  '/services/attestation/',
+  '/services/attestation/apostille/',
+  '/services/attestation/canada/',
+  '/services/attestation/embassy/',
+  '/services/attestation/india/',
+  '/services/attestation/mofa/',
+  '/services/attestation/pakistan/',
+  '/services/attestation/philippines/',
+  '/services/attestation/uk/',
+  '/services/attestation/us/',
+  '/services/certificate-translation/',
+  '/services/corporate-translation/',
+  '/services/golden-visa-translation/',
+  '/services/legal-translation/',
+  '/services/proofreading/',
+  '/services/title-deed-translation-dubai/',
+
+  // Specialized
+  '/specialized-translation/',
+  '/specialized/digital/',
+  '/specialized/hospitality/',
+  '/specialized/medical/',
+  '/specialized/technical/',
+]);

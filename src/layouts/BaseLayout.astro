@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import MobileShell from '../components/MobileShell.astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
 import Analytics from '@vercel/analytics/astro';
+import { arabicPages } from '../data/arabicPages';
 
 interface Props {
   title: string;
@@ -42,6 +43,13 @@ const robotsContent = (() => {
 // Use Astro.site from config for consistent URL handling
 const siteUrl = Astro.site?.origin || 'https://onlinetranslation.ae';
 const fullCanonical = canonical.startsWith('http') ? canonical : `${siteUrl}${canonical}`;
+
+// Build page-specific Arabic hreflang URL
+// Only emit hreflang="ar" when the Arabic page actually exists
+const pathname = Astro.url.pathname;
+const normalizedPath = pathname.endsWith('/') ? pathname : `${pathname}/`;
+const hasArabicVersion = arabicPages.has(normalizedPath) || arabicPages.has(pathname);
+const arabicHref = hasArabicVersion ? `${siteUrl}/ar${normalizedPath}` : null;
 
 // Critical CSS - inlined for fastest paint
 const criticalCSS = `*,*::before,*::after{box-sizing:border-box}html{font-size:80%;scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.6;color:#2d3748;background:#fff}:root{--surface-base:#fff;--surface-navy:#0E2B48;--surface-navy-dark:#072035;--text-heading:#0E2B48;--text-body:#2d3748;--text-on-dark:#f4f7fc;--accent-coral:#FF1654;--container-max:1200px;--gutter:clamp(16px,2vw,24px);--section-py:clamp(40px,5vw,80px);--fs-hero:clamp(2.5rem,1.6rem + 2.5vw,4.5rem);--fs-xl:clamp(1.75rem,1.3rem + 1.2vw,2.5rem);--fs-lg:clamp(1.25rem,1rem + 0.6vw,1.5rem);--fs-md:clamp(1rem,0.9rem + 0.35vw,1.125rem)}.skip-link{position:absolute;top:-40px;left:0;background:#0E2B48;color:#fff;padding:8px 16px;z-index:9999;transition:top .2s}.skip-link:focus{top:0}.container{width:100%;max-width:var(--container-max);margin:0 auto;padding:0 var(--gutter)}.porto-header{position:sticky;top:0;z-index:1000;background:var(--surface-navy)}.porto-top-bar{background:#FF1654;padding:6px 0;font-size:.75rem;color:#fff}.porto-main-nav{background:var(--surface-navy);padding:12px 0}.porto-logo img{height:40px;width:auto}.porto-nav-links{display:none}@media(min-width:992px){.porto-nav-links{display:flex;gap:1.5rem}}.hero-section{position:relative;min-height:80vh;display:flex;align-items:center;overflow:hidden}.hero-background{position:absolute;inset:0;z-index:0}.hero-image{width:100%;height:100%;object-fit:cover;object-position:center}.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(14,43,72,0.92) 0%,rgba(7,32,53,0.85) 100%)}.hero-content{position:relative;z-index:1;padding:var(--section-py) 0}.hero-title{font-size:var(--fs-hero);font-weight:800;color:#fff;line-height:1.1;margin:0 0 1rem}.hero-lead{font-size:var(--fs-lg);color:rgba(255,255,255,0.9);margin-bottom:1.5rem}.hero-bullets{list-style:none;padding:0;margin:0 0 2rem}.hero-bullets li{display:flex;align-items:flex-start;gap:.75rem;margin-bottom:.75rem;color:rgba(255,255,255,0.95);font-size:var(--fs-md)}.hero-bullets i{color:#FF1654;margin-top:4px}.hero-cta{display:inline-flex;align-items:center;gap:.5rem;background:#25D366;color:#fff;padding:14px 28px;border-radius:8px;font-weight:600;text-decoration:none;transition:transform .2s,box-shadow .2s}.hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,0.4)}.hero-cta-secondary{color:rgba(255,255,255,0.9);text-decoration:underline;margin-left:1rem}.hero-text-desktop{display:block}.hero-text-mobile{display:none}@media(max-width:767px){.hero-text-desktop{display:none}.hero-text-mobile{display:block}.hero-section{min-height:auto;padding:60px 0}}.overlap-cards-wrapper{position:relative;z-index:2;margin-top:-60px;padding-bottom:var(--section-py)}.overlap-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}.overlap-card{background:#fff;border-radius:12px;padding:1.5rem;box-shadow:0 8px 30px rgba(0,0,0,0.12);display:flex;gap:1rem;text-decoration:none;color:inherit;transition:transform .2s,box-shadow .2s}.overlap-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.15)}.overlap-card-icon{width:48px;height:48px;background:linear-gradient(135deg,#FF1654,#ff4d7a);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.25rem;flex-shrink:0}.overlap-card-title{font-size:1rem;font-weight:700;color:var(--text-heading);margin:0 0 .25rem}.overlap-card-desc{font-size:.875rem;color:var(--text-body);margin:0}.overlap-card-badge{display:inline-block;font-size:.75rem;color:#FF1654;margin-top:.5rem}.trust-bar{background:var(--surface-base);padding:1.5rem 0;border-bottom:1px solid #e2e8f0}.section{padding:var(--section-py) 0}.bg-white{background:var(--surface-base)}.bg-light{background:#f8f9fa}.bg-alt{background:#f0f2f5}.bg-dark{background:var(--surface-navy);color:var(--text-on-dark)}.section-header{text-align:center;margin-bottom:2.5rem}.section-label{display:inline-block;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:#FF1654;margin-bottom:.75rem}.section-title{font-size:var(--fs-xl);font-weight:700;color:var(--text-heading);margin:0;line-height:1.2}.bg-dark .section-title{color:var(--text-on-dark)}img{max-width:100%;height:auto;display:block}img[width][height]{aspect-ratio:attr(width)/attr(height)}.fa,.fas,.fab,.far,.fal,.fad{display:inline-block;font-style:normal;font-variant:normal;text-rendering:auto;line-height:1}.fa::before,.fas::before,.fab::before,.far::before{font-family:'Font Awesome 6 Free','Font Awesome 6 Brands',sans-serif}.os-ios-only{display:none!important}`;
@@ -87,9 +95,9 @@ const criticalCSS = `*,*::before,*::after{box-sizing:border-box}html{font-size:8
   <link rel="canonical" href={fullCanonical}>
 
   <!-- Hreflang tags for internationalization -->
-  <!-- Note: Arabic hreflang points to /ar/ (where content lives), not /عربي/ (which 301 redirects to /ar/) -->
+  <!-- Page-specific: maps each English page to its Arabic equivalent (if it exists) -->
   <link rel="alternate" hreflang="en-AE" href={fullCanonical} />
-  <link rel="alternate" hreflang="ar" href={`${siteUrl}/ar/`} />
+  {arabicHref && <link rel="alternate" hreflang="ar" href={arabicHref} />}
   <link rel="alternate" hreflang="x-default" href={fullCanonical} />
 
   <!-- Open Graph -->
