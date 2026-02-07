@@ -3,14 +3,14 @@
 
 // UPDATED: Jan 2026 - Fixed FontAwesome reload issue
 // v1.2.0: Bypass SW entirely for FontAwesome - let browser handle natively
-const CACHE_NAME = 'ot-cache-v4';
-const STATIC_CACHE = 'ot-static-v4';
-const RUNTIME_CACHE = 'ot-runtime-v4';
+const CACHE_NAME = 'ot-cache-v5';
+const STATIC_CACHE = 'ot-static-v5';
+const RUNTIME_CACHE = 'ot-runtime-v5';
 
 // Critical assets to precache
 const PRECACHE_ASSETS = [
   '/',
-  '/styles/critical.css',
+  '/styles/css-layer-order.css',
   '/styles/base-architecture.css',
   '/assets/images/icons/favicon-64.png',
   '/manifest.webmanifest'
