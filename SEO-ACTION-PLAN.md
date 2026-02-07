@@ -22,12 +22,18 @@ This plan addresses the real SEO challenges identified through deep repository a
 
 ### Competitive Position
 
-| Metric | OnlineTranslation.ae | Alsun | Al Syed | Gap |
+| Metric | OnlineTranslation.ae | Alsun | Al Syed (translationindubai.com) | Gap |
 |--------|---------------------|-------|---------|-----|
 | Backlinks | 144 | 2,772 | 6,310 | -95% to -98% |
 | Keywords in Top 10 | ~8 | 29 | 13 | -72% to -38% |
-| Content Depth | 4,500+ words/page | 3,000+ | 1,500 | **Competitive** |
-| Technical SEO | 8.5/10 | Unknown | Unknown | **Strong** |
+| Content Depth | 4,500+ words/page | ~3,000+ | 800-1,500 | **We lead** |
+| Technical SEO | 8.5/10 | Standard (WordPress) | Weak (no schema, no sitemap) | **We lead** |
+| Arabic Pages | **~82** | 40-70+ | **0** | **We lead in Arabic** |
+| Google Reviews | Growing | **256+ at 4.9** | ~32 | Alsun leads |
+| Schema Markup | Comprehensive | Likely (WPML) | None | **We lead** |
+| Domains | 1 (.ae) | 3+ (.com + .ae) | 1-2 (.com) | Alsun leads in coverage |
+
+**Key insight (Feb 2026):** Al Syed's 6,310 backlinks and 350+ pages drive English head term rankings, but they have zero Arabic content, no schema markup, and no authority-specific process guides. Alsun is the true benchmark competitor with bilingual content and strong reviews. Our advantages: technical SEO, content depth, Arabic page count, and process-guide content (which neither competitor has).
 
 ---
 
@@ -238,9 +244,19 @@ Add FAQs to pages with <8 questions.
 
 ---
 
-## Phase 4: Arabic Market Expansion (Weeks 13-18)
+## Phase 4: Arabic Market Expansion (NOW PARALLEL — See CONTENT-PLAN.md v3.0)
 
-### 4.1 Abu Dhabi-First Strategy
+**IMPORTANT:** Arabic content is no longer a Week 13-18 afterthought. The February 2026 Al Syed analysis revealed that OnlineTranslation.ae already has ~82 Arabic pages — more than any single competitor domain. Arabic optimization now runs in parallel with English content from Week 1. See `CONTENT-PLAN.md` v3.0 for the full dual-track schedule.
+
+### 4.1 Why Arabic Was Elevated
+
+| Competitor | Arabic Pages | Implication |
+|------------|-------------|-------------|
+| Al Syed (translationindubai.com) | **0** | The #1-2 English ranker is invisible in Arabic SERPs |
+| Alsun (3 domains) | ~40-70 | Only serious Arabic competitor, but beatable |
+| OnlineTranslation.ae | **~82** | We already have more Arabic pages than any single competitor domain |
+
+### 4.2 Abu Dhabi-First Strategy
 
 Target keywords (per SEO_ARABIC_KEYWORDS.md):
 
@@ -250,18 +266,26 @@ Target keywords (per SEO_ARABIC_KEYWORDS.md):
 | ترجمة قانونية معتمدة أبوظبي | Critical | Top 5 | ✅ Optimized |
 | ترجمة قانونية الإمارات | High | Top 10 | ✅ Optimized |
 
-### 4.2 Arabic Title Formula
+### 4.3 Arabic Title Formula
 
 ```
 Format 1: [Service] + معتمدة + في + [Location]
 Format 2: مكتب + [Service] + في + [Location]
 ```
 
-### 4.3 Arabic Content Priority
+### 4.4 Arabic Content Priority (Updated)
 
+**Already done:**
 - ✅ `/ar/` homepage - Updated title, meta, H1, hero with Abu Dhabi focus
 - ✅ `/ar/legal-translation-dubai/` - Updated title, meta, H1, FAQs for Abu Dhabi
 - ✅ `/ar/locations/abu-dhabi/` - Already comprehensive with 10 local FAQs
+
+**New priorities (from CONTENT-PLAN.md v3.0):**
+- ⏳ Optimize all 82 Arabic page titles/meta with `SEO_ARABIC_KEYWORDS.md` formulas
+- ⏳ Create Arabic authority process guides (GDRFA, MOHRE, translation type decision)
+- ⏳ Create Arabic blog content (rejection prevention, decision content)
+- ⏳ Create Arabic location pages (Al Ain, Ajman, RAK, Fujairah)
+- ⏳ Create Arabic neighborhood blog posts (International City, Deira, Karama)
 - ⏳ Build Arabic backlinks from UAE forums (ongoing)
 
 ---
@@ -607,11 +631,11 @@ Track link additions/changes over time:
 
 Analyze competitor internal linking and match/exceed:
 
-| Competitor | Avg Links/Page | Our Target |
-|------------|----------------|------------|
-| Alsun | ~6-8 | 12+ (exceed) |
-| Al Syed | ~4-6 | 12+ (exceed) |
-| Prime Legal | ~5-7 | 12+ (exceed) |
+| Competitor | Avg Links/Page | Our Target | Notes |
+|------------|----------------|------------|-------|
+| Alsun | ~6-8 | 12+ (exceed) | Bilingual multi-domain |
+| Al Syed (translationindubai.com) | ~4-6 | 12+ (exceed) | 150+ mega-menu links dilute PageRank |
+| Prime Legal | ~5-7 | 12+ (exceed) | Mid-market |
 
 **Monthly audit:** Compare internal linking metrics against top 3 competitors
 
