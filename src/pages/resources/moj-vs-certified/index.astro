@@ -307,6 +307,122 @@ const faqSchema = {
     </div>
   </section>
 
+  <!-- Authority-Specific Requirements -->
+  <section class="section bg-white">
+    <div class="container content-container">
+      <h2>Which Translation Type for Which Authority</h2>
+      <p>Different UAE authorities have different translation requirements. Use this reference table to confirm which type your destination requires.</p>
+      <p>For detailed guidance on specific authorities, see our guides for <a href="/resources/gdrfa-document-requirements/">GDRFA documents</a>, <a href="/resources/adjd-translation-requirements/">ADJD requirements</a>, <a href="/resources/difc-translation-guide/">DIFC Courts</a>, and <a href="/resources/adgm-translation-requirements/">ADGM Courts</a>.</p>
+
+      <div class="authority-table-wrapper">
+        <table class="authority-table">
+          <thead>
+            <tr>
+              <th>Authority</th>
+              <th>MOJ Required?</th>
+              <th>Certified OK?</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Dubai Courts</strong></td>
+              <td class="required-yes">Yes</td>
+              <td class="required-no">No</td>
+              <td>All litigation and probate cases require <a href="/legal-translation-dubai/">MOJ Legal Translation</a></td>
+            </tr>
+            <tr>
+              <td><strong>DIFC Courts</strong></td>
+              <td class="required-no">No (English)</td>
+              <td class="required-na">N/A</td>
+              <td>Common law jurisdiction operates in English</td>
+            </tr>
+            <tr>
+              <td><strong>ADGM Courts</strong></td>
+              <td class="required-no">No (English)</td>
+              <td class="required-na">N/A</td>
+              <td>Common law jurisdiction operates in English</td>
+            </tr>
+            <tr>
+              <td><strong>ADJD (Abu Dhabi Courts)</strong></td>
+              <td class="required-yes">Yes</td>
+              <td class="required-no">No</td>
+              <td>Civil law system requires Arabic MOJ translation</td>
+            </tr>
+            <tr>
+              <td><strong>GDRFA (Immigration)</strong></td>
+              <td class="required-yes">Yes</td>
+              <td class="required-no">No</td>
+              <td>All visa types require MOJ certification</td>
+            </tr>
+            <tr>
+              <td><strong>MOHRE (Work Permits)</strong></td>
+              <td class="required-yes">Yes</td>
+              <td class="required-no">No</td>
+              <td>Employment visa and work permits need MOJ seal</td>
+            </tr>
+            <tr>
+              <td><strong>MOFA (Foreign Affairs)</strong></td>
+              <td class="required-na">N/A</td>
+              <td class="required-na">N/A</td>
+              <td>MOFA provides attestation only, not translation</td>
+            </tr>
+            <tr>
+              <td><strong>DHA (Health Authority)</strong></td>
+              <td class="required-varies">Varies</td>
+              <td class="required-yes">Yes (some)</td>
+              <td>DataFlow accepts Certified for some healthcare licensing documents</td>
+            </tr>
+            <tr>
+              <td><strong>KHDA (Education)</strong></td>
+              <td class="required-varies">Varies</td>
+              <td class="required-yes">Yes (some)</td>
+              <td>School enrollment may accept Certified Translation</td>
+            </tr>
+            <tr>
+              <td><strong>DLD (Land Department)</strong></td>
+              <td class="required-yes">Yes</td>
+              <td class="required-no">No</td>
+              <td>Property transactions require MOJ certification</td>
+            </tr>
+            <tr>
+              <td><strong>RERA (Rentals)</strong></td>
+              <td class="required-yes">Yes</td>
+              <td class="required-no">No</td>
+              <td>Rental disputes and Ejari submissions need MOJ</td>
+            </tr>
+            <tr>
+              <td><strong>Free Zones (JAFZA, DAFZA)</strong></td>
+              <td class="required-no">No</td>
+              <td class="required-yes">Yes</td>
+              <td>English-language operations accept Certified Translation</td>
+            </tr>
+            <tr>
+              <td><strong>UAE Banks</strong></td>
+              <td class="required-varies">Varies</td>
+              <td class="required-yes">Yes (most)</td>
+              <td>Most banks accept Certified for account opening and loans</td>
+            </tr>
+            <tr>
+              <td><strong>Private Companies</strong></td>
+              <td class="required-no">No</td>
+              <td class="required-yes">Yes</td>
+              <td>HR and employment documentation accepts Certified</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="authority-note">
+        <i class="fas fa-info-circle"></i>
+        <div>
+          <strong>Always verify with the recipient.</strong>
+          <p>Requirements can change based on specific use cases. Send us the exact wording from your recipient and we will confirm the correct type.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Related Services -->
   <section class="section">
     <div class="container">
@@ -451,9 +567,31 @@ const faqSchema = {
   .btn-primary { background: var(--accent-color); color: #ffffff !important; }
   .btn-primary:hover { background: #e0144c; transform: translateY(-2px); }
 
+  /* Authority Table */
+  .authority-table-wrapper { overflow-x: auto; margin: 2rem 0; }
+  .authority-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  .authority-table th, .authority-table td { padding: 0.875rem; text-align: left; border-bottom: 1px solid rgba(0,0,0,0.1); }
+  .authority-table th { background: var(--primary-color, #0E2B48); color: white; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .authority-table tbody tr:hover { background: var(--surface-raised, #f8f9fa); }
+  .authority-table td strong { color: var(--text-heading); }
+  .authority-table td a { color: var(--accent-color); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+  .authority-table td a:hover { border-bottom-color: var(--accent-color); }
+
+  .required-yes { background: #efe; color: #1a5f7a; font-weight: 600; text-align: center; }
+  .required-no { background: #fee; color: #8B2635; font-weight: 600; text-align: center; }
+  .required-varies { background: #ffeaa7; color: #d63031; font-weight: 600; text-align: center; }
+  .required-na { background: var(--surface-raised, #f0f0f0); color: var(--text-muted); font-weight: 600; text-align: center; }
+
+  .authority-note { display: flex; gap: 1rem; background: var(--surface-raised, #f8f9fa); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--accent-color); margin-top: 2rem; }
+  .authority-note i { font-size: 1.5rem; color: var(--accent-color); flex-shrink: 0; }
+  .authority-note strong { color: var(--text-heading); display: block; margin-bottom: 0.5rem; }
+  .authority-note p { margin: 0; color: var(--text-body); line-height: 1.7; }
+
   @media (max-width: 600px) {
     .step-branches { grid-template-columns: 1fr; }
     .type-cards { grid-template-columns: 1fr; }
     .acceptance-grid { grid-template-columns: 1fr; }
+    .authority-table { font-size: 0.8rem; }
+    .authority-table th, .authority-table td { padding: 0.625rem; }
   }
 </style>
